@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist.
@@ -74,6 +75,12 @@ func (o LookupReferenceImageResultOutput) ToLookupReferenceImageResultOutput() L
 
 func (o LookupReferenceImageResultOutput) ToLookupReferenceImageResultOutputWithContext(ctx context.Context) LookupReferenceImageResultOutput {
 	return o
+}
+
+func (o LookupReferenceImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReferenceImageResult] {
+	return pulumix.Output[LookupReferenceImageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).

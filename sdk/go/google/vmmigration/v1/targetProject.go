@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new TargetProject in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
@@ -129,6 +130,12 @@ func (i *TargetProject) ToTargetProjectOutputWithContext(ctx context.Context) Ta
 	return pulumi.ToOutputWithContext(ctx, i).(TargetProjectOutput)
 }
 
+func (i *TargetProject) ToOutput(ctx context.Context) pulumix.Output[*TargetProject] {
+	return pulumix.Output[*TargetProject]{
+		OutputState: i.ToTargetProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetProjectOutput struct{ *pulumi.OutputState }
 
 func (TargetProjectOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o TargetProjectOutput) ToTargetProjectOutput() TargetProjectOutput {
 
 func (o TargetProjectOutput) ToTargetProjectOutputWithContext(ctx context.Context) TargetProjectOutput {
 	return o
+}
+
+func (o TargetProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetProject] {
+	return pulumix.Output[*TargetProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time this target project resource was created (not related to when the Compute Engine project it points to was created).

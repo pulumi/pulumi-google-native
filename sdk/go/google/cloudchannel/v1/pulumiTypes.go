@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i GoogleCloudChannelV1AssociationInfoArgs) ToGoogleCloudChannelV1Associati
 
 func (i GoogleCloudChannelV1AssociationInfoArgs) ToGoogleCloudChannelV1AssociationInfoOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1AssociationInfoOutput)
+}
+
+func (i GoogleCloudChannelV1AssociationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1AssociationInfo] {
+	return pulumix.Output[GoogleCloudChannelV1AssociationInfo]{
+		OutputState: i.ToGoogleCloudChannelV1AssociationInfoOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudChannelV1AssociationInfoArgs) ToGoogleCloudChannelV1AssociationInfoPtrOutput() GoogleCloudChannelV1AssociationInfoPtrOutput {
@@ -89,6 +96,12 @@ func (i *googleCloudChannelV1AssociationInfoPtrType) ToGoogleCloudChannelV1Assoc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1AssociationInfoPtrOutput)
 }
 
+func (i *googleCloudChannelV1AssociationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1AssociationInfo] {
+	return pulumix.Output[*GoogleCloudChannelV1AssociationInfo]{
+		OutputState: i.ToGoogleCloudChannelV1AssociationInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Association links that an entitlement has to other entitlements.
 type GoogleCloudChannelV1AssociationInfoOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o GoogleCloudChannelV1AssociationInfoOutput) ToGoogleCloudChannelV1Associa
 	}).(GoogleCloudChannelV1AssociationInfoPtrOutput)
 }
 
+func (o GoogleCloudChannelV1AssociationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1AssociationInfo] {
+	return pulumix.Output[GoogleCloudChannelV1AssociationInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the base entitlement, for which this entitlement is an add-on.
 func (o GoogleCloudChannelV1AssociationInfoOutput) BaseEntitlement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1AssociationInfo) *string { return v.BaseEntitlement }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o GoogleCloudChannelV1AssociationInfoPtrOutput) ToGoogleCloudChannelV1Asso
 
 func (o GoogleCloudChannelV1AssociationInfoPtrOutput) ToGoogleCloudChannelV1AssociationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1AssociationInfoPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1AssociationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1AssociationInfo] {
+	return pulumix.Output[*GoogleCloudChannelV1AssociationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1AssociationInfoPtrOutput) Elem() GoogleCloudChannelV1AssociationInfoOutput {
@@ -174,6 +199,12 @@ func (o GoogleCloudChannelV1AssociationInfoResponseOutput) ToGoogleCloudChannelV
 	return o
 }
 
+func (o GoogleCloudChannelV1AssociationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1AssociationInfoResponse] {
+	return pulumix.Output[GoogleCloudChannelV1AssociationInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the base entitlement, for which this entitlement is an add-on.
 func (o GoogleCloudChannelV1AssociationInfoResponseOutput) BaseEntitlement() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1AssociationInfoResponse) string { return v.BaseEntitlement }).(pulumi.StringOutput)
@@ -212,6 +243,12 @@ func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChanne
 
 func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToGoogleCloudChannelV1CloudIdentityInfoResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1CloudIdentityInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1CloudIdentityInfoResponse] {
+	return pulumix.Output[GoogleCloudChannelV1CloudIdentityInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // URI of Customer's Admin console dashboard.
@@ -291,6 +328,12 @@ func (i GoogleCloudChannelV1CommitmentSettingsArgs) ToGoogleCloudChannelV1Commit
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CommitmentSettingsOutput)
 }
 
+func (i GoogleCloudChannelV1CommitmentSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1CommitmentSettings] {
+	return pulumix.Output[GoogleCloudChannelV1CommitmentSettings]{
+		OutputState: i.ToGoogleCloudChannelV1CommitmentSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1CommitmentSettingsArgs) ToGoogleCloudChannelV1CommitmentSettingsPtrOutput() GoogleCloudChannelV1CommitmentSettingsPtrOutput {
 	return i.ToGoogleCloudChannelV1CommitmentSettingsPtrOutputWithContext(context.Background())
 }
@@ -332,6 +375,12 @@ func (i *googleCloudChannelV1CommitmentSettingsPtrType) ToGoogleCloudChannelV1Co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1CommitmentSettingsPtrOutput)
 }
 
+func (i *googleCloudChannelV1CommitmentSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1CommitmentSettings] {
+	return pulumix.Output[*GoogleCloudChannelV1CommitmentSettings]{
+		OutputState: i.ToGoogleCloudChannelV1CommitmentSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Commitment settings for commitment-based offers.
 type GoogleCloudChannelV1CommitmentSettingsOutput struct{ *pulumi.OutputState }
 
@@ -357,6 +406,12 @@ func (o GoogleCloudChannelV1CommitmentSettingsOutput) ToGoogleCloudChannelV1Comm
 	}).(GoogleCloudChannelV1CommitmentSettingsPtrOutput)
 }
 
+func (o GoogleCloudChannelV1CommitmentSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1CommitmentSettings] {
+	return pulumix.Output[GoogleCloudChannelV1CommitmentSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Renewal settings applicable for a commitment-based Offer.
 func (o GoogleCloudChannelV1CommitmentSettingsOutput) RenewalSettings() GoogleCloudChannelV1RenewalSettingsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1CommitmentSettings) *GoogleCloudChannelV1RenewalSettings {
@@ -376,6 +431,12 @@ func (o GoogleCloudChannelV1CommitmentSettingsPtrOutput) ToGoogleCloudChannelV1C
 
 func (o GoogleCloudChannelV1CommitmentSettingsPtrOutput) ToGoogleCloudChannelV1CommitmentSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1CommitmentSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1CommitmentSettings] {
+	return pulumix.Output[*GoogleCloudChannelV1CommitmentSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1CommitmentSettingsPtrOutput) Elem() GoogleCloudChannelV1CommitmentSettingsOutput {
@@ -421,6 +482,12 @@ func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChann
 
 func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToGoogleCloudChannelV1CommitmentSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1CommitmentSettingsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1CommitmentSettingsResponse] {
+	return pulumix.Output[GoogleCloudChannelV1CommitmentSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Commitment end timestamp.
@@ -483,6 +550,12 @@ func (i GoogleCloudChannelV1ConditionalOverrideArgs) ToGoogleCloudChannelV1Condi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ConditionalOverrideOutput)
 }
 
+func (i GoogleCloudChannelV1ConditionalOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ConditionalOverride] {
+	return pulumix.Output[GoogleCloudChannelV1ConditionalOverride]{
+		OutputState: i.ToGoogleCloudChannelV1ConditionalOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudChannelV1ConditionalOverrideArrayInput is an input type that accepts GoogleCloudChannelV1ConditionalOverrideArray and GoogleCloudChannelV1ConditionalOverrideArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ConditionalOverrideArrayInput` via:
 //
@@ -508,6 +581,12 @@ func (i GoogleCloudChannelV1ConditionalOverrideArray) ToGoogleCloudChannelV1Cond
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ConditionalOverrideArrayOutput)
 }
 
+func (i GoogleCloudChannelV1ConditionalOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudChannelV1ConditionalOverride] {
+	return pulumix.Output[[]GoogleCloudChannelV1ConditionalOverride]{
+		OutputState: i.ToGoogleCloudChannelV1ConditionalOverrideArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the override to conditionally apply.
 type GoogleCloudChannelV1ConditionalOverrideOutput struct{ *pulumi.OutputState }
 
@@ -521,6 +600,12 @@ func (o GoogleCloudChannelV1ConditionalOverrideOutput) ToGoogleCloudChannelV1Con
 
 func (o GoogleCloudChannelV1ConditionalOverrideOutput) ToGoogleCloudChannelV1ConditionalOverrideOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ConditionalOverride] {
+	return pulumix.Output[GoogleCloudChannelV1ConditionalOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information about the applied override's adjustment.
@@ -558,6 +643,12 @@ func (o GoogleCloudChannelV1ConditionalOverrideArrayOutput) ToGoogleCloudChannel
 	return o
 }
 
+func (o GoogleCloudChannelV1ConditionalOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudChannelV1ConditionalOverride] {
+	return pulumix.Output[[]GoogleCloudChannelV1ConditionalOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudChannelV1ConditionalOverrideArrayOutput) Index(i pulumi.IntInput) GoogleCloudChannelV1ConditionalOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudChannelV1ConditionalOverride {
 		return vs[0].([]GoogleCloudChannelV1ConditionalOverride)[vs[1].(int)]
@@ -587,6 +678,12 @@ func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) ToGoogleCloudChan
 
 func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) ToGoogleCloudChannelV1ConditionalOverrideResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ConditionalOverrideResponse] {
+	return pulumix.Output[GoogleCloudChannelV1ConditionalOverrideResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information about the applied override's adjustment.
@@ -620,6 +717,12 @@ func (o GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) ToGoogleClou
 
 func (o GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) ToGoogleCloudChannelV1ConditionalOverrideResponseArrayOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudChannelV1ConditionalOverrideResponse] {
+	return pulumix.Output[[]GoogleCloudChannelV1ConditionalOverrideResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudChannelV1ConditionalOverrideResponseOutput {
@@ -679,6 +782,12 @@ func (i GoogleCloudChannelV1ContactInfoArgs) ToGoogleCloudChannelV1ContactInfoOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ContactInfoOutput)
 }
 
+func (i GoogleCloudChannelV1ContactInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ContactInfo] {
+	return pulumix.Output[GoogleCloudChannelV1ContactInfo]{
+		OutputState: i.ToGoogleCloudChannelV1ContactInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1ContactInfoArgs) ToGoogleCloudChannelV1ContactInfoPtrOutput() GoogleCloudChannelV1ContactInfoPtrOutput {
 	return i.ToGoogleCloudChannelV1ContactInfoPtrOutputWithContext(context.Background())
 }
@@ -720,6 +829,12 @@ func (i *googleCloudChannelV1ContactInfoPtrType) ToGoogleCloudChannelV1ContactIn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ContactInfoPtrOutput)
 }
 
+func (i *googleCloudChannelV1ContactInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1ContactInfo] {
+	return pulumix.Output[*GoogleCloudChannelV1ContactInfo]{
+		OutputState: i.ToGoogleCloudChannelV1ContactInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contact information for a customer account.
 type GoogleCloudChannelV1ContactInfoOutput struct{ *pulumi.OutputState }
 
@@ -743,6 +858,12 @@ func (o GoogleCloudChannelV1ContactInfoOutput) ToGoogleCloudChannelV1ContactInfo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1ContactInfo) *GoogleCloudChannelV1ContactInfo {
 		return &v
 	}).(GoogleCloudChannelV1ContactInfoPtrOutput)
+}
+
+func (o GoogleCloudChannelV1ContactInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ContactInfo] {
+	return pulumix.Output[GoogleCloudChannelV1ContactInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
@@ -782,6 +903,12 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) ToGoogleCloudChannelV1ContactI
 
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) ToGoogleCloudChannelV1ContactInfoPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ContactInfoPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ContactInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1ContactInfo] {
+	return pulumix.Output[*GoogleCloudChannelV1ContactInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) Elem() GoogleCloudChannelV1ContactInfoOutput {
@@ -875,6 +1002,12 @@ func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1Con
 	return o
 }
 
+func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ContactInfoResponse] {
+	return pulumix.Output[GoogleCloudChannelV1ContactInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The customer account contact's display name, formatted as a combination of the customer's first and last name.
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -928,6 +1061,12 @@ func (o GoogleCloudChannelV1EduDataResponseOutput) ToGoogleCloudChannelV1EduData
 
 func (o GoogleCloudChannelV1EduDataResponseOutput) ToGoogleCloudChannelV1EduDataResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1EduDataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1EduDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1EduDataResponse] {
+	return pulumix.Output[GoogleCloudChannelV1EduDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of the institute.
@@ -984,6 +1123,12 @@ func (i GoogleCloudChannelV1ParameterArgs) ToGoogleCloudChannelV1ParameterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ParameterOutput)
 }
 
+func (i GoogleCloudChannelV1ParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1Parameter] {
+	return pulumix.Output[GoogleCloudChannelV1Parameter]{
+		OutputState: i.ToGoogleCloudChannelV1ParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudChannelV1ParameterArrayInput is an input type that accepts GoogleCloudChannelV1ParameterArray and GoogleCloudChannelV1ParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ParameterArrayInput` via:
 //
@@ -1009,6 +1154,12 @@ func (i GoogleCloudChannelV1ParameterArray) ToGoogleCloudChannelV1ParameterArray
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ParameterArrayOutput)
 }
 
+func (i GoogleCloudChannelV1ParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudChannelV1Parameter] {
+	return pulumix.Output[[]GoogleCloudChannelV1Parameter]{
+		OutputState: i.ToGoogleCloudChannelV1ParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Definition for extended entitlement parameters.
 type GoogleCloudChannelV1ParameterOutput struct{ *pulumi.OutputState }
 
@@ -1022,6 +1173,12 @@ func (o GoogleCloudChannelV1ParameterOutput) ToGoogleCloudChannelV1ParameterOutp
 
 func (o GoogleCloudChannelV1ParameterOutput) ToGoogleCloudChannelV1ParameterOutputWithContext(ctx context.Context) GoogleCloudChannelV1ParameterOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1Parameter] {
+	return pulumix.Output[GoogleCloudChannelV1Parameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the parameter.
@@ -1046,6 +1203,12 @@ func (o GoogleCloudChannelV1ParameterArrayOutput) ToGoogleCloudChannelV1Paramete
 
 func (o GoogleCloudChannelV1ParameterArrayOutput) ToGoogleCloudChannelV1ParameterArrayOutputWithContext(ctx context.Context) GoogleCloudChannelV1ParameterArrayOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudChannelV1Parameter] {
+	return pulumix.Output[[]GoogleCloudChannelV1Parameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1ParameterArrayOutput) Index(i pulumi.IntInput) GoogleCloudChannelV1ParameterOutput {
@@ -1079,6 +1242,12 @@ func (o GoogleCloudChannelV1ParameterResponseOutput) ToGoogleCloudChannelV1Param
 	return o
 }
 
+func (o GoogleCloudChannelV1ParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ParameterResponse] {
+	return pulumix.Output[GoogleCloudChannelV1ParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
 func (o GoogleCloudChannelV1ParameterResponseOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ParameterResponse) bool { return v.Editable }).(pulumi.BoolOutput)
@@ -1106,6 +1275,12 @@ func (o GoogleCloudChannelV1ParameterResponseArrayOutput) ToGoogleCloudChannelV1
 
 func (o GoogleCloudChannelV1ParameterResponseArrayOutput) ToGoogleCloudChannelV1ParameterResponseArrayOutputWithContext(ctx context.Context) GoogleCloudChannelV1ParameterResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudChannelV1ParameterResponse] {
+	return pulumix.Output[[]GoogleCloudChannelV1ParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1ParameterResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudChannelV1ParameterResponseOutput {
@@ -1149,6 +1324,12 @@ func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToGoogleCloudChannelV1Perc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PercentageAdjustmentOutput)
 }
 
+func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1PercentageAdjustment] {
+	return pulumix.Output[GoogleCloudChannelV1PercentageAdjustment]{
+		OutputState: i.ToGoogleCloudChannelV1PercentageAdjustmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutput() GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
 	return i.ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(context.Background())
 }
@@ -1190,6 +1371,12 @@ func (i *googleCloudChannelV1PercentageAdjustmentPtrType) ToGoogleCloudChannelV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PercentageAdjustmentPtrOutput)
 }
 
+func (i *googleCloudChannelV1PercentageAdjustmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1PercentageAdjustment] {
+	return pulumix.Output[*GoogleCloudChannelV1PercentageAdjustment]{
+		OutputState: i.ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An adjustment that applies a flat markup or markdown to an entire bill.
 type GoogleCloudChannelV1PercentageAdjustmentOutput struct{ *pulumi.OutputState }
 
@@ -1215,6 +1402,12 @@ func (o GoogleCloudChannelV1PercentageAdjustmentOutput) ToGoogleCloudChannelV1Pe
 	}).(GoogleCloudChannelV1PercentageAdjustmentPtrOutput)
 }
 
+func (o GoogleCloudChannelV1PercentageAdjustmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1PercentageAdjustment] {
+	return pulumix.Output[GoogleCloudChannelV1PercentageAdjustment]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
 func (o GoogleCloudChannelV1PercentageAdjustmentOutput) Percentage() GoogleTypeDecimalPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1PercentageAdjustment) *GoogleTypeDecimal { return v.Percentage }).(GoogleTypeDecimalPtrOutput)
@@ -1232,6 +1425,12 @@ func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) ToGoogleCloudChannelV
 
 func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1PercentageAdjustment] {
+	return pulumix.Output[*GoogleCloudChannelV1PercentageAdjustment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) Elem() GoogleCloudChannelV1PercentageAdjustmentOutput {
@@ -1273,6 +1472,12 @@ func (o GoogleCloudChannelV1PercentageAdjustmentResponseOutput) ToGoogleCloudCha
 
 func (o GoogleCloudChannelV1PercentageAdjustmentResponseOutput) ToGoogleCloudChannelV1PercentageAdjustmentResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1PercentageAdjustmentResponse] {
+	return pulumix.Output[GoogleCloudChannelV1PercentageAdjustmentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
@@ -1321,6 +1526,12 @@ func (i GoogleCloudChannelV1PeriodArgs) ToGoogleCloudChannelV1PeriodOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PeriodOutput)
 }
 
+func (i GoogleCloudChannelV1PeriodArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1Period] {
+	return pulumix.Output[GoogleCloudChannelV1Period]{
+		OutputState: i.ToGoogleCloudChannelV1PeriodOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1PeriodArgs) ToGoogleCloudChannelV1PeriodPtrOutput() GoogleCloudChannelV1PeriodPtrOutput {
 	return i.ToGoogleCloudChannelV1PeriodPtrOutputWithContext(context.Background())
 }
@@ -1362,6 +1573,12 @@ func (i *googleCloudChannelV1PeriodPtrType) ToGoogleCloudChannelV1PeriodPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PeriodPtrOutput)
 }
 
+func (i *googleCloudChannelV1PeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1Period] {
+	return pulumix.Output[*GoogleCloudChannelV1Period]{
+		OutputState: i.ToGoogleCloudChannelV1PeriodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents period in days/months/years.
 type GoogleCloudChannelV1PeriodOutput struct{ *pulumi.OutputState }
 
@@ -1387,6 +1604,12 @@ func (o GoogleCloudChannelV1PeriodOutput) ToGoogleCloudChannelV1PeriodPtrOutputW
 	}).(GoogleCloudChannelV1PeriodPtrOutput)
 }
 
+func (o GoogleCloudChannelV1PeriodOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1Period] {
+	return pulumix.Output[GoogleCloudChannelV1Period]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Total duration of Period Type defined.
 func (o GoogleCloudChannelV1PeriodOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1Period) *int { return v.Duration }).(pulumi.IntPtrOutput)
@@ -1409,6 +1632,12 @@ func (o GoogleCloudChannelV1PeriodPtrOutput) ToGoogleCloudChannelV1PeriodPtrOutp
 
 func (o GoogleCloudChannelV1PeriodPtrOutput) ToGoogleCloudChannelV1PeriodPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1PeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1Period] {
+	return pulumix.Output[*GoogleCloudChannelV1Period]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1PeriodPtrOutput) Elem() GoogleCloudChannelV1PeriodOutput {
@@ -1464,6 +1693,12 @@ func (o GoogleCloudChannelV1PeriodResponseOutput) ToGoogleCloudChannelV1PeriodRe
 	return o
 }
 
+func (o GoogleCloudChannelV1PeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1PeriodResponse] {
+	return pulumix.Output[GoogleCloudChannelV1PeriodResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Total duration of Period Type defined.
 func (o GoogleCloudChannelV1PeriodResponseOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1PeriodResponse) int { return v.Duration }).(pulumi.IntOutput)
@@ -1497,6 +1732,12 @@ func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToGoogleCloudChann
 
 func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToGoogleCloudChannelV1ProvisionedServiceResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ProvisionedServiceResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ProvisionedServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ProvisionedServiceResponse] {
+	return pulumix.Output[GoogleCloudChannelV1ProvisionedServiceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The product pertaining to the provisioning resource as specified in the Offer.
@@ -1561,6 +1802,12 @@ func (i GoogleCloudChannelV1RenewalSettingsArgs) ToGoogleCloudChannelV1RenewalSe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RenewalSettingsOutput)
 }
 
+func (i GoogleCloudChannelV1RenewalSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RenewalSettings] {
+	return pulumix.Output[GoogleCloudChannelV1RenewalSettings]{
+		OutputState: i.ToGoogleCloudChannelV1RenewalSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1RenewalSettingsArgs) ToGoogleCloudChannelV1RenewalSettingsPtrOutput() GoogleCloudChannelV1RenewalSettingsPtrOutput {
 	return i.ToGoogleCloudChannelV1RenewalSettingsPtrOutputWithContext(context.Background())
 }
@@ -1602,6 +1849,12 @@ func (i *googleCloudChannelV1RenewalSettingsPtrType) ToGoogleCloudChannelV1Renew
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RenewalSettingsPtrOutput)
 }
 
+func (i *googleCloudChannelV1RenewalSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RenewalSettings] {
+	return pulumix.Output[*GoogleCloudChannelV1RenewalSettings]{
+		OutputState: i.ToGoogleCloudChannelV1RenewalSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Renewal settings for renewable Offers.
 type GoogleCloudChannelV1RenewalSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1625,6 +1878,12 @@ func (o GoogleCloudChannelV1RenewalSettingsOutput) ToGoogleCloudChannelV1Renewal
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RenewalSettings) *GoogleCloudChannelV1RenewalSettings {
 		return &v
 	}).(GoogleCloudChannelV1RenewalSettingsPtrOutput)
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RenewalSettings] {
+	return pulumix.Output[GoogleCloudChannelV1RenewalSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If false, the plan will be completed at the end date.
@@ -1661,6 +1920,12 @@ func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) ToGoogleCloudChannelV1Rene
 
 func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) ToGoogleCloudChannelV1RenewalSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RenewalSettings] {
+	return pulumix.Output[*GoogleCloudChannelV1RenewalSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsOutput {
@@ -1740,6 +2005,12 @@ func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToGoogleCloudChannelV
 	return o
 }
 
+func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RenewalSettingsResponse] {
+	return pulumix.Output[GoogleCloudChannelV1RenewalSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If false, the plan will be completed at the end date.
 func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) EnableRenewal() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RenewalSettingsResponse) bool { return v.EnableRenewal }).(pulumi.BoolOutput)
@@ -1797,6 +2068,12 @@ func (i GoogleCloudChannelV1RepricingAdjustmentArgs) ToGoogleCloudChannelV1Repri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingAdjustmentOutput)
 }
 
+func (i GoogleCloudChannelV1RepricingAdjustmentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingAdjustment] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingAdjustment]{
+		OutputState: i.ToGoogleCloudChannelV1RepricingAdjustmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A type that represents the various adjustments you can apply to a bill.
 type GoogleCloudChannelV1RepricingAdjustmentOutput struct{ *pulumi.OutputState }
 
@@ -1810,6 +2087,12 @@ func (o GoogleCloudChannelV1RepricingAdjustmentOutput) ToGoogleCloudChannelV1Rep
 
 func (o GoogleCloudChannelV1RepricingAdjustmentOutput) ToGoogleCloudChannelV1RepricingAdjustmentOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingAdjustmentOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingAdjustmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingAdjustment] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingAdjustment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flat markup or markdown on an entire bill.
@@ -1838,6 +2121,12 @@ func (o GoogleCloudChannelV1RepricingAdjustmentResponseOutput) ToGoogleCloudChan
 
 func (o GoogleCloudChannelV1RepricingAdjustmentResponseOutput) ToGoogleCloudChannelV1RepricingAdjustmentResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingAdjustmentResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingAdjustmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingAdjustmentResponse] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingAdjustmentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flat markup or markdown on an entire bill.
@@ -1882,6 +2171,12 @@ func (i GoogleCloudChannelV1RepricingConditionArgs) ToGoogleCloudChannelV1Repric
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConditionOutput)
 }
 
+func (i GoogleCloudChannelV1RepricingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingCondition] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingCondition]{
+		OutputState: i.ToGoogleCloudChannelV1RepricingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the various repricing conditions you can use for a conditional override.
 type GoogleCloudChannelV1RepricingConditionOutput struct{ *pulumi.OutputState }
 
@@ -1895,6 +2190,12 @@ func (o GoogleCloudChannelV1RepricingConditionOutput) ToGoogleCloudChannelV1Repr
 
 func (o GoogleCloudChannelV1RepricingConditionOutput) ToGoogleCloudChannelV1RepricingConditionOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConditionOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingCondition] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SKU Group condition for override.
@@ -1923,6 +2224,12 @@ func (o GoogleCloudChannelV1RepricingConditionResponseOutput) ToGoogleCloudChann
 
 func (o GoogleCloudChannelV1RepricingConditionResponseOutput) ToGoogleCloudChannelV1RepricingConditionResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConditionResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConditionResponse] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SKU Group condition for override.
@@ -1987,6 +2294,12 @@ func (i GoogleCloudChannelV1RepricingConfigArgs) ToGoogleCloudChannelV1Repricing
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigOutput)
 }
 
+func (i GoogleCloudChannelV1RepricingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfig] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfig]{
+		OutputState: i.ToGoogleCloudChannelV1RepricingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for repricing a Google bill over a period of time.
 type GoogleCloudChannelV1RepricingConfigOutput struct{ *pulumi.OutputState }
 
@@ -2000,6 +2313,12 @@ func (o GoogleCloudChannelV1RepricingConfigOutput) ToGoogleCloudChannelV1Reprici
 
 func (o GoogleCloudChannelV1RepricingConfigOutput) ToGoogleCloudChannelV1RepricingConfigOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfig] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information about the adjustment.
@@ -2073,6 +2392,12 @@ func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput)
 }
 
+func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity]{
+		OutputState: i.ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
 	return i.ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(context.Background())
 }
@@ -2114,6 +2439,12 @@ func (i *googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput)
 }
 
+func (i *googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity] {
+	return pulumix.Output[*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity]{
+		OutputState: i.ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput struct{ *pulumi.OutputState }
 
@@ -2139,6 +2470,12 @@ func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ToGo
 	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput)
 }
 
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity]{
+		OutputState: o.OutputState,
+	}
+}
+
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) ElementType() reflect.Type {
@@ -2151,6 +2488,12 @@ func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) T
 
 func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity] {
+	return pulumix.Output[*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) Elem() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput {
@@ -2180,6 +2523,12 @@ func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutp
 
 func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Applies the repricing configuration at the entitlement level.
@@ -2215,6 +2564,12 @@ func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleC
 
 func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput)
+}
+
+func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigEntitlementGranularity] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfigEntitlementGranularity]{
+		OutputState: i.ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
@@ -2258,6 +2613,12 @@ func (i *googleCloudChannelV1RepricingConfigEntitlementGranularityPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput)
 }
 
+func (i *googleCloudChannelV1RepricingConfigEntitlementGranularityPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RepricingConfigEntitlementGranularity] {
+	return pulumix.Output[*GoogleCloudChannelV1RepricingConfigEntitlementGranularity]{
+		OutputState: i.ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Applies the repricing configuration at the entitlement level.
 type GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput struct{ *pulumi.OutputState }
 
@@ -2283,6 +2644,12 @@ func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) ToGoogl
 	}).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput)
 }
 
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigEntitlementGranularity] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfigEntitlementGranularity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
 func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) Entitlement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigEntitlementGranularity) *string { return v.Entitlement }).(pulumi.StringPtrOutput)
@@ -2300,6 +2667,12 @@ func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) ToGo
 
 func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RepricingConfigEntitlementGranularity] {
+	return pulumix.Output[*GoogleCloudChannelV1RepricingConfigEntitlementGranularity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) Elem() GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput {
@@ -2343,6 +2716,12 @@ func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput)
 	return o
 }
 
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
 func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput) Entitlement() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse) string { return v.Entitlement }).(pulumi.StringOutput)
@@ -2377,6 +2756,12 @@ func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ToGoogleCloudChannelV
 
 func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ToGoogleCloudChannelV1RepricingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigResponse] {
+	return pulumix.Output[GoogleCloudChannelV1RepricingConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information about the adjustment.
@@ -2454,6 +2839,12 @@ func (i GoogleCloudChannelV1SkuGroupConditionArgs) ToGoogleCloudChannelV1SkuGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1SkuGroupConditionOutput)
 }
 
+func (i GoogleCloudChannelV1SkuGroupConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1SkuGroupCondition] {
+	return pulumix.Output[GoogleCloudChannelV1SkuGroupCondition]{
+		OutputState: i.ToGoogleCloudChannelV1SkuGroupConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1SkuGroupConditionArgs) ToGoogleCloudChannelV1SkuGroupConditionPtrOutput() GoogleCloudChannelV1SkuGroupConditionPtrOutput {
 	return i.ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(context.Background())
 }
@@ -2495,6 +2886,12 @@ func (i *googleCloudChannelV1SkuGroupConditionPtrType) ToGoogleCloudChannelV1Sku
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1SkuGroupConditionPtrOutput)
 }
 
+func (i *googleCloudChannelV1SkuGroupConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1SkuGroupCondition] {
+	return pulumix.Output[*GoogleCloudChannelV1SkuGroupCondition]{
+		OutputState: i.ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A condition that applies the override if a line item SKU is found in the SKU group.
 type GoogleCloudChannelV1SkuGroupConditionOutput struct{ *pulumi.OutputState }
 
@@ -2520,6 +2917,12 @@ func (o GoogleCloudChannelV1SkuGroupConditionOutput) ToGoogleCloudChannelV1SkuGr
 	}).(GoogleCloudChannelV1SkuGroupConditionPtrOutput)
 }
 
+func (o GoogleCloudChannelV1SkuGroupConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1SkuGroupCondition] {
+	return pulumix.Output[GoogleCloudChannelV1SkuGroupCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
 func (o GoogleCloudChannelV1SkuGroupConditionOutput) SkuGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1SkuGroupCondition) *string { return v.SkuGroup }).(pulumi.StringPtrOutput)
@@ -2537,6 +2940,12 @@ func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) ToGoogleCloudChannelV1Sk
 
 func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1SkuGroupCondition] {
+	return pulumix.Output[*GoogleCloudChannelV1SkuGroupCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) Elem() GoogleCloudChannelV1SkuGroupConditionOutput {
@@ -2580,6 +2989,12 @@ func (o GoogleCloudChannelV1SkuGroupConditionResponseOutput) ToGoogleCloudChanne
 	return o
 }
 
+func (o GoogleCloudChannelV1SkuGroupConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1SkuGroupConditionResponse] {
+	return pulumix.Output[GoogleCloudChannelV1SkuGroupConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
 func (o GoogleCloudChannelV1SkuGroupConditionResponseOutput) SkuGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1SkuGroupConditionResponse) string { return v.SkuGroup }).(pulumi.StringOutput)
@@ -2606,6 +3021,12 @@ func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToGoogleCloudChannelV1T
 
 func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToGoogleCloudChannelV1TrialSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1TrialSettingsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1TrialSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1TrialSettingsResponse] {
+	return pulumix.Output[GoogleCloudChannelV1TrialSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
@@ -2669,6 +3090,12 @@ func (i GoogleCloudChannelV1ValueArgs) ToGoogleCloudChannelV1ValueOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ValueOutput)
 }
 
+func (i GoogleCloudChannelV1ValueArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1Value] {
+	return pulumix.Output[GoogleCloudChannelV1Value]{
+		OutputState: i.ToGoogleCloudChannelV1ValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudChannelV1ValueArgs) ToGoogleCloudChannelV1ValuePtrOutput() GoogleCloudChannelV1ValuePtrOutput {
 	return i.ToGoogleCloudChannelV1ValuePtrOutputWithContext(context.Background())
 }
@@ -2710,6 +3137,12 @@ func (i *googleCloudChannelV1ValuePtrType) ToGoogleCloudChannelV1ValuePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ValuePtrOutput)
 }
 
+func (i *googleCloudChannelV1ValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1Value] {
+	return pulumix.Output[*GoogleCloudChannelV1Value]{
+		OutputState: i.ToGoogleCloudChannelV1ValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Data type and value of a parameter.
 type GoogleCloudChannelV1ValueOutput struct{ *pulumi.OutputState }
 
@@ -2733,6 +3166,12 @@ func (o GoogleCloudChannelV1ValueOutput) ToGoogleCloudChannelV1ValuePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1Value) *GoogleCloudChannelV1Value {
 		return &v
 	}).(GoogleCloudChannelV1ValuePtrOutput)
+}
+
+func (o GoogleCloudChannelV1ValueOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1Value] {
+	return pulumix.Output[GoogleCloudChannelV1Value]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents a boolean value.
@@ -2772,6 +3211,12 @@ func (o GoogleCloudChannelV1ValuePtrOutput) ToGoogleCloudChannelV1ValuePtrOutput
 
 func (o GoogleCloudChannelV1ValuePtrOutput) ToGoogleCloudChannelV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ValuePtrOutput {
 	return o
+}
+
+func (o GoogleCloudChannelV1ValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1Value] {
+	return pulumix.Output[*GoogleCloudChannelV1Value]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudChannelV1ValuePtrOutput) Elem() GoogleCloudChannelV1ValueOutput {
@@ -2863,6 +3308,12 @@ func (o GoogleCloudChannelV1ValueResponseOutput) ToGoogleCloudChannelV1ValueResp
 	return o
 }
 
+func (o GoogleCloudChannelV1ValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ValueResponse] {
+	return pulumix.Output[GoogleCloudChannelV1ValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Represents a boolean value.
 func (o GoogleCloudChannelV1ValueResponseOutput) BoolValue() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ValueResponse) bool { return v.BoolValue }).(pulumi.BoolOutput)
@@ -2931,6 +3382,12 @@ func (i GoogleTypeDateArgs) ToGoogleTypeDateOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput)
 }
 
+func (i GoogleTypeDateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDate] {
+	return pulumix.Output[GoogleTypeDate]{
+		OutputState: i.ToGoogleTypeDateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type GoogleTypeDateOutput struct{ *pulumi.OutputState }
 
@@ -2944,6 +3401,12 @@ func (o GoogleTypeDateOutput) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
 
 func (o GoogleTypeDateOutput) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
 	return o
+}
+
+func (o GoogleTypeDateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDate] {
+	return pulumix.Output[GoogleTypeDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -2984,6 +3447,12 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutput() GoogleTyp
 
 func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
 	return o
+}
+
+func (o GoogleTypeDateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDateResponse] {
+	return pulumix.Output[GoogleTypeDateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -3036,6 +3505,12 @@ func (i GoogleTypeDecimalArgs) ToGoogleTypeDecimalOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDecimalOutput)
 }
 
+func (i GoogleTypeDecimalArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDecimal] {
+	return pulumix.Output[GoogleTypeDecimal]{
+		OutputState: i.ToGoogleTypeDecimalOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleTypeDecimalArgs) ToGoogleTypeDecimalPtrOutput() GoogleTypeDecimalPtrOutput {
 	return i.ToGoogleTypeDecimalPtrOutputWithContext(context.Background())
 }
@@ -3077,6 +3552,12 @@ func (i *googleTypeDecimalPtrType) ToGoogleTypeDecimalPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDecimalPtrOutput)
 }
 
+func (i *googleTypeDecimalPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeDecimal] {
+	return pulumix.Output[*GoogleTypeDecimal]{
+		OutputState: i.ToGoogleTypeDecimalPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
 type GoogleTypeDecimalOutput struct{ *pulumi.OutputState }
 
@@ -3102,6 +3583,12 @@ func (o GoogleTypeDecimalOutput) ToGoogleTypeDecimalPtrOutputWithContext(ctx con
 	}).(GoogleTypeDecimalPtrOutput)
 }
 
+func (o GoogleTypeDecimalOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDecimal] {
+	return pulumix.Output[GoogleTypeDecimal]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = ” | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
 func (o GoogleTypeDecimalOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleTypeDecimal) *string { return v.Value }).(pulumi.StringPtrOutput)
@@ -3119,6 +3606,12 @@ func (o GoogleTypeDecimalPtrOutput) ToGoogleTypeDecimalPtrOutput() GoogleTypeDec
 
 func (o GoogleTypeDecimalPtrOutput) ToGoogleTypeDecimalPtrOutputWithContext(ctx context.Context) GoogleTypeDecimalPtrOutput {
 	return o
+}
+
+func (o GoogleTypeDecimalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeDecimal] {
+	return pulumix.Output[*GoogleTypeDecimal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleTypeDecimalPtrOutput) Elem() GoogleTypeDecimalOutput {
@@ -3160,6 +3653,12 @@ func (o GoogleTypeDecimalResponseOutput) ToGoogleTypeDecimalResponseOutput() Goo
 
 func (o GoogleTypeDecimalResponseOutput) ToGoogleTypeDecimalResponseOutputWithContext(ctx context.Context) GoogleTypeDecimalResponseOutput {
 	return o
+}
+
+func (o GoogleTypeDecimalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDecimalResponse] {
+	return pulumix.Output[GoogleTypeDecimalResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = ” | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
@@ -3242,6 +3741,12 @@ func (i GoogleTypePostalAddressArgs) ToGoogleTypePostalAddressOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressOutput)
 }
 
+func (i GoogleTypePostalAddressArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypePostalAddress] {
+	return pulumix.Output[GoogleTypePostalAddress]{
+		OutputState: i.ToGoogleTypePostalAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
 type GoogleTypePostalAddressOutput struct{ *pulumi.OutputState }
 
@@ -3255,6 +3760,12 @@ func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressOutput() GoogleT
 
 func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressOutputWithContext(ctx context.Context) GoogleTypePostalAddressOutput {
 	return o
+}
+
+func (o GoogleTypePostalAddressOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypePostalAddress] {
+	return pulumix.Output[GoogleTypePostalAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -3351,6 +3862,12 @@ func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponse
 
 func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponseOutputWithContext(ctx context.Context) GoogleTypePostalAddressResponseOutput {
 	return o
+}
+
+func (o GoogleTypePostalAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypePostalAddressResponse] {
+	return pulumix.Output[GoogleTypePostalAddressResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).

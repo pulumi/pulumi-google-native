@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
@@ -253,6 +272,12 @@ func (o EndpointNetworkTypeOutput) ToEndpointNetworkTypePtrOutputWithContext(ctx
 	}).(EndpointNetworkTypePtrOutput)
 }
 
+func (o EndpointNetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointNetworkType] {
+	return pulumix.Output[EndpointNetworkType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o EndpointNetworkTypePtrOutput) ToEndpointNetworkTypePtrOutput() EndpointN
 
 func (o EndpointNetworkTypePtrOutput) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
 	return o
+}
+
+func (o EndpointNetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointNetworkType] {
+	return pulumix.Output[*EndpointNetworkType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointNetworkTypePtrOutput) Elem() EndpointNetworkTypeOutput {
@@ -348,6 +379,12 @@ func (in *endpointNetworkTypePtr) ToEndpointNetworkTypePtrOutput() EndpointNetwo
 
 func (in *endpointNetworkTypePtr) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointNetworkTypePtrOutput)
+}
+
+func (in *endpointNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointNetworkType] {
+	return pulumix.Output[*EndpointNetworkType]{
+		OutputState: in.ToEndpointNetworkTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

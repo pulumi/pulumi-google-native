@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists all of the ordered rules present in a single specified policy.
@@ -92,6 +93,12 @@ func (o LookupSslPolicyResultOutput) ToLookupSslPolicyResultOutput() LookupSslPo
 
 func (o LookupSslPolicyResultOutput) ToLookupSslPolicyResultOutputWithContext(ctx context.Context) LookupSslPolicyResultOutput {
 	return o
+}
+
+func (o LookupSslPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSslPolicyResult] {
+	return pulumix.Output[LookupSslPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

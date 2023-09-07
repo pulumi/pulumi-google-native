@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
@@ -221,6 +222,12 @@ func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerOutput)
 }
 
+func (i *InstanceGroupManager) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManager] {
+	return pulumix.Output[*InstanceGroupManager]{
+		OutputState: i.ToInstanceGroupManagerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
@@ -233,6 +240,12 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroup
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
 	return o
+}
+
+func (o InstanceGroupManagerOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManager] {
+	return pulumix.Output[*InstanceGroupManager]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies configuration that overrides the instance template configuration for the group.

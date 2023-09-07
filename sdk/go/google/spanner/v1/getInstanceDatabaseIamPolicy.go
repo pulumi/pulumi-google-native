@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.
@@ -72,6 +73,12 @@ func (o LookupInstanceDatabaseIamPolicyResultOutput) ToLookupInstanceDatabaseIam
 
 func (o LookupInstanceDatabaseIamPolicyResultOutput) ToLookupInstanceDatabaseIamPolicyResultOutputWithContext(ctx context.Context) LookupInstanceDatabaseIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupInstanceDatabaseIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceDatabaseIamPolicyResult] {
+	return pulumix.Output[LookupInstanceDatabaseIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.

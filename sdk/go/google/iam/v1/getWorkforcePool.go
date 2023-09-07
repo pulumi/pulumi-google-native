@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an individual WorkforcePool.
@@ -78,6 +79,12 @@ func (o LookupWorkforcePoolResultOutput) ToLookupWorkforcePoolResultOutput() Loo
 
 func (o LookupWorkforcePoolResultOutput) ToLookupWorkforcePoolResultOutputWithContext(ctx context.Context) LookupWorkforcePoolResultOutput {
 	return o
+}
+
+func (o LookupWorkforcePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkforcePoolResult] {
+	return pulumix.Output[LookupWorkforcePoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A user-specified description of the pool. Cannot exceed 256 characters.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified flow.
@@ -84,6 +85,12 @@ func (o LookupFlowResultOutput) ToLookupFlowResultOutput() LookupFlowResultOutpu
 
 func (o LookupFlowResultOutput) ToLookupFlowResultOutputWithContext(ctx context.Context) LookupFlowResultOutput {
 	return o
+}
+
+func (o LookupFlowResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFlowResult] {
+	return pulumix.Output[LookupFlowResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.

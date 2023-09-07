@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified subnetwork.
@@ -116,6 +117,12 @@ func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutput() LookupSub
 
 func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutputWithContext(ctx context.Context) LookupSubnetworkResultOutput {
 	return o
+}
+
+func (o LookupSubnetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubnetworkResult] {
+	return pulumix.Output[LookupSubnetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether this subnetwork's ranges can conflict with existing static routes. Setting this to true allows this subnetwork's primary and secondary ranges to overlap with (and contain) static routes that have already been configured on the corresponding network. For example if a static route has range 10.1.0.0/16, a subnet range 10.0.0.0/8 could only be created if allow_conflicting_routes=true. Overlapping is only allowed on subnetwork operations; routes whose ranges conflict with this subnetwork's ranges won't be allowed unless route.allow_conflicting_subnetworks is set to true. Typically packets destined to IPs within the subnetwork (which may contain private/sensitive data) are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.

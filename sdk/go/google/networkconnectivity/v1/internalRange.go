@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new internal range in a given project and location.
@@ -183,6 +184,12 @@ func (i *InternalRange) ToInternalRangeOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeOutput)
 }
 
+func (i *InternalRange) ToOutput(ctx context.Context) pulumix.Output[*InternalRange] {
+	return pulumix.Output[*InternalRange]{
+		OutputState: i.ToInternalRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InternalRangeOutput struct{ *pulumi.OutputState }
 
 func (InternalRangeOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o InternalRangeOutput) ToInternalRangeOutput() InternalRangeOutput {
 
 func (o InternalRangeOutput) ToInternalRangeOutputWithContext(ctx context.Context) InternalRangeOutput {
 	return o
+}
+
+func (o InternalRangeOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRange] {
+	return pulumix.Output[*InternalRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time when the internal range was created.

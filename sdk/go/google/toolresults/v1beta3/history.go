@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist
@@ -125,6 +126,12 @@ func (i *History) ToHistoryOutputWithContext(ctx context.Context) HistoryOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HistoryOutput)
 }
 
+func (i *History) ToOutput(ctx context.Context) pulumix.Output[*History] {
+	return pulumix.Output[*History]{
+		OutputState: i.ToHistoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HistoryOutput struct{ *pulumi.OutputState }
 
 func (HistoryOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o HistoryOutput) ToHistoryOutput() HistoryOutput {
 
 func (o HistoryOutput) ToHistoryOutputWithContext(ctx context.Context) HistoryOutput {
 	return o
+}
+
+func (o HistoryOutput) ToOutput(ctx context.Context) pulumix.Output[*History] {
+	return pulumix.Output[*History]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional

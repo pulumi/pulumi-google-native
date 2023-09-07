@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i SubnetArgs) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
 }
 
+func (i SubnetArgs) ToOutput(ctx context.Context) pulumix.Output[Subnet] {
+	return pulumix.Output[Subnet]{
+		OutputState: i.ToSubnetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubnetArgs) ToSubnetPtrOutput() SubnetPtrOutput {
 	return i.ToSubnetPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *subnetPtrType) ToSubnetPtrOutputWithContext(ctx context.Context) Subnet
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPtrOutput)
 }
 
+func (i *subnetPtrType) ToOutput(ctx context.Context) pulumix.Output[*Subnet] {
+	return pulumix.Output[*Subnet]{
+		OutputState: i.ToSubnetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The subnet in which to house the connector
 type SubnetOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o SubnetOutput) ToSubnetPtrOutputWithContext(ctx context.Context) SubnetPt
 	}).(SubnetPtrOutput)
 }
 
+func (o SubnetOutput) ToOutput(ctx context.Context) pulumix.Output[Subnet] {
+	return pulumix.Output[Subnet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
 func (o SubnetOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Subnet) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -140,6 +159,12 @@ func (o SubnetPtrOutput) ToSubnetPtrOutput() SubnetPtrOutput {
 
 func (o SubnetPtrOutput) ToSubnetPtrOutputWithContext(ctx context.Context) SubnetPtrOutput {
 	return o
+}
+
+func (o SubnetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Subnet] {
+	return pulumix.Output[*Subnet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetPtrOutput) Elem() SubnetOutput {
@@ -193,6 +218,12 @@ func (o SubnetResponseOutput) ToSubnetResponseOutput() SubnetResponseOutput {
 
 func (o SubnetResponseOutput) ToSubnetResponseOutputWithContext(ctx context.Context) SubnetResponseOutput {
 	return o
+}
+
+func (o SubnetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetResponse] {
+	return pulumix.Output[SubnetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}

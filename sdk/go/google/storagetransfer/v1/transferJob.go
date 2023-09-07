@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a transfer job that runs periodically.
@@ -152,6 +153,12 @@ func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) Transf
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobOutput)
 }
 
+func (i *TransferJob) ToOutput(ctx context.Context) pulumix.Output[*TransferJob] {
+	return pulumix.Output[*TransferJob]{
+		OutputState: i.ToTransferJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransferJobOutput struct{ *pulumi.OutputState }
 
 func (TransferJobOutput) ElementType() reflect.Type {
@@ -164,6 +171,12 @@ func (o TransferJobOutput) ToTransferJobOutput() TransferJobOutput {
 
 func (o TransferJobOutput) ToTransferJobOutputWithContext(ctx context.Context) TransferJobOutput {
 	return o
+}
+
+func (o TransferJobOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferJob] {
+	return pulumix.Output[*TransferJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time that the transfer job was created.

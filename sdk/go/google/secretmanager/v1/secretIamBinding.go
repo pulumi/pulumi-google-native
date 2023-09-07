@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
@@ -135,6 +136,12 @@ func (i *SecretIamBinding) ToSecretIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingOutput)
 }
 
+func (i *SecretIamBinding) ToOutput(ctx context.Context) pulumix.Output[*SecretIamBinding] {
+	return pulumix.Output[*SecretIamBinding]{
+		OutputState: i.ToSecretIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretIamBindingOutput struct{ *pulumi.OutputState }
 
 func (SecretIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o SecretIamBindingOutput) ToSecretIamBindingOutput() SecretIamBindingOutpu
 
 func (o SecretIamBindingOutput) ToSecretIamBindingOutputWithContext(ctx context.Context) SecretIamBindingOutput {
 	return o
+}
+
+func (o SecretIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretIamBinding] {
+	return pulumix.Output[*SecretIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

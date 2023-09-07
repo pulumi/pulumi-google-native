@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
@@ -231,6 +232,12 @@ func (i *Organization) ToOrganizationOutputWithContext(ctx context.Context) Orga
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationOutput)
 }
 
+func (i *Organization) ToOutput(ctx context.Context) pulumix.Output[*Organization] {
+	return pulumix.Output[*Organization]{
+		OutputState: i.ToOrganizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationOutput struct{ *pulumi.OutputState }
 
 func (OrganizationOutput) ElementType() reflect.Type {
@@ -243,6 +250,12 @@ func (o OrganizationOutput) ToOrganizationOutput() OrganizationOutput {
 
 func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
 	return o
+}
+
+func (o OrganizationOutput) ToOutput(ctx context.Context) pulumix.Output[*Organization] {
+	return pulumix.Output[*Organization]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Addon configurations of the Apigee organization.

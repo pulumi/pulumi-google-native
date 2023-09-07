@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single CertificateMap.
@@ -78,6 +79,12 @@ func (o LookupCertificateMapResultOutput) ToLookupCertificateMapResultOutput() L
 
 func (o LookupCertificateMapResultOutput) ToLookupCertificateMapResultOutputWithContext(ctx context.Context) LookupCertificateMapResultOutput {
 	return o
+}
+
+func (o LookupCertificateMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCertificateMapResult] {
+	return pulumix.Output[LookupCertificateMapResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp of a Certificate Map.

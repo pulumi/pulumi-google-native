@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a specified regional persistent disk.
@@ -178,6 +179,12 @@ func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutput() LookupReg
 
 func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutputWithContext(ctx context.Context) LookupRegionDiskResultOutput {
 	return o
+}
+
+func (o LookupRegionDiskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionDiskResult] {
+	return pulumix.Output[LookupRegionDiskResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The architecture of the disk. Valid values are ARM64 or X86_64.

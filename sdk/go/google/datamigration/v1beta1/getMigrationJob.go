@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single migration job.
@@ -104,6 +105,12 @@ func (o LookupMigrationJobResultOutput) ToLookupMigrationJobResultOutput() Looku
 
 func (o LookupMigrationJobResultOutput) ToLookupMigrationJobResultOutputWithContext(ctx context.Context) LookupMigrationJobResultOutput {
 	return o
+}
+
+func (o LookupMigrationJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigrationJobResult] {
+	return pulumix.Output[LookupMigrationJobResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".

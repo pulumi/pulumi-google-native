@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -34,6 +35,12 @@ func (o AccessUrlsResponseOutput) ToAccessUrlsResponseOutput() AccessUrlsRespons
 
 func (o AccessUrlsResponseOutput) ToAccessUrlsResponseOutputWithContext(ctx context.Context) AccessUrlsResponseOutput {
 	return o
+}
+
+func (o AccessUrlsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessUrlsResponse] {
+	return pulumix.Output[AccessUrlsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
@@ -85,6 +92,12 @@ func (i AllowedKeyTypeArgs) ToAllowedKeyTypeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedKeyTypeOutput)
 }
 
+func (i AllowedKeyTypeArgs) ToOutput(ctx context.Context) pulumix.Output[AllowedKeyType] {
+	return pulumix.Output[AllowedKeyType]{
+		OutputState: i.ToAllowedKeyTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AllowedKeyTypeArrayInput is an input type that accepts AllowedKeyTypeArray and AllowedKeyTypeArrayOutput values.
 // You can construct a concrete instance of `AllowedKeyTypeArrayInput` via:
 //
@@ -110,6 +123,12 @@ func (i AllowedKeyTypeArray) ToAllowedKeyTypeArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedKeyTypeArrayOutput)
 }
 
+func (i AllowedKeyTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]AllowedKeyType] {
+	return pulumix.Output[[]AllowedKeyType]{
+		OutputState: i.ToAllowedKeyTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a "type" of key that may be used in a Certificate issued from a CaPool. Note that a single AllowedKeyType may refer to either a fully-qualified key algorithm, such as RSA 4096, or a family of key algorithms, such as any RSA key.
 type AllowedKeyTypeOutput struct{ *pulumi.OutputState }
 
@@ -123,6 +142,12 @@ func (o AllowedKeyTypeOutput) ToAllowedKeyTypeOutput() AllowedKeyTypeOutput {
 
 func (o AllowedKeyTypeOutput) ToAllowedKeyTypeOutputWithContext(ctx context.Context) AllowedKeyTypeOutput {
 	return o
+}
+
+func (o AllowedKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedKeyType] {
+	return pulumix.Output[AllowedKeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents an allowed Elliptic Curve key type.
@@ -147,6 +172,12 @@ func (o AllowedKeyTypeArrayOutput) ToAllowedKeyTypeArrayOutput() AllowedKeyTypeA
 
 func (o AllowedKeyTypeArrayOutput) ToAllowedKeyTypeArrayOutputWithContext(ctx context.Context) AllowedKeyTypeArrayOutput {
 	return o
+}
+
+func (o AllowedKeyTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowedKeyType] {
+	return pulumix.Output[[]AllowedKeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllowedKeyTypeArrayOutput) Index(i pulumi.IntInput) AllowedKeyTypeOutput {
@@ -178,6 +209,12 @@ func (o AllowedKeyTypeResponseOutput) ToAllowedKeyTypeResponseOutputWithContext(
 	return o
 }
 
+func (o AllowedKeyTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedKeyTypeResponse] {
+	return pulumix.Output[AllowedKeyTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Represents an allowed Elliptic Curve key type.
 func (o AllowedKeyTypeResponseOutput) EllipticCurve() EcKeyTypeResponseOutput {
 	return o.ApplyT(func(v AllowedKeyTypeResponse) EcKeyTypeResponse { return v.EllipticCurve }).(EcKeyTypeResponseOutput)
@@ -200,6 +237,12 @@ func (o AllowedKeyTypeResponseArrayOutput) ToAllowedKeyTypeResponseArrayOutput()
 
 func (o AllowedKeyTypeResponseArrayOutput) ToAllowedKeyTypeResponseArrayOutputWithContext(ctx context.Context) AllowedKeyTypeResponseArrayOutput {
 	return o
+}
+
+func (o AllowedKeyTypeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowedKeyTypeResponse] {
+	return pulumix.Output[[]AllowedKeyTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllowedKeyTypeResponseArrayOutput) Index(i pulumi.IntInput) AllowedKeyTypeResponseOutput {
@@ -247,6 +290,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -272,6 +321,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -285,6 +340,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -309,6 +370,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -340,6 +407,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -362,6 +435,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -409,6 +488,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -434,6 +519,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -447,6 +538,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -471,6 +568,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -502,6 +605,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -524,6 +633,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -575,6 +690,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -600,6 +721,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -613,6 +740,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -642,6 +775,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -675,6 +814,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -702,6 +847,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -749,6 +900,12 @@ func (i CaOptionsArgs) ToCaOptionsOutputWithContext(ctx context.Context) CaOptio
 	return pulumi.ToOutputWithContext(ctx, i).(CaOptionsOutput)
 }
 
+func (i CaOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[CaOptions] {
+	return pulumix.Output[CaOptions]{
+		OutputState: i.ToCaOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CaOptionsArgs) ToCaOptionsPtrOutput() CaOptionsPtrOutput {
 	return i.ToCaOptionsPtrOutputWithContext(context.Background())
 }
@@ -790,6 +947,12 @@ func (i *caOptionsPtrType) ToCaOptionsPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CaOptionsPtrOutput)
 }
 
+func (i *caOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CaOptions] {
+	return pulumix.Output[*CaOptions]{
+		OutputState: i.ToCaOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes values that are relevant in a CA certificate.
 type CaOptionsOutput struct{ *pulumi.OutputState }
 
@@ -815,6 +978,12 @@ func (o CaOptionsOutput) ToCaOptionsPtrOutputWithContext(ctx context.Context) Ca
 	}).(CaOptionsPtrOutput)
 }
 
+func (o CaOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[CaOptions] {
+	return pulumix.Output[CaOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
 func (o CaOptionsOutput) IsCa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CaOptions) *bool { return v.IsCa }).(pulumi.BoolPtrOutput)
@@ -837,6 +1006,12 @@ func (o CaOptionsPtrOutput) ToCaOptionsPtrOutput() CaOptionsPtrOutput {
 
 func (o CaOptionsPtrOutput) ToCaOptionsPtrOutputWithContext(ctx context.Context) CaOptionsPtrOutput {
 	return o
+}
+
+func (o CaOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CaOptions] {
+	return pulumix.Output[*CaOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CaOptionsPtrOutput) Elem() CaOptionsOutput {
@@ -892,6 +1067,12 @@ func (o CaOptionsResponseOutput) ToCaOptionsResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o CaOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CaOptionsResponse] {
+	return pulumix.Output[CaOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
 func (o CaOptionsResponseOutput) IsCa() pulumi.BoolOutput {
 	return o.ApplyT(func(v CaOptionsResponse) bool { return v.IsCa }).(pulumi.BoolOutput)
@@ -945,6 +1126,12 @@ func (i CertificateConfigArgs) ToCertificateConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigOutput)
 }
 
+func (i CertificateConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateConfig] {
+	return pulumix.Output[CertificateConfig]{
+		OutputState: i.ToCertificateConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CertificateConfigArgs) ToCertificateConfigPtrOutput() CertificateConfigPtrOutput {
 	return i.ToCertificateConfigPtrOutputWithContext(context.Background())
 }
@@ -986,6 +1173,12 @@ func (i *certificateConfigPtrType) ToCertificateConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigPtrOutput)
 }
 
+func (i *certificateConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateConfig] {
+	return pulumix.Output[*CertificateConfig]{
+		OutputState: i.ToCertificateConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
 type CertificateConfigOutput struct{ *pulumi.OutputState }
 
@@ -1009,6 +1202,12 @@ func (o CertificateConfigOutput) ToCertificateConfigPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfig) *CertificateConfig {
 		return &v
 	}).(CertificateConfigPtrOutput)
+}
+
+func (o CertificateConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateConfig] {
+	return pulumix.Output[CertificateConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
@@ -1038,6 +1237,12 @@ func (o CertificateConfigPtrOutput) ToCertificateConfigPtrOutput() CertificateCo
 
 func (o CertificateConfigPtrOutput) ToCertificateConfigPtrOutputWithContext(ctx context.Context) CertificateConfigPtrOutput {
 	return o
+}
+
+func (o CertificateConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateConfig] {
+	return pulumix.Output[*CertificateConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateConfigPtrOutput) Elem() CertificateConfigOutput {
@@ -1105,6 +1310,12 @@ func (o CertificateConfigResponseOutput) ToCertificateConfigResponseOutputWithCo
 	return o
 }
 
+func (o CertificateConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateConfigResponse] {
+	return pulumix.Output[CertificateConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 func (o CertificateConfigResponseOutput) PublicKey() PublicKeyResponseOutput {
 	return o.ApplyT(func(v CertificateConfigResponse) PublicKeyResponse { return v.PublicKey }).(PublicKeyResponseOutput)
@@ -1153,6 +1364,12 @@ func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponseOu
 
 func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponseOutputWithContext(ctx context.Context) CertificateDescriptionResponseOutput {
 	return o
+}
+
+func (o CertificateDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateDescriptionResponse] {
+	return pulumix.Output[CertificateDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
@@ -1209,6 +1426,12 @@ func (o CertificateDescriptionResponseArrayOutput) ToCertificateDescriptionRespo
 	return o
 }
 
+func (o CertificateDescriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertificateDescriptionResponse] {
+	return pulumix.Output[[]CertificateDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CertificateDescriptionResponseArrayOutput) Index(i pulumi.IntInput) CertificateDescriptionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateDescriptionResponse {
 		return vs[0].([]CertificateDescriptionResponse)[vs[1].(int)]
@@ -1254,6 +1477,12 @@ func (i CertificateExtensionConstraintsArgs) ToCertificateExtensionConstraintsOu
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateExtensionConstraintsOutput)
 }
 
+func (i CertificateExtensionConstraintsArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateExtensionConstraints] {
+	return pulumix.Output[CertificateExtensionConstraints]{
+		OutputState: i.ToCertificateExtensionConstraintsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CertificateExtensionConstraintsArgs) ToCertificateExtensionConstraintsPtrOutput() CertificateExtensionConstraintsPtrOutput {
 	return i.ToCertificateExtensionConstraintsPtrOutputWithContext(context.Background())
 }
@@ -1295,6 +1524,12 @@ func (i *certificateExtensionConstraintsPtrType) ToCertificateExtensionConstrain
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateExtensionConstraintsPtrOutput)
 }
 
+func (i *certificateExtensionConstraintsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateExtensionConstraints] {
+	return pulumix.Output[*CertificateExtensionConstraints]{
+		OutputState: i.ToCertificateExtensionConstraintsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a set of X.509 extensions that may be part of some certificate issuance controls.
 type CertificateExtensionConstraintsOutput struct{ *pulumi.OutputState }
 
@@ -1318,6 +1553,12 @@ func (o CertificateExtensionConstraintsOutput) ToCertificateExtensionConstraints
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateExtensionConstraints) *CertificateExtensionConstraints {
 		return &v
 	}).(CertificateExtensionConstraintsPtrOutput)
+}
+
+func (o CertificateExtensionConstraintsOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateExtensionConstraints] {
+	return pulumix.Output[CertificateExtensionConstraints]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
@@ -1344,6 +1585,12 @@ func (o CertificateExtensionConstraintsPtrOutput) ToCertificateExtensionConstrai
 
 func (o CertificateExtensionConstraintsPtrOutput) ToCertificateExtensionConstraintsPtrOutputWithContext(ctx context.Context) CertificateExtensionConstraintsPtrOutput {
 	return o
+}
+
+func (o CertificateExtensionConstraintsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateExtensionConstraints] {
+	return pulumix.Output[*CertificateExtensionConstraints]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateExtensionConstraintsPtrOutput) Elem() CertificateExtensionConstraintsOutput {
@@ -1399,6 +1646,12 @@ func (o CertificateExtensionConstraintsResponseOutput) ToCertificateExtensionCon
 	return o
 }
 
+func (o CertificateExtensionConstraintsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateExtensionConstraintsResponse] {
+	return pulumix.Output[CertificateExtensionConstraintsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
 func (o CertificateExtensionConstraintsResponseOutput) AdditionalExtensions() ObjectIdResponseArrayOutput {
 	return o.ApplyT(func(v CertificateExtensionConstraintsResponse) []ObjectIdResponse { return v.AdditionalExtensions }).(ObjectIdResponseArrayOutput)
@@ -1428,6 +1681,12 @@ func (o CertificateFingerprintResponseOutput) ToCertificateFingerprintResponseOu
 
 func (o CertificateFingerprintResponseOutput) ToCertificateFingerprintResponseOutputWithContext(ctx context.Context) CertificateFingerprintResponseOutput {
 	return o
+}
+
+func (o CertificateFingerprintResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateFingerprintResponse] {
+	return pulumix.Output[CertificateFingerprintResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
@@ -1478,6 +1737,12 @@ func (i CertificateIdentityConstraintsArgs) ToCertificateIdentityConstraintsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateIdentityConstraintsOutput)
 }
 
+func (i CertificateIdentityConstraintsArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateIdentityConstraints] {
+	return pulumix.Output[CertificateIdentityConstraints]{
+		OutputState: i.ToCertificateIdentityConstraintsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CertificateIdentityConstraintsArgs) ToCertificateIdentityConstraintsPtrOutput() CertificateIdentityConstraintsPtrOutput {
 	return i.ToCertificateIdentityConstraintsPtrOutputWithContext(context.Background())
 }
@@ -1519,6 +1784,12 @@ func (i *certificateIdentityConstraintsPtrType) ToCertificateIdentityConstraints
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateIdentityConstraintsPtrOutput)
 }
 
+func (i *certificateIdentityConstraintsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateIdentityConstraints] {
+	return pulumix.Output[*CertificateIdentityConstraints]{
+		OutputState: i.ToCertificateIdentityConstraintsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes constraints on a Certificate's Subject and SubjectAltNames.
 type CertificateIdentityConstraintsOutput struct{ *pulumi.OutputState }
 
@@ -1542,6 +1813,12 @@ func (o CertificateIdentityConstraintsOutput) ToCertificateIdentityConstraintsPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateIdentityConstraints) *CertificateIdentityConstraints {
 		return &v
 	}).(CertificateIdentityConstraintsPtrOutput)
+}
+
+func (o CertificateIdentityConstraintsOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateIdentityConstraints] {
+	return pulumix.Output[CertificateIdentityConstraints]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
@@ -1571,6 +1848,12 @@ func (o CertificateIdentityConstraintsPtrOutput) ToCertificateIdentityConstraint
 
 func (o CertificateIdentityConstraintsPtrOutput) ToCertificateIdentityConstraintsPtrOutputWithContext(ctx context.Context) CertificateIdentityConstraintsPtrOutput {
 	return o
+}
+
+func (o CertificateIdentityConstraintsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateIdentityConstraints] {
+	return pulumix.Output[*CertificateIdentityConstraints]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateIdentityConstraintsPtrOutput) Elem() CertificateIdentityConstraintsOutput {
@@ -1638,6 +1921,12 @@ func (o CertificateIdentityConstraintsResponseOutput) ToCertificateIdentityConst
 	return o
 }
 
+func (o CertificateIdentityConstraintsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateIdentityConstraintsResponse] {
+	return pulumix.Output[CertificateIdentityConstraintsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
 func (o CertificateIdentityConstraintsResponseOutput) AllowSubjectAltNamesPassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v CertificateIdentityConstraintsResponse) bool { return v.AllowSubjectAltNamesPassthrough }).(pulumi.BoolOutput)
@@ -1688,6 +1977,12 @@ func (i EcKeyTypeArgs) ToEcKeyTypeOutputWithContext(ctx context.Context) EcKeyTy
 	return pulumi.ToOutputWithContext(ctx, i).(EcKeyTypeOutput)
 }
 
+func (i EcKeyTypeArgs) ToOutput(ctx context.Context) pulumix.Output[EcKeyType] {
+	return pulumix.Output[EcKeyType]{
+		OutputState: i.ToEcKeyTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EcKeyTypeArgs) ToEcKeyTypePtrOutput() EcKeyTypePtrOutput {
 	return i.ToEcKeyTypePtrOutputWithContext(context.Background())
 }
@@ -1729,6 +2024,12 @@ func (i *ecKeyTypePtrType) ToEcKeyTypePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EcKeyTypePtrOutput)
 }
 
+func (i *ecKeyTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*EcKeyType] {
+	return pulumix.Output[*EcKeyType]{
+		OutputState: i.ToEcKeyTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
 type EcKeyTypeOutput struct{ *pulumi.OutputState }
 
@@ -1754,6 +2055,12 @@ func (o EcKeyTypeOutput) ToEcKeyTypePtrOutputWithContext(ctx context.Context) Ec
 	}).(EcKeyTypePtrOutput)
 }
 
+func (o EcKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EcKeyType] {
+	return pulumix.Output[EcKeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
 func (o EcKeyTypeOutput) SignatureAlgorithm() EcKeyTypeSignatureAlgorithmPtrOutput {
 	return o.ApplyT(func(v EcKeyType) *EcKeyTypeSignatureAlgorithm { return v.SignatureAlgorithm }).(EcKeyTypeSignatureAlgorithmPtrOutput)
@@ -1771,6 +2078,12 @@ func (o EcKeyTypePtrOutput) ToEcKeyTypePtrOutput() EcKeyTypePtrOutput {
 
 func (o EcKeyTypePtrOutput) ToEcKeyTypePtrOutputWithContext(ctx context.Context) EcKeyTypePtrOutput {
 	return o
+}
+
+func (o EcKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EcKeyType] {
+	return pulumix.Output[*EcKeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcKeyTypePtrOutput) Elem() EcKeyTypeOutput {
@@ -1812,6 +2125,12 @@ func (o EcKeyTypeResponseOutput) ToEcKeyTypeResponseOutput() EcKeyTypeResponseOu
 
 func (o EcKeyTypeResponseOutput) ToEcKeyTypeResponseOutputWithContext(ctx context.Context) EcKeyTypeResponseOutput {
 	return o
+}
+
+func (o EcKeyTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EcKeyTypeResponse] {
+	return pulumix.Output[EcKeyTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
@@ -1866,6 +2185,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1907,6 +2232,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1930,6 +2261,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1964,6 +2301,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -2043,6 +2386,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -2118,6 +2467,12 @@ func (i ExtendedKeyUsageOptionsArgs) ToExtendedKeyUsageOptionsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedKeyUsageOptionsOutput)
 }
 
+func (i ExtendedKeyUsageOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ExtendedKeyUsageOptions] {
+	return pulumix.Output[ExtendedKeyUsageOptions]{
+		OutputState: i.ToExtendedKeyUsageOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExtendedKeyUsageOptionsArgs) ToExtendedKeyUsageOptionsPtrOutput() ExtendedKeyUsageOptionsPtrOutput {
 	return i.ToExtendedKeyUsageOptionsPtrOutputWithContext(context.Background())
 }
@@ -2159,6 +2514,12 @@ func (i *extendedKeyUsageOptionsPtrType) ToExtendedKeyUsageOptionsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedKeyUsageOptionsPtrOutput)
 }
 
+func (i *extendedKeyUsageOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtendedKeyUsageOptions] {
+	return pulumix.Output[*ExtendedKeyUsageOptions]{
+		OutputState: i.ToExtendedKeyUsageOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value.
 type ExtendedKeyUsageOptionsOutput struct{ *pulumi.OutputState }
 
@@ -2182,6 +2543,12 @@ func (o ExtendedKeyUsageOptionsOutput) ToExtendedKeyUsageOptionsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedKeyUsageOptions) *ExtendedKeyUsageOptions {
 		return &v
 	}).(ExtendedKeyUsageOptionsPtrOutput)
+}
+
+func (o ExtendedKeyUsageOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedKeyUsageOptions] {
+	return pulumix.Output[ExtendedKeyUsageOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
@@ -2226,6 +2593,12 @@ func (o ExtendedKeyUsageOptionsPtrOutput) ToExtendedKeyUsageOptionsPtrOutput() E
 
 func (o ExtendedKeyUsageOptionsPtrOutput) ToExtendedKeyUsageOptionsPtrOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsPtrOutput {
 	return o
+}
+
+func (o ExtendedKeyUsageOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedKeyUsageOptions] {
+	return pulumix.Output[*ExtendedKeyUsageOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtendedKeyUsageOptionsPtrOutput) Elem() ExtendedKeyUsageOptionsOutput {
@@ -2329,6 +2702,12 @@ func (o ExtendedKeyUsageOptionsResponseOutput) ToExtendedKeyUsageOptionsResponse
 	return o
 }
 
+func (o ExtendedKeyUsageOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedKeyUsageOptionsResponse] {
+	return pulumix.Output[ExtendedKeyUsageOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
 func (o ExtendedKeyUsageOptionsResponseOutput) ClientAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v ExtendedKeyUsageOptionsResponse) bool { return v.ClientAuth }).(pulumi.BoolOutput)
@@ -2398,6 +2777,12 @@ func (i IssuanceModesArgs) ToIssuanceModesOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IssuanceModesOutput)
 }
 
+func (i IssuanceModesArgs) ToOutput(ctx context.Context) pulumix.Output[IssuanceModes] {
+	return pulumix.Output[IssuanceModes]{
+		OutputState: i.ToIssuanceModesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IssuanceModesArgs) ToIssuanceModesPtrOutput() IssuanceModesPtrOutput {
 	return i.ToIssuanceModesPtrOutputWithContext(context.Background())
 }
@@ -2439,6 +2824,12 @@ func (i *issuanceModesPtrType) ToIssuanceModesPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(IssuanceModesPtrOutput)
 }
 
+func (i *issuanceModesPtrType) ToOutput(ctx context.Context) pulumix.Output[*IssuanceModes] {
+	return pulumix.Output[*IssuanceModes]{
+		OutputState: i.ToIssuanceModesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 type IssuanceModesOutput struct{ *pulumi.OutputState }
 
@@ -2464,6 +2855,12 @@ func (o IssuanceModesOutput) ToIssuanceModesPtrOutputWithContext(ctx context.Con
 	}).(IssuanceModesPtrOutput)
 }
 
+func (o IssuanceModesOutput) ToOutput(ctx context.Context) pulumix.Output[IssuanceModes] {
+	return pulumix.Output[IssuanceModes]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
 func (o IssuanceModesOutput) AllowConfigBasedIssuance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IssuanceModes) *bool { return v.AllowConfigBasedIssuance }).(pulumi.BoolPtrOutput)
@@ -2486,6 +2883,12 @@ func (o IssuanceModesPtrOutput) ToIssuanceModesPtrOutput() IssuanceModesPtrOutpu
 
 func (o IssuanceModesPtrOutput) ToIssuanceModesPtrOutputWithContext(ctx context.Context) IssuanceModesPtrOutput {
 	return o
+}
+
+func (o IssuanceModesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IssuanceModes] {
+	return pulumix.Output[*IssuanceModes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IssuanceModesPtrOutput) Elem() IssuanceModesOutput {
@@ -2539,6 +2942,12 @@ func (o IssuanceModesResponseOutput) ToIssuanceModesResponseOutput() IssuanceMod
 
 func (o IssuanceModesResponseOutput) ToIssuanceModesResponseOutputWithContext(ctx context.Context) IssuanceModesResponseOutput {
 	return o
+}
+
+func (o IssuanceModesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IssuanceModesResponse] {
+	return pulumix.Output[IssuanceModesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -2606,6 +3015,12 @@ func (i IssuancePolicyArgs) ToIssuancePolicyOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IssuancePolicyOutput)
 }
 
+func (i IssuancePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[IssuancePolicy] {
+	return pulumix.Output[IssuancePolicy]{
+		OutputState: i.ToIssuancePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IssuancePolicyArgs) ToIssuancePolicyPtrOutput() IssuancePolicyPtrOutput {
 	return i.ToIssuancePolicyPtrOutputWithContext(context.Background())
 }
@@ -2647,6 +3062,12 @@ func (i *issuancePolicyPtrType) ToIssuancePolicyPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(IssuancePolicyPtrOutput)
 }
 
+func (i *issuancePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*IssuancePolicy] {
+	return pulumix.Output[*IssuancePolicy]{
+		OutputState: i.ToIssuancePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines controls over all certificate issuance within a CaPool.
 type IssuancePolicyOutput struct{ *pulumi.OutputState }
 
@@ -2670,6 +3091,12 @@ func (o IssuancePolicyOutput) ToIssuancePolicyPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssuancePolicy) *IssuancePolicy {
 		return &v
 	}).(IssuancePolicyPtrOutput)
+}
+
+func (o IssuancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[IssuancePolicy] {
+	return pulumix.Output[IssuancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.
@@ -2714,6 +3141,12 @@ func (o IssuancePolicyPtrOutput) ToIssuancePolicyPtrOutput() IssuancePolicyPtrOu
 
 func (o IssuancePolicyPtrOutput) ToIssuancePolicyPtrOutputWithContext(ctx context.Context) IssuancePolicyPtrOutput {
 	return o
+}
+
+func (o IssuancePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IssuancePolicy] {
+	return pulumix.Output[*IssuancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IssuancePolicyPtrOutput) Elem() IssuancePolicyOutput {
@@ -2817,6 +3250,12 @@ func (o IssuancePolicyResponseOutput) ToIssuancePolicyResponseOutputWithContext(
 	return o
 }
 
+func (o IssuancePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IssuancePolicyResponse] {
+	return pulumix.Output[IssuancePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.
 func (o IssuancePolicyResponseOutput) AllowedIssuanceModes() IssuanceModesResponseOutput {
 	return o.ApplyT(func(v IssuancePolicyResponse) IssuanceModesResponse { return v.AllowedIssuanceModes }).(IssuanceModesResponseOutput)
@@ -2868,6 +3307,12 @@ func (o KeyIdResponseOutput) ToKeyIdResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o KeyIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyIdResponse] {
+	return pulumix.Output[KeyIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 func (o KeyIdResponseOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyIdResponse) string { return v.KeyId }).(pulumi.StringOutput)
@@ -2916,6 +3361,12 @@ func (i KeyUsageArgs) ToKeyUsageOutputWithContext(ctx context.Context) KeyUsageO
 	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageOutput)
 }
 
+func (i KeyUsageArgs) ToOutput(ctx context.Context) pulumix.Output[KeyUsage] {
+	return pulumix.Output[KeyUsage]{
+		OutputState: i.ToKeyUsageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyUsageArgs) ToKeyUsagePtrOutput() KeyUsagePtrOutput {
 	return i.ToKeyUsagePtrOutputWithContext(context.Background())
 }
@@ -2957,6 +3408,12 @@ func (i *keyUsagePtrType) ToKeyUsagePtrOutputWithContext(ctx context.Context) Ke
 	return pulumi.ToOutputWithContext(ctx, i).(KeyUsagePtrOutput)
 }
 
+func (i *keyUsagePtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyUsage] {
+	return pulumix.Output[*KeyUsage]{
+		OutputState: i.ToKeyUsagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A KeyUsage describes key usage values that may appear in an X.509 certificate.
 type KeyUsageOutput struct{ *pulumi.OutputState }
 
@@ -2980,6 +3437,12 @@ func (o KeyUsageOutput) ToKeyUsagePtrOutputWithContext(ctx context.Context) KeyU
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsage) *KeyUsage {
 		return &v
 	}).(KeyUsagePtrOutput)
+}
+
+func (o KeyUsageOutput) ToOutput(ctx context.Context) pulumix.Output[KeyUsage] {
+	return pulumix.Output[KeyUsage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes high-level ways in which a key may be used.
@@ -3009,6 +3472,12 @@ func (o KeyUsagePtrOutput) ToKeyUsagePtrOutput() KeyUsagePtrOutput {
 
 func (o KeyUsagePtrOutput) ToKeyUsagePtrOutputWithContext(ctx context.Context) KeyUsagePtrOutput {
 	return o
+}
+
+func (o KeyUsagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyUsage] {
+	return pulumix.Output[*KeyUsage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyUsagePtrOutput) Elem() KeyUsageOutput {
@@ -3118,6 +3587,12 @@ func (i KeyUsageOptionsArgs) ToKeyUsageOptionsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageOptionsOutput)
 }
 
+func (i KeyUsageOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[KeyUsageOptions] {
+	return pulumix.Output[KeyUsageOptions]{
+		OutputState: i.ToKeyUsageOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyUsageOptionsArgs) ToKeyUsageOptionsPtrOutput() KeyUsageOptionsPtrOutput {
 	return i.ToKeyUsageOptionsPtrOutputWithContext(context.Background())
 }
@@ -3159,6 +3634,12 @@ func (i *keyUsageOptionsPtrType) ToKeyUsageOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(KeyUsageOptionsPtrOutput)
 }
 
+func (i *keyUsageOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyUsageOptions] {
+	return pulumix.Output[*KeyUsageOptions]{
+		OutputState: i.ToKeyUsageOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyUsage.KeyUsageOptions corresponds to the key usage values described in https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
 type KeyUsageOptionsOutput struct{ *pulumi.OutputState }
 
@@ -3182,6 +3663,12 @@ func (o KeyUsageOptionsOutput) ToKeyUsageOptionsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsageOptions) *KeyUsageOptions {
 		return &v
 	}).(KeyUsageOptionsPtrOutput)
+}
+
+func (o KeyUsageOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[KeyUsageOptions] {
+	return pulumix.Output[KeyUsageOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key may be used to sign certificates.
@@ -3241,6 +3728,12 @@ func (o KeyUsageOptionsPtrOutput) ToKeyUsageOptionsPtrOutput() KeyUsageOptionsPt
 
 func (o KeyUsageOptionsPtrOutput) ToKeyUsageOptionsPtrOutputWithContext(ctx context.Context) KeyUsageOptionsPtrOutput {
 	return o
+}
+
+func (o KeyUsageOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyUsageOptions] {
+	return pulumix.Output[*KeyUsageOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyUsageOptionsPtrOutput) Elem() KeyUsageOptionsOutput {
@@ -3380,6 +3873,12 @@ func (o KeyUsageOptionsResponseOutput) ToKeyUsageOptionsResponseOutputWithContex
 	return o
 }
 
+func (o KeyUsageOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyUsageOptionsResponse] {
+	return pulumix.Output[KeyUsageOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The key may be used to sign certificates.
 func (o KeyUsageOptionsResponseOutput) CertSign() pulumi.BoolOutput {
 	return o.ApplyT(func(v KeyUsageOptionsResponse) bool { return v.CertSign }).(pulumi.BoolOutput)
@@ -3450,6 +3949,12 @@ func (o KeyUsageResponseOutput) ToKeyUsageResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o KeyUsageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyUsageResponse] {
+	return pulumix.Output[KeyUsageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes high-level ways in which a key may be used.
 func (o KeyUsageResponseOutput) BaseKeyUsage() KeyUsageOptionsResponseOutput {
 	return o.ApplyT(func(v KeyUsageResponse) KeyUsageOptionsResponse { return v.BaseKeyUsage }).(KeyUsageOptionsResponseOutput)
@@ -3504,6 +4009,12 @@ func (i KeyVersionSpecArgs) ToKeyVersionSpecOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionSpecOutput)
 }
 
+func (i KeyVersionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVersionSpec] {
+	return pulumix.Output[KeyVersionSpec]{
+		OutputState: i.ToKeyVersionSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpecOutput struct{ *pulumi.OutputState }
 
@@ -3517,6 +4028,12 @@ func (o KeyVersionSpecOutput) ToKeyVersionSpecOutput() KeyVersionSpecOutput {
 
 func (o KeyVersionSpecOutput) ToKeyVersionSpecOutputWithContext(ctx context.Context) KeyVersionSpecOutput {
 	return o
+}
+
+func (o KeyVersionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVersionSpec] {
+	return pulumix.Output[KeyVersionSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
@@ -3550,6 +4067,12 @@ func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponseOutput() KeyVersio
 
 func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponseOutputWithContext(ctx context.Context) KeyVersionSpecResponseOutput {
 	return o
+}
+
+func (o KeyVersionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVersionSpecResponse] {
+	return pulumix.Output[KeyVersionSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
@@ -3629,6 +4152,12 @@ func (i NameConstraintsArgs) ToNameConstraintsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NameConstraintsOutput)
 }
 
+func (i NameConstraintsArgs) ToOutput(ctx context.Context) pulumix.Output[NameConstraints] {
+	return pulumix.Output[NameConstraints]{
+		OutputState: i.ToNameConstraintsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NameConstraintsArgs) ToNameConstraintsPtrOutput() NameConstraintsPtrOutput {
 	return i.ToNameConstraintsPtrOutputWithContext(context.Background())
 }
@@ -3670,6 +4199,12 @@ func (i *nameConstraintsPtrType) ToNameConstraintsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NameConstraintsPtrOutput)
 }
 
+func (i *nameConstraintsPtrType) ToOutput(ctx context.Context) pulumix.Output[*NameConstraints] {
+	return pulumix.Output[*NameConstraints]{
+		OutputState: i.ToNameConstraintsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
 type NameConstraintsOutput struct{ *pulumi.OutputState }
 
@@ -3693,6 +4228,12 @@ func (o NameConstraintsOutput) ToNameConstraintsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameConstraints) *NameConstraints {
 		return &v
 	}).(NameConstraintsPtrOutput)
+}
+
+func (o NameConstraintsOutput) ToOutput(ctx context.Context) pulumix.Output[NameConstraints] {
+	return pulumix.Output[NameConstraints]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether or not the name constraints are marked critical.
@@ -3752,6 +4293,12 @@ func (o NameConstraintsPtrOutput) ToNameConstraintsPtrOutput() NameConstraintsPt
 
 func (o NameConstraintsPtrOutput) ToNameConstraintsPtrOutputWithContext(ctx context.Context) NameConstraintsPtrOutput {
 	return o
+}
+
+func (o NameConstraintsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NameConstraints] {
+	return pulumix.Output[*NameConstraints]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NameConstraintsPtrOutput) Elem() NameConstraintsOutput {
@@ -3891,6 +4438,12 @@ func (o NameConstraintsResponseOutput) ToNameConstraintsResponseOutputWithContex
 	return o
 }
 
+func (o NameConstraintsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NameConstraintsResponse] {
+	return pulumix.Output[NameConstraintsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether or not the name constraints are marked critical.
 func (o NameConstraintsResponseOutput) Critical() pulumi.BoolOutput {
 	return o.ApplyT(func(v NameConstraintsResponse) bool { return v.Critical }).(pulumi.BoolOutput)
@@ -3971,6 +4524,12 @@ func (i ObjectIdArgs) ToObjectIdOutputWithContext(ctx context.Context) ObjectIdO
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectIdOutput)
 }
 
+func (i ObjectIdArgs) ToOutput(ctx context.Context) pulumix.Output[ObjectId] {
+	return pulumix.Output[ObjectId]{
+		OutputState: i.ToObjectIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ObjectIdArrayInput is an input type that accepts ObjectIdArray and ObjectIdArrayOutput values.
 // You can construct a concrete instance of `ObjectIdArrayInput` via:
 //
@@ -3996,6 +4555,12 @@ func (i ObjectIdArray) ToObjectIdArrayOutputWithContext(ctx context.Context) Obj
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectIdArrayOutput)
 }
 
+func (i ObjectIdArray) ToOutput(ctx context.Context) pulumix.Output[[]ObjectId] {
+	return pulumix.Output[[]ObjectId]{
+		OutputState: i.ToObjectIdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 type ObjectIdOutput struct{ *pulumi.OutputState }
 
@@ -4009,6 +4574,12 @@ func (o ObjectIdOutput) ToObjectIdOutput() ObjectIdOutput {
 
 func (o ObjectIdOutput) ToObjectIdOutputWithContext(ctx context.Context) ObjectIdOutput {
 	return o
+}
+
+func (o ObjectIdOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectId] {
+	return pulumix.Output[ObjectId]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parts of an OID path. The most significant parts of the path come first.
@@ -4028,6 +4599,12 @@ func (o ObjectIdArrayOutput) ToObjectIdArrayOutput() ObjectIdArrayOutput {
 
 func (o ObjectIdArrayOutput) ToObjectIdArrayOutputWithContext(ctx context.Context) ObjectIdArrayOutput {
 	return o
+}
+
+func (o ObjectIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ObjectId] {
+	return pulumix.Output[[]ObjectId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ObjectIdArrayOutput) Index(i pulumi.IntInput) ObjectIdOutput {
@@ -4057,6 +4634,12 @@ func (o ObjectIdResponseOutput) ToObjectIdResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o ObjectIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectIdResponse] {
+	return pulumix.Output[ObjectIdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The parts of an OID path. The most significant parts of the path come first.
 func (o ObjectIdResponseOutput) ObjectIdPath() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v ObjectIdResponse) []int { return v.ObjectIdPath }).(pulumi.IntArrayOutput)
@@ -4074,6 +4657,12 @@ func (o ObjectIdResponseArrayOutput) ToObjectIdResponseArrayOutput() ObjectIdRes
 
 func (o ObjectIdResponseArrayOutput) ToObjectIdResponseArrayOutputWithContext(ctx context.Context) ObjectIdResponseArrayOutput {
 	return o
+}
+
+func (o ObjectIdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ObjectIdResponse] {
+	return pulumix.Output[[]ObjectIdResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ObjectIdResponseArrayOutput) Index(i pulumi.IntInput) ObjectIdResponseOutput {
@@ -4121,6 +4710,12 @@ func (i PublicKeyArgs) ToPublicKeyOutputWithContext(ctx context.Context) PublicK
 	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyOutput)
 }
 
+func (i PublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[PublicKey] {
+	return pulumix.Output[PublicKey]{
+		OutputState: i.ToPublicKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PublicKeyArgs) ToPublicKeyPtrOutput() PublicKeyPtrOutput {
 	return i.ToPublicKeyPtrOutputWithContext(context.Background())
 }
@@ -4162,6 +4757,12 @@ func (i *publicKeyPtrType) ToPublicKeyPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyPtrOutput)
 }
 
+func (i *publicKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PublicKey] {
+	return pulumix.Output[*PublicKey]{
+		OutputState: i.ToPublicKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A PublicKey describes a public key.
 type PublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -4187,6 +4788,12 @@ func (o PublicKeyOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context) Pu
 	}).(PublicKeyPtrOutput)
 }
 
+func (o PublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[PublicKey] {
+	return pulumix.Output[PublicKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The format of the public key.
 func (o PublicKeyOutput) Format() PublicKeyFormatOutput {
 	return o.ApplyT(func(v PublicKey) PublicKeyFormat { return v.Format }).(PublicKeyFormatOutput)
@@ -4209,6 +4816,12 @@ func (o PublicKeyPtrOutput) ToPublicKeyPtrOutput() PublicKeyPtrOutput {
 
 func (o PublicKeyPtrOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput {
 	return o
+}
+
+func (o PublicKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicKey] {
+	return pulumix.Output[*PublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicKeyPtrOutput) Elem() PublicKeyOutput {
@@ -4264,6 +4877,12 @@ func (o PublicKeyResponseOutput) ToPublicKeyResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o PublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PublicKeyResponse] {
+	return pulumix.Output[PublicKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The format of the public key.
 func (o PublicKeyResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicKeyResponse) string { return v.Format }).(pulumi.StringOutput)
@@ -4317,6 +4936,12 @@ func (i PublishingOptionsArgs) ToPublishingOptionsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PublishingOptionsOutput)
 }
 
+func (i PublishingOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[PublishingOptions] {
+	return pulumix.Output[PublishingOptions]{
+		OutputState: i.ToPublishingOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PublishingOptionsArgs) ToPublishingOptionsPtrOutput() PublishingOptionsPtrOutput {
 	return i.ToPublishingOptionsPtrOutputWithContext(context.Background())
 }
@@ -4358,6 +4983,12 @@ func (i *publishingOptionsPtrType) ToPublishingOptionsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PublishingOptionsPtrOutput)
 }
 
+func (i *publishingOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*PublishingOptions] {
+	return pulumix.Output[*PublishingOptions]{
+		OutputState: i.ToPublishingOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
 type PublishingOptionsOutput struct{ *pulumi.OutputState }
 
@@ -4381,6 +5012,12 @@ func (o PublishingOptionsOutput) ToPublishingOptionsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublishingOptions) *PublishingOptions {
 		return &v
 	}).(PublishingOptionsPtrOutput)
+}
+
+func (o PublishingOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[PublishingOptions] {
+	return pulumix.Output[PublishingOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
@@ -4410,6 +5047,12 @@ func (o PublishingOptionsPtrOutput) ToPublishingOptionsPtrOutput() PublishingOpt
 
 func (o PublishingOptionsPtrOutput) ToPublishingOptionsPtrOutputWithContext(ctx context.Context) PublishingOptionsPtrOutput {
 	return o
+}
+
+func (o PublishingOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublishingOptions] {
+	return pulumix.Output[*PublishingOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublishingOptionsPtrOutput) Elem() PublishingOptionsOutput {
@@ -4477,6 +5120,12 @@ func (o PublishingOptionsResponseOutput) ToPublishingOptionsResponseOutputWithCo
 	return o
 }
 
+func (o PublishingOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PublishingOptionsResponse] {
+	return pulumix.Output[PublishingOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
 func (o PublishingOptionsResponseOutput) EncodingFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v PublishingOptionsResponse) string { return v.EncodingFormat }).(pulumi.StringOutput)
@@ -4513,6 +5162,12 @@ func (o RevocationDetailsResponseOutput) ToRevocationDetailsResponseOutput() Rev
 
 func (o RevocationDetailsResponseOutput) ToRevocationDetailsResponseOutputWithContext(ctx context.Context) RevocationDetailsResponseOutput {
 	return o
+}
+
+func (o RevocationDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RevocationDetailsResponse] {
+	return pulumix.Output[RevocationDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates why a Certificate was revoked.
@@ -4564,6 +5219,12 @@ func (i RsaKeyTypeArgs) ToRsaKeyTypeOutputWithContext(ctx context.Context) RsaKe
 	return pulumi.ToOutputWithContext(ctx, i).(RsaKeyTypeOutput)
 }
 
+func (i RsaKeyTypeArgs) ToOutput(ctx context.Context) pulumix.Output[RsaKeyType] {
+	return pulumix.Output[RsaKeyType]{
+		OutputState: i.ToRsaKeyTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RsaKeyTypeArgs) ToRsaKeyTypePtrOutput() RsaKeyTypePtrOutput {
 	return i.ToRsaKeyTypePtrOutputWithContext(context.Background())
 }
@@ -4605,6 +5266,12 @@ func (i *rsaKeyTypePtrType) ToRsaKeyTypePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RsaKeyTypePtrOutput)
 }
 
+func (i *rsaKeyTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*RsaKeyType] {
+	return pulumix.Output[*RsaKeyType]{
+		OutputState: i.ToRsaKeyTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes an RSA key that may be used in a Certificate issued from a CaPool.
 type RsaKeyTypeOutput struct{ *pulumi.OutputState }
 
@@ -4630,6 +5297,12 @@ func (o RsaKeyTypeOutput) ToRsaKeyTypePtrOutputWithContext(ctx context.Context) 
 	}).(RsaKeyTypePtrOutput)
 }
 
+func (o RsaKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RsaKeyType] {
+	return pulumix.Output[RsaKeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
 func (o RsaKeyTypeOutput) MaxModulusSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RsaKeyType) *string { return v.MaxModulusSize }).(pulumi.StringPtrOutput)
@@ -4652,6 +5325,12 @@ func (o RsaKeyTypePtrOutput) ToRsaKeyTypePtrOutput() RsaKeyTypePtrOutput {
 
 func (o RsaKeyTypePtrOutput) ToRsaKeyTypePtrOutputWithContext(ctx context.Context) RsaKeyTypePtrOutput {
 	return o
+}
+
+func (o RsaKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RsaKeyType] {
+	return pulumix.Output[*RsaKeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RsaKeyTypePtrOutput) Elem() RsaKeyTypeOutput {
@@ -4705,6 +5384,12 @@ func (o RsaKeyTypeResponseOutput) ToRsaKeyTypeResponseOutput() RsaKeyTypeRespons
 
 func (o RsaKeyTypeResponseOutput) ToRsaKeyTypeResponseOutputWithContext(ctx context.Context) RsaKeyTypeResponseOutput {
 	return o
+}
+
+func (o RsaKeyTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RsaKeyTypeResponse] {
+	return pulumix.Output[RsaKeyTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
@@ -4780,6 +5465,12 @@ func (i SubjectArgs) ToSubjectOutputWithContext(ctx context.Context) SubjectOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectOutput)
 }
 
+func (i SubjectArgs) ToOutput(ctx context.Context) pulumix.Output[Subject] {
+	return pulumix.Output[Subject]{
+		OutputState: i.ToSubjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubjectArgs) ToSubjectPtrOutput() SubjectPtrOutput {
 	return i.ToSubjectPtrOutputWithContext(context.Background())
 }
@@ -4821,6 +5512,12 @@ func (i *subjectPtrType) ToSubjectPtrOutputWithContext(ctx context.Context) Subj
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectPtrOutput)
 }
 
+func (i *subjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*Subject] {
+	return pulumix.Output[*Subject]{
+		OutputState: i.ToSubjectPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
 type SubjectOutput struct{ *pulumi.OutputState }
 
@@ -4844,6 +5541,12 @@ func (o SubjectOutput) ToSubjectPtrOutputWithContext(ctx context.Context) Subjec
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subject) *Subject {
 		return &v
 	}).(SubjectPtrOutput)
+}
+
+func (o SubjectOutput) ToOutput(ctx context.Context) pulumix.Output[Subject] {
+	return pulumix.Output[Subject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The "common name" of the subject.
@@ -4898,6 +5601,12 @@ func (o SubjectPtrOutput) ToSubjectPtrOutput() SubjectPtrOutput {
 
 func (o SubjectPtrOutput) ToSubjectPtrOutputWithContext(ctx context.Context) SubjectPtrOutput {
 	return o
+}
+
+func (o SubjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Subject] {
+	return pulumix.Output[*Subject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubjectPtrOutput) Elem() SubjectOutput {
@@ -5041,6 +5750,12 @@ func (i SubjectAltNamesArgs) ToSubjectAltNamesOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectAltNamesOutput)
 }
 
+func (i SubjectAltNamesArgs) ToOutput(ctx context.Context) pulumix.Output[SubjectAltNames] {
+	return pulumix.Output[SubjectAltNames]{
+		OutputState: i.ToSubjectAltNamesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubjectAltNamesArgs) ToSubjectAltNamesPtrOutput() SubjectAltNamesPtrOutput {
 	return i.ToSubjectAltNamesPtrOutputWithContext(context.Background())
 }
@@ -5082,6 +5797,12 @@ func (i *subjectAltNamesPtrType) ToSubjectAltNamesPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectAltNamesPtrOutput)
 }
 
+func (i *subjectAltNamesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubjectAltNames] {
+	return pulumix.Output[*SubjectAltNames]{
+		OutputState: i.ToSubjectAltNamesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
 type SubjectAltNamesOutput struct{ *pulumi.OutputState }
 
@@ -5105,6 +5826,12 @@ func (o SubjectAltNamesOutput) ToSubjectAltNamesPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectAltNames) *SubjectAltNames {
 		return &v
 	}).(SubjectAltNamesPtrOutput)
+}
+
+func (o SubjectAltNamesOutput) ToOutput(ctx context.Context) pulumix.Output[SubjectAltNames] {
+	return pulumix.Output[SubjectAltNames]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
@@ -5144,6 +5871,12 @@ func (o SubjectAltNamesPtrOutput) ToSubjectAltNamesPtrOutput() SubjectAltNamesPt
 
 func (o SubjectAltNamesPtrOutput) ToSubjectAltNamesPtrOutputWithContext(ctx context.Context) SubjectAltNamesPtrOutput {
 	return o
+}
+
+func (o SubjectAltNamesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubjectAltNames] {
+	return pulumix.Output[*SubjectAltNames]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubjectAltNamesPtrOutput) Elem() SubjectAltNamesOutput {
@@ -5235,6 +5968,12 @@ func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponseOutputWithContex
 	return o
 }
 
+func (o SubjectAltNamesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubjectAltNamesResponse] {
+	return pulumix.Output[SubjectAltNamesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
 func (o SubjectAltNamesResponseOutput) CustomSans() X509ExtensionResponseArrayOutput {
 	return o.ApplyT(func(v SubjectAltNamesResponse) []X509ExtensionResponse { return v.CustomSans }).(X509ExtensionResponseArrayOutput)
@@ -5299,6 +6038,12 @@ func (i SubjectConfigArgs) ToSubjectConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectConfigOutput)
 }
 
+func (i SubjectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SubjectConfig] {
+	return pulumix.Output[SubjectConfig]{
+		OutputState: i.ToSubjectConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubjectConfigArgs) ToSubjectConfigPtrOutput() SubjectConfigPtrOutput {
 	return i.ToSubjectConfigPtrOutputWithContext(context.Background())
 }
@@ -5340,6 +6085,12 @@ func (i *subjectConfigPtrType) ToSubjectConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectConfigPtrOutput)
 }
 
+func (i *subjectConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubjectConfig] {
+	return pulumix.Output[*SubjectConfig]{
+		OutputState: i.ToSubjectConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
 type SubjectConfigOutput struct{ *pulumi.OutputState }
 
@@ -5365,6 +6116,12 @@ func (o SubjectConfigOutput) ToSubjectConfigPtrOutputWithContext(ctx context.Con
 	}).(SubjectConfigPtrOutput)
 }
 
+func (o SubjectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SubjectConfig] {
+	return pulumix.Output[SubjectConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Contains distinguished name fields such as the common name, location and organization.
 func (o SubjectConfigOutput) Subject() SubjectOutput {
 	return o.ApplyT(func(v SubjectConfig) Subject { return v.Subject }).(SubjectOutput)
@@ -5387,6 +6144,12 @@ func (o SubjectConfigPtrOutput) ToSubjectConfigPtrOutput() SubjectConfigPtrOutpu
 
 func (o SubjectConfigPtrOutput) ToSubjectConfigPtrOutputWithContext(ctx context.Context) SubjectConfigPtrOutput {
 	return o
+}
+
+func (o SubjectConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubjectConfig] {
+	return pulumix.Output[*SubjectConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubjectConfigPtrOutput) Elem() SubjectConfigOutput {
@@ -5442,6 +6205,12 @@ func (o SubjectConfigResponseOutput) ToSubjectConfigResponseOutputWithContext(ct
 	return o
 }
 
+func (o SubjectConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubjectConfigResponse] {
+	return pulumix.Output[SubjectConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Contains distinguished name fields such as the common name, location and organization.
 func (o SubjectConfigResponseOutput) Subject() SubjectResponseOutput {
 	return o.ApplyT(func(v SubjectConfigResponse) SubjectResponse { return v.Subject }).(SubjectResponseOutput)
@@ -5481,6 +6250,12 @@ func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponseOutput() S
 
 func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponseOutputWithContext(ctx context.Context) SubjectDescriptionResponseOutput {
 	return o
+}
+
+func (o SubjectDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubjectDescriptionResponse] {
+	return pulumix.Output[SubjectDescriptionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The serial number encoded in lowercase hexadecimal.
@@ -5546,6 +6321,12 @@ func (o SubjectResponseOutput) ToSubjectResponseOutput() SubjectResponseOutput {
 
 func (o SubjectResponseOutput) ToSubjectResponseOutputWithContext(ctx context.Context) SubjectResponseOutput {
 	return o
+}
+
+func (o SubjectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubjectResponse] {
+	return pulumix.Output[SubjectResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The "common name" of the subject.
@@ -5627,6 +6408,12 @@ func (i SubordinateConfigArgs) ToSubordinateConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigOutput)
 }
 
+func (i SubordinateConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SubordinateConfig] {
+	return pulumix.Output[SubordinateConfig]{
+		OutputState: i.ToSubordinateConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubordinateConfigArgs) ToSubordinateConfigPtrOutput() SubordinateConfigPtrOutput {
 	return i.ToSubordinateConfigPtrOutputWithContext(context.Background())
 }
@@ -5668,6 +6455,12 @@ func (i *subordinateConfigPtrType) ToSubordinateConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigPtrOutput)
 }
 
+func (i *subordinateConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubordinateConfig] {
+	return pulumix.Output[*SubordinateConfig]{
+		OutputState: i.ToSubordinateConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfigOutput struct{ *pulumi.OutputState }
 
@@ -5693,6 +6486,12 @@ func (o SubordinateConfigOutput) ToSubordinateConfigPtrOutputWithContext(ctx con
 	}).(SubordinateConfigPtrOutput)
 }
 
+func (o SubordinateConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SubordinateConfig] {
+	return pulumix.Output[SubordinateConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 func (o SubordinateConfigOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v SubordinateConfig) string { return v.CertificateAuthority }).(pulumi.StringOutput)
@@ -5715,6 +6514,12 @@ func (o SubordinateConfigPtrOutput) ToSubordinateConfigPtrOutput() SubordinateCo
 
 func (o SubordinateConfigPtrOutput) ToSubordinateConfigPtrOutputWithContext(ctx context.Context) SubordinateConfigPtrOutput {
 	return o
+}
+
+func (o SubordinateConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubordinateConfig] {
+	return pulumix.Output[*SubordinateConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubordinateConfigPtrOutput) Elem() SubordinateConfigOutput {
@@ -5782,6 +6587,12 @@ func (i SubordinateConfigChainArgs) ToSubordinateConfigChainOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigChainOutput)
 }
 
+func (i SubordinateConfigChainArgs) ToOutput(ctx context.Context) pulumix.Output[SubordinateConfigChain] {
+	return pulumix.Output[SubordinateConfigChain]{
+		OutputState: i.ToSubordinateConfigChainOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SubordinateConfigChainArgs) ToSubordinateConfigChainPtrOutput() SubordinateConfigChainPtrOutput {
 	return i.ToSubordinateConfigChainPtrOutputWithContext(context.Background())
 }
@@ -5823,6 +6634,12 @@ func (i *subordinateConfigChainPtrType) ToSubordinateConfigChainPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SubordinateConfigChainPtrOutput)
 }
 
+func (i *subordinateConfigChainPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubordinateConfigChain] {
+	return pulumix.Output[*SubordinateConfigChain]{
+		OutputState: i.ToSubordinateConfigChainPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
 type SubordinateConfigChainOutput struct{ *pulumi.OutputState }
 
@@ -5848,6 +6665,12 @@ func (o SubordinateConfigChainOutput) ToSubordinateConfigChainPtrOutputWithConte
 	}).(SubordinateConfigChainPtrOutput)
 }
 
+func (o SubordinateConfigChainOutput) ToOutput(ctx context.Context) pulumix.Output[SubordinateConfigChain] {
+	return pulumix.Output[SubordinateConfigChain]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Expected to be in leaf-to-root order according to RFC 5246.
 func (o SubordinateConfigChainOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubordinateConfigChain) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
@@ -5865,6 +6688,12 @@ func (o SubordinateConfigChainPtrOutput) ToSubordinateConfigChainPtrOutput() Sub
 
 func (o SubordinateConfigChainPtrOutput) ToSubordinateConfigChainPtrOutputWithContext(ctx context.Context) SubordinateConfigChainPtrOutput {
 	return o
+}
+
+func (o SubordinateConfigChainPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubordinateConfigChain] {
+	return pulumix.Output[*SubordinateConfigChain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubordinateConfigChainPtrOutput) Elem() SubordinateConfigChainOutput {
@@ -5908,6 +6737,12 @@ func (o SubordinateConfigChainResponseOutput) ToSubordinateConfigChainResponseOu
 	return o
 }
 
+func (o SubordinateConfigChainResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubordinateConfigChainResponse] {
+	return pulumix.Output[SubordinateConfigChainResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Expected to be in leaf-to-root order according to RFC 5246.
 func (o SubordinateConfigChainResponseOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubordinateConfigChainResponse) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
@@ -5934,6 +6769,12 @@ func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponseOutput() Sub
 
 func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponseOutputWithContext(ctx context.Context) SubordinateConfigResponseOutput {
 	return o
+}
+
+func (o SubordinateConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubordinateConfigResponse] {
+	return pulumix.Output[SubordinateConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
@@ -5989,6 +6830,12 @@ func (i X509ExtensionArgs) ToX509ExtensionOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(X509ExtensionOutput)
 }
 
+func (i X509ExtensionArgs) ToOutput(ctx context.Context) pulumix.Output[X509Extension] {
+	return pulumix.Output[X509Extension]{
+		OutputState: i.ToX509ExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // X509ExtensionArrayInput is an input type that accepts X509ExtensionArray and X509ExtensionArrayOutput values.
 // You can construct a concrete instance of `X509ExtensionArrayInput` via:
 //
@@ -6014,6 +6861,12 @@ func (i X509ExtensionArray) ToX509ExtensionArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(X509ExtensionArrayOutput)
 }
 
+func (i X509ExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]X509Extension] {
+	return pulumix.Output[[]X509Extension]{
+		OutputState: i.ToX509ExtensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 type X509ExtensionOutput struct{ *pulumi.OutputState }
 
@@ -6027,6 +6880,12 @@ func (o X509ExtensionOutput) ToX509ExtensionOutput() X509ExtensionOutput {
 
 func (o X509ExtensionOutput) ToX509ExtensionOutputWithContext(ctx context.Context) X509ExtensionOutput {
 	return o
+}
+
+func (o X509ExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[X509Extension] {
+	return pulumix.Output[X509Extension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
@@ -6056,6 +6915,12 @@ func (o X509ExtensionArrayOutput) ToX509ExtensionArrayOutput() X509ExtensionArra
 
 func (o X509ExtensionArrayOutput) ToX509ExtensionArrayOutputWithContext(ctx context.Context) X509ExtensionArrayOutput {
 	return o
+}
+
+func (o X509ExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X509Extension] {
+	return pulumix.Output[[]X509Extension]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o X509ExtensionArrayOutput) Index(i pulumi.IntInput) X509ExtensionOutput {
@@ -6089,6 +6954,12 @@ func (o X509ExtensionResponseOutput) ToX509ExtensionResponseOutputWithContext(ct
 	return o
 }
 
+func (o X509ExtensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X509ExtensionResponse] {
+	return pulumix.Output[X509ExtensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
 func (o X509ExtensionResponseOutput) Critical() pulumi.BoolOutput {
 	return o.ApplyT(func(v X509ExtensionResponse) bool { return v.Critical }).(pulumi.BoolOutput)
@@ -6116,6 +6987,12 @@ func (o X509ExtensionResponseArrayOutput) ToX509ExtensionResponseArrayOutput() X
 
 func (o X509ExtensionResponseArrayOutput) ToX509ExtensionResponseArrayOutputWithContext(ctx context.Context) X509ExtensionResponseArrayOutput {
 	return o
+}
+
+func (o X509ExtensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X509ExtensionResponse] {
+	return pulumix.Output[[]X509ExtensionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o X509ExtensionResponseArrayOutput) Index(i pulumi.IntInput) X509ExtensionResponseOutput {
@@ -6179,6 +7056,12 @@ func (i X509ParametersArgs) ToX509ParametersOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(X509ParametersOutput)
 }
 
+func (i X509ParametersArgs) ToOutput(ctx context.Context) pulumix.Output[X509Parameters] {
+	return pulumix.Output[X509Parameters]{
+		OutputState: i.ToX509ParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i X509ParametersArgs) ToX509ParametersPtrOutput() X509ParametersPtrOutput {
 	return i.ToX509ParametersPtrOutputWithContext(context.Background())
 }
@@ -6220,6 +7103,12 @@ func (i *x509parametersPtrType) ToX509ParametersPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(X509ParametersPtrOutput)
 }
 
+func (i *x509parametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*X509Parameters] {
+	return pulumix.Output[*X509Parameters]{
+		OutputState: i.ToX509ParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An X509Parameters is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
 type X509ParametersOutput struct{ *pulumi.OutputState }
 
@@ -6243,6 +7132,12 @@ func (o X509ParametersOutput) ToX509ParametersPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X509Parameters) *X509Parameters {
 		return &v
 	}).(X509ParametersPtrOutput)
+}
+
+func (o X509ParametersOutput) ToOutput(ctx context.Context) pulumix.Output[X509Parameters] {
+	return pulumix.Output[X509Parameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Describes custom X.509 extensions.
@@ -6287,6 +7182,12 @@ func (o X509ParametersPtrOutput) ToX509ParametersPtrOutput() X509ParametersPtrOu
 
 func (o X509ParametersPtrOutput) ToX509ParametersPtrOutputWithContext(ctx context.Context) X509ParametersPtrOutput {
 	return o
+}
+
+func (o X509ParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X509Parameters] {
+	return pulumix.Output[*X509Parameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o X509ParametersPtrOutput) Elem() X509ParametersOutput {
@@ -6388,6 +7289,12 @@ func (o X509ParametersResponseOutput) ToX509ParametersResponseOutput() X509Param
 
 func (o X509ParametersResponseOutput) ToX509ParametersResponseOutputWithContext(ctx context.Context) X509ParametersResponseOutput {
 	return o
+}
+
+func (o X509ParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X509ParametersResponse] {
+	return pulumix.Output[X509ParametersResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Describes custom X.509 extensions.

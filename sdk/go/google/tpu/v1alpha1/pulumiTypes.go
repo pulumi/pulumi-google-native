@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o NetworkEndpointResponseOutput) ToNetworkEndpointResponseOutputWithContex
 	return o
 }
 
+func (o NetworkEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkEndpointResponse] {
+	return pulumix.Output[NetworkEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP address of this network endpoint.
 func (o NetworkEndpointResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
@@ -58,6 +65,12 @@ func (o NetworkEndpointResponseArrayOutput) ToNetworkEndpointResponseArrayOutput
 
 func (o NetworkEndpointResponseArrayOutput) ToNetworkEndpointResponseArrayOutputWithContext(ctx context.Context) NetworkEndpointResponseArrayOutput {
 	return o
+}
+
+func (o NetworkEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkEndpointResponse] {
+	return pulumix.Output[[]NetworkEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkEndpointResponseArrayOutput) Index(i pulumi.IntInput) NetworkEndpointResponseOutput {
@@ -105,6 +118,12 @@ func (i SchedulingConfigArgs) ToSchedulingConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigOutput)
 }
 
+func (i SchedulingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SchedulingConfig] {
+	return pulumix.Output[SchedulingConfig]{
+		OutputState: i.ToSchedulingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SchedulingConfigArgs) ToSchedulingConfigPtrOutput() SchedulingConfigPtrOutput {
 	return i.ToSchedulingConfigPtrOutputWithContext(context.Background())
 }
@@ -146,6 +165,12 @@ func (i *schedulingConfigPtrType) ToSchedulingConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigPtrOutput)
 }
 
+func (i *schedulingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SchedulingConfig] {
+	return pulumix.Output[*SchedulingConfig]{
+		OutputState: i.ToSchedulingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sets the scheduling options for this node.
 type SchedulingConfigOutput struct{ *pulumi.OutputState }
 
@@ -171,6 +196,12 @@ func (o SchedulingConfigOutput) ToSchedulingConfigPtrOutputWithContext(ctx conte
 	}).(SchedulingConfigPtrOutput)
 }
 
+func (o SchedulingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingConfig] {
+	return pulumix.Output[SchedulingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines whether the node is preemptible.
 func (o SchedulingConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SchedulingConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
@@ -193,6 +224,12 @@ func (o SchedulingConfigPtrOutput) ToSchedulingConfigPtrOutput() SchedulingConfi
 
 func (o SchedulingConfigPtrOutput) ToSchedulingConfigPtrOutputWithContext(ctx context.Context) SchedulingConfigPtrOutput {
 	return o
+}
+
+func (o SchedulingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingConfig] {
+	return pulumix.Output[*SchedulingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulingConfigPtrOutput) Elem() SchedulingConfigOutput {
@@ -248,6 +285,12 @@ func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponseOutputWithCont
 	return o
 }
 
+func (o SchedulingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingConfigResponse] {
+	return pulumix.Output[SchedulingConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines whether the node is preemptible.
 func (o SchedulingConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Preemptible }).(pulumi.BoolOutput)
@@ -285,6 +328,12 @@ func (o SymptomResponseOutput) ToSymptomResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o SymptomResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SymptomResponse] {
+	return pulumix.Output[SymptomResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Timestamp when the Symptom is created.
 func (o SymptomResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SymptomResponse) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -317,6 +366,12 @@ func (o SymptomResponseArrayOutput) ToSymptomResponseArrayOutput() SymptomRespon
 
 func (o SymptomResponseArrayOutput) ToSymptomResponseArrayOutputWithContext(ctx context.Context) SymptomResponseArrayOutput {
 	return o
+}
+
+func (o SymptomResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SymptomResponse] {
+	return pulumix.Output[[]SymptomResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SymptomResponseArrayOutput) Index(i pulumi.IntInput) SymptomResponseOutput {

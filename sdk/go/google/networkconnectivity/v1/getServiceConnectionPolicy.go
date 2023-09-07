@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ServiceConnectionPolicy.
@@ -86,6 +87,12 @@ func (o LookupServiceConnectionPolicyResultOutput) ToLookupServiceConnectionPoli
 
 func (o LookupServiceConnectionPolicyResultOutput) ToLookupServiceConnectionPolicyResultOutputWithContext(ctx context.Context) LookupServiceConnectionPolicyResultOutput {
 	return o
+}
+
+func (o LookupServiceConnectionPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceConnectionPolicyResult] {
+	return pulumix.Output[LookupServiceConnectionPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time when the ServiceConnectionMap was created.

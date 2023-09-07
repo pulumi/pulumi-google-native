@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns all of the details about the specified managed instance group.
@@ -118,6 +119,12 @@ func (o LookupInstanceGroupManagerResultOutput) ToLookupInstanceGroupManagerResu
 
 func (o LookupInstanceGroupManagerResultOutput) ToLookupInstanceGroupManagerResultOutputWithContext(ctx context.Context) LookupInstanceGroupManagerResultOutput {
 	return o
+}
+
+func (o LookupInstanceGroupManagerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceGroupManagerResult] {
+	return pulumix.Output[LookupInstanceGroupManagerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies configuration that overrides the instance template configuration for the group.

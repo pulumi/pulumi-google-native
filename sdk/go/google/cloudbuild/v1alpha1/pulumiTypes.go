@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i NetworkArgs) ToNetworkOutputWithContext(ctx context.Context) NetworkOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkOutput)
 }
 
+func (i NetworkArgs) ToOutput(ctx context.Context) pulumix.Output[Network] {
+	return pulumix.Output[Network]{
+		OutputState: i.ToNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NetworkArgs) ToNetworkPtrOutput() NetworkPtrOutput {
 	return i.ToNetworkPtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *networkPtrType) ToNetworkPtrOutputWithContext(ctx context.Context) Netw
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPtrOutput)
 }
 
+func (i *networkPtrType) ToOutput(ctx context.Context) pulumix.Output[*Network] {
+	return pulumix.Output[*Network]{
+		OutputState: i.ToNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Network describes the GCP network used to create workers in.
 type NetworkOutput struct{ *pulumi.OutputState }
 
@@ -120,6 +133,12 @@ func (o NetworkOutput) ToNetworkPtrOutputWithContext(ctx context.Context) Networ
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Network) *Network {
 		return &v
 	}).(NetworkPtrOutput)
+}
+
+func (o NetworkOutput) ToOutput(ctx context.Context) pulumix.Output[Network] {
+	return pulumix.Output[Network]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Network on which the workers are created. "default" network is used if empty.
@@ -149,6 +168,12 @@ func (o NetworkPtrOutput) ToNetworkPtrOutput() NetworkPtrOutput {
 
 func (o NetworkPtrOutput) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
 	return o
+}
+
+func (o NetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Network] {
+	return pulumix.Output[*Network]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkPtrOutput) Elem() NetworkOutput {
@@ -216,6 +241,12 @@ func (o NetworkResponseOutput) ToNetworkResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o NetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkResponse] {
+	return pulumix.Output[NetworkResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Network on which the workers are created. "default" network is used if empty.
 func (o NetworkResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkResponse) string { return v.Network }).(pulumi.StringOutput)
@@ -278,6 +309,12 @@ func (i WorkerConfigArgs) ToWorkerConfigOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigOutput)
 }
 
+func (i WorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerConfig] {
+	return pulumix.Output[WorkerConfig]{
+		OutputState: i.ToWorkerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkerConfigArgs) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 	return i.ToWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -319,6 +356,12 @@ func (i *workerConfigPtrType) ToWorkerConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigPtrOutput)
 }
 
+func (i *workerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkerConfig] {
+	return pulumix.Output[*WorkerConfig]{
+		OutputState: i.ToWorkerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkerConfig defines the configuration to be used for a creating workers in the pool.
 type WorkerConfigOutput struct{ *pulumi.OutputState }
 
@@ -342,6 +385,12 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfig) *WorkerConfig {
 		return &v
 	}).(WorkerConfigPtrOutput)
+}
+
+func (o WorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerConfig] {
+	return pulumix.Output[WorkerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions
@@ -376,6 +425,12 @@ func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 
 func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerConfigPtrOutput {
 	return o
+}
+
+func (o WorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerConfig] {
+	return pulumix.Output[*WorkerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
@@ -453,6 +508,12 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutput() WorkerConfigR
 
 func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutputWithContext(ctx context.Context) WorkerConfigResponseOutput {
 	return o
+}
+
+func (o WorkerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerConfigResponse] {
+	return pulumix.Output[WorkerConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified image.
@@ -126,6 +127,12 @@ func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOu
 
 func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
 	return o
+}
+
+func (o LookupImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImageResult] {
+	return pulumix.Output[LookupImageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The architecture of the image. Valid values are ARM64 or X86_64.

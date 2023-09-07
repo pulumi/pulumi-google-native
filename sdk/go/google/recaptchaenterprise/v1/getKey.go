@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified key.
@@ -82,6 +83,12 @@ func (o LookupKeyResultOutput) ToLookupKeyResultOutput() LookupKeyResultOutput {
 
 func (o LookupKeyResultOutput) ToLookupKeyResultOutputWithContext(ctx context.Context) LookupKeyResultOutput {
 	return o
+}
+
+func (o LookupKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeyResult] {
+	return pulumix.Output[LookupKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Settings for keys that can be used by Android apps.

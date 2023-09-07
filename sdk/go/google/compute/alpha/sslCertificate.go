@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a SslCertificate resource in the specified project using the data included in the request.
@@ -155,6 +156,12 @@ func (i *SslCertificate) ToSslCertificateOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertificateOutput)
 }
 
+func (i *SslCertificate) ToOutput(ctx context.Context) pulumix.Output[*SslCertificate] {
+	return pulumix.Output[*SslCertificate]{
+		OutputState: i.ToSslCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SslCertificateOutput struct{ *pulumi.OutputState }
 
 func (SslCertificateOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o SslCertificateOutput) ToSslCertificateOutput() SslCertificateOutput {
 
 func (o SslCertificateOutput) ToSslCertificateOutputWithContext(ctx context.Context) SslCertificateOutput {
 	return o
+}
+
+func (o SslCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*SslCertificate] {
+	return pulumix.Output[*SslCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.

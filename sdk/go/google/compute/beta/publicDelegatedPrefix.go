@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
@@ -153,6 +154,12 @@ func (i *PublicDelegatedPrefix) ToPublicDelegatedPrefixOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PublicDelegatedPrefixOutput)
 }
 
+func (i *PublicDelegatedPrefix) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefix] {
+	return pulumix.Output[*PublicDelegatedPrefix]{
+		OutputState: i.ToPublicDelegatedPrefixOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PublicDelegatedPrefixOutput struct{ *pulumi.OutputState }
 
 func (PublicDelegatedPrefixOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o PublicDelegatedPrefixOutput) ToPublicDelegatedPrefixOutput() PublicDeleg
 
 func (o PublicDelegatedPrefixOutput) ToPublicDelegatedPrefixOutputWithContext(ctx context.Context) PublicDelegatedPrefixOutput {
 	return o
+}
+
+func (o PublicDelegatedPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefix] {
+	return pulumix.Output[*PublicDelegatedPrefix]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

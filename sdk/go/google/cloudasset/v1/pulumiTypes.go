@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AccessSelectorArgs) ToAccessSelectorOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccessSelectorOutput)
 }
 
+func (i AccessSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[AccessSelector] {
+	return pulumix.Output[AccessSelector]{
+		OutputState: i.ToAccessSelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AccessSelectorArgs) ToAccessSelectorPtrOutput() AccessSelectorPtrOutput {
 	return i.ToAccessSelectorPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *accessSelectorPtrType) ToAccessSelectorPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AccessSelectorPtrOutput)
 }
 
+func (i *accessSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessSelector] {
+	return pulumix.Output[*AccessSelector]{
+		OutputState: i.ToAccessSelectorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies roles and/or permissions to analyze, to determine both the identities possessing them and the resources they control. If multiple values are specified, results will include roles or permissions matching any of them. The total number of roles and permissions should be equal or less than 10.
 type AccessSelectorOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o AccessSelectorOutput) ToAccessSelectorPtrOutputWithContext(ctx context.C
 	}).(AccessSelectorPtrOutput)
 }
 
+func (o AccessSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[AccessSelector] {
+	return pulumix.Output[AccessSelector]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The permissions to appear in result.
 func (o AccessSelectorOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessSelector) []string { return v.Permissions }).(pulumi.StringArrayOutput)
@@ -140,6 +159,12 @@ func (o AccessSelectorPtrOutput) ToAccessSelectorPtrOutput() AccessSelectorPtrOu
 
 func (o AccessSelectorPtrOutput) ToAccessSelectorPtrOutputWithContext(ctx context.Context) AccessSelectorPtrOutput {
 	return o
+}
+
+func (o AccessSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessSelector] {
+	return pulumix.Output[*AccessSelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessSelectorPtrOutput) Elem() AccessSelectorOutput {
@@ -195,6 +220,12 @@ func (o AccessSelectorResponseOutput) ToAccessSelectorResponseOutputWithContext(
 	return o
 }
 
+func (o AccessSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessSelectorResponse] {
+	return pulumix.Output[AccessSelectorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The permissions to appear in result.
 func (o AccessSelectorResponseOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessSelectorResponse) []string { return v.Permissions }).(pulumi.StringArrayOutput)
@@ -240,6 +271,12 @@ func (i ConditionContextArgs) ToConditionContextOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionContextOutput)
 }
 
+func (i ConditionContextArgs) ToOutput(ctx context.Context) pulumix.Output[ConditionContext] {
+	return pulumix.Output[ConditionContext]{
+		OutputState: i.ToConditionContextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConditionContextArgs) ToConditionContextPtrOutput() ConditionContextPtrOutput {
 	return i.ToConditionContextPtrOutputWithContext(context.Background())
 }
@@ -281,6 +318,12 @@ func (i *conditionContextPtrType) ToConditionContextPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionContextPtrOutput)
 }
 
+func (i *conditionContextPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConditionContext] {
+	return pulumix.Output[*ConditionContext]{
+		OutputState: i.ToConditionContextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IAM conditions context.
 type ConditionContextOutput struct{ *pulumi.OutputState }
 
@@ -306,6 +349,12 @@ func (o ConditionContextOutput) ToConditionContextPtrOutputWithContext(ctx conte
 	}).(ConditionContextPtrOutput)
 }
 
+func (o ConditionContextOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionContext] {
+	return pulumix.Output[ConditionContext]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
 func (o ConditionContextOutput) AccessTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionContext) *string { return v.AccessTime }).(pulumi.StringPtrOutput)
@@ -323,6 +372,12 @@ func (o ConditionContextPtrOutput) ToConditionContextPtrOutput() ConditionContex
 
 func (o ConditionContextPtrOutput) ToConditionContextPtrOutputWithContext(ctx context.Context) ConditionContextPtrOutput {
 	return o
+}
+
+func (o ConditionContextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionContext] {
+	return pulumix.Output[*ConditionContext]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionContextPtrOutput) Elem() ConditionContextOutput {
@@ -364,6 +419,12 @@ func (o ConditionContextResponseOutput) ToConditionContextResponseOutput() Condi
 
 func (o ConditionContextResponseOutput) ToConditionContextResponseOutputWithContext(ctx context.Context) ConditionContextResponseOutput {
 	return o
+}
+
+func (o ConditionContextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionContextResponse] {
+	return pulumix.Output[ConditionContextResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
@@ -418,6 +479,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -459,6 +526,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -482,6 +555,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -516,6 +595,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -595,6 +680,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -650,6 +741,12 @@ func (i FeedOutputConfigArgs) ToFeedOutputConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigOutput)
 }
 
+func (i FeedOutputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FeedOutputConfig] {
+	return pulumix.Output[FeedOutputConfig]{
+		OutputState: i.ToFeedOutputConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Output configuration for asset feed destination.
 type FeedOutputConfigOutput struct{ *pulumi.OutputState }
 
@@ -663,6 +760,12 @@ func (o FeedOutputConfigOutput) ToFeedOutputConfigOutput() FeedOutputConfigOutpu
 
 func (o FeedOutputConfigOutput) ToFeedOutputConfigOutputWithContext(ctx context.Context) FeedOutputConfigOutput {
 	return o
+}
+
+func (o FeedOutputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FeedOutputConfig] {
+	return pulumix.Output[FeedOutputConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Destination on Pub/Sub.
@@ -689,6 +792,12 @@ func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponseOutput() FeedO
 
 func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponseOutputWithContext(ctx context.Context) FeedOutputConfigResponseOutput {
 	return o
+}
+
+func (o FeedOutputConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FeedOutputConfigResponse] {
+	return pulumix.Output[FeedOutputConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Destination on Pub/Sub.
@@ -751,6 +860,12 @@ func (i IamPolicyAnalysisQueryArgs) ToIamPolicyAnalysisQueryOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyAnalysisQueryOutput)
 }
 
+func (i IamPolicyAnalysisQueryArgs) ToOutput(ctx context.Context) pulumix.Output[IamPolicyAnalysisQuery] {
+	return pulumix.Output[IamPolicyAnalysisQuery]{
+		OutputState: i.ToIamPolicyAnalysisQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IamPolicyAnalysisQueryArgs) ToIamPolicyAnalysisQueryPtrOutput() IamPolicyAnalysisQueryPtrOutput {
 	return i.ToIamPolicyAnalysisQueryPtrOutputWithContext(context.Background())
 }
@@ -792,6 +907,12 @@ func (i *iamPolicyAnalysisQueryPtrType) ToIamPolicyAnalysisQueryPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyAnalysisQueryPtrOutput)
 }
 
+func (i *iamPolicyAnalysisQueryPtrType) ToOutput(ctx context.Context) pulumix.Output[*IamPolicyAnalysisQuery] {
+	return pulumix.Output[*IamPolicyAnalysisQuery]{
+		OutputState: i.ToIamPolicyAnalysisQueryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IAM policy analysis query message.
 type IamPolicyAnalysisQueryOutput struct{ *pulumi.OutputState }
 
@@ -815,6 +936,12 @@ func (o IamPolicyAnalysisQueryOutput) ToIamPolicyAnalysisQueryPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamPolicyAnalysisQuery) *IamPolicyAnalysisQuery {
 		return &v
 	}).(IamPolicyAnalysisQueryPtrOutput)
+}
+
+func (o IamPolicyAnalysisQueryOutput) ToOutput(ctx context.Context) pulumix.Output[IamPolicyAnalysisQuery] {
+	return pulumix.Output[IamPolicyAnalysisQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Specifies roles or permissions for analysis. This is optional.
@@ -859,6 +986,12 @@ func (o IamPolicyAnalysisQueryPtrOutput) ToIamPolicyAnalysisQueryPtrOutput() Iam
 
 func (o IamPolicyAnalysisQueryPtrOutput) ToIamPolicyAnalysisQueryPtrOutputWithContext(ctx context.Context) IamPolicyAnalysisQueryPtrOutput {
 	return o
+}
+
+func (o IamPolicyAnalysisQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IamPolicyAnalysisQuery] {
+	return pulumix.Output[*IamPolicyAnalysisQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamPolicyAnalysisQueryPtrOutput) Elem() IamPolicyAnalysisQueryOutput {
@@ -962,6 +1095,12 @@ func (o IamPolicyAnalysisQueryResponseOutput) ToIamPolicyAnalysisQueryResponseOu
 	return o
 }
 
+func (o IamPolicyAnalysisQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IamPolicyAnalysisQueryResponse] {
+	return pulumix.Output[IamPolicyAnalysisQueryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Specifies roles or permissions for analysis. This is optional.
 func (o IamPolicyAnalysisQueryResponseOutput) AccessSelector() AccessSelectorResponseOutput {
 	return o.ApplyT(func(v IamPolicyAnalysisQueryResponse) AccessSelectorResponse { return v.AccessSelector }).(AccessSelectorResponseOutput)
@@ -1027,6 +1166,12 @@ func (i IdentitySelectorArgs) ToIdentitySelectorOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorOutput)
 }
 
+func (i IdentitySelectorArgs) ToOutput(ctx context.Context) pulumix.Output[IdentitySelector] {
+	return pulumix.Output[IdentitySelector]{
+		OutputState: i.ToIdentitySelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IdentitySelectorArgs) ToIdentitySelectorPtrOutput() IdentitySelectorPtrOutput {
 	return i.ToIdentitySelectorPtrOutputWithContext(context.Background())
 }
@@ -1068,6 +1213,12 @@ func (i *identitySelectorPtrType) ToIdentitySelectorPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorPtrOutput)
 }
 
+func (i *identitySelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*IdentitySelector] {
+	return pulumix.Output[*IdentitySelector]{
+		OutputState: i.ToIdentitySelectorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies an identity for which to determine resource access, based on roles assigned either directly to them or to the groups they belong to, directly or indirectly.
 type IdentitySelectorOutput struct{ *pulumi.OutputState }
 
@@ -1093,6 +1244,12 @@ func (o IdentitySelectorOutput) ToIdentitySelectorPtrOutputWithContext(ctx conte
 	}).(IdentitySelectorPtrOutput)
 }
 
+func (o IdentitySelectorOutput) ToOutput(ctx context.Context) pulumix.Output[IdentitySelector] {
+	return pulumix.Output[IdentitySelector]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The identity appear in the form of principals in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity.
 func (o IdentitySelectorOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentitySelector) string { return v.Identity }).(pulumi.StringOutput)
@@ -1110,6 +1267,12 @@ func (o IdentitySelectorPtrOutput) ToIdentitySelectorPtrOutput() IdentitySelecto
 
 func (o IdentitySelectorPtrOutput) ToIdentitySelectorPtrOutputWithContext(ctx context.Context) IdentitySelectorPtrOutput {
 	return o
+}
+
+func (o IdentitySelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentitySelector] {
+	return pulumix.Output[*IdentitySelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentitySelectorPtrOutput) Elem() IdentitySelectorOutput {
@@ -1151,6 +1314,12 @@ func (o IdentitySelectorResponseOutput) ToIdentitySelectorResponseOutput() Ident
 
 func (o IdentitySelectorResponseOutput) ToIdentitySelectorResponseOutputWithContext(ctx context.Context) IdentitySelectorResponseOutput {
 	return o
+}
+
+func (o IdentitySelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentitySelectorResponse] {
+	return pulumix.Output[IdentitySelectorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identity appear in the form of principals in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity.
@@ -1217,6 +1386,12 @@ func (i OptionsArgs) ToOptionsOutputWithContext(ctx context.Context) OptionsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OptionsOutput)
 }
 
+func (i OptionsArgs) ToOutput(ctx context.Context) pulumix.Output[Options] {
+	return pulumix.Output[Options]{
+		OutputState: i.ToOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OptionsArgs) ToOptionsPtrOutput() OptionsPtrOutput {
 	return i.ToOptionsPtrOutputWithContext(context.Background())
 }
@@ -1258,6 +1433,12 @@ func (i *optionsPtrType) ToOptionsPtrOutputWithContext(ctx context.Context) Opti
 	return pulumi.ToOutputWithContext(ctx, i).(OptionsPtrOutput)
 }
 
+func (i *optionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Options] {
+	return pulumix.Output[*Options]{
+		OutputState: i.ToOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains query options.
 type OptionsOutput struct{ *pulumi.OutputState }
 
@@ -1281,6 +1462,12 @@ func (o OptionsOutput) ToOptionsPtrOutputWithContext(ctx context.Context) Option
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Options) *Options {
 		return &v
 	}).(OptionsPtrOutput)
+}
+
+func (o OptionsOutput) ToOutput(ctx context.Context) pulumix.Output[Options] {
+	return pulumix.Output[Options]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If true, the response will include access analysis from identities to resources via service account impersonation. This is a very expensive operation, because many derived queries will be executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning RPC instead. For example, if the request analyzes for which resources user A has permission P, and there's an IAM policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM policy states service account SA has permission P to a Google Cloud folder F, then user A potentially has access to the Google Cloud folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes for who has permission P to a Google Cloud folder F, and there's an IAM policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service account SA has permission P to the Google Cloud folder F, then user A potentially has access to the Google Cloud folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Only the following permissions are considered in this analysis: * `iam.serviceAccounts.actAs` * `iam.serviceAccounts.signBlob` * `iam.serviceAccounts.signJwt` * `iam.serviceAccounts.getAccessToken` * `iam.serviceAccounts.getOpenIdToken` * `iam.serviceAccounts.implicitDelegation` Default is false.
@@ -1330,6 +1517,12 @@ func (o OptionsPtrOutput) ToOptionsPtrOutput() OptionsPtrOutput {
 
 func (o OptionsPtrOutput) ToOptionsPtrOutputWithContext(ctx context.Context) OptionsPtrOutput {
 	return o
+}
+
+func (o OptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Options] {
+	return pulumix.Output[*Options]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OptionsPtrOutput) Elem() OptionsOutput {
@@ -1445,6 +1638,12 @@ func (o OptionsResponseOutput) ToOptionsResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o OptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OptionsResponse] {
+	return pulumix.Output[OptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. If true, the response will include access analysis from identities to resources via service account impersonation. This is a very expensive operation, because many derived queries will be executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning RPC instead. For example, if the request analyzes for which resources user A has permission P, and there's an IAM policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM policy states service account SA has permission P to a Google Cloud folder F, then user A potentially has access to the Google Cloud folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes for who has permission P to a Google Cloud folder F, and there's an IAM policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service account SA has permission P to the Google Cloud folder F, then user A potentially has access to the Google Cloud folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Only the following permissions are considered in this analysis: * `iam.serviceAccounts.actAs` * `iam.serviceAccounts.signBlob` * `iam.serviceAccounts.signJwt` * `iam.serviceAccounts.getAccessToken` * `iam.serviceAccounts.getOpenIdToken` * `iam.serviceAccounts.implicitDelegation` Default is false.
 func (o OptionsResponseOutput) AnalyzeServiceAccountImpersonation() pulumi.BoolOutput {
 	return o.ApplyT(func(v OptionsResponse) bool { return v.AnalyzeServiceAccountImpersonation }).(pulumi.BoolOutput)
@@ -1515,6 +1714,12 @@ func (i PubsubDestinationArgs) ToPubsubDestinationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationOutput)
 }
 
+func (i PubsubDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[PubsubDestination] {
+	return pulumix.Output[PubsubDestination]{
+		OutputState: i.ToPubsubDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PubsubDestinationArgs) ToPubsubDestinationPtrOutput() PubsubDestinationPtrOutput {
 	return i.ToPubsubDestinationPtrOutputWithContext(context.Background())
 }
@@ -1556,6 +1761,12 @@ func (i *pubsubDestinationPtrType) ToPubsubDestinationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationPtrOutput)
 }
 
+func (i *pubsubDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*PubsubDestination] {
+	return pulumix.Output[*PubsubDestination]{
+		OutputState: i.ToPubsubDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A Pub/Sub destination.
 type PubsubDestinationOutput struct{ *pulumi.OutputState }
 
@@ -1581,6 +1792,12 @@ func (o PubsubDestinationOutput) ToPubsubDestinationPtrOutputWithContext(ctx con
 	}).(PubsubDestinationPtrOutput)
 }
 
+func (o PubsubDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubDestination] {
+	return pulumix.Output[PubsubDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
 func (o PubsubDestinationOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PubsubDestination) *string { return v.Topic }).(pulumi.StringPtrOutput)
@@ -1598,6 +1815,12 @@ func (o PubsubDestinationPtrOutput) ToPubsubDestinationPtrOutput() PubsubDestina
 
 func (o PubsubDestinationPtrOutput) ToPubsubDestinationPtrOutputWithContext(ctx context.Context) PubsubDestinationPtrOutput {
 	return o
+}
+
+func (o PubsubDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PubsubDestination] {
+	return pulumix.Output[*PubsubDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PubsubDestinationPtrOutput) Elem() PubsubDestinationOutput {
@@ -1641,6 +1864,12 @@ func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponseOutputWithCo
 	return o
 }
 
+func (o PubsubDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubDestinationResponse] {
+	return pulumix.Output[PubsubDestinationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
 func (o PubsubDestinationResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubDestinationResponse) string { return v.Topic }).(pulumi.StringOutput)
@@ -1679,6 +1908,12 @@ func (i QueryContentArgs) ToQueryContentOutput() QueryContentOutput {
 
 func (i QueryContentArgs) ToQueryContentOutputWithContext(ctx context.Context) QueryContentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueryContentOutput)
+}
+
+func (i QueryContentArgs) ToOutput(ctx context.Context) pulumix.Output[QueryContent] {
+	return pulumix.Output[QueryContent]{
+		OutputState: i.ToQueryContentOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i QueryContentArgs) ToQueryContentPtrOutput() QueryContentPtrOutput {
@@ -1722,6 +1957,12 @@ func (i *queryContentPtrType) ToQueryContentPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(QueryContentPtrOutput)
 }
 
+func (i *queryContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryContent] {
+	return pulumix.Output[*QueryContent]{
+		OutputState: i.ToQueryContentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The query content.
 type QueryContentOutput struct{ *pulumi.OutputState }
 
@@ -1747,6 +1988,12 @@ func (o QueryContentOutput) ToQueryContentPtrOutputWithContext(ctx context.Conte
 	}).(QueryContentPtrOutput)
 }
 
+func (o QueryContentOutput) ToOutput(ctx context.Context) pulumix.Output[QueryContent] {
+	return pulumix.Output[QueryContent]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
 func (o QueryContentOutput) IamPolicyAnalysisQuery() IamPolicyAnalysisQueryPtrOutput {
 	return o.ApplyT(func(v QueryContent) *IamPolicyAnalysisQuery { return v.IamPolicyAnalysisQuery }).(IamPolicyAnalysisQueryPtrOutput)
@@ -1764,6 +2011,12 @@ func (o QueryContentPtrOutput) ToQueryContentPtrOutput() QueryContentPtrOutput {
 
 func (o QueryContentPtrOutput) ToQueryContentPtrOutputWithContext(ctx context.Context) QueryContentPtrOutput {
 	return o
+}
+
+func (o QueryContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryContent] {
+	return pulumix.Output[*QueryContent]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueryContentPtrOutput) Elem() QueryContentOutput {
@@ -1807,6 +2060,12 @@ func (o QueryContentResponseOutput) ToQueryContentResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o QueryContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryContentResponse] {
+	return pulumix.Output[QueryContentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
 func (o QueryContentResponseOutput) IamPolicyAnalysisQuery() IamPolicyAnalysisQueryResponseOutput {
 	return o.ApplyT(func(v QueryContentResponse) IamPolicyAnalysisQueryResponse { return v.IamPolicyAnalysisQuery }).(IamPolicyAnalysisQueryResponseOutput)
@@ -1845,6 +2104,12 @@ func (i ResourceSelectorArgs) ToResourceSelectorOutput() ResourceSelectorOutput 
 
 func (i ResourceSelectorArgs) ToResourceSelectorOutputWithContext(ctx context.Context) ResourceSelectorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorOutput)
+}
+
+func (i ResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSelector] {
+	return pulumix.Output[ResourceSelector]{
+		OutputState: i.ToResourceSelectorOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ResourceSelectorArgs) ToResourceSelectorPtrOutput() ResourceSelectorPtrOutput {
@@ -1888,6 +2153,12 @@ func (i *resourceSelectorPtrType) ToResourceSelectorPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorPtrOutput)
 }
 
+func (i *resourceSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSelector] {
+	return pulumix.Output[*ResourceSelector]{
+		OutputState: i.ToResourceSelectorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the resource to analyze for access policies, which may be set directly on the resource, or on ancestors such as organizations, folders or projects.
 type ResourceSelectorOutput struct{ *pulumi.OutputState }
 
@@ -1913,6 +2184,12 @@ func (o ResourceSelectorOutput) ToResourceSelectorPtrOutputWithContext(ctx conte
 	}).(ResourceSelectorPtrOutput)
 }
 
+func (o ResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSelector] {
+	return pulumix.Output[ResourceSelector]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
 func (o ResourceSelectorOutput) FullResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSelector) string { return v.FullResourceName }).(pulumi.StringOutput)
@@ -1930,6 +2207,12 @@ func (o ResourceSelectorPtrOutput) ToResourceSelectorPtrOutput() ResourceSelecto
 
 func (o ResourceSelectorPtrOutput) ToResourceSelectorPtrOutputWithContext(ctx context.Context) ResourceSelectorPtrOutput {
 	return o
+}
+
+func (o ResourceSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSelector] {
+	return pulumix.Output[*ResourceSelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSelectorPtrOutput) Elem() ResourceSelectorOutput {
@@ -1971,6 +2254,12 @@ func (o ResourceSelectorResponseOutput) ToResourceSelectorResponseOutput() Resou
 
 func (o ResourceSelectorResponseOutput) ToResourceSelectorResponseOutputWithContext(ctx context.Context) ResourceSelectorResponseOutput {
 	return o
+}
+
+func (o ResourceSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSelectorResponse] {
+	return pulumix.Output[ResourceSelectorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).

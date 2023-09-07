@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates and starts a Replay using the given ReplayConfig.
@@ -119,6 +120,12 @@ func (i *FolderReplay) ToFolderReplayOutputWithContext(ctx context.Context) Fold
 	return pulumi.ToOutputWithContext(ctx, i).(FolderReplayOutput)
 }
 
+func (i *FolderReplay) ToOutput(ctx context.Context) pulumix.Output[*FolderReplay] {
+	return pulumix.Output[*FolderReplay]{
+		OutputState: i.ToFolderReplayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FolderReplayOutput struct{ *pulumi.OutputState }
 
 func (FolderReplayOutput) ElementType() reflect.Type {
@@ -131,6 +138,12 @@ func (o FolderReplayOutput) ToFolderReplayOutput() FolderReplayOutput {
 
 func (o FolderReplayOutput) ToFolderReplayOutputWithContext(ctx context.Context) FolderReplayOutput {
 	return o
+}
+
+func (o FolderReplayOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderReplay] {
+	return pulumix.Output[*FolderReplay]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration used for the `Replay`.

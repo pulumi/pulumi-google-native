@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ContactCenter.
@@ -92,6 +93,12 @@ func (o LookupContactCenterResultOutput) ToLookupContactCenterResultOutput() Loo
 
 func (o LookupContactCenterResultOutput) ToLookupContactCenterResultOutputWithContext(ctx context.Context) LookupContactCenterResultOutput {
 	return o
+}
+
+func (o LookupContactCenterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContactCenterResult] {
+	return pulumix.Output[LookupContactCenterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Info about the first admin user, such as given name and family name.

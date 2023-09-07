@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i AggregationArgs) ToAggregationOutputWithContext(ctx context.Context) Agg
 	return pulumi.ToOutputWithContext(ctx, i).(AggregationOutput)
 }
 
+func (i AggregationArgs) ToOutput(ctx context.Context) pulumix.Output[Aggregation] {
+	return pulumix.Output[Aggregation]{
+		OutputState: i.ToAggregationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AggregationArrayInput is an input type that accepts AggregationArray and AggregationArrayOutput values.
 // You can construct a concrete instance of `AggregationArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i AggregationArray) ToAggregationArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AggregationArrayOutput)
 }
 
+func (i AggregationArray) ToOutput(ctx context.Context) pulumix.Output[[]Aggregation] {
+	return pulumix.Output[[]Aggregation]{
+		OutputState: i.ToAggregationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
 type AggregationOutput struct{ *pulumi.OutputState }
 
@@ -98,6 +111,12 @@ func (o AggregationOutput) ToAggregationOutput() AggregationOutput {
 
 func (o AggregationOutput) ToAggregationOutputWithContext(ctx context.Context) AggregationOutput {
 	return o
+}
+
+func (o AggregationOutput) ToOutput(ctx context.Context) pulumix.Output[Aggregation] {
+	return pulumix.Output[Aggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
@@ -134,6 +153,12 @@ func (o AggregationArrayOutput) ToAggregationArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AggregationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Aggregation] {
+	return pulumix.Output[[]Aggregation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AggregationArrayOutput) Index(i pulumi.IntInput) AggregationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Aggregation {
 		return vs[0].([]Aggregation)[vs[1].(int)]
@@ -165,6 +190,12 @@ func (o AggregationResponseOutput) ToAggregationResponseOutput() AggregationResp
 
 func (o AggregationResponseOutput) ToAggregationResponseOutputWithContext(ctx context.Context) AggregationResponseOutput {
 	return o
+}
+
+func (o AggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationResponse] {
+	return pulumix.Output[AggregationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
@@ -199,6 +230,12 @@ func (o AggregationResponseArrayOutput) ToAggregationResponseArrayOutput() Aggre
 
 func (o AggregationResponseArrayOutput) ToAggregationResponseArrayOutputWithContext(ctx context.Context) AggregationResponseArrayOutput {
 	return o
+}
+
+func (o AggregationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AggregationResponse] {
+	return pulumix.Output[[]AggregationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AggregationResponseArrayOutput) Index(i pulumi.IntInput) AggregationResponseOutput {
@@ -250,6 +287,12 @@ func (i AlertStrategyArgs) ToAlertStrategyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlertStrategyOutput)
 }
 
+func (i AlertStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[AlertStrategy] {
+	return pulumix.Output[AlertStrategy]{
+		OutputState: i.ToAlertStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertStrategyArgs) ToAlertStrategyPtrOutput() AlertStrategyPtrOutput {
 	return i.ToAlertStrategyPtrOutputWithContext(context.Background())
 }
@@ -291,6 +334,12 @@ func (i *alertStrategyPtrType) ToAlertStrategyPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AlertStrategyPtrOutput)
 }
 
+func (i *alertStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertStrategy] {
+	return pulumix.Output[*AlertStrategy]{
+		OutputState: i.ToAlertStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategyOutput struct{ *pulumi.OutputState }
 
@@ -314,6 +363,12 @@ func (o AlertStrategyOutput) ToAlertStrategyPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertStrategy) *AlertStrategy {
 		return &v
 	}).(AlertStrategyPtrOutput)
+}
+
+func (o AlertStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[AlertStrategy] {
+	return pulumix.Output[AlertStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If an alert policy that was active has no data for this long, any open incidents will close
@@ -343,6 +398,12 @@ func (o AlertStrategyPtrOutput) ToAlertStrategyPtrOutput() AlertStrategyPtrOutpu
 
 func (o AlertStrategyPtrOutput) ToAlertStrategyPtrOutputWithContext(ctx context.Context) AlertStrategyPtrOutput {
 	return o
+}
+
+func (o AlertStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertStrategy] {
+	return pulumix.Output[*AlertStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertStrategyPtrOutput) Elem() AlertStrategyOutput {
@@ -410,6 +471,12 @@ func (o AlertStrategyResponseOutput) ToAlertStrategyResponseOutputWithContext(ct
 	return o
 }
 
+func (o AlertStrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AlertStrategyResponse] {
+	return pulumix.Output[AlertStrategyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If an alert policy that was active has no data for this long, any open incidents will close
 func (o AlertStrategyResponseOutput) AutoClose() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertStrategyResponse) string { return v.AutoClose }).(pulumi.StringOutput)
@@ -462,6 +529,12 @@ func (i AppEngineArgs) ToAppEngineOutputWithContext(ctx context.Context) AppEngi
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineOutput)
 }
 
+func (i AppEngineArgs) ToOutput(ctx context.Context) pulumix.Output[AppEngine] {
+	return pulumix.Output[AppEngine]{
+		OutputState: i.ToAppEngineOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppEngineArgs) ToAppEnginePtrOutput() AppEnginePtrOutput {
 	return i.ToAppEnginePtrOutputWithContext(context.Background())
 }
@@ -503,6 +576,12 @@ func (i *appEnginePtrType) ToAppEnginePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AppEnginePtrOutput)
 }
 
+func (i *appEnginePtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEngine] {
+	return pulumix.Output[*AppEngine]{
+		OutputState: i.ToAppEnginePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // App Engine service. Learn more at https://cloud.google.com/appengine.
 type AppEngineOutput struct{ *pulumi.OutputState }
 
@@ -528,6 +607,12 @@ func (o AppEngineOutput) ToAppEnginePtrOutputWithContext(ctx context.Context) Ap
 	}).(AppEnginePtrOutput)
 }
 
+func (o AppEngineOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngine] {
+	return pulumix.Output[AppEngine]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 func (o AppEngineOutput) ModuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngine) *string { return v.ModuleId }).(pulumi.StringPtrOutput)
@@ -545,6 +630,12 @@ func (o AppEnginePtrOutput) ToAppEnginePtrOutput() AppEnginePtrOutput {
 
 func (o AppEnginePtrOutput) ToAppEnginePtrOutputWithContext(ctx context.Context) AppEnginePtrOutput {
 	return o
+}
+
+func (o AppEnginePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngine] {
+	return pulumix.Output[*AppEngine]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEnginePtrOutput) Elem() AppEngineOutput {
@@ -588,6 +679,12 @@ func (o AppEngineResponseOutput) ToAppEngineResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o AppEngineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineResponse] {
+	return pulumix.Output[AppEngineResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 func (o AppEngineResponseOutput) ModuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineResponse) string { return v.ModuleId }).(pulumi.StringOutput)
@@ -622,6 +719,12 @@ func (i AvailabilityCriteriaArgs) ToAvailabilityCriteriaOutput() AvailabilityCri
 
 func (i AvailabilityCriteriaArgs) ToAvailabilityCriteriaOutputWithContext(ctx context.Context) AvailabilityCriteriaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityCriteriaOutput)
+}
+
+func (i AvailabilityCriteriaArgs) ToOutput(ctx context.Context) pulumix.Output[AvailabilityCriteria] {
+	return pulumix.Output[AvailabilityCriteria]{
+		OutputState: i.ToAvailabilityCriteriaOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AvailabilityCriteriaArgs) ToAvailabilityCriteriaPtrOutput() AvailabilityCriteriaPtrOutput {
@@ -665,6 +768,12 @@ func (i *availabilityCriteriaPtrType) ToAvailabilityCriteriaPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityCriteriaPtrOutput)
 }
 
+func (i *availabilityCriteriaPtrType) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityCriteria] {
+	return pulumix.Output[*AvailabilityCriteria]{
+		OutputState: i.ToAvailabilityCriteriaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Future parameters for the availability SLI.
 type AvailabilityCriteriaOutput struct{ *pulumi.OutputState }
 
@@ -690,6 +799,12 @@ func (o AvailabilityCriteriaOutput) ToAvailabilityCriteriaPtrOutputWithContext(c
 	}).(AvailabilityCriteriaPtrOutput)
 }
 
+func (o AvailabilityCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[AvailabilityCriteria] {
+	return pulumix.Output[AvailabilityCriteria]{
+		OutputState: o.OutputState,
+	}
+}
+
 type AvailabilityCriteriaPtrOutput struct{ *pulumi.OutputState }
 
 func (AvailabilityCriteriaPtrOutput) ElementType() reflect.Type {
@@ -702,6 +817,12 @@ func (o AvailabilityCriteriaPtrOutput) ToAvailabilityCriteriaPtrOutput() Availab
 
 func (o AvailabilityCriteriaPtrOutput) ToAvailabilityCriteriaPtrOutputWithContext(ctx context.Context) AvailabilityCriteriaPtrOutput {
 	return o
+}
+
+func (o AvailabilityCriteriaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityCriteria] {
+	return pulumix.Output[*AvailabilityCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AvailabilityCriteriaPtrOutput) Elem() AvailabilityCriteriaOutput {
@@ -731,6 +852,12 @@ func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponseOutput
 
 func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponseOutputWithContext(ctx context.Context) AvailabilityCriteriaResponseOutput {
 	return o
+}
+
+func (o AvailabilityCriteriaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AvailabilityCriteriaResponse] {
+	return pulumix.Output[AvailabilityCriteriaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
@@ -770,6 +897,12 @@ func (i BasicAuthenticationArgs) ToBasicAuthenticationOutput() BasicAuthenticati
 
 func (i BasicAuthenticationArgs) ToBasicAuthenticationOutputWithContext(ctx context.Context) BasicAuthenticationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAuthenticationOutput)
+}
+
+func (i BasicAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[BasicAuthentication] {
+	return pulumix.Output[BasicAuthentication]{
+		OutputState: i.ToBasicAuthenticationOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i BasicAuthenticationArgs) ToBasicAuthenticationPtrOutput() BasicAuthenticationPtrOutput {
@@ -813,6 +946,12 @@ func (i *basicAuthenticationPtrType) ToBasicAuthenticationPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAuthenticationPtrOutput)
 }
 
+func (i *basicAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BasicAuthentication] {
+	return pulumix.Output[*BasicAuthentication]{
+		OutputState: i.ToBasicAuthenticationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
 type BasicAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -838,6 +977,12 @@ func (o BasicAuthenticationOutput) ToBasicAuthenticationPtrOutputWithContext(ctx
 	}).(BasicAuthenticationPtrOutput)
 }
 
+func (o BasicAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[BasicAuthentication] {
+	return pulumix.Output[BasicAuthentication]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The password to use when authenticating with the HTTP server.
 func (o BasicAuthenticationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BasicAuthentication) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -860,6 +1005,12 @@ func (o BasicAuthenticationPtrOutput) ToBasicAuthenticationPtrOutput() BasicAuth
 
 func (o BasicAuthenticationPtrOutput) ToBasicAuthenticationPtrOutputWithContext(ctx context.Context) BasicAuthenticationPtrOutput {
 	return o
+}
+
+func (o BasicAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicAuthentication] {
+	return pulumix.Output[*BasicAuthentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicAuthenticationPtrOutput) Elem() BasicAuthenticationOutput {
@@ -915,6 +1066,12 @@ func (o BasicAuthenticationResponseOutput) ToBasicAuthenticationResponseOutputWi
 	return o
 }
 
+func (o BasicAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BasicAuthenticationResponse] {
+	return pulumix.Output[BasicAuthenticationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The password to use when authenticating with the HTTP server.
 func (o BasicAuthenticationResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicAuthenticationResponse) string { return v.Password }).(pulumi.StringOutput)
@@ -964,6 +1121,12 @@ func (i BasicServiceArgs) ToBasicServiceOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BasicServiceOutput)
 }
 
+func (i BasicServiceArgs) ToOutput(ctx context.Context) pulumix.Output[BasicService] {
+	return pulumix.Output[BasicService]{
+		OutputState: i.ToBasicServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BasicServiceArgs) ToBasicServicePtrOutput() BasicServicePtrOutput {
 	return i.ToBasicServicePtrOutputWithContext(context.Background())
 }
@@ -1005,6 +1168,12 @@ func (i *basicServicePtrType) ToBasicServicePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BasicServicePtrOutput)
 }
 
+func (i *basicServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*BasicService] {
+	return pulumix.Output[*BasicService]{
+		OutputState: i.ToBasicServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
 type BasicServiceOutput struct{ *pulumi.OutputState }
 
@@ -1030,6 +1199,12 @@ func (o BasicServiceOutput) ToBasicServicePtrOutputWithContext(ctx context.Conte
 	}).(BasicServicePtrOutput)
 }
 
+func (o BasicServiceOutput) ToOutput(ctx context.Context) pulumix.Output[BasicService] {
+	return pulumix.Output[BasicService]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
 func (o BasicServiceOutput) ServiceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BasicService) map[string]string { return v.ServiceLabels }).(pulumi.StringMapOutput)
@@ -1052,6 +1227,12 @@ func (o BasicServicePtrOutput) ToBasicServicePtrOutput() BasicServicePtrOutput {
 
 func (o BasicServicePtrOutput) ToBasicServicePtrOutputWithContext(ctx context.Context) BasicServicePtrOutput {
 	return o
+}
+
+func (o BasicServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicService] {
+	return pulumix.Output[*BasicService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicServicePtrOutput) Elem() BasicServiceOutput {
@@ -1105,6 +1286,12 @@ func (o BasicServiceResponseOutput) ToBasicServiceResponseOutput() BasicServiceR
 
 func (o BasicServiceResponseOutput) ToBasicServiceResponseOutputWithContext(ctx context.Context) BasicServiceResponseOutput {
 	return o
+}
+
+func (o BasicServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BasicServiceResponse] {
+	return pulumix.Output[BasicServiceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
@@ -1168,6 +1355,12 @@ func (i BasicSliArgs) ToBasicSliOutputWithContext(ctx context.Context) BasicSliO
 	return pulumi.ToOutputWithContext(ctx, i).(BasicSliOutput)
 }
 
+func (i BasicSliArgs) ToOutput(ctx context.Context) pulumix.Output[BasicSli] {
+	return pulumix.Output[BasicSli]{
+		OutputState: i.ToBasicSliOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BasicSliArgs) ToBasicSliPtrOutput() BasicSliPtrOutput {
 	return i.ToBasicSliPtrOutputWithContext(context.Background())
 }
@@ -1209,6 +1402,12 @@ func (i *basicSliPtrType) ToBasicSliPtrOutputWithContext(ctx context.Context) Ba
 	return pulumi.ToOutputWithContext(ctx, i).(BasicSliPtrOutput)
 }
 
+func (i *basicSliPtrType) ToOutput(ctx context.Context) pulumix.Output[*BasicSli] {
+	return pulumix.Output[*BasicSli]{
+		OutputState: i.ToBasicSliPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An SLI measuring performance on a well-known service type. Performance will be computed on the basis of pre-defined metrics. The type of the service_resource determines the metrics to use and the service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down to just the data relevant to this service.
 type BasicSliOutput struct{ *pulumi.OutputState }
 
@@ -1232,6 +1431,12 @@ func (o BasicSliOutput) ToBasicSliPtrOutputWithContext(ctx context.Context) Basi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicSli) *BasicSli {
 		return &v
 	}).(BasicSliPtrOutput)
+}
+
+func (o BasicSliOutput) ToOutput(ctx context.Context) pulumix.Output[BasicSli] {
+	return pulumix.Output[BasicSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Good service is defined to be the count of requests made to this service that return successfully.
@@ -1271,6 +1476,12 @@ func (o BasicSliPtrOutput) ToBasicSliPtrOutput() BasicSliPtrOutput {
 
 func (o BasicSliPtrOutput) ToBasicSliPtrOutputWithContext(ctx context.Context) BasicSliPtrOutput {
 	return o
+}
+
+func (o BasicSliPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicSli] {
+	return pulumix.Output[*BasicSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicSliPtrOutput) Elem() BasicSliOutput {
@@ -1362,6 +1573,12 @@ func (o BasicSliResponseOutput) ToBasicSliResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o BasicSliResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BasicSliResponse] {
+	return pulumix.Output[BasicSliResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Good service is defined to be the count of requests made to this service that return successfully.
 func (o BasicSliResponseOutput) Availability() AvailabilityCriteriaResponseOutput {
 	return o.ApplyT(func(v BasicSliResponse) AvailabilityCriteriaResponse { return v.Availability }).(AvailabilityCriteriaResponseOutput)
@@ -1422,6 +1639,12 @@ func (i CloudEndpointsArgs) ToCloudEndpointsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CloudEndpointsOutput)
 }
 
+func (i CloudEndpointsArgs) ToOutput(ctx context.Context) pulumix.Output[CloudEndpoints] {
+	return pulumix.Output[CloudEndpoints]{
+		OutputState: i.ToCloudEndpointsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudEndpointsArgs) ToCloudEndpointsPtrOutput() CloudEndpointsPtrOutput {
 	return i.ToCloudEndpointsPtrOutputWithContext(context.Background())
 }
@@ -1463,6 +1686,12 @@ func (i *cloudEndpointsPtrType) ToCloudEndpointsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CloudEndpointsPtrOutput)
 }
 
+func (i *cloudEndpointsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudEndpoints] {
+	return pulumix.Output[*CloudEndpoints]{
+		OutputState: i.ToCloudEndpointsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
 type CloudEndpointsOutput struct{ *pulumi.OutputState }
 
@@ -1488,6 +1717,12 @@ func (o CloudEndpointsOutput) ToCloudEndpointsPtrOutputWithContext(ctx context.C
 	}).(CloudEndpointsPtrOutput)
 }
 
+func (o CloudEndpointsOutput) ToOutput(ctx context.Context) pulumix.Output[CloudEndpoints] {
+	return pulumix.Output[CloudEndpoints]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
 func (o CloudEndpointsOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudEndpoints) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -1505,6 +1740,12 @@ func (o CloudEndpointsPtrOutput) ToCloudEndpointsPtrOutput() CloudEndpointsPtrOu
 
 func (o CloudEndpointsPtrOutput) ToCloudEndpointsPtrOutputWithContext(ctx context.Context) CloudEndpointsPtrOutput {
 	return o
+}
+
+func (o CloudEndpointsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudEndpoints] {
+	return pulumix.Output[*CloudEndpoints]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudEndpointsPtrOutput) Elem() CloudEndpointsOutput {
@@ -1546,6 +1787,12 @@ func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponseOutput() CloudEndp
 
 func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponseOutputWithContext(ctx context.Context) CloudEndpointsResponseOutput {
 	return o
+}
+
+func (o CloudEndpointsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudEndpointsResponse] {
+	return pulumix.Output[CloudEndpointsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
@@ -1592,6 +1839,12 @@ func (i CloudRunArgs) ToCloudRunOutputWithContext(ctx context.Context) CloudRunO
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunOutput)
 }
 
+func (i CloudRunArgs) ToOutput(ctx context.Context) pulumix.Output[CloudRun] {
+	return pulumix.Output[CloudRun]{
+		OutputState: i.ToCloudRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudRunArgs) ToCloudRunPtrOutput() CloudRunPtrOutput {
 	return i.ToCloudRunPtrOutputWithContext(context.Background())
 }
@@ -1633,6 +1886,12 @@ func (i *cloudRunPtrType) ToCloudRunPtrOutputWithContext(ctx context.Context) Cl
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunPtrOutput)
 }
 
+func (i *cloudRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudRun] {
+	return pulumix.Output[*CloudRun]{
+		OutputState: i.ToCloudRunPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cloud Run service. Learn more at https://cloud.google.com/run.
 type CloudRunOutput struct{ *pulumi.OutputState }
 
@@ -1658,6 +1917,12 @@ func (o CloudRunOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) Clou
 	}).(CloudRunPtrOutput)
 }
 
+func (o CloudRunOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRun] {
+	return pulumix.Output[CloudRun]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 func (o CloudRunOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRun) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -1680,6 +1945,12 @@ func (o CloudRunPtrOutput) ToCloudRunPtrOutput() CloudRunPtrOutput {
 
 func (o CloudRunPtrOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) CloudRunPtrOutput {
 	return o
+}
+
+func (o CloudRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudRun] {
+	return pulumix.Output[*CloudRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudRunPtrOutput) Elem() CloudRunOutput {
@@ -1733,6 +2004,12 @@ func (o CloudRunResponseOutput) ToCloudRunResponseOutput() CloudRunResponseOutpu
 
 func (o CloudRunResponseOutput) ToCloudRunResponseOutputWithContext(ctx context.Context) CloudRunResponseOutput {
 	return o
+}
+
+func (o CloudRunResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunResponse] {
+	return pulumix.Output[CloudRunResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
@@ -1792,6 +2069,12 @@ func (i ClusterIstioArgs) ToClusterIstioOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIstioOutput)
 }
 
+func (i ClusterIstioArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterIstio] {
+	return pulumix.Output[ClusterIstio]{
+		OutputState: i.ToClusterIstioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ClusterIstioArgs) ToClusterIstioPtrOutput() ClusterIstioPtrOutput {
 	return i.ToClusterIstioPtrOutputWithContext(context.Background())
 }
@@ -1833,6 +2116,12 @@ func (i *clusterIstioPtrType) ToClusterIstioPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIstioPtrOutput)
 }
 
+func (i *clusterIstioPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterIstio] {
+	return pulumix.Output[*ClusterIstio]{
+		OutputState: i.ToClusterIstioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
 type ClusterIstioOutput struct{ *pulumi.OutputState }
 
@@ -1856,6 +2145,12 @@ func (o ClusterIstioOutput) ToClusterIstioPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIstio) *ClusterIstio {
 		return &v
 	}).(ClusterIstioPtrOutput)
+}
+
+func (o ClusterIstioOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterIstio] {
+	return pulumix.Output[ClusterIstio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
@@ -1890,6 +2185,12 @@ func (o ClusterIstioPtrOutput) ToClusterIstioPtrOutput() ClusterIstioPtrOutput {
 
 func (o ClusterIstioPtrOutput) ToClusterIstioPtrOutputWithContext(ctx context.Context) ClusterIstioPtrOutput {
 	return o
+}
+
+func (o ClusterIstioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterIstio] {
+	return pulumix.Output[*ClusterIstio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterIstioPtrOutput) Elem() ClusterIstioOutput {
@@ -1969,6 +2270,12 @@ func (o ClusterIstioResponseOutput) ToClusterIstioResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o ClusterIstioResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterIstioResponse] {
+	return pulumix.Output[ClusterIstioResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
 func (o ClusterIstioResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterIstioResponse) string { return v.ClusterName }).(pulumi.StringOutput)
@@ -2044,6 +2351,12 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
 }
 
+func (i ConditionArgs) ToOutput(ctx context.Context) pulumix.Output[Condition] {
+	return pulumix.Output[Condition]{
+		OutputState: i.ToConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
 // You can construct a concrete instance of `ConditionArrayInput` via:
 //
@@ -2069,6 +2382,12 @@ func (i ConditionArray) ToConditionArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionArrayOutput)
 }
 
+func (i ConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
+	return pulumix.Output[[]Condition]{
+		OutputState: i.ToConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
 type ConditionOutput struct{ *pulumi.OutputState }
 
@@ -2082,6 +2401,12 @@ func (o ConditionOutput) ToConditionOutput() ConditionOutput {
 
 func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
 	return o
+}
+
+func (o ConditionOutput) ToOutput(ctx context.Context) pulumix.Output[Condition] {
+	return pulumix.Output[Condition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A condition that checks that a time series continues to receive new data points.
@@ -2128,6 +2453,12 @@ func (o ConditionArrayOutput) ToConditionArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
+	return pulumix.Output[[]Condition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Condition {
 		return vs[0].([]Condition)[vs[1].(int)]
@@ -2163,6 +2494,12 @@ func (o ConditionResponseOutput) ToConditionResponseOutput() ConditionResponseOu
 
 func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx context.Context) ConditionResponseOutput {
 	return o
+}
+
+func (o ConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionResponse] {
+	return pulumix.Output[ConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A condition that checks that a time series continues to receive new data points.
@@ -2209,6 +2546,12 @@ func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutput() Condition
 
 func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
 	return o
+}
+
+func (o ConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionResponse] {
+	return pulumix.Output[[]ConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponseOutput {
@@ -2260,6 +2603,12 @@ func (i ContentMatcherArgs) ToContentMatcherOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContentMatcherOutput)
 }
 
+func (i ContentMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[ContentMatcher] {
+	return pulumix.Output[ContentMatcher]{
+		OutputState: i.ToContentMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContentMatcherArrayInput is an input type that accepts ContentMatcherArray and ContentMatcherArrayOutput values.
 // You can construct a concrete instance of `ContentMatcherArrayInput` via:
 //
@@ -2285,6 +2634,12 @@ func (i ContentMatcherArray) ToContentMatcherArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ContentMatcherArrayOutput)
 }
 
+func (i ContentMatcherArray) ToOutput(ctx context.Context) pulumix.Output[[]ContentMatcher] {
+	return pulumix.Output[[]ContentMatcher]{
+		OutputState: i.ToContentMatcherArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
 type ContentMatcherOutput struct{ *pulumi.OutputState }
 
@@ -2298,6 +2653,12 @@ func (o ContentMatcherOutput) ToContentMatcherOutput() ContentMatcherOutput {
 
 func (o ContentMatcherOutput) ToContentMatcherOutputWithContext(ctx context.Context) ContentMatcherOutput {
 	return o
+}
+
+func (o ContentMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[ContentMatcher] {
+	return pulumix.Output[ContentMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 // String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
@@ -2327,6 +2688,12 @@ func (o ContentMatcherArrayOutput) ToContentMatcherArrayOutput() ContentMatcherA
 
 func (o ContentMatcherArrayOutput) ToContentMatcherArrayOutputWithContext(ctx context.Context) ContentMatcherArrayOutput {
 	return o
+}
+
+func (o ContentMatcherArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContentMatcher] {
+	return pulumix.Output[[]ContentMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentMatcherArrayOutput) Index(i pulumi.IntInput) ContentMatcherOutput {
@@ -2360,6 +2727,12 @@ func (o ContentMatcherResponseOutput) ToContentMatcherResponseOutputWithContext(
 	return o
 }
 
+func (o ContentMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContentMatcherResponse] {
+	return pulumix.Output[ContentMatcherResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 func (o ContentMatcherResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentMatcherResponse) string { return v.Content }).(pulumi.StringOutput)
@@ -2387,6 +2760,12 @@ func (o ContentMatcherResponseArrayOutput) ToContentMatcherResponseArrayOutput()
 
 func (o ContentMatcherResponseArrayOutput) ToContentMatcherResponseArrayOutputWithContext(ctx context.Context) ContentMatcherResponseArrayOutput {
 	return o
+}
+
+func (o ContentMatcherResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContentMatcherResponse] {
+	return pulumix.Output[[]ContentMatcherResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentMatcherResponseArrayOutput) Index(i pulumi.IntInput) ContentMatcherResponseOutput {
@@ -2430,6 +2809,12 @@ func (i CriteriaArgs) ToCriteriaOutputWithContext(ctx context.Context) CriteriaO
 	return pulumi.ToOutputWithContext(ctx, i).(CriteriaOutput)
 }
 
+func (i CriteriaArgs) ToOutput(ctx context.Context) pulumix.Output[Criteria] {
+	return pulumix.Output[Criteria]{
+		OutputState: i.ToCriteriaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied.
 type CriteriaOutput struct{ *pulumi.OutputState }
 
@@ -2443,6 +2828,12 @@ func (o CriteriaOutput) ToCriteriaOutput() CriteriaOutput {
 
 func (o CriteriaOutput) ToCriteriaOutputWithContext(ctx context.Context) CriteriaOutput {
 	return o
+}
+
+func (o CriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[Criteria] {
+	return pulumix.Output[Criteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
@@ -2469,6 +2860,12 @@ func (o CriteriaResponseOutput) ToCriteriaResponseOutput() CriteriaResponseOutpu
 
 func (o CriteriaResponseOutput) ToCriteriaResponseOutputWithContext(ctx context.Context) CriteriaResponseOutput {
 	return o
+}
+
+func (o CriteriaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CriteriaResponse] {
+	return pulumix.Output[CriteriaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
@@ -2505,6 +2902,12 @@ func (i CustomArgs) ToCustomOutput() CustomOutput {
 
 func (i CustomArgs) ToCustomOutputWithContext(ctx context.Context) CustomOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomOutput)
+}
+
+func (i CustomArgs) ToOutput(ctx context.Context) pulumix.Output[Custom] {
+	return pulumix.Output[Custom]{
+		OutputState: i.ToCustomOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CustomArgs) ToCustomPtrOutput() CustomPtrOutput {
@@ -2548,6 +2951,12 @@ func (i *customPtrType) ToCustomPtrOutputWithContext(ctx context.Context) Custom
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPtrOutput)
 }
 
+func (i *customPtrType) ToOutput(ctx context.Context) pulumix.Output[*Custom] {
+	return pulumix.Output[*Custom]{
+		OutputState: i.ToCustomPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
 type CustomOutput struct{ *pulumi.OutputState }
 
@@ -2573,6 +2982,12 @@ func (o CustomOutput) ToCustomPtrOutputWithContext(ctx context.Context) CustomPt
 	}).(CustomPtrOutput)
 }
 
+func (o CustomOutput) ToOutput(ctx context.Context) pulumix.Output[Custom] {
+	return pulumix.Output[Custom]{
+		OutputState: o.OutputState,
+	}
+}
+
 type CustomPtrOutput struct{ *pulumi.OutputState }
 
 func (CustomPtrOutput) ElementType() reflect.Type {
@@ -2585,6 +3000,12 @@ func (o CustomPtrOutput) ToCustomPtrOutput() CustomPtrOutput {
 
 func (o CustomPtrOutput) ToCustomPtrOutputWithContext(ctx context.Context) CustomPtrOutput {
 	return o
+}
+
+func (o CustomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Custom] {
+	return pulumix.Output[*Custom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomPtrOutput) Elem() CustomOutput {
@@ -2614,6 +3035,12 @@ func (o CustomResponseOutput) ToCustomResponseOutput() CustomResponseOutput {
 
 func (o CustomResponseOutput) ToCustomResponseOutputWithContext(ctx context.Context) CustomResponseOutput {
 	return o
+}
+
+func (o CustomResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomResponse] {
+	return pulumix.Output[CustomResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
@@ -2653,6 +3080,12 @@ func (i DistributionCutArgs) ToDistributionCutOutput() DistributionCutOutput {
 
 func (i DistributionCutArgs) ToDistributionCutOutputWithContext(ctx context.Context) DistributionCutOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionCutOutput)
+}
+
+func (i DistributionCutArgs) ToOutput(ctx context.Context) pulumix.Output[DistributionCut] {
+	return pulumix.Output[DistributionCut]{
+		OutputState: i.ToDistributionCutOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DistributionCutArgs) ToDistributionCutPtrOutput() DistributionCutPtrOutput {
@@ -2696,6 +3129,12 @@ func (i *distributionCutPtrType) ToDistributionCutPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionCutPtrOutput)
 }
 
+func (i *distributionCutPtrType) ToOutput(ctx context.Context) pulumix.Output[*DistributionCut] {
+	return pulumix.Output[*DistributionCut]{
+		OutputState: i.ToDistributionCutPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 type DistributionCutOutput struct{ *pulumi.OutputState }
 
@@ -2721,6 +3160,12 @@ func (o DistributionCutOutput) ToDistributionCutPtrOutputWithContext(ctx context
 	}).(DistributionCutPtrOutput)
 }
 
+func (o DistributionCutOutput) ToOutput(ctx context.Context) pulumix.Output[DistributionCut] {
+	return pulumix.Output[DistributionCut]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
 func (o DistributionCutOutput) DistributionFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DistributionCut) *string { return v.DistributionFilter }).(pulumi.StringPtrOutput)
@@ -2743,6 +3188,12 @@ func (o DistributionCutPtrOutput) ToDistributionCutPtrOutput() DistributionCutPt
 
 func (o DistributionCutPtrOutput) ToDistributionCutPtrOutputWithContext(ctx context.Context) DistributionCutPtrOutput {
 	return o
+}
+
+func (o DistributionCutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributionCut] {
+	return pulumix.Output[*DistributionCut]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DistributionCutPtrOutput) Elem() DistributionCutOutput {
@@ -2798,6 +3249,12 @@ func (o DistributionCutResponseOutput) ToDistributionCutResponseOutputWithContex
 	return o
 }
 
+func (o DistributionCutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DistributionCutResponse] {
+	return pulumix.Output[DistributionCutResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
 func (o DistributionCutResponseOutput) DistributionFilter() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributionCutResponse) string { return v.DistributionFilter }).(pulumi.StringOutput)
@@ -2847,6 +3304,12 @@ func (i DocumentationArgs) ToDocumentationOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentationOutput)
 }
 
+func (i DocumentationArgs) ToOutput(ctx context.Context) pulumix.Output[Documentation] {
+	return pulumix.Output[Documentation]{
+		OutputState: i.ToDocumentationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DocumentationArgs) ToDocumentationPtrOutput() DocumentationPtrOutput {
 	return i.ToDocumentationPtrOutputWithContext(context.Background())
 }
@@ -2888,6 +3351,12 @@ func (i *documentationPtrType) ToDocumentationPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPtrOutput)
 }
 
+func (i *documentationPtrType) ToOutput(ctx context.Context) pulumix.Output[*Documentation] {
+	return pulumix.Output[*Documentation]{
+		OutputState: i.ToDocumentationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A content string and a MIME type that describes the content string's format.
 type DocumentationOutput struct{ *pulumi.OutputState }
 
@@ -2913,6 +3382,12 @@ func (o DocumentationOutput) ToDocumentationPtrOutputWithContext(ctx context.Con
 	}).(DocumentationPtrOutput)
 }
 
+func (o DocumentationOutput) ToOutput(ctx context.Context) pulumix.Output[Documentation] {
+	return pulumix.Output[Documentation]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Documentation) *string { return v.Content }).(pulumi.StringPtrOutput)
@@ -2935,6 +3410,12 @@ func (o DocumentationPtrOutput) ToDocumentationPtrOutput() DocumentationPtrOutpu
 
 func (o DocumentationPtrOutput) ToDocumentationPtrOutputWithContext(ctx context.Context) DocumentationPtrOutput {
 	return o
+}
+
+func (o DocumentationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Documentation] {
+	return pulumix.Output[*Documentation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DocumentationPtrOutput) Elem() DocumentationOutput {
@@ -2990,6 +3471,12 @@ func (o DocumentationResponseOutput) ToDocumentationResponseOutputWithContext(ct
 	return o
 }
 
+func (o DocumentationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentationResponse] {
+	return pulumix.Output[DocumentationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.Content }).(pulumi.StringOutput)
@@ -3035,6 +3522,12 @@ func (i ForecastOptionsArgs) ToForecastOptionsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ForecastOptionsOutput)
 }
 
+func (i ForecastOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ForecastOptions] {
+	return pulumix.Output[ForecastOptions]{
+		OutputState: i.ToForecastOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ForecastOptionsArgs) ToForecastOptionsPtrOutput() ForecastOptionsPtrOutput {
 	return i.ToForecastOptionsPtrOutputWithContext(context.Background())
 }
@@ -3076,6 +3569,12 @@ func (i *forecastOptionsPtrType) ToForecastOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ForecastOptionsPtrOutput)
 }
 
+func (i *forecastOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ForecastOptions] {
+	return pulumix.Output[*ForecastOptions]{
+		OutputState: i.ToForecastOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Options used when forecasting the time series and testing the predicted value against the threshold.
 type ForecastOptionsOutput struct{ *pulumi.OutputState }
 
@@ -3101,6 +3600,12 @@ func (o ForecastOptionsOutput) ToForecastOptionsPtrOutputWithContext(ctx context
 	}).(ForecastOptionsPtrOutput)
 }
 
+func (o ForecastOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ForecastOptions] {
+	return pulumix.Output[ForecastOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
 func (o ForecastOptionsOutput) ForecastHorizon() pulumi.StringOutput {
 	return o.ApplyT(func(v ForecastOptions) string { return v.ForecastHorizon }).(pulumi.StringOutput)
@@ -3118,6 +3623,12 @@ func (o ForecastOptionsPtrOutput) ToForecastOptionsPtrOutput() ForecastOptionsPt
 
 func (o ForecastOptionsPtrOutput) ToForecastOptionsPtrOutputWithContext(ctx context.Context) ForecastOptionsPtrOutput {
 	return o
+}
+
+func (o ForecastOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForecastOptions] {
+	return pulumix.Output[*ForecastOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForecastOptionsPtrOutput) Elem() ForecastOptionsOutput {
@@ -3159,6 +3670,12 @@ func (o ForecastOptionsResponseOutput) ToForecastOptionsResponseOutput() Forecas
 
 func (o ForecastOptionsResponseOutput) ToForecastOptionsResponseOutputWithContext(ctx context.Context) ForecastOptionsResponseOutput {
 	return o
+}
+
+func (o ForecastOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ForecastOptionsResponse] {
+	return pulumix.Output[ForecastOptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
@@ -3209,6 +3726,12 @@ func (i GkeNamespaceArgs) ToGkeNamespaceOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GkeNamespaceOutput)
 }
 
+func (i GkeNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[GkeNamespace] {
+	return pulumix.Output[GkeNamespace]{
+		OutputState: i.ToGkeNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GkeNamespaceArgs) ToGkeNamespacePtrOutput() GkeNamespacePtrOutput {
 	return i.ToGkeNamespacePtrOutputWithContext(context.Background())
 }
@@ -3250,6 +3773,12 @@ func (i *gkeNamespacePtrType) ToGkeNamespacePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GkeNamespacePtrOutput)
 }
 
+func (i *gkeNamespacePtrType) ToOutput(ctx context.Context) pulumix.Output[*GkeNamespace] {
+	return pulumix.Output[*GkeNamespace]{
+		OutputState: i.ToGkeNamespacePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 type GkeNamespaceOutput struct{ *pulumi.OutputState }
 
@@ -3273,6 +3802,12 @@ func (o GkeNamespaceOutput) ToGkeNamespacePtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeNamespace) *GkeNamespace {
 		return &v
 	}).(GkeNamespacePtrOutput)
+}
+
+func (o GkeNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[GkeNamespace] {
+	return pulumix.Output[GkeNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the parent cluster.
@@ -3302,6 +3837,12 @@ func (o GkeNamespacePtrOutput) ToGkeNamespacePtrOutput() GkeNamespacePtrOutput {
 
 func (o GkeNamespacePtrOutput) ToGkeNamespacePtrOutputWithContext(ctx context.Context) GkeNamespacePtrOutput {
 	return o
+}
+
+func (o GkeNamespacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GkeNamespace] {
+	return pulumix.Output[*GkeNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GkeNamespacePtrOutput) Elem() GkeNamespaceOutput {
@@ -3371,6 +3912,12 @@ func (o GkeNamespaceResponseOutput) ToGkeNamespaceResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o GkeNamespaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GkeNamespaceResponse] {
+	return pulumix.Output[GkeNamespaceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the parent cluster.
 func (o GkeNamespaceResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeNamespaceResponse) string { return v.ClusterName }).(pulumi.StringOutput)
@@ -3438,6 +3985,12 @@ func (i GkeServiceArgs) ToGkeServiceOutputWithContext(ctx context.Context) GkeSe
 	return pulumi.ToOutputWithContext(ctx, i).(GkeServiceOutput)
 }
 
+func (i GkeServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GkeService] {
+	return pulumix.Output[GkeService]{
+		OutputState: i.ToGkeServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GkeServiceArgs) ToGkeServicePtrOutput() GkeServicePtrOutput {
 	return i.ToGkeServicePtrOutputWithContext(context.Background())
 }
@@ -3479,6 +4032,12 @@ func (i *gkeServicePtrType) ToGkeServicePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GkeServicePtrOutput)
 }
 
+func (i *gkeServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*GkeService] {
+	return pulumix.Output[*GkeService]{
+		OutputState: i.ToGkeServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 type GkeServiceOutput struct{ *pulumi.OutputState }
 
@@ -3502,6 +4061,12 @@ func (o GkeServiceOutput) ToGkeServicePtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeService) *GkeService {
 		return &v
 	}).(GkeServicePtrOutput)
+}
+
+func (o GkeServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GkeService] {
+	return pulumix.Output[GkeService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the parent cluster.
@@ -3536,6 +4101,12 @@ func (o GkeServicePtrOutput) ToGkeServicePtrOutput() GkeServicePtrOutput {
 
 func (o GkeServicePtrOutput) ToGkeServicePtrOutputWithContext(ctx context.Context) GkeServicePtrOutput {
 	return o
+}
+
+func (o GkeServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GkeService] {
+	return pulumix.Output[*GkeService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GkeServicePtrOutput) Elem() GkeServiceOutput {
@@ -3617,6 +4188,12 @@ func (o GkeServiceResponseOutput) ToGkeServiceResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o GkeServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GkeServiceResponse] {
+	return pulumix.Output[GkeServiceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the parent cluster.
 func (o GkeServiceResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeServiceResponse) string { return v.ClusterName }).(pulumi.StringOutput)
@@ -3693,6 +4270,12 @@ func (i GkeWorkloadArgs) ToGkeWorkloadOutputWithContext(ctx context.Context) Gke
 	return pulumi.ToOutputWithContext(ctx, i).(GkeWorkloadOutput)
 }
 
+func (i GkeWorkloadArgs) ToOutput(ctx context.Context) pulumix.Output[GkeWorkload] {
+	return pulumix.Output[GkeWorkload]{
+		OutputState: i.ToGkeWorkloadOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GkeWorkloadArgs) ToGkeWorkloadPtrOutput() GkeWorkloadPtrOutput {
 	return i.ToGkeWorkloadPtrOutputWithContext(context.Background())
 }
@@ -3734,6 +4317,12 @@ func (i *gkeWorkloadPtrType) ToGkeWorkloadPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GkeWorkloadPtrOutput)
 }
 
+func (i *gkeWorkloadPtrType) ToOutput(ctx context.Context) pulumix.Output[*GkeWorkload] {
+	return pulumix.Output[*GkeWorkload]{
+		OutputState: i.ToGkeWorkloadPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
 type GkeWorkloadOutput struct{ *pulumi.OutputState }
 
@@ -3757,6 +4346,12 @@ func (o GkeWorkloadOutput) ToGkeWorkloadPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeWorkload) *GkeWorkload {
 		return &v
 	}).(GkeWorkloadPtrOutput)
+}
+
+func (o GkeWorkloadOutput) ToOutput(ctx context.Context) pulumix.Output[GkeWorkload] {
+	return pulumix.Output[GkeWorkload]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the parent cluster.
@@ -3796,6 +4391,12 @@ func (o GkeWorkloadPtrOutput) ToGkeWorkloadPtrOutput() GkeWorkloadPtrOutput {
 
 func (o GkeWorkloadPtrOutput) ToGkeWorkloadPtrOutputWithContext(ctx context.Context) GkeWorkloadPtrOutput {
 	return o
+}
+
+func (o GkeWorkloadPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GkeWorkload] {
+	return pulumix.Output[*GkeWorkload]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GkeWorkloadPtrOutput) Elem() GkeWorkloadOutput {
@@ -3889,6 +4490,12 @@ func (o GkeWorkloadResponseOutput) ToGkeWorkloadResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o GkeWorkloadResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GkeWorkloadResponse] {
+	return pulumix.Output[GkeWorkloadResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the parent cluster.
 func (o GkeWorkloadResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.ClusterName }).(pulumi.StringOutput)
@@ -3958,6 +4565,12 @@ func (i GoogleMonitoringV3RangeArgs) ToGoogleMonitoringV3RangeOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleMonitoringV3RangeOutput)
 }
 
+func (i GoogleMonitoringV3RangeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleMonitoringV3Range] {
+	return pulumix.Output[GoogleMonitoringV3Range]{
+		OutputState: i.ToGoogleMonitoringV3RangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleMonitoringV3RangeArgs) ToGoogleMonitoringV3RangePtrOutput() GoogleMonitoringV3RangePtrOutput {
 	return i.ToGoogleMonitoringV3RangePtrOutputWithContext(context.Background())
 }
@@ -3999,6 +4612,12 @@ func (i *googleMonitoringV3RangePtrType) ToGoogleMonitoringV3RangePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleMonitoringV3RangePtrOutput)
 }
 
+func (i *googleMonitoringV3RangePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleMonitoringV3Range] {
+	return pulumix.Output[*GoogleMonitoringV3Range]{
+		OutputState: i.ToGoogleMonitoringV3RangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Range of numerical values within min and max.
 type GoogleMonitoringV3RangeOutput struct{ *pulumi.OutputState }
 
@@ -4024,6 +4643,12 @@ func (o GoogleMonitoringV3RangeOutput) ToGoogleMonitoringV3RangePtrOutputWithCon
 	}).(GoogleMonitoringV3RangePtrOutput)
 }
 
+func (o GoogleMonitoringV3RangeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleMonitoringV3Range] {
+	return pulumix.Output[GoogleMonitoringV3Range]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Range maximum.
 func (o GoogleMonitoringV3RangeOutput) Max() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleMonitoringV3Range) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
@@ -4046,6 +4671,12 @@ func (o GoogleMonitoringV3RangePtrOutput) ToGoogleMonitoringV3RangePtrOutput() G
 
 func (o GoogleMonitoringV3RangePtrOutput) ToGoogleMonitoringV3RangePtrOutputWithContext(ctx context.Context) GoogleMonitoringV3RangePtrOutput {
 	return o
+}
+
+func (o GoogleMonitoringV3RangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleMonitoringV3Range] {
+	return pulumix.Output[*GoogleMonitoringV3Range]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleMonitoringV3RangePtrOutput) Elem() GoogleMonitoringV3RangeOutput {
@@ -4099,6 +4730,12 @@ func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponse
 
 func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponseOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponseOutput {
 	return o
+}
+
+func (o GoogleMonitoringV3RangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleMonitoringV3RangeResponse] {
+	return pulumix.Output[GoogleMonitoringV3RangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Range maximum.
@@ -4194,6 +4831,12 @@ func (i HttpCheckArgs) ToHttpCheckOutputWithContext(ctx context.Context) HttpChe
 	return pulumi.ToOutputWithContext(ctx, i).(HttpCheckOutput)
 }
 
+func (i HttpCheckArgs) ToOutput(ctx context.Context) pulumix.Output[HttpCheck] {
+	return pulumix.Output[HttpCheck]{
+		OutputState: i.ToHttpCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpCheckArgs) ToHttpCheckPtrOutput() HttpCheckPtrOutput {
 	return i.ToHttpCheckPtrOutputWithContext(context.Background())
 }
@@ -4235,6 +4878,12 @@ func (i *httpCheckPtrType) ToHttpCheckPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(HttpCheckPtrOutput)
 }
 
+func (i *httpCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpCheck] {
+	return pulumix.Output[*HttpCheck]{
+		OutputState: i.ToHttpCheckPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information involved in an HTTP/HTTPS Uptime check request.
 type HttpCheckOutput struct{ *pulumi.OutputState }
 
@@ -4258,6 +4907,12 @@ func (o HttpCheckOutput) ToHttpCheckPtrOutputWithContext(ctx context.Context) Ht
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpCheck) *HttpCheck {
 		return &v
 	}).(HttpCheckPtrOutput)
+}
+
+func (o HttpCheckOutput) ToOutput(ctx context.Context) pulumix.Output[HttpCheck] {
+	return pulumix.Output[HttpCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
@@ -4337,6 +4992,12 @@ func (o HttpCheckPtrOutput) ToHttpCheckPtrOutput() HttpCheckPtrOutput {
 
 func (o HttpCheckPtrOutput) ToHttpCheckPtrOutputWithContext(ctx context.Context) HttpCheckPtrOutput {
 	return o
+}
+
+func (o HttpCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpCheck] {
+	return pulumix.Output[*HttpCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpCheckPtrOutput) Elem() HttpCheckOutput {
@@ -4524,6 +5185,12 @@ func (o HttpCheckResponseOutput) ToHttpCheckResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o HttpCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpCheckResponse] {
+	return pulumix.Output[HttpCheckResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
 func (o HttpCheckResponseOutput) AcceptedResponseStatusCodes() ResponseStatusCodeResponseArrayOutput {
 	return o.ApplyT(func(v HttpCheckResponse) []ResponseStatusCodeResponse { return v.AcceptedResponseStatusCodes }).(ResponseStatusCodeResponseArrayOutput)
@@ -4644,6 +5311,12 @@ func (i InternalCheckerArgs) ToInternalCheckerOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InternalCheckerOutput)
 }
 
+func (i InternalCheckerArgs) ToOutput(ctx context.Context) pulumix.Output[InternalChecker] {
+	return pulumix.Output[InternalChecker]{
+		OutputState: i.ToInternalCheckerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InternalCheckerArrayInput is an input type that accepts InternalCheckerArray and InternalCheckerArrayOutput values.
 // You can construct a concrete instance of `InternalCheckerArrayInput` via:
 //
@@ -4669,6 +5342,12 @@ func (i InternalCheckerArray) ToInternalCheckerArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InternalCheckerArrayOutput)
 }
 
+func (i InternalCheckerArray) ToOutput(ctx context.Context) pulumix.Output[[]InternalChecker] {
+	return pulumix.Output[[]InternalChecker]{
+		OutputState: i.ToInternalCheckerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An internal checker allows Uptime checks to run on private/internal GCP resources.
 type InternalCheckerOutput struct{ *pulumi.OutputState }
 
@@ -4682,6 +5361,12 @@ func (o InternalCheckerOutput) ToInternalCheckerOutput() InternalCheckerOutput {
 
 func (o InternalCheckerOutput) ToInternalCheckerOutputWithContext(ctx context.Context) InternalCheckerOutput {
 	return o
+}
+
+func (o InternalCheckerOutput) ToOutput(ctx context.Context) pulumix.Output[InternalChecker] {
+	return pulumix.Output[InternalChecker]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
@@ -4728,6 +5413,12 @@ func (o InternalCheckerArrayOutput) ToInternalCheckerArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o InternalCheckerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InternalChecker] {
+	return pulumix.Output[[]InternalChecker]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InternalCheckerArrayOutput) Index(i pulumi.IntInput) InternalCheckerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InternalChecker {
 		return vs[0].([]InternalChecker)[vs[1].(int)]
@@ -4763,6 +5454,12 @@ func (o InternalCheckerResponseOutput) ToInternalCheckerResponseOutput() Interna
 
 func (o InternalCheckerResponseOutput) ToInternalCheckerResponseOutputWithContext(ctx context.Context) InternalCheckerResponseOutput {
 	return o
+}
+
+func (o InternalCheckerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InternalCheckerResponse] {
+	return pulumix.Output[InternalCheckerResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
@@ -4807,6 +5504,12 @@ func (o InternalCheckerResponseArrayOutput) ToInternalCheckerResponseArrayOutput
 
 func (o InternalCheckerResponseArrayOutput) ToInternalCheckerResponseArrayOutputWithContext(ctx context.Context) InternalCheckerResponseArrayOutput {
 	return o
+}
+
+func (o InternalCheckerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InternalCheckerResponse] {
+	return pulumix.Output[[]InternalCheckerResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InternalCheckerResponseArrayOutput) Index(i pulumi.IntInput) InternalCheckerResponseOutput {
@@ -4858,6 +5561,12 @@ func (i IstioCanonicalServiceArgs) ToIstioCanonicalServiceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServiceOutput)
 }
 
+func (i IstioCanonicalServiceArgs) ToOutput(ctx context.Context) pulumix.Output[IstioCanonicalService] {
+	return pulumix.Output[IstioCanonicalService]{
+		OutputState: i.ToIstioCanonicalServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IstioCanonicalServiceArgs) ToIstioCanonicalServicePtrOutput() IstioCanonicalServicePtrOutput {
 	return i.ToIstioCanonicalServicePtrOutputWithContext(context.Background())
 }
@@ -4899,6 +5608,12 @@ func (i *istioCanonicalServicePtrType) ToIstioCanonicalServicePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServicePtrOutput)
 }
 
+func (i *istioCanonicalServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*IstioCanonicalService] {
+	return pulumix.Output[*IstioCanonicalService]{
+		OutputState: i.ToIstioCanonicalServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
 type IstioCanonicalServiceOutput struct{ *pulumi.OutputState }
 
@@ -4922,6 +5637,12 @@ func (o IstioCanonicalServiceOutput) ToIstioCanonicalServicePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioCanonicalService) *IstioCanonicalService {
 		return &v
 	}).(IstioCanonicalServicePtrOutput)
+}
+
+func (o IstioCanonicalServiceOutput) ToOutput(ctx context.Context) pulumix.Output[IstioCanonicalService] {
+	return pulumix.Output[IstioCanonicalService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
@@ -4951,6 +5672,12 @@ func (o IstioCanonicalServicePtrOutput) ToIstioCanonicalServicePtrOutput() Istio
 
 func (o IstioCanonicalServicePtrOutput) ToIstioCanonicalServicePtrOutputWithContext(ctx context.Context) IstioCanonicalServicePtrOutput {
 	return o
+}
+
+func (o IstioCanonicalServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioCanonicalService] {
+	return pulumix.Output[*IstioCanonicalService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IstioCanonicalServicePtrOutput) Elem() IstioCanonicalServiceOutput {
@@ -5018,6 +5745,12 @@ func (o IstioCanonicalServiceResponseOutput) ToIstioCanonicalServiceResponseOutp
 	return o
 }
 
+func (o IstioCanonicalServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IstioCanonicalServiceResponse] {
+	return pulumix.Output[IstioCanonicalServiceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
 func (o IstioCanonicalServiceResponseOutput) CanonicalService() pulumi.StringOutput {
 	return o.ApplyT(func(v IstioCanonicalServiceResponse) string { return v.CanonicalService }).(pulumi.StringOutput)
@@ -5072,6 +5805,12 @@ func (i JsonPathMatcherArgs) ToJsonPathMatcherOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JsonPathMatcherOutput)
 }
 
+func (i JsonPathMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[JsonPathMatcher] {
+	return pulumix.Output[JsonPathMatcher]{
+		OutputState: i.ToJsonPathMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JsonPathMatcherArgs) ToJsonPathMatcherPtrOutput() JsonPathMatcherPtrOutput {
 	return i.ToJsonPathMatcherPtrOutputWithContext(context.Background())
 }
@@ -5113,6 +5852,12 @@ func (i *jsonPathMatcherPtrType) ToJsonPathMatcherPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(JsonPathMatcherPtrOutput)
 }
 
+func (i *jsonPathMatcherPtrType) ToOutput(ctx context.Context) pulumix.Output[*JsonPathMatcher] {
+	return pulumix.Output[*JsonPathMatcher]{
+		OutputState: i.ToJsonPathMatcherPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
 type JsonPathMatcherOutput struct{ *pulumi.OutputState }
 
@@ -5138,6 +5883,12 @@ func (o JsonPathMatcherOutput) ToJsonPathMatcherPtrOutputWithContext(ctx context
 	}).(JsonPathMatcherPtrOutput)
 }
 
+func (o JsonPathMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[JsonPathMatcher] {
+	return pulumix.Output[JsonPathMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
 func (o JsonPathMatcherOutput) JsonMatcher() JsonPathMatcherJsonMatcherPtrOutput {
 	return o.ApplyT(func(v JsonPathMatcher) *JsonPathMatcherJsonMatcher { return v.JsonMatcher }).(JsonPathMatcherJsonMatcherPtrOutput)
@@ -5160,6 +5911,12 @@ func (o JsonPathMatcherPtrOutput) ToJsonPathMatcherPtrOutput() JsonPathMatcherPt
 
 func (o JsonPathMatcherPtrOutput) ToJsonPathMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherPtrOutput {
 	return o
+}
+
+func (o JsonPathMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonPathMatcher] {
+	return pulumix.Output[*JsonPathMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JsonPathMatcherPtrOutput) Elem() JsonPathMatcherOutput {
@@ -5215,6 +5972,12 @@ func (o JsonPathMatcherResponseOutput) ToJsonPathMatcherResponseOutputWithContex
 	return o
 }
 
+func (o JsonPathMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JsonPathMatcherResponse] {
+	return pulumix.Output[JsonPathMatcherResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
 func (o JsonPathMatcherResponseOutput) JsonMatcher() pulumi.StringOutput {
 	return o.ApplyT(func(v JsonPathMatcherResponse) string { return v.JsonMatcher }).(pulumi.StringOutput)
@@ -5268,6 +6031,12 @@ func (i LabelDescriptorArgs) ToLabelDescriptorOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorOutput)
 }
 
+func (i LabelDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptor] {
+	return pulumix.Output[LabelDescriptor]{
+		OutputState: i.ToLabelDescriptorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LabelDescriptorArrayInput is an input type that accepts LabelDescriptorArray and LabelDescriptorArrayOutput values.
 // You can construct a concrete instance of `LabelDescriptorArrayInput` via:
 //
@@ -5293,6 +6062,12 @@ func (i LabelDescriptorArray) ToLabelDescriptorArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorArrayOutput)
 }
 
+func (i LabelDescriptorArray) ToOutput(ctx context.Context) pulumix.Output[[]LabelDescriptor] {
+	return pulumix.Output[[]LabelDescriptor]{
+		OutputState: i.ToLabelDescriptorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A description of a label.
 type LabelDescriptorOutput struct{ *pulumi.OutputState }
 
@@ -5306,6 +6081,12 @@ func (o LabelDescriptorOutput) ToLabelDescriptorOutput() LabelDescriptorOutput {
 
 func (o LabelDescriptorOutput) ToLabelDescriptorOutputWithContext(ctx context.Context) LabelDescriptorOutput {
 	return o
+}
+
+func (o LabelDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptor] {
+	return pulumix.Output[LabelDescriptor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A human-readable description for the label.
@@ -5335,6 +6116,12 @@ func (o LabelDescriptorArrayOutput) ToLabelDescriptorArrayOutput() LabelDescript
 
 func (o LabelDescriptorArrayOutput) ToLabelDescriptorArrayOutputWithContext(ctx context.Context) LabelDescriptorArrayOutput {
 	return o
+}
+
+func (o LabelDescriptorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LabelDescriptor] {
+	return pulumix.Output[[]LabelDescriptor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LabelDescriptorArrayOutput) Index(i pulumi.IntInput) LabelDescriptorOutput {
@@ -5368,6 +6155,12 @@ func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutputWithContex
 	return o
 }
 
+func (o LabelDescriptorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptorResponse] {
+	return pulumix.Output[LabelDescriptorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A human-readable description for the label.
 func (o LabelDescriptorResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -5395,6 +6188,12 @@ func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutput
 
 func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
 	return o
+}
+
+func (o LabelDescriptorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LabelDescriptorResponse] {
+	return pulumix.Output[[]LabelDescriptorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LabelDescriptorResponseArrayOutput) Index(i pulumi.IntInput) LabelDescriptorResponseOutput {
@@ -5438,6 +6237,12 @@ func (i LatencyCriteriaArgs) ToLatencyCriteriaOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(LatencyCriteriaOutput)
 }
 
+func (i LatencyCriteriaArgs) ToOutput(ctx context.Context) pulumix.Output[LatencyCriteria] {
+	return pulumix.Output[LatencyCriteria]{
+		OutputState: i.ToLatencyCriteriaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LatencyCriteriaArgs) ToLatencyCriteriaPtrOutput() LatencyCriteriaPtrOutput {
 	return i.ToLatencyCriteriaPtrOutputWithContext(context.Background())
 }
@@ -5479,6 +6284,12 @@ func (i *latencyCriteriaPtrType) ToLatencyCriteriaPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(LatencyCriteriaPtrOutput)
 }
 
+func (i *latencyCriteriaPtrType) ToOutput(ctx context.Context) pulumix.Output[*LatencyCriteria] {
+	return pulumix.Output[*LatencyCriteria]{
+		OutputState: i.ToLatencyCriteriaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Parameters for a latency threshold SLI.
 type LatencyCriteriaOutput struct{ *pulumi.OutputState }
 
@@ -5504,6 +6315,12 @@ func (o LatencyCriteriaOutput) ToLatencyCriteriaPtrOutputWithContext(ctx context
 	}).(LatencyCriteriaPtrOutput)
 }
 
+func (o LatencyCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[LatencyCriteria] {
+	return pulumix.Output[LatencyCriteria]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Good service is defined to be the count of requests made to this service that return in no more than threshold.
 func (o LatencyCriteriaOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LatencyCriteria) *string { return v.Threshold }).(pulumi.StringPtrOutput)
@@ -5521,6 +6338,12 @@ func (o LatencyCriteriaPtrOutput) ToLatencyCriteriaPtrOutput() LatencyCriteriaPt
 
 func (o LatencyCriteriaPtrOutput) ToLatencyCriteriaPtrOutputWithContext(ctx context.Context) LatencyCriteriaPtrOutput {
 	return o
+}
+
+func (o LatencyCriteriaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LatencyCriteria] {
+	return pulumix.Output[*LatencyCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LatencyCriteriaPtrOutput) Elem() LatencyCriteriaOutput {
@@ -5562,6 +6385,12 @@ func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponseOutput() Latency
 
 func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponseOutputWithContext(ctx context.Context) LatencyCriteriaResponseOutput {
 	return o
+}
+
+func (o LatencyCriteriaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LatencyCriteriaResponse] {
+	return pulumix.Output[LatencyCriteriaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Good service is defined to be the count of requests made to this service that return in no more than threshold.
@@ -5608,6 +6437,12 @@ func (i LogMatchArgs) ToLogMatchOutputWithContext(ctx context.Context) LogMatchO
 	return pulumi.ToOutputWithContext(ctx, i).(LogMatchOutput)
 }
 
+func (i LogMatchArgs) ToOutput(ctx context.Context) pulumix.Output[LogMatch] {
+	return pulumix.Output[LogMatch]{
+		OutputState: i.ToLogMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LogMatchArgs) ToLogMatchPtrOutput() LogMatchPtrOutput {
 	return i.ToLogMatchPtrOutputWithContext(context.Background())
 }
@@ -5649,6 +6484,12 @@ func (i *logMatchPtrType) ToLogMatchPtrOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LogMatchPtrOutput)
 }
 
+func (i *logMatchPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogMatch] {
+	return pulumix.Output[*LogMatch]{
+		OutputState: i.ToLogMatchPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchOutput struct{ *pulumi.OutputState }
 
@@ -5674,6 +6515,12 @@ func (o LogMatchOutput) ToLogMatchPtrOutputWithContext(ctx context.Context) LogM
 	}).(LogMatchPtrOutput)
 }
 
+func (o LogMatchOutput) ToOutput(ctx context.Context) pulumix.Output[LogMatch] {
+	return pulumix.Output[LogMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 func (o LogMatchOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LogMatch) string { return v.Filter }).(pulumi.StringOutput)
@@ -5696,6 +6543,12 @@ func (o LogMatchPtrOutput) ToLogMatchPtrOutput() LogMatchPtrOutput {
 
 func (o LogMatchPtrOutput) ToLogMatchPtrOutputWithContext(ctx context.Context) LogMatchPtrOutput {
 	return o
+}
+
+func (o LogMatchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogMatch] {
+	return pulumix.Output[*LogMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogMatchPtrOutput) Elem() LogMatchOutput {
@@ -5751,6 +6604,12 @@ func (o LogMatchResponseOutput) ToLogMatchResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o LogMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogMatchResponse] {
+	return pulumix.Output[LogMatchResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
 func (o LogMatchResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LogMatchResponse) string { return v.Filter }).(pulumi.StringOutput)
@@ -5804,6 +6663,12 @@ func (i MeshIstioArgs) ToMeshIstioOutputWithContext(ctx context.Context) MeshIst
 	return pulumi.ToOutputWithContext(ctx, i).(MeshIstioOutput)
 }
 
+func (i MeshIstioArgs) ToOutput(ctx context.Context) pulumix.Output[MeshIstio] {
+	return pulumix.Output[MeshIstio]{
+		OutputState: i.ToMeshIstioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MeshIstioArgs) ToMeshIstioPtrOutput() MeshIstioPtrOutput {
 	return i.ToMeshIstioPtrOutputWithContext(context.Background())
 }
@@ -5845,6 +6710,12 @@ func (i *meshIstioPtrType) ToMeshIstioPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MeshIstioPtrOutput)
 }
 
+func (i *meshIstioPtrType) ToOutput(ctx context.Context) pulumix.Output[*MeshIstio] {
+	return pulumix.Output[*MeshIstio]{
+		OutputState: i.ToMeshIstioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type.
 type MeshIstioOutput struct{ *pulumi.OutputState }
 
@@ -5868,6 +6739,12 @@ func (o MeshIstioOutput) ToMeshIstioPtrOutputWithContext(ctx context.Context) Me
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MeshIstio) *MeshIstio {
 		return &v
 	}).(MeshIstioPtrOutput)
+}
+
+func (o MeshIstioOutput) ToOutput(ctx context.Context) pulumix.Output[MeshIstio] {
+	return pulumix.Output[MeshIstio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
@@ -5897,6 +6774,12 @@ func (o MeshIstioPtrOutput) ToMeshIstioPtrOutput() MeshIstioPtrOutput {
 
 func (o MeshIstioPtrOutput) ToMeshIstioPtrOutputWithContext(ctx context.Context) MeshIstioPtrOutput {
 	return o
+}
+
+func (o MeshIstioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MeshIstio] {
+	return pulumix.Output[*MeshIstio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MeshIstioPtrOutput) Elem() MeshIstioOutput {
@@ -5964,6 +6847,12 @@ func (o MeshIstioResponseOutput) ToMeshIstioResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o MeshIstioResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MeshIstioResponse] {
+	return pulumix.Output[MeshIstioResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
 func (o MeshIstioResponseOutput) MeshUid() pulumi.StringOutput {
 	return o.ApplyT(func(v MeshIstioResponse) string { return v.MeshUid }).(pulumi.StringOutput)
@@ -6026,6 +6915,12 @@ func (i MetricAbsenceArgs) ToMetricAbsenceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MetricAbsenceOutput)
 }
 
+func (i MetricAbsenceArgs) ToOutput(ctx context.Context) pulumix.Output[MetricAbsence] {
+	return pulumix.Output[MetricAbsence]{
+		OutputState: i.ToMetricAbsenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricAbsenceArgs) ToMetricAbsencePtrOutput() MetricAbsencePtrOutput {
 	return i.ToMetricAbsencePtrOutputWithContext(context.Background())
 }
@@ -6067,6 +6962,12 @@ func (i *metricAbsencePtrType) ToMetricAbsencePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MetricAbsencePtrOutput)
 }
 
+func (i *metricAbsencePtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricAbsence] {
+	return pulumix.Output[*MetricAbsence]{
+		OutputState: i.ToMetricAbsencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration.
 type MetricAbsenceOutput struct{ *pulumi.OutputState }
 
@@ -6090,6 +6991,12 @@ func (o MetricAbsenceOutput) ToMetricAbsencePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricAbsence) *MetricAbsence {
 		return &v
 	}).(MetricAbsencePtrOutput)
+}
+
+func (o MetricAbsenceOutput) ToOutput(ctx context.Context) pulumix.Output[MetricAbsence] {
+	return pulumix.Output[MetricAbsence]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
@@ -6124,6 +7031,12 @@ func (o MetricAbsencePtrOutput) ToMetricAbsencePtrOutput() MetricAbsencePtrOutpu
 
 func (o MetricAbsencePtrOutput) ToMetricAbsencePtrOutputWithContext(ctx context.Context) MetricAbsencePtrOutput {
 	return o
+}
+
+func (o MetricAbsencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricAbsence] {
+	return pulumix.Output[*MetricAbsence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricAbsencePtrOutput) Elem() MetricAbsenceOutput {
@@ -6203,6 +7116,12 @@ func (o MetricAbsenceResponseOutput) ToMetricAbsenceResponseOutputWithContext(ct
 	return o
 }
 
+func (o MetricAbsenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricAbsenceResponse] {
+	return pulumix.Output[MetricAbsenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
 func (o MetricAbsenceResponseOutput) Aggregations() AggregationResponseArrayOutput {
 	return o.ApplyT(func(v MetricAbsenceResponse) []AggregationResponse { return v.Aggregations }).(AggregationResponseArrayOutput)
@@ -6270,6 +7189,12 @@ func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataOutput)
 }
 
+func (i MetricDescriptorMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadata] {
+	return pulumix.Output[MetricDescriptorMetadata]{
+		OutputState: i.ToMetricDescriptorMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput {
 	return i.ToMetricDescriptorMetadataPtrOutputWithContext(context.Background())
 }
@@ -6311,6 +7236,12 @@ func (i *metricDescriptorMetadataPtrType) ToMetricDescriptorMetadataPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataPtrOutput)
 }
 
+func (i *metricDescriptorMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadata] {
+	return pulumix.Output[*MetricDescriptorMetadata]{
+		OutputState: i.ToMetricDescriptorMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional annotations that can be used to guide the usage of a metric.
 type MetricDescriptorMetadataOutput struct{ *pulumi.OutputState }
 
@@ -6334,6 +7265,12 @@ func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetadata) *MetricDescriptorMetadata {
 		return &v
 	}).(MetricDescriptorMetadataPtrOutput)
+}
+
+func (o MetricDescriptorMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadata] {
+	return pulumix.Output[MetricDescriptorMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
@@ -6365,6 +7302,12 @@ func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutput()
 
 func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
 	return o
+}
+
+func (o MetricDescriptorMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadata] {
+	return pulumix.Output[*MetricDescriptorMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricDescriptorMetadataPtrOutput) Elem() MetricDescriptorMetadataOutput {
@@ -6436,6 +7379,12 @@ func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataRespon
 	return o
 }
 
+func (o MetricDescriptorMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadataResponse] {
+	return pulumix.Output[MetricDescriptorMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 func (o MetricDescriptorMetadataResponseOutput) IngestDelay() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.IngestDelay }).(pulumi.StringOutput)
@@ -6492,6 +7441,12 @@ func (i MetricRangeArgs) ToMetricRangeOutputWithContext(ctx context.Context) Met
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRangeOutput)
 }
 
+func (i MetricRangeArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRange] {
+	return pulumix.Output[MetricRange]{
+		OutputState: i.ToMetricRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricRangeArgs) ToMetricRangePtrOutput() MetricRangePtrOutput {
 	return i.ToMetricRangePtrOutputWithContext(context.Background())
 }
@@ -6533,6 +7488,12 @@ func (i *metricRangePtrType) ToMetricRangePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRangePtrOutput)
 }
 
+func (i *metricRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricRange] {
+	return pulumix.Output[*MetricRange]{
+		OutputState: i.ToMetricRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 type MetricRangeOutput struct{ *pulumi.OutputState }
 
@@ -6558,6 +7519,12 @@ func (o MetricRangeOutput) ToMetricRangePtrOutputWithContext(ctx context.Context
 	}).(MetricRangePtrOutput)
 }
 
+func (o MetricRangeOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRange] {
+	return pulumix.Output[MetricRange]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 func (o MetricRangeOutput) Range() GoogleMonitoringV3RangePtrOutput {
 	return o.ApplyT(func(v MetricRange) *GoogleMonitoringV3Range { return v.Range }).(GoogleMonitoringV3RangePtrOutput)
@@ -6580,6 +7547,12 @@ func (o MetricRangePtrOutput) ToMetricRangePtrOutput() MetricRangePtrOutput {
 
 func (o MetricRangePtrOutput) ToMetricRangePtrOutputWithContext(ctx context.Context) MetricRangePtrOutput {
 	return o
+}
+
+func (o MetricRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRange] {
+	return pulumix.Output[*MetricRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRangePtrOutput) Elem() MetricRangeOutput {
@@ -6633,6 +7606,12 @@ func (o MetricRangeResponseOutput) ToMetricRangeResponseOutput() MetricRangeResp
 
 func (o MetricRangeResponseOutput) ToMetricRangeResponseOutputWithContext(ctx context.Context) MetricRangeResponseOutput {
 	return o
+}
+
+func (o MetricRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRangeResponse] {
+	return pulumix.Output[MetricRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Range of values considered "good." For a one-sided range, set one bound to an infinite value.
@@ -6716,6 +7695,12 @@ func (i MetricThresholdArgs) ToMetricThresholdOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MetricThresholdOutput)
 }
 
+func (i MetricThresholdArgs) ToOutput(ctx context.Context) pulumix.Output[MetricThreshold] {
+	return pulumix.Output[MetricThreshold]{
+		OutputState: i.ToMetricThresholdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricThresholdArgs) ToMetricThresholdPtrOutput() MetricThresholdPtrOutput {
 	return i.ToMetricThresholdPtrOutputWithContext(context.Background())
 }
@@ -6757,6 +7742,12 @@ func (i *metricThresholdPtrType) ToMetricThresholdPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricThresholdPtrOutput)
 }
 
+func (i *metricThresholdPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricThreshold] {
+	return pulumix.Output[*MetricThreshold]{
+		OutputState: i.ToMetricThresholdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A condition type that compares a collection of time series against a threshold.
 type MetricThresholdOutput struct{ *pulumi.OutputState }
 
@@ -6780,6 +7771,12 @@ func (o MetricThresholdOutput) ToMetricThresholdPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricThreshold) *MetricThreshold {
 		return &v
 	}).(MetricThresholdPtrOutput)
+}
+
+func (o MetricThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[MetricThreshold] {
+	return pulumix.Output[MetricThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
@@ -6844,6 +7841,12 @@ func (o MetricThresholdPtrOutput) ToMetricThresholdPtrOutput() MetricThresholdPt
 
 func (o MetricThresholdPtrOutput) ToMetricThresholdPtrOutputWithContext(ctx context.Context) MetricThresholdPtrOutput {
 	return o
+}
+
+func (o MetricThresholdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricThreshold] {
+	return pulumix.Output[*MetricThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricThresholdPtrOutput) Elem() MetricThresholdOutput {
@@ -6995,6 +7998,12 @@ func (o MetricThresholdResponseOutput) ToMetricThresholdResponseOutputWithContex
 	return o
 }
 
+func (o MetricThresholdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricThresholdResponse] {
+	return pulumix.Output[MetricThresholdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
 func (o MetricThresholdResponseOutput) Aggregations() AggregationResponseArrayOutput {
 	return o.ApplyT(func(v MetricThresholdResponse) []AggregationResponse { return v.Aggregations }).(AggregationResponseArrayOutput)
@@ -7084,6 +8093,12 @@ func (i MonitoredResourceArgs) ToMonitoredResourceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceOutput)
 }
 
+func (i MonitoredResourceArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoredResource] {
+	return pulumix.Output[MonitoredResource]{
+		OutputState: i.ToMonitoredResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MonitoredResourceArgs) ToMonitoredResourcePtrOutput() MonitoredResourcePtrOutput {
 	return i.ToMonitoredResourcePtrOutputWithContext(context.Background())
 }
@@ -7125,6 +8140,12 @@ func (i *monitoredResourcePtrType) ToMonitoredResourcePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourcePtrOutput)
 }
 
+func (i *monitoredResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoredResource] {
+	return pulumix.Output[*MonitoredResource]{
+		OutputState: i.ToMonitoredResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
 type MonitoredResourceOutput struct{ *pulumi.OutputState }
 
@@ -7150,6 +8171,12 @@ func (o MonitoredResourceOutput) ToMonitoredResourcePtrOutputWithContext(ctx con
 	}).(MonitoredResourcePtrOutput)
 }
 
+func (o MonitoredResourceOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResource] {
+	return pulumix.Output[MonitoredResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
 func (o MonitoredResourceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -7172,6 +8199,12 @@ func (o MonitoredResourcePtrOutput) ToMonitoredResourcePtrOutput() MonitoredReso
 
 func (o MonitoredResourcePtrOutput) ToMonitoredResourcePtrOutputWithContext(ctx context.Context) MonitoredResourcePtrOutput {
 	return o
+}
+
+func (o MonitoredResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoredResource] {
+	return pulumix.Output[*MonitoredResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitoredResourcePtrOutput) Elem() MonitoredResourceOutput {
@@ -7225,6 +8258,12 @@ func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutput() Mon
 
 func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutputWithContext(ctx context.Context) MonitoredResourceResponseOutput {
 	return o
+}
+
+func (o MonitoredResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResourceResponse] {
+	return pulumix.Output[MonitoredResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
@@ -7284,6 +8323,12 @@ func (i MonitoringQueryLanguageConditionArgs) ToMonitoringQueryLanguageCondition
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringQueryLanguageConditionOutput)
 }
 
+func (i MonitoringQueryLanguageConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoringQueryLanguageCondition] {
+	return pulumix.Output[MonitoringQueryLanguageCondition]{
+		OutputState: i.ToMonitoringQueryLanguageConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MonitoringQueryLanguageConditionArgs) ToMonitoringQueryLanguageConditionPtrOutput() MonitoringQueryLanguageConditionPtrOutput {
 	return i.ToMonitoringQueryLanguageConditionPtrOutputWithContext(context.Background())
 }
@@ -7325,6 +8370,12 @@ func (i *monitoringQueryLanguageConditionPtrType) ToMonitoringQueryLanguageCondi
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringQueryLanguageConditionPtrOutput)
 }
 
+func (i *monitoringQueryLanguageConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoringQueryLanguageCondition] {
+	return pulumix.Output[*MonitoringQueryLanguageCondition]{
+		OutputState: i.ToMonitoringQueryLanguageConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).
 type MonitoringQueryLanguageConditionOutput struct{ *pulumi.OutputState }
 
@@ -7348,6 +8399,12 @@ func (o MonitoringQueryLanguageConditionOutput) ToMonitoringQueryLanguageConditi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringQueryLanguageCondition) *MonitoringQueryLanguageCondition {
 		return &v
 	}).(MonitoringQueryLanguageConditionPtrOutput)
+}
+
+func (o MonitoringQueryLanguageConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringQueryLanguageCondition] {
+	return pulumix.Output[MonitoringQueryLanguageCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
@@ -7384,6 +8441,12 @@ func (o MonitoringQueryLanguageConditionPtrOutput) ToMonitoringQueryLanguageCond
 
 func (o MonitoringQueryLanguageConditionPtrOutput) ToMonitoringQueryLanguageConditionPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionPtrOutput {
 	return o
+}
+
+func (o MonitoringQueryLanguageConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringQueryLanguageCondition] {
+	return pulumix.Output[*MonitoringQueryLanguageCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitoringQueryLanguageConditionPtrOutput) Elem() MonitoringQueryLanguageConditionOutput {
@@ -7463,6 +8526,12 @@ func (o MonitoringQueryLanguageConditionResponseOutput) ToMonitoringQueryLanguag
 	return o
 }
 
+func (o MonitoringQueryLanguageConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringQueryLanguageConditionResponse] {
+	return pulumix.Output[MonitoringQueryLanguageConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 func (o MonitoringQueryLanguageConditionResponseOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoringQueryLanguageConditionResponse) string { return v.Duration }).(pulumi.StringOutput)
@@ -7522,6 +8591,12 @@ func (i MutationRecordArgs) ToMutationRecordOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordOutput)
 }
 
+func (i MutationRecordArgs) ToOutput(ctx context.Context) pulumix.Output[MutationRecord] {
+	return pulumix.Output[MutationRecord]{
+		OutputState: i.ToMutationRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MutationRecordArgs) ToMutationRecordPtrOutput() MutationRecordPtrOutput {
 	return i.ToMutationRecordPtrOutputWithContext(context.Background())
 }
@@ -7563,6 +8638,12 @@ func (i *mutationRecordPtrType) ToMutationRecordPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordPtrOutput)
 }
 
+func (i *mutationRecordPtrType) ToOutput(ctx context.Context) pulumix.Output[*MutationRecord] {
+	return pulumix.Output[*MutationRecord]{
+		OutputState: i.ToMutationRecordPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MutationRecordArrayInput is an input type that accepts MutationRecordArray and MutationRecordArrayOutput values.
 // You can construct a concrete instance of `MutationRecordArrayInput` via:
 //
@@ -7586,6 +8667,12 @@ func (i MutationRecordArray) ToMutationRecordArrayOutput() MutationRecordArrayOu
 
 func (i MutationRecordArray) ToMutationRecordArrayOutputWithContext(ctx context.Context) MutationRecordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordArrayOutput)
+}
+
+func (i MutationRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]MutationRecord] {
+	return pulumix.Output[[]MutationRecord]{
+		OutputState: i.ToMutationRecordArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Describes a change made to a configuration.
@@ -7613,6 +8700,12 @@ func (o MutationRecordOutput) ToMutationRecordPtrOutputWithContext(ctx context.C
 	}).(MutationRecordPtrOutput)
 }
 
+func (o MutationRecordOutput) ToOutput(ctx context.Context) pulumix.Output[MutationRecord] {
+	return pulumix.Output[MutationRecord]{
+		OutputState: o.OutputState,
+	}
+}
+
 // When the change occurred.
 func (o MutationRecordOutput) MutateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MutationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
@@ -7635,6 +8728,12 @@ func (o MutationRecordPtrOutput) ToMutationRecordPtrOutput() MutationRecordPtrOu
 
 func (o MutationRecordPtrOutput) ToMutationRecordPtrOutputWithContext(ctx context.Context) MutationRecordPtrOutput {
 	return o
+}
+
+func (o MutationRecordPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MutationRecord] {
+	return pulumix.Output[*MutationRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MutationRecordPtrOutput) Elem() MutationRecordOutput {
@@ -7681,6 +8780,12 @@ func (o MutationRecordArrayOutput) ToMutationRecordArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o MutationRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MutationRecord] {
+	return pulumix.Output[[]MutationRecord]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MutationRecordArrayOutput) Index(i pulumi.IntInput) MutationRecordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MutationRecord {
 		return vs[0].([]MutationRecord)[vs[1].(int)]
@@ -7710,6 +8815,12 @@ func (o MutationRecordResponseOutput) ToMutationRecordResponseOutputWithContext(
 	return o
 }
 
+func (o MutationRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MutationRecordResponse] {
+	return pulumix.Output[MutationRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // When the change occurred.
 func (o MutationRecordResponseOutput) MutateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MutationRecordResponse) string { return v.MutateTime }).(pulumi.StringOutput)
@@ -7732,6 +8843,12 @@ func (o MutationRecordResponseArrayOutput) ToMutationRecordResponseArrayOutput()
 
 func (o MutationRecordResponseArrayOutput) ToMutationRecordResponseArrayOutputWithContext(ctx context.Context) MutationRecordResponseArrayOutput {
 	return o
+}
+
+func (o MutationRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MutationRecordResponse] {
+	return pulumix.Output[[]MutationRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MutationRecordResponseArrayOutput) Index(i pulumi.IntInput) MutationRecordResponseOutput {
@@ -7779,6 +8896,12 @@ func (i NotificationChannelStrategyArgs) ToNotificationChannelStrategyOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelStrategyOutput)
 }
 
+func (i NotificationChannelStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationChannelStrategy] {
+	return pulumix.Output[NotificationChannelStrategy]{
+		OutputState: i.ToNotificationChannelStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationChannelStrategyArrayInput is an input type that accepts NotificationChannelStrategyArray and NotificationChannelStrategyArrayOutput values.
 // You can construct a concrete instance of `NotificationChannelStrategyArrayInput` via:
 //
@@ -7804,6 +8927,12 @@ func (i NotificationChannelStrategyArray) ToNotificationChannelStrategyArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelStrategyArrayOutput)
 }
 
+func (i NotificationChannelStrategyArray) ToOutput(ctx context.Context) pulumix.Output[[]NotificationChannelStrategy] {
+	return pulumix.Output[[]NotificationChannelStrategy]{
+		OutputState: i.ToNotificationChannelStrategyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
 type NotificationChannelStrategyOutput struct{ *pulumi.OutputState }
 
@@ -7817,6 +8946,12 @@ func (o NotificationChannelStrategyOutput) ToNotificationChannelStrategyOutput()
 
 func (o NotificationChannelStrategyOutput) ToNotificationChannelStrategyOutputWithContext(ctx context.Context) NotificationChannelStrategyOutput {
 	return o
+}
+
+func (o NotificationChannelStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationChannelStrategy] {
+	return pulumix.Output[NotificationChannelStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
@@ -7841,6 +8976,12 @@ func (o NotificationChannelStrategyArrayOutput) ToNotificationChannelStrategyArr
 
 func (o NotificationChannelStrategyArrayOutput) ToNotificationChannelStrategyArrayOutputWithContext(ctx context.Context) NotificationChannelStrategyArrayOutput {
 	return o
+}
+
+func (o NotificationChannelStrategyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NotificationChannelStrategy] {
+	return pulumix.Output[[]NotificationChannelStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationChannelStrategyArrayOutput) Index(i pulumi.IntInput) NotificationChannelStrategyOutput {
@@ -7872,6 +9013,12 @@ func (o NotificationChannelStrategyResponseOutput) ToNotificationChannelStrategy
 	return o
 }
 
+func (o NotificationChannelStrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationChannelStrategyResponse] {
+	return pulumix.Output[NotificationChannelStrategyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 func (o NotificationChannelStrategyResponseOutput) NotificationChannelNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationChannelStrategyResponse) []string { return v.NotificationChannelNames }).(pulumi.StringArrayOutput)
@@ -7894,6 +9041,12 @@ func (o NotificationChannelStrategyResponseArrayOutput) ToNotificationChannelStr
 
 func (o NotificationChannelStrategyResponseArrayOutput) ToNotificationChannelStrategyResponseArrayOutputWithContext(ctx context.Context) NotificationChannelStrategyResponseArrayOutput {
 	return o
+}
+
+func (o NotificationChannelStrategyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NotificationChannelStrategyResponse] {
+	return pulumix.Output[[]NotificationChannelStrategyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationChannelStrategyResponseArrayOutput) Index(i pulumi.IntInput) NotificationChannelStrategyResponseOutput {
@@ -7937,6 +9090,12 @@ func (i NotificationRateLimitArgs) ToNotificationRateLimitOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationRateLimitOutput)
 }
 
+func (i NotificationRateLimitArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationRateLimit] {
+	return pulumix.Output[NotificationRateLimit]{
+		OutputState: i.ToNotificationRateLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NotificationRateLimitArgs) ToNotificationRateLimitPtrOutput() NotificationRateLimitPtrOutput {
 	return i.ToNotificationRateLimitPtrOutputWithContext(context.Background())
 }
@@ -7978,6 +9137,12 @@ func (i *notificationRateLimitPtrType) ToNotificationRateLimitPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationRateLimitPtrOutput)
 }
 
+func (i *notificationRateLimitPtrType) ToOutput(ctx context.Context) pulumix.Output[*NotificationRateLimit] {
+	return pulumix.Output[*NotificationRateLimit]{
+		OutputState: i.ToNotificationRateLimitPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Control over the rate of notifications sent to this alert policy's notification channels.
 type NotificationRateLimitOutput struct{ *pulumi.OutputState }
 
@@ -8003,6 +9168,12 @@ func (o NotificationRateLimitOutput) ToNotificationRateLimitPtrOutputWithContext
 	}).(NotificationRateLimitPtrOutput)
 }
 
+func (o NotificationRateLimitOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationRateLimit] {
+	return pulumix.Output[NotificationRateLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not more than one notification per period.
 func (o NotificationRateLimitOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationRateLimit) *string { return v.Period }).(pulumi.StringPtrOutput)
@@ -8020,6 +9191,12 @@ func (o NotificationRateLimitPtrOutput) ToNotificationRateLimitPtrOutput() Notif
 
 func (o NotificationRateLimitPtrOutput) ToNotificationRateLimitPtrOutputWithContext(ctx context.Context) NotificationRateLimitPtrOutput {
 	return o
+}
+
+func (o NotificationRateLimitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationRateLimit] {
+	return pulumix.Output[*NotificationRateLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationRateLimitPtrOutput) Elem() NotificationRateLimitOutput {
@@ -8061,6 +9238,12 @@ func (o NotificationRateLimitResponseOutput) ToNotificationRateLimitResponseOutp
 
 func (o NotificationRateLimitResponseOutput) ToNotificationRateLimitResponseOutputWithContext(ctx context.Context) NotificationRateLimitResponseOutput {
 	return o
+}
+
+func (o NotificationRateLimitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationRateLimitResponse] {
+	return pulumix.Output[NotificationRateLimitResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Not more than one notification per period.
@@ -8111,6 +9294,12 @@ func (i PerformanceThresholdArgs) ToPerformanceThresholdOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PerformanceThresholdOutput)
 }
 
+func (i PerformanceThresholdArgs) ToOutput(ctx context.Context) pulumix.Output[PerformanceThreshold] {
+	return pulumix.Output[PerformanceThreshold]{
+		OutputState: i.ToPerformanceThresholdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PerformanceThresholdArgs) ToPerformanceThresholdPtrOutput() PerformanceThresholdPtrOutput {
 	return i.ToPerformanceThresholdPtrOutputWithContext(context.Background())
 }
@@ -8152,6 +9341,12 @@ func (i *performanceThresholdPtrType) ToPerformanceThresholdPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PerformanceThresholdPtrOutput)
 }
 
+func (i *performanceThresholdPtrType) ToOutput(ctx context.Context) pulumix.Output[*PerformanceThreshold] {
+	return pulumix.Output[*PerformanceThreshold]{
+		OutputState: i.ToPerformanceThresholdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
 type PerformanceThresholdOutput struct{ *pulumi.OutputState }
 
@@ -8175,6 +9370,12 @@ func (o PerformanceThresholdOutput) ToPerformanceThresholdPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PerformanceThreshold) *PerformanceThreshold {
 		return &v
 	}).(PerformanceThresholdPtrOutput)
+}
+
+func (o PerformanceThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceThreshold] {
+	return pulumix.Output[PerformanceThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 // BasicSli to evaluate to judge window quality.
@@ -8204,6 +9405,12 @@ func (o PerformanceThresholdPtrOutput) ToPerformanceThresholdPtrOutput() Perform
 
 func (o PerformanceThresholdPtrOutput) ToPerformanceThresholdPtrOutputWithContext(ctx context.Context) PerformanceThresholdPtrOutput {
 	return o
+}
+
+func (o PerformanceThresholdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PerformanceThreshold] {
+	return pulumix.Output[*PerformanceThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PerformanceThresholdPtrOutput) Elem() PerformanceThresholdOutput {
@@ -8271,6 +9478,12 @@ func (o PerformanceThresholdResponseOutput) ToPerformanceThresholdResponseOutput
 	return o
 }
 
+func (o PerformanceThresholdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceThresholdResponse] {
+	return pulumix.Output[PerformanceThresholdResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // BasicSli to evaluate to judge window quality.
 func (o PerformanceThresholdResponseOutput) BasicSliPerformance() BasicSliResponseOutput {
 	return o.ApplyT(func(v PerformanceThresholdResponse) BasicSliResponse { return v.BasicSliPerformance }).(BasicSliResponseOutput)
@@ -8321,6 +9534,12 @@ func (i PingConfigArgs) ToPingConfigOutputWithContext(ctx context.Context) PingC
 	return pulumi.ToOutputWithContext(ctx, i).(PingConfigOutput)
 }
 
+func (i PingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PingConfig] {
+	return pulumix.Output[PingConfig]{
+		OutputState: i.ToPingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PingConfigArgs) ToPingConfigPtrOutput() PingConfigPtrOutput {
 	return i.ToPingConfigPtrOutputWithContext(context.Background())
 }
@@ -8362,6 +9581,12 @@ func (i *pingConfigPtrType) ToPingConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PingConfigPtrOutput)
 }
 
+func (i *pingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PingConfig] {
+	return pulumix.Output[*PingConfig]{
+		OutputState: i.ToPingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
 type PingConfigOutput struct{ *pulumi.OutputState }
 
@@ -8387,6 +9612,12 @@ func (o PingConfigOutput) ToPingConfigPtrOutputWithContext(ctx context.Context) 
 	}).(PingConfigPtrOutput)
 }
 
+func (o PingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PingConfig] {
+	return pulumix.Output[PingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
 func (o PingConfigOutput) PingsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PingConfig) *int { return v.PingsCount }).(pulumi.IntPtrOutput)
@@ -8404,6 +9635,12 @@ func (o PingConfigPtrOutput) ToPingConfigPtrOutput() PingConfigPtrOutput {
 
 func (o PingConfigPtrOutput) ToPingConfigPtrOutputWithContext(ctx context.Context) PingConfigPtrOutput {
 	return o
+}
+
+func (o PingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PingConfig] {
+	return pulumix.Output[*PingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PingConfigPtrOutput) Elem() PingConfigOutput {
@@ -8445,6 +9682,12 @@ func (o PingConfigResponseOutput) ToPingConfigResponseOutput() PingConfigRespons
 
 func (o PingConfigResponseOutput) ToPingConfigResponseOutputWithContext(ctx context.Context) PingConfigResponseOutput {
 	return o
+}
+
+func (o PingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PingConfigResponse] {
+	return pulumix.Output[PingConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
@@ -8491,6 +9734,12 @@ func (i RequestBasedSliArgs) ToRequestBasedSliOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RequestBasedSliOutput)
 }
 
+func (i RequestBasedSliArgs) ToOutput(ctx context.Context) pulumix.Output[RequestBasedSli] {
+	return pulumix.Output[RequestBasedSli]{
+		OutputState: i.ToRequestBasedSliOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RequestBasedSliArgs) ToRequestBasedSliPtrOutput() RequestBasedSliPtrOutput {
 	return i.ToRequestBasedSliPtrOutputWithContext(context.Background())
 }
@@ -8532,6 +9781,12 @@ func (i *requestBasedSliPtrType) ToRequestBasedSliPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RequestBasedSliPtrOutput)
 }
 
+func (i *requestBasedSliPtrType) ToOutput(ctx context.Context) pulumix.Output[*RequestBasedSli] {
+	return pulumix.Output[*RequestBasedSli]{
+		OutputState: i.ToRequestBasedSliPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Service Level Indicators for which atomic units of service are counted directly.
 type RequestBasedSliOutput struct{ *pulumi.OutputState }
 
@@ -8557,6 +9812,12 @@ func (o RequestBasedSliOutput) ToRequestBasedSliPtrOutputWithContext(ctx context
 	}).(RequestBasedSliPtrOutput)
 }
 
+func (o RequestBasedSliOutput) ToOutput(ctx context.Context) pulumix.Output[RequestBasedSli] {
+	return pulumix.Output[RequestBasedSli]{
+		OutputState: o.OutputState,
+	}
+}
+
 // distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
 func (o RequestBasedSliOutput) DistributionCut() DistributionCutPtrOutput {
 	return o.ApplyT(func(v RequestBasedSli) *DistributionCut { return v.DistributionCut }).(DistributionCutPtrOutput)
@@ -8579,6 +9840,12 @@ func (o RequestBasedSliPtrOutput) ToRequestBasedSliPtrOutput() RequestBasedSliPt
 
 func (o RequestBasedSliPtrOutput) ToRequestBasedSliPtrOutputWithContext(ctx context.Context) RequestBasedSliPtrOutput {
 	return o
+}
+
+func (o RequestBasedSliPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RequestBasedSli] {
+	return pulumix.Output[*RequestBasedSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RequestBasedSliPtrOutput) Elem() RequestBasedSliOutput {
@@ -8634,6 +9901,12 @@ func (o RequestBasedSliResponseOutput) ToRequestBasedSliResponseOutputWithContex
 	return o
 }
 
+func (o RequestBasedSliResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RequestBasedSliResponse] {
+	return pulumix.Output[RequestBasedSliResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
 func (o RequestBasedSliResponseOutput) DistributionCut() DistributionCutResponseOutput {
 	return o.ApplyT(func(v RequestBasedSliResponse) DistributionCutResponse { return v.DistributionCut }).(DistributionCutResponseOutput)
@@ -8683,6 +9956,12 @@ func (i ResourceGroupArgs) ToResourceGroupOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupOutput)
 }
 
+func (i ResourceGroupArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGroup] {
+	return pulumix.Output[ResourceGroup]{
+		OutputState: i.ToResourceGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceGroupArgs) ToResourceGroupPtrOutput() ResourceGroupPtrOutput {
 	return i.ToResourceGroupPtrOutputWithContext(context.Background())
 }
@@ -8724,6 +10003,12 @@ func (i *resourceGroupPtrType) ToResourceGroupPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupPtrOutput)
 }
 
+func (i *resourceGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceGroup] {
+	return pulumix.Output[*ResourceGroup]{
+		OutputState: i.ToResourceGroupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
 type ResourceGroupOutput struct{ *pulumi.OutputState }
 
@@ -8749,6 +10034,12 @@ func (o ResourceGroupOutput) ToResourceGroupPtrOutputWithContext(ctx context.Con
 	}).(ResourceGroupPtrOutput)
 }
 
+func (o ResourceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroup] {
+	return pulumix.Output[ResourceGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
 func (o ResourceGroupOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
@@ -8771,6 +10062,12 @@ func (o ResourceGroupPtrOutput) ToResourceGroupPtrOutput() ResourceGroupPtrOutpu
 
 func (o ResourceGroupPtrOutput) ToResourceGroupPtrOutputWithContext(ctx context.Context) ResourceGroupPtrOutput {
 	return o
+}
+
+func (o ResourceGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGroup] {
+	return pulumix.Output[*ResourceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceGroupPtrOutput) Elem() ResourceGroupOutput {
@@ -8826,6 +10123,12 @@ func (o ResourceGroupResponseOutput) ToResourceGroupResponseOutputWithContext(ct
 	return o
 }
 
+func (o ResourceGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupResponse] {
+	return pulumix.Output[ResourceGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
 func (o ResourceGroupResponseOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGroupResponse) string { return v.GroupId }).(pulumi.StringOutput)
@@ -8875,6 +10178,12 @@ func (i ResponseStatusCodeArgs) ToResponseStatusCodeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResponseStatusCodeOutput)
 }
 
+func (i ResponseStatusCodeArgs) ToOutput(ctx context.Context) pulumix.Output[ResponseStatusCode] {
+	return pulumix.Output[ResponseStatusCode]{
+		OutputState: i.ToResponseStatusCodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResponseStatusCodeArrayInput is an input type that accepts ResponseStatusCodeArray and ResponseStatusCodeArrayOutput values.
 // You can construct a concrete instance of `ResponseStatusCodeArrayInput` via:
 //
@@ -8900,6 +10209,12 @@ func (i ResponseStatusCodeArray) ToResponseStatusCodeArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ResponseStatusCodeArrayOutput)
 }
 
+func (i ResponseStatusCodeArray) ToOutput(ctx context.Context) pulumix.Output[[]ResponseStatusCode] {
+	return pulumix.Output[[]ResponseStatusCode]{
+		OutputState: i.ToResponseStatusCodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A status to accept. Either a status code class like "2xx", or an integer status code like "200".
 type ResponseStatusCodeOutput struct{ *pulumi.OutputState }
 
@@ -8913,6 +10228,12 @@ func (o ResponseStatusCodeOutput) ToResponseStatusCodeOutput() ResponseStatusCod
 
 func (o ResponseStatusCodeOutput) ToResponseStatusCodeOutputWithContext(ctx context.Context) ResponseStatusCodeOutput {
 	return o
+}
+
+func (o ResponseStatusCodeOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseStatusCode] {
+	return pulumix.Output[ResponseStatusCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A class of status codes to accept.
@@ -8937,6 +10258,12 @@ func (o ResponseStatusCodeArrayOutput) ToResponseStatusCodeArrayOutput() Respons
 
 func (o ResponseStatusCodeArrayOutput) ToResponseStatusCodeArrayOutputWithContext(ctx context.Context) ResponseStatusCodeArrayOutput {
 	return o
+}
+
+func (o ResponseStatusCodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResponseStatusCode] {
+	return pulumix.Output[[]ResponseStatusCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponseStatusCodeArrayOutput) Index(i pulumi.IntInput) ResponseStatusCodeOutput {
@@ -8968,6 +10295,12 @@ func (o ResponseStatusCodeResponseOutput) ToResponseStatusCodeResponseOutputWith
 	return o
 }
 
+func (o ResponseStatusCodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseStatusCodeResponse] {
+	return pulumix.Output[ResponseStatusCodeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A class of status codes to accept.
 func (o ResponseStatusCodeResponseOutput) StatusClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ResponseStatusCodeResponse) string { return v.StatusClass }).(pulumi.StringOutput)
@@ -8990,6 +10323,12 @@ func (o ResponseStatusCodeResponseArrayOutput) ToResponseStatusCodeResponseArray
 
 func (o ResponseStatusCodeResponseArrayOutput) ToResponseStatusCodeResponseArrayOutputWithContext(ctx context.Context) ResponseStatusCodeResponseArrayOutput {
 	return o
+}
+
+func (o ResponseStatusCodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResponseStatusCodeResponse] {
+	return pulumix.Output[[]ResponseStatusCodeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponseStatusCodeResponseArrayOutput) Index(i pulumi.IntInput) ResponseStatusCodeResponseOutput {
@@ -9041,6 +10380,12 @@ func (i ServiceLevelIndicatorArgs) ToServiceLevelIndicatorOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLevelIndicatorOutput)
 }
 
+func (i ServiceLevelIndicatorArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceLevelIndicator] {
+	return pulumix.Output[ServiceLevelIndicator]{
+		OutputState: i.ToServiceLevelIndicatorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceLevelIndicatorArgs) ToServiceLevelIndicatorPtrOutput() ServiceLevelIndicatorPtrOutput {
 	return i.ToServiceLevelIndicatorPtrOutputWithContext(context.Background())
 }
@@ -9082,6 +10427,12 @@ func (i *serviceLevelIndicatorPtrType) ToServiceLevelIndicatorPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLevelIndicatorPtrOutput)
 }
 
+func (i *serviceLevelIndicatorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceLevelIndicator] {
+	return pulumix.Output[*ServiceLevelIndicator]{
+		OutputState: i.ToServiceLevelIndicatorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An SLI is defined to be good_service / total_service over any queried time interval. The value of performance always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or counting time windows in which the service complies with a criterion. For separation of concerns, a single Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of successful queries or fast-enough queries.
 type ServiceLevelIndicatorOutput struct{ *pulumi.OutputState }
 
@@ -9105,6 +10456,12 @@ func (o ServiceLevelIndicatorOutput) ToServiceLevelIndicatorPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLevelIndicator) *ServiceLevelIndicator {
 		return &v
 	}).(ServiceLevelIndicatorPtrOutput)
+}
+
+func (o ServiceLevelIndicatorOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLevelIndicator] {
+	return pulumix.Output[ServiceLevelIndicator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Basic SLI on a well-known service type.
@@ -9134,6 +10491,12 @@ func (o ServiceLevelIndicatorPtrOutput) ToServiceLevelIndicatorPtrOutput() Servi
 
 func (o ServiceLevelIndicatorPtrOutput) ToServiceLevelIndicatorPtrOutputWithContext(ctx context.Context) ServiceLevelIndicatorPtrOutput {
 	return o
+}
+
+func (o ServiceLevelIndicatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLevelIndicator] {
+	return pulumix.Output[*ServiceLevelIndicator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceLevelIndicatorPtrOutput) Elem() ServiceLevelIndicatorOutput {
@@ -9201,6 +10564,12 @@ func (o ServiceLevelIndicatorResponseOutput) ToServiceLevelIndicatorResponseOutp
 	return o
 }
 
+func (o ServiceLevelIndicatorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLevelIndicatorResponse] {
+	return pulumix.Output[ServiceLevelIndicatorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Basic SLI on a well-known service type.
 func (o ServiceLevelIndicatorResponseOutput) BasicSli() BasicSliResponseOutput {
 	return o.ApplyT(func(v ServiceLevelIndicatorResponse) BasicSliResponse { return v.BasicSli }).(BasicSliResponseOutput)
@@ -9259,6 +10628,12 @@ func (i StatusArgs) ToStatusOutputWithContext(ctx context.Context) StatusOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput)
 }
 
+func (i StatusArgs) ToOutput(ctx context.Context) pulumix.Output[Status] {
+	return pulumix.Output[Status]{
+		OutputState: i.ToStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StatusArgs) ToStatusPtrOutput() StatusPtrOutput {
 	return i.ToStatusPtrOutputWithContext(context.Background())
 }
@@ -9300,6 +10675,12 @@ func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) Status
 	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
 }
 
+func (i *statusPtrType) ToOutput(ctx context.Context) pulumix.Output[*Status] {
+	return pulumix.Output[*Status]{
+		OutputState: i.ToStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).
 type StatusOutput struct{ *pulumi.OutputState }
 
@@ -9323,6 +10704,12 @@ func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Status) *Status {
 		return &v
 	}).(StatusPtrOutput)
+}
+
+func (o StatusOutput) ToOutput(ctx context.Context) pulumix.Output[Status] {
+	return pulumix.Output[Status]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -9352,6 +10739,12 @@ func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
 
 func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
 	return o
+}
+
+func (o StatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Status] {
+	return pulumix.Output[*Status]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StatusPtrOutput) Elem() StatusOutput {
@@ -9419,6 +10812,12 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
+	return pulumix.Output[StatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -9473,6 +10872,12 @@ func (i TcpCheckArgs) ToTcpCheckOutputWithContext(ctx context.Context) TcpCheckO
 	return pulumi.ToOutputWithContext(ctx, i).(TcpCheckOutput)
 }
 
+func (i TcpCheckArgs) ToOutput(ctx context.Context) pulumix.Output[TcpCheck] {
+	return pulumix.Output[TcpCheck]{
+		OutputState: i.ToTcpCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TcpCheckArgs) ToTcpCheckPtrOutput() TcpCheckPtrOutput {
 	return i.ToTcpCheckPtrOutputWithContext(context.Background())
 }
@@ -9514,6 +10919,12 @@ func (i *tcpCheckPtrType) ToTcpCheckPtrOutputWithContext(ctx context.Context) Tc
 	return pulumi.ToOutputWithContext(ctx, i).(TcpCheckPtrOutput)
 }
 
+func (i *tcpCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*TcpCheck] {
+	return pulumix.Output[*TcpCheck]{
+		OutputState: i.ToTcpCheckPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information required for a TCP Uptime check request.
 type TcpCheckOutput struct{ *pulumi.OutputState }
 
@@ -9539,6 +10950,12 @@ func (o TcpCheckOutput) ToTcpCheckPtrOutputWithContext(ctx context.Context) TcpC
 	}).(TcpCheckPtrOutput)
 }
 
+func (o TcpCheckOutput) ToOutput(ctx context.Context) pulumix.Output[TcpCheck] {
+	return pulumix.Output[TcpCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Contains information needed to add pings to a TCP check.
 func (o TcpCheckOutput) PingConfig() PingConfigPtrOutput {
 	return o.ApplyT(func(v TcpCheck) *PingConfig { return v.PingConfig }).(PingConfigPtrOutput)
@@ -9561,6 +10978,12 @@ func (o TcpCheckPtrOutput) ToTcpCheckPtrOutput() TcpCheckPtrOutput {
 
 func (o TcpCheckPtrOutput) ToTcpCheckPtrOutputWithContext(ctx context.Context) TcpCheckPtrOutput {
 	return o
+}
+
+func (o TcpCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpCheck] {
+	return pulumix.Output[*TcpCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TcpCheckPtrOutput) Elem() TcpCheckOutput {
@@ -9616,6 +11039,12 @@ func (o TcpCheckResponseOutput) ToTcpCheckResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o TcpCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TcpCheckResponse] {
+	return pulumix.Output[TcpCheckResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Contains information needed to add pings to a TCP check.
 func (o TcpCheckResponseOutput) PingConfig() PingConfigResponseOutput {
 	return o.ApplyT(func(v TcpCheckResponse) PingConfigResponse { return v.PingConfig }).(PingConfigResponseOutput)
@@ -9661,6 +11090,12 @@ func (i TelemetryArgs) ToTelemetryOutputWithContext(ctx context.Context) Telemet
 	return pulumi.ToOutputWithContext(ctx, i).(TelemetryOutput)
 }
 
+func (i TelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[Telemetry] {
+	return pulumix.Output[Telemetry]{
+		OutputState: i.ToTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TelemetryArgs) ToTelemetryPtrOutput() TelemetryPtrOutput {
 	return i.ToTelemetryPtrOutputWithContext(context.Background())
 }
@@ -9702,6 +11137,12 @@ func (i *telemetryPtrType) ToTelemetryPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TelemetryPtrOutput)
 }
 
+func (i *telemetryPtrType) ToOutput(ctx context.Context) pulumix.Output[*Telemetry] {
+	return pulumix.Output[*Telemetry]{
+		OutputState: i.ToTelemetryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for how to query telemetry on a Service.
 type TelemetryOutput struct{ *pulumi.OutputState }
 
@@ -9727,6 +11168,12 @@ func (o TelemetryOutput) ToTelemetryPtrOutputWithContext(ctx context.Context) Te
 	}).(TelemetryPtrOutput)
 }
 
+func (o TelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[Telemetry] {
+	return pulumix.Output[Telemetry]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
 func (o TelemetryOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Telemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
@@ -9744,6 +11191,12 @@ func (o TelemetryPtrOutput) ToTelemetryPtrOutput() TelemetryPtrOutput {
 
 func (o TelemetryPtrOutput) ToTelemetryPtrOutputWithContext(ctx context.Context) TelemetryPtrOutput {
 	return o
+}
+
+func (o TelemetryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Telemetry] {
+	return pulumix.Output[*Telemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TelemetryPtrOutput) Elem() TelemetryOutput {
@@ -9785,6 +11238,12 @@ func (o TelemetryResponseOutput) ToTelemetryResponseOutput() TelemetryResponseOu
 
 func (o TelemetryResponseOutput) ToTelemetryResponseOutputWithContext(ctx context.Context) TelemetryResponseOutput {
 	return o
+}
+
+func (o TelemetryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TelemetryResponse] {
+	return pulumix.Output[TelemetryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
@@ -9831,6 +11290,12 @@ func (i TimeIntervalArgs) ToTimeIntervalOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TimeIntervalOutput)
 }
 
+func (i TimeIntervalArgs) ToOutput(ctx context.Context) pulumix.Output[TimeInterval] {
+	return pulumix.Output[TimeInterval]{
+		OutputState: i.ToTimeIntervalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time.
 type TimeIntervalOutput struct{ *pulumi.OutputState }
 
@@ -9844,6 +11309,12 @@ func (o TimeIntervalOutput) ToTimeIntervalOutput() TimeIntervalOutput {
 
 func (o TimeIntervalOutput) ToTimeIntervalOutputWithContext(ctx context.Context) TimeIntervalOutput {
 	return o
+}
+
+func (o TimeIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[TimeInterval] {
+	return pulumix.Output[TimeInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end of the time interval.
@@ -9877,6 +11348,12 @@ func (o TimeIntervalResponseOutput) ToTimeIntervalResponseOutput() TimeIntervalR
 
 func (o TimeIntervalResponseOutput) ToTimeIntervalResponseOutputWithContext(ctx context.Context) TimeIntervalResponseOutput {
 	return o
+}
+
+func (o TimeIntervalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeIntervalResponse] {
+	return pulumix.Output[TimeIntervalResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The end of the time interval.
@@ -9932,6 +11409,12 @@ func (i TimeSeriesRatioArgs) ToTimeSeriesRatioOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesRatioOutput)
 }
 
+func (i TimeSeriesRatioArgs) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesRatio] {
+	return pulumix.Output[TimeSeriesRatio]{
+		OutputState: i.ToTimeSeriesRatioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TimeSeriesRatioArgs) ToTimeSeriesRatioPtrOutput() TimeSeriesRatioPtrOutput {
 	return i.ToTimeSeriesRatioPtrOutputWithContext(context.Background())
 }
@@ -9973,6 +11456,12 @@ func (i *timeSeriesRatioPtrType) ToTimeSeriesRatioPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesRatioPtrOutput)
 }
 
+func (i *timeSeriesRatioPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesRatio] {
+	return pulumix.Output[*TimeSeriesRatio]{
+		OutputState: i.ToTimeSeriesRatioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed.
 type TimeSeriesRatioOutput struct{ *pulumi.OutputState }
 
@@ -9996,6 +11485,12 @@ func (o TimeSeriesRatioOutput) ToTimeSeriesRatioPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesRatio) *TimeSeriesRatio {
 		return &v
 	}).(TimeSeriesRatioPtrOutput)
+}
+
+func (o TimeSeriesRatioOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesRatio] {
+	return pulumix.Output[TimeSeriesRatio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
@@ -10025,6 +11520,12 @@ func (o TimeSeriesRatioPtrOutput) ToTimeSeriesRatioPtrOutput() TimeSeriesRatioPt
 
 func (o TimeSeriesRatioPtrOutput) ToTimeSeriesRatioPtrOutputWithContext(ctx context.Context) TimeSeriesRatioPtrOutput {
 	return o
+}
+
+func (o TimeSeriesRatioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesRatio] {
+	return pulumix.Output[*TimeSeriesRatio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimeSeriesRatioPtrOutput) Elem() TimeSeriesRatioOutput {
@@ -10092,6 +11593,12 @@ func (o TimeSeriesRatioResponseOutput) ToTimeSeriesRatioResponseOutputWithContex
 	return o
 }
 
+func (o TimeSeriesRatioResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesRatioResponse] {
+	return pulumix.Output[TimeSeriesRatioResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
 func (o TimeSeriesRatioResponseOutput) BadServiceFilter() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSeriesRatioResponse) string { return v.BadServiceFilter }).(pulumi.StringOutput)
@@ -10146,6 +11653,12 @@ func (i TriggerArgs) ToTriggerOutputWithContext(ctx context.Context) TriggerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerOutput)
 }
 
+func (i TriggerArgs) ToOutput(ctx context.Context) pulumix.Output[Trigger] {
+	return pulumix.Output[Trigger]{
+		OutputState: i.ToTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerArgs) ToTriggerPtrOutput() TriggerPtrOutput {
 	return i.ToTriggerPtrOutputWithContext(context.Background())
 }
@@ -10187,6 +11700,12 @@ func (i *triggerPtrType) ToTriggerPtrOutputWithContext(ctx context.Context) Trig
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerPtrOutput)
 }
 
+func (i *triggerPtrType) ToOutput(ctx context.Context) pulumix.Output[*Trigger] {
+	return pulumix.Output[*Trigger]{
+		OutputState: i.ToTriggerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used.
 type TriggerOutput struct{ *pulumi.OutputState }
 
@@ -10212,6 +11731,12 @@ func (o TriggerOutput) ToTriggerPtrOutputWithContext(ctx context.Context) Trigge
 	}).(TriggerPtrOutput)
 }
 
+func (o TriggerOutput) ToOutput(ctx context.Context) pulumix.Output[Trigger] {
+	return pulumix.Output[Trigger]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The absolute number of time series that must fail the predicate for the condition to be triggered.
 func (o TriggerOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Trigger) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -10234,6 +11759,12 @@ func (o TriggerPtrOutput) ToTriggerPtrOutput() TriggerPtrOutput {
 
 func (o TriggerPtrOutput) ToTriggerPtrOutputWithContext(ctx context.Context) TriggerPtrOutput {
 	return o
+}
+
+func (o TriggerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Trigger] {
+	return pulumix.Output[*Trigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerPtrOutput) Elem() TriggerOutput {
@@ -10287,6 +11818,12 @@ func (o TriggerResponseOutput) ToTriggerResponseOutput() TriggerResponseOutput {
 
 func (o TriggerResponseOutput) ToTriggerResponseOutputWithContext(ctx context.Context) TriggerResponseOutput {
 	return o
+}
+
+func (o TriggerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerResponse] {
+	return pulumix.Output[TriggerResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The absolute number of time series that must fail the predicate for the condition to be triggered.
@@ -10350,6 +11887,12 @@ func (i WindowsBasedSliArgs) ToWindowsBasedSliOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsBasedSliOutput)
 }
 
+func (i WindowsBasedSliArgs) ToOutput(ctx context.Context) pulumix.Output[WindowsBasedSli] {
+	return pulumix.Output[WindowsBasedSli]{
+		OutputState: i.ToWindowsBasedSliOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WindowsBasedSliArgs) ToWindowsBasedSliPtrOutput() WindowsBasedSliPtrOutput {
 	return i.ToWindowsBasedSliPtrOutputWithContext(context.Background())
 }
@@ -10391,6 +11934,12 @@ func (i *windowsBasedSliPtrType) ToWindowsBasedSliPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsBasedSliPtrOutput)
 }
 
+func (i *windowsBasedSliPtrType) ToOutput(ctx context.Context) pulumix.Output[*WindowsBasedSli] {
+	return pulumix.Output[*WindowsBasedSli]{
+		OutputState: i.ToWindowsBasedSliPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
 type WindowsBasedSliOutput struct{ *pulumi.OutputState }
 
@@ -10414,6 +11963,12 @@ func (o WindowsBasedSliOutput) ToWindowsBasedSliPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsBasedSli) *WindowsBasedSli {
 		return &v
 	}).(WindowsBasedSliPtrOutput)
+}
+
+func (o WindowsBasedSliOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsBasedSli] {
+	return pulumix.Output[WindowsBasedSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
@@ -10453,6 +12008,12 @@ func (o WindowsBasedSliPtrOutput) ToWindowsBasedSliPtrOutput() WindowsBasedSliPt
 
 func (o WindowsBasedSliPtrOutput) ToWindowsBasedSliPtrOutputWithContext(ctx context.Context) WindowsBasedSliPtrOutput {
 	return o
+}
+
+func (o WindowsBasedSliPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsBasedSli] {
+	return pulumix.Output[*WindowsBasedSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WindowsBasedSliPtrOutput) Elem() WindowsBasedSliOutput {
@@ -10542,6 +12103,12 @@ func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponseOutput() Windows
 
 func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponseOutputWithContext(ctx context.Context) WindowsBasedSliResponseOutput {
 	return o
+}
+
+func (o WindowsBasedSliResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsBasedSliResponse] {
+	return pulumix.Output[WindowsBasedSliResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.

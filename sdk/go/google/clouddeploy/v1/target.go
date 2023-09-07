@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Target in a given project and location.
@@ -186,6 +187,12 @@ func (i *Target) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetOutput)
 }
 
+func (i *Target) ToOutput(ctx context.Context) pulumix.Output[*Target] {
+	return pulumix.Output[*Target]{
+		OutputState: i.ToTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetOutput struct{ *pulumi.OutputState }
 
 func (TargetOutput) ElementType() reflect.Type {
@@ -198,6 +205,12 @@ func (o TargetOutput) ToTargetOutput() TargetOutput {
 
 func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return o
+}
+
+func (o TargetOutput) ToOutput(ctx context.Context) pulumix.Output[*Target] {
+	return pulumix.Output[*Target]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

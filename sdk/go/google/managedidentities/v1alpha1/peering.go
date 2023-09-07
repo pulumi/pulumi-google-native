@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Peering for Managed AD instance.
@@ -139,6 +140,12 @@ func (i *Peering) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringOutput)
 }
 
+func (i *Peering) ToOutput(ctx context.Context) pulumix.Output[*Peering] {
+	return pulumix.Output[*Peering]{
+		OutputState: i.ToPeeringOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PeeringOutput struct{ *pulumi.OutputState }
 
 func (PeeringOutput) ElementType() reflect.Type {
@@ -151,6 +158,12 @@ func (o PeeringOutput) ToPeeringOutput() PeeringOutput {
 
 func (o PeeringOutput) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput {
 	return o
+}
+
+func (o PeeringOutput) ToOutput(ctx context.Context) pulumix.Output[*Peering] {
+	return pulumix.Output[*Peering]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.

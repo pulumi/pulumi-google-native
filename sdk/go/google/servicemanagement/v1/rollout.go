@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new service configuration rollout. Based on rollout, the Google Service Management will roll out the service configurations to different backend services. For example, the logging configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be deleted eventually. Operation
@@ -134,6 +135,12 @@ func (i *Rollout) ToRolloutOutputWithContext(ctx context.Context) RolloutOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RolloutOutput)
 }
 
+func (i *Rollout) ToOutput(ctx context.Context) pulumix.Output[*Rollout] {
+	return pulumix.Output[*Rollout]{
+		OutputState: i.ToRolloutOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RolloutOutput struct{ *pulumi.OutputState }
 
 func (RolloutOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o RolloutOutput) ToRolloutOutput() RolloutOutput {
 
 func (o RolloutOutput) ToRolloutOutputWithContext(ctx context.Context) RolloutOutput {
 	return o
+}
+
+func (o RolloutOutput) ToOutput(ctx context.Context) pulumix.Output[*Rollout] {
+	return pulumix.Output[*Rollout]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation time of the rollout. Readonly.

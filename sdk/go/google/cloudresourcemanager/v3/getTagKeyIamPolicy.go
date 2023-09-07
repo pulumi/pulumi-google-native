@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a TagKey. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `cloudresourcemanager.googleapis.com/tagKeys.getIamPolicy` permission on the specified TagKey.
@@ -70,6 +71,12 @@ func (o LookupTagKeyIamPolicyResultOutput) ToLookupTagKeyIamPolicyResultOutput()
 
 func (o LookupTagKeyIamPolicyResultOutput) ToLookupTagKeyIamPolicyResultOutputWithContext(ctx context.Context) LookupTagKeyIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupTagKeyIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagKeyIamPolicyResult] {
+	return pulumix.Output[LookupTagKeyIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

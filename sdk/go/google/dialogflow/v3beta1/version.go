@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Version in the specified Flow. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: CreateVersionOperationMetadata - `response`: Version
@@ -139,6 +140,12 @@ func (i *Version) ToVersionOutputWithContext(ctx context.Context) VersionOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(VersionOutput)
 }
 
+func (i *Version) ToOutput(ctx context.Context) pulumix.Output[*Version] {
+	return pulumix.Output[*Version]{
+		OutputState: i.ToVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VersionOutput struct{ *pulumi.OutputState }
 
 func (VersionOutput) ElementType() reflect.Type {
@@ -151,6 +158,12 @@ func (o VersionOutput) ToVersionOutput() VersionOutput {
 
 func (o VersionOutput) ToVersionOutputWithContext(ctx context.Context) VersionOutput {
 	return o
+}
+
+func (o VersionOutput) ToOutput(ctx context.Context) pulumix.Output[*Version] {
+	return pulumix.Output[*Version]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VersionOutput) AgentId() pulumi.StringOutput {

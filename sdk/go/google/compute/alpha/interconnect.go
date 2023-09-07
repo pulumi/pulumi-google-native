@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an Interconnect in the specified project using the data included in the request.
@@ -215,6 +216,12 @@ func (i *Interconnect) ToInterconnectOutputWithContext(ctx context.Context) Inte
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectOutput)
 }
 
+func (i *Interconnect) ToOutput(ctx context.Context) pulumix.Output[*Interconnect] {
+	return pulumix.Output[*Interconnect]{
+		OutputState: i.ToInterconnectOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterconnectOutput struct{ *pulumi.OutputState }
 
 func (InterconnectOutput) ElementType() reflect.Type {
@@ -227,6 +234,12 @@ func (o InterconnectOutput) ToInterconnectOutput() InterconnectOutput {
 
 func (o InterconnectOutput) ToInterconnectOutputWithContext(ctx context.Context) InterconnectOutput {
 	return o
+}
+
+func (o InterconnectOutput) ToOutput(ctx context.Context) pulumix.Output[*Interconnect] {
+	return pulumix.Output[*Interconnect]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.

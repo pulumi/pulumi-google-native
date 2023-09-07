@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the GcpUserAccessBinding with the given name.
@@ -72,6 +73,12 @@ func (o LookupGcpUserAccessBindingResultOutput) ToLookupGcpUserAccessBindingResu
 
 func (o LookupGcpUserAccessBindingResultOutput) ToLookupGcpUserAccessBindingResultOutputWithContext(ctx context.Context) LookupGcpUserAccessBindingResultOutput {
 	return o
+}
+
+func (o LookupGcpUserAccessBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGcpUserAccessBindingResult] {
+	return pulumix.Output[LookupGcpUserAccessBindingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
@@ -126,6 +127,12 @@ func (i *EnvironmentEntry) ToEnvironmentEntryOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentEntryOutput)
 }
 
+func (i *EnvironmentEntry) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentEntry] {
+	return pulumix.Output[*EnvironmentEntry]{
+		OutputState: i.ToEnvironmentEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentEntryOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentEntryOutput) ElementType() reflect.Type {
@@ -138,6 +145,12 @@ func (o EnvironmentEntryOutput) ToEnvironmentEntryOutput() EnvironmentEntryOutpu
 
 func (o EnvironmentEntryOutput) ToEnvironmentEntryOutputWithContext(ctx context.Context) EnvironmentEntryOutput {
 	return o
+}
+
+func (o EnvironmentEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentEntry] {
+	return pulumix.Output[*EnvironmentEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentEntryOutput) EnvironmentId() pulumi.StringOutput {

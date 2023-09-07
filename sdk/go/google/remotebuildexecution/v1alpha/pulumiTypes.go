@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput)
 }
 
+func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput {
 	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput)
 }
 
+func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AcceleratorConfig defines the accelerator cards to attach to the VM.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput struct{ *pulumi.OutputState }
 
@@ -116,6 +129,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput)
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of guest accelerator cards exposed to each VM.
@@ -144,6 +163,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput {
@@ -199,6 +224,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseO
 	return o
 }
 
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of guest accelerator cards exposed to each VM.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput) AcceleratorCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse) string {
@@ -252,6 +283,12 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs) ToGoogleDev
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput)
 }
 
+func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput {
 	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutputWithContext(context.Background())
 }
@@ -293,6 +330,12 @@ func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput)
 }
 
+func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Autoscale defines the autoscaling policy of a worker pool.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput struct{ *pulumi.OutputState }
 
@@ -318,6 +361,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput) ToGoogleD
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput)
 }
 
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The maximal number of workers. Must be equal to or greater than min_size.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput) MaxSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale) *string { return v.MaxSize }).(pulumi.StringPtrOutput)
@@ -340,6 +389,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput) ToGoog
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput {
@@ -393,6 +448,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) T
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximal number of workers. Must be equal to or greater than min_size.
@@ -472,6 +533,12 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput)
 }
 
+func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput {
 	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutputWithContext(context.Background())
 }
@@ -513,6 +580,12 @@ func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrType) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput)
 }
 
+func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput struct{ *pulumi.OutputState }
 
@@ -536,6 +609,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput) ToGoo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput)
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
@@ -613,6 +692,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) To
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput {
@@ -754,6 +839,12 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput)
 }
 
+func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput {
 	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutputWithContext(context.Background())
 }
@@ -795,6 +886,12 @@ func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput)
 }
 
+func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines whether a feature can be used or what values are accepted.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput struct{ *pulumi.OutputState }
 
@@ -818,6 +915,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput)
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of acceptable values. Only effective when the policy is `RESTRICTED`.
@@ -846,6 +949,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOut
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput {
@@ -901,6 +1010,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureRespon
 	return o
 }
 
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of acceptable values. Only effective when the policy is `RESTRICTED`.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponseOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse) []string {
@@ -950,6 +1065,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutpu
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
@@ -1090,6 +1211,12 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput)
 }
 
+func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput {
 	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -1131,6 +1258,12 @@ func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrType) ToGo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput)
 }
 
+func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig]{
+		OutputState: i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the configuration to be used for creating workers in the worker pool.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput struct{ *pulumi.OutputState }
 
@@ -1154,6 +1287,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) ToGoog
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
 		return &v
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput)
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The accelerator card attached to each VM.
@@ -1229,6 +1368,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) ToG
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput {
@@ -1390,6 +1535,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The accelerator card attached to each VM.

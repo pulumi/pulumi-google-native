@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The algorithm to use for autoscaling.
@@ -82,6 +83,12 @@ func (o AutoscalingSettingsAlgorithmOutput) ToAutoscalingSettingsAlgorithmPtrOut
 	}).(AutoscalingSettingsAlgorithmPtrOutput)
 }
 
+func (o AutoscalingSettingsAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingSettingsAlgorithm] {
+	return pulumix.Output[AutoscalingSettingsAlgorithm]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscalingSettingsAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AutoscalingSettingsAlgorithmPtrOutput) ToAutoscalingSettingsAlgorithmPtr
 
 func (o AutoscalingSettingsAlgorithmPtrOutput) ToAutoscalingSettingsAlgorithmPtrOutputWithContext(ctx context.Context) AutoscalingSettingsAlgorithmPtrOutput {
 	return o
+}
+
+func (o AutoscalingSettingsAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingSettingsAlgorithm] {
+	return pulumix.Output[*AutoscalingSettingsAlgorithm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingSettingsAlgorithmPtrOutput) Elem() AutoscalingSettingsAlgorithmOutput {
@@ -177,6 +190,12 @@ func (in *autoscalingSettingsAlgorithmPtr) ToAutoscalingSettingsAlgorithmPtrOutp
 
 func (in *autoscalingSettingsAlgorithmPtr) ToAutoscalingSettingsAlgorithmPtrOutputWithContext(ctx context.Context) AutoscalingSettingsAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingSettingsAlgorithmPtrOutput)
+}
+
+func (in *autoscalingSettingsAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingSettingsAlgorithm] {
+	return pulumix.Output[*AutoscalingSettingsAlgorithm]{
+		OutputState: in.ToAutoscalingSettingsAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Which Flexible Resource Scheduling mode to run in.
@@ -251,6 +270,12 @@ func (o EnvironmentFlexResourceSchedulingGoalOutput) ToEnvironmentFlexResourceSc
 	}).(EnvironmentFlexResourceSchedulingGoalPtrOutput)
 }
 
+func (o EnvironmentFlexResourceSchedulingGoalOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentFlexResourceSchedulingGoal] {
+	return pulumix.Output[EnvironmentFlexResourceSchedulingGoal]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentFlexResourceSchedulingGoalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToEnvironmentFlexResourc
 
 func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToEnvironmentFlexResourceSchedulingGoalPtrOutputWithContext(ctx context.Context) EnvironmentFlexResourceSchedulingGoalPtrOutput {
 	return o
+}
+
+func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentFlexResourceSchedulingGoal] {
+	return pulumix.Output[*EnvironmentFlexResourceSchedulingGoal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) Elem() EnvironmentFlexResourceSchedulingGoalOutput {
@@ -346,6 +377,12 @@ func (in *environmentFlexResourceSchedulingGoalPtr) ToEnvironmentFlexResourceSch
 
 func (in *environmentFlexResourceSchedulingGoalPtr) ToEnvironmentFlexResourceSchedulingGoalPtrOutputWithContext(ctx context.Context) EnvironmentFlexResourceSchedulingGoalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentFlexResourceSchedulingGoalPtrOutput)
+}
+
+func (in *environmentFlexResourceSchedulingGoalPtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentFlexResourceSchedulingGoal] {
+	return pulumix.Output[*EnvironmentFlexResourceSchedulingGoal]{
+		OutputState: in.ToEnvironmentFlexResourceSchedulingGoalPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Executions stage states allow the same set of values as JobState.
@@ -440,6 +477,12 @@ func (o ExecutionStageStateExecutionStageStateOutput) ToExecutionStageStateExecu
 	}).(ExecutionStageStateExecutionStageStatePtrOutput)
 }
 
+func (o ExecutionStageStateExecutionStageStateOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageStateExecutionStageState] {
+	return pulumix.Output[ExecutionStageStateExecutionStageState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExecutionStageStateExecutionStageStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -473,6 +516,12 @@ func (o ExecutionStageStateExecutionStageStatePtrOutput) ToExecutionStageStateEx
 
 func (o ExecutionStageStateExecutionStageStatePtrOutput) ToExecutionStageStateExecutionStageStatePtrOutputWithContext(ctx context.Context) ExecutionStageStateExecutionStageStatePtrOutput {
 	return o
+}
+
+func (o ExecutionStageStateExecutionStageStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStageStateExecutionStageState] {
+	return pulumix.Output[*ExecutionStageStateExecutionStageState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecutionStageStateExecutionStageStatePtrOutput) Elem() ExecutionStageStateExecutionStageStateOutput {
@@ -535,6 +584,12 @@ func (in *executionStageStateExecutionStageStatePtr) ToExecutionStageStateExecut
 
 func (in *executionStageStateExecutionStageStatePtr) ToExecutionStageStateExecutionStageStatePtrOutputWithContext(ctx context.Context) ExecutionStageStateExecutionStageStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionStageStateExecutionStageStatePtrOutput)
+}
+
+func (in *executionStageStateExecutionStageStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStageStateExecutionStageState] {
+	return pulumix.Output[*ExecutionStageStateExecutionStageState]{
+		OutputState: in.ToExecutionStageStateExecutionStageStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of transform this stage is executing.
@@ -621,6 +676,12 @@ func (o ExecutionStageSummaryKindOutput) ToExecutionStageSummaryKindPtrOutputWit
 	}).(ExecutionStageSummaryKindPtrOutput)
 }
 
+func (o ExecutionStageSummaryKindOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageSummaryKind] {
+	return pulumix.Output[ExecutionStageSummaryKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExecutionStageSummaryKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -654,6 +715,12 @@ func (o ExecutionStageSummaryKindPtrOutput) ToExecutionStageSummaryKindPtrOutput
 
 func (o ExecutionStageSummaryKindPtrOutput) ToExecutionStageSummaryKindPtrOutputWithContext(ctx context.Context) ExecutionStageSummaryKindPtrOutput {
 	return o
+}
+
+func (o ExecutionStageSummaryKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStageSummaryKind] {
+	return pulumix.Output[*ExecutionStageSummaryKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecutionStageSummaryKindPtrOutput) Elem() ExecutionStageSummaryKindOutput {
@@ -716,6 +783,12 @@ func (in *executionStageSummaryKindPtr) ToExecutionStageSummaryKindPtrOutput() E
 
 func (in *executionStageSummaryKindPtr) ToExecutionStageSummaryKindPtrOutputWithContext(ctx context.Context) ExecutionStageSummaryKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionStageSummaryKindPtrOutput)
+}
+
+func (in *executionStageSummaryKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStageSummaryKind] {
+	return pulumix.Output[*ExecutionStageSummaryKind]{
+		OutputState: in.ToExecutionStageSummaryKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -810,6 +883,12 @@ func (o JobCurrentStateOutput) ToJobCurrentStatePtrOutputWithContext(ctx context
 	}).(JobCurrentStatePtrOutput)
 }
 
+func (o JobCurrentStateOutput) ToOutput(ctx context.Context) pulumix.Output[JobCurrentState] {
+	return pulumix.Output[JobCurrentState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobCurrentStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -843,6 +922,12 @@ func (o JobCurrentStatePtrOutput) ToJobCurrentStatePtrOutput() JobCurrentStatePt
 
 func (o JobCurrentStatePtrOutput) ToJobCurrentStatePtrOutputWithContext(ctx context.Context) JobCurrentStatePtrOutput {
 	return o
+}
+
+func (o JobCurrentStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobCurrentState] {
+	return pulumix.Output[*JobCurrentState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobCurrentStatePtrOutput) Elem() JobCurrentStateOutput {
@@ -905,6 +990,12 @@ func (in *jobCurrentStatePtr) ToJobCurrentStatePtrOutput() JobCurrentStatePtrOut
 
 func (in *jobCurrentStatePtr) ToJobCurrentStatePtrOutputWithContext(ctx context.Context) JobCurrentStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobCurrentStatePtrOutput)
+}
+
+func (in *jobCurrentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*JobCurrentState] {
+	return pulumix.Output[*JobCurrentState]{
+		OutputState: in.ToJobCurrentStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
@@ -999,6 +1090,12 @@ func (o JobRequestedStateOutput) ToJobRequestedStatePtrOutputWithContext(ctx con
 	}).(JobRequestedStatePtrOutput)
 }
 
+func (o JobRequestedStateOutput) ToOutput(ctx context.Context) pulumix.Output[JobRequestedState] {
+	return pulumix.Output[JobRequestedState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobRequestedStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1032,6 +1129,12 @@ func (o JobRequestedStatePtrOutput) ToJobRequestedStatePtrOutput() JobRequestedS
 
 func (o JobRequestedStatePtrOutput) ToJobRequestedStatePtrOutputWithContext(ctx context.Context) JobRequestedStatePtrOutput {
 	return o
+}
+
+func (o JobRequestedStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobRequestedState] {
+	return pulumix.Output[*JobRequestedState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRequestedStatePtrOutput) Elem() JobRequestedStateOutput {
@@ -1094,6 +1197,12 @@ func (in *jobRequestedStatePtr) ToJobRequestedStatePtrOutput() JobRequestedState
 
 func (in *jobRequestedStatePtr) ToJobRequestedStatePtrOutputWithContext(ctx context.Context) JobRequestedStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobRequestedStatePtrOutput)
+}
+
+func (in *jobRequestedStatePtr) ToOutput(ctx context.Context) pulumix.Output[*JobRequestedState] {
+	return pulumix.Output[*JobRequestedState]{
+		OutputState: in.ToJobRequestedStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of Cloud Dataflow job.
@@ -1168,6 +1277,12 @@ func (o JobTypeOutput) ToJobTypePtrOutputWithContext(ctx context.Context) JobTyp
 	}).(JobTypePtrOutput)
 }
 
+func (o JobTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JobType] {
+	return pulumix.Output[JobType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1201,6 +1316,12 @@ func (o JobTypePtrOutput) ToJobTypePtrOutput() JobTypePtrOutput {
 
 func (o JobTypePtrOutput) ToJobTypePtrOutputWithContext(ctx context.Context) JobTypePtrOutput {
 	return o
+}
+
+func (o JobTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobType] {
+	return pulumix.Output[*JobType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTypePtrOutput) Elem() JobTypeOutput {
@@ -1263,6 +1384,12 @@ func (in *jobTypePtr) ToJobTypePtrOutput() JobTypePtrOutput {
 
 func (in *jobTypePtr) ToJobTypePtrOutputWithContext(ctx context.Context) JobTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobTypePtrOutput)
+}
+
+func (in *jobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobType] {
+	return pulumix.Output[*JobType]{
+		OutputState: in.ToJobTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Configuration for VM IPs.
@@ -1337,6 +1464,12 @@ func (o RuntimeEnvironmentIpConfigurationOutput) ToRuntimeEnvironmentIpConfigura
 	}).(RuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
+func (o RuntimeEnvironmentIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeEnvironmentIpConfiguration] {
+	return pulumix.Output[RuntimeEnvironmentIpConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuntimeEnvironmentIpConfigurationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1370,6 +1503,12 @@ func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToRuntimeEnvironmentIpConfig
 
 func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentIpConfigurationPtrOutput {
 	return o
+}
+
+func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironmentIpConfiguration] {
+	return pulumix.Output[*RuntimeEnvironmentIpConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeEnvironmentIpConfigurationPtrOutput) Elem() RuntimeEnvironmentIpConfigurationOutput {
@@ -1432,6 +1571,12 @@ func (in *runtimeEnvironmentIpConfigurationPtr) ToRuntimeEnvironmentIpConfigurat
 
 func (in *runtimeEnvironmentIpConfigurationPtr) ToRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentIpConfigurationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeEnvironmentIpConfigurationPtrOutput)
+}
+
+func (in *runtimeEnvironmentIpConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironmentIpConfiguration] {
+	return pulumix.Output[*RuntimeEnvironmentIpConfiguration]{
+		OutputState: in.ToRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The support status for this SDK version.
@@ -1510,6 +1655,12 @@ func (o SdkVersionSdkSupportStatusOutput) ToSdkVersionSdkSupportStatusPtrOutputW
 	}).(SdkVersionSdkSupportStatusPtrOutput)
 }
 
+func (o SdkVersionSdkSupportStatusOutput) ToOutput(ctx context.Context) pulumix.Output[SdkVersionSdkSupportStatus] {
+	return pulumix.Output[SdkVersionSdkSupportStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SdkVersionSdkSupportStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1543,6 +1694,12 @@ func (o SdkVersionSdkSupportStatusPtrOutput) ToSdkVersionSdkSupportStatusPtrOutp
 
 func (o SdkVersionSdkSupportStatusPtrOutput) ToSdkVersionSdkSupportStatusPtrOutputWithContext(ctx context.Context) SdkVersionSdkSupportStatusPtrOutput {
 	return o
+}
+
+func (o SdkVersionSdkSupportStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SdkVersionSdkSupportStatus] {
+	return pulumix.Output[*SdkVersionSdkSupportStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SdkVersionSdkSupportStatusPtrOutput) Elem() SdkVersionSdkSupportStatusOutput {
@@ -1605,6 +1762,12 @@ func (in *sdkVersionSdkSupportStatusPtr) ToSdkVersionSdkSupportStatusPtrOutput()
 
 func (in *sdkVersionSdkSupportStatusPtr) ToSdkVersionSdkSupportStatusPtrOutputWithContext(ctx context.Context) SdkVersionSdkSupportStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SdkVersionSdkSupportStatusPtrOutput)
+}
+
+func (in *sdkVersionSdkSupportStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SdkVersionSdkSupportStatus] {
+	return pulumix.Output[*SdkVersionSdkSupportStatus]{
+		OutputState: in.ToSdkVersionSdkSupportStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of transform.
@@ -1691,6 +1854,12 @@ func (o TransformSummaryKindOutput) ToTransformSummaryKindPtrOutputWithContext(c
 	}).(TransformSummaryKindPtrOutput)
 }
 
+func (o TransformSummaryKindOutput) ToOutput(ctx context.Context) pulumix.Output[TransformSummaryKind] {
+	return pulumix.Output[TransformSummaryKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransformSummaryKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1724,6 +1893,12 @@ func (o TransformSummaryKindPtrOutput) ToTransformSummaryKindPtrOutput() Transfo
 
 func (o TransformSummaryKindPtrOutput) ToTransformSummaryKindPtrOutputWithContext(ctx context.Context) TransformSummaryKindPtrOutput {
 	return o
+}
+
+func (o TransformSummaryKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransformSummaryKind] {
+	return pulumix.Output[*TransformSummaryKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransformSummaryKindPtrOutput) Elem() TransformSummaryKindOutput {
@@ -1786,6 +1961,12 @@ func (in *transformSummaryKindPtr) ToTransformSummaryKindPtrOutput() TransformSu
 
 func (in *transformSummaryKindPtr) ToTransformSummaryKindPtrOutputWithContext(ctx context.Context) TransformSummaryKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransformSummaryKindPtrOutput)
+}
+
+func (in *transformSummaryKindPtr) ToOutput(ctx context.Context) pulumix.Output[*TransformSummaryKind] {
+	return pulumix.Output[*TransformSummaryKind]{
+		OutputState: in.ToTransformSummaryKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
@@ -1862,6 +2043,12 @@ func (o WorkerPoolDefaultPackageSetOutput) ToWorkerPoolDefaultPackageSetPtrOutpu
 	}).(WorkerPoolDefaultPackageSetPtrOutput)
 }
 
+func (o WorkerPoolDefaultPackageSetOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolDefaultPackageSet] {
+	return pulumix.Output[WorkerPoolDefaultPackageSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkerPoolDefaultPackageSetOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1895,6 +2082,12 @@ func (o WorkerPoolDefaultPackageSetPtrOutput) ToWorkerPoolDefaultPackageSetPtrOu
 
 func (o WorkerPoolDefaultPackageSetPtrOutput) ToWorkerPoolDefaultPackageSetPtrOutputWithContext(ctx context.Context) WorkerPoolDefaultPackageSetPtrOutput {
 	return o
+}
+
+func (o WorkerPoolDefaultPackageSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolDefaultPackageSet] {
+	return pulumix.Output[*WorkerPoolDefaultPackageSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerPoolDefaultPackageSetPtrOutput) Elem() WorkerPoolDefaultPackageSetOutput {
@@ -1957,6 +2150,12 @@ func (in *workerPoolDefaultPackageSetPtr) ToWorkerPoolDefaultPackageSetPtrOutput
 
 func (in *workerPoolDefaultPackageSetPtr) ToWorkerPoolDefaultPackageSetPtrOutputWithContext(ctx context.Context) WorkerPoolDefaultPackageSetPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolDefaultPackageSetPtrOutput)
+}
+
+func (in *workerPoolDefaultPackageSetPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolDefaultPackageSet] {
+	return pulumix.Output[*WorkerPoolDefaultPackageSet]{
+		OutputState: in.ToWorkerPoolDefaultPackageSetPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Configuration for VM IPs.
@@ -2031,6 +2230,12 @@ func (o WorkerPoolIpConfigurationOutput) ToWorkerPoolIpConfigurationPtrOutputWit
 	}).(WorkerPoolIpConfigurationPtrOutput)
 }
 
+func (o WorkerPoolIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolIpConfiguration] {
+	return pulumix.Output[WorkerPoolIpConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkerPoolIpConfigurationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2064,6 +2269,12 @@ func (o WorkerPoolIpConfigurationPtrOutput) ToWorkerPoolIpConfigurationPtrOutput
 
 func (o WorkerPoolIpConfigurationPtrOutput) ToWorkerPoolIpConfigurationPtrOutputWithContext(ctx context.Context) WorkerPoolIpConfigurationPtrOutput {
 	return o
+}
+
+func (o WorkerPoolIpConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolIpConfiguration] {
+	return pulumix.Output[*WorkerPoolIpConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerPoolIpConfigurationPtrOutput) Elem() WorkerPoolIpConfigurationOutput {
@@ -2126,6 +2337,12 @@ func (in *workerPoolIpConfigurationPtr) ToWorkerPoolIpConfigurationPtrOutput() W
 
 func (in *workerPoolIpConfigurationPtr) ToWorkerPoolIpConfigurationPtrOutputWithContext(ctx context.Context) WorkerPoolIpConfigurationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolIpConfigurationPtrOutput)
+}
+
+func (in *workerPoolIpConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolIpConfiguration] {
+	return pulumix.Output[*WorkerPoolIpConfiguration]{
+		OutputState: in.ToWorkerPoolIpConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
@@ -2202,6 +2419,12 @@ func (o WorkerPoolTeardownPolicyOutput) ToWorkerPoolTeardownPolicyPtrOutputWithC
 	}).(WorkerPoolTeardownPolicyPtrOutput)
 }
 
+func (o WorkerPoolTeardownPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolTeardownPolicy] {
+	return pulumix.Output[WorkerPoolTeardownPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkerPoolTeardownPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2235,6 +2458,12 @@ func (o WorkerPoolTeardownPolicyPtrOutput) ToWorkerPoolTeardownPolicyPtrOutput()
 
 func (o WorkerPoolTeardownPolicyPtrOutput) ToWorkerPoolTeardownPolicyPtrOutputWithContext(ctx context.Context) WorkerPoolTeardownPolicyPtrOutput {
 	return o
+}
+
+func (o WorkerPoolTeardownPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolTeardownPolicy] {
+	return pulumix.Output[*WorkerPoolTeardownPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerPoolTeardownPolicyPtrOutput) Elem() WorkerPoolTeardownPolicyOutput {
@@ -2297,6 +2526,12 @@ func (in *workerPoolTeardownPolicyPtr) ToWorkerPoolTeardownPolicyPtrOutput() Wor
 
 func (in *workerPoolTeardownPolicyPtr) ToWorkerPoolTeardownPolicyPtrOutputWithContext(ctx context.Context) WorkerPoolTeardownPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolTeardownPolicyPtrOutput)
+}
+
+func (in *workerPoolTeardownPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolTeardownPolicy] {
+	return pulumix.Output[*WorkerPoolTeardownPolicy]{
+		OutputState: in.ToWorkerPoolTeardownPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

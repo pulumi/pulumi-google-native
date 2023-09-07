@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
@@ -70,6 +71,12 @@ func (o LookupBillingAccountResultOutput) ToLookupBillingAccountResultOutput() L
 
 func (o LookupBillingAccountResultOutput) ToLookupBillingAccountResultOutputWithContext(ctx context.Context) LookupBillingAccountResultOutput {
 	return o
+}
+
+func (o LookupBillingAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBillingAccountResult] {
+	return pulumix.Output[LookupBillingAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ManagedZone.
@@ -80,6 +81,12 @@ func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutput() LookupM
 
 func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutputWithContext(ctx context.Context) LookupManagedZoneResultOutput {
 	return o
+}
+
+func (o LookupManagedZoneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedZoneResult] {
+	return pulumix.Output[LookupManagedZoneResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Created time.

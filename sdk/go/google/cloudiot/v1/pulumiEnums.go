@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
@@ -86,6 +87,12 @@ func (o DeviceLogLevelOutput) ToDeviceLogLevelPtrOutputWithContext(ctx context.C
 	}).(DeviceLogLevelPtrOutput)
 }
 
+func (o DeviceLogLevelOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceLogLevel] {
+	return pulumix.Output[DeviceLogLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeviceLogLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (o DeviceLogLevelPtrOutput) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOu
 
 func (o DeviceLogLevelPtrOutput) ToDeviceLogLevelPtrOutputWithContext(ctx context.Context) DeviceLogLevelPtrOutput {
 	return o
+}
+
+func (o DeviceLogLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceLogLevel] {
+	return pulumix.Output[*DeviceLogLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceLogLevelPtrOutput) Elem() DeviceLogLevelOutput {
@@ -181,6 +194,12 @@ func (in *deviceLogLevelPtr) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOutput
 
 func (in *deviceLogLevelPtr) ToDeviceLogLevelPtrOutputWithContext(ctx context.Context) DeviceLogLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeviceLogLevelPtrOutput)
+}
+
+func (in *deviceLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DeviceLogLevel] {
+	return pulumix.Output[*DeviceLogLevel]{
+		OutputState: in.ToDeviceLogLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates how to authorize and/or authenticate devices to access the gateway.
@@ -257,6 +276,12 @@ func (o GatewayConfigGatewayAuthMethodOutput) ToGatewayConfigGatewayAuthMethodPt
 	}).(GatewayConfigGatewayAuthMethodPtrOutput)
 }
 
+func (o GatewayConfigGatewayAuthMethodOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayConfigGatewayAuthMethod] {
+	return pulumix.Output[GatewayConfigGatewayAuthMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayConfigGatewayAuthMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -290,6 +315,12 @@ func (o GatewayConfigGatewayAuthMethodPtrOutput) ToGatewayConfigGatewayAuthMetho
 
 func (o GatewayConfigGatewayAuthMethodPtrOutput) ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodPtrOutput {
 	return o
+}
+
+func (o GatewayConfigGatewayAuthMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayConfigGatewayAuthMethod] {
+	return pulumix.Output[*GatewayConfigGatewayAuthMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayConfigGatewayAuthMethodPtrOutput) Elem() GatewayConfigGatewayAuthMethodOutput {
@@ -352,6 +383,12 @@ func (in *gatewayConfigGatewayAuthMethodPtr) ToGatewayConfigGatewayAuthMethodPtr
 
 func (in *gatewayConfigGatewayAuthMethodPtr) ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayConfigGatewayAuthMethodPtrOutput)
+}
+
+func (in *gatewayConfigGatewayAuthMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayConfigGatewayAuthMethod] {
+	return pulumix.Output[*GatewayConfigGatewayAuthMethod]{
+		OutputState: in.ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether the device is a gateway.
@@ -426,6 +463,12 @@ func (o GatewayConfigGatewayTypeOutput) ToGatewayConfigGatewayTypePtrOutputWithC
 	}).(GatewayConfigGatewayTypePtrOutput)
 }
 
+func (o GatewayConfigGatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayConfigGatewayType] {
+	return pulumix.Output[GatewayConfigGatewayType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayConfigGatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -459,6 +502,12 @@ func (o GatewayConfigGatewayTypePtrOutput) ToGatewayConfigGatewayTypePtrOutput()
 
 func (o GatewayConfigGatewayTypePtrOutput) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
 	return o
+}
+
+func (o GatewayConfigGatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayConfigGatewayType] {
+	return pulumix.Output[*GatewayConfigGatewayType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayConfigGatewayTypePtrOutput) Elem() GatewayConfigGatewayTypeOutput {
@@ -521,6 +570,12 @@ func (in *gatewayConfigGatewayTypePtr) ToGatewayConfigGatewayTypePtrOutput() Gat
 
 func (in *gatewayConfigGatewayTypePtr) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayConfigGatewayTypePtrOutput)
+}
+
+func (in *gatewayConfigGatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayConfigGatewayType] {
+	return pulumix.Output[*GatewayConfigGatewayType]{
+		OutputState: in.ToGatewayConfigGatewayTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
@@ -595,6 +650,12 @@ func (o HttpConfigHttpEnabledStateOutput) ToHttpConfigHttpEnabledStatePtrOutputW
 	}).(HttpConfigHttpEnabledStatePtrOutput)
 }
 
+func (o HttpConfigHttpEnabledStateOutput) ToOutput(ctx context.Context) pulumix.Output[HttpConfigHttpEnabledState] {
+	return pulumix.Output[HttpConfigHttpEnabledState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpConfigHttpEnabledStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -628,6 +689,12 @@ func (o HttpConfigHttpEnabledStatePtrOutput) ToHttpConfigHttpEnabledStatePtrOutp
 
 func (o HttpConfigHttpEnabledStatePtrOutput) ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStatePtrOutput {
 	return o
+}
+
+func (o HttpConfigHttpEnabledStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpConfigHttpEnabledState] {
+	return pulumix.Output[*HttpConfigHttpEnabledState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpConfigHttpEnabledStatePtrOutput) Elem() HttpConfigHttpEnabledStateOutput {
@@ -690,6 +757,12 @@ func (in *httpConfigHttpEnabledStatePtr) ToHttpConfigHttpEnabledStatePtrOutput()
 
 func (in *httpConfigHttpEnabledStatePtr) ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpConfigHttpEnabledStatePtrOutput)
+}
+
+func (in *httpConfigHttpEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpConfigHttpEnabledState] {
+	return pulumix.Output[*HttpConfigHttpEnabledState]{
+		OutputState: in.ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
@@ -764,6 +837,12 @@ func (o MqttConfigMqttEnabledStateOutput) ToMqttConfigMqttEnabledStatePtrOutputW
 	}).(MqttConfigMqttEnabledStatePtrOutput)
 }
 
+func (o MqttConfigMqttEnabledStateOutput) ToOutput(ctx context.Context) pulumix.Output[MqttConfigMqttEnabledState] {
+	return pulumix.Output[MqttConfigMqttEnabledState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MqttConfigMqttEnabledStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -797,6 +876,12 @@ func (o MqttConfigMqttEnabledStatePtrOutput) ToMqttConfigMqttEnabledStatePtrOutp
 
 func (o MqttConfigMqttEnabledStatePtrOutput) ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStatePtrOutput {
 	return o
+}
+
+func (o MqttConfigMqttEnabledStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttConfigMqttEnabledState] {
+	return pulumix.Output[*MqttConfigMqttEnabledState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MqttConfigMqttEnabledStatePtrOutput) Elem() MqttConfigMqttEnabledStateOutput {
@@ -859,6 +944,12 @@ func (in *mqttConfigMqttEnabledStatePtr) ToMqttConfigMqttEnabledStatePtrOutput()
 
 func (in *mqttConfigMqttEnabledStatePtr) ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MqttConfigMqttEnabledStatePtrOutput)
+}
+
+func (in *mqttConfigMqttEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*MqttConfigMqttEnabledState] {
+	return pulumix.Output[*MqttConfigMqttEnabledState]{
+		OutputState: in.ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The certificate format.
@@ -931,6 +1022,12 @@ func (o PublicKeyCertificateFormatOutput) ToPublicKeyCertificateFormatPtrOutputW
 	}).(PublicKeyCertificateFormatPtrOutput)
 }
 
+func (o PublicKeyCertificateFormatOutput) ToOutput(ctx context.Context) pulumix.Output[PublicKeyCertificateFormat] {
+	return pulumix.Output[PublicKeyCertificateFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PublicKeyCertificateFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -964,6 +1061,12 @@ func (o PublicKeyCertificateFormatPtrOutput) ToPublicKeyCertificateFormatPtrOutp
 
 func (o PublicKeyCertificateFormatPtrOutput) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
 	return o
+}
+
+func (o PublicKeyCertificateFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyCertificateFormat] {
+	return pulumix.Output[*PublicKeyCertificateFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicKeyCertificateFormatPtrOutput) Elem() PublicKeyCertificateFormatOutput {
@@ -1026,6 +1129,12 @@ func (in *publicKeyCertificateFormatPtr) ToPublicKeyCertificateFormatPtrOutput()
 
 func (in *publicKeyCertificateFormatPtr) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyCertificateFormatPtrOutput)
+}
+
+func (in *publicKeyCertificateFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyCertificateFormat] {
+	return pulumix.Output[*PublicKeyCertificateFormat]{
+		OutputState: in.ToPublicKeyCertificateFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The format of the key.
@@ -1104,6 +1213,12 @@ func (o PublicKeyCredentialFormatOutput) ToPublicKeyCredentialFormatPtrOutputWit
 	}).(PublicKeyCredentialFormatPtrOutput)
 }
 
+func (o PublicKeyCredentialFormatOutput) ToOutput(ctx context.Context) pulumix.Output[PublicKeyCredentialFormat] {
+	return pulumix.Output[PublicKeyCredentialFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PublicKeyCredentialFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1137,6 +1252,12 @@ func (o PublicKeyCredentialFormatPtrOutput) ToPublicKeyCredentialFormatPtrOutput
 
 func (o PublicKeyCredentialFormatPtrOutput) ToPublicKeyCredentialFormatPtrOutputWithContext(ctx context.Context) PublicKeyCredentialFormatPtrOutput {
 	return o
+}
+
+func (o PublicKeyCredentialFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyCredentialFormat] {
+	return pulumix.Output[*PublicKeyCredentialFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicKeyCredentialFormatPtrOutput) Elem() PublicKeyCredentialFormatOutput {
@@ -1199,6 +1320,12 @@ func (in *publicKeyCredentialFormatPtr) ToPublicKeyCredentialFormatPtrOutput() P
 
 func (in *publicKeyCredentialFormatPtr) ToPublicKeyCredentialFormatPtrOutputWithContext(ctx context.Context) PublicKeyCredentialFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyCredentialFormatPtrOutput)
+}
+
+func (in *publicKeyCredentialFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyCredentialFormat] {
+	return pulumix.Output[*PublicKeyCredentialFormat]{
+		OutputState: in.ToPublicKeyCredentialFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
@@ -1277,6 +1404,12 @@ func (o RegistryLogLevelOutput) ToRegistryLogLevelPtrOutputWithContext(ctx conte
 	}).(RegistryLogLevelPtrOutput)
 }
 
+func (o RegistryLogLevelOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryLogLevel] {
+	return pulumix.Output[RegistryLogLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegistryLogLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1310,6 +1443,12 @@ func (o RegistryLogLevelPtrOutput) ToRegistryLogLevelPtrOutput() RegistryLogLeve
 
 func (o RegistryLogLevelPtrOutput) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
 	return o
+}
+
+func (o RegistryLogLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryLogLevel] {
+	return pulumix.Output[*RegistryLogLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryLogLevelPtrOutput) Elem() RegistryLogLevelOutput {
@@ -1372,6 +1511,12 @@ func (in *registryLogLevelPtr) ToRegistryLogLevelPtrOutput() RegistryLogLevelPtr
 
 func (in *registryLogLevelPtr) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegistryLogLevelPtrOutput)
+}
+
+func (in *registryLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*RegistryLogLevel] {
+	return pulumix.Output[*RegistryLogLevel]{
+		OutputState: in.ToRegistryLogLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

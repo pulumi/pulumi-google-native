@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a queue.
@@ -92,6 +93,12 @@ func (o LookupQueueResultOutput) ToLookupQueueResultOutput() LookupQueueResultOu
 
 func (o LookupQueueResultOutput) ToLookupQueueResultOutputWithContext(ctx context.Context) LookupQueueResultOutput {
 	return o
+}
+
+func (o LookupQueueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQueueResult] {
+	return pulumix.Output[LookupQueueResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AppEngineHttpQueue settings apply only to App Engine tasks in this queue. Http tasks are not affected by this proto.

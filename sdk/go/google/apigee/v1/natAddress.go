@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
@@ -114,6 +115,12 @@ func (i *NatAddress) ToNatAddressOutputWithContext(ctx context.Context) NatAddre
 	return pulumi.ToOutputWithContext(ctx, i).(NatAddressOutput)
 }
 
+func (i *NatAddress) ToOutput(ctx context.Context) pulumix.Output[*NatAddress] {
+	return pulumix.Output[*NatAddress]{
+		OutputState: i.ToNatAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NatAddressOutput struct{ *pulumi.OutputState }
 
 func (NatAddressOutput) ElementType() reflect.Type {
@@ -126,6 +133,12 @@ func (o NatAddressOutput) ToNatAddressOutput() NatAddressOutput {
 
 func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) NatAddressOutput {
 	return o
+}
+
+func (o NatAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*NatAddress] {
+	return pulumix.Output[*NatAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NatAddressOutput) InstanceId() pulumi.StringOutput {

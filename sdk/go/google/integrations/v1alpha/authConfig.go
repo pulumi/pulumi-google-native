@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an auth config record. Fetch corresponding credentials for specific auth types, e.g. access token for OAuth 2.0, JWT token for JWT. Encrypt the auth config with Cloud KMS and store the encrypted credentials in Spanner. Returns the encrypted auth config.
@@ -218,6 +219,12 @@ func (i *AuthConfig) ToAuthConfigOutputWithContext(ctx context.Context) AuthConf
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOutput)
 }
 
+func (i *AuthConfig) ToOutput(ctx context.Context) pulumix.Output[*AuthConfig] {
+	return pulumix.Output[*AuthConfig]{
+		OutputState: i.ToAuthConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthConfigOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOutput) ElementType() reflect.Type {
@@ -230,6 +237,12 @@ func (o AuthConfigOutput) ToAuthConfigOutput() AuthConfigOutput {
 
 func (o AuthConfigOutput) ToAuthConfigOutputWithContext(ctx context.Context) AuthConfigOutput {
 	return o
+}
+
+func (o AuthConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfig] {
+	return pulumix.Output[*AuthConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Certificate id for client certificate

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AuthenticationArgs) ToAuthenticationOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationOutput)
 }
 
+func (i AuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[Authentication] {
+	return pulumix.Output[Authentication]{
+		OutputState: i.ToAuthenticationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AuthenticationArgs) ToAuthenticationPtrOutput() AuthenticationPtrOutput {
 	return i.ToAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *authenticationPtrType) ToAuthenticationPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationPtrOutput)
 }
 
+func (i *authenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*Authentication] {
+	return pulumix.Output[*Authentication]{
+		OutputState: i.ToAuthenticationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Scan authentication configuration.
 type AuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o AuthenticationOutput) ToAuthenticationPtrOutputWithContext(ctx context.C
 	}).(AuthenticationPtrOutput)
 }
 
+func (o AuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[Authentication] {
+	return pulumix.Output[Authentication]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Authentication using a custom account.
 func (o AuthenticationOutput) CustomAccount() CustomAccountPtrOutput {
 	return o.ApplyT(func(v Authentication) *CustomAccount { return v.CustomAccount }).(CustomAccountPtrOutput)
@@ -140,6 +159,12 @@ func (o AuthenticationPtrOutput) ToAuthenticationPtrOutput() AuthenticationPtrOu
 
 func (o AuthenticationPtrOutput) ToAuthenticationPtrOutputWithContext(ctx context.Context) AuthenticationPtrOutput {
 	return o
+}
+
+func (o AuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Authentication] {
+	return pulumix.Output[*Authentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthenticationPtrOutput) Elem() AuthenticationOutput {
@@ -195,6 +220,12 @@ func (o AuthenticationResponseOutput) ToAuthenticationResponseOutputWithContext(
 	return o
 }
 
+func (o AuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthenticationResponse] {
+	return pulumix.Output[AuthenticationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Authentication using a custom account.
 func (o AuthenticationResponseOutput) CustomAccount() CustomAccountResponseOutput {
 	return o.ApplyT(func(v AuthenticationResponse) CustomAccountResponse { return v.CustomAccount }).(CustomAccountResponseOutput)
@@ -248,6 +279,12 @@ func (i CustomAccountArgs) ToCustomAccountOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountOutput)
 }
 
+func (i CustomAccountArgs) ToOutput(ctx context.Context) pulumix.Output[CustomAccount] {
+	return pulumix.Output[CustomAccount]{
+		OutputState: i.ToCustomAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CustomAccountArgs) ToCustomAccountPtrOutput() CustomAccountPtrOutput {
 	return i.ToCustomAccountPtrOutputWithContext(context.Background())
 }
@@ -289,6 +326,12 @@ func (i *customAccountPtrType) ToCustomAccountPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountPtrOutput)
 }
 
+func (i *customAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomAccount] {
+	return pulumix.Output[*CustomAccount]{
+		OutputState: i.ToCustomAccountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes authentication configuration that uses a custom account.
 type CustomAccountOutput struct{ *pulumi.OutputState }
 
@@ -312,6 +355,12 @@ func (o CustomAccountOutput) ToCustomAccountPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomAccount) *CustomAccount {
 		return &v
 	}).(CustomAccountPtrOutput)
+}
+
+func (o CustomAccountOutput) ToOutput(ctx context.Context) pulumix.Output[CustomAccount] {
+	return pulumix.Output[CustomAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The login form URL of the website.
@@ -341,6 +390,12 @@ func (o CustomAccountPtrOutput) ToCustomAccountPtrOutput() CustomAccountPtrOutpu
 
 func (o CustomAccountPtrOutput) ToCustomAccountPtrOutputWithContext(ctx context.Context) CustomAccountPtrOutput {
 	return o
+}
+
+func (o CustomAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomAccount] {
+	return pulumix.Output[*CustomAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomAccountPtrOutput) Elem() CustomAccountOutput {
@@ -408,6 +463,12 @@ func (o CustomAccountResponseOutput) ToCustomAccountResponseOutputWithContext(ct
 	return o
 }
 
+func (o CustomAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomAccountResponse] {
+	return pulumix.Output[CustomAccountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The login form URL of the website.
 func (o CustomAccountResponseOutput) LoginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomAccountResponse) string { return v.LoginUrl }).(pulumi.StringOutput)
@@ -462,6 +523,12 @@ func (i GoogleAccountArgs) ToGoogleAccountOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountOutput)
 }
 
+func (i GoogleAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleAccount] {
+	return pulumix.Output[GoogleAccount]{
+		OutputState: i.ToGoogleAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleAccountArgs) ToGoogleAccountPtrOutput() GoogleAccountPtrOutput {
 	return i.ToGoogleAccountPtrOutputWithContext(context.Background())
 }
@@ -503,6 +570,12 @@ func (i *googleAccountPtrType) ToGoogleAccountPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountPtrOutput)
 }
 
+func (i *googleAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleAccount] {
+	return pulumix.Output[*GoogleAccount]{
+		OutputState: i.ToGoogleAccountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes authentication configuration that uses a Google account.
 type GoogleAccountOutput struct{ *pulumi.OutputState }
 
@@ -528,6 +601,12 @@ func (o GoogleAccountOutput) ToGoogleAccountPtrOutputWithContext(ctx context.Con
 	}).(GoogleAccountPtrOutput)
 }
 
+func (o GoogleAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleAccount] {
+	return pulumix.Output[GoogleAccount]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o GoogleAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleAccount) string { return v.Password }).(pulumi.StringOutput)
@@ -550,6 +629,12 @@ func (o GoogleAccountPtrOutput) ToGoogleAccountPtrOutput() GoogleAccountPtrOutpu
 
 func (o GoogleAccountPtrOutput) ToGoogleAccountPtrOutputWithContext(ctx context.Context) GoogleAccountPtrOutput {
 	return o
+}
+
+func (o GoogleAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleAccount] {
+	return pulumix.Output[*GoogleAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleAccountPtrOutput) Elem() GoogleAccountOutput {
@@ -603,6 +688,12 @@ func (o GoogleAccountResponseOutput) ToGoogleAccountResponseOutput() GoogleAccou
 
 func (o GoogleAccountResponseOutput) ToGoogleAccountResponseOutputWithContext(ctx context.Context) GoogleAccountResponseOutput {
 	return o
+}
+
+func (o GoogleAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleAccountResponse] {
+	return pulumix.Output[GoogleAccountResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
@@ -682,6 +773,12 @@ func (i ScanRunArgs) ToScanRunOutputWithContext(ctx context.Context) ScanRunOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ScanRunOutput)
 }
 
+func (i ScanRunArgs) ToOutput(ctx context.Context) pulumix.Output[ScanRun] {
+	return pulumix.Output[ScanRun]{
+		OutputState: i.ToScanRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScanRunArgs) ToScanRunPtrOutput() ScanRunPtrOutput {
 	return i.ToScanRunPtrOutputWithContext(context.Background())
 }
@@ -723,6 +820,12 @@ func (i *scanRunPtrType) ToScanRunPtrOutputWithContext(ctx context.Context) Scan
 	return pulumi.ToOutputWithContext(ctx, i).(ScanRunPtrOutput)
 }
 
+func (i *scanRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScanRun] {
+	return pulumix.Output[*ScanRun]{
+		OutputState: i.ToScanRunPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A ScanRun is a output-only resource representing an actual run of the scan.
 type ScanRunOutput struct{ *pulumi.OutputState }
 
@@ -746,6 +849,12 @@ func (o ScanRunOutput) ToScanRunPtrOutputWithContext(ctx context.Context) ScanRu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScanRun) *ScanRun {
 		return &v
 	}).(ScanRunPtrOutput)
+}
+
+func (o ScanRunOutput) ToOutput(ctx context.Context) pulumix.Output[ScanRun] {
+	return pulumix.Output[ScanRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
@@ -805,6 +914,12 @@ func (o ScanRunPtrOutput) ToScanRunPtrOutput() ScanRunPtrOutput {
 
 func (o ScanRunPtrOutput) ToScanRunPtrOutputWithContext(ctx context.Context) ScanRunPtrOutput {
 	return o
+}
+
+func (o ScanRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanRun] {
+	return pulumix.Output[*ScanRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScanRunPtrOutput) Elem() ScanRunOutput {
@@ -944,6 +1059,12 @@ func (o ScanRunResponseOutput) ToScanRunResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ScanRunResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScanRunResponse] {
+	return pulumix.Output[ScanRunResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
 func (o ScanRunResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ScanRunResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -1028,6 +1149,12 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
+func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScheduleArgs) ToSchedulePtrOutput() SchedulePtrOutput {
 	return i.ToSchedulePtrOutputWithContext(context.Background())
 }
@@ -1069,6 +1196,12 @@ func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
 }
 
+func (i *schedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
+	return pulumix.Output[*Schedule]{
+		OutputState: i.ToSchedulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Scan schedule configuration.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
@@ -1094,6 +1227,12 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	}).(SchedulePtrOutput)
 }
 
+func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The duration of time between executions in days.
 func (o ScheduleOutput) IntervalDurationDays() pulumi.IntOutput {
 	return o.ApplyT(func(v Schedule) int { return v.IntervalDurationDays }).(pulumi.IntOutput)
@@ -1116,6 +1255,12 @@ func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 
 func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
 	return o
+}
+
+func (o SchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
+	return pulumix.Output[*Schedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
@@ -1169,6 +1314,12 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutpu
 
 func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
 	return o
+}
+
+func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
+	return pulumix.Output[ScheduleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The duration of time between executions in days.

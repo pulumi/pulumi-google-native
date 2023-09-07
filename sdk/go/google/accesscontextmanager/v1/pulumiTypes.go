@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i ApiOperationArgs) ToApiOperationOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationOutput)
 }
 
+func (i ApiOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ApiOperation] {
+	return pulumix.Output[ApiOperation]{
+		OutputState: i.ToApiOperationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApiOperationArrayInput is an input type that accepts ApiOperationArray and ApiOperationArrayOutput values.
 // You can construct a concrete instance of `ApiOperationArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i ApiOperationArray) ToApiOperationArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationArrayOutput)
 }
 
+func (i ApiOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ApiOperation] {
+	return pulumix.Output[[]ApiOperation]{
+		OutputState: i.ToApiOperationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identification for an API Operation.
 type ApiOperationOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o ApiOperationOutput) ToApiOperationOutput() ApiOperationOutput {
 
 func (o ApiOperationOutput) ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput {
 	return o
+}
+
+func (o ApiOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ApiOperation] {
+	return pulumix.Output[ApiOperation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`.
@@ -114,6 +133,12 @@ func (o ApiOperationArrayOutput) ToApiOperationArrayOutput() ApiOperationArrayOu
 
 func (o ApiOperationArrayOutput) ToApiOperationArrayOutputWithContext(ctx context.Context) ApiOperationArrayOutput {
 	return o
+}
+
+func (o ApiOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiOperation] {
+	return pulumix.Output[[]ApiOperation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiOperationArrayOutput) Index(i pulumi.IntInput) ApiOperationOutput {
@@ -145,6 +170,12 @@ func (o ApiOperationResponseOutput) ToApiOperationResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o ApiOperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiOperationResponse] {
+	return pulumix.Output[ApiOperationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`.
 func (o ApiOperationResponseOutput) MethodSelectors() MethodSelectorResponseArrayOutput {
 	return o.ApplyT(func(v ApiOperationResponse) []MethodSelectorResponse { return v.MethodSelectors }).(MethodSelectorResponseArrayOutput)
@@ -167,6 +198,12 @@ func (o ApiOperationResponseArrayOutput) ToApiOperationResponseArrayOutput() Api
 
 func (o ApiOperationResponseArrayOutput) ToApiOperationResponseArrayOutputWithContext(ctx context.Context) ApiOperationResponseArrayOutput {
 	return o
+}
+
+func (o ApiOperationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiOperationResponse] {
+	return pulumix.Output[[]ApiOperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiOperationResponseArrayOutput) Index(i pulumi.IntInput) ApiOperationResponseOutput {
@@ -214,6 +251,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -239,6 +282,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -252,6 +301,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -276,6 +331,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -307,6 +368,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -329,6 +396,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -376,6 +449,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -401,6 +480,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -414,6 +499,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -438,6 +529,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -469,6 +566,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -491,6 +594,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -538,6 +647,12 @@ func (i BasicLevelArgs) ToBasicLevelOutputWithContext(ctx context.Context) Basic
 	return pulumi.ToOutputWithContext(ctx, i).(BasicLevelOutput)
 }
 
+func (i BasicLevelArgs) ToOutput(ctx context.Context) pulumix.Output[BasicLevel] {
+	return pulumix.Output[BasicLevel]{
+		OutputState: i.ToBasicLevelOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BasicLevelArgs) ToBasicLevelPtrOutput() BasicLevelPtrOutput {
 	return i.ToBasicLevelPtrOutputWithContext(context.Background())
 }
@@ -579,6 +694,12 @@ func (i *basicLevelPtrType) ToBasicLevelPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BasicLevelPtrOutput)
 }
 
+func (i *basicLevelPtrType) ToOutput(ctx context.Context) pulumix.Output[*BasicLevel] {
+	return pulumix.Output[*BasicLevel]{
+		OutputState: i.ToBasicLevelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // `BasicLevel` is an `AccessLevel` using a set of recommended features.
 type BasicLevelOutput struct{ *pulumi.OutputState }
 
@@ -604,6 +725,12 @@ func (o BasicLevelOutput) ToBasicLevelPtrOutputWithContext(ctx context.Context) 
 	}).(BasicLevelPtrOutput)
 }
 
+func (o BasicLevelOutput) ToOutput(ctx context.Context) pulumix.Output[BasicLevel] {
+	return pulumix.Output[BasicLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 func (o BasicLevelOutput) CombiningFunction() BasicLevelCombiningFunctionPtrOutput {
 	return o.ApplyT(func(v BasicLevel) *BasicLevelCombiningFunction { return v.CombiningFunction }).(BasicLevelCombiningFunctionPtrOutput)
@@ -626,6 +753,12 @@ func (o BasicLevelPtrOutput) ToBasicLevelPtrOutput() BasicLevelPtrOutput {
 
 func (o BasicLevelPtrOutput) ToBasicLevelPtrOutputWithContext(ctx context.Context) BasicLevelPtrOutput {
 	return o
+}
+
+func (o BasicLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicLevel] {
+	return pulumix.Output[*BasicLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicLevelPtrOutput) Elem() BasicLevelOutput {
@@ -681,6 +814,12 @@ func (o BasicLevelResponseOutput) ToBasicLevelResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o BasicLevelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BasicLevelResponse] {
+	return pulumix.Output[BasicLevelResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 func (o BasicLevelResponseOutput) CombiningFunction() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicLevelResponse) string { return v.CombiningFunction }).(pulumi.StringOutput)
@@ -734,6 +873,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -759,6 +904,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -772,6 +923,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -801,6 +958,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -834,6 +997,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -861,6 +1030,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -924,6 +1099,12 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
 }
 
+func (i ConditionArgs) ToOutput(ctx context.Context) pulumix.Output[Condition] {
+	return pulumix.Output[Condition]{
+		OutputState: i.ToConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
 // You can construct a concrete instance of `ConditionArrayInput` via:
 //
@@ -949,6 +1130,12 @@ func (i ConditionArray) ToConditionArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionArrayOutput)
 }
 
+func (i ConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
+	return pulumix.Output[[]Condition]{
+		OutputState: i.ToConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
 type ConditionOutput struct{ *pulumi.OutputState }
 
@@ -962,6 +1149,12 @@ func (o ConditionOutput) ToConditionOutput() ConditionOutput {
 
 func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
 	return o
+}
+
+func (o ConditionOutput) ToOutput(ctx context.Context) pulumix.Output[Condition] {
+	return pulumix.Output[Condition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed.
@@ -1008,6 +1201,12 @@ func (o ConditionArrayOutput) ToConditionArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
+	return pulumix.Output[[]Condition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Condition {
 		return vs[0].([]Condition)[vs[1].(int)]
@@ -1043,6 +1242,12 @@ func (o ConditionResponseOutput) ToConditionResponseOutput() ConditionResponseOu
 
 func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx context.Context) ConditionResponseOutput {
 	return o
+}
+
+func (o ConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionResponse] {
+	return pulumix.Output[ConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed.
@@ -1089,6 +1294,12 @@ func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutputWithContext(
 	return o
 }
 
+func (o ConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionResponse] {
+	return pulumix.Output[[]ConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionResponse {
 		return vs[0].([]ConditionResponse)[vs[1].(int)]
@@ -1128,6 +1339,12 @@ func (i CustomLevelArgs) ToCustomLevelOutput() CustomLevelOutput {
 
 func (i CustomLevelArgs) ToCustomLevelOutputWithContext(ctx context.Context) CustomLevelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLevelOutput)
+}
+
+func (i CustomLevelArgs) ToOutput(ctx context.Context) pulumix.Output[CustomLevel] {
+	return pulumix.Output[CustomLevel]{
+		OutputState: i.ToCustomLevelOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CustomLevelArgs) ToCustomLevelPtrOutput() CustomLevelPtrOutput {
@@ -1171,6 +1388,12 @@ func (i *customLevelPtrType) ToCustomLevelPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLevelPtrOutput)
 }
 
+func (i *customLevelPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomLevel] {
+	return pulumix.Output[*CustomLevel]{
+		OutputState: i.ToCustomLevelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
 type CustomLevelOutput struct{ *pulumi.OutputState }
 
@@ -1196,6 +1419,12 @@ func (o CustomLevelOutput) ToCustomLevelPtrOutputWithContext(ctx context.Context
 	}).(CustomLevelPtrOutput)
 }
 
+func (o CustomLevelOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLevel] {
+	return pulumix.Output[CustomLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A Cloud CEL expression evaluating to a boolean.
 func (o CustomLevelOutput) Expr() ExprOutput {
 	return o.ApplyT(func(v CustomLevel) Expr { return v.Expr }).(ExprOutput)
@@ -1213,6 +1442,12 @@ func (o CustomLevelPtrOutput) ToCustomLevelPtrOutput() CustomLevelPtrOutput {
 
 func (o CustomLevelPtrOutput) ToCustomLevelPtrOutputWithContext(ctx context.Context) CustomLevelPtrOutput {
 	return o
+}
+
+func (o CustomLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomLevel] {
+	return pulumix.Output[*CustomLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomLevelPtrOutput) Elem() CustomLevelOutput {
@@ -1254,6 +1489,12 @@ func (o CustomLevelResponseOutput) ToCustomLevelResponseOutput() CustomLevelResp
 
 func (o CustomLevelResponseOutput) ToCustomLevelResponseOutputWithContext(ctx context.Context) CustomLevelResponseOutput {
 	return o
+}
+
+func (o CustomLevelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLevelResponse] {
+	return pulumix.Output[CustomLevelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A Cloud CEL expression evaluating to a boolean.
@@ -1316,6 +1557,12 @@ func (i DevicePolicyArgs) ToDevicePolicyOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyOutput)
 }
 
+func (i DevicePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[DevicePolicy] {
+	return pulumix.Output[DevicePolicy]{
+		OutputState: i.ToDevicePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DevicePolicyArgs) ToDevicePolicyPtrOutput() DevicePolicyPtrOutput {
 	return i.ToDevicePolicyPtrOutputWithContext(context.Background())
 }
@@ -1357,6 +1604,12 @@ func (i *devicePolicyPtrType) ToDevicePolicyPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyPtrOutput)
 }
 
+func (i *devicePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicy] {
+	return pulumix.Output[*DevicePolicy]{
+		OutputState: i.ToDevicePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
 type DevicePolicyOutput struct{ *pulumi.OutputState }
 
@@ -1380,6 +1633,12 @@ func (o DevicePolicyOutput) ToDevicePolicyPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevicePolicy) *DevicePolicy {
 		return &v
 	}).(DevicePolicyPtrOutput)
+}
+
+func (o DevicePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[DevicePolicy] {
+	return pulumix.Output[DevicePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed device management levels, an empty list allows all management levels.
@@ -1426,6 +1685,12 @@ func (o DevicePolicyPtrOutput) ToDevicePolicyPtrOutput() DevicePolicyPtrOutput {
 
 func (o DevicePolicyPtrOutput) ToDevicePolicyPtrOutputWithContext(ctx context.Context) DevicePolicyPtrOutput {
 	return o
+}
+
+func (o DevicePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicy] {
+	return pulumix.Output[*DevicePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePolicyPtrOutput) Elem() DevicePolicyOutput {
@@ -1529,6 +1794,12 @@ func (o DevicePolicyResponseOutput) ToDevicePolicyResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o DevicePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DevicePolicyResponse] {
+	return pulumix.Output[DevicePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Allowed device management levels, an empty list allows all management levels.
 func (o DevicePolicyResponseOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DevicePolicyResponse) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
@@ -1598,6 +1869,12 @@ func (i EgressFromArgs) ToEgressFromOutputWithContext(ctx context.Context) Egres
 	return pulumi.ToOutputWithContext(ctx, i).(EgressFromOutput)
 }
 
+func (i EgressFromArgs) ToOutput(ctx context.Context) pulumix.Output[EgressFrom] {
+	return pulumix.Output[EgressFrom]{
+		OutputState: i.ToEgressFromOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EgressFromArgs) ToEgressFromPtrOutput() EgressFromPtrOutput {
 	return i.ToEgressFromPtrOutputWithContext(context.Background())
 }
@@ -1639,6 +1916,12 @@ func (i *egressFromPtrType) ToEgressFromPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EgressFromPtrOutput)
 }
 
+func (i *egressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*EgressFrom] {
+	return pulumix.Output[*EgressFrom]{
+		OutputState: i.ToEgressFromPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromOutput struct{ *pulumi.OutputState }
 
@@ -1664,6 +1947,12 @@ func (o EgressFromOutput) ToEgressFromPtrOutputWithContext(ctx context.Context) 
 	}).(EgressFromPtrOutput)
 }
 
+func (o EgressFromOutput) ToOutput(ctx context.Context) pulumix.Output[EgressFrom] {
+	return pulumix.Output[EgressFrom]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
 func (o EgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
@@ -1686,6 +1975,12 @@ func (o EgressFromPtrOutput) ToEgressFromPtrOutput() EgressFromPtrOutput {
 
 func (o EgressFromPtrOutput) ToEgressFromPtrOutputWithContext(ctx context.Context) EgressFromPtrOutput {
 	return o
+}
+
+func (o EgressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EgressFrom] {
+	return pulumix.Output[*EgressFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EgressFromPtrOutput) Elem() EgressFromOutput {
@@ -1741,6 +2036,12 @@ func (o EgressFromResponseOutput) ToEgressFromResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o EgressFromResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EgressFromResponse] {
+	return pulumix.Output[EgressFromResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
 func (o EgressFromResponseOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EgressFromResponse) []string { return v.Identities }).(pulumi.StringArrayOutput)
@@ -1790,6 +2091,12 @@ func (i EgressPolicyArgs) ToEgressPolicyOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EgressPolicyOutput)
 }
 
+func (i EgressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[EgressPolicy] {
+	return pulumix.Output[EgressPolicy]{
+		OutputState: i.ToEgressPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EgressPolicyArrayInput is an input type that accepts EgressPolicyArray and EgressPolicyArrayOutput values.
 // You can construct a concrete instance of `EgressPolicyArrayInput` via:
 //
@@ -1815,6 +2122,12 @@ func (i EgressPolicyArray) ToEgressPolicyArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EgressPolicyArrayOutput)
 }
 
+func (i EgressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]EgressPolicy] {
+	return pulumix.Output[[]EgressPolicy]{
+		OutputState: i.ToEgressPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Policy for egress from perimeter. EgressPolicies match requests based on `egress_from` and `egress_to` stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to` stanzas must be matched. If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an EgressPolicy can be used to allow VMs on networks within the ServicePerimeter to access a defined set of projects outside the perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query against a BigQuery dataset). EgressPolicies are concerned with the *resources* that a request relates as well as the API services and API actions being used. They do not related to the direction of data movement. More detailed documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.
 type EgressPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1828,6 +2141,12 @@ func (o EgressPolicyOutput) ToEgressPolicyOutput() EgressPolicyOutput {
 
 func (o EgressPolicyOutput) ToEgressPolicyOutputWithContext(ctx context.Context) EgressPolicyOutput {
 	return o
+}
+
+func (o EgressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[EgressPolicy] {
+	return pulumix.Output[EgressPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines conditions on the source of a request causing this EgressPolicy to apply.
@@ -1852,6 +2171,12 @@ func (o EgressPolicyArrayOutput) ToEgressPolicyArrayOutput() EgressPolicyArrayOu
 
 func (o EgressPolicyArrayOutput) ToEgressPolicyArrayOutputWithContext(ctx context.Context) EgressPolicyArrayOutput {
 	return o
+}
+
+func (o EgressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EgressPolicy] {
+	return pulumix.Output[[]EgressPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EgressPolicyArrayOutput) Index(i pulumi.IntInput) EgressPolicyOutput {
@@ -1883,6 +2208,12 @@ func (o EgressPolicyResponseOutput) ToEgressPolicyResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o EgressPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EgressPolicyResponse] {
+	return pulumix.Output[EgressPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines conditions on the source of a request causing this EgressPolicy to apply.
 func (o EgressPolicyResponseOutput) EgressFrom() EgressFromResponseOutput {
 	return o.ApplyT(func(v EgressPolicyResponse) EgressFromResponse { return v.EgressFrom }).(EgressFromResponseOutput)
@@ -1905,6 +2236,12 @@ func (o EgressPolicyResponseArrayOutput) ToEgressPolicyResponseArrayOutput() Egr
 
 func (o EgressPolicyResponseArrayOutput) ToEgressPolicyResponseArrayOutputWithContext(ctx context.Context) EgressPolicyResponseArrayOutput {
 	return o
+}
+
+func (o EgressPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EgressPolicyResponse] {
+	return pulumix.Output[[]EgressPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EgressPolicyResponseArrayOutput) Index(i pulumi.IntInput) EgressPolicyResponseOutput {
@@ -1956,6 +2293,12 @@ func (i EgressToArgs) ToEgressToOutputWithContext(ctx context.Context) EgressToO
 	return pulumi.ToOutputWithContext(ctx, i).(EgressToOutput)
 }
 
+func (i EgressToArgs) ToOutput(ctx context.Context) pulumix.Output[EgressTo] {
+	return pulumix.Output[EgressTo]{
+		OutputState: i.ToEgressToOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EgressToArgs) ToEgressToPtrOutput() EgressToPtrOutput {
 	return i.ToEgressToPtrOutputWithContext(context.Background())
 }
@@ -1997,6 +2340,12 @@ func (i *egressToPtrType) ToEgressToPtrOutputWithContext(ctx context.Context) Eg
 	return pulumi.ToOutputWithContext(ctx, i).(EgressToPtrOutput)
 }
 
+func (i *egressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*EgressTo] {
+	return pulumix.Output[*EgressTo]{
+		OutputState: i.ToEgressToPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToOutput struct{ *pulumi.OutputState }
 
@@ -2020,6 +2369,12 @@ func (o EgressToOutput) ToEgressToPtrOutputWithContext(ctx context.Context) Egre
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EgressTo) *EgressTo {
 		return &v
 	}).(EgressToPtrOutput)
+}
+
+func (o EgressToOutput) ToOutput(ctx context.Context) pulumix.Output[EgressTo] {
+	return pulumix.Output[EgressTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
@@ -2049,6 +2404,12 @@ func (o EgressToPtrOutput) ToEgressToPtrOutput() EgressToPtrOutput {
 
 func (o EgressToPtrOutput) ToEgressToPtrOutputWithContext(ctx context.Context) EgressToPtrOutput {
 	return o
+}
+
+func (o EgressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EgressTo] {
+	return pulumix.Output[*EgressTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EgressToPtrOutput) Elem() EgressToOutput {
@@ -2116,6 +2477,12 @@ func (o EgressToResponseOutput) ToEgressToResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o EgressToResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EgressToResponse] {
+	return pulumix.Output[EgressToResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
 func (o EgressToResponseOutput) ExternalResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EgressToResponse) []string { return v.ExternalResources }).(pulumi.StringArrayOutput)
@@ -2178,6 +2545,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -2219,6 +2592,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -2242,6 +2621,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2276,6 +2661,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -2355,6 +2746,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -2418,6 +2815,12 @@ func (i IngressFromArgs) ToIngressFromOutputWithContext(ctx context.Context) Ing
 	return pulumi.ToOutputWithContext(ctx, i).(IngressFromOutput)
 }
 
+func (i IngressFromArgs) ToOutput(ctx context.Context) pulumix.Output[IngressFrom] {
+	return pulumix.Output[IngressFrom]{
+		OutputState: i.ToIngressFromOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IngressFromArgs) ToIngressFromPtrOutput() IngressFromPtrOutput {
 	return i.ToIngressFromPtrOutputWithContext(context.Background())
 }
@@ -2459,6 +2862,12 @@ func (i *ingressFromPtrType) ToIngressFromPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IngressFromPtrOutput)
 }
 
+func (i *ingressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*IngressFrom] {
+	return pulumix.Output[*IngressFrom]{
+		OutputState: i.ToIngressFromPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFromOutput struct{ *pulumi.OutputState }
 
@@ -2482,6 +2891,12 @@ func (o IngressFromOutput) ToIngressFromPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngressFrom) *IngressFrom {
 		return &v
 	}).(IngressFromPtrOutput)
+}
+
+func (o IngressFromOutput) ToOutput(ctx context.Context) pulumix.Output[IngressFrom] {
+	return pulumix.Output[IngressFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
@@ -2511,6 +2926,12 @@ func (o IngressFromPtrOutput) ToIngressFromPtrOutput() IngressFromPtrOutput {
 
 func (o IngressFromPtrOutput) ToIngressFromPtrOutputWithContext(ctx context.Context) IngressFromPtrOutput {
 	return o
+}
+
+func (o IngressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IngressFrom] {
+	return pulumix.Output[*IngressFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressFromPtrOutput) Elem() IngressFromOutput {
@@ -2578,6 +2999,12 @@ func (o IngressFromResponseOutput) ToIngressFromResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o IngressFromResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngressFromResponse] {
+	return pulumix.Output[IngressFromResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
 func (o IngressFromResponseOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IngressFromResponse) []string { return v.Identities }).(pulumi.StringArrayOutput)
@@ -2632,6 +3059,12 @@ func (i IngressPolicyArgs) ToIngressPolicyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IngressPolicyOutput)
 }
 
+func (i IngressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[IngressPolicy] {
+	return pulumix.Output[IngressPolicy]{
+		OutputState: i.ToIngressPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IngressPolicyArrayInput is an input type that accepts IngressPolicyArray and IngressPolicyArrayOutput values.
 // You can construct a concrete instance of `IngressPolicyArrayInput` via:
 //
@@ -2657,6 +3090,12 @@ func (i IngressPolicyArray) ToIngressPolicyArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IngressPolicyArrayOutput)
 }
 
+func (i IngressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]IngressPolicy] {
+	return pulumix.Output[[]IngressPolicy]{
+		OutputState: i.ToIngressPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Policy for ingress into ServicePerimeter. IngressPolicies match requests based on `ingress_from` and `ingress_to` stanzas. For an ingress policy to match, both the `ingress_from` and `ingress_to` stanzas must be matched. If an IngressPolicy matches a request, the request is allowed through the perimeter boundary from outside the perimeter. For example, access from the internet can be allowed either based on an AccessLevel or, for traffic hosted on Google Cloud, the project of the source network. For access from private networks, using the project of the hosting network is required. Individual ingress policies can be limited by restricting which services and/or actions they match using the `ingress_to` field.
 type IngressPolicyOutput struct{ *pulumi.OutputState }
 
@@ -2670,6 +3109,12 @@ func (o IngressPolicyOutput) ToIngressPolicyOutput() IngressPolicyOutput {
 
 func (o IngressPolicyOutput) ToIngressPolicyOutputWithContext(ctx context.Context) IngressPolicyOutput {
 	return o
+}
+
+func (o IngressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[IngressPolicy] {
+	return pulumix.Output[IngressPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines the conditions on the source of a request causing this IngressPolicy to apply.
@@ -2694,6 +3139,12 @@ func (o IngressPolicyArrayOutput) ToIngressPolicyArrayOutput() IngressPolicyArra
 
 func (o IngressPolicyArrayOutput) ToIngressPolicyArrayOutputWithContext(ctx context.Context) IngressPolicyArrayOutput {
 	return o
+}
+
+func (o IngressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngressPolicy] {
+	return pulumix.Output[[]IngressPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressPolicyArrayOutput) Index(i pulumi.IntInput) IngressPolicyOutput {
@@ -2725,6 +3176,12 @@ func (o IngressPolicyResponseOutput) ToIngressPolicyResponseOutputWithContext(ct
 	return o
 }
 
+func (o IngressPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngressPolicyResponse] {
+	return pulumix.Output[IngressPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Defines the conditions on the source of a request causing this IngressPolicy to apply.
 func (o IngressPolicyResponseOutput) IngressFrom() IngressFromResponseOutput {
 	return o.ApplyT(func(v IngressPolicyResponse) IngressFromResponse { return v.IngressFrom }).(IngressFromResponseOutput)
@@ -2747,6 +3204,12 @@ func (o IngressPolicyResponseArrayOutput) ToIngressPolicyResponseArrayOutput() I
 
 func (o IngressPolicyResponseArrayOutput) ToIngressPolicyResponseArrayOutputWithContext(ctx context.Context) IngressPolicyResponseArrayOutput {
 	return o
+}
+
+func (o IngressPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngressPolicyResponse] {
+	return pulumix.Output[[]IngressPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressPolicyResponseArrayOutput) Index(i pulumi.IntInput) IngressPolicyResponseOutput {
@@ -2794,6 +3257,12 @@ func (i IngressSourceArgs) ToIngressSourceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IngressSourceOutput)
 }
 
+func (i IngressSourceArgs) ToOutput(ctx context.Context) pulumix.Output[IngressSource] {
+	return pulumix.Output[IngressSource]{
+		OutputState: i.ToIngressSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IngressSourceArrayInput is an input type that accepts IngressSourceArray and IngressSourceArrayOutput values.
 // You can construct a concrete instance of `IngressSourceArrayInput` via:
 //
@@ -2819,6 +3288,12 @@ func (i IngressSourceArray) ToIngressSourceArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IngressSourceArrayOutput)
 }
 
+func (i IngressSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]IngressSource] {
+	return pulumix.Output[[]IngressSource]{
+		OutputState: i.ToIngressSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The source that IngressPolicy authorizes access from.
 type IngressSourceOutput struct{ *pulumi.OutputState }
 
@@ -2832,6 +3307,12 @@ func (o IngressSourceOutput) ToIngressSourceOutput() IngressSourceOutput {
 
 func (o IngressSourceOutput) ToIngressSourceOutputWithContext(ctx context.Context) IngressSourceOutput {
 	return o
+}
+
+func (o IngressSourceOutput) ToOutput(ctx context.Context) pulumix.Output[IngressSource] {
+	return pulumix.Output[IngressSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
@@ -2856,6 +3337,12 @@ func (o IngressSourceArrayOutput) ToIngressSourceArrayOutput() IngressSourceArra
 
 func (o IngressSourceArrayOutput) ToIngressSourceArrayOutputWithContext(ctx context.Context) IngressSourceArrayOutput {
 	return o
+}
+
+func (o IngressSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngressSource] {
+	return pulumix.Output[[]IngressSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressSourceArrayOutput) Index(i pulumi.IntInput) IngressSourceOutput {
@@ -2887,6 +3374,12 @@ func (o IngressSourceResponseOutput) ToIngressSourceResponseOutputWithContext(ct
 	return o
 }
 
+func (o IngressSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngressSourceResponse] {
+	return pulumix.Output[IngressSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 func (o IngressSourceResponseOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v IngressSourceResponse) string { return v.AccessLevel }).(pulumi.StringOutput)
@@ -2909,6 +3402,12 @@ func (o IngressSourceResponseArrayOutput) ToIngressSourceResponseArrayOutput() I
 
 func (o IngressSourceResponseArrayOutput) ToIngressSourceResponseArrayOutputWithContext(ctx context.Context) IngressSourceResponseArrayOutput {
 	return o
+}
+
+func (o IngressSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngressSourceResponse] {
+	return pulumix.Output[[]IngressSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressSourceResponseArrayOutput) Index(i pulumi.IntInput) IngressSourceResponseOutput {
@@ -2956,6 +3455,12 @@ func (i IngressToArgs) ToIngressToOutputWithContext(ctx context.Context) Ingress
 	return pulumi.ToOutputWithContext(ctx, i).(IngressToOutput)
 }
 
+func (i IngressToArgs) ToOutput(ctx context.Context) pulumix.Output[IngressTo] {
+	return pulumix.Output[IngressTo]{
+		OutputState: i.ToIngressToOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IngressToArgs) ToIngressToPtrOutput() IngressToPtrOutput {
 	return i.ToIngressToPtrOutputWithContext(context.Background())
 }
@@ -2997,6 +3502,12 @@ func (i *ingressToPtrType) ToIngressToPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IngressToPtrOutput)
 }
 
+func (i *ingressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*IngressTo] {
+	return pulumix.Output[*IngressTo]{
+		OutputState: i.ToIngressToPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressToOutput struct{ *pulumi.OutputState }
 
@@ -3022,6 +3533,12 @@ func (o IngressToOutput) ToIngressToPtrOutputWithContext(ctx context.Context) In
 	}).(IngressToPtrOutput)
 }
 
+func (o IngressToOutput) ToOutput(ctx context.Context) pulumix.Output[IngressTo] {
+	return pulumix.Output[IngressTo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 func (o IngressToOutput) Operations() ApiOperationArrayOutput {
 	return o.ApplyT(func(v IngressTo) []ApiOperation { return v.Operations }).(ApiOperationArrayOutput)
@@ -3044,6 +3561,12 @@ func (o IngressToPtrOutput) ToIngressToPtrOutput() IngressToPtrOutput {
 
 func (o IngressToPtrOutput) ToIngressToPtrOutputWithContext(ctx context.Context) IngressToPtrOutput {
 	return o
+}
+
+func (o IngressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IngressTo] {
+	return pulumix.Output[*IngressTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressToPtrOutput) Elem() IngressToOutput {
@@ -3099,6 +3622,12 @@ func (o IngressToResponseOutput) ToIngressToResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o IngressToResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngressToResponse] {
+	return pulumix.Output[IngressToResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 func (o IngressToResponseOutput) Operations() ApiOperationResponseArrayOutput {
 	return o.ApplyT(func(v IngressToResponse) []ApiOperationResponse { return v.Operations }).(ApiOperationResponseArrayOutput)
@@ -3148,6 +3677,12 @@ func (i MethodSelectorArgs) ToMethodSelectorOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MethodSelectorOutput)
 }
 
+func (i MethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[MethodSelector] {
+	return pulumix.Output[MethodSelector]{
+		OutputState: i.ToMethodSelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MethodSelectorArrayInput is an input type that accepts MethodSelectorArray and MethodSelectorArrayOutput values.
 // You can construct a concrete instance of `MethodSelectorArrayInput` via:
 //
@@ -3173,6 +3708,12 @@ func (i MethodSelectorArray) ToMethodSelectorArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MethodSelectorArrayOutput)
 }
 
+func (i MethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]MethodSelector] {
+	return pulumix.Output[[]MethodSelector]{
+		OutputState: i.ToMethodSelectorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An allowed method or permission of a service specified in ApiOperation.
 type MethodSelectorOutput struct{ *pulumi.OutputState }
 
@@ -3186,6 +3727,12 @@ func (o MethodSelectorOutput) ToMethodSelectorOutput() MethodSelectorOutput {
 
 func (o MethodSelectorOutput) ToMethodSelectorOutputWithContext(ctx context.Context) MethodSelectorOutput {
 	return o
+}
+
+func (o MethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[MethodSelector] {
+	return pulumix.Output[MethodSelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.
@@ -3210,6 +3757,12 @@ func (o MethodSelectorArrayOutput) ToMethodSelectorArrayOutput() MethodSelectorA
 
 func (o MethodSelectorArrayOutput) ToMethodSelectorArrayOutputWithContext(ctx context.Context) MethodSelectorArrayOutput {
 	return o
+}
+
+func (o MethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MethodSelector] {
+	return pulumix.Output[[]MethodSelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MethodSelectorArrayOutput) Index(i pulumi.IntInput) MethodSelectorOutput {
@@ -3241,6 +3794,12 @@ func (o MethodSelectorResponseOutput) ToMethodSelectorResponseOutputWithContext(
 	return o
 }
 
+func (o MethodSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MethodSelectorResponse] {
+	return pulumix.Output[MethodSelectorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.
 func (o MethodSelectorResponseOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v MethodSelectorResponse) string { return v.Method }).(pulumi.StringOutput)
@@ -3263,6 +3822,12 @@ func (o MethodSelectorResponseArrayOutput) ToMethodSelectorResponseArrayOutput()
 
 func (o MethodSelectorResponseArrayOutput) ToMethodSelectorResponseArrayOutputWithContext(ctx context.Context) MethodSelectorResponseArrayOutput {
 	return o
+}
+
+func (o MethodSelectorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MethodSelectorResponse] {
+	return pulumix.Output[[]MethodSelectorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MethodSelectorResponseArrayOutput) Index(i pulumi.IntInput) MethodSelectorResponseOutput {
@@ -3314,6 +3879,12 @@ func (i OsConstraintArgs) ToOsConstraintOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OsConstraintOutput)
 }
 
+func (i OsConstraintArgs) ToOutput(ctx context.Context) pulumix.Output[OsConstraint] {
+	return pulumix.Output[OsConstraint]{
+		OutputState: i.ToOsConstraintOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OsConstraintArrayInput is an input type that accepts OsConstraintArray and OsConstraintArrayOutput values.
 // You can construct a concrete instance of `OsConstraintArrayInput` via:
 //
@@ -3339,6 +3910,12 @@ func (i OsConstraintArray) ToOsConstraintArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OsConstraintArrayOutput)
 }
 
+func (i OsConstraintArray) ToOutput(ctx context.Context) pulumix.Output[[]OsConstraint] {
+	return pulumix.Output[[]OsConstraint]{
+		OutputState: i.ToOsConstraintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A restriction on the OS type and version of devices making requests.
 type OsConstraintOutput struct{ *pulumi.OutputState }
 
@@ -3352,6 +3929,12 @@ func (o OsConstraintOutput) ToOsConstraintOutput() OsConstraintOutput {
 
 func (o OsConstraintOutput) ToOsConstraintOutputWithContext(ctx context.Context) OsConstraintOutput {
 	return o
+}
+
+func (o OsConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[OsConstraint] {
+	return pulumix.Output[OsConstraint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
@@ -3381,6 +3964,12 @@ func (o OsConstraintArrayOutput) ToOsConstraintArrayOutput() OsConstraintArrayOu
 
 func (o OsConstraintArrayOutput) ToOsConstraintArrayOutputWithContext(ctx context.Context) OsConstraintArrayOutput {
 	return o
+}
+
+func (o OsConstraintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsConstraint] {
+	return pulumix.Output[[]OsConstraint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OsConstraintArrayOutput) Index(i pulumi.IntInput) OsConstraintOutput {
@@ -3414,6 +4003,12 @@ func (o OsConstraintResponseOutput) ToOsConstraintResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o OsConstraintResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OsConstraintResponse] {
+	return pulumix.Output[OsConstraintResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 func (o OsConstraintResponseOutput) MinimumVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v OsConstraintResponse) string { return v.MinimumVersion }).(pulumi.StringOutput)
@@ -3441,6 +4036,12 @@ func (o OsConstraintResponseArrayOutput) ToOsConstraintResponseArrayOutput() OsC
 
 func (o OsConstraintResponseArrayOutput) ToOsConstraintResponseArrayOutputWithContext(ctx context.Context) OsConstraintResponseArrayOutput {
 	return o
+}
+
+func (o OsConstraintResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OsConstraintResponse] {
+	return pulumix.Output[[]OsConstraintResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OsConstraintResponseArrayOutput) Index(i pulumi.IntInput) OsConstraintResponseOutput {
@@ -3504,6 +4105,12 @@ func (i ServicePerimeterConfigArgs) ToServicePerimeterConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterConfigOutput)
 }
 
+func (i ServicePerimeterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterConfig] {
+	return pulumix.Output[ServicePerimeterConfig]{
+		OutputState: i.ToServicePerimeterConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServicePerimeterConfigArgs) ToServicePerimeterConfigPtrOutput() ServicePerimeterConfigPtrOutput {
 	return i.ToServicePerimeterConfigPtrOutputWithContext(context.Background())
 }
@@ -3545,6 +4152,12 @@ func (i *servicePerimeterConfigPtrType) ToServicePerimeterConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterConfigPtrOutput)
 }
 
+func (i *servicePerimeterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterConfig] {
+	return pulumix.Output[*ServicePerimeterConfig]{
+		OutputState: i.ToServicePerimeterConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // `ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service Perimeter configuration.
 type ServicePerimeterConfigOutput struct{ *pulumi.OutputState }
 
@@ -3568,6 +4181,12 @@ func (o ServicePerimeterConfigOutput) ToServicePerimeterConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterConfig) *ServicePerimeterConfig {
 		return &v
 	}).(ServicePerimeterConfigPtrOutput)
+}
+
+func (o ServicePerimeterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterConfig] {
+	return pulumix.Output[ServicePerimeterConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
@@ -3612,6 +4231,12 @@ func (o ServicePerimeterConfigPtrOutput) ToServicePerimeterConfigPtrOutput() Ser
 
 func (o ServicePerimeterConfigPtrOutput) ToServicePerimeterConfigPtrOutputWithContext(ctx context.Context) ServicePerimeterConfigPtrOutput {
 	return o
+}
+
+func (o ServicePerimeterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterConfig] {
+	return pulumix.Output[*ServicePerimeterConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePerimeterConfigPtrOutput) Elem() ServicePerimeterConfigOutput {
@@ -3715,6 +4340,12 @@ func (o ServicePerimeterConfigResponseOutput) ToServicePerimeterConfigResponseOu
 	return o
 }
 
+func (o ServicePerimeterConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterConfigResponse] {
+	return pulumix.Output[ServicePerimeterConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
 func (o ServicePerimeterConfigResponseOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterConfigResponse) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
@@ -3784,6 +4415,12 @@ func (i VpcAccessibleServicesArgs) ToVpcAccessibleServicesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessibleServicesOutput)
 }
 
+func (i VpcAccessibleServicesArgs) ToOutput(ctx context.Context) pulumix.Output[VpcAccessibleServices] {
+	return pulumix.Output[VpcAccessibleServices]{
+		OutputState: i.ToVpcAccessibleServicesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VpcAccessibleServicesArgs) ToVpcAccessibleServicesPtrOutput() VpcAccessibleServicesPtrOutput {
 	return i.ToVpcAccessibleServicesPtrOutputWithContext(context.Background())
 }
@@ -3825,6 +4462,12 @@ func (i *vpcAccessibleServicesPtrType) ToVpcAccessibleServicesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessibleServicesPtrOutput)
 }
 
+func (i *vpcAccessibleServicesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VpcAccessibleServices] {
+	return pulumix.Output[*VpcAccessibleServices]{
+		OutputState: i.ToVpcAccessibleServicesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies how APIs are allowed to communicate within the Service Perimeter.
 type VpcAccessibleServicesOutput struct{ *pulumi.OutputState }
 
@@ -3850,6 +4493,12 @@ func (o VpcAccessibleServicesOutput) ToVpcAccessibleServicesPtrOutputWithContext
 	}).(VpcAccessibleServicesPtrOutput)
 }
 
+func (o VpcAccessibleServicesOutput) ToOutput(ctx context.Context) pulumix.Output[VpcAccessibleServices] {
+	return pulumix.Output[VpcAccessibleServices]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.
 func (o VpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
@@ -3872,6 +4521,12 @@ func (o VpcAccessibleServicesPtrOutput) ToVpcAccessibleServicesPtrOutput() VpcAc
 
 func (o VpcAccessibleServicesPtrOutput) ToVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) VpcAccessibleServicesPtrOutput {
 	return o
+}
+
+func (o VpcAccessibleServicesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcAccessibleServices] {
+	return pulumix.Output[*VpcAccessibleServices]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcAccessibleServicesPtrOutput) Elem() VpcAccessibleServicesOutput {
@@ -3925,6 +4580,12 @@ func (o VpcAccessibleServicesResponseOutput) ToVpcAccessibleServicesResponseOutp
 
 func (o VpcAccessibleServicesResponseOutput) ToVpcAccessibleServicesResponseOutputWithContext(ctx context.Context) VpcAccessibleServicesResponseOutput {
 	return o
+}
+
+func (o VpcAccessibleServicesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpcAccessibleServicesResponse] {
+	return pulumix.Output[VpcAccessibleServicesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.

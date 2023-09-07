@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
@@ -82,6 +83,12 @@ func (o LookupExecutionResultOutput) ToLookupExecutionResultOutput() LookupExecu
 
 func (o LookupExecutionResultOutput) ToLookupExecutionResultOutputWithContext(ctx context.Context) LookupExecutionResultOutput {
 	return o
+}
+
+func (o LookupExecutionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExecutionResult] {
+	return pulumix.Output[LookupExecutionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set

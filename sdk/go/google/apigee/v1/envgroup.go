@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new environment group.
@@ -118,6 +119,12 @@ func (i *Envgroup) ToEnvgroupOutputWithContext(ctx context.Context) EnvgroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EnvgroupOutput)
 }
 
+func (i *Envgroup) ToOutput(ctx context.Context) pulumix.Output[*Envgroup] {
+	return pulumix.Output[*Envgroup]{
+		OutputState: i.ToEnvgroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvgroupOutput struct{ *pulumi.OutputState }
 
 func (EnvgroupOutput) ElementType() reflect.Type {
@@ -130,6 +137,12 @@ func (o EnvgroupOutput) ToEnvgroupOutput() EnvgroupOutput {
 
 func (o EnvgroupOutput) ToEnvgroupOutputWithContext(ctx context.Context) EnvgroupOutput {
 	return o
+}
+
+func (o EnvgroupOutput) ToOutput(ctx context.Context) pulumix.Output[*Envgroup] {
+	return pulumix.Output[*Envgroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the environment group was created as milliseconds since epoch.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -64,6 +65,12 @@ func (i GoogleCloudApigeeV1AddonsConfigArgs) ToGoogleCloudApigeeV1AddonsConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1AddonsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AddonsConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1AddonsConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1AddonsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1AddonsConfigArgs) ToGoogleCloudApigeeV1AddonsConfigPtrOutput() GoogleCloudApigeeV1AddonsConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(context.Background())
 }
@@ -105,6 +112,12 @@ func (i *googleCloudApigeeV1AddonsConfigPtrType) ToGoogleCloudApigeeV1AddonsConf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1AddonsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1AddonsConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1AddonsConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Add-on configurations for the Apigee organization.
 type GoogleCloudApigeeV1AddonsConfigOutput struct{ *pulumi.OutputState }
 
@@ -128,6 +141,12 @@ func (o GoogleCloudApigeeV1AddonsConfigOutput) ToGoogleCloudApigeeV1AddonsConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1AddonsConfig {
 		return &v
 	}).(GoogleCloudApigeeV1AddonsConfigPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AddonsConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1AddonsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration for the Advanced API Ops add-on.
@@ -177,6 +196,12 @@ func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ToGoogleCloudApigeeV1AddonsCon
 
 func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1AddonsConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1AddonsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) Elem() GoogleCloudApigeeV1AddonsConfigOutput {
@@ -268,6 +293,12 @@ func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToGoogleCloudApigeeV1Addo
 	return o
 }
 
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AddonsConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1AddonsConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Configuration for the Advanced API Ops add-on.
 func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) AdvancedApiOpsConfig() GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
@@ -338,6 +369,12 @@ func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToGoogleCloudApigeeV1Advanc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AdvancedApiOpsConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1AdvancedApiOpsConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(context.Background())
 }
@@ -379,6 +416,12 @@ func (i *googleCloudApigeeV1AdvancedApiOpsConfigPtrType) ToGoogleCloudApigeeV1Ad
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1AdvancedApiOpsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1AdvancedApiOpsConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1AdvancedApiOpsConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for the Advanced API Ops add-on.
 type GoogleCloudApigeeV1AdvancedApiOpsConfigOutput struct{ *pulumi.OutputState }
 
@@ -404,6 +447,12 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToGoogleCloudApigeeV1Adva
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AdvancedApiOpsConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1AdvancedApiOpsConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -421,6 +470,12 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) ToGoogleCloudApigeeV1A
 
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1AdvancedApiOpsConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1AdvancedApiOpsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) Elem() GoogleCloudApigeeV1AdvancedApiOpsConfigOutput {
@@ -464,6 +519,12 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToGoogleCloudApig
 	return o
 }
 
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AdvancedApiOpsConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1AdvancedApiOpsConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -494,6 +555,12 @@ func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1A
 
 func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ApiCategoryDataResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1ApiCategoryDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // GCP name of api category resource.
@@ -537,6 +604,12 @@ func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) ToGoogleCloudApigeeV1Api
 	return o
 }
 
+func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ApiProductRefResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1ApiProductRefResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the API product.
 func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) Apiproduct() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiProductRefResponse) string { return v.Apiproduct }).(pulumi.StringOutput)
@@ -559,6 +632,12 @@ func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) ToGoogleCloudApigee
 
 func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1ApiProductRefResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1ApiProductRefResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1ApiProductRefResponseOutput {
@@ -602,6 +681,12 @@ func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToGoogleCloudApigeeV1ApiSecuri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiSecurityConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ApiSecurityConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1ApiSecurityConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1ApiSecurityConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutput() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(context.Background())
 }
@@ -643,6 +728,12 @@ func (i *googleCloudApigeeV1ApiSecurityConfigPtrType) ToGoogleCloudApigeeV1ApiSe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiSecurityConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1ApiSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1ApiSecurityConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1ApiSecurityConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configurations of the API Security add-on.
 type GoogleCloudApigeeV1ApiSecurityConfigOutput struct{ *pulumi.OutputState }
 
@@ -668,6 +759,12 @@ func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) ToGoogleCloudApigeeV1ApiSecu
 	}).(GoogleCloudApigeeV1ApiSecurityConfigPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ApiSecurityConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1ApiSecurityConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the API security add-on is enabled.
 func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiSecurityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -685,6 +782,12 @@ func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) ToGoogleCloudApigeeV1ApiS
 
 func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1ApiSecurityConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1ApiSecurityConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) Elem() GoogleCloudApigeeV1ApiSecurityConfigOutput {
@@ -730,6 +833,12 @@ func (o GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) ToGoogleCloudApigeeV
 	return o
 }
 
+func (o GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ApiSecurityConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1ApiSecurityConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the API security add-on is enabled.
 func (o GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiSecurityConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -759,6 +868,12 @@ func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1
 
 func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AsyncQueryResultResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1AsyncQueryResultResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Query result will be unaccessable after this time.
@@ -810,6 +925,12 @@ func (i GoogleCloudApigeeV1AttributeArgs) ToGoogleCloudApigeeV1AttributeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AttributeOutput)
 }
 
+func (i GoogleCloudApigeeV1AttributeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Attribute] {
+	return pulumix.Output[GoogleCloudApigeeV1Attribute]{
+		OutputState: i.ToGoogleCloudApigeeV1AttributeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1AttributeArrayInput is an input type that accepts GoogleCloudApigeeV1AttributeArray and GoogleCloudApigeeV1AttributeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1AttributeArrayInput` via:
 //
@@ -835,6 +956,12 @@ func (i GoogleCloudApigeeV1AttributeArray) ToGoogleCloudApigeeV1AttributeArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AttributeArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1AttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1Attribute] {
+	return pulumix.Output[[]GoogleCloudApigeeV1Attribute]{
+		OutputState: i.ToGoogleCloudApigeeV1AttributeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Key-value pair to store extra metadata.
 type GoogleCloudApigeeV1AttributeOutput struct{ *pulumi.OutputState }
 
@@ -848,6 +975,12 @@ func (o GoogleCloudApigeeV1AttributeOutput) ToGoogleCloudApigeeV1AttributeOutput
 
 func (o GoogleCloudApigeeV1AttributeOutput) ToGoogleCloudApigeeV1AttributeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AttributeOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1AttributeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Attribute] {
+	return pulumix.Output[GoogleCloudApigeeV1Attribute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // API key of the attribute.
@@ -872,6 +1005,12 @@ func (o GoogleCloudApigeeV1AttributeArrayOutput) ToGoogleCloudApigeeV1AttributeA
 
 func (o GoogleCloudApigeeV1AttributeArrayOutput) ToGoogleCloudApigeeV1AttributeArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AttributeArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1AttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1Attribute] {
+	return pulumix.Output[[]GoogleCloudApigeeV1Attribute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1AttributeArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1AttributeOutput {
@@ -903,6 +1042,12 @@ func (o GoogleCloudApigeeV1AttributeResponseOutput) ToGoogleCloudApigeeV1Attribu
 	return o
 }
 
+func (o GoogleCloudApigeeV1AttributeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1AttributeResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1AttributeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // API key of the attribute.
 func (o GoogleCloudApigeeV1AttributeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1AttributeResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -925,6 +1070,12 @@ func (o GoogleCloudApigeeV1AttributeResponseArrayOutput) ToGoogleCloudApigeeV1At
 
 func (o GoogleCloudApigeeV1AttributeResponseArrayOutput) ToGoogleCloudApigeeV1AttributeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AttributeResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1AttributeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1AttributeResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1AttributeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1AttributeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1AttributeResponseOutput {
@@ -976,6 +1127,12 @@ func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs) ToGoogleCloudApigee
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput)
 }
 
+func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CanaryEvaluationMetricLabels] {
+	return pulumix.Output[GoogleCloudApigeeV1CanaryEvaluationMetricLabels]{
+		OutputState: i.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Labels that can be used to filter Apigee metrics.
 type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput struct{ *pulumi.OutputState }
 
@@ -989,6 +1146,12 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToGoogleCloudApig
 
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CanaryEvaluationMetricLabels] {
+	return pulumix.Output[GoogleCloudApigeeV1CanaryEvaluationMetricLabels]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The environment ID associated with the metrics.
@@ -1029,6 +1192,12 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleC
 
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The environment ID associated with the metrics.
@@ -1085,6 +1254,12 @@ func (o GoogleCloudApigeeV1CertInfoResponseOutput) ToGoogleCloudApigeeV1CertInfo
 
 func (o GoogleCloudApigeeV1CertInfoResponseOutput) ToGoogleCloudApigeeV1CertInfoResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertInfoResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CertInfoResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1CertInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // X.509 basic constraints extension.
@@ -1156,6 +1331,12 @@ func (o GoogleCloudApigeeV1CertInfoResponseArrayOutput) ToGoogleCloudApigeeV1Cer
 	return o
 }
 
+func (o GoogleCloudApigeeV1CertInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1CertInfoResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1CertInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudApigeeV1CertInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CertInfoResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1CertInfoResponse {
 		return vs[0].([]GoogleCloudApigeeV1CertInfoResponse)[vs[1].(int)]
@@ -1179,6 +1360,12 @@ func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1Certi
 
 func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CertificateResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1CertificateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Chain of certificates under this name.
@@ -1223,6 +1410,12 @@ func (i GoogleCloudApigeeV1ConnectorsPlatformConfigArgs) ToGoogleCloudApigeeV1Co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ConnectorsPlatformConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1ConnectorsPlatformConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ConnectorsPlatformConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1ConnectorsPlatformConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1ConnectorsPlatformConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1ConnectorsPlatformConfigArgs) ToGoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput() GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutputWithContext(context.Background())
 }
@@ -1264,6 +1457,12 @@ func (i *googleCloudApigeeV1ConnectorsPlatformConfigPtrType) ToGoogleCloudApigee
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1ConnectorsPlatformConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1ConnectorsPlatformConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1ConnectorsPlatformConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for the Connectors Platform add-on.
 type GoogleCloudApigeeV1ConnectorsPlatformConfigOutput struct{ *pulumi.OutputState }
 
@@ -1289,6 +1488,12 @@ func (o GoogleCloudApigeeV1ConnectorsPlatformConfigOutput) ToGoogleCloudApigeeV1
 	}).(GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1ConnectorsPlatformConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ConnectorsPlatformConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1ConnectorsPlatformConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Connectors Platform add-on is enabled.
 func (o GoogleCloudApigeeV1ConnectorsPlatformConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ConnectorsPlatformConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1306,6 +1511,12 @@ func (o GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput) ToGoogleCloudApige
 
 func (o GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput) ToGoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1ConnectorsPlatformConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1ConnectorsPlatformConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput) Elem() GoogleCloudApigeeV1ConnectorsPlatformConfigOutput {
@@ -1351,6 +1562,12 @@ func (o GoogleCloudApigeeV1ConnectorsPlatformConfigResponseOutput) ToGoogleCloud
 	return o
 }
 
+func (o GoogleCloudApigeeV1ConnectorsPlatformConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ConnectorsPlatformConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1ConnectorsPlatformConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Connectors Platform add-on is enabled.
 func (o GoogleCloudApigeeV1ConnectorsPlatformConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ConnectorsPlatformConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -1392,6 +1609,12 @@ func (o GoogleCloudApigeeV1CredentialResponseOutput) ToGoogleCloudApigeeV1Creden
 
 func (o GoogleCloudApigeeV1CredentialResponseOutput) ToGoogleCloudApigeeV1CredentialResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CredentialResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1CredentialResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of API products this credential can be used for.
@@ -1452,6 +1675,12 @@ func (o GoogleCloudApigeeV1CredentialResponseArrayOutput) ToGoogleCloudApigeeV1C
 	return o
 }
 
+func (o GoogleCloudApigeeV1CredentialResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1CredentialResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1CredentialResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudApigeeV1CredentialResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CredentialResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1CredentialResponse {
 		return vs[0].([]GoogleCloudApigeeV1CredentialResponse)[vs[1].(int)]
@@ -1497,6 +1726,12 @@ func (i GoogleCloudApigeeV1CustomReportMetricArgs) ToGoogleCloudApigeeV1CustomRe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CustomReportMetricOutput)
 }
 
+func (i GoogleCloudApigeeV1CustomReportMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CustomReportMetric] {
+	return pulumix.Output[GoogleCloudApigeeV1CustomReportMetric]{
+		OutputState: i.ToGoogleCloudApigeeV1CustomReportMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1CustomReportMetricArrayInput is an input type that accepts GoogleCloudApigeeV1CustomReportMetricArray and GoogleCloudApigeeV1CustomReportMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1CustomReportMetricArrayInput` via:
 //
@@ -1522,6 +1757,12 @@ func (i GoogleCloudApigeeV1CustomReportMetricArray) ToGoogleCloudApigeeV1CustomR
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CustomReportMetricArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1CustomReportMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1CustomReportMetric] {
+	return pulumix.Output[[]GoogleCloudApigeeV1CustomReportMetric]{
+		OutputState: i.ToGoogleCloudApigeeV1CustomReportMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
 type GoogleCloudApigeeV1CustomReportMetricOutput struct{ *pulumi.OutputState }
 
@@ -1535,6 +1776,12 @@ func (o GoogleCloudApigeeV1CustomReportMetricOutput) ToGoogleCloudApigeeV1Custom
 
 func (o GoogleCloudApigeeV1CustomReportMetricOutput) ToGoogleCloudApigeeV1CustomReportMetricOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CustomReportMetricOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CustomReportMetric] {
+	return pulumix.Output[GoogleCloudApigeeV1CustomReportMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // aggregate function
@@ -1559,6 +1806,12 @@ func (o GoogleCloudApigeeV1CustomReportMetricArrayOutput) ToGoogleCloudApigeeV1C
 
 func (o GoogleCloudApigeeV1CustomReportMetricArrayOutput) ToGoogleCloudApigeeV1CustomReportMetricArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CustomReportMetricArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1CustomReportMetric] {
+	return pulumix.Output[[]GoogleCloudApigeeV1CustomReportMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1CustomReportMetricArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CustomReportMetricOutput {
@@ -1590,6 +1843,12 @@ func (o GoogleCloudApigeeV1CustomReportMetricResponseOutput) ToGoogleCloudApigee
 	return o
 }
 
+func (o GoogleCloudApigeeV1CustomReportMetricResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1CustomReportMetricResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1CustomReportMetricResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // aggregate function
 func (o GoogleCloudApigeeV1CustomReportMetricResponseOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1CustomReportMetricResponse) string { return v.Function }).(pulumi.StringOutput)
@@ -1612,6 +1871,12 @@ func (o GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) ToGoogleCloudA
 
 func (o GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1CustomReportMetricResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1CustomReportMetricResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CustomReportMetricResponseOutput {
@@ -1671,6 +1936,12 @@ func (i GoogleCloudApigeeV1DatastoreConfigArgs) ToGoogleCloudApigeeV1DatastoreCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1DatastoreConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1DatastoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1DatastoreConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1DatastoreConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1DatastoreConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1DatastoreConfigArgs) ToGoogleCloudApigeeV1DatastoreConfigPtrOutput() GoogleCloudApigeeV1DatastoreConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1DatastoreConfigPtrOutputWithContext(context.Background())
 }
@@ -1712,6 +1983,12 @@ func (i *googleCloudApigeeV1DatastoreConfigPtrType) ToGoogleCloudApigeeV1Datasto
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1DatastoreConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1DatastoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1DatastoreConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1DatastoreConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1DatastoreConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration detail for datastore
 type GoogleCloudApigeeV1DatastoreConfigOutput struct{ *pulumi.OutputState }
 
@@ -1735,6 +2012,12 @@ func (o GoogleCloudApigeeV1DatastoreConfigOutput) ToGoogleCloudApigeeV1Datastore
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1DatastoreConfig) *GoogleCloudApigeeV1DatastoreConfig {
 		return &v
 	}).(GoogleCloudApigeeV1DatastoreConfigPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1DatastoreConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1DatastoreConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Cloud Storage bucket. Required for `gcs` target_type.
@@ -1774,6 +2057,12 @@ func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) ToGoogleCloudApigeeV1Datast
 
 func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) ToGoogleCloudApigeeV1DatastoreConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1DatastoreConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1DatastoreConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) Elem() GoogleCloudApigeeV1DatastoreConfigOutput {
@@ -1865,6 +2154,12 @@ func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToGoogleCloudApigeeV1D
 	return o
 }
 
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1DatastoreConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1DatastoreConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Cloud Storage bucket. Required for `gcs` target_type.
 func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.BucketName }).(pulumi.StringOutput)
@@ -1929,6 +2224,12 @@ func (i GoogleCloudApigeeV1DateRangeArgs) ToGoogleCloudApigeeV1DateRangeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1DateRangeOutput)
 }
 
+func (i GoogleCloudApigeeV1DateRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1DateRange] {
+	return pulumix.Output[GoogleCloudApigeeV1DateRange]{
+		OutputState: i.ToGoogleCloudApigeeV1DateRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Date range of the data to export.
 type GoogleCloudApigeeV1DateRangeOutput struct{ *pulumi.OutputState }
 
@@ -1942,6 +2243,12 @@ func (o GoogleCloudApigeeV1DateRangeOutput) ToGoogleCloudApigeeV1DateRangeOutput
 
 func (o GoogleCloudApigeeV1DateRangeOutput) ToGoogleCloudApigeeV1DateRangeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DateRangeOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1DateRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1DateRange] {
+	return pulumix.Output[GoogleCloudApigeeV1DateRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
@@ -1977,6 +2284,12 @@ func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1En
 
 func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1EntityMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1EntityMetadataResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1EntityMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the API proxy was created, in milliseconds since epoch.
@@ -2033,6 +2346,12 @@ func (i GoogleCloudApigeeV1GraphQLOperationArgs) ToGoogleCloudApigeeV1GraphQLOpe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationOutput)
 }
 
+func (i GoogleCloudApigeeV1GraphQLOperationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperation] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperation]{
+		OutputState: i.ToGoogleCloudApigeeV1GraphQLOperationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1GraphQLOperationArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationArray and GoogleCloudApigeeV1GraphQLOperationArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationArrayInput` via:
 //
@@ -2058,6 +2377,12 @@ func (i GoogleCloudApigeeV1GraphQLOperationArray) ToGoogleCloudApigeeV1GraphQLOp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1GraphQLOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperation] {
+	return pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperation]{
+		OutputState: i.ToGoogleCloudApigeeV1GraphQLOperationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the pairing of GraphQL operation types and the GraphQL operation name.
 type GoogleCloudApigeeV1GraphQLOperationOutput struct{ *pulumi.OutputState }
 
@@ -2071,6 +2396,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationOutput) ToGoogleCloudApigeeV1GraphQLO
 
 func (o GoogleCloudApigeeV1GraphQLOperationOutput) ToGoogleCloudApigeeV1GraphQLOperationOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperation] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
@@ -2095,6 +2426,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) ToGoogleCloudApigeeV1Gra
 
 func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperation] {
+	return pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationOutput {
@@ -2150,6 +2487,12 @@ func (i GoogleCloudApigeeV1GraphQLOperationConfigArgs) ToGoogleCloudApigeeV1Grap
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1GraphQLOperationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1GraphQLOperationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1GraphQLOperationConfigArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationConfigArray and GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationConfigArrayInput` via:
 //
@@ -2175,6 +2518,12 @@ func (i GoogleCloudApigeeV1GraphQLOperationConfigArray) ToGoogleCloudApigeeV1Gra
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1GraphQLOperationConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationConfig] {
+	return pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
 type GoogleCloudApigeeV1GraphQLOperationConfigOutput struct{ *pulumi.OutputState }
 
@@ -2188,6 +2537,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ToGoogleCloudApigeeV1Gr
 
 func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
@@ -2226,6 +2581,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) ToGoogleCloudApige
 	return o
 }
 
+func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationConfig] {
+	return pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1GraphQLOperationConfig {
 		return vs[0].([]GoogleCloudApigeeV1GraphQLOperationConfig)[vs[1].(int)]
@@ -2257,6 +2618,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ToGoogleCloudAp
 
 func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperationConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
@@ -2297,6 +2664,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationConfigResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput {
@@ -2344,6 +2717,12 @@ func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToGoogleCloudApigeeV1Graph
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupOutput)
 }
 
+func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperationGroup] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperationGroup]{
+		OutputState: i.ToGoogleCloudApigeeV1GraphQLOperationGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
 	return i.ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(context.Background())
 }
@@ -2385,6 +2764,12 @@ func (i *googleCloudApigeeV1GraphQLOperationGroupPtrType) ToGoogleCloudApigeeV1G
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput)
 }
 
+func (i *googleCloudApigeeV1GraphQLOperationGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1GraphQLOperationGroup] {
+	return pulumix.Output[*GoogleCloudApigeeV1GraphQLOperationGroup]{
+		OutputState: i.ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1GraphQLOperationGroupOutput struct{ *pulumi.OutputState }
 
@@ -2408,6 +2793,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1Gra
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1GraphQLOperationGroup) *GoogleCloudApigeeV1GraphQLOperationGroup {
 		return &v
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperationGroup] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperationGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
@@ -2434,6 +2825,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) ToGoogleCloudApigeeV1
 
 func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1GraphQLOperationGroup] {
+	return pulumix.Output[*GoogleCloudApigeeV1GraphQLOperationGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) Elem() GoogleCloudApigeeV1GraphQLOperationGroupOutput {
@@ -2489,6 +2886,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApi
 	return o
 }
 
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperationGroupResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperationGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) OperationConfigType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroupResponse) string { return v.OperationConfigType }).(pulumi.StringOutput)
@@ -2524,6 +2927,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) ToGoogleCloudApigeeV1
 	return o
 }
 
+func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1GraphQLOperationResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1GraphQLOperationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
 func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationResponse) string { return v.Operation }).(pulumi.StringOutput)
@@ -2546,6 +2955,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) ToGoogleCloudApi
 
 func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1GraphQLOperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationResponseOutput {
@@ -2589,6 +3004,12 @@ func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1Integrati
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1IntegrationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1IntegrationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Background())
 }
@@ -2630,6 +3051,12 @@ func (i *googleCloudApigeeV1IntegrationConfigPtrType) ToGoogleCloudApigeeV1Integ
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1IntegrationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1IntegrationConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1IntegrationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for the Integration add-on.
 type GoogleCloudApigeeV1IntegrationConfigOutput struct{ *pulumi.OutputState }
 
@@ -2655,6 +3082,12 @@ func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1Integra
 	}).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1IntegrationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1IntegrationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Integration add-on is enabled.
 func (o GoogleCloudApigeeV1IntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2672,6 +3105,12 @@ func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) ToGoogleCloudApigeeV1Inte
 
 func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1IntegrationConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1IntegrationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) Elem() GoogleCloudApigeeV1IntegrationConfigOutput {
@@ -2715,6 +3154,12 @@ func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV
 	return o
 }
 
+func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1IntegrationConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1IntegrationConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Integration add-on is enabled.
 func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2753,6 +3198,12 @@ func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1Monetiza
 
 func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1MonetizationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1MonetizationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1MonetizationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1MonetizationConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1MonetizationConfigPtrOutput() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
@@ -2796,6 +3247,12 @@ func (i *googleCloudApigeeV1MonetizationConfigPtrType) ToGoogleCloudApigeeV1Mone
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1MonetizationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1MonetizationConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1MonetizationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for the Monetization add-on.
 type GoogleCloudApigeeV1MonetizationConfigOutput struct{ *pulumi.OutputState }
 
@@ -2821,6 +3278,12 @@ func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToGoogleCloudApigeeV1Moneti
 	}).(GoogleCloudApigeeV1MonetizationConfigPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1MonetizationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1MonetizationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Monetization add-on is enabled.
 func (o GoogleCloudApigeeV1MonetizationConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2838,6 +3301,12 @@ func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) ToGoogleCloudApigeeV1Mon
 
 func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1MonetizationConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1MonetizationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) Elem() GoogleCloudApigeeV1MonetizationConfigOutput {
@@ -2879,6 +3348,12 @@ func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigee
 
 func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigeeV1MonetizationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1MonetizationConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1MonetizationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that specifies whether the Monetization add-on is enabled.
@@ -2925,6 +3400,12 @@ func (i GoogleCloudApigeeV1NodeConfigArgs) ToGoogleCloudApigeeV1NodeConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1NodeConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1NodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1NodeConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1NodeConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1NodeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1NodeConfigArgs) ToGoogleCloudApigeeV1NodeConfigPtrOutput() GoogleCloudApigeeV1NodeConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(context.Background())
 }
@@ -2966,6 +3447,12 @@ func (i *googleCloudApigeeV1NodeConfigPtrType) ToGoogleCloudApigeeV1NodeConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1NodeConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1NodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1NodeConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1NodeConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NodeConfig for setting the min/max number of nodes associated with the environment.
 type GoogleCloudApigeeV1NodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -2991,6 +3478,12 @@ func (o GoogleCloudApigeeV1NodeConfigOutput) ToGoogleCloudApigeeV1NodeConfigPtrO
 	}).(GoogleCloudApigeeV1NodeConfigPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1NodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1NodeConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1NodeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
 func (o GoogleCloudApigeeV1NodeConfigOutput) MaxNodeCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1NodeConfig) *string { return v.MaxNodeCount }).(pulumi.StringPtrOutput)
@@ -3013,6 +3506,12 @@ func (o GoogleCloudApigeeV1NodeConfigPtrOutput) ToGoogleCloudApigeeV1NodeConfigP
 
 func (o GoogleCloudApigeeV1NodeConfigPtrOutput) ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1NodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1NodeConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1NodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1NodeConfigPtrOutput) Elem() GoogleCloudApigeeV1NodeConfigOutput {
@@ -3070,6 +3569,12 @@ func (o GoogleCloudApigeeV1NodeConfigResponseOutput) ToGoogleCloudApigeeV1NodeCo
 	return o
 }
 
+func (o GoogleCloudApigeeV1NodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1NodeConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1NodeConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The current total number of gateway nodes that each environment currently has across all instances.
 func (o GoogleCloudApigeeV1NodeConfigResponseOutput) CurrentAggregateNodeCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1NodeConfigResponse) string { return v.CurrentAggregateNodeCount }).(pulumi.StringOutput)
@@ -3124,6 +3629,12 @@ func (i GoogleCloudApigeeV1OperationArgs) ToGoogleCloudApigeeV1OperationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationOutput)
 }
 
+func (i GoogleCloudApigeeV1OperationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Operation] {
+	return pulumix.Output[GoogleCloudApigeeV1Operation]{
+		OutputState: i.ToGoogleCloudApigeeV1OperationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1OperationArrayInput is an input type that accepts GoogleCloudApigeeV1OperationArray and GoogleCloudApigeeV1OperationArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationArrayInput` via:
 //
@@ -3149,6 +3660,12 @@ func (i GoogleCloudApigeeV1OperationArray) ToGoogleCloudApigeeV1OperationArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1OperationArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1Operation] {
+	return pulumix.Output[[]GoogleCloudApigeeV1Operation]{
+		OutputState: i.ToGoogleCloudApigeeV1OperationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1OperationOutput struct{ *pulumi.OutputState }
 
@@ -3162,6 +3679,12 @@ func (o GoogleCloudApigeeV1OperationOutput) ToGoogleCloudApigeeV1OperationOutput
 
 func (o GoogleCloudApigeeV1OperationOutput) ToGoogleCloudApigeeV1OperationOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1OperationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Operation] {
+	return pulumix.Output[GoogleCloudApigeeV1Operation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
@@ -3186,6 +3709,12 @@ func (o GoogleCloudApigeeV1OperationArrayOutput) ToGoogleCloudApigeeV1OperationA
 
 func (o GoogleCloudApigeeV1OperationArrayOutput) ToGoogleCloudApigeeV1OperationArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1OperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1Operation] {
+	return pulumix.Output[[]GoogleCloudApigeeV1Operation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1OperationArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1OperationOutput {
@@ -3241,6 +3770,12 @@ func (i GoogleCloudApigeeV1OperationConfigArgs) ToGoogleCloudApigeeV1OperationCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1OperationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1OperationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1OperationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1OperationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1OperationConfigArrayInput is an input type that accepts GoogleCloudApigeeV1OperationConfigArray and GoogleCloudApigeeV1OperationConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationConfigArrayInput` via:
 //
@@ -3266,6 +3801,12 @@ func (i GoogleCloudApigeeV1OperationConfigArray) ToGoogleCloudApigeeV1OperationC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationConfigArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1OperationConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1OperationConfig] {
+	return pulumix.Output[[]GoogleCloudApigeeV1OperationConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1OperationConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
 type GoogleCloudApigeeV1OperationConfigOutput struct{ *pulumi.OutputState }
 
@@ -3279,6 +3820,12 @@ func (o GoogleCloudApigeeV1OperationConfigOutput) ToGoogleCloudApigeeV1Operation
 
 func (o GoogleCloudApigeeV1OperationConfigOutput) ToGoogleCloudApigeeV1OperationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationConfigOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1OperationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1OperationConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1OperationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the API proxy or remote service with which the resources, methods, and quota are associated.
@@ -3315,6 +3862,12 @@ func (o GoogleCloudApigeeV1OperationConfigArrayOutput) ToGoogleCloudApigeeV1Oper
 	return o
 }
 
+func (o GoogleCloudApigeeV1OperationConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1OperationConfig] {
+	return pulumix.Output[[]GoogleCloudApigeeV1OperationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudApigeeV1OperationConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1OperationConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1OperationConfig {
 		return vs[0].([]GoogleCloudApigeeV1OperationConfig)[vs[1].(int)]
@@ -3346,6 +3899,12 @@ func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ToGoogleCloudApigeeV1O
 
 func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ToGoogleCloudApigeeV1OperationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1OperationConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1OperationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the API proxy or remote service with which the resources, methods, and quota are associated.
@@ -3384,6 +3943,12 @@ func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) ToGoogleCloudApig
 
 func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) ToGoogleCloudApigeeV1OperationConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1OperationConfigResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1OperationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1OperationConfigResponseOutput {
@@ -3431,6 +3996,12 @@ func (i GoogleCloudApigeeV1OperationGroupArgs) ToGoogleCloudApigeeV1OperationGro
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationGroupOutput)
 }
 
+func (i GoogleCloudApigeeV1OperationGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1OperationGroup] {
+	return pulumix.Output[GoogleCloudApigeeV1OperationGroup]{
+		OutputState: i.ToGoogleCloudApigeeV1OperationGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1OperationGroupArgs) ToGoogleCloudApigeeV1OperationGroupPtrOutput() GoogleCloudApigeeV1OperationGroupPtrOutput {
 	return i.ToGoogleCloudApigeeV1OperationGroupPtrOutputWithContext(context.Background())
 }
@@ -3472,6 +4043,12 @@ func (i *googleCloudApigeeV1OperationGroupPtrType) ToGoogleCloudApigeeV1Operatio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationGroupPtrOutput)
 }
 
+func (i *googleCloudApigeeV1OperationGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1OperationGroup] {
+	return pulumix.Output[*GoogleCloudApigeeV1OperationGroup]{
+		OutputState: i.ToGoogleCloudApigeeV1OperationGroupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1OperationGroupOutput struct{ *pulumi.OutputState }
 
@@ -3495,6 +4072,12 @@ func (o GoogleCloudApigeeV1OperationGroupOutput) ToGoogleCloudApigeeV1OperationG
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1OperationGroup) *GoogleCloudApigeeV1OperationGroup {
 		return &v
 	}).(GoogleCloudApigeeV1OperationGroupPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1OperationGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1OperationGroup] {
+	return pulumix.Output[GoogleCloudApigeeV1OperationGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
@@ -3521,6 +4104,12 @@ func (o GoogleCloudApigeeV1OperationGroupPtrOutput) ToGoogleCloudApigeeV1Operati
 
 func (o GoogleCloudApigeeV1OperationGroupPtrOutput) ToGoogleCloudApigeeV1OperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1OperationGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1OperationGroup] {
+	return pulumix.Output[*GoogleCloudApigeeV1OperationGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1OperationGroupPtrOutput) Elem() GoogleCloudApigeeV1OperationGroupOutput {
@@ -3576,6 +4165,12 @@ func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1Op
 	return o
 }
 
+func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1OperationGroupResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1OperationGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1OperationGroupResponseOutput) OperationConfigType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroupResponse) string { return v.OperationConfigType }).(pulumi.StringOutput)
@@ -3611,6 +4206,12 @@ func (o GoogleCloudApigeeV1OperationResponseOutput) ToGoogleCloudApigeeV1Operati
 	return o
 }
 
+func (o GoogleCloudApigeeV1OperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1OperationResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1OperationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
 func (o GoogleCloudApigeeV1OperationResponseOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationResponse) []string { return v.Methods }).(pulumi.StringArrayOutput)
@@ -3633,6 +4234,12 @@ func (o GoogleCloudApigeeV1OperationResponseArrayOutput) ToGoogleCloudApigeeV1Op
 
 func (o GoogleCloudApigeeV1OperationResponseArrayOutput) ToGoogleCloudApigeeV1OperationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1OperationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1OperationResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1OperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1OperationResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1OperationResponseOutput {
@@ -3676,6 +4283,12 @@ func (i GoogleCloudApigeeV1PropertiesArgs) ToGoogleCloudApigeeV1PropertiesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesOutput)
 }
 
+func (i GoogleCloudApigeeV1PropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Properties] {
+	return pulumix.Output[GoogleCloudApigeeV1Properties]{
+		OutputState: i.ToGoogleCloudApigeeV1PropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1PropertiesArgs) ToGoogleCloudApigeeV1PropertiesPtrOutput() GoogleCloudApigeeV1PropertiesPtrOutput {
 	return i.ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(context.Background())
 }
@@ -3717,6 +4330,12 @@ func (i *googleCloudApigeeV1PropertiesPtrType) ToGoogleCloudApigeeV1PropertiesPt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesPtrOutput)
 }
 
+func (i *googleCloudApigeeV1PropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1Properties] {
+	return pulumix.Output[*GoogleCloudApigeeV1Properties]{
+		OutputState: i.ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message for compatibility with legacy Edge specification for Java Properties object in JSON.
 type GoogleCloudApigeeV1PropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3742,6 +4361,12 @@ func (o GoogleCloudApigeeV1PropertiesOutput) ToGoogleCloudApigeeV1PropertiesPtrO
 	}).(GoogleCloudApigeeV1PropertiesPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1PropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Properties] {
+	return pulumix.Output[GoogleCloudApigeeV1Properties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of all properties in the object
 func (o GoogleCloudApigeeV1PropertiesOutput) Property() GoogleCloudApigeeV1PropertyArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1Properties) []GoogleCloudApigeeV1Property { return v.Property }).(GoogleCloudApigeeV1PropertyArrayOutput)
@@ -3759,6 +4384,12 @@ func (o GoogleCloudApigeeV1PropertiesPtrOutput) ToGoogleCloudApigeeV1PropertiesP
 
 func (o GoogleCloudApigeeV1PropertiesPtrOutput) ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1PropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1Properties] {
+	return pulumix.Output[*GoogleCloudApigeeV1Properties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1PropertiesPtrOutput) Elem() GoogleCloudApigeeV1PropertiesOutput {
@@ -3800,6 +4431,12 @@ func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1Proper
 
 func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1PropertiesResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1PropertiesResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1PropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of all properties in the object
@@ -3846,6 +4483,12 @@ func (i GoogleCloudApigeeV1PropertyArgs) ToGoogleCloudApigeeV1PropertyOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertyOutput)
 }
 
+func (i GoogleCloudApigeeV1PropertyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Property] {
+	return pulumix.Output[GoogleCloudApigeeV1Property]{
+		OutputState: i.ToGoogleCloudApigeeV1PropertyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1PropertyArrayInput is an input type that accepts GoogleCloudApigeeV1PropertyArray and GoogleCloudApigeeV1PropertyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1PropertyArrayInput` via:
 //
@@ -3871,6 +4514,12 @@ func (i GoogleCloudApigeeV1PropertyArray) ToGoogleCloudApigeeV1PropertyArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertyArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1PropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1Property] {
+	return pulumix.Output[[]GoogleCloudApigeeV1Property]{
+		OutputState: i.ToGoogleCloudApigeeV1PropertyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A single property entry in the Properties message.
 type GoogleCloudApigeeV1PropertyOutput struct{ *pulumi.OutputState }
 
@@ -3884,6 +4533,12 @@ func (o GoogleCloudApigeeV1PropertyOutput) ToGoogleCloudApigeeV1PropertyOutput()
 
 func (o GoogleCloudApigeeV1PropertyOutput) ToGoogleCloudApigeeV1PropertyOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertyOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1PropertyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Property] {
+	return pulumix.Output[GoogleCloudApigeeV1Property]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The property key
@@ -3908,6 +4563,12 @@ func (o GoogleCloudApigeeV1PropertyArrayOutput) ToGoogleCloudApigeeV1PropertyArr
 
 func (o GoogleCloudApigeeV1PropertyArrayOutput) ToGoogleCloudApigeeV1PropertyArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertyArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1PropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1Property] {
+	return pulumix.Output[[]GoogleCloudApigeeV1Property]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1PropertyArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1PropertyOutput {
@@ -3939,6 +4600,12 @@ func (o GoogleCloudApigeeV1PropertyResponseOutput) ToGoogleCloudApigeeV1Property
 	return o
 }
 
+func (o GoogleCloudApigeeV1PropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1PropertyResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1PropertyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The property key
 func (o GoogleCloudApigeeV1PropertyResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1PropertyResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -3961,6 +4628,12 @@ func (o GoogleCloudApigeeV1PropertyResponseArrayOutput) ToGoogleCloudApigeeV1Pro
 
 func (o GoogleCloudApigeeV1PropertyResponseArrayOutput) ToGoogleCloudApigeeV1PropertyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertyResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1PropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1PropertyResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1PropertyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1PropertyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1PropertyResponseOutput {
@@ -3996,6 +4669,12 @@ func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1Que
 
 func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1QueryMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1QueryMetadataResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1QueryMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dimensions of the AsyncQuery.
@@ -4079,6 +4758,12 @@ func (i GoogleCloudApigeeV1QueryMetricArgs) ToGoogleCloudApigeeV1QueryMetricOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QueryMetricOutput)
 }
 
+func (i GoogleCloudApigeeV1QueryMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1QueryMetric] {
+	return pulumix.Output[GoogleCloudApigeeV1QueryMetric]{
+		OutputState: i.ToGoogleCloudApigeeV1QueryMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1QueryMetricArrayInput is an input type that accepts GoogleCloudApigeeV1QueryMetricArray and GoogleCloudApigeeV1QueryMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1QueryMetricArrayInput` via:
 //
@@ -4104,6 +4789,12 @@ func (i GoogleCloudApigeeV1QueryMetricArray) ToGoogleCloudApigeeV1QueryMetricArr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QueryMetricArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1QueryMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1QueryMetric] {
+	return pulumix.Output[[]GoogleCloudApigeeV1QueryMetric]{
+		OutputState: i.ToGoogleCloudApigeeV1QueryMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // More info about Metric: https://docs.apigee.com/api-platform/analytics/analytics-reference#metrics
 type GoogleCloudApigeeV1QueryMetricOutput struct{ *pulumi.OutputState }
 
@@ -4117,6 +4808,12 @@ func (o GoogleCloudApigeeV1QueryMetricOutput) ToGoogleCloudApigeeV1QueryMetricOu
 
 func (o GoogleCloudApigeeV1QueryMetricOutput) ToGoogleCloudApigeeV1QueryMetricOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetricOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1QueryMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1QueryMetric] {
+	return pulumix.Output[GoogleCloudApigeeV1QueryMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alias for the metric. Alias will be used to replace metric name in query results.
@@ -4156,6 +4853,12 @@ func (o GoogleCloudApigeeV1QueryMetricArrayOutput) ToGoogleCloudApigeeV1QueryMet
 
 func (o GoogleCloudApigeeV1QueryMetricArrayOutput) ToGoogleCloudApigeeV1QueryMetricArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetricArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1QueryMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1QueryMetric] {
+	return pulumix.Output[[]GoogleCloudApigeeV1QueryMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1QueryMetricArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1QueryMetricOutput {
@@ -4207,6 +4910,12 @@ func (i GoogleCloudApigeeV1QuotaArgs) ToGoogleCloudApigeeV1QuotaOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QuotaOutput)
 }
 
+func (i GoogleCloudApigeeV1QuotaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Quota] {
+	return pulumix.Output[GoogleCloudApigeeV1Quota]{
+		OutputState: i.ToGoogleCloudApigeeV1QuotaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1QuotaArgs) ToGoogleCloudApigeeV1QuotaPtrOutput() GoogleCloudApigeeV1QuotaPtrOutput {
 	return i.ToGoogleCloudApigeeV1QuotaPtrOutputWithContext(context.Background())
 }
@@ -4248,6 +4957,12 @@ func (i *googleCloudApigeeV1QuotaPtrType) ToGoogleCloudApigeeV1QuotaPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QuotaPtrOutput)
 }
 
+func (i *googleCloudApigeeV1QuotaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1Quota] {
+	return pulumix.Output[*GoogleCloudApigeeV1Quota]{
+		OutputState: i.ToGoogleCloudApigeeV1QuotaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
 type GoogleCloudApigeeV1QuotaOutput struct{ *pulumi.OutputState }
 
@@ -4271,6 +4986,12 @@ func (o GoogleCloudApigeeV1QuotaOutput) ToGoogleCloudApigeeV1QuotaPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1Quota) *GoogleCloudApigeeV1Quota {
 		return &v
 	}).(GoogleCloudApigeeV1QuotaPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1QuotaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1Quota] {
+	return pulumix.Output[GoogleCloudApigeeV1Quota]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time interval over which the number of request messages is calculated.
@@ -4300,6 +5021,12 @@ func (o GoogleCloudApigeeV1QuotaPtrOutput) ToGoogleCloudApigeeV1QuotaPtrOutput()
 
 func (o GoogleCloudApigeeV1QuotaPtrOutput) ToGoogleCloudApigeeV1QuotaPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QuotaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1QuotaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1Quota] {
+	return pulumix.Output[*GoogleCloudApigeeV1Quota]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1QuotaPtrOutput) Elem() GoogleCloudApigeeV1QuotaOutput {
@@ -4367,6 +5094,12 @@ func (o GoogleCloudApigeeV1QuotaResponseOutput) ToGoogleCloudApigeeV1QuotaRespon
 	return o
 }
 
+func (o GoogleCloudApigeeV1QuotaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1QuotaResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1QuotaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Time interval over which the number of request messages is calculated.
 func (o GoogleCloudApigeeV1QuotaResponseOutput) Interval() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1QuotaResponse) string { return v.Interval }).(pulumi.StringOutput)
@@ -4425,6 +5158,12 @@ func (i GoogleCloudApigeeV1RateRangeArgs) ToGoogleCloudApigeeV1RateRangeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RateRangeOutput)
 }
 
+func (i GoogleCloudApigeeV1RateRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1RateRange] {
+	return pulumix.Output[GoogleCloudApigeeV1RateRange]{
+		OutputState: i.ToGoogleCloudApigeeV1RateRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1RateRangeArrayInput is an input type that accepts GoogleCloudApigeeV1RateRangeArray and GoogleCloudApigeeV1RateRangeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1RateRangeArrayInput` via:
 //
@@ -4450,6 +5189,12 @@ func (i GoogleCloudApigeeV1RateRangeArray) ToGoogleCloudApigeeV1RateRangeArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RateRangeArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1RateRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1RateRange] {
+	return pulumix.Output[[]GoogleCloudApigeeV1RateRange]{
+		OutputState: i.ToGoogleCloudApigeeV1RateRangeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // API call volume range and the fees charged when the total number of API calls is within the range.
 type GoogleCloudApigeeV1RateRangeOutput struct{ *pulumi.OutputState }
 
@@ -4463,6 +5208,12 @@ func (o GoogleCloudApigeeV1RateRangeOutput) ToGoogleCloudApigeeV1RateRangeOutput
 
 func (o GoogleCloudApigeeV1RateRangeOutput) ToGoogleCloudApigeeV1RateRangeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1RateRange] {
+	return pulumix.Output[GoogleCloudApigeeV1RateRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Ending value of the range. Set to 0 or `null` for the last range of values.
@@ -4492,6 +5243,12 @@ func (o GoogleCloudApigeeV1RateRangeArrayOutput) ToGoogleCloudApigeeV1RateRangeA
 
 func (o GoogleCloudApigeeV1RateRangeArrayOutput) ToGoogleCloudApigeeV1RateRangeArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1RateRange] {
+	return pulumix.Output[[]GoogleCloudApigeeV1RateRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1RateRangeArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RateRangeOutput {
@@ -4525,6 +5282,12 @@ func (o GoogleCloudApigeeV1RateRangeResponseOutput) ToGoogleCloudApigeeV1RateRan
 	return o
 }
 
+func (o GoogleCloudApigeeV1RateRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1RateRangeResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1RateRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Ending value of the range. Set to 0 or `null` for the last range of values.
 func (o GoogleCloudApigeeV1RateRangeResponseOutput) End() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1RateRangeResponse) string { return v.End }).(pulumi.StringOutput)
@@ -4552,6 +5315,12 @@ func (o GoogleCloudApigeeV1RateRangeResponseArrayOutput) ToGoogleCloudApigeeV1Ra
 
 func (o GoogleCloudApigeeV1RateRangeResponseArrayOutput) ToGoogleCloudApigeeV1RateRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1RateRangeResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1RateRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1RateRangeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RateRangeResponseOutput {
@@ -4597,6 +5366,12 @@ func (i GoogleCloudApigeeV1ReportPropertyArgs) ToGoogleCloudApigeeV1ReportProper
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ReportPropertyOutput)
 }
 
+func (i GoogleCloudApigeeV1ReportPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ReportProperty] {
+	return pulumix.Output[GoogleCloudApigeeV1ReportProperty]{
+		OutputState: i.ToGoogleCloudApigeeV1ReportPropertyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1ReportPropertyArrayInput is an input type that accepts GoogleCloudApigeeV1ReportPropertyArray and GoogleCloudApigeeV1ReportPropertyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1ReportPropertyArrayInput` via:
 //
@@ -4622,6 +5397,12 @@ func (i GoogleCloudApigeeV1ReportPropertyArray) ToGoogleCloudApigeeV1ReportPrope
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ReportPropertyArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1ReportPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1ReportProperty] {
+	return pulumix.Output[[]GoogleCloudApigeeV1ReportProperty]{
+		OutputState: i.ToGoogleCloudApigeeV1ReportPropertyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudApigeeV1ReportPropertyOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1ReportPropertyOutput) ElementType() reflect.Type {
@@ -4634,6 +5415,12 @@ func (o GoogleCloudApigeeV1ReportPropertyOutput) ToGoogleCloudApigeeV1ReportProp
 
 func (o GoogleCloudApigeeV1ReportPropertyOutput) ToGoogleCloudApigeeV1ReportPropertyOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ReportPropertyOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ReportProperty] {
+	return pulumix.Output[GoogleCloudApigeeV1ReportProperty]{
+		OutputState: o.OutputState,
+	}
 }
 
 // name of the property
@@ -4658,6 +5445,12 @@ func (o GoogleCloudApigeeV1ReportPropertyArrayOutput) ToGoogleCloudApigeeV1Repor
 
 func (o GoogleCloudApigeeV1ReportPropertyArrayOutput) ToGoogleCloudApigeeV1ReportPropertyArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ReportPropertyArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1ReportProperty] {
+	return pulumix.Output[[]GoogleCloudApigeeV1ReportProperty]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1ReportPropertyArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1ReportPropertyOutput {
@@ -4687,6 +5480,12 @@ func (o GoogleCloudApigeeV1ReportPropertyResponseOutput) ToGoogleCloudApigeeV1Re
 	return o
 }
 
+func (o GoogleCloudApigeeV1ReportPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1ReportPropertyResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1ReportPropertyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // name of the property
 func (o GoogleCloudApigeeV1ReportPropertyResponseOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ReportPropertyResponse) string { return v.Property }).(pulumi.StringOutput)
@@ -4711,6 +5510,12 @@ func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) ToGoogleCloudApige
 
 func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ReportPropertyResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1ReportPropertyResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1ReportPropertyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1ReportPropertyResponseOutput {
@@ -4762,6 +5567,12 @@ func (i GoogleCloudApigeeV1RevenueShareRangeArgs) ToGoogleCloudApigeeV1RevenueSh
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RevenueShareRangeOutput)
 }
 
+func (i GoogleCloudApigeeV1RevenueShareRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1RevenueShareRange] {
+	return pulumix.Output[GoogleCloudApigeeV1RevenueShareRange]{
+		OutputState: i.ToGoogleCloudApigeeV1RevenueShareRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1RevenueShareRangeArrayInput is an input type that accepts GoogleCloudApigeeV1RevenueShareRangeArray and GoogleCloudApigeeV1RevenueShareRangeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1RevenueShareRangeArrayInput` via:
 //
@@ -4787,6 +5598,12 @@ func (i GoogleCloudApigeeV1RevenueShareRangeArray) ToGoogleCloudApigeeV1RevenueS
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RevenueShareRangeArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1RevenueShareRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1RevenueShareRange] {
+	return pulumix.Output[[]GoogleCloudApigeeV1RevenueShareRange]{
+		OutputState: i.ToGoogleCloudApigeeV1RevenueShareRangeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
 type GoogleCloudApigeeV1RevenueShareRangeOutput struct{ *pulumi.OutputState }
 
@@ -4800,6 +5617,12 @@ func (o GoogleCloudApigeeV1RevenueShareRangeOutput) ToGoogleCloudApigeeV1Revenue
 
 func (o GoogleCloudApigeeV1RevenueShareRangeOutput) ToGoogleCloudApigeeV1RevenueShareRangeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1RevenueShareRange] {
+	return pulumix.Output[GoogleCloudApigeeV1RevenueShareRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Ending value of the range. Set to 0 or `null` for the last range of values.
@@ -4829,6 +5652,12 @@ func (o GoogleCloudApigeeV1RevenueShareRangeArrayOutput) ToGoogleCloudApigeeV1Re
 
 func (o GoogleCloudApigeeV1RevenueShareRangeArrayOutput) ToGoogleCloudApigeeV1RevenueShareRangeArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1RevenueShareRange] {
+	return pulumix.Output[[]GoogleCloudApigeeV1RevenueShareRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1RevenueShareRangeArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RevenueShareRangeOutput {
@@ -4862,6 +5691,12 @@ func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) ToGoogleCloudApigeeV
 	return o
 }
 
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1RevenueShareRangeResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1RevenueShareRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Ending value of the range. Set to 0 or `null` for the last range of values.
 func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) End() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1RevenueShareRangeResponse) string { return v.End }).(pulumi.StringOutput)
@@ -4889,6 +5724,12 @@ func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) ToGoogleCloudAp
 
 func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1RevenueShareRangeResponse] {
+	return pulumix.Output[[]GoogleCloudApigeeV1RevenueShareRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RevenueShareRangeResponseOutput {
@@ -4926,6 +5767,12 @@ func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) ToGoogleCloudAp
 
 func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) ToGoogleCloudApigeeV1SecurityReportMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportMetadataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1SecurityReportMetadataResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1SecurityReportMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dimensions of the SecurityReport.
@@ -5009,6 +5856,12 @@ func (i GoogleCloudApigeeV1SecurityReportQueryMetricArgs) ToGoogleCloudApigeeV1S
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1SecurityReportQueryMetricOutput)
 }
 
+func (i GoogleCloudApigeeV1SecurityReportQueryMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1SecurityReportQueryMetric] {
+	return pulumix.Output[GoogleCloudApigeeV1SecurityReportQueryMetric]{
+		OutputState: i.ToGoogleCloudApigeeV1SecurityReportQueryMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput is an input type that accepts GoogleCloudApigeeV1SecurityReportQueryMetricArray and GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput` via:
 //
@@ -5034,6 +5887,12 @@ func (i GoogleCloudApigeeV1SecurityReportQueryMetricArray) ToGoogleCloudApigeeV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput)
 }
 
+func (i GoogleCloudApigeeV1SecurityReportQueryMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1SecurityReportQueryMetric] {
+	return pulumix.Output[[]GoogleCloudApigeeV1SecurityReportQueryMetric]{
+		OutputState: i.ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metric of the Query
 type GoogleCloudApigeeV1SecurityReportQueryMetricOutput struct{ *pulumi.OutputState }
 
@@ -5047,6 +5906,12 @@ func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) ToGoogleCloudApigeeV
 
 func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) ToGoogleCloudApigeeV1SecurityReportQueryMetricOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportQueryMetricOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1SecurityReportQueryMetric] {
+	return pulumix.Output[GoogleCloudApigeeV1SecurityReportQueryMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregation function: avg, min, max, or sum.
@@ -5088,6 +5953,12 @@ func (o GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput) ToGoogleCloudAp
 	return o
 }
 
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudApigeeV1SecurityReportQueryMetric] {
+	return pulumix.Output[[]GoogleCloudApigeeV1SecurityReportQueryMetric]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1SecurityReportQueryMetricOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1SecurityReportQueryMetric {
 		return vs[0].([]GoogleCloudApigeeV1SecurityReportQueryMetric)[vs[1].(int)]
@@ -5115,6 +5986,12 @@ func (o GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) ToGoogleC
 
 func (o GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) ToGoogleCloudApigeeV1SecurityReportResultMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1SecurityReportResultMetadataResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1SecurityReportResultMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
@@ -5194,6 +6071,12 @@ func (i GoogleCloudApigeeV1TlsInfoArgs) ToGoogleCloudApigeeV1TlsInfoOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoOutput)
 }
 
+func (i GoogleCloudApigeeV1TlsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TlsInfo] {
+	return pulumix.Output[GoogleCloudApigeeV1TlsInfo]{
+		OutputState: i.ToGoogleCloudApigeeV1TlsInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1TlsInfoArgs) ToGoogleCloudApigeeV1TlsInfoPtrOutput() GoogleCloudApigeeV1TlsInfoPtrOutput {
 	return i.ToGoogleCloudApigeeV1TlsInfoPtrOutputWithContext(context.Background())
 }
@@ -5235,6 +6118,12 @@ func (i *googleCloudApigeeV1TlsInfoPtrType) ToGoogleCloudApigeeV1TlsInfoPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoPtrOutput)
 }
 
+func (i *googleCloudApigeeV1TlsInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TlsInfo] {
+	return pulumix.Output[*GoogleCloudApigeeV1TlsInfo]{
+		OutputState: i.ToGoogleCloudApigeeV1TlsInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfoOutput struct{ *pulumi.OutputState }
 
@@ -5258,6 +6147,12 @@ func (o GoogleCloudApigeeV1TlsInfoOutput) ToGoogleCloudApigeeV1TlsInfoPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TlsInfo) *GoogleCloudApigeeV1TlsInfo {
 		return &v
 	}).(GoogleCloudApigeeV1TlsInfoPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1TlsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TlsInfo] {
+	return pulumix.Output[GoogleCloudApigeeV1TlsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
@@ -5317,6 +6212,12 @@ func (o GoogleCloudApigeeV1TlsInfoPtrOutput) ToGoogleCloudApigeeV1TlsInfoPtrOutp
 
 func (o GoogleCloudApigeeV1TlsInfoPtrOutput) ToGoogleCloudApigeeV1TlsInfoPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TlsInfo] {
+	return pulumix.Output[*GoogleCloudApigeeV1TlsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1TlsInfoPtrOutput) Elem() GoogleCloudApigeeV1TlsInfoOutput {
@@ -5456,6 +6357,12 @@ func (i GoogleCloudApigeeV1TlsInfoCommonNameArgs) ToGoogleCloudApigeeV1TlsInfoCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoCommonNameOutput)
 }
 
+func (i GoogleCloudApigeeV1TlsInfoCommonNameArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TlsInfoCommonName] {
+	return pulumix.Output[GoogleCloudApigeeV1TlsInfoCommonName]{
+		OutputState: i.ToGoogleCloudApigeeV1TlsInfoCommonNameOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1TlsInfoCommonNameArgs) ToGoogleCloudApigeeV1TlsInfoCommonNamePtrOutput() GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput {
 	return i.ToGoogleCloudApigeeV1TlsInfoCommonNamePtrOutputWithContext(context.Background())
 }
@@ -5497,6 +6404,12 @@ func (i *googleCloudApigeeV1TlsInfoCommonNamePtrType) ToGoogleCloudApigeeV1TlsIn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput)
 }
 
+func (i *googleCloudApigeeV1TlsInfoCommonNamePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TlsInfoCommonName] {
+	return pulumix.Output[*GoogleCloudApigeeV1TlsInfoCommonName]{
+		OutputState: i.ToGoogleCloudApigeeV1TlsInfoCommonNamePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudApigeeV1TlsInfoCommonNameOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1TlsInfoCommonNameOutput) ElementType() reflect.Type {
@@ -5521,6 +6434,12 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNameOutput) ToGoogleCloudApigeeV1TlsInfo
 	}).(GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput)
 }
 
+func (o GoogleCloudApigeeV1TlsInfoCommonNameOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TlsInfoCommonName] {
+	return pulumix.Output[GoogleCloudApigeeV1TlsInfoCommonName]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The TLS Common Name string of the certificate.
 func (o GoogleCloudApigeeV1TlsInfoCommonNameOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonName) *string { return v.Value }).(pulumi.StringPtrOutput)
@@ -5543,6 +6462,12 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) ToGoogleCloudApigeeV1TlsI
 
 func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) ToGoogleCloudApigeeV1TlsInfoCommonNamePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TlsInfoCommonName] {
+	return pulumix.Output[*GoogleCloudApigeeV1TlsInfoCommonName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) Elem() GoogleCloudApigeeV1TlsInfoCommonNameOutput {
@@ -5596,6 +6521,12 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToGoogleCloudApigeeV
 	return o
 }
 
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TlsInfoCommonNameResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1TlsInfoCommonNameResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The TLS Common Name string of the certificate.
 func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonNameResponse) string { return v.Value }).(pulumi.StringOutput)
@@ -5641,6 +6572,12 @@ func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoRe
 
 func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponseOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TlsInfoResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1TlsInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
@@ -5729,6 +6666,12 @@ func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToGoogleCloudApigeeV1TraceSa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigOutput)
 }
 
+func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1TraceSamplingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
 	return i.ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(context.Background())
 }
@@ -5770,6 +6713,12 @@ func (i *googleCloudApigeeV1TraceSamplingConfigPtrType) ToGoogleCloudApigeeV1Tra
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigPtrOutput)
 }
 
+func (i *googleCloudApigeeV1TraceSamplingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfig]{
+		OutputState: i.ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
 type GoogleCloudApigeeV1TraceSamplingConfigOutput struct{ *pulumi.OutputState }
 
@@ -5793,6 +6742,12 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToGoogleCloudApigeeV1Trace
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TraceSamplingConfig) *GoogleCloudApigeeV1TraceSamplingConfig {
 		return &v
 	}).(GoogleCloudApigeeV1TraceSamplingConfigPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfig] {
+	return pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sampler of distributed tracing. OFF is the default value.
@@ -5819,6 +6774,12 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) ToGoogleCloudApigeeV1Tr
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfig] {
+	return pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigOutput {
@@ -5874,6 +6835,12 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToGoogleCloudApige
 	return o
 }
 
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfigResponse] {
+	return pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sampler of distributed tracing. OFF is the default value.
 func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) Sampler() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfigResponse) string { return v.Sampler }).(pulumi.StringOutput)
@@ -5923,6 +6890,12 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
 }
 
+func (i GoogleIamV1AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
+	return pulumix.Output[GoogleIamV1AuditConfig]{
+		OutputState: i.ToGoogleIamV1AuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
@@ -5948,6 +6921,12 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
+func (i GoogleIamV1AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditConfig]{
+		OutputState: i.ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -5961,6 +6940,12 @@ func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIam
 
 func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
+	return pulumix.Output[GoogleIamV1AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -5985,6 +6970,12 @@ func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput()
 
 func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
@@ -6016,6 +7007,12 @@ func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOu
 	return o
 }
 
+func (o GoogleIamV1AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfigResponse] {
+	return pulumix.Output[GoogleIamV1AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
@@ -6038,6 +7035,12 @@ func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigRespo
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
@@ -6085,6 +7088,12 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
 }
 
+func (i GoogleIamV1AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1AuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
@@ -6110,6 +7119,12 @@ func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
 }
 
+func (i GoogleIamV1AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -6123,6 +7138,12 @@ func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() Goo
 
 func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -6147,6 +7168,12 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOu
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
@@ -6178,6 +7205,12 @@ func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResp
 	return o
 }
 
+func (o GoogleIamV1AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigResponse] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -6200,6 +7233,12 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfi
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
@@ -6251,6 +7290,12 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
+func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
+	return pulumix.Output[GoogleIamV1Binding]{
+		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -6276,6 +7321,12 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
+func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
+	return pulumix.Output[[]GoogleIamV1Binding]{
+		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -6289,6 +7340,12 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
+	return pulumix.Output[GoogleIamV1Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -6318,6 +7375,12 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
+	return pulumix.Output[[]GoogleIamV1Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -6351,6 +7414,12 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
+func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
+	return pulumix.Output[GoogleIamV1BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
@@ -6378,6 +7447,12 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
+	return pulumix.Output[[]GoogleIamV1BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -6433,6 +7508,12 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
+func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
+	return pulumix.Output[GoogleTypeExpr]{
+		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -6474,6 +7555,12 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
+func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
+	return pulumix.Output[*GoogleTypeExpr]{
+		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -6497,6 +7584,12 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
+}
+
+func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
+	return pulumix.Output[GoogleTypeExpr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -6531,6 +7624,12 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
+}
+
+func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
+	return pulumix.Output[*GoogleTypeExpr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -6610,6 +7709,12 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(
 	return o
 }
 
+func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
+	return pulumix.Output[GoogleTypeExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o GoogleTypeExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -6673,6 +7778,12 @@ func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyOutput)
 }
 
+func (i GoogleTypeMoneyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeMoney] {
+	return pulumix.Output[GoogleTypeMoney]{
+		OutputState: i.ToGoogleTypeMoneyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOutput {
 	return i.ToGoogleTypeMoneyPtrOutputWithContext(context.Background())
 }
@@ -6714,6 +7825,12 @@ func (i *googleTypeMoneyPtrType) ToGoogleTypeMoneyPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyPtrOutput)
 }
 
+func (i *googleTypeMoneyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeMoney] {
+	return pulumix.Output[*GoogleTypeMoney]{
+		OutputState: i.ToGoogleTypeMoneyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an amount of money with its currency type.
 type GoogleTypeMoneyOutput struct{ *pulumi.OutputState }
 
@@ -6737,6 +7854,12 @@ func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeMoney) *GoogleTypeMoney {
 		return &v
 	}).(GoogleTypeMoneyPtrOutput)
+}
+
+func (o GoogleTypeMoneyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeMoney] {
+	return pulumix.Output[GoogleTypeMoney]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -6766,6 +7889,12 @@ func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPt
 
 func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
 	return o
+}
+
+func (o GoogleTypeMoneyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeMoney] {
+	return pulumix.Output[*GoogleTypeMoney]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleTypeMoneyPtrOutput) Elem() GoogleTypeMoneyOutput {
@@ -6831,6 +7960,12 @@ func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutput() GoogleT
 
 func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutputWithContext(ctx context.Context) GoogleTypeMoneyResponseOutput {
 	return o
+}
+
+func (o GoogleTypeMoneyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeMoneyResponse] {
+	return pulumix.Output[GoogleTypeMoneyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The three-letter currency code defined in ISO 4217.

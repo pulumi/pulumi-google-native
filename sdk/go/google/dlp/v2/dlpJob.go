@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.
@@ -138,6 +139,12 @@ func (i *DlpJob) ToDlpJobOutputWithContext(ctx context.Context) DlpJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DlpJobOutput)
 }
 
+func (i *DlpJob) ToOutput(ctx context.Context) pulumix.Output[*DlpJob] {
+	return pulumix.Output[*DlpJob]{
+		OutputState: i.ToDlpJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DlpJobOutput struct{ *pulumi.OutputState }
 
 func (DlpJobOutput) ElementType() reflect.Type {
@@ -150,6 +157,12 @@ func (o DlpJobOutput) ToDlpJobOutput() DlpJobOutput {
 
 func (o DlpJobOutput) ToDlpJobOutputWithContext(ctx context.Context) DlpJobOutput {
 	return o
+}
+
+func (o DlpJobOutput) ToOutput(ctx context.Context) pulumix.Output[*DlpJob] {
+	return pulumix.Output[*DlpJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Events that should occur after the job has completed.

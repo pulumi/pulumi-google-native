@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -84,6 +85,12 @@ func (o EnvironmentConfigEnvironmentSizeOutput) ToEnvironmentConfigEnvironmentSi
 	}).(EnvironmentConfigEnvironmentSizePtrOutput)
 }
 
+func (o EnvironmentConfigEnvironmentSizeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigEnvironmentSize] {
+	return pulumix.Output[EnvironmentConfigEnvironmentSize]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentConfigEnvironmentSizeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o EnvironmentConfigEnvironmentSizePtrOutput) ToEnvironmentConfigEnvironmen
 
 func (o EnvironmentConfigEnvironmentSizePtrOutput) ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizePtrOutput {
 	return o
+}
+
+func (o EnvironmentConfigEnvironmentSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigEnvironmentSize] {
+	return pulumix.Output[*EnvironmentConfigEnvironmentSize]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentConfigEnvironmentSizePtrOutput) Elem() EnvironmentConfigEnvironmentSizeOutput {
@@ -179,6 +192,12 @@ func (in *environmentConfigEnvironmentSizePtr) ToEnvironmentConfigEnvironmentSiz
 
 func (in *environmentConfigEnvironmentSizePtr) ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentConfigEnvironmentSizePtrOutput)
+}
+
+func (in *environmentConfigEnvironmentSizePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigEnvironmentSize] {
+	return pulumix.Output[*EnvironmentConfigEnvironmentSize]{
+		OutputState: in.ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current state of the environment.
@@ -259,6 +278,12 @@ func (o EnvironmentStateEnumOutput) ToEnvironmentStateEnumPtrOutputWithContext(c
 	}).(EnvironmentStateEnumPtrOutput)
 }
 
+func (o EnvironmentStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentStateEnum] {
+	return pulumix.Output[EnvironmentStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -292,6 +317,12 @@ func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutput() Environ
 
 func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
 	return o
+}
+
+func (o EnvironmentStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentStateEnum] {
+	return pulumix.Output[*EnvironmentStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentStateEnumPtrOutput) Elem() EnvironmentStateEnumOutput {
@@ -354,6 +385,12 @@ func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutput() Environment
 
 func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentStateEnumPtrOutput)
+}
+
+func (in *environmentStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentStateEnum] {
+	return pulumix.Output[*EnvironmentStateEnum]{
+		OutputState: in.ToEnvironmentStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
@@ -428,6 +465,12 @@ func (o NetworkingConfigConnectionTypeOutput) ToNetworkingConfigConnectionTypePt
 	}).(NetworkingConfigConnectionTypePtrOutput)
 }
 
+func (o NetworkingConfigConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkingConfigConnectionType] {
+	return pulumix.Output[NetworkingConfigConnectionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkingConfigConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -461,6 +504,12 @@ func (o NetworkingConfigConnectionTypePtrOutput) ToNetworkingConfigConnectionTyp
 
 func (o NetworkingConfigConnectionTypePtrOutput) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
 	return o
+}
+
+func (o NetworkingConfigConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkingConfigConnectionType] {
+	return pulumix.Output[*NetworkingConfigConnectionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkingConfigConnectionTypePtrOutput) Elem() NetworkingConfigConnectionTypeOutput {
@@ -523,6 +572,12 @@ func (in *networkingConfigConnectionTypePtr) ToNetworkingConfigConnectionTypePtr
 
 func (in *networkingConfigConnectionTypePtr) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkingConfigConnectionTypePtrOutput)
+}
+
+func (in *networkingConfigConnectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkingConfigConnectionType] {
+	return pulumix.Output[*NetworkingConfigConnectionType]{
+		OutputState: in.ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

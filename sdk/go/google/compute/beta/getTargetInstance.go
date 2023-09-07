@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified TargetInstance resource.
@@ -86,6 +87,12 @@ func (o LookupTargetInstanceResultOutput) ToLookupTargetInstanceResultOutput() L
 
 func (o LookupTargetInstanceResultOutput) ToLookupTargetInstanceResultOutputWithContext(ctx context.Context) LookupTargetInstanceResultOutput {
 	return o
+}
+
+func (o LookupTargetInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTargetInstanceResult] {
+	return pulumix.Output[LookupTargetInstanceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

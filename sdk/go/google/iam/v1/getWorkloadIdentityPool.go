@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an individual WorkloadIdentityPool.
@@ -76,6 +77,12 @@ func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResu
 
 func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResultOutputWithContext(ctx context.Context) LookupWorkloadIdentityPoolResultOutput {
 	return o
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadIdentityPoolResult] {
+	return pulumix.Output[LookupWorkloadIdentityPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description of the pool. Cannot exceed 256 characters.

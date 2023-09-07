@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches the representation of an existing ResourceRecordSet.
@@ -83,6 +84,12 @@ func (o LookupResourceRecordSetResultOutput) ToLookupResourceRecordSetResultOutp
 
 func (o LookupResourceRecordSetResultOutput) ToLookupResourceRecordSetResultOutputWithContext(ctx context.Context) LookupResourceRecordSetResultOutput {
 	return o
+}
+
+func (o LookupResourceRecordSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourceRecordSetResult] {
+	return pulumix.Output[LookupResourceRecordSetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupResourceRecordSetResultOutput) Kind() pulumi.StringOutput {

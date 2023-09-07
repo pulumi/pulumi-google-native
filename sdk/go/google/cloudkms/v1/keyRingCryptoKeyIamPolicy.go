@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -142,6 +143,12 @@ func (i *KeyRingCryptoKeyIamPolicy) ToKeyRingCryptoKeyIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingCryptoKeyIamPolicyOutput)
 }
 
+func (i *KeyRingCryptoKeyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*KeyRingCryptoKeyIamPolicy] {
+	return pulumix.Output[*KeyRingCryptoKeyIamPolicy]{
+		OutputState: i.ToKeyRingCryptoKeyIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingCryptoKeyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingCryptoKeyIamPolicyOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o KeyRingCryptoKeyIamPolicyOutput) ToKeyRingCryptoKeyIamPolicyOutput() Key
 
 func (o KeyRingCryptoKeyIamPolicyOutput) ToKeyRingCryptoKeyIamPolicyOutputWithContext(ctx context.Context) KeyRingCryptoKeyIamPolicyOutput {
 	return o
+}
+
+func (o KeyRingCryptoKeyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRingCryptoKeyIamPolicy] {
+	return pulumix.Output[*KeyRingCryptoKeyIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

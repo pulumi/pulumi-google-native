@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the IAM policy for the specified Access Context Manager access policy.
@@ -70,6 +71,12 @@ func (o LookupAccessPolicyIamPolicyResultOutput) ToLookupAccessPolicyIamPolicyRe
 
 func (o LookupAccessPolicyIamPolicyResultOutput) ToLookupAccessPolicyIamPolicyResultOutputWithContext(ctx context.Context) LookupAccessPolicyIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupAccessPolicyIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessPolicyIamPolicyResult] {
+	return pulumix.Output[LookupAccessPolicyIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

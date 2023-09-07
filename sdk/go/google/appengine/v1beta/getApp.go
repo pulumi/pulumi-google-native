@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about an application.
@@ -89,6 +90,12 @@ func (o LookupAppResultOutput) ToLookupAppResultOutput() LookupAppResultOutput {
 
 func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Context) LookupAppResultOutput {
 	return o
+}
+
+func (o LookupAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppResult] {
+	return pulumix.Output[LookupAppResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.

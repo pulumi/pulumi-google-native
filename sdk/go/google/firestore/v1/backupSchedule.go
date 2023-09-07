@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a backup schedule on a database. At most two backup schedules can be configured on a database, one daily backup schedule with retention up to 7 days and one weekly backup schedule with retention up to 14 weeks.
@@ -126,6 +127,12 @@ func (i *BackupSchedule) ToBackupScheduleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleOutput)
 }
 
+func (i *BackupSchedule) ToOutput(ctx context.Context) pulumix.Output[*BackupSchedule] {
+	return pulumix.Output[*BackupSchedule]{
+		OutputState: i.ToBackupScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupScheduleOutput struct{ *pulumi.OutputState }
 
 func (BackupScheduleOutput) ElementType() reflect.Type {
@@ -138,6 +145,12 @@ func (o BackupScheduleOutput) ToBackupScheduleOutput() BackupScheduleOutput {
 
 func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Context) BackupScheduleOutput {
 	return o
+}
+
+func (o BackupScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupSchedule] {
+	return pulumix.Output[*BackupSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp at which this backup schedule was created and effective since. No backups will be created for this schedule before this time.

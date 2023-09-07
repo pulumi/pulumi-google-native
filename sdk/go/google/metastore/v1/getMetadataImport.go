@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single import.
@@ -82,6 +83,12 @@ func (o LookupMetadataImportResultOutput) ToLookupMetadataImportResultOutput() L
 
 func (o LookupMetadataImportResultOutput) ToLookupMetadataImportResultOutputWithContext(ctx context.Context) LookupMetadataImportResultOutput {
 	return o
+}
+
+func (o LookupMetadataImportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetadataImportResult] {
+	return pulumix.Output[LookupMetadataImportResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the metadata import was started.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
@@ -169,6 +170,12 @@ func (i *TargetHttpsProxy) ToTargetHttpsProxyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyOutput)
 }
 
+func (i *TargetHttpsProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxy] {
+	return pulumix.Output[*TargetHttpsProxy]{
+		OutputState: i.ToTargetHttpsProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetHttpsProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpsProxyOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutput() TargetHttpsProxyOutpu
 
 func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutputWithContext(ctx context.Context) TargetHttpsProxyOutput {
 	return o
+}
+
+func (o TargetHttpsProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxy] {
+	return pulumix.Output[*TargetHttpsProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.

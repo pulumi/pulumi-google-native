@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.
@@ -128,6 +129,12 @@ func (i *InstanceDatabaseIamPolicy) ToInstanceDatabaseIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatabaseIamPolicyOutput)
 }
 
+func (i *InstanceDatabaseIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*InstanceDatabaseIamPolicy] {
+	return pulumix.Output[*InstanceDatabaseIamPolicy]{
+		OutputState: i.ToInstanceDatabaseIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceDatabaseIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseIamPolicyOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o InstanceDatabaseIamPolicyOutput) ToInstanceDatabaseIamPolicyOutput() Ins
 
 func (o InstanceDatabaseIamPolicyOutput) ToInstanceDatabaseIamPolicyOutputWithContext(ctx context.Context) InstanceDatabaseIamPolicyOutput {
 	return o
+}
+
+func (o InstanceDatabaseIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDatabaseIamPolicy] {
+	return pulumix.Output[*InstanceDatabaseIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.

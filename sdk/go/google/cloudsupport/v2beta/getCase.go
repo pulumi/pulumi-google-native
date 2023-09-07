@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the specified case.
@@ -98,6 +99,12 @@ func (o LookupCaseResultOutput) ToLookupCaseResultOutput() LookupCaseResultOutpu
 
 func (o LookupCaseResultOutput) ToLookupCaseResultOutputWithContext(ctx context.Context) LookupCaseResultOutput {
 	return o
+}
+
+func (o LookupCaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCaseResult] {
+	return pulumix.Output[LookupCaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The issue classification applicable to this case.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -123,6 +142,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -156,6 +181,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -183,6 +214,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -226,6 +263,12 @@ func (i DockerRepositoryArgs) ToDockerRepositoryOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryOutput)
 }
 
+func (i DockerRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[DockerRepository] {
+	return pulumix.Output[DockerRepository]{
+		OutputState: i.ToDockerRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DockerRepositoryArgs) ToDockerRepositoryPtrOutput() DockerRepositoryPtrOutput {
 	return i.ToDockerRepositoryPtrOutputWithContext(context.Background())
 }
@@ -267,6 +310,12 @@ func (i *dockerRepositoryPtrType) ToDockerRepositoryPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryPtrOutput)
 }
 
+func (i *dockerRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*DockerRepository] {
+	return pulumix.Output[*DockerRepository]{
+		OutputState: i.ToDockerRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for a Docker remote repository.
 type DockerRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -292,6 +341,12 @@ func (o DockerRepositoryOutput) ToDockerRepositoryPtrOutputWithContext(ctx conte
 	}).(DockerRepositoryPtrOutput)
 }
 
+func (o DockerRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[DockerRepository] {
+	return pulumix.Output[DockerRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
 // One of the publicly available Docker repositories supported by Artifact Registry.
 func (o DockerRepositoryOutput) PublicRepository() DockerRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v DockerRepository) *DockerRepositoryPublicRepository { return v.PublicRepository }).(DockerRepositoryPublicRepositoryPtrOutput)
@@ -309,6 +364,12 @@ func (o DockerRepositoryPtrOutput) ToDockerRepositoryPtrOutput() DockerRepositor
 
 func (o DockerRepositoryPtrOutput) ToDockerRepositoryPtrOutputWithContext(ctx context.Context) DockerRepositoryPtrOutput {
 	return o
+}
+
+func (o DockerRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DockerRepository] {
+	return pulumix.Output[*DockerRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DockerRepositoryPtrOutput) Elem() DockerRepositoryOutput {
@@ -366,6 +427,12 @@ func (i DockerRepositoryConfigArgs) ToDockerRepositoryConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryConfigOutput)
 }
 
+func (i DockerRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DockerRepositoryConfig] {
+	return pulumix.Output[DockerRepositoryConfig]{
+		OutputState: i.ToDockerRepositoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DockerRepositoryConfigArgs) ToDockerRepositoryConfigPtrOutput() DockerRepositoryConfigPtrOutput {
 	return i.ToDockerRepositoryConfigPtrOutputWithContext(context.Background())
 }
@@ -407,6 +474,12 @@ func (i *dockerRepositoryConfigPtrType) ToDockerRepositoryConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryConfigPtrOutput)
 }
 
+func (i *dockerRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DockerRepositoryConfig] {
+	return pulumix.Output[*DockerRepositoryConfig]{
+		OutputState: i.ToDockerRepositoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
 type DockerRepositoryConfigOutput struct{ *pulumi.OutputState }
 
@@ -432,6 +505,12 @@ func (o DockerRepositoryConfigOutput) ToDockerRepositoryConfigPtrOutputWithConte
 	}).(DockerRepositoryConfigPtrOutput)
 }
 
+func (o DockerRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DockerRepositoryConfig] {
+	return pulumix.Output[DockerRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
 func (o DockerRepositoryConfigOutput) ImmutableTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DockerRepositoryConfig) *bool { return v.ImmutableTags }).(pulumi.BoolPtrOutput)
@@ -449,6 +528,12 @@ func (o DockerRepositoryConfigPtrOutput) ToDockerRepositoryConfigPtrOutput() Doc
 
 func (o DockerRepositoryConfigPtrOutput) ToDockerRepositoryConfigPtrOutputWithContext(ctx context.Context) DockerRepositoryConfigPtrOutput {
 	return o
+}
+
+func (o DockerRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DockerRepositoryConfig] {
+	return pulumix.Output[*DockerRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DockerRepositoryConfigPtrOutput) Elem() DockerRepositoryConfigOutput {
@@ -492,6 +577,12 @@ func (o DockerRepositoryConfigResponseOutput) ToDockerRepositoryConfigResponseOu
 	return o
 }
 
+func (o DockerRepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DockerRepositoryConfigResponse] {
+	return pulumix.Output[DockerRepositoryConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
 func (o DockerRepositoryConfigResponseOutput) ImmutableTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v DockerRepositoryConfigResponse) bool { return v.ImmutableTags }).(pulumi.BoolOutput)
@@ -516,6 +607,12 @@ func (o DockerRepositoryResponseOutput) ToDockerRepositoryResponseOutput() Docke
 
 func (o DockerRepositoryResponseOutput) ToDockerRepositoryResponseOutputWithContext(ctx context.Context) DockerRepositoryResponseOutput {
 	return o
+}
+
+func (o DockerRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DockerRepositoryResponse] {
+	return pulumix.Output[DockerRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // One of the publicly available Docker repositories supported by Artifact Registry.
@@ -570,6 +667,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -611,6 +714,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -634,6 +743,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -668,6 +783,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -747,6 +868,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -802,6 +929,12 @@ func (i MavenRepositoryArgs) ToMavenRepositoryOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryOutput)
 }
 
+func (i MavenRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[MavenRepository] {
+	return pulumix.Output[MavenRepository]{
+		OutputState: i.ToMavenRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MavenRepositoryArgs) ToMavenRepositoryPtrOutput() MavenRepositoryPtrOutput {
 	return i.ToMavenRepositoryPtrOutputWithContext(context.Background())
 }
@@ -843,6 +976,12 @@ func (i *mavenRepositoryPtrType) ToMavenRepositoryPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryPtrOutput)
 }
 
+func (i *mavenRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*MavenRepository] {
+	return pulumix.Output[*MavenRepository]{
+		OutputState: i.ToMavenRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for a Maven remote repository.
 type MavenRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -868,6 +1007,12 @@ func (o MavenRepositoryOutput) ToMavenRepositoryPtrOutputWithContext(ctx context
 	}).(MavenRepositoryPtrOutput)
 }
 
+func (o MavenRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[MavenRepository] {
+	return pulumix.Output[MavenRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
 // One of the publicly available Maven repositories supported by Artifact Registry.
 func (o MavenRepositoryOutput) PublicRepository() MavenRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v MavenRepository) *MavenRepositoryPublicRepository { return v.PublicRepository }).(MavenRepositoryPublicRepositoryPtrOutput)
@@ -885,6 +1030,12 @@ func (o MavenRepositoryPtrOutput) ToMavenRepositoryPtrOutput() MavenRepositoryPt
 
 func (o MavenRepositoryPtrOutput) ToMavenRepositoryPtrOutputWithContext(ctx context.Context) MavenRepositoryPtrOutput {
 	return o
+}
+
+func (o MavenRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MavenRepository] {
+	return pulumix.Output[*MavenRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MavenRepositoryPtrOutput) Elem() MavenRepositoryOutput {
@@ -946,6 +1097,12 @@ func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigOutput)
 }
 
+func (i MavenRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryConfig] {
+	return pulumix.Output[MavenRepositoryConfig]{
+		OutputState: i.ToMavenRepositoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigPtrOutput() MavenRepositoryConfigPtrOutput {
 	return i.ToMavenRepositoryConfigPtrOutputWithContext(context.Background())
 }
@@ -987,6 +1144,12 @@ func (i *mavenRepositoryConfigPtrType) ToMavenRepositoryConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigPtrOutput)
 }
 
+func (i *mavenRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryConfig] {
+	return pulumix.Output[*MavenRepositoryConfig]{
+		OutputState: i.ToMavenRepositoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 type MavenRepositoryConfigOutput struct{ *pulumi.OutputState }
 
@@ -1012,6 +1175,12 @@ func (o MavenRepositoryConfigOutput) ToMavenRepositoryConfigPtrOutputWithContext
 	}).(MavenRepositoryConfigPtrOutput)
 }
 
+func (o MavenRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryConfig] {
+	return pulumix.Output[MavenRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The repository with this flag will allow publishing the same snapshot versions.
 func (o MavenRepositoryConfigOutput) AllowSnapshotOverwrites() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MavenRepositoryConfig) *bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolPtrOutput)
@@ -1034,6 +1203,12 @@ func (o MavenRepositoryConfigPtrOutput) ToMavenRepositoryConfigPtrOutput() Maven
 
 func (o MavenRepositoryConfigPtrOutput) ToMavenRepositoryConfigPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigPtrOutput {
 	return o
+}
+
+func (o MavenRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryConfig] {
+	return pulumix.Output[*MavenRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MavenRepositoryConfigPtrOutput) Elem() MavenRepositoryConfigOutput {
@@ -1089,6 +1264,12 @@ func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponseOutp
 	return o
 }
 
+func (o MavenRepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryConfigResponse] {
+	return pulumix.Output[MavenRepositoryConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The repository with this flag will allow publishing the same snapshot versions.
 func (o MavenRepositoryConfigResponseOutput) AllowSnapshotOverwrites() pulumi.BoolOutput {
 	return o.ApplyT(func(v MavenRepositoryConfigResponse) bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolOutput)
@@ -1118,6 +1299,12 @@ func (o MavenRepositoryResponseOutput) ToMavenRepositoryResponseOutput() MavenRe
 
 func (o MavenRepositoryResponseOutput) ToMavenRepositoryResponseOutputWithContext(ctx context.Context) MavenRepositoryResponseOutput {
 	return o
+}
+
+func (o MavenRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryResponse] {
+	return pulumix.Output[MavenRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // One of the publicly available Maven repositories supported by Artifact Registry.
@@ -1158,6 +1345,12 @@ func (i NpmRepositoryArgs) ToNpmRepositoryOutput() NpmRepositoryOutput {
 
 func (i NpmRepositoryArgs) ToNpmRepositoryOutputWithContext(ctx context.Context) NpmRepositoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NpmRepositoryOutput)
+}
+
+func (i NpmRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[NpmRepository] {
+	return pulumix.Output[NpmRepository]{
+		OutputState: i.ToNpmRepositoryOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i NpmRepositoryArgs) ToNpmRepositoryPtrOutput() NpmRepositoryPtrOutput {
@@ -1201,6 +1394,12 @@ func (i *npmRepositoryPtrType) ToNpmRepositoryPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NpmRepositoryPtrOutput)
 }
 
+func (i *npmRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*NpmRepository] {
+	return pulumix.Output[*NpmRepository]{
+		OutputState: i.ToNpmRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for a Npm remote repository.
 type NpmRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -1226,6 +1425,12 @@ func (o NpmRepositoryOutput) ToNpmRepositoryPtrOutputWithContext(ctx context.Con
 	}).(NpmRepositoryPtrOutput)
 }
 
+func (o NpmRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[NpmRepository] {
+	return pulumix.Output[NpmRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
 // One of the publicly available Npm repositories supported by Artifact Registry.
 func (o NpmRepositoryOutput) PublicRepository() NpmRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v NpmRepository) *NpmRepositoryPublicRepository { return v.PublicRepository }).(NpmRepositoryPublicRepositoryPtrOutput)
@@ -1243,6 +1448,12 @@ func (o NpmRepositoryPtrOutput) ToNpmRepositoryPtrOutput() NpmRepositoryPtrOutpu
 
 func (o NpmRepositoryPtrOutput) ToNpmRepositoryPtrOutputWithContext(ctx context.Context) NpmRepositoryPtrOutput {
 	return o
+}
+
+func (o NpmRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NpmRepository] {
+	return pulumix.Output[*NpmRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NpmRepositoryPtrOutput) Elem() NpmRepositoryOutput {
@@ -1286,6 +1497,12 @@ func (o NpmRepositoryResponseOutput) ToNpmRepositoryResponseOutputWithContext(ct
 	return o
 }
 
+func (o NpmRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NpmRepositoryResponse] {
+	return pulumix.Output[NpmRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // One of the publicly available Npm repositories supported by Artifact Registry.
 func (o NpmRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v NpmRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -1324,6 +1541,12 @@ func (i PythonRepositoryArgs) ToPythonRepositoryOutput() PythonRepositoryOutput 
 
 func (i PythonRepositoryArgs) ToPythonRepositoryOutputWithContext(ctx context.Context) PythonRepositoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PythonRepositoryOutput)
+}
+
+func (i PythonRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[PythonRepository] {
+	return pulumix.Output[PythonRepository]{
+		OutputState: i.ToPythonRepositoryOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i PythonRepositoryArgs) ToPythonRepositoryPtrOutput() PythonRepositoryPtrOutput {
@@ -1367,6 +1590,12 @@ func (i *pythonRepositoryPtrType) ToPythonRepositoryPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PythonRepositoryPtrOutput)
 }
 
+func (i *pythonRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*PythonRepository] {
+	return pulumix.Output[*PythonRepository]{
+		OutputState: i.ToPythonRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for a Python remote repository.
 type PythonRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -1392,6 +1621,12 @@ func (o PythonRepositoryOutput) ToPythonRepositoryPtrOutputWithContext(ctx conte
 	}).(PythonRepositoryPtrOutput)
 }
 
+func (o PythonRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[PythonRepository] {
+	return pulumix.Output[PythonRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
 // One of the publicly available Python repositories supported by Artifact Registry.
 func (o PythonRepositoryOutput) PublicRepository() PythonRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v PythonRepository) *PythonRepositoryPublicRepository { return v.PublicRepository }).(PythonRepositoryPublicRepositoryPtrOutput)
@@ -1409,6 +1644,12 @@ func (o PythonRepositoryPtrOutput) ToPythonRepositoryPtrOutput() PythonRepositor
 
 func (o PythonRepositoryPtrOutput) ToPythonRepositoryPtrOutputWithContext(ctx context.Context) PythonRepositoryPtrOutput {
 	return o
+}
+
+func (o PythonRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PythonRepository] {
+	return pulumix.Output[*PythonRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PythonRepositoryPtrOutput) Elem() PythonRepositoryOutput {
@@ -1450,6 +1691,12 @@ func (o PythonRepositoryResponseOutput) ToPythonRepositoryResponseOutput() Pytho
 
 func (o PythonRepositoryResponseOutput) ToPythonRepositoryResponseOutputWithContext(ctx context.Context) PythonRepositoryResponseOutput {
 	return o
+}
+
+func (o PythonRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PythonRepositoryResponse] {
+	return pulumix.Output[PythonRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // One of the publicly available Python repositories supported by Artifact Registry.
@@ -1508,6 +1755,12 @@ func (i RemoteRepositoryConfigArgs) ToRemoteRepositoryConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteRepositoryConfigOutput)
 }
 
+func (i RemoteRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RemoteRepositoryConfig] {
+	return pulumix.Output[RemoteRepositoryConfig]{
+		OutputState: i.ToRemoteRepositoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RemoteRepositoryConfigArgs) ToRemoteRepositoryConfigPtrOutput() RemoteRepositoryConfigPtrOutput {
 	return i.ToRemoteRepositoryConfigPtrOutputWithContext(context.Background())
 }
@@ -1549,6 +1802,12 @@ func (i *remoteRepositoryConfigPtrType) ToRemoteRepositoryConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteRepositoryConfigPtrOutput)
 }
 
+func (i *remoteRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RemoteRepositoryConfig] {
+	return pulumix.Output[*RemoteRepositoryConfig]{
+		OutputState: i.ToRemoteRepositoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Remote repository configuration.
 type RemoteRepositoryConfigOutput struct{ *pulumi.OutputState }
 
@@ -1572,6 +1831,12 @@ func (o RemoteRepositoryConfigOutput) ToRemoteRepositoryConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoteRepositoryConfig) *RemoteRepositoryConfig {
 		return &v
 	}).(RemoteRepositoryConfigPtrOutput)
+}
+
+func (o RemoteRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RemoteRepositoryConfig] {
+	return pulumix.Output[RemoteRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the remote source.
@@ -1611,6 +1876,12 @@ func (o RemoteRepositoryConfigPtrOutput) ToRemoteRepositoryConfigPtrOutput() Rem
 
 func (o RemoteRepositoryConfigPtrOutput) ToRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RemoteRepositoryConfigPtrOutput {
 	return o
+}
+
+func (o RemoteRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemoteRepositoryConfig] {
+	return pulumix.Output[*RemoteRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RemoteRepositoryConfigPtrOutput) Elem() RemoteRepositoryConfigOutput {
@@ -1702,6 +1973,12 @@ func (o RemoteRepositoryConfigResponseOutput) ToRemoteRepositoryConfigResponseOu
 	return o
 }
 
+func (o RemoteRepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RemoteRepositoryConfigResponse] {
+	return pulumix.Output[RemoteRepositoryConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The description of the remote source.
 func (o RemoteRepositoryConfigResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteRepositoryConfigResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1770,6 +2047,12 @@ func (i UpstreamPolicyArgs) ToUpstreamPolicyOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(UpstreamPolicyOutput)
 }
 
+func (i UpstreamPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[UpstreamPolicy] {
+	return pulumix.Output[UpstreamPolicy]{
+		OutputState: i.ToUpstreamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UpstreamPolicyArrayInput is an input type that accepts UpstreamPolicyArray and UpstreamPolicyArrayOutput values.
 // You can construct a concrete instance of `UpstreamPolicyArrayInput` via:
 //
@@ -1795,6 +2078,12 @@ func (i UpstreamPolicyArray) ToUpstreamPolicyArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(UpstreamPolicyArrayOutput)
 }
 
+func (i UpstreamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]UpstreamPolicy] {
+	return pulumix.Output[[]UpstreamPolicy]{
+		OutputState: i.ToUpstreamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Artifact policy configuration for the repository contents.
 type UpstreamPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1808,6 +2097,12 @@ func (o UpstreamPolicyOutput) ToUpstreamPolicyOutput() UpstreamPolicyOutput {
 
 func (o UpstreamPolicyOutput) ToUpstreamPolicyOutputWithContext(ctx context.Context) UpstreamPolicyOutput {
 	return o
+}
+
+func (o UpstreamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[UpstreamPolicy] {
+	return pulumix.Output[UpstreamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The user-provided ID of the upstream policy.
@@ -1839,6 +2134,12 @@ func (o UpstreamPolicyArrayOutput) ToUpstreamPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o UpstreamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpstreamPolicy] {
+	return pulumix.Output[[]UpstreamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UpstreamPolicyArrayOutput) Index(i pulumi.IntInput) UpstreamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpstreamPolicy {
 		return vs[0].([]UpstreamPolicy)[vs[1].(int)]
@@ -1868,6 +2169,12 @@ func (o UpstreamPolicyResponseOutput) ToUpstreamPolicyResponseOutputWithContext(
 	return o
 }
 
+func (o UpstreamPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpstreamPolicyResponse] {
+	return pulumix.Output[UpstreamPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Entries with a greater priority value take precedence in the pull order.
 func (o UpstreamPolicyResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v UpstreamPolicyResponse) int { return v.Priority }).(pulumi.IntOutput)
@@ -1890,6 +2197,12 @@ func (o UpstreamPolicyResponseArrayOutput) ToUpstreamPolicyResponseArrayOutput()
 
 func (o UpstreamPolicyResponseArrayOutput) ToUpstreamPolicyResponseArrayOutputWithContext(ctx context.Context) UpstreamPolicyResponseArrayOutput {
 	return o
+}
+
+func (o UpstreamPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpstreamPolicyResponse] {
+	return pulumix.Output[[]UpstreamPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpstreamPolicyResponseArrayOutput) Index(i pulumi.IntInput) UpstreamPolicyResponseOutput {
@@ -1933,6 +2246,12 @@ func (i VirtualRepositoryConfigArgs) ToVirtualRepositoryConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualRepositoryConfigOutput)
 }
 
+func (i VirtualRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualRepositoryConfig] {
+	return pulumix.Output[VirtualRepositoryConfig]{
+		OutputState: i.ToVirtualRepositoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualRepositoryConfigArgs) ToVirtualRepositoryConfigPtrOutput() VirtualRepositoryConfigPtrOutput {
 	return i.ToVirtualRepositoryConfigPtrOutputWithContext(context.Background())
 }
@@ -1974,6 +2293,12 @@ func (i *virtualRepositoryConfigPtrType) ToVirtualRepositoryConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualRepositoryConfigPtrOutput)
 }
 
+func (i *virtualRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualRepositoryConfig] {
+	return pulumix.Output[*VirtualRepositoryConfig]{
+		OutputState: i.ToVirtualRepositoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Virtual repository configuration.
 type VirtualRepositoryConfigOutput struct{ *pulumi.OutputState }
 
@@ -1999,6 +2324,12 @@ func (o VirtualRepositoryConfigOutput) ToVirtualRepositoryConfigPtrOutputWithCon
 	}).(VirtualRepositoryConfigPtrOutput)
 }
 
+func (o VirtualRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualRepositoryConfig] {
+	return pulumix.Output[VirtualRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
 func (o VirtualRepositoryConfigOutput) UpstreamPolicies() UpstreamPolicyArrayOutput {
 	return o.ApplyT(func(v VirtualRepositoryConfig) []UpstreamPolicy { return v.UpstreamPolicies }).(UpstreamPolicyArrayOutput)
@@ -2016,6 +2347,12 @@ func (o VirtualRepositoryConfigPtrOutput) ToVirtualRepositoryConfigPtrOutput() V
 
 func (o VirtualRepositoryConfigPtrOutput) ToVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) VirtualRepositoryConfigPtrOutput {
 	return o
+}
+
+func (o VirtualRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualRepositoryConfig] {
+	return pulumix.Output[*VirtualRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualRepositoryConfigPtrOutput) Elem() VirtualRepositoryConfigOutput {
@@ -2057,6 +2394,12 @@ func (o VirtualRepositoryConfigResponseOutput) ToVirtualRepositoryConfigResponse
 
 func (o VirtualRepositoryConfigResponseOutput) ToVirtualRepositoryConfigResponseOutputWithContext(ctx context.Context) VirtualRepositoryConfigResponseOutput {
 	return o
+}
+
+func (o VirtualRepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualRepositoryConfigResponse] {
+	return pulumix.Output[VirtualRepositoryConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.

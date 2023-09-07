@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified regional HealthCheckService resource.
@@ -88,6 +89,12 @@ func (o LookupRegionHealthCheckServiceResultOutput) ToLookupRegionHealthCheckSer
 
 func (o LookupRegionHealthCheckServiceResultOutput) ToLookupRegionHealthCheckServiceResultOutputWithContext(ctx context.Context) LookupRegionHealthCheckServiceResultOutput {
 	return o
+}
+
+func (o LookupRegionHealthCheckServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionHealthCheckServiceResult] {
+	return pulumix.Output[LookupRegionHealthCheckServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

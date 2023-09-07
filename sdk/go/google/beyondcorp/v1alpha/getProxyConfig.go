@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Tenant.
@@ -82,6 +83,12 @@ func (o LookupProxyConfigResultOutput) ToLookupProxyConfigResultOutput() LookupP
 
 func (o LookupProxyConfigResultOutput) ToLookupProxyConfigResultOutputWithContext(ctx context.Context) LookupProxyConfigResultOutput {
 	return o
+}
+
+func (o LookupProxyConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProxyConfigResult] {
+	return pulumix.Output[LookupProxyConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Information to facilitate Authentication against the proxy server.

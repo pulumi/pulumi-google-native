@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
@@ -123,6 +124,12 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
 }
 
+func (i *Project) ToOutput(ctx context.Context) pulumix.Output[*Project] {
+	return pulumix.Output[*Project]{
+		OutputState: i.ToProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
@@ -135,6 +142,12 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
+}
+
+func (o ProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*Project] {
+	return pulumix.Output[*Project]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation time.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a context. If the specified context already exists, overrides the context.
@@ -141,6 +142,12 @@ func (i *Context) ToContextOutputWithContext(ctx context.Context) ContextOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ContextOutput)
 }
 
+func (i *Context) ToOutput(ctx context.Context) pulumix.Output[*Context] {
+	return pulumix.Output[*Context]{
+		OutputState: i.ToContextOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContextOutput struct{ *pulumi.OutputState }
 
 func (ContextOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o ContextOutput) ToContextOutput() ContextOutput {
 
 func (o ContextOutput) ToContextOutputWithContext(ctx context.Context) ContextOutput {
 	return o
+}
+
+func (o ContextOutput) ToOutput(ctx context.Context) pulumix.Output[*Context] {
+	return pulumix.Output[*Context]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContextOutput) EnvironmentId() pulumi.StringOutput {

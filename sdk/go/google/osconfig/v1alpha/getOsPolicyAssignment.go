@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
@@ -92,6 +93,12 @@ func (o LookupOsPolicyAssignmentResultOutput) ToLookupOsPolicyAssignmentResultOu
 
 func (o LookupOsPolicyAssignmentResultOutput) ToLookupOsPolicyAssignmentResultOutputWithContext(ctx context.Context) LookupOsPolicyAssignmentResultOutput {
 	return o
+}
+
+func (o LookupOsPolicyAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOsPolicyAssignmentResult] {
+	return pulumix.Output[LookupOsPolicyAssignmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.

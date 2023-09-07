@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a report configuration.
@@ -142,6 +143,12 @@ func (i *ReportConfig) ToReportConfigOutputWithContext(ctx context.Context) Repo
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigOutput)
 }
 
+func (i *ReportConfig) ToOutput(ctx context.Context) pulumix.Output[*ReportConfig] {
+	return pulumix.Output[*ReportConfig]{
+		OutputState: i.ToReportConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReportConfigOutput struct{ *pulumi.OutputState }
 
 func (ReportConfigOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o ReportConfigOutput) ToReportConfigOutput() ReportConfigOutput {
 
 func (o ReportConfigOutput) ToReportConfigOutputWithContext(ctx context.Context) ReportConfigOutput {
 	return o
+}
+
+func (o ReportConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfig] {
+	return pulumix.Output[*ReportConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the resource was created.

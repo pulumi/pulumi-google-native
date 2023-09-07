@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder.
@@ -127,6 +128,12 @@ func (i *FolderIamPolicy) ToFolderIamPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FolderIamPolicyOutput)
 }
 
+func (i *FolderIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*FolderIamPolicy] {
+	return pulumix.Output[*FolderIamPolicy]{
+		OutputState: i.ToFolderIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FolderIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (FolderIamPolicyOutput) ElementType() reflect.Type {
@@ -139,6 +146,12 @@ func (o FolderIamPolicyOutput) ToFolderIamPolicyOutput() FolderIamPolicyOutput {
 
 func (o FolderIamPolicyOutput) ToFolderIamPolicyOutputWithContext(ctx context.Context) FolderIamPolicyOutput {
 	return o
+}
+
+func (o FolderIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderIamPolicy] {
+	return pulumix.Output[*FolderIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TargetServer in the specified environment.
@@ -152,6 +153,12 @@ func (i *TargetServer) ToTargetServerOutputWithContext(ctx context.Context) Targ
 	return pulumi.ToOutputWithContext(ctx, i).(TargetServerOutput)
 }
 
+func (i *TargetServer) ToOutput(ctx context.Context) pulumix.Output[*TargetServer] {
+	return pulumix.Output[*TargetServer]{
+		OutputState: i.ToTargetServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetServerOutput struct{ *pulumi.OutputState }
 
 func (TargetServerOutput) ElementType() reflect.Type {
@@ -164,6 +171,12 @@ func (o TargetServerOutput) ToTargetServerOutput() TargetServerOutput {
 
 func (o TargetServerOutput) ToTargetServerOutputWithContext(ctx context.Context) TargetServerOutput {
 	return o
+}
+
+func (o TargetServerOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetServer] {
+	return pulumix.Output[*TargetServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A human-readable description of this TargetServer.

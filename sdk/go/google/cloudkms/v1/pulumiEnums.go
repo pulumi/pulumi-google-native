@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The immutable purpose of this CryptoKey.
@@ -257,6 +276,12 @@ func (o CryptoKeyPurposeOutput) ToCryptoKeyPurposePtrOutputWithContext(ctx conte
 	}).(CryptoKeyPurposePtrOutput)
 }
 
+func (o CryptoKeyPurposeOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyPurpose] {
+	return pulumix.Output[CryptoKeyPurpose]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CryptoKeyPurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -290,6 +315,12 @@ func (o CryptoKeyPurposePtrOutput) ToCryptoKeyPurposePtrOutput() CryptoKeyPurpos
 
 func (o CryptoKeyPurposePtrOutput) ToCryptoKeyPurposePtrOutputWithContext(ctx context.Context) CryptoKeyPurposePtrOutput {
 	return o
+}
+
+func (o CryptoKeyPurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyPurpose] {
+	return pulumix.Output[*CryptoKeyPurpose]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyPurposePtrOutput) Elem() CryptoKeyPurposeOutput {
@@ -352,6 +383,12 @@ func (in *cryptoKeyPurposePtr) ToCryptoKeyPurposePtrOutput() CryptoKeyPurposePtr
 
 func (in *cryptoKeyPurposePtr) ToCryptoKeyPurposePtrOutputWithContext(ctx context.Context) CryptoKeyPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyPurposePtrOutput)
+}
+
+func (in *cryptoKeyPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyPurpose] {
+	return pulumix.Output[*CryptoKeyPurpose]{
+		OutputState: in.ToCryptoKeyPurposePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current state of the CryptoKeyVersion.
@@ -442,6 +479,12 @@ func (o CryptoKeyVersionStateEnumOutput) ToCryptoKeyVersionStateEnumPtrOutputWit
 	}).(CryptoKeyVersionStateEnumPtrOutput)
 }
 
+func (o CryptoKeyVersionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionStateEnum] {
+	return pulumix.Output[CryptoKeyVersionStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CryptoKeyVersionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -475,6 +518,12 @@ func (o CryptoKeyVersionStateEnumPtrOutput) ToCryptoKeyVersionStateEnumPtrOutput
 
 func (o CryptoKeyVersionStateEnumPtrOutput) ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumPtrOutput {
 	return o
+}
+
+func (o CryptoKeyVersionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionStateEnum] {
+	return pulumix.Output[*CryptoKeyVersionStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionStateEnumPtrOutput) Elem() CryptoKeyVersionStateEnumOutput {
@@ -537,6 +586,12 @@ func (in *cryptoKeyVersionStateEnumPtr) ToCryptoKeyVersionStateEnumPtrOutput() C
 
 func (in *cryptoKeyVersionStateEnumPtr) ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionStateEnumPtrOutput)
+}
+
+func (in *cryptoKeyVersionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionStateEnum] {
+	return pulumix.Output[*CryptoKeyVersionStateEnum]{
+		OutputState: in.ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -663,6 +718,12 @@ func (o CryptoKeyVersionTemplateAlgorithmOutput) ToCryptoKeyVersionTemplateAlgor
 	}).(CryptoKeyVersionTemplateAlgorithmPtrOutput)
 }
 
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionTemplateAlgorithm] {
+	return pulumix.Output[CryptoKeyVersionTemplateAlgorithm]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CryptoKeyVersionTemplateAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -696,6 +757,12 @@ func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToCryptoKeyVersionTemplateAl
 
 func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmPtrOutput {
 	return o
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplateAlgorithm] {
+	return pulumix.Output[*CryptoKeyVersionTemplateAlgorithm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) Elem() CryptoKeyVersionTemplateAlgorithmOutput {
@@ -758,6 +825,12 @@ func (in *cryptoKeyVersionTemplateAlgorithmPtr) ToCryptoKeyVersionTemplateAlgori
 
 func (in *cryptoKeyVersionTemplateAlgorithmPtr) ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionTemplateAlgorithmPtrOutput)
+}
+
+func (in *cryptoKeyVersionTemplateAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplateAlgorithm] {
+	return pulumix.Output[*CryptoKeyVersionTemplateAlgorithm]{
+		OutputState: in.ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
@@ -836,6 +909,12 @@ func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToCryptoKeyVersionTemplat
 	}).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
 }
 
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionTemplateProtectionLevel] {
+	return pulumix.Output[CryptoKeyVersionTemplateProtectionLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -869,6 +948,12 @@ func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToCryptoKeyVersionTemp
 
 func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelPtrOutput {
 	return o
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplateProtectionLevel] {
+	return pulumix.Output[*CryptoKeyVersionTemplateProtectionLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) Elem() CryptoKeyVersionTemplateProtectionLevelOutput {
@@ -931,6 +1016,12 @@ func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToCryptoKeyVersionTemplate
 
 func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
+}
+
+func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplateProtectionLevel] {
+	return pulumix.Output[*CryptoKeyVersionTemplateProtectionLevel]{
+		OutputState: in.ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
@@ -1005,6 +1096,12 @@ func (o EkmConnectionKeyManagementModeOutput) ToEkmConnectionKeyManagementModePt
 	}).(EkmConnectionKeyManagementModePtrOutput)
 }
 
+func (o EkmConnectionKeyManagementModeOutput) ToOutput(ctx context.Context) pulumix.Output[EkmConnectionKeyManagementMode] {
+	return pulumix.Output[EkmConnectionKeyManagementMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EkmConnectionKeyManagementModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1038,6 +1135,12 @@ func (o EkmConnectionKeyManagementModePtrOutput) ToEkmConnectionKeyManagementMod
 
 func (o EkmConnectionKeyManagementModePtrOutput) ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModePtrOutput {
 	return o
+}
+
+func (o EkmConnectionKeyManagementModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EkmConnectionKeyManagementMode] {
+	return pulumix.Output[*EkmConnectionKeyManagementMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EkmConnectionKeyManagementModePtrOutput) Elem() EkmConnectionKeyManagementModeOutput {
@@ -1100,6 +1203,12 @@ func (in *ekmConnectionKeyManagementModePtr) ToEkmConnectionKeyManagementModePtr
 
 func (in *ekmConnectionKeyManagementModePtr) ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EkmConnectionKeyManagementModePtrOutput)
+}
+
+func (in *ekmConnectionKeyManagementModePtr) ToOutput(ctx context.Context) pulumix.Output[*EkmConnectionKeyManagementMode] {
+	return pulumix.Output[*EkmConnectionKeyManagementMode]{
+		OutputState: in.ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. The wrapping method to be used for incoming key material.
@@ -1182,6 +1291,12 @@ func (o ImportJobImportMethodOutput) ToImportJobImportMethodPtrOutputWithContext
 	}).(ImportJobImportMethodPtrOutput)
 }
 
+func (o ImportJobImportMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ImportJobImportMethod] {
+	return pulumix.Output[ImportJobImportMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImportJobImportMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1215,6 +1330,12 @@ func (o ImportJobImportMethodPtrOutput) ToImportJobImportMethodPtrOutput() Impor
 
 func (o ImportJobImportMethodPtrOutput) ToImportJobImportMethodPtrOutputWithContext(ctx context.Context) ImportJobImportMethodPtrOutput {
 	return o
+}
+
+func (o ImportJobImportMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportJobImportMethod] {
+	return pulumix.Output[*ImportJobImportMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImportJobImportMethodPtrOutput) Elem() ImportJobImportMethodOutput {
@@ -1277,6 +1398,12 @@ func (in *importJobImportMethodPtr) ToImportJobImportMethodPtrOutput() ImportJob
 
 func (in *importJobImportMethodPtr) ToImportJobImportMethodPtrOutputWithContext(ctx context.Context) ImportJobImportMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImportJobImportMethodPtrOutput)
+}
+
+func (in *importJobImportMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*ImportJobImportMethod] {
+	return pulumix.Output[*ImportJobImportMethod]{
+		OutputState: in.ToImportJobImportMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
@@ -1355,6 +1482,12 @@ func (o ImportJobProtectionLevelOutput) ToImportJobProtectionLevelPtrOutputWithC
 	}).(ImportJobProtectionLevelPtrOutput)
 }
 
+func (o ImportJobProtectionLevelOutput) ToOutput(ctx context.Context) pulumix.Output[ImportJobProtectionLevel] {
+	return pulumix.Output[ImportJobProtectionLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImportJobProtectionLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1388,6 +1521,12 @@ func (o ImportJobProtectionLevelPtrOutput) ToImportJobProtectionLevelPtrOutput()
 
 func (o ImportJobProtectionLevelPtrOutput) ToImportJobProtectionLevelPtrOutputWithContext(ctx context.Context) ImportJobProtectionLevelPtrOutput {
 	return o
+}
+
+func (o ImportJobProtectionLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportJobProtectionLevel] {
+	return pulumix.Output[*ImportJobProtectionLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImportJobProtectionLevelPtrOutput) Elem() ImportJobProtectionLevelOutput {
@@ -1450,6 +1589,12 @@ func (in *importJobProtectionLevelPtr) ToImportJobProtectionLevelPtrOutput() Imp
 
 func (in *importJobProtectionLevelPtr) ToImportJobProtectionLevelPtrOutputWithContext(ctx context.Context) ImportJobProtectionLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImportJobProtectionLevelPtrOutput)
+}
+
+func (in *importJobProtectionLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ImportJobProtectionLevel] {
+	return pulumix.Output[*ImportJobProtectionLevel]{
+		OutputState: in.ToImportJobProtectionLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

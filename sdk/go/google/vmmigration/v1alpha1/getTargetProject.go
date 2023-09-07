@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
@@ -76,6 +77,12 @@ func (o LookupTargetProjectResultOutput) ToLookupTargetProjectResultOutput() Loo
 
 func (o LookupTargetProjectResultOutput) ToLookupTargetProjectResultOutputWithContext(ctx context.Context) LookupTargetProjectResultOutput {
 	return o
+}
+
+func (o LookupTargetProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTargetProjectResult] {
+	return pulumix.Output[LookupTargetProjectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time this target project resource was created (not related to when the Compute Engine project it points to was created).

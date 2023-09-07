@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an access policy based on the name.
@@ -72,6 +73,12 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutput() Looku
 
 func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithContext(ctx context.Context) LookupAccessPolicyResultOutput {
 	return o
+}
+
+func (o LookupAccessPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessPolicyResult] {
+	return pulumix.Output[LookupAccessPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.

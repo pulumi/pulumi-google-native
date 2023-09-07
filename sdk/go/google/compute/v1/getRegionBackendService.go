@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified regional BackendService resource.
@@ -143,6 +144,12 @@ func (o LookupRegionBackendServiceResultOutput) ToLookupRegionBackendServiceResu
 
 func (o LookupRegionBackendServiceResultOutput) ToLookupRegionBackendServiceResultOutputWithContext(ctx context.Context) LookupRegionBackendServiceResultOutput {
 	return o
+}
+
+func (o LookupRegionBackendServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionBackendServiceResult] {
+	return pulumix.Output[LookupRegionBackendServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.

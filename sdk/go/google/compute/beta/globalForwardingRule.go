@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
@@ -258,6 +259,12 @@ func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
 }
 
+func (i *GlobalForwardingRule) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
+	return pulumix.Output[*GlobalForwardingRule]{
+		OutputState: i.ToGlobalForwardingRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GlobalForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
@@ -270,6 +277,12 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutput() GlobalForward
 
 func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
+	return pulumix.Output[*GlobalForwardingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By internal TCP/UDP load balancers, backend service-based network load balancers, and internal and external protocol forwarding. Set this field to true to allow packets addressed to any port or packets lacking destination port information (for example, UDP fragments after the first fragment) to be forwarded to the backends configured with this forwarding rule. The ports, port_range, and allPorts fields are mutually exclusive.

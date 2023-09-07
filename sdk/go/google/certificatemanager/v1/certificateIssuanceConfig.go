@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new CertificateIssuanceConfig in a given project and location.
@@ -166,6 +167,12 @@ func (i *CertificateIssuanceConfig) ToCertificateIssuanceConfigOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigOutput)
 }
 
+func (i *CertificateIssuanceConfig) ToOutput(ctx context.Context) pulumix.Output[*CertificateIssuanceConfig] {
+	return pulumix.Output[*CertificateIssuanceConfig]{
+		OutputState: i.ToCertificateIssuanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificateIssuanceConfigOutput struct{ *pulumi.OutputState }
 
 func (CertificateIssuanceConfigOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o CertificateIssuanceConfigOutput) ToCertificateIssuanceConfigOutput() Cer
 
 func (o CertificateIssuanceConfigOutput) ToCertificateIssuanceConfigOutputWithContext(ctx context.Context) CertificateIssuanceConfigOutput {
 	return o
+}
+
+func (o CertificateIssuanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateIssuanceConfig] {
+	return pulumix.Output[*CertificateIssuanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.

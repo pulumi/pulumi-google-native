@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.Design your application to single-thread API calls that modify the state of notification channels in a single project. This includes calls to CreateNotificationChannel, DeleteNotificationChannel and UpdateNotificationChannel.
@@ -153,6 +154,12 @@ func (i *NotificationChannel) ToNotificationChannelOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelOutput)
 }
 
+func (i *NotificationChannel) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannel] {
+	return pulumix.Output[*NotificationChannel]{
+		OutputState: i.ToNotificationChannelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationChannelOutput struct{ *pulumi.OutputState }
 
 func (NotificationChannelOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o NotificationChannelOutput) ToNotificationChannelOutput() NotificationCha
 
 func (o NotificationChannelOutput) ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput {
 	return o
+}
+
+func (o NotificationChannelOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannel] {
+	return pulumix.Output[*NotificationChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Record of the creation of this channel.

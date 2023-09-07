@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single DnsAuthorization.
@@ -80,6 +81,12 @@ func (o LookupDnsAuthorizationResultOutput) ToLookupDnsAuthorizationResultOutput
 
 func (o LookupDnsAuthorizationResultOutput) ToLookupDnsAuthorizationResultOutputWithContext(ctx context.Context) LookupDnsAuthorizationResultOutput {
 	return o
+}
+
+func (o LookupDnsAuthorizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDnsAuthorizationResult] {
+	return pulumix.Output[LookupDnsAuthorizationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp of a DnsAuthorization.

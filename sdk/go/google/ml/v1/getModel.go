@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
@@ -80,6 +81,12 @@ func (o LookupModelResultOutput) ToLookupModelResultOutput() LookupModelResultOu
 
 func (o LookupModelResultOutput) ToLookupModelResultOutputWithContext(ctx context.Context) LookupModelResultOutput {
 	return o
+}
+
+func (o LookupModelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupModelResult] {
+	return pulumix.Output[LookupModelResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.

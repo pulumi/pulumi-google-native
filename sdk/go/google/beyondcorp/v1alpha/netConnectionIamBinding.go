@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -140,6 +141,12 @@ func (i *NetConnectionIamBinding) ToNetConnectionIamBindingOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NetConnectionIamBindingOutput)
 }
 
+func (i *NetConnectionIamBinding) ToOutput(ctx context.Context) pulumix.Output[*NetConnectionIamBinding] {
+	return pulumix.Output[*NetConnectionIamBinding]{
+		OutputState: i.ToNetConnectionIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetConnectionIamBindingOutput struct{ *pulumi.OutputState }
 
 func (NetConnectionIamBindingOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o NetConnectionIamBindingOutput) ToNetConnectionIamBindingOutput() NetConn
 
 func (o NetConnectionIamBindingOutput) ToNetConnectionIamBindingOutputWithContext(ctx context.Context) NetConnectionIamBindingOutput {
 	return o
+}
+
+func (o NetConnectionIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*NetConnectionIamBinding] {
+	return pulumix.Output[*NetConnectionIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

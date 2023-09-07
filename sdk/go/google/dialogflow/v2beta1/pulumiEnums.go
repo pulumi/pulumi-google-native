@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
@@ -82,6 +83,12 @@ func (o ConversationConversationStageOutput) ToConversationConversationStagePtrO
 	}).(ConversationConversationStagePtrOutput)
 }
 
+func (o ConversationConversationStageOutput) ToOutput(ctx context.Context) pulumix.Output[ConversationConversationStage] {
+	return pulumix.Output[ConversationConversationStage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConversationConversationStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o ConversationConversationStagePtrOutput) ToConversationConversationStageP
 
 func (o ConversationConversationStagePtrOutput) ToConversationConversationStagePtrOutputWithContext(ctx context.Context) ConversationConversationStagePtrOutput {
 	return o
+}
+
+func (o ConversationConversationStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversationConversationStage] {
+	return pulumix.Output[*ConversationConversationStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConversationConversationStagePtrOutput) Elem() ConversationConversationStageOutput {
@@ -177,6 +190,12 @@ func (in *conversationConversationStagePtr) ToConversationConversationStagePtrOu
 
 func (in *conversationConversationStagePtr) ToConversationConversationStagePtrOutputWithContext(ctx context.Context) ConversationConversationStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConversationConversationStagePtrOutput)
+}
+
+func (in *conversationConversationStagePtr) ToOutput(ctx context.Context) pulumix.Output[*ConversationConversationStage] {
+	return pulumix.Output[*ConversationConversationStage]{
+		OutputState: in.ToConversationConversationStagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type DocumentKnowledgeTypesItem string
@@ -256,6 +275,12 @@ func (o DocumentKnowledgeTypesItemOutput) ToDocumentKnowledgeTypesItemPtrOutputW
 	}).(DocumentKnowledgeTypesItemPtrOutput)
 }
 
+func (o DocumentKnowledgeTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentKnowledgeTypesItem] {
+	return pulumix.Output[DocumentKnowledgeTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DocumentKnowledgeTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -289,6 +314,12 @@ func (o DocumentKnowledgeTypesItemPtrOutput) ToDocumentKnowledgeTypesItemPtrOutp
 
 func (o DocumentKnowledgeTypesItemPtrOutput) ToDocumentKnowledgeTypesItemPtrOutputWithContext(ctx context.Context) DocumentKnowledgeTypesItemPtrOutput {
 	return o
+}
+
+func (o DocumentKnowledgeTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentKnowledgeTypesItem] {
+	return pulumix.Output[*DocumentKnowledgeTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DocumentKnowledgeTypesItemPtrOutput) Elem() DocumentKnowledgeTypesItemOutput {
@@ -353,6 +384,12 @@ func (in *documentKnowledgeTypesItemPtr) ToDocumentKnowledgeTypesItemPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(DocumentKnowledgeTypesItemPtrOutput)
 }
 
+func (in *documentKnowledgeTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DocumentKnowledgeTypesItem] {
+	return pulumix.Output[*DocumentKnowledgeTypesItem]{
+		OutputState: in.ToDocumentKnowledgeTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DocumentKnowledgeTypesItemArrayInput is an input type that accepts DocumentKnowledgeTypesItemArray and DocumentKnowledgeTypesItemArrayOutput values.
 // You can construct a concrete instance of `DocumentKnowledgeTypesItemArrayInput` via:
 //
@@ -378,6 +415,12 @@ func (i DocumentKnowledgeTypesItemArray) ToDocumentKnowledgeTypesItemArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentKnowledgeTypesItemArrayOutput)
 }
 
+func (i DocumentKnowledgeTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DocumentKnowledgeTypesItem] {
+	return pulumix.Output[[]DocumentKnowledgeTypesItem]{
+		OutputState: i.ToDocumentKnowledgeTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DocumentKnowledgeTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (DocumentKnowledgeTypesItemArrayOutput) ElementType() reflect.Type {
@@ -390,6 +433,12 @@ func (o DocumentKnowledgeTypesItemArrayOutput) ToDocumentKnowledgeTypesItemArray
 
 func (o DocumentKnowledgeTypesItemArrayOutput) ToDocumentKnowledgeTypesItemArrayOutputWithContext(ctx context.Context) DocumentKnowledgeTypesItemArrayOutput {
 	return o
+}
+
+func (o DocumentKnowledgeTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DocumentKnowledgeTypesItem] {
+	return pulumix.Output[[]DocumentKnowledgeTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DocumentKnowledgeTypesItemArrayOutput) Index(i pulumi.IntInput) DocumentKnowledgeTypesItemOutput {
@@ -468,6 +517,12 @@ func (o EntityTypeAutoExpansionModeOutput) ToEntityTypeAutoExpansionModePtrOutpu
 	}).(EntityTypeAutoExpansionModePtrOutput)
 }
 
+func (o EntityTypeAutoExpansionModeOutput) ToOutput(ctx context.Context) pulumix.Output[EntityTypeAutoExpansionMode] {
+	return pulumix.Output[EntityTypeAutoExpansionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityTypeAutoExpansionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -501,6 +556,12 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOu
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
 	return o
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeAutoExpansionMode] {
+	return pulumix.Output[*EntityTypeAutoExpansionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypeAutoExpansionModePtrOutput) Elem() EntityTypeAutoExpansionModeOutput {
@@ -563,6 +624,12 @@ func (in *entityTypeAutoExpansionModePtr) ToEntityTypeAutoExpansionModePtrOutput
 
 func (in *entityTypeAutoExpansionModePtr) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeAutoExpansionModePtrOutput)
+}
+
+func (in *entityTypeAutoExpansionModePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeAutoExpansionMode] {
+	return pulumix.Output[*EntityTypeAutoExpansionMode]{
+		OutputState: in.ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Indicates the kind of entity type.
@@ -639,6 +706,12 @@ func (o EntityTypeKindOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.C
 	}).(EntityTypeKindPtrOutput)
 }
 
+func (o EntityTypeKindOutput) ToOutput(ctx context.Context) pulumix.Output[EntityTypeKind] {
+	return pulumix.Output[EntityTypeKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityTypeKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -672,6 +745,12 @@ func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOu
 
 func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
 	return o
+}
+
+func (o EntityTypeKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeKind] {
+	return pulumix.Output[*EntityTypeKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypeKindPtrOutput) Elem() EntityTypeKindOutput {
@@ -734,6 +813,12 @@ func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput
 
 func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeKindPtrOutput)
+}
+
+func (in *entityTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeKind] {
+	return pulumix.Output[*EntityTypeKind]{
+		OutputState: in.ToEntityTypeKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the feature that enabled for fulfillment.
@@ -806,6 +891,12 @@ func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput) ToGoogleCloudD
 	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1FulfillmentFeatureType] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1FulfillmentFeatureType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -839,6 +930,12 @@ func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToGoogleClo
 
 func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1FulfillmentFeatureType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1FulfillmentFeatureType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput {
@@ -901,6 +998,12 @@ func (in *googleCloudDialogflowV2beta1FulfillmentFeatureTypePtr) ToGoogleCloudDi
 
 func (in *googleCloudDialogflowV2beta1FulfillmentFeatureTypePtr) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1FulfillmentFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1FulfillmentFeatureType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1FulfillmentFeatureType]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
@@ -975,6 +1078,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouse
 	}).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1008,6 +1117,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouse
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput {
@@ -1070,6 +1185,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarou
 
 func (in *googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtr) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Settings for displaying the image. Applies to every image in items.
@@ -1148,6 +1269,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayO
 	}).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1181,6 +1308,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayO
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput {
@@ -1243,6 +1376,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDispla
 
 func (in *googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtr) ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Defines text alignment for all cells in this column.
@@ -1319,6 +1458,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlign
 	}).(GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1352,6 +1497,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlign
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput {
@@ -1414,6 +1565,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAli
 
 func (in *googleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtr) ToGoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. What type of media is the content (ie "audio").
@@ -1486,6 +1643,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput) To
 	}).(GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1519,6 +1682,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput)
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput {
@@ -1581,6 +1750,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtr) ToG
 
 func (in *googleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtr) ToGoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The platform that this message is intended for.
@@ -1671,6 +1846,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput) ToGoogleCloudDi
 	}).(GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessagePlatform] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessagePlatform]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1704,6 +1885,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessagePlatform] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessagePlatform]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput {
@@ -1766,6 +1953,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessagePlatformPtr) ToGoogleCloudDia
 
 func (in *googleCloudDialogflowV2beta1IntentMessagePlatformPtr) ToGoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessagePlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessagePlatform] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessagePlatform]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
@@ -1842,6 +2035,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOut
 	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1875,6 +2074,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtr
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput {
@@ -1937,6 +2142,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightP
 
 func (in *googleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtr) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The width of the cards in the carousel.
@@ -2011,6 +2222,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput)
 	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2044,6 +2261,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutp
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput {
@@ -2106,6 +2329,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtr) 
 
 func (in *googleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtr) ToGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Orientation of the card.
@@ -2180,6 +2409,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientatio
 	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2213,6 +2448,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientatio
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput {
@@ -2275,6 +2516,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientat
 
 func (in *googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtr) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
@@ -2349,6 +2596,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImage
 	}).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2382,6 +2635,12 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImage
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput {
@@ -2444,6 +2703,12 @@ func (in *googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailIma
 
 func (in *googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtr) ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of the training phrase.
@@ -2518,6 +2783,12 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput) ToGoogleClou
 	}).(GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1IntentTrainingPhraseType] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1IntentTrainingPhraseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2551,6 +2822,12 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToGoogleC
 
 func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToGoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentTrainingPhraseType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentTrainingPhraseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput {
@@ -2613,6 +2890,12 @@ func (in *googleCloudDialogflowV2beta1IntentTrainingPhraseTypePtr) ToGoogleCloud
 
 func (in *googleCloudDialogflowV2beta1IntentTrainingPhraseTypePtr) ToGoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1IntentTrainingPhraseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1IntentTrainingPhraseType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1IntentTrainingPhraseType]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Format of message.
@@ -2687,6 +2970,12 @@ func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput) ToGoo
 	}).(GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2720,6 +3009,12 @@ func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) To
 
 func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) Elem() GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput {
@@ -2782,6 +3077,12 @@ func (in *googleCloudDialogflowV2beta1NotificationConfigMessageFormatPtr) ToGoog
 
 func (in *googleCloudDialogflowV2beta1NotificationConfigMessageFormatPtr) ToGoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1NotificationConfigMessageFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
@@ -2858,6 +3159,12 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput) 
 	}).(GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2891,6 +3198,12 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutpu
 
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput) Elem() GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput {
@@ -2953,6 +3266,12 @@ func (in *googleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtr) T
 
 func (in *googleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtr) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of Human Agent Assistant API feature to request.
@@ -3031,6 +3350,12 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput) ToGoogleCloudDi
 	}).(GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1SuggestionFeatureType] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1SuggestionFeatureType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3064,6 +3389,12 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1SuggestionFeatureType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1SuggestionFeatureType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) Elem() GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput {
@@ -3126,6 +3457,12 @@ func (in *googleCloudDialogflowV2beta1SuggestionFeatureTypePtr) ToGoogleCloudDia
 
 func (in *googleCloudDialogflowV2beta1SuggestionFeatureTypePtr) ToGoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1SuggestionFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1SuggestionFeatureType] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1SuggestionFeatureType]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Audio encoding of the synthesized audio content.
@@ -3206,6 +3543,12 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutpu
 	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3239,6 +3582,12 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOu
 
 func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput) Elem() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput {
@@ -3301,6 +3650,12 @@ func (in *googleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtr
 
 func (in *googleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtr) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
@@ -3377,6 +3732,12 @@ func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderOutput) ToGoog
 	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput)
 }
 
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender] {
+	return pulumix.Output[GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3410,6 +3771,12 @@ func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput) ToG
 
 func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput) Elem() GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderOutput {
@@ -3472,6 +3839,12 @@ func (in *googleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtr) ToGoogl
 
 func (in *googleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtr) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+func (in *googleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender] {
+	return pulumix.Output[*GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender]{
+		OutputState: in.ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type IntentDefaultResponsePlatformsItem string
@@ -3561,6 +3934,12 @@ func (o IntentDefaultResponsePlatformsItemOutput) ToIntentDefaultResponsePlatfor
 	}).(IntentDefaultResponsePlatformsItemPtrOutput)
 }
 
+func (o IntentDefaultResponsePlatformsItemOutput) ToOutput(ctx context.Context) pulumix.Output[IntentDefaultResponsePlatformsItem] {
+	return pulumix.Output[IntentDefaultResponsePlatformsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntentDefaultResponsePlatformsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3594,6 +3973,12 @@ func (o IntentDefaultResponsePlatformsItemPtrOutput) ToIntentDefaultResponsePlat
 
 func (o IntentDefaultResponsePlatformsItemPtrOutput) ToIntentDefaultResponsePlatformsItemPtrOutputWithContext(ctx context.Context) IntentDefaultResponsePlatformsItemPtrOutput {
 	return o
+}
+
+func (o IntentDefaultResponsePlatformsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntentDefaultResponsePlatformsItem] {
+	return pulumix.Output[*IntentDefaultResponsePlatformsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntentDefaultResponsePlatformsItemPtrOutput) Elem() IntentDefaultResponsePlatformsItemOutput {
@@ -3658,6 +4043,12 @@ func (in *intentDefaultResponsePlatformsItemPtr) ToIntentDefaultResponsePlatform
 	return pulumi.ToOutputWithContext(ctx, in).(IntentDefaultResponsePlatformsItemPtrOutput)
 }
 
+func (in *intentDefaultResponsePlatformsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*IntentDefaultResponsePlatformsItem] {
+	return pulumix.Output[*IntentDefaultResponsePlatformsItem]{
+		OutputState: in.ToIntentDefaultResponsePlatformsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntentDefaultResponsePlatformsItemArrayInput is an input type that accepts IntentDefaultResponsePlatformsItemArray and IntentDefaultResponsePlatformsItemArrayOutput values.
 // You can construct a concrete instance of `IntentDefaultResponsePlatformsItemArrayInput` via:
 //
@@ -3683,6 +4074,12 @@ func (i IntentDefaultResponsePlatformsItemArray) ToIntentDefaultResponsePlatform
 	return pulumi.ToOutputWithContext(ctx, i).(IntentDefaultResponsePlatformsItemArrayOutput)
 }
 
+func (i IntentDefaultResponsePlatformsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]IntentDefaultResponsePlatformsItem] {
+	return pulumix.Output[[]IntentDefaultResponsePlatformsItem]{
+		OutputState: i.ToIntentDefaultResponsePlatformsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntentDefaultResponsePlatformsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (IntentDefaultResponsePlatformsItemArrayOutput) ElementType() reflect.Type {
@@ -3695,6 +4092,12 @@ func (o IntentDefaultResponsePlatformsItemArrayOutput) ToIntentDefaultResponsePl
 
 func (o IntentDefaultResponsePlatformsItemArrayOutput) ToIntentDefaultResponsePlatformsItemArrayOutputWithContext(ctx context.Context) IntentDefaultResponsePlatformsItemArrayOutput {
 	return o
+}
+
+func (o IntentDefaultResponsePlatformsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntentDefaultResponsePlatformsItem] {
+	return pulumix.Output[[]IntentDefaultResponsePlatformsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntentDefaultResponsePlatformsItemArrayOutput) Index(i pulumi.IntInput) IntentDefaultResponsePlatformsItemOutput {
@@ -3775,6 +4178,12 @@ func (o IntentWebhookStateOutput) ToIntentWebhookStatePtrOutputWithContext(ctx c
 	}).(IntentWebhookStatePtrOutput)
 }
 
+func (o IntentWebhookStateOutput) ToOutput(ctx context.Context) pulumix.Output[IntentWebhookState] {
+	return pulumix.Output[IntentWebhookState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntentWebhookStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3808,6 +4217,12 @@ func (o IntentWebhookStatePtrOutput) ToIntentWebhookStatePtrOutput() IntentWebho
 
 func (o IntentWebhookStatePtrOutput) ToIntentWebhookStatePtrOutputWithContext(ctx context.Context) IntentWebhookStatePtrOutput {
 	return o
+}
+
+func (o IntentWebhookStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntentWebhookState] {
+	return pulumix.Output[*IntentWebhookState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntentWebhookStatePtrOutput) Elem() IntentWebhookStateOutput {
@@ -3870,6 +4285,12 @@ func (in *intentWebhookStatePtr) ToIntentWebhookStatePtrOutput() IntentWebhookSt
 
 func (in *intentWebhookStatePtr) ToIntentWebhookStatePtrOutputWithContext(ctx context.Context) IntentWebhookStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntentWebhookStatePtrOutput)
+}
+
+func (in *intentWebhookStatePtr) ToOutput(ctx context.Context) pulumix.Output[*IntentWebhookState] {
+	return pulumix.Output[*IntentWebhookState]{
+		OutputState: in.ToIntentWebhookStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
@@ -3946,6 +4367,12 @@ func (o ParticipantRoleOutput) ToParticipantRolePtrOutputWithContext(ctx context
 	}).(ParticipantRolePtrOutput)
 }
 
+func (o ParticipantRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ParticipantRole] {
+	return pulumix.Output[ParticipantRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ParticipantRoleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3979,6 +4406,12 @@ func (o ParticipantRolePtrOutput) ToParticipantRolePtrOutput() ParticipantRolePt
 
 func (o ParticipantRolePtrOutput) ToParticipantRolePtrOutputWithContext(ctx context.Context) ParticipantRolePtrOutput {
 	return o
+}
+
+func (o ParticipantRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParticipantRole] {
+	return pulumix.Output[*ParticipantRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParticipantRolePtrOutput) Elem() ParticipantRoleOutput {
@@ -4041,6 +4474,12 @@ func (in *participantRolePtr) ToParticipantRolePtrOutput() ParticipantRolePtrOut
 
 func (in *participantRolePtr) ToParticipantRolePtrOutputWithContext(ctx context.Context) ParticipantRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ParticipantRolePtrOutput)
+}
+
+func (in *participantRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ParticipantRole] {
+	return pulumix.Output[*ParticipantRole]{
+		OutputState: in.ToParticipantRolePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Indicates whether the additional data should override or supplement the custom entity type definition.
@@ -4115,6 +4554,12 @@ func (o SessionEntityTypeEntityOverrideModeOutput) ToSessionEntityTypeEntityOver
 	}).(SessionEntityTypeEntityOverrideModePtrOutput)
 }
 
+func (o SessionEntityTypeEntityOverrideModeOutput) ToOutput(ctx context.Context) pulumix.Output[SessionEntityTypeEntityOverrideMode] {
+	return pulumix.Output[SessionEntityTypeEntityOverrideMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SessionEntityTypeEntityOverrideModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4148,6 +4593,12 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityO
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
 	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SessionEntityTypeEntityOverrideMode] {
+	return pulumix.Output[*SessionEntityTypeEntityOverrideMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) Elem() SessionEntityTypeEntityOverrideModeOutput {
@@ -4210,6 +4661,12 @@ func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverr
 
 func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionEntityTypeEntityOverrideModePtrOutput)
+}
+
+func (in *sessionEntityTypeEntityOverrideModePtr) ToOutput(ctx context.Context) pulumix.Output[*SessionEntityTypeEntityOverrideMode] {
+	return pulumix.Output[*SessionEntityTypeEntityOverrideMode]{
+		OutputState: in.ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

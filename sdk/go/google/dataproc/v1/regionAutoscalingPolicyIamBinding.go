@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -135,6 +136,12 @@ func (i *RegionAutoscalingPolicyIamBinding) ToRegionAutoscalingPolicyIamBindingO
 	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalingPolicyIamBindingOutput)
 }
 
+func (i *RegionAutoscalingPolicyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RegionAutoscalingPolicyIamBinding] {
+	return pulumix.Output[*RegionAutoscalingPolicyIamBinding]{
+		OutputState: i.ToRegionAutoscalingPolicyIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionAutoscalingPolicyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalingPolicyIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RegionAutoscalingPolicyIamBindingOutput) ToRegionAutoscalingPolicyIamBin
 
 func (o RegionAutoscalingPolicyIamBindingOutput) ToRegionAutoscalingPolicyIamBindingOutputWithContext(ctx context.Context) RegionAutoscalingPolicyIamBindingOutput {
 	return o
+}
+
+func (o RegionAutoscalingPolicyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionAutoscalingPolicyIamBinding] {
+	return pulumix.Output[*RegionAutoscalingPolicyIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

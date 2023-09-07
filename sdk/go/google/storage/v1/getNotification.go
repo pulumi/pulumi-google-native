@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // View a notification configuration.
@@ -82,6 +83,12 @@ func (o LookupNotificationResultOutput) ToLookupNotificationResultOutput() Looku
 
 func (o LookupNotificationResultOutput) ToLookupNotificationResultOutputWithContext(ctx context.Context) LookupNotificationResultOutput {
 	return o
+}
+
+func (o LookupNotificationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationResult] {
+	return pulumix.Output[LookupNotificationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.

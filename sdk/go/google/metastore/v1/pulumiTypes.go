@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.If there are AuditConfigs for both allServices and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted.Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -114,6 +133,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -145,6 +170,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -167,6 +198,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -214,6 +251,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -239,6 +282,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -252,6 +301,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -276,6 +331,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -307,6 +368,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -329,6 +396,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -380,6 +453,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -405,6 +484,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates members, or principals, with a role.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -418,6 +503,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -447,6 +538,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -480,6 +577,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -507,6 +610,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -550,6 +659,12 @@ func (i ConsumerArgs) ToConsumerOutputWithContext(ctx context.Context) ConsumerO
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerOutput)
 }
 
+func (i ConsumerArgs) ToOutput(ctx context.Context) pulumix.Output[Consumer] {
+	return pulumix.Output[Consumer]{
+		OutputState: i.ToConsumerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConsumerArrayInput is an input type that accepts ConsumerArray and ConsumerArrayOutput values.
 // You can construct a concrete instance of `ConsumerArrayInput` via:
 //
@@ -575,6 +690,12 @@ func (i ConsumerArray) ToConsumerArrayOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerArrayOutput)
 }
 
+func (i ConsumerArray) ToOutput(ctx context.Context) pulumix.Output[[]Consumer] {
+	return pulumix.Output[[]Consumer]{
+		OutputState: i.ToConsumerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains information of the customer's network configurations.
 type ConsumerOutput struct{ *pulumi.OutputState }
 
@@ -588,6 +709,12 @@ func (o ConsumerOutput) ToConsumerOutput() ConsumerOutput {
 
 func (o ConsumerOutput) ToConsumerOutputWithContext(ctx context.Context) ConsumerOutput {
 	return o
+}
+
+func (o ConsumerOutput) ToOutput(ctx context.Context) pulumix.Output[Consumer] {
+	return pulumix.Output[Consumer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
@@ -607,6 +734,12 @@ func (o ConsumerArrayOutput) ToConsumerArrayOutput() ConsumerArrayOutput {
 
 func (o ConsumerArrayOutput) ToConsumerArrayOutputWithContext(ctx context.Context) ConsumerArrayOutput {
 	return o
+}
+
+func (o ConsumerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Consumer] {
+	return pulumix.Output[[]Consumer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumerArrayOutput) Index(i pulumi.IntInput) ConsumerOutput {
@@ -638,6 +771,12 @@ func (o ConsumerResponseOutput) ToConsumerResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o ConsumerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsumerResponse] {
+	return pulumix.Output[ConsumerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The URI of the endpoint used to access the metastore service.
 func (o ConsumerResponseOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ConsumerResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
@@ -660,6 +799,12 @@ func (o ConsumerResponseArrayOutput) ToConsumerResponseArrayOutput() ConsumerRes
 
 func (o ConsumerResponseArrayOutput) ToConsumerResponseArrayOutputWithContext(ctx context.Context) ConsumerResponseArrayOutput {
 	return o
+}
+
+func (o ConsumerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConsumerResponse] {
+	return pulumix.Output[[]ConsumerResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumerResponseArrayOutput) Index(i pulumi.IntInput) ConsumerResponseOutput {
@@ -715,6 +860,12 @@ func (i DatabaseDumpArgs) ToDatabaseDumpOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDumpOutput)
 }
 
+func (i DatabaseDumpArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseDump] {
+	return pulumix.Output[DatabaseDump]{
+		OutputState: i.ToDatabaseDumpOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DatabaseDumpArgs) ToDatabaseDumpPtrOutput() DatabaseDumpPtrOutput {
 	return i.ToDatabaseDumpPtrOutputWithContext(context.Background())
 }
@@ -756,6 +907,12 @@ func (i *databaseDumpPtrType) ToDatabaseDumpPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDumpPtrOutput)
 }
 
+func (i *databaseDumpPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDump] {
+	return pulumix.Output[*DatabaseDump]{
+		OutputState: i.ToDatabaseDumpPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A specification of the location of and metadata about a database dump from a relational database management system.
 type DatabaseDumpOutput struct{ *pulumi.OutputState }
 
@@ -779,6 +936,12 @@ func (o DatabaseDumpOutput) ToDatabaseDumpPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseDump) *DatabaseDump {
 		return &v
 	}).(DatabaseDumpPtrOutput)
+}
+
+func (o DatabaseDumpOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseDump] {
+	return pulumix.Output[DatabaseDump]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the database.
@@ -813,6 +976,12 @@ func (o DatabaseDumpPtrOutput) ToDatabaseDumpPtrOutput() DatabaseDumpPtrOutput {
 
 func (o DatabaseDumpPtrOutput) ToDatabaseDumpPtrOutputWithContext(ctx context.Context) DatabaseDumpPtrOutput {
 	return o
+}
+
+func (o DatabaseDumpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDump] {
+	return pulumix.Output[*DatabaseDump]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseDumpPtrOutput) Elem() DatabaseDumpOutput {
@@ -892,6 +1061,12 @@ func (o DatabaseDumpResponseOutput) ToDatabaseDumpResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o DatabaseDumpResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseDumpResponse] {
+	return pulumix.Output[DatabaseDumpResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of the database.
 func (o DatabaseDumpResponseOutput) DatabaseType() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseDumpResponse) string { return v.DatabaseType }).(pulumi.StringOutput)
@@ -947,6 +1122,12 @@ func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
 }
 
+func (i EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
+	return pulumix.Output[EncryptionConfig]{
+		OutputState: i.ToEncryptionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
 	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -988,6 +1169,12 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
+func (i *encryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
+	return pulumix.Output[*EncryptionConfig]{
+		OutputState: i.ToEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Encryption settings for the service.
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1013,6 +1200,12 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
+func (o EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
+	return pulumix.Output[EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 func (o EncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
@@ -1030,6 +1223,12 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfi
 
 func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
 	return o
+}
+
+func (o EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
+	return pulumix.Output[*EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
@@ -1071,6 +1270,12 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutput() Encry
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
 	return o
+}
+
+func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigResponse] {
+	return pulumix.Output[EncryptionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
@@ -1125,6 +1330,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1166,6 +1377,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1189,6 +1406,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1223,6 +1446,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1302,6 +1531,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1369,6 +1604,12 @@ func (i HiveMetastoreConfigArgs) ToHiveMetastoreConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HiveMetastoreConfigOutput)
 }
 
+func (i HiveMetastoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[HiveMetastoreConfig] {
+	return pulumix.Output[HiveMetastoreConfig]{
+		OutputState: i.ToHiveMetastoreConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HiveMetastoreConfigArgs) ToHiveMetastoreConfigPtrOutput() HiveMetastoreConfigPtrOutput {
 	return i.ToHiveMetastoreConfigPtrOutputWithContext(context.Background())
 }
@@ -1410,6 +1651,12 @@ func (i *hiveMetastoreConfigPtrType) ToHiveMetastoreConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(HiveMetastoreConfigPtrOutput)
 }
 
+func (i *hiveMetastoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*HiveMetastoreConfig] {
+	return pulumix.Output[*HiveMetastoreConfig]{
+		OutputState: i.ToHiveMetastoreConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigOutput struct{ *pulumi.OutputState }
 
@@ -1433,6 +1680,12 @@ func (o HiveMetastoreConfigOutput) ToHiveMetastoreConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveMetastoreConfig) *HiveMetastoreConfig {
 		return &v
 	}).(HiveMetastoreConfigPtrOutput)
+}
+
+func (o HiveMetastoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[HiveMetastoreConfig] {
+	return pulumix.Output[HiveMetastoreConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
@@ -1467,6 +1720,12 @@ func (o HiveMetastoreConfigPtrOutput) ToHiveMetastoreConfigPtrOutput() HiveMetas
 
 func (o HiveMetastoreConfigPtrOutput) ToHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigPtrOutput {
 	return o
+}
+
+func (o HiveMetastoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HiveMetastoreConfig] {
+	return pulumix.Output[*HiveMetastoreConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HiveMetastoreConfigPtrOutput) Elem() HiveMetastoreConfigOutput {
@@ -1546,6 +1805,12 @@ func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutputWi
 	return o
 }
 
+func (o HiveMetastoreConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HiveMetastoreConfigResponse] {
+	return pulumix.Output[HiveMetastoreConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
 func (o HiveMetastoreConfigResponseOutput) AuxiliaryVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfigResponse) map[string]string { return v.AuxiliaryVersions }).(pulumi.StringMapOutput)
@@ -1609,6 +1874,12 @@ func (i KerberosConfigArgs) ToKerberosConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigOutput)
 }
 
+func (i KerberosConfigArgs) ToOutput(ctx context.Context) pulumix.Output[KerberosConfig] {
+	return pulumix.Output[KerberosConfig]{
+		OutputState: i.ToKerberosConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KerberosConfigArgs) ToKerberosConfigPtrOutput() KerberosConfigPtrOutput {
 	return i.ToKerberosConfigPtrOutputWithContext(context.Background())
 }
@@ -1650,6 +1921,12 @@ func (i *kerberosConfigPtrType) ToKerberosConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigPtrOutput)
 }
 
+func (i *kerberosConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*KerberosConfig] {
+	return pulumix.Output[*KerberosConfig]{
+		OutputState: i.ToKerberosConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration information for a Kerberos principal.
 type KerberosConfigOutput struct{ *pulumi.OutputState }
 
@@ -1673,6 +1950,12 @@ func (o KerberosConfigOutput) ToKerberosConfigPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KerberosConfig) *KerberosConfig {
 		return &v
 	}).(KerberosConfigPtrOutput)
+}
+
+func (o KerberosConfigOutput) ToOutput(ctx context.Context) pulumix.Output[KerberosConfig] {
+	return pulumix.Output[KerberosConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
@@ -1702,6 +1985,12 @@ func (o KerberosConfigPtrOutput) ToKerberosConfigPtrOutput() KerberosConfigPtrOu
 
 func (o KerberosConfigPtrOutput) ToKerberosConfigPtrOutputWithContext(ctx context.Context) KerberosConfigPtrOutput {
 	return o
+}
+
+func (o KerberosConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KerberosConfig] {
+	return pulumix.Output[*KerberosConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KerberosConfigPtrOutput) Elem() KerberosConfigOutput {
@@ -1769,6 +2058,12 @@ func (o KerberosConfigResponseOutput) ToKerberosConfigResponseOutputWithContext(
 	return o
 }
 
+func (o KerberosConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KerberosConfigResponse] {
+	return pulumix.Output[KerberosConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
 func (o KerberosConfigResponseOutput) Keytab() SecretResponseOutput {
 	return o.ApplyT(func(v KerberosConfigResponse) SecretResponse { return v.Keytab }).(SecretResponseOutput)
@@ -1823,6 +2118,12 @@ func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
 }
 
+func (i MaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
+	return pulumix.Output[MaintenanceWindow]{
+		OutputState: i.ToMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
 	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -1864,6 +2165,12 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
+func (i *maintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
+	return pulumix.Output[*MaintenanceWindow]{
+		OutputState: i.ToMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -1889,6 +2196,12 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	}).(MaintenanceWindowPtrOutput)
 }
 
+func (o MaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
+	return pulumix.Output[MaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The day of week, when the window starts.
 func (o MaintenanceWindowOutput) DayOfWeek() MaintenanceWindowDayOfWeekPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindowDayOfWeek { return v.DayOfWeek }).(MaintenanceWindowDayOfWeekPtrOutput)
@@ -1911,6 +2224,12 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWi
 
 func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
+	return pulumix.Output[*MaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
@@ -1966,6 +2285,12 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
+func (o MaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowResponse] {
+	return pulumix.Output[MaintenanceWindowResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The day of week, when the window starts.
 func (o MaintenanceWindowResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -2003,6 +2328,12 @@ func (o MetadataExportResponseOutput) ToMetadataExportResponseOutput() MetadataE
 
 func (o MetadataExportResponseOutput) ToMetadataExportResponseOutputWithContext(ctx context.Context) MetadataExportResponseOutput {
 	return o
+}
+
+func (o MetadataExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataExportResponse] {
+	return pulumix.Output[MetadataExportResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the database dump.
@@ -2044,6 +2375,12 @@ func (o MetadataExportResponseArrayOutput) ToMetadataExportResponseArrayOutputWi
 	return o
 }
 
+func (o MetadataExportResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetadataExportResponse] {
+	return pulumix.Output[[]MetadataExportResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetadataExportResponseArrayOutput) Index(i pulumi.IntInput) MetadataExportResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetadataExportResponse {
 		return vs[0].([]MetadataExportResponse)[vs[1].(int)]
@@ -2071,6 +2408,12 @@ func (o MetadataManagementActivityResponseOutput) ToMetadataManagementActivityRe
 
 func (o MetadataManagementActivityResponseOutput) ToMetadataManagementActivityResponseOutputWithContext(ctx context.Context) MetadataManagementActivityResponseOutput {
 	return o
+}
+
+func (o MetadataManagementActivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataManagementActivityResponse] {
+	return pulumix.Output[MetadataManagementActivityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The latest metadata exports of the metastore service.
@@ -2118,6 +2461,12 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
 }
 
+func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
+	return pulumix.Output[NetworkConfig]{
+		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NetworkConfigArgs) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -2159,6 +2508,12 @@ func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
 }
 
+func (i *networkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
+	return pulumix.Output[*NetworkConfig]{
+		OutputState: i.ToNetworkConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Network configuration for the Dataproc Metastore service.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -2184,6 +2539,12 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 	}).(NetworkConfigPtrOutput)
 }
 
+func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
+	return pulumix.Output[NetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 func (o NetworkConfigOutput) Consumers() ConsumerArrayOutput {
 	return o.ApplyT(func(v NetworkConfig) []Consumer { return v.Consumers }).(ConsumerArrayOutput)
@@ -2201,6 +2562,12 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutpu
 
 func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
 	return o
+}
+
+func (o NetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
+	return pulumix.Output[*NetworkConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
@@ -2244,6 +2611,12 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
+func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
+	return pulumix.Output[NetworkConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 func (o NetworkConfigResponseOutput) Consumers() ConsumerResponseArrayOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) []ConsumerResponse { return v.Consumers }).(ConsumerResponseArrayOutput)
@@ -2278,6 +2651,12 @@ func (o RestoreResponseOutput) ToRestoreResponseOutput() RestoreResponseOutput {
 
 func (o RestoreResponseOutput) ToRestoreResponseOutputWithContext(ctx context.Context) RestoreResponseOutput {
 	return o
+}
+
+func (o RestoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreResponse] {
+	return pulumix.Output[RestoreResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
@@ -2322,6 +2701,12 @@ func (o RestoreResponseArrayOutput) ToRestoreResponseArrayOutput() RestoreRespon
 
 func (o RestoreResponseArrayOutput) ToRestoreResponseArrayOutputWithContext(ctx context.Context) RestoreResponseArrayOutput {
 	return o
+}
+
+func (o RestoreResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestoreResponse] {
+	return pulumix.Output[[]RestoreResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RestoreResponseArrayOutput) Index(i pulumi.IntInput) RestoreResponseOutput {
@@ -2369,6 +2754,12 @@ func (i ScalingConfigArgs) ToScalingConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigOutput)
 }
 
+func (i ScalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingConfig] {
+	return pulumix.Output[ScalingConfig]{
+		OutputState: i.ToScalingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScalingConfigArgs) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
 	return i.ToScalingConfigPtrOutputWithContext(context.Background())
 }
@@ -2410,6 +2801,12 @@ func (i *scalingConfigPtrType) ToScalingConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigPtrOutput)
 }
 
+func (i *scalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScalingConfig] {
+	return pulumix.Output[*ScalingConfig]{
+		OutputState: i.ToScalingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the scaling configuration of a metastore service.
 type ScalingConfigOutput struct{ *pulumi.OutputState }
 
@@ -2435,6 +2832,12 @@ func (o ScalingConfigOutput) ToScalingConfigPtrOutputWithContext(ctx context.Con
 	}).(ScalingConfigPtrOutput)
 }
 
+func (o ScalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingConfig] {
+	return pulumix.Output[ScalingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
 func (o ScalingConfigOutput) InstanceSize() ScalingConfigInstanceSizePtrOutput {
 	return o.ApplyT(func(v ScalingConfig) *ScalingConfigInstanceSize { return v.InstanceSize }).(ScalingConfigInstanceSizePtrOutput)
@@ -2457,6 +2860,12 @@ func (o ScalingConfigPtrOutput) ToScalingConfigPtrOutput() ScalingConfigPtrOutpu
 
 func (o ScalingConfigPtrOutput) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
 	return o
+}
+
+func (o ScalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingConfig] {
+	return pulumix.Output[*ScalingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScalingConfigPtrOutput) Elem() ScalingConfigOutput {
@@ -2512,6 +2921,12 @@ func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutputWithContext(ct
 	return o
 }
 
+func (o ScalingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigResponse] {
+	return pulumix.Output[ScalingConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
 func (o ScalingConfigResponseOutput) InstanceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingConfigResponse) string { return v.InstanceSize }).(pulumi.StringOutput)
@@ -2557,6 +2972,12 @@ func (i SecretArgs) ToSecretOutputWithContext(ctx context.Context) SecretOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
 }
 
+func (i SecretArgs) ToOutput(ctx context.Context) pulumix.Output[Secret] {
+	return pulumix.Output[Secret]{
+		OutputState: i.ToSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretArgs) ToSecretPtrOutput() SecretPtrOutput {
 	return i.ToSecretPtrOutputWithContext(context.Background())
 }
@@ -2598,6 +3019,12 @@ func (i *secretPtrType) ToSecretPtrOutputWithContext(ctx context.Context) Secret
 	return pulumi.ToOutputWithContext(ctx, i).(SecretPtrOutput)
 }
 
+func (i *secretPtrType) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
+	return pulumix.Output[*Secret]{
+		OutputState: i.ToSecretPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A securely stored value.
 type SecretOutput struct{ *pulumi.OutputState }
 
@@ -2623,6 +3050,12 @@ func (o SecretOutput) ToSecretPtrOutputWithContext(ctx context.Context) SecretPt
 	}).(SecretPtrOutput)
 }
 
+func (o SecretOutput) ToOutput(ctx context.Context) pulumix.Output[Secret] {
+	return pulumix.Output[Secret]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
 func (o SecretOutput) CloudSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Secret) *string { return v.CloudSecret }).(pulumi.StringPtrOutput)
@@ -2640,6 +3073,12 @@ func (o SecretPtrOutput) ToSecretPtrOutput() SecretPtrOutput {
 
 func (o SecretPtrOutput) ToSecretPtrOutputWithContext(ctx context.Context) SecretPtrOutput {
 	return o
+}
+
+func (o SecretPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
+	return pulumix.Output[*Secret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretPtrOutput) Elem() SecretOutput {
@@ -2681,6 +3120,12 @@ func (o SecretResponseOutput) ToSecretResponseOutput() SecretResponseOutput {
 
 func (o SecretResponseOutput) ToSecretResponseOutputWithContext(ctx context.Context) SecretResponseOutput {
 	return o
+}
+
+func (o SecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretResponse] {
+	return pulumix.Output[SecretResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
@@ -2747,6 +3192,12 @@ func (o ServiceResponseOutput) ToServiceResponseOutput() ServiceResponseOutput {
 
 func (o ServiceResponseOutput) ToServiceResponseOutputWithContext(ctx context.Context) ServiceResponseOutput {
 	return o
+}
+
+func (o ServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceResponse] {
+	return pulumix.Output[ServiceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
@@ -2889,6 +3340,12 @@ func (i TelemetryConfigArgs) ToTelemetryConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TelemetryConfigOutput)
 }
 
+func (i TelemetryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TelemetryConfig] {
+	return pulumix.Output[TelemetryConfig]{
+		OutputState: i.ToTelemetryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TelemetryConfigArgs) ToTelemetryConfigPtrOutput() TelemetryConfigPtrOutput {
 	return i.ToTelemetryConfigPtrOutputWithContext(context.Background())
 }
@@ -2930,6 +3387,12 @@ func (i *telemetryConfigPtrType) ToTelemetryConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TelemetryConfigPtrOutput)
 }
 
+func (i *telemetryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TelemetryConfig] {
+	return pulumix.Output[*TelemetryConfig]{
+		OutputState: i.ToTelemetryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Telemetry Configuration for the Dataproc Metastore service.
 type TelemetryConfigOutput struct{ *pulumi.OutputState }
 
@@ -2955,6 +3418,12 @@ func (o TelemetryConfigOutput) ToTelemetryConfigPtrOutputWithContext(ctx context
 	}).(TelemetryConfigPtrOutput)
 }
 
+func (o TelemetryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TelemetryConfig] {
+	return pulumix.Output[TelemetryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The output format of the Dataproc Metastore service's logs.
 func (o TelemetryConfigOutput) LogFormat() TelemetryConfigLogFormatPtrOutput {
 	return o.ApplyT(func(v TelemetryConfig) *TelemetryConfigLogFormat { return v.LogFormat }).(TelemetryConfigLogFormatPtrOutput)
@@ -2972,6 +3441,12 @@ func (o TelemetryConfigPtrOutput) ToTelemetryConfigPtrOutput() TelemetryConfigPt
 
 func (o TelemetryConfigPtrOutput) ToTelemetryConfigPtrOutputWithContext(ctx context.Context) TelemetryConfigPtrOutput {
 	return o
+}
+
+func (o TelemetryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TelemetryConfig] {
+	return pulumix.Output[*TelemetryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TelemetryConfigPtrOutput) Elem() TelemetryConfigOutput {
@@ -3013,6 +3488,12 @@ func (o TelemetryConfigResponseOutput) ToTelemetryConfigResponseOutput() Telemet
 
 func (o TelemetryConfigResponseOutput) ToTelemetryConfigResponseOutputWithContext(ctx context.Context) TelemetryConfigResponseOutput {
 	return o
+}
+
+func (o TelemetryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TelemetryConfigResponse] {
+	return pulumix.Output[TelemetryConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The output format of the Dataproc Metastore service's logs.

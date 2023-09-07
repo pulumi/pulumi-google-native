@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -114,6 +133,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -145,6 +170,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -167,6 +198,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -214,6 +251,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -239,6 +282,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -252,6 +301,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -276,6 +331,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -307,6 +368,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -329,6 +396,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -380,6 +453,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -405,6 +484,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -418,6 +503,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -447,6 +538,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -480,6 +577,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -507,6 +610,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -562,6 +671,12 @@ func (i ContactArgs) ToContactOutputWithContext(ctx context.Context) ContactOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
 }
 
+func (i ContactArgs) ToOutput(ctx context.Context) pulumix.Output[Contact] {
+	return pulumix.Output[Contact]{
+		OutputState: i.ToContactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Details required for a contact associated with a `Registration`.
 type ContactOutput struct{ *pulumi.OutputState }
 
@@ -575,6 +690,12 @@ func (o ContactOutput) ToContactOutput() ContactOutput {
 
 func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
 	return o
+}
+
+func (o ContactOutput) ToOutput(ctx context.Context) pulumix.Output[Contact] {
+	return pulumix.Output[Contact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email address of the contact.
@@ -622,6 +743,12 @@ func (o ContactResponseOutput) ToContactResponseOutput() ContactResponseOutput {
 
 func (o ContactResponseOutput) ToContactResponseOutputWithContext(ctx context.Context) ContactResponseOutput {
 	return o
+}
+
+func (o ContactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactResponse] {
+	return pulumix.Output[ContactResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Email address of the contact.
@@ -691,6 +818,12 @@ func (i ContactSettingsArgs) ToContactSettingsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContactSettingsOutput)
 }
 
+func (i ContactSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ContactSettings] {
+	return pulumix.Output[ContactSettings]{
+		OutputState: i.ToContactSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
 type ContactSettingsOutput struct{ *pulumi.OutputState }
 
@@ -704,6 +837,12 @@ func (o ContactSettingsOutput) ToContactSettingsOutput() ContactSettingsOutput {
 
 func (o ContactSettingsOutput) ToContactSettingsOutputWithContext(ctx context.Context) ContactSettingsOutput {
 	return o
+}
+
+func (o ContactSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ContactSettings] {
+	return pulumix.Output[ContactSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The administrative contact for the `Registration`.
@@ -751,6 +890,12 @@ func (o ContactSettingsResponseOutput) ToContactSettingsResponseOutput() Contact
 
 func (o ContactSettingsResponseOutput) ToContactSettingsResponseOutputWithContext(ctx context.Context) ContactSettingsResponseOutput {
 	return o
+}
+
+func (o ContactSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactSettingsResponse] {
+	return pulumix.Output[ContactSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The administrative contact for the `Registration`.
@@ -812,6 +957,12 @@ func (i CustomDnsArgs) ToCustomDnsOutputWithContext(ctx context.Context) CustomD
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsOutput)
 }
 
+func (i CustomDnsArgs) ToOutput(ctx context.Context) pulumix.Output[CustomDns] {
+	return pulumix.Output[CustomDns]{
+		OutputState: i.ToCustomDnsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CustomDnsArgs) ToCustomDnsPtrOutput() CustomDnsPtrOutput {
 	return i.ToCustomDnsPtrOutputWithContext(context.Background())
 }
@@ -853,6 +1004,12 @@ func (i *customDnsPtrType) ToCustomDnsPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsPtrOutput)
 }
 
+func (i *customDnsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomDns] {
+	return pulumix.Output[*CustomDns]{
+		OutputState: i.ToCustomDnsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for an arbitrary DNS provider.
 type CustomDnsOutput struct{ *pulumi.OutputState }
 
@@ -878,6 +1035,12 @@ func (o CustomDnsOutput) ToCustomDnsPtrOutputWithContext(ctx context.Context) Cu
 	}).(CustomDnsPtrOutput)
 }
 
+func (o CustomDnsOutput) ToOutput(ctx context.Context) pulumix.Output[CustomDns] {
+	return pulumix.Output[CustomDns]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
 func (o CustomDnsOutput) DsRecords() DsRecordArrayOutput {
 	return o.ApplyT(func(v CustomDns) []DsRecord { return v.DsRecords }).(DsRecordArrayOutput)
@@ -900,6 +1063,12 @@ func (o CustomDnsPtrOutput) ToCustomDnsPtrOutput() CustomDnsPtrOutput {
 
 func (o CustomDnsPtrOutput) ToCustomDnsPtrOutputWithContext(ctx context.Context) CustomDnsPtrOutput {
 	return o
+}
+
+func (o CustomDnsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDns] {
+	return pulumix.Output[*CustomDns]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomDnsPtrOutput) Elem() CustomDnsOutput {
@@ -955,6 +1124,12 @@ func (o CustomDnsResponseOutput) ToCustomDnsResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o CustomDnsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomDnsResponse] {
+	return pulumix.Output[CustomDnsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
 func (o CustomDnsResponseOutput) DsRecords() DsRecordResponseArrayOutput {
 	return o.ApplyT(func(v CustomDnsResponse) []DsRecordResponse { return v.DsRecords }).(DsRecordResponseArrayOutput)
@@ -1008,6 +1183,12 @@ func (i DnsSettingsArgs) ToDnsSettingsOutputWithContext(ctx context.Context) Dns
 	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsOutput)
 }
 
+func (i DnsSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[DnsSettings] {
+	return pulumix.Output[DnsSettings]{
+		OutputState: i.ToDnsSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DnsSettingsArgs) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
 	return i.ToDnsSettingsPtrOutputWithContext(context.Background())
 }
@@ -1049,6 +1230,12 @@ func (i *dnsSettingsPtrType) ToDnsSettingsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsPtrOutput)
 }
 
+func (i *dnsSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DnsSettings] {
+	return pulumix.Output[*DnsSettings]{
+		OutputState: i.ToDnsSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
 type DnsSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1072,6 +1259,12 @@ func (o DnsSettingsOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsSettings) *DnsSettings {
 		return &v
 	}).(DnsSettingsPtrOutput)
+}
+
+func (o DnsSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[DnsSettings] {
+	return pulumix.Output[DnsSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An arbitrary DNS provider identified by its name servers.
@@ -1101,6 +1294,12 @@ func (o DnsSettingsPtrOutput) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
 
 func (o DnsSettingsPtrOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Context) DnsSettingsPtrOutput {
 	return o
+}
+
+func (o DnsSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsSettings] {
+	return pulumix.Output[*DnsSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsSettingsPtrOutput) Elem() DnsSettingsOutput {
@@ -1168,6 +1367,12 @@ func (o DnsSettingsResponseOutput) ToDnsSettingsResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o DnsSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsSettingsResponse] {
+	return pulumix.Output[DnsSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An arbitrary DNS provider identified by its name servers.
 func (o DnsSettingsResponseOutput) CustomDns() CustomDnsResponseOutput {
 	return o.ApplyT(func(v DnsSettingsResponse) CustomDnsResponse { return v.CustomDns }).(CustomDnsResponseOutput)
@@ -1230,6 +1435,12 @@ func (i DsRecordArgs) ToDsRecordOutputWithContext(ctx context.Context) DsRecordO
 	return pulumi.ToOutputWithContext(ctx, i).(DsRecordOutput)
 }
 
+func (i DsRecordArgs) ToOutput(ctx context.Context) pulumix.Output[DsRecord] {
+	return pulumix.Output[DsRecord]{
+		OutputState: i.ToDsRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DsRecordArrayInput is an input type that accepts DsRecordArray and DsRecordArrayOutput values.
 // You can construct a concrete instance of `DsRecordArrayInput` via:
 //
@@ -1255,6 +1466,12 @@ func (i DsRecordArray) ToDsRecordArrayOutputWithContext(ctx context.Context) DsR
 	return pulumi.ToOutputWithContext(ctx, i).(DsRecordArrayOutput)
 }
 
+func (i DsRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]DsRecord] {
+	return pulumix.Output[[]DsRecord]{
+		OutputState: i.ToDsRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
 type DsRecordOutput struct{ *pulumi.OutputState }
 
@@ -1268,6 +1485,12 @@ func (o DsRecordOutput) ToDsRecordOutput() DsRecordOutput {
 
 func (o DsRecordOutput) ToDsRecordOutputWithContext(ctx context.Context) DsRecordOutput {
 	return o
+}
+
+func (o DsRecordOutput) ToOutput(ctx context.Context) pulumix.Output[DsRecord] {
+	return pulumix.Output[DsRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm used to generate the referenced DNSKEY.
@@ -1304,6 +1527,12 @@ func (o DsRecordArrayOutput) ToDsRecordArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o DsRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DsRecord] {
+	return pulumix.Output[[]DsRecord]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DsRecordArrayOutput) Index(i pulumi.IntInput) DsRecordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DsRecord {
 		return vs[0].([]DsRecord)[vs[1].(int)]
@@ -1335,6 +1564,12 @@ func (o DsRecordResponseOutput) ToDsRecordResponseOutput() DsRecordResponseOutpu
 
 func (o DsRecordResponseOutput) ToDsRecordResponseOutputWithContext(ctx context.Context) DsRecordResponseOutput {
 	return o
+}
+
+func (o DsRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DsRecordResponse] {
+	return pulumix.Output[DsRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm used to generate the referenced DNSKEY.
@@ -1369,6 +1604,12 @@ func (o DsRecordResponseArrayOutput) ToDsRecordResponseArrayOutput() DsRecordRes
 
 func (o DsRecordResponseArrayOutput) ToDsRecordResponseArrayOutputWithContext(ctx context.Context) DsRecordResponseArrayOutput {
 	return o
+}
+
+func (o DsRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DsRecordResponse] {
+	return pulumix.Output[[]DsRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DsRecordResponseArrayOutput) Index(i pulumi.IntInput) DsRecordResponseOutput {
@@ -1424,6 +1665,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1465,6 +1712,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1488,6 +1741,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1522,6 +1781,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1601,6 +1866,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1664,6 +1935,12 @@ func (i GlueRecordArgs) ToGlueRecordOutputWithContext(ctx context.Context) GlueR
 	return pulumi.ToOutputWithContext(ctx, i).(GlueRecordOutput)
 }
 
+func (i GlueRecordArgs) ToOutput(ctx context.Context) pulumix.Output[GlueRecord] {
+	return pulumix.Output[GlueRecord]{
+		OutputState: i.ToGlueRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GlueRecordArrayInput is an input type that accepts GlueRecordArray and GlueRecordArrayOutput values.
 // You can construct a concrete instance of `GlueRecordArrayInput` via:
 //
@@ -1689,6 +1966,12 @@ func (i GlueRecordArray) ToGlueRecordArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GlueRecordArrayOutput)
 }
 
+func (i GlueRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]GlueRecord] {
+	return pulumix.Output[[]GlueRecord]{
+		OutputState: i.ToGlueRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
 type GlueRecordOutput struct{ *pulumi.OutputState }
 
@@ -1702,6 +1985,12 @@ func (o GlueRecordOutput) ToGlueRecordOutput() GlueRecordOutput {
 
 func (o GlueRecordOutput) ToGlueRecordOutputWithContext(ctx context.Context) GlueRecordOutput {
 	return o
+}
+
+func (o GlueRecordOutput) ToOutput(ctx context.Context) pulumix.Output[GlueRecord] {
+	return pulumix.Output[GlueRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Domain name of the host in Punycode format.
@@ -1731,6 +2020,12 @@ func (o GlueRecordArrayOutput) ToGlueRecordArrayOutput() GlueRecordArrayOutput {
 
 func (o GlueRecordArrayOutput) ToGlueRecordArrayOutputWithContext(ctx context.Context) GlueRecordArrayOutput {
 	return o
+}
+
+func (o GlueRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GlueRecord] {
+	return pulumix.Output[[]GlueRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlueRecordArrayOutput) Index(i pulumi.IntInput) GlueRecordOutput {
@@ -1764,6 +2059,12 @@ func (o GlueRecordResponseOutput) ToGlueRecordResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o GlueRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlueRecordResponse] {
+	return pulumix.Output[GlueRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Domain name of the host in Punycode format.
 func (o GlueRecordResponseOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GlueRecordResponse) string { return v.HostName }).(pulumi.StringOutput)
@@ -1791,6 +2092,12 @@ func (o GlueRecordResponseArrayOutput) ToGlueRecordResponseArrayOutput() GlueRec
 
 func (o GlueRecordResponseArrayOutput) ToGlueRecordResponseArrayOutputWithContext(ctx context.Context) GlueRecordResponseArrayOutput {
 	return o
+}
+
+func (o GlueRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GlueRecordResponse] {
+	return pulumix.Output[[]GlueRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlueRecordResponseArrayOutput) Index(i pulumi.IntInput) GlueRecordResponseOutput {
@@ -1834,6 +2141,12 @@ func (i GoogleDomainsDnsArgs) ToGoogleDomainsDnsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsOutput)
 }
 
+func (i GoogleDomainsDnsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDomainsDns] {
+	return pulumix.Output[GoogleDomainsDns]{
+		OutputState: i.ToGoogleDomainsDnsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleDomainsDnsArgs) ToGoogleDomainsDnsPtrOutput() GoogleDomainsDnsPtrOutput {
 	return i.ToGoogleDomainsDnsPtrOutputWithContext(context.Background())
 }
@@ -1875,6 +2188,12 @@ func (i *googleDomainsDnsPtrType) ToGoogleDomainsDnsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsPtrOutput)
 }
 
+func (i *googleDomainsDnsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDomainsDns] {
+	return pulumix.Output[*GoogleDomainsDns]{
+		OutputState: i.ToGoogleDomainsDnsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsOutput struct{ *pulumi.OutputState }
 
@@ -1900,6 +2219,12 @@ func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx conte
 	}).(GoogleDomainsDnsPtrOutput)
 }
 
+func (o GoogleDomainsDnsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDomainsDns] {
+	return pulumix.Output[GoogleDomainsDns]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 func (o GoogleDomainsDnsOutput) DsState() GoogleDomainsDnsDsStateOutput {
 	return o.ApplyT(func(v GoogleDomainsDns) GoogleDomainsDnsDsState { return v.DsState }).(GoogleDomainsDnsDsStateOutput)
@@ -1917,6 +2242,12 @@ func (o GoogleDomainsDnsPtrOutput) ToGoogleDomainsDnsPtrOutput() GoogleDomainsDn
 
 func (o GoogleDomainsDnsPtrOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx context.Context) GoogleDomainsDnsPtrOutput {
 	return o
+}
+
+func (o GoogleDomainsDnsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDomainsDns] {
+	return pulumix.Output[*GoogleDomainsDns]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDomainsDnsPtrOutput) Elem() GoogleDomainsDnsOutput {
@@ -1962,6 +2293,12 @@ func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponseOutput() Googl
 
 func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponseOutputWithContext(ctx context.Context) GoogleDomainsDnsResponseOutput {
 	return o
+}
+
+func (o GoogleDomainsDnsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDomainsDnsResponse] {
+	return pulumix.Output[GoogleDomainsDnsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
@@ -2014,6 +2351,12 @@ func (i ManagementSettingsArgs) ToManagementSettingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsOutput)
 }
 
+func (i ManagementSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementSettings] {
+	return pulumix.Output[ManagementSettings]{
+		OutputState: i.ToManagementSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagementSettingsArgs) ToManagementSettingsPtrOutput() ManagementSettingsPtrOutput {
 	return i.ToManagementSettingsPtrOutputWithContext(context.Background())
 }
@@ -2055,6 +2398,12 @@ func (i *managementSettingsPtrType) ToManagementSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsPtrOutput)
 }
 
+func (i *managementSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettings] {
+	return pulumix.Output[*ManagementSettings]{
+		OutputState: i.ToManagementSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines renewal, billing, and transfer settings for a `Registration`.
 type ManagementSettingsOutput struct{ *pulumi.OutputState }
 
@@ -2080,6 +2429,12 @@ func (o ManagementSettingsOutput) ToManagementSettingsPtrOutputWithContext(ctx c
 	}).(ManagementSettingsPtrOutput)
 }
 
+func (o ManagementSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementSettings] {
+	return pulumix.Output[ManagementSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Controls whether the domain can be transferred to another registrar.
 func (o ManagementSettingsOutput) TransferLockState() ManagementSettingsTransferLockStatePtrOutput {
 	return o.ApplyT(func(v ManagementSettings) *ManagementSettingsTransferLockState { return v.TransferLockState }).(ManagementSettingsTransferLockStatePtrOutput)
@@ -2097,6 +2452,12 @@ func (o ManagementSettingsPtrOutput) ToManagementSettingsPtrOutput() ManagementS
 
 func (o ManagementSettingsPtrOutput) ToManagementSettingsPtrOutputWithContext(ctx context.Context) ManagementSettingsPtrOutput {
 	return o
+}
+
+func (o ManagementSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettings] {
+	return pulumix.Output[*ManagementSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagementSettingsPtrOutput) Elem() ManagementSettingsOutput {
@@ -2140,6 +2501,12 @@ func (o ManagementSettingsResponseOutput) ToManagementSettingsResponseOutput() M
 
 func (o ManagementSettingsResponseOutput) ToManagementSettingsResponseOutputWithContext(ctx context.Context) ManagementSettingsResponseOutput {
 	return o
+}
+
+func (o ManagementSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementSettingsResponse] {
+	return pulumix.Output[ManagementSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The renewal method for this `Registration`.
@@ -2195,6 +2562,12 @@ func (i MoneyArgs) ToMoneyOutputWithContext(ctx context.Context) MoneyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MoneyOutput)
 }
 
+func (i MoneyArgs) ToOutput(ctx context.Context) pulumix.Output[Money] {
+	return pulumix.Output[Money]{
+		OutputState: i.ToMoneyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an amount of money with its currency type.
 type MoneyOutput struct{ *pulumi.OutputState }
 
@@ -2208,6 +2581,12 @@ func (o MoneyOutput) ToMoneyOutput() MoneyOutput {
 
 func (o MoneyOutput) ToMoneyOutputWithContext(ctx context.Context) MoneyOutput {
 	return o
+}
+
+func (o MoneyOutput) ToOutput(ctx context.Context) pulumix.Output[Money] {
+	return pulumix.Output[Money]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -2300,6 +2679,12 @@ func (i PostalAddressArgs) ToPostalAddressOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressOutput)
 }
 
+func (i PostalAddressArgs) ToOutput(ctx context.Context) pulumix.Output[PostalAddress] {
+	return pulumix.Output[PostalAddress]{
+		OutputState: i.ToPostalAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
 type PostalAddressOutput struct{ *pulumi.OutputState }
 
@@ -2313,6 +2698,12 @@ func (o PostalAddressOutput) ToPostalAddressOutput() PostalAddressOutput {
 
 func (o PostalAddressOutput) ToPostalAddressOutputWithContext(ctx context.Context) PostalAddressOutput {
 	return o
+}
+
+func (o PostalAddressOutput) ToOutput(ctx context.Context) pulumix.Output[PostalAddress] {
+	return pulumix.Output[PostalAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -2409,6 +2800,12 @@ func (o PostalAddressResponseOutput) ToPostalAddressResponseOutput() PostalAddre
 
 func (o PostalAddressResponseOutput) ToPostalAddressResponseOutputWithContext(ctx context.Context) PostalAddressResponseOutput {
 	return o
+}
+
+func (o PostalAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostalAddressResponse] {
+	return pulumix.Output[PostalAddressResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).

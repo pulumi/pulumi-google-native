@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *DomainBackupIamBinding) ToDomainBackupIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DomainBackupIamBindingOutput)
 }
 
+func (i *DomainBackupIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DomainBackupIamBinding] {
+	return pulumix.Output[*DomainBackupIamBinding]{
+		OutputState: i.ToDomainBackupIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainBackupIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DomainBackupIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o DomainBackupIamBindingOutput) ToDomainBackupIamBindingOutput() DomainBac
 
 func (o DomainBackupIamBindingOutput) ToDomainBackupIamBindingOutputWithContext(ctx context.Context) DomainBackupIamBindingOutput {
 	return o
+}
+
+func (o DomainBackupIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainBackupIamBinding] {
+	return pulumix.Output[*DomainBackupIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
@@ -92,6 +93,12 @@ func (o AppEngineHttpRequestHttpMethodOutput) ToAppEngineHttpRequestHttpMethodPt
 	}).(AppEngineHttpRequestHttpMethodPtrOutput)
 }
 
+func (o AppEngineHttpRequestHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpRequestHttpMethod] {
+	return pulumix.Output[AppEngineHttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEngineHttpRequestHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,6 +132,12 @@ func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMetho
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
 	return o
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpRequestHttpMethod] {
+	return pulumix.Output[*AppEngineHttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) Elem() AppEngineHttpRequestHttpMethodOutput {
@@ -187,6 +200,12 @@ func (in *appEngineHttpRequestHttpMethodPtr) ToAppEngineHttpRequestHttpMethodPtr
 
 func (in *appEngineHttpRequestHttpMethodPtr) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppEngineHttpRequestHttpMethodPtrOutput)
+}
+
+func (in *appEngineHttpRequestHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpRequestHttpMethod] {
+	return pulumix.Output[*AppEngineHttpRequestHttpMethod]{
+		OutputState: in.ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The HTTP method to use for the request. The default is POST.
@@ -271,6 +290,12 @@ func (o HttpRequestHttpMethodOutput) ToHttpRequestHttpMethodPtrOutputWithContext
 	}).(HttpRequestHttpMethodPtrOutput)
 }
 
+func (o HttpRequestHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRequestHttpMethod] {
+	return pulumix.Output[HttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpRequestHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -304,6 +329,12 @@ func (o HttpRequestHttpMethodPtrOutput) ToHttpRequestHttpMethodPtrOutput() HttpR
 
 func (o HttpRequestHttpMethodPtrOutput) ToHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) HttpRequestHttpMethodPtrOutput {
 	return o
+}
+
+func (o HttpRequestHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRequestHttpMethod] {
+	return pulumix.Output[*HttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRequestHttpMethodPtrOutput) Elem() HttpRequestHttpMethodOutput {
@@ -366,6 +397,12 @@ func (in *httpRequestHttpMethodPtr) ToHttpRequestHttpMethodPtrOutput() HttpReque
 
 func (in *httpRequestHttpMethodPtr) ToHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) HttpRequestHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpRequestHttpMethodPtrOutput)
+}
+
+func (in *httpRequestHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpRequestHttpMethod] {
+	return pulumix.Output[*HttpRequestHttpMethod]{
+		OutputState: in.ToHttpRequestHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
@@ -450,6 +487,12 @@ func (o HttpTargetHttpMethodOutput) ToHttpTargetHttpMethodPtrOutputWithContext(c
 	}).(HttpTargetHttpMethodPtrOutput)
 }
 
+func (o HttpTargetHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTargetHttpMethod] {
+	return pulumix.Output[HttpTargetHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpTargetHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -483,6 +526,12 @@ func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutput() HttpTar
 
 func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return o
+}
+
+func (o HttpTargetHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpTargetHttpMethod] {
+	return pulumix.Output[*HttpTargetHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpTargetHttpMethodPtrOutput) Elem() HttpTargetHttpMethodOutput {
@@ -545,6 +594,12 @@ func (in *httpTargetHttpMethodPtr) ToHttpTargetHttpMethodPtrOutput() HttpTargetH
 
 func (in *httpTargetHttpMethodPtr) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpTargetHttpMethodPtrOutput)
+}
+
+func (in *httpTargetHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpTargetHttpMethod] {
+	return pulumix.Output[*HttpTargetHttpMethod]{
+		OutputState: in.ToHttpTargetHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
@@ -619,6 +674,12 @@ func (o QueueTypeOutput) ToQueueTypePtrOutputWithContext(ctx context.Context) Qu
 	}).(QueueTypePtrOutput)
 }
 
+func (o QueueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[QueueType] {
+	return pulumix.Output[QueueType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QueueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -652,6 +713,12 @@ func (o QueueTypePtrOutput) ToQueueTypePtrOutput() QueueTypePtrOutput {
 
 func (o QueueTypePtrOutput) ToQueueTypePtrOutputWithContext(ctx context.Context) QueueTypePtrOutput {
 	return o
+}
+
+func (o QueueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueType] {
+	return pulumix.Output[*QueueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueTypePtrOutput) Elem() QueueTypeOutput {
@@ -714,6 +781,12 @@ func (in *queueTypePtr) ToQueueTypePtrOutput() QueueTypePtrOutput {
 
 func (in *queueTypePtr) ToQueueTypePtrOutputWithContext(ctx context.Context) QueueTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(QueueTypePtrOutput)
+}
+
+func (in *queueTypePtr) ToOutput(ctx context.Context) pulumix.Output[*QueueType] {
+	return pulumix.Output[*QueueType]{
+		OutputState: in.ToQueueTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
@@ -788,6 +861,12 @@ func (o TaskResponseViewOutput) ToTaskResponseViewPtrOutputWithContext(ctx conte
 	}).(TaskResponseViewPtrOutput)
 }
 
+func (o TaskResponseViewOutput) ToOutput(ctx context.Context) pulumix.Output[TaskResponseView] {
+	return pulumix.Output[TaskResponseView]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TaskResponseViewOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -821,6 +900,12 @@ func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutput() TaskResponseVie
 
 func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
 	return o
+}
+
+func (o TaskResponseViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskResponseView] {
+	return pulumix.Output[*TaskResponseView]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaskResponseViewPtrOutput) Elem() TaskResponseViewOutput {
@@ -883,6 +968,12 @@ func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutput() TaskResponseViewPtr
 
 func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TaskResponseViewPtrOutput)
+}
+
+func (in *taskResponseViewPtr) ToOutput(ctx context.Context) pulumix.Output[*TaskResponseView] {
+	return pulumix.Output[*TaskResponseView]{
+		OutputState: in.ToTaskResponseViewPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
@@ -957,6 +1048,12 @@ func (o UriOverrideSchemeOutput) ToUriOverrideSchemePtrOutputWithContext(ctx con
 	}).(UriOverrideSchemePtrOutput)
 }
 
+func (o UriOverrideSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[UriOverrideScheme] {
+	return pulumix.Output[UriOverrideScheme]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UriOverrideSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -990,6 +1087,12 @@ func (o UriOverrideSchemePtrOutput) ToUriOverrideSchemePtrOutput() UriOverrideSc
 
 func (o UriOverrideSchemePtrOutput) ToUriOverrideSchemePtrOutputWithContext(ctx context.Context) UriOverrideSchemePtrOutput {
 	return o
+}
+
+func (o UriOverrideSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UriOverrideScheme] {
+	return pulumix.Output[*UriOverrideScheme]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UriOverrideSchemePtrOutput) Elem() UriOverrideSchemeOutput {
@@ -1052,6 +1155,12 @@ func (in *uriOverrideSchemePtr) ToUriOverrideSchemePtrOutput() UriOverrideScheme
 
 func (in *uriOverrideSchemePtr) ToUriOverrideSchemePtrOutputWithContext(ctx context.Context) UriOverrideSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UriOverrideSchemePtrOutput)
+}
+
+func (in *uriOverrideSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*UriOverrideScheme] {
+	return pulumix.Output[*UriOverrideScheme]{
+		OutputState: in.ToUriOverrideSchemePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
@@ -1126,6 +1235,12 @@ func (o UriOverrideUriOverrideEnforceModeOutput) ToUriOverrideUriOverrideEnforce
 	}).(UriOverrideUriOverrideEnforceModePtrOutput)
 }
 
+func (o UriOverrideUriOverrideEnforceModeOutput) ToOutput(ctx context.Context) pulumix.Output[UriOverrideUriOverrideEnforceMode] {
+	return pulumix.Output[UriOverrideUriOverrideEnforceMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UriOverrideUriOverrideEnforceModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1159,6 +1274,12 @@ func (o UriOverrideUriOverrideEnforceModePtrOutput) ToUriOverrideUriOverrideEnfo
 
 func (o UriOverrideUriOverrideEnforceModePtrOutput) ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModePtrOutput {
 	return o
+}
+
+func (o UriOverrideUriOverrideEnforceModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UriOverrideUriOverrideEnforceMode] {
+	return pulumix.Output[*UriOverrideUriOverrideEnforceMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UriOverrideUriOverrideEnforceModePtrOutput) Elem() UriOverrideUriOverrideEnforceModeOutput {
@@ -1221,6 +1342,12 @@ func (in *uriOverrideUriOverrideEnforceModePtr) ToUriOverrideUriOverrideEnforceM
 
 func (in *uriOverrideUriOverrideEnforceModePtr) ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
+func (in *uriOverrideUriOverrideEnforceModePtr) ToOutput(ctx context.Context) pulumix.Output[*UriOverrideUriOverrideEnforceMode] {
+	return pulumix.Output[*UriOverrideUriOverrideEnforceMode]{
+		OutputState: in.ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

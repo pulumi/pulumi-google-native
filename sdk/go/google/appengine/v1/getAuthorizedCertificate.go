@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified SSL certificate.
@@ -82,6 +83,12 @@ func (o LookupAuthorizedCertificateResultOutput) ToLookupAuthorizedCertificateRe
 
 func (o LookupAuthorizedCertificateResultOutput) ToLookupAuthorizedCertificateResultOutputWithContext(ctx context.Context) LookupAuthorizedCertificateResultOutput {
 	return o
+}
+
+func (o LookupAuthorizedCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorizedCertificateResult] {
+	return pulumix.Output[LookupAuthorizedCertificateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.

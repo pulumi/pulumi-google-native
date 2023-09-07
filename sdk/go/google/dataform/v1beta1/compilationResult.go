@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new CompilationResult in a given project and location.
@@ -140,6 +141,12 @@ func (i *CompilationResult) ToCompilationResultOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CompilationResultOutput)
 }
 
+func (i *CompilationResult) ToOutput(ctx context.Context) pulumix.Output[*CompilationResult] {
+	return pulumix.Output[*CompilationResult]{
+		OutputState: i.ToCompilationResultOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CompilationResultOutput struct{ *pulumi.OutputState }
 
 func (CompilationResultOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o CompilationResultOutput) ToCompilationResultOutput() CompilationResultOu
 
 func (o CompilationResultOutput) ToCompilationResultOutputWithContext(ctx context.Context) CompilationResultOutput {
 	return o
+}
+
+func (o CompilationResultOutput) ToOutput(ctx context.Context) pulumix.Output[*CompilationResult] {
+	return pulumix.Output[*CompilationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.

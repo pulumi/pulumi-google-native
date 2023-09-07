@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new canary evaluation for an organization.
@@ -160,6 +161,12 @@ func (i *CanaryEvaluation) ToCanaryEvaluationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CanaryEvaluationOutput)
 }
 
+func (i *CanaryEvaluation) ToOutput(ctx context.Context) pulumix.Output[*CanaryEvaluation] {
+	return pulumix.Output[*CanaryEvaluation]{
+		OutputState: i.ToCanaryEvaluationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CanaryEvaluationOutput struct{ *pulumi.OutputState }
 
 func (CanaryEvaluationOutput) ElementType() reflect.Type {
@@ -172,6 +179,12 @@ func (o CanaryEvaluationOutput) ToCanaryEvaluationOutput() CanaryEvaluationOutpu
 
 func (o CanaryEvaluationOutput) ToCanaryEvaluationOutputWithContext(ctx context.Context) CanaryEvaluationOutput {
 	return o
+}
+
+func (o CanaryEvaluationOutput) ToOutput(ctx context.Context) pulumix.Output[*CanaryEvaluation] {
+	return pulumix.Output[*CanaryEvaluation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The stable version that is serving requests.

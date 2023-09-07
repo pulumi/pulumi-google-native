@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single MigratingVm.
@@ -118,6 +119,12 @@ func (o LookupMigratingVmResultOutput) ToLookupMigratingVmResultOutput() LookupM
 
 func (o LookupMigratingVmResultOutput) ToLookupMigratingVmResultOutputWithContext(ctx context.Context) LookupMigratingVmResultOutput {
 	return o
+}
+
+func (o LookupMigratingVmResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigratingVmResult] {
+	return pulumix.Output[LookupMigratingVmResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details of the VM from an AWS source.

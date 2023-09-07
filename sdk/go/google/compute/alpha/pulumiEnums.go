@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
@@ -86,6 +87,12 @@ func (o AccessConfigNetworkTierOutput) ToAccessConfigNetworkTierPtrOutputWithCon
 	}).(AccessConfigNetworkTierPtrOutput)
 }
 
+func (o AccessConfigNetworkTierOutput) ToOutput(ctx context.Context) pulumix.Output[AccessConfigNetworkTier] {
+	return pulumix.Output[AccessConfigNetworkTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessConfigNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (o AccessConfigNetworkTierPtrOutput) ToAccessConfigNetworkTierPtrOutput() A
 
 func (o AccessConfigNetworkTierPtrOutput) ToAccessConfigNetworkTierPtrOutputWithContext(ctx context.Context) AccessConfigNetworkTierPtrOutput {
 	return o
+}
+
+func (o AccessConfigNetworkTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigNetworkTier] {
+	return pulumix.Output[*AccessConfigNetworkTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessConfigNetworkTierPtrOutput) Elem() AccessConfigNetworkTierOutput {
@@ -181,6 +194,12 @@ func (in *accessConfigNetworkTierPtr) ToAccessConfigNetworkTierPtrOutput() Acces
 
 func (in *accessConfigNetworkTierPtr) ToAccessConfigNetworkTierPtrOutputWithContext(ctx context.Context) AccessConfigNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessConfigNetworkTierPtrOutput)
+}
+
+func (in *accessConfigNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigNetworkTier] {
+	return pulumix.Output[*AccessConfigNetworkTier]{
+		OutputState: in.ToAccessConfigNetworkTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
@@ -251,6 +270,12 @@ func (o AccessConfigTypeOutput) ToAccessConfigTypePtrOutputWithContext(ctx conte
 	}).(AccessConfigTypePtrOutput)
 }
 
+func (o AccessConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AccessConfigType] {
+	return pulumix.Output[AccessConfigType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o AccessConfigTypePtrOutput) ToAccessConfigTypePtrOutput() AccessConfigTyp
 
 func (o AccessConfigTypePtrOutput) ToAccessConfigTypePtrOutputWithContext(ctx context.Context) AccessConfigTypePtrOutput {
 	return o
+}
+
+func (o AccessConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigType] {
+	return pulumix.Output[*AccessConfigType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessConfigTypePtrOutput) Elem() AccessConfigTypeOutput {
@@ -346,6 +377,12 @@ func (in *accessConfigTypePtr) ToAccessConfigTypePtrOutput() AccessConfigTypePtr
 
 func (in *accessConfigTypePtr) ToAccessConfigTypePtrOutputWithContext(ctx context.Context) AccessConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessConfigTypePtrOutput)
+}
+
+func (in *accessConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigType] {
+	return pulumix.Output[*AccessConfigType]{
+		OutputState: in.ToAccessConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
@@ -421,6 +458,12 @@ func (o AddressAddressTypeOutput) ToAddressAddressTypePtrOutputWithContext(ctx c
 	}).(AddressAddressTypePtrOutput)
 }
 
+func (o AddressAddressTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AddressAddressType] {
+	return pulumix.Output[AddressAddressType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressAddressTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -454,6 +497,12 @@ func (o AddressAddressTypePtrOutput) ToAddressAddressTypePtrOutput() AddressAddr
 
 func (o AddressAddressTypePtrOutput) ToAddressAddressTypePtrOutputWithContext(ctx context.Context) AddressAddressTypePtrOutput {
 	return o
+}
+
+func (o AddressAddressTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressAddressType] {
+	return pulumix.Output[*AddressAddressType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressAddressTypePtrOutput) Elem() AddressAddressTypeOutput {
@@ -516,6 +565,12 @@ func (in *addressAddressTypePtr) ToAddressAddressTypePtrOutput() AddressAddressT
 
 func (in *addressAddressTypePtr) ToAddressAddressTypePtrOutputWithContext(ctx context.Context) AddressAddressTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressAddressTypePtrOutput)
+}
+
+func (in *addressAddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressAddressType] {
+	return pulumix.Output[*AddressAddressType]{
+		OutputState: in.ToAddressAddressTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
@@ -587,6 +642,12 @@ func (o AddressIpVersionOutput) ToAddressIpVersionPtrOutputWithContext(ctx conte
 	}).(AddressIpVersionPtrOutput)
 }
 
+func (o AddressIpVersionOutput) ToOutput(ctx context.Context) pulumix.Output[AddressIpVersion] {
+	return pulumix.Output[AddressIpVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressIpVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -620,6 +681,12 @@ func (o AddressIpVersionPtrOutput) ToAddressIpVersionPtrOutput() AddressIpVersio
 
 func (o AddressIpVersionPtrOutput) ToAddressIpVersionPtrOutputWithContext(ctx context.Context) AddressIpVersionPtrOutput {
 	return o
+}
+
+func (o AddressIpVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressIpVersion] {
+	return pulumix.Output[*AddressIpVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressIpVersionPtrOutput) Elem() AddressIpVersionOutput {
@@ -682,6 +749,12 @@ func (in *addressIpVersionPtr) ToAddressIpVersionPtrOutput() AddressIpVersionPtr
 
 func (in *addressIpVersionPtr) ToAddressIpVersionPtrOutputWithContext(ctx context.Context) AddressIpVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressIpVersionPtrOutput)
+}
+
+func (in *addressIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*AddressIpVersion] {
+	return pulumix.Output[*AddressIpVersion]{
+		OutputState: in.ToAddressIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
@@ -754,6 +827,12 @@ func (o AddressIpv6EndpointTypeOutput) ToAddressIpv6EndpointTypePtrOutputWithCon
 	}).(AddressIpv6EndpointTypePtrOutput)
 }
 
+func (o AddressIpv6EndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AddressIpv6EndpointType] {
+	return pulumix.Output[AddressIpv6EndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressIpv6EndpointTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -787,6 +866,12 @@ func (o AddressIpv6EndpointTypePtrOutput) ToAddressIpv6EndpointTypePtrOutput() A
 
 func (o AddressIpv6EndpointTypePtrOutput) ToAddressIpv6EndpointTypePtrOutputWithContext(ctx context.Context) AddressIpv6EndpointTypePtrOutput {
 	return o
+}
+
+func (o AddressIpv6EndpointTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressIpv6EndpointType] {
+	return pulumix.Output[*AddressIpv6EndpointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressIpv6EndpointTypePtrOutput) Elem() AddressIpv6EndpointTypeOutput {
@@ -849,6 +934,12 @@ func (in *addressIpv6EndpointTypePtr) ToAddressIpv6EndpointTypePtrOutput() Addre
 
 func (in *addressIpv6EndpointTypePtr) ToAddressIpv6EndpointTypePtrOutputWithContext(ctx context.Context) AddressIpv6EndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressIpv6EndpointTypePtrOutput)
+}
+
+func (in *addressIpv6EndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressIpv6EndpointType] {
+	return pulumix.Output[*AddressIpv6EndpointType]{
+		OutputState: in.ToAddressIpv6EndpointTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
@@ -927,6 +1018,12 @@ func (o AddressNetworkTierOutput) ToAddressNetworkTierPtrOutputWithContext(ctx c
 	}).(AddressNetworkTierPtrOutput)
 }
 
+func (o AddressNetworkTierOutput) ToOutput(ctx context.Context) pulumix.Output[AddressNetworkTier] {
+	return pulumix.Output[AddressNetworkTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -960,6 +1057,12 @@ func (o AddressNetworkTierPtrOutput) ToAddressNetworkTierPtrOutput() AddressNetw
 
 func (o AddressNetworkTierPtrOutput) ToAddressNetworkTierPtrOutputWithContext(ctx context.Context) AddressNetworkTierPtrOutput {
 	return o
+}
+
+func (o AddressNetworkTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressNetworkTier] {
+	return pulumix.Output[*AddressNetworkTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressNetworkTierPtrOutput) Elem() AddressNetworkTierOutput {
@@ -1022,6 +1125,12 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutput() AddressNetworkT
 
 func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx context.Context) AddressNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
+}
+
+func (in *addressNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AddressNetworkTier] {
+	return pulumix.Output[*AddressNetworkTier]{
+		OutputState: in.ToAddressNetworkTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
@@ -1106,6 +1215,12 @@ func (o AddressPurposeOutput) ToAddressPurposePtrOutputWithContext(ctx context.C
 	}).(AddressPurposePtrOutput)
 }
 
+func (o AddressPurposeOutput) ToOutput(ctx context.Context) pulumix.Output[AddressPurpose] {
+	return pulumix.Output[AddressPurpose]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressPurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1139,6 +1254,12 @@ func (o AddressPurposePtrOutput) ToAddressPurposePtrOutput() AddressPurposePtrOu
 
 func (o AddressPurposePtrOutput) ToAddressPurposePtrOutputWithContext(ctx context.Context) AddressPurposePtrOutput {
 	return o
+}
+
+func (o AddressPurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressPurpose] {
+	return pulumix.Output[*AddressPurpose]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressPurposePtrOutput) Elem() AddressPurposeOutput {
@@ -1201,6 +1322,12 @@ func (in *addressPurposePtr) ToAddressPurposePtrOutput() AddressPurposePtrOutput
 
 func (in *addressPurposePtr) ToAddressPurposePtrOutputWithContext(ctx context.Context) AddressPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressPurposePtrOutput)
+}
+
+func (in *addressPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressPurpose] {
+	return pulumix.Output[*AddressPurpose]{
+		OutputState: in.ToAddressPurposePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of Performance Monitoring Unit requested on instance.
@@ -1276,6 +1403,12 @@ func (o AdvancedMachineFeaturesPerformanceMonitoringUnitOutput) ToAdvancedMachin
 	}).(AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput)
 }
 
+func (o AdvancedMachineFeaturesPerformanceMonitoringUnitOutput) ToOutput(ctx context.Context) pulumix.Output[AdvancedMachineFeaturesPerformanceMonitoringUnit] {
+	return pulumix.Output[AdvancedMachineFeaturesPerformanceMonitoringUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AdvancedMachineFeaturesPerformanceMonitoringUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1309,6 +1442,12 @@ func (o AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput) ToAdvancedMac
 
 func (o AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput) ToAdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput {
 	return o
+}
+
+func (o AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdvancedMachineFeaturesPerformanceMonitoringUnit] {
+	return pulumix.Output[*AdvancedMachineFeaturesPerformanceMonitoringUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput) Elem() AdvancedMachineFeaturesPerformanceMonitoringUnitOutput {
@@ -1371,6 +1510,12 @@ func (in *advancedMachineFeaturesPerformanceMonitoringUnitPtr) ToAdvancedMachine
 
 func (in *advancedMachineFeaturesPerformanceMonitoringUnitPtr) ToAdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput)
+}
+
+func (in *advancedMachineFeaturesPerformanceMonitoringUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*AdvancedMachineFeaturesPerformanceMonitoringUnit] {
+	return pulumix.Output[*AdvancedMachineFeaturesPerformanceMonitoringUnit]{
+		OutputState: in.ToAdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The VM family that all instances scheduled against this reservation must belong to.
@@ -1443,6 +1588,12 @@ func (o AllocationAggregateReservationVmFamilyOutput) ToAllocationAggregateReser
 	}).(AllocationAggregateReservationVmFamilyPtrOutput)
 }
 
+func (o AllocationAggregateReservationVmFamilyOutput) ToOutput(ctx context.Context) pulumix.Output[AllocationAggregateReservationVmFamily] {
+	return pulumix.Output[AllocationAggregateReservationVmFamily]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AllocationAggregateReservationVmFamilyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1476,6 +1627,12 @@ func (o AllocationAggregateReservationVmFamilyPtrOutput) ToAllocationAggregateRe
 
 func (o AllocationAggregateReservationVmFamilyPtrOutput) ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyPtrOutput {
 	return o
+}
+
+func (o AllocationAggregateReservationVmFamilyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllocationAggregateReservationVmFamily] {
+	return pulumix.Output[*AllocationAggregateReservationVmFamily]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllocationAggregateReservationVmFamilyPtrOutput) Elem() AllocationAggregateReservationVmFamilyOutput {
@@ -1538,6 +1695,12 @@ func (in *allocationAggregateReservationVmFamilyPtr) ToAllocationAggregateReserv
 
 func (in *allocationAggregateReservationVmFamilyPtr) ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx context.Context) AllocationAggregateReservationVmFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationAggregateReservationVmFamilyPtrOutput)
+}
+
+func (in *allocationAggregateReservationVmFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationAggregateReservationVmFamily] {
+	return pulumix.Output[*AllocationAggregateReservationVmFamily]{
+		OutputState: in.ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
@@ -1609,6 +1772,12 @@ func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskIn
 	}).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput)
 }
 
+func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface] {
+	return pulumix.Output[AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1642,6 +1811,12 @@ func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskIn
 
 func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) ToAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutputWithContext(ctx context.Context) AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput {
 	return o
+}
+
+func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface] {
+	return pulumix.Output[*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput) Elem() AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput {
@@ -1704,6 +1879,12 @@ func (in *allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
 
 func (in *allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtr) ToAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutputWithContext(ctx context.Context) AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput)
+}
+
+func (in *allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface] {
+	return pulumix.Output[*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface]{
+		OutputState: in.ToAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -1778,6 +1959,12 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInte
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput)
 }
 
+func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval] {
+	return pulumix.Output[AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1811,6 +1998,12 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInte
 
 func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput) ToAllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutputWithContext(ctx context.Context) AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput {
 	return o
+}
+
+func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval] {
+	return pulumix.Output[*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput) Elem() AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalOutput {
@@ -1873,6 +2066,12 @@ func (in *allocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIn
 
 func (in *allocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtr) ToAllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutputWithContext(ctx context.Context) AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput)
+}
+
+func (in *allocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval] {
+	return pulumix.Output[*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval]{
+		OutputState: in.ToAllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The architecture of the attached disk. Valid values are arm64 or x86_64.
@@ -1947,6 +2146,12 @@ func (o AttachedDiskInitializeParamsArchitectureOutput) ToAttachedDiskInitialize
 	}).(AttachedDiskInitializeParamsArchitecturePtrOutput)
 }
 
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskInitializeParamsArchitecture] {
+	return pulumix.Output[AttachedDiskInitializeParamsArchitecture]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskInitializeParamsArchitectureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1980,6 +2185,12 @@ func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToAttachedDiskInitial
 
 func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitecturePtrOutput {
 	return o
+}
+
+func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsArchitecture] {
+	return pulumix.Output[*AttachedDiskInitializeParamsArchitecture]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskInitializeParamsArchitecturePtrOutput) Elem() AttachedDiskInitializeParamsArchitectureOutput {
@@ -2042,6 +2253,12 @@ func (in *attachedDiskInitializeParamsArchitecturePtr) ToAttachedDiskInitializeP
 
 func (in *attachedDiskInitializeParamsArchitecturePtr) ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsArchitecturePtrOutput)
+}
+
+func (in *attachedDiskInitializeParamsArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsArchitecture] {
+	return pulumix.Output[*AttachedDiskInitializeParamsArchitecture]{
+		OutputState: in.ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -2113,6 +2330,12 @@ func (o AttachedDiskInitializeParamsInterfaceOutput) ToAttachedDiskInitializePar
 	}).(AttachedDiskInitializeParamsInterfacePtrOutput)
 }
 
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskInitializeParamsInterface] {
+	return pulumix.Output[AttachedDiskInitializeParamsInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskInitializeParamsInterfaceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2146,6 +2369,12 @@ func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToAttachedDiskInitialize
 
 func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfacePtrOutput {
 	return o
+}
+
+func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsInterface] {
+	return pulumix.Output[*AttachedDiskInitializeParamsInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskInitializeParamsInterfacePtrOutput) Elem() AttachedDiskInitializeParamsInterfaceOutput {
@@ -2208,6 +2437,12 @@ func (in *attachedDiskInitializeParamsInterfacePtr) ToAttachedDiskInitializePara
 
 func (in *attachedDiskInitializeParamsInterfacePtr) ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfacePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsInterfacePtrOutput)
+}
+
+func (in *attachedDiskInitializeParamsInterfacePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsInterface] {
+	return pulumix.Output[*AttachedDiskInitializeParamsInterface]{
+		OutputState: in.ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -2282,6 +2517,12 @@ func (o AttachedDiskInitializeParamsOnUpdateActionOutput) ToAttachedDiskInitiali
 	}).(AttachedDiskInitializeParamsOnUpdateActionPtrOutput)
 }
 
+func (o AttachedDiskInitializeParamsOnUpdateActionOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskInitializeParamsOnUpdateAction] {
+	return pulumix.Output[AttachedDiskInitializeParamsOnUpdateAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskInitializeParamsOnUpdateActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2315,6 +2556,12 @@ func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToAttachedDiskIniti
 
 func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToAttachedDiskInitializeParamsOnUpdateActionPtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsOnUpdateActionPtrOutput {
 	return o
+}
+
+func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsOnUpdateAction] {
+	return pulumix.Output[*AttachedDiskInitializeParamsOnUpdateAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) Elem() AttachedDiskInitializeParamsOnUpdateActionOutput {
@@ -2377,6 +2624,12 @@ func (in *attachedDiskInitializeParamsOnUpdateActionPtr) ToAttachedDiskInitializ
 
 func (in *attachedDiskInitializeParamsOnUpdateActionPtr) ToAttachedDiskInitializeParamsOnUpdateActionPtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsOnUpdateActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsOnUpdateActionPtrOutput)
+}
+
+func (in *attachedDiskInitializeParamsOnUpdateActionPtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsOnUpdateAction] {
+	return pulumix.Output[*AttachedDiskInitializeParamsOnUpdateAction]{
+		OutputState: in.ToAttachedDiskInitializeParamsOnUpdateActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, see About persistent disks.
@@ -2448,6 +2701,12 @@ func (o AttachedDiskInterfaceOutput) ToAttachedDiskInterfacePtrOutputWithContext
 	}).(AttachedDiskInterfacePtrOutput)
 }
 
+func (o AttachedDiskInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskInterface] {
+	return pulumix.Output[AttachedDiskInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2481,6 +2740,12 @@ func (o AttachedDiskInterfacePtrOutput) ToAttachedDiskInterfacePtrOutput() Attac
 
 func (o AttachedDiskInterfacePtrOutput) ToAttachedDiskInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInterfacePtrOutput {
 	return o
+}
+
+func (o AttachedDiskInterfacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInterface] {
+	return pulumix.Output[*AttachedDiskInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskInterfacePtrOutput) Elem() AttachedDiskInterfaceOutput {
@@ -2543,6 +2808,12 @@ func (in *attachedDiskInterfacePtr) ToAttachedDiskInterfacePtrOutput() AttachedD
 
 func (in *attachedDiskInterfacePtr) ToAttachedDiskInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInterfacePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInterfacePtrOutput)
+}
+
+func (in *attachedDiskInterfacePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInterface] {
+	return pulumix.Output[*AttachedDiskInterface]{
+		OutputState: in.ToAttachedDiskInterfacePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
@@ -2615,6 +2886,12 @@ func (o AttachedDiskModeOutput) ToAttachedDiskModePtrOutputWithContext(ctx conte
 	}).(AttachedDiskModePtrOutput)
 }
 
+func (o AttachedDiskModeOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskMode] {
+	return pulumix.Output[AttachedDiskMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2648,6 +2925,12 @@ func (o AttachedDiskModePtrOutput) ToAttachedDiskModePtrOutput() AttachedDiskMod
 
 func (o AttachedDiskModePtrOutput) ToAttachedDiskModePtrOutputWithContext(ctx context.Context) AttachedDiskModePtrOutput {
 	return o
+}
+
+func (o AttachedDiskModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskMode] {
+	return pulumix.Output[*AttachedDiskMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskModePtrOutput) Elem() AttachedDiskModeOutput {
@@ -2710,6 +2993,12 @@ func (in *attachedDiskModePtr) ToAttachedDiskModePtrOutput() AttachedDiskModePtr
 
 func (in *attachedDiskModePtr) ToAttachedDiskModePtrOutputWithContext(ctx context.Context) AttachedDiskModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskModePtrOutput)
+}
+
+func (in *attachedDiskModePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskMode] {
+	return pulumix.Output[*AttachedDiskMode]{
+		OutputState: in.ToAttachedDiskModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
@@ -2782,6 +3071,12 @@ func (o AttachedDiskSavedStateOutput) ToAttachedDiskSavedStatePtrOutputWithConte
 	}).(AttachedDiskSavedStatePtrOutput)
 }
 
+func (o AttachedDiskSavedStateOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskSavedState] {
+	return pulumix.Output[AttachedDiskSavedState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskSavedStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2815,6 +3110,12 @@ func (o AttachedDiskSavedStatePtrOutput) ToAttachedDiskSavedStatePtrOutput() Att
 
 func (o AttachedDiskSavedStatePtrOutput) ToAttachedDiskSavedStatePtrOutputWithContext(ctx context.Context) AttachedDiskSavedStatePtrOutput {
 	return o
+}
+
+func (o AttachedDiskSavedStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskSavedState] {
+	return pulumix.Output[*AttachedDiskSavedState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskSavedStatePtrOutput) Elem() AttachedDiskSavedStateOutput {
@@ -2877,6 +3178,12 @@ func (in *attachedDiskSavedStatePtr) ToAttachedDiskSavedStatePtrOutput() Attache
 
 func (in *attachedDiskSavedStatePtr) ToAttachedDiskSavedStatePtrOutputWithContext(ctx context.Context) AttachedDiskSavedStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskSavedStatePtrOutput)
+}
+
+func (in *attachedDiskSavedStatePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskSavedState] {
+	return pulumix.Output[*AttachedDiskSavedState]{
+		OutputState: in.ToAttachedDiskSavedStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
@@ -2947,6 +3254,12 @@ func (o AttachedDiskTypeOutput) ToAttachedDiskTypePtrOutputWithContext(ctx conte
 	}).(AttachedDiskTypePtrOutput)
 }
 
+func (o AttachedDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskType] {
+	return pulumix.Output[AttachedDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2980,6 +3293,12 @@ func (o AttachedDiskTypePtrOutput) ToAttachedDiskTypePtrOutput() AttachedDiskTyp
 
 func (o AttachedDiskTypePtrOutput) ToAttachedDiskTypePtrOutputWithContext(ctx context.Context) AttachedDiskTypePtrOutput {
 	return o
+}
+
+func (o AttachedDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskType] {
+	return pulumix.Output[*AttachedDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskTypePtrOutput) Elem() AttachedDiskTypeOutput {
@@ -3042,6 +3361,12 @@ func (in *attachedDiskTypePtr) ToAttachedDiskTypePtrOutput() AttachedDiskTypePtr
 
 func (in *attachedDiskTypePtr) ToAttachedDiskTypePtrOutputWithContext(ctx context.Context) AttachedDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskTypePtrOutput)
+}
+
+func (in *attachedDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskType] {
+	return pulumix.Output[*AttachedDiskType]{
+		OutputState: in.ToAttachedDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -3118,6 +3443,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3151,6 +3482,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -3213,6 +3550,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
@@ -3286,6 +3629,12 @@ func (o AuthenticationPolicyPrincipalBindingOutput) ToAuthenticationPolicyPrinci
 	}).(AuthenticationPolicyPrincipalBindingPtrOutput)
 }
 
+func (o AuthenticationPolicyPrincipalBindingOutput) ToOutput(ctx context.Context) pulumix.Output[AuthenticationPolicyPrincipalBinding] {
+	return pulumix.Output[AuthenticationPolicyPrincipalBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthenticationPolicyPrincipalBindingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3319,6 +3668,12 @@ func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToAuthenticationPolicyPri
 
 func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingPtrOutput {
 	return o
+}
+
+func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationPolicyPrincipalBinding] {
+	return pulumix.Output[*AuthenticationPolicyPrincipalBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthenticationPolicyPrincipalBindingPtrOutput) Elem() AuthenticationPolicyPrincipalBindingOutput {
@@ -3381,6 +3736,12 @@ func (in *authenticationPolicyPrincipalBindingPtr) ToAuthenticationPolicyPrincip
 
 func (in *authenticationPolicyPrincipalBindingPtr) ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationPolicyPrincipalBindingPtrOutput)
+}
+
+func (in *authenticationPolicyPrincipalBindingPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationPolicyPrincipalBinding] {
+	return pulumix.Output[*AuthenticationPolicyPrincipalBinding]{
+		OutputState: in.ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -3459,6 +3820,12 @@ func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToAuthorizationLoggingO
 	}).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
 }
 
+func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationLoggingOptionsPermissionType] {
+	return pulumix.Output[AuthorizationLoggingOptionsPermissionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3492,6 +3859,12 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggi
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPermissionTypePtrOutput {
 	return o
+}
+
+func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationLoggingOptionsPermissionType] {
+	return pulumix.Output[*AuthorizationLoggingOptionsPermissionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) Elem() AuthorizationLoggingOptionsPermissionTypeOutput {
@@ -3554,6 +3927,12 @@ func (in *authorizationLoggingOptionsPermissionTypePtr) ToAuthorizationLoggingOp
 
 func (in *authorizationLoggingOptionsPermissionTypePtr) ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPermissionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
+}
+
+func (in *authorizationLoggingOptionsPermissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationLoggingOptionsPermissionType] {
+	return pulumix.Output[*AuthorizationLoggingOptionsPermissionType]{
+		OutputState: in.ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are: * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
@@ -3629,6 +4008,12 @@ func (o AutoscalingPolicyCpuUtilizationPredictiveMethodOutput) ToAutoscalingPoli
 	}).(AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput)
 }
 
+func (o AutoscalingPolicyCpuUtilizationPredictiveMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyCpuUtilizationPredictiveMethod] {
+	return pulumix.Output[AutoscalingPolicyCpuUtilizationPredictiveMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscalingPolicyCpuUtilizationPredictiveMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3662,6 +4047,12 @@ func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToAutoscalingP
 
 func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToAutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutputWithContext(ctx context.Context) AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput {
 	return o
+}
+
+func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyCpuUtilizationPredictiveMethod] {
+	return pulumix.Output[*AutoscalingPolicyCpuUtilizationPredictiveMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) Elem() AutoscalingPolicyCpuUtilizationPredictiveMethodOutput {
@@ -3724,6 +4115,12 @@ func (in *autoscalingPolicyCpuUtilizationPredictiveMethodPtr) ToAutoscalingPolic
 
 func (in *autoscalingPolicyCpuUtilizationPredictiveMethodPtr) ToAutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutputWithContext(ctx context.Context) AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput)
+}
+
+func (in *autoscalingPolicyCpuUtilizationPredictiveMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyCpuUtilizationPredictiveMethod] {
+	return pulumix.Output[*AutoscalingPolicyCpuUtilizationPredictiveMethod]{
+		OutputState: in.ToAutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE.
@@ -3798,6 +4195,12 @@ func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput) ToA
 	}).(AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput)
 }
 
+func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType] {
+	return pulumix.Output[AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3831,6 +4234,12 @@ func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) 
 
 func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) ToAutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutputWithContext(ctx context.Context) AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput {
 	return o
+}
+
+func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType] {
+	return pulumix.Output[*AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) Elem() AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput {
@@ -3893,6 +4302,12 @@ func (in *autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtr) ToAu
 
 func (in *autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtr) ToAutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutputWithContext(ctx context.Context) AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput)
+}
+
+func (in *autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType] {
+	return pulumix.Output[*AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType]{
+		OutputState: in.ToAutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines operating mode for this policy.
@@ -3969,6 +4384,12 @@ func (o AutoscalingPolicyModeOutput) ToAutoscalingPolicyModePtrOutputWithContext
 	}).(AutoscalingPolicyModePtrOutput)
 }
 
+func (o AutoscalingPolicyModeOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingPolicyMode] {
+	return pulumix.Output[AutoscalingPolicyMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscalingPolicyModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4002,6 +4423,12 @@ func (o AutoscalingPolicyModePtrOutput) ToAutoscalingPolicyModePtrOutput() Autos
 
 func (o AutoscalingPolicyModePtrOutput) ToAutoscalingPolicyModePtrOutputWithContext(ctx context.Context) AutoscalingPolicyModePtrOutput {
 	return o
+}
+
+func (o AutoscalingPolicyModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyMode] {
+	return pulumix.Output[*AutoscalingPolicyMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingPolicyModePtrOutput) Elem() AutoscalingPolicyModeOutput {
@@ -4064,6 +4491,12 @@ func (in *autoscalingPolicyModePtr) ToAutoscalingPolicyModePtrOutput() Autoscali
 
 func (in *autoscalingPolicyModePtr) ToAutoscalingPolicyModePtrOutputWithContext(ctx context.Context) AutoscalingPolicyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyModePtrOutput)
+}
+
+func (in *autoscalingPolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyMode] {
+	return pulumix.Output[*AutoscalingPolicyMode]{
+		OutputState: in.ToAutoscalingPolicyModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
@@ -4138,6 +4571,12 @@ func (o BackendBalancingModeOutput) ToBackendBalancingModePtrOutputWithContext(c
 	}).(BackendBalancingModePtrOutput)
 }
 
+func (o BackendBalancingModeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendBalancingMode] {
+	return pulumix.Output[BackendBalancingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendBalancingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4171,6 +4610,12 @@ func (o BackendBalancingModePtrOutput) ToBackendBalancingModePtrOutput() Backend
 
 func (o BackendBalancingModePtrOutput) ToBackendBalancingModePtrOutputWithContext(ctx context.Context) BackendBalancingModePtrOutput {
 	return o
+}
+
+func (o BackendBalancingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBalancingMode] {
+	return pulumix.Output[*BackendBalancingMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendBalancingModePtrOutput) Elem() BackendBalancingModeOutput {
@@ -4233,6 +4678,12 @@ func (in *backendBalancingModePtr) ToBackendBalancingModePtrOutput() BackendBala
 
 func (in *backendBalancingModePtr) ToBackendBalancingModePtrOutputWithContext(ctx context.Context) BackendBalancingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendBalancingModePtrOutput)
+}
+
+func (in *backendBalancingModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendBalancingMode] {
+	return pulumix.Output[*BackendBalancingMode]{
+		OutputState: in.ToBackendBalancingModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
@@ -4308,6 +4759,12 @@ func (o BackendBucketCdnPolicyCacheModeOutput) ToBackendBucketCdnPolicyCacheMode
 	}).(BackendBucketCdnPolicyCacheModePtrOutput)
 }
 
+func (o BackendBucketCdnPolicyCacheModeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendBucketCdnPolicyCacheMode] {
+	return pulumix.Output[BackendBucketCdnPolicyCacheMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendBucketCdnPolicyCacheModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4341,6 +4798,12 @@ func (o BackendBucketCdnPolicyCacheModePtrOutput) ToBackendBucketCdnPolicyCacheM
 
 func (o BackendBucketCdnPolicyCacheModePtrOutput) ToBackendBucketCdnPolicyCacheModePtrOutputWithContext(ctx context.Context) BackendBucketCdnPolicyCacheModePtrOutput {
 	return o
+}
+
+func (o BackendBucketCdnPolicyCacheModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketCdnPolicyCacheMode] {
+	return pulumix.Output[*BackendBucketCdnPolicyCacheMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendBucketCdnPolicyCacheModePtrOutput) Elem() BackendBucketCdnPolicyCacheModeOutput {
@@ -4403,6 +4866,12 @@ func (in *backendBucketCdnPolicyCacheModePtr) ToBackendBucketCdnPolicyCacheModeP
 
 func (in *backendBucketCdnPolicyCacheModePtr) ToBackendBucketCdnPolicyCacheModePtrOutputWithContext(ctx context.Context) BackendBucketCdnPolicyCacheModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendBucketCdnPolicyCacheModePtrOutput)
+}
+
+func (in *backendBucketCdnPolicyCacheModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketCdnPolicyCacheMode] {
+	return pulumix.Output[*BackendBucketCdnPolicyCacheMode]{
+		OutputState: in.ToBackendBucketCdnPolicyCacheModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -4475,6 +4944,12 @@ func (o BackendBucketCompressionModeOutput) ToBackendBucketCompressionModePtrOut
 	}).(BackendBucketCompressionModePtrOutput)
 }
 
+func (o BackendBucketCompressionModeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendBucketCompressionMode] {
+	return pulumix.Output[BackendBucketCompressionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendBucketCompressionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4508,6 +4983,12 @@ func (o BackendBucketCompressionModePtrOutput) ToBackendBucketCompressionModePtr
 
 func (o BackendBucketCompressionModePtrOutput) ToBackendBucketCompressionModePtrOutputWithContext(ctx context.Context) BackendBucketCompressionModePtrOutput {
 	return o
+}
+
+func (o BackendBucketCompressionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketCompressionMode] {
+	return pulumix.Output[*BackendBucketCompressionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendBucketCompressionModePtrOutput) Elem() BackendBucketCompressionModeOutput {
@@ -4570,6 +5051,12 @@ func (in *backendBucketCompressionModePtr) ToBackendBucketCompressionModePtrOutp
 
 func (in *backendBucketCompressionModePtr) ToBackendBucketCompressionModePtrOutputWithContext(ctx context.Context) BackendBucketCompressionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendBucketCompressionModePtrOutput)
+}
+
+func (in *backendBucketCompressionModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketCompressionMode] {
+	return pulumix.Output[*BackendBucketCompressionMode]{
+		OutputState: in.ToBackendBucketCompressionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
@@ -4645,6 +5132,12 @@ func (o BackendServiceCdnPolicyCacheModeOutput) ToBackendServiceCdnPolicyCacheMo
 	}).(BackendServiceCdnPolicyCacheModePtrOutput)
 }
 
+func (o BackendServiceCdnPolicyCacheModeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceCdnPolicyCacheMode] {
+	return pulumix.Output[BackendServiceCdnPolicyCacheMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceCdnPolicyCacheModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4678,6 +5171,12 @@ func (o BackendServiceCdnPolicyCacheModePtrOutput) ToBackendServiceCdnPolicyCach
 
 func (o BackendServiceCdnPolicyCacheModePtrOutput) ToBackendServiceCdnPolicyCacheModePtrOutputWithContext(ctx context.Context) BackendServiceCdnPolicyCacheModePtrOutput {
 	return o
+}
+
+func (o BackendServiceCdnPolicyCacheModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceCdnPolicyCacheMode] {
+	return pulumix.Output[*BackendServiceCdnPolicyCacheMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceCdnPolicyCacheModePtrOutput) Elem() BackendServiceCdnPolicyCacheModeOutput {
@@ -4740,6 +5239,12 @@ func (in *backendServiceCdnPolicyCacheModePtr) ToBackendServiceCdnPolicyCacheMod
 
 func (in *backendServiceCdnPolicyCacheModePtr) ToBackendServiceCdnPolicyCacheModePtrOutputWithContext(ctx context.Context) BackendServiceCdnPolicyCacheModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceCdnPolicyCacheModePtrOutput)
+}
+
+func (in *backendServiceCdnPolicyCacheModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceCdnPolicyCacheMode] {
+	return pulumix.Output[*BackendServiceCdnPolicyCacheMode]{
+		OutputState: in.ToBackendServiceCdnPolicyCacheModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -4812,6 +5317,12 @@ func (o BackendServiceCompressionModeOutput) ToBackendServiceCompressionModePtrO
 	}).(BackendServiceCompressionModePtrOutput)
 }
 
+func (o BackendServiceCompressionModeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceCompressionMode] {
+	return pulumix.Output[BackendServiceCompressionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceCompressionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4845,6 +5356,12 @@ func (o BackendServiceCompressionModePtrOutput) ToBackendServiceCompressionModeP
 
 func (o BackendServiceCompressionModePtrOutput) ToBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) BackendServiceCompressionModePtrOutput {
 	return o
+}
+
+func (o BackendServiceCompressionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceCompressionMode] {
+	return pulumix.Output[*BackendServiceCompressionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceCompressionModePtrOutput) Elem() BackendServiceCompressionModeOutput {
@@ -4907,6 +5424,12 @@ func (in *backendServiceCompressionModePtr) ToBackendServiceCompressionModePtrOu
 
 func (in *backendServiceCompressionModePtr) ToBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) BackendServiceCompressionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceCompressionModePtrOutput)
+}
+
+func (in *backendServiceCompressionModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceCompressionMode] {
+	return pulumix.Output[*BackendServiceCompressionMode]{
+		OutputState: in.ToBackendServiceCompressionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
@@ -4978,6 +5501,12 @@ func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBa
 	}).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
 }
 
+func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends] {
+	return pulumix.Output[BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5011,6 +5540,12 @@ func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBa
 
 func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput) ToBackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutputWithContext(ctx context.Context) BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput {
 	return o
+}
+
+func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends] {
+	return pulumix.Output[*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput) Elem() BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsOutput {
@@ -5073,6 +5608,12 @@ func (in *backendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthy
 
 func (in *backendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtr) ToBackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutputWithContext(ctx context.Context) BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
+}
+
+func (in *backendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends] {
+	return pulumix.Output[*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends]{
+		OutputState: in.ToBackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
@@ -5144,6 +5685,12 @@ func (o BackendServiceConnectionTrackingPolicyTrackingModeOutput) ToBackendServi
 	}).(BackendServiceConnectionTrackingPolicyTrackingModePtrOutput)
 }
 
+func (o BackendServiceConnectionTrackingPolicyTrackingModeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceConnectionTrackingPolicyTrackingMode] {
+	return pulumix.Output[BackendServiceConnectionTrackingPolicyTrackingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceConnectionTrackingPolicyTrackingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5177,6 +5724,12 @@ func (o BackendServiceConnectionTrackingPolicyTrackingModePtrOutput) ToBackendSe
 
 func (o BackendServiceConnectionTrackingPolicyTrackingModePtrOutput) ToBackendServiceConnectionTrackingPolicyTrackingModePtrOutputWithContext(ctx context.Context) BackendServiceConnectionTrackingPolicyTrackingModePtrOutput {
 	return o
+}
+
+func (o BackendServiceConnectionTrackingPolicyTrackingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceConnectionTrackingPolicyTrackingMode] {
+	return pulumix.Output[*BackendServiceConnectionTrackingPolicyTrackingMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceConnectionTrackingPolicyTrackingModePtrOutput) Elem() BackendServiceConnectionTrackingPolicyTrackingModeOutput {
@@ -5239,6 +5792,12 @@ func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToBackendServic
 
 func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToBackendServiceConnectionTrackingPolicyTrackingModePtrOutputWithContext(ctx context.Context) BackendServiceConnectionTrackingPolicyTrackingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceConnectionTrackingPolicyTrackingModePtrOutput)
+}
+
+func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceConnectionTrackingPolicyTrackingMode] {
+	return pulumix.Output[*BackendServiceConnectionTrackingPolicyTrackingMode]{
+		OutputState: in.ToBackendServiceConnectionTrackingPolicyTrackingModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
@@ -5315,6 +5874,12 @@ func (o BackendServiceIpAddressSelectionPolicyOutput) ToBackendServiceIpAddressS
 	}).(BackendServiceIpAddressSelectionPolicyPtrOutput)
 }
 
+func (o BackendServiceIpAddressSelectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceIpAddressSelectionPolicy] {
+	return pulumix.Output[BackendServiceIpAddressSelectionPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceIpAddressSelectionPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5348,6 +5913,12 @@ func (o BackendServiceIpAddressSelectionPolicyPtrOutput) ToBackendServiceIpAddre
 
 func (o BackendServiceIpAddressSelectionPolicyPtrOutput) ToBackendServiceIpAddressSelectionPolicyPtrOutputWithContext(ctx context.Context) BackendServiceIpAddressSelectionPolicyPtrOutput {
 	return o
+}
+
+func (o BackendServiceIpAddressSelectionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceIpAddressSelectionPolicy] {
+	return pulumix.Output[*BackendServiceIpAddressSelectionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceIpAddressSelectionPolicyPtrOutput) Elem() BackendServiceIpAddressSelectionPolicyOutput {
@@ -5410,6 +5981,12 @@ func (in *backendServiceIpAddressSelectionPolicyPtr) ToBackendServiceIpAddressSe
 
 func (in *backendServiceIpAddressSelectionPolicyPtr) ToBackendServiceIpAddressSelectionPolicyPtrOutputWithContext(ctx context.Context) BackendServiceIpAddressSelectionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceIpAddressSelectionPolicyPtrOutput)
+}
+
+func (in *backendServiceIpAddressSelectionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceIpAddressSelectionPolicy] {
+	return pulumix.Output[*BackendServiceIpAddressSelectionPolicy]{
+		OutputState: in.ToBackendServiceIpAddressSelectionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -5489,6 +6066,12 @@ func (o BackendServiceLoadBalancingSchemeOutput) ToBackendServiceLoadBalancingSc
 	}).(BackendServiceLoadBalancingSchemePtrOutput)
 }
 
+func (o BackendServiceLoadBalancingSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceLoadBalancingScheme] {
+	return pulumix.Output[BackendServiceLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5522,6 +6105,12 @@ func (o BackendServiceLoadBalancingSchemePtrOutput) ToBackendServiceLoadBalancin
 
 func (o BackendServiceLoadBalancingSchemePtrOutput) ToBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) BackendServiceLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o BackendServiceLoadBalancingSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLoadBalancingScheme] {
+	return pulumix.Output[*BackendServiceLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceLoadBalancingSchemePtrOutput) Elem() BackendServiceLoadBalancingSchemeOutput {
@@ -5584,6 +6173,12 @@ func (in *backendServiceLoadBalancingSchemePtr) ToBackendServiceLoadBalancingSch
 
 func (in *backendServiceLoadBalancingSchemePtr) ToBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) BackendServiceLoadBalancingSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLoadBalancingSchemePtrOutput)
+}
+
+func (in *backendServiceLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLoadBalancingScheme] {
+	return pulumix.Output[*BackendServiceLoadBalancingScheme]{
+		OutputState: in.ToBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -5667,6 +6262,12 @@ func (o BackendServiceLocalityLbPolicyOutput) ToBackendServiceLocalityLbPolicyPt
 	}).(BackendServiceLocalityLbPolicyPtrOutput)
 }
 
+func (o BackendServiceLocalityLbPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceLocalityLbPolicy] {
+	return pulumix.Output[BackendServiceLocalityLbPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceLocalityLbPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5700,6 +6301,12 @@ func (o BackendServiceLocalityLbPolicyPtrOutput) ToBackendServiceLocalityLbPolic
 
 func (o BackendServiceLocalityLbPolicyPtrOutput) ToBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLbPolicyPtrOutput {
 	return o
+}
+
+func (o BackendServiceLocalityLbPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLocalityLbPolicy] {
+	return pulumix.Output[*BackendServiceLocalityLbPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceLocalityLbPolicyPtrOutput) Elem() BackendServiceLocalityLbPolicyOutput {
@@ -5762,6 +6369,12 @@ func (in *backendServiceLocalityLbPolicyPtr) ToBackendServiceLocalityLbPolicyPtr
 
 func (in *backendServiceLocalityLbPolicyPtr) ToBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLbPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLbPolicyPtrOutput)
+}
+
+func (in *backendServiceLocalityLbPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLocalityLbPolicy] {
+	return pulumix.Output[*BackendServiceLocalityLbPolicy]{
+		OutputState: in.ToBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
@@ -5845,6 +6458,12 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToBacke
 	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
 }
 
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceLocalityLoadBalancingPolicyConfigPolicyName] {
+	return pulumix.Output[BackendServiceLocalityLoadBalancingPolicyConfigPolicyName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5878,6 +6497,12 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToBa
 
 func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
 	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName] {
+	return pulumix.Output[*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) Elem() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput {
@@ -5940,6 +6565,12 @@ func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBacken
 
 func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName] {
+	return pulumix.Output[*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName]{
+		OutputState: in.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
@@ -6015,6 +6646,12 @@ func (o BackendServiceLogConfigOptionalOutput) ToBackendServiceLogConfigOptional
 	}).(BackendServiceLogConfigOptionalPtrOutput)
 }
 
+func (o BackendServiceLogConfigOptionalOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceLogConfigOptional] {
+	return pulumix.Output[BackendServiceLogConfigOptional]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceLogConfigOptionalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6048,6 +6685,12 @@ func (o BackendServiceLogConfigOptionalPtrOutput) ToBackendServiceLogConfigOptio
 
 func (o BackendServiceLogConfigOptionalPtrOutput) ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalPtrOutput {
 	return o
+}
+
+func (o BackendServiceLogConfigOptionalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLogConfigOptional] {
+	return pulumix.Output[*BackendServiceLogConfigOptional]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceLogConfigOptionalPtrOutput) Elem() BackendServiceLogConfigOptionalOutput {
@@ -6110,6 +6753,12 @@ func (in *backendServiceLogConfigOptionalPtr) ToBackendServiceLogConfigOptionalP
 
 func (in *backendServiceLogConfigOptionalPtr) ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLogConfigOptionalPtrOutput)
+}
+
+func (in *backendServiceLogConfigOptionalPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLogConfigOptional] {
+	return pulumix.Output[*BackendServiceLogConfigOptional]{
+		OutputState: in.ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
@@ -6185,6 +6834,12 @@ func (o BackendServiceLogConfigOptionalModeOutput) ToBackendServiceLogConfigOpti
 	}).(BackendServiceLogConfigOptionalModePtrOutput)
 }
 
+func (o BackendServiceLogConfigOptionalModeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceLogConfigOptionalMode] {
+	return pulumix.Output[BackendServiceLogConfigOptionalMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceLogConfigOptionalModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6218,6 +6873,12 @@ func (o BackendServiceLogConfigOptionalModePtrOutput) ToBackendServiceLogConfigO
 
 func (o BackendServiceLogConfigOptionalModePtrOutput) ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModePtrOutput {
 	return o
+}
+
+func (o BackendServiceLogConfigOptionalModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLogConfigOptionalMode] {
+	return pulumix.Output[*BackendServiceLogConfigOptionalMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceLogConfigOptionalModePtrOutput) Elem() BackendServiceLogConfigOptionalModeOutput {
@@ -6280,6 +6941,12 @@ func (in *backendServiceLogConfigOptionalModePtr) ToBackendServiceLogConfigOptio
 
 func (in *backendServiceLogConfigOptionalModePtr) ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLogConfigOptionalModePtrOutput)
+}
+
+func (in *backendServiceLogConfigOptionalModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLogConfigOptionalMode] {
+	return pulumix.Output[*BackendServiceLogConfigOptionalMode]{
+		OutputState: in.ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
@@ -6364,6 +7031,12 @@ func (o BackendServiceProtocolOutput) ToBackendServiceProtocolPtrOutputWithConte
 	}).(BackendServiceProtocolPtrOutput)
 }
 
+func (o BackendServiceProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceProtocol] {
+	return pulumix.Output[BackendServiceProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6397,6 +7070,12 @@ func (o BackendServiceProtocolPtrOutput) ToBackendServiceProtocolPtrOutput() Bac
 
 func (o BackendServiceProtocolPtrOutput) ToBackendServiceProtocolPtrOutputWithContext(ctx context.Context) BackendServiceProtocolPtrOutput {
 	return o
+}
+
+func (o BackendServiceProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceProtocol] {
+	return pulumix.Output[*BackendServiceProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceProtocolPtrOutput) Elem() BackendServiceProtocolOutput {
@@ -6459,6 +7138,12 @@ func (in *backendServiceProtocolPtr) ToBackendServiceProtocolPtrOutput() Backend
 
 func (in *backendServiceProtocolPtr) ToBackendServiceProtocolPtrOutputWithContext(ctx context.Context) BackendServiceProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceProtocolPtrOutput)
+}
+
+func (in *backendServiceProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceProtocol] {
+	return pulumix.Output[*BackendServiceProtocol]{
+		OutputState: in.ToBackendServiceProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
@@ -6543,6 +7228,12 @@ func (o BackendServiceSessionAffinityOutput) ToBackendServiceSessionAffinityPtrO
 	}).(BackendServiceSessionAffinityPtrOutput)
 }
 
+func (o BackendServiceSessionAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceSessionAffinity] {
+	return pulumix.Output[BackendServiceSessionAffinity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceSessionAffinityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6576,6 +7267,12 @@ func (o BackendServiceSessionAffinityPtrOutput) ToBackendServiceSessionAffinityP
 
 func (o BackendServiceSessionAffinityPtrOutput) ToBackendServiceSessionAffinityPtrOutputWithContext(ctx context.Context) BackendServiceSessionAffinityPtrOutput {
 	return o
+}
+
+func (o BackendServiceSessionAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceSessionAffinity] {
+	return pulumix.Output[*BackendServiceSessionAffinity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceSessionAffinityPtrOutput) Elem() BackendServiceSessionAffinityOutput {
@@ -6638,6 +7335,12 @@ func (in *backendServiceSessionAffinityPtr) ToBackendServiceSessionAffinityPtrOu
 
 func (in *backendServiceSessionAffinityPtr) ToBackendServiceSessionAffinityPtrOutputWithContext(ctx context.Context) BackendServiceSessionAffinityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceSessionAffinityPtrOutput)
+}
+
+func (in *backendServiceSessionAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceSessionAffinity] {
+	return pulumix.Output[*BackendServiceSessionAffinity]{
+		OutputState: in.ToBackendServiceSessionAffinityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
@@ -6710,6 +7413,12 @@ func (o BackendServiceVpcNetworkScopeOutput) ToBackendServiceVpcNetworkScopePtrO
 	}).(BackendServiceVpcNetworkScopePtrOutput)
 }
 
+func (o BackendServiceVpcNetworkScopeOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceVpcNetworkScope] {
+	return pulumix.Output[BackendServiceVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6743,6 +7452,12 @@ func (o BackendServiceVpcNetworkScopePtrOutput) ToBackendServiceVpcNetworkScopeP
 
 func (o BackendServiceVpcNetworkScopePtrOutput) ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopePtrOutput {
 	return o
+}
+
+func (o BackendServiceVpcNetworkScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceVpcNetworkScope] {
+	return pulumix.Output[*BackendServiceVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceVpcNetworkScopePtrOutput) Elem() BackendServiceVpcNetworkScopeOutput {
@@ -6805,6 +7520,12 @@ func (in *backendServiceVpcNetworkScopePtr) ToBackendServiceVpcNetworkScopePtrOu
 
 func (in *backendServiceVpcNetworkScopePtr) ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceVpcNetworkScopePtrOutput)
+}
+
+func (in *backendServiceVpcNetworkScopePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceVpcNetworkScope] {
+	return pulumix.Output[*BackendServiceVpcNetworkScope]{
+		OutputState: in.ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of call credentials to use for GRPC requests to the SDS server. This field can be set to one of the following: - GCE_VM: The local GCE VM service account credentials are used to access the SDS server. - FROM_PLUGIN: Custom authenticator credentials are used to access the SDS server.
@@ -6878,6 +7599,12 @@ func (o CallCredentialsCallCredentialTypeOutput) ToCallCredentialsCallCredential
 	}).(CallCredentialsCallCredentialTypePtrOutput)
 }
 
+func (o CallCredentialsCallCredentialTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CallCredentialsCallCredentialType] {
+	return pulumix.Output[CallCredentialsCallCredentialType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CallCredentialsCallCredentialTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6911,6 +7638,12 @@ func (o CallCredentialsCallCredentialTypePtrOutput) ToCallCredentialsCallCredent
 
 func (o CallCredentialsCallCredentialTypePtrOutput) ToCallCredentialsCallCredentialTypePtrOutputWithContext(ctx context.Context) CallCredentialsCallCredentialTypePtrOutput {
 	return o
+}
+
+func (o CallCredentialsCallCredentialTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CallCredentialsCallCredentialType] {
+	return pulumix.Output[*CallCredentialsCallCredentialType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CallCredentialsCallCredentialTypePtrOutput) Elem() CallCredentialsCallCredentialTypeOutput {
@@ -6973,6 +7706,12 @@ func (in *callCredentialsCallCredentialTypePtr) ToCallCredentialsCallCredentialT
 
 func (in *callCredentialsCallCredentialTypePtr) ToCallCredentialsCallCredentialTypePtrOutputWithContext(ctx context.Context) CallCredentialsCallCredentialTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CallCredentialsCallCredentialTypePtrOutput)
+}
+
+func (in *callCredentialsCallCredentialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CallCredentialsCallCredentialType] {
+	return pulumix.Output[*CallCredentialsCallCredentialType]{
+		OutputState: in.ToCallCredentialsCallCredentialTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The channel credentials to access the SDS server. This field can be set to one of the following: CERTIFICATES: Use TLS certificates to access the SDS server. GCE_VM: Use local GCE VM credentials to access the SDS server.
@@ -7046,6 +7785,12 @@ func (o ChannelCredentialsChannelCredentialTypeOutput) ToChannelCredentialsChann
 	}).(ChannelCredentialsChannelCredentialTypePtrOutput)
 }
 
+func (o ChannelCredentialsChannelCredentialTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ChannelCredentialsChannelCredentialType] {
+	return pulumix.Output[ChannelCredentialsChannelCredentialType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ChannelCredentialsChannelCredentialTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -7079,6 +7824,12 @@ func (o ChannelCredentialsChannelCredentialTypePtrOutput) ToChannelCredentialsCh
 
 func (o ChannelCredentialsChannelCredentialTypePtrOutput) ToChannelCredentialsChannelCredentialTypePtrOutputWithContext(ctx context.Context) ChannelCredentialsChannelCredentialTypePtrOutput {
 	return o
+}
+
+func (o ChannelCredentialsChannelCredentialTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ChannelCredentialsChannelCredentialType] {
+	return pulumix.Output[*ChannelCredentialsChannelCredentialType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChannelCredentialsChannelCredentialTypePtrOutput) Elem() ChannelCredentialsChannelCredentialTypeOutput {
@@ -7141,6 +7892,12 @@ func (in *channelCredentialsChannelCredentialTypePtr) ToChannelCredentialsChanne
 
 func (in *channelCredentialsChannelCredentialTypePtr) ToChannelCredentialsChannelCredentialTypePtrOutputWithContext(ctx context.Context) ChannelCredentialsChannelCredentialTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ChannelCredentialsChannelCredentialTypePtrOutput)
+}
+
+func (in *channelCredentialsChannelCredentialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ChannelCredentialsChannelCredentialType] {
+	return pulumix.Output[*ChannelCredentialsChannelCredentialType]{
+		OutputState: in.ToChannelCredentialsChannelCredentialTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
@@ -7216,6 +7973,12 @@ func (o ClientTlsSettingsModeOutput) ToClientTlsSettingsModePtrOutputWithContext
 	}).(ClientTlsSettingsModePtrOutput)
 }
 
+func (o ClientTlsSettingsModeOutput) ToOutput(ctx context.Context) pulumix.Output[ClientTlsSettingsMode] {
+	return pulumix.Output[ClientTlsSettingsMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClientTlsSettingsModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -7249,6 +8012,12 @@ func (o ClientTlsSettingsModePtrOutput) ToClientTlsSettingsModePtrOutput() Clien
 
 func (o ClientTlsSettingsModePtrOutput) ToClientTlsSettingsModePtrOutputWithContext(ctx context.Context) ClientTlsSettingsModePtrOutput {
 	return o
+}
+
+func (o ClientTlsSettingsModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsSettingsMode] {
+	return pulumix.Output[*ClientTlsSettingsMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClientTlsSettingsModePtrOutput) Elem() ClientTlsSettingsModeOutput {
@@ -7311,6 +8080,12 @@ func (in *clientTlsSettingsModePtr) ToClientTlsSettingsModePtrOutput() ClientTls
 
 func (in *clientTlsSettingsModePtr) ToClientTlsSettingsModePtrOutputWithContext(ctx context.Context) ClientTlsSettingsModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClientTlsSettingsModePtrOutput)
+}
+
+func (in *clientTlsSettingsModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsSettingsMode] {
+	return pulumix.Output[*ClientTlsSettingsMode]{
+		OutputState: in.ToClientTlsSettingsModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -7395,6 +8170,12 @@ func (o ConditionIamOutput) ToConditionIamPtrOutputWithContext(ctx context.Conte
 	}).(ConditionIamPtrOutput)
 }
 
+func (o ConditionIamOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionIam] {
+	return pulumix.Output[ConditionIam]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionIamOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -7428,6 +8209,12 @@ func (o ConditionIamPtrOutput) ToConditionIamPtrOutput() ConditionIamPtrOutput {
 
 func (o ConditionIamPtrOutput) ToConditionIamPtrOutputWithContext(ctx context.Context) ConditionIamPtrOutput {
 	return o
+}
+
+func (o ConditionIamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionIam] {
+	return pulumix.Output[*ConditionIam]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionIamPtrOutput) Elem() ConditionIamOutput {
@@ -7490,6 +8277,12 @@ func (in *conditionIamPtr) ToConditionIamPtrOutput() ConditionIamPtrOutput {
 
 func (in *conditionIamPtr) ToConditionIamPtrOutputWithContext(ctx context.Context) ConditionIamPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionIamPtrOutput)
+}
+
+func (in *conditionIamPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionIam] {
+	return pulumix.Output[*ConditionIam]{
+		OutputState: in.ToConditionIamPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -7570,6 +8363,12 @@ func (o ConditionOpOutput) ToConditionOpPtrOutputWithContext(ctx context.Context
 	}).(ConditionOpPtrOutput)
 }
 
+func (o ConditionOpOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionOp] {
+	return pulumix.Output[ConditionOp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionOpOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -7603,6 +8402,12 @@ func (o ConditionOpPtrOutput) ToConditionOpPtrOutput() ConditionOpPtrOutput {
 
 func (o ConditionOpPtrOutput) ToConditionOpPtrOutputWithContext(ctx context.Context) ConditionOpPtrOutput {
 	return o
+}
+
+func (o ConditionOpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionOp] {
+	return pulumix.Output[*ConditionOp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionOpPtrOutput) Elem() ConditionOpOutput {
@@ -7665,6 +8470,12 @@ func (in *conditionOpPtr) ToConditionOpPtrOutput() ConditionOpPtrOutput {
 
 func (in *conditionOpPtr) ToConditionOpPtrOutputWithContext(ctx context.Context) ConditionOpPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOpPtrOutput)
+}
+
+func (in *conditionOpPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOp] {
+	return pulumix.Output[*ConditionOp]{
+		OutputState: in.ToConditionOpPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -7743,6 +8554,12 @@ func (o ConditionSysOutput) ToConditionSysPtrOutputWithContext(ctx context.Conte
 	}).(ConditionSysPtrOutput)
 }
 
+func (o ConditionSysOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionSys] {
+	return pulumix.Output[ConditionSys]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionSysOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -7776,6 +8593,12 @@ func (o ConditionSysPtrOutput) ToConditionSysPtrOutput() ConditionSysPtrOutput {
 
 func (o ConditionSysPtrOutput) ToConditionSysPtrOutputWithContext(ctx context.Context) ConditionSysPtrOutput {
 	return o
+}
+
+func (o ConditionSysPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionSys] {
+	return pulumix.Output[*ConditionSys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionSysPtrOutput) Elem() ConditionSysOutput {
@@ -7838,6 +8661,12 @@ func (in *conditionSysPtr) ToConditionSysPtrOutput() ConditionSysPtrOutput {
 
 func (in *conditionSysPtr) ToConditionSysPtrOutputWithContext(ctx context.Context) ConditionSysPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionSysPtrOutput)
+}
+
+func (in *conditionSysPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionSys] {
+	return pulumix.Output[*ConditionSys]{
+		OutputState: in.ToConditionSysPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines the type of technology used by the confidential instance.
@@ -7914,6 +8743,12 @@ func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToConfidential
 	}).(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput)
 }
 
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConfidentialInstanceConfigConfidentialInstanceType] {
+	return pulumix.Output[ConfidentialInstanceConfigConfidentialInstanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -7947,6 +8782,12 @@ func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToConfident
 
 func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
 	return o
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfidentialInstanceConfigConfidentialInstanceType] {
+	return pulumix.Output[*ConfidentialInstanceConfigConfidentialInstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) Elem() ConfidentialInstanceConfigConfidentialInstanceTypeOutput {
@@ -8009,6 +8850,12 @@ func (in *confidentialInstanceConfigConfidentialInstanceTypePtr) ToConfidentialI
 
 func (in *confidentialInstanceConfigConfidentialInstanceTypePtr) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput)
+}
+
+func (in *confidentialInstanceConfigConfidentialInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfidentialInstanceConfigConfidentialInstanceType] {
+	return pulumix.Output[*ConfidentialInstanceConfigConfidentialInstanceType]{
+		OutputState: in.ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
@@ -8081,6 +8928,12 @@ func (o DeprecationStatusStateOutput) ToDeprecationStatusStatePtrOutputWithConte
 	}).(DeprecationStatusStatePtrOutput)
 }
 
+func (o DeprecationStatusStateOutput) ToOutput(ctx context.Context) pulumix.Output[DeprecationStatusState] {
+	return pulumix.Output[DeprecationStatusState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeprecationStatusStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -8114,6 +8967,12 @@ func (o DeprecationStatusStatePtrOutput) ToDeprecationStatusStatePtrOutput() Dep
 
 func (o DeprecationStatusStatePtrOutput) ToDeprecationStatusStatePtrOutputWithContext(ctx context.Context) DeprecationStatusStatePtrOutput {
 	return o
+}
+
+func (o DeprecationStatusStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeprecationStatusState] {
+	return pulumix.Output[*DeprecationStatusState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeprecationStatusStatePtrOutput) Elem() DeprecationStatusStateOutput {
@@ -8176,6 +9035,12 @@ func (in *deprecationStatusStatePtr) ToDeprecationStatusStatePtrOutput() Depreca
 
 func (in *deprecationStatusStatePtr) ToDeprecationStatusStatePtrOutputWithContext(ctx context.Context) DeprecationStatusStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeprecationStatusStatePtrOutput)
+}
+
+func (in *deprecationStatusStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DeprecationStatusState] {
+	return pulumix.Output[*DeprecationStatusState]{
+		OutputState: in.ToDeprecationStatusStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -8250,6 +9115,12 @@ func (o DiskArchitectureOutput) ToDiskArchitecturePtrOutputWithContext(ctx conte
 	}).(DiskArchitecturePtrOutput)
 }
 
+func (o DiskArchitectureOutput) ToOutput(ctx context.Context) pulumix.Output[DiskArchitecture] {
+	return pulumix.Output[DiskArchitecture]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskArchitectureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -8283,6 +9154,12 @@ func (o DiskArchitecturePtrOutput) ToDiskArchitecturePtrOutput() DiskArchitectur
 
 func (o DiskArchitecturePtrOutput) ToDiskArchitecturePtrOutputWithContext(ctx context.Context) DiskArchitecturePtrOutput {
 	return o
+}
+
+func (o DiskArchitecturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskArchitecture] {
+	return pulumix.Output[*DiskArchitecture]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskArchitecturePtrOutput) Elem() DiskArchitectureOutput {
@@ -8345,6 +9222,12 @@ func (in *diskArchitecturePtr) ToDiskArchitecturePtrOutput() DiskArchitecturePtr
 
 func (in *diskArchitecturePtr) ToDiskArchitecturePtrOutputWithContext(ctx context.Context) DiskArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskArchitecturePtrOutput)
+}
+
+func (in *diskArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskArchitecture] {
+	return pulumix.Output[*DiskArchitecture]{
+		OutputState: in.ToDiskArchitecturePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
@@ -8427,6 +9310,12 @@ func (o DiskInstantiationConfigInstantiateFromOutput) ToDiskInstantiationConfigI
 	}).(DiskInstantiationConfigInstantiateFromPtrOutput)
 }
 
+func (o DiskInstantiationConfigInstantiateFromOutput) ToOutput(ctx context.Context) pulumix.Output[DiskInstantiationConfigInstantiateFrom] {
+	return pulumix.Output[DiskInstantiationConfigInstantiateFrom]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskInstantiationConfigInstantiateFromOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -8460,6 +9349,12 @@ func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToDiskInstantiationConf
 
 func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToDiskInstantiationConfigInstantiateFromPtrOutputWithContext(ctx context.Context) DiskInstantiationConfigInstantiateFromPtrOutput {
 	return o
+}
+
+func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskInstantiationConfigInstantiateFrom] {
+	return pulumix.Output[*DiskInstantiationConfigInstantiateFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskInstantiationConfigInstantiateFromPtrOutput) Elem() DiskInstantiationConfigInstantiateFromOutput {
@@ -8522,6 +9417,12 @@ func (in *diskInstantiationConfigInstantiateFromPtr) ToDiskInstantiationConfigIn
 
 func (in *diskInstantiationConfigInstantiateFromPtr) ToDiskInstantiationConfigInstantiateFromPtrOutputWithContext(ctx context.Context) DiskInstantiationConfigInstantiateFromPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskInstantiationConfigInstantiateFromPtrOutput)
+}
+
+func (in *diskInstantiationConfigInstantiateFromPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskInstantiationConfigInstantiateFrom] {
+	return pulumix.Output[*DiskInstantiationConfigInstantiateFrom]{
+		OutputState: in.ToDiskInstantiationConfigInstantiateFromPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -8593,6 +9494,12 @@ func (o DiskInterfaceOutput) ToDiskInterfacePtrOutputWithContext(ctx context.Con
 	}).(DiskInterfacePtrOutput)
 }
 
+func (o DiskInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[DiskInterface] {
+	return pulumix.Output[DiskInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -8626,6 +9533,12 @@ func (o DiskInterfacePtrOutput) ToDiskInterfacePtrOutput() DiskInterfacePtrOutpu
 
 func (o DiskInterfacePtrOutput) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
 	return o
+}
+
+func (o DiskInterfacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskInterface] {
+	return pulumix.Output[*DiskInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskInterfacePtrOutput) Elem() DiskInterfaceOutput {
@@ -8688,6 +9601,12 @@ func (in *diskInterfacePtr) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
 
 func (in *diskInterfacePtr) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskInterfacePtrOutput)
+}
+
+func (in *diskInterfacePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskInterface] {
+	return pulumix.Output[*DiskInterface]{
+		OutputState: in.ToDiskInterfacePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // [Deprecated] Storage type of the persistent disk.
@@ -8758,6 +9677,12 @@ func (o DiskStorageTypeOutput) ToDiskStorageTypePtrOutputWithContext(ctx context
 	}).(DiskStorageTypePtrOutput)
 }
 
+func (o DiskStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DiskStorageType] {
+	return pulumix.Output[DiskStorageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -8791,6 +9716,12 @@ func (o DiskStorageTypePtrOutput) ToDiskStorageTypePtrOutput() DiskStorageTypePt
 
 func (o DiskStorageTypePtrOutput) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
 	return o
+}
+
+func (o DiskStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskStorageType] {
+	return pulumix.Output[*DiskStorageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskStorageTypePtrOutput) Elem() DiskStorageTypeOutput {
@@ -8853,6 +9784,12 @@ func (in *diskStorageTypePtr) ToDiskStorageTypePtrOutput() DiskStorageTypePtrOut
 
 func (in *diskStorageTypePtr) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskStorageTypePtrOutput)
+}
+
+func (in *diskStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskStorageType] {
+	return pulumix.Output[*DiskStorageType]{
+		OutputState: in.ToDiskStorageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
@@ -8929,6 +9866,12 @@ func (o DistributionPolicyTargetShapeOutput) ToDistributionPolicyTargetShapePtrO
 	}).(DistributionPolicyTargetShapePtrOutput)
 }
 
+func (o DistributionPolicyTargetShapeOutput) ToOutput(ctx context.Context) pulumix.Output[DistributionPolicyTargetShape] {
+	return pulumix.Output[DistributionPolicyTargetShape]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DistributionPolicyTargetShapeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -8962,6 +9905,12 @@ func (o DistributionPolicyTargetShapePtrOutput) ToDistributionPolicyTargetShapeP
 
 func (o DistributionPolicyTargetShapePtrOutput) ToDistributionPolicyTargetShapePtrOutputWithContext(ctx context.Context) DistributionPolicyTargetShapePtrOutput {
 	return o
+}
+
+func (o DistributionPolicyTargetShapePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributionPolicyTargetShape] {
+	return pulumix.Output[*DistributionPolicyTargetShape]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DistributionPolicyTargetShapePtrOutput) Elem() DistributionPolicyTargetShapeOutput {
@@ -9024,6 +9973,12 @@ func (in *distributionPolicyTargetShapePtr) ToDistributionPolicyTargetShapePtrOu
 
 func (in *distributionPolicyTargetShapePtr) ToDistributionPolicyTargetShapePtrOutputWithContext(ctx context.Context) DistributionPolicyTargetShapePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DistributionPolicyTargetShapePtrOutput)
+}
+
+func (in *distributionPolicyTargetShapePtr) ToOutput(ctx context.Context) pulumix.Output[*DistributionPolicyTargetShape] {
+	return pulumix.Output[*DistributionPolicyTargetShape]{
+		OutputState: in.ToDistributionPolicyTargetShapePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates the user-supplied redundancy type of this external VPN gateway.
@@ -9098,6 +10053,12 @@ func (o ExternalVpnGatewayRedundancyTypeOutput) ToExternalVpnGatewayRedundancyTy
 	}).(ExternalVpnGatewayRedundancyTypePtrOutput)
 }
 
+func (o ExternalVpnGatewayRedundancyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalVpnGatewayRedundancyType] {
+	return pulumix.Output[ExternalVpnGatewayRedundancyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExternalVpnGatewayRedundancyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -9131,6 +10092,12 @@ func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToExternalVpnGatewayRedundanc
 
 func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToExternalVpnGatewayRedundancyTypePtrOutputWithContext(ctx context.Context) ExternalVpnGatewayRedundancyTypePtrOutput {
 	return o
+}
+
+func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalVpnGatewayRedundancyType] {
+	return pulumix.Output[*ExternalVpnGatewayRedundancyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExternalVpnGatewayRedundancyTypePtrOutput) Elem() ExternalVpnGatewayRedundancyTypeOutput {
@@ -9193,6 +10160,12 @@ func (in *externalVpnGatewayRedundancyTypePtr) ToExternalVpnGatewayRedundancyTyp
 
 func (in *externalVpnGatewayRedundancyTypePtr) ToExternalVpnGatewayRedundancyTypePtrOutputWithContext(ctx context.Context) ExternalVpnGatewayRedundancyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExternalVpnGatewayRedundancyTypePtrOutput)
+}
+
+func (in *externalVpnGatewayRedundancyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalVpnGatewayRedundancyType] {
+	return pulumix.Output[*ExternalVpnGatewayRedundancyType]{
+		OutputState: in.ToExternalVpnGatewayRedundancyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The file type of source file.
@@ -9264,6 +10237,12 @@ func (o FileContentBufferFileTypeOutput) ToFileContentBufferFileTypePtrOutputWit
 	}).(FileContentBufferFileTypePtrOutput)
 }
 
+func (o FileContentBufferFileTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FileContentBufferFileType] {
+	return pulumix.Output[FileContentBufferFileType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FileContentBufferFileTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -9297,6 +10276,12 @@ func (o FileContentBufferFileTypePtrOutput) ToFileContentBufferFileTypePtrOutput
 
 func (o FileContentBufferFileTypePtrOutput) ToFileContentBufferFileTypePtrOutputWithContext(ctx context.Context) FileContentBufferFileTypePtrOutput {
 	return o
+}
+
+func (o FileContentBufferFileTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileContentBufferFileType] {
+	return pulumix.Output[*FileContentBufferFileType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FileContentBufferFileTypePtrOutput) Elem() FileContentBufferFileTypeOutput {
@@ -9359,6 +10344,12 @@ func (in *fileContentBufferFileTypePtr) ToFileContentBufferFileTypePtrOutput() F
 
 func (in *fileContentBufferFileTypePtr) ToFileContentBufferFileTypePtrOutputWithContext(ctx context.Context) FileContentBufferFileTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FileContentBufferFileTypePtrOutput)
+}
+
+func (in *fileContentBufferFileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileContentBufferFileType] {
+	return pulumix.Output[*FileContentBufferFileType]{
+		OutputState: in.ToFileContentBufferFileTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
@@ -9431,6 +10422,12 @@ func (o FirewallDirectionOutput) ToFirewallDirectionPtrOutputWithContext(ctx con
 	}).(FirewallDirectionPtrOutput)
 }
 
+func (o FirewallDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallDirection] {
+	return pulumix.Output[FirewallDirection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -9464,6 +10461,12 @@ func (o FirewallDirectionPtrOutput) ToFirewallDirectionPtrOutput() FirewallDirec
 
 func (o FirewallDirectionPtrOutput) ToFirewallDirectionPtrOutputWithContext(ctx context.Context) FirewallDirectionPtrOutput {
 	return o
+}
+
+func (o FirewallDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallDirection] {
+	return pulumix.Output[*FirewallDirection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallDirectionPtrOutput) Elem() FirewallDirectionOutput {
@@ -9526,6 +10529,12 @@ func (in *firewallDirectionPtr) ToFirewallDirectionPtrOutput() FirewallDirection
 
 func (in *firewallDirectionPtr) ToFirewallDirectionPtrOutputWithContext(ctx context.Context) FirewallDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallDirectionPtrOutput)
+}
+
+func (in *firewallDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallDirection] {
+	return pulumix.Output[*FirewallDirection]{
+		OutputState: in.ToFirewallDirectionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
@@ -9596,6 +10605,12 @@ func (o FirewallLogConfigMetadataOutput) ToFirewallLogConfigMetadataPtrOutputWit
 	}).(FirewallLogConfigMetadataPtrOutput)
 }
 
+func (o FirewallLogConfigMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallLogConfigMetadata] {
+	return pulumix.Output[FirewallLogConfigMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallLogConfigMetadataOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -9629,6 +10644,12 @@ func (o FirewallLogConfigMetadataPtrOutput) ToFirewallLogConfigMetadataPtrOutput
 
 func (o FirewallLogConfigMetadataPtrOutput) ToFirewallLogConfigMetadataPtrOutputWithContext(ctx context.Context) FirewallLogConfigMetadataPtrOutput {
 	return o
+}
+
+func (o FirewallLogConfigMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallLogConfigMetadata] {
+	return pulumix.Output[*FirewallLogConfigMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallLogConfigMetadataPtrOutput) Elem() FirewallLogConfigMetadataOutput {
@@ -9691,6 +10712,12 @@ func (in *firewallLogConfigMetadataPtr) ToFirewallLogConfigMetadataPtrOutput() F
 
 func (in *firewallLogConfigMetadataPtr) ToFirewallLogConfigMetadataPtrOutputWithContext(ctx context.Context) FirewallLogConfigMetadataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallLogConfigMetadataPtrOutput)
+}
+
+func (in *firewallLogConfigMetadataPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallLogConfigMetadata] {
+	return pulumix.Output[*FirewallLogConfigMetadata]{
+		OutputState: in.ToFirewallLogConfigMetadataPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The direction in which this rule applies.
@@ -9761,6 +10788,12 @@ func (o FirewallPolicyRuleDirectionOutput) ToFirewallPolicyRuleDirectionPtrOutpu
 	}).(FirewallPolicyRuleDirectionPtrOutput)
 }
 
+func (o FirewallPolicyRuleDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyRuleDirection] {
+	return pulumix.Output[FirewallPolicyRuleDirection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallPolicyRuleDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -9794,6 +10827,12 @@ func (o FirewallPolicyRuleDirectionPtrOutput) ToFirewallPolicyRuleDirectionPtrOu
 
 func (o FirewallPolicyRuleDirectionPtrOutput) ToFirewallPolicyRuleDirectionPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleDirectionPtrOutput {
 	return o
+}
+
+func (o FirewallPolicyRuleDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyRuleDirection] {
+	return pulumix.Output[*FirewallPolicyRuleDirection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallPolicyRuleDirectionPtrOutput) Elem() FirewallPolicyRuleDirectionOutput {
@@ -9856,6 +10895,12 @@ func (in *firewallPolicyRuleDirectionPtr) ToFirewallPolicyRuleDirectionPtrOutput
 
 func (in *firewallPolicyRuleDirectionPtr) ToFirewallPolicyRuleDirectionPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyRuleDirectionPtrOutput)
+}
+
+func (in *firewallPolicyRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyRuleDirection] {
+	return pulumix.Output[*FirewallPolicyRuleDirection]{
+		OutputState: in.ToFirewallPolicyRuleDirectionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
@@ -9928,6 +10973,12 @@ func (o FirewallPolicyVpcNetworkScopeOutput) ToFirewallPolicyVpcNetworkScopePtrO
 	}).(FirewallPolicyVpcNetworkScopePtrOutput)
 }
 
+func (o FirewallPolicyVpcNetworkScopeOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[FirewallPolicyVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallPolicyVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -9961,6 +11012,12 @@ func (o FirewallPolicyVpcNetworkScopePtrOutput) ToFirewallPolicyVpcNetworkScopeP
 
 func (o FirewallPolicyVpcNetworkScopePtrOutput) ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopePtrOutput {
 	return o
+}
+
+func (o FirewallPolicyVpcNetworkScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[*FirewallPolicyVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallPolicyVpcNetworkScopePtrOutput) Elem() FirewallPolicyVpcNetworkScopeOutput {
@@ -10023,6 +11080,12 @@ func (in *firewallPolicyVpcNetworkScopePtr) ToFirewallPolicyVpcNetworkScopePtrOu
 
 func (in *firewallPolicyVpcNetworkScopePtr) ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) FirewallPolicyVpcNetworkScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (in *firewallPolicyVpcNetworkScopePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[*FirewallPolicyVpcNetworkScope]{
+		OutputState: in.ToFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
@@ -10099,6 +11162,12 @@ func (o ForwardingRuleIpProtocolOutput) ToForwardingRuleIpProtocolPtrOutputWithC
 	}).(ForwardingRuleIpProtocolPtrOutput)
 }
 
+func (o ForwardingRuleIpProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardingRuleIpProtocol] {
+	return pulumix.Output[ForwardingRuleIpProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ForwardingRuleIpProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -10132,6 +11201,12 @@ func (o ForwardingRuleIpProtocolPtrOutput) ToForwardingRuleIpProtocolPtrOutput()
 
 func (o ForwardingRuleIpProtocolPtrOutput) ToForwardingRuleIpProtocolPtrOutputWithContext(ctx context.Context) ForwardingRuleIpProtocolPtrOutput {
 	return o
+}
+
+func (o ForwardingRuleIpProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleIpProtocol] {
+	return pulumix.Output[*ForwardingRuleIpProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForwardingRuleIpProtocolPtrOutput) Elem() ForwardingRuleIpProtocolOutput {
@@ -10194,6 +11269,12 @@ func (in *forwardingRuleIpProtocolPtr) ToForwardingRuleIpProtocolPtrOutput() For
 
 func (in *forwardingRuleIpProtocolPtr) ToForwardingRuleIpProtocolPtrOutputWithContext(ctx context.Context) ForwardingRuleIpProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleIpProtocolPtrOutput)
+}
+
+func (in *forwardingRuleIpProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleIpProtocol] {
+	return pulumix.Output[*ForwardingRuleIpProtocol]{
+		OutputState: in.ToForwardingRuleIpProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
@@ -10265,6 +11346,12 @@ func (o ForwardingRuleIpVersionOutput) ToForwardingRuleIpVersionPtrOutputWithCon
 	}).(ForwardingRuleIpVersionPtrOutput)
 }
 
+func (o ForwardingRuleIpVersionOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardingRuleIpVersion] {
+	return pulumix.Output[ForwardingRuleIpVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ForwardingRuleIpVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -10298,6 +11385,12 @@ func (o ForwardingRuleIpVersionPtrOutput) ToForwardingRuleIpVersionPtrOutput() F
 
 func (o ForwardingRuleIpVersionPtrOutput) ToForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) ForwardingRuleIpVersionPtrOutput {
 	return o
+}
+
+func (o ForwardingRuleIpVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleIpVersion] {
+	return pulumix.Output[*ForwardingRuleIpVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForwardingRuleIpVersionPtrOutput) Elem() ForwardingRuleIpVersionOutput {
@@ -10360,6 +11453,12 @@ func (in *forwardingRuleIpVersionPtr) ToForwardingRuleIpVersionPtrOutput() Forwa
 
 func (in *forwardingRuleIpVersionPtr) ToForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) ForwardingRuleIpVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleIpVersionPtrOutput)
+}
+
+func (in *forwardingRuleIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleIpVersion] {
+	return pulumix.Output[*ForwardingRuleIpVersion]{
+		OutputState: in.ToForwardingRuleIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
@@ -10434,6 +11533,12 @@ func (o ForwardingRuleLoadBalancingSchemeOutput) ToForwardingRuleLoadBalancingSc
 	}).(ForwardingRuleLoadBalancingSchemePtrOutput)
 }
 
+func (o ForwardingRuleLoadBalancingSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardingRuleLoadBalancingScheme] {
+	return pulumix.Output[ForwardingRuleLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ForwardingRuleLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -10467,6 +11572,12 @@ func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToForwardingRuleLoadBalancin
 
 func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx context.Context) ForwardingRuleLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleLoadBalancingScheme] {
+	return pulumix.Output[*ForwardingRuleLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForwardingRuleLoadBalancingSchemePtrOutput) Elem() ForwardingRuleLoadBalancingSchemeOutput {
@@ -10529,6 +11640,12 @@ func (in *forwardingRuleLoadBalancingSchemePtr) ToForwardingRuleLoadBalancingSch
 
 func (in *forwardingRuleLoadBalancingSchemePtr) ToForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx context.Context) ForwardingRuleLoadBalancingSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleLoadBalancingSchemePtrOutput)
+}
+
+func (in *forwardingRuleLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleLoadBalancingScheme] {
+	return pulumix.Output[*ForwardingRuleLoadBalancingScheme]{
+		OutputState: in.ToForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
@@ -10607,6 +11724,12 @@ func (o ForwardingRuleNetworkTierOutput) ToForwardingRuleNetworkTierPtrOutputWit
 	}).(ForwardingRuleNetworkTierPtrOutput)
 }
 
+func (o ForwardingRuleNetworkTierOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardingRuleNetworkTier] {
+	return pulumix.Output[ForwardingRuleNetworkTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ForwardingRuleNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -10640,6 +11763,12 @@ func (o ForwardingRuleNetworkTierPtrOutput) ToForwardingRuleNetworkTierPtrOutput
 
 func (o ForwardingRuleNetworkTierPtrOutput) ToForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) ForwardingRuleNetworkTierPtrOutput {
 	return o
+}
+
+func (o ForwardingRuleNetworkTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleNetworkTier] {
+	return pulumix.Output[*ForwardingRuleNetworkTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForwardingRuleNetworkTierPtrOutput) Elem() ForwardingRuleNetworkTierOutput {
@@ -10702,6 +11831,12 @@ func (in *forwardingRuleNetworkTierPtr) ToForwardingRuleNetworkTierPtrOutput() F
 
 func (in *forwardingRuleNetworkTierPtr) ToForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) ForwardingRuleNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleNetworkTierPtrOutput)
+}
+
+func (in *forwardingRuleNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleNetworkTier] {
+	return pulumix.Output[*ForwardingRuleNetworkTier]{
+		OutputState: in.ToForwardingRuleNetworkTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ForwardingRulePscConnectionStatus string
@@ -10780,6 +11915,12 @@ func (o ForwardingRulePscConnectionStatusOutput) ToForwardingRulePscConnectionSt
 	}).(ForwardingRulePscConnectionStatusPtrOutput)
 }
 
+func (o ForwardingRulePscConnectionStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardingRulePscConnectionStatus] {
+	return pulumix.Output[ForwardingRulePscConnectionStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ForwardingRulePscConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -10813,6 +11954,12 @@ func (o ForwardingRulePscConnectionStatusPtrOutput) ToForwardingRulePscConnectio
 
 func (o ForwardingRulePscConnectionStatusPtrOutput) ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusPtrOutput {
 	return o
+}
+
+func (o ForwardingRulePscConnectionStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRulePscConnectionStatus] {
+	return pulumix.Output[*ForwardingRulePscConnectionStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForwardingRulePscConnectionStatusPtrOutput) Elem() ForwardingRulePscConnectionStatusOutput {
@@ -10875,6 +12022,12 @@ func (in *forwardingRulePscConnectionStatusPtr) ToForwardingRulePscConnectionSta
 
 func (in *forwardingRulePscConnectionStatusPtr) ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRulePscConnectionStatusPtrOutput)
+}
+
+func (in *forwardingRulePscConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRulePscConnectionStatus] {
+	return pulumix.Output[*ForwardingRulePscConnectionStatus]{
+		OutputState: in.ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Planning state before being submitted for evaluation
@@ -10948,6 +12101,12 @@ func (o FutureReservationPlanningStatusOutput) ToFutureReservationPlanningStatus
 	}).(FutureReservationPlanningStatusPtrOutput)
 }
 
+func (o FutureReservationPlanningStatusOutput) ToOutput(ctx context.Context) pulumix.Output[FutureReservationPlanningStatus] {
+	return pulumix.Output[FutureReservationPlanningStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FutureReservationPlanningStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -10981,6 +12140,12 @@ func (o FutureReservationPlanningStatusPtrOutput) ToFutureReservationPlanningSta
 
 func (o FutureReservationPlanningStatusPtrOutput) ToFutureReservationPlanningStatusPtrOutputWithContext(ctx context.Context) FutureReservationPlanningStatusPtrOutput {
 	return o
+}
+
+func (o FutureReservationPlanningStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FutureReservationPlanningStatus] {
+	return pulumix.Output[*FutureReservationPlanningStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FutureReservationPlanningStatusPtrOutput) Elem() FutureReservationPlanningStatusOutput {
@@ -11043,6 +12208,12 @@ func (in *futureReservationPlanningStatusPtr) ToFutureReservationPlanningStatusP
 
 func (in *futureReservationPlanningStatusPtr) ToFutureReservationPlanningStatusPtrOutputWithContext(ctx context.Context) FutureReservationPlanningStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FutureReservationPlanningStatusPtrOutput)
+}
+
+func (in *futureReservationPlanningStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*FutureReservationPlanningStatus] {
+	return pulumix.Output[*FutureReservationPlanningStatus]{
+		OutputState: in.ToFutureReservationPlanningStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -11117,6 +12288,12 @@ func (o GRPCHealthCheckPortSpecificationOutput) ToGRPCHealthCheckPortSpecificati
 	}).(GRPCHealthCheckPortSpecificationPtrOutput)
 }
 
+func (o GRPCHealthCheckPortSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[GRPCHealthCheckPortSpecification] {
+	return pulumix.Output[GRPCHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GRPCHealthCheckPortSpecificationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -11150,6 +12327,12 @@ func (o GRPCHealthCheckPortSpecificationPtrOutput) ToGRPCHealthCheckPortSpecific
 
 func (o GRPCHealthCheckPortSpecificationPtrOutput) ToGRPCHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) GRPCHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o GRPCHealthCheckPortSpecificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GRPCHealthCheckPortSpecification] {
+	return pulumix.Output[*GRPCHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GRPCHealthCheckPortSpecificationPtrOutput) Elem() GRPCHealthCheckPortSpecificationOutput {
@@ -11212,6 +12395,12 @@ func (in *grpchealthCheckPortSpecificationPtr) ToGRPCHealthCheckPortSpecificatio
 
 func (in *grpchealthCheckPortSpecificationPtr) ToGRPCHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) GRPCHealthCheckPortSpecificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GRPCHealthCheckPortSpecificationPtrOutput)
+}
+
+func (in *grpchealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*GRPCHealthCheckPortSpecification] {
+	return pulumix.Output[*GRPCHealthCheckPortSpecification]{
+		OutputState: in.ToGRPCHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
@@ -11287,6 +12476,12 @@ func (o GlobalAddressAddressTypeOutput) ToGlobalAddressAddressTypePtrOutputWithC
 	}).(GlobalAddressAddressTypePtrOutput)
 }
 
+func (o GlobalAddressAddressTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalAddressAddressType] {
+	return pulumix.Output[GlobalAddressAddressType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalAddressAddressTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -11320,6 +12515,12 @@ func (o GlobalAddressAddressTypePtrOutput) ToGlobalAddressAddressTypePtrOutput()
 
 func (o GlobalAddressAddressTypePtrOutput) ToGlobalAddressAddressTypePtrOutputWithContext(ctx context.Context) GlobalAddressAddressTypePtrOutput {
 	return o
+}
+
+func (o GlobalAddressAddressTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressAddressType] {
+	return pulumix.Output[*GlobalAddressAddressType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalAddressAddressTypePtrOutput) Elem() GlobalAddressAddressTypeOutput {
@@ -11382,6 +12583,12 @@ func (in *globalAddressAddressTypePtr) ToGlobalAddressAddressTypePtrOutput() Glo
 
 func (in *globalAddressAddressTypePtr) ToGlobalAddressAddressTypePtrOutputWithContext(ctx context.Context) GlobalAddressAddressTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressAddressTypePtrOutput)
+}
+
+func (in *globalAddressAddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressAddressType] {
+	return pulumix.Output[*GlobalAddressAddressType]{
+		OutputState: in.ToGlobalAddressAddressTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
@@ -11453,6 +12660,12 @@ func (o GlobalAddressIpVersionOutput) ToGlobalAddressIpVersionPtrOutputWithConte
 	}).(GlobalAddressIpVersionPtrOutput)
 }
 
+func (o GlobalAddressIpVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalAddressIpVersion] {
+	return pulumix.Output[GlobalAddressIpVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalAddressIpVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -11486,6 +12699,12 @@ func (o GlobalAddressIpVersionPtrOutput) ToGlobalAddressIpVersionPtrOutput() Glo
 
 func (o GlobalAddressIpVersionPtrOutput) ToGlobalAddressIpVersionPtrOutputWithContext(ctx context.Context) GlobalAddressIpVersionPtrOutput {
 	return o
+}
+
+func (o GlobalAddressIpVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressIpVersion] {
+	return pulumix.Output[*GlobalAddressIpVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalAddressIpVersionPtrOutput) Elem() GlobalAddressIpVersionOutput {
@@ -11548,6 +12767,12 @@ func (in *globalAddressIpVersionPtr) ToGlobalAddressIpVersionPtrOutput() GlobalA
 
 func (in *globalAddressIpVersionPtr) ToGlobalAddressIpVersionPtrOutputWithContext(ctx context.Context) GlobalAddressIpVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressIpVersionPtrOutput)
+}
+
+func (in *globalAddressIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressIpVersion] {
+	return pulumix.Output[*GlobalAddressIpVersion]{
+		OutputState: in.ToGlobalAddressIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
@@ -11620,6 +12845,12 @@ func (o GlobalAddressIpv6EndpointTypeOutput) ToGlobalAddressIpv6EndpointTypePtrO
 	}).(GlobalAddressIpv6EndpointTypePtrOutput)
 }
 
+func (o GlobalAddressIpv6EndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalAddressIpv6EndpointType] {
+	return pulumix.Output[GlobalAddressIpv6EndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalAddressIpv6EndpointTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -11653,6 +12884,12 @@ func (o GlobalAddressIpv6EndpointTypePtrOutput) ToGlobalAddressIpv6EndpointTypeP
 
 func (o GlobalAddressIpv6EndpointTypePtrOutput) ToGlobalAddressIpv6EndpointTypePtrOutputWithContext(ctx context.Context) GlobalAddressIpv6EndpointTypePtrOutput {
 	return o
+}
+
+func (o GlobalAddressIpv6EndpointTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressIpv6EndpointType] {
+	return pulumix.Output[*GlobalAddressIpv6EndpointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalAddressIpv6EndpointTypePtrOutput) Elem() GlobalAddressIpv6EndpointTypeOutput {
@@ -11715,6 +12952,12 @@ func (in *globalAddressIpv6EndpointTypePtr) ToGlobalAddressIpv6EndpointTypePtrOu
 
 func (in *globalAddressIpv6EndpointTypePtr) ToGlobalAddressIpv6EndpointTypePtrOutputWithContext(ctx context.Context) GlobalAddressIpv6EndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressIpv6EndpointTypePtrOutput)
+}
+
+func (in *globalAddressIpv6EndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressIpv6EndpointType] {
+	return pulumix.Output[*GlobalAddressIpv6EndpointType]{
+		OutputState: in.ToGlobalAddressIpv6EndpointTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
@@ -11793,6 +13036,12 @@ func (o GlobalAddressNetworkTierOutput) ToGlobalAddressNetworkTierPtrOutputWithC
 	}).(GlobalAddressNetworkTierPtrOutput)
 }
 
+func (o GlobalAddressNetworkTierOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalAddressNetworkTier] {
+	return pulumix.Output[GlobalAddressNetworkTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalAddressNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -11826,6 +13075,12 @@ func (o GlobalAddressNetworkTierPtrOutput) ToGlobalAddressNetworkTierPtrOutput()
 
 func (o GlobalAddressNetworkTierPtrOutput) ToGlobalAddressNetworkTierPtrOutputWithContext(ctx context.Context) GlobalAddressNetworkTierPtrOutput {
 	return o
+}
+
+func (o GlobalAddressNetworkTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressNetworkTier] {
+	return pulumix.Output[*GlobalAddressNetworkTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalAddressNetworkTierPtrOutput) Elem() GlobalAddressNetworkTierOutput {
@@ -11888,6 +13143,12 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutput() Glo
 
 func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithContext(ctx context.Context) GlobalAddressNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
+}
+
+func (in *globalAddressNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressNetworkTier] {
+	return pulumix.Output[*GlobalAddressNetworkTier]{
+		OutputState: in.ToGlobalAddressNetworkTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
@@ -11972,6 +13233,12 @@ func (o GlobalAddressPurposeOutput) ToGlobalAddressPurposePtrOutputWithContext(c
 	}).(GlobalAddressPurposePtrOutput)
 }
 
+func (o GlobalAddressPurposeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalAddressPurpose] {
+	return pulumix.Output[GlobalAddressPurpose]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalAddressPurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -12005,6 +13272,12 @@ func (o GlobalAddressPurposePtrOutput) ToGlobalAddressPurposePtrOutput() GlobalA
 
 func (o GlobalAddressPurposePtrOutput) ToGlobalAddressPurposePtrOutputWithContext(ctx context.Context) GlobalAddressPurposePtrOutput {
 	return o
+}
+
+func (o GlobalAddressPurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressPurpose] {
+	return pulumix.Output[*GlobalAddressPurpose]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalAddressPurposePtrOutput) Elem() GlobalAddressPurposeOutput {
@@ -12067,6 +13340,12 @@ func (in *globalAddressPurposePtr) ToGlobalAddressPurposePtrOutput() GlobalAddre
 
 func (in *globalAddressPurposePtr) ToGlobalAddressPurposePtrOutputWithContext(ctx context.Context) GlobalAddressPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressPurposePtrOutput)
+}
+
+func (in *globalAddressPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressPurpose] {
+	return pulumix.Output[*GlobalAddressPurpose]{
+		OutputState: in.ToGlobalAddressPurposePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
@@ -12143,6 +13422,12 @@ func (o GlobalForwardingRuleIpProtocolOutput) ToGlobalForwardingRuleIpProtocolPt
 	}).(GlobalForwardingRuleIpProtocolPtrOutput)
 }
 
+func (o GlobalForwardingRuleIpProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalForwardingRuleIpProtocol] {
+	return pulumix.Output[GlobalForwardingRuleIpProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalForwardingRuleIpProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -12176,6 +13461,12 @@ func (o GlobalForwardingRuleIpProtocolPtrOutput) ToGlobalForwardingRuleIpProtoco
 
 func (o GlobalForwardingRuleIpProtocolPtrOutput) ToGlobalForwardingRuleIpProtocolPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleIpProtocolPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleIpProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleIpProtocol] {
+	return pulumix.Output[*GlobalForwardingRuleIpProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalForwardingRuleIpProtocolPtrOutput) Elem() GlobalForwardingRuleIpProtocolOutput {
@@ -12238,6 +13529,12 @@ func (in *globalForwardingRuleIpProtocolPtr) ToGlobalForwardingRuleIpProtocolPtr
 
 func (in *globalForwardingRuleIpProtocolPtr) ToGlobalForwardingRuleIpProtocolPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleIpProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleIpProtocolPtrOutput)
+}
+
+func (in *globalForwardingRuleIpProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleIpProtocol] {
+	return pulumix.Output[*GlobalForwardingRuleIpProtocol]{
+		OutputState: in.ToGlobalForwardingRuleIpProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
@@ -12309,6 +13606,12 @@ func (o GlobalForwardingRuleIpVersionOutput) ToGlobalForwardingRuleIpVersionPtrO
 	}).(GlobalForwardingRuleIpVersionPtrOutput)
 }
 
+func (o GlobalForwardingRuleIpVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalForwardingRuleIpVersion] {
+	return pulumix.Output[GlobalForwardingRuleIpVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalForwardingRuleIpVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -12342,6 +13645,12 @@ func (o GlobalForwardingRuleIpVersionPtrOutput) ToGlobalForwardingRuleIpVersionP
 
 func (o GlobalForwardingRuleIpVersionPtrOutput) ToGlobalForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleIpVersionPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleIpVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleIpVersion] {
+	return pulumix.Output[*GlobalForwardingRuleIpVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalForwardingRuleIpVersionPtrOutput) Elem() GlobalForwardingRuleIpVersionOutput {
@@ -12404,6 +13713,12 @@ func (in *globalForwardingRuleIpVersionPtr) ToGlobalForwardingRuleIpVersionPtrOu
 
 func (in *globalForwardingRuleIpVersionPtr) ToGlobalForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleIpVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleIpVersionPtrOutput)
+}
+
+func (in *globalForwardingRuleIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleIpVersion] {
+	return pulumix.Output[*GlobalForwardingRuleIpVersion]{
+		OutputState: in.ToGlobalForwardingRuleIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
@@ -12478,6 +13793,12 @@ func (o GlobalForwardingRuleLoadBalancingSchemeOutput) ToGlobalForwardingRuleLoa
 	}).(GlobalForwardingRuleLoadBalancingSchemePtrOutput)
 }
 
+func (o GlobalForwardingRuleLoadBalancingSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalForwardingRuleLoadBalancingScheme] {
+	return pulumix.Output[GlobalForwardingRuleLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalForwardingRuleLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -12511,6 +13832,12 @@ func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToGlobalForwardingRule
 
 func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToGlobalForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx context.Context) GlobalForwardingRuleLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleLoadBalancingScheme] {
+	return pulumix.Output[*GlobalForwardingRuleLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) Elem() GlobalForwardingRuleLoadBalancingSchemeOutput {
@@ -12573,6 +13900,12 @@ func (in *globalForwardingRuleLoadBalancingSchemePtr) ToGlobalForwardingRuleLoad
 
 func (in *globalForwardingRuleLoadBalancingSchemePtr) ToGlobalForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx context.Context) GlobalForwardingRuleLoadBalancingSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleLoadBalancingSchemePtrOutput)
+}
+
+func (in *globalForwardingRuleLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleLoadBalancingScheme] {
+	return pulumix.Output[*GlobalForwardingRuleLoadBalancingScheme]{
+		OutputState: in.ToGlobalForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
@@ -12651,6 +13984,12 @@ func (o GlobalForwardingRuleNetworkTierOutput) ToGlobalForwardingRuleNetworkTier
 	}).(GlobalForwardingRuleNetworkTierPtrOutput)
 }
 
+func (o GlobalForwardingRuleNetworkTierOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalForwardingRuleNetworkTier] {
+	return pulumix.Output[GlobalForwardingRuleNetworkTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalForwardingRuleNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -12684,6 +14023,12 @@ func (o GlobalForwardingRuleNetworkTierPtrOutput) ToGlobalForwardingRuleNetworkT
 
 func (o GlobalForwardingRuleNetworkTierPtrOutput) ToGlobalForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleNetworkTierPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRuleNetworkTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleNetworkTier] {
+	return pulumix.Output[*GlobalForwardingRuleNetworkTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalForwardingRuleNetworkTierPtrOutput) Elem() GlobalForwardingRuleNetworkTierOutput {
@@ -12746,6 +14091,12 @@ func (in *globalForwardingRuleNetworkTierPtr) ToGlobalForwardingRuleNetworkTierP
 
 func (in *globalForwardingRuleNetworkTierPtr) ToGlobalForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleNetworkTierPtrOutput)
+}
+
+func (in *globalForwardingRuleNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleNetworkTier] {
+	return pulumix.Output[*GlobalForwardingRuleNetworkTier]{
+		OutputState: in.ToGlobalForwardingRuleNetworkTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type GlobalForwardingRulePscConnectionStatus string
@@ -12824,6 +14175,12 @@ func (o GlobalForwardingRulePscConnectionStatusOutput) ToGlobalForwardingRulePsc
 	}).(GlobalForwardingRulePscConnectionStatusPtrOutput)
 }
 
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalForwardingRulePscConnectionStatus] {
+	return pulumix.Output[GlobalForwardingRulePscConnectionStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalForwardingRulePscConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -12857,6 +14214,12 @@ func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToGlobalForwardingRule
 
 func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
 	return o
+}
+
+func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRulePscConnectionStatus] {
+	return pulumix.Output[*GlobalForwardingRulePscConnectionStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalForwardingRulePscConnectionStatusPtrOutput) Elem() GlobalForwardingRulePscConnectionStatusOutput {
@@ -12919,6 +14282,12 @@ func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscC
 
 func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRulePscConnectionStatusPtrOutput)
+}
+
+func (in *globalForwardingRulePscConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRulePscConnectionStatus] {
+	return pulumix.Output[*GlobalForwardingRulePscConnectionStatus]{
+		OutputState: in.ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -13003,6 +14372,12 @@ func (o GlobalNetworkEndpointGroupNetworkEndpointTypeOutput) ToGlobalNetworkEndp
 	}).(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
+func (o GlobalNetworkEndpointGroupNetworkEndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalNetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[GlobalNetworkEndpointGroupNetworkEndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalNetworkEndpointGroupNetworkEndpointTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -13036,6 +14411,12 @@ func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToGlobalNetworkE
 
 func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToGlobalNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return o
+}
+
+func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[*GlobalNetworkEndpointGroupNetworkEndpointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() GlobalNetworkEndpointGroupNetworkEndpointTypeOutput {
@@ -13098,6 +14479,12 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpo
 
 func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput)
+}
+
+func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[*GlobalNetworkEndpointGroupNetworkEndpointType]{
+		OutputState: in.ToGlobalNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
@@ -13168,6 +14555,12 @@ func (o GlobalNetworkEndpointGroupTypeOutput) ToGlobalNetworkEndpointGroupTypePt
 	}).(GlobalNetworkEndpointGroupTypePtrOutput)
 }
 
+func (o GlobalNetworkEndpointGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalNetworkEndpointGroupType] {
+	return pulumix.Output[GlobalNetworkEndpointGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalNetworkEndpointGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -13201,6 +14594,12 @@ func (o GlobalNetworkEndpointGroupTypePtrOutput) ToGlobalNetworkEndpointGroupTyp
 
 func (o GlobalNetworkEndpointGroupTypePtrOutput) ToGlobalNetworkEndpointGroupTypePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupTypePtrOutput {
 	return o
+}
+
+func (o GlobalNetworkEndpointGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupType] {
+	return pulumix.Output[*GlobalNetworkEndpointGroupType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalNetworkEndpointGroupTypePtrOutput) Elem() GlobalNetworkEndpointGroupTypeOutput {
@@ -13263,6 +14662,12 @@ func (in *globalNetworkEndpointGroupTypePtr) ToGlobalNetworkEndpointGroupTypePtr
 
 func (in *globalNetworkEndpointGroupTypePtr) ToGlobalNetworkEndpointGroupTypePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupTypePtrOutput)
+}
+
+func (in *globalNetworkEndpointGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupType] {
+	return pulumix.Output[*GlobalNetworkEndpointGroupType]{
+		OutputState: in.ToGlobalNetworkEndpointGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
@@ -13343,6 +14748,12 @@ func (o GuestOsFeatureTypeOutput) ToGuestOsFeatureTypePtrOutputWithContext(ctx c
 	}).(GuestOsFeatureTypePtrOutput)
 }
 
+func (o GuestOsFeatureTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GuestOsFeatureType] {
+	return pulumix.Output[GuestOsFeatureType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GuestOsFeatureTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -13376,6 +14787,12 @@ func (o GuestOsFeatureTypePtrOutput) ToGuestOsFeatureTypePtrOutput() GuestOsFeat
 
 func (o GuestOsFeatureTypePtrOutput) ToGuestOsFeatureTypePtrOutputWithContext(ctx context.Context) GuestOsFeatureTypePtrOutput {
 	return o
+}
+
+func (o GuestOsFeatureTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestOsFeatureType] {
+	return pulumix.Output[*GuestOsFeatureType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestOsFeatureTypePtrOutput) Elem() GuestOsFeatureTypeOutput {
@@ -13438,6 +14855,12 @@ func (in *guestOsFeatureTypePtr) ToGuestOsFeatureTypePtrOutput() GuestOsFeatureT
 
 func (in *guestOsFeatureTypePtr) ToGuestOsFeatureTypePtrOutputWithContext(ctx context.Context) GuestOsFeatureTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GuestOsFeatureTypePtrOutput)
+}
+
+func (in *guestOsFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GuestOsFeatureType] {
+	return pulumix.Output[*GuestOsFeatureType]{
+		OutputState: in.ToGuestOsFeatureTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -13512,6 +14935,12 @@ func (o HTTP2HealthCheckPortSpecificationOutput) ToHTTP2HealthCheckPortSpecifica
 	}).(HTTP2HealthCheckPortSpecificationPtrOutput)
 }
 
+func (o HTTP2HealthCheckPortSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[HTTP2HealthCheckPortSpecification] {
+	return pulumix.Output[HTTP2HealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTP2HealthCheckPortSpecificationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -13545,6 +14974,12 @@ func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToHTTP2HealthCheckPortSpecif
 
 func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToHTTP2HealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTP2HealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckPortSpecification] {
+	return pulumix.Output[*HTTP2HealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTP2HealthCheckPortSpecificationPtrOutput) Elem() HTTP2HealthCheckPortSpecificationOutput {
@@ -13607,6 +15042,12 @@ func (in *http2healthCheckPortSpecificationPtr) ToHTTP2HealthCheckPortSpecificat
 
 func (in *http2healthCheckPortSpecificationPtr) ToHTTP2HealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTP2HealthCheckPortSpecificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTP2HealthCheckPortSpecificationPtrOutput)
+}
+
+func (in *http2healthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckPortSpecification] {
+	return pulumix.Output[*HTTP2HealthCheckPortSpecification]{
+		OutputState: in.ToHTTP2HealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -13677,6 +15118,12 @@ func (o HTTP2HealthCheckProxyHeaderOutput) ToHTTP2HealthCheckProxyHeaderPtrOutpu
 	}).(HTTP2HealthCheckProxyHeaderPtrOutput)
 }
 
+func (o HTTP2HealthCheckProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[HTTP2HealthCheckProxyHeader] {
+	return pulumix.Output[HTTP2HealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTP2HealthCheckProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -13710,6 +15157,12 @@ func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToHTTP2HealthCheckProxyHeaderPtrOu
 
 func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToHTTP2HealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTP2HealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckProxyHeader] {
+	return pulumix.Output[*HTTP2HealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTP2HealthCheckProxyHeaderPtrOutput) Elem() HTTP2HealthCheckProxyHeaderOutput {
@@ -13772,6 +15225,12 @@ func (in *http2healthCheckProxyHeaderPtr) ToHTTP2HealthCheckProxyHeaderPtrOutput
 
 func (in *http2healthCheckProxyHeaderPtr) ToHTTP2HealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTP2HealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTP2HealthCheckProxyHeaderPtrOutput)
+}
+
+func (in *http2healthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckProxyHeader] {
+	return pulumix.Output[*HTTP2HealthCheckProxyHeader]{
+		OutputState: in.ToHTTP2HealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Weight report mode. used for weighted Load Balancing.
@@ -13846,6 +15305,12 @@ func (o HTTP2HealthCheckWeightReportModeOutput) ToHTTP2HealthCheckWeightReportMo
 	}).(HTTP2HealthCheckWeightReportModePtrOutput)
 }
 
+func (o HTTP2HealthCheckWeightReportModeOutput) ToOutput(ctx context.Context) pulumix.Output[HTTP2HealthCheckWeightReportMode] {
+	return pulumix.Output[HTTP2HealthCheckWeightReportMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTP2HealthCheckWeightReportModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -13879,6 +15344,12 @@ func (o HTTP2HealthCheckWeightReportModePtrOutput) ToHTTP2HealthCheckWeightRepor
 
 func (o HTTP2HealthCheckWeightReportModePtrOutput) ToHTTP2HealthCheckWeightReportModePtrOutputWithContext(ctx context.Context) HTTP2HealthCheckWeightReportModePtrOutput {
 	return o
+}
+
+func (o HTTP2HealthCheckWeightReportModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckWeightReportMode] {
+	return pulumix.Output[*HTTP2HealthCheckWeightReportMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTP2HealthCheckWeightReportModePtrOutput) Elem() HTTP2HealthCheckWeightReportModeOutput {
@@ -13941,6 +15412,12 @@ func (in *http2healthCheckWeightReportModePtr) ToHTTP2HealthCheckWeightReportMod
 
 func (in *http2healthCheckWeightReportModePtr) ToHTTP2HealthCheckWeightReportModePtrOutputWithContext(ctx context.Context) HTTP2HealthCheckWeightReportModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTP2HealthCheckWeightReportModePtrOutput)
+}
+
+func (in *http2healthCheckWeightReportModePtr) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckWeightReportMode] {
+	return pulumix.Output[*HTTP2HealthCheckWeightReportMode]{
+		OutputState: in.ToHTTP2HealthCheckWeightReportModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -14015,6 +15492,12 @@ func (o HTTPHealthCheckPortSpecificationOutput) ToHTTPHealthCheckPortSpecificati
 	}).(HTTPHealthCheckPortSpecificationPtrOutput)
 }
 
+func (o HTTPHealthCheckPortSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPHealthCheckPortSpecification] {
+	return pulumix.Output[HTTPHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTPHealthCheckPortSpecificationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -14048,6 +15531,12 @@ func (o HTTPHealthCheckPortSpecificationPtrOutput) ToHTTPHealthCheckPortSpecific
 
 func (o HTTPHealthCheckPortSpecificationPtrOutput) ToHTTPHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTPHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o HTTPHealthCheckPortSpecificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckPortSpecification] {
+	return pulumix.Output[*HTTPHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPHealthCheckPortSpecificationPtrOutput) Elem() HTTPHealthCheckPortSpecificationOutput {
@@ -14110,6 +15599,12 @@ func (in *httphealthCheckPortSpecificationPtr) ToHTTPHealthCheckPortSpecificatio
 
 func (in *httphealthCheckPortSpecificationPtr) ToHTTPHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTPHealthCheckPortSpecificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPHealthCheckPortSpecificationPtrOutput)
+}
+
+func (in *httphealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckPortSpecification] {
+	return pulumix.Output[*HTTPHealthCheckPortSpecification]{
+		OutputState: in.ToHTTPHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -14180,6 +15675,12 @@ func (o HTTPHealthCheckProxyHeaderOutput) ToHTTPHealthCheckProxyHeaderPtrOutputW
 	}).(HTTPHealthCheckProxyHeaderPtrOutput)
 }
 
+func (o HTTPHealthCheckProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPHealthCheckProxyHeader] {
+	return pulumix.Output[HTTPHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTPHealthCheckProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -14213,6 +15714,12 @@ func (o HTTPHealthCheckProxyHeaderPtrOutput) ToHTTPHealthCheckProxyHeaderPtrOutp
 
 func (o HTTPHealthCheckProxyHeaderPtrOutput) ToHTTPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o HTTPHealthCheckProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckProxyHeader] {
+	return pulumix.Output[*HTTPHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPHealthCheckProxyHeaderPtrOutput) Elem() HTTPHealthCheckProxyHeaderOutput {
@@ -14275,6 +15782,12 @@ func (in *httphealthCheckProxyHeaderPtr) ToHTTPHealthCheckProxyHeaderPtrOutput()
 
 func (in *httphealthCheckProxyHeaderPtr) ToHTTPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPHealthCheckProxyHeaderPtrOutput)
+}
+
+func (in *httphealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckProxyHeader] {
+	return pulumix.Output[*HTTPHealthCheckProxyHeader]{
+		OutputState: in.ToHTTPHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Weight report mode. used for weighted Load Balancing.
@@ -14349,6 +15862,12 @@ func (o HTTPHealthCheckWeightReportModeOutput) ToHTTPHealthCheckWeightReportMode
 	}).(HTTPHealthCheckWeightReportModePtrOutput)
 }
 
+func (o HTTPHealthCheckWeightReportModeOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPHealthCheckWeightReportMode] {
+	return pulumix.Output[HTTPHealthCheckWeightReportMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTPHealthCheckWeightReportModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -14382,6 +15901,12 @@ func (o HTTPHealthCheckWeightReportModePtrOutput) ToHTTPHealthCheckWeightReportM
 
 func (o HTTPHealthCheckWeightReportModePtrOutput) ToHTTPHealthCheckWeightReportModePtrOutputWithContext(ctx context.Context) HTTPHealthCheckWeightReportModePtrOutput {
 	return o
+}
+
+func (o HTTPHealthCheckWeightReportModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckWeightReportMode] {
+	return pulumix.Output[*HTTPHealthCheckWeightReportMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPHealthCheckWeightReportModePtrOutput) Elem() HTTPHealthCheckWeightReportModeOutput {
@@ -14444,6 +15969,12 @@ func (in *httphealthCheckWeightReportModePtr) ToHTTPHealthCheckWeightReportModeP
 
 func (in *httphealthCheckWeightReportModePtr) ToHTTPHealthCheckWeightReportModePtrOutputWithContext(ctx context.Context) HTTPHealthCheckWeightReportModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPHealthCheckWeightReportModePtrOutput)
+}
+
+func (in *httphealthCheckWeightReportModePtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckWeightReportMode] {
+	return pulumix.Output[*HTTPHealthCheckWeightReportMode]{
+		OutputState: in.ToHTTPHealthCheckWeightReportModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -14518,6 +16049,12 @@ func (o HTTPSHealthCheckPortSpecificationOutput) ToHTTPSHealthCheckPortSpecifica
 	}).(HTTPSHealthCheckPortSpecificationPtrOutput)
 }
 
+func (o HTTPSHealthCheckPortSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPSHealthCheckPortSpecification] {
+	return pulumix.Output[HTTPSHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTPSHealthCheckPortSpecificationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -14551,6 +16088,12 @@ func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToHTTPSHealthCheckPortSpecif
 
 func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToHTTPSHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckPortSpecification] {
+	return pulumix.Output[*HTTPSHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPSHealthCheckPortSpecificationPtrOutput) Elem() HTTPSHealthCheckPortSpecificationOutput {
@@ -14613,6 +16156,12 @@ func (in *httpshealthCheckPortSpecificationPtr) ToHTTPSHealthCheckPortSpecificat
 
 func (in *httpshealthCheckPortSpecificationPtr) ToHTTPSHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckPortSpecificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSHealthCheckPortSpecificationPtrOutput)
+}
+
+func (in *httpshealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckPortSpecification] {
+	return pulumix.Output[*HTTPSHealthCheckPortSpecification]{
+		OutputState: in.ToHTTPSHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -14683,6 +16232,12 @@ func (o HTTPSHealthCheckProxyHeaderOutput) ToHTTPSHealthCheckProxyHeaderPtrOutpu
 	}).(HTTPSHealthCheckProxyHeaderPtrOutput)
 }
 
+func (o HTTPSHealthCheckProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPSHealthCheckProxyHeader] {
+	return pulumix.Output[HTTPSHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTPSHealthCheckProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -14716,6 +16271,12 @@ func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToHTTPSHealthCheckProxyHeaderPtrOu
 
 func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToHTTPSHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckProxyHeader] {
+	return pulumix.Output[*HTTPSHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPSHealthCheckProxyHeaderPtrOutput) Elem() HTTPSHealthCheckProxyHeaderOutput {
@@ -14778,6 +16339,12 @@ func (in *httpshealthCheckProxyHeaderPtr) ToHTTPSHealthCheckProxyHeaderPtrOutput
 
 func (in *httpshealthCheckProxyHeaderPtr) ToHTTPSHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSHealthCheckProxyHeaderPtrOutput)
+}
+
+func (in *httpshealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckProxyHeader] {
+	return pulumix.Output[*HTTPSHealthCheckProxyHeader]{
+		OutputState: in.ToHTTPSHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Weight report mode. used for weighted Load Balancing.
@@ -14852,6 +16419,12 @@ func (o HTTPSHealthCheckWeightReportModeOutput) ToHTTPSHealthCheckWeightReportMo
 	}).(HTTPSHealthCheckWeightReportModePtrOutput)
 }
 
+func (o HTTPSHealthCheckWeightReportModeOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPSHealthCheckWeightReportMode] {
+	return pulumix.Output[HTTPSHealthCheckWeightReportMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HTTPSHealthCheckWeightReportModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -14885,6 +16458,12 @@ func (o HTTPSHealthCheckWeightReportModePtrOutput) ToHTTPSHealthCheckWeightRepor
 
 func (o HTTPSHealthCheckWeightReportModePtrOutput) ToHTTPSHealthCheckWeightReportModePtrOutputWithContext(ctx context.Context) HTTPSHealthCheckWeightReportModePtrOutput {
 	return o
+}
+
+func (o HTTPSHealthCheckWeightReportModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckWeightReportMode] {
+	return pulumix.Output[*HTTPSHealthCheckWeightReportMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPSHealthCheckWeightReportModePtrOutput) Elem() HTTPSHealthCheckWeightReportModeOutput {
@@ -14947,6 +16526,12 @@ func (in *httpshealthCheckWeightReportModePtr) ToHTTPSHealthCheckWeightReportMod
 
 func (in *httpshealthCheckWeightReportModePtr) ToHTTPSHealthCheckWeightReportModePtrOutputWithContext(ctx context.Context) HTTPSHealthCheckWeightReportModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSHealthCheckWeightReportModePtrOutput)
+}
+
+func (in *httpshealthCheckWeightReportModePtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckWeightReportMode] {
+	return pulumix.Output[*HTTPSHealthCheckWeightReportMode]{
+		OutputState: in.ToHTTPSHealthCheckWeightReportModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
@@ -15023,6 +16608,12 @@ func (o HealthCheckTypeOutput) ToHealthCheckTypePtrOutputWithContext(ctx context
 	}).(HealthCheckTypePtrOutput)
 }
 
+func (o HealthCheckTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HealthCheckType] {
+	return pulumix.Output[HealthCheckType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HealthCheckTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -15056,6 +16647,12 @@ func (o HealthCheckTypePtrOutput) ToHealthCheckTypePtrOutput() HealthCheckTypePt
 
 func (o HealthCheckTypePtrOutput) ToHealthCheckTypePtrOutputWithContext(ctx context.Context) HealthCheckTypePtrOutput {
 	return o
+}
+
+func (o HealthCheckTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthCheckType] {
+	return pulumix.Output[*HealthCheckType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HealthCheckTypePtrOutput) Elem() HealthCheckTypeOutput {
@@ -15118,6 +16715,12 @@ func (in *healthCheckTypePtr) ToHealthCheckTypePtrOutput() HealthCheckTypePtrOut
 
 func (in *healthCheckTypePtr) ToHealthCheckTypePtrOutputWithContext(ctx context.Context) HealthCheckTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HealthCheckTypePtrOutput)
+}
+
+func (in *healthCheckTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HealthCheckType] {
+	return pulumix.Output[*HealthCheckType]{
+		OutputState: in.ToHealthCheckTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
@@ -15196,6 +16799,12 @@ func (o HttpRedirectActionRedirectResponseCodeOutput) ToHttpRedirectActionRedire
 	}).(HttpRedirectActionRedirectResponseCodePtrOutput)
 }
 
+func (o HttpRedirectActionRedirectResponseCodeOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRedirectActionRedirectResponseCode] {
+	return pulumix.Output[HttpRedirectActionRedirectResponseCode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpRedirectActionRedirectResponseCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -15229,6 +16838,12 @@ func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToHttpRedirectActionRed
 
 func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToHttpRedirectActionRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRedirectActionRedirectResponseCodePtrOutput {
 	return o
+}
+
+func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRedirectActionRedirectResponseCode] {
+	return pulumix.Output[*HttpRedirectActionRedirectResponseCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRedirectActionRedirectResponseCodePtrOutput) Elem() HttpRedirectActionRedirectResponseCodeOutput {
@@ -15291,6 +16906,12 @@ func (in *httpRedirectActionRedirectResponseCodePtr) ToHttpRedirectActionRedirec
 
 func (in *httpRedirectActionRedirectResponseCodePtr) ToHttpRedirectActionRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRedirectActionRedirectResponseCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpRedirectActionRedirectResponseCodePtrOutput)
+}
+
+func (in *httpRedirectActionRedirectResponseCodePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpRedirectActionRedirectResponseCode] {
+	return pulumix.Output[*HttpRedirectActionRedirectResponseCode]{
+		OutputState: in.ToHttpRedirectActionRedirectResponseCodePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The architecture of the image. Valid values are ARM64 or X86_64.
@@ -15365,6 +16986,12 @@ func (o ImageArchitectureOutput) ToImageArchitecturePtrOutputWithContext(ctx con
 	}).(ImageArchitecturePtrOutput)
 }
 
+func (o ImageArchitectureOutput) ToOutput(ctx context.Context) pulumix.Output[ImageArchitecture] {
+	return pulumix.Output[ImageArchitecture]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageArchitectureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -15398,6 +17025,12 @@ func (o ImageArchitecturePtrOutput) ToImageArchitecturePtrOutput() ImageArchitec
 
 func (o ImageArchitecturePtrOutput) ToImageArchitecturePtrOutputWithContext(ctx context.Context) ImageArchitecturePtrOutput {
 	return o
+}
+
+func (o ImageArchitecturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageArchitecture] {
+	return pulumix.Output[*ImageArchitecture]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageArchitecturePtrOutput) Elem() ImageArchitectureOutput {
@@ -15460,6 +17093,12 @@ func (in *imageArchitecturePtr) ToImageArchitecturePtrOutput() ImageArchitecture
 
 func (in *imageArchitecturePtr) ToImageArchitecturePtrOutputWithContext(ctx context.Context) ImageArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImageArchitecturePtrOutput)
+}
+
+func (in *imageArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageArchitecture] {
+	return pulumix.Output[*ImageArchitecture]{
+		OutputState: in.ToImageArchitecturePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
@@ -15529,6 +17168,12 @@ func (o ImageRawDiskContainerTypeOutput) ToImageRawDiskContainerTypePtrOutputWit
 	}).(ImageRawDiskContainerTypePtrOutput)
 }
 
+func (o ImageRawDiskContainerTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ImageRawDiskContainerType] {
+	return pulumix.Output[ImageRawDiskContainerType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageRawDiskContainerTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -15562,6 +17207,12 @@ func (o ImageRawDiskContainerTypePtrOutput) ToImageRawDiskContainerTypePtrOutput
 
 func (o ImageRawDiskContainerTypePtrOutput) ToImageRawDiskContainerTypePtrOutputWithContext(ctx context.Context) ImageRawDiskContainerTypePtrOutput {
 	return o
+}
+
+func (o ImageRawDiskContainerTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageRawDiskContainerType] {
+	return pulumix.Output[*ImageRawDiskContainerType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageRawDiskContainerTypePtrOutput) Elem() ImageRawDiskContainerTypeOutput {
@@ -15624,6 +17275,12 @@ func (in *imageRawDiskContainerTypePtr) ToImageRawDiskContainerTypePtrOutput() I
 
 func (in *imageRawDiskContainerTypePtr) ToImageRawDiskContainerTypePtrOutputWithContext(ctx context.Context) ImageRawDiskContainerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImageRawDiskContainerTypePtrOutput)
+}
+
+func (in *imageRawDiskContainerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageRawDiskContainerType] {
+	return pulumix.Output[*ImageRawDiskContainerType]{
+		OutputState: in.ToImageRawDiskContainerTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the image used to create this disk. The default and only valid value is RAW.
@@ -15693,6 +17350,12 @@ func (o ImageSourceTypeOutput) ToImageSourceTypePtrOutputWithContext(ctx context
 	}).(ImageSourceTypePtrOutput)
 }
 
+func (o ImageSourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ImageSourceType] {
+	return pulumix.Output[ImageSourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageSourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -15726,6 +17389,12 @@ func (o ImageSourceTypePtrOutput) ToImageSourceTypePtrOutput() ImageSourceTypePt
 
 func (o ImageSourceTypePtrOutput) ToImageSourceTypePtrOutputWithContext(ctx context.Context) ImageSourceTypePtrOutput {
 	return o
+}
+
+func (o ImageSourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageSourceType] {
+	return pulumix.Output[*ImageSourceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageSourceTypePtrOutput) Elem() ImageSourceTypeOutput {
@@ -15788,6 +17457,12 @@ func (in *imageSourceTypePtr) ToImageSourceTypePtrOutput() ImageSourceTypePtrOut
 
 func (in *imageSourceTypePtr) ToImageSourceTypePtrOutputWithContext(ctx context.Context) ImageSourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImageSourceTypePtrOutput)
+}
+
+func (in *imageSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageSourceType] {
+	return pulumix.Output[*ImageSourceType]{
+		OutputState: in.ToImageSourceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // If you have configured an application-based health check for the group, this field controls whether to trigger VM autohealing based on a failed health check. Valid values are: - ON (default): The group recreates running VMs that fail the application-based health check. - OFF: When set to OFF, you can still observe instance health state, but the group does not recreate VMs that fail the application-based health check. This is useful for troubleshooting and setting up your health check configuration.
@@ -15860,6 +17535,12 @@ func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckOut
 	}).(InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput)
 }
 
+func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck] {
+	return pulumix.Output[InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -15893,6 +17574,12 @@ func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtr
 
 func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput) ToInstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck] {
+	return pulumix.Output[*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput) Elem() InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckOutput {
@@ -15955,6 +17642,12 @@ func (in *instanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckP
 
 func (in *instanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtr) ToInstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput)
+}
+
+func (in *instanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck] {
+	return pulumix.Output[*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck]{
+		OutputState: in.ToInstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
@@ -16025,6 +17718,12 @@ func (o InstanceGroupManagerFailoverActionOutput) ToInstanceGroupManagerFailover
 	}).(InstanceGroupManagerFailoverActionPtrOutput)
 }
 
+func (o InstanceGroupManagerFailoverActionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerFailoverAction] {
+	return pulumix.Output[InstanceGroupManagerFailoverAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerFailoverActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -16058,6 +17757,12 @@ func (o InstanceGroupManagerFailoverActionPtrOutput) ToInstanceGroupManagerFailo
 
 func (o InstanceGroupManagerFailoverActionPtrOutput) ToInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerFailoverActionPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerFailoverActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerFailoverAction] {
+	return pulumix.Output[*InstanceGroupManagerFailoverAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerFailoverActionPtrOutput) Elem() InstanceGroupManagerFailoverActionOutput {
@@ -16120,6 +17825,12 @@ func (in *instanceGroupManagerFailoverActionPtr) ToInstanceGroupManagerFailoverA
 
 func (in *instanceGroupManagerFailoverActionPtr) ToInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerFailoverActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerFailoverActionPtrOutput)
+}
+
+func (in *instanceGroupManagerFailoverActionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerFailoverAction] {
+	return pulumix.Output[*InstanceGroupManagerFailoverAction]{
+		OutputState: in.ToInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines behaviour for all instance or failures
@@ -16192,6 +17903,12 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput)
 	}).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput)
 }
 
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure] {
+	return pulumix.Output[InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -16225,6 +17942,12 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutp
 
 func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure] {
+	return pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput) Elem() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureOutput {
@@ -16287,6 +18010,12 @@ func (in *instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr) 
 
 func (in *instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr) ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput)
+}
+
+func (in *instanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure] {
+	return pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure]{
+		OutputState: in.ToInstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
@@ -16357,6 +18086,12 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) To
 	}).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
 }
 
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair] {
+	return pulumix.Output[InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -16390,6 +18125,12 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
 
 func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair] {
+	return pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) Elem() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput {
@@ -16452,6 +18193,12 @@ func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToI
 
 func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
+}
+
+func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair] {
+	return pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair]{
+		OutputState: in.ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Pagination behavior of the listManagedInstances API method for this managed instance group.
@@ -16524,6 +18271,12 @@ func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToInstanceGroupMa
 	}).(InstanceGroupManagerListManagedInstancesResultsPtrOutput)
 }
 
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerListManagedInstancesResults] {
+	return pulumix.Output[InstanceGroupManagerListManagedInstancesResults]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -16557,6 +18310,12 @@ func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToInstanceGrou
 
 func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerListManagedInstancesResults] {
+	return pulumix.Output[*InstanceGroupManagerListManagedInstancesResults]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) Elem() InstanceGroupManagerListManagedInstancesResultsOutput {
@@ -16619,6 +18378,12 @@ func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToInstanceGroupMan
 
 func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerListManagedInstancesResultsPtrOutput)
+}
+
+func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerListManagedInstancesResults] {
+	return pulumix.Output[*InstanceGroupManagerListManagedInstancesResults]{
+		OutputState: in.ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The unit of measure for the target size.
@@ -16691,6 +18456,12 @@ func (o InstanceGroupManagerTargetSizeUnitOutput) ToInstanceGroupManagerTargetSi
 	}).(InstanceGroupManagerTargetSizeUnitPtrOutput)
 }
 
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerTargetSizeUnit] {
+	return pulumix.Output[InstanceGroupManagerTargetSizeUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerTargetSizeUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -16724,6 +18495,12 @@ func (o InstanceGroupManagerTargetSizeUnitPtrOutput) ToInstanceGroupManagerTarge
 
 func (o InstanceGroupManagerTargetSizeUnitPtrOutput) ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerTargetSizeUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerTargetSizeUnit] {
+	return pulumix.Output[*InstanceGroupManagerTargetSizeUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerTargetSizeUnitPtrOutput) Elem() InstanceGroupManagerTargetSizeUnitOutput {
@@ -16786,6 +18563,12 @@ func (in *instanceGroupManagerTargetSizeUnitPtr) ToInstanceGroupManagerTargetSiz
 
 func (in *instanceGroupManagerTargetSizeUnitPtr) ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
+func (in *instanceGroupManagerTargetSizeUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerTargetSizeUnit] {
+	return pulumix.Output[*InstanceGroupManagerTargetSizeUnit]{
+		OutputState: in.ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled.
@@ -16858,6 +18641,12 @@ func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput) ToInst
 	}).(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput)
 }
 
+func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerUpdatePolicyInstanceRedistributionType] {
+	return pulumix.Output[InstanceGroupManagerUpdatePolicyInstanceRedistributionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -16891,6 +18680,12 @@ func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToI
 
 func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToInstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyInstanceRedistributionType] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyInstanceRedistributionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) Elem() InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput {
@@ -16953,6 +18748,12 @@ func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToInsta
 
 func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToInstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput)
+}
+
+func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyInstanceRedistributionType] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyInstanceRedistributionType]{
+		OutputState: in.ToInstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
@@ -17029,6 +18830,12 @@ func (o InstanceGroupManagerUpdatePolicyMinimalActionOutput) ToInstanceGroupMana
 	}).(InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput)
 }
 
+func (o InstanceGroupManagerUpdatePolicyMinimalActionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerUpdatePolicyMinimalAction] {
+	return pulumix.Output[InstanceGroupManagerUpdatePolicyMinimalAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerUpdatePolicyMinimalActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -17062,6 +18869,12 @@ func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToInstanceGroupM
 
 func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToInstanceGroupManagerUpdatePolicyMinimalActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyMinimalAction] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyMinimalAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) Elem() InstanceGroupManagerUpdatePolicyMinimalActionOutput {
@@ -17124,6 +18937,12 @@ func (in *instanceGroupManagerUpdatePolicyMinimalActionPtr) ToInstanceGroupManag
 
 func (in *instanceGroupManagerUpdatePolicyMinimalActionPtr) ToInstanceGroupManagerUpdatePolicyMinimalActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput)
+}
+
+func (in *instanceGroupManagerUpdatePolicyMinimalActionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyMinimalAction] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyMinimalAction]{
+		OutputState: in.ToInstanceGroupManagerUpdatePolicyMinimalActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
@@ -17200,6 +19019,12 @@ func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionOutput) ToIns
 	}).(InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput)
 }
 
+func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction] {
+	return pulumix.Output[InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -17233,6 +19058,12 @@ func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput) To
 
 func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput) ToInstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput) Elem() InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionOutput {
@@ -17295,6 +19126,12 @@ func (in *instanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtr) ToInst
 
 func (in *instanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtr) ToInstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput)
+}
+
+func (in *instanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction]{
+		OutputState: in.ToInstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // What action should be used to replace instances. See minimal_action.REPLACE
@@ -17367,6 +19204,12 @@ func (o InstanceGroupManagerUpdatePolicyReplacementMethodOutput) ToInstanceGroup
 	}).(InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput)
 }
 
+func (o InstanceGroupManagerUpdatePolicyReplacementMethodOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerUpdatePolicyReplacementMethod] {
+	return pulumix.Output[InstanceGroupManagerUpdatePolicyReplacementMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerUpdatePolicyReplacementMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -17400,6 +19243,12 @@ func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToInstanceGr
 
 func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToInstanceGroupManagerUpdatePolicyReplacementMethodPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyReplacementMethod] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyReplacementMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) Elem() InstanceGroupManagerUpdatePolicyReplacementMethodOutput {
@@ -17462,6 +19311,12 @@ func (in *instanceGroupManagerUpdatePolicyReplacementMethodPtr) ToInstanceGroupM
 
 func (in *instanceGroupManagerUpdatePolicyReplacementMethodPtr) ToInstanceGroupManagerUpdatePolicyReplacementMethodPtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput)
+}
+
+func (in *instanceGroupManagerUpdatePolicyReplacementMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyReplacementMethod] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyReplacementMethod]{
+		OutputState: in.ToInstanceGroupManagerUpdatePolicyReplacementMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -17534,6 +19389,12 @@ func (o InstanceGroupManagerUpdatePolicyTypeOutput) ToInstanceGroupManagerUpdate
 	}).(InstanceGroupManagerUpdatePolicyTypePtrOutput)
 }
 
+func (o InstanceGroupManagerUpdatePolicyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerUpdatePolicyType] {
+	return pulumix.Output[InstanceGroupManagerUpdatePolicyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupManagerUpdatePolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -17567,6 +19428,12 @@ func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToInstanceGroupManagerUpd
 
 func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToInstanceGroupManagerUpdatePolicyTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyTypePtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyType] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) Elem() InstanceGroupManagerUpdatePolicyTypeOutput {
@@ -17629,6 +19496,12 @@ func (in *instanceGroupManagerUpdatePolicyTypePtr) ToInstanceGroupManagerUpdateP
 
 func (in *instanceGroupManagerUpdatePolicyTypePtr) ToInstanceGroupManagerUpdatePolicyTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyTypePtrOutput)
+}
+
+func (in *instanceGroupManagerUpdatePolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyType] {
+	return pulumix.Output[*InstanceGroupManagerUpdatePolicyType]{
+		OutputState: in.ToInstanceGroupManagerUpdatePolicyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
@@ -17703,6 +19576,12 @@ func (o InstanceKeyRevocationActionTypeOutput) ToInstanceKeyRevocationActionType
 	}).(InstanceKeyRevocationActionTypePtrOutput)
 }
 
+func (o InstanceKeyRevocationActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceKeyRevocationActionType] {
+	return pulumix.Output[InstanceKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceKeyRevocationActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -17736,6 +19615,12 @@ func (o InstanceKeyRevocationActionTypePtrOutput) ToInstanceKeyRevocationActionT
 
 func (o InstanceKeyRevocationActionTypePtrOutput) ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypePtrOutput {
 	return o
+}
+
+func (o InstanceKeyRevocationActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceKeyRevocationActionType] {
+	return pulumix.Output[*InstanceKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceKeyRevocationActionTypePtrOutput) Elem() InstanceKeyRevocationActionTypeOutput {
@@ -17798,6 +19683,12 @@ func (in *instanceKeyRevocationActionTypePtr) ToInstanceKeyRevocationActionTypeP
 
 func (in *instanceKeyRevocationActionTypePtr) ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceKeyRevocationActionTypePtrOutput)
+}
+
+func (in *instanceKeyRevocationActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceKeyRevocationActionType] {
+	return pulumix.Output[*InstanceKeyRevocationActionType]{
+		OutputState: in.ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -17872,6 +19763,12 @@ func (o InstancePostKeyRevocationActionTypeOutput) ToInstancePostKeyRevocationAc
 	}).(InstancePostKeyRevocationActionTypePtrOutput)
 }
 
+func (o InstancePostKeyRevocationActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePostKeyRevocationActionType] {
+	return pulumix.Output[InstancePostKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstancePostKeyRevocationActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -17905,6 +19802,12 @@ func (o InstancePostKeyRevocationActionTypePtrOutput) ToInstancePostKeyRevocatio
 
 func (o InstancePostKeyRevocationActionTypePtrOutput) ToInstancePostKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePostKeyRevocationActionTypePtrOutput {
 	return o
+}
+
+func (o InstancePostKeyRevocationActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePostKeyRevocationActionType] {
+	return pulumix.Output[*InstancePostKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePostKeyRevocationActionTypePtrOutput) Elem() InstancePostKeyRevocationActionTypeOutput {
@@ -17967,6 +19870,12 @@ func (in *instancePostKeyRevocationActionTypePtr) ToInstancePostKeyRevocationAct
 
 func (in *instancePostKeyRevocationActionTypePtr) ToInstancePostKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePostKeyRevocationActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePostKeyRevocationActionTypePtrOutput)
+}
+
+func (in *instancePostKeyRevocationActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePostKeyRevocationActionType] {
+	return pulumix.Output[*InstancePostKeyRevocationActionType]{
+		OutputState: in.ToInstancePostKeyRevocationActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -18041,6 +19950,12 @@ func (o InstancePrivateIpv6GoogleAccessOutput) ToInstancePrivateIpv6GoogleAccess
 	}).(InstancePrivateIpv6GoogleAccessPtrOutput)
 }
 
+func (o InstancePrivateIpv6GoogleAccessOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePrivateIpv6GoogleAccess] {
+	return pulumix.Output[InstancePrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstancePrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -18074,6 +19989,12 @@ func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToInstancePrivateIpv6GoogleAcc
 
 func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToInstancePrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePrivateIpv6GoogleAccess] {
+	return pulumix.Output[*InstancePrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePrivateIpv6GoogleAccessPtrOutput) Elem() InstancePrivateIpv6GoogleAccessOutput {
@@ -18136,6 +20057,12 @@ func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessP
 
 func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePrivateIpv6GoogleAccessPtrOutput)
+}
+
+func (in *instancePrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePrivateIpv6GoogleAccess] {
+	return pulumix.Output[*InstancePrivateIpv6GoogleAccess]{
+		OutputState: in.ToInstancePrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
@@ -18210,6 +20137,12 @@ func (o InstancePropertiesKeyRevocationActionTypeOutput) ToInstancePropertiesKey
 	}).(InstancePropertiesKeyRevocationActionTypePtrOutput)
 }
 
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePropertiesKeyRevocationActionType] {
+	return pulumix.Output[InstancePropertiesKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstancePropertiesKeyRevocationActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -18243,6 +20176,12 @@ func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToInstanceProperties
 
 func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypePtrOutput {
 	return o
+}
+
+func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesKeyRevocationActionType] {
+	return pulumix.Output[*InstancePropertiesKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePropertiesKeyRevocationActionTypePtrOutput) Elem() InstancePropertiesKeyRevocationActionTypeOutput {
@@ -18305,6 +20244,12 @@ func (in *instancePropertiesKeyRevocationActionTypePtr) ToInstancePropertiesKeyR
 
 func (in *instancePropertiesKeyRevocationActionTypePtr) ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePropertiesKeyRevocationActionTypePtrOutput)
+}
+
+func (in *instancePropertiesKeyRevocationActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesKeyRevocationActionType] {
+	return pulumix.Output[*InstancePropertiesKeyRevocationActionType]{
+		OutputState: in.ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -18379,6 +20324,12 @@ func (o InstancePropertiesPostKeyRevocationActionTypeOutput) ToInstancePropertie
 	}).(InstancePropertiesPostKeyRevocationActionTypePtrOutput)
 }
 
+func (o InstancePropertiesPostKeyRevocationActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePropertiesPostKeyRevocationActionType] {
+	return pulumix.Output[InstancePropertiesPostKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstancePropertiesPostKeyRevocationActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -18412,6 +20363,12 @@ func (o InstancePropertiesPostKeyRevocationActionTypePtrOutput) ToInstanceProper
 
 func (o InstancePropertiesPostKeyRevocationActionTypePtrOutput) ToInstancePropertiesPostKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesPostKeyRevocationActionTypePtrOutput {
 	return o
+}
+
+func (o InstancePropertiesPostKeyRevocationActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesPostKeyRevocationActionType] {
+	return pulumix.Output[*InstancePropertiesPostKeyRevocationActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePropertiesPostKeyRevocationActionTypePtrOutput) Elem() InstancePropertiesPostKeyRevocationActionTypeOutput {
@@ -18474,6 +20431,12 @@ func (in *instancePropertiesPostKeyRevocationActionTypePtr) ToInstanceProperties
 
 func (in *instancePropertiesPostKeyRevocationActionTypePtr) ToInstancePropertiesPostKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesPostKeyRevocationActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePropertiesPostKeyRevocationActionTypePtrOutput)
+}
+
+func (in *instancePropertiesPostKeyRevocationActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesPostKeyRevocationActionType] {
+	return pulumix.Output[*InstancePropertiesPostKeyRevocationActionType]{
+		OutputState: in.ToInstancePropertiesPostKeyRevocationActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -18548,6 +20511,12 @@ func (o InstancePropertiesPrivateIpv6GoogleAccessOutput) ToInstancePropertiesPri
 	}).(InstancePropertiesPrivateIpv6GoogleAccessPtrOutput)
 }
 
+func (o InstancePropertiesPrivateIpv6GoogleAccessOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePropertiesPrivateIpv6GoogleAccess] {
+	return pulumix.Output[InstancePropertiesPrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstancePropertiesPrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -18581,6 +20550,12 @@ func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToInstanceProperties
 
 func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToInstancePropertiesPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePropertiesPrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesPrivateIpv6GoogleAccess] {
+	return pulumix.Output[*InstancePropertiesPrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) Elem() InstancePropertiesPrivateIpv6GoogleAccessOutput {
@@ -18643,6 +20618,12 @@ func (in *instancePropertiesPrivateIpv6GoogleAccessPtr) ToInstancePropertiesPriv
 
 func (in *instancePropertiesPrivateIpv6GoogleAccessPtr) ToInstancePropertiesPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePropertiesPrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePropertiesPrivateIpv6GoogleAccessPtrOutput)
+}
+
+func (in *instancePropertiesPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesPrivateIpv6GoogleAccess] {
+	return pulumix.Output[*InstancePropertiesPrivateIpv6GoogleAccess]{
+		OutputState: in.ToInstancePropertiesPrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
@@ -18735,6 +20716,12 @@ func (o InterconnectAttachmentBandwidthOutput) ToInterconnectAttachmentBandwidth
 	}).(InterconnectAttachmentBandwidthPtrOutput)
 }
 
+func (o InterconnectAttachmentBandwidthOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachmentBandwidth] {
+	return pulumix.Output[InterconnectAttachmentBandwidth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectAttachmentBandwidthOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -18768,6 +20755,12 @@ func (o InterconnectAttachmentBandwidthPtrOutput) ToInterconnectAttachmentBandwi
 
 func (o InterconnectAttachmentBandwidthPtrOutput) ToInterconnectAttachmentBandwidthPtrOutputWithContext(ctx context.Context) InterconnectAttachmentBandwidthPtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentBandwidthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentBandwidth] {
+	return pulumix.Output[*InterconnectAttachmentBandwidth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectAttachmentBandwidthPtrOutput) Elem() InterconnectAttachmentBandwidthOutput {
@@ -18830,6 +20823,12 @@ func (in *interconnectAttachmentBandwidthPtr) ToInterconnectAttachmentBandwidthP
 
 func (in *interconnectAttachmentBandwidthPtr) ToInterconnectAttachmentBandwidthPtrOutputWithContext(ctx context.Context) InterconnectAttachmentBandwidthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentBandwidthPtrOutput)
+}
+
+func (in *interconnectAttachmentBandwidthPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentBandwidth] {
+	return pulumix.Output[*InterconnectAttachmentBandwidth]{
+		OutputState: in.ToInterconnectAttachmentBandwidthPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
@@ -18901,6 +20900,12 @@ func (o InterconnectAttachmentEdgeAvailabilityDomainOutput) ToInterconnectAttach
 	}).(InterconnectAttachmentEdgeAvailabilityDomainPtrOutput)
 }
 
+func (o InterconnectAttachmentEdgeAvailabilityDomainOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachmentEdgeAvailabilityDomain] {
+	return pulumix.Output[InterconnectAttachmentEdgeAvailabilityDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectAttachmentEdgeAvailabilityDomainOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -18934,6 +20939,12 @@ func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToInterconnectAtt
 
 func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToInterconnectAttachmentEdgeAvailabilityDomainPtrOutputWithContext(ctx context.Context) InterconnectAttachmentEdgeAvailabilityDomainPtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentEdgeAvailabilityDomain] {
+	return pulumix.Output[*InterconnectAttachmentEdgeAvailabilityDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) Elem() InterconnectAttachmentEdgeAvailabilityDomainOutput {
@@ -18996,6 +21007,12 @@ func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToInterconnectAttachm
 
 func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToInterconnectAttachmentEdgeAvailabilityDomainPtrOutputWithContext(ctx context.Context) InterconnectAttachmentEdgeAvailabilityDomainPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentEdgeAvailabilityDomainPtrOutput)
+}
+
+func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentEdgeAvailabilityDomain] {
+	return pulumix.Output[*InterconnectAttachmentEdgeAvailabilityDomain]{
+		OutputState: in.ToInterconnectAttachmentEdgeAvailabilityDomainPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option.
@@ -19068,6 +21085,12 @@ func (o InterconnectAttachmentEncryptionOutput) ToInterconnectAttachmentEncrypti
 	}).(InterconnectAttachmentEncryptionPtrOutput)
 }
 
+func (o InterconnectAttachmentEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachmentEncryption] {
+	return pulumix.Output[InterconnectAttachmentEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectAttachmentEncryptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -19101,6 +21124,12 @@ func (o InterconnectAttachmentEncryptionPtrOutput) ToInterconnectAttachmentEncry
 
 func (o InterconnectAttachmentEncryptionPtrOutput) ToInterconnectAttachmentEncryptionPtrOutputWithContext(ctx context.Context) InterconnectAttachmentEncryptionPtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentEncryption] {
+	return pulumix.Output[*InterconnectAttachmentEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectAttachmentEncryptionPtrOutput) Elem() InterconnectAttachmentEncryptionOutput {
@@ -19163,6 +21192,12 @@ func (in *interconnectAttachmentEncryptionPtr) ToInterconnectAttachmentEncryptio
 
 func (in *interconnectAttachmentEncryptionPtr) ToInterconnectAttachmentEncryptionPtrOutputWithContext(ctx context.Context) InterconnectAttachmentEncryptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentEncryptionPtrOutput)
+}
+
+func (in *interconnectAttachmentEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentEncryption] {
+	return pulumix.Output[*InterconnectAttachmentEncryption]{
+		OutputState: in.ToInterconnectAttachmentEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
@@ -19235,6 +21270,12 @@ func (o InterconnectAttachmentStackTypeOutput) ToInterconnectAttachmentStackType
 	}).(InterconnectAttachmentStackTypePtrOutput)
 }
 
+func (o InterconnectAttachmentStackTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachmentStackType] {
+	return pulumix.Output[InterconnectAttachmentStackType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectAttachmentStackTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -19268,6 +21309,12 @@ func (o InterconnectAttachmentStackTypePtrOutput) ToInterconnectAttachmentStackT
 
 func (o InterconnectAttachmentStackTypePtrOutput) ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypePtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentStackTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentStackType] {
+	return pulumix.Output[*InterconnectAttachmentStackType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectAttachmentStackTypePtrOutput) Elem() InterconnectAttachmentStackTypeOutput {
@@ -19330,6 +21377,12 @@ func (in *interconnectAttachmentStackTypePtr) ToInterconnectAttachmentStackTypeP
 
 func (in *interconnectAttachmentStackTypePtr) ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentStackTypePtrOutput)
+}
+
+func (in *interconnectAttachmentStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentStackType] {
+	return pulumix.Output[*InterconnectAttachmentStackType]{
+		OutputState: in.ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
@@ -19404,6 +21457,12 @@ func (o InterconnectAttachmentTypeOutput) ToInterconnectAttachmentTypePtrOutputW
 	}).(InterconnectAttachmentTypePtrOutput)
 }
 
+func (o InterconnectAttachmentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectAttachmentType] {
+	return pulumix.Output[InterconnectAttachmentType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectAttachmentTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -19437,6 +21496,12 @@ func (o InterconnectAttachmentTypePtrOutput) ToInterconnectAttachmentTypePtrOutp
 
 func (o InterconnectAttachmentTypePtrOutput) ToInterconnectAttachmentTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentTypePtrOutput {
 	return o
+}
+
+func (o InterconnectAttachmentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentType] {
+	return pulumix.Output[*InterconnectAttachmentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectAttachmentTypePtrOutput) Elem() InterconnectAttachmentTypeOutput {
@@ -19499,6 +21564,12 @@ func (in *interconnectAttachmentTypePtr) ToInterconnectAttachmentTypePtrOutput()
 
 func (in *interconnectAttachmentTypePtr) ToInterconnectAttachmentTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentTypePtrOutput)
+}
+
+func (in *interconnectAttachmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentType] {
+	return pulumix.Output[*InterconnectAttachmentType]{
+		OutputState: in.ToInterconnectAttachmentTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
@@ -19573,6 +21644,12 @@ func (o InterconnectInterconnectTypeOutput) ToInterconnectInterconnectTypePtrOut
 	}).(InterconnectInterconnectTypePtrOutput)
 }
 
+func (o InterconnectInterconnectTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectInterconnectType] {
+	return pulumix.Output[InterconnectInterconnectType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectInterconnectTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -19606,6 +21683,12 @@ func (o InterconnectInterconnectTypePtrOutput) ToInterconnectInterconnectTypePtr
 
 func (o InterconnectInterconnectTypePtrOutput) ToInterconnectInterconnectTypePtrOutputWithContext(ctx context.Context) InterconnectInterconnectTypePtrOutput {
 	return o
+}
+
+func (o InterconnectInterconnectTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectInterconnectType] {
+	return pulumix.Output[*InterconnectInterconnectType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectInterconnectTypePtrOutput) Elem() InterconnectInterconnectTypeOutput {
@@ -19668,6 +21751,12 @@ func (in *interconnectInterconnectTypePtr) ToInterconnectInterconnectTypePtrOutp
 
 func (in *interconnectInterconnectTypePtr) ToInterconnectInterconnectTypePtrOutputWithContext(ctx context.Context) InterconnectInterconnectTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectInterconnectTypePtrOutput)
+}
+
+func (in *interconnectInterconnectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectInterconnectType] {
+	return pulumix.Output[*InterconnectInterconnectType]{
+		OutputState: in.ToInterconnectInterconnectTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
@@ -19740,6 +21829,12 @@ func (o InterconnectLinkTypeOutput) ToInterconnectLinkTypePtrOutputWithContext(c
 	}).(InterconnectLinkTypePtrOutput)
 }
 
+func (o InterconnectLinkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectLinkType] {
+	return pulumix.Output[InterconnectLinkType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectLinkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -19773,6 +21868,12 @@ func (o InterconnectLinkTypePtrOutput) ToInterconnectLinkTypePtrOutput() Interco
 
 func (o InterconnectLinkTypePtrOutput) ToInterconnectLinkTypePtrOutputWithContext(ctx context.Context) InterconnectLinkTypePtrOutput {
 	return o
+}
+
+func (o InterconnectLinkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectLinkType] {
+	return pulumix.Output[*InterconnectLinkType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectLinkTypePtrOutput) Elem() InterconnectLinkTypeOutput {
@@ -19835,6 +21936,12 @@ func (in *interconnectLinkTypePtr) ToInterconnectLinkTypePtrOutput() Interconnec
 
 func (in *interconnectLinkTypePtr) ToInterconnectLinkTypePtrOutputWithContext(ctx context.Context) InterconnectLinkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectLinkTypePtrOutput)
+}
+
+func (in *interconnectLinkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectLinkType] {
+	return pulumix.Output[*InterconnectLinkType]{
+		OutputState: in.ToInterconnectLinkTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type InterconnectRequestedFeaturesItem string
@@ -19904,6 +22011,12 @@ func (o InterconnectRequestedFeaturesItemOutput) ToInterconnectRequestedFeatures
 	}).(InterconnectRequestedFeaturesItemPtrOutput)
 }
 
+func (o InterconnectRequestedFeaturesItemOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectRequestedFeaturesItem] {
+	return pulumix.Output[InterconnectRequestedFeaturesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectRequestedFeaturesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -19937,6 +22050,12 @@ func (o InterconnectRequestedFeaturesItemPtrOutput) ToInterconnectRequestedFeatu
 
 func (o InterconnectRequestedFeaturesItemPtrOutput) ToInterconnectRequestedFeaturesItemPtrOutputWithContext(ctx context.Context) InterconnectRequestedFeaturesItemPtrOutput {
 	return o
+}
+
+func (o InterconnectRequestedFeaturesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectRequestedFeaturesItem] {
+	return pulumix.Output[*InterconnectRequestedFeaturesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectRequestedFeaturesItemPtrOutput) Elem() InterconnectRequestedFeaturesItemOutput {
@@ -20001,6 +22120,12 @@ func (in *interconnectRequestedFeaturesItemPtr) ToInterconnectRequestedFeaturesI
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectRequestedFeaturesItemPtrOutput)
 }
 
+func (in *interconnectRequestedFeaturesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectRequestedFeaturesItem] {
+	return pulumix.Output[*InterconnectRequestedFeaturesItem]{
+		OutputState: in.ToInterconnectRequestedFeaturesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InterconnectRequestedFeaturesItemArrayInput is an input type that accepts InterconnectRequestedFeaturesItemArray and InterconnectRequestedFeaturesItemArrayOutput values.
 // You can construct a concrete instance of `InterconnectRequestedFeaturesItemArrayInput` via:
 //
@@ -20026,6 +22151,12 @@ func (i InterconnectRequestedFeaturesItemArray) ToInterconnectRequestedFeaturesI
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectRequestedFeaturesItemArrayOutput)
 }
 
+func (i InterconnectRequestedFeaturesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]InterconnectRequestedFeaturesItem] {
+	return pulumix.Output[[]InterconnectRequestedFeaturesItem]{
+		OutputState: i.ToInterconnectRequestedFeaturesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterconnectRequestedFeaturesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (InterconnectRequestedFeaturesItemArrayOutput) ElementType() reflect.Type {
@@ -20038,6 +22169,12 @@ func (o InterconnectRequestedFeaturesItemArrayOutput) ToInterconnectRequestedFea
 
 func (o InterconnectRequestedFeaturesItemArrayOutput) ToInterconnectRequestedFeaturesItemArrayOutputWithContext(ctx context.Context) InterconnectRequestedFeaturesItemArrayOutput {
 	return o
+}
+
+func (o InterconnectRequestedFeaturesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InterconnectRequestedFeaturesItem] {
+	return pulumix.Output[[]InterconnectRequestedFeaturesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectRequestedFeaturesItemArrayOutput) Index(i pulumi.IntInput) InterconnectRequestedFeaturesItemOutput {
@@ -20118,6 +22255,12 @@ func (o LocationPolicyTargetShapeOutput) ToLocationPolicyTargetShapePtrOutputWit
 	}).(LocationPolicyTargetShapePtrOutput)
 }
 
+func (o LocationPolicyTargetShapeOutput) ToOutput(ctx context.Context) pulumix.Output[LocationPolicyTargetShape] {
+	return pulumix.Output[LocationPolicyTargetShape]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LocationPolicyTargetShapeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -20151,6 +22294,12 @@ func (o LocationPolicyTargetShapePtrOutput) ToLocationPolicyTargetShapePtrOutput
 
 func (o LocationPolicyTargetShapePtrOutput) ToLocationPolicyTargetShapePtrOutputWithContext(ctx context.Context) LocationPolicyTargetShapePtrOutput {
 	return o
+}
+
+func (o LocationPolicyTargetShapePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocationPolicyTargetShape] {
+	return pulumix.Output[*LocationPolicyTargetShape]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LocationPolicyTargetShapePtrOutput) Elem() LocationPolicyTargetShapeOutput {
@@ -20213,6 +22362,12 @@ func (in *locationPolicyTargetShapePtr) ToLocationPolicyTargetShapePtrOutput() L
 
 func (in *locationPolicyTargetShapePtr) ToLocationPolicyTargetShapePtrOutputWithContext(ctx context.Context) LocationPolicyTargetShapePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LocationPolicyTargetShapePtrOutput)
+}
+
+func (in *locationPolicyTargetShapePtr) ToOutput(ctx context.Context) pulumix.Output[*LocationPolicyTargetShape] {
+	return pulumix.Output[*LocationPolicyTargetShape]{
+		OutputState: in.ToLocationPolicyTargetShapePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -20287,6 +22442,12 @@ func (o LogConfigCloudAuditOptionsLogNameOutput) ToLogConfigCloudAuditOptionsLog
 	}).(LogConfigCloudAuditOptionsLogNamePtrOutput)
 }
 
+func (o LogConfigCloudAuditOptionsLogNameOutput) ToOutput(ctx context.Context) pulumix.Output[LogConfigCloudAuditOptionsLogName] {
+	return pulumix.Output[LogConfigCloudAuditOptionsLogName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogConfigCloudAuditOptionsLogNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -20320,6 +22481,12 @@ func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToLogConfigCloudAuditOptions
 
 func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToLogConfigCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) LogConfigCloudAuditOptionsLogNamePtrOutput {
 	return o
+}
+
+func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogConfigCloudAuditOptionsLogName] {
+	return pulumix.Output[*LogConfigCloudAuditOptionsLogName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogConfigCloudAuditOptionsLogNamePtrOutput) Elem() LogConfigCloudAuditOptionsLogNameOutput {
@@ -20382,6 +22549,12 @@ func (in *logConfigCloudAuditOptionsLogNamePtr) ToLogConfigCloudAuditOptionsLogN
 
 func (in *logConfigCloudAuditOptionsLogNamePtr) ToLogConfigCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) LogConfigCloudAuditOptionsLogNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogConfigCloudAuditOptionsLogNamePtrOutput)
+}
+
+func (in *logConfigCloudAuditOptionsLogNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LogConfigCloudAuditOptionsLogName] {
+	return pulumix.Output[*LogConfigCloudAuditOptionsLogName]{
+		OutputState: in.ToLogConfigCloudAuditOptionsLogNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -20454,6 +22627,12 @@ func (o LogConfigDataAccessOptionsLogModeOutput) ToLogConfigDataAccessOptionsLog
 	}).(LogConfigDataAccessOptionsLogModePtrOutput)
 }
 
+func (o LogConfigDataAccessOptionsLogModeOutput) ToOutput(ctx context.Context) pulumix.Output[LogConfigDataAccessOptionsLogMode] {
+	return pulumix.Output[LogConfigDataAccessOptionsLogMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogConfigDataAccessOptionsLogModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -20487,6 +22666,12 @@ func (o LogConfigDataAccessOptionsLogModePtrOutput) ToLogConfigDataAccessOptions
 
 func (o LogConfigDataAccessOptionsLogModePtrOutput) ToLogConfigDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) LogConfigDataAccessOptionsLogModePtrOutput {
 	return o
+}
+
+func (o LogConfigDataAccessOptionsLogModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogConfigDataAccessOptionsLogMode] {
+	return pulumix.Output[*LogConfigDataAccessOptionsLogMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogConfigDataAccessOptionsLogModePtrOutput) Elem() LogConfigDataAccessOptionsLogModeOutput {
@@ -20549,6 +22734,12 @@ func (in *logConfigDataAccessOptionsLogModePtr) ToLogConfigDataAccessOptionsLogM
 
 func (in *logConfigDataAccessOptionsLogModePtr) ToLogConfigDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) LogConfigDataAccessOptionsLogModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogConfigDataAccessOptionsLogModePtrOutput)
+}
+
+func (in *logConfigDataAccessOptionsLogModePtr) ToOutput(ctx context.Context) pulumix.Output[*LogConfigDataAccessOptionsLogMode] {
+	return pulumix.Output[*LogConfigDataAccessOptionsLogMode]{
+		OutputState: in.ToLogConfigDataAccessOptionsLogModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
@@ -20623,6 +22814,12 @@ func (o MetadataFilterFilterMatchCriteriaOutput) ToMetadataFilterFilterMatchCrit
 	}).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
 
+func (o MetadataFilterFilterMatchCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataFilterFilterMatchCriteria] {
+	return pulumix.Output[MetadataFilterFilterMatchCriteria]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetadataFilterFilterMatchCriteriaOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -20656,6 +22853,12 @@ func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToMetadataFilterFilterMatchC
 
 func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToMetadataFilterFilterMatchCriteriaPtrOutputWithContext(ctx context.Context) MetadataFilterFilterMatchCriteriaPtrOutput {
 	return o
+}
+
+func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataFilterFilterMatchCriteria] {
+	return pulumix.Output[*MetadataFilterFilterMatchCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetadataFilterFilterMatchCriteriaPtrOutput) Elem() MetadataFilterFilterMatchCriteriaOutput {
@@ -20718,6 +22921,12 @@ func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCrite
 
 func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCriteriaPtrOutputWithContext(ctx context.Context) MetadataFilterFilterMatchCriteriaPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataFilterFilterMatchCriteriaPtrOutput)
+}
+
+func (in *metadataFilterFilterMatchCriteriaPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataFilterFilterMatchCriteria] {
+	return pulumix.Output[*MetadataFilterFilterMatchCriteria]{
+		OutputState: in.ToMetadataFilterFilterMatchCriteriaPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
@@ -20791,6 +23000,12 @@ func (o MutualTlsModeOutput) ToMutualTlsModePtrOutputWithContext(ctx context.Con
 	}).(MutualTlsModePtrOutput)
 }
 
+func (o MutualTlsModeOutput) ToOutput(ctx context.Context) pulumix.Output[MutualTlsMode] {
+	return pulumix.Output[MutualTlsMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MutualTlsModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -20824,6 +23039,12 @@ func (o MutualTlsModePtrOutput) ToMutualTlsModePtrOutput() MutualTlsModePtrOutpu
 
 func (o MutualTlsModePtrOutput) ToMutualTlsModePtrOutputWithContext(ctx context.Context) MutualTlsModePtrOutput {
 	return o
+}
+
+func (o MutualTlsModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MutualTlsMode] {
+	return pulumix.Output[*MutualTlsMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MutualTlsModePtrOutput) Elem() MutualTlsModeOutput {
@@ -20886,6 +23107,12 @@ func (in *mutualTlsModePtr) ToMutualTlsModePtrOutput() MutualTlsModePtrOutput {
 
 func (in *mutualTlsModePtr) ToMutualTlsModePtrOutputWithContext(ctx context.Context) MutualTlsModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MutualTlsModePtrOutput)
+}
+
+func (in *mutualTlsModePtr) ToOutput(ctx context.Context) pulumix.Output[*MutualTlsMode] {
+	return pulumix.Output[*MutualTlsMode]{
+		OutputState: in.ToMutualTlsModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type NetworkAttachmentConnectionPreference string
@@ -20956,6 +23183,12 @@ func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnecti
 	}).(NetworkAttachmentConnectionPreferencePtrOutput)
 }
 
+func (o NetworkAttachmentConnectionPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkAttachmentConnectionPreference] {
+	return pulumix.Output[NetworkAttachmentConnectionPreference]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkAttachmentConnectionPreferenceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -20989,6 +23222,12 @@ func (o NetworkAttachmentConnectionPreferencePtrOutput) ToNetworkAttachmentConne
 
 func (o NetworkAttachmentConnectionPreferencePtrOutput) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
 	return o
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachmentConnectionPreference] {
+	return pulumix.Output[*NetworkAttachmentConnectionPreference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkAttachmentConnectionPreferencePtrOutput) Elem() NetworkAttachmentConnectionPreferenceOutput {
@@ -21051,6 +23290,12 @@ func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectio
 
 func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkAttachmentConnectionPreferencePtrOutput)
+}
+
+func (in *networkAttachmentConnectionPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachmentConnectionPreference] {
+	return pulumix.Output[*NetworkAttachmentConnectionPreference]{
+		OutputState: in.ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -21135,6 +23380,12 @@ func (o NetworkEndpointGroupNetworkEndpointTypeOutput) ToNetworkEndpointGroupNet
 	}).(NetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
+func (o NetworkEndpointGroupNetworkEndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[NetworkEndpointGroupNetworkEndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkEndpointGroupNetworkEndpointTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -21168,6 +23419,12 @@ func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToNetworkEndpointGroup
 
 func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return o
+}
+
+func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[*NetworkEndpointGroupNetworkEndpointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() NetworkEndpointGroupNetworkEndpointTypeOutput {
@@ -21230,6 +23487,12 @@ func (in *networkEndpointGroupNetworkEndpointTypePtr) ToNetworkEndpointGroupNetw
 
 func (in *networkEndpointGroupNetworkEndpointTypePtr) ToNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkEndpointGroupNetworkEndpointTypePtrOutput)
+}
+
+func (in *networkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[*NetworkEndpointGroupNetworkEndpointType]{
+		OutputState: in.ToNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
@@ -21300,6 +23563,12 @@ func (o NetworkEndpointGroupTypeOutput) ToNetworkEndpointGroupTypePtrOutputWithC
 	}).(NetworkEndpointGroupTypePtrOutput)
 }
 
+func (o NetworkEndpointGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkEndpointGroupType] {
+	return pulumix.Output[NetworkEndpointGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkEndpointGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -21333,6 +23602,12 @@ func (o NetworkEndpointGroupTypePtrOutput) ToNetworkEndpointGroupTypePtrOutput()
 
 func (o NetworkEndpointGroupTypePtrOutput) ToNetworkEndpointGroupTypePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupTypePtrOutput {
 	return o
+}
+
+func (o NetworkEndpointGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupType] {
+	return pulumix.Output[*NetworkEndpointGroupType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkEndpointGroupTypePtrOutput) Elem() NetworkEndpointGroupTypeOutput {
@@ -21395,6 +23670,12 @@ func (in *networkEndpointGroupTypePtr) ToNetworkEndpointGroupTypePtrOutput() Net
 
 func (in *networkEndpointGroupTypePtr) ToNetworkEndpointGroupTypePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkEndpointGroupTypePtrOutput)
+}
+
+func (in *networkEndpointGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupType] {
+	return pulumix.Output[*NetworkEndpointGroupType]{
+		OutputState: in.ToNetworkEndpointGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
@@ -21467,6 +23748,12 @@ func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToNetworkFirewallPolicyVpcNe
 	}).(NetworkFirewallPolicyVpcNetworkScopePtrOutput)
 }
 
+func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkFirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[NetworkFirewallPolicyVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkFirewallPolicyVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -21500,6 +23787,12 @@ func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToNetworkFirewallPolicyVp
 
 func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopePtrOutput {
 	return o
+}
+
+func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[*NetworkFirewallPolicyVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) Elem() NetworkFirewallPolicyVpcNetworkScopeOutput {
@@ -21562,6 +23855,12 @@ func (in *networkFirewallPolicyVpcNetworkScopePtr) ToNetworkFirewallPolicyVpcNet
 
 func (in *networkFirewallPolicyVpcNetworkScopePtr) ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) NetworkFirewallPolicyVpcNetworkScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (in *networkFirewallPolicyVpcNetworkScopePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[*NetworkFirewallPolicyVpcNetworkScope]{
+		OutputState: in.ToNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -21636,6 +23935,12 @@ func (o NetworkInterfaceNicTypeOutput) ToNetworkInterfaceNicTypePtrOutputWithCon
 	}).(NetworkInterfaceNicTypePtrOutput)
 }
 
+func (o NetworkInterfaceNicTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceNicType] {
+	return pulumix.Output[NetworkInterfaceNicType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkInterfaceNicTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -21669,6 +23974,12 @@ func (o NetworkInterfaceNicTypePtrOutput) ToNetworkInterfaceNicTypePtrOutput() N
 
 func (o NetworkInterfaceNicTypePtrOutput) ToNetworkInterfaceNicTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceNicTypePtrOutput {
 	return o
+}
+
+func (o NetworkInterfaceNicTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceNicType] {
+	return pulumix.Output[*NetworkInterfaceNicType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkInterfaceNicTypePtrOutput) Elem() NetworkInterfaceNicTypeOutput {
@@ -21731,6 +24042,12 @@ func (in *networkInterfaceNicTypePtr) ToNetworkInterfaceNicTypePtrOutput() Netwo
 
 func (in *networkInterfaceNicTypePtr) ToNetworkInterfaceNicTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceNicTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceNicTypePtrOutput)
+}
+
+func (in *networkInterfaceNicTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceNicType] {
+	return pulumix.Output[*NetworkInterfaceNicType]{
+		OutputState: in.ToNetworkInterfaceNicTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
@@ -21803,6 +24120,12 @@ func (o NetworkInterfaceStackTypeOutput) ToNetworkInterfaceStackTypePtrOutputWit
 	}).(NetworkInterfaceStackTypePtrOutput)
 }
 
+func (o NetworkInterfaceStackTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceStackType] {
+	return pulumix.Output[NetworkInterfaceStackType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkInterfaceStackTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -21836,6 +24159,12 @@ func (o NetworkInterfaceStackTypePtrOutput) ToNetworkInterfaceStackTypePtrOutput
 
 func (o NetworkInterfaceStackTypePtrOutput) ToNetworkInterfaceStackTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceStackTypePtrOutput {
 	return o
+}
+
+func (o NetworkInterfaceStackTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceStackType] {
+	return pulumix.Output[*NetworkInterfaceStackType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkInterfaceStackTypePtrOutput) Elem() NetworkInterfaceStackTypeOutput {
@@ -21898,6 +24227,12 @@ func (in *networkInterfaceStackTypePtr) ToNetworkInterfaceStackTypePtrOutput() N
 
 func (in *networkInterfaceStackTypePtr) ToNetworkInterfaceStackTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceStackTypePtrOutput)
+}
+
+func (in *networkInterfaceStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceStackType] {
+	return pulumix.Output[*NetworkInterfaceStackType]{
+		OutputState: in.ToNetworkInterfaceStackTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type NetworkInterfaceSubInterfaceIpAllocationMode string
@@ -21970,6 +24305,12 @@ func (o NetworkInterfaceSubInterfaceIpAllocationModeOutput) ToNetworkInterfaceSu
 	}).(NetworkInterfaceSubInterfaceIpAllocationModePtrOutput)
 }
 
+func (o NetworkInterfaceSubInterfaceIpAllocationModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceSubInterfaceIpAllocationMode] {
+	return pulumix.Output[NetworkInterfaceSubInterfaceIpAllocationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkInterfaceSubInterfaceIpAllocationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -22003,6 +24344,12 @@ func (o NetworkInterfaceSubInterfaceIpAllocationModePtrOutput) ToNetworkInterfac
 
 func (o NetworkInterfaceSubInterfaceIpAllocationModePtrOutput) ToNetworkInterfaceSubInterfaceIpAllocationModePtrOutputWithContext(ctx context.Context) NetworkInterfaceSubInterfaceIpAllocationModePtrOutput {
 	return o
+}
+
+func (o NetworkInterfaceSubInterfaceIpAllocationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceSubInterfaceIpAllocationMode] {
+	return pulumix.Output[*NetworkInterfaceSubInterfaceIpAllocationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkInterfaceSubInterfaceIpAllocationModePtrOutput) Elem() NetworkInterfaceSubInterfaceIpAllocationModeOutput {
@@ -22065,6 +24412,12 @@ func (in *networkInterfaceSubInterfaceIpAllocationModePtr) ToNetworkInterfaceSub
 
 func (in *networkInterfaceSubInterfaceIpAllocationModePtr) ToNetworkInterfaceSubInterfaceIpAllocationModePtrOutputWithContext(ctx context.Context) NetworkInterfaceSubInterfaceIpAllocationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceSubInterfaceIpAllocationModePtrOutput)
+}
+
+func (in *networkInterfaceSubInterfaceIpAllocationModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceSubInterfaceIpAllocationMode] {
+	return pulumix.Output[*NetworkInterfaceSubInterfaceIpAllocationMode]{
+		OutputState: in.ToNetworkInterfaceSubInterfaceIpAllocationModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
@@ -22135,6 +24488,12 @@ func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToNetworkNetworkFire
 	}).(NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
 }
 
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkNetworkFirewallPolicyEnforcementOrder] {
+	return pulumix.Output[NetworkNetworkFirewallPolicyEnforcementOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -22168,6 +24527,12 @@ func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToNetworkNetworkF
 
 func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
 	return o
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkNetworkFirewallPolicyEnforcementOrder] {
+	return pulumix.Output[*NetworkNetworkFirewallPolicyEnforcementOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) Elem() NetworkNetworkFirewallPolicyEnforcementOrderOutput {
@@ -22230,6 +24595,12 @@ func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToNetworkNetworkFirew
 
 func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
+}
+
+func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkNetworkFirewallPolicyEnforcementOrder] {
+	return pulumix.Output[*NetworkNetworkFirewallPolicyEnforcementOrder]{
+		OutputState: in.ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type NetworkPerformanceConfigExternalIpEgressBandwidthTier string
@@ -22299,6 +24670,12 @@ func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierOutput) ToNetworkPe
 	}).(NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput)
 }
 
+func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkPerformanceConfigExternalIpEgressBandwidthTier] {
+	return pulumix.Output[NetworkPerformanceConfigExternalIpEgressBandwidthTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -22332,6 +24709,12 @@ func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput) ToNetwor
 
 func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput) ToNetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput {
 	return o
+}
+
+func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigExternalIpEgressBandwidthTier] {
+	return pulumix.Output[*NetworkPerformanceConfigExternalIpEgressBandwidthTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput) Elem() NetworkPerformanceConfigExternalIpEgressBandwidthTierOutput {
@@ -22394,6 +24777,12 @@ func (in *networkPerformanceConfigExternalIpEgressBandwidthTierPtr) ToNetworkPer
 
 func (in *networkPerformanceConfigExternalIpEgressBandwidthTierPtr) ToNetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput)
+}
+
+func (in *networkPerformanceConfigExternalIpEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigExternalIpEgressBandwidthTier] {
+	return pulumix.Output[*NetworkPerformanceConfigExternalIpEgressBandwidthTier]{
+		OutputState: in.ToNetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type NetworkPerformanceConfigTotalEgressBandwidthTier string
@@ -22463,6 +24852,12 @@ func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToNetworkPerform
 	}).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
 }
 
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkPerformanceConfigTotalEgressBandwidthTier] {
+	return pulumix.Output[NetworkPerformanceConfigTotalEgressBandwidthTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -22496,6 +24891,12 @@ func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToNetworkPerf
 
 func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
 	return o
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier] {
+	return pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) Elem() NetworkPerformanceConfigTotalEgressBandwidthTierOutput {
@@ -22558,6 +24959,12 @@ func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToNetworkPerforma
 
 func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier] {
+	return pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier]{
+		OutputState: in.ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
@@ -22628,6 +25035,12 @@ func (o NetworkRoutingConfigRoutingModeOutput) ToNetworkRoutingConfigRoutingMode
 	}).(NetworkRoutingConfigRoutingModePtrOutput)
 }
 
+func (o NetworkRoutingConfigRoutingModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRoutingConfigRoutingMode] {
+	return pulumix.Output[NetworkRoutingConfigRoutingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkRoutingConfigRoutingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -22661,6 +25074,12 @@ func (o NetworkRoutingConfigRoutingModePtrOutput) ToNetworkRoutingConfigRoutingM
 
 func (o NetworkRoutingConfigRoutingModePtrOutput) ToNetworkRoutingConfigRoutingModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigRoutingModePtrOutput {
 	return o
+}
+
+func (o NetworkRoutingConfigRoutingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRoutingConfigRoutingMode] {
+	return pulumix.Output[*NetworkRoutingConfigRoutingMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkRoutingConfigRoutingModePtrOutput) Elem() NetworkRoutingConfigRoutingModeOutput {
@@ -22723,6 +25142,12 @@ func (in *networkRoutingConfigRoutingModePtr) ToNetworkRoutingConfigRoutingModeP
 
 func (in *networkRoutingConfigRoutingModePtr) ToNetworkRoutingConfigRoutingModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigRoutingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRoutingConfigRoutingModePtrOutput)
+}
+
+func (in *networkRoutingConfigRoutingModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRoutingConfigRoutingMode] {
+	return pulumix.Output[*NetworkRoutingConfigRoutingMode]{
+		OutputState: in.ToNetworkRoutingConfigRoutingModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
@@ -22798,6 +25223,12 @@ func (o NodeGroupAutoscalingPolicyModeOutput) ToNodeGroupAutoscalingPolicyModePt
 	}).(NodeGroupAutoscalingPolicyModePtrOutput)
 }
 
+func (o NodeGroupAutoscalingPolicyModeOutput) ToOutput(ctx context.Context) pulumix.Output[NodeGroupAutoscalingPolicyMode] {
+	return pulumix.Output[NodeGroupAutoscalingPolicyMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeGroupAutoscalingPolicyModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -22831,6 +25262,12 @@ func (o NodeGroupAutoscalingPolicyModePtrOutput) ToNodeGroupAutoscalingPolicyMod
 
 func (o NodeGroupAutoscalingPolicyModePtrOutput) ToNodeGroupAutoscalingPolicyModePtrOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyModePtrOutput {
 	return o
+}
+
+func (o NodeGroupAutoscalingPolicyModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupAutoscalingPolicyMode] {
+	return pulumix.Output[*NodeGroupAutoscalingPolicyMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeGroupAutoscalingPolicyModePtrOutput) Elem() NodeGroupAutoscalingPolicyModeOutput {
@@ -22893,6 +25330,12 @@ func (in *nodeGroupAutoscalingPolicyModePtr) ToNodeGroupAutoscalingPolicyModePtr
 
 func (in *nodeGroupAutoscalingPolicyModePtr) ToNodeGroupAutoscalingPolicyModePtrOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupAutoscalingPolicyModePtrOutput)
+}
+
+func (in *nodeGroupAutoscalingPolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupAutoscalingPolicyMode] {
+	return pulumix.Output[*NodeGroupAutoscalingPolicyMode]{
+		OutputState: in.ToNodeGroupAutoscalingPolicyModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
@@ -22967,6 +25410,12 @@ func (o NodeGroupMaintenanceIntervalOutput) ToNodeGroupMaintenanceIntervalPtrOut
 	}).(NodeGroupMaintenanceIntervalPtrOutput)
 }
 
+func (o NodeGroupMaintenanceIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[NodeGroupMaintenanceInterval] {
+	return pulumix.Output[NodeGroupMaintenanceInterval]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeGroupMaintenanceIntervalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -23000,6 +25449,12 @@ func (o NodeGroupMaintenanceIntervalPtrOutput) ToNodeGroupMaintenanceIntervalPtr
 
 func (o NodeGroupMaintenanceIntervalPtrOutput) ToNodeGroupMaintenanceIntervalPtrOutputWithContext(ctx context.Context) NodeGroupMaintenanceIntervalPtrOutput {
 	return o
+}
+
+func (o NodeGroupMaintenanceIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupMaintenanceInterval] {
+	return pulumix.Output[*NodeGroupMaintenanceInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeGroupMaintenanceIntervalPtrOutput) Elem() NodeGroupMaintenanceIntervalOutput {
@@ -23062,6 +25517,12 @@ func (in *nodeGroupMaintenanceIntervalPtr) ToNodeGroupMaintenanceIntervalPtrOutp
 
 func (in *nodeGroupMaintenanceIntervalPtr) ToNodeGroupMaintenanceIntervalPtrOutputWithContext(ctx context.Context) NodeGroupMaintenanceIntervalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupMaintenanceIntervalPtrOutput)
+}
+
+func (in *nodeGroupMaintenanceIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupMaintenanceInterval] {
+	return pulumix.Output[*NodeGroupMaintenanceInterval]{
+		OutputState: in.ToNodeGroupMaintenanceIntervalPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
@@ -23137,6 +25598,12 @@ func (o NodeGroupMaintenancePolicyOutput) ToNodeGroupMaintenancePolicyPtrOutputW
 	}).(NodeGroupMaintenancePolicyPtrOutput)
 }
 
+func (o NodeGroupMaintenancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[NodeGroupMaintenancePolicy] {
+	return pulumix.Output[NodeGroupMaintenancePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeGroupMaintenancePolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -23170,6 +25637,12 @@ func (o NodeGroupMaintenancePolicyPtrOutput) ToNodeGroupMaintenancePolicyPtrOutp
 
 func (o NodeGroupMaintenancePolicyPtrOutput) ToNodeGroupMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodeGroupMaintenancePolicyPtrOutput {
 	return o
+}
+
+func (o NodeGroupMaintenancePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupMaintenancePolicy] {
+	return pulumix.Output[*NodeGroupMaintenancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeGroupMaintenancePolicyPtrOutput) Elem() NodeGroupMaintenancePolicyOutput {
@@ -23232,6 +25705,12 @@ func (in *nodeGroupMaintenancePolicyPtr) ToNodeGroupMaintenancePolicyPtrOutput()
 
 func (in *nodeGroupMaintenancePolicyPtr) ToNodeGroupMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodeGroupMaintenancePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupMaintenancePolicyPtrOutput)
+}
+
+func (in *nodeGroupMaintenancePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupMaintenancePolicy] {
+	return pulumix.Output[*NodeGroupMaintenancePolicy]{
+		OutputState: in.ToNodeGroupMaintenancePolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type NodeGroupStatus string
@@ -23312,6 +25791,12 @@ func (o NodeTemplateCpuOvercommitTypeOutput) ToNodeTemplateCpuOvercommitTypePtrO
 	}).(NodeTemplateCpuOvercommitTypePtrOutput)
 }
 
+func (o NodeTemplateCpuOvercommitTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NodeTemplateCpuOvercommitType] {
+	return pulumix.Output[NodeTemplateCpuOvercommitType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeTemplateCpuOvercommitTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -23345,6 +25830,12 @@ func (o NodeTemplateCpuOvercommitTypePtrOutput) ToNodeTemplateCpuOvercommitTypeP
 
 func (o NodeTemplateCpuOvercommitTypePtrOutput) ToNodeTemplateCpuOvercommitTypePtrOutputWithContext(ctx context.Context) NodeTemplateCpuOvercommitTypePtrOutput {
 	return o
+}
+
+func (o NodeTemplateCpuOvercommitTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeTemplateCpuOvercommitType] {
+	return pulumix.Output[*NodeTemplateCpuOvercommitType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeTemplateCpuOvercommitTypePtrOutput) Elem() NodeTemplateCpuOvercommitTypeOutput {
@@ -23407,6 +25898,12 @@ func (in *nodeTemplateCpuOvercommitTypePtr) ToNodeTemplateCpuOvercommitTypePtrOu
 
 func (in *nodeTemplateCpuOvercommitTypePtr) ToNodeTemplateCpuOvercommitTypePtrOutputWithContext(ctx context.Context) NodeTemplateCpuOvercommitTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTemplateCpuOvercommitTypePtrOutput)
+}
+
+func (in *nodeTemplateCpuOvercommitTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeTemplateCpuOvercommitType] {
+	return pulumix.Output[*NodeTemplateCpuOvercommitType]{
+		OutputState: in.ToNodeTemplateCpuOvercommitTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
@@ -23480,6 +25977,12 @@ func (o OrganizationSecurityPolicyTypeOutput) ToOrganizationSecurityPolicyTypePt
 	}).(OrganizationSecurityPolicyTypePtrOutput)
 }
 
+func (o OrganizationSecurityPolicyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationSecurityPolicyType] {
+	return pulumix.Output[OrganizationSecurityPolicyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationSecurityPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -23513,6 +26016,12 @@ func (o OrganizationSecurityPolicyTypePtrOutput) ToOrganizationSecurityPolicyTyp
 
 func (o OrganizationSecurityPolicyTypePtrOutput) ToOrganizationSecurityPolicyTypePtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyTypePtrOutput {
 	return o
+}
+
+func (o OrganizationSecurityPolicyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyType] {
+	return pulumix.Output[*OrganizationSecurityPolicyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationSecurityPolicyTypePtrOutput) Elem() OrganizationSecurityPolicyTypeOutput {
@@ -23575,6 +26084,12 @@ func (in *organizationSecurityPolicyTypePtr) ToOrganizationSecurityPolicyTypePtr
 
 func (in *organizationSecurityPolicyTypePtr) ToOrganizationSecurityPolicyTypePtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationSecurityPolicyTypePtrOutput)
+}
+
+func (in *organizationSecurityPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyType] {
+	return pulumix.Output[*OrganizationSecurityPolicyType]{
+		OutputState: in.ToOrganizationSecurityPolicyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
@@ -23645,6 +26160,12 @@ func (o PacketMirroringEnableOutput) ToPacketMirroringEnablePtrOutputWithContext
 	}).(PacketMirroringEnablePtrOutput)
 }
 
+func (o PacketMirroringEnableOutput) ToOutput(ctx context.Context) pulumix.Output[PacketMirroringEnable] {
+	return pulumix.Output[PacketMirroringEnable]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PacketMirroringEnableOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -23678,6 +26199,12 @@ func (o PacketMirroringEnablePtrOutput) ToPacketMirroringEnablePtrOutput() Packe
 
 func (o PacketMirroringEnablePtrOutput) ToPacketMirroringEnablePtrOutputWithContext(ctx context.Context) PacketMirroringEnablePtrOutput {
 	return o
+}
+
+func (o PacketMirroringEnablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroringEnable] {
+	return pulumix.Output[*PacketMirroringEnable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PacketMirroringEnablePtrOutput) Elem() PacketMirroringEnableOutput {
@@ -23740,6 +26267,12 @@ func (in *packetMirroringEnablePtr) ToPacketMirroringEnablePtrOutput() PacketMir
 
 func (in *packetMirroringEnablePtr) ToPacketMirroringEnablePtrOutputWithContext(ctx context.Context) PacketMirroringEnablePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PacketMirroringEnablePtrOutput)
+}
+
+func (in *packetMirroringEnablePtr) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroringEnable] {
+	return pulumix.Output[*PacketMirroringEnable]{
+		OutputState: in.ToPacketMirroringEnablePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
@@ -23814,6 +26347,12 @@ func (o PacketMirroringFilterDirectionOutput) ToPacketMirroringFilterDirectionPt
 	}).(PacketMirroringFilterDirectionPtrOutput)
 }
 
+func (o PacketMirroringFilterDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[PacketMirroringFilterDirection] {
+	return pulumix.Output[PacketMirroringFilterDirection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PacketMirroringFilterDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -23847,6 +26386,12 @@ func (o PacketMirroringFilterDirectionPtrOutput) ToPacketMirroringFilterDirectio
 
 func (o PacketMirroringFilterDirectionPtrOutput) ToPacketMirroringFilterDirectionPtrOutputWithContext(ctx context.Context) PacketMirroringFilterDirectionPtrOutput {
 	return o
+}
+
+func (o PacketMirroringFilterDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroringFilterDirection] {
+	return pulumix.Output[*PacketMirroringFilterDirection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PacketMirroringFilterDirectionPtrOutput) Elem() PacketMirroringFilterDirectionOutput {
@@ -23909,6 +26454,12 @@ func (in *packetMirroringFilterDirectionPtr) ToPacketMirroringFilterDirectionPtr
 
 func (in *packetMirroringFilterDirectionPtr) ToPacketMirroringFilterDirectionPtrOutputWithContext(ctx context.Context) PacketMirroringFilterDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PacketMirroringFilterDirectionPtrOutput)
+}
+
+func (in *packetMirroringFilterDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroringFilterDirection] {
+	return pulumix.Output[*PacketMirroringFilterDirection]{
+		OutputState: in.ToPacketMirroringFilterDirectionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
@@ -23983,6 +26534,12 @@ func (o PublicAdvertisedPrefixPdpScopeOutput) ToPublicAdvertisedPrefixPdpScopePt
 	}).(PublicAdvertisedPrefixPdpScopePtrOutput)
 }
 
+func (o PublicAdvertisedPrefixPdpScopeOutput) ToOutput(ctx context.Context) pulumix.Output[PublicAdvertisedPrefixPdpScope] {
+	return pulumix.Output[PublicAdvertisedPrefixPdpScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PublicAdvertisedPrefixPdpScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -24016,6 +26573,12 @@ func (o PublicAdvertisedPrefixPdpScopePtrOutput) ToPublicAdvertisedPrefixPdpScop
 
 func (o PublicAdvertisedPrefixPdpScopePtrOutput) ToPublicAdvertisedPrefixPdpScopePtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPdpScopePtrOutput {
 	return o
+}
+
+func (o PublicAdvertisedPrefixPdpScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefixPdpScope] {
+	return pulumix.Output[*PublicAdvertisedPrefixPdpScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicAdvertisedPrefixPdpScopePtrOutput) Elem() PublicAdvertisedPrefixPdpScopeOutput {
@@ -24078,6 +26641,12 @@ func (in *publicAdvertisedPrefixPdpScopePtr) ToPublicAdvertisedPrefixPdpScopePtr
 
 func (in *publicAdvertisedPrefixPdpScopePtr) ToPublicAdvertisedPrefixPdpScopePtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPdpScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicAdvertisedPrefixPdpScopePtrOutput)
+}
+
+func (in *publicAdvertisedPrefixPdpScopePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefixPdpScope] {
+	return pulumix.Output[*PublicAdvertisedPrefixPdpScope]{
+		OutputState: in.ToPublicAdvertisedPrefixPdpScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
@@ -24164,6 +26733,12 @@ func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusPtrOut
 	}).(PublicAdvertisedPrefixStatusPtrOutput)
 }
 
+func (o PublicAdvertisedPrefixStatusOutput) ToOutput(ctx context.Context) pulumix.Output[PublicAdvertisedPrefixStatus] {
+	return pulumix.Output[PublicAdvertisedPrefixStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PublicAdvertisedPrefixStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -24197,6 +26772,12 @@ func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtr
 
 func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
 	return o
+}
+
+func (o PublicAdvertisedPrefixStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefixStatus] {
+	return pulumix.Output[*PublicAdvertisedPrefixStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicAdvertisedPrefixStatusPtrOutput) Elem() PublicAdvertisedPrefixStatusOutput {
@@ -24259,6 +26840,12 @@ func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutp
 
 func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicAdvertisedPrefixStatusPtrOutput)
+}
+
+func (in *publicAdvertisedPrefixStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefixStatus] {
+	return pulumix.Output[*PublicAdvertisedPrefixStatus]{
+		OutputState: in.ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -24331,6 +26918,12 @@ func (o RegionBackendServiceCompressionModeOutput) ToRegionBackendServiceCompres
 	}).(RegionBackendServiceCompressionModePtrOutput)
 }
 
+func (o RegionBackendServiceCompressionModeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionBackendServiceCompressionMode] {
+	return pulumix.Output[RegionBackendServiceCompressionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceCompressionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -24364,6 +26957,12 @@ func (o RegionBackendServiceCompressionModePtrOutput) ToRegionBackendServiceComp
 
 func (o RegionBackendServiceCompressionModePtrOutput) ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModePtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceCompressionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceCompressionMode] {
+	return pulumix.Output[*RegionBackendServiceCompressionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceCompressionModePtrOutput) Elem() RegionBackendServiceCompressionModeOutput {
@@ -24426,6 +27025,12 @@ func (in *regionBackendServiceCompressionModePtr) ToRegionBackendServiceCompress
 
 func (in *regionBackendServiceCompressionModePtr) ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceCompressionModePtrOutput)
+}
+
+func (in *regionBackendServiceCompressionModePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceCompressionMode] {
+	return pulumix.Output[*RegionBackendServiceCompressionMode]{
+		OutputState: in.ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
@@ -24502,6 +27107,12 @@ func (o RegionBackendServiceIpAddressSelectionPolicyOutput) ToRegionBackendServi
 	}).(RegionBackendServiceIpAddressSelectionPolicyPtrOutput)
 }
 
+func (o RegionBackendServiceIpAddressSelectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RegionBackendServiceIpAddressSelectionPolicy] {
+	return pulumix.Output[RegionBackendServiceIpAddressSelectionPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceIpAddressSelectionPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -24535,6 +27146,12 @@ func (o RegionBackendServiceIpAddressSelectionPolicyPtrOutput) ToRegionBackendSe
 
 func (o RegionBackendServiceIpAddressSelectionPolicyPtrOutput) ToRegionBackendServiceIpAddressSelectionPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceIpAddressSelectionPolicyPtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceIpAddressSelectionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIpAddressSelectionPolicy] {
+	return pulumix.Output[*RegionBackendServiceIpAddressSelectionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceIpAddressSelectionPolicyPtrOutput) Elem() RegionBackendServiceIpAddressSelectionPolicyOutput {
@@ -24597,6 +27214,12 @@ func (in *regionBackendServiceIpAddressSelectionPolicyPtr) ToRegionBackendServic
 
 func (in *regionBackendServiceIpAddressSelectionPolicyPtr) ToRegionBackendServiceIpAddressSelectionPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceIpAddressSelectionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceIpAddressSelectionPolicyPtrOutput)
+}
+
+func (in *regionBackendServiceIpAddressSelectionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIpAddressSelectionPolicy] {
+	return pulumix.Output[*RegionBackendServiceIpAddressSelectionPolicy]{
+		OutputState: in.ToRegionBackendServiceIpAddressSelectionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -24676,6 +27299,12 @@ func (o RegionBackendServiceLoadBalancingSchemeOutput) ToRegionBackendServiceLoa
 	}).(RegionBackendServiceLoadBalancingSchemePtrOutput)
 }
 
+func (o RegionBackendServiceLoadBalancingSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionBackendServiceLoadBalancingScheme] {
+	return pulumix.Output[RegionBackendServiceLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -24709,6 +27338,12 @@ func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToRegionBackendService
 
 func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToRegionBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) RegionBackendServiceLoadBalancingSchemePtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceLoadBalancingScheme] {
+	return pulumix.Output[*RegionBackendServiceLoadBalancingScheme]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceLoadBalancingSchemePtrOutput) Elem() RegionBackendServiceLoadBalancingSchemeOutput {
@@ -24771,6 +27406,12 @@ func (in *regionBackendServiceLoadBalancingSchemePtr) ToRegionBackendServiceLoad
 
 func (in *regionBackendServiceLoadBalancingSchemePtr) ToRegionBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) RegionBackendServiceLoadBalancingSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceLoadBalancingSchemePtrOutput)
+}
+
+func (in *regionBackendServiceLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceLoadBalancingScheme] {
+	return pulumix.Output[*RegionBackendServiceLoadBalancingScheme]{
+		OutputState: in.ToRegionBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -24854,6 +27495,12 @@ func (o RegionBackendServiceLocalityLbPolicyOutput) ToRegionBackendServiceLocali
 	}).(RegionBackendServiceLocalityLbPolicyPtrOutput)
 }
 
+func (o RegionBackendServiceLocalityLbPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RegionBackendServiceLocalityLbPolicy] {
+	return pulumix.Output[RegionBackendServiceLocalityLbPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceLocalityLbPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -24887,6 +27534,12 @@ func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToRegionBackendServiceLoc
 
 func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToRegionBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceLocalityLbPolicyPtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceLocalityLbPolicy] {
+	return pulumix.Output[*RegionBackendServiceLocalityLbPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceLocalityLbPolicyPtrOutput) Elem() RegionBackendServiceLocalityLbPolicyOutput {
@@ -24949,6 +27602,12 @@ func (in *regionBackendServiceLocalityLbPolicyPtr) ToRegionBackendServiceLocalit
 
 func (in *regionBackendServiceLocalityLbPolicyPtr) ToRegionBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceLocalityLbPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceLocalityLbPolicyPtrOutput)
+}
+
+func (in *regionBackendServiceLocalityLbPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceLocalityLbPolicy] {
+	return pulumix.Output[*RegionBackendServiceLocalityLbPolicy]{
+		OutputState: in.ToRegionBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
@@ -25033,6 +27692,12 @@ func (o RegionBackendServiceProtocolOutput) ToRegionBackendServiceProtocolPtrOut
 	}).(RegionBackendServiceProtocolPtrOutput)
 }
 
+func (o RegionBackendServiceProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[RegionBackendServiceProtocol] {
+	return pulumix.Output[RegionBackendServiceProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -25066,6 +27731,12 @@ func (o RegionBackendServiceProtocolPtrOutput) ToRegionBackendServiceProtocolPtr
 
 func (o RegionBackendServiceProtocolPtrOutput) ToRegionBackendServiceProtocolPtrOutputWithContext(ctx context.Context) RegionBackendServiceProtocolPtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceProtocol] {
+	return pulumix.Output[*RegionBackendServiceProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceProtocolPtrOutput) Elem() RegionBackendServiceProtocolOutput {
@@ -25128,6 +27799,12 @@ func (in *regionBackendServiceProtocolPtr) ToRegionBackendServiceProtocolPtrOutp
 
 func (in *regionBackendServiceProtocolPtr) ToRegionBackendServiceProtocolPtrOutputWithContext(ctx context.Context) RegionBackendServiceProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceProtocolPtrOutput)
+}
+
+func (in *regionBackendServiceProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceProtocol] {
+	return pulumix.Output[*RegionBackendServiceProtocol]{
+		OutputState: in.ToRegionBackendServiceProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
@@ -25212,6 +27889,12 @@ func (o RegionBackendServiceSessionAffinityOutput) ToRegionBackendServiceSession
 	}).(RegionBackendServiceSessionAffinityPtrOutput)
 }
 
+func (o RegionBackendServiceSessionAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[RegionBackendServiceSessionAffinity] {
+	return pulumix.Output[RegionBackendServiceSessionAffinity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceSessionAffinityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -25245,6 +27928,12 @@ func (o RegionBackendServiceSessionAffinityPtrOutput) ToRegionBackendServiceSess
 
 func (o RegionBackendServiceSessionAffinityPtrOutput) ToRegionBackendServiceSessionAffinityPtrOutputWithContext(ctx context.Context) RegionBackendServiceSessionAffinityPtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceSessionAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceSessionAffinity] {
+	return pulumix.Output[*RegionBackendServiceSessionAffinity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceSessionAffinityPtrOutput) Elem() RegionBackendServiceSessionAffinityOutput {
@@ -25307,6 +27996,12 @@ func (in *regionBackendServiceSessionAffinityPtr) ToRegionBackendServiceSessionA
 
 func (in *regionBackendServiceSessionAffinityPtr) ToRegionBackendServiceSessionAffinityPtrOutputWithContext(ctx context.Context) RegionBackendServiceSessionAffinityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceSessionAffinityPtrOutput)
+}
+
+func (in *regionBackendServiceSessionAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceSessionAffinity] {
+	return pulumix.Output[*RegionBackendServiceSessionAffinity]{
+		OutputState: in.ToRegionBackendServiceSessionAffinityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
@@ -25379,6 +28074,12 @@ func (o RegionBackendServiceVpcNetworkScopeOutput) ToRegionBackendServiceVpcNetw
 	}).(RegionBackendServiceVpcNetworkScopePtrOutput)
 }
 
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionBackendServiceVpcNetworkScope] {
+	return pulumix.Output[RegionBackendServiceVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -25412,6 +28113,12 @@ func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToRegionBackendServiceVpcN
 
 func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopePtrOutput {
 	return o
+}
+
+func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceVpcNetworkScope] {
+	return pulumix.Output[*RegionBackendServiceVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceVpcNetworkScopePtrOutput) Elem() RegionBackendServiceVpcNetworkScopeOutput {
@@ -25474,6 +28181,12 @@ func (in *regionBackendServiceVpcNetworkScopePtr) ToRegionBackendServiceVpcNetwo
 
 func (in *regionBackendServiceVpcNetworkScopePtr) ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceVpcNetworkScopePtrOutput)
+}
+
+func (in *regionBackendServiceVpcNetworkScopePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceVpcNetworkScope] {
+	return pulumix.Output[*RegionBackendServiceVpcNetworkScope]{
+		OutputState: in.ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
@@ -25545,6 +28258,12 @@ func (o RegionCommitmentCategoryOutput) ToRegionCommitmentCategoryPtrOutputWithC
 	}).(RegionCommitmentCategoryPtrOutput)
 }
 
+func (o RegionCommitmentCategoryOutput) ToOutput(ctx context.Context) pulumix.Output[RegionCommitmentCategory] {
+	return pulumix.Output[RegionCommitmentCategory]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionCommitmentCategoryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -25578,6 +28297,12 @@ func (o RegionCommitmentCategoryPtrOutput) ToRegionCommitmentCategoryPtrOutput()
 
 func (o RegionCommitmentCategoryPtrOutput) ToRegionCommitmentCategoryPtrOutputWithContext(ctx context.Context) RegionCommitmentCategoryPtrOutput {
 	return o
+}
+
+func (o RegionCommitmentCategoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentCategory] {
+	return pulumix.Output[*RegionCommitmentCategory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionCommitmentCategoryPtrOutput) Elem() RegionCommitmentCategoryOutput {
@@ -25640,6 +28365,12 @@ func (in *regionCommitmentCategoryPtr) ToRegionCommitmentCategoryPtrOutput() Reg
 
 func (in *regionCommitmentCategoryPtr) ToRegionCommitmentCategoryPtrOutputWithContext(ctx context.Context) RegionCommitmentCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentCategoryPtrOutput)
+}
+
+func (in *regionCommitmentCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentCategory] {
+	return pulumix.Output[*RegionCommitmentCategory]{
+		OutputState: in.ToRegionCommitmentCategoryPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -25711,6 +28442,12 @@ func (o RegionCommitmentPlanOutput) ToRegionCommitmentPlanPtrOutputWithContext(c
 	}).(RegionCommitmentPlanPtrOutput)
 }
 
+func (o RegionCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[RegionCommitmentPlan] {
+	return pulumix.Output[RegionCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -25744,6 +28481,12 @@ func (o RegionCommitmentPlanPtrOutput) ToRegionCommitmentPlanPtrOutput() RegionC
 
 func (o RegionCommitmentPlanPtrOutput) ToRegionCommitmentPlanPtrOutputWithContext(ctx context.Context) RegionCommitmentPlanPtrOutput {
 	return o
+}
+
+func (o RegionCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentPlan] {
+	return pulumix.Output[*RegionCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionCommitmentPlanPtrOutput) Elem() RegionCommitmentPlanOutput {
@@ -25806,6 +28549,12 @@ func (in *regionCommitmentPlanPtr) ToRegionCommitmentPlanPtrOutput() RegionCommi
 
 func (in *regionCommitmentPlanPtr) ToRegionCommitmentPlanPtrOutputWithContext(ctx context.Context) RegionCommitmentPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentPlanPtrOutput)
+}
+
+func (in *regionCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentPlan] {
+	return pulumix.Output[*RegionCommitmentPlan]{
+		OutputState: in.ToRegionCommitmentPlanPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
@@ -25888,6 +28637,12 @@ func (o RegionCommitmentTypeOutput) ToRegionCommitmentTypePtrOutputWithContext(c
 	}).(RegionCommitmentTypePtrOutput)
 }
 
+func (o RegionCommitmentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionCommitmentType] {
+	return pulumix.Output[RegionCommitmentType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionCommitmentTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -25921,6 +28676,12 @@ func (o RegionCommitmentTypePtrOutput) ToRegionCommitmentTypePtrOutput() RegionC
 
 func (o RegionCommitmentTypePtrOutput) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
 	return o
+}
+
+func (o RegionCommitmentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentType] {
+	return pulumix.Output[*RegionCommitmentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionCommitmentTypePtrOutput) Elem() RegionCommitmentTypeOutput {
@@ -25983,6 +28744,12 @@ func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutput() RegionCommi
 
 func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentTypePtrOutput)
+}
+
+func (in *regionCommitmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentType] {
+	return pulumix.Output[*RegionCommitmentType]{
+		OutputState: in.ToRegionCommitmentTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -26057,6 +28824,12 @@ func (o RegionDiskArchitectureOutput) ToRegionDiskArchitecturePtrOutputWithConte
 	}).(RegionDiskArchitecturePtrOutput)
 }
 
+func (o RegionDiskArchitectureOutput) ToOutput(ctx context.Context) pulumix.Output[RegionDiskArchitecture] {
+	return pulumix.Output[RegionDiskArchitecture]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionDiskArchitectureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -26090,6 +28863,12 @@ func (o RegionDiskArchitecturePtrOutput) ToRegionDiskArchitecturePtrOutput() Reg
 
 func (o RegionDiskArchitecturePtrOutput) ToRegionDiskArchitecturePtrOutputWithContext(ctx context.Context) RegionDiskArchitecturePtrOutput {
 	return o
+}
+
+func (o RegionDiskArchitecturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskArchitecture] {
+	return pulumix.Output[*RegionDiskArchitecture]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionDiskArchitecturePtrOutput) Elem() RegionDiskArchitectureOutput {
@@ -26152,6 +28931,12 @@ func (in *regionDiskArchitecturePtr) ToRegionDiskArchitecturePtrOutput() RegionD
 
 func (in *regionDiskArchitecturePtr) ToRegionDiskArchitecturePtrOutputWithContext(ctx context.Context) RegionDiskArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskArchitecturePtrOutput)
+}
+
+func (in *regionDiskArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskArchitecture] {
+	return pulumix.Output[*RegionDiskArchitecture]{
+		OutputState: in.ToRegionDiskArchitecturePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -26223,6 +29008,12 @@ func (o RegionDiskInterfaceOutput) ToRegionDiskInterfacePtrOutputWithContext(ctx
 	}).(RegionDiskInterfacePtrOutput)
 }
 
+func (o RegionDiskInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[RegionDiskInterface] {
+	return pulumix.Output[RegionDiskInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionDiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -26256,6 +29047,12 @@ func (o RegionDiskInterfacePtrOutput) ToRegionDiskInterfacePtrOutput() RegionDis
 
 func (o RegionDiskInterfacePtrOutput) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
 	return o
+}
+
+func (o RegionDiskInterfacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskInterface] {
+	return pulumix.Output[*RegionDiskInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionDiskInterfacePtrOutput) Elem() RegionDiskInterfaceOutput {
@@ -26318,6 +29115,12 @@ func (in *regionDiskInterfacePtr) ToRegionDiskInterfacePtrOutput() RegionDiskInt
 
 func (in *regionDiskInterfacePtr) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskInterfacePtrOutput)
+}
+
+func (in *regionDiskInterfacePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskInterface] {
+	return pulumix.Output[*RegionDiskInterface]{
+		OutputState: in.ToRegionDiskInterfacePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // [Deprecated] Storage type of the persistent disk.
@@ -26388,6 +29191,12 @@ func (o RegionDiskStorageTypeOutput) ToRegionDiskStorageTypePtrOutputWithContext
 	}).(RegionDiskStorageTypePtrOutput)
 }
 
+func (o RegionDiskStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionDiskStorageType] {
+	return pulumix.Output[RegionDiskStorageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionDiskStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -26421,6 +29230,12 @@ func (o RegionDiskStorageTypePtrOutput) ToRegionDiskStorageTypePtrOutput() Regio
 
 func (o RegionDiskStorageTypePtrOutput) ToRegionDiskStorageTypePtrOutputWithContext(ctx context.Context) RegionDiskStorageTypePtrOutput {
 	return o
+}
+
+func (o RegionDiskStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskStorageType] {
+	return pulumix.Output[*RegionDiskStorageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionDiskStorageTypePtrOutput) Elem() RegionDiskStorageTypeOutput {
@@ -26483,6 +29298,12 @@ func (in *regionDiskStorageTypePtr) ToRegionDiskStorageTypePtrOutput() RegionDis
 
 func (in *regionDiskStorageTypePtr) ToRegionDiskStorageTypePtrOutputWithContext(ctx context.Context) RegionDiskStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskStorageTypePtrOutput)
+}
+
+func (in *regionDiskStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskStorageType] {
+	return pulumix.Output[*RegionDiskStorageType]{
+		OutputState: in.ToRegionDiskStorageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
@@ -26555,6 +29376,12 @@ func (o RegionHealthCheckServiceHealthStatusAggregationPolicyOutput) ToRegionHea
 	}).(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput)
 }
 
+func (o RegionHealthCheckServiceHealthStatusAggregationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RegionHealthCheckServiceHealthStatusAggregationPolicy] {
+	return pulumix.Output[RegionHealthCheckServiceHealthStatusAggregationPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionHealthCheckServiceHealthStatusAggregationPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -26588,6 +29415,12 @@ func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToRegion
 
 func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput {
 	return o
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationPolicy] {
+	return pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) Elem() RegionHealthCheckServiceHealthStatusAggregationPolicyOutput {
@@ -26650,6 +29483,12 @@ func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToRegionHeal
 
 func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput)
+}
+
+func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationPolicy] {
+	return pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationPolicy]{
+		OutputState: in.ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
@@ -26722,6 +29561,12 @@ func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToRegionH
 	}).(RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput)
 }
 
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[RegionHealthCheckServiceHealthStatusAggregationStrategy] {
+	return pulumix.Output[RegionHealthCheckServiceHealthStatusAggregationStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -26755,6 +29600,12 @@ func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToRegi
 
 func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
 	return o
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationStrategy] {
+	return pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) Elem() RegionHealthCheckServiceHealthStatusAggregationStrategyOutput {
@@ -26817,6 +29668,12 @@ func (in *regionHealthCheckServiceHealthStatusAggregationStrategyPtr) ToRegionHe
 
 func (in *regionHealthCheckServiceHealthStatusAggregationStrategyPtr) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput)
+}
+
+func (in *regionHealthCheckServiceHealthStatusAggregationStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationStrategy] {
+	return pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationStrategy]{
+		OutputState: in.ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
@@ -26893,6 +29750,12 @@ func (o RegionHealthCheckTypeOutput) ToRegionHealthCheckTypePtrOutputWithContext
 	}).(RegionHealthCheckTypePtrOutput)
 }
 
+func (o RegionHealthCheckTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionHealthCheckType] {
+	return pulumix.Output[RegionHealthCheckType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionHealthCheckTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -26926,6 +29789,12 @@ func (o RegionHealthCheckTypePtrOutput) ToRegionHealthCheckTypePtrOutput() Regio
 
 func (o RegionHealthCheckTypePtrOutput) ToRegionHealthCheckTypePtrOutputWithContext(ctx context.Context) RegionHealthCheckTypePtrOutput {
 	return o
+}
+
+func (o RegionHealthCheckTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckType] {
+	return pulumix.Output[*RegionHealthCheckType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionHealthCheckTypePtrOutput) Elem() RegionHealthCheckTypeOutput {
@@ -26988,6 +29857,12 @@ func (in *regionHealthCheckTypePtr) ToRegionHealthCheckTypePtrOutput() RegionHea
 
 func (in *regionHealthCheckTypePtr) ToRegionHealthCheckTypePtrOutputWithContext(ctx context.Context) RegionHealthCheckTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckTypePtrOutput)
+}
+
+func (in *regionHealthCheckTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckType] {
+	return pulumix.Output[*RegionHealthCheckType]{
+		OutputState: in.ToRegionHealthCheckTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
@@ -27058,6 +29933,12 @@ func (o RegionInstanceGroupManagerFailoverActionOutput) ToRegionInstanceGroupMan
 	}).(RegionInstanceGroupManagerFailoverActionPtrOutput)
 }
 
+func (o RegionInstanceGroupManagerFailoverActionOutput) ToOutput(ctx context.Context) pulumix.Output[RegionInstanceGroupManagerFailoverAction] {
+	return pulumix.Output[RegionInstanceGroupManagerFailoverAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionInstanceGroupManagerFailoverActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -27091,6 +29972,12 @@ func (o RegionInstanceGroupManagerFailoverActionPtrOutput) ToRegionInstanceGroup
 
 func (o RegionInstanceGroupManagerFailoverActionPtrOutput) ToRegionInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerFailoverActionPtrOutput {
 	return o
+}
+
+func (o RegionInstanceGroupManagerFailoverActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManagerFailoverAction] {
+	return pulumix.Output[*RegionInstanceGroupManagerFailoverAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionInstanceGroupManagerFailoverActionPtrOutput) Elem() RegionInstanceGroupManagerFailoverActionOutput {
@@ -27153,6 +30040,12 @@ func (in *regionInstanceGroupManagerFailoverActionPtr) ToRegionInstanceGroupMana
 
 func (in *regionInstanceGroupManagerFailoverActionPtr) ToRegionInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerFailoverActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerFailoverActionPtrOutput)
+}
+
+func (in *regionInstanceGroupManagerFailoverActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManagerFailoverAction] {
+	return pulumix.Output[*RegionInstanceGroupManagerFailoverAction]{
+		OutputState: in.ToRegionInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Pagination behavior of the listManagedInstances API method for this managed instance group.
@@ -27225,6 +30118,12 @@ func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToRegionIns
 	}).(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput)
 }
 
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToOutput(ctx context.Context) pulumix.Output[RegionInstanceGroupManagerListManagedInstancesResults] {
+	return pulumix.Output[RegionInstanceGroupManagerListManagedInstancesResults]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -27258,6 +30157,12 @@ func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToRegion
 
 func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
 	return o
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManagerListManagedInstancesResults] {
+	return pulumix.Output[*RegionInstanceGroupManagerListManagedInstancesResults]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) Elem() RegionInstanceGroupManagerListManagedInstancesResultsOutput {
@@ -27320,6 +30225,12 @@ func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToRegionInst
 
 func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput)
+}
+
+func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManagerListManagedInstancesResults] {
+	return pulumix.Output[*RegionInstanceGroupManagerListManagedInstancesResults]{
+		OutputState: in.ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The unit of measure for the target size.
@@ -27392,6 +30303,12 @@ func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToRegionInstanceGroupMan
 	}).(RegionInstanceGroupManagerTargetSizeUnitPtrOutput)
 }
 
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToOutput(ctx context.Context) pulumix.Output[RegionInstanceGroupManagerTargetSizeUnit] {
+	return pulumix.Output[RegionInstanceGroupManagerTargetSizeUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -27425,6 +30342,12 @@ func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ToRegionInstanceGroup
 
 func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
 	return o
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManagerTargetSizeUnit] {
+	return pulumix.Output[*RegionInstanceGroupManagerTargetSizeUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) Elem() RegionInstanceGroupManagerTargetSizeUnitOutput {
@@ -27487,6 +30410,12 @@ func (in *regionInstanceGroupManagerTargetSizeUnitPtr) ToRegionInstanceGroupMana
 
 func (in *regionInstanceGroupManagerTargetSizeUnitPtr) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
+func (in *regionInstanceGroupManagerTargetSizeUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManagerTargetSizeUnit] {
+	return pulumix.Output[*RegionInstanceGroupManagerTargetSizeUnit]{
+		OutputState: in.ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -27571,6 +30500,12 @@ func (o RegionNetworkEndpointGroupNetworkEndpointTypeOutput) ToRegionNetworkEndp
 	}).(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
+func (o RegionNetworkEndpointGroupNetworkEndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionNetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[RegionNetworkEndpointGroupNetworkEndpointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionNetworkEndpointGroupNetworkEndpointTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -27604,6 +30539,12 @@ func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToRegionNetworkE
 
 func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToRegionNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return o
+}
+
+func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[*RegionNetworkEndpointGroupNetworkEndpointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) Elem() RegionNetworkEndpointGroupNetworkEndpointTypeOutput {
@@ -27666,6 +30607,12 @@ func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToRegionNetworkEndpo
 
 func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToRegionNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput)
+}
+
+func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupNetworkEndpointType] {
+	return pulumix.Output[*RegionNetworkEndpointGroupNetworkEndpointType]{
+		OutputState: in.ToRegionNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
@@ -27736,6 +30683,12 @@ func (o RegionNetworkEndpointGroupTypeOutput) ToRegionNetworkEndpointGroupTypePt
 	}).(RegionNetworkEndpointGroupTypePtrOutput)
 }
 
+func (o RegionNetworkEndpointGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionNetworkEndpointGroupType] {
+	return pulumix.Output[RegionNetworkEndpointGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionNetworkEndpointGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -27769,6 +30722,12 @@ func (o RegionNetworkEndpointGroupTypePtrOutput) ToRegionNetworkEndpointGroupTyp
 
 func (o RegionNetworkEndpointGroupTypePtrOutput) ToRegionNetworkEndpointGroupTypePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupTypePtrOutput {
 	return o
+}
+
+func (o RegionNetworkEndpointGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupType] {
+	return pulumix.Output[*RegionNetworkEndpointGroupType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionNetworkEndpointGroupTypePtrOutput) Elem() RegionNetworkEndpointGroupTypeOutput {
@@ -27831,6 +30790,12 @@ func (in *regionNetworkEndpointGroupTypePtr) ToRegionNetworkEndpointGroupTypePtr
 
 func (in *regionNetworkEndpointGroupTypePtr) ToRegionNetworkEndpointGroupTypePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupTypePtrOutput)
+}
+
+func (in *regionNetworkEndpointGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupType] {
+	return pulumix.Output[*RegionNetworkEndpointGroupType]{
+		OutputState: in.ToRegionNetworkEndpointGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
@@ -27903,6 +30868,12 @@ func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToRegionNetworkFirewal
 	}).(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput)
 }
 
+func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionNetworkFirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[RegionNetworkFirewallPolicyVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionNetworkFirewallPolicyVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -27936,6 +30907,12 @@ func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToRegionNetworkFire
 
 func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
 	return o
+}
+
+func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkFirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[*RegionNetworkFirewallPolicyVpcNetworkScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) Elem() RegionNetworkFirewallPolicyVpcNetworkScopeOutput {
@@ -27998,6 +30975,12 @@ func (in *regionNetworkFirewallPolicyVpcNetworkScopePtr) ToRegionNetworkFirewall
 
 func (in *regionNetworkFirewallPolicyVpcNetworkScopePtr) ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput)
+}
+
+func (in *regionNetworkFirewallPolicyVpcNetworkScopePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkFirewallPolicyVpcNetworkScope] {
+	return pulumix.Output[*RegionNetworkFirewallPolicyVpcNetworkScope]{
+		OutputState: in.ToRegionNetworkFirewallPolicyVpcNetworkScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
@@ -28071,6 +31054,12 @@ func (o RegionSecurityPolicyTypeOutput) ToRegionSecurityPolicyTypePtrOutputWithC
 	}).(RegionSecurityPolicyTypePtrOutput)
 }
 
+func (o RegionSecurityPolicyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionSecurityPolicyType] {
+	return pulumix.Output[RegionSecurityPolicyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionSecurityPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -28104,6 +31093,12 @@ func (o RegionSecurityPolicyTypePtrOutput) ToRegionSecurityPolicyTypePtrOutput()
 
 func (o RegionSecurityPolicyTypePtrOutput) ToRegionSecurityPolicyTypePtrOutputWithContext(ctx context.Context) RegionSecurityPolicyTypePtrOutput {
 	return o
+}
+
+func (o RegionSecurityPolicyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicyType] {
+	return pulumix.Output[*RegionSecurityPolicyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionSecurityPolicyTypePtrOutput) Elem() RegionSecurityPolicyTypeOutput {
@@ -28166,6 +31161,12 @@ func (in *regionSecurityPolicyTypePtr) ToRegionSecurityPolicyTypePtrOutput() Reg
 
 func (in *regionSecurityPolicyTypePtr) ToRegionSecurityPolicyTypePtrOutputWithContext(ctx context.Context) RegionSecurityPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSecurityPolicyTypePtrOutput)
+}
+
+func (in *regionSecurityPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicyType] {
+	return pulumix.Output[*RegionSecurityPolicyType]{
+		OutputState: in.ToRegionSecurityPolicyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -28239,6 +31240,12 @@ func (o RegionSslCertificateTypeOutput) ToRegionSslCertificateTypePtrOutputWithC
 	}).(RegionSslCertificateTypePtrOutput)
 }
 
+func (o RegionSslCertificateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionSslCertificateType] {
+	return pulumix.Output[RegionSslCertificateType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionSslCertificateTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -28272,6 +31279,12 @@ func (o RegionSslCertificateTypePtrOutput) ToRegionSslCertificateTypePtrOutput()
 
 func (o RegionSslCertificateTypePtrOutput) ToRegionSslCertificateTypePtrOutputWithContext(ctx context.Context) RegionSslCertificateTypePtrOutput {
 	return o
+}
+
+func (o RegionSslCertificateTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSslCertificateType] {
+	return pulumix.Output[*RegionSslCertificateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionSslCertificateTypePtrOutput) Elem() RegionSslCertificateTypeOutput {
@@ -28334,6 +31347,12 @@ func (in *regionSslCertificateTypePtr) ToRegionSslCertificateTypePtrOutput() Reg
 
 func (in *regionSslCertificateTypePtr) ToRegionSslCertificateTypePtrOutputWithContext(ctx context.Context) RegionSslCertificateTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSslCertificateTypePtrOutput)
+}
+
+func (in *regionSslCertificateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSslCertificateType] {
+	return pulumix.Output[*RegionSslCertificateType]{
+		OutputState: in.ToRegionSslCertificateTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
@@ -28408,6 +31427,12 @@ func (o RegionSslPolicyMinTlsVersionOutput) ToRegionSslPolicyMinTlsVersionPtrOut
 	}).(RegionSslPolicyMinTlsVersionPtrOutput)
 }
 
+func (o RegionSslPolicyMinTlsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[RegionSslPolicyMinTlsVersion] {
+	return pulumix.Output[RegionSslPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionSslPolicyMinTlsVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -28441,6 +31466,12 @@ func (o RegionSslPolicyMinTlsVersionPtrOutput) ToRegionSslPolicyMinTlsVersionPtr
 
 func (o RegionSslPolicyMinTlsVersionPtrOutput) ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionPtrOutput {
 	return o
+}
+
+func (o RegionSslPolicyMinTlsVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicyMinTlsVersion] {
+	return pulumix.Output[*RegionSslPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionSslPolicyMinTlsVersionPtrOutput) Elem() RegionSslPolicyMinTlsVersionOutput {
@@ -28503,6 +31534,12 @@ func (in *regionSslPolicyMinTlsVersionPtr) ToRegionSslPolicyMinTlsVersionPtrOutp
 
 func (in *regionSslPolicyMinTlsVersionPtr) ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSslPolicyMinTlsVersionPtrOutput)
+}
+
+func (in *regionSslPolicyMinTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicyMinTlsVersion] {
+	return pulumix.Output[*RegionSslPolicyMinTlsVersion]{
+		OutputState: in.ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
@@ -28579,6 +31616,12 @@ func (o RegionSslPolicyProfileOutput) ToRegionSslPolicyProfilePtrOutputWithConte
 	}).(RegionSslPolicyProfilePtrOutput)
 }
 
+func (o RegionSslPolicyProfileOutput) ToOutput(ctx context.Context) pulumix.Output[RegionSslPolicyProfile] {
+	return pulumix.Output[RegionSslPolicyProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionSslPolicyProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -28612,6 +31655,12 @@ func (o RegionSslPolicyProfilePtrOutput) ToRegionSslPolicyProfilePtrOutput() Reg
 
 func (o RegionSslPolicyProfilePtrOutput) ToRegionSslPolicyProfilePtrOutputWithContext(ctx context.Context) RegionSslPolicyProfilePtrOutput {
 	return o
+}
+
+func (o RegionSslPolicyProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicyProfile] {
+	return pulumix.Output[*RegionSslPolicyProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionSslPolicyProfilePtrOutput) Elem() RegionSslPolicyProfileOutput {
@@ -28674,6 +31723,12 @@ func (in *regionSslPolicyProfilePtr) ToRegionSslPolicyProfilePtrOutput() RegionS
 
 func (in *regionSslPolicyProfilePtr) ToRegionSslPolicyProfilePtrOutputWithContext(ctx context.Context) RegionSslPolicyProfilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSslPolicyProfilePtrOutput)
+}
+
+func (in *regionSslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicyProfile] {
+	return pulumix.Output[*RegionSslPolicyProfile]{
+		OutputState: in.ToRegionSslPolicyProfilePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
@@ -28748,6 +31803,12 @@ func (o RegionTargetHttpsProxyQuicOverrideOutput) ToRegionTargetHttpsProxyQuicOv
 	}).(RegionTargetHttpsProxyQuicOverridePtrOutput)
 }
 
+func (o RegionTargetHttpsProxyQuicOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[RegionTargetHttpsProxyQuicOverride] {
+	return pulumix.Output[RegionTargetHttpsProxyQuicOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionTargetHttpsProxyQuicOverrideOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -28781,6 +31842,12 @@ func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToRegionTargetHttpsProxyQui
 
 func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToRegionTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyQuicOverridePtrOutput {
 	return o
+}
+
+func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpsProxyQuicOverride] {
+	return pulumix.Output[*RegionTargetHttpsProxyQuicOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionTargetHttpsProxyQuicOverridePtrOutput) Elem() RegionTargetHttpsProxyQuicOverrideOutput {
@@ -28843,6 +31910,12 @@ func (in *regionTargetHttpsProxyQuicOverridePtr) ToRegionTargetHttpsProxyQuicOve
 
 func (in *regionTargetHttpsProxyQuicOverridePtr) ToRegionTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyQuicOverridePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionTargetHttpsProxyQuicOverridePtrOutput)
+}
+
+func (in *regionTargetHttpsProxyQuicOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpsProxyQuicOverride] {
+	return pulumix.Output[*RegionTargetHttpsProxyQuicOverride]{
+		OutputState: in.ToRegionTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -28913,6 +31986,12 @@ func (o RegionTargetTcpProxyProxyHeaderOutput) ToRegionTargetTcpProxyProxyHeader
 	}).(RegionTargetTcpProxyProxyHeaderPtrOutput)
 }
 
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[RegionTargetTcpProxyProxyHeader] {
+	return pulumix.Output[RegionTargetTcpProxyProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionTargetTcpProxyProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -28946,6 +32025,12 @@ func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToRegionTargetTcpProxyProxyHea
 
 func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput {
 	return o
+}
+
+func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetTcpProxyProxyHeader] {
+	return pulumix.Output[*RegionTargetTcpProxyProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionTargetTcpProxyProxyHeaderPtrOutput) Elem() RegionTargetTcpProxyProxyHeaderOutput {
@@ -29008,6 +32093,12 @@ func (in *regionTargetTcpProxyProxyHeaderPtr) ToRegionTargetTcpProxyProxyHeaderP
 
 func (in *regionTargetTcpProxyProxyHeaderPtr) ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionTargetTcpProxyProxyHeaderPtrOutput)
+}
+
+func (in *regionTargetTcpProxyProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetTcpProxyProxyHeader] {
+	return pulumix.Output[*RegionTargetTcpProxyProxyHeader]{
+		OutputState: in.ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
@@ -29085,6 +32176,12 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityCo
 	}).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
+func (o ReservationAffinityConsumeReservationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[ReservationAffinityConsumeReservationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -29118,6 +32215,12 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
@@ -29180,6 +32283,12 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 
 func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (in *reservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
+		OutputState: in.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
@@ -29253,6 +32362,12 @@ func (o ResourceCommitmentTypeOutput) ToResourceCommitmentTypePtrOutputWithConte
 	}).(ResourceCommitmentTypePtrOutput)
 }
 
+func (o ResourceCommitmentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceCommitmentType] {
+	return pulumix.Output[ResourceCommitmentType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceCommitmentTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -29286,6 +32401,12 @@ func (o ResourceCommitmentTypePtrOutput) ToResourceCommitmentTypePtrOutput() Res
 
 func (o ResourceCommitmentTypePtrOutput) ToResourceCommitmentTypePtrOutputWithContext(ctx context.Context) ResourceCommitmentTypePtrOutput {
 	return o
+}
+
+func (o ResourceCommitmentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceCommitmentType] {
+	return pulumix.Output[*ResourceCommitmentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceCommitmentTypePtrOutput) Elem() ResourceCommitmentTypeOutput {
@@ -29348,6 +32469,12 @@ func (in *resourceCommitmentTypePtr) ToResourceCommitmentTypePtrOutput() Resourc
 
 func (in *resourceCommitmentTypePtr) ToResourceCommitmentTypePtrOutputWithContext(ctx context.Context) ResourceCommitmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceCommitmentTypePtrOutput)
+}
+
+func (in *resourceCommitmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceCommitmentType] {
+	return pulumix.Output[*ResourceCommitmentType]{
+		OutputState: in.ToResourceCommitmentTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies network collocation
@@ -29420,6 +32547,12 @@ func (o ResourcePolicyGroupPlacementPolicyCollocationOutput) ToResourcePolicyGro
 	}).(ResourcePolicyGroupPlacementPolicyCollocationPtrOutput)
 }
 
+func (o ResourcePolicyGroupPlacementPolicyCollocationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePolicyGroupPlacementPolicyCollocation] {
+	return pulumix.Output[ResourcePolicyGroupPlacementPolicyCollocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourcePolicyGroupPlacementPolicyCollocationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -29453,6 +32586,12 @@ func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToResourcePolicy
 
 func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToResourcePolicyGroupPlacementPolicyCollocationPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyCollocationPtrOutput {
 	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyCollocation] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyCollocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) Elem() ResourcePolicyGroupPlacementPolicyCollocationOutput {
@@ -29515,6 +32654,12 @@ func (in *resourcePolicyGroupPlacementPolicyCollocationPtr) ToResourcePolicyGrou
 
 func (in *resourcePolicyGroupPlacementPolicyCollocationPtr) ToResourcePolicyGroupPlacementPolicyCollocationPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyCollocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicyGroupPlacementPolicyCollocationPtrOutput)
+}
+
+func (in *resourcePolicyGroupPlacementPolicyCollocationPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyCollocation] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyCollocation]{
+		OutputState: in.ToResourcePolicyGroupPlacementPolicyCollocationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies network locality
@@ -29586,6 +32731,12 @@ func (o ResourcePolicyGroupPlacementPolicyLocalityOutput) ToResourcePolicyGroupP
 	}).(ResourcePolicyGroupPlacementPolicyLocalityPtrOutput)
 }
 
+func (o ResourcePolicyGroupPlacementPolicyLocalityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePolicyGroupPlacementPolicyLocality] {
+	return pulumix.Output[ResourcePolicyGroupPlacementPolicyLocality]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourcePolicyGroupPlacementPolicyLocalityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -29619,6 +32770,12 @@ func (o ResourcePolicyGroupPlacementPolicyLocalityPtrOutput) ToResourcePolicyGro
 
 func (o ResourcePolicyGroupPlacementPolicyLocalityPtrOutput) ToResourcePolicyGroupPlacementPolicyLocalityPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyLocalityPtrOutput {
 	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyLocalityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyLocality] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyLocality]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePolicyGroupPlacementPolicyLocalityPtrOutput) Elem() ResourcePolicyGroupPlacementPolicyLocalityOutput {
@@ -29681,6 +32838,12 @@ func (in *resourcePolicyGroupPlacementPolicyLocalityPtr) ToResourcePolicyGroupPl
 
 func (in *resourcePolicyGroupPlacementPolicyLocalityPtr) ToResourcePolicyGroupPlacementPolicyLocalityPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyLocalityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicyGroupPlacementPolicyLocalityPtrOutput)
+}
+
+func (in *resourcePolicyGroupPlacementPolicyLocalityPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyLocality] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyLocality]{
+		OutputState: in.ToResourcePolicyGroupPlacementPolicyLocalityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Scope specifies the availability domain to which the VMs should be spread.
@@ -29753,6 +32916,12 @@ func (o ResourcePolicyGroupPlacementPolicyScopeOutput) ToResourcePolicyGroupPlac
 	}).(ResourcePolicyGroupPlacementPolicyScopePtrOutput)
 }
 
+func (o ResourcePolicyGroupPlacementPolicyScopeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePolicyGroupPlacementPolicyScope] {
+	return pulumix.Output[ResourcePolicyGroupPlacementPolicyScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourcePolicyGroupPlacementPolicyScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -29786,6 +32955,12 @@ func (o ResourcePolicyGroupPlacementPolicyScopePtrOutput) ToResourcePolicyGroupP
 
 func (o ResourcePolicyGroupPlacementPolicyScopePtrOutput) ToResourcePolicyGroupPlacementPolicyScopePtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyScopePtrOutput {
 	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyScope] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePolicyGroupPlacementPolicyScopePtrOutput) Elem() ResourcePolicyGroupPlacementPolicyScopeOutput {
@@ -29848,6 +33023,12 @@ func (in *resourcePolicyGroupPlacementPolicyScopePtr) ToResourcePolicyGroupPlace
 
 func (in *resourcePolicyGroupPlacementPolicyScopePtr) ToResourcePolicyGroupPlacementPolicyScopePtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicyGroupPlacementPolicyScopePtrOutput)
+}
+
+func (in *resourcePolicyGroupPlacementPolicyScopePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyScope] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyScope]{
+		OutputState: in.ToResourcePolicyGroupPlacementPolicyScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies instances to hosts placement relationship
@@ -29921,6 +33102,12 @@ func (o ResourcePolicyGroupPlacementPolicyStyleOutput) ToResourcePolicyGroupPlac
 	}).(ResourcePolicyGroupPlacementPolicyStylePtrOutput)
 }
 
+func (o ResourcePolicyGroupPlacementPolicyStyleOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePolicyGroupPlacementPolicyStyle] {
+	return pulumix.Output[ResourcePolicyGroupPlacementPolicyStyle]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourcePolicyGroupPlacementPolicyStyleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -29954,6 +33141,12 @@ func (o ResourcePolicyGroupPlacementPolicyStylePtrOutput) ToResourcePolicyGroupP
 
 func (o ResourcePolicyGroupPlacementPolicyStylePtrOutput) ToResourcePolicyGroupPlacementPolicyStylePtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyStylePtrOutput {
 	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyStylePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyStyle] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyStyle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePolicyGroupPlacementPolicyStylePtrOutput) Elem() ResourcePolicyGroupPlacementPolicyStyleOutput {
@@ -30016,6 +33209,12 @@ func (in *resourcePolicyGroupPlacementPolicyStylePtr) ToResourcePolicyGroupPlace
 
 func (in *resourcePolicyGroupPlacementPolicyStylePtr) ToResourcePolicyGroupPlacementPolicyStylePtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyStylePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicyGroupPlacementPolicyStylePtrOutput)
+}
+
+func (in *resourcePolicyGroupPlacementPolicyStylePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyStyle] {
+	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyStyle]{
+		OutputState: in.ToResourcePolicyGroupPlacementPolicyStylePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch string
@@ -30086,6 +33285,12 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchOutput)
 	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutput)
 }
 
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch] {
+	return pulumix.Output[ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -30119,6 +33324,12 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutp
 
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutput {
 	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch] {
+	return pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchOutput {
@@ -30181,6 +33392,12 @@ func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtr) 
 
 func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtr) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutput)
+}
+
+func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch] {
+	return pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch]{
+		OutputState: in.ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
@@ -30252,6 +33469,12 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOut
 	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput)
 }
 
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete] {
+	return pulumix.Output[ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -30285,6 +33508,12 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr
 
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput {
 	return o
+}
+
+func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete] {
+	return pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput) Elem() ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput {
@@ -30347,6 +33576,12 @@ func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteP
 
 func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput)
+}
+
+func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete] {
+	return pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete]{
+		OutputState: in.ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
@@ -30423,6 +33658,12 @@ func (o ResourcePolicyWeeklyCycleDayOfWeekDayOutput) ToResourcePolicyWeeklyCycle
 	}).(ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput)
 }
 
+func (o ResourcePolicyWeeklyCycleDayOfWeekDayOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePolicyWeeklyCycleDayOfWeekDay] {
+	return pulumix.Output[ResourcePolicyWeeklyCycleDayOfWeekDay]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourcePolicyWeeklyCycleDayOfWeekDayOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -30456,6 +33697,12 @@ func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToResourcePolicyWeeklyCy
 
 func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToResourcePolicyWeeklyCycleDayOfWeekDayPtrOutputWithContext(ctx context.Context) ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput {
 	return o
+}
+
+func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyWeeklyCycleDayOfWeekDay] {
+	return pulumix.Output[*ResourcePolicyWeeklyCycleDayOfWeekDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) Elem() ResourcePolicyWeeklyCycleDayOfWeekDayOutput {
@@ -30518,6 +33765,12 @@ func (in *resourcePolicyWeeklyCycleDayOfWeekDayPtr) ToResourcePolicyWeeklyCycleD
 
 func (in *resourcePolicyWeeklyCycleDayOfWeekDayPtr) ToResourcePolicyWeeklyCycleDayOfWeekDayPtrOutputWithContext(ctx context.Context) ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput)
+}
+
+func (in *resourcePolicyWeeklyCycleDayOfWeekDayPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyWeeklyCycleDayOfWeekDay] {
+	return pulumix.Output[*ResourcePolicyWeeklyCycleDayOfWeekDay]{
+		OutputState: in.ToResourcePolicyWeeklyCycleDayOfWeekDayPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
@@ -30590,6 +33843,12 @@ func (o RouteIlbRouteBehaviorOnUnhealthyOutput) ToRouteIlbRouteBehaviorOnUnhealt
 	}).(RouteIlbRouteBehaviorOnUnhealthyPtrOutput)
 }
 
+func (o RouteIlbRouteBehaviorOnUnhealthyOutput) ToOutput(ctx context.Context) pulumix.Output[RouteIlbRouteBehaviorOnUnhealthy] {
+	return pulumix.Output[RouteIlbRouteBehaviorOnUnhealthy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouteIlbRouteBehaviorOnUnhealthyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -30623,6 +33882,12 @@ func (o RouteIlbRouteBehaviorOnUnhealthyPtrOutput) ToRouteIlbRouteBehaviorOnUnhe
 
 func (o RouteIlbRouteBehaviorOnUnhealthyPtrOutput) ToRouteIlbRouteBehaviorOnUnhealthyPtrOutputWithContext(ctx context.Context) RouteIlbRouteBehaviorOnUnhealthyPtrOutput {
 	return o
+}
+
+func (o RouteIlbRouteBehaviorOnUnhealthyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteIlbRouteBehaviorOnUnhealthy] {
+	return pulumix.Output[*RouteIlbRouteBehaviorOnUnhealthy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouteIlbRouteBehaviorOnUnhealthyPtrOutput) Elem() RouteIlbRouteBehaviorOnUnhealthyOutput {
@@ -30685,6 +33950,12 @@ func (in *routeIlbRouteBehaviorOnUnhealthyPtr) ToRouteIlbRouteBehaviorOnUnhealth
 
 func (in *routeIlbRouteBehaviorOnUnhealthyPtr) ToRouteIlbRouteBehaviorOnUnhealthyPtrOutputWithContext(ctx context.Context) RouteIlbRouteBehaviorOnUnhealthyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouteIlbRouteBehaviorOnUnhealthyPtrOutput)
+}
+
+func (in *routeIlbRouteBehaviorOnUnhealthyPtr) ToOutput(ctx context.Context) pulumix.Output[*RouteIlbRouteBehaviorOnUnhealthy] {
+	return pulumix.Output[*RouteIlbRouteBehaviorOnUnhealthy]{
+		OutputState: in.ToRouteIlbRouteBehaviorOnUnhealthyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or CUSTOM.
@@ -30755,6 +34026,12 @@ func (o RouterBgpAdvertiseModeOutput) ToRouterBgpAdvertiseModePtrOutputWithConte
 	}).(RouterBgpAdvertiseModePtrOutput)
 }
 
+func (o RouterBgpAdvertiseModeOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpAdvertiseMode] {
+	return pulumix.Output[RouterBgpAdvertiseMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpAdvertiseModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -30788,6 +34065,12 @@ func (o RouterBgpAdvertiseModePtrOutput) ToRouterBgpAdvertiseModePtrOutput() Rou
 
 func (o RouterBgpAdvertiseModePtrOutput) ToRouterBgpAdvertiseModePtrOutputWithContext(ctx context.Context) RouterBgpAdvertiseModePtrOutput {
 	return o
+}
+
+func (o RouterBgpAdvertiseModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpAdvertiseMode] {
+	return pulumix.Output[*RouterBgpAdvertiseMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpAdvertiseModePtrOutput) Elem() RouterBgpAdvertiseModeOutput {
@@ -30850,6 +34133,12 @@ func (in *routerBgpAdvertiseModePtr) ToRouterBgpAdvertiseModePtrOutput() RouterB
 
 func (in *routerBgpAdvertiseModePtr) ToRouterBgpAdvertiseModePtrOutputWithContext(ctx context.Context) RouterBgpAdvertiseModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpAdvertiseModePtrOutput)
+}
+
+func (in *routerBgpAdvertiseModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpAdvertiseMode] {
+	return pulumix.Output[*RouterBgpAdvertiseMode]{
+		OutputState: in.ToRouterBgpAdvertiseModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type RouterBgpAdvertisedGroupsItem string
@@ -30923,6 +34212,12 @@ func (o RouterBgpAdvertisedGroupsItemOutput) ToRouterBgpAdvertisedGroupsItemPtrO
 	}).(RouterBgpAdvertisedGroupsItemPtrOutput)
 }
 
+func (o RouterBgpAdvertisedGroupsItemOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpAdvertisedGroupsItem] {
+	return pulumix.Output[RouterBgpAdvertisedGroupsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpAdvertisedGroupsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -30956,6 +34251,12 @@ func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToRouterBgpAdvertisedGroupsItemP
 
 func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToRouterBgpAdvertisedGroupsItemPtrOutputWithContext(ctx context.Context) RouterBgpAdvertisedGroupsItemPtrOutput {
 	return o
+}
+
+func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpAdvertisedGroupsItem] {
+	return pulumix.Output[*RouterBgpAdvertisedGroupsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpAdvertisedGroupsItemPtrOutput) Elem() RouterBgpAdvertisedGroupsItemOutput {
@@ -31020,6 +34321,12 @@ func (in *routerBgpAdvertisedGroupsItemPtr) ToRouterBgpAdvertisedGroupsItemPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpAdvertisedGroupsItemPtrOutput)
 }
 
+func (in *routerBgpAdvertisedGroupsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpAdvertisedGroupsItem] {
+	return pulumix.Output[*RouterBgpAdvertisedGroupsItem]{
+		OutputState: in.ToRouterBgpAdvertisedGroupsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouterBgpAdvertisedGroupsItemArrayInput is an input type that accepts RouterBgpAdvertisedGroupsItemArray and RouterBgpAdvertisedGroupsItemArrayOutput values.
 // You can construct a concrete instance of `RouterBgpAdvertisedGroupsItemArrayInput` via:
 //
@@ -31045,6 +34352,12 @@ func (i RouterBgpAdvertisedGroupsItemArray) ToRouterBgpAdvertisedGroupsItemArray
 	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpAdvertisedGroupsItemArrayOutput)
 }
 
+func (i RouterBgpAdvertisedGroupsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RouterBgpAdvertisedGroupsItem] {
+	return pulumix.Output[[]RouterBgpAdvertisedGroupsItem]{
+		OutputState: i.ToRouterBgpAdvertisedGroupsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouterBgpAdvertisedGroupsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpAdvertisedGroupsItemArrayOutput) ElementType() reflect.Type {
@@ -31057,6 +34370,12 @@ func (o RouterBgpAdvertisedGroupsItemArrayOutput) ToRouterBgpAdvertisedGroupsIte
 
 func (o RouterBgpAdvertisedGroupsItemArrayOutput) ToRouterBgpAdvertisedGroupsItemArrayOutputWithContext(ctx context.Context) RouterBgpAdvertisedGroupsItemArrayOutput {
 	return o
+}
+
+func (o RouterBgpAdvertisedGroupsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouterBgpAdvertisedGroupsItem] {
+	return pulumix.Output[[]RouterBgpAdvertisedGroupsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) RouterBgpAdvertisedGroupsItemOutput {
@@ -31133,6 +34452,12 @@ func (o RouterBgpPeerAdvertiseModeOutput) ToRouterBgpPeerAdvertiseModePtrOutputW
 	}).(RouterBgpPeerAdvertiseModePtrOutput)
 }
 
+func (o RouterBgpPeerAdvertiseModeOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpPeerAdvertiseMode] {
+	return pulumix.Output[RouterBgpPeerAdvertiseMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpPeerAdvertiseModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -31166,6 +34491,12 @@ func (o RouterBgpPeerAdvertiseModePtrOutput) ToRouterBgpPeerAdvertiseModePtrOutp
 
 func (o RouterBgpPeerAdvertiseModePtrOutput) ToRouterBgpPeerAdvertiseModePtrOutputWithContext(ctx context.Context) RouterBgpPeerAdvertiseModePtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerAdvertiseModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerAdvertiseMode] {
+	return pulumix.Output[*RouterBgpPeerAdvertiseMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpPeerAdvertiseModePtrOutput) Elem() RouterBgpPeerAdvertiseModeOutput {
@@ -31228,6 +34559,12 @@ func (in *routerBgpPeerAdvertiseModePtr) ToRouterBgpPeerAdvertiseModePtrOutput()
 
 func (in *routerBgpPeerAdvertiseModePtr) ToRouterBgpPeerAdvertiseModePtrOutputWithContext(ctx context.Context) RouterBgpPeerAdvertiseModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerAdvertiseModePtrOutput)
+}
+
+func (in *routerBgpPeerAdvertiseModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerAdvertiseMode] {
+	return pulumix.Output[*RouterBgpPeerAdvertiseMode]{
+		OutputState: in.ToRouterBgpPeerAdvertiseModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type RouterBgpPeerAdvertisedGroupsItem string
@@ -31301,6 +34638,12 @@ func (o RouterBgpPeerAdvertisedGroupsItemOutput) ToRouterBgpPeerAdvertisedGroups
 	}).(RouterBgpPeerAdvertisedGroupsItemPtrOutput)
 }
 
+func (o RouterBgpPeerAdvertisedGroupsItemOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpPeerAdvertisedGroupsItem] {
+	return pulumix.Output[RouterBgpPeerAdvertisedGroupsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpPeerAdvertisedGroupsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -31334,6 +34677,12 @@ func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToRouterBgpPeerAdvertisedGro
 
 func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToRouterBgpPeerAdvertisedGroupsItemPtrOutputWithContext(ctx context.Context) RouterBgpPeerAdvertisedGroupsItemPtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerAdvertisedGroupsItem] {
+	return pulumix.Output[*RouterBgpPeerAdvertisedGroupsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) Elem() RouterBgpPeerAdvertisedGroupsItemOutput {
@@ -31398,6 +34747,12 @@ func (in *routerBgpPeerAdvertisedGroupsItemPtr) ToRouterBgpPeerAdvertisedGroupsI
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerAdvertisedGroupsItemPtrOutput)
 }
 
+func (in *routerBgpPeerAdvertisedGroupsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerAdvertisedGroupsItem] {
+	return pulumix.Output[*RouterBgpPeerAdvertisedGroupsItem]{
+		OutputState: in.ToRouterBgpPeerAdvertisedGroupsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouterBgpPeerAdvertisedGroupsItemArrayInput is an input type that accepts RouterBgpPeerAdvertisedGroupsItemArray and RouterBgpPeerAdvertisedGroupsItemArrayOutput values.
 // You can construct a concrete instance of `RouterBgpPeerAdvertisedGroupsItemArrayInput` via:
 //
@@ -31423,6 +34778,12 @@ func (i RouterBgpPeerAdvertisedGroupsItemArray) ToRouterBgpPeerAdvertisedGroupsI
 	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerAdvertisedGroupsItemArrayOutput)
 }
 
+func (i RouterBgpPeerAdvertisedGroupsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RouterBgpPeerAdvertisedGroupsItem] {
+	return pulumix.Output[[]RouterBgpPeerAdvertisedGroupsItem]{
+		OutputState: i.ToRouterBgpPeerAdvertisedGroupsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouterBgpPeerAdvertisedGroupsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterBgpPeerAdvertisedGroupsItemArrayOutput) ElementType() reflect.Type {
@@ -31435,6 +34796,12 @@ func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) ToRouterBgpPeerAdvertisedG
 
 func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) ToRouterBgpPeerAdvertisedGroupsItemArrayOutputWithContext(ctx context.Context) RouterBgpPeerAdvertisedGroupsItemArrayOutput {
 	return o
+}
+
+func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouterBgpPeerAdvertisedGroupsItem] {
+	return pulumix.Output[[]RouterBgpPeerAdvertisedGroupsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) RouterBgpPeerAdvertisedGroupsItemOutput {
@@ -31512,6 +34879,12 @@ func (o RouterBgpPeerBfdModeOutput) ToRouterBgpPeerBfdModePtrOutputWithContext(c
 	}).(RouterBgpPeerBfdModePtrOutput)
 }
 
+func (o RouterBgpPeerBfdModeOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpPeerBfdMode] {
+	return pulumix.Output[RouterBgpPeerBfdMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpPeerBfdModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -31545,6 +34918,12 @@ func (o RouterBgpPeerBfdModePtrOutput) ToRouterBgpPeerBfdModePtrOutput() RouterB
 
 func (o RouterBgpPeerBfdModePtrOutput) ToRouterBgpPeerBfdModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdModePtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerBfdModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerBfdMode] {
+	return pulumix.Output[*RouterBgpPeerBfdMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpPeerBfdModePtrOutput) Elem() RouterBgpPeerBfdModeOutput {
@@ -31607,6 +34986,12 @@ func (in *routerBgpPeerBfdModePtr) ToRouterBgpPeerBfdModePtrOutput() RouterBgpPe
 
 func (in *routerBgpPeerBfdModePtr) ToRouterBgpPeerBfdModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerBfdModePtrOutput)
+}
+
+func (in *routerBgpPeerBfdModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerBfdMode] {
+	return pulumix.Output[*RouterBgpPeerBfdMode]{
+		OutputState: in.ToRouterBgpPeerBfdModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The BFD packet mode for this BGP peer. If set to CONTROL_AND_ECHO, BFD echo mode is enabled for this BGP peer. In this mode, if the peer router also has BFD echo mode enabled, BFD echo packets will be sent to the other router. If the peer router does not have BFD echo mode enabled, only control packets will be sent. If set to CONTROL_ONLY, BFD echo mode is disabled for this BGP peer. If this router and the peer router have a multihop connection, this should be set to CONTROL_ONLY as BFD echo mode is only supported on singlehop connections. The default is CONTROL_AND_ECHO.
@@ -31677,6 +35062,12 @@ func (o RouterBgpPeerBfdPacketModeOutput) ToRouterBgpPeerBfdPacketModePtrOutputW
 	}).(RouterBgpPeerBfdPacketModePtrOutput)
 }
 
+func (o RouterBgpPeerBfdPacketModeOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpPeerBfdPacketMode] {
+	return pulumix.Output[RouterBgpPeerBfdPacketMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpPeerBfdPacketModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -31710,6 +35101,12 @@ func (o RouterBgpPeerBfdPacketModePtrOutput) ToRouterBgpPeerBfdPacketModePtrOutp
 
 func (o RouterBgpPeerBfdPacketModePtrOutput) ToRouterBgpPeerBfdPacketModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdPacketModePtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerBfdPacketModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerBfdPacketMode] {
+	return pulumix.Output[*RouterBgpPeerBfdPacketMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpPeerBfdPacketModePtrOutput) Elem() RouterBgpPeerBfdPacketModeOutput {
@@ -31772,6 +35169,12 @@ func (in *routerBgpPeerBfdPacketModePtr) ToRouterBgpPeerBfdPacketModePtrOutput()
 
 func (in *routerBgpPeerBfdPacketModePtr) ToRouterBgpPeerBfdPacketModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdPacketModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerBfdPacketModePtrOutput)
+}
+
+func (in *routerBgpPeerBfdPacketModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerBfdPacketMode] {
+	return pulumix.Output[*RouterBgpPeerBfdPacketMode]{
+		OutputState: in.ToRouterBgpPeerBfdPacketModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.
@@ -31843,6 +35246,12 @@ func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToRouterBgpPeerBfdSessi
 	}).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
 }
 
+func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpPeerBfdSessionInitializationMode] {
+	return pulumix.Output[RouterBgpPeerBfdSessionInitializationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpPeerBfdSessionInitializationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -31876,6 +35285,12 @@ func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToRouterBgpPeerBfdSe
 
 func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModePtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerBfdSessionInitializationMode] {
+	return pulumix.Output[*RouterBgpPeerBfdSessionInitializationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) Elem() RouterBgpPeerBfdSessionInitializationModeOutput {
@@ -31938,6 +35353,12 @@ func (in *routerBgpPeerBfdSessionInitializationModePtr) ToRouterBgpPeerBfdSessio
 
 func (in *routerBgpPeerBfdSessionInitializationModePtr) ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx context.Context) RouterBgpPeerBfdSessionInitializationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
+}
+
+func (in *routerBgpPeerBfdSessionInitializationModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerBfdSessionInitializationMode] {
+	return pulumix.Output[*RouterBgpPeerBfdSessionInitializationMode]{
+		OutputState: in.ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
@@ -32008,6 +35429,12 @@ func (o RouterBgpPeerEnableOutput) ToRouterBgpPeerEnablePtrOutputWithContext(ctx
 	}).(RouterBgpPeerEnablePtrOutput)
 }
 
+func (o RouterBgpPeerEnableOutput) ToOutput(ctx context.Context) pulumix.Output[RouterBgpPeerEnable] {
+	return pulumix.Output[RouterBgpPeerEnable]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterBgpPeerEnableOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -32041,6 +35468,12 @@ func (o RouterBgpPeerEnablePtrOutput) ToRouterBgpPeerEnablePtrOutput() RouterBgp
 
 func (o RouterBgpPeerEnablePtrOutput) ToRouterBgpPeerEnablePtrOutputWithContext(ctx context.Context) RouterBgpPeerEnablePtrOutput {
 	return o
+}
+
+func (o RouterBgpPeerEnablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerEnable] {
+	return pulumix.Output[*RouterBgpPeerEnable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterBgpPeerEnablePtrOutput) Elem() RouterBgpPeerEnableOutput {
@@ -32103,6 +35536,12 @@ func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutput() RouterBgpPeer
 
 func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutputWithContext(ctx context.Context) RouterBgpPeerEnablePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerEnablePtrOutput)
+}
+
+func (in *routerBgpPeerEnablePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerEnable] {
+	return pulumix.Output[*RouterBgpPeerEnable]{
+		OutputState: in.ToRouterBgpPeerEnablePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
@@ -32181,6 +35620,12 @@ func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierPtrOutputWithC
 	}).(RouterNatAutoNetworkTierPtrOutput)
 }
 
+func (o RouterNatAutoNetworkTierOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNatAutoNetworkTier] {
+	return pulumix.Output[RouterNatAutoNetworkTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterNatAutoNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -32214,6 +35659,12 @@ func (o RouterNatAutoNetworkTierPtrOutput) ToRouterNatAutoNetworkTierPtrOutput()
 
 func (o RouterNatAutoNetworkTierPtrOutput) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
 	return o
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNatAutoNetworkTier] {
+	return pulumix.Output[*RouterNatAutoNetworkTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatAutoNetworkTierPtrOutput) Elem() RouterNatAutoNetworkTierOutput {
@@ -32276,6 +35727,12 @@ func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutput() Rou
 
 func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatAutoNetworkTierPtrOutput)
+}
+
+func (in *routerNatAutoNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatAutoNetworkTier] {
+	return pulumix.Output[*RouterNatAutoNetworkTier]{
+		OutputState: in.ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type RouterNatEndpointTypesItem string
@@ -32349,6 +35806,12 @@ func (o RouterNatEndpointTypesItemOutput) ToRouterNatEndpointTypesItemPtrOutputW
 	}).(RouterNatEndpointTypesItemPtrOutput)
 }
 
+func (o RouterNatEndpointTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNatEndpointTypesItem] {
+	return pulumix.Output[RouterNatEndpointTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterNatEndpointTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -32382,6 +35845,12 @@ func (o RouterNatEndpointTypesItemPtrOutput) ToRouterNatEndpointTypesItemPtrOutp
 
 func (o RouterNatEndpointTypesItemPtrOutput) ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemPtrOutput {
 	return o
+}
+
+func (o RouterNatEndpointTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNatEndpointTypesItem] {
+	return pulumix.Output[*RouterNatEndpointTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatEndpointTypesItemPtrOutput) Elem() RouterNatEndpointTypesItemOutput {
@@ -32446,6 +35915,12 @@ func (in *routerNatEndpointTypesItemPtr) ToRouterNatEndpointTypesItemPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatEndpointTypesItemPtrOutput)
 }
 
+func (in *routerNatEndpointTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatEndpointTypesItem] {
+	return pulumix.Output[*RouterNatEndpointTypesItem]{
+		OutputState: in.ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouterNatEndpointTypesItemArrayInput is an input type that accepts RouterNatEndpointTypesItemArray and RouterNatEndpointTypesItemArrayOutput values.
 // You can construct a concrete instance of `RouterNatEndpointTypesItemArrayInput` via:
 //
@@ -32471,6 +35946,12 @@ func (i RouterNatEndpointTypesItemArray) ToRouterNatEndpointTypesItemArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatEndpointTypesItemArrayOutput)
 }
 
+func (i RouterNatEndpointTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RouterNatEndpointTypesItem] {
+	return pulumix.Output[[]RouterNatEndpointTypesItem]{
+		OutputState: i.ToRouterNatEndpointTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouterNatEndpointTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterNatEndpointTypesItemArrayOutput) ElementType() reflect.Type {
@@ -32483,6 +35964,12 @@ func (o RouterNatEndpointTypesItemArrayOutput) ToRouterNatEndpointTypesItemArray
 
 func (o RouterNatEndpointTypesItemArrayOutput) ToRouterNatEndpointTypesItemArrayOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemArrayOutput {
 	return o
+}
+
+func (o RouterNatEndpointTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouterNatEndpointTypesItem] {
+	return pulumix.Output[[]RouterNatEndpointTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatEndpointTypesItemArrayOutput) Index(i pulumi.IntInput) RouterNatEndpointTypesItemOutput {
@@ -32563,6 +36050,12 @@ func (o RouterNatLogConfigFilterOutput) ToRouterNatLogConfigFilterPtrOutputWithC
 	}).(RouterNatLogConfigFilterPtrOutput)
 }
 
+func (o RouterNatLogConfigFilterOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNatLogConfigFilter] {
+	return pulumix.Output[RouterNatLogConfigFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterNatLogConfigFilterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -32596,6 +36089,12 @@ func (o RouterNatLogConfigFilterPtrOutput) ToRouterNatLogConfigFilterPtrOutput()
 
 func (o RouterNatLogConfigFilterPtrOutput) ToRouterNatLogConfigFilterPtrOutputWithContext(ctx context.Context) RouterNatLogConfigFilterPtrOutput {
 	return o
+}
+
+func (o RouterNatLogConfigFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNatLogConfigFilter] {
+	return pulumix.Output[*RouterNatLogConfigFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatLogConfigFilterPtrOutput) Elem() RouterNatLogConfigFilterOutput {
@@ -32658,6 +36157,12 @@ func (in *routerNatLogConfigFilterPtr) ToRouterNatLogConfigFilterPtrOutput() Rou
 
 func (in *routerNatLogConfigFilterPtr) ToRouterNatLogConfigFilterPtrOutputWithContext(ctx context.Context) RouterNatLogConfigFilterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatLogConfigFilterPtrOutput)
+}
+
+func (in *routerNatLogConfigFilterPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatLogConfigFilter] {
+	return pulumix.Output[*RouterNatLogConfigFilter]{
+		OutputState: in.ToRouterNatLogConfigFilterPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
@@ -32730,6 +36235,12 @@ func (o RouterNatNatIpAllocateOptionOutput) ToRouterNatNatIpAllocateOptionPtrOut
 	}).(RouterNatNatIpAllocateOptionPtrOutput)
 }
 
+func (o RouterNatNatIpAllocateOptionOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNatNatIpAllocateOption] {
+	return pulumix.Output[RouterNatNatIpAllocateOption]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterNatNatIpAllocateOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -32763,6 +36274,12 @@ func (o RouterNatNatIpAllocateOptionPtrOutput) ToRouterNatNatIpAllocateOptionPtr
 
 func (o RouterNatNatIpAllocateOptionPtrOutput) ToRouterNatNatIpAllocateOptionPtrOutputWithContext(ctx context.Context) RouterNatNatIpAllocateOptionPtrOutput {
 	return o
+}
+
+func (o RouterNatNatIpAllocateOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNatNatIpAllocateOption] {
+	return pulumix.Output[*RouterNatNatIpAllocateOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatNatIpAllocateOptionPtrOutput) Elem() RouterNatNatIpAllocateOptionOutput {
@@ -32825,6 +36342,12 @@ func (in *routerNatNatIpAllocateOptionPtr) ToRouterNatNatIpAllocateOptionPtrOutp
 
 func (in *routerNatNatIpAllocateOptionPtr) ToRouterNatNatIpAllocateOptionPtrOutputWithContext(ctx context.Context) RouterNatNatIpAllocateOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatNatIpAllocateOptionPtrOutput)
+}
+
+func (in *routerNatNatIpAllocateOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatNatIpAllocateOption] {
+	return pulumix.Output[*RouterNatNatIpAllocateOption]{
+		OutputState: in.ToRouterNatNatIpAllocateOptionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
@@ -32899,6 +36422,12 @@ func (o RouterNatSourceSubnetworkIpRangesToNatOutput) ToRouterNatSourceSubnetwor
 	}).(RouterNatSourceSubnetworkIpRangesToNatPtrOutput)
 }
 
+func (o RouterNatSourceSubnetworkIpRangesToNatOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNatSourceSubnetworkIpRangesToNat] {
+	return pulumix.Output[RouterNatSourceSubnetworkIpRangesToNat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterNatSourceSubnetworkIpRangesToNatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -32932,6 +36461,12 @@ func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToRouterNatSourceSubnet
 
 func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToRouterNatSourceSubnetworkIpRangesToNatPtrOutputWithContext(ctx context.Context) RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
 	return o
+}
+
+func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNatSourceSubnetworkIpRangesToNat] {
+	return pulumix.Output[*RouterNatSourceSubnetworkIpRangesToNat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) Elem() RouterNatSourceSubnetworkIpRangesToNatOutput {
@@ -32994,6 +36529,12 @@ func (in *routerNatSourceSubnetworkIpRangesToNatPtr) ToRouterNatSourceSubnetwork
 
 func (in *routerNatSourceSubnetworkIpRangesToNatPtr) ToRouterNatSourceSubnetworkIpRangesToNatPtrOutputWithContext(ctx context.Context) RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatSourceSubnetworkIpRangesToNatPtrOutput)
+}
+
+func (in *routerNatSourceSubnetworkIpRangesToNatPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatSourceSubnetworkIpRangesToNat] {
+	return pulumix.Output[*RouterNatSourceSubnetworkIpRangesToNat]{
+		OutputState: in.ToRouterNatSourceSubnetworkIpRangesToNatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type RouterNatSubnetworkToNatSourceIpRangesToNatItem string
@@ -33067,6 +36608,12 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput) ToRouterNatSubnet
 	}).(RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput)
 }
 
+func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNatSubnetworkToNatSourceIpRangesToNatItem] {
+	return pulumix.Output[RouterNatSubnetworkToNatSourceIpRangesToNatItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -33100,6 +36647,12 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToRouterNatSub
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToRouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutputWithContext(ctx context.Context) RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput {
 	return o
+}
+
+func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNatSubnetworkToNatSourceIpRangesToNatItem] {
+	return pulumix.Output[*RouterNatSubnetworkToNatSourceIpRangesToNatItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) Elem() RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput {
@@ -33164,6 +36717,12 @@ func (in *routerNatSubnetworkToNatSourceIpRangesToNatItemPtr) ToRouterNatSubnetw
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput)
 }
 
+func (in *routerNatSubnetworkToNatSourceIpRangesToNatItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatSubnetworkToNatSourceIpRangesToNatItem] {
+	return pulumix.Output[*RouterNatSubnetworkToNatSourceIpRangesToNatItem]{
+		OutputState: in.ToRouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayInput is an input type that accepts RouterNatSubnetworkToNatSourceIpRangesToNatItemArray and RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput values.
 // You can construct a concrete instance of `RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayInput` via:
 //
@@ -33189,6 +36748,12 @@ func (i RouterNatSubnetworkToNatSourceIpRangesToNatItemArray) ToRouterNatSubnetw
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput)
 }
 
+func (i RouterNatSubnetworkToNatSourceIpRangesToNatItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RouterNatSubnetworkToNatSourceIpRangesToNatItem] {
+	return pulumix.Output[[]RouterNatSubnetworkToNatSourceIpRangesToNatItem]{
+		OutputState: i.ToRouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) ElementType() reflect.Type {
@@ -33201,6 +36766,12 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) ToRouterNatS
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) ToRouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutputWithContext(ctx context.Context) RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput {
 	return o
+}
+
+func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouterNatSubnetworkToNatSourceIpRangesToNatItem] {
+	return pulumix.Output[[]RouterNatSubnetworkToNatSourceIpRangesToNatItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) Index(i pulumi.IntInput) RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput {
@@ -33279,6 +36850,12 @@ func (o RouterNatTypeOutput) ToRouterNatTypePtrOutputWithContext(ctx context.Con
 	}).(RouterNatTypePtrOutput)
 }
 
+func (o RouterNatTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNatType] {
+	return pulumix.Output[RouterNatType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouterNatTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -33312,6 +36889,12 @@ func (o RouterNatTypePtrOutput) ToRouterNatTypePtrOutput() RouterNatTypePtrOutpu
 
 func (o RouterNatTypePtrOutput) ToRouterNatTypePtrOutputWithContext(ctx context.Context) RouterNatTypePtrOutput {
 	return o
+}
+
+func (o RouterNatTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNatType] {
+	return pulumix.Output[*RouterNatType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterNatTypePtrOutput) Elem() RouterNatTypeOutput {
@@ -33374,6 +36957,12 @@ func (in *routerNatTypePtr) ToRouterNatTypePtrOutput() RouterNatTypePtrOutput {
 
 func (in *routerNatTypePtr) ToRouterNatTypePtrOutputWithContext(ctx context.Context) RouterNatTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatTypePtrOutput)
+}
+
+func (in *routerNatTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatType] {
+	return pulumix.Output[*RouterNatType]{
+		OutputState: in.ToRouterNatTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -33454,6 +37043,12 @@ func (o RuleActionOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) 
 	}).(RuleActionPtrOutput)
 }
 
+func (o RuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[RuleAction] {
+	return pulumix.Output[RuleAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuleActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -33487,6 +37082,12 @@ func (o RuleActionPtrOutput) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (o RuleActionPtrOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return o
+}
+
+func (o RuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
+	return pulumix.Output[*RuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleActionPtrOutput) Elem() RuleActionOutput {
@@ -33549,6 +37150,12 @@ func (in *ruleActionPtr) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (in *ruleActionPtr) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleActionPtrOutput)
+}
+
+func (in *ruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
+	return pulumix.Output[*RuleAction]{
+		OutputState: in.ToRuleActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -33623,6 +37230,12 @@ func (o SSLHealthCheckPortSpecificationOutput) ToSSLHealthCheckPortSpecification
 	}).(SSLHealthCheckPortSpecificationPtrOutput)
 }
 
+func (o SSLHealthCheckPortSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[SSLHealthCheckPortSpecification] {
+	return pulumix.Output[SSLHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SSLHealthCheckPortSpecificationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -33656,6 +37269,12 @@ func (o SSLHealthCheckPortSpecificationPtrOutput) ToSSLHealthCheckPortSpecificat
 
 func (o SSLHealthCheckPortSpecificationPtrOutput) ToSSLHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) SSLHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o SSLHealthCheckPortSpecificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SSLHealthCheckPortSpecification] {
+	return pulumix.Output[*SSLHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SSLHealthCheckPortSpecificationPtrOutput) Elem() SSLHealthCheckPortSpecificationOutput {
@@ -33718,6 +37337,12 @@ func (in *sslhealthCheckPortSpecificationPtr) ToSSLHealthCheckPortSpecificationP
 
 func (in *sslhealthCheckPortSpecificationPtr) ToSSLHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) SSLHealthCheckPortSpecificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SSLHealthCheckPortSpecificationPtrOutput)
+}
+
+func (in *sslhealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*SSLHealthCheckPortSpecification] {
+	return pulumix.Output[*SSLHealthCheckPortSpecification]{
+		OutputState: in.ToSSLHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -33788,6 +37413,12 @@ func (o SSLHealthCheckProxyHeaderOutput) ToSSLHealthCheckProxyHeaderPtrOutputWit
 	}).(SSLHealthCheckProxyHeaderPtrOutput)
 }
 
+func (o SSLHealthCheckProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[SSLHealthCheckProxyHeader] {
+	return pulumix.Output[SSLHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SSLHealthCheckProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -33821,6 +37452,12 @@ func (o SSLHealthCheckProxyHeaderPtrOutput) ToSSLHealthCheckProxyHeaderPtrOutput
 
 func (o SSLHealthCheckProxyHeaderPtrOutput) ToSSLHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) SSLHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o SSLHealthCheckProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SSLHealthCheckProxyHeader] {
+	return pulumix.Output[*SSLHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SSLHealthCheckProxyHeaderPtrOutput) Elem() SSLHealthCheckProxyHeaderOutput {
@@ -33883,6 +37520,12 @@ func (in *sslhealthCheckProxyHeaderPtr) ToSSLHealthCheckProxyHeaderPtrOutput() S
 
 func (in *sslhealthCheckProxyHeaderPtr) ToSSLHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) SSLHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SSLHealthCheckProxyHeaderPtrOutput)
+}
+
+func (in *sslhealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*SSLHealthCheckProxyHeader] {
+	return pulumix.Output[*SSLHealthCheckProxyHeader]{
+		OutputState: in.ToSSLHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the termination action for the instance.
@@ -33957,6 +37600,12 @@ func (o SchedulingInstanceTerminationActionOutput) ToSchedulingInstanceTerminati
 	}).(SchedulingInstanceTerminationActionPtrOutput)
 }
 
+func (o SchedulingInstanceTerminationActionOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingInstanceTerminationAction] {
+	return pulumix.Output[SchedulingInstanceTerminationAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchedulingInstanceTerminationActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -33990,6 +37639,12 @@ func (o SchedulingInstanceTerminationActionPtrOutput) ToSchedulingInstanceTermin
 
 func (o SchedulingInstanceTerminationActionPtrOutput) ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionPtrOutput {
 	return o
+}
+
+func (o SchedulingInstanceTerminationActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingInstanceTerminationAction] {
+	return pulumix.Output[*SchedulingInstanceTerminationAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulingInstanceTerminationActionPtrOutput) Elem() SchedulingInstanceTerminationActionOutput {
@@ -34052,6 +37707,12 @@ func (in *schedulingInstanceTerminationActionPtr) ToSchedulingInstanceTerminatio
 
 func (in *schedulingInstanceTerminationActionPtr) ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx context.Context) SchedulingInstanceTerminationActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingInstanceTerminationActionPtrOutput)
+}
+
+func (in *schedulingInstanceTerminationActionPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingInstanceTerminationAction] {
+	return pulumix.Output[*SchedulingInstanceTerminationAction]{
+		OutputState: in.ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -34126,6 +37787,12 @@ func (o SchedulingMaintenanceIntervalOutput) ToSchedulingMaintenanceIntervalPtrO
 	}).(SchedulingMaintenanceIntervalPtrOutput)
 }
 
+func (o SchedulingMaintenanceIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingMaintenanceInterval] {
+	return pulumix.Output[SchedulingMaintenanceInterval]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchedulingMaintenanceIntervalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -34159,6 +37826,12 @@ func (o SchedulingMaintenanceIntervalPtrOutput) ToSchedulingMaintenanceIntervalP
 
 func (o SchedulingMaintenanceIntervalPtrOutput) ToSchedulingMaintenanceIntervalPtrOutputWithContext(ctx context.Context) SchedulingMaintenanceIntervalPtrOutput {
 	return o
+}
+
+func (o SchedulingMaintenanceIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingMaintenanceInterval] {
+	return pulumix.Output[*SchedulingMaintenanceInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulingMaintenanceIntervalPtrOutput) Elem() SchedulingMaintenanceIntervalOutput {
@@ -34221,6 +37894,12 @@ func (in *schedulingMaintenanceIntervalPtr) ToSchedulingMaintenanceIntervalPtrOu
 
 func (in *schedulingMaintenanceIntervalPtr) ToSchedulingMaintenanceIntervalPtrOutputWithContext(ctx context.Context) SchedulingMaintenanceIntervalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingMaintenanceIntervalPtrOutput)
+}
+
+func (in *schedulingMaintenanceIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingMaintenanceInterval] {
+	return pulumix.Output[*SchedulingMaintenanceInterval]{
+		OutputState: in.ToSchedulingMaintenanceIntervalPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
@@ -34294,6 +37973,12 @@ func (o SchedulingNodeAffinityOperatorOutput) ToSchedulingNodeAffinityOperatorPt
 	}).(SchedulingNodeAffinityOperatorPtrOutput)
 }
 
+func (o SchedulingNodeAffinityOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingNodeAffinityOperator] {
+	return pulumix.Output[SchedulingNodeAffinityOperator]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchedulingNodeAffinityOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -34327,6 +38012,12 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperato
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) SchedulingNodeAffinityOperatorPtrOutput {
 	return o
+}
+
+func (o SchedulingNodeAffinityOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingNodeAffinityOperator] {
+	return pulumix.Output[*SchedulingNodeAffinityOperator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) Elem() SchedulingNodeAffinityOperatorOutput {
@@ -34389,6 +38080,12 @@ func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtr
 
 func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) SchedulingNodeAffinityOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingNodeAffinityOperatorPtrOutput)
+}
+
+func (in *schedulingNodeAffinityOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingNodeAffinityOperator] {
+	return pulumix.Output[*SchedulingNodeAffinityOperator]{
+		OutputState: in.ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
@@ -34461,6 +38158,12 @@ func (o SchedulingOnHostMaintenanceOutput) ToSchedulingOnHostMaintenancePtrOutpu
 	}).(SchedulingOnHostMaintenancePtrOutput)
 }
 
+func (o SchedulingOnHostMaintenanceOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingOnHostMaintenance] {
+	return pulumix.Output[SchedulingOnHostMaintenance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchedulingOnHostMaintenanceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -34494,6 +38197,12 @@ func (o SchedulingOnHostMaintenancePtrOutput) ToSchedulingOnHostMaintenancePtrOu
 
 func (o SchedulingOnHostMaintenancePtrOutput) ToSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) SchedulingOnHostMaintenancePtrOutput {
 	return o
+}
+
+func (o SchedulingOnHostMaintenancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingOnHostMaintenance] {
+	return pulumix.Output[*SchedulingOnHostMaintenance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulingOnHostMaintenancePtrOutput) Elem() SchedulingOnHostMaintenanceOutput {
@@ -34556,6 +38265,12 @@ func (in *schedulingOnHostMaintenancePtr) ToSchedulingOnHostMaintenancePtrOutput
 
 func (in *schedulingOnHostMaintenancePtr) ToSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) SchedulingOnHostMaintenancePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingOnHostMaintenancePtrOutput)
+}
+
+func (in *schedulingOnHostMaintenancePtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingOnHostMaintenance] {
+	return pulumix.Output[*SchedulingOnHostMaintenance]{
+		OutputState: in.ToSchedulingOnHostMaintenancePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the provisioning model of the instance.
@@ -34628,6 +38343,12 @@ func (o SchedulingProvisioningModelOutput) ToSchedulingProvisioningModelPtrOutpu
 	}).(SchedulingProvisioningModelPtrOutput)
 }
 
+func (o SchedulingProvisioningModelOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingProvisioningModel] {
+	return pulumix.Output[SchedulingProvisioningModel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchedulingProvisioningModelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -34661,6 +38382,12 @@ func (o SchedulingProvisioningModelPtrOutput) ToSchedulingProvisioningModelPtrOu
 
 func (o SchedulingProvisioningModelPtrOutput) ToSchedulingProvisioningModelPtrOutputWithContext(ctx context.Context) SchedulingProvisioningModelPtrOutput {
 	return o
+}
+
+func (o SchedulingProvisioningModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingProvisioningModel] {
+	return pulumix.Output[*SchedulingProvisioningModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulingProvisioningModelPtrOutput) Elem() SchedulingProvisioningModelOutput {
@@ -34723,6 +38450,12 @@ func (in *schedulingProvisioningModelPtr) ToSchedulingProvisioningModelPtrOutput
 
 func (in *schedulingProvisioningModelPtr) ToSchedulingProvisioningModelPtrOutputWithContext(ctx context.Context) SchedulingProvisioningModelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingProvisioningModelPtrOutput)
+}
+
+func (in *schedulingProvisioningModelPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingProvisioningModel] {
+	return pulumix.Output[*SchedulingProvisioningModel]{
+		OutputState: in.ToSchedulingProvisioningModelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
@@ -34793,6 +38526,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibil
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
 }
 
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility] {
+	return pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -34826,6 +38565,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibil
 
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility] {
+	return pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput {
@@ -34888,6 +38633,12 @@ func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisib
 
 func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtr) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
+}
+
+func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility] {
+	return pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility]{
+		OutputState: in.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SecurityPolicyAdvancedOptionsConfigJsonParsing string
@@ -34957,6 +38708,12 @@ func (o SecurityPolicyAdvancedOptionsConfigJsonParsingOutput) ToSecurityPolicyAd
 	}).(SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput)
 }
 
+func (o SecurityPolicyAdvancedOptionsConfigJsonParsingOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyAdvancedOptionsConfigJsonParsing] {
+	return pulumix.Output[SecurityPolicyAdvancedOptionsConfigJsonParsing]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyAdvancedOptionsConfigJsonParsingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -34990,6 +38747,12 @@ func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToSecurityPolic
 
 func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdvancedOptionsConfigJsonParsing] {
+	return pulumix.Output[*SecurityPolicyAdvancedOptionsConfigJsonParsing]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigJsonParsingOutput {
@@ -35052,6 +38815,12 @@ func (in *securityPolicyAdvancedOptionsConfigJsonParsingPtr) ToSecurityPolicyAdv
 
 func (in *securityPolicyAdvancedOptionsConfigJsonParsingPtr) ToSecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput)
+}
+
+func (in *securityPolicyAdvancedOptionsConfigJsonParsingPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdvancedOptionsConfigJsonParsing] {
+	return pulumix.Output[*SecurityPolicyAdvancedOptionsConfigJsonParsing]{
+		OutputState: in.ToSecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SecurityPolicyAdvancedOptionsConfigLogLevel string
@@ -35121,6 +38890,12 @@ func (o SecurityPolicyAdvancedOptionsConfigLogLevelOutput) ToSecurityPolicyAdvan
 	}).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
 }
 
+func (o SecurityPolicyAdvancedOptionsConfigLogLevelOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyAdvancedOptionsConfigLogLevel] {
+	return pulumix.Output[SecurityPolicyAdvancedOptionsConfigLogLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyAdvancedOptionsConfigLogLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -35154,6 +38929,12 @@ func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToSecurityPolicyAd
 
 func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToSecurityPolicyAdvancedOptionsConfigLogLevelPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdvancedOptionsConfigLogLevel] {
+	return pulumix.Output[*SecurityPolicyAdvancedOptionsConfigLogLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigLogLevelOutput {
@@ -35216,6 +38997,12 @@ func (in *securityPolicyAdvancedOptionsConfigLogLevelPtr) ToSecurityPolicyAdvanc
 
 func (in *securityPolicyAdvancedOptionsConfigLogLevelPtr) ToSecurityPolicyAdvancedOptionsConfigLogLevelPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
+}
+
+func (in *securityPolicyAdvancedOptionsConfigLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdvancedOptionsConfigLogLevel] {
+	return pulumix.Output[*SecurityPolicyAdvancedOptionsConfigLogLevel]{
+		OutputState: in.ToSecurityPolicyAdvancedOptionsConfigLogLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SecurityPolicyDdosProtectionConfigDdosProtection string
@@ -35286,6 +39073,12 @@ func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToSecurityPolicy
 	}).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
 }
 
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyDdosProtectionConfigDdosProtection] {
+	return pulumix.Output[SecurityPolicyDdosProtectionConfigDdosProtection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -35319,6 +39112,12 @@ func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToSecurityPol
 
 func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyDdosProtectionConfigDdosProtection] {
+	return pulumix.Output[*SecurityPolicyDdosProtectionConfigDdosProtection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) Elem() SecurityPolicyDdosProtectionConfigDdosProtectionOutput {
@@ -35381,6 +39180,12 @@ func (in *securityPolicyDdosProtectionConfigDdosProtectionPtr) ToSecurityPolicyD
 
 func (in *securityPolicyDdosProtectionConfigDdosProtectionPtr) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
+func (in *securityPolicyDdosProtectionConfigDdosProtectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyDdosProtectionConfigDdosProtection] {
+	return pulumix.Output[*SecurityPolicyDdosProtectionConfigDdosProtection]{
+		OutputState: in.ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
@@ -35451,6 +39256,12 @@ func (o SecurityPolicyRuleDirectionOutput) ToSecurityPolicyRuleDirectionPtrOutpu
 	}).(SecurityPolicyRuleDirectionPtrOutput)
 }
 
+func (o SecurityPolicyRuleDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleDirection] {
+	return pulumix.Output[SecurityPolicyRuleDirection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyRuleDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -35484,6 +39295,12 @@ func (o SecurityPolicyRuleDirectionPtrOutput) ToSecurityPolicyRuleDirectionPtrOu
 
 func (o SecurityPolicyRuleDirectionPtrOutput) ToSecurityPolicyRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleDirectionPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyRuleDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleDirection] {
+	return pulumix.Output[*SecurityPolicyRuleDirection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyRuleDirectionPtrOutput) Elem() SecurityPolicyRuleDirectionOutput {
@@ -35546,6 +39363,12 @@ func (in *securityPolicyRuleDirectionPtr) ToSecurityPolicyRuleDirectionPtrOutput
 
 func (in *securityPolicyRuleDirectionPtr) ToSecurityPolicyRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleDirectionPtrOutput)
+}
+
+func (in *securityPolicyRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleDirection] {
+	return pulumix.Output[*SecurityPolicyRuleDirection]{
+		OutputState: in.ToSecurityPolicyRuleDirectionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
@@ -35617,6 +39440,12 @@ func (o SecurityPolicyRuleMatcherVersionedExprOutput) ToSecurityPolicyRuleMatche
 	}).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
+func (o SecurityPolicyRuleMatcherVersionedExprOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherVersionedExpr] {
+	return pulumix.Output[SecurityPolicyRuleMatcherVersionedExpr]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyRuleMatcherVersionedExprOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -35650,6 +39479,12 @@ func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToSecurityPolicyRuleMat
 
 func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToSecurityPolicyRuleMatcherVersionedExprPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherVersionedExprPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleMatcherVersionedExpr] {
+	return pulumix.Output[*SecurityPolicyRuleMatcherVersionedExpr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) Elem() SecurityPolicyRuleMatcherVersionedExprOutput {
@@ -35712,6 +39547,12 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 
 func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcherVersionedExprPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherVersionedExprPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
+}
+
+func (in *securityPolicyRuleMatcherVersionedExprPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleMatcherVersionedExpr] {
+	return pulumix.Output[*SecurityPolicyRuleMatcherVersionedExpr]{
+		OutputState: in.ToSecurityPolicyRuleMatcherVersionedExprPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The match operator for the field.
@@ -35790,6 +39631,12 @@ func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) To
 	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
 }
 
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp] {
+	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -35823,6 +39670,12 @@ func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
 
 func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp] {
+	return pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) Elem() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
@@ -35885,6 +39738,12 @@ func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToS
 
 func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp] {
+	return pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp]{
+		OutputState: in.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
@@ -35962,6 +39821,12 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToSecurityPolicyRu
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
 }
 
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleRateLimitOptionsEnforceOnKey] {
+	return pulumix.Output[SecurityPolicyRuleRateLimitOptionsEnforceOnKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -35995,6 +39860,12 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToSecurityPolic
 
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKey] {
+	return pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput {
@@ -36057,6 +39928,12 @@ func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToSecurityPolicyRul
 
 func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKey] {
+	return pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKey]{
+		OutputState: in.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
@@ -36134,6 +40011,12 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeOutp
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput)
 }
 
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType] {
+	return pulumix.Output[SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -36167,6 +40050,12 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrO
 
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput {
 	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType] {
+	return pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeOutput {
@@ -36229,6 +40118,12 @@ func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePt
 
 func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtr) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput)
+}
+
+func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType] {
+	return pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType]{
+		OutputState: in.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of the redirect action.
@@ -36299,6 +40194,12 @@ func (o SecurityPolicyRuleRedirectOptionsTypeOutput) ToSecurityPolicyRuleRedirec
 	}).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
 }
 
+func (o SecurityPolicyRuleRedirectOptionsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleRedirectOptionsType] {
+	return pulumix.Output[SecurityPolicyRuleRedirectOptionsType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyRuleRedirectOptionsTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -36332,6 +40233,12 @@ func (o SecurityPolicyRuleRedirectOptionsTypePtrOutput) ToSecurityPolicyRuleRedi
 
 func (o SecurityPolicyRuleRedirectOptionsTypePtrOutput) ToSecurityPolicyRuleRedirectOptionsTypePtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsTypePtrOutput {
 	return o
+}
+
+func (o SecurityPolicyRuleRedirectOptionsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRedirectOptionsType] {
+	return pulumix.Output[*SecurityPolicyRuleRedirectOptionsType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyRuleRedirectOptionsTypePtrOutput) Elem() SecurityPolicyRuleRedirectOptionsTypeOutput {
@@ -36394,6 +40301,12 @@ func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirect
 
 func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirectOptionsTypePtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
+}
+
+func (in *securityPolicyRuleRedirectOptionsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRedirectOptionsType] {
+	return pulumix.Output[*SecurityPolicyRuleRedirectOptionsType]{
+		OutputState: in.ToSecurityPolicyRuleRedirectOptionsTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
@@ -36467,6 +40380,12 @@ func (o SecurityPolicyTypeOutput) ToSecurityPolicyTypePtrOutputWithContext(ctx c
 	}).(SecurityPolicyTypePtrOutput)
 }
 
+func (o SecurityPolicyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyType] {
+	return pulumix.Output[SecurityPolicyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -36500,6 +40419,12 @@ func (o SecurityPolicyTypePtrOutput) ToSecurityPolicyTypePtrOutput() SecurityPol
 
 func (o SecurityPolicyTypePtrOutput) ToSecurityPolicyTypePtrOutputWithContext(ctx context.Context) SecurityPolicyTypePtrOutput {
 	return o
+}
+
+func (o SecurityPolicyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyType] {
+	return pulumix.Output[*SecurityPolicyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyTypePtrOutput) Elem() SecurityPolicyTypeOutput {
@@ -36562,6 +40487,12 @@ func (in *securityPolicyTypePtr) ToSecurityPolicyTypePtrOutput() SecurityPolicyT
 
 func (in *securityPolicyTypePtr) ToSecurityPolicyTypePtrOutputWithContext(ctx context.Context) SecurityPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyTypePtrOutput)
+}
+
+func (in *securityPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyType] {
+	return pulumix.Output[*SecurityPolicyType]{
+		OutputState: in.ToSecurityPolicyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
@@ -36634,6 +40565,12 @@ func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFie
 	}).(SecurityPolicyUserDefinedFieldBasePtrOutput)
 }
 
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyUserDefinedFieldBase] {
+	return pulumix.Output[SecurityPolicyUserDefinedFieldBase]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -36667,6 +40604,12 @@ func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToSecurityPolicyUserDefined
 
 func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
 	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyUserDefinedFieldBase] {
+	return pulumix.Output[*SecurityPolicyUserDefinedFieldBase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPolicyUserDefinedFieldBasePtrOutput) Elem() SecurityPolicyUserDefinedFieldBaseOutput {
@@ -36729,6 +40672,12 @@ func (in *securityPolicyUserDefinedFieldBasePtr) ToSecurityPolicyUserDefinedFiel
 
 func (in *securityPolicyUserDefinedFieldBasePtr) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
+func (in *securityPolicyUserDefinedFieldBasePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyUserDefinedFieldBase] {
+	return pulumix.Output[*SecurityPolicyUserDefinedFieldBase]{
+		OutputState: in.ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ServerBindingType string
@@ -36801,6 +40750,12 @@ func (o ServerBindingTypeOutput) ToServerBindingTypePtrOutputWithContext(ctx con
 	}).(ServerBindingTypePtrOutput)
 }
 
+func (o ServerBindingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServerBindingType] {
+	return pulumix.Output[ServerBindingType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerBindingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -36834,6 +40789,12 @@ func (o ServerBindingTypePtrOutput) ToServerBindingTypePtrOutput() ServerBinding
 
 func (o ServerBindingTypePtrOutput) ToServerBindingTypePtrOutputWithContext(ctx context.Context) ServerBindingTypePtrOutput {
 	return o
+}
+
+func (o ServerBindingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerBindingType] {
+	return pulumix.Output[*ServerBindingType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerBindingTypePtrOutput) Elem() ServerBindingTypeOutput {
@@ -36896,6 +40857,12 @@ func (in *serverBindingTypePtr) ToServerBindingTypePtrOutput() ServerBindingType
 
 func (in *serverBindingTypePtr) ToServerBindingTypePtrOutputWithContext(ctx context.Context) ServerBindingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerBindingTypePtrOutput)
+}
+
+func (in *serverBindingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServerBindingType] {
+	return pulumix.Output[*ServerBindingType]{
+		OutputState: in.ToServerBindingTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
@@ -36969,6 +40936,12 @@ func (o ServerTlsSettingsTlsModeOutput) ToServerTlsSettingsTlsModePtrOutputWithC
 	}).(ServerTlsSettingsTlsModePtrOutput)
 }
 
+func (o ServerTlsSettingsTlsModeOutput) ToOutput(ctx context.Context) pulumix.Output[ServerTlsSettingsTlsMode] {
+	return pulumix.Output[ServerTlsSettingsTlsMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerTlsSettingsTlsModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -37002,6 +40975,12 @@ func (o ServerTlsSettingsTlsModePtrOutput) ToServerTlsSettingsTlsModePtrOutput()
 
 func (o ServerTlsSettingsTlsModePtrOutput) ToServerTlsSettingsTlsModePtrOutputWithContext(ctx context.Context) ServerTlsSettingsTlsModePtrOutput {
 	return o
+}
+
+func (o ServerTlsSettingsTlsModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsSettingsTlsMode] {
+	return pulumix.Output[*ServerTlsSettingsTlsMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerTlsSettingsTlsModePtrOutput) Elem() ServerTlsSettingsTlsModeOutput {
@@ -37064,6 +41043,12 @@ func (in *serverTlsSettingsTlsModePtr) ToServerTlsSettingsTlsModePtrOutput() Ser
 
 func (in *serverTlsSettingsTlsModePtr) ToServerTlsSettingsTlsModePtrOutputWithContext(ctx context.Context) ServerTlsSettingsTlsModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerTlsSettingsTlsModePtrOutput)
+}
+
+func (in *serverTlsSettingsTlsModePtr) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsSettingsTlsMode] {
+	return pulumix.Output[*ServerTlsSettingsTlsMode]{
+		OutputState: in.ToServerTlsSettingsTlsModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
@@ -37135,6 +41120,12 @@ func (o ServiceAttachmentConnectionPreferenceOutput) ToServiceAttachmentConnecti
 	}).(ServiceAttachmentConnectionPreferencePtrOutput)
 }
 
+func (o ServiceAttachmentConnectionPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAttachmentConnectionPreference] {
+	return pulumix.Output[ServiceAttachmentConnectionPreference]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceAttachmentConnectionPreferenceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -37168,6 +41159,12 @@ func (o ServiceAttachmentConnectionPreferencePtrOutput) ToServiceAttachmentConne
 
 func (o ServiceAttachmentConnectionPreferencePtrOutput) ToServiceAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) ServiceAttachmentConnectionPreferencePtrOutput {
 	return o
+}
+
+func (o ServiceAttachmentConnectionPreferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentConnectionPreference] {
+	return pulumix.Output[*ServiceAttachmentConnectionPreference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceAttachmentConnectionPreferencePtrOutput) Elem() ServiceAttachmentConnectionPreferenceOutput {
@@ -37230,6 +41227,12 @@ func (in *serviceAttachmentConnectionPreferencePtr) ToServiceAttachmentConnectio
 
 func (in *serviceAttachmentConnectionPreferencePtr) ToServiceAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) ServiceAttachmentConnectionPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceAttachmentConnectionPreferencePtrOutput)
+}
+
+func (in *serviceAttachmentConnectionPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentConnectionPreference] {
+	return pulumix.Output[*ServiceAttachmentConnectionPreference]{
+		OutputState: in.ToServiceAttachmentConnectionPreferencePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of sharing for this shared-reservation
@@ -37308,6 +41311,12 @@ func (o ShareSettingsShareTypeOutput) ToShareSettingsShareTypePtrOutputWithConte
 	}).(ShareSettingsShareTypePtrOutput)
 }
 
+func (o ShareSettingsShareTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ShareSettingsShareType] {
+	return pulumix.Output[ShareSettingsShareType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ShareSettingsShareTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -37341,6 +41350,12 @@ func (o ShareSettingsShareTypePtrOutput) ToShareSettingsShareTypePtrOutput() Sha
 
 func (o ShareSettingsShareTypePtrOutput) ToShareSettingsShareTypePtrOutputWithContext(ctx context.Context) ShareSettingsShareTypePtrOutput {
 	return o
+}
+
+func (o ShareSettingsShareTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShareSettingsShareType] {
+	return pulumix.Output[*ShareSettingsShareType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ShareSettingsShareTypePtrOutput) Elem() ShareSettingsShareTypeOutput {
@@ -37403,6 +41418,12 @@ func (in *shareSettingsShareTypePtr) ToShareSettingsShareTypePtrOutput() ShareSe
 
 func (in *shareSettingsShareTypePtr) ToShareSettingsShareTypePtrOutputWithContext(ctx context.Context) ShareSettingsShareTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ShareSettingsShareTypePtrOutput)
+}
+
+func (in *shareSettingsShareTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ShareSettingsShareType] {
+	return pulumix.Output[*ShareSettingsShareType]{
+		OutputState: in.ToShareSettingsShareTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates the type of the snapshot.
@@ -37473,6 +41494,12 @@ func (o SnapshotSnapshotTypeOutput) ToSnapshotSnapshotTypePtrOutputWithContext(c
 	}).(SnapshotSnapshotTypePtrOutput)
 }
 
+func (o SnapshotSnapshotTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SnapshotSnapshotType] {
+	return pulumix.Output[SnapshotSnapshotType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SnapshotSnapshotTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -37506,6 +41533,12 @@ func (o SnapshotSnapshotTypePtrOutput) ToSnapshotSnapshotTypePtrOutput() Snapsho
 
 func (o SnapshotSnapshotTypePtrOutput) ToSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotSnapshotTypePtrOutput {
 	return o
+}
+
+func (o SnapshotSnapshotTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotSnapshotType] {
+	return pulumix.Output[*SnapshotSnapshotType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SnapshotSnapshotTypePtrOutput) Elem() SnapshotSnapshotTypeOutput {
@@ -37568,6 +41601,12 @@ func (in *snapshotSnapshotTypePtr) ToSnapshotSnapshotTypePtrOutput() SnapshotSna
 
 func (in *snapshotSnapshotTypePtr) ToSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotSnapshotTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SnapshotSnapshotTypePtrOutput)
+}
+
+func (in *snapshotSnapshotTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SnapshotSnapshotType] {
+	return pulumix.Output[*SnapshotSnapshotType]{
+		OutputState: in.ToSnapshotSnapshotTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -37641,6 +41680,12 @@ func (o SslCertificateTypeOutput) ToSslCertificateTypePtrOutputWithContext(ctx c
 	}).(SslCertificateTypePtrOutput)
 }
 
+func (o SslCertificateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SslCertificateType] {
+	return pulumix.Output[SslCertificateType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SslCertificateTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -37674,6 +41719,12 @@ func (o SslCertificateTypePtrOutput) ToSslCertificateTypePtrOutput() SslCertific
 
 func (o SslCertificateTypePtrOutput) ToSslCertificateTypePtrOutputWithContext(ctx context.Context) SslCertificateTypePtrOutput {
 	return o
+}
+
+func (o SslCertificateTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslCertificateType] {
+	return pulumix.Output[*SslCertificateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SslCertificateTypePtrOutput) Elem() SslCertificateTypeOutput {
@@ -37736,6 +41787,12 @@ func (in *sslCertificateTypePtr) ToSslCertificateTypePtrOutput() SslCertificateT
 
 func (in *sslCertificateTypePtr) ToSslCertificateTypePtrOutputWithContext(ctx context.Context) SslCertificateTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslCertificateTypePtrOutput)
+}
+
+func (in *sslCertificateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SslCertificateType] {
+	return pulumix.Output[*SslCertificateType]{
+		OutputState: in.ToSslCertificateTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
@@ -37810,6 +41867,12 @@ func (o SslPolicyMinTlsVersionOutput) ToSslPolicyMinTlsVersionPtrOutputWithConte
 	}).(SslPolicyMinTlsVersionPtrOutput)
 }
 
+func (o SslPolicyMinTlsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[SslPolicyMinTlsVersion] {
+	return pulumix.Output[SslPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SslPolicyMinTlsVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -37843,6 +41906,12 @@ func (o SslPolicyMinTlsVersionPtrOutput) ToSslPolicyMinTlsVersionPtrOutput() Ssl
 
 func (o SslPolicyMinTlsVersionPtrOutput) ToSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) SslPolicyMinTlsVersionPtrOutput {
 	return o
+}
+
+func (o SslPolicyMinTlsVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslPolicyMinTlsVersion] {
+	return pulumix.Output[*SslPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SslPolicyMinTlsVersionPtrOutput) Elem() SslPolicyMinTlsVersionOutput {
@@ -37905,6 +41974,12 @@ func (in *sslPolicyMinTlsVersionPtr) ToSslPolicyMinTlsVersionPtrOutput() SslPoli
 
 func (in *sslPolicyMinTlsVersionPtr) ToSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) SslPolicyMinTlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslPolicyMinTlsVersionPtrOutput)
+}
+
+func (in *sslPolicyMinTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*SslPolicyMinTlsVersion] {
+	return pulumix.Output[*SslPolicyMinTlsVersion]{
+		OutputState: in.ToSslPolicyMinTlsVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
@@ -37981,6 +42056,12 @@ func (o SslPolicyProfileOutput) ToSslPolicyProfilePtrOutputWithContext(ctx conte
 	}).(SslPolicyProfilePtrOutput)
 }
 
+func (o SslPolicyProfileOutput) ToOutput(ctx context.Context) pulumix.Output[SslPolicyProfile] {
+	return pulumix.Output[SslPolicyProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SslPolicyProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -38014,6 +42095,12 @@ func (o SslPolicyProfilePtrOutput) ToSslPolicyProfilePtrOutput() SslPolicyProfil
 
 func (o SslPolicyProfilePtrOutput) ToSslPolicyProfilePtrOutputWithContext(ctx context.Context) SslPolicyProfilePtrOutput {
 	return o
+}
+
+func (o SslPolicyProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslPolicyProfile] {
+	return pulumix.Output[*SslPolicyProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SslPolicyProfilePtrOutput) Elem() SslPolicyProfileOutput {
@@ -38076,6 +42163,12 @@ func (in *sslPolicyProfilePtr) ToSslPolicyProfilePtrOutput() SslPolicyProfilePtr
 
 func (in *sslPolicyProfilePtr) ToSslPolicyProfilePtrOutputWithContext(ctx context.Context) SslPolicyProfilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslPolicyProfilePtrOutput)
+}
+
+func (in *sslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*SslPolicyProfile] {
+	return pulumix.Output[*SslPolicyProfile]{
+		OutputState: in.ToSslPolicyProfilePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of the storage pool
@@ -38146,6 +42239,12 @@ func (o StoragePoolTypeOutput) ToStoragePoolTypePtrOutputWithContext(ctx context
 	}).(StoragePoolTypePtrOutput)
 }
 
+func (o StoragePoolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[StoragePoolType] {
+	return pulumix.Output[StoragePoolType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StoragePoolTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -38179,6 +42278,12 @@ func (o StoragePoolTypePtrOutput) ToStoragePoolTypePtrOutput() StoragePoolTypePt
 
 func (o StoragePoolTypePtrOutput) ToStoragePoolTypePtrOutputWithContext(ctx context.Context) StoragePoolTypePtrOutput {
 	return o
+}
+
+func (o StoragePoolTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolType] {
+	return pulumix.Output[*StoragePoolType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StoragePoolTypePtrOutput) Elem() StoragePoolTypeOutput {
@@ -38241,6 +42346,12 @@ func (in *storagePoolTypePtr) ToStoragePoolTypePtrOutput() StoragePoolTypePtrOut
 
 func (in *storagePoolTypePtr) ToStoragePoolTypePtrOutputWithContext(ctx context.Context) StoragePoolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolTypePtrOutput)
+}
+
+func (in *storagePoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolType] {
+	return pulumix.Output[*StoragePoolType]{
+		OutputState: in.ToStoragePoolTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.
@@ -38315,6 +42426,12 @@ func (o SubnetworkAggregationIntervalOutput) ToSubnetworkAggregationIntervalPtrO
 	}).(SubnetworkAggregationIntervalPtrOutput)
 }
 
+func (o SubnetworkAggregationIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkAggregationInterval] {
+	return pulumix.Output[SubnetworkAggregationInterval]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkAggregationIntervalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -38348,6 +42465,12 @@ func (o SubnetworkAggregationIntervalPtrOutput) ToSubnetworkAggregationIntervalP
 
 func (o SubnetworkAggregationIntervalPtrOutput) ToSubnetworkAggregationIntervalPtrOutputWithContext(ctx context.Context) SubnetworkAggregationIntervalPtrOutput {
 	return o
+}
+
+func (o SubnetworkAggregationIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkAggregationInterval] {
+	return pulumix.Output[*SubnetworkAggregationInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkAggregationIntervalPtrOutput) Elem() SubnetworkAggregationIntervalOutput {
@@ -38410,6 +42533,12 @@ func (in *subnetworkAggregationIntervalPtr) ToSubnetworkAggregationIntervalPtrOu
 
 func (in *subnetworkAggregationIntervalPtr) ToSubnetworkAggregationIntervalPtrOutputWithContext(ctx context.Context) SubnetworkAggregationIntervalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkAggregationIntervalPtrOutput)
+}
+
+func (in *subnetworkAggregationIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkAggregationInterval] {
+	return pulumix.Output[*SubnetworkAggregationInterval]{
+		OutputState: in.ToSubnetworkAggregationIntervalPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
@@ -38482,6 +42611,12 @@ func (o SubnetworkIpv6AccessTypeOutput) ToSubnetworkIpv6AccessTypePtrOutputWithC
 	}).(SubnetworkIpv6AccessTypePtrOutput)
 }
 
+func (o SubnetworkIpv6AccessTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkIpv6AccessType] {
+	return pulumix.Output[SubnetworkIpv6AccessType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkIpv6AccessTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -38515,6 +42650,12 @@ func (o SubnetworkIpv6AccessTypePtrOutput) ToSubnetworkIpv6AccessTypePtrOutput()
 
 func (o SubnetworkIpv6AccessTypePtrOutput) ToSubnetworkIpv6AccessTypePtrOutputWithContext(ctx context.Context) SubnetworkIpv6AccessTypePtrOutput {
 	return o
+}
+
+func (o SubnetworkIpv6AccessTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIpv6AccessType] {
+	return pulumix.Output[*SubnetworkIpv6AccessType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkIpv6AccessTypePtrOutput) Elem() SubnetworkIpv6AccessTypeOutput {
@@ -38577,6 +42718,12 @@ func (in *subnetworkIpv6AccessTypePtr) ToSubnetworkIpv6AccessTypePtrOutput() Sub
 
 func (in *subnetworkIpv6AccessTypePtr) ToSubnetworkIpv6AccessTypePtrOutputWithContext(ctx context.Context) SubnetworkIpv6AccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkIpv6AccessTypePtrOutput)
+}
+
+func (in *subnetworkIpv6AccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIpv6AccessType] {
+	return pulumix.Output[*SubnetworkIpv6AccessType]{
+		OutputState: in.ToSubnetworkIpv6AccessTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
@@ -38651,6 +42798,12 @@ func (o SubnetworkLogConfigAggregationIntervalOutput) ToSubnetworkLogConfigAggre
 	}).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
+func (o SubnetworkLogConfigAggregationIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkLogConfigAggregationInterval] {
+	return pulumix.Output[SubnetworkLogConfigAggregationInterval]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkLogConfigAggregationIntervalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -38684,6 +42837,12 @@ func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToSubnetworkLogConfigAg
 
 func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToSubnetworkLogConfigAggregationIntervalPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigAggregationIntervalPtrOutput {
 	return o
+}
+
+func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkLogConfigAggregationInterval] {
+	return pulumix.Output[*SubnetworkLogConfigAggregationInterval]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkLogConfigAggregationIntervalPtrOutput) Elem() SubnetworkLogConfigAggregationIntervalOutput {
@@ -38746,6 +42905,12 @@ func (in *subnetworkLogConfigAggregationIntervalPtr) ToSubnetworkLogConfigAggreg
 
 func (in *subnetworkLogConfigAggregationIntervalPtr) ToSubnetworkLogConfigAggregationIntervalPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigAggregationIntervalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkLogConfigAggregationIntervalPtrOutput)
+}
+
+func (in *subnetworkLogConfigAggregationIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkLogConfigAggregationInterval] {
+	return pulumix.Output[*SubnetworkLogConfigAggregationInterval]{
+		OutputState: in.ToSubnetworkLogConfigAggregationIntervalPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
@@ -38817,6 +42982,12 @@ func (o SubnetworkLogConfigMetadataOutput) ToSubnetworkLogConfigMetadataPtrOutpu
 	}).(SubnetworkLogConfigMetadataPtrOutput)
 }
 
+func (o SubnetworkLogConfigMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkLogConfigMetadata] {
+	return pulumix.Output[SubnetworkLogConfigMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkLogConfigMetadataOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -38850,6 +43021,12 @@ func (o SubnetworkLogConfigMetadataPtrOutput) ToSubnetworkLogConfigMetadataPtrOu
 
 func (o SubnetworkLogConfigMetadataPtrOutput) ToSubnetworkLogConfigMetadataPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigMetadataPtrOutput {
 	return o
+}
+
+func (o SubnetworkLogConfigMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkLogConfigMetadata] {
+	return pulumix.Output[*SubnetworkLogConfigMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkLogConfigMetadataPtrOutput) Elem() SubnetworkLogConfigMetadataOutput {
@@ -38912,6 +43089,12 @@ func (in *subnetworkLogConfigMetadataPtr) ToSubnetworkLogConfigMetadataPtrOutput
 
 func (in *subnetworkLogConfigMetadataPtr) ToSubnetworkLogConfigMetadataPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigMetadataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkLogConfigMetadataPtrOutput)
+}
+
+func (in *subnetworkLogConfigMetadataPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkLogConfigMetadata] {
+	return pulumix.Output[*SubnetworkLogConfigMetadata]{
+		OutputState: in.ToSubnetworkLogConfigMetadataPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and CUSTOM_METADATA. Default is EXCLUDE_ALL_METADATA.
@@ -38982,6 +43165,12 @@ func (o SubnetworkMetadataOutput) ToSubnetworkMetadataPtrOutputWithContext(ctx c
 	}).(SubnetworkMetadataPtrOutput)
 }
 
+func (o SubnetworkMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkMetadata] {
+	return pulumix.Output[SubnetworkMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkMetadataOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -39015,6 +43204,12 @@ func (o SubnetworkMetadataPtrOutput) ToSubnetworkMetadataPtrOutput() SubnetworkM
 
 func (o SubnetworkMetadataPtrOutput) ToSubnetworkMetadataPtrOutputWithContext(ctx context.Context) SubnetworkMetadataPtrOutput {
 	return o
+}
+
+func (o SubnetworkMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkMetadata] {
+	return pulumix.Output[*SubnetworkMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkMetadataPtrOutput) Elem() SubnetworkMetadataOutput {
@@ -39077,6 +43272,12 @@ func (in *subnetworkMetadataPtr) ToSubnetworkMetadataPtrOutput() SubnetworkMetad
 
 func (in *subnetworkMetadataPtr) ToSubnetworkMetadataPtrOutputWithContext(ctx context.Context) SubnetworkMetadataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkMetadataPtrOutput)
+}
+
+func (in *subnetworkMetadataPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkMetadata] {
+	return pulumix.Output[*SubnetworkMetadata]{
+		OutputState: in.ToSubnetworkMetadataPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This field is for internal use. This field can be both set at resource creation time and updated using patch.
@@ -39151,6 +43352,12 @@ func (o SubnetworkPrivateIpv6GoogleAccessOutput) ToSubnetworkPrivateIpv6GoogleAc
 	}).(SubnetworkPrivateIpv6GoogleAccessPtrOutput)
 }
 
+func (o SubnetworkPrivateIpv6GoogleAccessOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkPrivateIpv6GoogleAccess] {
+	return pulumix.Output[SubnetworkPrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkPrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -39184,6 +43391,12 @@ func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToSubnetworkPrivateIpv6Googl
 
 func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToSubnetworkPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) SubnetworkPrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkPrivateIpv6GoogleAccess] {
+	return pulumix.Output[*SubnetworkPrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) Elem() SubnetworkPrivateIpv6GoogleAccessOutput {
@@ -39246,6 +43459,12 @@ func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToSubnetworkPrivateIpv6GoogleAcc
 
 func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToSubnetworkPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) SubnetworkPrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPrivateIpv6GoogleAccessPtrOutput)
+}
+
+func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkPrivateIpv6GoogleAccess] {
+	return pulumix.Output[*SubnetworkPrivateIpv6GoogleAccess]{
+		OutputState: in.ToSubnetworkPrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
@@ -39332,6 +43551,12 @@ func (o SubnetworkPurposeOutput) ToSubnetworkPurposePtrOutputWithContext(ctx con
 	}).(SubnetworkPurposePtrOutput)
 }
 
+func (o SubnetworkPurposeOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkPurpose] {
+	return pulumix.Output[SubnetworkPurpose]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkPurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -39365,6 +43590,12 @@ func (o SubnetworkPurposePtrOutput) ToSubnetworkPurposePtrOutput() SubnetworkPur
 
 func (o SubnetworkPurposePtrOutput) ToSubnetworkPurposePtrOutputWithContext(ctx context.Context) SubnetworkPurposePtrOutput {
 	return o
+}
+
+func (o SubnetworkPurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkPurpose] {
+	return pulumix.Output[*SubnetworkPurpose]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkPurposePtrOutput) Elem() SubnetworkPurposeOutput {
@@ -39427,6 +43658,12 @@ func (in *subnetworkPurposePtr) ToSubnetworkPurposePtrOutput() SubnetworkPurpose
 
 func (in *subnetworkPurposePtr) ToSubnetworkPurposePtrOutputWithContext(ctx context.Context) SubnetworkPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPurposePtrOutput)
+}
+
+func (in *subnetworkPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkPurpose] {
+	return pulumix.Output[*SubnetworkPurpose]{
+		OutputState: in.ToSubnetworkPurposePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
@@ -39499,6 +43736,12 @@ func (o SubnetworkRoleOutput) ToSubnetworkRolePtrOutputWithContext(ctx context.C
 	}).(SubnetworkRolePtrOutput)
 }
 
+func (o SubnetworkRoleOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkRole] {
+	return pulumix.Output[SubnetworkRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkRoleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -39532,6 +43775,12 @@ func (o SubnetworkRolePtrOutput) ToSubnetworkRolePtrOutput() SubnetworkRolePtrOu
 
 func (o SubnetworkRolePtrOutput) ToSubnetworkRolePtrOutputWithContext(ctx context.Context) SubnetworkRolePtrOutput {
 	return o
+}
+
+func (o SubnetworkRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkRole] {
+	return pulumix.Output[*SubnetworkRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkRolePtrOutput) Elem() SubnetworkRoleOutput {
@@ -39594,6 +43843,12 @@ func (in *subnetworkRolePtr) ToSubnetworkRolePtrOutput() SubnetworkRolePtrOutput
 
 func (in *subnetworkRolePtr) ToSubnetworkRolePtrOutputWithContext(ctx context.Context) SubnetworkRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkRolePtrOutput)
+}
+
+func (in *subnetworkRolePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkRole] {
+	return pulumix.Output[*SubnetworkRole]{
+		OutputState: in.ToSubnetworkRolePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
@@ -39666,6 +43921,12 @@ func (o SubnetworkStackTypeOutput) ToSubnetworkStackTypePtrOutputWithContext(ctx
 	}).(SubnetworkStackTypePtrOutput)
 }
 
+func (o SubnetworkStackTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetworkStackType] {
+	return pulumix.Output[SubnetworkStackType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkStackTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -39699,6 +43960,12 @@ func (o SubnetworkStackTypePtrOutput) ToSubnetworkStackTypePtrOutput() Subnetwor
 
 func (o SubnetworkStackTypePtrOutput) ToSubnetworkStackTypePtrOutputWithContext(ctx context.Context) SubnetworkStackTypePtrOutput {
 	return o
+}
+
+func (o SubnetworkStackTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkStackType] {
+	return pulumix.Output[*SubnetworkStackType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkStackTypePtrOutput) Elem() SubnetworkStackTypeOutput {
@@ -39761,6 +44028,12 @@ func (in *subnetworkStackTypePtr) ToSubnetworkStackTypePtrOutput() SubnetworkSta
 
 func (in *subnetworkStackTypePtr) ToSubnetworkStackTypePtrOutputWithContext(ctx context.Context) SubnetworkStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkStackTypePtrOutput)
+}
+
+func (in *subnetworkStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkStackType] {
+	return pulumix.Output[*SubnetworkStackType]{
+		OutputState: in.ToSubnetworkStackTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SubsettingPolicy string
@@ -39832,6 +44105,12 @@ func (o SubsettingPolicyOutput) ToSubsettingPolicyPtrOutputWithContext(ctx conte
 	}).(SubsettingPolicyPtrOutput)
 }
 
+func (o SubsettingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[SubsettingPolicy] {
+	return pulumix.Output[SubsettingPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubsettingPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -39865,6 +44144,12 @@ func (o SubsettingPolicyPtrOutput) ToSubsettingPolicyPtrOutput() SubsettingPolic
 
 func (o SubsettingPolicyPtrOutput) ToSubsettingPolicyPtrOutputWithContext(ctx context.Context) SubsettingPolicyPtrOutput {
 	return o
+}
+
+func (o SubsettingPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubsettingPolicy] {
+	return pulumix.Output[*SubsettingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubsettingPolicyPtrOutput) Elem() SubsettingPolicyOutput {
@@ -39927,6 +44212,12 @@ func (in *subsettingPolicyPtr) ToSubsettingPolicyPtrOutput() SubsettingPolicyPtr
 
 func (in *subsettingPolicyPtr) ToSubsettingPolicyPtrOutputWithContext(ctx context.Context) SubsettingPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubsettingPolicyPtrOutput)
+}
+
+func (in *subsettingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*SubsettingPolicy] {
+	return pulumix.Output[*SubsettingPolicy]{
+		OutputState: in.ToSubsettingPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -40001,6 +44292,12 @@ func (o TCPHealthCheckPortSpecificationOutput) ToTCPHealthCheckPortSpecification
 	}).(TCPHealthCheckPortSpecificationPtrOutput)
 }
 
+func (o TCPHealthCheckPortSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[TCPHealthCheckPortSpecification] {
+	return pulumix.Output[TCPHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TCPHealthCheckPortSpecificationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -40034,6 +44331,12 @@ func (o TCPHealthCheckPortSpecificationPtrOutput) ToTCPHealthCheckPortSpecificat
 
 func (o TCPHealthCheckPortSpecificationPtrOutput) ToTCPHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) TCPHealthCheckPortSpecificationPtrOutput {
 	return o
+}
+
+func (o TCPHealthCheckPortSpecificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TCPHealthCheckPortSpecification] {
+	return pulumix.Output[*TCPHealthCheckPortSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TCPHealthCheckPortSpecificationPtrOutput) Elem() TCPHealthCheckPortSpecificationOutput {
@@ -40096,6 +44399,12 @@ func (in *tcphealthCheckPortSpecificationPtr) ToTCPHealthCheckPortSpecificationP
 
 func (in *tcphealthCheckPortSpecificationPtr) ToTCPHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) TCPHealthCheckPortSpecificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TCPHealthCheckPortSpecificationPtrOutput)
+}
+
+func (in *tcphealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*TCPHealthCheckPortSpecification] {
+	return pulumix.Output[*TCPHealthCheckPortSpecification]{
+		OutputState: in.ToTCPHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -40166,6 +44475,12 @@ func (o TCPHealthCheckProxyHeaderOutput) ToTCPHealthCheckProxyHeaderPtrOutputWit
 	}).(TCPHealthCheckProxyHeaderPtrOutput)
 }
 
+func (o TCPHealthCheckProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[TCPHealthCheckProxyHeader] {
+	return pulumix.Output[TCPHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TCPHealthCheckProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -40199,6 +44514,12 @@ func (o TCPHealthCheckProxyHeaderPtrOutput) ToTCPHealthCheckProxyHeaderPtrOutput
 
 func (o TCPHealthCheckProxyHeaderPtrOutput) ToTCPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) TCPHealthCheckProxyHeaderPtrOutput {
 	return o
+}
+
+func (o TCPHealthCheckProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TCPHealthCheckProxyHeader] {
+	return pulumix.Output[*TCPHealthCheckProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TCPHealthCheckProxyHeaderPtrOutput) Elem() TCPHealthCheckProxyHeaderOutput {
@@ -40261,6 +44582,12 @@ func (in *tcphealthCheckProxyHeaderPtr) ToTCPHealthCheckProxyHeaderPtrOutput() T
 
 func (in *tcphealthCheckProxyHeaderPtr) ToTCPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) TCPHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TCPHealthCheckProxyHeaderPtrOutput)
+}
+
+func (in *tcphealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*TCPHealthCheckProxyHeader] {
+	return pulumix.Output[*TCPHealthCheckProxyHeader]{
+		OutputState: in.ToTCPHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
@@ -40335,6 +44662,12 @@ func (o TargetHttpsProxyQuicOverrideOutput) ToTargetHttpsProxyQuicOverridePtrOut
 	}).(TargetHttpsProxyQuicOverridePtrOutput)
 }
 
+func (o TargetHttpsProxyQuicOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[TargetHttpsProxyQuicOverride] {
+	return pulumix.Output[TargetHttpsProxyQuicOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetHttpsProxyQuicOverrideOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -40368,6 +44701,12 @@ func (o TargetHttpsProxyQuicOverridePtrOutput) ToTargetHttpsProxyQuicOverridePtr
 
 func (o TargetHttpsProxyQuicOverridePtrOutput) ToTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx context.Context) TargetHttpsProxyQuicOverridePtrOutput {
 	return o
+}
+
+func (o TargetHttpsProxyQuicOverridePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxyQuicOverride] {
+	return pulumix.Output[*TargetHttpsProxyQuicOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetHttpsProxyQuicOverridePtrOutput) Elem() TargetHttpsProxyQuicOverrideOutput {
@@ -40430,6 +44769,12 @@ func (in *targetHttpsProxyQuicOverridePtr) ToTargetHttpsProxyQuicOverridePtrOutp
 
 func (in *targetHttpsProxyQuicOverridePtr) ToTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx context.Context) TargetHttpsProxyQuicOverridePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetHttpsProxyQuicOverridePtrOutput)
+}
+
+func (in *targetHttpsProxyQuicOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxyQuicOverride] {
+	return pulumix.Output[*TargetHttpsProxyQuicOverride]{
+		OutputState: in.ToTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
@@ -40500,6 +44845,12 @@ func (o TargetInstanceNatPolicyOutput) ToTargetInstanceNatPolicyPtrOutputWithCon
 	}).(TargetInstanceNatPolicyPtrOutput)
 }
 
+func (o TargetInstanceNatPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[TargetInstanceNatPolicy] {
+	return pulumix.Output[TargetInstanceNatPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetInstanceNatPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -40533,6 +44884,12 @@ func (o TargetInstanceNatPolicyPtrOutput) ToTargetInstanceNatPolicyPtrOutput() T
 
 func (o TargetInstanceNatPolicyPtrOutput) ToTargetInstanceNatPolicyPtrOutputWithContext(ctx context.Context) TargetInstanceNatPolicyPtrOutput {
 	return o
+}
+
+func (o TargetInstanceNatPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetInstanceNatPolicy] {
+	return pulumix.Output[*TargetInstanceNatPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetInstanceNatPolicyPtrOutput) Elem() TargetInstanceNatPolicyOutput {
@@ -40595,6 +44952,12 @@ func (in *targetInstanceNatPolicyPtr) ToTargetInstanceNatPolicyPtrOutput() Targe
 
 func (in *targetInstanceNatPolicyPtr) ToTargetInstanceNatPolicyPtrOutputWithContext(ctx context.Context) TargetInstanceNatPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetInstanceNatPolicyPtrOutput)
+}
+
+func (in *targetInstanceNatPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetInstanceNatPolicy] {
+	return pulumix.Output[*TargetInstanceNatPolicy]{
+		OutputState: in.ToTargetInstanceNatPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
@@ -40679,6 +45042,12 @@ func (o TargetPoolSessionAffinityOutput) ToTargetPoolSessionAffinityPtrOutputWit
 	}).(TargetPoolSessionAffinityPtrOutput)
 }
 
+func (o TargetPoolSessionAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[TargetPoolSessionAffinity] {
+	return pulumix.Output[TargetPoolSessionAffinity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetPoolSessionAffinityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -40712,6 +45081,12 @@ func (o TargetPoolSessionAffinityPtrOutput) ToTargetPoolSessionAffinityPtrOutput
 
 func (o TargetPoolSessionAffinityPtrOutput) ToTargetPoolSessionAffinityPtrOutputWithContext(ctx context.Context) TargetPoolSessionAffinityPtrOutput {
 	return o
+}
+
+func (o TargetPoolSessionAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetPoolSessionAffinity] {
+	return pulumix.Output[*TargetPoolSessionAffinity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetPoolSessionAffinityPtrOutput) Elem() TargetPoolSessionAffinityOutput {
@@ -40774,6 +45149,12 @@ func (in *targetPoolSessionAffinityPtr) ToTargetPoolSessionAffinityPtrOutput() T
 
 func (in *targetPoolSessionAffinityPtr) ToTargetPoolSessionAffinityPtrOutputWithContext(ctx context.Context) TargetPoolSessionAffinityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetPoolSessionAffinityPtrOutput)
+}
+
+func (in *targetPoolSessionAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetPoolSessionAffinity] {
+	return pulumix.Output[*TargetPoolSessionAffinity]{
+		OutputState: in.ToTargetPoolSessionAffinityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -40844,6 +45225,12 @@ func (o TargetSslProxyProxyHeaderOutput) ToTargetSslProxyProxyHeaderPtrOutputWit
 	}).(TargetSslProxyProxyHeaderPtrOutput)
 }
 
+func (o TargetSslProxyProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[TargetSslProxyProxyHeader] {
+	return pulumix.Output[TargetSslProxyProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetSslProxyProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -40877,6 +45264,12 @@ func (o TargetSslProxyProxyHeaderPtrOutput) ToTargetSslProxyProxyHeaderPtrOutput
 
 func (o TargetSslProxyProxyHeaderPtrOutput) ToTargetSslProxyProxyHeaderPtrOutputWithContext(ctx context.Context) TargetSslProxyProxyHeaderPtrOutput {
 	return o
+}
+
+func (o TargetSslProxyProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetSslProxyProxyHeader] {
+	return pulumix.Output[*TargetSslProxyProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetSslProxyProxyHeaderPtrOutput) Elem() TargetSslProxyProxyHeaderOutput {
@@ -40939,6 +45332,12 @@ func (in *targetSslProxyProxyHeaderPtr) ToTargetSslProxyProxyHeaderPtrOutput() T
 
 func (in *targetSslProxyProxyHeaderPtr) ToTargetSslProxyProxyHeaderPtrOutputWithContext(ctx context.Context) TargetSslProxyProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetSslProxyProxyHeaderPtrOutput)
+}
+
+func (in *targetSslProxyProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetSslProxyProxyHeader] {
+	return pulumix.Output[*TargetSslProxyProxyHeader]{
+		OutputState: in.ToTargetSslProxyProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -41009,6 +45408,12 @@ func (o TargetTcpProxyProxyHeaderOutput) ToTargetTcpProxyProxyHeaderPtrOutputWit
 	}).(TargetTcpProxyProxyHeaderPtrOutput)
 }
 
+func (o TargetTcpProxyProxyHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[TargetTcpProxyProxyHeader] {
+	return pulumix.Output[TargetTcpProxyProxyHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetTcpProxyProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -41042,6 +45447,12 @@ func (o TargetTcpProxyProxyHeaderPtrOutput) ToTargetTcpProxyProxyHeaderPtrOutput
 
 func (o TargetTcpProxyProxyHeaderPtrOutput) ToTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) TargetTcpProxyProxyHeaderPtrOutput {
 	return o
+}
+
+func (o TargetTcpProxyProxyHeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetTcpProxyProxyHeader] {
+	return pulumix.Output[*TargetTcpProxyProxyHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetTcpProxyProxyHeaderPtrOutput) Elem() TargetTcpProxyProxyHeaderOutput {
@@ -41104,6 +45515,12 @@ func (in *targetTcpProxyProxyHeaderPtr) ToTargetTcpProxyProxyHeaderPtrOutput() T
 
 func (in *targetTcpProxyProxyHeaderPtr) ToTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) TargetTcpProxyProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetTcpProxyProxyHeaderPtrOutput)
+}
+
+func (in *targetTcpProxyProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetTcpProxyProxyHeader] {
+	return pulumix.Output[*TargetTcpProxyProxyHeader]{
+		OutputState: in.ToTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines how TLS certificates are obtained.
@@ -41177,6 +45594,12 @@ func (o TlsCertificateContextCertificateSourceOutput) ToTlsCertificateContextCer
 	}).(TlsCertificateContextCertificateSourcePtrOutput)
 }
 
+func (o TlsCertificateContextCertificateSourceOutput) ToOutput(ctx context.Context) pulumix.Output[TlsCertificateContextCertificateSource] {
+	return pulumix.Output[TlsCertificateContextCertificateSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TlsCertificateContextCertificateSourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -41210,6 +45633,12 @@ func (o TlsCertificateContextCertificateSourcePtrOutput) ToTlsCertificateContext
 
 func (o TlsCertificateContextCertificateSourcePtrOutput) ToTlsCertificateContextCertificateSourcePtrOutputWithContext(ctx context.Context) TlsCertificateContextCertificateSourcePtrOutput {
 	return o
+}
+
+func (o TlsCertificateContextCertificateSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsCertificateContextCertificateSource] {
+	return pulumix.Output[*TlsCertificateContextCertificateSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TlsCertificateContextCertificateSourcePtrOutput) Elem() TlsCertificateContextCertificateSourceOutput {
@@ -41272,6 +45701,12 @@ func (in *tlsCertificateContextCertificateSourcePtr) ToTlsCertificateContextCert
 
 func (in *tlsCertificateContextCertificateSourcePtr) ToTlsCertificateContextCertificateSourcePtrOutputWithContext(ctx context.Context) TlsCertificateContextCertificateSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsCertificateContextCertificateSourcePtrOutput)
+}
+
+func (in *tlsCertificateContextCertificateSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*TlsCertificateContextCertificateSource] {
+	return pulumix.Output[*TlsCertificateContextCertificateSource]{
+		OutputState: in.ToTlsCertificateContextCertificateSourcePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines how TLS certificates are obtained.
@@ -41345,6 +45780,12 @@ func (o TlsValidationContextValidationSourceOutput) ToTlsValidationContextValida
 	}).(TlsValidationContextValidationSourcePtrOutput)
 }
 
+func (o TlsValidationContextValidationSourceOutput) ToOutput(ctx context.Context) pulumix.Output[TlsValidationContextValidationSource] {
+	return pulumix.Output[TlsValidationContextValidationSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TlsValidationContextValidationSourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -41378,6 +45819,12 @@ func (o TlsValidationContextValidationSourcePtrOutput) ToTlsValidationContextVal
 
 func (o TlsValidationContextValidationSourcePtrOutput) ToTlsValidationContextValidationSourcePtrOutputWithContext(ctx context.Context) TlsValidationContextValidationSourcePtrOutput {
 	return o
+}
+
+func (o TlsValidationContextValidationSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsValidationContextValidationSource] {
+	return pulumix.Output[*TlsValidationContextValidationSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TlsValidationContextValidationSourcePtrOutput) Elem() TlsValidationContextValidationSourceOutput {
@@ -41440,6 +45887,12 @@ func (in *tlsValidationContextValidationSourcePtr) ToTlsValidationContextValidat
 
 func (in *tlsValidationContextValidationSourcePtr) ToTlsValidationContextValidationSourcePtrOutputWithContext(ctx context.Context) TlsValidationContextValidationSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsValidationContextValidationSourcePtrOutput)
+}
+
+func (in *tlsValidationContextValidationSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*TlsValidationContextValidationSource] {
+	return pulumix.Output[*TlsValidationContextValidationSource]{
+		OutputState: in.ToTlsValidationContextValidationSourcePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
@@ -41512,6 +45965,12 @@ func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionPtrOutputW
 	}).(VpnGatewayGatewayIpVersionPtrOutput)
 }
 
+func (o VpnGatewayGatewayIpVersionOutput) ToOutput(ctx context.Context) pulumix.Output[VpnGatewayGatewayIpVersion] {
+	return pulumix.Output[VpnGatewayGatewayIpVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpnGatewayGatewayIpVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -41545,6 +46004,12 @@ func (o VpnGatewayGatewayIpVersionPtrOutput) ToVpnGatewayGatewayIpVersionPtrOutp
 
 func (o VpnGatewayGatewayIpVersionPtrOutput) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
 	return o
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpnGatewayGatewayIpVersion] {
+	return pulumix.Output[*VpnGatewayGatewayIpVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpnGatewayGatewayIpVersionPtrOutput) Elem() VpnGatewayGatewayIpVersionOutput {
@@ -41607,6 +46072,12 @@ func (in *vpnGatewayGatewayIpVersionPtr) ToVpnGatewayGatewayIpVersionPtrOutput()
 
 func (in *vpnGatewayGatewayIpVersionPtr) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VpnGatewayGatewayIpVersionPtrOutput)
+}
+
+func (in *vpnGatewayGatewayIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*VpnGatewayGatewayIpVersion] {
+	return pulumix.Output[*VpnGatewayGatewayIpVersion]{
+		OutputState: in.ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
@@ -41681,6 +46152,12 @@ func (o VpnGatewayStackTypeOutput) ToVpnGatewayStackTypePtrOutputWithContext(ctx
 	}).(VpnGatewayStackTypePtrOutput)
 }
 
+func (o VpnGatewayStackTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VpnGatewayStackType] {
+	return pulumix.Output[VpnGatewayStackType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpnGatewayStackTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -41714,6 +46191,12 @@ func (o VpnGatewayStackTypePtrOutput) ToVpnGatewayStackTypePtrOutput() VpnGatewa
 
 func (o VpnGatewayStackTypePtrOutput) ToVpnGatewayStackTypePtrOutputWithContext(ctx context.Context) VpnGatewayStackTypePtrOutput {
 	return o
+}
+
+func (o VpnGatewayStackTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpnGatewayStackType] {
+	return pulumix.Output[*VpnGatewayStackType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpnGatewayStackTypePtrOutput) Elem() VpnGatewayStackTypeOutput {
@@ -41776,6 +46259,12 @@ func (in *vpnGatewayStackTypePtr) ToVpnGatewayStackTypePtrOutput() VpnGatewaySta
 
 func (in *vpnGatewayStackTypePtr) ToVpnGatewayStackTypePtrOutputWithContext(ctx context.Context) VpnGatewayStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VpnGatewayStackTypePtrOutput)
+}
+
+func (in *vpnGatewayStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VpnGatewayStackType] {
+	return pulumix.Output[*VpnGatewayStackType]{
+		OutputState: in.ToVpnGatewayStackTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

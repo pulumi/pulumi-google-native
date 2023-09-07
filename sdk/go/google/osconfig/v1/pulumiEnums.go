@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
@@ -82,6 +83,12 @@ func (o AptSettingsTypeOutput) ToAptSettingsTypePtrOutputWithContext(ctx context
 	}).(AptSettingsTypePtrOutput)
 }
 
+func (o AptSettingsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AptSettingsType] {
+	return pulumix.Output[AptSettingsType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AptSettingsTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutput() AptSettingsTypePt
 
 func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
 	return o
+}
+
+func (o AptSettingsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AptSettingsType] {
+	return pulumix.Output[*AptSettingsType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AptSettingsTypePtrOutput) Elem() AptSettingsTypeOutput {
@@ -177,6 +190,12 @@ func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOut
 
 func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AptSettingsTypePtrOutput)
+}
+
+func (in *aptSettingsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AptSettingsType] {
+	return pulumix.Output[*AptSettingsType]{
+		OutputState: in.ToAptSettingsTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
@@ -253,6 +272,12 @@ func (o ExecStepConfigInterpreterOutput) ToExecStepConfigInterpreterPtrOutputWit
 	}).(ExecStepConfigInterpreterPtrOutput)
 }
 
+func (o ExecStepConfigInterpreterOutput) ToOutput(ctx context.Context) pulumix.Output[ExecStepConfigInterpreter] {
+	return pulumix.Output[ExecStepConfigInterpreter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExecStepConfigInterpreterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutput
 
 func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
 	return o
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfigInterpreter] {
+	return pulumix.Output[*ExecStepConfigInterpreter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecStepConfigInterpreterPtrOutput) Elem() ExecStepConfigInterpreterOutput {
@@ -348,6 +379,12 @@ func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutput() E
 
 func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecStepConfigInterpreterPtrOutput)
+}
+
+func (in *execStepConfigInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfigInterpreter] {
+	return pulumix.Output[*ExecStepConfigInterpreter]{
+		OutputState: in.ToExecStepConfigInterpreterPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Policy mode
@@ -422,6 +459,12 @@ func (o OSPolicyModeOutput) ToOSPolicyModePtrOutputWithContext(ctx context.Conte
 	}).(OSPolicyModePtrOutput)
 }
 
+func (o OSPolicyModeOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyMode] {
+	return pulumix.Output[OSPolicyMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
 
 func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
 	return o
+}
+
+func (o OSPolicyModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyMode] {
+	return pulumix.Output[*OSPolicyMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyModePtrOutput) Elem() OSPolicyModeOutput {
@@ -517,6 +566,12 @@ func (in *ospolicyModePtr) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
 
 func (in *ospolicyModePtr) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyModePtrOutput)
+}
+
+func (in *ospolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyMode] {
+	return pulumix.Output[*OSPolicyMode]{
+		OutputState: in.ToOSPolicyModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The script interpreter to use.
@@ -593,6 +648,12 @@ func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOSPolicyResourceExe
 	}).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
 }
 
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResourceExecInterpreter] {
+	return pulumix.Output[OSPolicyResourceExecResourceExecInterpreter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -626,6 +687,12 @@ func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResource
 
 func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter] {
+	return pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) Elem() OSPolicyResourceExecResourceExecInterpreterOutput {
@@ -688,6 +755,12 @@ func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOSPolicyResourceExec
 
 func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
+}
+
+func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter] {
+	return pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter]{
+		OutputState: in.ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Desired state of the file.
@@ -764,6 +837,12 @@ func (o OSPolicyResourceFileResourceStateOutput) ToOSPolicyResourceFileResourceS
 	}).(OSPolicyResourceFileResourceStatePtrOutput)
 }
 
+func (o OSPolicyResourceFileResourceStateOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileResourceState] {
+	return pulumix.Output[OSPolicyResourceFileResourceState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourceFileResourceStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -797,6 +876,12 @@ func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResour
 
 func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileResourceState] {
+	return pulumix.Output[*OSPolicyResourceFileResourceState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceFileResourceStatePtrOutput) Elem() OSPolicyResourceFileResourceStateOutput {
@@ -859,6 +944,12 @@ func (in *ospolicyResourceFileResourceStatePtr) ToOSPolicyResourceFileResourceSt
 
 func (in *ospolicyResourceFileResourceStatePtr) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceFileResourceStatePtrOutput)
+}
+
+func (in *ospolicyResourceFileResourceStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileResourceState] {
+	return pulumix.Output[*OSPolicyResourceFileResourceState]{
+		OutputState: in.ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The desired state the agent should maintain for this package.
@@ -933,6 +1024,12 @@ func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOSPolicyResourcePac
 	}).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceDesiredState] {
+	return pulumix.Output[OSPolicyResourcePackageResourceDesiredState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -966,6 +1063,12 @@ func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResource
 
 func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceDesiredState] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceDesiredState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) Elem() OSPolicyResourcePackageResourceDesiredStateOutput {
@@ -1028,6 +1131,12 @@ func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOSPolicyResourcePack
 
 func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
+}
+
+func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceDesiredState] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceDesiredState]{
+		OutputState: in.ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Type of archive files in this repository.
@@ -1102,6 +1211,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOSPo
 	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
 }
 
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceAptRepositoryArchiveType] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceAptRepositoryArchiveType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1135,6 +1250,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToO
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) Elem() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
@@ -1197,6 +1318,12 @@ func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPol
 
 func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
+}
+
+func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType]{
+		OutputState: in.ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Post-patch reboot settings.
@@ -1273,6 +1400,12 @@ func (o PatchConfigRebootConfigOutput) ToPatchConfigRebootConfigPtrOutputWithCon
 	}).(PatchConfigRebootConfigPtrOutput)
 }
 
+func (o PatchConfigRebootConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchConfigRebootConfig] {
+	return pulumix.Output[PatchConfigRebootConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PatchConfigRebootConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1306,6 +1439,12 @@ func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutput() P
 
 func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
 	return o
+}
+
+func (o PatchConfigRebootConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchConfigRebootConfig] {
+	return pulumix.Output[*PatchConfigRebootConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PatchConfigRebootConfigPtrOutput) Elem() PatchConfigRebootConfigOutput {
@@ -1368,6 +1507,12 @@ func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutput() Patch
 
 func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PatchConfigRebootConfigPtrOutput)
+}
+
+func (in *patchConfigRebootConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*PatchConfigRebootConfig] {
+	return pulumix.Output[*PatchConfigRebootConfig]{
+		OutputState: in.ToPatchConfigRebootConfigPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Mode of the patch rollout.
@@ -1442,6 +1587,12 @@ func (o PatchRolloutModeOutput) ToPatchRolloutModePtrOutputWithContext(ctx conte
 	}).(PatchRolloutModePtrOutput)
 }
 
+func (o PatchRolloutModeOutput) ToOutput(ctx context.Context) pulumix.Output[PatchRolloutMode] {
+	return pulumix.Output[PatchRolloutMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PatchRolloutModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1475,6 +1626,12 @@ func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutput() PatchRolloutMod
 
 func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
 	return o
+}
+
+func (o PatchRolloutModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchRolloutMode] {
+	return pulumix.Output[*PatchRolloutMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PatchRolloutModePtrOutput) Elem() PatchRolloutModeOutput {
@@ -1537,6 +1694,12 @@ func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutput() PatchRolloutModePtr
 
 func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PatchRolloutModePtrOutput)
+}
+
+func (in *patchRolloutModePtr) ToOutput(ctx context.Context) pulumix.Output[*PatchRolloutMode] {
+	return pulumix.Output[*PatchRolloutMode]{
+		OutputState: in.ToPatchRolloutModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The frequency unit of this recurring schedule.
@@ -1613,6 +1776,12 @@ func (o RecurringScheduleFrequencyOutput) ToRecurringScheduleFrequencyPtrOutputW
 	}).(RecurringScheduleFrequencyPtrOutput)
 }
 
+func (o RecurringScheduleFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[RecurringScheduleFrequency] {
+	return pulumix.Output[RecurringScheduleFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecurringScheduleFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1646,6 +1815,12 @@ func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutp
 
 func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
 	return o
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurringScheduleFrequency] {
+	return pulumix.Output[*RecurringScheduleFrequency]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurringScheduleFrequencyPtrOutput) Elem() RecurringScheduleFrequencyOutput {
@@ -1708,6 +1883,12 @@ func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutput()
 
 func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurringScheduleFrequencyPtrOutput)
+}
+
+func (in *recurringScheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurringScheduleFrequency] {
+	return pulumix.Output[*RecurringScheduleFrequency]{
+		OutputState: in.ToRecurringScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. A day of the week.
@@ -1792,6 +1973,12 @@ func (o WeekDayOfMonthDayOfWeekOutput) ToWeekDayOfMonthDayOfWeekPtrOutputWithCon
 	}).(WeekDayOfMonthDayOfWeekPtrOutput)
 }
 
+func (o WeekDayOfMonthDayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[WeekDayOfMonthDayOfWeek] {
+	return pulumix.Output[WeekDayOfMonthDayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WeekDayOfMonthDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1825,6 +2012,12 @@ func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutput() W
 
 func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
 	return o
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeekDayOfMonthDayOfWeek] {
+	return pulumix.Output[*WeekDayOfMonthDayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WeekDayOfMonthDayOfWeekPtrOutput) Elem() WeekDayOfMonthDayOfWeekOutput {
@@ -1887,6 +2080,12 @@ func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutput() WeekD
 
 func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayOfMonthDayOfWeekPtrOutput)
+}
+
+func (in *weekDayOfMonthDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDayOfMonthDayOfWeek] {
+	return pulumix.Output[*WeekDayOfMonthDayOfWeek]{
+		OutputState: in.ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Day of the week.
@@ -1971,6 +2170,12 @@ func (o WeeklyScheduleDayOfWeekOutput) ToWeeklyScheduleDayOfWeekPtrOutputWithCon
 	}).(WeeklyScheduleDayOfWeekPtrOutput)
 }
 
+func (o WeeklyScheduleDayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyScheduleDayOfWeek] {
+	return pulumix.Output[WeeklyScheduleDayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WeeklyScheduleDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2004,6 +2209,12 @@ func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutput() W
 
 func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
 	return o
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleDayOfWeek] {
+	return pulumix.Output[*WeeklyScheduleDayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WeeklyScheduleDayOfWeekPtrOutput) Elem() WeeklyScheduleDayOfWeekOutput {
@@ -2066,6 +2277,12 @@ func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutput() Weekl
 
 func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeklyScheduleDayOfWeekPtrOutput)
+}
+
+func (in *weeklyScheduleDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleDayOfWeek] {
+	return pulumix.Output[*WeeklyScheduleDayOfWeek]{
+		OutputState: in.ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type WindowsUpdateSettingsClassificationsItem string
@@ -2153,6 +2370,12 @@ func (o WindowsUpdateSettingsClassificationsItemOutput) ToWindowsUpdateSettingsC
 	}).(WindowsUpdateSettingsClassificationsItemPtrOutput)
 }
 
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[WindowsUpdateSettingsClassificationsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WindowsUpdateSettingsClassificationsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2186,6 +2409,12 @@ func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettin
 
 func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
 	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[*WindowsUpdateSettingsClassificationsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WindowsUpdateSettingsClassificationsItemPtrOutput) Elem() WindowsUpdateSettingsClassificationsItemOutput {
@@ -2250,6 +2479,12 @@ func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsCl
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsUpdateSettingsClassificationsItemPtrOutput)
 }
 
+func (in *windowsUpdateSettingsClassificationsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[*WindowsUpdateSettingsClassificationsItem]{
+		OutputState: in.ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WindowsUpdateSettingsClassificationsItemArrayInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArray and WindowsUpdateSettingsClassificationsItemArrayOutput values.
 // You can construct a concrete instance of `WindowsUpdateSettingsClassificationsItemArrayInput` via:
 //
@@ -2275,6 +2510,12 @@ func (i WindowsUpdateSettingsClassificationsItemArray) ToWindowsUpdateSettingsCl
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsClassificationsItemArrayOutput)
 }
 
+func (i WindowsUpdateSettingsClassificationsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[[]WindowsUpdateSettingsClassificationsItem]{
+		OutputState: i.ToWindowsUpdateSettingsClassificationsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WindowsUpdateSettingsClassificationsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (WindowsUpdateSettingsClassificationsItemArrayOutput) ElementType() reflect.Type {
@@ -2287,6 +2528,12 @@ func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToWindowsUpdateSett
 
 func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToWindowsUpdateSettingsClassificationsItemArrayOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemArrayOutput {
 	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[[]WindowsUpdateSettingsClassificationsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WindowsUpdateSettingsClassificationsItemArrayOutput) Index(i pulumi.IntInput) WindowsUpdateSettingsClassificationsItemOutput {

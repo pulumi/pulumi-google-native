@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified webhook.
@@ -80,6 +81,12 @@ func (o LookupWebhookResultOutput) ToLookupWebhookResultOutput() LookupWebhookRe
 
 func (o LookupWebhookResultOutput) ToLookupWebhookResultOutputWithContext(ctx context.Context) LookupWebhookResultOutput {
 	return o
+}
+
+func (o LookupWebhookResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebhookResult] {
+	return pulumix.Output[LookupWebhookResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether the webhook is disabled.

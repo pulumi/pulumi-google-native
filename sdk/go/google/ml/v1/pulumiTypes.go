@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (i GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 
 func (i GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs) ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput)
+}
+
+func (i GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig] {
+	return pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig]{
+		OutputState: i.ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs) ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput {
@@ -87,6 +94,12 @@ func (i *googleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig]{
+		OutputState: i.ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput)
 }
 
+func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig] {
+	return pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput) UseElapsedTime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig) *bool {
@@ -130,6 +149,12 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput) Elem() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput {
@@ -169,6 +194,12 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
@@ -213,6 +244,12 @@ func (i GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArg
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput)
 }
 
+func (i GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig] {
+	return pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig]{
+		OutputState: i.ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs) ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput() GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput {
 	return i.ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutputWithContext(context.Background())
 }
@@ -254,6 +291,12 @@ func (i *googleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig]{
+		OutputState: i.ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The median automated stopping rule stops a pending trial if the trial's best objective_value is strictly below the median 'performance' of all completed trials reported up to the trial's last measurement. Currently, 'performance' refers to the running average of the objective values reported by the trial in each measurement.
 type GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput struct{ *pulumi.OutputState }
 
@@ -279,6 +322,12 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOut
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput)
 }
 
+func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig] {
+	return pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If true, the median automated stopping rule applies to measurement.use_elapsed_time, which means the elapsed_time field of the current trial's latest measurement is used to compute the median objective value for each completed trial.
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput) UseElapsedTime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig) *bool {
@@ -298,6 +347,12 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtr
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput) Elem() GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput {
@@ -339,6 +394,12 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigRes
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If true, the median automated stopping rule applies to measurement.use_elapsed_time, which means the elapsed_time field of the current trial's latest measurement is used to compute the median objective value for each completed trial.
@@ -387,6 +448,12 @@ func (i GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput)
 }
 
+func (i GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric] {
+	return pulumix.Output[GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric]{
+		OutputState: i.ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs) ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput() GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput {
 	return i.ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutputWithContext(context.Background())
 }
@@ -428,6 +495,12 @@ func (i *googleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput)
 }
 
+func (i *googleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric] {
+	return pulumix.Output[*GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric]{
+		OutputState: i.ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayInput is an input type that accepts GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArray and GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayInput` via:
 //
@@ -451,6 +524,12 @@ func (i GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArray) ToGoogle
 
 func (i GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArray) ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutput)
+}
+
+func (i GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric] {
+	return pulumix.Output[[]GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric]{
+		OutputState: i.ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // An observed value of a metric.
@@ -478,6 +557,12 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput) ToGoogl
 	}).(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput)
 }
 
+func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric] {
+	return pulumix.Output[GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The objective value at this training step.
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput) ObjectiveValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric) *float64 { return v.ObjectiveValue }).(pulumi.Float64PtrOutput)
@@ -500,6 +585,12 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput) ToGo
 
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput) ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric] {
+	return pulumix.Output[*GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput) Elem() GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput {
@@ -546,6 +637,12 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutput) To
 	return o
 }
 
+func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric] {
+	return pulumix.Output[[]GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
 		return vs[0].([]GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric)[vs[1].(int)]
@@ -575,6 +672,12 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseOutput)
 	return o
 }
 
+func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse] {
+	return pulumix.Output[GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The objective value at this training step.
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseOutput) ObjectiveValue() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse) float64 {
@@ -601,6 +704,12 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseArrayOu
 
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseArrayOutput) ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseOutput {
@@ -648,6 +757,12 @@ func (i GoogleCloudMlV1_Measurement_MetricArgs) ToGoogleCloudMlV1_Measurement_Me
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_Measurement_MetricOutput)
 }
 
+func (i GoogleCloudMlV1_Measurement_MetricArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_Measurement_Metric] {
+	return pulumix.Output[GoogleCloudMlV1_Measurement_Metric]{
+		OutputState: i.ToGoogleCloudMlV1_Measurement_MetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1_Measurement_MetricArrayInput is an input type that accepts GoogleCloudMlV1_Measurement_MetricArray and GoogleCloudMlV1_Measurement_MetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_Measurement_MetricArrayInput` via:
 //
@@ -673,6 +788,12 @@ func (i GoogleCloudMlV1_Measurement_MetricArray) ToGoogleCloudMlV1_Measurement_M
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_Measurement_MetricArrayOutput)
 }
 
+func (i GoogleCloudMlV1_Measurement_MetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_Measurement_Metric] {
+	return pulumix.Output[[]GoogleCloudMlV1_Measurement_Metric]{
+		OutputState: i.ToGoogleCloudMlV1_Measurement_MetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A message representing a metric in the measurement.
 type GoogleCloudMlV1_Measurement_MetricOutput struct{ *pulumi.OutputState }
 
@@ -686,6 +807,12 @@ func (o GoogleCloudMlV1_Measurement_MetricOutput) ToGoogleCloudMlV1_Measurement_
 
 func (o GoogleCloudMlV1_Measurement_MetricOutput) ToGoogleCloudMlV1_Measurement_MetricOutputWithContext(ctx context.Context) GoogleCloudMlV1_Measurement_MetricOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_Measurement_MetricOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_Measurement_Metric] {
+	return pulumix.Output[GoogleCloudMlV1_Measurement_Metric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Metric name.
@@ -710,6 +837,12 @@ func (o GoogleCloudMlV1_Measurement_MetricArrayOutput) ToGoogleCloudMlV1_Measure
 
 func (o GoogleCloudMlV1_Measurement_MetricArrayOutput) ToGoogleCloudMlV1_Measurement_MetricArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1_Measurement_MetricArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_Measurement_MetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_Measurement_Metric] {
+	return pulumix.Output[[]GoogleCloudMlV1_Measurement_Metric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_Measurement_MetricArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_Measurement_MetricOutput {
@@ -741,6 +874,12 @@ func (o GoogleCloudMlV1_Measurement_MetricResponseOutput) ToGoogleCloudMlV1_Meas
 	return o
 }
 
+func (o GoogleCloudMlV1_Measurement_MetricResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_Measurement_MetricResponse] {
+	return pulumix.Output[GoogleCloudMlV1_Measurement_MetricResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Metric name.
 func (o GoogleCloudMlV1_Measurement_MetricResponseOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_Measurement_MetricResponse) string { return v.Metric }).(pulumi.StringOutput)
@@ -763,6 +902,12 @@ func (o GoogleCloudMlV1_Measurement_MetricResponseArrayOutput) ToGoogleCloudMlV1
 
 func (o GoogleCloudMlV1_Measurement_MetricResponseArrayOutput) ToGoogleCloudMlV1_Measurement_MetricResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1_Measurement_MetricResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_Measurement_MetricResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_Measurement_MetricResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1_Measurement_MetricResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_Measurement_MetricResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_Measurement_MetricResponseOutput {
@@ -802,6 +947,12 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs) ToGoo
 
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput)
+}
+
+func (i GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput() GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput {
@@ -845,6 +996,12 @@ func (i *googleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput) ElementType() reflect.Type {
@@ -869,6 +1026,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput) ToG
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput)
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Must be specified if type is `CATEGORICAL`. The list of possible categories.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -886,6 +1049,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput) 
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput {
@@ -927,6 +1096,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponseOut
 	return o
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Must be specified if type is `CATEGORICAL`. The list of possible categories.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponse) []string {
@@ -965,6 +1140,12 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs) ToGoogle
 
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput)
+}
+
+func (i GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput() GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput {
@@ -1008,6 +1189,12 @@ func (i *googleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrType) ToGo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput) ElementType() reflect.Type {
@@ -1032,6 +1219,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput) ToGoog
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput)
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Must be specified if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput) Values() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
@@ -1049,6 +1242,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput) ToG
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput {
@@ -1088,6 +1287,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponseOutput
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponseOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be specified if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values.
@@ -1132,6 +1337,12 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput() GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput {
 	return i.ToGoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutputWithContext(context.Background())
 }
@@ -1173,6 +1384,12 @@ func (i *googleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrType) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput) ElementType() reflect.Type {
@@ -1197,6 +1414,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput) ToGoogle
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput)
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Must be specified if type is `DOUBLE`. Maximum value of the parameter.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
@@ -1219,6 +1442,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput) ToGoo
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput {
@@ -1272,6 +1501,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponseOutput) 
 	return o
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Must be specified if type is `DOUBLE`. Maximum value of the parameter.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponseOutput) MaxValue() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse) float64 { return v.MaxValue }).(pulumi.Float64Output)
@@ -1319,6 +1554,12 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput() GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput {
 	return i.ToGoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutputWithContext(context.Background())
 }
@@ -1360,6 +1601,12 @@ func (i *googleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput) ElementType() reflect.Type {
@@ -1384,6 +1631,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput) ToGoogl
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput)
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Must be specified if type is `INTEGER`. Maximum value of the parameter.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput) MaxValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
@@ -1406,6 +1659,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput) ToGo
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput {
@@ -1459,6 +1718,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponseOutput)
 	return o
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Must be specified if type is `INTEGER`. Maximum value of the parameter.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponseOutput) MaxValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse) string { return v.MaxValue }).(pulumi.StringOutput)
@@ -1504,6 +1769,12 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueS
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput {
 	return i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutputWithContext(context.Background())
 }
@@ -1545,6 +1816,12 @@ func (i *googleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValue
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the spec to match categorical values from parent parameter.
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput struct{ *pulumi.OutputState }
 
@@ -1570,6 +1847,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueS
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput)
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in `categorical_value_spec` of parent parameter.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec) []string {
@@ -1589,6 +1872,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueS
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput {
@@ -1630,6 +1919,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueS
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponseOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in `categorical_value_spec` of parent parameter.
@@ -1674,6 +1969,12 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput {
 	return i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutputWithContext(context.Background())
 }
@@ -1715,6 +2016,12 @@ func (i *googleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the spec to match discrete values from parent parameter.
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput struct{ *pulumi.OutputState }
 
@@ -1740,6 +2047,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput)
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput) Values() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec) []float64 {
@@ -1759,6 +2072,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput {
@@ -1800,6 +2119,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponseOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.
@@ -1844,6 +2169,12 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput {
 	return i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutputWithContext(context.Background())
 }
@@ -1885,6 +2216,12 @@ func (i *googleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the spec to match integer values from parent parameter.
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput struct{ *pulumi.OutputState }
 
@@ -1910,6 +2247,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutpu
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput)
 }
 
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter.
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -1927,6 +2270,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOu
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec] {
+	return pulumix.Output[*GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput {
@@ -1968,6 +2317,12 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecRespo
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponseOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter.
@@ -2016,6 +2371,12 @@ func (i GoogleCloudMlV1_StudyConfig_MetricSpecArgs) ToGoogleCloudMlV1_StudyConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfig_MetricSpecOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfig_MetricSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfig_MetricSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfig_MetricSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfig_MetricSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1_StudyConfig_MetricSpecArrayInput is an input type that accepts GoogleCloudMlV1_StudyConfig_MetricSpecArray and GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfig_MetricSpecArrayInput` via:
 //
@@ -2041,6 +2402,12 @@ func (i GoogleCloudMlV1_StudyConfig_MetricSpecArray) ToGoogleCloudMlV1_StudyConf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfig_MetricSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_StudyConfig_MetricSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1_StudyConfig_MetricSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfig_MetricSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpecOutput struct{ *pulumi.OutputState }
 
@@ -2054,6 +2421,12 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) ToGoogleCloudMlV1_StudyCon
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) ToGoogleCloudMlV1_StudyConfig_MetricSpecOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_MetricSpecOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfig_MetricSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfig_MetricSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The optimization goal of the metric.
@@ -2080,6 +2453,12 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput) ToGoogleCloudMlV1_Stu
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput) ToGoogleCloudMlV1_StudyConfig_MetricSpecArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_StudyConfig_MetricSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1_StudyConfig_MetricSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_StudyConfig_MetricSpecOutput {
@@ -2111,6 +2490,12 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseOutput) ToGoogleCloudMlV1_
 	return o
 }
 
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfig_MetricSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfig_MetricSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The optimization goal of the metric.
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseOutput) Goal() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpecResponse) string { return v.Goal }).(pulumi.StringOutput)
@@ -2133,6 +2518,12 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutput) ToGoogleCloud
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutput) ToGoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_StudyConfig_MetricSpecResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1_StudyConfig_MetricSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_StudyConfig_MetricSpecResponseOutput {
@@ -2210,6 +2601,12 @@ func (i GoogleCloudMlV1_StudyConfig_ParameterSpecArgs) ToGoogleCloudMlV1_StudyCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfig_ParameterSpecOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfig_ParameterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfig_ParameterSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfig_ParameterSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfig_ParameterSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1_StudyConfig_ParameterSpecArrayInput is an input type that accepts GoogleCloudMlV1_StudyConfig_ParameterSpecArray and GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfig_ParameterSpecArrayInput` via:
 //
@@ -2235,6 +2632,12 @@ func (i GoogleCloudMlV1_StudyConfig_ParameterSpecArray) ToGoogleCloudMlV1_StudyC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput)
 }
 
+func (i GoogleCloudMlV1_StudyConfig_ParameterSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_StudyConfig_ParameterSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1_StudyConfig_ParameterSpec]{
+		OutputState: i.ToGoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a single parameter to optimize.
 type GoogleCloudMlV1_StudyConfig_ParameterSpecOutput struct{ *pulumi.OutputState }
 
@@ -2248,6 +2651,12 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ToGoogleCloudMlV1_Study
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ToGoogleCloudMlV1_StudyConfig_ParameterSpecOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_ParameterSpecOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfig_ParameterSpec] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfig_ParameterSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value spec for a 'CATEGORICAL' parameter.
@@ -2336,6 +2745,12 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput) ToGoogleCloudMlV1_
 	return o
 }
 
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_StudyConfig_ParameterSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1_StudyConfig_ParameterSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_StudyConfig_ParameterSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudMlV1_StudyConfig_ParameterSpec {
 		return vs[0].([]GoogleCloudMlV1_StudyConfig_ParameterSpec)[vs[1].(int)]
@@ -2378,6 +2793,12 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput) ToGoogleCloudMl
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput) ToGoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_StudyConfig_ParameterSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1_StudyConfig_ParameterSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value spec for a 'CATEGORICAL' parameter.
@@ -2462,6 +2883,12 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseArrayOutput) ToGoogleCl
 	return o
 }
 
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_StudyConfig_ParameterSpecResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1_StudyConfig_ParameterSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudMlV1_StudyConfig_ParameterSpecResponse {
 		return vs[0].([]GoogleCloudMlV1_StudyConfig_ParameterSpecResponse)[vs[1].(int)]
@@ -2515,6 +2942,12 @@ func (i GoogleCloudMlV1_Trial_ParameterArgs) ToGoogleCloudMlV1_Trial_ParameterOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_Trial_ParameterOutput)
 }
 
+func (i GoogleCloudMlV1_Trial_ParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_Trial_Parameter] {
+	return pulumix.Output[GoogleCloudMlV1_Trial_Parameter]{
+		OutputState: i.ToGoogleCloudMlV1_Trial_ParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1_Trial_ParameterArrayInput is an input type that accepts GoogleCloudMlV1_Trial_ParameterArray and GoogleCloudMlV1_Trial_ParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_Trial_ParameterArrayInput` via:
 //
@@ -2540,6 +2973,12 @@ func (i GoogleCloudMlV1_Trial_ParameterArray) ToGoogleCloudMlV1_Trial_ParameterA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1_Trial_ParameterArrayOutput)
 }
 
+func (i GoogleCloudMlV1_Trial_ParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_Trial_Parameter] {
+	return pulumix.Output[[]GoogleCloudMlV1_Trial_Parameter]{
+		OutputState: i.ToGoogleCloudMlV1_Trial_ParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A message representing a parameter to be tuned. Contains the name of the parameter and the suggested value to use for this trial.
 type GoogleCloudMlV1_Trial_ParameterOutput struct{ *pulumi.OutputState }
 
@@ -2553,6 +2992,12 @@ func (o GoogleCloudMlV1_Trial_ParameterOutput) ToGoogleCloudMlV1_Trial_Parameter
 
 func (o GoogleCloudMlV1_Trial_ParameterOutput) ToGoogleCloudMlV1_Trial_ParameterOutputWithContext(ctx context.Context) GoogleCloudMlV1_Trial_ParameterOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_Trial_ParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_Trial_Parameter] {
+	return pulumix.Output[GoogleCloudMlV1_Trial_Parameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be set if ParameterType is DOUBLE or DISCRETE.
@@ -2589,6 +3034,12 @@ func (o GoogleCloudMlV1_Trial_ParameterArrayOutput) ToGoogleCloudMlV1_Trial_Para
 	return o
 }
 
+func (o GoogleCloudMlV1_Trial_ParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_Trial_Parameter] {
+	return pulumix.Output[[]GoogleCloudMlV1_Trial_Parameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudMlV1_Trial_ParameterArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_Trial_ParameterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudMlV1_Trial_Parameter {
 		return vs[0].([]GoogleCloudMlV1_Trial_Parameter)[vs[1].(int)]
@@ -2620,6 +3071,12 @@ func (o GoogleCloudMlV1_Trial_ParameterResponseOutput) ToGoogleCloudMlV1_Trial_P
 
 func (o GoogleCloudMlV1_Trial_ParameterResponseOutput) ToGoogleCloudMlV1_Trial_ParameterResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1_Trial_ParameterResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_Trial_ParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1_Trial_ParameterResponse] {
+	return pulumix.Output[GoogleCloudMlV1_Trial_ParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be set if ParameterType is DOUBLE or DISCRETE.
@@ -2654,6 +3111,12 @@ func (o GoogleCloudMlV1_Trial_ParameterResponseArrayOutput) ToGoogleCloudMlV1_Tr
 
 func (o GoogleCloudMlV1_Trial_ParameterResponseArrayOutput) ToGoogleCloudMlV1_Trial_ParameterResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1_Trial_ParameterResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1_Trial_ParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1_Trial_ParameterResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1_Trial_ParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1_Trial_ParameterResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1_Trial_ParameterResponseOutput {
@@ -2701,6 +3164,12 @@ func (i GoogleCloudMlV1__AcceleratorConfigArgs) ToGoogleCloudMlV1__AcceleratorCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__AcceleratorConfigOutput)
 }
 
+func (i GoogleCloudMlV1__AcceleratorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AcceleratorConfig] {
+	return pulumix.Output[GoogleCloudMlV1__AcceleratorConfig]{
+		OutputState: i.ToGoogleCloudMlV1__AcceleratorConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__AcceleratorConfigArgs) ToGoogleCloudMlV1__AcceleratorConfigPtrOutput() GoogleCloudMlV1__AcceleratorConfigPtrOutput {
 	return i.ToGoogleCloudMlV1__AcceleratorConfigPtrOutputWithContext(context.Background())
 }
@@ -2742,6 +3211,12 @@ func (i *googleCloudMlV1__AcceleratorConfigPtrType) ToGoogleCloudMlV1__Accelerat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__AcceleratorConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1__AcceleratorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__AcceleratorConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__AcceleratorConfig]{
+		OutputState: i.ToGoogleCloudMlV1__AcceleratorConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
 type GoogleCloudMlV1__AcceleratorConfigOutput struct{ *pulumi.OutputState }
 
@@ -2767,6 +3242,12 @@ func (o GoogleCloudMlV1__AcceleratorConfigOutput) ToGoogleCloudMlV1__Accelerator
 	}).(GoogleCloudMlV1__AcceleratorConfigPtrOutput)
 }
 
+func (o GoogleCloudMlV1__AcceleratorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AcceleratorConfig] {
+	return pulumix.Output[GoogleCloudMlV1__AcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of accelerators to attach to each machine running the job.
 func (o GoogleCloudMlV1__AcceleratorConfigOutput) Count() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__AcceleratorConfig) *string { return v.Count }).(pulumi.StringPtrOutput)
@@ -2789,6 +3270,12 @@ func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) ToGoogleCloudMlV1__Accelera
 
 func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) ToGoogleCloudMlV1__AcceleratorConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AcceleratorConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__AcceleratorConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__AcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) Elem() GoogleCloudMlV1__AcceleratorConfigOutput {
@@ -2844,6 +3331,12 @@ func (o GoogleCloudMlV1__AcceleratorConfigResponseOutput) ToGoogleCloudMlV1__Acc
 	return o
 }
 
+func (o GoogleCloudMlV1__AcceleratorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AcceleratorConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__AcceleratorConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of accelerators to attach to each machine running the job.
 func (o GoogleCloudMlV1__AcceleratorConfigResponseOutput) Count() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__AcceleratorConfigResponse) string { return v.Count }).(pulumi.StringOutput)
@@ -2897,6 +3390,12 @@ func (i GoogleCloudMlV1__AutoScalingArgs) ToGoogleCloudMlV1__AutoScalingOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__AutoScalingOutput)
 }
 
+func (i GoogleCloudMlV1__AutoScalingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AutoScaling] {
+	return pulumix.Output[GoogleCloudMlV1__AutoScaling]{
+		OutputState: i.ToGoogleCloudMlV1__AutoScalingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__AutoScalingArgs) ToGoogleCloudMlV1__AutoScalingPtrOutput() GoogleCloudMlV1__AutoScalingPtrOutput {
 	return i.ToGoogleCloudMlV1__AutoScalingPtrOutputWithContext(context.Background())
 }
@@ -2938,6 +3437,12 @@ func (i *googleCloudMlV1__AutoScalingPtrType) ToGoogleCloudMlV1__AutoScalingPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__AutoScalingPtrOutput)
 }
 
+func (i *googleCloudMlV1__AutoScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__AutoScaling] {
+	return pulumix.Output[*GoogleCloudMlV1__AutoScaling]{
+		OutputState: i.ToGoogleCloudMlV1__AutoScalingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Options for automatically scaling a model.
 type GoogleCloudMlV1__AutoScalingOutput struct{ *pulumi.OutputState }
 
@@ -2961,6 +3466,12 @@ func (o GoogleCloudMlV1__AutoScalingOutput) ToGoogleCloudMlV1__AutoScalingPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AutoScaling) *GoogleCloudMlV1__AutoScaling {
 		return &v
 	}).(GoogleCloudMlV1__AutoScalingPtrOutput)
+}
+
+func (o GoogleCloudMlV1__AutoScalingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AutoScaling] {
+	return pulumix.Output[GoogleCloudMlV1__AutoScaling]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum number of nodes to scale this model under load. The actual value will depend on resource quota and availability.
@@ -2990,6 +3501,12 @@ func (o GoogleCloudMlV1__AutoScalingPtrOutput) ToGoogleCloudMlV1__AutoScalingPtr
 
 func (o GoogleCloudMlV1__AutoScalingPtrOutput) ToGoogleCloudMlV1__AutoScalingPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AutoScalingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__AutoScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__AutoScaling] {
+	return pulumix.Output[*GoogleCloudMlV1__AutoScaling]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__AutoScalingPtrOutput) Elem() GoogleCloudMlV1__AutoScalingOutput {
@@ -3057,6 +3574,12 @@ func (o GoogleCloudMlV1__AutoScalingResponseOutput) ToGoogleCloudMlV1__AutoScali
 	return o
 }
 
+func (o GoogleCloudMlV1__AutoScalingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AutoScalingResponse] {
+	return pulumix.Output[GoogleCloudMlV1__AutoScalingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The maximum number of nodes to scale this model under load. The actual value will depend on resource quota and availability.
 func (o GoogleCloudMlV1__AutoScalingResponseOutput) MaxNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__AutoScalingResponse) int { return v.MaxNodes }).(pulumi.IntOutput)
@@ -3107,6 +3630,12 @@ func (i GoogleCloudMlV1__AutomatedStoppingConfigArgs) ToGoogleCloudMlV1__Automat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__AutomatedStoppingConfigOutput)
 }
 
+func (i GoogleCloudMlV1__AutomatedStoppingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AutomatedStoppingConfig] {
+	return pulumix.Output[GoogleCloudMlV1__AutomatedStoppingConfig]{
+		OutputState: i.ToGoogleCloudMlV1__AutomatedStoppingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__AutomatedStoppingConfigArgs) ToGoogleCloudMlV1__AutomatedStoppingConfigPtrOutput() GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput {
 	return i.ToGoogleCloudMlV1__AutomatedStoppingConfigPtrOutputWithContext(context.Background())
 }
@@ -3148,6 +3677,12 @@ func (i *googleCloudMlV1__AutomatedStoppingConfigPtrType) ToGoogleCloudMlV1__Aut
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1__AutomatedStoppingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__AutomatedStoppingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__AutomatedStoppingConfig]{
+		OutputState: i.ToGoogleCloudMlV1__AutomatedStoppingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated early stopping will not be run.
 type GoogleCloudMlV1__AutomatedStoppingConfigOutput struct{ *pulumi.OutputState }
 
@@ -3171,6 +3706,12 @@ func (o GoogleCloudMlV1__AutomatedStoppingConfigOutput) ToGoogleCloudMlV1__Autom
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AutomatedStoppingConfig) *GoogleCloudMlV1__AutomatedStoppingConfig {
 		return &v
 	}).(GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput)
+}
+
+func (o GoogleCloudMlV1__AutomatedStoppingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AutomatedStoppingConfig] {
+	return pulumix.Output[GoogleCloudMlV1__AutomatedStoppingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigOutput) DecayCurveStoppingConfig() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput {
@@ -3197,6 +3738,12 @@ func (o GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput) ToGoogleCloudMlV1__Au
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput) ToGoogleCloudMlV1__AutomatedStoppingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__AutomatedStoppingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__AutomatedStoppingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput) Elem() GoogleCloudMlV1__AutomatedStoppingConfigOutput {
@@ -3246,6 +3793,12 @@ func (o GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV1__AutomatedStoppingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__AutomatedStoppingConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__AutomatedStoppingConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput) DecayCurveStoppingConfig() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput {
@@ -3307,6 +3860,12 @@ func (i GoogleCloudMlV1__BuiltInAlgorithmOutputArgs) ToGoogleCloudMlV1__BuiltInA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__BuiltInAlgorithmOutputOutput)
 }
 
+func (i GoogleCloudMlV1__BuiltInAlgorithmOutputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__BuiltInAlgorithmOutput] {
+	return pulumix.Output[GoogleCloudMlV1__BuiltInAlgorithmOutput]{
+		OutputState: i.ToGoogleCloudMlV1__BuiltInAlgorithmOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__BuiltInAlgorithmOutputArgs) ToGoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput() GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput {
 	return i.ToGoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutputWithContext(context.Background())
 }
@@ -3348,6 +3907,12 @@ func (i *googleCloudMlV1__BuiltInAlgorithmOutputPtrType) ToGoogleCloudMlV1__Buil
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput)
 }
 
+func (i *googleCloudMlV1__BuiltInAlgorithmOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__BuiltInAlgorithmOutput] {
+	return pulumix.Output[*GoogleCloudMlV1__BuiltInAlgorithmOutput]{
+		OutputState: i.ToGoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents output related to a built-in algorithm Job.
 type GoogleCloudMlV1__BuiltInAlgorithmOutputOutput struct{ *pulumi.OutputState }
 
@@ -3371,6 +3936,12 @@ func (o GoogleCloudMlV1__BuiltInAlgorithmOutputOutput) ToGoogleCloudMlV1__BuiltI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__BuiltInAlgorithmOutput) *GoogleCloudMlV1__BuiltInAlgorithmOutput {
 		return &v
 	}).(GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput)
+}
+
+func (o GoogleCloudMlV1__BuiltInAlgorithmOutputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__BuiltInAlgorithmOutput] {
+	return pulumix.Output[GoogleCloudMlV1__BuiltInAlgorithmOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Framework on which the built-in algorithm was trained.
@@ -3405,6 +3976,12 @@ func (o GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput) ToGoogleCloudMlV1__Bui
 
 func (o GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput) ToGoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__BuiltInAlgorithmOutput] {
+	return pulumix.Output[*GoogleCloudMlV1__BuiltInAlgorithmOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput) Elem() GoogleCloudMlV1__BuiltInAlgorithmOutputOutput {
@@ -3484,6 +4061,12 @@ func (o GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput) ToGoogleCloudMlV1
 	return o
 }
 
+func (o GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__BuiltInAlgorithmOutputResponse] {
+	return pulumix.Output[GoogleCloudMlV1__BuiltInAlgorithmOutputResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Framework on which the built-in algorithm was trained.
 func (o GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput) Framework() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__BuiltInAlgorithmOutputResponse) string { return v.Framework }).(pulumi.StringOutput)
@@ -3539,6 +4122,12 @@ func (i GoogleCloudMlV1__ContainerPortArgs) ToGoogleCloudMlV1__ContainerPortOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ContainerPortOutput)
 }
 
+func (i GoogleCloudMlV1__ContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ContainerPort] {
+	return pulumix.Output[GoogleCloudMlV1__ContainerPort]{
+		OutputState: i.ToGoogleCloudMlV1__ContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1__ContainerPortArrayInput is an input type that accepts GoogleCloudMlV1__ContainerPortArray and GoogleCloudMlV1__ContainerPortArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ContainerPortArrayInput` via:
 //
@@ -3564,6 +4153,12 @@ func (i GoogleCloudMlV1__ContainerPortArray) ToGoogleCloudMlV1__ContainerPortArr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ContainerPortArrayOutput)
 }
 
+func (i GoogleCloudMlV1__ContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__ContainerPort] {
+	return pulumix.Output[[]GoogleCloudMlV1__ContainerPort]{
+		OutputState: i.ToGoogleCloudMlV1__ContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a network port in a single container. This message is a subset of the [Kubernetes ContainerPort v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#containerport-v1-core).
 type GoogleCloudMlV1__ContainerPortOutput struct{ *pulumi.OutputState }
 
@@ -3577,6 +4172,12 @@ func (o GoogleCloudMlV1__ContainerPortOutput) ToGoogleCloudMlV1__ContainerPortOu
 
 func (o GoogleCloudMlV1__ContainerPortOutput) ToGoogleCloudMlV1__ContainerPortOutputWithContext(ctx context.Context) GoogleCloudMlV1__ContainerPortOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ContainerPort] {
+	return pulumix.Output[GoogleCloudMlV1__ContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of the port to expose on the container. This must be a valid port number: 0 < PORT_NUMBER < 65536.
@@ -3596,6 +4197,12 @@ func (o GoogleCloudMlV1__ContainerPortArrayOutput) ToGoogleCloudMlV1__ContainerP
 
 func (o GoogleCloudMlV1__ContainerPortArrayOutput) ToGoogleCloudMlV1__ContainerPortArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__ContainerPortArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__ContainerPort] {
+	return pulumix.Output[[]GoogleCloudMlV1__ContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__ContainerPortArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__ContainerPortOutput {
@@ -3625,6 +4232,12 @@ func (o GoogleCloudMlV1__ContainerPortResponseOutput) ToGoogleCloudMlV1__Contain
 	return o
 }
 
+func (o GoogleCloudMlV1__ContainerPortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ContainerPortResponse] {
+	return pulumix.Output[GoogleCloudMlV1__ContainerPortResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of the port to expose on the container. This must be a valid port number: 0 < PORT_NUMBER < 65536.
 func (o GoogleCloudMlV1__ContainerPortResponseOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__ContainerPortResponse) int { return v.ContainerPort }).(pulumi.IntOutput)
@@ -3642,6 +4255,12 @@ func (o GoogleCloudMlV1__ContainerPortResponseArrayOutput) ToGoogleCloudMlV1__Co
 
 func (o GoogleCloudMlV1__ContainerPortResponseArrayOutput) ToGoogleCloudMlV1__ContainerPortResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__ContainerPortResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ContainerPortResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__ContainerPortResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1__ContainerPortResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__ContainerPortResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__ContainerPortResponseOutput {
@@ -3701,6 +4320,12 @@ func (i GoogleCloudMlV1__ContainerSpecArgs) ToGoogleCloudMlV1__ContainerSpecOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ContainerSpecOutput)
 }
 
+func (i GoogleCloudMlV1__ContainerSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ContainerSpec] {
+	return pulumix.Output[GoogleCloudMlV1__ContainerSpec]{
+		OutputState: i.ToGoogleCloudMlV1__ContainerSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__ContainerSpecArgs) ToGoogleCloudMlV1__ContainerSpecPtrOutput() GoogleCloudMlV1__ContainerSpecPtrOutput {
 	return i.ToGoogleCloudMlV1__ContainerSpecPtrOutputWithContext(context.Background())
 }
@@ -3742,6 +4367,12 @@ func (i *googleCloudMlV1__ContainerSpecPtrType) ToGoogleCloudMlV1__ContainerSpec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ContainerSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1__ContainerSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ContainerSpec] {
+	return pulumix.Output[*GoogleCloudMlV1__ContainerSpec]{
+		OutputState: i.ToGoogleCloudMlV1__ContainerSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of a custom container for serving predictions. This message is a subset of the [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 type GoogleCloudMlV1__ContainerSpecOutput struct{ *pulumi.OutputState }
 
@@ -3765,6 +4396,12 @@ func (o GoogleCloudMlV1__ContainerSpecOutput) ToGoogleCloudMlV1__ContainerSpecPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ContainerSpec) *GoogleCloudMlV1__ContainerSpec {
 		return &v
 	}).(GoogleCloudMlV1__ContainerSpecPtrOutput)
+}
+
+func (o GoogleCloudMlV1__ContainerSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ContainerSpec] {
+	return pulumix.Output[GoogleCloudMlV1__ContainerSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `commmand` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the [Docker documentation about how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by AI Platform Prediction](/ai-platform/prediction/docs/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
@@ -3804,6 +4441,12 @@ func (o GoogleCloudMlV1__ContainerSpecPtrOutput) ToGoogleCloudMlV1__ContainerSpe
 
 func (o GoogleCloudMlV1__ContainerSpecPtrOutput) ToGoogleCloudMlV1__ContainerSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ContainerSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ContainerSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ContainerSpec] {
+	return pulumix.Output[*GoogleCloudMlV1__ContainerSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__ContainerSpecPtrOutput) Elem() GoogleCloudMlV1__ContainerSpecOutput {
@@ -3895,6 +4538,12 @@ func (o GoogleCloudMlV1__ContainerSpecResponseOutput) ToGoogleCloudMlV1__Contain
 	return o
 }
 
+func (o GoogleCloudMlV1__ContainerSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ContainerSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1__ContainerSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `commmand` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the [Docker documentation about how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by AI Platform Prediction](/ai-platform/prediction/docs/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 func (o GoogleCloudMlV1__ContainerSpecResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__ContainerSpecResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -3961,6 +4610,12 @@ func (i GoogleCloudMlV1__DiskConfigArgs) ToGoogleCloudMlV1__DiskConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__DiskConfigOutput)
 }
 
+func (i GoogleCloudMlV1__DiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__DiskConfig] {
+	return pulumix.Output[GoogleCloudMlV1__DiskConfig]{
+		OutputState: i.ToGoogleCloudMlV1__DiskConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__DiskConfigArgs) ToGoogleCloudMlV1__DiskConfigPtrOutput() GoogleCloudMlV1__DiskConfigPtrOutput {
 	return i.ToGoogleCloudMlV1__DiskConfigPtrOutputWithContext(context.Background())
 }
@@ -4002,6 +4657,12 @@ func (i *googleCloudMlV1__DiskConfigPtrType) ToGoogleCloudMlV1__DiskConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__DiskConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1__DiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__DiskConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__DiskConfig]{
+		OutputState: i.ToGoogleCloudMlV1__DiskConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the config of disk options.
 type GoogleCloudMlV1__DiskConfigOutput struct{ *pulumi.OutputState }
 
@@ -4027,6 +4688,12 @@ func (o GoogleCloudMlV1__DiskConfigOutput) ToGoogleCloudMlV1__DiskConfigPtrOutpu
 	}).(GoogleCloudMlV1__DiskConfigPtrOutput)
 }
 
+func (o GoogleCloudMlV1__DiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__DiskConfig] {
+	return pulumix.Output[GoogleCloudMlV1__DiskConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Size in GB of the boot disk (default is 100GB).
 func (o GoogleCloudMlV1__DiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__DiskConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
@@ -4049,6 +4716,12 @@ func (o GoogleCloudMlV1__DiskConfigPtrOutput) ToGoogleCloudMlV1__DiskConfigPtrOu
 
 func (o GoogleCloudMlV1__DiskConfigPtrOutput) ToGoogleCloudMlV1__DiskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__DiskConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__DiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__DiskConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__DiskConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__DiskConfigPtrOutput) Elem() GoogleCloudMlV1__DiskConfigOutput {
@@ -4104,6 +4777,12 @@ func (o GoogleCloudMlV1__DiskConfigResponseOutput) ToGoogleCloudMlV1__DiskConfig
 	return o
 }
 
+func (o GoogleCloudMlV1__DiskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__DiskConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__DiskConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Size in GB of the boot disk (default is 100GB).
 func (o GoogleCloudMlV1__DiskConfigResponseOutput) BootDiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__DiskConfigResponse) int { return v.BootDiskSizeGb }).(pulumi.IntOutput)
@@ -4149,6 +4828,12 @@ func (i GoogleCloudMlV1__EncryptionConfigArgs) ToGoogleCloudMlV1__EncryptionConf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__EncryptionConfigOutput)
 }
 
+func (i GoogleCloudMlV1__EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__EncryptionConfig] {
+	return pulumix.Output[GoogleCloudMlV1__EncryptionConfig]{
+		OutputState: i.ToGoogleCloudMlV1__EncryptionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__EncryptionConfigArgs) ToGoogleCloudMlV1__EncryptionConfigPtrOutput() GoogleCloudMlV1__EncryptionConfigPtrOutput {
 	return i.ToGoogleCloudMlV1__EncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -4190,6 +4875,12 @@ func (i *googleCloudMlV1__EncryptionConfigPtrType) ToGoogleCloudMlV1__Encryption
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__EncryptionConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1__EncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__EncryptionConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__EncryptionConfig]{
+		OutputState: i.ToGoogleCloudMlV1__EncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a custom encryption key configuration that can be applied to a resource.
 type GoogleCloudMlV1__EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -4215,6 +4906,12 @@ func (o GoogleCloudMlV1__EncryptionConfigOutput) ToGoogleCloudMlV1__EncryptionCo
 	}).(GoogleCloudMlV1__EncryptionConfigPtrOutput)
 }
 
+func (o GoogleCloudMlV1__EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__EncryptionConfig] {
+	return pulumix.Output[GoogleCloudMlV1__EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a training job. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
 func (o GoogleCloudMlV1__EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -4232,6 +4929,12 @@ func (o GoogleCloudMlV1__EncryptionConfigPtrOutput) ToGoogleCloudMlV1__Encryptio
 
 func (o GoogleCloudMlV1__EncryptionConfigPtrOutput) ToGoogleCloudMlV1__EncryptionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__EncryptionConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__EncryptionConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__EncryptionConfigPtrOutput) Elem() GoogleCloudMlV1__EncryptionConfigOutput {
@@ -4273,6 +4976,12 @@ func (o GoogleCloudMlV1__EncryptionConfigResponseOutput) ToGoogleCloudMlV1__Encr
 
 func (o GoogleCloudMlV1__EncryptionConfigResponseOutput) ToGoogleCloudMlV1__EncryptionConfigResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__EncryptionConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__EncryptionConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__EncryptionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a training job. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
@@ -4319,6 +5028,12 @@ func (i GoogleCloudMlV1__EnvVarArgs) ToGoogleCloudMlV1__EnvVarOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__EnvVarOutput)
 }
 
+func (i GoogleCloudMlV1__EnvVarArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__EnvVar] {
+	return pulumix.Output[GoogleCloudMlV1__EnvVar]{
+		OutputState: i.ToGoogleCloudMlV1__EnvVarOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1__EnvVarArrayInput is an input type that accepts GoogleCloudMlV1__EnvVarArray and GoogleCloudMlV1__EnvVarArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__EnvVarArrayInput` via:
 //
@@ -4344,6 +5059,12 @@ func (i GoogleCloudMlV1__EnvVarArray) ToGoogleCloudMlV1__EnvVarArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__EnvVarArrayOutput)
 }
 
+func (i GoogleCloudMlV1__EnvVarArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__EnvVar] {
+	return pulumix.Output[[]GoogleCloudMlV1__EnvVar]{
+		OutputState: i.ToGoogleCloudMlV1__EnvVarArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an environment variable to be made available in a container. This message is a subset of the [Kubernetes EnvVar v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#envvar-v1-core).
 type GoogleCloudMlV1__EnvVarOutput struct{ *pulumi.OutputState }
 
@@ -4357,6 +5078,12 @@ func (o GoogleCloudMlV1__EnvVarOutput) ToGoogleCloudMlV1__EnvVarOutput() GoogleC
 
 func (o GoogleCloudMlV1__EnvVarOutput) ToGoogleCloudMlV1__EnvVarOutputWithContext(ctx context.Context) GoogleCloudMlV1__EnvVarOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__EnvVarOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__EnvVar] {
+	return pulumix.Output[GoogleCloudMlV1__EnvVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the environment variable. Must be a [valid C identifier](https://github.com/kubernetes/kubernetes/blob/v1.18.8/staging/src/k8s.io/apimachinery/pkg/util/validation/validation.go#L258) and must not begin with the prefix `AIP_`.
@@ -4381,6 +5108,12 @@ func (o GoogleCloudMlV1__EnvVarArrayOutput) ToGoogleCloudMlV1__EnvVarArrayOutput
 
 func (o GoogleCloudMlV1__EnvVarArrayOutput) ToGoogleCloudMlV1__EnvVarArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__EnvVarArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__EnvVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__EnvVar] {
+	return pulumix.Output[[]GoogleCloudMlV1__EnvVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__EnvVarArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__EnvVarOutput {
@@ -4412,6 +5145,12 @@ func (o GoogleCloudMlV1__EnvVarResponseOutput) ToGoogleCloudMlV1__EnvVarResponse
 	return o
 }
 
+func (o GoogleCloudMlV1__EnvVarResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__EnvVarResponse] {
+	return pulumix.Output[GoogleCloudMlV1__EnvVarResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the environment variable. Must be a [valid C identifier](https://github.com/kubernetes/kubernetes/blob/v1.18.8/staging/src/k8s.io/apimachinery/pkg/util/validation/validation.go#L258) and must not begin with the prefix `AIP_`.
 func (o GoogleCloudMlV1__EnvVarResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4434,6 +5173,12 @@ func (o GoogleCloudMlV1__EnvVarResponseArrayOutput) ToGoogleCloudMlV1__EnvVarRes
 
 func (o GoogleCloudMlV1__EnvVarResponseArrayOutput) ToGoogleCloudMlV1__EnvVarResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__EnvVarResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__EnvVarResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__EnvVarResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1__EnvVarResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__EnvVarResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__EnvVarResponseOutput {
@@ -4485,6 +5230,12 @@ func (i GoogleCloudMlV1__ExplanationConfigArgs) ToGoogleCloudMlV1__ExplanationCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ExplanationConfigOutput)
 }
 
+func (i GoogleCloudMlV1__ExplanationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ExplanationConfig] {
+	return pulumix.Output[GoogleCloudMlV1__ExplanationConfig]{
+		OutputState: i.ToGoogleCloudMlV1__ExplanationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__ExplanationConfigArgs) ToGoogleCloudMlV1__ExplanationConfigPtrOutput() GoogleCloudMlV1__ExplanationConfigPtrOutput {
 	return i.ToGoogleCloudMlV1__ExplanationConfigPtrOutputWithContext(context.Background())
 }
@@ -4526,6 +5277,12 @@ func (i *googleCloudMlV1__ExplanationConfigPtrType) ToGoogleCloudMlV1__Explanati
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ExplanationConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1__ExplanationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ExplanationConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__ExplanationConfig]{
+		OutputState: i.ToGoogleCloudMlV1__ExplanationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message holding configuration options for explaining model predictions. There are three feature attribution methods supported for TensorFlow models: integrated gradients, sampled Shapley, and XRAI. [Learn more about feature attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
 type GoogleCloudMlV1__ExplanationConfigOutput struct{ *pulumi.OutputState }
 
@@ -4549,6 +5306,12 @@ func (o GoogleCloudMlV1__ExplanationConfigOutput) ToGoogleCloudMlV1__Explanation
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ExplanationConfig) *GoogleCloudMlV1__ExplanationConfig {
 		return &v
 	}).(GoogleCloudMlV1__ExplanationConfigPtrOutput)
+}
+
+func (o GoogleCloudMlV1__ExplanationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ExplanationConfig] {
+	return pulumix.Output[GoogleCloudMlV1__ExplanationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
@@ -4582,6 +5345,12 @@ func (o GoogleCloudMlV1__ExplanationConfigPtrOutput) ToGoogleCloudMlV1__Explanat
 
 func (o GoogleCloudMlV1__ExplanationConfigPtrOutput) ToGoogleCloudMlV1__ExplanationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ExplanationConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ExplanationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ExplanationConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__ExplanationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__ExplanationConfigPtrOutput) Elem() GoogleCloudMlV1__ExplanationConfigOutput {
@@ -4647,6 +5416,12 @@ func (o GoogleCloudMlV1__ExplanationConfigResponseOutput) ToGoogleCloudMlV1__Exp
 
 func (o GoogleCloudMlV1__ExplanationConfigResponseOutput) ToGoogleCloudMlV1__ExplanationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__ExplanationConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ExplanationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ExplanationConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__ExplanationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
@@ -4729,6 +5504,12 @@ func (i GoogleCloudMlV1__HyperparameterOutputArgs) ToGoogleCloudMlV1__Hyperparam
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__HyperparameterOutputOutput)
 }
 
+func (i GoogleCloudMlV1__HyperparameterOutputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__HyperparameterOutput] {
+	return pulumix.Output[GoogleCloudMlV1__HyperparameterOutput]{
+		OutputState: i.ToGoogleCloudMlV1__HyperparameterOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1__HyperparameterOutputArrayInput is an input type that accepts GoogleCloudMlV1__HyperparameterOutputArray and GoogleCloudMlV1__HyperparameterOutputArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__HyperparameterOutputArrayInput` via:
 //
@@ -4754,6 +5535,12 @@ func (i GoogleCloudMlV1__HyperparameterOutputArray) ToGoogleCloudMlV1__Hyperpara
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__HyperparameterOutputArrayOutput)
 }
 
+func (i GoogleCloudMlV1__HyperparameterOutputArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__HyperparameterOutput] {
+	return pulumix.Output[[]GoogleCloudMlV1__HyperparameterOutput]{
+		OutputState: i.ToGoogleCloudMlV1__HyperparameterOutputArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
 type GoogleCloudMlV1__HyperparameterOutputOutput struct{ *pulumi.OutputState }
 
@@ -4767,6 +5554,12 @@ func (o GoogleCloudMlV1__HyperparameterOutputOutput) ToGoogleCloudMlV1__Hyperpar
 
 func (o GoogleCloudMlV1__HyperparameterOutputOutput) ToGoogleCloudMlV1__HyperparameterOutputOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterOutputOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__HyperparameterOutputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__HyperparameterOutput] {
+	return pulumix.Output[GoogleCloudMlV1__HyperparameterOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 // All recorded object metrics for this trial. This field is not currently populated.
@@ -4824,6 +5617,12 @@ func (o GoogleCloudMlV1__HyperparameterOutputArrayOutput) ToGoogleCloudMlV1__Hyp
 	return o
 }
 
+func (o GoogleCloudMlV1__HyperparameterOutputArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__HyperparameterOutput] {
+	return pulumix.Output[[]GoogleCloudMlV1__HyperparameterOutput]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudMlV1__HyperparameterOutputArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__HyperparameterOutputOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudMlV1__HyperparameterOutput {
 		return vs[0].([]GoogleCloudMlV1__HyperparameterOutput)[vs[1].(int)]
@@ -4867,6 +5666,12 @@ func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) ToGoogleCloudMlV1__
 
 func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) ToGoogleCloudMlV1__HyperparameterOutputResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterOutputResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__HyperparameterOutputResponse] {
+	return pulumix.Output[GoogleCloudMlV1__HyperparameterOutputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // All recorded object metrics for this trial. This field is not currently populated.
@@ -4937,6 +5742,12 @@ func (o GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput) ToGoogleCloudM
 
 func (o GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput) ToGoogleCloudMlV1__HyperparameterOutputResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__HyperparameterOutputResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1__HyperparameterOutputResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__HyperparameterOutputResponseOutput {
@@ -5012,6 +5823,12 @@ func (i GoogleCloudMlV1__HyperparameterSpecArgs) ToGoogleCloudMlV1__Hyperparamet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__HyperparameterSpecOutput)
 }
 
+func (i GoogleCloudMlV1__HyperparameterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__HyperparameterSpec] {
+	return pulumix.Output[GoogleCloudMlV1__HyperparameterSpec]{
+		OutputState: i.ToGoogleCloudMlV1__HyperparameterSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__HyperparameterSpecArgs) ToGoogleCloudMlV1__HyperparameterSpecPtrOutput() GoogleCloudMlV1__HyperparameterSpecPtrOutput {
 	return i.ToGoogleCloudMlV1__HyperparameterSpecPtrOutputWithContext(context.Background())
 }
@@ -5053,6 +5870,12 @@ func (i *googleCloudMlV1__HyperparameterSpecPtrType) ToGoogleCloudMlV1__Hyperpar
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__HyperparameterSpecPtrOutput)
 }
 
+func (i *googleCloudMlV1__HyperparameterSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__HyperparameterSpec] {
+	return pulumix.Output[*GoogleCloudMlV1__HyperparameterSpec]{
+		OutputState: i.ToGoogleCloudMlV1__HyperparameterSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a set of hyperparameters to optimize.
 type GoogleCloudMlV1__HyperparameterSpecOutput struct{ *pulumi.OutputState }
 
@@ -5076,6 +5899,12 @@ func (o GoogleCloudMlV1__HyperparameterSpecOutput) ToGoogleCloudMlV1__Hyperparam
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__HyperparameterSpec) *GoogleCloudMlV1__HyperparameterSpec {
 		return &v
 	}).(GoogleCloudMlV1__HyperparameterSpecPtrOutput)
+}
+
+func (o GoogleCloudMlV1__HyperparameterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__HyperparameterSpec] {
+	return pulumix.Output[GoogleCloudMlV1__HyperparameterSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
@@ -5137,6 +5966,12 @@ func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) ToGoogleCloudMlV1__Hyperpa
 
 func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) ToGoogleCloudMlV1__HyperparameterSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__HyperparameterSpec] {
+	return pulumix.Output[*GoogleCloudMlV1__HyperparameterSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Elem() GoogleCloudMlV1__HyperparameterSpecOutput {
@@ -5276,6 +6111,12 @@ func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) ToGoogleCloudMlV1__Hy
 	return o
 }
 
+func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__HyperparameterSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1__HyperparameterSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
 func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpecResponse) string { return v.Algorithm }).(pulumi.StringOutput)
@@ -5358,6 +6199,12 @@ func (i GoogleCloudMlV1__IntegratedGradientsAttributionArgs) ToGoogleCloudMlV1__
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__IntegratedGradientsAttributionOutput)
 }
 
+func (i GoogleCloudMlV1__IntegratedGradientsAttributionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__IntegratedGradientsAttribution] {
+	return pulumix.Output[GoogleCloudMlV1__IntegratedGradientsAttribution]{
+		OutputState: i.ToGoogleCloudMlV1__IntegratedGradientsAttributionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__IntegratedGradientsAttributionArgs) ToGoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput() GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput {
 	return i.ToGoogleCloudMlV1__IntegratedGradientsAttributionPtrOutputWithContext(context.Background())
 }
@@ -5399,6 +6246,12 @@ func (i *googleCloudMlV1__IntegratedGradientsAttributionPtrType) ToGoogleCloudMl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput)
 }
 
+func (i *googleCloudMlV1__IntegratedGradientsAttributionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__IntegratedGradientsAttribution] {
+	return pulumix.Output[*GoogleCloudMlV1__IntegratedGradientsAttribution]{
+		OutputState: i.ToGoogleCloudMlV1__IntegratedGradientsAttributionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
 type GoogleCloudMlV1__IntegratedGradientsAttributionOutput struct{ *pulumi.OutputState }
 
@@ -5424,6 +6277,12 @@ func (o GoogleCloudMlV1__IntegratedGradientsAttributionOutput) ToGoogleCloudMlV1
 	}).(GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput)
 }
 
+func (o GoogleCloudMlV1__IntegratedGradientsAttributionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__IntegratedGradientsAttribution] {
+	return pulumix.Output[GoogleCloudMlV1__IntegratedGradientsAttribution]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionOutput) NumIntegralSteps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__IntegratedGradientsAttribution) *int { return v.NumIntegralSteps }).(pulumi.IntPtrOutput)
@@ -5441,6 +6300,12 @@ func (o GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput) ToGoogleCloudM
 
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput) ToGoogleCloudMlV1__IntegratedGradientsAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__IntegratedGradientsAttribution] {
+	return pulumix.Output[*GoogleCloudMlV1__IntegratedGradientsAttribution]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput) Elem() GoogleCloudMlV1__IntegratedGradientsAttributionOutput {
@@ -5484,6 +6349,12 @@ func (o GoogleCloudMlV1__IntegratedGradientsAttributionResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudMlV1__IntegratedGradientsAttributionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__IntegratedGradientsAttributionResponse] {
+	return pulumix.Output[GoogleCloudMlV1__IntegratedGradientsAttributionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionResponseOutput) NumIntegralSteps() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__IntegratedGradientsAttributionResponse) int { return v.NumIntegralSteps }).(pulumi.IntOutput)
@@ -5522,6 +6393,12 @@ func (i GoogleCloudMlV1__ManualScalingArgs) ToGoogleCloudMlV1__ManualScalingOutp
 
 func (i GoogleCloudMlV1__ManualScalingArgs) ToGoogleCloudMlV1__ManualScalingOutputWithContext(ctx context.Context) GoogleCloudMlV1__ManualScalingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ManualScalingOutput)
+}
+
+func (i GoogleCloudMlV1__ManualScalingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ManualScaling] {
+	return pulumix.Output[GoogleCloudMlV1__ManualScaling]{
+		OutputState: i.ToGoogleCloudMlV1__ManualScalingOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudMlV1__ManualScalingArgs) ToGoogleCloudMlV1__ManualScalingPtrOutput() GoogleCloudMlV1__ManualScalingPtrOutput {
@@ -5565,6 +6442,12 @@ func (i *googleCloudMlV1__ManualScalingPtrType) ToGoogleCloudMlV1__ManualScaling
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ManualScalingPtrOutput)
 }
 
+func (i *googleCloudMlV1__ManualScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ManualScaling] {
+	return pulumix.Output[*GoogleCloudMlV1__ManualScaling]{
+		OutputState: i.ToGoogleCloudMlV1__ManualScalingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Options for manually scaling a model.
 type GoogleCloudMlV1__ManualScalingOutput struct{ *pulumi.OutputState }
 
@@ -5590,6 +6473,12 @@ func (o GoogleCloudMlV1__ManualScalingOutput) ToGoogleCloudMlV1__ManualScalingPt
 	}).(GoogleCloudMlV1__ManualScalingPtrOutput)
 }
 
+func (o GoogleCloudMlV1__ManualScalingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ManualScaling] {
+	return pulumix.Output[GoogleCloudMlV1__ManualScaling]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of nodes to allocate for this model. These nodes are always up, starting from the time the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours since last billing cycle plus the cost for each prediction performed.
 func (o GoogleCloudMlV1__ManualScalingOutput) Nodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__ManualScaling) *int { return v.Nodes }).(pulumi.IntPtrOutput)
@@ -5607,6 +6496,12 @@ func (o GoogleCloudMlV1__ManualScalingPtrOutput) ToGoogleCloudMlV1__ManualScalin
 
 func (o GoogleCloudMlV1__ManualScalingPtrOutput) ToGoogleCloudMlV1__ManualScalingPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ManualScalingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ManualScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ManualScaling] {
+	return pulumix.Output[*GoogleCloudMlV1__ManualScaling]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__ManualScalingPtrOutput) Elem() GoogleCloudMlV1__ManualScalingOutput {
@@ -5648,6 +6543,12 @@ func (o GoogleCloudMlV1__ManualScalingResponseOutput) ToGoogleCloudMlV1__ManualS
 
 func (o GoogleCloudMlV1__ManualScalingResponseOutput) ToGoogleCloudMlV1__ManualScalingResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__ManualScalingResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ManualScalingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ManualScalingResponse] {
+	return pulumix.Output[GoogleCloudMlV1__ManualScalingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of nodes to allocate for this model. These nodes are always up, starting from the time the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours since last billing cycle plus the cost for each prediction performed.
@@ -5694,6 +6595,12 @@ func (i GoogleCloudMlV1__MeasurementArgs) ToGoogleCloudMlV1__MeasurementOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__MeasurementOutput)
 }
 
+func (i GoogleCloudMlV1__MeasurementArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__Measurement] {
+	return pulumix.Output[GoogleCloudMlV1__Measurement]{
+		OutputState: i.ToGoogleCloudMlV1__MeasurementOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__MeasurementArgs) ToGoogleCloudMlV1__MeasurementPtrOutput() GoogleCloudMlV1__MeasurementPtrOutput {
 	return i.ToGoogleCloudMlV1__MeasurementPtrOutputWithContext(context.Background())
 }
@@ -5735,6 +6642,12 @@ func (i *googleCloudMlV1__MeasurementPtrType) ToGoogleCloudMlV1__MeasurementPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__MeasurementPtrOutput)
 }
 
+func (i *googleCloudMlV1__MeasurementPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__Measurement] {
+	return pulumix.Output[*GoogleCloudMlV1__Measurement]{
+		OutputState: i.ToGoogleCloudMlV1__MeasurementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1__MeasurementArrayInput is an input type that accepts GoogleCloudMlV1__MeasurementArray and GoogleCloudMlV1__MeasurementArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__MeasurementArrayInput` via:
 //
@@ -5758,6 +6671,12 @@ func (i GoogleCloudMlV1__MeasurementArray) ToGoogleCloudMlV1__MeasurementArrayOu
 
 func (i GoogleCloudMlV1__MeasurementArray) ToGoogleCloudMlV1__MeasurementArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__MeasurementArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__MeasurementArrayOutput)
+}
+
+func (i GoogleCloudMlV1__MeasurementArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__Measurement] {
+	return pulumix.Output[[]GoogleCloudMlV1__Measurement]{
+		OutputState: i.ToGoogleCloudMlV1__MeasurementArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // A message representing a measurement.
@@ -5785,6 +6704,12 @@ func (o GoogleCloudMlV1__MeasurementOutput) ToGoogleCloudMlV1__MeasurementPtrOut
 	}).(GoogleCloudMlV1__MeasurementPtrOutput)
 }
 
+func (o GoogleCloudMlV1__MeasurementOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__Measurement] {
+	return pulumix.Output[GoogleCloudMlV1__Measurement]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Provides a list of metrics that act as inputs into the objective function.
 func (o GoogleCloudMlV1__MeasurementOutput) Metrics() GoogleCloudMlV1_Measurement_MetricArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__Measurement) []GoogleCloudMlV1_Measurement_Metric { return v.Metrics }).(GoogleCloudMlV1_Measurement_MetricArrayOutput)
@@ -5807,6 +6732,12 @@ func (o GoogleCloudMlV1__MeasurementPtrOutput) ToGoogleCloudMlV1__MeasurementPtr
 
 func (o GoogleCloudMlV1__MeasurementPtrOutput) ToGoogleCloudMlV1__MeasurementPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__MeasurementPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__MeasurementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__Measurement] {
+	return pulumix.Output[*GoogleCloudMlV1__Measurement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__MeasurementPtrOutput) Elem() GoogleCloudMlV1__MeasurementOutput {
@@ -5853,6 +6784,12 @@ func (o GoogleCloudMlV1__MeasurementArrayOutput) ToGoogleCloudMlV1__MeasurementA
 	return o
 }
 
+func (o GoogleCloudMlV1__MeasurementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__Measurement] {
+	return pulumix.Output[[]GoogleCloudMlV1__Measurement]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudMlV1__MeasurementArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__MeasurementOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudMlV1__Measurement {
 		return vs[0].([]GoogleCloudMlV1__Measurement)[vs[1].(int)]
@@ -5884,6 +6821,12 @@ func (o GoogleCloudMlV1__MeasurementResponseOutput) ToGoogleCloudMlV1__Measureme
 	return o
 }
 
+func (o GoogleCloudMlV1__MeasurementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__MeasurementResponse] {
+	return pulumix.Output[GoogleCloudMlV1__MeasurementResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Time that the trial has been running at the point of this measurement.
 func (o GoogleCloudMlV1__MeasurementResponseOutput) ElapsedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__MeasurementResponse) string { return v.ElapsedTime }).(pulumi.StringOutput)
@@ -5913,6 +6856,12 @@ func (o GoogleCloudMlV1__MeasurementResponseArrayOutput) ToGoogleCloudMlV1__Meas
 
 func (o GoogleCloudMlV1__MeasurementResponseArrayOutput) ToGoogleCloudMlV1__MeasurementResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__MeasurementResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__MeasurementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__MeasurementResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1__MeasurementResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__MeasurementResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__MeasurementResponseOutput {
@@ -5960,6 +6909,12 @@ func (i GoogleCloudMlV1__MetricSpecArgs) ToGoogleCloudMlV1__MetricSpecOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__MetricSpecOutput)
 }
 
+func (i GoogleCloudMlV1__MetricSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__MetricSpec] {
+	return pulumix.Output[GoogleCloudMlV1__MetricSpec]{
+		OutputState: i.ToGoogleCloudMlV1__MetricSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1__MetricSpecArrayInput is an input type that accepts GoogleCloudMlV1__MetricSpecArray and GoogleCloudMlV1__MetricSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__MetricSpecArrayInput` via:
 //
@@ -5985,6 +6940,12 @@ func (i GoogleCloudMlV1__MetricSpecArray) ToGoogleCloudMlV1__MetricSpecArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__MetricSpecArrayOutput)
 }
 
+func (i GoogleCloudMlV1__MetricSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__MetricSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1__MetricSpec]{
+		OutputState: i.ToGoogleCloudMlV1__MetricSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
 type GoogleCloudMlV1__MetricSpecOutput struct{ *pulumi.OutputState }
 
@@ -5998,6 +6959,12 @@ func (o GoogleCloudMlV1__MetricSpecOutput) ToGoogleCloudMlV1__MetricSpecOutput()
 
 func (o GoogleCloudMlV1__MetricSpecOutput) ToGoogleCloudMlV1__MetricSpecOutputWithContext(ctx context.Context) GoogleCloudMlV1__MetricSpecOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__MetricSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__MetricSpec] {
+	return pulumix.Output[GoogleCloudMlV1__MetricSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // metric name.
@@ -6022,6 +6989,12 @@ func (o GoogleCloudMlV1__MetricSpecArrayOutput) ToGoogleCloudMlV1__MetricSpecArr
 
 func (o GoogleCloudMlV1__MetricSpecArrayOutput) ToGoogleCloudMlV1__MetricSpecArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__MetricSpecArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__MetricSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__MetricSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1__MetricSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__MetricSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__MetricSpecOutput {
@@ -6053,6 +7026,12 @@ func (o GoogleCloudMlV1__MetricSpecResponseOutput) ToGoogleCloudMlV1__MetricSpec
 	return o
 }
 
+func (o GoogleCloudMlV1__MetricSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__MetricSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1__MetricSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // metric name.
 func (o GoogleCloudMlV1__MetricSpecResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__MetricSpecResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6075,6 +7054,12 @@ func (o GoogleCloudMlV1__MetricSpecResponseArrayOutput) ToGoogleCloudMlV1__Metri
 
 func (o GoogleCloudMlV1__MetricSpecResponseArrayOutput) ToGoogleCloudMlV1__MetricSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__MetricSpecResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__MetricSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__MetricSpecResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1__MetricSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__MetricSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__MetricSpecResponseOutput {
@@ -6142,6 +7127,12 @@ func (i GoogleCloudMlV1__ParameterSpecArgs) ToGoogleCloudMlV1__ParameterSpecOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ParameterSpecOutput)
 }
 
+func (i GoogleCloudMlV1__ParameterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ParameterSpec] {
+	return pulumix.Output[GoogleCloudMlV1__ParameterSpec]{
+		OutputState: i.ToGoogleCloudMlV1__ParameterSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudMlV1__ParameterSpecArrayInput is an input type that accepts GoogleCloudMlV1__ParameterSpecArray and GoogleCloudMlV1__ParameterSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ParameterSpecArrayInput` via:
 //
@@ -6167,6 +7158,12 @@ func (i GoogleCloudMlV1__ParameterSpecArray) ToGoogleCloudMlV1__ParameterSpecArr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ParameterSpecArrayOutput)
 }
 
+func (i GoogleCloudMlV1__ParameterSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__ParameterSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1__ParameterSpec]{
+		OutputState: i.ToGoogleCloudMlV1__ParameterSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a single hyperparameter to optimize.
 type GoogleCloudMlV1__ParameterSpecOutput struct{ *pulumi.OutputState }
 
@@ -6180,6 +7177,12 @@ func (o GoogleCloudMlV1__ParameterSpecOutput) ToGoogleCloudMlV1__ParameterSpecOu
 
 func (o GoogleCloudMlV1__ParameterSpecOutput) ToGoogleCloudMlV1__ParameterSpecOutputWithContext(ctx context.Context) GoogleCloudMlV1__ParameterSpecOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ParameterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ParameterSpec] {
+	return pulumix.Output[GoogleCloudMlV1__ParameterSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required if type is `CATEGORICAL`. The list of possible categories.
@@ -6231,6 +7234,12 @@ func (o GoogleCloudMlV1__ParameterSpecArrayOutput) ToGoogleCloudMlV1__ParameterS
 	return o
 }
 
+func (o GoogleCloudMlV1__ParameterSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__ParameterSpec] {
+	return pulumix.Output[[]GoogleCloudMlV1__ParameterSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudMlV1__ParameterSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__ParameterSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudMlV1__ParameterSpec {
 		return vs[0].([]GoogleCloudMlV1__ParameterSpec)[vs[1].(int)]
@@ -6268,6 +7277,12 @@ func (o GoogleCloudMlV1__ParameterSpecResponseOutput) ToGoogleCloudMlV1__Paramet
 
 func (o GoogleCloudMlV1__ParameterSpecResponseOutput) ToGoogleCloudMlV1__ParameterSpecResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__ParameterSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ParameterSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ParameterSpecResponse] {
+	return pulumix.Output[GoogleCloudMlV1__ParameterSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required if type is `CATEGORICAL`. The list of possible categories.
@@ -6317,6 +7332,12 @@ func (o GoogleCloudMlV1__ParameterSpecResponseArrayOutput) ToGoogleCloudMlV1__Pa
 
 func (o GoogleCloudMlV1__ParameterSpecResponseArrayOutput) ToGoogleCloudMlV1__ParameterSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudMlV1__ParameterSpecResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ParameterSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudMlV1__ParameterSpecResponse] {
+	return pulumix.Output[[]GoogleCloudMlV1__ParameterSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__ParameterSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudMlV1__ParameterSpecResponseOutput {
@@ -6404,6 +7425,12 @@ func (i GoogleCloudMlV1__PredictionInputArgs) ToGoogleCloudMlV1__PredictionInput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__PredictionInputOutput)
 }
 
+func (i GoogleCloudMlV1__PredictionInputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__PredictionInput] {
+	return pulumix.Output[GoogleCloudMlV1__PredictionInput]{
+		OutputState: i.ToGoogleCloudMlV1__PredictionInputOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__PredictionInputArgs) ToGoogleCloudMlV1__PredictionInputPtrOutput() GoogleCloudMlV1__PredictionInputPtrOutput {
 	return i.ToGoogleCloudMlV1__PredictionInputPtrOutputWithContext(context.Background())
 }
@@ -6445,6 +7472,12 @@ func (i *googleCloudMlV1__PredictionInputPtrType) ToGoogleCloudMlV1__PredictionI
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__PredictionInputPtrOutput)
 }
 
+func (i *googleCloudMlV1__PredictionInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__PredictionInput] {
+	return pulumix.Output[*GoogleCloudMlV1__PredictionInput]{
+		OutputState: i.ToGoogleCloudMlV1__PredictionInputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents input parameters for a prediction job.
 type GoogleCloudMlV1__PredictionInputOutput struct{ *pulumi.OutputState }
 
@@ -6468,6 +7501,12 @@ func (o GoogleCloudMlV1__PredictionInputOutput) ToGoogleCloudMlV1__PredictionInp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__PredictionInput) *GoogleCloudMlV1__PredictionInput {
 		return &v
 	}).(GoogleCloudMlV1__PredictionInputPtrOutput)
+}
+
+func (o GoogleCloudMlV1__PredictionInputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__PredictionInput] {
+	return pulumix.Output[GoogleCloudMlV1__PredictionInput]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
@@ -6546,6 +7585,12 @@ func (o GoogleCloudMlV1__PredictionInputPtrOutput) ToGoogleCloudMlV1__Prediction
 
 func (o GoogleCloudMlV1__PredictionInputPtrOutput) ToGoogleCloudMlV1__PredictionInputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionInputPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__PredictionInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__PredictionInput] {
+	return pulumix.Output[*GoogleCloudMlV1__PredictionInput]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__PredictionInputPtrOutput) Elem() GoogleCloudMlV1__PredictionInputOutput {
@@ -6721,6 +7766,12 @@ func (o GoogleCloudMlV1__PredictionInputResponseOutput) ToGoogleCloudMlV1__Predi
 	return o
 }
 
+func (o GoogleCloudMlV1__PredictionInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__PredictionInputResponse] {
+	return pulumix.Output[GoogleCloudMlV1__PredictionInputResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 func (o GoogleCloudMlV1__PredictionInputResponseOutput) BatchSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) string { return v.BatchSize }).(pulumi.StringOutput)
@@ -6828,6 +7879,12 @@ func (i GoogleCloudMlV1__PredictionOutputArgs) ToGoogleCloudMlV1__PredictionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__PredictionOutputOutput)
 }
 
+func (i GoogleCloudMlV1__PredictionOutputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__PredictionOutput] {
+	return pulumix.Output[GoogleCloudMlV1__PredictionOutput]{
+		OutputState: i.ToGoogleCloudMlV1__PredictionOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__PredictionOutputArgs) ToGoogleCloudMlV1__PredictionOutputPtrOutput() GoogleCloudMlV1__PredictionOutputPtrOutput {
 	return i.ToGoogleCloudMlV1__PredictionOutputPtrOutputWithContext(context.Background())
 }
@@ -6869,6 +7926,12 @@ func (i *googleCloudMlV1__PredictionOutputPtrType) ToGoogleCloudMlV1__Prediction
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__PredictionOutputPtrOutput)
 }
 
+func (i *googleCloudMlV1__PredictionOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__PredictionOutput] {
+	return pulumix.Output[*GoogleCloudMlV1__PredictionOutput]{
+		OutputState: i.ToGoogleCloudMlV1__PredictionOutputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents results of a prediction job.
 type GoogleCloudMlV1__PredictionOutputOutput struct{ *pulumi.OutputState }
 
@@ -6892,6 +7955,12 @@ func (o GoogleCloudMlV1__PredictionOutputOutput) ToGoogleCloudMlV1__PredictionOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__PredictionOutput) *GoogleCloudMlV1__PredictionOutput {
 		return &v
 	}).(GoogleCloudMlV1__PredictionOutputPtrOutput)
+}
+
+func (o GoogleCloudMlV1__PredictionOutputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__PredictionOutput] {
+	return pulumix.Output[GoogleCloudMlV1__PredictionOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of data instances which resulted in errors.
@@ -6926,6 +7995,12 @@ func (o GoogleCloudMlV1__PredictionOutputPtrOutput) ToGoogleCloudMlV1__Predictio
 
 func (o GoogleCloudMlV1__PredictionOutputPtrOutput) ToGoogleCloudMlV1__PredictionOutputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionOutputPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__PredictionOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__PredictionOutput] {
+	return pulumix.Output[*GoogleCloudMlV1__PredictionOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__PredictionOutputPtrOutput) Elem() GoogleCloudMlV1__PredictionOutputOutput {
@@ -7005,6 +8080,12 @@ func (o GoogleCloudMlV1__PredictionOutputResponseOutput) ToGoogleCloudMlV1__Pred
 	return o
 }
 
+func (o GoogleCloudMlV1__PredictionOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__PredictionOutputResponse] {
+	return pulumix.Output[GoogleCloudMlV1__PredictionOutputResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of data instances which resulted in errors.
 func (o GoogleCloudMlV1__PredictionOutputResponseOutput) ErrorCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionOutputResponse) string { return v.ErrorCount }).(pulumi.StringOutput)
@@ -7080,6 +8161,12 @@ func (i GoogleCloudMlV1__ReplicaConfigArgs) ToGoogleCloudMlV1__ReplicaConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ReplicaConfigOutput)
 }
 
+func (i GoogleCloudMlV1__ReplicaConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ReplicaConfig] {
+	return pulumix.Output[GoogleCloudMlV1__ReplicaConfig]{
+		OutputState: i.ToGoogleCloudMlV1__ReplicaConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__ReplicaConfigArgs) ToGoogleCloudMlV1__ReplicaConfigPtrOutput() GoogleCloudMlV1__ReplicaConfigPtrOutput {
 	return i.ToGoogleCloudMlV1__ReplicaConfigPtrOutputWithContext(context.Background())
 }
@@ -7121,6 +8208,12 @@ func (i *googleCloudMlV1__ReplicaConfigPtrType) ToGoogleCloudMlV1__ReplicaConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__ReplicaConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1__ReplicaConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ReplicaConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__ReplicaConfig]{
+		OutputState: i.ToGoogleCloudMlV1__ReplicaConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the configuration for a replica in a cluster.
 type GoogleCloudMlV1__ReplicaConfigOutput struct{ *pulumi.OutputState }
 
@@ -7144,6 +8237,12 @@ func (o GoogleCloudMlV1__ReplicaConfigOutput) ToGoogleCloudMlV1__ReplicaConfigPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ReplicaConfig) *GoogleCloudMlV1__ReplicaConfig {
 		return &v
 	}).(GoogleCloudMlV1__ReplicaConfigPtrOutput)
+}
+
+func (o GoogleCloudMlV1__ReplicaConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ReplicaConfig] {
+	return pulumix.Output[GoogleCloudMlV1__ReplicaConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents the type and number of accelerators used by the replica. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
@@ -7188,6 +8287,12 @@ func (o GoogleCloudMlV1__ReplicaConfigPtrOutput) ToGoogleCloudMlV1__ReplicaConfi
 
 func (o GoogleCloudMlV1__ReplicaConfigPtrOutput) ToGoogleCloudMlV1__ReplicaConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ReplicaConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__ReplicaConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ReplicaConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__ReplicaConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__ReplicaConfigPtrOutput) Elem() GoogleCloudMlV1__ReplicaConfigOutput {
@@ -7291,6 +8396,12 @@ func (o GoogleCloudMlV1__ReplicaConfigResponseOutput) ToGoogleCloudMlV1__Replica
 	return o
 }
 
+func (o GoogleCloudMlV1__ReplicaConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__ReplicaConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__ReplicaConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Represents the type and number of accelerators used by the replica. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
 func (o GoogleCloudMlV1__ReplicaConfigResponseOutput) AcceleratorConfig() GoogleCloudMlV1__AcceleratorConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__ReplicaConfigResponse) GoogleCloudMlV1__AcceleratorConfigResponse {
@@ -7364,6 +8475,12 @@ func (i GoogleCloudMlV1__RequestLoggingConfigArgs) ToGoogleCloudMlV1__RequestLog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__RequestLoggingConfigOutput)
 }
 
+func (i GoogleCloudMlV1__RequestLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__RequestLoggingConfig] {
+	return pulumix.Output[GoogleCloudMlV1__RequestLoggingConfig]{
+		OutputState: i.ToGoogleCloudMlV1__RequestLoggingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__RequestLoggingConfigArgs) ToGoogleCloudMlV1__RequestLoggingConfigPtrOutput() GoogleCloudMlV1__RequestLoggingConfigPtrOutput {
 	return i.ToGoogleCloudMlV1__RequestLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -7405,6 +8522,12 @@ func (i *googleCloudMlV1__RequestLoggingConfigPtrType) ToGoogleCloudMlV1__Reques
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__RequestLoggingConfigPtrOutput)
 }
 
+func (i *googleCloudMlV1__RequestLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__RequestLoggingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__RequestLoggingConfig]{
+		OutputState: i.ToGoogleCloudMlV1__RequestLoggingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs.
 type GoogleCloudMlV1__RequestLoggingConfigOutput struct{ *pulumi.OutputState }
 
@@ -7430,6 +8553,12 @@ func (o GoogleCloudMlV1__RequestLoggingConfigOutput) ToGoogleCloudMlV1__RequestL
 	}).(GoogleCloudMlV1__RequestLoggingConfigPtrOutput)
 }
 
+func (o GoogleCloudMlV1__RequestLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__RequestLoggingConfig] {
+	return pulumix.Output[GoogleCloudMlV1__RequestLoggingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
 func (o GoogleCloudMlV1__RequestLoggingConfigOutput) BigqueryTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__RequestLoggingConfig) string { return v.BigqueryTableName }).(pulumi.StringOutput)
@@ -7452,6 +8581,12 @@ func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) ToGoogleCloudMlV1__Reque
 
 func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) ToGoogleCloudMlV1__RequestLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__RequestLoggingConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__RequestLoggingConfig] {
+	return pulumix.Output[*GoogleCloudMlV1__RequestLoggingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) Elem() GoogleCloudMlV1__RequestLoggingConfigOutput {
@@ -7507,6 +8642,12 @@ func (o GoogleCloudMlV1__RequestLoggingConfigResponseOutput) ToGoogleCloudMlV1__
 	return o
 }
 
+func (o GoogleCloudMlV1__RequestLoggingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__RequestLoggingConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__RequestLoggingConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
 func (o GoogleCloudMlV1__RequestLoggingConfigResponseOutput) BigqueryTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__RequestLoggingConfigResponse) string { return v.BigqueryTableName }).(pulumi.StringOutput)
@@ -7556,6 +8697,12 @@ func (i GoogleCloudMlV1__RouteMapArgs) ToGoogleCloudMlV1__RouteMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__RouteMapOutput)
 }
 
+func (i GoogleCloudMlV1__RouteMapArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__RouteMap] {
+	return pulumix.Output[GoogleCloudMlV1__RouteMap]{
+		OutputState: i.ToGoogleCloudMlV1__RouteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__RouteMapArgs) ToGoogleCloudMlV1__RouteMapPtrOutput() GoogleCloudMlV1__RouteMapPtrOutput {
 	return i.ToGoogleCloudMlV1__RouteMapPtrOutputWithContext(context.Background())
 }
@@ -7597,6 +8744,12 @@ func (i *googleCloudMlV1__RouteMapPtrType) ToGoogleCloudMlV1__RouteMapPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__RouteMapPtrOutput)
 }
 
+func (i *googleCloudMlV1__RouteMapPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__RouteMap] {
+	return pulumix.Output[*GoogleCloudMlV1__RouteMap]{
+		OutputState: i.ToGoogleCloudMlV1__RouteMapPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies HTTP paths served by a custom container. AI Platform Prediction sends requests to these paths on the container; the custom container must run an HTTP server that responds to these requests with appropriate responses. Read [Custom container requirements](/ai-platform/prediction/docs/custom-container-requirements) for details on how to create your container image to meet these requirements.
 type GoogleCloudMlV1__RouteMapOutput struct{ *pulumi.OutputState }
 
@@ -7622,6 +8775,12 @@ func (o GoogleCloudMlV1__RouteMapOutput) ToGoogleCloudMlV1__RouteMapPtrOutputWit
 	}).(GoogleCloudMlV1__RouteMapPtrOutput)
 }
 
+func (o GoogleCloudMlV1__RouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__RouteMap] {
+	return pulumix.Output[GoogleCloudMlV1__RouteMap]{
+		OutputState: o.OutputState,
+	}
+}
+
 // HTTP path on the container to send health checkss to. AI Platform Prediction intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](/ai-platform/prediction/docs/custom-container-requirements#checks). For example, if you set this field to `/bar`, then AI Platform Prediction intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of Version.container.ports. If you don't specify this field, it defaults to the following value: /v1/models/ MODEL/versions/VERSION The placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of the model version. This does not include the "projects/PROJECT_ID /models/MODEL/versions/" prefix that the API returns in output; it is the bare version name, as provided to projects.models.versions.create.
 func (o GoogleCloudMlV1__RouteMapOutput) Health() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__RouteMap) *string { return v.Health }).(pulumi.StringPtrOutput)
@@ -7644,6 +8803,12 @@ func (o GoogleCloudMlV1__RouteMapPtrOutput) ToGoogleCloudMlV1__RouteMapPtrOutput
 
 func (o GoogleCloudMlV1__RouteMapPtrOutput) ToGoogleCloudMlV1__RouteMapPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__RouteMapPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__RouteMapPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__RouteMap] {
+	return pulumix.Output[*GoogleCloudMlV1__RouteMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__RouteMapPtrOutput) Elem() GoogleCloudMlV1__RouteMapOutput {
@@ -7699,6 +8864,12 @@ func (o GoogleCloudMlV1__RouteMapResponseOutput) ToGoogleCloudMlV1__RouteMapResp
 	return o
 }
 
+func (o GoogleCloudMlV1__RouteMapResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__RouteMapResponse] {
+	return pulumix.Output[GoogleCloudMlV1__RouteMapResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // HTTP path on the container to send health checkss to. AI Platform Prediction intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](/ai-platform/prediction/docs/custom-container-requirements#checks). For example, if you set this field to `/bar`, then AI Platform Prediction intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of Version.container.ports. If you don't specify this field, it defaults to the following value: /v1/models/ MODEL/versions/VERSION The placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of the model version. This does not include the "projects/PROJECT_ID /models/MODEL/versions/" prefix that the API returns in output; it is the bare version name, as provided to projects.models.versions.create.
 func (o GoogleCloudMlV1__RouteMapResponseOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__RouteMapResponse) string { return v.Health }).(pulumi.StringOutput)
@@ -7744,6 +8915,12 @@ func (i GoogleCloudMlV1__SampledShapleyAttributionArgs) ToGoogleCloudMlV1__Sampl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__SampledShapleyAttributionOutput)
 }
 
+func (i GoogleCloudMlV1__SampledShapleyAttributionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__SampledShapleyAttribution] {
+	return pulumix.Output[GoogleCloudMlV1__SampledShapleyAttribution]{
+		OutputState: i.ToGoogleCloudMlV1__SampledShapleyAttributionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__SampledShapleyAttributionArgs) ToGoogleCloudMlV1__SampledShapleyAttributionPtrOutput() GoogleCloudMlV1__SampledShapleyAttributionPtrOutput {
 	return i.ToGoogleCloudMlV1__SampledShapleyAttributionPtrOutputWithContext(context.Background())
 }
@@ -7785,6 +8962,12 @@ func (i *googleCloudMlV1__SampledShapleyAttributionPtrType) ToGoogleCloudMlV1__S
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__SampledShapleyAttributionPtrOutput)
 }
 
+func (i *googleCloudMlV1__SampledShapleyAttributionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__SampledShapleyAttribution] {
+	return pulumix.Output[*GoogleCloudMlV1__SampledShapleyAttribution]{
+		OutputState: i.ToGoogleCloudMlV1__SampledShapleyAttributionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An attribution method that approximates Shapley values for features that contribute to the label being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of features.
 type GoogleCloudMlV1__SampledShapleyAttributionOutput struct{ *pulumi.OutputState }
 
@@ -7810,6 +8993,12 @@ func (o GoogleCloudMlV1__SampledShapleyAttributionOutput) ToGoogleCloudMlV1__Sam
 	}).(GoogleCloudMlV1__SampledShapleyAttributionPtrOutput)
 }
 
+func (o GoogleCloudMlV1__SampledShapleyAttributionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__SampledShapleyAttribution] {
+	return pulumix.Output[GoogleCloudMlV1__SampledShapleyAttribution]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number of feature permutations to consider when approximating the Shapley values.
 func (o GoogleCloudMlV1__SampledShapleyAttributionOutput) NumPaths() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__SampledShapleyAttribution) *int { return v.NumPaths }).(pulumi.IntPtrOutput)
@@ -7827,6 +9016,12 @@ func (o GoogleCloudMlV1__SampledShapleyAttributionPtrOutput) ToGoogleCloudMlV1__
 
 func (o GoogleCloudMlV1__SampledShapleyAttributionPtrOutput) ToGoogleCloudMlV1__SampledShapleyAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__SampledShapleyAttributionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__SampledShapleyAttributionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__SampledShapleyAttribution] {
+	return pulumix.Output[*GoogleCloudMlV1__SampledShapleyAttribution]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__SampledShapleyAttributionPtrOutput) Elem() GoogleCloudMlV1__SampledShapleyAttributionOutput {
@@ -7868,6 +9063,12 @@ func (o GoogleCloudMlV1__SampledShapleyAttributionResponseOutput) ToGoogleCloudM
 
 func (o GoogleCloudMlV1__SampledShapleyAttributionResponseOutput) ToGoogleCloudMlV1__SampledShapleyAttributionResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__SampledShapleyAttributionResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__SampledShapleyAttributionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__SampledShapleyAttributionResponse] {
+	return pulumix.Output[GoogleCloudMlV1__SampledShapleyAttributionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of feature permutations to consider when approximating the Shapley values.
@@ -7918,6 +9119,12 @@ func (i GoogleCloudMlV1__SchedulingArgs) ToGoogleCloudMlV1__SchedulingOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__SchedulingOutput)
 }
 
+func (i GoogleCloudMlV1__SchedulingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__Scheduling] {
+	return pulumix.Output[GoogleCloudMlV1__Scheduling]{
+		OutputState: i.ToGoogleCloudMlV1__SchedulingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__SchedulingArgs) ToGoogleCloudMlV1__SchedulingPtrOutput() GoogleCloudMlV1__SchedulingPtrOutput {
 	return i.ToGoogleCloudMlV1__SchedulingPtrOutputWithContext(context.Background())
 }
@@ -7959,6 +9166,12 @@ func (i *googleCloudMlV1__SchedulingPtrType) ToGoogleCloudMlV1__SchedulingPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__SchedulingPtrOutput)
 }
 
+func (i *googleCloudMlV1__SchedulingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__Scheduling] {
+	return pulumix.Output[*GoogleCloudMlV1__Scheduling]{
+		OutputState: i.ToGoogleCloudMlV1__SchedulingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // All parameters related to scheduling of training jobs.
 type GoogleCloudMlV1__SchedulingOutput struct{ *pulumi.OutputState }
 
@@ -7982,6 +9195,12 @@ func (o GoogleCloudMlV1__SchedulingOutput) ToGoogleCloudMlV1__SchedulingPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__Scheduling) *GoogleCloudMlV1__Scheduling {
 		return &v
 	}).(GoogleCloudMlV1__SchedulingPtrOutput)
+}
+
+func (o GoogleCloudMlV1__SchedulingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__Scheduling] {
+	return pulumix.Output[GoogleCloudMlV1__Scheduling]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The maximum job running time, expressed in seconds. The field can contain up to nine fractional digits, terminated by `s`. If not specified, this field defaults to `604800s` (seven days). If the training job is still running after this duration, AI Platform Training cancels it. The duration is measured from when the job enters the `RUNNING` state; therefore it does not overlap with the duration limited by Scheduling.max_wait_time. For example, if you want to ensure your job runs for no more than 2 hours, set this field to `7200s` (2 hours * 60 minutes / hour * 60 seconds / minute). If you submit your training job using the `gcloud` tool, you can [specify this field in a `config.yaml` file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ``` yaml trainingInput: scheduling: maxRunningTime: 7200s  ```
@@ -8011,6 +9230,12 @@ func (o GoogleCloudMlV1__SchedulingPtrOutput) ToGoogleCloudMlV1__SchedulingPtrOu
 
 func (o GoogleCloudMlV1__SchedulingPtrOutput) ToGoogleCloudMlV1__SchedulingPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__SchedulingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__SchedulingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__Scheduling] {
+	return pulumix.Output[*GoogleCloudMlV1__Scheduling]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__SchedulingPtrOutput) Elem() GoogleCloudMlV1__SchedulingOutput {
@@ -8078,6 +9303,12 @@ func (o GoogleCloudMlV1__SchedulingResponseOutput) ToGoogleCloudMlV1__Scheduling
 	return o
 }
 
+func (o GoogleCloudMlV1__SchedulingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__SchedulingResponse] {
+	return pulumix.Output[GoogleCloudMlV1__SchedulingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The maximum job running time, expressed in seconds. The field can contain up to nine fractional digits, terminated by `s`. If not specified, this field defaults to `604800s` (seven days). If the training job is still running after this duration, AI Platform Training cancels it. The duration is measured from when the job enters the `RUNNING` state; therefore it does not overlap with the duration limited by Scheduling.max_wait_time. For example, if you want to ensure your job runs for no more than 2 hours, set this field to `7200s` (2 hours * 60 minutes / hour * 60 seconds / minute). If you submit your training job using the `gcloud` tool, you can [specify this field in a `config.yaml` file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ``` yaml trainingInput: scheduling: maxRunningTime: 7200s  ```
 func (o GoogleCloudMlV1__SchedulingResponseOutput) MaxRunningTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__SchedulingResponse) string { return v.MaxRunningTime }).(pulumi.StringOutput)
@@ -8140,6 +9371,12 @@ func (i GoogleCloudMlV1__StudyConfigArgs) ToGoogleCloudMlV1__StudyConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__StudyConfigOutput)
 }
 
+func (i GoogleCloudMlV1__StudyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__StudyConfig] {
+	return pulumix.Output[GoogleCloudMlV1__StudyConfig]{
+		OutputState: i.ToGoogleCloudMlV1__StudyConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents configuration of a study.
 type GoogleCloudMlV1__StudyConfigOutput struct{ *pulumi.OutputState }
 
@@ -8153,6 +9390,12 @@ func (o GoogleCloudMlV1__StudyConfigOutput) ToGoogleCloudMlV1__StudyConfigOutput
 
 func (o GoogleCloudMlV1__StudyConfigOutput) ToGoogleCloudMlV1__StudyConfigOutputWithContext(ctx context.Context) GoogleCloudMlV1__StudyConfigOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__StudyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__StudyConfig] {
+	return pulumix.Output[GoogleCloudMlV1__StudyConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The search algorithm specified for the study.
@@ -8202,6 +9445,12 @@ func (o GoogleCloudMlV1__StudyConfigResponseOutput) ToGoogleCloudMlV1__StudyConf
 
 func (o GoogleCloudMlV1__StudyConfigResponseOutput) ToGoogleCloudMlV1__StudyConfigResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__StudyConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__StudyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__StudyConfigResponse] {
+	return pulumix.Output[GoogleCloudMlV1__StudyConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The search algorithm specified for the study.
@@ -8365,6 +9614,12 @@ func (i GoogleCloudMlV1__TrainingInputArgs) ToGoogleCloudMlV1__TrainingInputOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__TrainingInputOutput)
 }
 
+func (i GoogleCloudMlV1__TrainingInputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__TrainingInput] {
+	return pulumix.Output[GoogleCloudMlV1__TrainingInput]{
+		OutputState: i.ToGoogleCloudMlV1__TrainingInputOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__TrainingInputArgs) ToGoogleCloudMlV1__TrainingInputPtrOutput() GoogleCloudMlV1__TrainingInputPtrOutput {
 	return i.ToGoogleCloudMlV1__TrainingInputPtrOutputWithContext(context.Background())
 }
@@ -8406,6 +9661,12 @@ func (i *googleCloudMlV1__TrainingInputPtrType) ToGoogleCloudMlV1__TrainingInput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__TrainingInputPtrOutput)
 }
 
+func (i *googleCloudMlV1__TrainingInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__TrainingInput] {
+	return pulumix.Output[*GoogleCloudMlV1__TrainingInput]{
+		OutputState: i.ToGoogleCloudMlV1__TrainingInputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents input parameters for a training job. When using the gcloud command to submit your training job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file referenced from the --config command-line argument. For details, see the guide to [submitting a training job](/ai-platform/training/docs/training-jobs).
 type GoogleCloudMlV1__TrainingInputOutput struct{ *pulumi.OutputState }
 
@@ -8429,6 +9690,12 @@ func (o GoogleCloudMlV1__TrainingInputOutput) ToGoogleCloudMlV1__TrainingInputPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__TrainingInput) *GoogleCloudMlV1__TrainingInput {
 		return &v
 	}).(GoogleCloudMlV1__TrainingInputPtrOutput)
+}
+
+func (o GoogleCloudMlV1__TrainingInputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__TrainingInput] {
+	return pulumix.Output[GoogleCloudMlV1__TrainingInput]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
@@ -8573,6 +9840,12 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) ToGoogleCloudMlV1__TrainingInpu
 
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) ToGoogleCloudMlV1__TrainingInputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__TrainingInputPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__TrainingInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__TrainingInput] {
+	return pulumix.Output[*GoogleCloudMlV1__TrainingInput]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) Elem() GoogleCloudMlV1__TrainingInputOutput {
@@ -8916,6 +10189,12 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) ToGoogleCloudMlV1__Trainin
 	return o
 }
 
+func (o GoogleCloudMlV1__TrainingInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__TrainingInputResponse] {
+	return pulumix.Output[GoogleCloudMlV1__TrainingInputResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -9119,6 +10398,12 @@ func (i GoogleCloudMlV1__TrainingOutputArgs) ToGoogleCloudMlV1__TrainingOutputOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__TrainingOutputOutput)
 }
 
+func (i GoogleCloudMlV1__TrainingOutputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__TrainingOutput] {
+	return pulumix.Output[GoogleCloudMlV1__TrainingOutput]{
+		OutputState: i.ToGoogleCloudMlV1__TrainingOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__TrainingOutputArgs) ToGoogleCloudMlV1__TrainingOutputPtrOutput() GoogleCloudMlV1__TrainingOutputPtrOutput {
 	return i.ToGoogleCloudMlV1__TrainingOutputPtrOutputWithContext(context.Background())
 }
@@ -9160,6 +10445,12 @@ func (i *googleCloudMlV1__TrainingOutputPtrType) ToGoogleCloudMlV1__TrainingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__TrainingOutputPtrOutput)
 }
 
+func (i *googleCloudMlV1__TrainingOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__TrainingOutput] {
+	return pulumix.Output[*GoogleCloudMlV1__TrainingOutput]{
+		OutputState: i.ToGoogleCloudMlV1__TrainingOutputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents results of a training job. Output only.
 type GoogleCloudMlV1__TrainingOutputOutput struct{ *pulumi.OutputState }
 
@@ -9183,6 +10474,12 @@ func (o GoogleCloudMlV1__TrainingOutputOutput) ToGoogleCloudMlV1__TrainingOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__TrainingOutput) *GoogleCloudMlV1__TrainingOutput {
 		return &v
 	}).(GoogleCloudMlV1__TrainingOutputPtrOutput)
+}
+
+func (o GoogleCloudMlV1__TrainingOutputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__TrainingOutput] {
+	return pulumix.Output[GoogleCloudMlV1__TrainingOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
@@ -9234,6 +10531,12 @@ func (o GoogleCloudMlV1__TrainingOutputPtrOutput) ToGoogleCloudMlV1__TrainingOut
 
 func (o GoogleCloudMlV1__TrainingOutputPtrOutput) ToGoogleCloudMlV1__TrainingOutputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__TrainingOutputPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__TrainingOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__TrainingOutput] {
+	return pulumix.Output[*GoogleCloudMlV1__TrainingOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__TrainingOutputPtrOutput) Elem() GoogleCloudMlV1__TrainingOutputOutput {
@@ -9351,6 +10654,12 @@ func (o GoogleCloudMlV1__TrainingOutputResponseOutput) ToGoogleCloudMlV1__Traini
 	return o
 }
 
+func (o GoogleCloudMlV1__TrainingOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__TrainingOutputResponse] {
+	return pulumix.Output[GoogleCloudMlV1__TrainingOutputResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
 func (o GoogleCloudMlV1__TrainingOutputResponseOutput) BuiltInAlgorithmOutput() GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingOutputResponse) GoogleCloudMlV1__BuiltInAlgorithmOutputResponse {
@@ -9464,6 +10773,12 @@ func (o GoogleCloudMlV1__VersionResponseOutput) ToGoogleCloudMlV1__VersionRespon
 
 func (o GoogleCloudMlV1__VersionResponseOutput) ToGoogleCloudMlV1__VersionResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__VersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__VersionResponse] {
+	return pulumix.Output[GoogleCloudMlV1__VersionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
@@ -9639,6 +10954,12 @@ func (i GoogleCloudMlV1__XraiAttributionArgs) ToGoogleCloudMlV1__XraiAttribution
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__XraiAttributionOutput)
 }
 
+func (i GoogleCloudMlV1__XraiAttributionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__XraiAttribution] {
+	return pulumix.Output[GoogleCloudMlV1__XraiAttribution]{
+		OutputState: i.ToGoogleCloudMlV1__XraiAttributionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudMlV1__XraiAttributionArgs) ToGoogleCloudMlV1__XraiAttributionPtrOutput() GoogleCloudMlV1__XraiAttributionPtrOutput {
 	return i.ToGoogleCloudMlV1__XraiAttributionPtrOutputWithContext(context.Background())
 }
@@ -9680,6 +11001,12 @@ func (i *googleCloudMlV1__XraiAttributionPtrType) ToGoogleCloudMlV1__XraiAttribu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__XraiAttributionPtrOutput)
 }
 
+func (i *googleCloudMlV1__XraiAttributionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__XraiAttribution] {
+	return pulumix.Output[*GoogleCloudMlV1__XraiAttribution]{
+		OutputState: i.ToGoogleCloudMlV1__XraiAttributionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Attributes credit by computing the XRAI taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1906.02825 Currently only implemented for models with natural image inputs.
 type GoogleCloudMlV1__XraiAttributionOutput struct{ *pulumi.OutputState }
 
@@ -9705,6 +11032,12 @@ func (o GoogleCloudMlV1__XraiAttributionOutput) ToGoogleCloudMlV1__XraiAttributi
 	}).(GoogleCloudMlV1__XraiAttributionPtrOutput)
 }
 
+func (o GoogleCloudMlV1__XraiAttributionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__XraiAttribution] {
+	return pulumix.Output[GoogleCloudMlV1__XraiAttribution]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
 func (o GoogleCloudMlV1__XraiAttributionOutput) NumIntegralSteps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__XraiAttribution) *int { return v.NumIntegralSteps }).(pulumi.IntPtrOutput)
@@ -9722,6 +11055,12 @@ func (o GoogleCloudMlV1__XraiAttributionPtrOutput) ToGoogleCloudMlV1__XraiAttrib
 
 func (o GoogleCloudMlV1__XraiAttributionPtrOutput) ToGoogleCloudMlV1__XraiAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__XraiAttributionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__XraiAttributionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__XraiAttribution] {
+	return pulumix.Output[*GoogleCloudMlV1__XraiAttribution]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudMlV1__XraiAttributionPtrOutput) Elem() GoogleCloudMlV1__XraiAttributionOutput {
@@ -9763,6 +11102,12 @@ func (o GoogleCloudMlV1__XraiAttributionResponseOutput) ToGoogleCloudMlV1__XraiA
 
 func (o GoogleCloudMlV1__XraiAttributionResponseOutput) ToGoogleCloudMlV1__XraiAttributionResponseOutputWithContext(ctx context.Context) GoogleCloudMlV1__XraiAttributionResponseOutput {
 	return o
+}
+
+func (o GoogleCloudMlV1__XraiAttributionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMlV1__XraiAttributionResponse] {
+	return pulumix.Output[GoogleCloudMlV1__XraiAttributionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
@@ -9809,6 +11154,12 @@ func (i GoogleIamV1__AuditConfigArgs) ToGoogleIamV1__AuditConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__AuditConfigOutput)
 }
 
+func (i GoogleIamV1__AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__AuditConfig] {
+	return pulumix.Output[GoogleIamV1__AuditConfig]{
+		OutputState: i.ToGoogleIamV1__AuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1__AuditConfigArrayInput is an input type that accepts GoogleIamV1__AuditConfigArray and GoogleIamV1__AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1__AuditConfigArrayInput` via:
 //
@@ -9834,6 +11185,12 @@ func (i GoogleIamV1__AuditConfigArray) ToGoogleIamV1__AuditConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__AuditConfigArrayOutput)
 }
 
+func (i GoogleIamV1__AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1__AuditConfig]{
+		OutputState: i.ToGoogleIamV1__AuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1__AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -9847,6 +11204,12 @@ func (o GoogleIamV1__AuditConfigOutput) ToGoogleIamV1__AuditConfigOutput() Googl
 
 func (o GoogleIamV1__AuditConfigOutput) ToGoogleIamV1__AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1__AuditConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1__AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__AuditConfig] {
+	return pulumix.Output[GoogleIamV1__AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -9871,6 +11234,12 @@ func (o GoogleIamV1__AuditConfigArrayOutput) ToGoogleIamV1__AuditConfigArrayOutp
 
 func (o GoogleIamV1__AuditConfigArrayOutput) ToGoogleIamV1__AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1__AuditConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1__AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1__AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1__AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1__AuditConfigOutput {
@@ -9902,6 +11271,12 @@ func (o GoogleIamV1__AuditConfigResponseOutput) ToGoogleIamV1__AuditConfigRespon
 	return o
 }
 
+func (o GoogleIamV1__AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__AuditConfigResponse] {
+	return pulumix.Output[GoogleIamV1__AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1__AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1__AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1__AuditConfigResponse) []GoogleIamV1__AuditLogConfigResponse {
@@ -9926,6 +11301,12 @@ func (o GoogleIamV1__AuditConfigResponseArrayOutput) ToGoogleIamV1__AuditConfigR
 
 func (o GoogleIamV1__AuditConfigResponseArrayOutput) ToGoogleIamV1__AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1__AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1__AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__AuditConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1__AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1__AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1__AuditConfigResponseOutput {
@@ -9973,6 +11354,12 @@ func (i GoogleIamV1__AuditLogConfigArgs) ToGoogleIamV1__AuditLogConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__AuditLogConfigOutput)
 }
 
+func (i GoogleIamV1__AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1__AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1__AuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1__AuditLogConfigArrayInput is an input type that accepts GoogleIamV1__AuditLogConfigArray and GoogleIamV1__AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1__AuditLogConfigArrayInput` via:
 //
@@ -9998,6 +11385,12 @@ func (i GoogleIamV1__AuditLogConfigArray) ToGoogleIamV1__AuditLogConfigArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__AuditLogConfigArrayOutput)
 }
 
+func (i GoogleIamV1__AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1__AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1__AuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1__AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -10011,6 +11404,12 @@ func (o GoogleIamV1__AuditLogConfigOutput) ToGoogleIamV1__AuditLogConfigOutput()
 
 func (o GoogleIamV1__AuditLogConfigOutput) ToGoogleIamV1__AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1__AuditLogConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1__AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1__AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -10035,6 +11434,12 @@ func (o GoogleIamV1__AuditLogConfigArrayOutput) ToGoogleIamV1__AuditLogConfigArr
 
 func (o GoogleIamV1__AuditLogConfigArrayOutput) ToGoogleIamV1__AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1__AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1__AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1__AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1__AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1__AuditLogConfigOutput {
@@ -10066,6 +11471,12 @@ func (o GoogleIamV1__AuditLogConfigResponseOutput) ToGoogleIamV1__AuditLogConfig
 	return o
 }
 
+func (o GoogleIamV1__AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__AuditLogConfigResponse] {
+	return pulumix.Output[GoogleIamV1__AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1__AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1__AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -10088,6 +11499,12 @@ func (o GoogleIamV1__AuditLogConfigResponseArrayOutput) ToGoogleIamV1__AuditLogC
 
 func (o GoogleIamV1__AuditLogConfigResponseArrayOutput) ToGoogleIamV1__AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1__AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1__AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__AuditLogConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1__AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1__AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1__AuditLogConfigResponseOutput {
@@ -10139,6 +11556,12 @@ func (i GoogleIamV1__BindingArgs) ToGoogleIamV1__BindingOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__BindingOutput)
 }
 
+func (i GoogleIamV1__BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__Binding] {
+	return pulumix.Output[GoogleIamV1__Binding]{
+		OutputState: i.ToGoogleIamV1__BindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1__BindingArrayInput is an input type that accepts GoogleIamV1__BindingArray and GoogleIamV1__BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1__BindingArrayInput` via:
 //
@@ -10164,6 +11587,12 @@ func (i GoogleIamV1__BindingArray) ToGoogleIamV1__BindingArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__BindingArrayOutput)
 }
 
+func (i GoogleIamV1__BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__Binding] {
+	return pulumix.Output[[]GoogleIamV1__Binding]{
+		OutputState: i.ToGoogleIamV1__BindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1__BindingOutput struct{ *pulumi.OutputState }
 
@@ -10177,6 +11606,12 @@ func (o GoogleIamV1__BindingOutput) ToGoogleIamV1__BindingOutput() GoogleIamV1__
 
 func (o GoogleIamV1__BindingOutput) ToGoogleIamV1__BindingOutputWithContext(ctx context.Context) GoogleIamV1__BindingOutput {
 	return o
+}
+
+func (o GoogleIamV1__BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__Binding] {
+	return pulumix.Output[GoogleIamV1__Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -10206,6 +11641,12 @@ func (o GoogleIamV1__BindingArrayOutput) ToGoogleIamV1__BindingArrayOutput() Goo
 
 func (o GoogleIamV1__BindingArrayOutput) ToGoogleIamV1__BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1__BindingArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1__BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__Binding] {
+	return pulumix.Output[[]GoogleIamV1__Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1__BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1__BindingOutput {
@@ -10239,6 +11680,12 @@ func (o GoogleIamV1__BindingResponseOutput) ToGoogleIamV1__BindingResponseOutput
 	return o
 }
 
+func (o GoogleIamV1__BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1__BindingResponse] {
+	return pulumix.Output[GoogleIamV1__BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1__BindingResponseOutput) Condition() GoogleType__ExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1__BindingResponse) GoogleType__ExprResponse { return v.Condition }).(GoogleType__ExprResponseOutput)
@@ -10266,6 +11713,12 @@ func (o GoogleIamV1__BindingResponseArrayOutput) ToGoogleIamV1__BindingResponseA
 
 func (o GoogleIamV1__BindingResponseArrayOutput) ToGoogleIamV1__BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1__BindingResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1__BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1__BindingResponse] {
+	return pulumix.Output[[]GoogleIamV1__BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1__BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1__BindingResponseOutput {
@@ -10321,6 +11774,12 @@ func (i GoogleType__ExprArgs) ToGoogleType__ExprOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleType__ExprOutput)
 }
 
+func (i GoogleType__ExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleType__Expr] {
+	return pulumix.Output[GoogleType__Expr]{
+		OutputState: i.ToGoogleType__ExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleType__ExprArgs) ToGoogleType__ExprPtrOutput() GoogleType__ExprPtrOutput {
 	return i.ToGoogleType__ExprPtrOutputWithContext(context.Background())
 }
@@ -10362,6 +11821,12 @@ func (i *googleType__ExprPtrType) ToGoogleType__ExprPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleType__ExprPtrOutput)
 }
 
+func (i *googleType__ExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleType__Expr] {
+	return pulumix.Output[*GoogleType__Expr]{
+		OutputState: i.ToGoogleType__ExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleType__ExprOutput struct{ *pulumi.OutputState }
 
@@ -10385,6 +11850,12 @@ func (o GoogleType__ExprOutput) ToGoogleType__ExprPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleType__Expr) *GoogleType__Expr {
 		return &v
 	}).(GoogleType__ExprPtrOutput)
+}
+
+func (o GoogleType__ExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleType__Expr] {
+	return pulumix.Output[GoogleType__Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -10419,6 +11890,12 @@ func (o GoogleType__ExprPtrOutput) ToGoogleType__ExprPtrOutput() GoogleType__Exp
 
 func (o GoogleType__ExprPtrOutput) ToGoogleType__ExprPtrOutputWithContext(ctx context.Context) GoogleType__ExprPtrOutput {
 	return o
+}
+
+func (o GoogleType__ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleType__Expr] {
+	return pulumix.Output[*GoogleType__Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleType__ExprPtrOutput) Elem() GoogleType__ExprOutput {
@@ -10496,6 +11973,12 @@ func (o GoogleType__ExprResponseOutput) ToGoogleType__ExprResponseOutput() Googl
 
 func (o GoogleType__ExprResponseOutput) ToGoogleType__ExprResponseOutputWithContext(ctx context.Context) GoogleType__ExprResponseOutput {
 	return o
+}
+
+func (o GoogleType__ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleType__ExprResponse] {
+	return pulumix.Output[GoogleType__ExprResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

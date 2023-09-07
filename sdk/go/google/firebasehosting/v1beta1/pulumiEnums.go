@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The redirect status code.
@@ -80,6 +81,12 @@ func (o DomainRedirectTypeOutput) ToDomainRedirectTypePtrOutputWithContext(ctx c
 	}).(DomainRedirectTypePtrOutput)
 }
 
+func (o DomainRedirectTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DomainRedirectType] {
+	return pulumix.Output[DomainRedirectType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DomainRedirectTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutput() DomainRedir
 
 func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
 	return o
+}
+
+func (o DomainRedirectTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirectType] {
+	return pulumix.Output[*DomainRedirectType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainRedirectTypePtrOutput) Elem() DomainRedirectTypeOutput {
@@ -175,6 +188,12 @@ func (in *domainRedirectTypePtr) ToDomainRedirectTypePtrOutput() DomainRedirectT
 
 func (in *domainRedirectTypePtr) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DomainRedirectTypePtrOutput)
+}
+
+func (in *domainRedirectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirectType] {
+	return pulumix.Output[*DomainRedirectType]{
+		OutputState: in.ToDomainRedirectTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
@@ -251,6 +270,12 @@ func (o ReleaseTypeOutput) ToReleaseTypePtrOutputWithContext(ctx context.Context
 	}).(ReleaseTypePtrOutput)
 }
 
+func (o ReleaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReleaseType] {
+	return pulumix.Output[ReleaseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReleaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o ReleaseTypePtrOutput) ToReleaseTypePtrOutput() ReleaseTypePtrOutput {
 
 func (o ReleaseTypePtrOutput) ToReleaseTypePtrOutputWithContext(ctx context.Context) ReleaseTypePtrOutput {
 	return o
+}
+
+func (o ReleaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReleaseType] {
+	return pulumix.Output[*ReleaseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReleaseTypePtrOutput) Elem() ReleaseTypeOutput {
@@ -346,6 +377,12 @@ func (in *releaseTypePtr) ToReleaseTypePtrOutput() ReleaseTypePtrOutput {
 
 func (in *releaseTypePtr) ToReleaseTypePtrOutputWithContext(ctx context.Context) ReleaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReleaseTypePtrOutput)
+}
+
+func (in *releaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReleaseType] {
+	return pulumix.Output[*ReleaseType]{
+		OutputState: in.ToReleaseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // How to handle well known App Association files.
@@ -418,6 +455,12 @@ func (o ServingConfigAppAssociationOutput) ToServingConfigAppAssociationPtrOutpu
 	}).(ServingConfigAppAssociationPtrOutput)
 }
 
+func (o ServingConfigAppAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfigAppAssociation] {
+	return pulumix.Output[ServingConfigAppAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServingConfigAppAssociationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -451,6 +494,12 @@ func (o ServingConfigAppAssociationPtrOutput) ToServingConfigAppAssociationPtrOu
 
 func (o ServingConfigAppAssociationPtrOutput) ToServingConfigAppAssociationPtrOutputWithContext(ctx context.Context) ServingConfigAppAssociationPtrOutput {
 	return o
+}
+
+func (o ServingConfigAppAssociationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigAppAssociation] {
+	return pulumix.Output[*ServingConfigAppAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServingConfigAppAssociationPtrOutput) Elem() ServingConfigAppAssociationOutput {
@@ -513,6 +562,12 @@ func (in *servingConfigAppAssociationPtr) ToServingConfigAppAssociationPtrOutput
 
 func (in *servingConfigAppAssociationPtr) ToServingConfigAppAssociationPtrOutputWithContext(ctx context.Context) ServingConfigAppAssociationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServingConfigAppAssociationPtrOutput)
+}
+
+func (in *servingConfigAppAssociationPtr) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigAppAssociation] {
+	return pulumix.Output[*ServingConfigAppAssociation]{
+		OutputState: in.ToServingConfigAppAssociationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines how to handle a trailing slash in the URL path.
@@ -587,6 +642,12 @@ func (o ServingConfigTrailingSlashBehaviorOutput) ToServingConfigTrailingSlashBe
 	}).(ServingConfigTrailingSlashBehaviorPtrOutput)
 }
 
+func (o ServingConfigTrailingSlashBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfigTrailingSlashBehavior] {
+	return pulumix.Output[ServingConfigTrailingSlashBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServingConfigTrailingSlashBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -620,6 +681,12 @@ func (o ServingConfigTrailingSlashBehaviorPtrOutput) ToServingConfigTrailingSlas
 
 func (o ServingConfigTrailingSlashBehaviorPtrOutput) ToServingConfigTrailingSlashBehaviorPtrOutputWithContext(ctx context.Context) ServingConfigTrailingSlashBehaviorPtrOutput {
 	return o
+}
+
+func (o ServingConfigTrailingSlashBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigTrailingSlashBehavior] {
+	return pulumix.Output[*ServingConfigTrailingSlashBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServingConfigTrailingSlashBehaviorPtrOutput) Elem() ServingConfigTrailingSlashBehaviorOutput {
@@ -682,6 +749,12 @@ func (in *servingConfigTrailingSlashBehaviorPtr) ToServingConfigTrailingSlashBeh
 
 func (in *servingConfigTrailingSlashBehaviorPtr) ToServingConfigTrailingSlashBehaviorPtrOutputWithContext(ctx context.Context) ServingConfigTrailingSlashBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServingConfigTrailingSlashBehaviorPtrOutput)
+}
+
+func (in *servingConfigTrailingSlashBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigTrailingSlashBehavior] {
+	return pulumix.Output[*ServingConfigTrailingSlashBehavior]{
+		OutputState: in.ToServingConfigTrailingSlashBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).

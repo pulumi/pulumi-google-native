@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified contentitem resource. Replaces any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
@@ -142,6 +143,12 @@ func (i *LakeContentIamPolicy) ToLakeContentIamPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(LakeContentIamPolicyOutput)
 }
 
+func (i *LakeContentIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*LakeContentIamPolicy] {
+	return pulumix.Output[*LakeContentIamPolicy]{
+		OutputState: i.ToLakeContentIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LakeContentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (LakeContentIamPolicyOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o LakeContentIamPolicyOutput) ToLakeContentIamPolicyOutput() LakeContentIa
 
 func (o LakeContentIamPolicyOutput) ToLakeContentIamPolicyOutputWithContext(ctx context.Context) LakeContentIamPolicyOutput {
 	return o
+}
+
+func (o LakeContentIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*LakeContentIamPolicy] {
+	return pulumix.Output[*LakeContentIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

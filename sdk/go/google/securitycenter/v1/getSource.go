@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a source.
@@ -72,6 +73,12 @@ func (o LookupSourceResultOutput) ToLookupSourceResultOutput() LookupSourceResul
 
 func (o LookupSourceResultOutput) ToLookupSourceResultOutputWithContext(ctx context.Context) LookupSourceResultOutput {
 	return o
+}
+
+func (o LookupSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSourceResult] {
+	return pulumix.Output[LookupSourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.

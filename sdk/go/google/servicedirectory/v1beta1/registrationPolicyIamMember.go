@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM Policy for a resource
@@ -135,6 +136,12 @@ func (i *RegistrationPolicyIamMember) ToRegistrationPolicyIamMemberOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationPolicyIamMemberOutput)
 }
 
+func (i *RegistrationPolicyIamMember) ToOutput(ctx context.Context) pulumix.Output[*RegistrationPolicyIamMember] {
+	return pulumix.Output[*RegistrationPolicyIamMember]{
+		OutputState: i.ToRegistrationPolicyIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistrationPolicyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegistrationPolicyIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RegistrationPolicyIamMemberOutput) ToRegistrationPolicyIamMemberOutput()
 
 func (o RegistrationPolicyIamMemberOutput) ToRegistrationPolicyIamMemberOutputWithContext(ctx context.Context) RegistrationPolicyIamMemberOutput {
 	return o
+}
+
+func (o RegistrationPolicyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationPolicyIamMember] {
+	return pulumix.Output[*RegistrationPolicyIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy of the feature.
@@ -84,6 +85,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput)
 }
 
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput {
@@ -179,6 +192,12 @@ func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePoli
 
 func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtr) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput)
+}
+
+func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy]{
+		OutputState: in.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // linux_isolation allows overriding the docker runtime used for containers started on Linux.
@@ -253,6 +272,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolatio
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput)
 }
 
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation] {
+	return pulumix.Output[GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolatio
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput {
@@ -348,6 +379,12 @@ func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolat
 
 func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtr) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput)
+}
+
+func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation] {
+	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation]{
+		OutputState: in.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

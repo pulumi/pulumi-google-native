@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
@@ -74,6 +75,12 @@ func (o LookupResourcefileResultOutput) ToLookupResourcefileResultOutput() Looku
 
 func (o LookupResourcefileResultOutput) ToLookupResourcefileResultOutputWithContext(ctx context.Context) LookupResourcefileResultOutput {
 	return o
+}
+
+func (o LookupResourcefileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourcefileResult] {
+	return pulumix.Output[LookupResourcefileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The HTTP Content-Type header value specifying the content type of the body.

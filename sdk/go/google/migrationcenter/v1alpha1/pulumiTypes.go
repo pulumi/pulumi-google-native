@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i ComputeEnginePreferencesArgs) ToComputeEnginePreferencesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnginePreferencesOutput)
 }
 
+func (i ComputeEnginePreferencesArgs) ToOutput(ctx context.Context) pulumix.Output[ComputeEnginePreferences] {
+	return pulumix.Output[ComputeEnginePreferences]{
+		OutputState: i.ToComputeEnginePreferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ComputeEnginePreferencesArgs) ToComputeEnginePreferencesPtrOutput() ComputeEnginePreferencesPtrOutput {
 	return i.ToComputeEnginePreferencesPtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *computeEnginePreferencesPtrType) ToComputeEnginePreferencesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnginePreferencesPtrOutput)
 }
 
+func (i *computeEnginePreferencesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferences] {
+	return pulumix.Output[*ComputeEnginePreferences]{
+		OutputState: i.ToComputeEnginePreferencesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The user preferences relating to Compute Engine target platform.
 type ComputeEnginePreferencesOutput struct{ *pulumi.OutputState }
 
@@ -120,6 +133,12 @@ func (o ComputeEnginePreferencesOutput) ToComputeEnginePreferencesPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeEnginePreferences) *ComputeEnginePreferences {
 		return &v
 	}).(ComputeEnginePreferencesPtrOutput)
+}
+
+func (o ComputeEnginePreferencesOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEnginePreferences] {
+	return pulumix.Output[ComputeEnginePreferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 // License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
@@ -151,6 +170,12 @@ func (o ComputeEnginePreferencesPtrOutput) ToComputeEnginePreferencesPtrOutput()
 
 func (o ComputeEnginePreferencesPtrOutput) ToComputeEnginePreferencesPtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesPtrOutput {
 	return o
+}
+
+func (o ComputeEnginePreferencesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferences] {
+	return pulumix.Output[*ComputeEnginePreferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeEnginePreferencesPtrOutput) Elem() ComputeEnginePreferencesOutput {
@@ -218,6 +243,12 @@ func (o ComputeEnginePreferencesResponseOutput) ToComputeEnginePreferencesRespon
 	return o
 }
 
+func (o ComputeEnginePreferencesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEnginePreferencesResponse] {
+	return pulumix.Output[ComputeEnginePreferencesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 func (o ComputeEnginePreferencesResponseOutput) LicenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEnginePreferencesResponse) string { return v.LicenseType }).(pulumi.StringOutput)
@@ -260,6 +291,12 @@ func (o ExecutionReportResponseOutput) ToExecutionReportResponseOutput() Executi
 
 func (o ExecutionReportResponseOutput) ToExecutionReportResponseOutputWithContext(ctx context.Context) ExecutionReportResponseOutput {
 	return o
+}
+
+func (o ExecutionReportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionReportResponse] {
+	return pulumix.Output[ExecutionReportResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Validation errors encountered during the execution of the import job.
@@ -311,6 +348,12 @@ func (o FileValidationReportResponseOutput) ToFileValidationReportResponseOutput
 	return o
 }
 
+func (o FileValidationReportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileValidationReportResponse] {
+	return pulumix.Output[FileValidationReportResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of file level errors.
 func (o FileValidationReportResponseOutput) FileErrors() ImportErrorResponseArrayOutput {
 	return o.ApplyT(func(v FileValidationReportResponse) []ImportErrorResponse { return v.FileErrors }).(ImportErrorResponseArrayOutput)
@@ -343,6 +386,12 @@ func (o FileValidationReportResponseArrayOutput) ToFileValidationReportResponseA
 
 func (o FileValidationReportResponseArrayOutput) ToFileValidationReportResponseArrayOutputWithContext(ctx context.Context) FileValidationReportResponseArrayOutput {
 	return o
+}
+
+func (o FileValidationReportResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileValidationReportResponse] {
+	return pulumix.Output[[]FileValidationReportResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FileValidationReportResponseArrayOutput) Index(i pulumi.IntInput) FileValidationReportResponseOutput {
@@ -390,6 +439,12 @@ func (i GCSPayloadInfoArgs) ToGCSPayloadInfoOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GCSPayloadInfoOutput)
 }
 
+func (i GCSPayloadInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GCSPayloadInfo] {
+	return pulumix.Output[GCSPayloadInfo]{
+		OutputState: i.ToGCSPayloadInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GCSPayloadInfoArgs) ToGCSPayloadInfoPtrOutput() GCSPayloadInfoPtrOutput {
 	return i.ToGCSPayloadInfoPtrOutputWithContext(context.Background())
 }
@@ -431,6 +486,12 @@ func (i *gcspayloadInfoPtrType) ToGCSPayloadInfoPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GCSPayloadInfoPtrOutput)
 }
 
+func (i *gcspayloadInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GCSPayloadInfo] {
+	return pulumix.Output[*GCSPayloadInfo]{
+		OutputState: i.ToGCSPayloadInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A resource that represents a payload hosted on Google Cloud Storage.
 type GCSPayloadInfoOutput struct{ *pulumi.OutputState }
 
@@ -456,6 +517,12 @@ func (o GCSPayloadInfoOutput) ToGCSPayloadInfoPtrOutputWithContext(ctx context.C
 	}).(GCSPayloadInfoPtrOutput)
 }
 
+func (o GCSPayloadInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GCSPayloadInfo] {
+	return pulumix.Output[GCSPayloadInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The import job format.
 func (o GCSPayloadInfoOutput) Format() GCSPayloadInfoFormatPtrOutput {
 	return o.ApplyT(func(v GCSPayloadInfo) *GCSPayloadInfoFormat { return v.Format }).(GCSPayloadInfoFormatPtrOutput)
@@ -478,6 +545,12 @@ func (o GCSPayloadInfoPtrOutput) ToGCSPayloadInfoPtrOutput() GCSPayloadInfoPtrOu
 
 func (o GCSPayloadInfoPtrOutput) ToGCSPayloadInfoPtrOutputWithContext(ctx context.Context) GCSPayloadInfoPtrOutput {
 	return o
+}
+
+func (o GCSPayloadInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GCSPayloadInfo] {
+	return pulumix.Output[*GCSPayloadInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GCSPayloadInfoPtrOutput) Elem() GCSPayloadInfoOutput {
@@ -533,6 +606,12 @@ func (o GCSPayloadInfoResponseOutput) ToGCSPayloadInfoResponseOutputWithContext(
 	return o
 }
 
+func (o GCSPayloadInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GCSPayloadInfoResponse] {
+	return pulumix.Output[GCSPayloadInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The import job format.
 func (o GCSPayloadInfoResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v GCSPayloadInfoResponse) string { return v.Format }).(pulumi.StringOutput)
@@ -566,6 +645,12 @@ func (o ImportErrorResponseOutput) ToImportErrorResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o ImportErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImportErrorResponse] {
+	return pulumix.Output[ImportErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The error information.
 func (o ImportErrorResponseOutput) ErrorDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v ImportErrorResponse) string { return v.ErrorDetails }).(pulumi.StringOutput)
@@ -588,6 +673,12 @@ func (o ImportErrorResponseArrayOutput) ToImportErrorResponseArrayOutput() Impor
 
 func (o ImportErrorResponseArrayOutput) ToImportErrorResponseArrayOutputWithContext(ctx context.Context) ImportErrorResponseArrayOutput {
 	return o
+}
+
+func (o ImportErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ImportErrorResponse] {
+	return pulumix.Output[[]ImportErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImportErrorResponseArrayOutput) Index(i pulumi.IntInput) ImportErrorResponseOutput {
@@ -623,6 +714,12 @@ func (o ImportRowErrorResponseOutput) ToImportRowErrorResponseOutputWithContext(
 	return o
 }
 
+func (o ImportRowErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImportRowErrorResponse] {
+	return pulumix.Output[ImportRowErrorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of errors detected in the row.
 func (o ImportRowErrorResponseOutput) Errors() ImportErrorResponseArrayOutput {
 	return o.ApplyT(func(v ImportRowErrorResponse) []ImportErrorResponse { return v.Errors }).(ImportErrorResponseArrayOutput)
@@ -655,6 +752,12 @@ func (o ImportRowErrorResponseArrayOutput) ToImportRowErrorResponseArrayOutput()
 
 func (o ImportRowErrorResponseArrayOutput) ToImportRowErrorResponseArrayOutputWithContext(ctx context.Context) ImportRowErrorResponseArrayOutput {
 	return o
+}
+
+func (o ImportRowErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ImportRowErrorResponse] {
+	return pulumix.Output[[]ImportRowErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImportRowErrorResponseArrayOutput) Index(i pulumi.IntInput) ImportRowErrorResponseOutput {
@@ -702,6 +805,12 @@ func (i InlinePayloadInfoArgs) ToInlinePayloadInfoOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InlinePayloadInfoOutput)
 }
 
+func (i InlinePayloadInfoArgs) ToOutput(ctx context.Context) pulumix.Output[InlinePayloadInfo] {
+	return pulumix.Output[InlinePayloadInfo]{
+		OutputState: i.ToInlinePayloadInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InlinePayloadInfoArgs) ToInlinePayloadInfoPtrOutput() InlinePayloadInfoPtrOutput {
 	return i.ToInlinePayloadInfoPtrOutputWithContext(context.Background())
 }
@@ -743,6 +852,12 @@ func (i *inlinePayloadInfoPtrType) ToInlinePayloadInfoPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InlinePayloadInfoPtrOutput)
 }
 
+func (i *inlinePayloadInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*InlinePayloadInfo] {
+	return pulumix.Output[*InlinePayloadInfo]{
+		OutputState: i.ToInlinePayloadInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A resource that represents the inline import job payload.
 type InlinePayloadInfoOutput struct{ *pulumi.OutputState }
 
@@ -768,6 +883,12 @@ func (o InlinePayloadInfoOutput) ToInlinePayloadInfoPtrOutputWithContext(ctx con
 	}).(InlinePayloadInfoPtrOutput)
 }
 
+func (o InlinePayloadInfoOutput) ToOutput(ctx context.Context) pulumix.Output[InlinePayloadInfo] {
+	return pulumix.Output[InlinePayloadInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The import job format.
 func (o InlinePayloadInfoOutput) Format() InlinePayloadInfoFormatPtrOutput {
 	return o.ApplyT(func(v InlinePayloadInfo) *InlinePayloadInfoFormat { return v.Format }).(InlinePayloadInfoFormatPtrOutput)
@@ -790,6 +911,12 @@ func (o InlinePayloadInfoPtrOutput) ToInlinePayloadInfoPtrOutput() InlinePayload
 
 func (o InlinePayloadInfoPtrOutput) ToInlinePayloadInfoPtrOutputWithContext(ctx context.Context) InlinePayloadInfoPtrOutput {
 	return o
+}
+
+func (o InlinePayloadInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InlinePayloadInfo] {
+	return pulumix.Output[*InlinePayloadInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InlinePayloadInfoPtrOutput) Elem() InlinePayloadInfoOutput {
@@ -845,6 +972,12 @@ func (o InlinePayloadInfoResponseOutput) ToInlinePayloadInfoResponseOutputWithCo
 	return o
 }
 
+func (o InlinePayloadInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InlinePayloadInfoResponse] {
+	return pulumix.Output[InlinePayloadInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The import job format.
 func (o InlinePayloadInfoResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v InlinePayloadInfoResponse) string { return v.Format }).(pulumi.StringOutput)
@@ -890,6 +1023,12 @@ func (i MachinePreferencesArgs) ToMachinePreferencesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MachinePreferencesOutput)
 }
 
+func (i MachinePreferencesArgs) ToOutput(ctx context.Context) pulumix.Output[MachinePreferences] {
+	return pulumix.Output[MachinePreferences]{
+		OutputState: i.ToMachinePreferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MachinePreferencesArgs) ToMachinePreferencesPtrOutput() MachinePreferencesPtrOutput {
 	return i.ToMachinePreferencesPtrOutputWithContext(context.Background())
 }
@@ -931,6 +1070,12 @@ func (i *machinePreferencesPtrType) ToMachinePreferencesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MachinePreferencesPtrOutput)
 }
 
+func (i *machinePreferencesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MachinePreferences] {
+	return pulumix.Output[*MachinePreferences]{
+		OutputState: i.ToMachinePreferencesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
 type MachinePreferencesOutput struct{ *pulumi.OutputState }
 
@@ -956,6 +1101,12 @@ func (o MachinePreferencesOutput) ToMachinePreferencesPtrOutputWithContext(ctx c
 	}).(MachinePreferencesPtrOutput)
 }
 
+func (o MachinePreferencesOutput) ToOutput(ctx context.Context) pulumix.Output[MachinePreferences] {
+	return pulumix.Output[MachinePreferences]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
 func (o MachinePreferencesOutput) AllowedMachineSeries() MachineSeriesArrayOutput {
 	return o.ApplyT(func(v MachinePreferences) []MachineSeries { return v.AllowedMachineSeries }).(MachineSeriesArrayOutput)
@@ -973,6 +1124,12 @@ func (o MachinePreferencesPtrOutput) ToMachinePreferencesPtrOutput() MachinePref
 
 func (o MachinePreferencesPtrOutput) ToMachinePreferencesPtrOutputWithContext(ctx context.Context) MachinePreferencesPtrOutput {
 	return o
+}
+
+func (o MachinePreferencesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachinePreferences] {
+	return pulumix.Output[*MachinePreferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachinePreferencesPtrOutput) Elem() MachinePreferencesOutput {
@@ -1016,6 +1173,12 @@ func (o MachinePreferencesResponseOutput) ToMachinePreferencesResponseOutputWith
 	return o
 }
 
+func (o MachinePreferencesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachinePreferencesResponse] {
+	return pulumix.Output[MachinePreferencesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
 func (o MachinePreferencesResponseOutput) AllowedMachineSeries() MachineSeriesResponseArrayOutput {
 	return o.ApplyT(func(v MachinePreferencesResponse) []MachineSeriesResponse { return v.AllowedMachineSeries }).(MachineSeriesResponseArrayOutput)
@@ -1056,6 +1219,12 @@ func (i MachineSeriesArgs) ToMachineSeriesOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MachineSeriesOutput)
 }
 
+func (i MachineSeriesArgs) ToOutput(ctx context.Context) pulumix.Output[MachineSeries] {
+	return pulumix.Output[MachineSeries]{
+		OutputState: i.ToMachineSeriesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MachineSeriesArrayInput is an input type that accepts MachineSeriesArray and MachineSeriesArrayOutput values.
 // You can construct a concrete instance of `MachineSeriesArrayInput` via:
 //
@@ -1081,6 +1250,12 @@ func (i MachineSeriesArray) ToMachineSeriesArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MachineSeriesArrayOutput)
 }
 
+func (i MachineSeriesArray) ToOutput(ctx context.Context) pulumix.Output[[]MachineSeries] {
+	return pulumix.Output[[]MachineSeries]{
+		OutputState: i.ToMachineSeriesArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A Compute Engine machine series.
 type MachineSeriesOutput struct{ *pulumi.OutputState }
 
@@ -1094,6 +1269,12 @@ func (o MachineSeriesOutput) ToMachineSeriesOutput() MachineSeriesOutput {
 
 func (o MachineSeriesOutput) ToMachineSeriesOutputWithContext(ctx context.Context) MachineSeriesOutput {
 	return o
+}
+
+func (o MachineSeriesOutput) ToOutput(ctx context.Context) pulumix.Output[MachineSeries] {
+	return pulumix.Output[MachineSeries]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
@@ -1113,6 +1294,12 @@ func (o MachineSeriesArrayOutput) ToMachineSeriesArrayOutput() MachineSeriesArra
 
 func (o MachineSeriesArrayOutput) ToMachineSeriesArrayOutputWithContext(ctx context.Context) MachineSeriesArrayOutput {
 	return o
+}
+
+func (o MachineSeriesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineSeries] {
+	return pulumix.Output[[]MachineSeries]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineSeriesArrayOutput) Index(i pulumi.IntInput) MachineSeriesOutput {
@@ -1142,6 +1329,12 @@ func (o MachineSeriesResponseOutput) ToMachineSeriesResponseOutputWithContext(ct
 	return o
 }
 
+func (o MachineSeriesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineSeriesResponse] {
+	return pulumix.Output[MachineSeriesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
 func (o MachineSeriesResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineSeriesResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -1159,6 +1352,12 @@ func (o MachineSeriesResponseArrayOutput) ToMachineSeriesResponseArrayOutput() M
 
 func (o MachineSeriesResponseArrayOutput) ToMachineSeriesResponseArrayOutputWithContext(ctx context.Context) MachineSeriesResponseArrayOutput {
 	return o
+}
+
+func (o MachineSeriesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineSeriesResponse] {
+	return pulumix.Output[[]MachineSeriesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineSeriesResponseArrayOutput) Index(i pulumi.IntInput) MachineSeriesResponseOutput {
@@ -1190,6 +1389,12 @@ func (o MoneyResponseOutput) ToMoneyResponseOutput() MoneyResponseOutput {
 
 func (o MoneyResponseOutput) ToMoneyResponseOutputWithContext(ctx context.Context) MoneyResponseOutput {
 	return o
+}
+
+func (o MoneyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MoneyResponse] {
+	return pulumix.Output[MoneyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -1246,6 +1451,12 @@ func (i PayloadFileArgs) ToPayloadFileOutputWithContext(ctx context.Context) Pay
 	return pulumi.ToOutputWithContext(ctx, i).(PayloadFileOutput)
 }
 
+func (i PayloadFileArgs) ToOutput(ctx context.Context) pulumix.Output[PayloadFile] {
+	return pulumix.Output[PayloadFile]{
+		OutputState: i.ToPayloadFileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PayloadFileArrayInput is an input type that accepts PayloadFileArray and PayloadFileArrayOutput values.
 // You can construct a concrete instance of `PayloadFileArrayInput` via:
 //
@@ -1271,6 +1482,12 @@ func (i PayloadFileArray) ToPayloadFileArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PayloadFileArrayOutput)
 }
 
+func (i PayloadFileArray) ToOutput(ctx context.Context) pulumix.Output[[]PayloadFile] {
+	return pulumix.Output[[]PayloadFile]{
+		OutputState: i.ToPayloadFileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Payload file for inline import job payload.
 type PayloadFileOutput struct{ *pulumi.OutputState }
 
@@ -1284,6 +1501,12 @@ func (o PayloadFileOutput) ToPayloadFileOutput() PayloadFileOutput {
 
 func (o PayloadFileOutput) ToPayloadFileOutputWithContext(ctx context.Context) PayloadFileOutput {
 	return o
+}
+
+func (o PayloadFileOutput) ToOutput(ctx context.Context) pulumix.Output[PayloadFile] {
+	return pulumix.Output[PayloadFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The file data.
@@ -1308,6 +1531,12 @@ func (o PayloadFileArrayOutput) ToPayloadFileArrayOutput() PayloadFileArrayOutpu
 
 func (o PayloadFileArrayOutput) ToPayloadFileArrayOutputWithContext(ctx context.Context) PayloadFileArrayOutput {
 	return o
+}
+
+func (o PayloadFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PayloadFile] {
+	return pulumix.Output[[]PayloadFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PayloadFileArrayOutput) Index(i pulumi.IntInput) PayloadFileOutput {
@@ -1339,6 +1568,12 @@ func (o PayloadFileResponseOutput) ToPayloadFileResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o PayloadFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PayloadFileResponse] {
+	return pulumix.Output[PayloadFileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The file data.
 func (o PayloadFileResponseOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v PayloadFileResponse) string { return v.Data }).(pulumi.StringOutput)
@@ -1361,6 +1596,12 @@ func (o PayloadFileResponseArrayOutput) ToPayloadFileResponseArrayOutput() Paylo
 
 func (o PayloadFileResponseArrayOutput) ToPayloadFileResponseArrayOutputWithContext(ctx context.Context) PayloadFileResponseArrayOutput {
 	return o
+}
+
+func (o PayloadFileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PayloadFileResponse] {
+	return pulumix.Output[[]PayloadFileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PayloadFileResponseArrayOutput) Index(i pulumi.IntInput) PayloadFileResponseOutput {
@@ -1404,6 +1645,12 @@ func (i RegionPreferencesArgs) ToRegionPreferencesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RegionPreferencesOutput)
 }
 
+func (i RegionPreferencesArgs) ToOutput(ctx context.Context) pulumix.Output[RegionPreferences] {
+	return pulumix.Output[RegionPreferences]{
+		OutputState: i.ToRegionPreferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RegionPreferencesArgs) ToRegionPreferencesPtrOutput() RegionPreferencesPtrOutput {
 	return i.ToRegionPreferencesPtrOutputWithContext(context.Background())
 }
@@ -1445,6 +1692,12 @@ func (i *regionPreferencesPtrType) ToRegionPreferencesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionPreferencesPtrOutput)
 }
 
+func (i *regionPreferencesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RegionPreferences] {
+	return pulumix.Output[*RegionPreferences]{
+		OutputState: i.ToRegionPreferencesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The user preferences relating to target regions.
 type RegionPreferencesOutput struct{ *pulumi.OutputState }
 
@@ -1470,6 +1723,12 @@ func (o RegionPreferencesOutput) ToRegionPreferencesPtrOutputWithContext(ctx con
 	}).(RegionPreferencesPtrOutput)
 }
 
+func (o RegionPreferencesOutput) ToOutput(ctx context.Context) pulumix.Output[RegionPreferences] {
+	return pulumix.Output[RegionPreferences]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
 func (o RegionPreferencesOutput) PreferredRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegionPreferences) []string { return v.PreferredRegions }).(pulumi.StringArrayOutput)
@@ -1487,6 +1746,12 @@ func (o RegionPreferencesPtrOutput) ToRegionPreferencesPtrOutput() RegionPrefere
 
 func (o RegionPreferencesPtrOutput) ToRegionPreferencesPtrOutputWithContext(ctx context.Context) RegionPreferencesPtrOutput {
 	return o
+}
+
+func (o RegionPreferencesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionPreferences] {
+	return pulumix.Output[*RegionPreferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionPreferencesPtrOutput) Elem() RegionPreferencesOutput {
@@ -1528,6 +1793,12 @@ func (o RegionPreferencesResponseOutput) ToRegionPreferencesResponseOutput() Reg
 
 func (o RegionPreferencesResponseOutput) ToRegionPreferencesResponseOutputWithContext(ctx context.Context) RegionPreferencesResponseOutput {
 	return o
+}
+
+func (o RegionPreferencesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegionPreferencesResponse] {
+	return pulumix.Output[RegionPreferencesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
@@ -1574,6 +1845,12 @@ func (i ReportConfigGroupPreferenceSetAssignmentArgs) ToReportConfigGroupPrefere
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigGroupPreferenceSetAssignmentOutput)
 }
 
+func (i ReportConfigGroupPreferenceSetAssignmentArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigGroupPreferenceSetAssignment] {
+	return pulumix.Output[ReportConfigGroupPreferenceSetAssignment]{
+		OutputState: i.ToReportConfigGroupPreferenceSetAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReportConfigGroupPreferenceSetAssignmentArrayInput is an input type that accepts ReportConfigGroupPreferenceSetAssignmentArray and ReportConfigGroupPreferenceSetAssignmentArrayOutput values.
 // You can construct a concrete instance of `ReportConfigGroupPreferenceSetAssignmentArrayInput` via:
 //
@@ -1599,6 +1876,12 @@ func (i ReportConfigGroupPreferenceSetAssignmentArray) ToReportConfigGroupPrefer
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigGroupPreferenceSetAssignmentArrayOutput)
 }
 
+func (i ReportConfigGroupPreferenceSetAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigGroupPreferenceSetAssignment] {
+	return pulumix.Output[[]ReportConfigGroupPreferenceSetAssignment]{
+		OutputState: i.ToReportConfigGroupPreferenceSetAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a combination of a group with a preference set.
 type ReportConfigGroupPreferenceSetAssignmentOutput struct{ *pulumi.OutputState }
 
@@ -1612,6 +1895,12 @@ func (o ReportConfigGroupPreferenceSetAssignmentOutput) ToReportConfigGroupPrefe
 
 func (o ReportConfigGroupPreferenceSetAssignmentOutput) ToReportConfigGroupPreferenceSetAssignmentOutputWithContext(ctx context.Context) ReportConfigGroupPreferenceSetAssignmentOutput {
 	return o
+}
+
+func (o ReportConfigGroupPreferenceSetAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigGroupPreferenceSetAssignment] {
+	return pulumix.Output[ReportConfigGroupPreferenceSetAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the group.
@@ -1636,6 +1925,12 @@ func (o ReportConfigGroupPreferenceSetAssignmentArrayOutput) ToReportConfigGroup
 
 func (o ReportConfigGroupPreferenceSetAssignmentArrayOutput) ToReportConfigGroupPreferenceSetAssignmentArrayOutputWithContext(ctx context.Context) ReportConfigGroupPreferenceSetAssignmentArrayOutput {
 	return o
+}
+
+func (o ReportConfigGroupPreferenceSetAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigGroupPreferenceSetAssignment] {
+	return pulumix.Output[[]ReportConfigGroupPreferenceSetAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportConfigGroupPreferenceSetAssignmentArrayOutput) Index(i pulumi.IntInput) ReportConfigGroupPreferenceSetAssignmentOutput {
@@ -1667,6 +1962,12 @@ func (o ReportConfigGroupPreferenceSetAssignmentResponseOutput) ToReportConfigGr
 	return o
 }
 
+func (o ReportConfigGroupPreferenceSetAssignmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigGroupPreferenceSetAssignmentResponse] {
+	return pulumix.Output[ReportConfigGroupPreferenceSetAssignmentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the group.
 func (o ReportConfigGroupPreferenceSetAssignmentResponseOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportConfigGroupPreferenceSetAssignmentResponse) string { return v.Group }).(pulumi.StringOutput)
@@ -1689,6 +1990,12 @@ func (o ReportConfigGroupPreferenceSetAssignmentResponseArrayOutput) ToReportCon
 
 func (o ReportConfigGroupPreferenceSetAssignmentResponseArrayOutput) ToReportConfigGroupPreferenceSetAssignmentResponseArrayOutputWithContext(ctx context.Context) ReportConfigGroupPreferenceSetAssignmentResponseArrayOutput {
 	return o
+}
+
+func (o ReportConfigGroupPreferenceSetAssignmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigGroupPreferenceSetAssignmentResponse] {
+	return pulumix.Output[[]ReportConfigGroupPreferenceSetAssignmentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportConfigGroupPreferenceSetAssignmentResponseArrayOutput) Index(i pulumi.IntInput) ReportConfigGroupPreferenceSetAssignmentResponseOutput {
@@ -1740,6 +2047,12 @@ func (o ReportSummaryAssetAggregateStatsResponseOutput) ToReportSummaryAssetAggr
 
 func (o ReportSummaryAssetAggregateStatsResponseOutput) ToReportSummaryAssetAggregateStatsResponseOutputWithContext(ctx context.Context) ReportSummaryAssetAggregateStatsResponseOutput {
 	return o
+}
+
+func (o ReportSummaryAssetAggregateStatsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryAssetAggregateStatsResponse] {
+	return pulumix.Output[ReportSummaryAssetAggregateStatsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Count of assets grouped by age.
@@ -1846,6 +2159,12 @@ func (o ReportSummaryChartDataDataPointResponseOutput) ToReportSummaryChartDataD
 	return o
 }
 
+func (o ReportSummaryChartDataDataPointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryChartDataDataPointResponse] {
+	return pulumix.Output[ReportSummaryChartDataDataPointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The X-axis label for this data point.
 func (o ReportSummaryChartDataDataPointResponseOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryChartDataDataPointResponse) string { return v.Label }).(pulumi.StringOutput)
@@ -1868,6 +2187,12 @@ func (o ReportSummaryChartDataDataPointResponseArrayOutput) ToReportSummaryChart
 
 func (o ReportSummaryChartDataDataPointResponseArrayOutput) ToReportSummaryChartDataDataPointResponseArrayOutputWithContext(ctx context.Context) ReportSummaryChartDataDataPointResponseArrayOutput {
 	return o
+}
+
+func (o ReportSummaryChartDataDataPointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportSummaryChartDataDataPointResponse] {
+	return pulumix.Output[[]ReportSummaryChartDataDataPointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportSummaryChartDataDataPointResponseArrayOutput) Index(i pulumi.IntInput) ReportSummaryChartDataDataPointResponseOutput {
@@ -1895,6 +2220,12 @@ func (o ReportSummaryChartDataResponseOutput) ToReportSummaryChartDataResponseOu
 
 func (o ReportSummaryChartDataResponseOutput) ToReportSummaryChartDataResponseOutputWithContext(ctx context.Context) ReportSummaryChartDataResponseOutput {
 	return o
+}
+
+func (o ReportSummaryChartDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryChartDataResponse] {
+	return pulumix.Output[ReportSummaryChartDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Each data point in the chart is represented as a name-value pair with the name being the x-axis label, and the value being the y-axis value.
@@ -1929,6 +2260,12 @@ func (o ReportSummaryGroupFindingResponseOutput) ToReportSummaryGroupFindingResp
 
 func (o ReportSummaryGroupFindingResponseOutput) ToReportSummaryGroupFindingResponseOutputWithContext(ctx context.Context) ReportSummaryGroupFindingResponseOutput {
 	return o
+}
+
+func (o ReportSummaryGroupFindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryGroupFindingResponse] {
+	return pulumix.Output[ReportSummaryGroupFindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Summary statistics for all the assets in this group.
@@ -1972,6 +2309,12 @@ func (o ReportSummaryGroupFindingResponseArrayOutput) ToReportSummaryGroupFindin
 
 func (o ReportSummaryGroupFindingResponseArrayOutput) ToReportSummaryGroupFindingResponseArrayOutputWithContext(ctx context.Context) ReportSummaryGroupFindingResponseArrayOutput {
 	return o
+}
+
+func (o ReportSummaryGroupFindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportSummaryGroupFindingResponse] {
+	return pulumix.Output[[]ReportSummaryGroupFindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportSummaryGroupFindingResponseArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupFindingResponseOutput {
@@ -2023,6 +2366,12 @@ func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) ToReportSummaryGro
 
 func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) ToReportSummaryGroupPreferenceSetFindingResponseOutputWithContext(ctx context.Context) ReportSummaryGroupPreferenceSetFindingResponseOutput {
 	return o
+}
+
+func (o ReportSummaryGroupPreferenceSetFindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryGroupPreferenceSetFindingResponse] {
+	return pulumix.Output[ReportSummaryGroupPreferenceSetFindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description for the Preference Set.
@@ -2110,6 +2459,12 @@ func (o ReportSummaryGroupPreferenceSetFindingResponseArrayOutput) ToReportSumma
 	return o
 }
 
+func (o ReportSummaryGroupPreferenceSetFindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportSummaryGroupPreferenceSetFindingResponse] {
+	return pulumix.Output[[]ReportSummaryGroupPreferenceSetFindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReportSummaryGroupPreferenceSetFindingResponseArrayOutput) Index(i pulumi.IntInput) ReportSummaryGroupPreferenceSetFindingResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryGroupPreferenceSetFindingResponse {
 		return vs[0].([]ReportSummaryGroupPreferenceSetFindingResponse)[vs[1].(int)]
@@ -2141,6 +2496,12 @@ func (o ReportSummaryHistogramChartDataBucketResponseOutput) ToReportSummaryHist
 	return o
 }
 
+func (o ReportSummaryHistogramChartDataBucketResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryHistogramChartDataBucketResponse] {
+	return pulumix.Output[ReportSummaryHistogramChartDataBucketResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Count of items in the bucket.
 func (o ReportSummaryHistogramChartDataBucketResponseOutput) Count() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryHistogramChartDataBucketResponse) string { return v.Count }).(pulumi.StringOutput)
@@ -2170,6 +2531,12 @@ func (o ReportSummaryHistogramChartDataBucketResponseArrayOutput) ToReportSummar
 	return o
 }
 
+func (o ReportSummaryHistogramChartDataBucketResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportSummaryHistogramChartDataBucketResponse] {
+	return pulumix.Output[[]ReportSummaryHistogramChartDataBucketResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReportSummaryHistogramChartDataBucketResponseArrayOutput) Index(i pulumi.IntInput) ReportSummaryHistogramChartDataBucketResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportSummaryHistogramChartDataBucketResponse {
 		return vs[0].([]ReportSummaryHistogramChartDataBucketResponse)[vs[1].(int)]
@@ -2195,6 +2562,12 @@ func (o ReportSummaryHistogramChartDataResponseOutput) ToReportSummaryHistogramC
 
 func (o ReportSummaryHistogramChartDataResponseOutput) ToReportSummaryHistogramChartDataResponseOutputWithContext(ctx context.Context) ReportSummaryHistogramChartDataResponseOutput {
 	return o
+}
+
+func (o ReportSummaryHistogramChartDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryHistogramChartDataResponse] {
+	return pulumix.Output[ReportSummaryHistogramChartDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Buckets in the histogram. There will be `n+1` buckets matching `n` lower bounds in the request. The first bucket will be from -infinity to the first bound. Subsequent buckets will be between one bound and the next. The final bucket will be from the final bound to infinity.
@@ -2229,6 +2602,12 @@ func (o ReportSummaryMachineFindingResponseOutput) ToReportSummaryMachineFinding
 
 func (o ReportSummaryMachineFindingResponseOutput) ToReportSummaryMachineFindingResponseOutputWithContext(ctx context.Context) ReportSummaryMachineFindingResponseOutput {
 	return o
+}
+
+func (o ReportSummaryMachineFindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryMachineFindingResponse] {
+	return pulumix.Output[ReportSummaryMachineFindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Count of assets which were allocated.
@@ -2276,6 +2655,12 @@ func (o ReportSummaryMachineSeriesAllocationResponseOutput) ToReportSummaryMachi
 	return o
 }
 
+func (o ReportSummaryMachineSeriesAllocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryMachineSeriesAllocationResponse] {
+	return pulumix.Output[ReportSummaryMachineSeriesAllocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Count of assets allocated to this machine series.
 func (o ReportSummaryMachineSeriesAllocationResponseOutput) AllocatedAssetCount() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportSummaryMachineSeriesAllocationResponse) string { return v.AllocatedAssetCount }).(pulumi.StringOutput)
@@ -2298,6 +2683,12 @@ func (o ReportSummaryMachineSeriesAllocationResponseArrayOutput) ToReportSummary
 
 func (o ReportSummaryMachineSeriesAllocationResponseArrayOutput) ToReportSummaryMachineSeriesAllocationResponseArrayOutputWithContext(ctx context.Context) ReportSummaryMachineSeriesAllocationResponseArrayOutput {
 	return o
+}
+
+func (o ReportSummaryMachineSeriesAllocationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportSummaryMachineSeriesAllocationResponse] {
+	return pulumix.Output[[]ReportSummaryMachineSeriesAllocationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportSummaryMachineSeriesAllocationResponseArrayOutput) Index(i pulumi.IntInput) ReportSummaryMachineSeriesAllocationResponseOutput {
@@ -2327,6 +2718,12 @@ func (o ReportSummaryResponseOutput) ToReportSummaryResponseOutput() ReportSumma
 
 func (o ReportSummaryResponseOutput) ToReportSummaryResponseOutputWithContext(ctx context.Context) ReportSummaryResponseOutput {
 	return o
+}
+
+func (o ReportSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryResponse] {
+	return pulumix.Output[ReportSummaryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregate statistics for all the assets across all the groups.
@@ -2360,6 +2757,12 @@ func (o ReportSummaryUtilizationChartDataResponseOutput) ToReportSummaryUtilizat
 
 func (o ReportSummaryUtilizationChartDataResponseOutput) ToReportSummaryUtilizationChartDataResponseOutputWithContext(ctx context.Context) ReportSummaryUtilizationChartDataResponseOutput {
 	return o
+}
+
+func (o ReportSummaryUtilizationChartDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSummaryUtilizationChartDataResponse] {
+	return pulumix.Output[ReportSummaryUtilizationChartDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregate value which falls into the "Free" bucket.
@@ -2403,6 +2806,12 @@ func (i UploadFileInfoArgs) ToUploadFileInfoOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(UploadFileInfoOutput)
 }
 
+func (i UploadFileInfoArgs) ToOutput(ctx context.Context) pulumix.Output[UploadFileInfo] {
+	return pulumix.Output[UploadFileInfo]{
+		OutputState: i.ToUploadFileInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UploadFileInfoArgs) ToUploadFileInfoPtrOutput() UploadFileInfoPtrOutput {
 	return i.ToUploadFileInfoPtrOutputWithContext(context.Background())
 }
@@ -2444,6 +2853,12 @@ func (i *uploadFileInfoPtrType) ToUploadFileInfoPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(UploadFileInfoPtrOutput)
 }
 
+func (i *uploadFileInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*UploadFileInfo] {
+	return pulumix.Output[*UploadFileInfo]{
+		OutputState: i.ToUploadFileInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A resource that contains a URI to which a data file can be uploaded.
 type UploadFileInfoOutput struct{ *pulumi.OutputState }
 
@@ -2469,6 +2884,12 @@ func (o UploadFileInfoOutput) ToUploadFileInfoPtrOutputWithContext(ctx context.C
 	}).(UploadFileInfoPtrOutput)
 }
 
+func (o UploadFileInfoOutput) ToOutput(ctx context.Context) pulumix.Output[UploadFileInfo] {
+	return pulumix.Output[UploadFileInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 type UploadFileInfoPtrOutput struct{ *pulumi.OutputState }
 
 func (UploadFileInfoPtrOutput) ElementType() reflect.Type {
@@ -2481,6 +2902,12 @@ func (o UploadFileInfoPtrOutput) ToUploadFileInfoPtrOutput() UploadFileInfoPtrOu
 
 func (o UploadFileInfoPtrOutput) ToUploadFileInfoPtrOutputWithContext(ctx context.Context) UploadFileInfoPtrOutput {
 	return o
+}
+
+func (o UploadFileInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UploadFileInfo] {
+	return pulumix.Output[*UploadFileInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UploadFileInfoPtrOutput) Elem() UploadFileInfoOutput {
@@ -2516,6 +2943,12 @@ func (o UploadFileInfoResponseOutput) ToUploadFileInfoResponseOutput() UploadFil
 
 func (o UploadFileInfoResponseOutput) ToUploadFileInfoResponseOutputWithContext(ctx context.Context) UploadFileInfoResponseOutput {
 	return o
+}
+
+func (o UploadFileInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UploadFileInfoResponse] {
+	return pulumix.Output[UploadFileInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The headers that were used to sign the URL.
@@ -2554,6 +2987,12 @@ func (o ValidationReportResponseOutput) ToValidationReportResponseOutput() Valid
 
 func (o ValidationReportResponseOutput) ToValidationReportResponseOutputWithContext(ctx context.Context) ValidationReportResponseOutput {
 	return o
+}
+
+func (o ValidationReportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationReportResponse] {
+	return pulumix.Output[ValidationReportResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of errors found in files.
@@ -2613,6 +3052,12 @@ func (i VirtualMachinePreferencesArgs) ToVirtualMachinePreferencesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesOutput)
 }
 
+func (i VirtualMachinePreferencesArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferences] {
+	return pulumix.Output[VirtualMachinePreferences]{
+		OutputState: i.ToVirtualMachinePreferencesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VirtualMachinePreferencesArgs) ToVirtualMachinePreferencesPtrOutput() VirtualMachinePreferencesPtrOutput {
 	return i.ToVirtualMachinePreferencesPtrOutputWithContext(context.Background())
 }
@@ -2654,6 +3099,12 @@ func (i *virtualMachinePreferencesPtrType) ToVirtualMachinePreferencesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePreferencesPtrOutput)
 }
 
+func (i *virtualMachinePreferencesPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferences] {
+	return pulumix.Output[*VirtualMachinePreferences]{
+		OutputState: i.ToVirtualMachinePreferencesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
 type VirtualMachinePreferencesOutput struct{ *pulumi.OutputState }
 
@@ -2677,6 +3128,12 @@ func (o VirtualMachinePreferencesOutput) ToVirtualMachinePreferencesPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePreferences) *VirtualMachinePreferences {
 		return &v
 	}).(VirtualMachinePreferencesPtrOutput)
+}
+
+func (o VirtualMachinePreferencesOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferences] {
+	return pulumix.Output[VirtualMachinePreferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
@@ -2713,6 +3170,12 @@ func (o VirtualMachinePreferencesPtrOutput) ToVirtualMachinePreferencesPtrOutput
 
 func (o VirtualMachinePreferencesPtrOutput) ToVirtualMachinePreferencesPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePreferencesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferences] {
+	return pulumix.Output[*VirtualMachinePreferences]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePreferencesPtrOutput) Elem() VirtualMachinePreferencesOutput {
@@ -2790,6 +3253,12 @@ func (o VirtualMachinePreferencesResponseOutput) ToVirtualMachinePreferencesResp
 
 func (o VirtualMachinePreferencesResponseOutput) ToVirtualMachinePreferencesResponseOutputWithContext(ctx context.Context) VirtualMachinePreferencesResponseOutput {
 	return o
+}
+
+func (o VirtualMachinePreferencesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesResponse] {
+	return pulumix.Output[VirtualMachinePreferencesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.

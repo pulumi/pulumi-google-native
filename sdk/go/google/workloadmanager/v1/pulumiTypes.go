@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i GceInstanceFilterArgs) ToGceInstanceFilterOutput() GceInstanceFilterOutp
 
 func (i GceInstanceFilterArgs) ToGceInstanceFilterOutputWithContext(ctx context.Context) GceInstanceFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GceInstanceFilterOutput)
+}
+
+func (i GceInstanceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GceInstanceFilter] {
+	return pulumix.Output[GceInstanceFilter]{
+		OutputState: i.ToGceInstanceFilterOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GceInstanceFilterArgs) ToGceInstanceFilterPtrOutput() GceInstanceFilterPtrOutput {
@@ -89,6 +96,12 @@ func (i *gceInstanceFilterPtrType) ToGceInstanceFilterPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GceInstanceFilterPtrOutput)
 }
 
+func (i *gceInstanceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*GceInstanceFilter] {
+	return pulumix.Output[*GceInstanceFilter]{
+		OutputState: i.ToGceInstanceFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message describing compute engine instance filter
 type GceInstanceFilterOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o GceInstanceFilterOutput) ToGceInstanceFilterPtrOutputWithContext(ctx con
 	}).(GceInstanceFilterPtrOutput)
 }
 
+func (o GceInstanceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GceInstanceFilter] {
+	return pulumix.Output[GceInstanceFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Service account of compute engine
 func (o GceInstanceFilterOutput) ServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GceInstanceFilter) []string { return v.ServiceAccounts }).(pulumi.StringArrayOutput)
@@ -131,6 +150,12 @@ func (o GceInstanceFilterPtrOutput) ToGceInstanceFilterPtrOutput() GceInstanceFi
 
 func (o GceInstanceFilterPtrOutput) ToGceInstanceFilterPtrOutputWithContext(ctx context.Context) GceInstanceFilterPtrOutput {
 	return o
+}
+
+func (o GceInstanceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceInstanceFilter] {
+	return pulumix.Output[*GceInstanceFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GceInstanceFilterPtrOutput) Elem() GceInstanceFilterOutput {
@@ -172,6 +197,12 @@ func (o GceInstanceFilterResponseOutput) ToGceInstanceFilterResponseOutput() Gce
 
 func (o GceInstanceFilterResponseOutput) ToGceInstanceFilterResponseOutputWithContext(ctx context.Context) GceInstanceFilterResponseOutput {
 	return o
+}
+
+func (o GceInstanceFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GceInstanceFilterResponse] {
+	return pulumix.Output[GceInstanceFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Service account of compute engine
@@ -226,6 +257,12 @@ func (i ResourceFilterArgs) ToResourceFilterOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceFilterOutput)
 }
 
+func (i ResourceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceFilter] {
+	return pulumix.Output[ResourceFilter]{
+		OutputState: i.ToResourceFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceFilterArgs) ToResourceFilterPtrOutput() ResourceFilterPtrOutput {
 	return i.ToResourceFilterPtrOutputWithContext(context.Background())
 }
@@ -267,6 +304,12 @@ func (i *resourceFilterPtrType) ToResourceFilterPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceFilterPtrOutput)
 }
 
+func (i *resourceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceFilter] {
+	return pulumix.Output[*ResourceFilter]{
+		OutputState: i.ToResourceFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message describing resource filters
 type ResourceFilterOutput struct{ *pulumi.OutputState }
 
@@ -290,6 +333,12 @@ func (o ResourceFilterOutput) ToResourceFilterPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceFilter) *ResourceFilter {
 		return &v
 	}).(ResourceFilterPtrOutput)
+}
+
+func (o ResourceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceFilter] {
+	return pulumix.Output[ResourceFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Filter compute engine resource
@@ -324,6 +373,12 @@ func (o ResourceFilterPtrOutput) ToResourceFilterPtrOutput() ResourceFilterPtrOu
 
 func (o ResourceFilterPtrOutput) ToResourceFilterPtrOutputWithContext(ctx context.Context) ResourceFilterPtrOutput {
 	return o
+}
+
+func (o ResourceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceFilter] {
+	return pulumix.Output[*ResourceFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceFilterPtrOutput) Elem() ResourceFilterOutput {
@@ -403,6 +458,12 @@ func (o ResourceFilterResponseOutput) ToResourceFilterResponseOutputWithContext(
 	return o
 }
 
+func (o ResourceFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceFilterResponse] {
+	return pulumix.Output[ResourceFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Filter compute engine resource
 func (o ResourceFilterResponseOutput) GceInstanceFilter() GceInstanceFilterResponseOutput {
 	return o.ApplyT(func(v ResourceFilterResponse) GceInstanceFilterResponse { return v.GceInstanceFilter }).(GceInstanceFilterResponseOutput)
@@ -444,6 +505,12 @@ func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutput() ResourceS
 
 func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutputWithContext(ctx context.Context) ResourceStatusResponseOutput {
 	return o
+}
+
+func (o ResourceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceStatusResponse] {
+	return pulumix.Output[ResourceStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the new version of rule id if exists

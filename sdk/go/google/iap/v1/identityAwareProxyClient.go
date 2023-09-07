@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.
@@ -112,6 +113,12 @@ func (i *IdentityAwareProxyClient) ToIdentityAwareProxyClientOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityAwareProxyClientOutput)
 }
 
+func (i *IdentityAwareProxyClient) ToOutput(ctx context.Context) pulumix.Output[*IdentityAwareProxyClient] {
+	return pulumix.Output[*IdentityAwareProxyClient]{
+		OutputState: i.ToIdentityAwareProxyClientOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IdentityAwareProxyClientOutput struct{ *pulumi.OutputState }
 
 func (IdentityAwareProxyClientOutput) ElementType() reflect.Type {
@@ -124,6 +131,12 @@ func (o IdentityAwareProxyClientOutput) ToIdentityAwareProxyClientOutput() Ident
 
 func (o IdentityAwareProxyClientOutput) ToIdentityAwareProxyClientOutputWithContext(ctx context.Context) IdentityAwareProxyClientOutput {
 	return o
+}
+
+func (o IdentityAwareProxyClientOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityAwareProxyClient] {
+	return pulumix.Output[*IdentityAwareProxyClient]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IdentityAwareProxyClientOutput) BrandId() pulumi.StringOutput {

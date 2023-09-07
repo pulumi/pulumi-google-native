@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new WorkloadIdentityPoolProviderKey in a WorkloadIdentityPoolProvider.
@@ -144,6 +145,12 @@ func (i *WorkloadIdentityPoolKey) ToWorkloadIdentityPoolKeyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolKeyOutput)
 }
 
+func (i *WorkloadIdentityPoolKey) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolKey] {
+	return pulumix.Output[*WorkloadIdentityPoolKey]{
+		OutputState: i.ToWorkloadIdentityPoolKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkloadIdentityPoolKeyOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolKeyOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o WorkloadIdentityPoolKeyOutput) ToWorkloadIdentityPoolKeyOutput() Workloa
 
 func (o WorkloadIdentityPoolKeyOutput) ToWorkloadIdentityPoolKeyOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyOutput {
 	return o
+}
+
+func (o WorkloadIdentityPoolKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolKey] {
+	return pulumix.Output[*WorkloadIdentityPoolKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time after which the key will be permanently purged and cannot be recovered. Note that the key may get purged before this timestamp if the total limit of keys per provider is crossed.

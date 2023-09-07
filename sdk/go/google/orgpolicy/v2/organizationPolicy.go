@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
@@ -128,6 +129,12 @@ func (i *OrganizationPolicy) ToOrganizationPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyOutput)
 }
 
+func (i *OrganizationPolicy) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPolicy] {
+	return pulumix.Output[*OrganizationPolicy]{
+		OutputState: i.ToOrganizationPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o OrganizationPolicyOutput) ToOrganizationPolicyOutput() OrganizationPolic
 
 func (o OrganizationPolicyOutput) ToOrganizationPolicyOutputWithContext(ctx context.Context) OrganizationPolicyOutput {
 	return o
+}
+
+func (o OrganizationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPolicy] {
+	return pulumix.Output[*OrganizationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated.

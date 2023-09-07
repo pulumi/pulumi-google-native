@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new KeyRing in a given Project and Location.
@@ -110,6 +111,12 @@ func (i *KeyRing) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingOutput)
 }
 
+func (i *KeyRing) ToOutput(ctx context.Context) pulumix.Output[*KeyRing] {
+	return pulumix.Output[*KeyRing]{
+		OutputState: i.ToKeyRingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingOutput struct{ *pulumi.OutputState }
 
 func (KeyRingOutput) ElementType() reflect.Type {
@@ -122,6 +129,12 @@ func (o KeyRingOutput) ToKeyRingOutput() KeyRingOutput {
 
 func (o KeyRingOutput) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput {
 	return o
+}
+
+func (o KeyRingOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRing] {
+	return pulumix.Output[*KeyRing]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which this KeyRing was created.

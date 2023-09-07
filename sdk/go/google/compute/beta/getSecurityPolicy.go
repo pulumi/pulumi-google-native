@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List all of the ordered rules present in a single specified policy.
@@ -102,6 +103,12 @@ func (o LookupSecurityPolicyResultOutput) ToLookupSecurityPolicyResultOutput() L
 
 func (o LookupSecurityPolicyResultOutput) ToLookupSecurityPolicyResultOutputWithContext(ctx context.Context) LookupSecurityPolicyResultOutput {
 	return o
+}
+
+func (o LookupSecurityPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityPolicyResult] {
+	return pulumix.Output[LookupSecurityPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupSecurityPolicyResultOutput) AdaptiveProtectionConfig() SecurityPolicyAdaptiveProtectionConfigResponseOutput {

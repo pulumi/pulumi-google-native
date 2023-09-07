@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.
@@ -261,6 +262,12 @@ func (i *Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput)
 }
 
+func (i *Config) ToOutput(ctx context.Context) pulumix.Output[*Config] {
+	return pulumix.Output[*Config]{
+		OutputState: i.ToConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfigOutput) ElementType() reflect.Type {
@@ -273,6 +280,12 @@ func (o ConfigOutput) ToConfigOutput() ConfigOutput {
 
 func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return o
+}
+
+func (o ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*Config] {
+	return pulumix.Output[*Config]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ResourceRecordSet.
@@ -146,6 +147,12 @@ func (i *ResourceRecordSet) ToResourceRecordSetOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetOutput)
 }
 
+func (i *ResourceRecordSet) ToOutput(ctx context.Context) pulumix.Output[*ResourceRecordSet] {
+	return pulumix.Output[*ResourceRecordSet]{
+		OutputState: i.ToResourceRecordSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceRecordSetOutput struct{ *pulumi.OutputState }
 
 func (ResourceRecordSetOutput) ElementType() reflect.Type {
@@ -158,6 +165,12 @@ func (o ResourceRecordSetOutput) ToResourceRecordSetOutput() ResourceRecordSetOu
 
 func (o ResourceRecordSetOutput) ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput {
 	return o
+}
+
+func (o ResourceRecordSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRecordSet] {
+	return pulumix.Output[*ResourceRecordSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.

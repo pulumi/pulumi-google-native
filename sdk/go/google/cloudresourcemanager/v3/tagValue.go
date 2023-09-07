@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 1000 TagValues can exist under a TagKey at any given time.
@@ -126,6 +127,12 @@ func (i *TagValue) ToTagValueOutputWithContext(ctx context.Context) TagValueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueOutput)
 }
 
+func (i *TagValue) ToOutput(ctx context.Context) pulumix.Output[*TagValue] {
+	return pulumix.Output[*TagValue]{
+		OutputState: i.ToTagValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagValueOutput struct{ *pulumi.OutputState }
 
 func (TagValueOutput) ElementType() reflect.Type {
@@ -138,6 +145,12 @@ func (o TagValueOutput) ToTagValueOutput() TagValueOutput {
 
 func (o TagValueOutput) ToTagValueOutputWithContext(ctx context.Context) TagValueOutput {
 	return o
+}
+
+func (o TagValueOutput) ToOutput(ctx context.Context) pulumix.Output[*TagValue] {
+	return pulumix.Output[*TagValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation time.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new GrpcRoute in a given project and location.
@@ -162,6 +163,12 @@ func (i *GrpcRoute) ToGrpcRouteOutputWithContext(ctx context.Context) GrpcRouteO
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteOutput)
 }
 
+func (i *GrpcRoute) ToOutput(ctx context.Context) pulumix.Output[*GrpcRoute] {
+	return pulumix.Output[*GrpcRoute]{
+		OutputState: i.ToGrpcRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteOutput) ElementType() reflect.Type {
@@ -174,6 +181,12 @@ func (o GrpcRouteOutput) ToGrpcRouteOutput() GrpcRouteOutput {
 
 func (o GrpcRouteOutput) ToGrpcRouteOutputWithContext(ctx context.Context) GrpcRouteOutput {
 	return o
+}
+
+func (o GrpcRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRoute] {
+	return pulumix.Output[*GrpcRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the resource was created.

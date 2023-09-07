@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
@@ -118,6 +119,12 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingOutput)
 }
 
+func (i *DomainMapping) ToOutput(ctx context.Context) pulumix.Output[*DomainMapping] {
+	return pulumix.Output[*DomainMapping]{
+		OutputState: i.ToDomainMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainMappingOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingOutput) ElementType() reflect.Type {
@@ -130,6 +137,12 @@ func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
 
 func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
 	return o
+}
+
+func (o DomainMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainMapping] {
+	return pulumix.Output[*DomainMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainMappingOutput) AppId() pulumi.StringOutput {

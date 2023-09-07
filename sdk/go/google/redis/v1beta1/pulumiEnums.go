@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
@@ -82,6 +83,12 @@ func (o InstanceConnectModeOutput) ToInstanceConnectModePtrOutputWithContext(ctx
 	}).(InstanceConnectModePtrOutput)
 }
 
+func (o InstanceConnectModeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConnectMode] {
+	return pulumix.Output[InstanceConnectMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceConnectModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o InstanceConnectModePtrOutput) ToInstanceConnectModePtrOutput() InstanceC
 
 func (o InstanceConnectModePtrOutput) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
 	return o
+}
+
+func (o InstanceConnectModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceConnectMode] {
+	return pulumix.Output[*InstanceConnectMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceConnectModePtrOutput) Elem() InstanceConnectModeOutput {
@@ -177,6 +190,12 @@ func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutput() InstanceConne
 
 func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConnectModePtrOutput)
+}
+
+func (in *instanceConnectModePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceConnectMode] {
+	return pulumix.Output[*InstanceConnectMode]{
+		OutputState: in.ToInstanceConnectModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
@@ -251,6 +270,12 @@ func (o InstanceReadReplicasModeOutput) ToInstanceReadReplicasModePtrOutputWithC
 	}).(InstanceReadReplicasModePtrOutput)
 }
 
+func (o InstanceReadReplicasModeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceReadReplicasMode] {
+	return pulumix.Output[InstanceReadReplicasMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceReadReplicasModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o InstanceReadReplicasModePtrOutput) ToInstanceReadReplicasModePtrOutput()
 
 func (o InstanceReadReplicasModePtrOutput) ToInstanceReadReplicasModePtrOutputWithContext(ctx context.Context) InstanceReadReplicasModePtrOutput {
 	return o
+}
+
+func (o InstanceReadReplicasModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceReadReplicasMode] {
+	return pulumix.Output[*InstanceReadReplicasMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceReadReplicasModePtrOutput) Elem() InstanceReadReplicasModeOutput {
@@ -346,6 +377,12 @@ func (in *instanceReadReplicasModePtr) ToInstanceReadReplicasModePtrOutput() Ins
 
 func (in *instanceReadReplicasModePtr) ToInstanceReadReplicasModePtrOutputWithContext(ctx context.Context) InstanceReadReplicasModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceReadReplicasModePtrOutput)
+}
+
+func (in *instanceReadReplicasModePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceReadReplicasMode] {
+	return pulumix.Output[*InstanceReadReplicasMode]{
+		OutputState: in.ToInstanceReadReplicasModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type InstanceSuspensionReasonsItem string
@@ -417,6 +454,12 @@ func (o InstanceSuspensionReasonsItemOutput) ToInstanceSuspensionReasonsItemPtrO
 	}).(InstanceSuspensionReasonsItemPtrOutput)
 }
 
+func (o InstanceSuspensionReasonsItemOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSuspensionReasonsItem] {
+	return pulumix.Output[InstanceSuspensionReasonsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceSuspensionReasonsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -450,6 +493,12 @@ func (o InstanceSuspensionReasonsItemPtrOutput) ToInstanceSuspensionReasonsItemP
 
 func (o InstanceSuspensionReasonsItemPtrOutput) ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemPtrOutput {
 	return o
+}
+
+func (o InstanceSuspensionReasonsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceSuspensionReasonsItem] {
+	return pulumix.Output[*InstanceSuspensionReasonsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSuspensionReasonsItemPtrOutput) Elem() InstanceSuspensionReasonsItemOutput {
@@ -514,6 +563,12 @@ func (in *instanceSuspensionReasonsItemPtr) ToInstanceSuspensionReasonsItemPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceSuspensionReasonsItemPtrOutput)
 }
 
+func (in *instanceSuspensionReasonsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSuspensionReasonsItem] {
+	return pulumix.Output[*InstanceSuspensionReasonsItem]{
+		OutputState: in.ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceSuspensionReasonsItemArrayInput is an input type that accepts InstanceSuspensionReasonsItemArray and InstanceSuspensionReasonsItemArrayOutput values.
 // You can construct a concrete instance of `InstanceSuspensionReasonsItemArrayInput` via:
 //
@@ -539,6 +594,12 @@ func (i InstanceSuspensionReasonsItemArray) ToInstanceSuspensionReasonsItemArray
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSuspensionReasonsItemArrayOutput)
 }
 
+func (i InstanceSuspensionReasonsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSuspensionReasonsItem] {
+	return pulumix.Output[[]InstanceSuspensionReasonsItem]{
+		OutputState: i.ToInstanceSuspensionReasonsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceSuspensionReasonsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceSuspensionReasonsItemArrayOutput) ElementType() reflect.Type {
@@ -551,6 +612,12 @@ func (o InstanceSuspensionReasonsItemArrayOutput) ToInstanceSuspensionReasonsIte
 
 func (o InstanceSuspensionReasonsItemArrayOutput) ToInstanceSuspensionReasonsItemArrayOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemArrayOutput {
 	return o
+}
+
+func (o InstanceSuspensionReasonsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSuspensionReasonsItem] {
+	return pulumix.Output[[]InstanceSuspensionReasonsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSuspensionReasonsItemArrayOutput) Index(i pulumi.IntInput) InstanceSuspensionReasonsItemOutput {
@@ -631,6 +698,12 @@ func (o InstanceTierOutput) ToInstanceTierPtrOutputWithContext(ctx context.Conte
 	}).(InstanceTierPtrOutput)
 }
 
+func (o InstanceTierOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceTier] {
+	return pulumix.Output[InstanceTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -664,6 +737,12 @@ func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
 
 func (o InstanceTierPtrOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
 	return o
+}
+
+func (o InstanceTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceTier] {
+	return pulumix.Output[*InstanceTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
@@ -726,6 +805,12 @@ func (in *instanceTierPtr) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
 
 func (in *instanceTierPtr) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTierPtrOutput)
+}
+
+func (in *instanceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceTier] {
+	return pulumix.Output[*InstanceTier]{
+		OutputState: in.ToInstanceTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -800,6 +885,12 @@ func (o InstanceTransitEncryptionModeOutput) ToInstanceTransitEncryptionModePtrO
 	}).(InstanceTransitEncryptionModePtrOutput)
 }
 
+func (o InstanceTransitEncryptionModeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceTransitEncryptionMode] {
+	return pulumix.Output[InstanceTransitEncryptionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceTransitEncryptionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -833,6 +924,12 @@ func (o InstanceTransitEncryptionModePtrOutput) ToInstanceTransitEncryptionModeP
 
 func (o InstanceTransitEncryptionModePtrOutput) ToInstanceTransitEncryptionModePtrOutputWithContext(ctx context.Context) InstanceTransitEncryptionModePtrOutput {
 	return o
+}
+
+func (o InstanceTransitEncryptionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceTransitEncryptionMode] {
+	return pulumix.Output[*InstanceTransitEncryptionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceTransitEncryptionModePtrOutput) Elem() InstanceTransitEncryptionModeOutput {
@@ -895,6 +992,12 @@ func (in *instanceTransitEncryptionModePtr) ToInstanceTransitEncryptionModePtrOu
 
 func (in *instanceTransitEncryptionModePtr) ToInstanceTransitEncryptionModePtrOutputWithContext(ctx context.Context) InstanceTransitEncryptionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTransitEncryptionModePtrOutput)
+}
+
+func (in *instanceTransitEncryptionModePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceTransitEncryptionMode] {
+	return pulumix.Output[*InstanceTransitEncryptionMode]{
+		OutputState: in.ToInstanceTransitEncryptionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
@@ -969,6 +1072,12 @@ func (o PersistenceConfigPersistenceModeOutput) ToPersistenceConfigPersistenceMo
 	}).(PersistenceConfigPersistenceModePtrOutput)
 }
 
+func (o PersistenceConfigPersistenceModeOutput) ToOutput(ctx context.Context) pulumix.Output[PersistenceConfigPersistenceMode] {
+	return pulumix.Output[PersistenceConfigPersistenceMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PersistenceConfigPersistenceModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1002,6 +1111,12 @@ func (o PersistenceConfigPersistenceModePtrOutput) ToPersistenceConfigPersistenc
 
 func (o PersistenceConfigPersistenceModePtrOutput) ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModePtrOutput {
 	return o
+}
+
+func (o PersistenceConfigPersistenceModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfigPersistenceMode] {
+	return pulumix.Output[*PersistenceConfigPersistenceMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PersistenceConfigPersistenceModePtrOutput) Elem() PersistenceConfigPersistenceModeOutput {
@@ -1064,6 +1179,12 @@ func (in *persistenceConfigPersistenceModePtr) ToPersistenceConfigPersistenceMod
 
 func (in *persistenceConfigPersistenceModePtr) ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PersistenceConfigPersistenceModePtrOutput)
+}
+
+func (in *persistenceConfigPersistenceModePtr) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfigPersistenceMode] {
+	return pulumix.Output[*PersistenceConfigPersistenceMode]{
+		OutputState: in.ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
@@ -1142,6 +1263,12 @@ func (o PersistenceConfigRdbSnapshotPeriodOutput) ToPersistenceConfigRdbSnapshot
 	}).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
 }
 
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToOutput(ctx context.Context) pulumix.Output[PersistenceConfigRdbSnapshotPeriod] {
+	return pulumix.Output[PersistenceConfigRdbSnapshotPeriod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PersistenceConfigRdbSnapshotPeriodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1175,6 +1302,12 @@ func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToPersistenceConfigRdbSnaps
 
 func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput {
 	return o
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfigRdbSnapshotPeriod] {
+	return pulumix.Output[*PersistenceConfigRdbSnapshotPeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) Elem() PersistenceConfigRdbSnapshotPeriodOutput {
@@ -1237,6 +1370,12 @@ func (in *persistenceConfigRdbSnapshotPeriodPtr) ToPersistenceConfigRdbSnapshotP
 
 func (in *persistenceConfigRdbSnapshotPeriodPtr) ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
+}
+
+func (in *persistenceConfigRdbSnapshotPeriodPtr) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfigRdbSnapshotPeriod] {
+	return pulumix.Output[*PersistenceConfigRdbSnapshotPeriod]{
+		OutputState: in.ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The day of week that maintenance updates occur.
@@ -1321,6 +1460,12 @@ func (o WeeklyMaintenanceWindowDayOutput) ToWeeklyMaintenanceWindowDayPtrOutputW
 	}).(WeeklyMaintenanceWindowDayPtrOutput)
 }
 
+func (o WeeklyMaintenanceWindowDayOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindowDay] {
+	return pulumix.Output[WeeklyMaintenanceWindowDay]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WeeklyMaintenanceWindowDayOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1354,6 +1499,12 @@ func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutp
 
 func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
 	return o
+}
+
+func (o WeeklyMaintenanceWindowDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeeklyMaintenanceWindowDay] {
+	return pulumix.Output[*WeeklyMaintenanceWindowDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WeeklyMaintenanceWindowDayPtrOutput) Elem() WeeklyMaintenanceWindowDayOutput {
@@ -1416,6 +1567,12 @@ func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutput()
 
 func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeklyMaintenanceWindowDayPtrOutput)
+}
+
+func (in *weeklyMaintenanceWindowDayPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeklyMaintenanceWindowDay] {
+	return pulumix.Output[*WeeklyMaintenanceWindowDay]{
+		OutputState: in.ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an import data file.
@@ -80,6 +81,12 @@ func (o LookupImportDataFileResultOutput) ToLookupImportDataFileResultOutput() L
 
 func (o LookupImportDataFileResultOutput) ToLookupImportDataFileResultOutputWithContext(ctx context.Context) LookupImportDataFileResultOutput {
 	return o
+}
+
+func (o LookupImportDataFileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImportDataFileResult] {
+	return pulumix.Output[LookupImportDataFileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the file was created.

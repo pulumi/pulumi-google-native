@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new policy in the specified project using the data included in the request.
@@ -157,6 +158,12 @@ func (i *NetworkFirewallPolicy) ToNetworkFirewallPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFirewallPolicyOutput)
 }
 
+func (i *NetworkFirewallPolicy) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicy] {
+	return pulumix.Output[*NetworkFirewallPolicy]{
+		OutputState: i.ToNetworkFirewallPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkFirewallPolicyOutput struct{ *pulumi.OutputState }
 
 func (NetworkFirewallPolicyOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o NetworkFirewallPolicyOutput) ToNetworkFirewallPolicyOutput() NetworkFire
 
 func (o NetworkFirewallPolicyOutput) ToNetworkFirewallPolicyOutputWithContext(ctx context.Context) NetworkFirewallPolicyOutput {
 	return o
+}
+
+func (o NetworkFirewallPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicy] {
+	return pulumix.Output[*NetworkFirewallPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of associations that belong to this firewall policy.

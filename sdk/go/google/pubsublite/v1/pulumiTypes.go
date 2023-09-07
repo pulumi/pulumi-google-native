@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i CapacityArgs) ToCapacityOutputWithContext(ctx context.Context) CapacityO
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityOutput)
 }
 
+func (i CapacityArgs) ToOutput(ctx context.Context) pulumix.Output[Capacity] {
+	return pulumix.Output[Capacity]{
+		OutputState: i.ToCapacityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CapacityArgs) ToCapacityPtrOutput() CapacityPtrOutput {
 	return i.ToCapacityPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *capacityPtrType) ToCapacityPtrOutputWithContext(ctx context.Context) Ca
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityPtrOutput)
 }
 
+func (i *capacityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Capacity] {
+	return pulumix.Output[*Capacity]{
+		OutputState: i.ToCapacityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The throughput capacity configuration for each partition.
 type CapacityOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o CapacityOutput) ToCapacityPtrOutputWithContext(ctx context.Context) Capa
 	}).(CapacityPtrOutput)
 }
 
+func (o CapacityOutput) ToOutput(ctx context.Context) pulumix.Output[Capacity] {
+	return pulumix.Output[Capacity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
 func (o CapacityOutput) PublishMibPerSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Capacity) *int { return v.PublishMibPerSec }).(pulumi.IntPtrOutput)
@@ -140,6 +159,12 @@ func (o CapacityPtrOutput) ToCapacityPtrOutput() CapacityPtrOutput {
 
 func (o CapacityPtrOutput) ToCapacityPtrOutputWithContext(ctx context.Context) CapacityPtrOutput {
 	return o
+}
+
+func (o CapacityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Capacity] {
+	return pulumix.Output[*Capacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CapacityPtrOutput) Elem() CapacityOutput {
@@ -195,6 +220,12 @@ func (o CapacityResponseOutput) ToCapacityResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o CapacityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CapacityResponse] {
+	return pulumix.Output[CapacityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
 func (o CapacityResponseOutput) PublishMibPerSec() pulumi.IntOutput {
 	return o.ApplyT(func(v CapacityResponse) int { return v.PublishMibPerSec }).(pulumi.IntOutput)
@@ -240,6 +271,12 @@ func (i DeliveryConfigArgs) ToDeliveryConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigOutput)
 }
 
+func (i DeliveryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DeliveryConfig] {
+	return pulumix.Output[DeliveryConfig]{
+		OutputState: i.ToDeliveryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeliveryConfigArgs) ToDeliveryConfigPtrOutput() DeliveryConfigPtrOutput {
 	return i.ToDeliveryConfigPtrOutputWithContext(context.Background())
 }
@@ -281,6 +318,12 @@ func (i *deliveryConfigPtrType) ToDeliveryConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigPtrOutput)
 }
 
+func (i *deliveryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeliveryConfig] {
+	return pulumix.Output[*DeliveryConfig]{
+		OutputState: i.ToDeliveryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The settings for a subscription's message delivery.
 type DeliveryConfigOutput struct{ *pulumi.OutputState }
 
@@ -306,6 +349,12 @@ func (o DeliveryConfigOutput) ToDeliveryConfigPtrOutputWithContext(ctx context.C
 	}).(DeliveryConfigPtrOutput)
 }
 
+func (o DeliveryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryConfig] {
+	return pulumix.Output[DeliveryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The DeliveryRequirement for this subscription.
 func (o DeliveryConfigOutput) DeliveryRequirement() DeliveryConfigDeliveryRequirementPtrOutput {
 	return o.ApplyT(func(v DeliveryConfig) *DeliveryConfigDeliveryRequirement { return v.DeliveryRequirement }).(DeliveryConfigDeliveryRequirementPtrOutput)
@@ -323,6 +372,12 @@ func (o DeliveryConfigPtrOutput) ToDeliveryConfigPtrOutput() DeliveryConfigPtrOu
 
 func (o DeliveryConfigPtrOutput) ToDeliveryConfigPtrOutputWithContext(ctx context.Context) DeliveryConfigPtrOutput {
 	return o
+}
+
+func (o DeliveryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryConfig] {
+	return pulumix.Output[*DeliveryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeliveryConfigPtrOutput) Elem() DeliveryConfigOutput {
@@ -364,6 +419,12 @@ func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponseOutput() DeliveryC
 
 func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponseOutputWithContext(ctx context.Context) DeliveryConfigResponseOutput {
 	return o
+}
+
+func (o DeliveryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryConfigResponse] {
+	return pulumix.Output[DeliveryConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The DeliveryRequirement for this subscription.
@@ -414,6 +475,12 @@ func (i ExportConfigArgs) ToExportConfigOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(ExportConfigOutput)
 }
 
+func (i ExportConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExportConfig] {
+	return pulumix.Output[ExportConfig]{
+		OutputState: i.ToExportConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExportConfigArgs) ToExportConfigPtrOutput() ExportConfigPtrOutput {
 	return i.ToExportConfigPtrOutputWithContext(context.Background())
 }
@@ -455,6 +522,12 @@ func (i *exportConfigPtrType) ToExportConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ExportConfigPtrOutput)
 }
 
+func (i *exportConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportConfig] {
+	return pulumix.Output[*ExportConfig]{
+		OutputState: i.ToExportConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
 type ExportConfigOutput struct{ *pulumi.OutputState }
 
@@ -478,6 +551,12 @@ func (o ExportConfigOutput) ToExportConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExportConfig) *ExportConfig {
 		return &v
 	}).(ExportConfigPtrOutput)
+}
+
+func (o ExportConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExportConfig] {
+	return pulumix.Output[ExportConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
@@ -507,6 +586,12 @@ func (o ExportConfigPtrOutput) ToExportConfigPtrOutput() ExportConfigPtrOutput {
 
 func (o ExportConfigPtrOutput) ToExportConfigPtrOutputWithContext(ctx context.Context) ExportConfigPtrOutput {
 	return o
+}
+
+func (o ExportConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportConfig] {
+	return pulumix.Output[*ExportConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExportConfigPtrOutput) Elem() ExportConfigOutput {
@@ -576,6 +661,12 @@ func (o ExportConfigResponseOutput) ToExportConfigResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o ExportConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportConfigResponse] {
+	return pulumix.Output[ExportConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The current state of the export, which may be different to the desired state due to errors. This field is output only.
 func (o ExportConfigResponseOutput) CurrentState() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportConfigResponse) string { return v.CurrentState }).(pulumi.StringOutput)
@@ -643,6 +734,12 @@ func (i PartitionConfigArgs) ToPartitionConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PartitionConfigOutput)
 }
 
+func (i PartitionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PartitionConfig] {
+	return pulumix.Output[PartitionConfig]{
+		OutputState: i.ToPartitionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PartitionConfigArgs) ToPartitionConfigPtrOutput() PartitionConfigPtrOutput {
 	return i.ToPartitionConfigPtrOutputWithContext(context.Background())
 }
@@ -684,6 +781,12 @@ func (i *partitionConfigPtrType) ToPartitionConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PartitionConfigPtrOutput)
 }
 
+func (i *partitionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PartitionConfig] {
+	return pulumix.Output[*PartitionConfig]{
+		OutputState: i.ToPartitionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The settings for a topic's partitions.
 type PartitionConfigOutput struct{ *pulumi.OutputState }
 
@@ -707,6 +810,12 @@ func (o PartitionConfigOutput) ToPartitionConfigPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PartitionConfig) *PartitionConfig {
 		return &v
 	}).(PartitionConfigPtrOutput)
+}
+
+func (o PartitionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PartitionConfig] {
+	return pulumix.Output[PartitionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The capacity configuration.
@@ -738,6 +847,12 @@ func (o PartitionConfigPtrOutput) ToPartitionConfigPtrOutput() PartitionConfigPt
 
 func (o PartitionConfigPtrOutput) ToPartitionConfigPtrOutputWithContext(ctx context.Context) PartitionConfigPtrOutput {
 	return o
+}
+
+func (o PartitionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PartitionConfig] {
+	return pulumix.Output[*PartitionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PartitionConfigPtrOutput) Elem() PartitionConfigOutput {
@@ -809,6 +924,12 @@ func (o PartitionConfigResponseOutput) ToPartitionConfigResponseOutputWithContex
 	return o
 }
 
+func (o PartitionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PartitionConfigResponse] {
+	return pulumix.Output[PartitionConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The capacity configuration.
 func (o PartitionConfigResponseOutput) Capacity() CapacityResponseOutput {
 	return o.ApplyT(func(v PartitionConfigResponse) CapacityResponse { return v.Capacity }).(CapacityResponseOutput)
@@ -861,6 +982,12 @@ func (i PubSubConfigArgs) ToPubSubConfigOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PubSubConfigOutput)
 }
 
+func (i PubSubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PubSubConfig] {
+	return pulumix.Output[PubSubConfig]{
+		OutputState: i.ToPubSubConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PubSubConfigArgs) ToPubSubConfigPtrOutput() PubSubConfigPtrOutput {
 	return i.ToPubSubConfigPtrOutputWithContext(context.Background())
 }
@@ -902,6 +1029,12 @@ func (i *pubSubConfigPtrType) ToPubSubConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PubSubConfigPtrOutput)
 }
 
+func (i *pubSubConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PubSubConfig] {
+	return pulumix.Output[*PubSubConfig]{
+		OutputState: i.ToPubSubConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for exporting to a Pub/Sub topic.
 type PubSubConfigOutput struct{ *pulumi.OutputState }
 
@@ -927,6 +1060,12 @@ func (o PubSubConfigOutput) ToPubSubConfigPtrOutputWithContext(ctx context.Conte
 	}).(PubSubConfigPtrOutput)
 }
 
+func (o PubSubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PubSubConfig] {
+	return pulumix.Output[PubSubConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
 func (o PubSubConfigOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PubSubConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
@@ -944,6 +1083,12 @@ func (o PubSubConfigPtrOutput) ToPubSubConfigPtrOutput() PubSubConfigPtrOutput {
 
 func (o PubSubConfigPtrOutput) ToPubSubConfigPtrOutputWithContext(ctx context.Context) PubSubConfigPtrOutput {
 	return o
+}
+
+func (o PubSubConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PubSubConfig] {
+	return pulumix.Output[*PubSubConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PubSubConfigPtrOutput) Elem() PubSubConfigOutput {
@@ -987,6 +1132,12 @@ func (o PubSubConfigResponseOutput) ToPubSubConfigResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o PubSubConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PubSubConfigResponse] {
+	return pulumix.Output[PubSubConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
 func (o PubSubConfigResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubSubConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
@@ -1025,6 +1176,12 @@ func (i ReservationConfigArgs) ToReservationConfigOutput() ReservationConfigOutp
 
 func (i ReservationConfigArgs) ToReservationConfigOutputWithContext(ctx context.Context) ReservationConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigOutput)
+}
+
+func (i ReservationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ReservationConfig] {
+	return pulumix.Output[ReservationConfig]{
+		OutputState: i.ToReservationConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ReservationConfigArgs) ToReservationConfigPtrOutput() ReservationConfigPtrOutput {
@@ -1068,6 +1225,12 @@ func (i *reservationConfigPtrType) ToReservationConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationConfigPtrOutput)
 }
 
+func (i *reservationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReservationConfig] {
+	return pulumix.Output[*ReservationConfig]{
+		OutputState: i.ToReservationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The settings for this topic's Reservation usage.
 type ReservationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1093,6 +1256,12 @@ func (o ReservationConfigOutput) ToReservationConfigPtrOutputWithContext(ctx con
 	}).(ReservationConfigPtrOutput)
 }
 
+func (o ReservationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ReservationConfig] {
+	return pulumix.Output[ReservationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
 func (o ReservationConfigOutput) ThroughputReservation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationConfig) *string { return v.ThroughputReservation }).(pulumi.StringPtrOutput)
@@ -1110,6 +1279,12 @@ func (o ReservationConfigPtrOutput) ToReservationConfigPtrOutput() ReservationCo
 
 func (o ReservationConfigPtrOutput) ToReservationConfigPtrOutputWithContext(ctx context.Context) ReservationConfigPtrOutput {
 	return o
+}
+
+func (o ReservationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservationConfig] {
+	return pulumix.Output[*ReservationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservationConfigPtrOutput) Elem() ReservationConfigOutput {
@@ -1151,6 +1326,12 @@ func (o ReservationConfigResponseOutput) ToReservationConfigResponseOutput() Res
 
 func (o ReservationConfigResponseOutput) ToReservationConfigResponseOutputWithContext(ctx context.Context) ReservationConfigResponseOutput {
 	return o
+}
+
+func (o ReservationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReservationConfigResponse] {
+	return pulumix.Output[ReservationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
@@ -1197,6 +1378,12 @@ func (i RetentionConfigArgs) ToRetentionConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionConfigOutput)
 }
 
+func (i RetentionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RetentionConfig] {
+	return pulumix.Output[RetentionConfig]{
+		OutputState: i.ToRetentionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RetentionConfigArgs) ToRetentionConfigPtrOutput() RetentionConfigPtrOutput {
 	return i.ToRetentionConfigPtrOutputWithContext(context.Background())
 }
@@ -1238,6 +1425,12 @@ func (i *retentionConfigPtrType) ToRetentionConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionConfigPtrOutput)
 }
 
+func (i *retentionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetentionConfig] {
+	return pulumix.Output[*RetentionConfig]{
+		OutputState: i.ToRetentionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The settings for a topic's message retention.
 type RetentionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1263,6 +1456,12 @@ func (o RetentionConfigOutput) ToRetentionConfigPtrOutputWithContext(ctx context
 	}).(RetentionConfigPtrOutput)
 }
 
+func (o RetentionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionConfig] {
+	return pulumix.Output[RetentionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
 func (o RetentionConfigOutput) PerPartitionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionConfig) *string { return v.PerPartitionBytes }).(pulumi.StringPtrOutput)
@@ -1285,6 +1484,12 @@ func (o RetentionConfigPtrOutput) ToRetentionConfigPtrOutput() RetentionConfigPt
 
 func (o RetentionConfigPtrOutput) ToRetentionConfigPtrOutputWithContext(ctx context.Context) RetentionConfigPtrOutput {
 	return o
+}
+
+func (o RetentionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionConfig] {
+	return pulumix.Output[*RetentionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionConfigPtrOutput) Elem() RetentionConfigOutput {
@@ -1338,6 +1543,12 @@ func (o RetentionConfigResponseOutput) ToRetentionConfigResponseOutput() Retenti
 
 func (o RetentionConfigResponseOutput) ToRetentionConfigResponseOutputWithContext(ctx context.Context) RetentionConfigResponseOutput {
 	return o
+}
+
+func (o RetentionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionConfigResponse] {
+	return pulumix.Output[RetentionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.

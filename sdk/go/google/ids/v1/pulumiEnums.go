@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Lowest threat severity that this endpoint will alert on.
@@ -259,6 +278,12 @@ func (o EndpointSeverityOutput) ToEndpointSeverityPtrOutputWithContext(ctx conte
 	}).(EndpointSeverityPtrOutput)
 }
 
+func (o EndpointSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointSeverity] {
+	return pulumix.Output[EndpointSeverity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -292,6 +317,12 @@ func (o EndpointSeverityPtrOutput) ToEndpointSeverityPtrOutput() EndpointSeverit
 
 func (o EndpointSeverityPtrOutput) ToEndpointSeverityPtrOutputWithContext(ctx context.Context) EndpointSeverityPtrOutput {
 	return o
+}
+
+func (o EndpointSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointSeverity] {
+	return pulumix.Output[*EndpointSeverity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointSeverityPtrOutput) Elem() EndpointSeverityOutput {
@@ -354,6 +385,12 @@ func (in *endpointSeverityPtr) ToEndpointSeverityPtrOutput() EndpointSeverityPtr
 
 func (in *endpointSeverityPtr) ToEndpointSeverityPtrOutputWithContext(ctx context.Context) EndpointSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointSeverityPtrOutput)
+}
+
+func (in *endpointSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointSeverity] {
+	return pulumix.Output[*EndpointSeverity]{
+		OutputState: in.ToEndpointSeverityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

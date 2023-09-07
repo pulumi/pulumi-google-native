@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new AppGateway in a given project and location.
@@ -158,6 +159,12 @@ func (i *AppGateway) ToAppGatewayOutputWithContext(ctx context.Context) AppGatew
 	return pulumi.ToOutputWithContext(ctx, i).(AppGatewayOutput)
 }
 
+func (i *AppGateway) ToOutput(ctx context.Context) pulumix.Output[*AppGateway] {
+	return pulumix.Output[*AppGateway]{
+		OutputState: i.ToAppGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppGatewayOutput struct{ *pulumi.OutputState }
 
 func (AppGatewayOutput) ElementType() reflect.Type {
@@ -170,6 +177,12 @@ func (o AppGatewayOutput) ToAppGatewayOutput() AppGatewayOutput {
 
 func (o AppGatewayOutput) ToAppGatewayOutputWithContext(ctx context.Context) AppGatewayOutput {
 	return o
+}
+
+func (o AppGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGateway] {
+	return pulumix.Output[*AppGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of connections allocated for the Gateway

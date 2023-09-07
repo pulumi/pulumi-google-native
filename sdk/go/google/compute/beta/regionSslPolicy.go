@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new policy in the specified project and region using the data included in the request.
@@ -149,6 +150,12 @@ func (i *RegionSslPolicy) ToRegionSslPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslPolicyOutput)
 }
 
+func (i *RegionSslPolicy) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicy] {
+	return pulumix.Output[*RegionSslPolicy]{
+		OutputState: i.ToRegionSslPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionSslPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionSslPolicyOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o RegionSslPolicyOutput) ToRegionSslPolicyOutput() RegionSslPolicyOutput {
 
 func (o RegionSslPolicyOutput) ToRegionSslPolicyOutputWithContext(ctx context.Context) RegionSslPolicyOutput {
 	return o
+}
+
+func (o RegionSslPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicy] {
+	return pulumix.Output[*RegionSslPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
@@ -84,6 +85,12 @@ func (o LookupSslCertResultOutput) ToLookupSslCertResultOutput() LookupSslCertRe
 
 func (o LookupSslCertResultOutput) ToLookupSslCertResultOutputWithContext(ctx context.Context) LookupSslCertResultOutput {
 	return o
+}
+
+func (o LookupSslCertResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSslCertResult] {
+	return pulumix.Output[LookupSslCertResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // PEM representation.

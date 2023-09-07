@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single bare metal Cluster.
@@ -128,6 +129,12 @@ func (o LookupBareMetalClusterResultOutput) ToLookupBareMetalClusterResultOutput
 
 func (o LookupBareMetalClusterResultOutput) ToLookupBareMetalClusterResultOutputWithContext(ctx context.Context) LookupBareMetalClusterResultOutput {
 	return o
+}
+
+func (o LookupBareMetalClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBareMetalClusterResult] {
+	return pulumix.Output[LookupBareMetalClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership.

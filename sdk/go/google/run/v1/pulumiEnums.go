@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The mode of the certificate.
@@ -252,6 +271,12 @@ func (o DomainMappingSpecCertificateModeOutput) ToDomainMappingSpecCertificateMo
 	}).(DomainMappingSpecCertificateModePtrOutput)
 }
 
+func (o DomainMappingSpecCertificateModeOutput) ToOutput(ctx context.Context) pulumix.Output[DomainMappingSpecCertificateMode] {
+	return pulumix.Output[DomainMappingSpecCertificateMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DomainMappingSpecCertificateModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -285,6 +310,12 @@ func (o DomainMappingSpecCertificateModePtrOutput) ToDomainMappingSpecCertificat
 
 func (o DomainMappingSpecCertificateModePtrOutput) ToDomainMappingSpecCertificateModePtrOutputWithContext(ctx context.Context) DomainMappingSpecCertificateModePtrOutput {
 	return o
+}
+
+func (o DomainMappingSpecCertificateModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSpecCertificateMode] {
+	return pulumix.Output[*DomainMappingSpecCertificateMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainMappingSpecCertificateModePtrOutput) Elem() DomainMappingSpecCertificateModeOutput {
@@ -347,6 +378,12 @@ func (in *domainMappingSpecCertificateModePtr) ToDomainMappingSpecCertificateMod
 
 func (in *domainMappingSpecCertificateModePtr) ToDomainMappingSpecCertificateModePtrOutputWithContext(ctx context.Context) DomainMappingSpecCertificateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DomainMappingSpecCertificateModePtrOutput)
+}
+
+func (in *domainMappingSpecCertificateModePtr) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSpecCertificateMode] {
+	return pulumix.Output[*DomainMappingSpecCertificateMode]{
+		OutputState: in.ToDomainMappingSpecCertificateModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Resource record type. Example: `AAAA`.

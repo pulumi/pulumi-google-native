@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a model.
@@ -98,6 +99,12 @@ func (o LookupModelResultOutput) ToLookupModelResultOutput() LookupModelResultOu
 
 func (o LookupModelResultOutput) ToLookupModelResultOutputWithContext(ctx context.Context) LookupModelResultOutput {
 	return o
+}
+
+func (o LookupModelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupModelResult] {
+	return pulumix.Output[LookupModelResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamp the Recommendation Model was created at.

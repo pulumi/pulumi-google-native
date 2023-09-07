@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToGoogleCloudIdenti
 
 func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowByDefault] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowByDefault]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
@@ -89,6 +96,12 @@ func (i *googleCloudIdentitytoolkitAdminV2AllowByDefaultPtrType) ToGoogleCloudId
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2AllowByDefaultPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowByDefault] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowByDefault]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
 type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) ToGoogleCloudIden
 	}).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowByDefault] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowByDefault]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
 func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) DisallowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AllowByDefault) []string { return v.DisallowedRegions }).(pulumi.StringArrayOutput)
@@ -131,6 +150,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) ToGoogleCloudI
 
 func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowByDefault] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowByDefault]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput {
@@ -174,6 +199,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
 func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput) DisallowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse) []string { return v.DisallowedRegions }).(pulumi.StringArrayOutput)
@@ -212,6 +243,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToGoogleCloudIdentit
 
 func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowlistOnly] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowlistOnly]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
@@ -255,6 +292,12 @@ func (i *googleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrType) ToGoogleCloudIde
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowlistOnly] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowlistOnly]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines a policy of only allowing regions by explicitly adding them to an allowlist.
 type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput struct{ *pulumi.OutputState }
 
@@ -280,6 +323,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) ToGoogleCloudIdent
 	}).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowlistOnly] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowlistOnly]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
 func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) AllowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AllowlistOnly) []string { return v.AllowedRegions }).(pulumi.StringArrayOutput)
@@ -297,6 +346,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) ToGoogleCloudId
 
 func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowlistOnly] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AllowlistOnly]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput {
@@ -338,6 +393,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput) ToGoogleCl
 
 func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
@@ -382,6 +443,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs) ToGoogleCloudIde
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutputWithContext(context.Background())
 }
@@ -423,6 +490,12 @@ func (i *googleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional config for SignInWithApple.
 type GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutput struct{ *pulumi.OutputState }
 
@@ -448,6 +521,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutput) ToGoogleCloudI
 	}).(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of Bundle ID's usable by this project
 func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutput) BundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig) []string { return v.BundleIds }).(pulumi.StringArrayOutput)
@@ -471,6 +550,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput) ToGoogleClo
 
 func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutput {
@@ -524,6 +609,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponseOutput) ToGoog
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of Bundle ID's usable by this project
 func (o GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponseOutput) BundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse) []string { return v.BundleIds }).(pulumi.StringArrayOutput)
@@ -570,6 +661,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutputWithContext(context.Background())
 }
@@ -611,6 +708,12 @@ func (i *googleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Options related to how clients making requests on behalf of a tenant should be configured.
 type GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigOutput struct{ *pulumi.OutputState }
 
@@ -636,6 +739,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigOutput) ToGoogleC
 	}).(GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Configuration related to restricting a user's ability to affect their account.
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigOutput) Permissions() GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig) *GoogleCloudIdentitytoolkitAdminV2ClientPermissions {
@@ -655,6 +764,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput) ToGoog
 
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigOutput {
@@ -696,6 +811,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponseOutput) T
 
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration related to restricting a user's ability to affect their account.
@@ -744,6 +865,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2ClientPermissionsArgs) ToGoogleCloudIde
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ClientPermissionsOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2ClientPermissionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissions] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissions]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2ClientPermissionsArgs) ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput() GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutputWithContext(context.Background())
 }
@@ -785,6 +912,12 @@ func (i *googleCloudIdentitytoolkitAdminV2ClientPermissionsPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2ClientPermissionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissions] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissions]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration related to restricting a user's ability to affect their account.
 type GoogleCloudIdentitytoolkitAdminV2ClientPermissionsOutput struct{ *pulumi.OutputState }
 
@@ -810,6 +943,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsOutput) ToGoogleCloudI
 	}).(GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissions] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // When true, end users cannot delete their account on the associated project through any of our API methods
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsOutput) DisabledUserDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ClientPermissions) *bool { return v.DisabledUserDeletion }).(pulumi.BoolPtrOutput)
@@ -832,6 +971,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput) ToGoogleClo
 
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissions] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ClientPermissions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2ClientPermissionsOutput {
@@ -887,6 +1032,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponseOutput) ToGoog
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // When true, end users cannot delete their account on the associated project through any of our API methods
 func (o GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponseOutput) DisabledUserDeletion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse) bool { return v.DisabledUserDeletion }).(pulumi.BoolOutput)
@@ -940,6 +1091,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigArgs) ToGoogleCloudIdenti
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2CodeFlowConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutputWithContext(context.Background())
 }
@@ -981,6 +1138,12 @@ func (i *googleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrType) ToGoogleCloudId
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Additional config for Apple for code flow.
 type GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigOutput struct{ *pulumi.OutputState }
 
@@ -1004,6 +1167,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigOutput) ToGoogleCloudIden
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig) *GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key ID for the private key.
@@ -1033,6 +1202,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput) ToGoogleCloudI
 
 func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigOutput {
@@ -1098,6 +1273,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponseOutput) ToGoogleC
 
 func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key ID for the private key.
@@ -1170,6 +1351,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(context.Background())
 }
@@ -1211,6 +1398,12 @@ func (i *googleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Custom strength options to enforce on user passwords.
 type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1234,6 +1427,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ToGoogleCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password must contain a lower case character.
@@ -1286,6 +1485,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ToGoogl
 
 func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput {
@@ -1389,6 +1594,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) To
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The password must contain a lower case character.
 func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ContainsLowercaseCharacter() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse) bool {
@@ -1462,6 +1673,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs) ToGoogleCloudId
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutputWithContext(context.Background())
 }
@@ -1503,6 +1720,12 @@ func (i *googleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for settings related to email privacy and public visibility. Settings in this config protect against email enumeration, but may make some trade-offs in user-friendliness.
 type GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutput struct{ *pulumi.OutputState }
 
@@ -1528,6 +1751,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutput) ToGoogleCloud
 	}).(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Migrates the project to a state of improved email privacy. For example certain error codes are more generic to avoid giving away information on whether the account exists. In addition, this disables certain features that as a side-effect allow user enumeration. Enabling this toggle disables the fetchSignInMethodsForEmail functionality and changing the user's email to an unverified email. It is recommended to remove dependence on this functionality and enable this toggle to improve user privacy.
 func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutput) EnableImprovedEmailPrivacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig) *bool { return v.EnableImprovedEmailPrivacy }).(pulumi.BoolPtrOutput)
@@ -1545,6 +1774,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput) ToGoogleCl
 
 func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutput {
@@ -1588,6 +1823,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput) ToGoo
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Migrates the project to a state of improved email privacy. For example certain error codes are more generic to avoid giving away information on whether the account exists. In addition, this disables certain features that as a side-effect allow user enumeration. Enabling this toggle disables the fetchSignInMethodsForEmail functionality and changing the user's email to an unverified email. It is recommended to remove dependence on this functionality and enable this toggle to improve user privacy.
 func (o GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput) EnableImprovedEmailPrivacy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse) bool {
@@ -1622,6 +1863,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2HashConfigResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudIdentitytoolkitAdminV2HashConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2HashConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2HashConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2HashConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2HashConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2HashConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Different password hash algorithms used in Identity Toolkit.
@@ -1684,6 +1931,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2IdpCertificateArgs) ToGoogleCloudIdenti
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2IdpCertificateOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2IdpCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpCertificate] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpCertificate]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2IdpCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2IdpCertificateArray and GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayInput` via:
 //
@@ -1709,6 +1962,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2IdpCertificateArray) ToGoogleCloudIdent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2IdpCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2IdpCertificate] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2IdpCertificate]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 type GoogleCloudIdentitytoolkitAdminV2IdpCertificateOutput struct{ *pulumi.OutputState }
 
@@ -1722,6 +1981,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateOutput) ToGoogleCloudIden
 
 func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateOutput) ToGoogleCloudIdentitytoolkitAdminV2IdpCertificateOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2IdpCertificateOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpCertificate] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The x509 certificate
@@ -1741,6 +2006,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutput) ToGoogleClou
 
 func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2IdpCertificate] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2IdpCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2IdpCertificateOutput {
@@ -1770,6 +2041,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The x509 certificate
 func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseOutput) X509Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse) string { return v.X509Certificate }).(pulumi.StringOutput)
@@ -1787,6 +2064,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseArrayOutput) ToGo
 
 func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseOutput {
@@ -1842,6 +2125,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs) ToGoogleCloudIdentitytoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2IdpConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2IdpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutputWithContext(context.Background())
 }
@@ -1883,6 +2172,12 @@ func (i *googleCloudIdentitytoolkitAdminV2IdpConfigPtrType) ToGoogleCloudIdentit
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2IdpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2IdpConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2IdpConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
 type GoogleCloudIdentitytoolkitAdminV2IdpConfigOutput struct{ *pulumi.OutputState }
 
@@ -1906,6 +2201,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigOutput) ToGoogleCloudIdentityt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2IdpConfig) *GoogleCloudIdentitytoolkitAdminV2IdpConfig {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IDP's public keys for verifying signature in the assertions.
@@ -1942,6 +2243,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput) ToGoogleCloudIdenti
 
 func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2IdpConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2IdpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2IdpConfigOutput {
@@ -2021,6 +2328,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigResponseOutput) ToGoogleCloudI
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // IDP's public keys for verifying signature in the assertions.
 func (o GoogleCloudIdentitytoolkitAdminV2IdpConfigResponseOutput) IdpCertificates() GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse) []GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse {
@@ -2078,6 +2391,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2InheritanceArgs) ToGoogleCloudIdentityt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2InheritanceOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2InheritanceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2Inheritance] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2Inheritance]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2InheritanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2InheritanceArgs) ToGoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput() GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2InheritancePtrOutputWithContext(context.Background())
 }
@@ -2119,6 +2438,12 @@ func (i *googleCloudIdentitytoolkitAdminV2InheritancePtrType) ToGoogleCloudIdent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2InheritancePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2Inheritance] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2Inheritance]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2InheritancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings that the tenants will inherit from project level.
 type GoogleCloudIdentitytoolkitAdminV2InheritanceOutput struct{ *pulumi.OutputState }
 
@@ -2144,6 +2469,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2InheritanceOutput) ToGoogleCloudIdentit
 	}).(GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2InheritanceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2Inheritance] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2Inheritance]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to allow the tenant to inherit custom domains, email templates, and custom SMTP settings. If true, email sent from tenant will follow the project level email sending configurations. If false (by default), emails will go with the default settings with no customizations.
 func (o GoogleCloudIdentitytoolkitAdminV2InheritanceOutput) EmailSendingConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2Inheritance) *bool { return v.EmailSendingConfig }).(pulumi.BoolPtrOutput)
@@ -2161,6 +2492,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput) ToGoogleCloudIden
 
 func (o GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2InheritancePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2Inheritance] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2Inheritance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2InheritanceOutput {
@@ -2204,6 +2541,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2InheritanceResponseOutput) ToGoogleClou
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2InheritanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2InheritanceResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2InheritanceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to allow the tenant to inherit custom domains, email templates, and custom SMTP settings. If true, email sent from tenant will follow the project level email sending configurations. If false (by default), emails will go with the default settings with no customizations.
 func (o GoogleCloudIdentitytoolkitAdminV2InheritanceResponseOutput) EmailSendingConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2InheritanceResponse) bool { return v.EmailSendingConfig }).(pulumi.BoolOutput)
@@ -2242,6 +2585,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToGoogleCloudIden
 
 func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MonitoringConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MonitoringConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
@@ -2285,6 +2634,12 @@ func (i *googleCloudIdentitytoolkitAdminV2MonitoringConfigPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2MonitoringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MonitoringConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MonitoringConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration related to monitoring project activity.
 type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput struct{ *pulumi.OutputState }
 
@@ -2310,6 +2665,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) ToGoogleCloudId
 	}).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MonitoringConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MonitoringConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Configuration for logging requests made to this project to Stackdriver Logging
 func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) RequestLogging() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MonitoringConfig) *GoogleCloudIdentitytoolkitAdminV2RequestLogging {
@@ -2329,6 +2690,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) ToGoogleClou
 
 func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MonitoringConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MonitoringConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput {
@@ -2370,6 +2737,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) ToGoogl
 
 func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration for logging requests made to this project to Stackdriver Logging
@@ -2422,6 +2795,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutputWithContext(context.Background())
 }
@@ -2463,6 +2842,12 @@ func (i *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Options related to MultiFactor Authentication for the project.
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput struct{ *pulumi.OutputState }
 
@@ -2486,6 +2871,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput) ToGoogleCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig) *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of usable second factors for this project.
@@ -2521,6 +2912,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput {
@@ -2588,6 +2985,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput) To
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of usable second factors for this project.
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput) EnabledProviders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse) []string {
@@ -2650,6 +3053,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs) ToGoogleCloudIde
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2OAuthResponseType] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2OAuthResponseType]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs) ToGoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput() GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutputWithContext(context.Background())
 }
@@ -2691,6 +3100,12 @@ func (i *googleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2OAuthResponseType] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2OAuthResponseType]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported. See https://openid.net/specs/openid-connect-core-1_0.html#Authentication for a mapping of response type to OAuth 2.0 flow.
 type GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput struct{ *pulumi.OutputState }
 
@@ -2714,6 +3129,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput) ToGoogleCloudI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2OAuthResponseType) *GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2OAuthResponseType] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2OAuthResponseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If true, authorization code is returned from IdP's authorization endpoint.
@@ -2743,6 +3164,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput) ToGoogleClo
 
 func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2OAuthResponseType] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2OAuthResponseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput {
@@ -2810,6 +3237,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) ToGoog
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If true, authorization code is returned from IdP's authorization endpoint.
 func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) Code() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse) bool { return v.Code }).(pulumi.BoolOutput)
@@ -2868,6 +3301,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(context.Background())
 }
@@ -2909,6 +3348,12 @@ func (i *googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration for the password policy on the project.
 type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput struct{ *pulumi.OutputState }
 
@@ -2932,6 +3377,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Users must have a password compliant with the password policy to sign-in.
@@ -2965,6 +3416,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) ToGoogle
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput {
@@ -3034,6 +3491,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) ToG
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Users must have a password compliant with the password policy to sign-in.
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) ForceUpgradeOnSignin() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse) bool {
@@ -3095,6 +3558,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray and GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayInput` via:
 //
@@ -3120,6 +3589,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The strength attributes for the password policy on the project.
 type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput struct{ *pulumi.OutputState }
 
@@ -3133,6 +3608,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput) ToGoogleCl
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The custom strength options enforced by the password policy.
@@ -3154,6 +3635,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) ToGoo
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput {
@@ -3185,6 +3672,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) To
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The custom strength options enforced by the password policy.
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) CustomStrengthOptions() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
@@ -3209,6 +3702,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutpu
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput {
@@ -3256,6 +3755,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs) ToGoogleCloudIdenti
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray and GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput` via:
 //
@@ -3281,6 +3786,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray) ToGoogleCloudIdent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2ProviderConfig] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2ProviderConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProviderConfig describes the supported MFA providers along with their configurations.
 type GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput struct{ *pulumi.OutputState }
 
@@ -3294,6 +3805,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) ToGoogleCloudIden
 
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the state of the MultiFactor Authentication type.
@@ -3322,6 +3839,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) ToGoogleClou
 
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2ProviderConfig] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2ProviderConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput {
@@ -3353,6 +3876,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes the state of the MultiFactor Authentication type.
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse) string { return v.State }).(pulumi.StringOutput)
@@ -3377,6 +3906,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) ToGo
 
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput {
@@ -3428,6 +3963,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ToGoogleCloudIdent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(context.Background())
 }
@@ -3469,6 +4010,12 @@ func (i *googleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrType) ToGoogleCloudI
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The reCAPTCHA Enterprise integration config.
 type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput struct{ *pulumi.OutputState }
 
@@ -3492,6 +4039,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ToGoogleCloudIde
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
@@ -3525,6 +4078,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput {
@@ -3594,6 +4153,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) ToGoogle
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) EmailPasswordEnforcementState() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse) string {
@@ -3643,6 +4208,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) ToGoogleClo
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -3665,6 +4236,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) ToGoog
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput {
@@ -3712,6 +4289,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray and GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayInput` via:
 //
@@ -3737,6 +4320,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
 type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput struct{ *pulumi.OutputState }
 
@@ -3750,6 +4339,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) ToGoogleClo
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
@@ -3776,6 +4371,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) ToGoog
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput {
@@ -3807,6 +4408,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) ToG
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse) string { return v.Action }).(pulumi.StringOutput)
@@ -3829,6 +4436,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput {
@@ -3872,6 +4485,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ToGoogleCloudIdenti
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RequestLogging] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RequestLogging]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(context.Background())
 }
@@ -3913,6 +4532,12 @@ func (i *googleCloudIdentitytoolkitAdminV2RequestLoggingPtrType) ToGoogleCloudId
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2RequestLoggingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RequestLogging] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RequestLogging]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for logging requests made to this project to Stackdriver Logging
 type GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput struct{ *pulumi.OutputState }
 
@@ -3938,6 +4563,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) ToGoogleCloudIden
 	}).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RequestLogging] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RequestLogging]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether logging is enabled for this project or not.
 func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RequestLogging) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -3955,6 +4586,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) ToGoogleCloudI
 
 func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RequestLogging] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RequestLogging]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput {
@@ -3996,6 +4633,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) ToGoogleC
 
 func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether logging is enabled for this project or not.
@@ -4042,6 +4685,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ToGoogleCloudIdent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(context.Background())
 }
@@ -4083,6 +4732,12 @@ func (i *googleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrType) ToGoogleCloudI
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
 type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput struct{ *pulumi.OutputState }
 
@@ -4106,6 +4761,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) ToGoogleCloudIde
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig) *GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
 		return &v
 	}).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
@@ -4134,6 +4795,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput {
@@ -4189,6 +4856,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) ToGoogle
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
 func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) AllowByDefault() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse {
@@ -4226,6 +4899,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseOutput) ToGoogleCl
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Timestamp of the cert expiration instance.
 func (o GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse) string { return v.ExpiresAt }).(pulumi.StringOutput)
@@ -4248,6 +4927,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutput) ToGoo
 
 func (o GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseOutput {
@@ -4295,6 +4980,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2SpConfigArgs) ToGoogleCloudIdentitytool
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2SpConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2SpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2SpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2SpConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutputWithContext(context.Background())
 }
@@ -4336,6 +5027,12 @@ func (i *googleCloudIdentitytoolkitAdminV2SpConfigPtrType) ToGoogleCloudIdentity
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2SpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SpConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SpConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
 type GoogleCloudIdentitytoolkitAdminV2SpConfigOutput struct{ *pulumi.OutputState }
 
@@ -4361,6 +5058,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SpConfigOutput) ToGoogleCloudIdentityto
 	}).(GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2SpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Callback URI where responses from IDP are handled.
 func (o GoogleCloudIdentitytoolkitAdminV2SpConfigOutput) CallbackUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
@@ -4383,6 +5086,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput) ToGoogleCloudIdentit
 
 func (o GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SpConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2SpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2SpConfigOutput {
@@ -4440,6 +5149,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2SpConfigResponseOutput) ToGoogleCloudId
 	return o
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2SpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2SpConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Callback URI where responses from IDP are handled.
 func (o GoogleCloudIdentitytoolkitAdminV2SpConfigResponseOutput) CallbackUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SpConfigResponse) string { return v.CallbackUri }).(pulumi.StringOutput)
@@ -4492,6 +5207,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
 	return i.ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(context.Background())
 }
@@ -4533,6 +5254,12 @@ func (i *googleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput)
 }
 
+func (i *googleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TotpMFAProviderConfig represents the TOTP based MFA provider.
 type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput struct{ *pulumi.OutputState }
 
@@ -4558,6 +5285,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) ToGoogleCl
 	}).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
 func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) AdjacentIntervals() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig) *int { return v.AdjacentIntervals }).(pulumi.IntPtrOutput)
@@ -4575,6 +5308,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput {
@@ -4616,6 +5355,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput) To
 
 func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
@@ -4662,6 +5407,12 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
 }
 
+func (i GoogleIamV1AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
+	return pulumix.Output[GoogleIamV1AuditConfig]{
+		OutputState: i.ToGoogleIamV1AuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
@@ -4687,6 +5438,12 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
+func (i GoogleIamV1AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditConfig]{
+		OutputState: i.ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -4700,6 +5457,12 @@ func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIam
 
 func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
+	return pulumix.Output[GoogleIamV1AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -4724,6 +5487,12 @@ func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput()
 
 func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
@@ -4755,6 +5524,12 @@ func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOu
 	return o
 }
 
+func (o GoogleIamV1AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfigResponse] {
+	return pulumix.Output[GoogleIamV1AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
@@ -4777,6 +5552,12 @@ func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigRespo
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
@@ -4824,6 +5605,12 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
 }
 
+func (i GoogleIamV1AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1AuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
@@ -4849,6 +5636,12 @@ func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
 }
 
+func (i GoogleIamV1AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -4862,6 +5655,12 @@ func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() Goo
 
 func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -4886,6 +5685,12 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOu
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
@@ -4917,6 +5722,12 @@ func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResp
 	return o
 }
 
+func (o GoogleIamV1AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigResponse] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -4939,6 +5750,12 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfi
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
@@ -4990,6 +5807,12 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
+func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
+	return pulumix.Output[GoogleIamV1Binding]{
+		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -5015,6 +5838,12 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
+func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
+	return pulumix.Output[[]GoogleIamV1Binding]{
+		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -5028,6 +5857,12 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
+	return pulumix.Output[GoogleIamV1Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -5057,6 +5892,12 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
+	return pulumix.Output[[]GoogleIamV1Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -5090,6 +5931,12 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
+func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
+	return pulumix.Output[GoogleIamV1BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
@@ -5117,6 +5964,12 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
+	return pulumix.Output[[]GoogleIamV1BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -5172,6 +6025,12 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
+func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
+	return pulumix.Output[GoogleTypeExpr]{
+		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -5213,6 +6072,12 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
+func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
+	return pulumix.Output[*GoogleTypeExpr]{
+		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -5236,6 +6101,12 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
+}
+
+func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
+	return pulumix.Output[GoogleTypeExpr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -5270,6 +6141,12 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
+}
+
+func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
+	return pulumix.Output[*GoogleTypeExpr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -5347,6 +6224,12 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTyp
 
 func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
 	return o
+}
+
+func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
+	return pulumix.Output[GoogleTypeExprResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

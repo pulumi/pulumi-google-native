@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123".
@@ -135,6 +136,12 @@ func (i *OrganizationIamMember) ToOrganizationIamMemberOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationIamMemberOutput)
 }
 
+func (i *OrganizationIamMember) ToOutput(ctx context.Context) pulumix.Output[*OrganizationIamMember] {
+	return pulumix.Output[*OrganizationIamMember]{
+		OutputState: i.ToOrganizationIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationIamMemberOutput struct{ *pulumi.OutputState }
 
 func (OrganizationIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o OrganizationIamMemberOutput) ToOrganizationIamMemberOutput() Organizatio
 
 func (o OrganizationIamMemberOutput) ToOrganizationIamMemberOutputWithContext(ctx context.Context) OrganizationIamMemberOutput {
 	return o
+}
+
+func (o OrganizationIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationIamMember] {
+	return pulumix.Output[*OrganizationIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

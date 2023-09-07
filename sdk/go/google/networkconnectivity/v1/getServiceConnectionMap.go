@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ServiceConnectionMap.
@@ -90,6 +91,12 @@ func (o LookupServiceConnectionMapResultOutput) ToLookupServiceConnectionMapResu
 
 func (o LookupServiceConnectionMapResultOutput) ToLookupServiceConnectionMapResultOutputWithContext(ctx context.Context) LookupServiceConnectionMapResultOutput {
 	return o
+}
+
+func (o LookupServiceConnectionMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceConnectionMapResult] {
+	return pulumix.Output[LookupServiceConnectionMapResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The PSC configurations on consumer side.

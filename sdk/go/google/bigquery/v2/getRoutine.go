@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified routine resource by routine ID.
@@ -100,6 +101,12 @@ func (o LookupRoutineResultOutput) ToLookupRoutineResultOutput() LookupRoutineRe
 
 func (o LookupRoutineResultOutput) ToLookupRoutineResultOutputWithContext(ctx context.Context) LookupRoutineResultOutput {
 	return o
+}
+
+func (o LookupRoutineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoutineResult] {
+	return pulumix.Output[LookupRoutineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional.

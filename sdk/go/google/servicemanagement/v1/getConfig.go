@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a service configuration (version) for a managed service.
@@ -120,6 +121,12 @@ func (o LookupConfigResultOutput) ToLookupConfigResultOutput() LookupConfigResul
 
 func (o LookupConfigResultOutput) ToLookupConfigResultOutputWithContext(ctx context.Context) LookupConfigResultOutput {
 	return o
+}
+
+func (o LookupConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigResult] {
+	return pulumix.Output[LookupConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.

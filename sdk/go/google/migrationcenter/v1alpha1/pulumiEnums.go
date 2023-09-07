@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
@@ -82,6 +83,12 @@ func (o ComputeEnginePreferencesLicenseTypeOutput) ToComputeEnginePreferencesLic
 	}).(ComputeEnginePreferencesLicenseTypePtrOutput)
 }
 
+func (o ComputeEnginePreferencesLicenseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEnginePreferencesLicenseType] {
+	return pulumix.Output[ComputeEnginePreferencesLicenseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeEnginePreferencesLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o ComputeEnginePreferencesLicenseTypePtrOutput) ToComputeEnginePreferences
 
 func (o ComputeEnginePreferencesLicenseTypePtrOutput) ToComputeEnginePreferencesLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesLicenseTypePtrOutput {
 	return o
+}
+
+func (o ComputeEnginePreferencesLicenseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferencesLicenseType] {
+	return pulumix.Output[*ComputeEnginePreferencesLicenseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeEnginePreferencesLicenseTypePtrOutput) Elem() ComputeEnginePreferencesLicenseTypeOutput {
@@ -177,6 +190,12 @@ func (in *computeEnginePreferencesLicenseTypePtr) ToComputeEnginePreferencesLice
 
 func (in *computeEnginePreferencesLicenseTypePtr) ToComputeEnginePreferencesLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeEnginePreferencesLicenseTypePtrOutput)
+}
+
+func (in *computeEnginePreferencesLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferencesLicenseType] {
+	return pulumix.Output[*ComputeEnginePreferencesLicenseType]{
+		OutputState: in.ToComputeEnginePreferencesLicenseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
@@ -253,6 +272,12 @@ func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToComputeEnginePrefere
 	}).(ComputeEnginePreferencesPersistentDiskTypePtrOutput)
 }
 
+func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEnginePreferencesPersistentDiskType] {
+	return pulumix.Output[ComputeEnginePreferencesPersistentDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeEnginePreferencesPersistentDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) ToComputeEnginePref
 
 func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypePtrOutput {
 	return o
+}
+
+func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferencesPersistentDiskType] {
+	return pulumix.Output[*ComputeEnginePreferencesPersistentDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeEnginePreferencesPersistentDiskTypePtrOutput) Elem() ComputeEnginePreferencesPersistentDiskTypeOutput {
@@ -348,6 +379,12 @@ func (in *computeEnginePreferencesPersistentDiskTypePtr) ToComputeEnginePreferen
 
 func (in *computeEnginePreferencesPersistentDiskTypePtr) ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesPersistentDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeEnginePreferencesPersistentDiskTypePtrOutput)
+}
+
+func (in *computeEnginePreferencesPersistentDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferencesPersistentDiskType] {
+	return pulumix.Output[*ComputeEnginePreferencesPersistentDiskType]{
+		OutputState: in.ToComputeEnginePreferencesPersistentDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The import job format.
@@ -430,6 +467,12 @@ func (o GCSPayloadInfoFormatOutput) ToGCSPayloadInfoFormatPtrOutputWithContext(c
 	}).(GCSPayloadInfoFormatPtrOutput)
 }
 
+func (o GCSPayloadInfoFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GCSPayloadInfoFormat] {
+	return pulumix.Output[GCSPayloadInfoFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GCSPayloadInfoFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -463,6 +506,12 @@ func (o GCSPayloadInfoFormatPtrOutput) ToGCSPayloadInfoFormatPtrOutput() GCSPayl
 
 func (o GCSPayloadInfoFormatPtrOutput) ToGCSPayloadInfoFormatPtrOutputWithContext(ctx context.Context) GCSPayloadInfoFormatPtrOutput {
 	return o
+}
+
+func (o GCSPayloadInfoFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GCSPayloadInfoFormat] {
+	return pulumix.Output[*GCSPayloadInfoFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GCSPayloadInfoFormatPtrOutput) Elem() GCSPayloadInfoFormatOutput {
@@ -525,6 +574,12 @@ func (in *gcspayloadInfoFormatPtr) ToGCSPayloadInfoFormatPtrOutput() GCSPayloadI
 
 func (in *gcspayloadInfoFormatPtr) ToGCSPayloadInfoFormatPtrOutputWithContext(ctx context.Context) GCSPayloadInfoFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GCSPayloadInfoFormatPtrOutput)
+}
+
+func (in *gcspayloadInfoFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GCSPayloadInfoFormat] {
+	return pulumix.Output[*GCSPayloadInfoFormat]{
+		OutputState: in.ToGCSPayloadInfoFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The payload format.
@@ -607,6 +662,12 @@ func (o ImportDataFileFormatOutput) ToImportDataFileFormatPtrOutputWithContext(c
 	}).(ImportDataFileFormatPtrOutput)
 }
 
+func (o ImportDataFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ImportDataFileFormat] {
+	return pulumix.Output[ImportDataFileFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImportDataFileFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -640,6 +701,12 @@ func (o ImportDataFileFormatPtrOutput) ToImportDataFileFormatPtrOutput() ImportD
 
 func (o ImportDataFileFormatPtrOutput) ToImportDataFileFormatPtrOutputWithContext(ctx context.Context) ImportDataFileFormatPtrOutput {
 	return o
+}
+
+func (o ImportDataFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportDataFileFormat] {
+	return pulumix.Output[*ImportDataFileFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImportDataFileFormatPtrOutput) Elem() ImportDataFileFormatOutput {
@@ -702,6 +769,12 @@ func (in *importDataFileFormatPtr) ToImportDataFileFormatPtrOutput() ImportDataF
 
 func (in *importDataFileFormatPtr) ToImportDataFileFormatPtrOutputWithContext(ctx context.Context) ImportDataFileFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImportDataFileFormatPtrOutput)
+}
+
+func (in *importDataFileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ImportDataFileFormat] {
+	return pulumix.Output[*ImportDataFileFormat]{
+		OutputState: in.ToImportDataFileFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The import job format.
@@ -784,6 +857,12 @@ func (o InlinePayloadInfoFormatOutput) ToInlinePayloadInfoFormatPtrOutputWithCon
 	}).(InlinePayloadInfoFormatPtrOutput)
 }
 
+func (o InlinePayloadInfoFormatOutput) ToOutput(ctx context.Context) pulumix.Output[InlinePayloadInfoFormat] {
+	return pulumix.Output[InlinePayloadInfoFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InlinePayloadInfoFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -817,6 +896,12 @@ func (o InlinePayloadInfoFormatPtrOutput) ToInlinePayloadInfoFormatPtrOutput() I
 
 func (o InlinePayloadInfoFormatPtrOutput) ToInlinePayloadInfoFormatPtrOutputWithContext(ctx context.Context) InlinePayloadInfoFormatPtrOutput {
 	return o
+}
+
+func (o InlinePayloadInfoFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InlinePayloadInfoFormat] {
+	return pulumix.Output[*InlinePayloadInfoFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InlinePayloadInfoFormatPtrOutput) Elem() InlinePayloadInfoFormatOutput {
@@ -879,6 +964,12 @@ func (in *inlinePayloadInfoFormatPtr) ToInlinePayloadInfoFormatPtrOutput() Inlin
 
 func (in *inlinePayloadInfoFormatPtr) ToInlinePayloadInfoFormatPtrOutputWithContext(ctx context.Context) InlinePayloadInfoFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InlinePayloadInfoFormatPtrOutput)
+}
+
+func (in *inlinePayloadInfoFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*InlinePayloadInfoFormat] {
+	return pulumix.Output[*InlinePayloadInfoFormat]{
+		OutputState: in.ToInlinePayloadInfoFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Report creation state.
@@ -955,6 +1046,12 @@ func (o ReportStateEnumOutput) ToReportStateEnumPtrOutputWithContext(ctx context
 	}).(ReportStateEnumPtrOutput)
 }
 
+func (o ReportStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ReportStateEnum] {
+	return pulumix.Output[ReportStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReportStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -988,6 +1085,12 @@ func (o ReportStateEnumPtrOutput) ToReportStateEnumPtrOutput() ReportStateEnumPt
 
 func (o ReportStateEnumPtrOutput) ToReportStateEnumPtrOutputWithContext(ctx context.Context) ReportStateEnumPtrOutput {
 	return o
+}
+
+func (o ReportStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportStateEnum] {
+	return pulumix.Output[*ReportStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportStateEnumPtrOutput) Elem() ReportStateEnumOutput {
@@ -1050,6 +1153,12 @@ func (in *reportStateEnumPtr) ToReportStateEnumPtrOutput() ReportStateEnumPtrOut
 
 func (in *reportStateEnumPtr) ToReportStateEnumPtrOutputWithContext(ctx context.Context) ReportStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReportStateEnumPtrOutput)
+}
+
+func (in *reportStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ReportStateEnum] {
+	return pulumix.Output[*ReportStateEnum]{
+		OutputState: in.ToReportStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Report type.
@@ -1122,6 +1231,12 @@ func (o ReportTypeOutput) ToReportTypePtrOutputWithContext(ctx context.Context) 
 	}).(ReportTypePtrOutput)
 }
 
+func (o ReportTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReportType] {
+	return pulumix.Output[ReportType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReportTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1155,6 +1270,12 @@ func (o ReportTypePtrOutput) ToReportTypePtrOutput() ReportTypePtrOutput {
 
 func (o ReportTypePtrOutput) ToReportTypePtrOutputWithContext(ctx context.Context) ReportTypePtrOutput {
 	return o
+}
+
+func (o ReportTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportType] {
+	return pulumix.Output[*ReportType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReportTypePtrOutput) Elem() ReportTypeOutput {
@@ -1217,6 +1338,12 @@ func (in *reportTypePtr) ToReportTypePtrOutput() ReportTypePtrOutput {
 
 func (in *reportTypePtr) ToReportTypePtrOutputWithContext(ctx context.Context) ReportTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReportTypePtrOutput)
+}
+
+func (in *reportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportType] {
+	return pulumix.Output[*ReportType]{
+		OutputState: in.ToReportTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Data source type.
@@ -1295,6 +1422,12 @@ func (o SourceTypeOutput) ToSourceTypePtrOutputWithContext(ctx context.Context) 
 	}).(SourceTypePtrOutput)
 }
 
+func (o SourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SourceType] {
+	return pulumix.Output[SourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1328,6 +1461,12 @@ func (o SourceTypePtrOutput) ToSourceTypePtrOutput() SourceTypePtrOutput {
 
 func (o SourceTypePtrOutput) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
 	return o
+}
+
+func (o SourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
+	return pulumix.Output[*SourceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceTypePtrOutput) Elem() SourceTypeOutput {
@@ -1390,6 +1529,12 @@ func (in *sourceTypePtr) ToSourceTypePtrOutput() SourceTypePtrOutput {
 
 func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
+}
+
+func (in *sourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
+	return pulumix.Output[*SourceType]{
+		OutputState: in.ToSourceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
@@ -1466,6 +1611,12 @@ func (o VirtualMachinePreferencesCommitmentPlanOutput) ToVirtualMachinePreferenc
 	}).(VirtualMachinePreferencesCommitmentPlanPtrOutput)
 }
 
+func (o VirtualMachinePreferencesCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesCommitmentPlan] {
+	return pulumix.Output[VirtualMachinePreferencesCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachinePreferencesCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1499,6 +1650,12 @@ func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) ToVirtualMachinePrefer
 
 func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) ToVirtualMachinePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesCommitmentPlanPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesCommitmentPlan] {
+	return pulumix.Output[*VirtualMachinePreferencesCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) Elem() VirtualMachinePreferencesCommitmentPlanOutput {
@@ -1561,6 +1718,12 @@ func (in *virtualMachinePreferencesCommitmentPlanPtr) ToVirtualMachinePreference
 
 func (in *virtualMachinePreferencesCommitmentPlanPtr) ToVirtualMachinePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesCommitmentPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePreferencesCommitmentPlanPtrOutput)
+}
+
+func (in *virtualMachinePreferencesCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesCommitmentPlan] {
+	return pulumix.Output[*VirtualMachinePreferencesCommitmentPlan]{
+		OutputState: in.ToVirtualMachinePreferencesCommitmentPlanPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
@@ -1637,6 +1800,12 @@ func (o VirtualMachinePreferencesSizingOptimizationStrategyOutput) ToVirtualMach
 	}).(VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput)
 }
 
+func (o VirtualMachinePreferencesSizingOptimizationStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesSizingOptimizationStrategy] {
+	return pulumix.Output[VirtualMachinePreferencesSizingOptimizationStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachinePreferencesSizingOptimizationStrategyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1670,6 +1839,12 @@ func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) ToVirtualM
 
 func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) ToVirtualMachinePreferencesSizingOptimizationStrategyPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput {
 	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy] {
+	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) Elem() VirtualMachinePreferencesSizingOptimizationStrategyOutput {
@@ -1732,6 +1907,12 @@ func (in *virtualMachinePreferencesSizingOptimizationStrategyPtr) ToVirtualMachi
 
 func (in *virtualMachinePreferencesSizingOptimizationStrategyPtr) ToVirtualMachinePreferencesSizingOptimizationStrategyPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput)
+}
+
+func (in *virtualMachinePreferencesSizingOptimizationStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy] {
+	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy]{
+		OutputState: in.ToVirtualMachinePreferencesSizingOptimizationStrategyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. Immutable. Identifies the storage system of the entity data.
@@ -82,6 +83,12 @@ func (o EntitySystemOutput) ToEntitySystemPtrOutputWithContext(ctx context.Conte
 	}).(EntitySystemPtrOutput)
 }
 
+func (o EntitySystemOutput) ToOutput(ctx context.Context) pulumix.Output[EntitySystem] {
+	return pulumix.Output[EntitySystem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntitySystemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o EntitySystemPtrOutput) ToEntitySystemPtrOutput() EntitySystemPtrOutput {
 
 func (o EntitySystemPtrOutput) ToEntitySystemPtrOutputWithContext(ctx context.Context) EntitySystemPtrOutput {
 	return o
+}
+
+func (o EntitySystemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntitySystem] {
+	return pulumix.Output[*EntitySystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntitySystemPtrOutput) Elem() EntitySystemOutput {
@@ -177,6 +190,12 @@ func (in *entitySystemPtr) ToEntitySystemPtrOutput() EntitySystemPtrOutput {
 
 func (in *entitySystemPtr) ToEntitySystemPtrOutputWithContext(ctx context.Context) EntitySystemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntitySystemPtrOutput)
+}
+
+func (in *entitySystemPtr) ToOutput(ctx context.Context) pulumix.Output[*EntitySystem] {
+	return pulumix.Output[*EntitySystem]{
+		OutputState: in.ToEntitySystemPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. The type of entity.
@@ -251,6 +270,12 @@ func (o EntityTypeOutput) ToEntityTypePtrOutputWithContext(ctx context.Context) 
 	}).(EntityTypePtrOutput)
 }
 
+func (o EntityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EntityType] {
+	return pulumix.Output[EntityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o EntityTypePtrOutput) ToEntityTypePtrOutput() EntityTypePtrOutput {
 
 func (o EntityTypePtrOutput) ToEntityTypePtrOutputWithContext(ctx context.Context) EntityTypePtrOutput {
 	return o
+}
+
+func (o EntityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
+	return pulumix.Output[*EntityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypePtrOutput) Elem() EntityTypeOutput {
@@ -346,6 +377,12 @@ func (in *entityTypePtr) ToEntityTypePtrOutput() EntityTypePtrOutput {
 
 func (in *entityTypePtr) ToEntityTypePtrOutputWithContext(ctx context.Context) EntityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypePtrOutput)
+}
+
+func (in *entityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
+	return pulumix.Output[*EntityType]{
+		OutputState: in.ToEntityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
@@ -420,6 +457,12 @@ func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToGoogleClou
 	}).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetResourceSpecReadAccessMode] {
+	return pulumix.Output[GoogleCloudDataplexV1AssetResourceSpecReadAccessMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -453,6 +496,12 @@ func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToGoogleC
 
 func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecReadAccessMode] {
+	return pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecReadAccessMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) Elem() GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput {
@@ -515,6 +564,12 @@ func (in *googleCloudDataplexV1AssetResourceSpecReadAccessModePtr) ToGoogleCloud
 
 func (in *googleCloudDataplexV1AssetResourceSpecReadAccessModePtr) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput)
+}
+
+func (in *googleCloudDataplexV1AssetResourceSpecReadAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecReadAccessMode] {
+	return pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecReadAccessMode]{
+		OutputState: in.ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. Type of resource.
@@ -589,6 +644,12 @@ func (o GoogleCloudDataplexV1AssetResourceSpecTypeOutput) ToGoogleCloudDataplexV
 	}).(GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1AssetResourceSpecTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetResourceSpecType] {
+	return pulumix.Output[GoogleCloudDataplexV1AssetResourceSpecType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1AssetResourceSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -622,6 +683,12 @@ func (o GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput) ToGoogleCloudDatapl
 
 func (o GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput) ToGoogleCloudDataplexV1AssetResourceSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecType] {
+	return pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput) Elem() GoogleCloudDataplexV1AssetResourceSpecTypeOutput {
@@ -684,6 +751,12 @@ func (in *googleCloudDataplexV1AssetResourceSpecTypePtr) ToGoogleCloudDataplexV1
 
 func (in *googleCloudDataplexV1AssetResourceSpecTypePtr) ToGoogleCloudDataplexV1AssetResourceSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput)
+}
+
+func (in *googleCloudDataplexV1AssetResourceSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecType] {
+	return pulumix.Output[*GoogleCloudDataplexV1AssetResourceSpecType]{
+		OutputState: in.ToGoogleCloudDataplexV1AssetResourceSpecTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Kernel Type of the notebook.
@@ -756,6 +829,12 @@ func (o GoogleCloudDataplexV1ContentNotebookKernelTypeOutput) ToGoogleCloudDatap
 	}).(GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1ContentNotebookKernelTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentNotebookKernelType] {
+	return pulumix.Output[GoogleCloudDataplexV1ContentNotebookKernelType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1ContentNotebookKernelTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -789,6 +868,12 @@ func (o GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput) ToGoogleCloudDataplexV1ContentNotebookKernelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentNotebookKernelType] {
+	return pulumix.Output[*GoogleCloudDataplexV1ContentNotebookKernelType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput) Elem() GoogleCloudDataplexV1ContentNotebookKernelTypeOutput {
@@ -851,6 +936,12 @@ func (in *googleCloudDataplexV1ContentNotebookKernelTypePtr) ToGoogleCloudDatapl
 
 func (in *googleCloudDataplexV1ContentNotebookKernelTypePtr) ToGoogleCloudDataplexV1ContentNotebookKernelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput)
+}
+
+func (in *googleCloudDataplexV1ContentNotebookKernelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentNotebookKernelType] {
+	return pulumix.Output[*GoogleCloudDataplexV1ContentNotebookKernelType]{
+		OutputState: in.ToGoogleCloudDataplexV1ContentNotebookKernelTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Query Engine to be used for the Sql Query.
@@ -923,6 +1014,12 @@ func (o GoogleCloudDataplexV1ContentSqlScriptEngineOutput) ToGoogleCloudDataplex
 	}).(GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1ContentSqlScriptEngineOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentSqlScriptEngine] {
+	return pulumix.Output[GoogleCloudDataplexV1ContentSqlScriptEngine]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1ContentSqlScriptEngineOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -956,6 +1053,12 @@ func (o GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput) ToGoogleCloudDataplexV1ContentSqlScriptEnginePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentSqlScriptEngine] {
+	return pulumix.Output[*GoogleCloudDataplexV1ContentSqlScriptEngine]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput) Elem() GoogleCloudDataplexV1ContentSqlScriptEngineOutput {
@@ -1018,6 +1121,12 @@ func (in *googleCloudDataplexV1ContentSqlScriptEnginePtr) ToGoogleCloudDataplexV
 
 func (in *googleCloudDataplexV1ContentSqlScriptEnginePtr) ToGoogleCloudDataplexV1ContentSqlScriptEnginePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput)
+}
+
+func (in *googleCloudDataplexV1ContentSqlScriptEnginePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentSqlScriptEngine] {
+	return pulumix.Output[*GoogleCloudDataplexV1ContentSqlScriptEngine]{
+		OutputState: in.ToGoogleCloudDataplexV1ContentSqlScriptEnginePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The aggregate metric to evaluate.
@@ -1094,6 +1203,12 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOu
 	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
 }
 
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1127,6 +1242,12 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPt
 
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput {
@@ -1189,6 +1310,12 @@ func (in *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic
 
 func (in *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
+}
+
+func (in *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic] {
+	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic]{
+		OutputState: in.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. The type of field.
@@ -1289,6 +1416,12 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldTypeOutput) ToGoogleCloudDatapl
 	}).(GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1SchemaPartitionFieldTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaPartitionFieldType] {
+	return pulumix.Output[GoogleCloudDataplexV1SchemaPartitionFieldType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1SchemaPartitionFieldTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1322,6 +1455,12 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput) ToGoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionFieldType] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionFieldType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput) Elem() GoogleCloudDataplexV1SchemaPartitionFieldTypeOutput {
@@ -1384,6 +1523,12 @@ func (in *googleCloudDataplexV1SchemaPartitionFieldTypePtr) ToGoogleCloudDataple
 
 func (in *googleCloudDataplexV1SchemaPartitionFieldTypePtr) ToGoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput)
+}
+
+func (in *googleCloudDataplexV1SchemaPartitionFieldTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionFieldType] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionFieldType]{
+		OutputState: in.ToGoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The structure of paths containing partition data within the entity.
@@ -1456,6 +1601,12 @@ func (o GoogleCloudDataplexV1SchemaPartitionStyleOutput) ToGoogleCloudDataplexV1
 	}).(GoogleCloudDataplexV1SchemaPartitionStylePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1SchemaPartitionStyleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaPartitionStyle] {
+	return pulumix.Output[GoogleCloudDataplexV1SchemaPartitionStyle]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1SchemaPartitionStyleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1489,6 +1640,12 @@ func (o GoogleCloudDataplexV1SchemaPartitionStylePtrOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1SchemaPartitionStylePtrOutput) ToGoogleCloudDataplexV1SchemaPartitionStylePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaPartitionStylePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1SchemaPartitionStylePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionStyle] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionStyle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1SchemaPartitionStylePtrOutput) Elem() GoogleCloudDataplexV1SchemaPartitionStyleOutput {
@@ -1551,6 +1708,12 @@ func (in *googleCloudDataplexV1SchemaPartitionStylePtr) ToGoogleCloudDataplexV1S
 
 func (in *googleCloudDataplexV1SchemaPartitionStylePtr) ToGoogleCloudDataplexV1SchemaPartitionStylePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaPartitionStylePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1SchemaPartitionStylePtrOutput)
+}
+
+func (in *googleCloudDataplexV1SchemaPartitionStylePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionStyle] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaPartitionStyle]{
+		OutputState: in.ToGoogleCloudDataplexV1SchemaPartitionStylePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Additional field semantics.
@@ -1627,6 +1790,12 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldModeOutput) ToGoogleCloudDataplexV
 	}).(GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1SchemaSchemaFieldModeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaSchemaFieldMode] {
+	return pulumix.Output[GoogleCloudDataplexV1SchemaSchemaFieldMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1SchemaSchemaFieldModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1660,6 +1829,12 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput) ToGoogleCloudDatapl
 
 func (o GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput) ToGoogleCloudDataplexV1SchemaSchemaFieldModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldMode] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput) Elem() GoogleCloudDataplexV1SchemaSchemaFieldModeOutput {
@@ -1722,6 +1897,12 @@ func (in *googleCloudDataplexV1SchemaSchemaFieldModePtr) ToGoogleCloudDataplexV1
 
 func (in *googleCloudDataplexV1SchemaSchemaFieldModePtr) ToGoogleCloudDataplexV1SchemaSchemaFieldModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput)
+}
+
+func (in *googleCloudDataplexV1SchemaSchemaFieldModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldMode] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldMode]{
+		OutputState: in.ToGoogleCloudDataplexV1SchemaSchemaFieldModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of field.
@@ -1822,6 +2003,12 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldTypeOutput) ToGoogleCloudDataplexV
 	}).(GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1SchemaSchemaFieldTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaSchemaFieldType] {
+	return pulumix.Output[GoogleCloudDataplexV1SchemaSchemaFieldType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1SchemaSchemaFieldTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1855,6 +2042,12 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput) ToGoogleCloudDatapl
 
 func (o GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput) ToGoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldType] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput) Elem() GoogleCloudDataplexV1SchemaSchemaFieldTypeOutput {
@@ -1917,6 +2110,12 @@ func (in *googleCloudDataplexV1SchemaSchemaFieldTypePtr) ToGoogleCloudDataplexV1
 
 func (in *googleCloudDataplexV1SchemaSchemaFieldTypePtr) ToGoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput)
+}
+
+func (in *googleCloudDataplexV1SchemaSchemaFieldTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldType] {
+	return pulumix.Output[*GoogleCloudDataplexV1SchemaSchemaFieldType]{
+		OutputState: in.ToGoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
@@ -1991,6 +2190,12 @@ func (o GoogleCloudDataplexV1StorageFormatCompressionFormatOutput) ToGoogleCloud
 	}).(GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput)
 }
 
+func (o GoogleCloudDataplexV1StorageFormatCompressionFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatCompressionFormat] {
+	return pulumix.Output[GoogleCloudDataplexV1StorageFormatCompressionFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1StorageFormatCompressionFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2024,6 +2229,12 @@ func (o GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput) ToGoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatCompressionFormat] {
+	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatCompressionFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput) Elem() GoogleCloudDataplexV1StorageFormatCompressionFormatOutput {
@@ -2086,6 +2297,12 @@ func (in *googleCloudDataplexV1StorageFormatCompressionFormatPtr) ToGoogleCloudD
 
 func (in *googleCloudDataplexV1StorageFormatCompressionFormatPtr) ToGoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput)
+}
+
+func (in *googleCloudDataplexV1StorageFormatCompressionFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatCompressionFormat] {
+	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatCompressionFormat]{
+		OutputState: in.ToGoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. Trigger type of the user-specified Task.
@@ -2160,6 +2377,12 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecTypeOutput) ToGoogleCloudDataplexV1T
 	}).(GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1TaskTriggerSpecTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpecType] {
+	return pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpecType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1TaskTriggerSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2193,6 +2416,12 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput) ToGoogleCloudDataplex
 
 func (o GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput) ToGoogleCloudDataplexV1TaskTriggerSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskTriggerSpecType] {
+	return pulumix.Output[*GoogleCloudDataplexV1TaskTriggerSpecType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput) Elem() GoogleCloudDataplexV1TaskTriggerSpecTypeOutput {
@@ -2255,6 +2484,12 @@ func (in *googleCloudDataplexV1TaskTriggerSpecTypePtr) ToGoogleCloudDataplexV1Ta
 
 func (in *googleCloudDataplexV1TaskTriggerSpecTypePtr) ToGoogleCloudDataplexV1TaskTriggerSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput)
+}
+
+func (in *googleCloudDataplexV1TaskTriggerSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskTriggerSpecType] {
+	return pulumix.Output[*GoogleCloudDataplexV1TaskTriggerSpecType]{
+		OutputState: in.ToGoogleCloudDataplexV1TaskTriggerSpecTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
@@ -2329,6 +2564,12 @@ func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypeOutput) ToGoogleCloudDa
 	}).(GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput)
 }
 
+func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpecLocationType] {
+	return pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpecLocationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2362,6 +2603,12 @@ func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput) ToGoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneResourceSpecLocationType] {
+	return pulumix.Output[*GoogleCloudDataplexV1ZoneResourceSpecLocationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput) Elem() GoogleCloudDataplexV1ZoneResourceSpecLocationTypeOutput {
@@ -2424,6 +2671,12 @@ func (in *googleCloudDataplexV1ZoneResourceSpecLocationTypePtr) ToGoogleCloudDat
 
 func (in *googleCloudDataplexV1ZoneResourceSpecLocationTypePtr) ToGoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput)
+}
+
+func (in *googleCloudDataplexV1ZoneResourceSpecLocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneResourceSpecLocationType] {
+	return pulumix.Output[*GoogleCloudDataplexV1ZoneResourceSpecLocationType]{
+		OutputState: in.ToGoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -2500,6 +2753,12 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2533,6 +2792,12 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -2595,6 +2860,12 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. The type of the zone.
@@ -2669,6 +2940,12 @@ func (o ZoneTypeOutput) ToZoneTypePtrOutputWithContext(ctx context.Context) Zone
 	}).(ZoneTypePtrOutput)
 }
 
+func (o ZoneTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ZoneType] {
+	return pulumix.Output[ZoneType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2702,6 +2979,12 @@ func (o ZoneTypePtrOutput) ToZoneTypePtrOutput() ZoneTypePtrOutput {
 
 func (o ZoneTypePtrOutput) ToZoneTypePtrOutputWithContext(ctx context.Context) ZoneTypePtrOutput {
 	return o
+}
+
+func (o ZoneTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneType] {
+	return pulumix.Output[*ZoneType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneTypePtrOutput) Elem() ZoneTypeOutput {
@@ -2764,6 +3047,12 @@ func (in *zoneTypePtr) ToZoneTypePtrOutput() ZoneTypePtrOutput {
 
 func (in *zoneTypePtr) ToZoneTypePtrOutputWithContext(ctx context.Context) ZoneTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneTypePtrOutput)
+}
+
+func (in *zoneTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneType] {
+	return pulumix.Output[*ZoneType]{
+		OutputState: in.ToZoneTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

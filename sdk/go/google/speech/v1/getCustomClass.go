@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a custom class.
@@ -76,6 +77,12 @@ func (o LookupCustomClassResultOutput) ToLookupCustomClassResultOutput() LookupC
 
 func (o LookupCustomClassResultOutput) ToLookupCustomClassResultOutputWithContext(ctx context.Context) LookupCustomClassResultOutput {
 	return o
+}
+
+func (o LookupCustomClassResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomClassResult] {
+	return pulumix.Output[LookupCustomClassResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.

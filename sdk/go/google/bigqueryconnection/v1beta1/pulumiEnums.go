@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of the Cloud SQL database.
@@ -253,6 +272,12 @@ func (o CloudSqlPropertiesTypeOutput) ToCloudSqlPropertiesTypePtrOutputWithConte
 	}).(CloudSqlPropertiesTypePtrOutput)
 }
 
+func (o CloudSqlPropertiesTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlPropertiesType] {
+	return pulumix.Output[CloudSqlPropertiesType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudSqlPropertiesTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o CloudSqlPropertiesTypePtrOutput) ToCloudSqlPropertiesTypePtrOutput() Clo
 
 func (o CloudSqlPropertiesTypePtrOutput) ToCloudSqlPropertiesTypePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesTypePtrOutput {
 	return o
+}
+
+func (o CloudSqlPropertiesTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlPropertiesType] {
+	return pulumix.Output[*CloudSqlPropertiesType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSqlPropertiesTypePtrOutput) Elem() CloudSqlPropertiesTypeOutput {
@@ -348,6 +379,12 @@ func (in *cloudSqlPropertiesTypePtr) ToCloudSqlPropertiesTypePtrOutput() CloudSq
 
 func (in *cloudSqlPropertiesTypePtr) ToCloudSqlPropertiesTypePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlPropertiesTypePtrOutput)
+}
+
+func (in *cloudSqlPropertiesTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlPropertiesType] {
+	return pulumix.Output[*CloudSqlPropertiesType]{
+		OutputState: in.ToCloudSqlPropertiesTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

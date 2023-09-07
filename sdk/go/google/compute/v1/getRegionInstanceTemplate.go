@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified instance template.
@@ -84,6 +85,12 @@ func (o LookupRegionInstanceTemplateResultOutput) ToLookupRegionInstanceTemplate
 
 func (o LookupRegionInstanceTemplateResultOutput) ToLookupRegionInstanceTemplateResultOutputWithContext(ctx context.Context) LookupRegionInstanceTemplateResultOutput {
 	return o
+}
+
+func (o LookupRegionInstanceTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionInstanceTemplateResult] {
+	return pulumix.Output[LookupRegionInstanceTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp for this instance template in RFC3339 text format.

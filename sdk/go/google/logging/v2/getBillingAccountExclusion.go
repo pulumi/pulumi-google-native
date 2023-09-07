@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the description of an exclusion in the _Default sink.
@@ -76,6 +77,12 @@ func (o LookupBillingAccountExclusionResultOutput) ToLookupBillingAccountExclusi
 
 func (o LookupBillingAccountExclusionResultOutput) ToLookupBillingAccountExclusionResultOutputWithContext(ctx context.Context) LookupBillingAccountExclusionResultOutput {
 	return o
+}
+
+func (o LookupBillingAccountExclusionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBillingAccountExclusionResult] {
+	return pulumix.Output[LookupBillingAccountExclusionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp of the exclusion.This field may not be present for older exclusions.

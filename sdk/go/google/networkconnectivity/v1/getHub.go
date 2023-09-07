@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about a Network Connectivity Center hub.
@@ -80,6 +81,12 @@ func (o LookupHubResultOutput) ToLookupHubResultOutput() LookupHubResultOutput {
 
 func (o LookupHubResultOutput) ToLookupHubResultOutputWithContext(ctx context.Context) LookupHubResultOutput {
 	return o
+}
+
+func (o LookupHubResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHubResult] {
+	return pulumix.Output[LookupHubResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the hub was created.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new custom Role.
@@ -139,6 +140,12 @@ func (i *Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleOutput)
 }
 
+func (i *Role) ToOutput(ctx context.Context) pulumix.Output[*Role] {
+	return pulumix.Output[*Role]{
+		OutputState: i.ToRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoleOutput struct{ *pulumi.OutputState }
 
 func (RoleOutput) ElementType() reflect.Type {
@@ -151,6 +158,12 @@ func (o RoleOutput) ToRoleOutput() RoleOutput {
 
 func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
+}
+
+func (o RoleOutput) ToOutput(ctx context.Context) pulumix.Output[*Role] {
+	return pulumix.Output[*Role]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.

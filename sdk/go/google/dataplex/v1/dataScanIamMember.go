@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -140,6 +141,12 @@ func (i *DataScanIamMember) ToDataScanIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DataScanIamMemberOutput)
 }
 
+func (i *DataScanIamMember) ToOutput(ctx context.Context) pulumix.Output[*DataScanIamMember] {
+	return pulumix.Output[*DataScanIamMember]{
+		OutputState: i.ToDataScanIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataScanIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DataScanIamMemberOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o DataScanIamMemberOutput) ToDataScanIamMemberOutput() DataScanIamMemberOu
 
 func (o DataScanIamMemberOutput) ToDataScanIamMemberOutputWithContext(ctx context.Context) DataScanIamMemberOutput {
 	return o
+}
+
+func (o DataScanIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DataScanIamMember] {
+	return pulumix.Output[*DataScanIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -132,6 +133,12 @@ func (i *ApiVersionIamPolicy) ToApiVersionIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApiVersionIamPolicyOutput)
 }
 
+func (i *ApiVersionIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ApiVersionIamPolicy] {
+	return pulumix.Output[*ApiVersionIamPolicy]{
+		OutputState: i.ToApiVersionIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiVersionIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ApiVersionIamPolicyOutput) ElementType() reflect.Type {
@@ -144,6 +151,12 @@ func (o ApiVersionIamPolicyOutput) ToApiVersionIamPolicyOutput() ApiVersionIamPo
 
 func (o ApiVersionIamPolicyOutput) ToApiVersionIamPolicyOutputWithContext(ctx context.Context) ApiVersionIamPolicyOutput {
 	return o
+}
+
+func (o ApiVersionIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiVersionIamPolicy] {
+	return pulumix.Output[*ApiVersionIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiVersionIamPolicyOutput) ApiId() pulumi.StringOutput {

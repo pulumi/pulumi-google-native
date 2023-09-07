@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a document schema. Returns NOT_FOUND if the document schema does not exist.
@@ -80,6 +81,12 @@ func (o LookupDocumentSchemaResultOutput) ToLookupDocumentSchemaResultOutput() L
 
 func (o LookupDocumentSchemaResultOutput) ToLookupDocumentSchemaResultOutputWithContext(ctx context.Context) LookupDocumentSchemaResultOutput {
 	return o
+}
+
+func (o LookupDocumentSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDocumentSchemaResult] {
+	return pulumix.Output[LookupDocumentSchemaResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the document schema is created.

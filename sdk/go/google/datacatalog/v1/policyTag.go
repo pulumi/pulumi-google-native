@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a policy tag in a taxonomy.
@@ -131,6 +132,12 @@ func (i *PolicyTag) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagO
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagOutput)
 }
 
+func (i *PolicyTag) ToOutput(ctx context.Context) pulumix.Output[*PolicyTag] {
+	return pulumix.Output[*PolicyTag]{
+		OutputState: i.ToPolicyTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyTagOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o PolicyTagOutput) ToPolicyTagOutput() PolicyTagOutput {
 
 func (o PolicyTagOutput) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput {
 	return o
+}
+
+func (o PolicyTagOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyTag] {
+	return pulumix.Output[*PolicyTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource names of child policy tags of this policy tag.

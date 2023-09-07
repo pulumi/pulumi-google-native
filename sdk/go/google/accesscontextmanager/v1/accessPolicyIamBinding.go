@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy for the specified Access Context Manager access policy. This method replaces the existing IAM policy on the access policy. The IAM policy controls the set of users who can perform specific operations on the Access Context Manager access policy.
@@ -135,6 +136,12 @@ func (i *AccessPolicyIamBinding) ToAccessPolicyIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingOutput)
 }
 
+func (i *AccessPolicyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamBinding] {
+	return pulumix.Output[*AccessPolicyIamBinding]{
+		OutputState: i.ToAccessPolicyIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPolicyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o AccessPolicyIamBindingOutput) ToAccessPolicyIamBindingOutput() AccessPol
 
 func (o AccessPolicyIamBindingOutput) ToAccessPolicyIamBindingOutputWithContext(ctx context.Context) AccessPolicyIamBindingOutput {
 	return o
+}
+
+func (o AccessPolicyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamBinding] {
+	return pulumix.Output[*AccessPolicyIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates new workflow template.
@@ -149,6 +150,12 @@ func (i *WorkflowTemplate) ToWorkflowTemplateOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateOutput)
 }
 
+func (i *WorkflowTemplate) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplate] {
+	return pulumix.Output[*WorkflowTemplate]{
+		OutputState: i.ToWorkflowTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkflowTemplateOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o WorkflowTemplateOutput) ToWorkflowTemplateOutput() WorkflowTemplateOutpu
 
 func (o WorkflowTemplateOutput) ToWorkflowTemplateOutputWithContext(ctx context.Context) WorkflowTemplateOutput {
 	return o
+}
+
+func (o WorkflowTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplate] {
+	return pulumix.Output[*WorkflowTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time template was created.

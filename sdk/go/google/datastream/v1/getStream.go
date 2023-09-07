@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this method to get details about a stream.
@@ -90,6 +91,12 @@ func (o LookupStreamResultOutput) ToLookupStreamResultOutput() LookupStreamResul
 
 func (o LookupStreamResultOutput) ToLookupStreamResultOutputWithContext(ctx context.Context) LookupStreamResultOutput {
 	return o
+}
+
+func (o LookupStreamResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStreamResult] {
+	return pulumix.Output[LookupStreamResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.

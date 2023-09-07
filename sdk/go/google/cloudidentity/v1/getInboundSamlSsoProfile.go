@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an InboundSamlSsoProfile.
@@ -72,6 +73,12 @@ func (o LookupInboundSamlSsoProfileResultOutput) ToLookupInboundSamlSsoProfileRe
 
 func (o LookupInboundSamlSsoProfileResultOutput) ToLookupInboundSamlSsoProfileResultOutputWithContext(ctx context.Context) LookupInboundSamlSsoProfileResultOutput {
 	return o
+}
+
+func (o LookupInboundSamlSsoProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInboundSamlSsoProfileResult] {
+	return pulumix.Output[LookupInboundSamlSsoProfileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable. The customer. For example: `customers/C0123abc`.

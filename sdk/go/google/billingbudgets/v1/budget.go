@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
@@ -139,6 +140,12 @@ func (i *Budget) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetOutput)
 }
 
+func (i *Budget) ToOutput(ctx context.Context) pulumix.Output[*Budget] {
+	return pulumix.Output[*Budget]{
+		OutputState: i.ToBudgetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetOutput struct{ *pulumi.OutputState }
 
 func (BudgetOutput) ElementType() reflect.Type {
@@ -151,6 +158,12 @@ func (o BudgetOutput) ToBudgetOutput() BudgetOutput {
 
 func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
 	return o
+}
+
+func (o BudgetOutput) ToOutput(ctx context.Context) pulumix.Output[*Budget] {
+	return pulumix.Output[*Budget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Budgeted amount.

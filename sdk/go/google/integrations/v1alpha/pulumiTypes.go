@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -74,6 +75,12 @@ func (i EnterpriseCrmEventbusProtoAttributesArgs) ToEnterpriseCrmEventbusProtoAt
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoAttributesOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoAttributesArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoAttributes] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoAttributes]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoAttributesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoAttributesArgs) ToEnterpriseCrmEventbusProtoAttributesPtrOutput() EnterpriseCrmEventbusProtoAttributesPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoAttributesPtrOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (i *enterpriseCrmEventbusProtoAttributesPtrType) ToEnterpriseCrmEventbusPro
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoAttributesPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoAttributesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoAttributes] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoAttributes]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoAttributesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Attributes are additional options that can be associated with each event property. For more information, see
 type EnterpriseCrmEventbusProtoAttributesOutput struct{ *pulumi.OutputState }
 
@@ -138,6 +151,12 @@ func (o EnterpriseCrmEventbusProtoAttributesOutput) ToEnterpriseCrmEventbusProto
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoAttributes) *EnterpriseCrmEventbusProtoAttributes {
 		return &v
 	}).(EnterpriseCrmEventbusProtoAttributesPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoAttributesOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoAttributes] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoAttributes]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Things like URL, Email, Currency, Timestamp (rather than string, int64...)
@@ -196,6 +215,12 @@ func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) ToEnterpriseCrmEventbusPr
 
 func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) ToEnterpriseCrmEventbusProtoAttributesPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoAttributesPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoAttributes] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoAttributes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) Elem() EnterpriseCrmEventbusProtoAttributesOutput {
@@ -313,6 +338,12 @@ func (o EnterpriseCrmEventbusProtoAttributesResponseOutput) ToEnterpriseCrmEvent
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoAttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoAttributesResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoAttributesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Things like URL, Email, Currency, Timestamp (rather than string, int64...)
 func (o EnterpriseCrmEventbusProtoAttributesResponseOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributesResponse) string { return v.DataType }).(pulumi.StringOutput)
@@ -388,6 +419,12 @@ func (i EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListArgs) ToEnterprise
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListArgs) ToEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput() EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutputWithContext(context.Background())
 }
@@ -429,6 +466,12 @@ func (i *enterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrType) ToEnterp
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // List of error enums for alerts.
 type EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListOutput struct{ *pulumi.OutputState }
 
@@ -454,6 +497,12 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListOutput) ToEnterpri
 	}).(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListOutput) EnumStrings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList) []string { return v.EnumStrings }).(pulumi.StringArrayOutput)
 }
@@ -476,6 +525,12 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput) ToEnter
 
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput) ToEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrOutput) Elem() EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListOutput {
@@ -527,6 +582,12 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponseOutput) To
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponseOutput) EnumStrings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse) []string { return v.EnumStrings }).(pulumi.StringArrayOutput)
 }
@@ -570,6 +631,12 @@ func (i EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs) ToEnterpris
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs) ToEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput() EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutputWithContext(context.Background())
 }
@@ -611,6 +678,12 @@ func (i *enterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrType) ToEnter
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput struct{ *pulumi.OutputState }
 
@@ -636,6 +709,12 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput) ToEnterpr
 	}).(EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput) Absolute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue) *string { return v.Absolute }).(pulumi.StringPtrOutput)
 }
@@ -656,6 +735,12 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput) ToEnte
 
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput) ToEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput) Elem() EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput {
@@ -707,6 +792,12 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponseOutput) T
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponseOutput) Absolute() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse) string { return v.Absolute }).(pulumi.StringOutput)
 }
@@ -744,6 +835,12 @@ func (i EnterpriseCrmEventbusProtoBooleanParameterArrayArgs) ToEnterpriseCrmEven
 
 func (i EnterpriseCrmEventbusProtoBooleanParameterArrayArgs) ToEnterpriseCrmEventbusProtoBooleanParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoBooleanParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoBooleanParameterArrayOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoBooleanParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBooleanParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoBooleanParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoBooleanParameterArrayArgs) ToEnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput() EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput {
@@ -787,6 +884,12 @@ func (i *enterpriseCrmEventbusProtoBooleanParameterArrayPtrType) ToEnterpriseCrm
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoBooleanParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoBooleanParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoBooleanParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoBooleanParameterArrayOutput) ElementType() reflect.Type {
@@ -811,6 +914,12 @@ func (o EnterpriseCrmEventbusProtoBooleanParameterArrayOutput) ToEnterpriseCrmEv
 	}).(EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoBooleanParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBooleanParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoBooleanParameterArrayOutput) BooleanValues() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoBooleanParameterArray) []bool { return v.BooleanValues }).(pulumi.BoolArrayOutput)
 }
@@ -827,6 +936,12 @@ func (o EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput) ToEnterpriseCr
 
 func (o EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput) ToEnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoBooleanParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoBooleanParameterArrayOutput {
@@ -864,6 +979,12 @@ func (o EnterpriseCrmEventbusProtoBooleanParameterArrayResponseOutput) ToEnterpr
 
 func (o EnterpriseCrmEventbusProtoBooleanParameterArrayResponseOutput) ToEnterpriseCrmEventbusProtoBooleanParameterArrayResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoBooleanParameterArrayResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoBooleanParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoBooleanParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoBooleanParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoBooleanParameterArrayResponseOutput) BooleanValues() pulumi.BoolArrayOutput {
@@ -917,6 +1038,12 @@ func (i EnterpriseCrmEventbusProtoCloudSchedulerConfigArgs) ToEnterpriseCrmEvent
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoCloudSchedulerConfigOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoCloudSchedulerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCloudSchedulerConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCloudSchedulerConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoCloudSchedulerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoCloudSchedulerConfigArgs) ToEnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput() EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutputWithContext(context.Background())
 }
@@ -958,6 +1085,12 @@ func (i *enterpriseCrmEventbusProtoCloudSchedulerConfigPtrType) ToEnterpriseCrmE
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoCloudSchedulerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoCloudSchedulerConfig] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoCloudSchedulerConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cloud Scheduler Trigger configuration
 type EnterpriseCrmEventbusProtoCloudSchedulerConfigOutput struct{ *pulumi.OutputState }
 
@@ -981,6 +1114,12 @@ func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigOutput) ToEnterpriseCrmEve
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoCloudSchedulerConfig) *EnterpriseCrmEventbusProtoCloudSchedulerConfig {
 		return &v
 	}).(EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCloudSchedulerConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCloudSchedulerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cron tab of cloud scheduler trigger.
@@ -1015,6 +1154,12 @@ func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput) ToEnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoCloudSchedulerConfig] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoCloudSchedulerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigPtrOutput) Elem() EnterpriseCrmEventbusProtoCloudSchedulerConfigOutput {
@@ -1094,6 +1239,12 @@ func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigResponseOutput) ToEnterpri
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The cron tab of cloud scheduler trigger.
 func (o EnterpriseCrmEventbusProtoCloudSchedulerConfigResponseOutput) CronTab() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse) string { return v.CronTab }).(pulumi.StringOutput)
@@ -1149,6 +1300,12 @@ func (i EnterpriseCrmEventbusProtoCombinedConditionArgs) ToEnterpriseCrmEventbus
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoCombinedConditionOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoCombinedConditionArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCombinedCondition] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCombinedCondition]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoCombinedConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoCombinedConditionArrayInput is an input type that accepts EnterpriseCrmEventbusProtoCombinedConditionArray and EnterpriseCrmEventbusProtoCombinedConditionArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoCombinedConditionArrayInput` via:
 //
@@ -1174,6 +1331,12 @@ func (i EnterpriseCrmEventbusProtoCombinedConditionArray) ToEnterpriseCrmEventbu
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoCombinedConditionArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoCombinedConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoCombinedCondition] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoCombinedCondition]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoCombinedConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This message recursively combines constituent conditions using logical AND.
 type EnterpriseCrmEventbusProtoCombinedConditionOutput struct{ *pulumi.OutputState }
 
@@ -1187,6 +1350,12 @@ func (o EnterpriseCrmEventbusProtoCombinedConditionOutput) ToEnterpriseCrmEventb
 
 func (o EnterpriseCrmEventbusProtoCombinedConditionOutput) ToEnterpriseCrmEventbusProtoCombinedConditionOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoCombinedConditionOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoCombinedConditionOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCombinedCondition] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCombinedCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A set of individual constituent conditions.
@@ -1208,6 +1377,12 @@ func (o EnterpriseCrmEventbusProtoCombinedConditionArrayOutput) ToEnterpriseCrmE
 
 func (o EnterpriseCrmEventbusProtoCombinedConditionArrayOutput) ToEnterpriseCrmEventbusProtoCombinedConditionArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoCombinedConditionArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoCombinedConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoCombinedCondition] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoCombinedCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoCombinedConditionArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoCombinedConditionOutput {
@@ -1237,6 +1412,12 @@ func (o EnterpriseCrmEventbusProtoCombinedConditionResponseOutput) ToEnterpriseC
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoCombinedConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCombinedConditionResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCombinedConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A set of individual constituent conditions.
 func (o EnterpriseCrmEventbusProtoCombinedConditionResponseOutput) Conditions() EnterpriseCrmEventbusProtoConditionResponseArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoCombinedConditionResponse) []EnterpriseCrmEventbusProtoConditionResponse {
@@ -1256,6 +1437,12 @@ func (o EnterpriseCrmEventbusProtoCombinedConditionResponseArrayOutput) ToEnterp
 
 func (o EnterpriseCrmEventbusProtoCombinedConditionResponseArrayOutput) ToEnterpriseCrmEventbusProtoCombinedConditionResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoCombinedConditionResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoCombinedConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoCombinedConditionResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoCombinedConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoCombinedConditionResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoCombinedConditionResponseOutput {
@@ -1307,6 +1494,12 @@ func (i EnterpriseCrmEventbusProtoConditionArgs) ToEnterpriseCrmEventbusProtoCon
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoConditionOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoConditionArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCondition] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCondition]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoConditionArrayInput is an input type that accepts EnterpriseCrmEventbusProtoConditionArray and EnterpriseCrmEventbusProtoConditionArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoConditionArrayInput` via:
 //
@@ -1332,6 +1525,12 @@ func (i EnterpriseCrmEventbusProtoConditionArray) ToEnterpriseCrmEventbusProtoCo
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoConditionArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoCondition] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoCondition]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Condition that uses `operator` to evaluate the key against the value.
 type EnterpriseCrmEventbusProtoConditionOutput struct{ *pulumi.OutputState }
 
@@ -1345,6 +1544,12 @@ func (o EnterpriseCrmEventbusProtoConditionOutput) ToEnterpriseCrmEventbusProtoC
 
 func (o EnterpriseCrmEventbusProtoConditionOutput) ToEnterpriseCrmEventbusProtoConditionOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoConditionOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoConditionOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCondition] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.
@@ -1378,6 +1583,12 @@ func (o EnterpriseCrmEventbusProtoConditionArrayOutput) ToEnterpriseCrmEventbusP
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoCondition] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoConditionArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoCondition {
 		return vs[0].([]EnterpriseCrmEventbusProtoCondition)[vs[1].(int)]
@@ -1409,6 +1620,12 @@ func (o EnterpriseCrmEventbusProtoConditionResponseOutput) ToEnterpriseCrmEventb
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoConditionResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.
 func (o EnterpriseCrmEventbusProtoConditionResponseOutput) EventPropertyKey() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoConditionResponse) string { return v.EventPropertyKey }).(pulumi.StringOutput)
@@ -1438,6 +1655,12 @@ func (o EnterpriseCrmEventbusProtoConditionResponseArrayOutput) ToEnterpriseCrmE
 
 func (o EnterpriseCrmEventbusProtoConditionResponseArrayOutput) ToEnterpriseCrmEventbusProtoConditionResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoConditionResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoConditionResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoConditionResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoConditionResponseOutput {
@@ -1481,6 +1704,12 @@ func (i EnterpriseCrmEventbusProtoCoordinateArgs) ToEnterpriseCrmEventbusProtoCo
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoCoordinateOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoCoordinateArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCoordinate] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCoordinate]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoCoordinateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoCoordinateArgs) ToEnterpriseCrmEventbusProtoCoordinatePtrOutput() EnterpriseCrmEventbusProtoCoordinatePtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoCoordinatePtrOutputWithContext(context.Background())
 }
@@ -1522,6 +1751,12 @@ func (i *enterpriseCrmEventbusProtoCoordinatePtrType) ToEnterpriseCrmEventbusPro
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoCoordinatePtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoCoordinatePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoCoordinate] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoCoordinate]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoCoordinatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents two-dimensional positions.
 type EnterpriseCrmEventbusProtoCoordinateOutput struct{ *pulumi.OutputState }
 
@@ -1547,6 +1782,12 @@ func (o EnterpriseCrmEventbusProtoCoordinateOutput) ToEnterpriseCrmEventbusProto
 	}).(EnterpriseCrmEventbusProtoCoordinatePtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoCoordinateOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCoordinate] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCoordinate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoCoordinateOutput) X() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoCoordinate) *int { return v.X }).(pulumi.IntPtrOutput)
 }
@@ -1567,6 +1808,12 @@ func (o EnterpriseCrmEventbusProtoCoordinatePtrOutput) ToEnterpriseCrmEventbusPr
 
 func (o EnterpriseCrmEventbusProtoCoordinatePtrOutput) ToEnterpriseCrmEventbusProtoCoordinatePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoCoordinatePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoCoordinatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoCoordinate] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoCoordinate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoCoordinatePtrOutput) Elem() EnterpriseCrmEventbusProtoCoordinateOutput {
@@ -1618,6 +1865,12 @@ func (o EnterpriseCrmEventbusProtoCoordinateResponseOutput) ToEnterpriseCrmEvent
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoCoordinateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoCoordinateResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoCoordinateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoCoordinateResponseOutput) X() pulumi.IntOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoCoordinateResponse) int { return v.X }).(pulumi.IntOutput)
 }
@@ -1655,6 +1908,12 @@ func (i EnterpriseCrmEventbusProtoDoubleArrayArgs) ToEnterpriseCrmEventbusProtoD
 
 func (i EnterpriseCrmEventbusProtoDoubleArrayArgs) ToEnterpriseCrmEventbusProtoDoubleArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoDoubleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoDoubleArrayOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoDoubleArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoDoubleArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoDoubleArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoDoubleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoDoubleArrayArgs) ToEnterpriseCrmEventbusProtoDoubleArrayPtrOutput() EnterpriseCrmEventbusProtoDoubleArrayPtrOutput {
@@ -1698,6 +1957,12 @@ func (i *enterpriseCrmEventbusProtoDoubleArrayPtrType) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoDoubleArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoDoubleArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoDoubleArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoDoubleArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoDoubleArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoDoubleArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoDoubleArrayOutput) ElementType() reflect.Type {
@@ -1722,6 +1987,12 @@ func (o EnterpriseCrmEventbusProtoDoubleArrayOutput) ToEnterpriseCrmEventbusProt
 	}).(EnterpriseCrmEventbusProtoDoubleArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoDoubleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoDoubleArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoDoubleArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoDoubleArrayOutput) Values() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoDoubleArray) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
 }
@@ -1738,6 +2009,12 @@ func (o EnterpriseCrmEventbusProtoDoubleArrayPtrOutput) ToEnterpriseCrmEventbusP
 
 func (o EnterpriseCrmEventbusProtoDoubleArrayPtrOutput) ToEnterpriseCrmEventbusProtoDoubleArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoDoubleArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoDoubleArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoDoubleArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoDoubleArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoDoubleArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoDoubleArrayOutput {
@@ -1777,6 +2054,12 @@ func (o EnterpriseCrmEventbusProtoDoubleArrayResponseOutput) ToEnterpriseCrmEven
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoDoubleArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoDoubleArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoDoubleArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoDoubleArrayResponseOutput) Values() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoDoubleArrayResponse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
 }
@@ -1810,6 +2093,12 @@ func (i EnterpriseCrmEventbusProtoDoubleParameterArrayArgs) ToEnterpriseCrmEvent
 
 func (i EnterpriseCrmEventbusProtoDoubleParameterArrayArgs) ToEnterpriseCrmEventbusProtoDoubleParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoDoubleParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoDoubleParameterArrayOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoDoubleParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoDoubleParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoDoubleParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoDoubleParameterArrayArgs) ToEnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput() EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput {
@@ -1853,6 +2142,12 @@ func (i *enterpriseCrmEventbusProtoDoubleParameterArrayPtrType) ToEnterpriseCrmE
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoDoubleParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoDoubleParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoDoubleParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoDoubleParameterArrayOutput) ElementType() reflect.Type {
@@ -1877,6 +2172,12 @@ func (o EnterpriseCrmEventbusProtoDoubleParameterArrayOutput) ToEnterpriseCrmEve
 	}).(EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoDoubleParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoDoubleParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoDoubleParameterArrayOutput) DoubleValues() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoDoubleParameterArray) []float64 { return v.DoubleValues }).(pulumi.Float64ArrayOutput)
 }
@@ -1893,6 +2194,12 @@ func (o EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput) ToEnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoDoubleParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoDoubleParameterArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoDoubleParameterArrayOutput {
@@ -1932,6 +2239,12 @@ func (o EnterpriseCrmEventbusProtoDoubleParameterArrayResponseOutput) ToEnterpri
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoDoubleParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoDoubleParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoDoubleParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoDoubleParameterArrayResponseOutput) DoubleValues() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoDoubleParameterArrayResponse) []float64 { return v.DoubleValues }).(pulumi.Float64ArrayOutput)
 }
@@ -1969,6 +2282,12 @@ func (i EnterpriseCrmEventbusProtoEventBusPropertiesArgs) ToEnterpriseCrmEventbu
 
 func (i EnterpriseCrmEventbusProtoEventBusPropertiesArgs) ToEnterpriseCrmEventbusProtoEventBusPropertiesOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoEventBusPropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoEventBusPropertiesOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoEventBusPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoEventBusProperties] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoEventBusProperties]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoEventBusPropertiesOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoEventBusPropertiesArgs) ToEnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput() EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput {
@@ -2012,6 +2331,12 @@ func (i *enterpriseCrmEventbusProtoEventBusPropertiesPtrType) ToEnterpriseCrmEve
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoEventBusPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoEventBusProperties] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoEventBusProperties]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoEventBusPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
 type EnterpriseCrmEventbusProtoEventBusPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2037,6 +2362,12 @@ func (o EnterpriseCrmEventbusProtoEventBusPropertiesOutput) ToEnterpriseCrmEvent
 	}).(EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoEventBusPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoEventBusProperties] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoEventBusProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An unordered list of property entries.
 func (o EnterpriseCrmEventbusProtoEventBusPropertiesOutput) Properties() EnterpriseCrmEventbusProtoPropertyEntryArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoEventBusProperties) []EnterpriseCrmEventbusProtoPropertyEntry {
@@ -2056,6 +2387,12 @@ func (o EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput) ToEnterpriseCrmEv
 
 func (o EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput) ToEnterpriseCrmEventbusProtoEventBusPropertiesPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoEventBusProperties] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoEventBusProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput) Elem() EnterpriseCrmEventbusProtoEventBusPropertiesOutput {
@@ -2097,6 +2434,12 @@ func (o EnterpriseCrmEventbusProtoEventBusPropertiesResponseOutput) ToEnterprise
 
 func (o EnterpriseCrmEventbusProtoEventBusPropertiesResponseOutput) ToEnterpriseCrmEventbusProtoEventBusPropertiesResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoEventBusPropertiesResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoEventBusPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoEventBusPropertiesResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoEventBusPropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An unordered list of property entries.
@@ -2141,6 +2484,12 @@ func (i EnterpriseCrmEventbusProtoEventParametersArgs) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoEventParametersOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoEventParametersArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoEventParameters] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoEventParameters]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoEventParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoEventParametersArgs) ToEnterpriseCrmEventbusProtoEventParametersPtrOutput() EnterpriseCrmEventbusProtoEventParametersPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoEventParametersPtrOutputWithContext(context.Background())
 }
@@ -2182,6 +2531,12 @@ func (i *enterpriseCrmEventbusProtoEventParametersPtrType) ToEnterpriseCrmEventb
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoEventParametersPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoEventParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoEventParameters] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoEventParameters]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoEventParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmEventbusProtoEventParametersOutput struct{ *pulumi.OutputState }
 
@@ -2207,6 +2562,12 @@ func (o EnterpriseCrmEventbusProtoEventParametersOutput) ToEnterpriseCrmEventbus
 	}).(EnterpriseCrmEventbusProtoEventParametersPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoEventParametersOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoEventParameters] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoEventParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
 func (o EnterpriseCrmEventbusProtoEventParametersOutput) Parameters() EnterpriseCrmEventbusProtoParameterEntryArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoEventParameters) []EnterpriseCrmEventbusProtoParameterEntry {
@@ -2226,6 +2587,12 @@ func (o EnterpriseCrmEventbusProtoEventParametersPtrOutput) ToEnterpriseCrmEvent
 
 func (o EnterpriseCrmEventbusProtoEventParametersPtrOutput) ToEnterpriseCrmEventbusProtoEventParametersPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoEventParametersPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoEventParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoEventParameters] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoEventParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoEventParametersPtrOutput) Elem() EnterpriseCrmEventbusProtoEventParametersOutput {
@@ -2267,6 +2634,12 @@ func (o EnterpriseCrmEventbusProtoEventParametersResponseOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoEventParametersResponseOutput) ToEnterpriseCrmEventbusProtoEventParametersResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoEventParametersResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoEventParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoEventParametersResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoEventParametersResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
@@ -2319,6 +2692,12 @@ func (i EnterpriseCrmEventbusProtoFailurePolicyArgs) ToEnterpriseCrmEventbusProt
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoFailurePolicyOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoFailurePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoFailurePolicy] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoFailurePolicy]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoFailurePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoFailurePolicyArgs) ToEnterpriseCrmEventbusProtoFailurePolicyPtrOutput() EnterpriseCrmEventbusProtoFailurePolicyPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoFailurePolicyPtrOutputWithContext(context.Background())
 }
@@ -2360,6 +2739,12 @@ func (i *enterpriseCrmEventbusProtoFailurePolicyPtrType) ToEnterpriseCrmEventbus
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoFailurePolicyPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoFailurePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoFailurePolicy] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoFailurePolicy]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoFailurePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
 type EnterpriseCrmEventbusProtoFailurePolicyOutput struct{ *pulumi.OutputState }
 
@@ -2383,6 +2768,12 @@ func (o EnterpriseCrmEventbusProtoFailurePolicyOutput) ToEnterpriseCrmEventbusPr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoFailurePolicy) *EnterpriseCrmEventbusProtoFailurePolicy {
 		return &v
 	}).(EnterpriseCrmEventbusProtoFailurePolicyPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoFailurePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoFailurePolicy] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoFailurePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
@@ -2414,6 +2805,12 @@ func (o EnterpriseCrmEventbusProtoFailurePolicyPtrOutput) ToEnterpriseCrmEventbu
 
 func (o EnterpriseCrmEventbusProtoFailurePolicyPtrOutput) ToEnterpriseCrmEventbusProtoFailurePolicyPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoFailurePolicyPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoFailurePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoFailurePolicy] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoFailurePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoFailurePolicyPtrOutput) Elem() EnterpriseCrmEventbusProtoFailurePolicyOutput {
@@ -2481,6 +2878,12 @@ func (o EnterpriseCrmEventbusProtoFailurePolicyResponseOutput) ToEnterpriseCrmEv
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoFailurePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoFailurePolicyResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoFailurePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
 func (o EnterpriseCrmEventbusProtoFailurePolicyResponseOutput) IntervalInSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoFailurePolicyResponse) string { return v.IntervalInSeconds }).(pulumi.StringOutput)
@@ -2527,6 +2930,12 @@ func (i EnterpriseCrmEventbusProtoIntArrayArgs) ToEnterpriseCrmEventbusProtoIntA
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoIntArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoIntArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoIntArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoIntArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoIntArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoIntArrayArgs) ToEnterpriseCrmEventbusProtoIntArrayPtrOutput() EnterpriseCrmEventbusProtoIntArrayPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoIntArrayPtrOutputWithContext(context.Background())
 }
@@ -2568,6 +2977,12 @@ func (i *enterpriseCrmEventbusProtoIntArrayPtrType) ToEnterpriseCrmEventbusProto
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoIntArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoIntArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoIntArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoIntArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoIntArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoIntArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoIntArrayOutput) ElementType() reflect.Type {
@@ -2592,6 +3007,12 @@ func (o EnterpriseCrmEventbusProtoIntArrayOutput) ToEnterpriseCrmEventbusProtoIn
 	}).(EnterpriseCrmEventbusProtoIntArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoIntArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoIntArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoIntArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoIntArrayOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoIntArray) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -2608,6 +3029,12 @@ func (o EnterpriseCrmEventbusProtoIntArrayPtrOutput) ToEnterpriseCrmEventbusProt
 
 func (o EnterpriseCrmEventbusProtoIntArrayPtrOutput) ToEnterpriseCrmEventbusProtoIntArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoIntArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoIntArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoIntArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoIntArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoIntArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoIntArrayOutput {
@@ -2647,6 +3074,12 @@ func (o EnterpriseCrmEventbusProtoIntArrayResponseOutput) ToEnterpriseCrmEventbu
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoIntArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoIntArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoIntArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoIntArrayResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoIntArrayResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -2680,6 +3113,12 @@ func (i EnterpriseCrmEventbusProtoIntParameterArrayArgs) ToEnterpriseCrmEventbus
 
 func (i EnterpriseCrmEventbusProtoIntParameterArrayArgs) ToEnterpriseCrmEventbusProtoIntParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoIntParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoIntParameterArrayOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoIntParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoIntParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoIntParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoIntParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoIntParameterArrayArgs) ToEnterpriseCrmEventbusProtoIntParameterArrayPtrOutput() EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput {
@@ -2723,6 +3162,12 @@ func (i *enterpriseCrmEventbusProtoIntParameterArrayPtrType) ToEnterpriseCrmEven
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoIntParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoIntParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoIntParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoIntParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoIntParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoIntParameterArrayOutput) ElementType() reflect.Type {
@@ -2747,6 +3192,12 @@ func (o EnterpriseCrmEventbusProtoIntParameterArrayOutput) ToEnterpriseCrmEventb
 	}).(EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoIntParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoIntParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoIntParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoIntParameterArrayOutput) IntValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoIntParameterArray) []string { return v.IntValues }).(pulumi.StringArrayOutput)
 }
@@ -2763,6 +3214,12 @@ func (o EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput) ToEnterpriseCrmEve
 
 func (o EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput) ToEnterpriseCrmEventbusProtoIntParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoIntParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoIntParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoIntParameterArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoIntParameterArrayOutput {
@@ -2800,6 +3257,12 @@ func (o EnterpriseCrmEventbusProtoIntParameterArrayResponseOutput) ToEnterpriseC
 
 func (o EnterpriseCrmEventbusProtoIntParameterArrayResponseOutput) ToEnterpriseCrmEventbusProtoIntParameterArrayResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoIntParameterArrayResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoIntParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoIntParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoIntParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoIntParameterArrayResponseOutput) IntValues() pulumi.StringArrayOutput {
@@ -2853,6 +3316,12 @@ func (i EnterpriseCrmEventbusProtoLogSettingsArgs) ToEnterpriseCrmEventbusProtoL
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoLogSettingsOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoLogSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoLogSettings] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoLogSettings]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoLogSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoLogSettingsArgs) ToEnterpriseCrmEventbusProtoLogSettingsPtrOutput() EnterpriseCrmEventbusProtoLogSettingsPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoLogSettingsPtrOutputWithContext(context.Background())
 }
@@ -2894,6 +3363,12 @@ func (i *enterpriseCrmEventbusProtoLogSettingsPtrType) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoLogSettingsPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoLogSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoLogSettings] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoLogSettings]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoLogSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
 type EnterpriseCrmEventbusProtoLogSettingsOutput struct{ *pulumi.OutputState }
 
@@ -2917,6 +3392,12 @@ func (o EnterpriseCrmEventbusProtoLogSettingsOutput) ToEnterpriseCrmEventbusProt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoLogSettings) *EnterpriseCrmEventbusProtoLogSettings {
 		return &v
 	}).(EnterpriseCrmEventbusProtoLogSettingsPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoLogSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoLogSettings] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
@@ -2962,6 +3443,12 @@ func (o EnterpriseCrmEventbusProtoLogSettingsPtrOutput) ToEnterpriseCrmEventbusP
 
 func (o EnterpriseCrmEventbusProtoLogSettingsPtrOutput) ToEnterpriseCrmEventbusProtoLogSettingsPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoLogSettingsPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoLogSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoLogSettings] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoLogSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoLogSettingsPtrOutput) Elem() EnterpriseCrmEventbusProtoLogSettingsOutput {
@@ -3047,6 +3534,12 @@ func (o EnterpriseCrmEventbusProtoLogSettingsResponseOutput) ToEnterpriseCrmEven
 
 func (o EnterpriseCrmEventbusProtoLogSettingsResponseOutput) ToEnterpriseCrmEventbusProtoLogSettingsResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoLogSettingsResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoLogSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoLogSettingsResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoLogSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
@@ -3135,6 +3628,12 @@ func (i EnterpriseCrmEventbusProtoNextTaskArgs) ToEnterpriseCrmEventbusProtoNext
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoNextTaskOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoNextTaskArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNextTask] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNextTask]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoNextTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoNextTaskArrayInput is an input type that accepts EnterpriseCrmEventbusProtoNextTaskArray and EnterpriseCrmEventbusProtoNextTaskArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoNextTaskArrayInput` via:
 //
@@ -3160,6 +3659,12 @@ func (i EnterpriseCrmEventbusProtoNextTaskArray) ToEnterpriseCrmEventbusProtoNex
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoNextTaskArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoNextTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoNextTask] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoNextTask]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoNextTaskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The task that is next in line to be executed, if the condition specified evaluated to true.
 type EnterpriseCrmEventbusProtoNextTaskOutput struct{ *pulumi.OutputState }
 
@@ -3173,6 +3678,12 @@ func (o EnterpriseCrmEventbusProtoNextTaskOutput) ToEnterpriseCrmEventbusProtoNe
 
 func (o EnterpriseCrmEventbusProtoNextTaskOutput) ToEnterpriseCrmEventbusProtoNextTaskOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNextTaskOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoNextTaskOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNextTask] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNextTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`
@@ -3223,6 +3734,12 @@ func (o EnterpriseCrmEventbusProtoNextTaskArrayOutput) ToEnterpriseCrmEventbusPr
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoNextTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoNextTask] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoNextTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoNextTaskArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoNextTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoNextTask {
 		return vs[0].([]EnterpriseCrmEventbusProtoNextTask)[vs[1].(int)]
@@ -3260,6 +3777,12 @@ func (o EnterpriseCrmEventbusProtoNextTaskResponseOutput) ToEnterpriseCrmEventbu
 
 func (o EnterpriseCrmEventbusProtoNextTaskResponseOutput) ToEnterpriseCrmEventbusProtoNextTaskResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNextTaskResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoNextTaskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNextTaskResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNextTaskResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`
@@ -3310,6 +3833,12 @@ func (o EnterpriseCrmEventbusProtoNextTaskResponseArrayOutput) ToEnterpriseCrmEv
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoNextTaskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoNextTaskResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoNextTaskResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoNextTaskResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoNextTaskResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoNextTaskResponse {
 		return vs[0].([]EnterpriseCrmEventbusProtoNextTaskResponse)[vs[1].(int)]
@@ -3349,6 +3878,12 @@ func (i EnterpriseCrmEventbusProtoNextTeardownTaskArgs) ToEnterpriseCrmEventbusP
 
 func (i EnterpriseCrmEventbusProtoNextTeardownTaskArgs) ToEnterpriseCrmEventbusProtoNextTeardownTaskOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNextTeardownTaskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoNextTeardownTaskOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoNextTeardownTaskArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNextTeardownTask] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNextTeardownTask]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoNextTeardownTaskOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoNextTeardownTaskArgs) ToEnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput() EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput {
@@ -3392,6 +3927,12 @@ func (i *enterpriseCrmEventbusProtoNextTeardownTaskPtrType) ToEnterpriseCrmEvent
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoNextTeardownTaskPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoNextTeardownTask] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoNextTeardownTask]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoNextTeardownTaskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The teardown task that is next in line to be executed. We support only sequential execution of teardown tasks (i.e. no branching).
 type EnterpriseCrmEventbusProtoNextTeardownTaskOutput struct{ *pulumi.OutputState }
 
@@ -3417,6 +3958,12 @@ func (o EnterpriseCrmEventbusProtoNextTeardownTaskOutput) ToEnterpriseCrmEventbu
 	}).(EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoNextTeardownTaskOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNextTeardownTask] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNextTeardownTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the next teardown task.
 func (o EnterpriseCrmEventbusProtoNextTeardownTaskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoNextTeardownTask) string { return v.Name }).(pulumi.StringOutput)
@@ -3434,6 +3981,12 @@ func (o EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput) ToEnterpriseCrmEven
 
 func (o EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput) ToEnterpriseCrmEventbusProtoNextTeardownTaskPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoNextTeardownTask] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoNextTeardownTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoNextTeardownTaskPtrOutput) Elem() EnterpriseCrmEventbusProtoNextTeardownTaskOutput {
@@ -3475,6 +4028,12 @@ func (o EnterpriseCrmEventbusProtoNextTeardownTaskResponseOutput) ToEnterpriseCr
 
 func (o EnterpriseCrmEventbusProtoNextTeardownTaskResponseOutput) ToEnterpriseCrmEventbusProtoNextTeardownTaskResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNextTeardownTaskResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoNextTeardownTaskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNextTeardownTaskResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNextTeardownTaskResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the next teardown task.
@@ -3521,6 +4080,12 @@ func (i EnterpriseCrmEventbusProtoNodeIdentifierArgs) ToEnterpriseCrmEventbusPro
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoNodeIdentifierOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoNodeIdentifierArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNodeIdentifier] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNodeIdentifier]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoNodeIdentifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoNodeIdentifierArgs) ToEnterpriseCrmEventbusProtoNodeIdentifierPtrOutput() EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoNodeIdentifierPtrOutputWithContext(context.Background())
 }
@@ -3562,6 +4127,12 @@ func (i *enterpriseCrmEventbusProtoNodeIdentifierPtrType) ToEnterpriseCrmEventbu
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoNodeIdentifierPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoNodeIdentifier] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoNodeIdentifier]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoNodeIdentifierPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a node identifier (type + id). Next highest id: 3
 type EnterpriseCrmEventbusProtoNodeIdentifierOutput struct{ *pulumi.OutputState }
 
@@ -3585,6 +4156,12 @@ func (o EnterpriseCrmEventbusProtoNodeIdentifierOutput) ToEnterpriseCrmEventbusP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoNodeIdentifier) *EnterpriseCrmEventbusProtoNodeIdentifier {
 		return &v
 	}).(EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoNodeIdentifierOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNodeIdentifier] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNodeIdentifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration of the edge.
@@ -3611,6 +4188,12 @@ func (o EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput) ToEnterpriseCrmEventb
 
 func (o EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput) ToEnterpriseCrmEventbusProtoNodeIdentifierPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoNodeIdentifier] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoNodeIdentifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput) Elem() EnterpriseCrmEventbusProtoNodeIdentifierOutput {
@@ -3664,6 +4247,12 @@ func (o EnterpriseCrmEventbusProtoNodeIdentifierResponseOutput) ToEnterpriseCrmE
 
 func (o EnterpriseCrmEventbusProtoNodeIdentifierResponseOutput) ToEnterpriseCrmEventbusProtoNodeIdentifierResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNodeIdentifierResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoNodeIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoNodeIdentifierResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoNodeIdentifierResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration of the edge.
@@ -3737,6 +4326,12 @@ func (i EnterpriseCrmEventbusProtoParamSpecEntryConfigArgs) ToEnterpriseCrmEvent
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryConfigOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParamSpecEntryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoParamSpecEntryConfigArgs) ToEnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput() EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutputWithContext(context.Background())
 }
@@ -3778,6 +4373,12 @@ func (i *enterpriseCrmEventbusProtoParamSpecEntryConfigPtrType) ToEnterpriseCrmE
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoParamSpecEntryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfig] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoParamSpecEntryConfigOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoParamSpecEntryConfigOutput) ElementType() reflect.Type {
@@ -3800,6 +4401,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigOutput) ToEnterpriseCrmEve
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoParamSpecEntryConfig) *EnterpriseCrmEventbusProtoParamSpecEntryConfig {
 		return &v
 	}).(EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A short phrase to describe what this parameter contains.
@@ -3861,6 +4468,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput) ToEnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfig] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigPtrOutput) Elem() EnterpriseCrmEventbusProtoParamSpecEntryConfigOutput {
@@ -3994,6 +4607,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigResponseOutput) ToEnterpri
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A short phrase to describe what this parameter contains.
 func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigResponseOutput) DescriptivePhrase() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse) string { return v.DescriptivePhrase }).(pulumi.StringOutput)
@@ -4074,6 +4693,12 @@ func (i EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionArgs) ToEnterpris
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionArgs) ToEnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput() EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutputWithContext(context.Background())
 }
@@ -4115,6 +4740,12 @@ func (i *enterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrType) ToEnter
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutput) ElementType() reflect.Type {
@@ -4139,6 +4770,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutput) ToEnterpr
 	}).(EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".
 func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition) *string { return v.FullName }).(pulumi.StringPtrOutput)
@@ -4161,6 +4798,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput) ToEnte
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput) ToEnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionPtrOutput) Elem() EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionOutput {
@@ -4214,6 +4857,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponseOutput) T
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".
 func (o EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponseOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse) string { return v.FullName }).(pulumi.StringOutput)
@@ -4259,6 +4908,12 @@ func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleArgs) ToEnterprise
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRule] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRule]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleArgs) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput() EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutputWithContext(context.Background())
 }
@@ -4300,6 +4955,12 @@ func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrType) ToEnterp
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRule] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRule]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutput) ElementType() reflect.Type {
@@ -4322,6 +4983,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutput) ToEnterpri
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoParamSpecEntryValidationRule) *EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
 		return &v
 	}).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRule] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutput) DoubleRange() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput {
@@ -4354,6 +5021,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput) ToEnter
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRule] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRulePtrOutput) Elem() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleOutput {
@@ -4432,6 +5105,12 @@ func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeArgs) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutputWithContext(context.Background())
 }
@@ -4473,6 +5152,12 @@ func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Range used to validate doubles and floats.
 type EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeOutput struct{ *pulumi.OutputState }
 
@@ -4498,6 +5183,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeOutput)
 	}).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The inclusive maximum of the acceptable range.
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeOutput) Max() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
@@ -4520,6 +5211,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutp
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangePtrOutput) Elem() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeOutput {
@@ -4575,6 +5272,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeRespons
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The inclusive maximum of the acceptable range.
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponseOutput) Max() pulumi.Float64Output {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse) float64 {
@@ -4628,6 +5331,12 @@ func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeArgs) ToEn
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeArgs) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutputWithContext(context.Background())
 }
@@ -4669,6 +5378,12 @@ func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Range used to validate longs and ints.
 type EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeOutput struct{ *pulumi.OutputState }
 
@@ -4694,6 +5409,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeOutput) To
 	}).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The inclusive maximum of the acceptable range.
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeOutput) Max() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange) *string { return v.Max }).(pulumi.StringPtrOutput)
@@ -4716,6 +5437,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput)
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangePtrOutput) Elem() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeOutput {
@@ -4771,6 +5498,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponseOu
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The inclusive maximum of the acceptable range.
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponseOutput) Max() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse) string { return v.Max }).(pulumi.StringOutput)
@@ -4799,6 +5532,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponseOutput) To
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponseOutput) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponseOutput) DoubleRange() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponseOutput {
@@ -4858,6 +5597,12 @@ func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexArgs) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutputWithContext(context.Background())
 }
@@ -4899,6 +5644,12 @@ func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Rule used to validate strings.
 type EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexOutput struct{ *pulumi.OutputState }
 
@@ -4924,6 +5675,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexOutput)
 	}).(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexOutput) Exclusive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex) *bool { return v.Exclusive }).(pulumi.BoolPtrOutput)
@@ -4946,6 +5703,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutp
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput) ToEnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexPtrOutput) Elem() EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexOutput {
@@ -5001,6 +5764,12 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexRespons
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
 func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponseOutput) Exclusive() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse) bool {
@@ -5054,6 +5823,12 @@ func (i EnterpriseCrmEventbusProtoParameterEntryArgs) ToEnterpriseCrmEventbusPro
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParameterEntryOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParameterEntryArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParameterEntry] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParameterEntry]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParameterEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoParameterEntryArrayInput is an input type that accepts EnterpriseCrmEventbusProtoParameterEntryArray and EnterpriseCrmEventbusProtoParameterEntryArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoParameterEntryArrayInput` via:
 //
@@ -5079,6 +5854,12 @@ func (i EnterpriseCrmEventbusProtoParameterEntryArray) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParameterEntryArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParameterEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoParameterEntry] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoParameterEntry]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParameterEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Key-value pair of EventBus parameters.
 type EnterpriseCrmEventbusProtoParameterEntryOutput struct{ *pulumi.OutputState }
 
@@ -5092,6 +5873,12 @@ func (o EnterpriseCrmEventbusProtoParameterEntryOutput) ToEnterpriseCrmEventbusP
 
 func (o EnterpriseCrmEventbusProtoParameterEntryOutput) ToEnterpriseCrmEventbusProtoParameterEntryOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParameterEntryOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParameterEntryOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParameterEntry] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParameterEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
@@ -5118,6 +5905,12 @@ func (o EnterpriseCrmEventbusProtoParameterEntryArrayOutput) ToEnterpriseCrmEven
 
 func (o EnterpriseCrmEventbusProtoParameterEntryArrayOutput) ToEnterpriseCrmEventbusProtoParameterEntryArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParameterEntryArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParameterEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoParameterEntry] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoParameterEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParameterEntryArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoParameterEntryOutput {
@@ -5149,6 +5942,12 @@ func (o EnterpriseCrmEventbusProtoParameterEntryResponseOutput) ToEnterpriseCrmE
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoParameterEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParameterEntryResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParameterEntryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 func (o EnterpriseCrmEventbusProtoParameterEntryResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterEntryResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -5173,6 +5972,12 @@ func (o EnterpriseCrmEventbusProtoParameterEntryResponseArrayOutput) ToEnterpris
 
 func (o EnterpriseCrmEventbusProtoParameterEntryResponseArrayOutput) ToEnterpriseCrmEventbusProtoParameterEntryResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParameterEntryResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParameterEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoParameterEntryResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoParameterEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParameterEntryResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoParameterEntryResponseOutput {
@@ -5234,6 +6039,12 @@ func (i EnterpriseCrmEventbusProtoParameterValueTypeArgs) ToEnterpriseCrmEventbu
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParameterValueTypeOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoParameterValueTypeArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParameterValueType] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParameterValueType]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParameterValueTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoParameterValueTypeArgs) ToEnterpriseCrmEventbusProtoParameterValueTypePtrOutput() EnterpriseCrmEventbusProtoParameterValueTypePtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoParameterValueTypePtrOutputWithContext(context.Background())
 }
@@ -5275,6 +6086,12 @@ func (i *enterpriseCrmEventbusProtoParameterValueTypePtrType) ToEnterpriseCrmEve
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoParameterValueTypePtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoParameterValueTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParameterValueType] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParameterValueType]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoParameterValueTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LINT.IfChange To support various types of parameter values. Next available id: 14
 type EnterpriseCrmEventbusProtoParameterValueTypeOutput struct{ *pulumi.OutputState }
 
@@ -5298,6 +6115,12 @@ func (o EnterpriseCrmEventbusProtoParameterValueTypeOutput) ToEnterpriseCrmEvent
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoParameterValueType) *EnterpriseCrmEventbusProtoParameterValueType {
 		return &v
 	}).(EnterpriseCrmEventbusProtoParameterValueTypePtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoParameterValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParameterValueType] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParameterValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParameterValueTypeOutput) BooleanArray() EnterpriseCrmEventbusProtoBooleanParameterArrayPtrOutput {
@@ -5368,6 +6191,12 @@ func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) ToEnterpriseCrmEv
 
 func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) ToEnterpriseCrmEventbusProtoParameterValueTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoParameterValueTypePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParameterValueType] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoParameterValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) Elem() EnterpriseCrmEventbusProtoParameterValueTypeOutput {
@@ -5509,6 +6338,12 @@ func (o EnterpriseCrmEventbusProtoParameterValueTypeResponseOutput) ToEnterprise
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoParameterValueTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoParameterValueTypeResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoParameterValueTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoParameterValueTypeResponseOutput) BooleanArray() EnterpriseCrmEventbusProtoBooleanParameterArrayResponseOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterValueTypeResponse) EnterpriseCrmEventbusProtoBooleanParameterArrayResponse {
 		return v.BooleanArray
@@ -5604,6 +6439,12 @@ func (i EnterpriseCrmEventbusProtoPropertyEntryArgs) ToEnterpriseCrmEventbusProt
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoPropertyEntryOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoPropertyEntryArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoPropertyEntry] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoPropertyEntry]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoPropertyEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoPropertyEntryArrayInput is an input type that accepts EnterpriseCrmEventbusProtoPropertyEntryArray and EnterpriseCrmEventbusProtoPropertyEntryArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoPropertyEntryArrayInput` via:
 //
@@ -5629,6 +6470,12 @@ func (i EnterpriseCrmEventbusProtoPropertyEntryArray) ToEnterpriseCrmEventbusPro
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoPropertyEntryArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoPropertyEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoPropertyEntry] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoPropertyEntry]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoPropertyEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Key-value pair of EventBus property.
 type EnterpriseCrmEventbusProtoPropertyEntryOutput struct{ *pulumi.OutputState }
 
@@ -5642,6 +6489,12 @@ func (o EnterpriseCrmEventbusProtoPropertyEntryOutput) ToEnterpriseCrmEventbusPr
 
 func (o EnterpriseCrmEventbusProtoPropertyEntryOutput) ToEnterpriseCrmEventbusProtoPropertyEntryOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoPropertyEntryOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoPropertyEntryOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoPropertyEntry] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoPropertyEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key is used to retrieve the corresponding property value. This should be unique for a given fired event. The Tasks should be aware of the keys used while firing the events for them to be able to retrieve the values.
@@ -5666,6 +6519,12 @@ func (o EnterpriseCrmEventbusProtoPropertyEntryArrayOutput) ToEnterpriseCrmEvent
 
 func (o EnterpriseCrmEventbusProtoPropertyEntryArrayOutput) ToEnterpriseCrmEventbusProtoPropertyEntryArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoPropertyEntryArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoPropertyEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoPropertyEntry] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoPropertyEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoPropertyEntryArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoPropertyEntryOutput {
@@ -5697,6 +6556,12 @@ func (o EnterpriseCrmEventbusProtoPropertyEntryResponseOutput) ToEnterpriseCrmEv
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoPropertyEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoPropertyEntryResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoPropertyEntryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key is used to retrieve the corresponding property value. This should be unique for a given fired event. The Tasks should be aware of the keys used while firing the events for them to be able to retrieve the values.
 func (o EnterpriseCrmEventbusProtoPropertyEntryResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoPropertyEntryResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -5721,6 +6586,12 @@ func (o EnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutput) ToEnterprise
 
 func (o EnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutput) ToEnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoPropertyEntryResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoPropertyEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoPropertyEntryResponseOutput {
@@ -5758,6 +6629,12 @@ func (i EnterpriseCrmEventbusProtoProtoParameterArrayArgs) ToEnterpriseCrmEventb
 
 func (i EnterpriseCrmEventbusProtoProtoParameterArrayArgs) ToEnterpriseCrmEventbusProtoProtoParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoProtoParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoProtoParameterArrayOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoProtoParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoProtoParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoProtoParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoProtoParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoProtoParameterArrayArgs) ToEnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput() EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput {
@@ -5801,6 +6678,12 @@ func (i *enterpriseCrmEventbusProtoProtoParameterArrayPtrType) ToEnterpriseCrmEv
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoProtoParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoProtoParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoProtoParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoProtoParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoProtoParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoProtoParameterArrayOutput) ElementType() reflect.Type {
@@ -5825,6 +6708,12 @@ func (o EnterpriseCrmEventbusProtoProtoParameterArrayOutput) ToEnterpriseCrmEven
 	}).(EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoProtoParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoProtoParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoProtoParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoProtoParameterArrayOutput) ProtoValues() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoProtoParameterArray) []map[string]string { return v.ProtoValues }).(pulumi.StringMapArrayOutput)
 }
@@ -5841,6 +6730,12 @@ func (o EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput) ToEnterpriseCrmE
 
 func (o EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput) ToEnterpriseCrmEventbusProtoProtoParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoProtoParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoProtoParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoProtoParameterArrayOutput {
@@ -5880,6 +6775,12 @@ func (o EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput) ToEnterpris
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoProtoParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoProtoParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput) ProtoValues() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoProtoParameterArrayResponse) []map[string]string {
 		return v.ProtoValues
@@ -5915,6 +6816,12 @@ func (i EnterpriseCrmEventbusProtoSerializedObjectParameterArgs) ToEnterpriseCrm
 
 func (i EnterpriseCrmEventbusProtoSerializedObjectParameterArgs) ToEnterpriseCrmEventbusProtoSerializedObjectParameterOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoSerializedObjectParameterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoSerializedObjectParameterOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoSerializedObjectParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoSerializedObjectParameter]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoSerializedObjectParameterOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoSerializedObjectParameterArgs) ToEnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput() EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput {
@@ -5958,6 +6865,12 @@ func (i *enterpriseCrmEventbusProtoSerializedObjectParameterPtrType) ToEnterpris
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoSerializedObjectParameterPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoSerializedObjectParameter]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoSerializedObjectParameterOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoSerializedObjectParameterOutput) ElementType() reflect.Type {
@@ -5982,6 +6895,12 @@ func (o EnterpriseCrmEventbusProtoSerializedObjectParameterOutput) ToEnterpriseC
 	}).(EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoSerializedObjectParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoSerializedObjectParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoSerializedObjectParameterOutput) ObjectValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoSerializedObjectParameter) *string { return v.ObjectValue }).(pulumi.StringPtrOutput)
 }
@@ -5998,6 +6917,12 @@ func (o EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput) ToEnterpri
 
 func (o EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput) ToEnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoSerializedObjectParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput) Elem() EnterpriseCrmEventbusProtoSerializedObjectParameterOutput {
@@ -6037,6 +6962,12 @@ func (o EnterpriseCrmEventbusProtoSerializedObjectParameterResponseOutput) ToEnt
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoSerializedObjectParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoSerializedObjectParameterResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoSerializedObjectParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoSerializedObjectParameterResponseOutput) ObjectValue() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoSerializedObjectParameterResponse) string { return v.ObjectValue }).(pulumi.StringOutput)
 }
@@ -6070,6 +7001,12 @@ func (i EnterpriseCrmEventbusProtoStringArrayArgs) ToEnterpriseCrmEventbusProtoS
 
 func (i EnterpriseCrmEventbusProtoStringArrayArgs) ToEnterpriseCrmEventbusProtoStringArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoStringArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoStringArrayOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoStringArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoStringArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoStringArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoStringArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoStringArrayArgs) ToEnterpriseCrmEventbusProtoStringArrayPtrOutput() EnterpriseCrmEventbusProtoStringArrayPtrOutput {
@@ -6113,6 +7050,12 @@ func (i *enterpriseCrmEventbusProtoStringArrayPtrType) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoStringArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoStringArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoStringArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoStringArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoStringArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoStringArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoStringArrayOutput) ElementType() reflect.Type {
@@ -6137,6 +7080,12 @@ func (o EnterpriseCrmEventbusProtoStringArrayOutput) ToEnterpriseCrmEventbusProt
 	}).(EnterpriseCrmEventbusProtoStringArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoStringArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoStringArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoStringArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoStringArrayOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoStringArray) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6153,6 +7102,12 @@ func (o EnterpriseCrmEventbusProtoStringArrayPtrOutput) ToEnterpriseCrmEventbusP
 
 func (o EnterpriseCrmEventbusProtoStringArrayPtrOutput) ToEnterpriseCrmEventbusProtoStringArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoStringArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoStringArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoStringArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoStringArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoStringArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoStringArrayOutput {
@@ -6192,6 +7147,12 @@ func (o EnterpriseCrmEventbusProtoStringArrayResponseOutput) ToEnterpriseCrmEven
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoStringArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoStringArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoStringArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoStringArrayResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoStringArrayResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6225,6 +7186,12 @@ func (i EnterpriseCrmEventbusProtoStringParameterArrayArgs) ToEnterpriseCrmEvent
 
 func (i EnterpriseCrmEventbusProtoStringParameterArrayArgs) ToEnterpriseCrmEventbusProtoStringParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoStringParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoStringParameterArrayOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoStringParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoStringParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoStringParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoStringParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoStringParameterArrayArgs) ToEnterpriseCrmEventbusProtoStringParameterArrayPtrOutput() EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput {
@@ -6268,6 +7235,12 @@ func (i *enterpriseCrmEventbusProtoStringParameterArrayPtrType) ToEnterpriseCrmE
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoStringParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoStringParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoStringParameterArray]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoStringParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoStringParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoStringParameterArrayOutput) ElementType() reflect.Type {
@@ -6292,6 +7265,12 @@ func (o EnterpriseCrmEventbusProtoStringParameterArrayOutput) ToEnterpriseCrmEve
 	}).(EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoStringParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoStringParameterArray] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoStringParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoStringParameterArrayOutput) StringValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoStringParameterArray) []string { return v.StringValues }).(pulumi.StringArrayOutput)
 }
@@ -6308,6 +7287,12 @@ func (o EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput) ToEnterpriseCrmEventbusProtoStringParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoStringParameterArray] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoStringParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoStringParameterArrayPtrOutput) Elem() EnterpriseCrmEventbusProtoStringParameterArrayOutput {
@@ -6347,6 +7332,12 @@ func (o EnterpriseCrmEventbusProtoStringParameterArrayResponseOutput) ToEnterpri
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoStringParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoStringParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoStringParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoStringParameterArrayResponseOutput) StringValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoStringParameterArrayResponse) []string { return v.StringValues }).(pulumi.StringArrayOutput)
 }
@@ -6384,6 +7375,12 @@ func (i EnterpriseCrmEventbusProtoSuccessPolicyArgs) ToEnterpriseCrmEventbusProt
 
 func (i EnterpriseCrmEventbusProtoSuccessPolicyArgs) ToEnterpriseCrmEventbusProtoSuccessPolicyOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoSuccessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoSuccessPolicyOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoSuccessPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoSuccessPolicy] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoSuccessPolicy]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoSuccessPolicyOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoSuccessPolicyArgs) ToEnterpriseCrmEventbusProtoSuccessPolicyPtrOutput() EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput {
@@ -6427,6 +7424,12 @@ func (i *enterpriseCrmEventbusProtoSuccessPolicyPtrType) ToEnterpriseCrmEventbus
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoSuccessPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoSuccessPolicy] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoSuccessPolicy]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoSuccessPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Policy that dictates the behavior for the task after it completes successfully.
 type EnterpriseCrmEventbusProtoSuccessPolicyOutput struct{ *pulumi.OutputState }
 
@@ -6452,6 +7455,12 @@ func (o EnterpriseCrmEventbusProtoSuccessPolicyOutput) ToEnterpriseCrmEventbusPr
 	}).(EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoSuccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoSuccessPolicy] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoSuccessPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // State to which the execution snapshot status will be set if the task succeeds.
 func (o EnterpriseCrmEventbusProtoSuccessPolicyOutput) FinalState() EnterpriseCrmEventbusProtoSuccessPolicyFinalStatePtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoSuccessPolicy) *EnterpriseCrmEventbusProtoSuccessPolicyFinalState {
@@ -6471,6 +7480,12 @@ func (o EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput) ToEnterpriseCrmEventbu
 
 func (o EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput) ToEnterpriseCrmEventbusProtoSuccessPolicyPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoSuccessPolicy] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoSuccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoSuccessPolicyPtrOutput) Elem() EnterpriseCrmEventbusProtoSuccessPolicyOutput {
@@ -6512,6 +7527,12 @@ func (o EnterpriseCrmEventbusProtoSuccessPolicyResponseOutput) ToEnterpriseCrmEv
 
 func (o EnterpriseCrmEventbusProtoSuccessPolicyResponseOutput) ToEnterpriseCrmEventbusProtoSuccessPolicyResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoSuccessPolicyResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoSuccessPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoSuccessPolicyResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoSuccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // State to which the execution snapshot status will be set if the task succeeds.
@@ -6596,6 +7617,12 @@ func (i EnterpriseCrmEventbusProtoTaskAlertConfigArgs) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskAlertConfigOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskAlertConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskAlertConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskAlertConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskAlertConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoTaskAlertConfigArrayInput is an input type that accepts EnterpriseCrmEventbusProtoTaskAlertConfigArray and EnterpriseCrmEventbusProtoTaskAlertConfigArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskAlertConfigArrayInput` via:
 //
@@ -6621,6 +7648,12 @@ func (i EnterpriseCrmEventbusProtoTaskAlertConfigArray) ToEnterpriseCrmEventbusP
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskAlertConfigArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskAlertConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskAlertConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskAlertConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskAlertConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
 type EnterpriseCrmEventbusProtoTaskAlertConfigOutput struct{ *pulumi.OutputState }
 
@@ -6634,6 +7667,12 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigOutput) ToEnterpriseCrmEventbus
 
 func (o EnterpriseCrmEventbusProtoTaskAlertConfigOutput) ToEnterpriseCrmEventbusProtoTaskAlertConfigOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskAlertConfigOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskAlertConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskAlertConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskAlertConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week).
@@ -6722,6 +7761,12 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigArrayOutput) ToEnterpriseCrmEve
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoTaskAlertConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskAlertConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskAlertConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoTaskAlertConfigArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTaskAlertConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoTaskAlertConfig {
 		return vs[0].([]EnterpriseCrmEventbusProtoTaskAlertConfig)[vs[1].(int)]
@@ -6768,6 +7813,12 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput) ToEnterpriseCrmEventbusProtoTaskAlertConfigResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskAlertConfigResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskAlertConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week).
@@ -6850,6 +7901,12 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseArrayOutput) ToEnterpri
 
 func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseArrayOutput) ToEnterpriseCrmEventbusProtoTaskAlertConfigResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskAlertConfigResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskAlertConfigResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskAlertConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput {
@@ -6973,6 +8030,12 @@ func (i EnterpriseCrmEventbusProtoTaskMetadataArgs) ToEnterpriseCrmEventbusProto
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskMetadataOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadata] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadata]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoTaskMetadataArgs) ToEnterpriseCrmEventbusProtoTaskMetadataPtrOutput() EnterpriseCrmEventbusProtoTaskMetadataPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoTaskMetadataPtrOutputWithContext(context.Background())
 }
@@ -7014,6 +8077,12 @@ func (i *enterpriseCrmEventbusProtoTaskMetadataPtrType) ToEnterpriseCrmEventbusP
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskMetadataPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoTaskMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadata] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadata]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TaskMetadata are attributes that are associated to every common Task we have.
 type EnterpriseCrmEventbusProtoTaskMetadataOutput struct{ *pulumi.OutputState }
 
@@ -7037,6 +8106,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataOutput) ToEnterpriseCrmEventbusPro
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoTaskMetadata) *EnterpriseCrmEventbusProtoTaskMetadata {
 		return &v
 	}).(EnterpriseCrmEventbusProtoTaskMetadataPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoTaskMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadata] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The new task name to replace the current task if it is deprecated. Otherwise, it is the same as the current task name.
@@ -7171,6 +8246,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataPtrOutput) ToEnterpriseCrmEventbus
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataPtrOutput) ToEnterpriseCrmEventbusProtoTaskMetadataPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadata] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataPtrOutput) Elem() EnterpriseCrmEventbusProtoTaskMetadataOutput {
@@ -7436,6 +8517,12 @@ func (i EnterpriseCrmEventbusProtoTaskMetadataAdminArgs) ToEnterpriseCrmEventbus
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskMetadataAdminOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskMetadataAdminArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataAdmin] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataAdmin]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskMetadataAdminOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoTaskMetadataAdminArrayInput is an input type that accepts EnterpriseCrmEventbusProtoTaskMetadataAdminArray and EnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataAdminArrayInput` via:
 //
@@ -7461,6 +8548,12 @@ func (i EnterpriseCrmEventbusProtoTaskMetadataAdminArray) ToEnterpriseCrmEventbu
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskMetadataAdminArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskMetadataAdmin] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskMetadataAdmin]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Admins are owners of a Task, and have all permissions on a particular task identified by the task name. By default, Eventbus periodically scans all task metadata and syncs (adds) any new admins defined here to Zanzibar.
 type EnterpriseCrmEventbusProtoTaskMetadataAdminOutput struct{ *pulumi.OutputState }
 
@@ -7474,6 +8567,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataAdminOutput) ToEnterpriseCrmEventb
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataAdminOutput) ToEnterpriseCrmEventbusProtoTaskMetadataAdminOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataAdminOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskMetadataAdminOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataAdmin] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataAdmin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataAdminOutput) GoogleGroupEmail() pulumi.StringPtrOutput {
@@ -7496,6 +8595,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutput) ToEnterpriseCrmE
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutput) ToEnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskMetadataAdmin] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskMetadataAdmin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataAdminArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTaskMetadataAdminOutput {
@@ -7525,6 +8630,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseOutput) ToEnterpriseC
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataAdminResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataAdminResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseOutput) GoogleGroupEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskMetadataAdminResponse) string { return v.GoogleGroupEmail }).(pulumi.StringOutput)
 }
@@ -7545,6 +8656,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseArrayOutput) ToEnterp
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseArrayOutput) ToEnterpriseCrmEventbusProtoTaskMetadataAdminResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataAdminResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskMetadataAdminResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskMetadataAdminResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTaskMetadataAdminResponseOutput {
@@ -7612,6 +8729,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataResponseOutput) ToEnterpriseCrmEve
 
 func (o EnterpriseCrmEventbusProtoTaskMetadataResponseOutput) ToEnterpriseCrmEventbusProtoTaskMetadataResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The new task name to replace the current task if it is deprecated. Otherwise, it is the same as the current task name.
@@ -7759,6 +8882,12 @@ func (i EnterpriseCrmEventbusProtoTaskUiConfigArgs) ToEnterpriseCrmEventbusProto
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskUiConfigOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskUiConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskUiConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskUiConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskUiConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoTaskUiConfigArgs) ToEnterpriseCrmEventbusProtoTaskUiConfigPtrOutput() EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoTaskUiConfigPtrOutputWithContext(context.Background())
 }
@@ -7800,6 +8929,12 @@ func (i *enterpriseCrmEventbusProtoTaskUiConfigPtrType) ToEnterpriseCrmEventbusP
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoTaskUiConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskUiConfig] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskUiConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskUiConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
 type EnterpriseCrmEventbusProtoTaskUiConfigOutput struct{ *pulumi.OutputState }
 
@@ -7825,6 +8960,12 @@ func (o EnterpriseCrmEventbusProtoTaskUiConfigOutput) ToEnterpriseCrmEventbusPro
 	}).(EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoTaskUiConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskUiConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskUiConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Configurations of included config modules.
 func (o EnterpriseCrmEventbusProtoTaskUiConfigOutput) TaskUiModuleConfigs() EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskUiConfig) []EnterpriseCrmEventbusProtoTaskUiModuleConfig {
@@ -7844,6 +8985,12 @@ func (o EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput) ToEnterpriseCrmEventbus
 
 func (o EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput) ToEnterpriseCrmEventbusProtoTaskUiConfigPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskUiConfig] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskUiConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput) Elem() EnterpriseCrmEventbusProtoTaskUiConfigOutput {
@@ -7885,6 +9032,12 @@ func (o EnterpriseCrmEventbusProtoTaskUiConfigResponseOutput) ToEnterpriseCrmEve
 
 func (o EnterpriseCrmEventbusProtoTaskUiConfigResponseOutput) ToEnterpriseCrmEventbusProtoTaskUiConfigResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskUiConfigResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskUiConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskUiConfigResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskUiConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configurations of included config modules.
@@ -7929,6 +9082,12 @@ func (i EnterpriseCrmEventbusProtoTaskUiModuleConfigArgs) ToEnterpriseCrmEventbu
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskUiModuleConfigOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskUiModuleConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskUiModuleConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskUiModuleConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskUiModuleConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayInput is an input type that accepts EnterpriseCrmEventbusProtoTaskUiModuleConfigArray and EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayInput` via:
 //
@@ -7954,6 +9113,12 @@ func (i EnterpriseCrmEventbusProtoTaskUiModuleConfigArray) ToEnterpriseCrmEventb
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTaskUiModuleConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskUiModuleConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskUiModuleConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Task author would use this type to configure a config module.
 type EnterpriseCrmEventbusProtoTaskUiModuleConfigOutput struct{ *pulumi.OutputState }
 
@@ -7967,6 +9132,12 @@ func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigOutput) ToEnterpriseCrmEvent
 
 func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigOutput) ToEnterpriseCrmEventbusProtoTaskUiModuleConfigOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskUiModuleConfigOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskUiModuleConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskUiModuleConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the config module.
@@ -7988,6 +9159,12 @@ func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput) ToEnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskUiModuleConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskUiModuleConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTaskUiModuleConfigOutput {
@@ -8017,6 +9194,12 @@ func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseOutput) ToEnterprise
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ID of the config module.
 func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseOutput) ModuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse) string { return v.ModuleId }).(pulumi.StringOutput)
@@ -8034,6 +9217,12 @@ func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseArrayOutput) ToEnter
 
 func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseArrayOutput) ToEnterpriseCrmEventbusProtoTaskUiModuleConfigResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTaskUiModuleConfigResponseOutput {
@@ -8073,6 +9262,12 @@ func (i EnterpriseCrmEventbusProtoTeardownArgs) ToEnterpriseCrmEventbusProtoTear
 
 func (i EnterpriseCrmEventbusProtoTeardownArgs) ToEnterpriseCrmEventbusProtoTeardownOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTeardownOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTeardownOutput)
+}
+
+func (i EnterpriseCrmEventbusProtoTeardownArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTeardown] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTeardown]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTeardownOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmEventbusProtoTeardownArgs) ToEnterpriseCrmEventbusProtoTeardownPtrOutput() EnterpriseCrmEventbusProtoTeardownPtrOutput {
@@ -8116,6 +9311,12 @@ func (i *enterpriseCrmEventbusProtoTeardownPtrType) ToEnterpriseCrmEventbusProto
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTeardownPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoTeardownPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTeardown] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTeardown]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTeardownPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoTeardownOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTeardownOutput) ElementType() reflect.Type {
@@ -8140,6 +9341,12 @@ func (o EnterpriseCrmEventbusProtoTeardownOutput) ToEnterpriseCrmEventbusProtoTe
 	}).(EnterpriseCrmEventbusProtoTeardownPtrOutput)
 }
 
+func (o EnterpriseCrmEventbusProtoTeardownOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTeardown] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTeardown]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required.
 func (o EnterpriseCrmEventbusProtoTeardownOutput) TeardownTaskConfigs() EnterpriseCrmEventbusProtoTeardownTaskConfigArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTeardown) []EnterpriseCrmEventbusProtoTeardownTaskConfig {
@@ -8159,6 +9366,12 @@ func (o EnterpriseCrmEventbusProtoTeardownPtrOutput) ToEnterpriseCrmEventbusProt
 
 func (o EnterpriseCrmEventbusProtoTeardownPtrOutput) ToEnterpriseCrmEventbusProtoTeardownPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTeardownPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTeardownPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTeardown] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTeardown]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTeardownPtrOutput) Elem() EnterpriseCrmEventbusProtoTeardownOutput {
@@ -8198,6 +9411,12 @@ func (o EnterpriseCrmEventbusProtoTeardownResponseOutput) ToEnterpriseCrmEventbu
 
 func (o EnterpriseCrmEventbusProtoTeardownResponseOutput) ToEnterpriseCrmEventbusProtoTeardownResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTeardownResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTeardownResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTeardownResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTeardownResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required.
@@ -8256,6 +9475,12 @@ func (i EnterpriseCrmEventbusProtoTeardownTaskConfigArgs) ToEnterpriseCrmEventbu
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTeardownTaskConfigOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTeardownTaskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTeardownTaskConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTeardownTaskConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTeardownTaskConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoTeardownTaskConfigArrayInput is an input type that accepts EnterpriseCrmEventbusProtoTeardownTaskConfigArray and EnterpriseCrmEventbusProtoTeardownTaskConfigArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoTeardownTaskConfigArrayInput` via:
 //
@@ -8281,6 +9506,12 @@ func (i EnterpriseCrmEventbusProtoTeardownTaskConfigArray) ToEnterpriseCrmEventb
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTeardownTaskConfigArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTeardownTaskConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTeardownTaskConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTeardownTaskConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTeardownTaskConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoTeardownTaskConfigOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTeardownTaskConfigOutput) ElementType() reflect.Type {
@@ -8293,6 +9524,12 @@ func (o EnterpriseCrmEventbusProtoTeardownTaskConfigOutput) ToEnterpriseCrmEvent
 
 func (o EnterpriseCrmEventbusProtoTeardownTaskConfigOutput) ToEnterpriseCrmEventbusProtoTeardownTaskConfigOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTeardownTaskConfigOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTeardownTaskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTeardownTaskConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTeardownTaskConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creator's email address.
@@ -8345,6 +9582,12 @@ func (o EnterpriseCrmEventbusProtoTeardownTaskConfigArrayOutput) ToEnterpriseCrm
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoTeardownTaskConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTeardownTaskConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTeardownTaskConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoTeardownTaskConfigArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTeardownTaskConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoTeardownTaskConfig {
 		return vs[0].([]EnterpriseCrmEventbusProtoTeardownTaskConfig)[vs[1].(int)]
@@ -8376,6 +9619,12 @@ func (o EnterpriseCrmEventbusProtoTeardownTaskConfigResponseOutput) ToEnterprise
 
 func (o EnterpriseCrmEventbusProtoTeardownTaskConfigResponseOutput) ToEnterpriseCrmEventbusProtoTeardownTaskConfigResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTeardownTaskConfigResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTeardownTaskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTeardownTaskConfigResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTeardownTaskConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creator's email address.
@@ -8428,6 +9677,12 @@ func (o EnterpriseCrmEventbusProtoTeardownTaskConfigResponseArrayOutput) ToEnter
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoTeardownTaskConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoTeardownTaskConfigResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoTeardownTaskConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoTeardownTaskConfigResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoTeardownTaskConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoTeardownTaskConfigResponse {
 		return vs[0].([]EnterpriseCrmEventbusProtoTeardownTaskConfigResponse)[vs[1].(int)]
@@ -8475,6 +9730,12 @@ func (i EnterpriseCrmEventbusProtoTriggerCriteriaArgs) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTriggerCriteriaOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoTriggerCriteriaArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTriggerCriteria] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTriggerCriteria]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTriggerCriteriaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoTriggerCriteriaArgs) ToEnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput() EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoTriggerCriteriaPtrOutputWithContext(context.Background())
 }
@@ -8516,6 +9777,12 @@ func (i *enterpriseCrmEventbusProtoTriggerCriteriaPtrType) ToEnterpriseCrmEventb
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoTriggerCriteriaPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTriggerCriteria] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTriggerCriteria]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoTriggerCriteriaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusProtoTriggerCriteriaOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTriggerCriteriaOutput) ElementType() reflect.Type {
@@ -8538,6 +9805,12 @@ func (o EnterpriseCrmEventbusProtoTriggerCriteriaOutput) ToEnterpriseCrmEventbus
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoTriggerCriteria) *EnterpriseCrmEventbusProtoTriggerCriteria {
 		return &v
 	}).(EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoTriggerCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTriggerCriteria] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTriggerCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Standard filter expression, when true the workflow will be executed. If there's no trigger_criteria_task_implementation_class_name specified, the condition will be validated directly.
@@ -8571,6 +9844,12 @@ func (o EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput) ToEnterpriseCrmEvent
 
 func (o EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput) ToEnterpriseCrmEventbusProtoTriggerCriteriaPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTriggerCriteria] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoTriggerCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoTriggerCriteriaPtrOutput) Elem() EnterpriseCrmEventbusProtoTriggerCriteriaOutput {
@@ -8634,6 +9913,12 @@ func (o EnterpriseCrmEventbusProtoTriggerCriteriaResponseOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmEventbusProtoTriggerCriteriaResponseOutput) ToEnterpriseCrmEventbusProtoTriggerCriteriaResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTriggerCriteriaResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoTriggerCriteriaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoTriggerCriteriaResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoTriggerCriteriaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Standard filter expression, when true the workflow will be executed. If there's no trigger_criteria_task_implementation_class_name specified, the condition will be validated directly.
@@ -8702,6 +9987,12 @@ func (i EnterpriseCrmEventbusProtoValueTypeArgs) ToEnterpriseCrmEventbusProtoVal
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoValueTypeOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoValueTypeArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoValueType] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoValueType]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoValueTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusProtoValueTypeArgs) ToEnterpriseCrmEventbusProtoValueTypePtrOutput() EnterpriseCrmEventbusProtoValueTypePtrOutput {
 	return i.ToEnterpriseCrmEventbusProtoValueTypePtrOutputWithContext(context.Background())
 }
@@ -8743,6 +10034,12 @@ func (i *enterpriseCrmEventbusProtoValueTypePtrType) ToEnterpriseCrmEventbusProt
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoValueTypePtrOutput)
 }
 
+func (i *enterpriseCrmEventbusProtoValueTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoValueType] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoValueType]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoValueTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Used for define type for values. Currently supported value types include int, string, double, array, and any proto message.
 type EnterpriseCrmEventbusProtoValueTypeOutput struct{ *pulumi.OutputState }
 
@@ -8766,6 +10063,12 @@ func (o EnterpriseCrmEventbusProtoValueTypeOutput) ToEnterpriseCrmEventbusProtoV
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusProtoValueType) *EnterpriseCrmEventbusProtoValueType {
 		return &v
 	}).(EnterpriseCrmEventbusProtoValueTypePtrOutput)
+}
+
+func (o EnterpriseCrmEventbusProtoValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoValueType] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoValueTypeOutput) BooleanValue() pulumi.BoolPtrOutput {
@@ -8816,6 +10119,12 @@ func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) ToEnterpriseCrmEventbusPro
 
 func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) ToEnterpriseCrmEventbusProtoValueTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoValueTypePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoValueType] {
+	return pulumix.Output[*EnterpriseCrmEventbusProtoValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) Elem() EnterpriseCrmEventbusProtoValueTypeOutput {
@@ -8925,6 +10234,12 @@ func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) ToEnterpriseCrmEventb
 
 func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) ToEnterpriseCrmEventbusProtoValueTypeResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoValueTypeResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoValueTypeResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoValueTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) BooleanValue() pulumi.BoolOutput {
@@ -9042,6 +10357,12 @@ func (i EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs) ToEnterpriseCrmEventb
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoWorkflowAlertConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoWorkflowAlertConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoWorkflowAlertConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayInput is an input type that accepts EnterpriseCrmEventbusProtoWorkflowAlertConfigArray and EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayInput` via:
 //
@@ -9067,6 +10388,12 @@ func (i EnterpriseCrmEventbusProtoWorkflowAlertConfigArray) ToEnterpriseCrmEvent
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutput)
 }
 
+func (i EnterpriseCrmEventbusProtoWorkflowAlertConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoWorkflowAlertConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoWorkflowAlertConfig]{
+		OutputState: i.ToEnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput struct{ *pulumi.OutputState }
 
@@ -9080,6 +10407,12 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput) ToEnterpriseCrmEven
 
 func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput) ToEnterpriseCrmEventbusProtoWorkflowAlertConfigOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoWorkflowAlertConfig] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoWorkflowAlertConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
@@ -9168,6 +10501,12 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutput) ToEnterpriseCr
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoWorkflowAlertConfig] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoWorkflowAlertConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoWorkflowAlertConfig {
 		return vs[0].([]EnterpriseCrmEventbusProtoWorkflowAlertConfig)[vs[1].(int)]
@@ -9214,6 +10553,12 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput) ToEnterpris
 
 func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput) ToEnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
@@ -9298,6 +10643,12 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseArrayOutput) ToEnte
 	return o
 }
 
+func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse] {
+	return pulumix.Output[[]EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse {
 		return vs[0].([]EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse)[vs[1].(int)]
@@ -9355,6 +10706,12 @@ func (i EnterpriseCrmEventbusStatsArgs) ToEnterpriseCrmEventbusStatsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusStatsOutput)
 }
 
+func (i EnterpriseCrmEventbusStatsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusStats] {
+	return pulumix.Output[EnterpriseCrmEventbusStats]{
+		OutputState: i.ToEnterpriseCrmEventbusStatsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusStatsArgs) ToEnterpriseCrmEventbusStatsPtrOutput() EnterpriseCrmEventbusStatsPtrOutput {
 	return i.ToEnterpriseCrmEventbusStatsPtrOutputWithContext(context.Background())
 }
@@ -9396,6 +10753,12 @@ func (i *enterpriseCrmEventbusStatsPtrType) ToEnterpriseCrmEventbusStatsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusStatsPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusStatsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusStats] {
+	return pulumix.Output[*EnterpriseCrmEventbusStats]{
+		OutputState: i.ToEnterpriseCrmEventbusStatsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Stats for the requested dimensions: QPS, duration, and error/warning rate
 type EnterpriseCrmEventbusStatsOutput struct{ *pulumi.OutputState }
 
@@ -9419,6 +10782,12 @@ func (o EnterpriseCrmEventbusStatsOutput) ToEnterpriseCrmEventbusStatsPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusStats) *EnterpriseCrmEventbusStats {
 		return &v
 	}).(EnterpriseCrmEventbusStatsPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusStatsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusStats] {
+	return pulumix.Output[EnterpriseCrmEventbusStats]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dimensions that these stats have been aggregated on.
@@ -9458,6 +10827,12 @@ func (o EnterpriseCrmEventbusStatsPtrOutput) ToEnterpriseCrmEventbusStatsPtrOutp
 
 func (o EnterpriseCrmEventbusStatsPtrOutput) ToEnterpriseCrmEventbusStatsPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusStatsPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusStatsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusStats] {
+	return pulumix.Output[*EnterpriseCrmEventbusStats]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusStatsPtrOutput) Elem() EnterpriseCrmEventbusStatsOutput {
@@ -9573,6 +10948,12 @@ func (i EnterpriseCrmEventbusStatsDimensionsArgs) ToEnterpriseCrmEventbusStatsDi
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusStatsDimensionsOutput)
 }
 
+func (i EnterpriseCrmEventbusStatsDimensionsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusStatsDimensions] {
+	return pulumix.Output[EnterpriseCrmEventbusStatsDimensions]{
+		OutputState: i.ToEnterpriseCrmEventbusStatsDimensionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmEventbusStatsDimensionsArgs) ToEnterpriseCrmEventbusStatsDimensionsPtrOutput() EnterpriseCrmEventbusStatsDimensionsPtrOutput {
 	return i.ToEnterpriseCrmEventbusStatsDimensionsPtrOutputWithContext(context.Background())
 }
@@ -9614,6 +10995,12 @@ func (i *enterpriseCrmEventbusStatsDimensionsPtrType) ToEnterpriseCrmEventbusSta
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusStatsDimensionsPtrOutput)
 }
 
+func (i *enterpriseCrmEventbusStatsDimensionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusStatsDimensions] {
+	return pulumix.Output[*EnterpriseCrmEventbusStatsDimensions]{
+		OutputState: i.ToEnterpriseCrmEventbusStatsDimensionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmEventbusStatsDimensionsOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusStatsDimensionsOutput) ElementType() reflect.Type {
@@ -9636,6 +11023,12 @@ func (o EnterpriseCrmEventbusStatsDimensionsOutput) ToEnterpriseCrmEventbusStats
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmEventbusStatsDimensions) *EnterpriseCrmEventbusStatsDimensions {
 		return &v
 	}).(EnterpriseCrmEventbusStatsDimensionsPtrOutput)
+}
+
+func (o EnterpriseCrmEventbusStatsDimensionsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusStatsDimensions] {
+	return pulumix.Output[EnterpriseCrmEventbusStatsDimensions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusStatsDimensionsOutput) ClientId() pulumi.StringPtrOutput {
@@ -9696,6 +11089,12 @@ func (o EnterpriseCrmEventbusStatsDimensionsPtrOutput) ToEnterpriseCrmEventbusSt
 
 func (o EnterpriseCrmEventbusStatsDimensionsPtrOutput) ToEnterpriseCrmEventbusStatsDimensionsPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusStatsDimensionsPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmEventbusStatsDimensionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusStatsDimensions] {
+	return pulumix.Output[*EnterpriseCrmEventbusStatsDimensions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmEventbusStatsDimensionsPtrOutput) Elem() EnterpriseCrmEventbusStatsDimensionsOutput {
@@ -9829,6 +11228,12 @@ func (o EnterpriseCrmEventbusStatsDimensionsResponseOutput) ToEnterpriseCrmEvent
 	return o
 }
 
+func (o EnterpriseCrmEventbusStatsDimensionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusStatsDimensionsResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusStatsDimensionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmEventbusStatsDimensionsResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusStatsDimensionsResponse) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -9900,6 +11305,12 @@ func (o EnterpriseCrmEventbusStatsResponseOutput) ToEnterpriseCrmEventbusStatsRe
 	return o
 }
 
+func (o EnterpriseCrmEventbusStatsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmEventbusStatsResponse] {
+	return pulumix.Output[EnterpriseCrmEventbusStatsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Dimensions that these stats have been aggregated on.
 func (o EnterpriseCrmEventbusStatsResponseOutput) Dimensions() EnterpriseCrmEventbusStatsDimensionsResponseOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusStatsResponse) EnterpriseCrmEventbusStatsDimensionsResponse {
@@ -9958,6 +11369,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayArgs) ToEnterpri
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput() EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput {
 	return i.ToEnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutputWithContext(context.Background())
 }
@@ -9999,6 +11416,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrType) ToEnte
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutput) ElementType() reflect.Type {
@@ -10023,6 +11446,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutput) ToEnterp
 	}).(EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutput) BooleanValues() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray) []bool { return v.BooleanValues }).(pulumi.BoolArrayOutput)
 }
@@ -10039,6 +11468,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput) ToEnt
 
 func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayOutput {
@@ -10078,6 +11513,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponseOutput) 
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponseOutput) BooleanValues() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponse) []bool {
 		return v.BooleanValues
@@ -10113,6 +11554,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayArgs) ToEnterpris
 
 func (i EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput)
+}
+
+func (i EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput() EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput {
@@ -10156,6 +11603,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrType) ToEnter
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput) ElementType() reflect.Type {
@@ -10180,6 +11633,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput) ToEnterpr
 	}).(EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput) DoubleValues() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray) []float64 { return v.DoubleValues }).(pulumi.Float64ArrayOutput)
 }
@@ -10196,6 +11655,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput) ToEnte
 
 func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayOutput {
@@ -10233,6 +11698,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponseOutput) T
 
 func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponseOutput) DoubleValues() pulumi.Float64ArrayOutput {
@@ -10276,6 +11747,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoEventParametersArgs) ToEnterpriseCrmF
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoEventParametersOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoEventParametersArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoEventParameters] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoEventParameters]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoEventParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmFrontendsEventbusProtoEventParametersArgs) ToEnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput() EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput {
 	return i.ToEnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutputWithContext(context.Background())
 }
@@ -10317,6 +11794,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoEventParametersPtrType) ToEnterprise
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoEventParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoEventParameters] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoEventParameters]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmFrontendsEventbusProtoEventParametersOutput struct{ *pulumi.OutputState }
 
@@ -10342,6 +11825,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoEventParametersOutput) ToEnterpriseCr
 	}).(EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoEventParametersOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoEventParameters] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoEventParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
 func (o EnterpriseCrmFrontendsEventbusProtoEventParametersOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoEventParameters) []EnterpriseCrmFrontendsEventbusProtoParameterEntry {
@@ -10361,6 +11850,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput) ToEnterpris
 
 func (o EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoEventParameters] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoEventParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoEventParametersOutput {
@@ -10404,6 +11899,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoEventParametersResponseOutput) ToEnte
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoEventParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoEventParametersResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoEventParametersResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
 func (o EnterpriseCrmFrontendsEventbusProtoEventParametersResponseOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoEventParametersResponse) []EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse {
@@ -10440,6 +11941,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoIntParameterArrayArgs) ToEnterpriseCr
 
 func (i EnterpriseCrmFrontendsEventbusProtoIntParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput)
+}
+
+func (i EnterpriseCrmFrontendsEventbusProtoIntParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoIntParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoIntParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmFrontendsEventbusProtoIntParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput() EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput {
@@ -10483,6 +11990,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrType) ToEnterpri
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoIntParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoIntParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput) ElementType() reflect.Type {
@@ -10507,6 +12020,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput) ToEnterprise
 	}).(EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoIntParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoIntParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput) IntValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoIntParameterArray) []string { return v.IntValues }).(pulumi.StringArrayOutput)
 }
@@ -10523,6 +12042,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput) ToEnterpr
 
 func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoIntParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoIntParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoIntParameterArrayOutput {
@@ -10560,6 +12085,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponseOutput) ToEn
 
 func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoIntParameterArrayResponseOutput) IntValues() pulumi.StringArrayOutput {
@@ -10643,6 +12174,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArgs) ToEnterpriseCrmFr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecEntry] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecEntry]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArray and EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayInput` via:
 //
@@ -10668,6 +12205,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArray) ToEnterpriseCrmF
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParamSpecEntry] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParamSpecEntry]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Key-value pair of EventBus task parameters. Next id: 13
 type EnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutput struct{ *pulumi.OutputState }
 
@@ -10681,6 +12224,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutput) ToEnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecEntry] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The FQCN of the Java object this represents. A string, for example, would be "java.lang.String". If this is "java.lang.Object", the parameter can be of any type.
@@ -10766,6 +12315,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayOutput) ToEnterpri
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParamSpecEntry] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParamSpecEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoParamSpecEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoParamSpecEntry)[vs[1].(int)]
@@ -10812,6 +12367,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseOutput) ToEnter
 
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The FQCN of the Java object this represents. A string, for example, would be "java.lang.String". If this is "java.lang.Object", the parameter can be of any type.
@@ -10897,6 +12458,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseArrayOutput) To
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse)[vs[1].(int)]
@@ -10932,6 +12499,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageArgs) ToEnterpriseCr
 
 func (i EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageArgs) ToEnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput)
+}
+
+func (i EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageArgs) ToEnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput() EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput {
@@ -10975,6 +12548,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrType) ToEnterpri
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput) ElementType() reflect.Type {
@@ -10999,6 +12578,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput) ToEnterprise
 	}).(EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoParamSpecEntryArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage) []EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
 		return v.Parameters
@@ -11017,6 +12602,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput) ToEnterpr
 
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput) ToEnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageOutput {
@@ -11054,6 +12645,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponseOutput) ToEn
 
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponseOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponseArrayOutput {
@@ -11105,6 +12702,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs) ToEnterpriseCrmFr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterEntry] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterEntry]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParameterEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoParameterEntryArray and EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayInput` via:
 //
@@ -11130,6 +12733,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoParameterEntryArray) ToEnterpriseCrmF
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoParameterEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParameterEntry] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParameterEntry]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Key-value pair of EventBus parameters.
 type EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput struct{ *pulumi.OutputState }
 
@@ -11143,6 +12752,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput) ToEnterpriseCrm
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterEntry] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Explicitly getting the type of the parameter.
@@ -11178,6 +12793,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput) ToEnterpri
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParameterEntry] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParameterEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoParameterEntry {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoParameterEntry)[vs[1].(int)]
@@ -11209,6 +12830,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput) ToEnter
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Explicitly getting the type of the parameter.
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse) string { return v.DataType }).(pulumi.StringOutput)
@@ -11238,6 +12865,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput) To
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput {
@@ -11301,6 +12934,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs) ToEnterpriseC
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterValueType] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterValueType]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs) ToEnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput() EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput {
 	return i.ToEnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutputWithContext(context.Background())
 }
@@ -11342,6 +12981,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoParameterValueTypePtrType) ToEnterpr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoParameterValueTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParameterValueType] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParameterValueType]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // To support various types of parameter values. Next available id: 14
 type EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput struct{ *pulumi.OutputState }
 
@@ -11365,6 +13010,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput) ToEnterpris
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmFrontendsEventbusProtoParameterValueType) *EnterpriseCrmFrontendsEventbusProtoParameterValueType {
 		return &v
 	}).(EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterValueType] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput) BooleanArray() EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayPtrOutput {
@@ -11439,6 +13090,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) ToEnterp
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) ToEnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParameterValueType] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParameterValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput {
@@ -11590,6 +13247,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) ToE
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) BooleanArray() EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponseOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse) EnterpriseCrmFrontendsEventbusProtoBooleanParameterArrayResponse {
 		return v.BooleanArray
@@ -11683,6 +13346,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs) ToEnterprise
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoProtoParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoProtoParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput() EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput {
 	return i.ToEnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutputWithContext(context.Background())
 }
@@ -11724,6 +13393,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrType) ToEnterp
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoProtoParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoProtoParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput) ElementType() reflect.Type {
@@ -11748,6 +13423,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput) ToEnterpri
 	}).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoProtoParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoProtoParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput) ProtoValues() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoProtoParameterArray) []map[string]string {
 		return v.ProtoValues
@@ -11766,6 +13447,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput) ToEnter
 
 func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoProtoParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoProtoParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput {
@@ -11803,6 +13490,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput) To
 
 func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput) ProtoValues() pulumi.StringMapArrayOutput {
@@ -11854,6 +13547,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoRollbackStrategyArgs) ToEnterpriseCrm
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoRollbackStrategyOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoRollbackStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoRollbackStrategy] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoRollbackStrategy]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoRollbackStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmFrontendsEventbusProtoRollbackStrategyArgs) ToEnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput() EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput {
 	return i.ToEnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutputWithContext(context.Background())
 }
@@ -11895,6 +13594,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrType) ToEnterpris
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoRollbackStrategy] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoRollbackStrategy]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Next available id: 4
 type EnterpriseCrmFrontendsEventbusProtoRollbackStrategyOutput struct{ *pulumi.OutputState }
 
@@ -11918,6 +13623,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyOutput) ToEnterpriseC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmFrontendsEventbusProtoRollbackStrategy) *EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
 		return &v
 	}).(EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoRollbackStrategy] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoRollbackStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The customized parameters the user can pass to this task.
@@ -11951,6 +13662,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput) ToEnterpri
 
 func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoRollbackStrategy] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoRollbackStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoRollbackStrategyOutput {
@@ -12018,6 +13735,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponseOutput) ToEnt
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The customized parameters the user can pass to this task.
 func (o EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponseOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoEventParametersResponseOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse) EnterpriseCrmFrontendsEventbusProtoEventParametersResponse {
@@ -12070,6 +13793,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterArgs) ToEnte
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterArgs) ToEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput() EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput {
 	return i.ToEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutputWithContext(context.Background())
 }
@@ -12111,6 +13840,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutput) ElementType() reflect.Type {
@@ -12135,6 +13870,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutput) ToEn
 	}).(EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutput) ObjectValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter) *string { return v.ObjectValue }).(pulumi.StringPtrOutput)
 }
@@ -12151,6 +13892,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput) T
 
 func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterOutput {
@@ -12190,6 +13937,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponseOutp
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponseOutput) ObjectValue() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse) string {
 		return v.ObjectValue
@@ -12225,6 +13978,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoStringParameterArrayArgs) ToEnterpris
 
 func (i EnterpriseCrmFrontendsEventbusProtoStringParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput)
+}
+
+func (i EnterpriseCrmFrontendsEventbusProtoStringParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoStringParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoStringParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmFrontendsEventbusProtoStringParameterArrayArgs) ToEnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput() EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput {
@@ -12268,6 +14027,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrType) ToEnter
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoStringParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoStringParameterArray]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput) ElementType() reflect.Type {
@@ -12292,6 +14057,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput) ToEnterpr
 	}).(EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoStringParameterArray] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoStringParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput) StringValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoStringParameterArray) []string { return v.StringValues }).(pulumi.StringArrayOutput)
 }
@@ -12308,6 +14079,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput) ToEnte
 
 func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoStringParameterArray] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoStringParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoStringParameterArrayOutput {
@@ -12345,6 +14122,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponseOutput) T
 
 func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponseOutput) StringValues() pulumi.StringArrayOutput {
@@ -12494,6 +14277,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs) ToEnterpriseCrmFronte
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskConfig] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskConfig]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskConfigArray and EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayInput` via:
 //
@@ -12519,6 +14308,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoTaskConfigArray) ToEnterpriseCrmFront
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoTaskConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTaskConfig] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTaskConfig]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput struct{ *pulumi.OutputState }
 
@@ -12532,6 +14327,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) ToEnterpriseCrmFron
 
 func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskConfig] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alert configurations on error rate, warning rate, number of runs, durations, etc.
@@ -12713,6 +14514,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutput) ToEnterpriseCr
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTaskConfig] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTaskConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoTaskConfig {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoTaskConfig)[vs[1].(int)]
@@ -12791,6 +14598,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) ToEnterpris
 
 func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alert configurations on error rate, warning rate, number of runs, durations, etc.
@@ -12966,6 +14779,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseArrayOutput) ToEnte
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse)[vs[1].(int)]
@@ -13031,6 +14850,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoTaskEntityArgs) ToEnterpriseCrmFronte
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTaskEntityOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoTaskEntityArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskEntity] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskEntity]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoTaskEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmFrontendsEventbusProtoTaskEntityArgs) ToEnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput() EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput {
 	return i.ToEnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutputWithContext(context.Background())
 }
@@ -13072,6 +14897,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoTaskEntityPtrType) ToEnterpriseCrmFr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoTaskEntityPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskEntity] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskEntity]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains a task's metadata and associated information. Next available id: 7
 type EnterpriseCrmFrontendsEventbusProtoTaskEntityOutput struct{ *pulumi.OutputState }
 
@@ -13095,6 +14926,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityOutput) ToEnterpriseCrmFron
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmFrontendsEventbusProtoTaskEntity) *EnterpriseCrmFrontendsEventbusProtoTaskEntity {
 		return &v
 	}).(EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskEntity] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if the task has conflict with vpcsc
@@ -13149,6 +14986,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput) ToEnterpriseCrmF
 
 func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskEntity] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoTaskEntityOutput {
@@ -13254,6 +15097,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityResponseOutput) ToEnterpris
 
 func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskEntityResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskEntityResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if the task has conflict with vpcsc
@@ -13383,6 +15232,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs) ToEnterpriseCrmFro
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTriggerConfig] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTriggerConfig]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTriggerConfigArray and EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayInput` via:
 //
@@ -13408,6 +15263,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoTriggerConfigArray) ToEnterpriseCrmFr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoTriggerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTriggerConfig] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTriggerConfig]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration detail of a trigger. Next available id: 19
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput struct{ *pulumi.OutputState }
 
@@ -13421,6 +15282,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput) ToEnterpriseCrmF
 
 func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput) ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTriggerConfig] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTriggerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
@@ -13524,6 +15391,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutput) ToEnterpris
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTriggerConfig] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTriggerConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoTriggerConfig)[vs[1].(int)]
@@ -13575,6 +15448,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput) ToEnterp
 
 func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
@@ -13680,6 +15559,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseArrayOutput) ToE
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse)[vs[1].(int)]
@@ -13765,6 +15650,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs) ToEnterpr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArray and EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutput values.
 // You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayInput` via:
 //
@@ -13790,6 +15681,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArray) ToEnterp
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutput)
 }
 
+func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) ElementType() reflect.Type {
@@ -13802,6 +15699,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) ToEnter
 
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) ToEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Metadata information about the parameters.
@@ -13894,6 +15797,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutput) To
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry)[vs[1].(int)]
@@ -13940,6 +15849,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput)
 
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Metadata information about the parameters.
@@ -14032,6 +15947,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseArrayOu
 	return o
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse] {
+	return pulumix.Output[[]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse)[vs[1].(int)]
@@ -14071,6 +15992,12 @@ func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs) ToEnterpriseC
 
 func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs) ToEnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutput)
+}
+
+func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameters] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameters]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs) ToEnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput() EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput {
@@ -14114,6 +16041,12 @@ func (i *enterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrType) ToEnterpr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput)
 }
 
+func (i *enterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameters] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameters]{
+		OutputState: i.ToEnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LINT.IfChange This is the frontend version of WorkflowParameters. It's exactly like the backend version except that instead of flattening protobuf parameters and treating every field and subfield of a protobuf parameter as a separate parameter, the fields/subfields of a protobuf parameter will be nested as "children" (see 'children' field below) parameters of the parent parameter. Please refer to enterprise/crm/eventbus/proto/workflow_parameters.proto for more information about WorkflowParameters.
 type EnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutput struct{ *pulumi.OutputState }
 
@@ -14139,6 +16072,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutput) ToEnterpris
 	}).(EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput)
 }
 
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameters] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Parameters are a part of Event and can be used to communiticate between different tasks that are part of the same workflow execution.
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameters) []EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
@@ -14158,6 +16097,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput) ToEnterp
 
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput) ToEnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameters] {
+	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoWorkflowParametersOutput {
@@ -14199,6 +16144,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponseOutput) ToE
 
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponseOutput) ToEnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponseOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponseOutput {
 	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse] {
+	return pulumix.Output[EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Parameters are a part of Event and can be used to communiticate between different tasks that are part of the same workflow execution.
@@ -14255,6 +16206,12 @@ func (i EnterpriseCrmLoggingGwsFieldLimitsArgs) ToEnterpriseCrmLoggingGwsFieldLi
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmLoggingGwsFieldLimitsOutput)
 }
 
+func (i EnterpriseCrmLoggingGwsFieldLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmLoggingGwsFieldLimits] {
+	return pulumix.Output[EnterpriseCrmLoggingGwsFieldLimits]{
+		OutputState: i.ToEnterpriseCrmLoggingGwsFieldLimitsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmLoggingGwsFieldLimitsArgs) ToEnterpriseCrmLoggingGwsFieldLimitsPtrOutput() EnterpriseCrmLoggingGwsFieldLimitsPtrOutput {
 	return i.ToEnterpriseCrmLoggingGwsFieldLimitsPtrOutputWithContext(context.Background())
 }
@@ -14296,6 +16253,12 @@ func (i *enterpriseCrmLoggingGwsFieldLimitsPtrType) ToEnterpriseCrmLoggingGwsFie
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmLoggingGwsFieldLimitsPtrOutput)
 }
 
+func (i *enterpriseCrmLoggingGwsFieldLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimits] {
+	return pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimits]{
+		OutputState: i.ToEnterpriseCrmLoggingGwsFieldLimitsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes string and array limits when writing to logs. When a limit is exceeded the *shortener_type* describes how to shorten the field. next_id: 6
 type EnterpriseCrmLoggingGwsFieldLimitsOutput struct{ *pulumi.OutputState }
 
@@ -14319,6 +16282,12 @@ func (o EnterpriseCrmLoggingGwsFieldLimitsOutput) ToEnterpriseCrmLoggingGwsField
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmLoggingGwsFieldLimits) *EnterpriseCrmLoggingGwsFieldLimits {
 		return &v
 	}).(EnterpriseCrmLoggingGwsFieldLimitsPtrOutput)
+}
+
+func (o EnterpriseCrmLoggingGwsFieldLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmLoggingGwsFieldLimits] {
+	return pulumix.Output[EnterpriseCrmLoggingGwsFieldLimits]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmLoggingGwsFieldLimitsOutput) LogAction() EnterpriseCrmLoggingGwsFieldLimitsLogActionPtrOutput {
@@ -14362,6 +16331,12 @@ func (o EnterpriseCrmLoggingGwsFieldLimitsPtrOutput) ToEnterpriseCrmLoggingGwsFi
 
 func (o EnterpriseCrmLoggingGwsFieldLimitsPtrOutput) ToEnterpriseCrmLoggingGwsFieldLimitsPtrOutputWithContext(ctx context.Context) EnterpriseCrmLoggingGwsFieldLimitsPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmLoggingGwsFieldLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimits] {
+	return pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimits]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmLoggingGwsFieldLimitsPtrOutput) Elem() EnterpriseCrmLoggingGwsFieldLimitsOutput {
@@ -14449,6 +16424,12 @@ func (o EnterpriseCrmLoggingGwsFieldLimitsResponseOutput) ToEnterpriseCrmLogging
 	return o
 }
 
+func (o EnterpriseCrmLoggingGwsFieldLimitsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmLoggingGwsFieldLimitsResponse] {
+	return pulumix.Output[EnterpriseCrmLoggingGwsFieldLimitsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseCrmLoggingGwsFieldLimitsResponseOutput) LogAction() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmLoggingGwsFieldLimitsResponse) string { return v.LogAction }).(pulumi.StringOutput)
 }
@@ -14515,6 +16496,12 @@ func (i EnterpriseCrmLoggingGwsSanitizeOptionsArgs) ToEnterpriseCrmLoggingGwsSan
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmLoggingGwsSanitizeOptionsOutput)
 }
 
+func (i EnterpriseCrmLoggingGwsSanitizeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmLoggingGwsSanitizeOptions] {
+	return pulumix.Output[EnterpriseCrmLoggingGwsSanitizeOptions]{
+		OutputState: i.ToEnterpriseCrmLoggingGwsSanitizeOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseCrmLoggingGwsSanitizeOptionsArgs) ToEnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput() EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput {
 	return i.ToEnterpriseCrmLoggingGwsSanitizeOptionsPtrOutputWithContext(context.Background())
 }
@@ -14556,6 +16543,12 @@ func (i *enterpriseCrmLoggingGwsSanitizeOptionsPtrType) ToEnterpriseCrmLoggingGw
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput)
 }
 
+func (i *enterpriseCrmLoggingGwsSanitizeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptions] {
+	return pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptions]{
+		OutputState: i.ToEnterpriseCrmLoggingGwsSanitizeOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identifies whether a field contains, or may contain, PII or sensitive data, and how to sanitize the field if it does. If a field's privacy type cannot be determined then it is sanitized (e.g., scrubbed). The specific sanitizer implementation is determined by run-time configuration and environment options (e.g., prod vs. qa). next_id: 5
 type EnterpriseCrmLoggingGwsSanitizeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -14579,6 +16572,12 @@ func (o EnterpriseCrmLoggingGwsSanitizeOptionsOutput) ToEnterpriseCrmLoggingGwsS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmLoggingGwsSanitizeOptions) *EnterpriseCrmLoggingGwsSanitizeOptions {
 		return &v
 	}).(EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput)
+}
+
+func (o EnterpriseCrmLoggingGwsSanitizeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmLoggingGwsSanitizeOptions] {
+	return pulumix.Output[EnterpriseCrmLoggingGwsSanitizeOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.
@@ -14617,6 +16616,12 @@ func (o EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput) ToEnterpriseCrmLoggingG
 
 func (o EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput) ToEnterpriseCrmLoggingGwsSanitizeOptionsPtrOutputWithContext(ctx context.Context) EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput {
 	return o
+}
+
+func (o EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptions] {
+	return pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseCrmLoggingGwsSanitizeOptionsPtrOutput) Elem() EnterpriseCrmLoggingGwsSanitizeOptionsOutput {
@@ -14692,6 +16697,12 @@ func (o EnterpriseCrmLoggingGwsSanitizeOptionsResponseOutput) ToEnterpriseCrmLog
 	return o
 }
 
+func (o EnterpriseCrmLoggingGwsSanitizeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseCrmLoggingGwsSanitizeOptionsResponse] {
+	return pulumix.Output[EnterpriseCrmLoggingGwsSanitizeOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.
 func (o EnterpriseCrmLoggingGwsSanitizeOptionsResponseOutput) IsAlreadySanitized() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnterpriseCrmLoggingGwsSanitizeOptionsResponse) bool { return v.IsAlreadySanitized }).(pulumi.BoolOutput)
@@ -14761,6 +16772,12 @@ func (i GoogleCloudIntegrationsV1alphaAccessTokenArgs) ToGoogleCloudIntegrations
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaAccessTokenOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaAccessTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaAccessToken] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaAccessToken]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaAccessTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaAccessTokenArgs) ToGoogleCloudIntegrationsV1alphaAccessTokenPtrOutput() GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaAccessTokenPtrOutputWithContext(context.Background())
 }
@@ -14802,6 +16819,12 @@ func (i *googleCloudIntegrationsV1alphaAccessTokenPtrType) ToGoogleCloudIntegrat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaAccessTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaAccessToken] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaAccessToken]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaAccessTokenPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The access token represents the authorization of a specific application to access specific parts of a user’s data.
 type GoogleCloudIntegrationsV1alphaAccessTokenOutput struct{ *pulumi.OutputState }
 
@@ -14825,6 +16848,12 @@ func (o GoogleCloudIntegrationsV1alphaAccessTokenOutput) ToGoogleCloudIntegratio
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaAccessToken) *GoogleCloudIntegrationsV1alphaAccessToken {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaAccessTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaAccessToken] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access token encapsulating the security identity of a process or thread.
@@ -14864,6 +16893,12 @@ func (o GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput) ToGoogleCloudIntegra
 
 func (o GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput) ToGoogleCloudIntegrationsV1alphaAccessTokenPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaAccessToken] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput) Elem() GoogleCloudIntegrationsV1alphaAccessTokenOutput {
@@ -14955,6 +16990,12 @@ func (o GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput) ToGoogleCloudIn
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaAccessTokenResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaAccessTokenResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access token encapsulating the security identity of a process or thread.
 func (o GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput) AccessToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAccessTokenResponse) string { return v.AccessToken }).(pulumi.StringOutput)
@@ -15019,6 +17060,12 @@ func (i GoogleCloudIntegrationsV1alphaAuthTokenArgs) ToGoogleCloudIntegrationsV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaAuthTokenOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaAuthTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaAuthToken] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaAuthToken]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaAuthTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaAuthTokenArgs) ToGoogleCloudIntegrationsV1alphaAuthTokenPtrOutput() GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaAuthTokenPtrOutputWithContext(context.Background())
 }
@@ -15060,6 +17107,12 @@ func (i *googleCloudIntegrationsV1alphaAuthTokenPtrType) ToGoogleCloudIntegratio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaAuthTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaAuthToken] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaAuthToken]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaAuthTokenPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The credentials to authenticate a user agent with a server that is put in HTTP Authorization request header.
 type GoogleCloudIntegrationsV1alphaAuthTokenOutput struct{ *pulumi.OutputState }
 
@@ -15085,6 +17138,12 @@ func (o GoogleCloudIntegrationsV1alphaAuthTokenOutput) ToGoogleCloudIntegrations
 	}).(GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaAuthTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaAuthToken] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaAuthToken]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The token for the auth type.
 func (o GoogleCloudIntegrationsV1alphaAuthTokenOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAuthToken) *string { return v.Token }).(pulumi.StringPtrOutput)
@@ -15107,6 +17166,12 @@ func (o GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput) ToGoogleCloudIntegrati
 
 func (o GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput) ToGoogleCloudIntegrationsV1alphaAuthTokenPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaAuthToken] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaAuthToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput) Elem() GoogleCloudIntegrationsV1alphaAuthTokenOutput {
@@ -15162,6 +17227,12 @@ func (o GoogleCloudIntegrationsV1alphaAuthTokenResponseOutput) ToGoogleCloudInte
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaAuthTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaAuthTokenResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaAuthTokenResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The token for the auth type.
 func (o GoogleCloudIntegrationsV1alphaAuthTokenResponseOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAuthTokenResponse) string { return v.Token }).(pulumi.StringOutput)
@@ -15207,6 +17278,12 @@ func (i GoogleCloudIntegrationsV1alphaBooleanParameterArrayArgs) ToGoogleCloudIn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaBooleanParameterArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaBooleanParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaBooleanParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaBooleanParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaBooleanParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaBooleanParameterArrayArgs) ToGoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput() GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutputWithContext(context.Background())
 }
@@ -15248,6 +17325,12 @@ func (i *googleCloudIntegrationsV1alphaBooleanParameterArrayPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaBooleanParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaBooleanParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaBooleanParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This message only contains a field of boolean array.
 type GoogleCloudIntegrationsV1alphaBooleanParameterArrayOutput struct{ *pulumi.OutputState }
 
@@ -15273,6 +17356,12 @@ func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayOutput) ToGoogleCloud
 	}).(GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaBooleanParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaBooleanParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Boolean array.
 func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayOutput) BooleanValues() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaBooleanParameterArray) []bool { return v.BooleanValues }).(pulumi.BoolArrayOutput)
@@ -15290,6 +17379,12 @@ func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput) ToGoogleCl
 
 func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput) ToGoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaBooleanParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaBooleanParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrOutput) Elem() GoogleCloudIntegrationsV1alphaBooleanParameterArrayOutput {
@@ -15331,6 +17426,12 @@ func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponseOutput) ToGoo
 
 func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponseOutput) ToGoogleCloudIntegrationsV1alphaBooleanParameterArrayResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Boolean array.
@@ -15381,6 +17482,12 @@ func (i GoogleCloudIntegrationsV1alphaClientCertificateArgs) ToGoogleCloudIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaClientCertificateOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaClientCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaClientCertificate] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaClientCertificate]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaClientCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaClientCertificateArgs) ToGoogleCloudIntegrationsV1alphaClientCertificatePtrOutput() GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaClientCertificatePtrOutputWithContext(context.Background())
 }
@@ -15422,6 +17529,12 @@ func (i *googleCloudIntegrationsV1alphaClientCertificatePtrType) ToGoogleCloudIn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaClientCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaClientCertificate] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaClientCertificate]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaClientCertificatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contains client certificate information
 type GoogleCloudIntegrationsV1alphaClientCertificateOutput struct{ *pulumi.OutputState }
 
@@ -15445,6 +17558,12 @@ func (o GoogleCloudIntegrationsV1alphaClientCertificateOutput) ToGoogleCloudInte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaClientCertificate) *GoogleCloudIntegrationsV1alphaClientCertificate {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaClientCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaClientCertificate] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaClientCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines. For example, -----BEGIN CERTIFICATE----- MIICTTCCAbagAwIBAgIJAPT0tSKNxan/MA0GCSqGSIb3DQEBCwUAMCoxFzAVBgNV BAoTDkdvb2dsZSBURVNUSU5HMQ8wDQYDVQQDEwZ0ZXN0Q0EwHhcNMTUwMTAxMDAw MDAwWhcNMjUwMTAxMDAwMDAwWjAuMRcwFQYDVQQKEw5Hb29nbGUgVEVTVElORzET MBEGA1UEAwwKam9lQGJhbmFuYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA vDYFgMgxi5W488d9J7UpCInl0NXmZQpJDEHE4hvkaRlH7pnC71H0DLt0/3zATRP1 JzY2+eqBmbGl4/sgZKYv8UrLnNyQNUTsNx1iZAfPUflf5FwgVsai8BM0pUciq1NB xD429VFcrGZNucvFLh72RuRFIKH8WUpiK/iZNFkWhZ0CAwEAAaN3MHUwDgYDVR0P AQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMB Af8EAjAAMBkGA1UdDgQSBBCVgnFBCWgL/iwCqnGrhTPQMBsGA1UdIwQUMBKAEKey Um2o4k2WiEVA0ldQvNYwDQYJKoZIhvcNAQELBQADgYEAYK986R4E3L1v+Q6esBtW JrUwA9UmJRSQr0N5w3o9XzarU37/bkjOP0Fw0k/A6Vv1n3vlciYfBFaBIam1qRHr 5dMsYf4CZS6w50r7hyzqyrwDoyNxkLnd2PdcHT/sym1QmflsjEs7pejtnohO6N2H wQW6M0H7Zt8claGRla4fKkg= -----END CERTIFICATE-----
@@ -15474,6 +17593,12 @@ func (o GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput) ToGoogleCloudI
 
 func (o GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput) ToGoogleCloudIntegrationsV1alphaClientCertificatePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaClientCertificate] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaClientCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput) Elem() GoogleCloudIntegrationsV1alphaClientCertificateOutput {
@@ -15541,6 +17666,12 @@ func (o GoogleCloudIntegrationsV1alphaClientCertificateResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaClientCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaClientCertificateResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaClientCertificateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines. For example, -----BEGIN CERTIFICATE----- MIICTTCCAbagAwIBAgIJAPT0tSKNxan/MA0GCSqGSIb3DQEBCwUAMCoxFzAVBgNV BAoTDkdvb2dsZSBURVNUSU5HMQ8wDQYDVQQDEwZ0ZXN0Q0EwHhcNMTUwMTAxMDAw MDAwWhcNMjUwMTAxMDAwMDAwWjAuMRcwFQYDVQQKEw5Hb29nbGUgVEVTVElORzET MBEGA1UEAwwKam9lQGJhbmFuYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA vDYFgMgxi5W488d9J7UpCInl0NXmZQpJDEHE4hvkaRlH7pnC71H0DLt0/3zATRP1 JzY2+eqBmbGl4/sgZKYv8UrLnNyQNUTsNx1iZAfPUflf5FwgVsai8BM0pUciq1NB xD429VFcrGZNucvFLh72RuRFIKH8WUpiK/iZNFkWhZ0CAwEAAaN3MHUwDgYDVR0P AQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMB Af8EAjAAMBkGA1UdDgQSBBCVgnFBCWgL/iwCqnGrhTPQMBsGA1UdIwQUMBKAEKey Um2o4k2WiEVA0ldQvNYwDQYJKoZIhvcNAQELBQADgYEAYK986R4E3L1v+Q6esBtW JrUwA9UmJRSQr0N5w3o9XzarU37/bkjOP0Fw0k/A6Vv1n3vlciYfBFaBIam1qRHr 5dMsYf4CZS6w50r7hyzqyrwDoyNxkLnd2PdcHT/sym1QmflsjEs7pejtnohO6N2H wQW6M0H7Zt8claGRla4fKkg= -----END CERTIFICATE-----
 func (o GoogleCloudIntegrationsV1alphaClientCertificateResponseOutput) EncryptedPrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaClientCertificateResponse) string { return v.EncryptedPrivateKey }).(pulumi.StringOutput)
@@ -15603,6 +17734,12 @@ func (i GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ToGoogleCloudInt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCloudSchedulerConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCloudSchedulerConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(context.Background())
 }
@@ -15644,6 +17781,12 @@ func (i *googleCloudIntegrationsV1alphaCloudSchedulerConfigPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaCloudSchedulerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudSchedulerConfig] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudSchedulerConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Cloud Scheduler Trigger configuration
 type GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput struct{ *pulumi.OutputState }
 
@@ -15667,6 +17810,12 @@ func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ToGoogleCloudI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCloudSchedulerConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCloudSchedulerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cron tab of cloud scheduler trigger.
@@ -15701,6 +17850,12 @@ func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ToGoogleClo
 
 func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudSchedulerConfig] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudSchedulerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) Elem() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput {
@@ -15780,6 +17935,12 @@ func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponseOutput) ToGoog
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The cron tab of cloud scheduler trigger.
 func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponseOutput) CronTab() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse) string { return v.CronTab }).(pulumi.StringOutput)
@@ -15841,6 +18002,12 @@ func (i GoogleCloudIntegrationsV1alphaCoordinateArgs) ToGoogleCloudIntegrationsV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCoordinateOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaCoordinateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCoordinate] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCoordinate]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaCoordinateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaCoordinateArgs) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutput() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(context.Background())
 }
@@ -15882,6 +18049,12 @@ func (i *googleCloudIntegrationsV1alphaCoordinatePtrType) ToGoogleCloudIntegrati
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaCoordinatePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCoordinate] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCoordinate]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration detail of coordinate, it used for UI
 type GoogleCloudIntegrationsV1alphaCoordinateOutput struct{ *pulumi.OutputState }
 
@@ -15907,6 +18080,12 @@ func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) ToGoogleCloudIntegration
 	}).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCoordinate] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCoordinate]{
+		OutputState: o.OutputState,
+	}
+}
+
 // X axis of the coordinate
 func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) X() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCoordinate) int { return v.X }).(pulumi.IntOutput)
@@ -15929,6 +18108,12 @@ func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) ToGoogleCloudIntegrat
 
 func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCoordinate] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCoordinate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) Elem() GoogleCloudIntegrationsV1alphaCoordinateOutput {
@@ -15982,6 +18167,12 @@ func (o GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) ToGoogleCloudInt
 
 func (o GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) ToGoogleCloudIntegrationsV1alphaCoordinateResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinateResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCoordinateResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCoordinateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // X axis of the coordinate
@@ -16061,6 +18252,12 @@ func (i GoogleCloudIntegrationsV1alphaCredentialArgs) ToGoogleCloudIntegrationsV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCredentialOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCredential] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCredential]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaCredentialArgs) ToGoogleCloudIntegrationsV1alphaCredentialPtrOutput() GoogleCloudIntegrationsV1alphaCredentialPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaCredentialPtrOutputWithContext(context.Background())
 }
@@ -16102,6 +18299,12 @@ func (i *googleCloudIntegrationsV1alphaCredentialPtrType) ToGoogleCloudIntegrati
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCredentialPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCredential] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCredential]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaCredentialPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Defines parameters for a single, canonical credential.
 type GoogleCloudIntegrationsV1alphaCredentialOutput struct{ *pulumi.OutputState }
 
@@ -16125,6 +18328,12 @@ func (o GoogleCloudIntegrationsV1alphaCredentialOutput) ToGoogleCloudIntegration
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaCredential) *GoogleCloudIntegrationsV1alphaCredential {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaCredentialPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCredential] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auth token credential
@@ -16200,6 +18409,12 @@ func (o GoogleCloudIntegrationsV1alphaCredentialPtrOutput) ToGoogleCloudIntegrat
 
 func (o GoogleCloudIntegrationsV1alphaCredentialPtrOutput) ToGoogleCloudIntegrationsV1alphaCredentialPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCredentialPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCredential] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaCredentialPtrOutput) Elem() GoogleCloudIntegrationsV1alphaCredentialOutput {
@@ -16339,6 +18554,12 @@ func (o GoogleCloudIntegrationsV1alphaCredentialResponseOutput) ToGoogleCloudInt
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaCredentialResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaCredentialResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Auth token credential
 func (o GoogleCloudIntegrationsV1alphaCredentialResponseOutput) AuthToken() GoogleCloudIntegrationsV1alphaAuthTokenResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCredentialResponse) GoogleCloudIntegrationsV1alphaAuthTokenResponse {
@@ -16435,6 +18656,12 @@ func (i GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs) ToGoogleCloudInt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaDoubleParameterArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaDoubleParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaDoubleParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaDoubleParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs) ToGoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput() GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutputWithContext(context.Background())
 }
@@ -16476,6 +18703,12 @@ func (i *googleCloudIntegrationsV1alphaDoubleParameterArrayPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaDoubleParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaDoubleParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaDoubleParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This message only contains a field of double number array.
 type GoogleCloudIntegrationsV1alphaDoubleParameterArrayOutput struct{ *pulumi.OutputState }
 
@@ -16501,6 +18734,12 @@ func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayOutput) ToGoogleCloudI
 	}).(GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaDoubleParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaDoubleParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Double number array.
 func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayOutput) DoubleValues() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaDoubleParameterArray) []float64 { return v.DoubleValues }).(pulumi.Float64ArrayOutput)
@@ -16518,6 +18757,12 @@ func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput) ToGoogleClo
 
 func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput) ToGoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaDoubleParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaDoubleParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput) Elem() GoogleCloudIntegrationsV1alphaDoubleParameterArrayOutput {
@@ -16559,6 +18804,12 @@ func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutput) ToGoog
 
 func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutput) ToGoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Double number array.
@@ -16621,6 +18872,12 @@ func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs) ToGoogleCloudInteg
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaErrorCatcherConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaErrorCatcherConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray and GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput` via:
 //
@@ -16646,6 +18903,12 @@ func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray) ToGoogleCloudInte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaErrorCatcherConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaErrorCatcherConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration detail of a error catch task
 type GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput struct{ *pulumi.OutputState }
 
@@ -16659,6 +18922,12 @@ func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ToGoogleCloudInt
 
 func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaErrorCatcherConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaErrorCatcherConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-provided description intended to give more business context about the error catcher config.
@@ -16709,6 +18978,12 @@ func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput) ToGoogleClo
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaErrorCatcherConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaErrorCatcherConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaErrorCatcherConfig)[vs[1].(int)]
@@ -16744,6 +19019,12 @@ func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ToGoogle
 
 func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-provided description intended to give more business context about the error catcher config.
@@ -16792,6 +19073,12 @@ func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) ToG
 
 func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput {
@@ -16843,6 +19130,12 @@ func (i GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ToGoogleCloudIntegratio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaFailurePolicyOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaFailurePolicy] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaFailurePolicy]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaFailurePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(context.Background())
 }
@@ -16884,6 +19177,12 @@ func (i *googleCloudIntegrationsV1alphaFailurePolicyPtrType) ToGoogleCloudIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaFailurePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaFailurePolicy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaFailurePolicy]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
 type GoogleCloudIntegrationsV1alphaFailurePolicyOutput struct{ *pulumi.OutputState }
 
@@ -16907,6 +19206,12 @@ func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) ToGoogleCloudIntegrat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaFailurePolicy) *GoogleCloudIntegrationsV1alphaFailurePolicy {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaFailurePolicy] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaFailurePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
@@ -16938,6 +19243,12 @@ func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) ToGoogleCloudInteg
 
 func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaFailurePolicy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaFailurePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) Elem() GoogleCloudIntegrationsV1alphaFailurePolicyOutput {
@@ -17005,6 +19316,12 @@ func (o GoogleCloudIntegrationsV1alphaFailurePolicyResponseOutput) ToGoogleCloud
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaFailurePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaFailurePolicyResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaFailurePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
 func (o GoogleCloudIntegrationsV1alphaFailurePolicyResponseOutput) IntervalTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaFailurePolicyResponse) string { return v.IntervalTime }).(pulumi.StringOutput)
@@ -17055,6 +19372,12 @@ func (i GoogleCloudIntegrationsV1alphaIntParameterArrayArgs) ToGoogleCloudIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntParameterArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaIntParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaIntParameterArrayArgs) ToGoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput() GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutputWithContext(context.Background())
 }
@@ -17096,6 +19419,12 @@ func (i *googleCloudIntegrationsV1alphaIntParameterArrayPtrType) ToGoogleCloudIn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaIntParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This message only contains a field of integer array.
 type GoogleCloudIntegrationsV1alphaIntParameterArrayOutput struct{ *pulumi.OutputState }
 
@@ -17121,6 +19450,12 @@ func (o GoogleCloudIntegrationsV1alphaIntParameterArrayOutput) ToGoogleCloudInte
 	}).(GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaIntParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Integer array.
 func (o GoogleCloudIntegrationsV1alphaIntParameterArrayOutput) IntValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntParameterArray) []string { return v.IntValues }).(pulumi.StringArrayOutput)
@@ -17138,6 +19473,12 @@ func (o GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput) ToGoogleCloudI
 
 func (o GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput) ToGoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput) Elem() GoogleCloudIntegrationsV1alphaIntParameterArrayOutput {
@@ -17179,6 +19520,12 @@ func (o GoogleCloudIntegrationsV1alphaIntParameterArrayResponseOutput) ToGoogleC
 
 func (o GoogleCloudIntegrationsV1alphaIntParameterArrayResponseOutput) ToGoogleCloudIntegrationsV1alphaIntParameterArrayResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntParameterArrayResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntParameterArrayResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integer array.
@@ -17253,6 +19600,12 @@ func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs) ToGoogleCloudI
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray and GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayInput` via:
 //
@@ -17278,6 +19631,12 @@ func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput struct{ *pulumi.OutputState }
 
@@ -17291,6 +19650,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ToGoogleClou
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
@@ -17358,6 +19723,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput) ToGoogl
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig)[vs[1].(int)]
@@ -17399,6 +19770,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseOutput) ToGo
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
@@ -17466,6 +19843,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseArrayOutput)
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse)[vs[1].(int)]
@@ -17511,6 +19894,12 @@ func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(context.Background())
 }
@@ -17552,6 +19941,12 @@ func (i *googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput struct{ *pulumi.OutputState }
 
@@ -17577,6 +19972,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput
 	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Absolute value threshold.
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) Absolute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue) *string { return v.Absolute }).(pulumi.StringPtrOutput)
@@ -17599,6 +20000,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOut
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) Elem() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput {
@@ -17652,6 +20059,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueRespon
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponseOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Absolute value threshold.
@@ -17735,6 +20148,12 @@ func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArgs) ToGoogleCloudInt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationParameterOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationParameter] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationParameter]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationParameterArray and GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput` via:
 //
@@ -17760,6 +20179,12 @@ func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArray) ToGoogleCloudIn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationParameter] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationParameter]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition.
 type GoogleCloudIntegrationsV1alphaIntegrationParameterOutput struct{ *pulumi.OutputState }
 
@@ -17773,6 +20198,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) ToGoogleCloudI
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationParameter] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of the parameter.
@@ -17840,6 +20271,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationParameter] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaIntegrationParameterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaIntegrationParameter {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaIntegrationParameter)[vs[1].(int)]
@@ -17881,6 +20318,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) ToGoog
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) ToGoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationParameterResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaIntegrationParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of the parameter.
@@ -17944,6 +20387,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseArrayOutput) T
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationParameterResponse] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaIntegrationParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaIntegrationParameterResponse)[vs[1].(int)]
@@ -17997,6 +20446,12 @@ func (i GoogleCloudIntegrationsV1alphaJwtArgs) ToGoogleCloudIntegrationsV1alphaJ
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaJwtOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaJwtArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaJwt] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaJwt]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaJwtOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaJwtArgs) ToGoogleCloudIntegrationsV1alphaJwtPtrOutput() GoogleCloudIntegrationsV1alphaJwtPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaJwtPtrOutputWithContext(context.Background())
 }
@@ -18038,6 +20493,12 @@ func (i *googleCloudIntegrationsV1alphaJwtPtrType) ToGoogleCloudIntegrationsV1al
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaJwtPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaJwtPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaJwt] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaJwt]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaJwtPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents JSON web token(JWT), which is a compact, URL-safe means of representing claims to be transferred between two parties, enabling the claims to be digitally signed or integrity protected.
 type GoogleCloudIntegrationsV1alphaJwtOutput struct{ *pulumi.OutputState }
 
@@ -18061,6 +20522,12 @@ func (o GoogleCloudIntegrationsV1alphaJwtOutput) ToGoogleCloudIntegrationsV1alph
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaJwt) *GoogleCloudIntegrationsV1alphaJwt {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaJwtPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaJwtOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaJwt] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaJwt]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The token calculated by the header, payload and signature.
@@ -18095,6 +20562,12 @@ func (o GoogleCloudIntegrationsV1alphaJwtPtrOutput) ToGoogleCloudIntegrationsV1a
 
 func (o GoogleCloudIntegrationsV1alphaJwtPtrOutput) ToGoogleCloudIntegrationsV1alphaJwtPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaJwtPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaJwtPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaJwt] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaJwt]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaJwtPtrOutput) Elem() GoogleCloudIntegrationsV1alphaJwtOutput {
@@ -18174,6 +20647,12 @@ func (o GoogleCloudIntegrationsV1alphaJwtResponseOutput) ToGoogleCloudIntegratio
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaJwtResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaJwtResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaJwtResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The token calculated by the header, payload and signature.
 func (o GoogleCloudIntegrationsV1alphaJwtResponseOutput) Jwt() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaJwtResponse) string { return v.Jwt }).(pulumi.StringOutput)
@@ -18245,6 +20724,12 @@ func (i GoogleCloudIntegrationsV1alphaNextTaskArgs) ToGoogleCloudIntegrationsV1a
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaNextTaskOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaNextTaskArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaNextTask] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaNextTask]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaNextTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIntegrationsV1alphaNextTaskArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaNextTaskArray and GoogleCloudIntegrationsV1alphaNextTaskArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaNextTaskArrayInput` via:
 //
@@ -18270,6 +20755,12 @@ func (i GoogleCloudIntegrationsV1alphaNextTaskArray) ToGoogleCloudIntegrationsV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaNextTaskArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaNextTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaNextTask] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaNextTask]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaNextTaskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The task that is next in line to be executed, if the condition specified evaluated to true.
 type GoogleCloudIntegrationsV1alphaNextTaskOutput struct{ *pulumi.OutputState }
 
@@ -18283,6 +20774,12 @@ func (o GoogleCloudIntegrationsV1alphaNextTaskOutput) ToGoogleCloudIntegrationsV
 
 func (o GoogleCloudIntegrationsV1alphaNextTaskOutput) ToGoogleCloudIntegrationsV1alphaNextTaskOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaNextTaskOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaNextTaskOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaNextTask] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaNextTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Standard filter expression for this task to become an eligible next task.
@@ -18324,6 +20821,12 @@ func (o GoogleCloudIntegrationsV1alphaNextTaskArrayOutput) ToGoogleCloudIntegrat
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaNextTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaNextTask] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaNextTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaNextTaskArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaNextTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaNextTask {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaNextTask)[vs[1].(int)]
@@ -18357,6 +20860,12 @@ func (o GoogleCloudIntegrationsV1alphaNextTaskResponseOutput) ToGoogleCloudInteg
 
 func (o GoogleCloudIntegrationsV1alphaNextTaskResponseOutput) ToGoogleCloudIntegrationsV1alphaNextTaskResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaNextTaskResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaNextTaskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaNextTaskResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaNextTaskResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Standard filter expression for this task to become an eligible next task.
@@ -18396,6 +20905,12 @@ func (o GoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutput) ToGoogleCloud
 
 func (o GoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaNextTaskResponse] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaNextTaskResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaNextTaskResponseOutput {
@@ -18479,6 +20994,12 @@ func (i GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeArgs) ToGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput() GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutputWithContext(context.Background())
 }
@@ -18520,6 +21041,12 @@ func (i *googleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The OAuth Type where the client sends request with the client id and requested scopes to auth endpoint. User sees a consent screen and auth code is received at specified redirect url afterwards. The auth code is then combined with the client id and secret and sent to the token endpoint in exchange for the access and refresh token. The refresh token can be used to fetch new access tokens.
 type GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeOutput struct{ *pulumi.OutputState }
 
@@ -18543,6 +21070,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode) *GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access token received from the token endpoint.
@@ -18620,6 +21153,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput) ToGoogle
 
 func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput) ToGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodePtrOutput) Elem() GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeOutput {
@@ -18783,6 +21322,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponseOutput) ToG
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The access token received from the token endpoint.
 func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponseOutput) AccessToken() GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse) GoogleCloudIntegrationsV1alphaAccessTokenResponse {
@@ -18903,6 +21448,12 @@ func (i GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsArgs) ToGoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput() GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutputWithContext(context.Background())
 }
@@ -18944,6 +21495,12 @@ func (i *googleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // For client credentials grant, the client sends a POST request with grant_type as 'client_credentials' to the authorization server. The authorization server will respond with a JSON object containing the access token.
 type GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -18967,6 +21524,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials) *GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access token fetched from the authorization server.
@@ -19022,6 +21585,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput) ToGoogle
 
 func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput) ToGoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsPtrOutput) Elem() GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsOutput {
@@ -19137,6 +21706,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponseOutput) ToG
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Access token fetched from the authorization server.
 func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponseOutput) AccessToken() GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse) GoogleCloudIntegrationsV1alphaAccessTokenResponse {
@@ -19243,6 +21818,12 @@ func (i GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsArgs) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsArgs) ToGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput() GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutputWithContext(context.Background())
 }
@@ -19284,6 +21865,12 @@ func (i *googleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // For resource owner credentials grant, the client will ask the user for their authorization credentials (ususally a username and password) and send a POST request to the authorization server. The authorization server will respond with a JSON object containing the access token.
 type GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -19307,6 +21894,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsOutput) ToGo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials) *GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access token fetched from the authorization server.
@@ -19372,6 +21965,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput) T
 
 func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput) ToGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsPtrOutput) Elem() GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsOutput {
@@ -19511,6 +22110,12 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponseOutp
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Access token fetched from the authorization server.
 func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponseOutput) AccessToken() GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponse) GoogleCloudIntegrationsV1alphaAccessTokenResponse {
@@ -19613,6 +22218,12 @@ func (i GoogleCloudIntegrationsV1alphaOidcTokenArgs) ToGoogleCloudIntegrationsV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOidcTokenOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaOidcTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOidcToken] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOidcToken]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOidcTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaOidcTokenArgs) ToGoogleCloudIntegrationsV1alphaOidcTokenPtrOutput() GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaOidcTokenPtrOutputWithContext(context.Background())
 }
@@ -19654,6 +22265,12 @@ func (i *googleCloudIntegrationsV1alphaOidcTokenPtrType) ToGoogleCloudIntegratio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaOidcTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOidcToken] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOidcToken]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaOidcTokenPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OIDC Token
 type GoogleCloudIntegrationsV1alphaOidcTokenOutput struct{ *pulumi.OutputState }
 
@@ -19677,6 +22294,12 @@ func (o GoogleCloudIntegrationsV1alphaOidcTokenOutput) ToGoogleCloudIntegrations
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaOidcToken) *GoogleCloudIntegrationsV1alphaOidcToken {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaOidcTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOidcToken] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOidcToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
@@ -19711,6 +22334,12 @@ func (o GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput) ToGoogleCloudIntegrati
 
 func (o GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput) ToGoogleCloudIntegrationsV1alphaOidcTokenPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOidcToken] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOidcToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaOidcTokenPtrOutput) Elem() GoogleCloudIntegrationsV1alphaOidcTokenOutput {
@@ -19790,6 +22419,12 @@ func (o GoogleCloudIntegrationsV1alphaOidcTokenResponseOutput) ToGoogleCloudInte
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaOidcTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaOidcTokenResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaOidcTokenResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
 func (o GoogleCloudIntegrationsV1alphaOidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaOidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -19853,6 +22488,12 @@ func (i GoogleCloudIntegrationsV1alphaParameterMapArgs) ToGoogleCloudIntegration
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaParameterMapOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaParameterMapArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMap] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMap]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaParameterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaParameterMapArgs) ToGoogleCloudIntegrationsV1alphaParameterMapPtrOutput() GoogleCloudIntegrationsV1alphaParameterMapPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaParameterMapPtrOutputWithContext(context.Background())
 }
@@ -19894,6 +22535,12 @@ func (i *googleCloudIntegrationsV1alphaParameterMapPtrType) ToGoogleCloudIntegra
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaParameterMapPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaParameterMapPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMap] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMap]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaParameterMapPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A generic multi-map that holds key value pairs. They keys and values can be of any type, unless specified.
 type GoogleCloudIntegrationsV1alphaParameterMapOutput struct{ *pulumi.OutputState }
 
@@ -19917,6 +22564,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapOutput) ToGoogleCloudIntegrati
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaParameterMap) *GoogleCloudIntegrationsV1alphaParameterMap {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaParameterMapPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMap] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of parameter map entries.
@@ -19952,6 +22605,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapPtrOutput) ToGoogleCloudIntegr
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapPtrOutput) ToGoogleCloudIntegrationsV1alphaParameterMapPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaParameterMapPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMap] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapPtrOutput) Elem() GoogleCloudIntegrationsV1alphaParameterMapOutput {
@@ -20033,6 +22692,12 @@ func (i GoogleCloudIntegrationsV1alphaParameterMapEntryArgs) ToGoogleCloudIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaParameterMapEntryOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaParameterMapEntryArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapEntry] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapEntry]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaParameterMapEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIntegrationsV1alphaParameterMapEntryArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaParameterMapEntryArray and GoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaParameterMapEntryArrayInput` via:
 //
@@ -20058,6 +22723,12 @@ func (i GoogleCloudIntegrationsV1alphaParameterMapEntryArray) ToGoogleCloudInteg
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaParameterMapEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaParameterMapEntry] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaParameterMapEntry]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Entry is a pair of key and value.
 type GoogleCloudIntegrationsV1alphaParameterMapEntryOutput struct{ *pulumi.OutputState }
 
@@ -20071,6 +22742,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapEntryOutput) ToGoogleCloudInte
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapEntryOutput) ToGoogleCloudIntegrationsV1alphaParameterMapEntryOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaParameterMapEntryOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapEntryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapEntry] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key of the map entry.
@@ -20099,6 +22776,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutput) ToGoogleClou
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutput) ToGoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaParameterMapEntry] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaParameterMapEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapEntryArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaParameterMapEntryOutput {
@@ -20130,6 +22813,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapEntryResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaParameterMapEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapEntryResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapEntryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Key of the map entry.
 func (o GoogleCloudIntegrationsV1alphaParameterMapEntryResponseOutput) Key() GoogleCloudIntegrationsV1alphaParameterMapFieldResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaParameterMapEntryResponse) GoogleCloudIntegrationsV1alphaParameterMapFieldResponse {
@@ -20156,6 +22845,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapEntryResponseArrayOutput) ToGo
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapEntryResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaParameterMapEntryResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaParameterMapEntryResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaParameterMapEntryResponse] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaParameterMapEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapEntryResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaParameterMapEntryResponseOutput {
@@ -20203,6 +22898,12 @@ func (i GoogleCloudIntegrationsV1alphaParameterMapFieldArgs) ToGoogleCloudIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaParameterMapFieldOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaParameterMapFieldArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapField] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapField]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaParameterMapFieldOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaParameterMapFieldArgs) ToGoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput() GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutputWithContext(context.Background())
 }
@@ -20244,6 +22945,12 @@ func (i *googleCloudIntegrationsV1alphaParameterMapFieldPtrType) ToGoogleCloudIn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaParameterMapFieldPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapField] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapField]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Field represents either the key or value in an entry.
 type GoogleCloudIntegrationsV1alphaParameterMapFieldOutput struct{ *pulumi.OutputState }
 
@@ -20267,6 +22974,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapFieldOutput) ToGoogleCloudInte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaParameterMapField) *GoogleCloudIntegrationsV1alphaParameterMapField {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapFieldOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapField] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapField]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Passing a literal value.
@@ -20293,6 +23006,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput) ToGoogleCloudI
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput) ToGoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapField] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapField]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapFieldPtrOutput) Elem() GoogleCloudIntegrationsV1alphaParameterMapFieldOutput {
@@ -20348,6 +23067,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapFieldResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaParameterMapFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapFieldResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapFieldResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Passing a literal value.
 func (o GoogleCloudIntegrationsV1alphaParameterMapFieldResponseOutput) LiteralValue() GoogleCloudIntegrationsV1alphaValueTypeResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaParameterMapFieldResponse) GoogleCloudIntegrationsV1alphaValueTypeResponse {
@@ -20383,6 +23108,12 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapResponseOutput) ToGoogleCloudI
 
 func (o GoogleCloudIntegrationsV1alphaParameterMapResponseOutput) ToGoogleCloudIntegrationsV1alphaParameterMapResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaParameterMapResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaParameterMapResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaParameterMapResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of parameter map entries.
@@ -20441,6 +23172,12 @@ func (i GoogleCloudIntegrationsV1alphaServiceAccountCredentialsArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaServiceAccountCredentialsOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaServiceAccountCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaServiceAccountCredentials] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaServiceAccountCredentials]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaServiceAccountCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaServiceAccountCredentialsArgs) ToGoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput() GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutputWithContext(context.Background())
 }
@@ -20482,6 +23219,12 @@ func (i *googleCloudIntegrationsV1alphaServiceAccountCredentialsPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaServiceAccountCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaServiceAccountCredentials] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaServiceAccountCredentials]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents the service account which can be used to generate access token for authenticating the service call.
 type GoogleCloudIntegrationsV1alphaServiceAccountCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -20507,6 +23250,12 @@ func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsOutput) ToGoogleC
 	}).(GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaServiceAccountCredentials] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaServiceAccountCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A space-delimited list of requested scope permissions.
 func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaServiceAccountCredentials) *string { return v.Scope }).(pulumi.StringPtrOutput)
@@ -20529,6 +23278,12 @@ func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput) ToGoog
 
 func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput) ToGoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaServiceAccountCredentials] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaServiceAccountCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrOutput) Elem() GoogleCloudIntegrationsV1alphaServiceAccountCredentialsOutput {
@@ -20584,6 +23339,12 @@ func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponseOutput) T
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A space-delimited list of requested scope permissions.
 func (o GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponseOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse) string { return v.Scope }).(pulumi.StringOutput)
@@ -20631,6 +23392,12 @@ func (i GoogleCloudIntegrationsV1alphaStringParameterArrayArgs) ToGoogleCloudInt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaStringParameterArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaStringParameterArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaStringParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaStringParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaStringParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaStringParameterArrayArgs) ToGoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput() GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutputWithContext(context.Background())
 }
@@ -20672,6 +23439,12 @@ func (i *googleCloudIntegrationsV1alphaStringParameterArrayPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaStringParameterArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaStringParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaStringParameterArray]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This message only contains a field of string array.
 type GoogleCloudIntegrationsV1alphaStringParameterArrayOutput struct{ *pulumi.OutputState }
 
@@ -20697,6 +23470,12 @@ func (o GoogleCloudIntegrationsV1alphaStringParameterArrayOutput) ToGoogleCloudI
 	}).(GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaStringParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaStringParameterArray] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaStringParameterArray]{
+		OutputState: o.OutputState,
+	}
+}
+
 // String array.
 func (o GoogleCloudIntegrationsV1alphaStringParameterArrayOutput) StringValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaStringParameterArray) []string { return v.StringValues }).(pulumi.StringArrayOutput)
@@ -20714,6 +23493,12 @@ func (o GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput) ToGoogleClo
 
 func (o GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput) ToGoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaStringParameterArray] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaStringParameterArray]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput) Elem() GoogleCloudIntegrationsV1alphaStringParameterArrayOutput {
@@ -20757,6 +23542,12 @@ func (o GoogleCloudIntegrationsV1alphaStringParameterArrayResponseOutput) ToGoog
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaStringParameterArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaStringParameterArrayResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaStringParameterArrayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // String array.
 func (o GoogleCloudIntegrationsV1alphaStringParameterArrayResponseOutput) StringValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaStringParameterArrayResponse) []string { return v.StringValues }).(pulumi.StringArrayOutput)
@@ -20795,6 +23586,12 @@ func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToGoogleCloudIntegratio
 
 func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaSuccessPolicyOutput)
+}
+
+func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaSuccessPolicy] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaSuccessPolicy]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
@@ -20838,6 +23635,12 @@ func (i *googleCloudIntegrationsV1alphaSuccessPolicyPtrType) ToGoogleCloudIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaSuccessPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaSuccessPolicy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaSuccessPolicy]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Policy that dictates the behavior for the task after it completes successfully.
 type GoogleCloudIntegrationsV1alphaSuccessPolicyOutput struct{ *pulumi.OutputState }
 
@@ -20863,6 +23666,12 @@ func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) ToGoogleCloudIntegrat
 	}).(GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaSuccessPolicy] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaSuccessPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // State to which the execution snapshot status will be set if the task succeeds.
 func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) FinalState() GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaSuccessPolicy) *GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState {
@@ -20882,6 +23691,12 @@ func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) ToGoogleCloudInteg
 
 func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaSuccessPolicy] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaSuccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) Elem() GoogleCloudIntegrationsV1alphaSuccessPolicyOutput {
@@ -20923,6 +23738,12 @@ func (o GoogleCloudIntegrationsV1alphaSuccessPolicyResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudIntegrationsV1alphaSuccessPolicyResponseOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaSuccessPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaSuccessPolicyResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaSuccessPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // State to which the execution snapshot status will be set if the task succeeds.
@@ -21025,6 +23846,12 @@ func (i GoogleCloudIntegrationsV1alphaTaskConfigArgs) ToGoogleCloudIntegrationsV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTaskConfigOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaTaskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaTaskConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaTaskConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaTaskConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIntegrationsV1alphaTaskConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigArray and GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigArrayInput` via:
 //
@@ -21050,6 +23877,12 @@ func (i GoogleCloudIntegrationsV1alphaTaskConfigArray) ToGoogleCloudIntegrations
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaTaskConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaTaskConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaTaskConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 type GoogleCloudIntegrationsV1alphaTaskConfigOutput struct{ *pulumi.OutputState }
 
@@ -21063,6 +23896,12 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ToGoogleCloudIntegration
 
 func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaTaskConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaTaskConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-provided description intended to give additional business context about the task.
@@ -21177,6 +24016,12 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput) ToGoogleCloudIntegr
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaTaskConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaTaskConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTaskConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTaskConfig {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaTaskConfig)[vs[1].(int)]
@@ -21232,6 +24077,12 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) ToGoogleCloudInt
 
 func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaTaskConfigResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaTaskConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-provided description intended to give additional business context about the task.
@@ -21338,6 +24189,12 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseArrayOutput) ToGoogleClo
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaTaskConfigResponse] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaTaskConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTaskConfigResponse {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaTaskConfigResponse)[vs[1].(int)]
@@ -21423,6 +24280,12 @@ func (i GoogleCloudIntegrationsV1alphaTriggerConfigArgs) ToGoogleCloudIntegratio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTriggerConfigOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaTriggerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaTriggerConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaTriggerConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaTriggerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIntegrationsV1alphaTriggerConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaTriggerConfigArray and GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTriggerConfigArrayInput` via:
 //
@@ -21448,6 +24311,12 @@ func (i GoogleCloudIntegrationsV1alphaTriggerConfigArray) ToGoogleCloudIntegrati
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaTriggerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaTriggerConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaTriggerConfig]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration detail of a trigger.
 type GoogleCloudIntegrationsV1alphaTriggerConfigOutput struct{ *pulumi.OutputState }
 
@@ -21461,6 +24330,12 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ToGoogleCloudIntegrat
 
 func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ToGoogleCloudIntegrationsV1alphaTriggerConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaTriggerConfig] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaTriggerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
@@ -21549,6 +24424,12 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput) ToGoogleCloudInt
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaTriggerConfig] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaTriggerConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTriggerConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTriggerConfig {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaTriggerConfig)[vs[1].(int)]
@@ -21596,6 +24477,12 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaTriggerConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaTriggerConfigResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaTriggerConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
@@ -21680,6 +24567,12 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseArrayOutput) ToGoogle
 	return o
 }
 
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIntegrationsV1alphaTriggerConfigResponse] {
+	return pulumix.Output[[]GoogleCloudIntegrationsV1alphaTriggerConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaTriggerConfigResponse)[vs[1].(int)]
@@ -21725,6 +24618,12 @@ func (i GoogleCloudIntegrationsV1alphaUsernameAndPasswordArgs) ToGoogleCloudInte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaUsernameAndPasswordOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaUsernameAndPasswordArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaUsernameAndPassword] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaUsernameAndPassword]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaUsernameAndPasswordOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaUsernameAndPasswordArgs) ToGoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput() GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutputWithContext(context.Background())
 }
@@ -21766,6 +24665,12 @@ func (i *googleCloudIntegrationsV1alphaUsernameAndPasswordPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaUsernameAndPasswordPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaUsernameAndPassword] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaUsernameAndPassword]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Username and password pair.
 type GoogleCloudIntegrationsV1alphaUsernameAndPasswordOutput struct{ *pulumi.OutputState }
 
@@ -21791,6 +24696,12 @@ func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordOutput) ToGoogleCloudIn
 	}).(GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput)
 }
 
+func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaUsernameAndPassword] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaUsernameAndPassword]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Password to be used
 func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaUsernameAndPassword) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -21813,6 +24724,12 @@ func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput) ToGoogleClou
 
 func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput) ToGoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaUsernameAndPassword] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaUsernameAndPassword]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrOutput) Elem() GoogleCloudIntegrationsV1alphaUsernameAndPasswordOutput {
@@ -21866,6 +24783,12 @@ func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponseOutput) ToGoogl
 
 func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponseOutput) ToGoogleCloudIntegrationsV1alphaUsernameAndPasswordResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Password to be used
@@ -21945,6 +24868,12 @@ func (i GoogleCloudIntegrationsV1alphaValueTypeArgs) ToGoogleCloudIntegrationsV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaValueTypeOutput)
 }
 
+func (i GoogleCloudIntegrationsV1alphaValueTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaValueType] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaValueType]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaValueTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudIntegrationsV1alphaValueTypeArgs) ToGoogleCloudIntegrationsV1alphaValueTypePtrOutput() GoogleCloudIntegrationsV1alphaValueTypePtrOutput {
 	return i.ToGoogleCloudIntegrationsV1alphaValueTypePtrOutputWithContext(context.Background())
 }
@@ -21986,6 +24915,12 @@ func (i *googleCloudIntegrationsV1alphaValueTypePtrType) ToGoogleCloudIntegratio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaValueTypePtrOutput)
 }
 
+func (i *googleCloudIntegrationsV1alphaValueTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaValueType] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaValueType]{
+		OutputState: i.ToGoogleCloudIntegrationsV1alphaValueTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The type of the parameter.
 type GoogleCloudIntegrationsV1alphaValueTypeOutput struct{ *pulumi.OutputState }
 
@@ -22009,6 +24944,12 @@ func (o GoogleCloudIntegrationsV1alphaValueTypeOutput) ToGoogleCloudIntegrations
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaValueType) *GoogleCloudIntegrationsV1alphaValueType {
 		return &v
 	}).(GoogleCloudIntegrationsV1alphaValueTypePtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaValueType] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Boolean Array.
@@ -22076,6 +25017,12 @@ func (o GoogleCloudIntegrationsV1alphaValueTypePtrOutput) ToGoogleCloudIntegrati
 
 func (o GoogleCloudIntegrationsV1alphaValueTypePtrOutput) ToGoogleCloudIntegrationsV1alphaValueTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaValueTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaValueType] {
+	return pulumix.Output[*GoogleCloudIntegrationsV1alphaValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIntegrationsV1alphaValueTypePtrOutput) Elem() GoogleCloudIntegrationsV1alphaValueTypeOutput {
@@ -22213,6 +25160,12 @@ func (o GoogleCloudIntegrationsV1alphaValueTypeResponseOutput) ToGoogleCloudInte
 
 func (o GoogleCloudIntegrationsV1alphaValueTypeResponseOutput) ToGoogleCloudIntegrationsV1alphaValueTypeResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaValueTypeResponseOutput {
 	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaValueTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIntegrationsV1alphaValueTypeResponse] {
+	return pulumix.Output[GoogleCloudIntegrationsV1alphaValueTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Boolean Array.

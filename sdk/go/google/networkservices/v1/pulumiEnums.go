@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
@@ -253,6 +272,12 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput) ToE
 	}).(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput)
 }
 
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria] {
+	return pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) 
 
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
 	return o
+}
+
+func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria] {
+	return pulumix.Output[*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) Elem() EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput {
@@ -348,6 +379,12 @@ func (in *endpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtr) ToEn
 
 func (in *endpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtr) ToEndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput)
+}
+
+func (in *endpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria] {
+	return pulumix.Output[*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria]{
+		OutputState: in.ToEndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of endpoint policy. This is primarily used to validate the configuration.
@@ -422,6 +459,12 @@ func (o EndpointPolicyTypeOutput) ToEndpointPolicyTypePtrOutputWithContext(ctx c
 	}).(EndpointPolicyTypePtrOutput)
 }
 
+func (o EndpointPolicyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyType] {
+	return pulumix.Output[EndpointPolicyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o EndpointPolicyTypePtrOutput) ToEndpointPolicyTypePtrOutput() EndpointPol
 
 func (o EndpointPolicyTypePtrOutput) ToEndpointPolicyTypePtrOutputWithContext(ctx context.Context) EndpointPolicyTypePtrOutput {
 	return o
+}
+
+func (o EndpointPolicyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyType] {
+	return pulumix.Output[*EndpointPolicyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPolicyTypePtrOutput) Elem() EndpointPolicyTypeOutput {
@@ -517,6 +566,12 @@ func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutput() EndpointPolicyT
 
 func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutputWithContext(ctx context.Context) EndpointPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointPolicyTypePtrOutput)
+}
+
+func (in *endpointPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyType] {
+	return pulumix.Output[*EndpointPolicyType]{
+		OutputState: in.ToEndpointPolicyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
@@ -591,6 +646,12 @@ func (o GatewayTypeOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context
 	}).(GatewayTypePtrOutput)
 }
 
+func (o GatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayType] {
+	return pulumix.Output[GatewayType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -624,6 +685,12 @@ func (o GatewayTypePtrOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
 
 func (o GatewayTypePtrOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
 	return o
+}
+
+func (o GatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
+	return pulumix.Output[*GatewayType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayTypePtrOutput) Elem() GatewayTypeOutput {
@@ -686,6 +753,12 @@ func (in *gatewayTypePtr) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
 
 func (in *gatewayTypePtr) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayTypePtrOutput)
+}
+
+func (in *gatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
+	return pulumix.Output[*GatewayType]{
+		OutputState: in.ToGatewayTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
@@ -760,6 +833,12 @@ func (o GrpcRouteHeaderMatchTypeOutput) ToGrpcRouteHeaderMatchTypePtrOutputWithC
 	}).(GrpcRouteHeaderMatchTypePtrOutput)
 }
 
+func (o GrpcRouteHeaderMatchTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteHeaderMatchType] {
+	return pulumix.Output[GrpcRouteHeaderMatchType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GrpcRouteHeaderMatchTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -793,6 +872,12 @@ func (o GrpcRouteHeaderMatchTypePtrOutput) ToGrpcRouteHeaderMatchTypePtrOutput()
 
 func (o GrpcRouteHeaderMatchTypePtrOutput) ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypePtrOutput {
 	return o
+}
+
+func (o GrpcRouteHeaderMatchTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteHeaderMatchType] {
+	return pulumix.Output[*GrpcRouteHeaderMatchType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteHeaderMatchTypePtrOutput) Elem() GrpcRouteHeaderMatchTypeOutput {
@@ -855,6 +940,12 @@ func (in *grpcRouteHeaderMatchTypePtr) ToGrpcRouteHeaderMatchTypePtrOutput() Grp
 
 func (in *grpcRouteHeaderMatchTypePtr) ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GrpcRouteHeaderMatchTypePtrOutput)
+}
+
+func (in *grpcRouteHeaderMatchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteHeaderMatchType] {
+	return pulumix.Output[*GrpcRouteHeaderMatchType]{
+		OutputState: in.ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
@@ -929,6 +1020,12 @@ func (o GrpcRouteMethodMatchTypeOutput) ToGrpcRouteMethodMatchTypePtrOutputWithC
 	}).(GrpcRouteMethodMatchTypePtrOutput)
 }
 
+func (o GrpcRouteMethodMatchTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteMethodMatchType] {
+	return pulumix.Output[GrpcRouteMethodMatchType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GrpcRouteMethodMatchTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -962,6 +1059,12 @@ func (o GrpcRouteMethodMatchTypePtrOutput) ToGrpcRouteMethodMatchTypePtrOutput()
 
 func (o GrpcRouteMethodMatchTypePtrOutput) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
 	return o
+}
+
+func (o GrpcRouteMethodMatchTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteMethodMatchType] {
+	return pulumix.Output[*GrpcRouteMethodMatchType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteMethodMatchTypePtrOutput) Elem() GrpcRouteMethodMatchTypeOutput {
@@ -1024,6 +1127,12 @@ func (in *grpcRouteMethodMatchTypePtr) ToGrpcRouteMethodMatchTypePtrOutput() Grp
 
 func (in *grpcRouteMethodMatchTypePtr) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GrpcRouteMethodMatchTypePtrOutput)
+}
+
+func (in *grpcRouteMethodMatchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteMethodMatchType] {
+	return pulumix.Output[*GrpcRouteMethodMatchType]{
+		OutputState: in.ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The HTTP Status code to use for the redirect.
@@ -1104,6 +1213,12 @@ func (o HttpRouteRedirectResponseCodeOutput) ToHttpRouteRedirectResponseCodePtrO
 	}).(HttpRouteRedirectResponseCodePtrOutput)
 }
 
+func (o HttpRouteRedirectResponseCodeOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRedirectResponseCode] {
+	return pulumix.Output[HttpRouteRedirectResponseCode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpRouteRedirectResponseCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1137,6 +1252,12 @@ func (o HttpRouteRedirectResponseCodePtrOutput) ToHttpRouteRedirectResponseCodeP
 
 func (o HttpRouteRedirectResponseCodePtrOutput) ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodePtrOutput {
 	return o
+}
+
+func (o HttpRouteRedirectResponseCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRedirectResponseCode] {
+	return pulumix.Output[*HttpRouteRedirectResponseCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRedirectResponseCodePtrOutput) Elem() HttpRouteRedirectResponseCodeOutput {
@@ -1199,6 +1320,12 @@ func (in *httpRouteRedirectResponseCodePtr) ToHttpRouteRedirectResponseCodePtrOu
 
 func (in *httpRouteRedirectResponseCodePtr) ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpRouteRedirectResponseCodePtrOutput)
+}
+
+func (in *httpRouteRedirectResponseCodePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRedirectResponseCode] {
+	return pulumix.Output[*HttpRouteRedirectResponseCode]{
+		OutputState: in.ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

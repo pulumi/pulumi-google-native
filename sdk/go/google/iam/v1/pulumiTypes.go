@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -114,6 +133,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -145,6 +170,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -167,6 +198,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -214,6 +251,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -239,6 +282,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -252,6 +301,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -276,6 +331,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -307,6 +368,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -329,6 +396,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -372,6 +445,12 @@ func (i AwsArgs) ToAwsOutputWithContext(ctx context.Context) AwsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsOutput)
 }
 
+func (i AwsArgs) ToOutput(ctx context.Context) pulumix.Output[Aws] {
+	return pulumix.Output[Aws]{
+		OutputState: i.ToAwsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AwsArgs) ToAwsPtrOutput() AwsPtrOutput {
 	return i.ToAwsPtrOutputWithContext(context.Background())
 }
@@ -413,6 +492,12 @@ func (i *awsPtrType) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AwsPtrOutput)
 }
 
+func (i *awsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Aws] {
+	return pulumix.Output[*Aws]{
+		OutputState: i.ToAwsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an Amazon Web Services identity provider.
 type AwsOutput struct{ *pulumi.OutputState }
 
@@ -438,6 +523,12 @@ func (o AwsOutput) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
 	}).(AwsPtrOutput)
 }
 
+func (o AwsOutput) ToOutput(ctx context.Context) pulumix.Output[Aws] {
+	return pulumix.Output[Aws]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The AWS account ID.
 func (o AwsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v Aws) string { return v.AccountId }).(pulumi.StringOutput)
@@ -455,6 +546,12 @@ func (o AwsPtrOutput) ToAwsPtrOutput() AwsPtrOutput {
 
 func (o AwsPtrOutput) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
 	return o
+}
+
+func (o AwsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Aws] {
+	return pulumix.Output[*Aws]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsPtrOutput) Elem() AwsOutput {
@@ -496,6 +593,12 @@ func (o AwsResponseOutput) ToAwsResponseOutput() AwsResponseOutput {
 
 func (o AwsResponseOutput) ToAwsResponseOutputWithContext(ctx context.Context) AwsResponseOutput {
 	return o
+}
+
+func (o AwsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AwsResponse] {
+	return pulumix.Output[AwsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AWS account ID.
@@ -546,6 +649,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -571,6 +680,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -584,6 +699,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -613,6 +734,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -646,6 +773,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -673,6 +806,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -724,6 +863,12 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
 }
 
+func (i ConditionArgs) ToOutput(ctx context.Context) pulumix.Output[Condition] {
+	return pulumix.Output[Condition]{
+		OutputState: i.ToConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConditionArgs) ToConditionPtrOutput() ConditionPtrOutput {
 	return i.ToConditionPtrOutputWithContext(context.Background())
 }
@@ -765,6 +910,12 @@ func (i *conditionPtrType) ToConditionPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionPtrOutput)
 }
 
+func (i *conditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Condition] {
+	return pulumix.Output[*Condition]{
+		OutputState: i.ToConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.
 type ConditionOutput struct{ *pulumi.OutputState }
 
@@ -788,6 +939,12 @@ func (o ConditionOutput) ToConditionPtrOutputWithContext(ctx context.Context) Co
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Condition) *Condition {
 		return &v
 	}).(ConditionPtrOutput)
+}
+
+func (o ConditionOutput) ToOutput(ctx context.Context) pulumix.Output[Condition] {
+	return pulumix.Output[Condition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.
@@ -817,6 +974,12 @@ func (o ConditionPtrOutput) ToConditionPtrOutput() ConditionPtrOutput {
 
 func (o ConditionPtrOutput) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
 	return o
+}
+
+func (o ConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Condition] {
+	return pulumix.Output[*Condition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionPtrOutput) Elem() ConditionOutput {
@@ -906,6 +1069,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -947,6 +1116,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -970,6 +1145,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1004,6 +1185,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1083,6 +1270,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1146,6 +1339,12 @@ func (i GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ToGoogleIamAdminV1Workfor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderOidcOutput)
 }
 
+func (i GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidc] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidc]{
+		OutputState: i.ToGoogleIamAdminV1WorkforcePoolProviderOidcOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
 	return i.ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(context.Background())
 }
@@ -1187,6 +1386,12 @@ func (i *googleIamAdminV1WorkforcePoolProviderOidcPtrType) ToGoogleIamAdminV1Wor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput)
 }
 
+func (i *googleIamAdminV1WorkforcePoolProviderOidcPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidc] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidc]{
+		OutputState: i.ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an OpenId Connect 1.0 identity provider.
 type GoogleIamAdminV1WorkforcePoolProviderOidcOutput struct{ *pulumi.OutputState }
 
@@ -1210,6 +1415,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ToGoogleIamAdminV1Workf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamAdminV1WorkforcePoolProviderOidc) *GoogleIamAdminV1WorkforcePoolProviderOidc {
 		return &v
 	}).(GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidc] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The client ID. Must match the audience claim of the JWT issued by the identity provider.
@@ -1241,6 +1452,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) ToGoogleIamAdminV1Wo
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
 	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidc] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcOutput {
@@ -1308,6 +1525,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) ToGoogleIamAdmi
 	return o
 }
 
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcResponse] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID. Must match the audience claim of the JWT issued by the identity provider.
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderOidcResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1364,6 +1587,12 @@ func (i GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigArgs) ToGoogleIamAd
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigOutput)
 }
 
+func (i GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig]{
+		OutputState: i.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigArgs) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
 	return i.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(context.Background())
 }
@@ -1405,6 +1634,12 @@ func (i *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrType) ToGoogleI
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
 }
 
+func (i *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig]{
+		OutputState: i.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for web single sign-on for the OIDC provider.
 type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigOutput struct{ *pulumi.OutputState }
 
@@ -1428,6 +1663,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigOutput) ToGoogleIam
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig) *GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
 		return &v
 	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
@@ -1456,6 +1697,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ToGoogle
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
 	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigOutput {
@@ -1511,6 +1758,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseOutput) ToG
 	return o
 }
 
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseOutput) AssertionClaimsBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse) string {
@@ -1558,6 +1811,12 @@ func (i GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ToGoogleIamAdminV1Workfor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderSamlOutput)
 }
 
+func (i GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderSaml] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderSaml]{
+		OutputState: i.ToGoogleIamAdminV1WorkforcePoolProviderSamlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput() GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
 	return i.ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(context.Background())
 }
@@ -1599,6 +1858,12 @@ func (i *googleIamAdminV1WorkforcePoolProviderSamlPtrType) ToGoogleIamAdminV1Wor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput)
 }
 
+func (i *googleIamAdminV1WorkforcePoolProviderSamlPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderSaml] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderSaml]{
+		OutputState: i.ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a SAML identity provider.
 type GoogleIamAdminV1WorkforcePoolProviderSamlOutput struct{ *pulumi.OutputState }
 
@@ -1624,6 +1889,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) ToGoogleIamAdminV1Workf
 	}).(GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput)
 }
 
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderSaml] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderSaml]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
 func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) IdpMetadataXml() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderSaml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
@@ -1641,6 +1912,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) ToGoogleIamAdminV1Wo
 
 func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
 	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderSaml] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderSaml]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderSamlOutput {
@@ -1684,6 +1961,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput) ToGoogleIamAdmi
 	return o
 }
 
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderSamlResponse] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderSamlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
 func (o GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput) IdpMetadataXml() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderSamlResponse) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
@@ -1722,6 +2005,12 @@ func (i KeyDataArgs) ToKeyDataOutput() KeyDataOutput {
 
 func (i KeyDataArgs) ToKeyDataOutputWithContext(ctx context.Context) KeyDataOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyDataOutput)
+}
+
+func (i KeyDataArgs) ToOutput(ctx context.Context) pulumix.Output[KeyData] {
+	return pulumix.Output[KeyData]{
+		OutputState: i.ToKeyDataOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i KeyDataArgs) ToKeyDataPtrOutput() KeyDataPtrOutput {
@@ -1765,6 +2054,12 @@ func (i *keyDataPtrType) ToKeyDataPtrOutputWithContext(ctx context.Context) KeyD
 	return pulumi.ToOutputWithContext(ctx, i).(KeyDataPtrOutput)
 }
 
+func (i *keyDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyData] {
+	return pulumix.Output[*KeyData]{
+		OutputState: i.ToKeyDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a public key data along with its format.
 type KeyDataOutput struct{ *pulumi.OutputState }
 
@@ -1790,6 +2085,12 @@ func (o KeyDataOutput) ToKeyDataPtrOutputWithContext(ctx context.Context) KeyDat
 	}).(KeyDataPtrOutput)
 }
 
+func (o KeyDataOutput) ToOutput(ctx context.Context) pulumix.Output[KeyData] {
+	return pulumix.Output[KeyData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The specifications for the key.
 func (o KeyDataOutput) KeySpec() KeyDataKeySpecOutput {
 	return o.ApplyT(func(v KeyData) KeyDataKeySpec { return v.KeySpec }).(KeyDataKeySpecOutput)
@@ -1807,6 +2108,12 @@ func (o KeyDataPtrOutput) ToKeyDataPtrOutput() KeyDataPtrOutput {
 
 func (o KeyDataPtrOutput) ToKeyDataPtrOutputWithContext(ctx context.Context) KeyDataPtrOutput {
 	return o
+}
+
+func (o KeyDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyData] {
+	return pulumix.Output[*KeyData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyDataPtrOutput) Elem() KeyDataOutput {
@@ -1856,6 +2163,12 @@ func (o KeyDataResponseOutput) ToKeyDataResponseOutput() KeyDataResponseOutput {
 
 func (o KeyDataResponseOutput) ToKeyDataResponseOutputWithContext(ctx context.Context) KeyDataResponseOutput {
 	return o
+}
+
+func (o KeyDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyDataResponse] {
+	return pulumix.Output[KeyDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The format of the key.
@@ -1922,6 +2235,12 @@ func (i OidcArgs) ToOidcOutputWithContext(ctx context.Context) OidcOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OidcOutput)
 }
 
+func (i OidcArgs) ToOutput(ctx context.Context) pulumix.Output[Oidc] {
+	return pulumix.Output[Oidc]{
+		OutputState: i.ToOidcOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OidcArgs) ToOidcPtrOutput() OidcPtrOutput {
 	return i.ToOidcPtrOutputWithContext(context.Background())
 }
@@ -1963,6 +2282,12 @@ func (i *oidcPtrType) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(OidcPtrOutput)
 }
 
+func (i *oidcPtrType) ToOutput(ctx context.Context) pulumix.Output[*Oidc] {
+	return pulumix.Output[*Oidc]{
+		OutputState: i.ToOidcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an OpenId Connect 1.0 identity provider.
 type OidcOutput struct{ *pulumi.OutputState }
 
@@ -1988,6 +2313,12 @@ func (o OidcOutput) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutpu
 	}).(OidcPtrOutput)
 }
 
+func (o OidcOutput) ToOutput(ctx context.Context) pulumix.Output[Oidc] {
+	return pulumix.Output[Oidc]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
 func (o OidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Oidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
@@ -2010,6 +2341,12 @@ func (o OidcPtrOutput) ToOidcPtrOutput() OidcPtrOutput {
 
 func (o OidcPtrOutput) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutput {
 	return o
+}
+
+func (o OidcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Oidc] {
+	return pulumix.Output[*Oidc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OidcPtrOutput) Elem() OidcOutput {
@@ -2065,6 +2402,12 @@ func (o OidcResponseOutput) ToOidcResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o OidcResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OidcResponse] {
+	return pulumix.Output[OidcResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
 func (o OidcResponseOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OidcResponse) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
@@ -2110,6 +2453,12 @@ func (i SamlArgs) ToSamlOutputWithContext(ctx context.Context) SamlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SamlOutput)
 }
 
+func (i SamlArgs) ToOutput(ctx context.Context) pulumix.Output[Saml] {
+	return pulumix.Output[Saml]{
+		OutputState: i.ToSamlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SamlArgs) ToSamlPtrOutput() SamlPtrOutput {
 	return i.ToSamlPtrOutputWithContext(context.Background())
 }
@@ -2151,6 +2500,12 @@ func (i *samlPtrType) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(SamlPtrOutput)
 }
 
+func (i *samlPtrType) ToOutput(ctx context.Context) pulumix.Output[*Saml] {
+	return pulumix.Output[*Saml]{
+		OutputState: i.ToSamlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents an SAML 2.0 identity provider.
 type SamlOutput struct{ *pulumi.OutputState }
 
@@ -2176,6 +2531,12 @@ func (o SamlOutput) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOutpu
 	}).(SamlPtrOutput)
 }
 
+func (o SamlOutput) ToOutput(ctx context.Context) pulumix.Output[Saml] {
+	return pulumix.Output[Saml]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
 func (o SamlOutput) IdpMetadataXml() pulumi.StringOutput {
 	return o.ApplyT(func(v Saml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
@@ -2193,6 +2554,12 @@ func (o SamlPtrOutput) ToSamlPtrOutput() SamlPtrOutput {
 
 func (o SamlPtrOutput) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOutput {
 	return o
+}
+
+func (o SamlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Saml] {
+	return pulumix.Output[*Saml]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SamlPtrOutput) Elem() SamlOutput {
@@ -2234,6 +2601,12 @@ func (o SamlResponseOutput) ToSamlResponseOutput() SamlResponseOutput {
 
 func (o SamlResponseOutput) ToSamlResponseOutputWithContext(ctx context.Context) SamlResponseOutput {
 	return o
+}
+
+func (o SamlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SamlResponse] {
+	return pulumix.Output[SamlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata

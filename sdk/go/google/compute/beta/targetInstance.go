@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TargetInstance resource in the specified project and zone using the data included in the request.
@@ -141,6 +142,12 @@ func (i *TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceOutput)
 }
 
+func (i *TargetInstance) ToOutput(ctx context.Context) pulumix.Output[*TargetInstance] {
+	return pulumix.Output[*TargetInstance]{
+		OutputState: i.ToTargetInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetInstanceOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o TargetInstanceOutput) ToTargetInstanceOutput() TargetInstanceOutput {
 
 func (o TargetInstanceOutput) ToTargetInstanceOutputWithContext(ctx context.Context) TargetInstanceOutput {
 	return o
+}
+
+func (o TargetInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetInstance] {
+	return pulumix.Output[*TargetInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a `WorkerPool`.
@@ -141,6 +142,12 @@ func (i *WorkerPool) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolOutput)
 }
 
+func (i *WorkerPool) ToOutput(ctx context.Context) pulumix.Output[*WorkerPool] {
+	return pulumix.Output[*WorkerPool]{
+		OutputState: i.ToWorkerPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkerPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o WorkerPoolOutput) ToWorkerPoolOutput() WorkerPoolOutput {
 
 func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPoolOutput {
 	return o
+}
+
+func (o WorkerPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPool] {
+	return pulumix.Output[*WorkerPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

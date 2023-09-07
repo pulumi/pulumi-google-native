@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i GcsSourceArgs) ToGcsSourceOutputWithContext(ctx context.Context) GcsSour
 	return pulumi.ToOutputWithContext(ctx, i).(GcsSourceOutput)
 }
 
+func (i GcsSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GcsSource] {
+	return pulumix.Output[GcsSource]{
+		OutputState: i.ToGcsSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Google Cloud Storage location for the input content.
 type GcsSourceOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o GcsSourceOutput) ToGcsSourceOutput() GcsSourceOutput {
 
 func (o GcsSourceOutput) ToGcsSourceOutputWithContext(ctx context.Context) GcsSourceOutput {
 	return o
+}
+
+func (o GcsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GcsSource] {
+	return pulumix.Output[GcsSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Source data URI. For example, `gs://my_bucket/my_object`.
@@ -87,6 +100,12 @@ func (o GcsSourceResponseOutput) ToGcsSourceResponseOutput() GcsSourceResponseOu
 
 func (o GcsSourceResponseOutput) ToGcsSourceResponseOutputWithContext(ctx context.Context) GcsSourceResponseOutput {
 	return o
+}
+
+func (o GcsSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcsSourceResponse] {
+	return pulumix.Output[GcsSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Source data URI. For example, `gs://my_bucket/my_object`.
@@ -129,6 +148,12 @@ func (i GlossaryInputConfigArgs) ToGlossaryInputConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryInputConfigOutput)
 }
 
+func (i GlossaryInputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GlossaryInputConfig] {
+	return pulumix.Output[GlossaryInputConfig]{
+		OutputState: i.ToGlossaryInputConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Input configuration for glossaries.
 type GlossaryInputConfigOutput struct{ *pulumi.OutputState }
 
@@ -142,6 +167,12 @@ func (o GlossaryInputConfigOutput) ToGlossaryInputConfigOutput() GlossaryInputCo
 
 func (o GlossaryInputConfigOutput) ToGlossaryInputConfigOutputWithContext(ctx context.Context) GlossaryInputConfigOutput {
 	return o
+}
+
+func (o GlossaryInputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryInputConfig] {
+	return pulumix.Output[GlossaryInputConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): Two column file, tab- or comma-separated. The first column is source text. The second column is target text. No headers in this file. The first row contains data and not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
@@ -168,6 +199,12 @@ func (o GlossaryInputConfigResponseOutput) ToGlossaryInputConfigResponseOutput()
 
 func (o GlossaryInputConfigResponseOutput) ToGlossaryInputConfigResponseOutputWithContext(ctx context.Context) GlossaryInputConfigResponseOutput {
 	return o
+}
+
+func (o GlossaryInputConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryInputConfigResponse] {
+	return pulumix.Output[GlossaryInputConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): Two column file, tab- or comma-separated. The first column is source text. The second column is target text. No headers in this file. The first row contains data and not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
@@ -214,6 +251,12 @@ func (i GlossaryTermArgs) ToGlossaryTermOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermOutput)
 }
 
+func (i GlossaryTermArgs) ToOutput(ctx context.Context) pulumix.Output[GlossaryTerm] {
+	return pulumix.Output[GlossaryTerm]{
+		OutputState: i.ToGlossaryTermOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GlossaryTermArgs) ToGlossaryTermPtrOutput() GlossaryTermPtrOutput {
 	return i.ToGlossaryTermPtrOutputWithContext(context.Background())
 }
@@ -255,6 +298,12 @@ func (i *glossaryTermPtrType) ToGlossaryTermPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermPtrOutput)
 }
 
+func (i *glossaryTermPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlossaryTerm] {
+	return pulumix.Output[*GlossaryTerm]{
+		OutputState: i.ToGlossaryTermPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GlossaryTermArrayInput is an input type that accepts GlossaryTermArray and GlossaryTermArrayOutput values.
 // You can construct a concrete instance of `GlossaryTermArrayInput` via:
 //
@@ -278,6 +327,12 @@ func (i GlossaryTermArray) ToGlossaryTermArrayOutput() GlossaryTermArrayOutput {
 
 func (i GlossaryTermArray) ToGlossaryTermArrayOutputWithContext(ctx context.Context) GlossaryTermArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermArrayOutput)
+}
+
+func (i GlossaryTermArray) ToOutput(ctx context.Context) pulumix.Output[[]GlossaryTerm] {
+	return pulumix.Output[[]GlossaryTerm]{
+		OutputState: i.ToGlossaryTermArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Represents a single glossary term
@@ -305,6 +360,12 @@ func (o GlossaryTermOutput) ToGlossaryTermPtrOutputWithContext(ctx context.Conte
 	}).(GlossaryTermPtrOutput)
 }
 
+func (o GlossaryTermOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryTerm] {
+	return pulumix.Output[GlossaryTerm]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The language for this glossary term.
 func (o GlossaryTermOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlossaryTerm) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
@@ -327,6 +388,12 @@ func (o GlossaryTermPtrOutput) ToGlossaryTermPtrOutput() GlossaryTermPtrOutput {
 
 func (o GlossaryTermPtrOutput) ToGlossaryTermPtrOutputWithContext(ctx context.Context) GlossaryTermPtrOutput {
 	return o
+}
+
+func (o GlossaryTermPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlossaryTerm] {
+	return pulumix.Output[*GlossaryTerm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlossaryTermPtrOutput) Elem() GlossaryTermOutput {
@@ -373,6 +440,12 @@ func (o GlossaryTermArrayOutput) ToGlossaryTermArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GlossaryTermArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GlossaryTerm] {
+	return pulumix.Output[[]GlossaryTerm]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlossaryTermArrayOutput) Index(i pulumi.IntInput) GlossaryTermOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlossaryTerm {
 		return vs[0].([]GlossaryTerm)[vs[1].(int)]
@@ -402,6 +475,12 @@ func (o GlossaryTermResponseOutput) ToGlossaryTermResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o GlossaryTermResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryTermResponse] {
+	return pulumix.Output[GlossaryTermResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The language for this glossary term.
 func (o GlossaryTermResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GlossaryTermResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
@@ -424,6 +503,12 @@ func (o GlossaryTermResponseArrayOutput) ToGlossaryTermResponseArrayOutput() Glo
 
 func (o GlossaryTermResponseArrayOutput) ToGlossaryTermResponseArrayOutputWithContext(ctx context.Context) GlossaryTermResponseArrayOutput {
 	return o
+}
+
+func (o GlossaryTermResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GlossaryTermResponse] {
+	return pulumix.Output[[]GlossaryTermResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlossaryTermResponseArrayOutput) Index(i pulumi.IntInput) GlossaryTermResponseOutput {
@@ -471,6 +556,12 @@ func (i GlossaryTermsPairArgs) ToGlossaryTermsPairOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsPairOutput)
 }
 
+func (i GlossaryTermsPairArgs) ToOutput(ctx context.Context) pulumix.Output[GlossaryTermsPair] {
+	return pulumix.Output[GlossaryTermsPair]{
+		OutputState: i.ToGlossaryTermsPairOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GlossaryTermsPairArgs) ToGlossaryTermsPairPtrOutput() GlossaryTermsPairPtrOutput {
 	return i.ToGlossaryTermsPairPtrOutputWithContext(context.Background())
 }
@@ -512,6 +603,12 @@ func (i *glossaryTermsPairPtrType) ToGlossaryTermsPairPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsPairPtrOutput)
 }
 
+func (i *glossaryTermsPairPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlossaryTermsPair] {
+	return pulumix.Output[*GlossaryTermsPair]{
+		OutputState: i.ToGlossaryTermsPairPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a single entry for an unidirectional glossary.
 type GlossaryTermsPairOutput struct{ *pulumi.OutputState }
 
@@ -537,6 +634,12 @@ func (o GlossaryTermsPairOutput) ToGlossaryTermsPairPtrOutputWithContext(ctx con
 	}).(GlossaryTermsPairPtrOutput)
 }
 
+func (o GlossaryTermsPairOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryTermsPair] {
+	return pulumix.Output[GlossaryTermsPair]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The source term is the term that will get match in the text,
 func (o GlossaryTermsPairOutput) SourceTerm() GlossaryTermPtrOutput {
 	return o.ApplyT(func(v GlossaryTermsPair) *GlossaryTerm { return v.SourceTerm }).(GlossaryTermPtrOutput)
@@ -559,6 +662,12 @@ func (o GlossaryTermsPairPtrOutput) ToGlossaryTermsPairPtrOutput() GlossaryTerms
 
 func (o GlossaryTermsPairPtrOutput) ToGlossaryTermsPairPtrOutputWithContext(ctx context.Context) GlossaryTermsPairPtrOutput {
 	return o
+}
+
+func (o GlossaryTermsPairPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlossaryTermsPair] {
+	return pulumix.Output[*GlossaryTermsPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlossaryTermsPairPtrOutput) Elem() GlossaryTermsPairOutput {
@@ -614,6 +723,12 @@ func (o GlossaryTermsPairResponseOutput) ToGlossaryTermsPairResponseOutputWithCo
 	return o
 }
 
+func (o GlossaryTermsPairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryTermsPairResponse] {
+	return pulumix.Output[GlossaryTermsPairResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The source term is the term that will get match in the text,
 func (o GlossaryTermsPairResponseOutput) SourceTerm() GlossaryTermResponseOutput {
 	return o.ApplyT(func(v GlossaryTermsPairResponse) GlossaryTermResponse { return v.SourceTerm }).(GlossaryTermResponseOutput)
@@ -659,6 +774,12 @@ func (i GlossaryTermsSetArgs) ToGlossaryTermsSetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsSetOutput)
 }
 
+func (i GlossaryTermsSetArgs) ToOutput(ctx context.Context) pulumix.Output[GlossaryTermsSet] {
+	return pulumix.Output[GlossaryTermsSet]{
+		OutputState: i.ToGlossaryTermsSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GlossaryTermsSetArgs) ToGlossaryTermsSetPtrOutput() GlossaryTermsSetPtrOutput {
 	return i.ToGlossaryTermsSetPtrOutputWithContext(context.Background())
 }
@@ -700,6 +821,12 @@ func (i *glossaryTermsSetPtrType) ToGlossaryTermsSetPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsSetPtrOutput)
 }
 
+func (i *glossaryTermsSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlossaryTermsSet] {
+	return pulumix.Output[*GlossaryTermsSet]{
+		OutputState: i.ToGlossaryTermsSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
 type GlossaryTermsSetOutput struct{ *pulumi.OutputState }
 
@@ -725,6 +852,12 @@ func (o GlossaryTermsSetOutput) ToGlossaryTermsSetPtrOutputWithContext(ctx conte
 	}).(GlossaryTermsSetPtrOutput)
 }
 
+func (o GlossaryTermsSetOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryTermsSet] {
+	return pulumix.Output[GlossaryTermsSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Each term in the set represents a term that can be replaced by the other terms.
 func (o GlossaryTermsSetOutput) Terms() GlossaryTermArrayOutput {
 	return o.ApplyT(func(v GlossaryTermsSet) []GlossaryTerm { return v.Terms }).(GlossaryTermArrayOutput)
@@ -742,6 +875,12 @@ func (o GlossaryTermsSetPtrOutput) ToGlossaryTermsSetPtrOutput() GlossaryTermsSe
 
 func (o GlossaryTermsSetPtrOutput) ToGlossaryTermsSetPtrOutputWithContext(ctx context.Context) GlossaryTermsSetPtrOutput {
 	return o
+}
+
+func (o GlossaryTermsSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlossaryTermsSet] {
+	return pulumix.Output[*GlossaryTermsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlossaryTermsSetPtrOutput) Elem() GlossaryTermsSetOutput {
@@ -783,6 +922,12 @@ func (o GlossaryTermsSetResponseOutput) ToGlossaryTermsSetResponseOutput() Gloss
 
 func (o GlossaryTermsSetResponseOutput) ToGlossaryTermsSetResponseOutputWithContext(ctx context.Context) GlossaryTermsSetResponseOutput {
 	return o
+}
+
+func (o GlossaryTermsSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryTermsSetResponse] {
+	return pulumix.Output[GlossaryTermsSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Each term in the set represents a term that can be replaced by the other terms.
@@ -829,6 +974,12 @@ func (i LanguageCodePairArgs) ToLanguageCodePairOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodePairOutput)
 }
 
+func (i LanguageCodePairArgs) ToOutput(ctx context.Context) pulumix.Output[LanguageCodePair] {
+	return pulumix.Output[LanguageCodePair]{
+		OutputState: i.ToLanguageCodePairOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LanguageCodePairArgs) ToLanguageCodePairPtrOutput() LanguageCodePairPtrOutput {
 	return i.ToLanguageCodePairPtrOutputWithContext(context.Background())
 }
@@ -870,6 +1021,12 @@ func (i *languageCodePairPtrType) ToLanguageCodePairPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodePairPtrOutput)
 }
 
+func (i *languageCodePairPtrType) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodePair] {
+	return pulumix.Output[*LanguageCodePair]{
+		OutputState: i.ToLanguageCodePairPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Used with unidirectional glossaries.
 type LanguageCodePairOutput struct{ *pulumi.OutputState }
 
@@ -895,6 +1052,12 @@ func (o LanguageCodePairOutput) ToLanguageCodePairPtrOutputWithContext(ctx conte
 	}).(LanguageCodePairPtrOutput)
 }
 
+func (o LanguageCodePairOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodePair] {
+	return pulumix.Output[LanguageCodePair]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairOutput) SourceLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePair) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
@@ -917,6 +1080,12 @@ func (o LanguageCodePairPtrOutput) ToLanguageCodePairPtrOutput() LanguageCodePai
 
 func (o LanguageCodePairPtrOutput) ToLanguageCodePairPtrOutputWithContext(ctx context.Context) LanguageCodePairPtrOutput {
 	return o
+}
+
+func (o LanguageCodePairPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodePair] {
+	return pulumix.Output[*LanguageCodePair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LanguageCodePairPtrOutput) Elem() LanguageCodePairOutput {
@@ -972,6 +1141,12 @@ func (o LanguageCodePairResponseOutput) ToLanguageCodePairResponseOutputWithCont
 	return o
 }
 
+func (o LanguageCodePairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodePairResponse] {
+	return pulumix.Output[LanguageCodePairResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponseOutput) SourceLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePairResponse) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
@@ -1017,6 +1192,12 @@ func (i LanguageCodesSetArgs) ToLanguageCodesSetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodesSetOutput)
 }
 
+func (i LanguageCodesSetArgs) ToOutput(ctx context.Context) pulumix.Output[LanguageCodesSet] {
+	return pulumix.Output[LanguageCodesSet]{
+		OutputState: i.ToLanguageCodesSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LanguageCodesSetArgs) ToLanguageCodesSetPtrOutput() LanguageCodesSetPtrOutput {
 	return i.ToLanguageCodesSetPtrOutputWithContext(context.Background())
 }
@@ -1058,6 +1239,12 @@ func (i *languageCodesSetPtrType) ToLanguageCodesSetPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodesSetPtrOutput)
 }
 
+func (i *languageCodesSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodesSet] {
+	return pulumix.Output[*LanguageCodesSet]{
+		OutputState: i.ToLanguageCodesSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Used with equivalent term set glossaries.
 type LanguageCodesSetOutput struct{ *pulumi.OutputState }
 
@@ -1083,6 +1270,12 @@ func (o LanguageCodesSetOutput) ToLanguageCodesSetPtrOutputWithContext(ctx conte
 	}).(LanguageCodesSetPtrOutput)
 }
 
+func (o LanguageCodesSetOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodesSet] {
+	return pulumix.Output[LanguageCodesSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodesSetOutput) LanguageCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LanguageCodesSet) []string { return v.LanguageCodes }).(pulumi.StringArrayOutput)
@@ -1100,6 +1293,12 @@ func (o LanguageCodesSetPtrOutput) ToLanguageCodesSetPtrOutput() LanguageCodesSe
 
 func (o LanguageCodesSetPtrOutput) ToLanguageCodesSetPtrOutputWithContext(ctx context.Context) LanguageCodesSetPtrOutput {
 	return o
+}
+
+func (o LanguageCodesSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodesSet] {
+	return pulumix.Output[*LanguageCodesSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LanguageCodesSetPtrOutput) Elem() LanguageCodesSetOutput {
@@ -1141,6 +1340,12 @@ func (o LanguageCodesSetResponseOutput) ToLanguageCodesSetResponseOutput() Langu
 
 func (o LanguageCodesSetResponseOutput) ToLanguageCodesSetResponseOutputWithContext(ctx context.Context) LanguageCodesSetResponseOutput {
 	return o
+}
+
+func (o LanguageCodesSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodesSetResponse] {
+	return pulumix.Output[LanguageCodesSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.

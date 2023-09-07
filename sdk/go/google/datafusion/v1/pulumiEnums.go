@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Instance type.
@@ -255,6 +274,12 @@ func (o InstanceTypeOutput) ToInstanceTypePtrOutputWithContext(ctx context.Conte
 	}).(InstanceTypePtrOutput)
 }
 
+func (o InstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceType] {
+	return pulumix.Output[InstanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -288,6 +313,12 @@ func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
+	return pulumix.Output[*InstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
@@ -350,6 +381,12 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTypePtrOutput)
+}
+
+func (in *instanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
+	return pulumix.Output[*InstanceType]{
+		OutputState: in.ToInstanceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified `Note` or `Occurrence`. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a `Note` or an `Occurrence`, respectively. Attempting to call this method without these permissions will result in a ` `PERMISSION_DENIED`error. Attempting to call this method on a non-existent resource will result in a`NOT_FOUND`error if the user has`containeranalysis.notes.list`permission on a`Note`or`containeranalysis.occurrences.list`on an`Occurrence` , or a  `PERMISSION_DENIED`error otherwise. The resource takes the following formats:`projects/{projectid}/occurrences/{occurrenceid}` for occurrences and projects/{projectid}/notes/{noteid} for notes
@@ -124,6 +125,12 @@ func (i *ProviderNoteIamPolicy) ToProviderNoteIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderNoteIamPolicyOutput)
 }
 
+func (i *ProviderNoteIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ProviderNoteIamPolicy] {
+	return pulumix.Output[*ProviderNoteIamPolicy]{
+		OutputState: i.ToProviderNoteIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProviderNoteIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ProviderNoteIamPolicyOutput) ElementType() reflect.Type {
@@ -136,6 +143,12 @@ func (o ProviderNoteIamPolicyOutput) ToProviderNoteIamPolicyOutput() ProviderNot
 
 func (o ProviderNoteIamPolicyOutput) ToProviderNoteIamPolicyOutputWithContext(ctx context.Context) ProviderNoteIamPolicyOutput {
 	return o
+}
+
+func (o ProviderNoteIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ProviderNoteIamPolicy] {
+	return pulumix.Output[*ProviderNoteIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.

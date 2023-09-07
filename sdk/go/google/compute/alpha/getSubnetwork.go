@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified subnetwork.
@@ -132,6 +133,12 @@ func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutput() LookupSub
 
 func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutputWithContext(ctx context.Context) LookupSubnetworkResultOutput {
 	return o
+}
+
+func (o LookupSubnetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubnetworkResult] {
+	return pulumix.Output[LookupSubnetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.

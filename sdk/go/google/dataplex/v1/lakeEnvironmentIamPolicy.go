@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -142,6 +143,12 @@ func (i *LakeEnvironmentIamPolicy) ToLakeEnvironmentIamPolicyOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(LakeEnvironmentIamPolicyOutput)
 }
 
+func (i *LakeEnvironmentIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*LakeEnvironmentIamPolicy] {
+	return pulumix.Output[*LakeEnvironmentIamPolicy]{
+		OutputState: i.ToLakeEnvironmentIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LakeEnvironmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (LakeEnvironmentIamPolicyOutput) ElementType() reflect.Type {
@@ -154,6 +161,12 @@ func (o LakeEnvironmentIamPolicyOutput) ToLakeEnvironmentIamPolicyOutput() LakeE
 
 func (o LakeEnvironmentIamPolicyOutput) ToLakeEnvironmentIamPolicyOutputWithContext(ctx context.Context) LakeEnvironmentIamPolicyOutput {
 	return o
+}
+
+func (o LakeEnvironmentIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*LakeEnvironmentIamPolicy] {
+	return pulumix.Output[*LakeEnvironmentIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

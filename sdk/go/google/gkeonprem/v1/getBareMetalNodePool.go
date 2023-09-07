@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single bare metal node pool.
@@ -92,6 +93,12 @@ func (o LookupBareMetalNodePoolResultOutput) ToLookupBareMetalNodePoolResultOutp
 
 func (o LookupBareMetalNodePoolResultOutput) ToLookupBareMetalNodePoolResultOutputWithContext(ctx context.Context) LookupBareMetalNodePoolResultOutput {
 	return o
+}
+
+func (o LookupBareMetalNodePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBareMetalNodePoolResult] {
+	return pulumix.Output[LookupBareMetalNodePoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Annotations on the bare metal node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new company entity.
@@ -176,6 +177,12 @@ func (i *Company) ToCompanyOutputWithContext(ctx context.Context) CompanyOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CompanyOutput)
 }
 
+func (i *Company) ToOutput(ctx context.Context) pulumix.Output[*Company] {
+	return pulumix.Output[*Company]{
+		OutputState: i.ToCompanyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CompanyOutput struct{ *pulumi.OutputState }
 
 func (CompanyOutput) ElementType() reflect.Type {
@@ -188,6 +195,12 @@ func (o CompanyOutput) ToCompanyOutput() CompanyOutput {
 
 func (o CompanyOutput) ToCompanyOutputWithContext(ctx context.Context) CompanyOutput {
 	return o
+}
+
+func (o CompanyOutput) ToOutput(ctx context.Context) pulumix.Output[*Company] {
+	return pulumix.Output[*Company]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".

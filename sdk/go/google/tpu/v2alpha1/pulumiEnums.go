@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. Type of TPU.
@@ -84,6 +85,12 @@ func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypePtrOutputWithContext
 	}).(AcceleratorConfigTypePtrOutput)
 }
 
+func (o AcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfigType] {
+	return pulumix.Output[AcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutput() Accel
 
 func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o AcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
+	return pulumix.Output[*AcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AcceleratorConfigTypePtrOutput) Elem() AcceleratorConfigTypeOutput {
@@ -179,6 +192,12 @@ func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutput() Accelerat
 
 func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
+}
+
+func (in *acceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
+	return pulumix.Output[*AcceleratorConfigType]{
+		OutputState: in.ToAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
@@ -253,6 +272,12 @@ func (o AttachedDiskModeOutput) ToAttachedDiskModePtrOutputWithContext(ctx conte
 	}).(AttachedDiskModePtrOutput)
 }
 
+func (o AttachedDiskModeOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskMode] {
+	return pulumix.Output[AttachedDiskMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedDiskModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o AttachedDiskModePtrOutput) ToAttachedDiskModePtrOutput() AttachedDiskMod
 
 func (o AttachedDiskModePtrOutput) ToAttachedDiskModePtrOutputWithContext(ctx context.Context) AttachedDiskModePtrOutput {
 	return o
+}
+
+func (o AttachedDiskModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskMode] {
+	return pulumix.Output[*AttachedDiskMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedDiskModePtrOutput) Elem() AttachedDiskModeOutput {
@@ -348,6 +379,12 @@ func (in *attachedDiskModePtr) ToAttachedDiskModePtrOutput() AttachedDiskModePtr
 
 func (in *attachedDiskModePtr) ToAttachedDiskModePtrOutputWithContext(ctx context.Context) AttachedDiskModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskModePtrOutput)
+}
+
+func (in *attachedDiskModePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskMode] {
+	return pulumix.Output[*AttachedDiskMode]{
+		OutputState: in.ToAttachedDiskModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The health status of the TPU node.
@@ -426,6 +463,12 @@ func (o NodeHealthOutput) ToNodeHealthPtrOutputWithContext(ctx context.Context) 
 	}).(NodeHealthPtrOutput)
 }
 
+func (o NodeHealthOutput) ToOutput(ctx context.Context) pulumix.Output[NodeHealth] {
+	return pulumix.Output[NodeHealth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeHealthOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -459,6 +502,12 @@ func (o NodeHealthPtrOutput) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
 
 func (o NodeHealthPtrOutput) ToNodeHealthPtrOutputWithContext(ctx context.Context) NodeHealthPtrOutput {
 	return o
+}
+
+func (o NodeHealthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeHealth] {
+	return pulumix.Output[*NodeHealth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeHealthPtrOutput) Elem() NodeHealthOutput {
@@ -521,6 +570,12 @@ func (in *nodeHealthPtr) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
 
 func (in *nodeHealthPtr) ToNodeHealthPtrOutputWithContext(ctx context.Context) NodeHealthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeHealthPtrOutput)
+}
+
+func (in *nodeHealthPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeHealth] {
+	return pulumix.Output[*NodeHealth]{
+		OutputState: in.ToNodeHealthPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

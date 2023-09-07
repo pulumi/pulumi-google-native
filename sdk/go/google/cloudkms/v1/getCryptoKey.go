@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns metadata for a given CryptoKey, as well as its primary CryptoKeyVersion.
@@ -90,6 +91,12 @@ func (o LookupCryptoKeyResultOutput) ToLookupCryptoKeyResultOutput() LookupCrypt
 
 func (o LookupCryptoKeyResultOutput) ToLookupCryptoKeyResultOutputWithContext(ctx context.Context) LookupCryptoKeyResultOutput {
 	return o
+}
+
+func (o LookupCryptoKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCryptoKeyResult] {
+	return pulumix.Output[LookupCryptoKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which this CryptoKey was created.

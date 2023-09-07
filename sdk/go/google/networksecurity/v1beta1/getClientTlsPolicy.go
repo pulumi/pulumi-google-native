@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ClientTlsPolicy.
@@ -82,6 +83,12 @@ func (o LookupClientTlsPolicyResultOutput) ToLookupClientTlsPolicyResultOutput()
 
 func (o LookupClientTlsPolicyResultOutput) ToLookupClientTlsPolicyResultOutputWithContext(ctx context.Context) LookupClientTlsPolicyResultOutput {
 	return o
+}
+
+func (o LookupClientTlsPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClientTlsPolicyResult] {
+	return pulumix.Output[LookupClientTlsPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.

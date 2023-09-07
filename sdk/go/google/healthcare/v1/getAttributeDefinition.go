@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Attribute definition.
@@ -82,6 +83,12 @@ func (o LookupAttributeDefinitionResultOutput) ToLookupAttributeDefinitionResult
 
 func (o LookupAttributeDefinitionResultOutput) ToLookupAttributeDefinitionResultOutputWithContext(ctx context.Context) LookupAttributeDefinitionResultOutput {
 	return o
+}
+
+func (o LookupAttributeDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttributeDefinitionResult] {
+	return pulumix.Output[LookupAttributeDefinitionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.

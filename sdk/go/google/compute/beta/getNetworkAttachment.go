@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified NetworkAttachment resource in the given scope.
@@ -93,6 +94,12 @@ func (o LookupNetworkAttachmentResultOutput) ToLookupNetworkAttachmentResultOutp
 
 func (o LookupNetworkAttachmentResultOutput) ToLookupNetworkAttachmentResultOutputWithContext(ctx context.Context) LookupNetworkAttachmentResultOutput {
 	return o
+}
+
+func (o LookupNetworkAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkAttachmentResult] {
+	return pulumix.Output[LookupNetworkAttachmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An array of connections for all the producers connected to this network attachment.

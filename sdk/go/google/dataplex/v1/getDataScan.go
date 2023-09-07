@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a DataScan resource.
@@ -100,6 +101,12 @@ func (o LookupDataScanResultOutput) ToLookupDataScanResultOutput() LookupDataSca
 
 func (o LookupDataScanResultOutput) ToLookupDataScanResultOutputWithContext(ctx context.Context) LookupDataScanResultOutput {
 	return o
+}
+
+func (o LookupDataScanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataScanResult] {
+	return pulumix.Output[LookupDataScanResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the scan was created.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a lake resource.
@@ -90,6 +91,12 @@ func (o LookupLakeResultOutput) ToLookupLakeResultOutput() LookupLakeResultOutpu
 
 func (o LookupLakeResultOutput) ToLookupLakeResultOutputWithContext(ctx context.Context) LookupLakeResultOutput {
 	return o
+}
+
+func (o LookupLakeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLakeResult] {
+	return pulumix.Output[LookupLakeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregated status of the underlying assets of the lake.

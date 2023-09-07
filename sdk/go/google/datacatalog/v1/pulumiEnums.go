@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
@@ -108,6 +109,12 @@ func (o EntryTypeOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) En
 	}).(EntryTypePtrOutput)
 }
 
+func (o EntryTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EntryType] {
+	return pulumix.Output[EntryType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntryTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -141,6 +148,12 @@ func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
 
 func (o EntryTypePtrOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
 	return o
+}
+
+func (o EntryTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryType] {
+	return pulumix.Output[*EntryType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
@@ -203,6 +216,12 @@ func (in *entryTypePtr) ToEntryTypePtrOutput() EntryTypePtrOutput {
 
 func (in *entryTypePtr) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntryTypePtrOutput)
+}
+
+func (in *entryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntryType] {
+	return pulumix.Output[*EntryType]{
+		OutputState: in.ToEntryTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Most important inclusion of this column.
@@ -281,6 +300,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToGoogleC
 	}).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -314,6 +339,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToGoog
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) Elem() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput {
@@ -376,6 +407,12 @@ func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToGoogleCl
 
 func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType]{
+		OutputState: in.ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Looker specific column type of this column.
@@ -456,6 +493,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToGoogle
 	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -489,6 +532,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToGoo
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput {
@@ -551,6 +600,12 @@ func (in *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ToGoogleC
 
 func (in *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType]{
+		OutputState: in.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of this view.
@@ -625,6 +680,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput)
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -658,6 +719,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutp
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput {
@@ -720,6 +787,12 @@ func (in *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) 
 
 func (in *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType]{
+		OutputState: in.ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of this table.
@@ -794,6 +867,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToGoogleCloudDataca
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecType] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -827,6 +906,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
@@ -889,6 +974,12 @@ func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToGoogleCloudDatacat
 
 func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecType]{
+		OutputState: in.ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies whether the argument is input or output.
@@ -965,6 +1056,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToGoogleCloudData
 	}).(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgumentMode] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgumentMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -998,6 +1095,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecArgumentMode] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecArgumentMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
@@ -1060,6 +1163,12 @@ func (in *googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ToGoogleCloudDatac
 
 func (in *googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecArgumentMode] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecArgumentMode]{
+		OutputState: in.ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the routine.
@@ -1134,6 +1243,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToGoogleCloudDatac
 	}).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecRoutineType] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecRoutineType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1167,6 +1282,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecRoutineType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecRoutineType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
@@ -1229,6 +1350,12 @@ func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToGoogleCloudDataca
 
 func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecRoutineType] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecRoutineType]{
+		OutputState: in.ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type TaxonomyActivatedPolicyTypesItem string
@@ -1300,6 +1427,12 @@ func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesIt
 	}).(TaxonomyActivatedPolicyTypesItemPtrOutput)
 }
 
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[TaxonomyActivatedPolicyTypesItem] {
+	return pulumix.Output[TaxonomyActivatedPolicyTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1333,6 +1466,12 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyType
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
 	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyActivatedPolicyTypesItem] {
+	return pulumix.Output[*TaxonomyActivatedPolicyTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
@@ -1397,6 +1536,12 @@ func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesIte
 	return pulumi.ToOutputWithContext(ctx, in).(TaxonomyActivatedPolicyTypesItemPtrOutput)
 }
 
+func (in *taxonomyActivatedPolicyTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyActivatedPolicyTypesItem] {
+	return pulumix.Output[*TaxonomyActivatedPolicyTypesItem]{
+		OutputState: in.ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TaxonomyActivatedPolicyTypesItemArrayInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArray and TaxonomyActivatedPolicyTypesItemArrayOutput values.
 // You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemArrayInput` via:
 //
@@ -1422,6 +1567,12 @@ func (i TaxonomyActivatedPolicyTypesItemArray) ToTaxonomyActivatedPolicyTypesIte
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyActivatedPolicyTypesItemArrayOutput)
 }
 
+func (i TaxonomyActivatedPolicyTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]TaxonomyActivatedPolicyTypesItem] {
+	return pulumix.Output[[]TaxonomyActivatedPolicyTypesItem]{
+		OutputState: i.ToTaxonomyActivatedPolicyTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyActivatedPolicyTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyActivatedPolicyTypesItemArrayOutput) ElementType() reflect.Type {
@@ -1434,6 +1585,12 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTy
 
 func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTypesItemArrayOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemArrayOutput {
 	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TaxonomyActivatedPolicyTypesItem] {
+	return pulumix.Output[[]TaxonomyActivatedPolicyTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) TaxonomyActivatedPolicyTypesItemOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve an inbound SAML configuration for an Identity Toolkit project.
@@ -76,6 +77,12 @@ func (o LookupInboundSamlConfigResultOutput) ToLookupInboundSamlConfigResultOutp
 
 func (o LookupInboundSamlConfigResultOutput) ToLookupInboundSamlConfigResultOutputWithContext(ctx context.Context) LookupInboundSamlConfigResultOutput {
 	return o
+}
+
+func (o LookupInboundSamlConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInboundSamlConfigResult] {
+	return pulumix.Output[LookupInboundSamlConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The config's display name set by developers.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
@@ -84,6 +85,12 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput) ToGoogleClou
 	}).(GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput)
 }
 
+func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod] {
+	return pulumix.Output[GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToGoogleC
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToGoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput {
 	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod] {
+	return pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput {
@@ -179,6 +192,12 @@ func (in *googleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtr) ToGoogleCloud
 
 func (in *googleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtr) ToGoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput)
+}
+
+func (in *googleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod] {
+	return pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod]{
+		OutputState: in.ToGoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
@@ -254,6 +273,12 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput) ToGoog
 	}).(GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput)
 }
 
+func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment] {
+	return pulumix.Output[GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -287,6 +312,12 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToG
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToGoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment] {
+	return pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput {
@@ -349,6 +380,12 @@ func (in *googleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtr) ToGoogl
 
 func (in *googleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtr) ToGoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput)
+}
+
+func (in *googleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment] {
+	return pulumix.Output[*GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment]{
+		OutputState: in.ToGoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
@@ -423,6 +460,12 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput) ToGoogleC
 	}).(GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput)
 }
 
+func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis] {
+	return pulumix.Output[GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -456,6 +499,12 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToGoog
 
 func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToGoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput {
 	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis] {
+	return pulumix.Output[*GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput {
@@ -518,6 +567,12 @@ func (in *googleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtr) ToGoogleCl
 
 func (in *googleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtr) ToGoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput)
+}
+
+func (in *googleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis] {
+	return pulumix.Output[*GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis]{
+		OutputState: in.ToGoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

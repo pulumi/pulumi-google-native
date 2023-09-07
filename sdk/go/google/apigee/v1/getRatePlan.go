@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a rate plan.
@@ -106,6 +107,12 @@ func (o LookupRatePlanResultOutput) ToLookupRatePlanResultOutput() LookupRatePla
 
 func (o LookupRatePlanResultOutput) ToLookupRatePlanResultOutputWithContext(ctx context.Context) LookupRatePlanResultOutput {
 	return o
+}
+
+func (o LookupRatePlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRatePlanResult] {
+	return pulumix.Output[LookupRatePlanResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the API product that the rate plan is associated with.

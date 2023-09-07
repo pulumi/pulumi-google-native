@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
@@ -251,6 +270,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBeha
 	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput)
 }
 
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBeha
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
 	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput {
@@ -346,6 +377,12 @@ func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBe
 
 func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput)
+}
+
+func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior]{
+		OutputState: in.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
@@ -418,6 +455,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput)
 	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput)
 }
 
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType] {
+	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -451,6 +494,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutp
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput {
@@ -513,6 +562,12 @@ func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) 
 
 func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput)
+}
+
+func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType] {
+	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType]{
+		OutputState: in.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The specifications for the key.
@@ -589,6 +644,12 @@ func (o KeyDataKeySpecOutput) ToKeyDataKeySpecPtrOutputWithContext(ctx context.C
 	}).(KeyDataKeySpecPtrOutput)
 }
 
+func (o KeyDataKeySpecOutput) ToOutput(ctx context.Context) pulumix.Output[KeyDataKeySpec] {
+	return pulumix.Output[KeyDataKeySpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyDataKeySpecOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -622,6 +683,12 @@ func (o KeyDataKeySpecPtrOutput) ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOu
 
 func (o KeyDataKeySpecPtrOutput) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Context) KeyDataKeySpecPtrOutput {
 	return o
+}
+
+func (o KeyDataKeySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyDataKeySpec] {
+	return pulumix.Output[*KeyDataKeySpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyDataKeySpecPtrOutput) Elem() KeyDataKeySpecOutput {
@@ -684,6 +751,12 @@ func (in *keyDataKeySpecPtr) ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOutput
 
 func (in *keyDataKeySpecPtr) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Context) KeyDataKeySpecPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyDataKeySpecPtrOutput)
+}
+
+func (in *keyDataKeySpecPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyDataKeySpec] {
+	return pulumix.Output[*KeyDataKeySpec]{
+		OutputState: in.ToKeyDataKeySpecPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
@@ -758,6 +831,12 @@ func (o KeyKeyAlgorithmOutput) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context
 	}).(KeyKeyAlgorithmPtrOutput)
 }
 
+func (o KeyKeyAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[KeyKeyAlgorithm] {
+	return pulumix.Output[KeyKeyAlgorithm]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyKeyAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -791,6 +870,12 @@ func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPt
 
 func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
 	return o
+}
+
+func (o KeyKeyAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyKeyAlgorithm] {
+	return pulumix.Output[*KeyKeyAlgorithm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyKeyAlgorithmPtrOutput) Elem() KeyKeyAlgorithmOutput {
@@ -853,6 +938,12 @@ func (in *keyKeyAlgorithmPtr) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPtrOut
 
 func (in *keyKeyAlgorithmPtr) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyKeyAlgorithmPtrOutput)
+}
+
+func (in *keyKeyAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyKeyAlgorithm] {
+	return pulumix.Output[*KeyKeyAlgorithm]{
+		OutputState: in.ToKeyKeyAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
@@ -927,6 +1018,12 @@ func (o KeyPrivateKeyTypeOutput) ToKeyPrivateKeyTypePtrOutputWithContext(ctx con
 	}).(KeyPrivateKeyTypePtrOutput)
 }
 
+func (o KeyPrivateKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[KeyPrivateKeyType] {
+	return pulumix.Output[KeyPrivateKeyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyPrivateKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -960,6 +1057,12 @@ func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKey
 
 func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
 	return o
+}
+
+func (o KeyPrivateKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyPrivateKeyType] {
+	return pulumix.Output[*KeyPrivateKeyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyPrivateKeyTypePtrOutput) Elem() KeyPrivateKeyTypeOutput {
@@ -1022,6 +1125,12 @@ func (in *keyPrivateKeyTypePtr) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyType
 
 func (in *keyPrivateKeyTypePtr) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyPrivateKeyTypePtrOutput)
+}
+
+func (in *keyPrivateKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyPrivateKeyType] {
+	return pulumix.Output[*KeyPrivateKeyType]{
+		OutputState: in.ToKeyPrivateKeyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
@@ -1102,6 +1211,12 @@ func (o OrganizationRoleStageOutput) ToOrganizationRoleStagePtrOutputWithContext
 	}).(OrganizationRoleStagePtrOutput)
 }
 
+func (o OrganizationRoleStageOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationRoleStage] {
+	return pulumix.Output[OrganizationRoleStage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationRoleStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1135,6 +1250,12 @@ func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutput() Organ
 
 func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
 	return o
+}
+
+func (o OrganizationRoleStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationRoleStage] {
+	return pulumix.Output[*OrganizationRoleStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationRoleStagePtrOutput) Elem() OrganizationRoleStageOutput {
@@ -1197,6 +1318,12 @@ func (in *organizationRoleStagePtr) ToOrganizationRoleStagePtrOutput() Organizat
 
 func (in *organizationRoleStagePtr) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationRoleStagePtrOutput)
+}
+
+func (in *organizationRoleStagePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationRoleStage] {
+	return pulumix.Output[*OrganizationRoleStage]{
+		OutputState: in.ToOrganizationRoleStagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
@@ -1277,6 +1404,12 @@ func (o RoleStageOutput) ToRoleStagePtrOutputWithContext(ctx context.Context) Ro
 	}).(RoleStagePtrOutput)
 }
 
+func (o RoleStageOutput) ToOutput(ctx context.Context) pulumix.Output[RoleStage] {
+	return pulumix.Output[RoleStage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoleStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1310,6 +1443,12 @@ func (o RoleStagePtrOutput) ToRoleStagePtrOutput() RoleStagePtrOutput {
 
 func (o RoleStagePtrOutput) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
 	return o
+}
+
+func (o RoleStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleStage] {
+	return pulumix.Output[*RoleStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoleStagePtrOutput) Elem() RoleStageOutput {
@@ -1372,6 +1511,12 @@ func (in *roleStagePtr) ToRoleStagePtrOutput() RoleStagePtrOutput {
 
 func (in *roleStagePtr) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoleStagePtrOutput)
+}
+
+func (in *roleStagePtr) ToOutput(ctx context.Context) pulumix.Output[*RoleStage] {
+	return pulumix.Output[*RoleStage]{
+		OutputState: in.ToRoleStagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The purpose of the key.
@@ -1444,6 +1589,12 @@ func (o WorkforcePoolKeyUseOutput) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx
 	}).(WorkforcePoolKeyUsePtrOutput)
 }
 
+func (o WorkforcePoolKeyUseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkforcePoolKeyUse] {
+	return pulumix.Output[WorkforcePoolKeyUse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkforcePoolKeyUseOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1477,6 +1628,12 @@ func (o WorkforcePoolKeyUsePtrOutput) ToWorkforcePoolKeyUsePtrOutput() Workforce
 
 func (o WorkforcePoolKeyUsePtrOutput) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx context.Context) WorkforcePoolKeyUsePtrOutput {
 	return o
+}
+
+func (o WorkforcePoolKeyUsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolKeyUse] {
+	return pulumix.Output[*WorkforcePoolKeyUse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkforcePoolKeyUsePtrOutput) Elem() WorkforcePoolKeyUseOutput {
@@ -1539,6 +1696,12 @@ func (in *workforcePoolKeyUsePtr) ToWorkforcePoolKeyUsePtrOutput() WorkforcePool
 
 func (in *workforcePoolKeyUsePtr) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx context.Context) WorkforcePoolKeyUsePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkforcePoolKeyUsePtrOutput)
+}
+
+func (in *workforcePoolKeyUsePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolKeyUse] {
+	return pulumix.Output[*WorkforcePoolKeyUse]{
+		OutputState: in.ToWorkforcePoolKeyUsePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The purpose of the key.
@@ -1611,6 +1774,12 @@ func (o WorkloadIdentityPoolKeyUseOutput) ToWorkloadIdentityPoolKeyUsePtrOutputW
 	}).(WorkloadIdentityPoolKeyUsePtrOutput)
 }
 
+func (o WorkloadIdentityPoolKeyUseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadIdentityPoolKeyUse] {
+	return pulumix.Output[WorkloadIdentityPoolKeyUse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkloadIdentityPoolKeyUseOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1644,6 +1813,12 @@ func (o WorkloadIdentityPoolKeyUsePtrOutput) ToWorkloadIdentityPoolKeyUsePtrOutp
 
 func (o WorkloadIdentityPoolKeyUsePtrOutput) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
 	return o
+}
+
+func (o WorkloadIdentityPoolKeyUsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolKeyUse] {
+	return pulumix.Output[*WorkloadIdentityPoolKeyUse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadIdentityPoolKeyUsePtrOutput) Elem() WorkloadIdentityPoolKeyUseOutput {
@@ -1706,6 +1881,12 @@ func (in *workloadIdentityPoolKeyUsePtr) ToWorkloadIdentityPoolKeyUsePtrOutput()
 
 func (in *workloadIdentityPoolKeyUsePtr) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadIdentityPoolKeyUsePtrOutput)
+}
+
+func (in *workloadIdentityPoolKeyUsePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolKeyUse] {
+	return pulumix.Output[*WorkloadIdentityPoolKeyUse]{
+		OutputState: in.ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new execution using the latest revision of the given workflow.
@@ -136,6 +137,12 @@ func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionO
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionOutput)
 }
 
+func (i *Execution) ToOutput(ctx context.Context) pulumix.Output[*Execution] {
+	return pulumix.Output[*Execution]{
+		OutputState: i.ToExecutionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExecutionOutput struct{ *pulumi.OutputState }
 
 func (ExecutionOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {
 
 func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
 	return o
+}
+
+func (o ExecutionOutput) ToOutput(ctx context.Context) pulumix.Output[*Execution] {
+	return pulumix.Output[*Execution]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`

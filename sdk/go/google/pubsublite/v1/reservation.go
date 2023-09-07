@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new reservation.
@@ -120,6 +121,12 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationOutput)
 }
 
+func (i *Reservation) ToOutput(ctx context.Context) pulumix.Output[*Reservation] {
+	return pulumix.Output[*Reservation]{
+		OutputState: i.ToReservationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReservationOutput struct{ *pulumi.OutputState }
 
 func (ReservationOutput) ElementType() reflect.Type {
@@ -132,6 +139,12 @@ func (o ReservationOutput) ToReservationOutput() ReservationOutput {
 
 func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
 	return o
+}
+
+func (o ReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*Reservation] {
+	return pulumix.Output[*Reservation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservationOutput) Location() pulumi.StringOutput {

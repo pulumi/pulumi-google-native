@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches the representation of an existing Change.
@@ -79,6 +80,12 @@ func (o LookupChangeResultOutput) ToLookupChangeResultOutput() LookupChangeResul
 
 func (o LookupChangeResultOutput) ToLookupChangeResultOutputWithContext(ctx context.Context) LookupChangeResultOutput {
 	return o
+}
+
+func (o LookupChangeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupChangeResult] {
+	return pulumix.Output[LookupChangeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Which ResourceRecordSets to add?

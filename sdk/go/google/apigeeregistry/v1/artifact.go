@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a specified artifact.
@@ -167,6 +168,12 @@ func (i *Artifact) ToArtifactOutputWithContext(ctx context.Context) ArtifactOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactOutput)
 }
 
+func (i *Artifact) ToOutput(ctx context.Context) pulumix.Output[*Artifact] {
+	return pulumix.Output[*Artifact]{
+		OutputState: i.ToArtifactOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ArtifactOutput struct{ *pulumi.OutputState }
 
 func (ArtifactOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o ArtifactOutput) ToArtifactOutput() ArtifactOutput {
 
 func (o ArtifactOutput) ToArtifactOutputWithContext(ctx context.Context) ArtifactOutput {
 	return o
+}
+
+func (o ArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[*Artifact] {
+	return pulumix.Output[*Artifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.

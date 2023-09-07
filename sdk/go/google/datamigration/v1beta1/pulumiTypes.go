@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -114,6 +133,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -145,6 +170,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -167,6 +198,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -214,6 +251,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -239,6 +282,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -252,6 +301,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -276,6 +331,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -307,6 +368,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -329,6 +396,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -380,6 +453,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -405,6 +484,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -418,6 +503,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -447,6 +538,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -480,6 +577,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -507,6 +610,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -550,6 +659,12 @@ func (i CloudSqlConnectionProfileArgs) ToCloudSqlConnectionProfileOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlConnectionProfileOutput)
 }
 
+func (i CloudSqlConnectionProfileArgs) ToOutput(ctx context.Context) pulumix.Output[CloudSqlConnectionProfile] {
+	return pulumix.Output[CloudSqlConnectionProfile]{
+		OutputState: i.ToCloudSqlConnectionProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudSqlConnectionProfileArgs) ToCloudSqlConnectionProfilePtrOutput() CloudSqlConnectionProfilePtrOutput {
 	return i.ToCloudSqlConnectionProfilePtrOutputWithContext(context.Background())
 }
@@ -591,6 +706,12 @@ func (i *cloudSqlConnectionProfilePtrType) ToCloudSqlConnectionProfilePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlConnectionProfilePtrOutput)
 }
 
+func (i *cloudSqlConnectionProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlConnectionProfile] {
+	return pulumix.Output[*CloudSqlConnectionProfile]{
+		OutputState: i.ToCloudSqlConnectionProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
 type CloudSqlConnectionProfileOutput struct{ *pulumi.OutputState }
 
@@ -616,6 +737,12 @@ func (o CloudSqlConnectionProfileOutput) ToCloudSqlConnectionProfilePtrOutputWit
 	}).(CloudSqlConnectionProfilePtrOutput)
 }
 
+func (o CloudSqlConnectionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlConnectionProfile] {
+	return pulumix.Output[CloudSqlConnectionProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Immutable. Metadata used to create the destination Cloud SQL database.
 func (o CloudSqlConnectionProfileOutput) Settings() CloudSqlSettingsPtrOutput {
 	return o.ApplyT(func(v CloudSqlConnectionProfile) *CloudSqlSettings { return v.Settings }).(CloudSqlSettingsPtrOutput)
@@ -633,6 +760,12 @@ func (o CloudSqlConnectionProfilePtrOutput) ToCloudSqlConnectionProfilePtrOutput
 
 func (o CloudSqlConnectionProfilePtrOutput) ToCloudSqlConnectionProfilePtrOutputWithContext(ctx context.Context) CloudSqlConnectionProfilePtrOutput {
 	return o
+}
+
+func (o CloudSqlConnectionProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlConnectionProfile] {
+	return pulumix.Output[*CloudSqlConnectionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSqlConnectionProfilePtrOutput) Elem() CloudSqlConnectionProfileOutput {
@@ -680,6 +813,12 @@ func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResp
 
 func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResponseOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponseOutput {
 	return o
+}
+
+func (o CloudSqlConnectionProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlConnectionProfileResponse] {
+	return pulumix.Output[CloudSqlConnectionProfileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Cloud SQL instance ID that this connection profile is associated with.
@@ -785,6 +924,12 @@ func (i CloudSqlSettingsArgs) ToCloudSqlSettingsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlSettingsOutput)
 }
 
+func (i CloudSqlSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettings] {
+	return pulumix.Output[CloudSqlSettings]{
+		OutputState: i.ToCloudSqlSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudSqlSettingsArgs) ToCloudSqlSettingsPtrOutput() CloudSqlSettingsPtrOutput {
 	return i.ToCloudSqlSettingsPtrOutputWithContext(context.Background())
 }
@@ -826,6 +971,12 @@ func (i *cloudSqlSettingsPtrType) ToCloudSqlSettingsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlSettingsPtrOutput)
 }
 
+func (i *cloudSqlSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettings] {
+	return pulumix.Output[*CloudSqlSettings]{
+		OutputState: i.ToCloudSqlSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings for creating a Cloud SQL database instance.
 type CloudSqlSettingsOutput struct{ *pulumi.OutputState }
 
@@ -849,6 +1000,12 @@ func (o CloudSqlSettingsOutput) ToCloudSqlSettingsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettings) *CloudSqlSettings {
 		return &v
 	}).(CloudSqlSettingsPtrOutput)
+}
+
+func (o CloudSqlSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettings] {
+	return pulumix.Output[CloudSqlSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -928,6 +1085,12 @@ func (o CloudSqlSettingsPtrOutput) ToCloudSqlSettingsPtrOutput() CloudSqlSetting
 
 func (o CloudSqlSettingsPtrOutput) ToCloudSqlSettingsPtrOutputWithContext(ctx context.Context) CloudSqlSettingsPtrOutput {
 	return o
+}
+
+func (o CloudSqlSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettings] {
+	return pulumix.Output[*CloudSqlSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSqlSettingsPtrOutput) Elem() CloudSqlSettingsOutput {
@@ -1117,6 +1280,12 @@ func (o CloudSqlSettingsResponseOutput) ToCloudSqlSettingsResponseOutputWithCont
 	return o
 }
 
+func (o CloudSqlSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsResponse] {
+	return pulumix.Output[CloudSqlSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 func (o CloudSqlSettingsResponseOutput) ActivationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.ActivationPolicy }).(pulumi.StringOutput)
@@ -1226,6 +1395,12 @@ func (i DatabaseTypeArgs) ToDatabaseTypeOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTypeOutput)
 }
 
+func (i DatabaseTypeArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseType] {
+	return pulumix.Output[DatabaseType]{
+		OutputState: i.ToDatabaseTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DatabaseTypeArgs) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
 	return i.ToDatabaseTypePtrOutputWithContext(context.Background())
 }
@@ -1267,6 +1442,12 @@ func (i *databaseTypePtrType) ToDatabaseTypePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTypePtrOutput)
 }
 
+func (i *databaseTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
+	return pulumix.Output[*DatabaseType]{
+		OutputState: i.ToDatabaseTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A message defining the database engine and provider.
 type DatabaseTypeOutput struct{ *pulumi.OutputState }
 
@@ -1292,6 +1473,12 @@ func (o DatabaseTypeOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Conte
 	}).(DatabaseTypePtrOutput)
 }
 
+func (o DatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseType] {
+	return pulumix.Output[DatabaseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The database engine.
 func (o DatabaseTypeOutput) Engine() DatabaseTypeEnginePtrOutput {
 	return o.ApplyT(func(v DatabaseType) *DatabaseTypeEngine { return v.Engine }).(DatabaseTypeEnginePtrOutput)
@@ -1314,6 +1501,12 @@ func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
 
 func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
 	return o
+}
+
+func (o DatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
+	return pulumix.Output[*DatabaseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseTypePtrOutput) Elem() DatabaseTypeOutput {
@@ -1367,6 +1560,12 @@ func (o DatabaseTypeResponseOutput) ToDatabaseTypeResponseOutput() DatabaseTypeR
 
 func (o DatabaseTypeResponseOutput) ToDatabaseTypeResponseOutputWithContext(ctx context.Context) DatabaseTypeResponseOutput {
 	return o
+}
+
+func (o DatabaseTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTypeResponse] {
+	return pulumix.Output[DatabaseTypeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The database engine.
@@ -1426,6 +1625,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1467,6 +1672,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1490,6 +1701,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1524,6 +1741,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1603,6 +1826,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1678,6 +1907,12 @@ func (i MySqlConnectionProfileArgs) ToMySqlConnectionProfileOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlConnectionProfileOutput)
 }
 
+func (i MySqlConnectionProfileArgs) ToOutput(ctx context.Context) pulumix.Output[MySqlConnectionProfile] {
+	return pulumix.Output[MySqlConnectionProfile]{
+		OutputState: i.ToMySqlConnectionProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MySqlConnectionProfileArgs) ToMySqlConnectionProfilePtrOutput() MySqlConnectionProfilePtrOutput {
 	return i.ToMySqlConnectionProfilePtrOutputWithContext(context.Background())
 }
@@ -1719,6 +1954,12 @@ func (i *mySqlConnectionProfilePtrType) ToMySqlConnectionProfilePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlConnectionProfilePtrOutput)
 }
 
+func (i *mySqlConnectionProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*MySqlConnectionProfile] {
+	return pulumix.Output[*MySqlConnectionProfile]{
+		OutputState: i.ToMySqlConnectionProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies connection parameters required specifically for MySQL databases.
 type MySqlConnectionProfileOutput struct{ *pulumi.OutputState }
 
@@ -1742,6 +1983,12 @@ func (o MySqlConnectionProfileOutput) ToMySqlConnectionProfilePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySqlConnectionProfile) *MySqlConnectionProfile {
 		return &v
 	}).(MySqlConnectionProfilePtrOutput)
+}
+
+func (o MySqlConnectionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[MySqlConnectionProfile] {
+	return pulumix.Output[MySqlConnectionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -1786,6 +2033,12 @@ func (o MySqlConnectionProfilePtrOutput) ToMySqlConnectionProfilePtrOutput() MyS
 
 func (o MySqlConnectionProfilePtrOutput) ToMySqlConnectionProfilePtrOutputWithContext(ctx context.Context) MySqlConnectionProfilePtrOutput {
 	return o
+}
+
+func (o MySqlConnectionProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MySqlConnectionProfile] {
+	return pulumix.Output[*MySqlConnectionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MySqlConnectionProfilePtrOutput) Elem() MySqlConnectionProfileOutput {
@@ -1891,6 +2144,12 @@ func (o MySqlConnectionProfileResponseOutput) ToMySqlConnectionProfileResponseOu
 	return o
 }
 
+func (o MySqlConnectionProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MySqlConnectionProfileResponse] {
+	return pulumix.Output[MySqlConnectionProfileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 func (o MySqlConnectionProfileResponseOutput) CloudSqlId() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) string { return v.CloudSqlId }).(pulumi.StringOutput)
@@ -1973,6 +2232,12 @@ func (i ReverseSshConnectivityArgs) ToReverseSshConnectivityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ReverseSshConnectivityOutput)
 }
 
+func (i ReverseSshConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[ReverseSshConnectivity] {
+	return pulumix.Output[ReverseSshConnectivity]{
+		OutputState: i.ToReverseSshConnectivityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ReverseSshConnectivityArgs) ToReverseSshConnectivityPtrOutput() ReverseSshConnectivityPtrOutput {
 	return i.ToReverseSshConnectivityPtrOutputWithContext(context.Background())
 }
@@ -2014,6 +2279,12 @@ func (i *reverseSshConnectivityPtrType) ToReverseSshConnectivityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ReverseSshConnectivityPtrOutput)
 }
 
+func (i *reverseSshConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReverseSshConnectivity] {
+	return pulumix.Output[*ReverseSshConnectivity]{
+		OutputState: i.ToReverseSshConnectivityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1beta1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
 type ReverseSshConnectivityOutput struct{ *pulumi.OutputState }
 
@@ -2037,6 +2308,12 @@ func (o ReverseSshConnectivityOutput) ToReverseSshConnectivityPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReverseSshConnectivity) *ReverseSshConnectivity {
 		return &v
 	}).(ReverseSshConnectivityPtrOutput)
+}
+
+func (o ReverseSshConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[ReverseSshConnectivity] {
+	return pulumix.Output[ReverseSshConnectivity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
@@ -2071,6 +2348,12 @@ func (o ReverseSshConnectivityPtrOutput) ToReverseSshConnectivityPtrOutput() Rev
 
 func (o ReverseSshConnectivityPtrOutput) ToReverseSshConnectivityPtrOutputWithContext(ctx context.Context) ReverseSshConnectivityPtrOutput {
 	return o
+}
+
+func (o ReverseSshConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReverseSshConnectivity] {
+	return pulumix.Output[*ReverseSshConnectivity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReverseSshConnectivityPtrOutput) Elem() ReverseSshConnectivityOutput {
@@ -2150,6 +2433,12 @@ func (o ReverseSshConnectivityResponseOutput) ToReverseSshConnectivityResponseOu
 	return o
 }
 
+func (o ReverseSshConnectivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReverseSshConnectivityResponse] {
+	return pulumix.Output[ReverseSshConnectivityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 func (o ReverseSshConnectivityResponseOutput) Vm() pulumi.StringOutput {
 	return o.ApplyT(func(v ReverseSshConnectivityResponse) string { return v.Vm }).(pulumi.StringOutput)
@@ -2217,6 +2506,12 @@ func (i SqlAclEntryArgs) ToSqlAclEntryOutputWithContext(ctx context.Context) Sql
 	return pulumi.ToOutputWithContext(ctx, i).(SqlAclEntryOutput)
 }
 
+func (i SqlAclEntryArgs) ToOutput(ctx context.Context) pulumix.Output[SqlAclEntry] {
+	return pulumix.Output[SqlAclEntry]{
+		OutputState: i.ToSqlAclEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SqlAclEntryArrayInput is an input type that accepts SqlAclEntryArray and SqlAclEntryArrayOutput values.
 // You can construct a concrete instance of `SqlAclEntryArrayInput` via:
 //
@@ -2242,6 +2537,12 @@ func (i SqlAclEntryArray) ToSqlAclEntryArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SqlAclEntryArrayOutput)
 }
 
+func (i SqlAclEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]SqlAclEntry] {
+	return pulumix.Output[[]SqlAclEntry]{
+		OutputState: i.ToSqlAclEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An entry for an Access Control list.
 type SqlAclEntryOutput struct{ *pulumi.OutputState }
 
@@ -2255,6 +2556,12 @@ func (o SqlAclEntryOutput) ToSqlAclEntryOutput() SqlAclEntryOutput {
 
 func (o SqlAclEntryOutput) ToSqlAclEntryOutputWithContext(ctx context.Context) SqlAclEntryOutput {
 	return o
+}
+
+func (o SqlAclEntryOutput) ToOutput(ctx context.Context) pulumix.Output[SqlAclEntry] {
+	return pulumix.Output[SqlAclEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`.
@@ -2291,6 +2598,12 @@ func (o SqlAclEntryArrayOutput) ToSqlAclEntryArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SqlAclEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SqlAclEntry] {
+	return pulumix.Output[[]SqlAclEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlAclEntryArrayOutput) Index(i pulumi.IntInput) SqlAclEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAclEntry {
 		return vs[0].([]SqlAclEntry)[vs[1].(int)]
@@ -2322,6 +2635,12 @@ func (o SqlAclEntryResponseOutput) ToSqlAclEntryResponseOutput() SqlAclEntryResp
 
 func (o SqlAclEntryResponseOutput) ToSqlAclEntryResponseOutputWithContext(ctx context.Context) SqlAclEntryResponseOutput {
 	return o
+}
+
+func (o SqlAclEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlAclEntryResponse] {
+	return pulumix.Output[SqlAclEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`.
@@ -2356,6 +2675,12 @@ func (o SqlAclEntryResponseArrayOutput) ToSqlAclEntryResponseArrayOutput() SqlAc
 
 func (o SqlAclEntryResponseArrayOutput) ToSqlAclEntryResponseArrayOutputWithContext(ctx context.Context) SqlAclEntryResponseArrayOutput {
 	return o
+}
+
+func (o SqlAclEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SqlAclEntryResponse] {
+	return pulumix.Output[[]SqlAclEntryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlAclEntryResponseArrayOutput) Index(i pulumi.IntInput) SqlAclEntryResponseOutput {
@@ -2411,6 +2736,12 @@ func (i SqlIpConfigArgs) ToSqlIpConfigOutputWithContext(ctx context.Context) Sql
 	return pulumi.ToOutputWithContext(ctx, i).(SqlIpConfigOutput)
 }
 
+func (i SqlIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SqlIpConfig] {
+	return pulumix.Output[SqlIpConfig]{
+		OutputState: i.ToSqlIpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SqlIpConfigArgs) ToSqlIpConfigPtrOutput() SqlIpConfigPtrOutput {
 	return i.ToSqlIpConfigPtrOutputWithContext(context.Background())
 }
@@ -2452,6 +2783,12 @@ func (i *sqlIpConfigPtrType) ToSqlIpConfigPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SqlIpConfigPtrOutput)
 }
 
+func (i *sqlIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SqlIpConfig] {
+	return pulumix.Output[*SqlIpConfig]{
+		OutputState: i.ToSqlIpConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IP Management configuration.
 type SqlIpConfigOutput struct{ *pulumi.OutputState }
 
@@ -2475,6 +2812,12 @@ func (o SqlIpConfigOutput) ToSqlIpConfigPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlIpConfig) *SqlIpConfig {
 		return &v
 	}).(SqlIpConfigPtrOutput)
+}
+
+func (o SqlIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SqlIpConfig] {
+	return pulumix.Output[SqlIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
@@ -2509,6 +2852,12 @@ func (o SqlIpConfigPtrOutput) ToSqlIpConfigPtrOutput() SqlIpConfigPtrOutput {
 
 func (o SqlIpConfigPtrOutput) ToSqlIpConfigPtrOutputWithContext(ctx context.Context) SqlIpConfigPtrOutput {
 	return o
+}
+
+func (o SqlIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlIpConfig] {
+	return pulumix.Output[*SqlIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlIpConfigPtrOutput) Elem() SqlIpConfigOutput {
@@ -2588,6 +2937,12 @@ func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o SqlIpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlIpConfigResponse] {
+	return pulumix.Output[SqlIpConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 func (o SqlIpConfigResponseOutput) AuthorizedNetworks() SqlAclEntryResponseArrayOutput {
 	return o.ApplyT(func(v SqlIpConfigResponse) []SqlAclEntryResponse { return v.AuthorizedNetworks }).(SqlAclEntryResponseArrayOutput)
@@ -2651,6 +3006,12 @@ func (i SslConfigArgs) ToSslConfigOutputWithContext(ctx context.Context) SslConf
 	return pulumi.ToOutputWithContext(ctx, i).(SslConfigOutput)
 }
 
+func (i SslConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SslConfig] {
+	return pulumix.Output[SslConfig]{
+		OutputState: i.ToSslConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SslConfigArgs) ToSslConfigPtrOutput() SslConfigPtrOutput {
 	return i.ToSslConfigPtrOutputWithContext(context.Background())
 }
@@ -2692,6 +3053,12 @@ func (i *sslConfigPtrType) ToSslConfigPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SslConfigPtrOutput)
 }
 
+func (i *sslConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SslConfig] {
+	return pulumix.Output[*SslConfig]{
+		OutputState: i.ToSslConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSL configuration information.
 type SslConfigOutput struct{ *pulumi.OutputState }
 
@@ -2715,6 +3082,12 @@ func (o SslConfigOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) Ss
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfig) *SslConfig {
 		return &v
 	}).(SslConfigPtrOutput)
+}
+
+func (o SslConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfig] {
+	return pulumix.Output[SslConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
@@ -2744,6 +3117,12 @@ func (o SslConfigPtrOutput) ToSslConfigPtrOutput() SslConfigPtrOutput {
 
 func (o SslConfigPtrOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) SslConfigPtrOutput {
 	return o
+}
+
+func (o SslConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfig] {
+	return pulumix.Output[*SslConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SslConfigPtrOutput) Elem() SslConfigOutput {
@@ -2813,6 +3192,12 @@ func (o SslConfigResponseOutput) ToSslConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o SslConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfigResponse] {
+	return pulumix.Output[SslConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
 func (o SslConfigResponseOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v SslConfigResponse) string { return v.CaCertificate }).(pulumi.StringOutput)
@@ -2864,6 +3249,12 @@ func (i StaticIpConnectivityArgs) ToStaticIpConnectivityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpConnectivityOutput)
 }
 
+func (i StaticIpConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[StaticIpConnectivity] {
+	return pulumix.Output[StaticIpConnectivity]{
+		OutputState: i.ToStaticIpConnectivityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StaticIpConnectivityArgs) ToStaticIpConnectivityPtrOutput() StaticIpConnectivityPtrOutput {
 	return i.ToStaticIpConnectivityPtrOutputWithContext(context.Background())
 }
@@ -2905,6 +3296,12 @@ func (i *staticIpConnectivityPtrType) ToStaticIpConnectivityPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpConnectivityPtrOutput)
 }
 
+func (i *staticIpConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*StaticIpConnectivity] {
+	return pulumix.Output[*StaticIpConnectivity]{
+		OutputState: i.ToStaticIpConnectivityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
 type StaticIpConnectivityOutput struct{ *pulumi.OutputState }
 
@@ -2930,6 +3327,12 @@ func (o StaticIpConnectivityOutput) ToStaticIpConnectivityPtrOutputWithContext(c
 	}).(StaticIpConnectivityPtrOutput)
 }
 
+func (o StaticIpConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[StaticIpConnectivity] {
+	return pulumix.Output[StaticIpConnectivity]{
+		OutputState: o.OutputState,
+	}
+}
+
 type StaticIpConnectivityPtrOutput struct{ *pulumi.OutputState }
 
 func (StaticIpConnectivityPtrOutput) ElementType() reflect.Type {
@@ -2942,6 +3345,12 @@ func (o StaticIpConnectivityPtrOutput) ToStaticIpConnectivityPtrOutput() StaticI
 
 func (o StaticIpConnectivityPtrOutput) ToStaticIpConnectivityPtrOutputWithContext(ctx context.Context) StaticIpConnectivityPtrOutput {
 	return o
+}
+
+func (o StaticIpConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticIpConnectivity] {
+	return pulumix.Output[*StaticIpConnectivity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StaticIpConnectivityPtrOutput) Elem() StaticIpConnectivityOutput {
@@ -2973,6 +3382,12 @@ func (o StaticIpConnectivityResponseOutput) ToStaticIpConnectivityResponseOutput
 	return o
 }
 
+func (o StaticIpConnectivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticIpConnectivityResponse] {
+	return pulumix.Output[StaticIpConnectivityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -2996,6 +3411,12 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
+}
+
+func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
+	return pulumix.Output[StatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -3048,6 +3469,12 @@ func (i VpcPeeringConnectivityArgs) ToVpcPeeringConnectivityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectivityOutput)
 }
 
+func (i VpcPeeringConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[VpcPeeringConnectivity] {
+	return pulumix.Output[VpcPeeringConnectivity]{
+		OutputState: i.ToVpcPeeringConnectivityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VpcPeeringConnectivityArgs) ToVpcPeeringConnectivityPtrOutput() VpcPeeringConnectivityPtrOutput {
 	return i.ToVpcPeeringConnectivityPtrOutputWithContext(context.Background())
 }
@@ -3089,6 +3516,12 @@ func (i *vpcPeeringConnectivityPtrType) ToVpcPeeringConnectivityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectivityPtrOutput)
 }
 
+func (i *vpcPeeringConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*VpcPeeringConnectivity] {
+	return pulumix.Output[*VpcPeeringConnectivity]{
+		OutputState: i.ToVpcPeeringConnectivityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
 type VpcPeeringConnectivityOutput struct{ *pulumi.OutputState }
 
@@ -3114,6 +3547,12 @@ func (o VpcPeeringConnectivityOutput) ToVpcPeeringConnectivityPtrOutputWithConte
 	}).(VpcPeeringConnectivityPtrOutput)
 }
 
+func (o VpcPeeringConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[VpcPeeringConnectivity] {
+	return pulumix.Output[VpcPeeringConnectivity]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the VPC network to peer with the Cloud SQL private network.
 func (o VpcPeeringConnectivityOutput) Vpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpcPeeringConnectivity) *string { return v.Vpc }).(pulumi.StringPtrOutput)
@@ -3131,6 +3570,12 @@ func (o VpcPeeringConnectivityPtrOutput) ToVpcPeeringConnectivityPtrOutput() Vpc
 
 func (o VpcPeeringConnectivityPtrOutput) ToVpcPeeringConnectivityPtrOutputWithContext(ctx context.Context) VpcPeeringConnectivityPtrOutput {
 	return o
+}
+
+func (o VpcPeeringConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcPeeringConnectivity] {
+	return pulumix.Output[*VpcPeeringConnectivity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcPeeringConnectivityPtrOutput) Elem() VpcPeeringConnectivityOutput {
@@ -3172,6 +3617,12 @@ func (o VpcPeeringConnectivityResponseOutput) ToVpcPeeringConnectivityResponseOu
 
 func (o VpcPeeringConnectivityResponseOutput) ToVpcPeeringConnectivityResponseOutputWithContext(ctx context.Context) VpcPeeringConnectivityResponseOutput {
 	return o
+}
+
+func (o VpcPeeringConnectivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpcPeeringConnectivityResponse] {
+	return pulumix.Output[VpcPeeringConnectivityResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the VPC network to peer with the Cloud SQL private network.

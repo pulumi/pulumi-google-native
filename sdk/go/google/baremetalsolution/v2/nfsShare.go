@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an NFS share.
@@ -133,6 +134,12 @@ func (i *NfsShare) ToNfsShareOutputWithContext(ctx context.Context) NfsShareOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NfsShareOutput)
 }
 
+func (i *NfsShare) ToOutput(ctx context.Context) pulumix.Output[*NfsShare] {
+	return pulumix.Output[*NfsShare]{
+		OutputState: i.ToNfsShareOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NfsShareOutput struct{ *pulumi.OutputState }
 
 func (NfsShareOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o NfsShareOutput) ToNfsShareOutput() NfsShareOutput {
 
 func (o NfsShareOutput) ToNfsShareOutputWithContext(ctx context.Context) NfsShareOutput {
 	return o
+}
+
+func (o NfsShareOutput) ToOutput(ctx context.Context) pulumix.Output[*NfsShare] {
+	return pulumix.Output[*NfsShare]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of allowed access points.

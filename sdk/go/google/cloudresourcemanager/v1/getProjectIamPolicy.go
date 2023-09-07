@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names).
@@ -70,6 +71,12 @@ func (o LookupProjectIamPolicyResultOutput) ToLookupProjectIamPolicyResultOutput
 
 func (o LookupProjectIamPolicyResultOutput) ToLookupProjectIamPolicyResultOutputWithContext(ctx context.Context) LookupProjectIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupProjectIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectIamPolicyResult] {
+	return pulumix.Output[LookupProjectIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

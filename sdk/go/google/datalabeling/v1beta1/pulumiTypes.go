@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i GoogleCloudDatalabelingV1beta1AnnotationSpecArgs) ToGoogleCloudDatalabel
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AnnotationSpecOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1AnnotationSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1AnnotationSpec] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1AnnotationSpec]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1AnnotationSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput is an input type that accepts GoogleCloudDatalabelingV1beta1AnnotationSpecArray and GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i GoogleCloudDatalabelingV1beta1AnnotationSpecArray) ToGoogleCloudDatalabe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1AnnotationSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatalabelingV1beta1AnnotationSpec] {
+	return pulumix.Output[[]GoogleCloudDatalabelingV1beta1AnnotationSpec]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
 type GoogleCloudDatalabelingV1beta1AnnotationSpecOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) ToGoogleCloudDatalab
 
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) ToGoogleCloudDatalabelingV1beta1AnnotationSpecOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AnnotationSpecOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1AnnotationSpec] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1AnnotationSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
@@ -114,6 +133,12 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput) ToGoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatalabelingV1beta1AnnotationSpec] {
+	return pulumix.Output[[]GoogleCloudDatalabelingV1beta1AnnotationSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatalabelingV1beta1AnnotationSpecOutput {
@@ -147,6 +172,12 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput) ToGoogleClou
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1AnnotationSpecResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1AnnotationSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpecResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -174,6 +205,12 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput) ToGoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatalabelingV1beta1AnnotationSpecResponse] {
+	return pulumix.Output[[]GoogleCloudDatalabelingV1beta1AnnotationSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput {
@@ -204,6 +241,12 @@ func (o GoogleCloudDatalabelingV1beta1AttemptResponseOutput) ToGoogleCloudDatala
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1AttemptResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1AttemptResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1AttemptResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatalabelingV1beta1AttemptResponseOutput) AttemptTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AttemptResponse) string { return v.AttemptTime }).(pulumi.StringOutput)
 }
@@ -227,6 +270,12 @@ func (o GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput) ToGoogleCloudDatalabelingV1beta1AttemptResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatalabelingV1beta1AttemptResponse] {
+	return pulumix.Output[[]GoogleCloudDatalabelingV1beta1AttemptResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatalabelingV1beta1AttemptResponseOutput {
@@ -270,6 +319,12 @@ func (i GoogleCloudDatalabelingV1beta1BigQuerySourceArgs) ToGoogleCloudDatalabel
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BigQuerySourceOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1BigQuerySourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BigQuerySource] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BigQuerySource]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1BigQuerySourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1BigQuerySourceArgs) ToGoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput() GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutputWithContext(context.Background())
 }
@@ -311,6 +366,12 @@ func (i *googleCloudDatalabelingV1beta1BigQuerySourcePtrType) ToGoogleCloudDatal
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1BigQuerySourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1BigQuerySource] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1BigQuerySource]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
 type GoogleCloudDatalabelingV1beta1BigQuerySourceOutput struct{ *pulumi.OutputState }
 
@@ -336,6 +397,12 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) ToGoogleCloudDatalab
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BigQuerySource] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BigQuerySource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySource) string { return v.InputUri }).(pulumi.StringOutput)
@@ -353,6 +420,12 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) ToGoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1BigQuerySource] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1BigQuerySource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) Elem() GoogleCloudDatalabelingV1beta1BigQuerySourceOutput {
@@ -396,6 +469,12 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToGoogleClou
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BigQuerySourceResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BigQuerySourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) string { return v.InputUri }).(pulumi.StringOutput)
@@ -434,6 +513,12 @@ func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs) ToGoogle
 
 func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput)
+}
+
+func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput {
@@ -477,6 +562,12 @@ func (i *googleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrType) ToGo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Options regarding evaluation between bounding boxes.
 type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput struct{ *pulumi.OutputState }
 
@@ -502,6 +593,12 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput) ToGoog
 	}).(GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1.
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput) IouThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions) *float64 { return v.IouThreshold }).(pulumi.Float64PtrOutput)
@@ -519,6 +616,12 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput) ToG
 
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput {
@@ -560,6 +663,12 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput
 
 func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput) ToGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1.
@@ -608,6 +717,12 @@ func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs) ToGoogleCloudDatal
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingPolyConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingPolyConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput() GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutputWithContext(context.Background())
 }
@@ -649,6 +764,12 @@ func (i *googleCloudDatalabelingV1beta1BoundingPolyConfigPtrType) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1BoundingPolyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingPolyConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingPolyConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Config for image bounding poly (and bounding box) human labeling task.
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput struct{ *pulumi.OutputState }
 
@@ -674,6 +795,12 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) ToGoogleCloudDat
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingPolyConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingPolyConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) AnnotationSpecSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfig) string { return v.AnnotationSpecSet }).(pulumi.StringOutput)
@@ -696,6 +823,12 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingPolyConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1BoundingPolyConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput {
@@ -751,6 +884,12 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToGoogle
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) AnnotationSpecSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) string { return v.AnnotationSpecSet }).(pulumi.StringOutput)
@@ -796,6 +935,12 @@ func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1ClassificationMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1ClassificationMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1ClassificationMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput() GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutputWithContext(context.Background())
 }
@@ -837,6 +982,12 @@ func (i *googleCloudDatalabelingV1beta1ClassificationMetadataPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1ClassificationMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1ClassificationMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1ClassificationMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metadata for classification annotations.
 type GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput struct{ *pulumi.OutputState }
 
@@ -862,6 +1013,12 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput) ToGoogleClou
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1ClassificationMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1ClassificationMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether the classification task is multi-label or not.
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput) IsMultiLabel() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ClassificationMetadata) *bool { return v.IsMultiLabel }).(pulumi.BoolPtrOutput)
@@ -879,6 +1036,12 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput) ToGoogleC
 
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput) ToGoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1ClassificationMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1ClassificationMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput {
@@ -922,6 +1085,12 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) ToGo
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether the classification task is multi-label or not.
 func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) IsMultiLabel() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) bool { return v.IsMultiLabel }).(pulumi.BoolOutput)
@@ -960,6 +1129,12 @@ func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabel
 
 func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabelingV1beta1CsvInstructionOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1CsvInstructionOutput)
+}
+
+func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1CsvInstruction] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1CsvInstruction]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1CsvInstructionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput() GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
@@ -1003,6 +1178,12 @@ func (i *googleCloudDatalabelingV1beta1CsvInstructionPtrType) ToGoogleCloudDatal
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1CsvInstructionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1CsvInstruction] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1CsvInstruction]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
 type GoogleCloudDatalabelingV1beta1CsvInstructionOutput struct{ *pulumi.OutputState }
 
@@ -1028,6 +1209,12 @@ func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) ToGoogleCloudDatalab
 	}).(GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1CsvInstruction] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1CsvInstruction]{
+		OutputState: o.OutputState,
+	}
+}
+
 // CSV file for the instruction. Only gcs path is allowed.
 func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) GcsFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1CsvInstruction) *string { return v.GcsFileUri }).(pulumi.StringPtrOutput)
@@ -1045,6 +1232,12 @@ func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1CsvInstruction] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1CsvInstruction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) Elem() GoogleCloudDatalabelingV1beta1CsvInstructionOutput {
@@ -1088,6 +1281,12 @@ func (o GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput) ToGoogleClou
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1CsvInstructionResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1CsvInstructionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // CSV file for the instruction. Only gcs path is allowed.
 func (o GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput) GcsFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1CsvInstructionResponse) string { return v.GcsFileUri }).(pulumi.StringOutput)
@@ -1128,6 +1327,12 @@ func (i GoogleCloudDatalabelingV1beta1EvaluationConfigArgs) ToGoogleCloudDatalab
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1EvaluationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1EvaluationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration details used for calculating evaluation metrics and creating an Evaluation.
 type GoogleCloudDatalabelingV1beta1EvaluationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1141,6 +1346,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToGoogleCloudDatal
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1EvaluationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
@@ -1169,6 +1380,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToGoogleCl
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
@@ -1217,6 +1434,12 @@ func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutputWithContext(context.Background())
 }
@@ -1258,6 +1481,12 @@ func (i *googleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides details for how an evaluation job sends email alerts based on the results of a run.
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput struct{ *pulumi.OutputState }
 
@@ -1281,6 +1510,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) ToGoogleCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput)
+}
+
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An email address to send alerts to.
@@ -1307,6 +1542,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput {
@@ -1360,6 +1601,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) To
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An email address to send alerts to.
@@ -1445,6 +1692,12 @@ func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput struct{ *pulumi.OutputState }
 
@@ -1458,6 +1711,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
@@ -1563,6 +1822,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
@@ -1672,6 +1937,12 @@ func (i GoogleCloudDatalabelingV1beta1GcsSourceArgs) ToGoogleCloudDatalabelingV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1GcsSourceOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1GcsSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1GcsSource] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1GcsSource]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1GcsSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1GcsSourceArgs) ToGoogleCloudDatalabelingV1beta1GcsSourcePtrOutput() GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1GcsSourcePtrOutputWithContext(context.Background())
 }
@@ -1713,6 +1984,12 @@ func (i *googleCloudDatalabelingV1beta1GcsSourcePtrType) ToGoogleCloudDatalabeli
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1GcsSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1GcsSource] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1GcsSource]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1GcsSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Source of the Cloud Storage file to be imported.
 type GoogleCloudDatalabelingV1beta1GcsSourceOutput struct{ *pulumi.OutputState }
 
@@ -1738,6 +2015,12 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) ToGoogleCloudDatalabeling
 	}).(GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1GcsSource] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1GcsSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The input URI of source file. This must be a Cloud Storage path (`gs://...`).
 func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSource) string { return v.InputUri }).(pulumi.StringOutput)
@@ -1760,6 +2043,12 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) ToGoogleCloudDatalabel
 
 func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) ToGoogleCloudDatalabelingV1beta1GcsSourcePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1GcsSource] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1GcsSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) Elem() GoogleCloudDatalabelingV1beta1GcsSourceOutput {
@@ -1813,6 +2102,12 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudDatalabelingV1beta1GcsSourceResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1GcsSourceResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1GcsSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The input URI of source file. This must be a Cloud Storage path (`gs://...`).
@@ -1892,6 +2187,12 @@ func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1HumanAnnotationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1HumanAnnotationConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutputWithContext(context.Background())
 }
@@ -1933,6 +2234,12 @@ func (i *googleCloudDatalabelingV1beta1HumanAnnotationConfigPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1HumanAnnotationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1HumanAnnotationConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1HumanAnnotationConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for how human labeling task should be done.
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1956,6 +2263,12 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) ToGoogleCloud
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput)
+}
+
+func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1HumanAnnotationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1HumanAnnotationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
@@ -2019,6 +2332,12 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1HumanAnnotationConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1HumanAnnotationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput {
@@ -2158,6 +2477,12 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToGoo
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) AnnotatedDatasetDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) string {
@@ -2252,6 +2577,12 @@ func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutputWithContext(context.Background())
 }
@@ -2293,6 +2624,12 @@ func (i *googleCloudDatalabelingV1beta1ImageClassificationConfigPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1ImageClassificationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Config for image classification human labeling task.
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput struct{ *pulumi.OutputState }
 
@@ -2316,6 +2653,12 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) ToGoogleC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput)
+}
+
+func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
@@ -2347,6 +2690,12 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) ToGoog
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput {
@@ -2412,6 +2761,12 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) T
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
@@ -2488,6 +2843,12 @@ func (i GoogleCloudDatalabelingV1beta1InputConfigArgs) ToGoogleCloudDatalabeling
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1InputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1InputConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1InputConfigArgs) ToGoogleCloudDatalabelingV1beta1InputConfigPtrOutput() GoogleCloudDatalabelingV1beta1InputConfigPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1InputConfigPtrOutputWithContext(context.Background())
 }
@@ -2529,6 +2890,12 @@ func (i *googleCloudDatalabelingV1beta1InputConfigPtrType) ToGoogleCloudDatalabe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1InputConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1InputConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration of input data, including data type, location, etc.
 type GoogleCloudDatalabelingV1beta1InputConfigOutput struct{ *pulumi.OutputState }
 
@@ -2552,6 +2919,12 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) ToGoogleCloudDatalabeli
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1InputConfig) *GoogleCloudDatalabelingV1beta1InputConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1InputConfigPtrOutput)
+}
+
+func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -2608,6 +2981,12 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) ToGoogleCloudDatalab
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigOutput {
@@ -2711,6 +3090,12 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToGoogleCloudDa
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
 func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) AnnotationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfigResponse) string { return v.AnnotationType }).(pulumi.StringOutput)
@@ -2763,6 +3148,12 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput) ToGoogleCl
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatalabelingV1beta1InputConfigResponse] {
+	return pulumix.Output[[]GoogleCloudDatalabelingV1beta1InputConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatalabelingV1beta1InputConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatalabelingV1beta1InputConfigResponse {
 		return vs[0].([]GoogleCloudDatalabelingV1beta1InputConfigResponse)[vs[1].(int)]
@@ -2798,6 +3189,12 @@ func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs) ToGoogleClou
 
 func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput)
+}
+
+func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput {
@@ -2841,6 +3238,12 @@ func (i *googleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metadata describing the feedback from the operator.
 type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput struct{ *pulumi.OutputState }
 
@@ -2866,6 +3269,12 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput) ToGoogleCl
 	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) ElementType() reflect.Type {
@@ -2878,6 +3287,12 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput {
@@ -2907,6 +3322,12 @@ func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) To
 
 func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Instruction from a PDF file.
@@ -2942,6 +3363,12 @@ func (i GoogleCloudDatalabelingV1beta1PdfInstructionArgs) ToGoogleCloudDatalabel
 
 func (i GoogleCloudDatalabelingV1beta1PdfInstructionArgs) ToGoogleCloudDatalabelingV1beta1PdfInstructionOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1PdfInstructionOutput)
+}
+
+func (i GoogleCloudDatalabelingV1beta1PdfInstructionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1PdfInstruction] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1PdfInstruction]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1PdfInstructionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatalabelingV1beta1PdfInstructionArgs) ToGoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput() GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput {
@@ -2985,6 +3412,12 @@ func (i *googleCloudDatalabelingV1beta1PdfInstructionPtrType) ToGoogleCloudDatal
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1PdfInstructionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1PdfInstruction] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1PdfInstruction]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1PdfInstructionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Instruction from a PDF file.
 type GoogleCloudDatalabelingV1beta1PdfInstructionOutput struct{ *pulumi.OutputState }
 
@@ -3010,6 +3443,12 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionOutput) ToGoogleCloudDatalab
 	}).(GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1PdfInstructionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1PdfInstruction] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1PdfInstruction]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PDF file for the instruction. Only gcs path is allowed.
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionOutput) GcsFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1PdfInstruction) *string { return v.GcsFileUri }).(pulumi.StringPtrOutput)
@@ -3027,6 +3466,12 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput) ToGoogleCloudDatalabelingV1beta1PdfInstructionPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1PdfInstruction] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1PdfInstruction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput) Elem() GoogleCloudDatalabelingV1beta1PdfInstructionOutput {
@@ -3070,6 +3515,12 @@ func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) ToGoogleClou
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1PdfInstructionResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1PdfInstructionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PDF file for the instruction. Only gcs path is allowed.
 func (o GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput) GcsFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1PdfInstructionResponse) string { return v.GcsFileUri }).(pulumi.StringOutput)
@@ -3104,6 +3555,12 @@ func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs) ToGoogleClo
 
 func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput)
+}
+
+func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput {
@@ -3147,6 +3604,12 @@ func (i *googleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metadata describing the feedback from the labeling task requester.
 type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput struct{ *pulumi.OutputState }
 
@@ -3172,6 +3635,12 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput) ToGoogleC
 	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) ElementType() reflect.Type {
@@ -3184,6 +3653,12 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) ToGoog
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput {
@@ -3213,6 +3688,12 @@ func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) T
 
 func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) ToGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Config for setting up sentiments.
@@ -3248,6 +3729,12 @@ func (i GoogleCloudDatalabelingV1beta1SentimentConfigArgs) ToGoogleCloudDatalabe
 
 func (i GoogleCloudDatalabelingV1beta1SentimentConfigArgs) ToGoogleCloudDatalabelingV1beta1SentimentConfigOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1SentimentConfigOutput)
+}
+
+func (i GoogleCloudDatalabelingV1beta1SentimentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1SentimentConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1SentimentConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1SentimentConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatalabelingV1beta1SentimentConfigArgs) ToGoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput() GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput {
@@ -3291,6 +3778,12 @@ func (i *googleCloudDatalabelingV1beta1SentimentConfigPtrType) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1SentimentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1SentimentConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1SentimentConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1SentimentConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Config for setting up sentiments.
 type GoogleCloudDatalabelingV1beta1SentimentConfigOutput struct{ *pulumi.OutputState }
 
@@ -3316,6 +3809,12 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigOutput) ToGoogleCloudDatala
 	}).(GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1SentimentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1SentimentConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1SentimentConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigOutput) EnableLabelSentimentSelection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1SentimentConfig) *bool { return v.EnableLabelSentimentSelection }).(pulumi.BoolPtrOutput)
@@ -3333,6 +3832,12 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1SentimentConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1SentimentConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1SentimentConfigOutput {
@@ -3374,6 +3879,12 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToGoogleClo
 
 func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToGoogleCloudDatalabelingV1beta1SentimentConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1SentimentConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1SentimentConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
@@ -3426,6 +3937,12 @@ func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1TextClassificationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1TextClassificationConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1TextClassificationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput() GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutputWithContext(context.Background())
 }
@@ -3467,6 +3984,12 @@ func (i *googleCloudDatalabelingV1beta1TextClassificationConfigPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1TextClassificationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1TextClassificationConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1TextClassificationConfig]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Config for text classification human labeling task.
 type GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput struct{ *pulumi.OutputState }
 
@@ -3490,6 +4013,12 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput) ToGoogleCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1TextClassificationConfig) *GoogleCloudDatalabelingV1beta1TextClassificationConfig {
 		return &v
 	}).(GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput)
+}
+
+func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1TextClassificationConfig] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1TextClassificationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
@@ -3521,6 +4050,12 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) ToGoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1TextClassificationConfig] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1TextClassificationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput {
@@ -3588,6 +4123,12 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) To
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) AllowMultiLabel() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) bool { return v.AllowMultiLabel }).(pulumi.BoolOutput)
@@ -3642,6 +4183,12 @@ func (i GoogleCloudDatalabelingV1beta1TextMetadataArgs) ToGoogleCloudDatalabelin
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextMetadataOutput)
 }
 
+func (i GoogleCloudDatalabelingV1beta1TextMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1TextMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1TextMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1TextMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatalabelingV1beta1TextMetadataArgs) ToGoogleCloudDatalabelingV1beta1TextMetadataPtrOutput() GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput {
 	return i.ToGoogleCloudDatalabelingV1beta1TextMetadataPtrOutputWithContext(context.Background())
 }
@@ -3683,6 +4230,12 @@ func (i *googleCloudDatalabelingV1beta1TextMetadataPtrType) ToGoogleCloudDatalab
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput)
 }
 
+func (i *googleCloudDatalabelingV1beta1TextMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1TextMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1TextMetadata]{
+		OutputState: i.ToGoogleCloudDatalabelingV1beta1TextMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Metadata for the text.
 type GoogleCloudDatalabelingV1beta1TextMetadataOutput struct{ *pulumi.OutputState }
 
@@ -3708,6 +4261,12 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataOutput) ToGoogleCloudDatalabel
 	}).(GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput)
 }
 
+func (o GoogleCloudDatalabelingV1beta1TextMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1TextMetadata] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1TextMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
 func (o GoogleCloudDatalabelingV1beta1TextMetadataOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextMetadata) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
@@ -3725,6 +4284,12 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput) ToGoogleCloudDatala
 
 func (o GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput) ToGoogleCloudDatalabelingV1beta1TextMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1TextMetadata] {
+	return pulumix.Output[*GoogleCloudDatalabelingV1beta1TextMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput) Elem() GoogleCloudDatalabelingV1beta1TextMetadataOutput {
@@ -3768,6 +4333,12 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) ToGoogleCloudD
 	return o
 }
 
+func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1TextMetadataResponse] {
+	return pulumix.Output[GoogleCloudDatalabelingV1beta1TextMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
 func (o GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextMetadataResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
@@ -3798,6 +4369,12 @@ func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutputWithContex
 	return o
 }
 
+func (o GoogleRpcStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleRpcStatusResponse] {
+	return pulumix.Output[GoogleRpcStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The status code, which should be an enum value of google.rpc.Code.
 func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -3825,6 +4402,12 @@ func (o GoogleRpcStatusResponseArrayOutput) ToGoogleRpcStatusResponseArrayOutput
 
 func (o GoogleRpcStatusResponseArrayOutput) ToGoogleRpcStatusResponseArrayOutputWithContext(ctx context.Context) GoogleRpcStatusResponseArrayOutput {
 	return o
+}
+
+func (o GoogleRpcStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleRpcStatusResponse] {
+	return pulumix.Output[[]GoogleRpcStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleRpcStatusResponseArrayOutput) Index(i pulumi.IntInput) GoogleRpcStatusResponseOutput {

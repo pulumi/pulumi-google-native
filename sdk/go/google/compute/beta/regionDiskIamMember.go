@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -135,6 +136,12 @@ func (i *RegionDiskIamMember) ToRegionDiskIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberOutput)
 }
 
+func (i *RegionDiskIamMember) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskIamMember] {
+	return pulumix.Output[*RegionDiskIamMember]{
+		OutputState: i.ToRegionDiskIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionDiskIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberOutput() RegionDiskIamMe
 
 func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberOutputWithContext(ctx context.Context) RegionDiskIamMemberOutput {
 	return o
+}
+
+func (o RegionDiskIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskIamMember] {
+	return pulumix.Output[*RegionDiskIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

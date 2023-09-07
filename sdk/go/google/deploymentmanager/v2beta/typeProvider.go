@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a type provider.
@@ -147,6 +148,12 @@ func (i *TypeProvider) ToTypeProviderOutputWithContext(ctx context.Context) Type
 	return pulumi.ToOutputWithContext(ctx, i).(TypeProviderOutput)
 }
 
+func (i *TypeProvider) ToOutput(ctx context.Context) pulumix.Output[*TypeProvider] {
+	return pulumix.Output[*TypeProvider]{
+		OutputState: i.ToTypeProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TypeProviderOutput struct{ *pulumi.OutputState }
 
 func (TypeProviderOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o TypeProviderOutput) ToTypeProviderOutput() TypeProviderOutput {
 
 func (o TypeProviderOutput) ToTypeProviderOutputWithContext(ctx context.Context) TypeProviderOutput {
 	return o
+}
+
+func (o TypeProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*TypeProvider] {
+	return pulumix.Output[*TypeProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allows resource handling overrides for specific collections

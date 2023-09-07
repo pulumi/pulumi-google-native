@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
@@ -141,6 +142,12 @@ func (i *OrganizationBucketView) ToOrganizationBucketViewOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketViewOutput)
 }
 
+func (i *OrganizationBucketView) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBucketView] {
+	return pulumix.Output[*OrganizationBucketView]{
+		OutputState: i.ToOrganizationBucketViewOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationBucketViewOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketViewOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o OrganizationBucketViewOutput) ToOrganizationBucketViewOutput() Organizat
 
 func (o OrganizationBucketViewOutput) ToOrganizationBucketViewOutputWithContext(ctx context.Context) OrganizationBucketViewOutput {
 	return o
+}
+
+func (o OrganizationBucketViewOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBucketView] {
+	return pulumix.Output[*OrganizationBucketView]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationBucketViewOutput) BucketId() pulumi.StringOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new workstation configuration.
@@ -207,6 +208,12 @@ func (i *WorkstationConfig) ToWorkstationConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigOutput)
 }
 
+func (i *WorkstationConfig) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfig] {
+	return pulumix.Output[*WorkstationConfig]{
+		OutputState: i.ToWorkstationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigOutput) ElementType() reflect.Type {
@@ -219,6 +226,12 @@ func (o WorkstationConfigOutput) ToWorkstationConfigOutput() WorkstationConfigOu
 
 func (o WorkstationConfigOutput) ToWorkstationConfigOutputWithContext(ctx context.Context) WorkstationConfigOutput {
 	return o
+}
+
+func (o WorkstationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfig] {
+	return pulumix.Output[*WorkstationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Client-specified annotations.

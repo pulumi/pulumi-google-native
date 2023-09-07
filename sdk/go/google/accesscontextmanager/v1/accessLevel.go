@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an access level. The long-running operation from this RPC has a successful status after the access level propagates to long-lasting storage. If access levels contain errors, an error response is returned for the first error encountered.
@@ -127,6 +128,12 @@ func (i *AccessLevel) ToAccessLevelOutputWithContext(ctx context.Context) Access
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelOutput)
 }
 
+func (i *AccessLevel) ToOutput(ctx context.Context) pulumix.Output[*AccessLevel] {
+	return pulumix.Output[*AccessLevel]{
+		OutputState: i.ToAccessLevelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessLevelOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelOutput) ElementType() reflect.Type {
@@ -139,6 +146,12 @@ func (o AccessLevelOutput) ToAccessLevelOutput() AccessLevelOutput {
 
 func (o AccessLevelOutput) ToAccessLevelOutputWithContext(ctx context.Context) AccessLevelOutput {
 	return o
+}
+
+func (o AccessLevelOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevel] {
+	return pulumix.Output[*AccessLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessLevelOutput) AccessPolicyId() pulumi.StringOutput {

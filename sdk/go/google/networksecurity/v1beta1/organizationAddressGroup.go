@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new address group in a given project and location.
@@ -169,6 +170,12 @@ func (i *OrganizationAddressGroup) ToOrganizationAddressGroupOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAddressGroupOutput)
 }
 
+func (i *OrganizationAddressGroup) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroup] {
+	return pulumix.Output[*OrganizationAddressGroup]{
+		OutputState: i.ToOrganizationAddressGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationAddressGroupOutput struct{ *pulumi.OutputState }
 
 func (OrganizationAddressGroupOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o OrganizationAddressGroupOutput) ToOrganizationAddressGroupOutput() Organ
 
 func (o OrganizationAddressGroupOutput) ToOrganizationAddressGroupOutputWithContext(ctx context.Context) OrganizationAddressGroupOutput {
 	return o
+}
+
+func (o OrganizationAddressGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroup] {
+	return pulumix.Output[*OrganizationAddressGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. Short name of the AddressGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".

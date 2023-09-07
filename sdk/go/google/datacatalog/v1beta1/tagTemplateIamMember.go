@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
@@ -135,6 +136,12 @@ func (i *TagTemplateIamMember) ToTagTemplateIamMemberOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberOutput)
 }
 
+func (i *TagTemplateIamMember) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamMember] {
+	return pulumix.Output[*TagTemplateIamMember]{
+		OutputState: i.ToTagTemplateIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o TagTemplateIamMemberOutput) ToTagTemplateIamMemberOutput() TagTemplateIa
 
 func (o TagTemplateIamMemberOutput) ToTagTemplateIamMemberOutputWithContext(ctx context.Context) TagTemplateIamMemberOutput {
 	return o
+}
+
+func (o TagTemplateIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamMember] {
+	return pulumix.Output[*TagTemplateIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

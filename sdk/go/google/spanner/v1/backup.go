@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. There can be only one pending backup creation per database. Backup creation of different databases can run concurrently.
@@ -167,6 +168,12 @@ func (i *Backup) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupOutput)
 }
 
+func (i *Backup) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
+	return pulumix.Output[*Backup]{
+		OutputState: i.ToBackupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupOutput struct{ *pulumi.OutputState }
 
 func (BackupOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o BackupOutput) ToBackupOutput() BackupOutput {
 
 func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return o
+}
+
+func (o BackupOutput) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
+	return pulumix.Output[*Backup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.

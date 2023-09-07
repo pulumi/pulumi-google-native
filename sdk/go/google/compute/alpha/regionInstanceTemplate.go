@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an instance template in the specified project and region using the global instance template whose URL is included in the request.
@@ -145,6 +146,12 @@ func (i *RegionInstanceTemplate) ToRegionInstanceTemplateOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateOutput)
 }
 
+func (i *RegionInstanceTemplate) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceTemplate] {
+	return pulumix.Output[*RegionInstanceTemplate]{
+		OutputState: i.ToRegionInstanceTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionInstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (RegionInstanceTemplateOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o RegionInstanceTemplateOutput) ToRegionInstanceTemplateOutput() RegionIns
 
 func (o RegionInstanceTemplateOutput) ToRegionInstanceTemplateOutputWithContext(ctx context.Context) RegionInstanceTemplateOutput {
 	return o
+}
+
+func (o RegionInstanceTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceTemplate] {
+	return pulumix.Output[*RegionInstanceTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp for this instance template in RFC3339 text format.

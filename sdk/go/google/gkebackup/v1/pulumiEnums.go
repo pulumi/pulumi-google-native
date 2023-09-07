@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
@@ -253,6 +272,12 @@ func (o RestoreConfigClusterResourceConflictPolicyOutput) ToRestoreConfigCluster
 	}).(RestoreConfigClusterResourceConflictPolicyPtrOutput)
 }
 
+func (o RestoreConfigClusterResourceConflictPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfigClusterResourceConflictPolicy] {
+	return pulumix.Output[RestoreConfigClusterResourceConflictPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RestoreConfigClusterResourceConflictPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToRestoreConfigClus
 
 func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToRestoreConfigClusterResourceConflictPolicyPtrOutputWithContext(ctx context.Context) RestoreConfigClusterResourceConflictPolicyPtrOutput {
 	return o
+}
+
+func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigClusterResourceConflictPolicy] {
+	return pulumix.Output[*RestoreConfigClusterResourceConflictPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) Elem() RestoreConfigClusterResourceConflictPolicyOutput {
@@ -348,6 +379,12 @@ func (in *restoreConfigClusterResourceConflictPolicyPtr) ToRestoreConfigClusterR
 
 func (in *restoreConfigClusterResourceConflictPolicyPtr) ToRestoreConfigClusterResourceConflictPolicyPtrOutputWithContext(ctx context.Context) RestoreConfigClusterResourceConflictPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RestoreConfigClusterResourceConflictPolicyPtrOutput)
+}
+
+func (in *restoreConfigClusterResourceConflictPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigClusterResourceConflictPolicy] {
+	return pulumix.Output[*RestoreConfigClusterResourceConflictPolicy]{
+		OutputState: in.ToRestoreConfigClusterResourceConflictPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
@@ -422,6 +459,12 @@ func (o RestoreConfigNamespacedResourceRestoreModeOutput) ToRestoreConfigNamespa
 	}).(RestoreConfigNamespacedResourceRestoreModePtrOutput)
 }
 
+func (o RestoreConfigNamespacedResourceRestoreModeOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfigNamespacedResourceRestoreMode] {
+	return pulumix.Output[RestoreConfigNamespacedResourceRestoreMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RestoreConfigNamespacedResourceRestoreModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToRestoreConfigName
 
 func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToRestoreConfigNamespacedResourceRestoreModePtrOutputWithContext(ctx context.Context) RestoreConfigNamespacedResourceRestoreModePtrOutput {
 	return o
+}
+
+func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigNamespacedResourceRestoreMode] {
+	return pulumix.Output[*RestoreConfigNamespacedResourceRestoreMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) Elem() RestoreConfigNamespacedResourceRestoreModeOutput {
@@ -517,6 +566,12 @@ func (in *restoreConfigNamespacedResourceRestoreModePtr) ToRestoreConfigNamespac
 
 func (in *restoreConfigNamespacedResourceRestoreModePtr) ToRestoreConfigNamespacedResourceRestoreModePtrOutputWithContext(ctx context.Context) RestoreConfigNamespacedResourceRestoreModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RestoreConfigNamespacedResourceRestoreModePtrOutput)
+}
+
+func (in *restoreConfigNamespacedResourceRestoreModePtr) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigNamespacedResourceRestoreMode] {
+	return pulumix.Output[*RestoreConfigNamespacedResourceRestoreMode]{
+		OutputState: in.ToRestoreConfigNamespacedResourceRestoreModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
@@ -593,6 +648,12 @@ func (o RestoreConfigVolumeDataRestorePolicyOutput) ToRestoreConfigVolumeDataRes
 	}).(RestoreConfigVolumeDataRestorePolicyPtrOutput)
 }
 
+func (o RestoreConfigVolumeDataRestorePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfigVolumeDataRestorePolicy] {
+	return pulumix.Output[RestoreConfigVolumeDataRestorePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RestoreConfigVolumeDataRestorePolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -626,6 +687,12 @@ func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToRestoreConfigVolumeData
 
 func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToRestoreConfigVolumeDataRestorePolicyPtrOutputWithContext(ctx context.Context) RestoreConfigVolumeDataRestorePolicyPtrOutput {
 	return o
+}
+
+func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigVolumeDataRestorePolicy] {
+	return pulumix.Output[*RestoreConfigVolumeDataRestorePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) Elem() RestoreConfigVolumeDataRestorePolicyOutput {
@@ -688,6 +755,12 @@ func (in *restoreConfigVolumeDataRestorePolicyPtr) ToRestoreConfigVolumeDataRest
 
 func (in *restoreConfigVolumeDataRestorePolicyPtr) ToRestoreConfigVolumeDataRestorePolicyPtrOutputWithContext(ctx context.Context) RestoreConfigVolumeDataRestorePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RestoreConfigVolumeDataRestorePolicyPtrOutput)
+}
+
+func (in *restoreConfigVolumeDataRestorePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigVolumeDataRestorePolicy] {
+	return pulumix.Output[*RestoreConfigVolumeDataRestorePolicy]{
+		OutputState: in.ToRestoreConfigVolumeDataRestorePolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a notification config.
@@ -134,6 +135,12 @@ func (i *FolderNotificationConfig) ToFolderNotificationConfigOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(FolderNotificationConfigOutput)
 }
 
+func (i *FolderNotificationConfig) ToOutput(ctx context.Context) pulumix.Output[*FolderNotificationConfig] {
+	return pulumix.Output[*FolderNotificationConfig]{
+		OutputState: i.ToFolderNotificationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FolderNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (FolderNotificationConfigOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o FolderNotificationConfigOutput) ToFolderNotificationConfigOutput() Folde
 
 func (o FolderNotificationConfigOutput) ToFolderNotificationConfigOutputWithContext(ctx context.Context) FolderNotificationConfigOutput {
 	return o
+}
+
+func (o FolderNotificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderNotificationConfig] {
+	return pulumix.Output[*FolderNotificationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ClientConnectorService in a given project and location.
@@ -146,6 +147,12 @@ func (i *ClientConnectorService) ToClientConnectorServiceOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ClientConnectorServiceOutput)
 }
 
+func (i *ClientConnectorService) ToOutput(ctx context.Context) pulumix.Output[*ClientConnectorService] {
+	return pulumix.Output[*ClientConnectorService]{
+		OutputState: i.ToClientConnectorServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClientConnectorServiceOutput struct{ *pulumi.OutputState }
 
 func (ClientConnectorServiceOutput) ElementType() reflect.Type {
@@ -158,6 +165,12 @@ func (o ClientConnectorServiceOutput) ToClientConnectorServiceOutput() ClientCon
 
 func (o ClientConnectorServiceOutput) ToClientConnectorServiceOutputWithContext(ctx context.Context) ClientConnectorServiceOutput {
 	return o
+}
+
+func (o ClientConnectorServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientConnectorService] {
+	return pulumix.Output[*ClientConnectorService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.

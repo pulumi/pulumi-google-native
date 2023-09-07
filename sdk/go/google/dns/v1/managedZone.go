@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ManagedZone.
@@ -185,6 +186,12 @@ func (i *ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) Manage
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneOutput)
 }
 
+func (i *ManagedZone) ToOutput(ctx context.Context) pulumix.Output[*ManagedZone] {
+	return pulumix.Output[*ManagedZone]{
+		OutputState: i.ToManagedZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneOutput) ElementType() reflect.Type {
@@ -197,6 +204,12 @@ func (o ManagedZoneOutput) ToManagedZoneOutput() ManagedZoneOutput {
 
 func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) ManagedZoneOutput {
 	return o
+}
+
+func (o ManagedZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZone] {
+	return pulumix.Output[*ManagedZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.

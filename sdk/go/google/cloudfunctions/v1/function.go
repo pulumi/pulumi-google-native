@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
@@ -275,6 +276,12 @@ func (i *Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionOutput)
 }
 
+func (i *Function) ToOutput(ctx context.Context) pulumix.Output[*Function] {
+	return pulumix.Output[*Function]{
+		OutputState: i.ToFunctionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FunctionOutput struct{ *pulumi.OutputState }
 
 func (FunctionOutput) ElementType() reflect.Type {
@@ -287,6 +294,12 @@ func (o FunctionOutput) ToFunctionOutput() FunctionOutput {
 
 func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
 	return o
+}
+
+func (o FunctionOutput) ToOutput(ctx context.Context) pulumix.Output[*Function] {
+	return pulumix.Output[*Function]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The amount of memory in MB available for a function. Defaults to 256MB.

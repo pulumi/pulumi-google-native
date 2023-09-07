@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified network firewall policy.
@@ -98,6 +99,12 @@ func (o LookupRegionNetworkFirewallPolicyResultOutput) ToLookupRegionNetworkFire
 
 func (o LookupRegionNetworkFirewallPolicyResultOutput) ToLookupRegionNetworkFirewallPolicyResultOutputWithContext(ctx context.Context) LookupRegionNetworkFirewallPolicyResultOutput {
 	return o
+}
+
+func (o LookupRegionNetworkFirewallPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionNetworkFirewallPolicyResult] {
+	return pulumix.Output[LookupRegionNetworkFirewallPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of associations that belong to this firewall policy.

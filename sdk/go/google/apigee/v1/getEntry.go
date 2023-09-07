@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
@@ -72,6 +73,12 @@ func (o LookupEntryResultOutput) ToLookupEntryResultOutput() LookupEntryResultOu
 
 func (o LookupEntryResultOutput) ToLookupEntryResultOutputWithContext(ctx context.Context) LookupEntryResultOutput {
 	return o
+}
+
+func (o LookupEntryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntryResult] {
+	return pulumix.Output[LookupEntryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource URI that can be used to identify the scope of the key value map entries.

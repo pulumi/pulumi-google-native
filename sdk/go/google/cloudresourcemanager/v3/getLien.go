@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
@@ -74,6 +75,12 @@ func (o LookupLienResultOutput) ToLookupLienResultOutput() LookupLienResultOutpu
 
 func (o LookupLienResultOutput) ToLookupLienResultOutputWithContext(ctx context.Context) LookupLienResultOutput {
 	return o
+}
+
+func (o LookupLienResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLienResult] {
+	return pulumix.Output[LookupLienResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of this Lien.

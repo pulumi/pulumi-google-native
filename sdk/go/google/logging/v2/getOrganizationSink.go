@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a sink.
@@ -90,6 +91,12 @@ func (o LookupOrganizationSinkResultOutput) ToLookupOrganizationSinkResultOutput
 
 func (o LookupOrganizationSinkResultOutput) ToLookupOrganizationSinkResultOutputWithContext(ctx context.Context) LookupOrganizationSinkResultOutput {
 	return o
+}
+
+func (o LookupOrganizationSinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationSinkResult] {
+	return pulumix.Output[LookupOrganizationSinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Options that affect sinks exporting data to BigQuery.

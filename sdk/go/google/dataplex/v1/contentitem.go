@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a content.
@@ -156,6 +157,12 @@ func (i *Contentitem) ToContentitemOutputWithContext(ctx context.Context) Conten
 	return pulumi.ToOutputWithContext(ctx, i).(ContentitemOutput)
 }
 
+func (i *Contentitem) ToOutput(ctx context.Context) pulumix.Output[*Contentitem] {
+	return pulumix.Output[*Contentitem]{
+		OutputState: i.ToContentitemOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContentitemOutput struct{ *pulumi.OutputState }
 
 func (ContentitemOutput) ElementType() reflect.Type {
@@ -168,6 +175,12 @@ func (o ContentitemOutput) ToContentitemOutput() ContentitemOutput {
 
 func (o ContentitemOutput) ToContentitemOutputWithContext(ctx context.Context) ContentitemOutput {
 	return o
+}
+
+func (o ContentitemOutput) ToOutput(ctx context.Context) pulumix.Output[*Contentitem] {
+	return pulumix.Output[*Contentitem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Content creation time.

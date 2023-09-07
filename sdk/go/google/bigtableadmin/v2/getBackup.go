@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets metadata on a pending or completed Cloud Bigtable Backup.
@@ -86,6 +87,12 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutput() LookupBackupResul
 
 func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx context.Context) LookupBackupResultOutput {
 	return o
+}
+
+func (o LookupBackupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupResult] {
+	return pulumix.Output[LookupBackupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The encryption information for the backup.

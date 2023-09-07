@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the ACL entry for the specified entity on the specified bucket.
@@ -97,6 +98,12 @@ func (o LookupBucketAccessControlResultOutput) ToLookupBucketAccessControlResult
 
 func (o LookupBucketAccessControlResultOutput) ToLookupBucketAccessControlResultOutputWithContext(ctx context.Context) LookupBucketAccessControlResultOutput {
 	return o
+}
+
+func (o LookupBucketAccessControlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBucketAccessControlResult] {
+	return pulumix.Output[LookupBucketAccessControlResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the bucket.

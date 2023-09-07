@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The type of network connectivity used by the AppConnection.
@@ -80,6 +81,12 @@ func (o AppConnectionTypeOutput) ToAppConnectionTypePtrOutputWithContext(ctx con
 	}).(AppConnectionTypePtrOutput)
 }
 
+func (o AppConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppConnectionType] {
+	return pulumix.Output[AppConnectionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o AppConnectionTypePtrOutput) ToAppConnectionTypePtrOutput() AppConnection
 
 func (o AppConnectionTypePtrOutput) ToAppConnectionTypePtrOutputWithContext(ctx context.Context) AppConnectionTypePtrOutput {
 	return o
+}
+
+func (o AppConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionType] {
+	return pulumix.Output[*AppConnectionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppConnectionTypePtrOutput) Elem() AppConnectionTypeOutput {
@@ -175,6 +188,12 @@ func (in *appConnectionTypePtr) ToAppConnectionTypePtrOutput() AppConnectionType
 
 func (in *appConnectionTypePtr) ToAppConnectionTypePtrOutputWithContext(ctx context.Context) AppConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppConnectionTypePtrOutput)
+}
+
+func (in *appConnectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionType] {
+	return pulumix.Output[*AppConnectionType]{
+		OutputState: in.ToAppConnectionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of hosting used by the AppGateway.
@@ -247,6 +266,12 @@ func (o AppGatewayHostTypeOutput) ToAppGatewayHostTypePtrOutputWithContext(ctx c
 	}).(AppGatewayHostTypePtrOutput)
 }
 
+func (o AppGatewayHostTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppGatewayHostType] {
+	return pulumix.Output[AppGatewayHostType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppGatewayHostTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -280,6 +305,12 @@ func (o AppGatewayHostTypePtrOutput) ToAppGatewayHostTypePtrOutput() AppGatewayH
 
 func (o AppGatewayHostTypePtrOutput) ToAppGatewayHostTypePtrOutputWithContext(ctx context.Context) AppGatewayHostTypePtrOutput {
 	return o
+}
+
+func (o AppGatewayHostTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayHostType] {
+	return pulumix.Output[*AppGatewayHostType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppGatewayHostTypePtrOutput) Elem() AppGatewayHostTypeOutput {
@@ -342,6 +373,12 @@ func (in *appGatewayHostTypePtr) ToAppGatewayHostTypePtrOutput() AppGatewayHostT
 
 func (in *appGatewayHostTypePtr) ToAppGatewayHostTypePtrOutputWithContext(ctx context.Context) AppGatewayHostTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppGatewayHostTypePtrOutput)
+}
+
+func (in *appGatewayHostTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayHostType] {
+	return pulumix.Output[*AppGatewayHostType]{
+		OutputState: in.ToAppGatewayHostTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of network connectivity used by the AppGateway.
@@ -414,6 +451,12 @@ func (o AppGatewayTypeOutput) ToAppGatewayTypePtrOutputWithContext(ctx context.C
 	}).(AppGatewayTypePtrOutput)
 }
 
+func (o AppGatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppGatewayType] {
+	return pulumix.Output[AppGatewayType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppGatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -447,6 +490,12 @@ func (o AppGatewayTypePtrOutput) ToAppGatewayTypePtrOutput() AppGatewayTypePtrOu
 
 func (o AppGatewayTypePtrOutput) ToAppGatewayTypePtrOutputWithContext(ctx context.Context) AppGatewayTypePtrOutput {
 	return o
+}
+
+func (o AppGatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayType] {
+	return pulumix.Output[*AppGatewayType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppGatewayTypePtrOutput) Elem() AppGatewayTypeOutput {
@@ -509,6 +558,12 @@ func (in *appGatewayTypePtr) ToAppGatewayTypePtrOutput() AppGatewayTypePtrOutput
 
 func (in *appGatewayTypePtr) ToAppGatewayTypePtrOutputWithContext(ctx context.Context) AppGatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppGatewayTypePtrOutput)
+}
+
+func (in *appGatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayType] {
+	return pulumix.Output[*AppGatewayType]{
+		OutputState: in.ToAppGatewayTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. The transport protocol used between the client and the server.
@@ -581,6 +636,12 @@ func (o ConfigTransportProtocolOutput) ToConfigTransportProtocolPtrOutputWithCon
 	}).(ConfigTransportProtocolPtrOutput)
 }
 
+func (o ConfigTransportProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigTransportProtocol] {
+	return pulumix.Output[ConfigTransportProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConfigTransportProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -614,6 +675,12 @@ func (o ConfigTransportProtocolPtrOutput) ToConfigTransportProtocolPtrOutput() C
 
 func (o ConfigTransportProtocolPtrOutput) ToConfigTransportProtocolPtrOutputWithContext(ctx context.Context) ConfigTransportProtocolPtrOutput {
 	return o
+}
+
+func (o ConfigTransportProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigTransportProtocol] {
+	return pulumix.Output[*ConfigTransportProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigTransportProtocolPtrOutput) Elem() ConfigTransportProtocolOutput {
@@ -676,6 +743,12 @@ func (in *configTransportProtocolPtr) ToConfigTransportProtocolPtrOutput() Confi
 
 func (in *configTransportProtocolPtr) ToConfigTransportProtocolPtrOutputWithContext(ctx context.Context) ConfigTransportProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigTransportProtocolPtrOutput)
+}
+
+func (in *configTransportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigTransportProtocol] {
+	return pulumix.Output[*ConfigTransportProtocol]{
+		OutputState: in.ToConfigTransportProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of network connectivity used by the connection.
@@ -748,6 +821,12 @@ func (o ConnectionTypeOutput) ToConnectionTypePtrOutputWithContext(ctx context.C
 	}).(ConnectionTypePtrOutput)
 }
 
+func (o ConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionType] {
+	return pulumix.Output[ConnectionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -781,6 +860,12 @@ func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutput() ConnectionTypePtrOu
 
 func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return o
+}
+
+func (o ConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
+	return pulumix.Output[*ConnectionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionTypePtrOutput) Elem() ConnectionTypeOutput {
@@ -843,6 +928,12 @@ func (in *connectionTypePtr) ToConnectionTypePtrOutput() ConnectionTypePtrOutput
 
 func (in *connectionTypePtr) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionTypePtrOutput)
+}
+
+func (in *connectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
+	return pulumix.Output[*ConnectionType]{
+		OutputState: in.ToConnectionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of hosting used by the gateway.
@@ -915,6 +1006,12 @@ func (o GatewayTypeOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context
 	}).(GatewayTypePtrOutput)
 }
 
+func (o GatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayType] {
+	return pulumix.Output[GatewayType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -948,6 +1045,12 @@ func (o GatewayTypePtrOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
 
 func (o GatewayTypePtrOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
 	return o
+}
+
+func (o GatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
+	return pulumix.Output[*GatewayType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayTypePtrOutput) Elem() GatewayTypeOutput {
@@ -1010,6 +1113,12 @@ func (in *gatewayTypePtr) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
 
 func (in *gatewayTypePtr) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayTypePtrOutput)
+}
+
+func (in *gatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
+	return pulumix.Output[*GatewayType]{
+		OutputState: in.ToGatewayTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of hosting used by the gateway.
@@ -1082,6 +1191,12 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput
 	}).(GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput)
 }
 
+func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType] {
+	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1115,6 +1230,12 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOut
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput) ToGoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType] {
+	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput) Elem() GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput {
@@ -1177,6 +1298,12 @@ func (in *googleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtr)
 
 func (in *googleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtr) ToGoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput)
+}
+
+func (in *googleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType] {
+	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType]{
+		OutputState: in.ToGoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1255,6 +1382,12 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput) ToGoo
 	}).(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput)
 }
 
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus] {
+	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1288,6 +1421,12 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) To
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) ToGoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput {
 	return o
+}
+
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus] {
+	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) Elem() GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput {
@@ -1350,6 +1489,12 @@ func (in *googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtr) ToGoog
 
 func (in *googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtr) ToGoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput)
+}
+
+func (in *googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus] {
+	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus]{
+		OutputState: in.ToGoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -1426,6 +1571,12 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1459,6 +1610,12 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -1521,6 +1678,12 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1599,6 +1762,12 @@ func (o ResourceInfoStatusOutput) ToResourceInfoStatusPtrOutputWithContext(ctx c
 	}).(ResourceInfoStatusPtrOutput)
 }
 
+func (o ResourceInfoStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceInfoStatus] {
+	return pulumix.Output[ResourceInfoStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceInfoStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1632,6 +1801,12 @@ func (o ResourceInfoStatusPtrOutput) ToResourceInfoStatusPtrOutput() ResourceInf
 
 func (o ResourceInfoStatusPtrOutput) ToResourceInfoStatusPtrOutputWithContext(ctx context.Context) ResourceInfoStatusPtrOutput {
 	return o
+}
+
+func (o ResourceInfoStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceInfoStatus] {
+	return pulumix.Output[*ResourceInfoStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceInfoStatusPtrOutput) Elem() ResourceInfoStatusOutput {
@@ -1694,6 +1869,12 @@ func (in *resourceInfoStatusPtr) ToResourceInfoStatusPtrOutput() ResourceInfoSta
 
 func (in *resourceInfoStatusPtr) ToResourceInfoStatusPtrOutputWithContext(ctx context.Context) ResourceInfoStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceInfoStatusPtrOutput)
+}
+
+func (in *resourceInfoStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceInfoStatus] {
+	return pulumix.Output[*ResourceInfoStatus]{
+		OutputState: in.ToResourceInfoStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. SKU of subscription.
@@ -1766,6 +1947,12 @@ func (o SubscriptionSkuOutput) ToSubscriptionSkuPtrOutputWithContext(ctx context
 	}).(SubscriptionSkuPtrOutput)
 }
 
+func (o SubscriptionSkuOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionSku] {
+	return pulumix.Output[SubscriptionSku]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubscriptionSkuOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1799,6 +1986,12 @@ func (o SubscriptionSkuPtrOutput) ToSubscriptionSkuPtrOutput() SubscriptionSkuPt
 
 func (o SubscriptionSkuPtrOutput) ToSubscriptionSkuPtrOutputWithContext(ctx context.Context) SubscriptionSkuPtrOutput {
 	return o
+}
+
+func (o SubscriptionSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionSku] {
+	return pulumix.Output[*SubscriptionSku]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionSkuPtrOutput) Elem() SubscriptionSkuOutput {
@@ -1861,6 +2054,12 @@ func (in *subscriptionSkuPtr) ToSubscriptionSkuPtrOutput() SubscriptionSkuPtrOut
 
 func (in *subscriptionSkuPtr) ToSubscriptionSkuPtrOutputWithContext(ctx context.Context) SubscriptionSkuPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionSkuPtrOutput)
+}
+
+func (in *subscriptionSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionSku] {
+	return pulumix.Output[*SubscriptionSku]{
+		OutputState: in.ToSubscriptionSkuPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Type of subscription.
@@ -1937,6 +2136,12 @@ func (o SubscriptionTypeOutput) ToSubscriptionTypePtrOutputWithContext(ctx conte
 	}).(SubscriptionTypePtrOutput)
 }
 
+func (o SubscriptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionType] {
+	return pulumix.Output[SubscriptionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubscriptionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1970,6 +2175,12 @@ func (o SubscriptionTypePtrOutput) ToSubscriptionTypePtrOutput() SubscriptionTyp
 
 func (o SubscriptionTypePtrOutput) ToSubscriptionTypePtrOutputWithContext(ctx context.Context) SubscriptionTypePtrOutput {
 	return o
+}
+
+func (o SubscriptionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionType] {
+	return pulumix.Output[*SubscriptionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionTypePtrOutput) Elem() SubscriptionTypeOutput {
@@ -2032,6 +2243,12 @@ func (in *subscriptionTypePtr) ToSubscriptionTypePtrOutput() SubscriptionTypePtr
 
 func (in *subscriptionTypePtr) ToSubscriptionTypePtrOutputWithContext(ctx context.Context) SubscriptionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionTypePtrOutput)
+}
+
+func (in *subscriptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionType] {
+	return pulumix.Output[*SubscriptionType]{
+		OutputState: in.ToSubscriptionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified page.
@@ -86,6 +87,12 @@ func (o LookupPageResultOutput) ToLookupPageResultOutput() LookupPageResultOutpu
 
 func (o LookupPageResultOutput) ToLookupPageResultOutputWithContext(ctx context.Context) LookupPageResultOutput {
 	return o
+}
+
+func (o LookupPageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPageResult] {
+	return pulumix.Output[LookupPageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The human-readable name of the page, unique within the flow.

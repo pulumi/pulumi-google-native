@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified DICOM store.
@@ -74,6 +75,12 @@ func (o LookupDicomStoreResultOutput) ToLookupDicomStoreResultOutput() LookupDic
 
 func (o LookupDicomStoreResultOutput) ToLookupDicomStoreResultOutputWithContext(ctx context.Context) LookupDicomStoreResultOutput {
 	return o
+}
+
+func (o LookupDicomStoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDicomStoreResult] {
+	return pulumix.Output[LookupDicomStoreResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.

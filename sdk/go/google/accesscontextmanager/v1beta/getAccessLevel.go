@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an Access Level by resource name.
@@ -76,6 +77,12 @@ func (o LookupAccessLevelResultOutput) ToLookupAccessLevelResultOutput() LookupA
 
 func (o LookupAccessLevelResultOutput) ToLookupAccessLevelResultOutputWithContext(ctx context.Context) LookupAccessLevelResultOutput {
 	return o
+}
+
+func (o LookupAccessLevelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessLevelResult] {
+	return pulumix.Output[LookupAccessLevelResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A `BasicLevel` composed of `Conditions`.

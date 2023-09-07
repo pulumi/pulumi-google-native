@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Endpoint.
@@ -90,6 +91,12 @@ func (o LookupEndpointResultOutput) ToLookupEndpointResultOutput() LookupEndpoin
 
 func (o LookupEndpointResultOutput) ToLookupEndpointResultOutputWithContext(ctx context.Context) LookupEndpointResultOutput {
 	return o
+}
+
+func (o LookupEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEndpointResult] {
+	return pulumix.Output[LookupEndpointResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The create time timestamp.

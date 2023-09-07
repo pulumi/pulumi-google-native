@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new WorkforcePool. You cannot reuse the name of a deleted pool until 30 days after deletion.
@@ -134,6 +135,12 @@ func (i *WorkforcePool) ToWorkforcePoolOutputWithContext(ctx context.Context) Wo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolOutput)
 }
 
+func (i *WorkforcePool) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePool] {
+	return pulumix.Output[*WorkforcePool]{
+		OutputState: i.ToWorkforcePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkforcePoolOutput struct{ *pulumi.OutputState }
 
 func (WorkforcePoolOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o WorkforcePoolOutput) ToWorkforcePoolOutput() WorkforcePoolOutput {
 
 func (o WorkforcePoolOutput) ToWorkforcePoolOutputWithContext(ctx context.Context) WorkforcePoolOutput {
 	return o
+}
+
+func (o WorkforcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePool] {
+	return pulumix.Output[*WorkforcePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A user-specified description of the pool. Cannot exceed 256 characters.

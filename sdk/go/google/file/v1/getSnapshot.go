@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a specific snapshot.
@@ -80,6 +81,12 @@ func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutput() LookupSnapsho
 
 func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutputWithContext(ctx context.Context) LookupSnapshotResultOutput {
 	return o
+}
+
+func (o LookupSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSnapshotResult] {
+	return pulumix.Output[LookupSnapshotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the snapshot was created.

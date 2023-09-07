@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AdminUserArgs) ToAdminUserOutputWithContext(ctx context.Context) AdminUs
 	return pulumi.ToOutputWithContext(ctx, i).(AdminUserOutput)
 }
 
+func (i AdminUserArgs) ToOutput(ctx context.Context) pulumix.Output[AdminUser] {
+	return pulumix.Output[AdminUser]{
+		OutputState: i.ToAdminUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AdminUserArgs) ToAdminUserPtrOutput() AdminUserPtrOutput {
 	return i.ToAdminUserPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *adminUserPtrType) ToAdminUserPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AdminUserPtrOutput)
 }
 
+func (i *adminUserPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdminUser] {
+	return pulumix.Output[*AdminUser]{
+		OutputState: i.ToAdminUserPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message storing info about the first admin user. Next ID: 3
 type AdminUserOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o AdminUserOutput) ToAdminUserPtrOutputWithContext(ctx context.Context) Ad
 	}).(AdminUserPtrOutput)
 }
 
+func (o AdminUserOutput) ToOutput(ctx context.Context) pulumix.Output[AdminUser] {
+	return pulumix.Output[AdminUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Last/family name of the first admin user.
 func (o AdminUserOutput) FamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AdminUser) *string { return v.FamilyName }).(pulumi.StringPtrOutput)
@@ -140,6 +159,12 @@ func (o AdminUserPtrOutput) ToAdminUserPtrOutput() AdminUserPtrOutput {
 
 func (o AdminUserPtrOutput) ToAdminUserPtrOutputWithContext(ctx context.Context) AdminUserPtrOutput {
 	return o
+}
+
+func (o AdminUserPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdminUser] {
+	return pulumix.Output[*AdminUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdminUserPtrOutput) Elem() AdminUserOutput {
@@ -195,6 +220,12 @@ func (o AdminUserResponseOutput) ToAdminUserResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o AdminUserResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdminUserResponse] {
+	return pulumix.Output[AdminUserResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Last/family name of the first admin user.
 func (o AdminUserResponseOutput) FamilyName() pulumi.StringOutput {
 	return o.ApplyT(func(v AdminUserResponse) string { return v.FamilyName }).(pulumi.StringOutput)
@@ -240,6 +271,12 @@ func (i InstanceConfigArgs) ToInstanceConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigOutput)
 }
 
+func (i InstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceConfig] {
+	return pulumix.Output[InstanceConfig]{
+		OutputState: i.ToInstanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceConfigArgs) ToInstanceConfigPtrOutput() InstanceConfigPtrOutput {
 	return i.ToInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -281,6 +318,12 @@ func (i *instanceConfigPtrType) ToInstanceConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigPtrOutput)
 }
 
+func (i *instanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfig] {
+	return pulumix.Output[*InstanceConfig]{
+		OutputState: i.ToInstanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message storing the instance configuration.
 type InstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -306,6 +349,12 @@ func (o InstanceConfigOutput) ToInstanceConfigPtrOutputWithContext(ctx context.C
 	}).(InstanceConfigPtrOutput)
 }
 
+func (o InstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfig] {
+	return pulumix.Output[InstanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The instance size of this the instance configuration.
 func (o InstanceConfigOutput) InstanceSize() InstanceConfigInstanceSizePtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *InstanceConfigInstanceSize { return v.InstanceSize }).(InstanceConfigInstanceSizePtrOutput)
@@ -323,6 +372,12 @@ func (o InstanceConfigPtrOutput) ToInstanceConfigPtrOutput() InstanceConfigPtrOu
 
 func (o InstanceConfigPtrOutput) ToInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceConfigPtrOutput {
 	return o
+}
+
+func (o InstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfig] {
+	return pulumix.Output[*InstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceConfigPtrOutput) Elem() InstanceConfigOutput {
@@ -364,6 +419,12 @@ func (o InstanceConfigResponseOutput) ToInstanceConfigResponseOutput() InstanceC
 
 func (o InstanceConfigResponseOutput) ToInstanceConfigResponseOutputWithContext(ctx context.Context) InstanceConfigResponseOutput {
 	return o
+}
+
+func (o InstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfigResponse] {
+	return pulumix.Output[InstanceConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The instance size of this the instance configuration.
@@ -418,6 +479,12 @@ func (i SAMLParamsArgs) ToSAMLParamsOutputWithContext(ctx context.Context) SAMLP
 	return pulumi.ToOutputWithContext(ctx, i).(SAMLParamsOutput)
 }
 
+func (i SAMLParamsArgs) ToOutput(ctx context.Context) pulumix.Output[SAMLParams] {
+	return pulumix.Output[SAMLParams]{
+		OutputState: i.ToSAMLParamsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SAMLParamsArgs) ToSAMLParamsPtrOutput() SAMLParamsPtrOutput {
 	return i.ToSAMLParamsPtrOutputWithContext(context.Background())
 }
@@ -459,6 +526,12 @@ func (i *samlparamsPtrType) ToSAMLParamsPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SAMLParamsPtrOutput)
 }
 
+func (i *samlparamsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SAMLParams] {
+	return pulumix.Output[*SAMLParams]{
+		OutputState: i.ToSAMLParamsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message storing SAML params to enable Google as IDP.
 type SAMLParamsOutput struct{ *pulumi.OutputState }
 
@@ -482,6 +555,12 @@ func (o SAMLParamsOutput) ToSAMLParamsPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SAMLParams) *SAMLParams {
 		return &v
 	}).(SAMLParamsPtrOutput)
+}
+
+func (o SAMLParamsOutput) ToOutput(ctx context.Context) pulumix.Output[SAMLParams] {
+	return pulumix.Output[SAMLParams]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SAML certificate
@@ -516,6 +595,12 @@ func (o SAMLParamsPtrOutput) ToSAMLParamsPtrOutput() SAMLParamsPtrOutput {
 
 func (o SAMLParamsPtrOutput) ToSAMLParamsPtrOutputWithContext(ctx context.Context) SAMLParamsPtrOutput {
 	return o
+}
+
+func (o SAMLParamsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SAMLParams] {
+	return pulumix.Output[*SAMLParams]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SAMLParamsPtrOutput) Elem() SAMLParamsOutput {
@@ -595,6 +680,12 @@ func (o SAMLParamsResponseOutput) ToSAMLParamsResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o SAMLParamsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAMLParamsResponse] {
+	return pulumix.Output[SAMLParamsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SAML certificate
 func (o SAMLParamsResponseOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v SAMLParamsResponse) string { return v.Certificate }).(pulumi.StringOutput)
@@ -640,6 +731,12 @@ func (o URIsResponseOutput) ToURIsResponseOutput() URIsResponseOutput {
 
 func (o URIsResponseOutput) ToURIsResponseOutputWithContext(ctx context.Context) URIsResponseOutput {
 	return o
+}
+
+func (o URIsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[URIsResponse] {
+	return pulumix.Output[URIsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Chat Bot Uri of the ContactCenter

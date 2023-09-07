@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The dialect of the Cloud Spanner Database.
@@ -82,6 +83,12 @@ func (o DatabaseDatabaseDialectOutput) ToDatabaseDatabaseDialectPtrOutputWithCon
 	}).(DatabaseDatabaseDialectPtrOutput)
 }
 
+func (o DatabaseDatabaseDialectOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseDatabaseDialect] {
+	return pulumix.Output[DatabaseDatabaseDialect]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseDatabaseDialectOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o DatabaseDatabaseDialectPtrOutput) ToDatabaseDatabaseDialectPtrOutput() D
 
 func (o DatabaseDatabaseDialectPtrOutput) ToDatabaseDatabaseDialectPtrOutputWithContext(ctx context.Context) DatabaseDatabaseDialectPtrOutput {
 	return o
+}
+
+func (o DatabaseDatabaseDialectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDatabaseDialect] {
+	return pulumix.Output[*DatabaseDatabaseDialect]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseDatabaseDialectPtrOutput) Elem() DatabaseDatabaseDialectOutput {
@@ -177,6 +190,12 @@ func (in *databaseDatabaseDialectPtr) ToDatabaseDatabaseDialectPtrOutput() Datab
 
 func (in *databaseDatabaseDialectPtr) ToDatabaseDatabaseDialectPtrOutputWithContext(ctx context.Context) DatabaseDatabaseDialectPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDatabaseDialectPtrOutput)
+}
+
+func (in *databaseDatabaseDialectPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDatabaseDialect] {
+	return pulumix.Output[*DatabaseDatabaseDialect]{
+		OutputState: in.ToDatabaseDatabaseDialectPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
@@ -251,6 +270,12 @@ func (o FreeInstanceMetadataExpireBehaviorOutput) ToFreeInstanceMetadataExpireBe
 	}).(FreeInstanceMetadataExpireBehaviorPtrOutput)
 }
 
+func (o FreeInstanceMetadataExpireBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[FreeInstanceMetadataExpireBehavior] {
+	return pulumix.Output[FreeInstanceMetadataExpireBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FreeInstanceMetadataExpireBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o FreeInstanceMetadataExpireBehaviorPtrOutput) ToFreeInstanceMetadataExpir
 
 func (o FreeInstanceMetadataExpireBehaviorPtrOutput) ToFreeInstanceMetadataExpireBehaviorPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataExpireBehaviorPtrOutput {
 	return o
+}
+
+func (o FreeInstanceMetadataExpireBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FreeInstanceMetadataExpireBehavior] {
+	return pulumix.Output[*FreeInstanceMetadataExpireBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FreeInstanceMetadataExpireBehaviorPtrOutput) Elem() FreeInstanceMetadataExpireBehaviorOutput {
@@ -346,6 +377,12 @@ func (in *freeInstanceMetadataExpireBehaviorPtr) ToFreeInstanceMetadataExpireBeh
 
 func (in *freeInstanceMetadataExpireBehaviorPtr) ToFreeInstanceMetadataExpireBehaviorPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataExpireBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FreeInstanceMetadataExpireBehaviorPtrOutput)
+}
+
+func (in *freeInstanceMetadataExpireBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*FreeInstanceMetadataExpireBehavior] {
+	return pulumix.Output[*FreeInstanceMetadataExpireBehavior]{
+		OutputState: in.ToFreeInstanceMetadataExpireBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The `InstanceType` of the current instance.
@@ -420,6 +457,12 @@ func (o InstanceInstanceTypeOutput) ToInstanceInstanceTypePtrOutputWithContext(c
 	}).(InstanceInstanceTypePtrOutput)
 }
 
+func (o InstanceInstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceInstanceType] {
+	return pulumix.Output[InstanceInstanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceInstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -453,6 +496,12 @@ func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutput() Instanc
 
 func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutputWithContext(ctx context.Context) InstanceInstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceInstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
+	return pulumix.Output[*InstanceInstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceInstanceTypePtrOutput) Elem() InstanceInstanceTypeOutput {
@@ -515,6 +564,12 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutput() InstanceIns
 
 func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ctx context.Context) InstanceInstanceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceInstanceTypePtrOutput)
+}
+
+func (in *instanceInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
+	return pulumix.Output[*InstanceInstanceType]{
+		OutputState: in.ToInstanceInstanceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of replica.
@@ -591,6 +646,12 @@ func (o ReplicaInfoTypeOutput) ToReplicaInfoTypePtrOutputWithContext(ctx context
 	}).(ReplicaInfoTypePtrOutput)
 }
 
+func (o ReplicaInfoTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicaInfoType] {
+	return pulumix.Output[ReplicaInfoType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReplicaInfoTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -624,6 +685,12 @@ func (o ReplicaInfoTypePtrOutput) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePt
 
 func (o ReplicaInfoTypePtrOutput) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
 	return o
+}
+
+func (o ReplicaInfoTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicaInfoType] {
+	return pulumix.Output[*ReplicaInfoType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplicaInfoTypePtrOutput) Elem() ReplicaInfoTypeOutput {
@@ -686,6 +753,12 @@ func (in *replicaInfoTypePtr) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePtrOut
 
 func (in *replicaInfoTypePtr) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicaInfoTypePtrOutput)
+}
+
+func (in *replicaInfoTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicaInfoType] {
+	return pulumix.Output[*ReplicaInfoType]{
+		OutputState: in.ToReplicaInfoTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

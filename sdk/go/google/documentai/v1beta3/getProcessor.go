@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a processor detail.
@@ -82,6 +83,12 @@ func (o LookupProcessorResultOutput) ToLookupProcessorResultOutput() LookupProce
 
 func (o LookupProcessorResultOutput) ToLookupProcessorResultOutputWithContext(ctx context.Context) LookupProcessorResultOutput {
 	return o
+}
+
+func (o LookupProcessorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProcessorResult] {
+	return pulumix.Output[LookupProcessorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the processor was created.

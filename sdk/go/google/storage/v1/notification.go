@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a notification subscription for a given bucket.
@@ -156,6 +157,12 @@ func (i *Notification) ToNotificationOutputWithContext(ctx context.Context) Noti
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
+func (i *Notification) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
+	return pulumix.Output[*Notification]{
+		OutputState: i.ToNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationOutput struct{ *pulumi.OutputState }
 
 func (NotificationOutput) ElementType() reflect.Type {
@@ -168,6 +175,12 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
+}
+
+func (o NotificationOutput) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
+	return pulumix.Output[*Notification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationOutput) Bucket() pulumi.StringOutput {

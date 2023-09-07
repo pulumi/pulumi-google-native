@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a search application. **Note:** This API requires an admin account to execute.
@@ -148,6 +149,12 @@ func (i *SearchApplication) ToSearchApplicationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SearchApplicationOutput)
 }
 
+func (i *SearchApplication) ToOutput(ctx context.Context) pulumix.Output[*SearchApplication] {
+	return pulumix.Output[*SearchApplication]{
+		OutputState: i.ToSearchApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SearchApplicationOutput struct{ *pulumi.OutputState }
 
 func (SearchApplicationOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o SearchApplicationOutput) ToSearchApplicationOutput() SearchApplicationOu
 
 func (o SearchApplicationOutput) ToSearchApplicationOutputWithContext(ctx context.Context) SearchApplicationOutput {
 	return o
+}
+
+func (o SearchApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*SearchApplication] {
+	return pulumix.Output[*SearchApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Retrictions applied to the configurations. The maximum number of elements is 10.

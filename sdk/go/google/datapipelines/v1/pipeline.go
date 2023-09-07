@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a pipeline. For a batch pipeline, you can pass scheduler information. Data Pipelines uses the scheduler information to create an internal scheduler that runs jobs periodically. If the internal scheduler is not configured, you can use RunPipeline to run jobs.
@@ -161,6 +162,12 @@ func (i *Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineOutput)
 }
 
+func (i *Pipeline) ToOutput(ctx context.Context) pulumix.Output[*Pipeline] {
+	return pulumix.Output[*Pipeline]{
+		OutputState: i.ToPipelineOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PipelineOutput struct{ *pulumi.OutputState }
 
 func (PipelineOutput) ElementType() reflect.Type {
@@ -173,6 +180,12 @@ func (o PipelineOutput) ToPipelineOutput() PipelineOutput {
 
 func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
 	return o
+}
+
+func (o PipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*Pipeline] {
+	return pulumix.Output[*Pipeline]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable. The timestamp when the pipeline was initially created. Set by the Data Pipelines service.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i GoogleDatastoreAdminV1IndexedPropertyArgs) ToGoogleDatastoreAdminV1Index
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDatastoreAdminV1IndexedPropertyOutput)
 }
 
+func (i GoogleDatastoreAdminV1IndexedPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDatastoreAdminV1IndexedProperty] {
+	return pulumix.Output[GoogleDatastoreAdminV1IndexedProperty]{
+		OutputState: i.ToGoogleDatastoreAdminV1IndexedPropertyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleDatastoreAdminV1IndexedPropertyArrayInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyArray and GoogleDatastoreAdminV1IndexedPropertyArrayOutput values.
 // You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i GoogleDatastoreAdminV1IndexedPropertyArray) ToGoogleDatastoreAdminV1Inde
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDatastoreAdminV1IndexedPropertyArrayOutput)
 }
 
+func (i GoogleDatastoreAdminV1IndexedPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleDatastoreAdminV1IndexedProperty] {
+	return pulumix.Output[[]GoogleDatastoreAdminV1IndexedProperty]{
+		OutputState: i.ToGoogleDatastoreAdminV1IndexedPropertyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedPropertyOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyOutput) ToGoogleDatastoreAdminV1Ind
 
 func (o GoogleDatastoreAdminV1IndexedPropertyOutput) ToGoogleDatastoreAdminV1IndexedPropertyOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyOutput {
 	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDatastoreAdminV1IndexedProperty] {
+	return pulumix.Output[GoogleDatastoreAdminV1IndexedProperty]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
@@ -116,6 +135,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyArrayOutput) ToGoogleDatastoreAdmin
 
 func (o GoogleDatastoreAdminV1IndexedPropertyArrayOutput) ToGoogleDatastoreAdminV1IndexedPropertyArrayOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyArrayOutput {
 	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleDatastoreAdminV1IndexedProperty] {
+	return pulumix.Output[[]GoogleDatastoreAdminV1IndexedProperty]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDatastoreAdminV1IndexedPropertyArrayOutput) Index(i pulumi.IntInput) GoogleDatastoreAdminV1IndexedPropertyOutput {
@@ -147,6 +172,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyResponseOutput) ToGoogleDatastoreAd
 	return o
 }
 
+func (o GoogleDatastoreAdminV1IndexedPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDatastoreAdminV1IndexedPropertyResponse] {
+	return pulumix.Output[GoogleDatastoreAdminV1IndexedPropertyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
 func (o GoogleDatastoreAdminV1IndexedPropertyResponseOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedPropertyResponse) string { return v.Direction }).(pulumi.StringOutput)
@@ -169,6 +200,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput) ToGoogleDatast
 
 func (o GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput) ToGoogleDatastoreAdminV1IndexedPropertyResponseArrayOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput {
 	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleDatastoreAdminV1IndexedPropertyResponse] {
+	return pulumix.Output[[]GoogleDatastoreAdminV1IndexedPropertyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput) Index(i pulumi.IntInput) GoogleDatastoreAdminV1IndexedPropertyResponseOutput {

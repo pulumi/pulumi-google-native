@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
@@ -140,6 +141,12 @@ func (i *OrganizationEnvironmentIamMember) ToOrganizationEnvironmentIamMemberOut
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationEnvironmentIamMemberOutput)
 }
 
+func (i *OrganizationEnvironmentIamMember) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEnvironmentIamMember] {
+	return pulumix.Output[*OrganizationEnvironmentIamMember]{
+		OutputState: i.ToOrganizationEnvironmentIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationEnvironmentIamMemberOutput struct{ *pulumi.OutputState }
 
 func (OrganizationEnvironmentIamMemberOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o OrganizationEnvironmentIamMemberOutput) ToOrganizationEnvironmentIamMemb
 
 func (o OrganizationEnvironmentIamMemberOutput) ToOrganizationEnvironmentIamMemberOutputWithContext(ctx context.Context) OrganizationEnvironmentIamMemberOutput {
 	return o
+}
+
+func (o OrganizationEnvironmentIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEnvironmentIamMember] {
+	return pulumix.Output[*OrganizationEnvironmentIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

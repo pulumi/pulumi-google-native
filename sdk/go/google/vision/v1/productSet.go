@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
@@ -119,6 +120,12 @@ func (i *ProductSet) ToProductSetOutputWithContext(ctx context.Context) ProductS
 	return pulumi.ToOutputWithContext(ctx, i).(ProductSetOutput)
 }
 
+func (i *ProductSet) ToOutput(ctx context.Context) pulumix.Output[*ProductSet] {
+	return pulumix.Output[*ProductSet]{
+		OutputState: i.ToProductSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProductSetOutput struct{ *pulumi.OutputState }
 
 func (ProductSetOutput) ElementType() reflect.Type {
@@ -131,6 +138,12 @@ func (o ProductSetOutput) ToProductSetOutput() ProductSetOutput {
 
 func (o ProductSetOutput) ToProductSetOutputWithContext(ctx context.Context) ProductSetOutput {
 	return o
+}
+
+func (o ProductSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductSet] {
+	return pulumix.Output[*ProductSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.

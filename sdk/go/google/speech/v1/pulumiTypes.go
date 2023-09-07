@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i ClassItemArgs) ToClassItemOutputWithContext(ctx context.Context) ClassIt
 	return pulumi.ToOutputWithContext(ctx, i).(ClassItemOutput)
 }
 
+func (i ClassItemArgs) ToOutput(ctx context.Context) pulumix.Output[ClassItem] {
+	return pulumix.Output[ClassItem]{
+		OutputState: i.ToClassItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClassItemArrayInput is an input type that accepts ClassItemArray and ClassItemArrayOutput values.
 // You can construct a concrete instance of `ClassItemArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i ClassItemArray) ToClassItemArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ClassItemArrayOutput)
 }
 
+func (i ClassItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ClassItem] {
+	return pulumix.Output[[]ClassItem]{
+		OutputState: i.ToClassItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An item of the class.
 type ClassItemOutput struct{ *pulumi.OutputState }
 
@@ -86,6 +99,12 @@ func (o ClassItemOutput) ToClassItemOutput() ClassItemOutput {
 
 func (o ClassItemOutput) ToClassItemOutputWithContext(ctx context.Context) ClassItemOutput {
 	return o
+}
+
+func (o ClassItemOutput) ToOutput(ctx context.Context) pulumix.Output[ClassItem] {
+	return pulumix.Output[ClassItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The class item's value.
@@ -105,6 +124,12 @@ func (o ClassItemArrayOutput) ToClassItemArrayOutput() ClassItemArrayOutput {
 
 func (o ClassItemArrayOutput) ToClassItemArrayOutputWithContext(ctx context.Context) ClassItemArrayOutput {
 	return o
+}
+
+func (o ClassItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClassItem] {
+	return pulumix.Output[[]ClassItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClassItemArrayOutput) Index(i pulumi.IntInput) ClassItemOutput {
@@ -134,6 +159,12 @@ func (o ClassItemResponseOutput) ToClassItemResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o ClassItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClassItemResponse] {
+	return pulumix.Output[ClassItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The class item's value.
 func (o ClassItemResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassItemResponse) string { return v.Value }).(pulumi.StringOutput)
@@ -151,6 +182,12 @@ func (o ClassItemResponseArrayOutput) ToClassItemResponseArrayOutput() ClassItem
 
 func (o ClassItemResponseArrayOutput) ToClassItemResponseArrayOutputWithContext(ctx context.Context) ClassItemResponseArrayOutput {
 	return o
+}
+
+func (o ClassItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClassItemResponse] {
+	return pulumix.Output[[]ClassItemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClassItemResponseArrayOutput) Index(i pulumi.IntInput) ClassItemResponseOutput {
@@ -198,6 +235,12 @@ func (i PhraseArgs) ToPhraseOutputWithContext(ctx context.Context) PhraseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PhraseOutput)
 }
 
+func (i PhraseArgs) ToOutput(ctx context.Context) pulumix.Output[Phrase] {
+	return pulumix.Output[Phrase]{
+		OutputState: i.ToPhraseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PhraseArrayInput is an input type that accepts PhraseArray and PhraseArrayOutput values.
 // You can construct a concrete instance of `PhraseArrayInput` via:
 //
@@ -223,6 +266,12 @@ func (i PhraseArray) ToPhraseArrayOutputWithContext(ctx context.Context) PhraseA
 	return pulumi.ToOutputWithContext(ctx, i).(PhraseArrayOutput)
 }
 
+func (i PhraseArray) ToOutput(ctx context.Context) pulumix.Output[[]Phrase] {
+	return pulumix.Output[[]Phrase]{
+		OutputState: i.ToPhraseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
 type PhraseOutput struct{ *pulumi.OutputState }
 
@@ -236,6 +285,12 @@ func (o PhraseOutput) ToPhraseOutput() PhraseOutput {
 
 func (o PhraseOutput) ToPhraseOutputWithContext(ctx context.Context) PhraseOutput {
 	return o
+}
+
+func (o PhraseOutput) ToOutput(ctx context.Context) pulumix.Output[Phrase] {
+	return pulumix.Output[Phrase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
@@ -260,6 +315,12 @@ func (o PhraseArrayOutput) ToPhraseArrayOutput() PhraseArrayOutput {
 
 func (o PhraseArrayOutput) ToPhraseArrayOutputWithContext(ctx context.Context) PhraseArrayOutput {
 	return o
+}
+
+func (o PhraseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Phrase] {
+	return pulumix.Output[[]Phrase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PhraseArrayOutput) Index(i pulumi.IntInput) PhraseOutput {
@@ -291,6 +352,12 @@ func (o PhraseResponseOutput) ToPhraseResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o PhraseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PhraseResponse] {
+	return pulumix.Output[PhraseResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
 func (o PhraseResponseOutput) Boost() pulumi.Float64Output {
 	return o.ApplyT(func(v PhraseResponse) float64 { return v.Boost }).(pulumi.Float64Output)
@@ -313,6 +380,12 @@ func (o PhraseResponseArrayOutput) ToPhraseResponseArrayOutput() PhraseResponseA
 
 func (o PhraseResponseArrayOutput) ToPhraseResponseArrayOutputWithContext(ctx context.Context) PhraseResponseArrayOutput {
 	return o
+}
+
+func (o PhraseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PhraseResponse] {
+	return pulumix.Output[[]PhraseResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PhraseResponseArrayOutput) Index(i pulumi.IntInput) PhraseResponseOutput {

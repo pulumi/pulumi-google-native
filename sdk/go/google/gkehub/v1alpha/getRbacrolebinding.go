@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the details of a RBACRoleBinding.
@@ -86,6 +87,12 @@ func (o LookupRbacrolebindingResultOutput) ToLookupRbacrolebindingResultOutput()
 
 func (o LookupRbacrolebindingResultOutput) ToLookupRbacrolebindingResultOutputWithContext(ctx context.Context) LookupRbacrolebindingResultOutput {
 	return o
+}
+
+func (o LookupRbacrolebindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRbacrolebindingResult] {
+	return pulumix.Output[LookupRbacrolebindingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the rbacrolebinding was created.

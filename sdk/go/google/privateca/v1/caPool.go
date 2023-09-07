@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a CaPool.
@@ -144,6 +145,12 @@ func (i *CaPool) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolOutput)
 }
 
+func (i *CaPool) ToOutput(ctx context.Context) pulumix.Output[*CaPool] {
+	return pulumix.Output[*CaPool]{
+		OutputState: i.ToCaPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CaPoolOutput struct{ *pulumi.OutputState }
 
 func (CaPoolOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o CaPoolOutput) ToCaPoolOutput() CaPoolOutput {
 
 func (o CaPoolOutput) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 	return o
+}
+
+func (o CaPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*CaPool] {
+	return pulumix.Output[*CaPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new FHIR store within the parent dataset.
@@ -192,6 +193,12 @@ func (i *FhirStore) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreO
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreOutput)
 }
 
+func (i *FhirStore) ToOutput(ctx context.Context) pulumix.Output[*FhirStore] {
+	return pulumix.Output[*FhirStore]{
+		OutputState: i.ToFhirStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FhirStoreOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreOutput) ElementType() reflect.Type {
@@ -204,6 +211,12 @@ func (o FhirStoreOutput) ToFhirStoreOutput() FhirStoreOutput {
 
 func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreOutput {
 	return o
+}
+
+func (o FhirStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStore] {
+	return pulumix.Output[*FhirStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an entry. You can create entries only with 'FILESET', 'CLUSTER', 'DATA_STREAM', or custom types. Data Catalog automatically creates entries with other types during metadata ingestion from integrated systems. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). An entry group can have a maximum of 100,000 entries.
@@ -254,6 +255,12 @@ func (i *Entry) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryOutput)
 }
 
+func (i *Entry) ToOutput(ctx context.Context) pulumix.Output[*Entry] {
+	return pulumix.Output[*Entry]{
+		OutputState: i.ToEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryOutput struct{ *pulumi.OutputState }
 
 func (EntryOutput) ElementType() reflect.Type {
@@ -266,6 +273,12 @@ func (o EntryOutput) ToEntryOutput() EntryOutput {
 
 func (o EntryOutput) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return o
+}
+
+func (o EntryOutput) ToOutput(ctx context.Context) pulumix.Output[*Entry] {
+	return pulumix.Output[*Entry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).

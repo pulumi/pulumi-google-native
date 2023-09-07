@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -135,6 +136,12 @@ func (i *RegionJobIamMember) ToRegionJobIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(RegionJobIamMemberOutput)
 }
 
+func (i *RegionJobIamMember) ToOutput(ctx context.Context) pulumix.Output[*RegionJobIamMember] {
+	return pulumix.Output[*RegionJobIamMember]{
+		OutputState: i.ToRegionJobIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionJobIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegionJobIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RegionJobIamMemberOutput) ToRegionJobIamMemberOutput() RegionJobIamMembe
 
 func (o RegionJobIamMemberOutput) ToRegionJobIamMemberOutputWithContext(ctx context.Context) RegionJobIamMemberOutput {
 	return o
+}
+
+func (o RegionJobIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionJobIamMember] {
+	return pulumix.Output[*RegionJobIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

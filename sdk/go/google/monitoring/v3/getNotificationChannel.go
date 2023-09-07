@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single notification channel. The channel includes the relevant configuration details with which the channel was created. However, the response may truncate or omit passwords, API keys, or other private key matter and thus the response may not be 100% identical to the information that was supplied in the call to the create method.
@@ -84,6 +85,12 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 
 func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResultOutputWithContext(ctx context.Context) LookupNotificationChannelResultOutput {
 	return o
+}
+
+func (o LookupNotificationChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationChannelResult] {
+	return pulumix.Output[LookupNotificationChannelResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Record of the creation of this channel.

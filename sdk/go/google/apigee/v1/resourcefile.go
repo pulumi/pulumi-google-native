@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
@@ -147,6 +148,12 @@ func (i *Resourcefile) ToResourcefileOutputWithContext(ctx context.Context) Reso
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcefileOutput)
 }
 
+func (i *Resourcefile) ToOutput(ctx context.Context) pulumix.Output[*Resourcefile] {
+	return pulumix.Output[*Resourcefile]{
+		OutputState: i.ToResourcefileOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourcefileOutput struct{ *pulumi.OutputState }
 
 func (ResourcefileOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o ResourcefileOutput) ToResourcefileOutput() ResourcefileOutput {
 
 func (o ResourcefileOutput) ToResourcefileOutputWithContext(ctx context.Context) ResourcefileOutput {
 	return o
+}
+
+func (o ResourcefileOutput) ToOutput(ctx context.Context) pulumix.Output[*Resourcefile] {
+	return pulumix.Output[*Resourcefile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The HTTP Content-Type header value specifying the content type of the body.

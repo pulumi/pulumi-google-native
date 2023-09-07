@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The category of the attribute. The value of this field cannot be changed after creation.
@@ -82,6 +83,12 @@ func (o AttributeDefinitionCategoryOutput) ToAttributeDefinitionCategoryPtrOutpu
 	}).(AttributeDefinitionCategoryPtrOutput)
 }
 
+func (o AttributeDefinitionCategoryOutput) ToOutput(ctx context.Context) pulumix.Output[AttributeDefinitionCategory] {
+	return pulumix.Output[AttributeDefinitionCategory]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttributeDefinitionCategoryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOu
 
 func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
 	return o
+}
+
+func (o AttributeDefinitionCategoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttributeDefinitionCategory] {
+	return pulumix.Output[*AttributeDefinitionCategory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttributeDefinitionCategoryPtrOutput) Elem() AttributeDefinitionCategoryOutput {
@@ -177,6 +190,12 @@ func (in *attributeDefinitionCategoryPtr) ToAttributeDefinitionCategoryPtrOutput
 
 func (in *attributeDefinitionCategoryPtr) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttributeDefinitionCategoryPtrOutput)
+}
+
+func (in *attributeDefinitionCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*AttributeDefinitionCategory] {
+	return pulumix.Output[*AttributeDefinitionCategory]{
+		OutputState: in.ToAttributeDefinitionCategoryPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -253,6 +272,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -348,6 +379,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Indicates the current state of this Consent.
@@ -428,6 +465,12 @@ func (o ConsentStateEnumOutput) ToConsentStateEnumPtrOutputWithContext(ctx conte
 	}).(ConsentStateEnumPtrOutput)
 }
 
+func (o ConsentStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentStateEnum] {
+	return pulumix.Output[ConsentStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConsentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -461,6 +504,12 @@ func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutput() ConsentStateEnu
 
 func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
 	return o
+}
+
+func (o ConsentStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStateEnum] {
+	return pulumix.Output[*ConsentStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsentStateEnumPtrOutput) Elem() ConsentStateEnumOutput {
@@ -523,6 +572,12 @@ func (in *consentStateEnumPtr) ToConsentStateEnumPtrOutput() ConsentStateEnumPtr
 
 func (in *consentStateEnumPtr) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConsentStateEnumPtrOutput)
+}
+
+func (in *consentStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ConsentStateEnum] {
+	return pulumix.Output[*ConsentStateEnum]{
+		OutputState: in.ToConsentStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Tag filtering profile that determines which tags to keep/remove.
@@ -601,6 +656,12 @@ func (o DicomConfigFilterProfileOutput) ToDicomConfigFilterProfilePtrOutputWithC
 	}).(DicomConfigFilterProfilePtrOutput)
 }
 
+func (o DicomConfigFilterProfileOutput) ToOutput(ctx context.Context) pulumix.Output[DicomConfigFilterProfile] {
+	return pulumix.Output[DicomConfigFilterProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DicomConfigFilterProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -634,6 +695,12 @@ func (o DicomConfigFilterProfilePtrOutput) ToDicomConfigFilterProfilePtrOutput()
 
 func (o DicomConfigFilterProfilePtrOutput) ToDicomConfigFilterProfilePtrOutputWithContext(ctx context.Context) DicomConfigFilterProfilePtrOutput {
 	return o
+}
+
+func (o DicomConfigFilterProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomConfigFilterProfile] {
+	return pulumix.Output[*DicomConfigFilterProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DicomConfigFilterProfilePtrOutput) Elem() DicomConfigFilterProfileOutput {
@@ -696,6 +763,12 @@ func (in *dicomConfigFilterProfilePtr) ToDicomConfigFilterProfilePtrOutput() Dic
 
 func (in *dicomConfigFilterProfilePtr) ToDicomConfigFilterProfilePtrOutputWithContext(ctx context.Context) DicomConfigFilterProfilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DicomConfigFilterProfilePtrOutput)
+}
+
+func (in *dicomConfigFilterProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*DicomConfigFilterProfile] {
+	return pulumix.Output[*DicomConfigFilterProfile]{
+		OutputState: in.ToDicomConfigFilterProfilePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
@@ -770,6 +843,12 @@ func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToFhirStoreComplexDataTy
 	}).(FhirStoreComplexDataTypeReferenceParsingPtrOutput)
 }
 
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreComplexDataTypeReferenceParsing] {
+	return pulumix.Output[FhirStoreComplexDataTypeReferenceParsing]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -803,6 +882,12 @@ func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToFhirStoreComplexDat
 
 func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput {
 	return o
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreComplexDataTypeReferenceParsing] {
+	return pulumix.Output[*FhirStoreComplexDataTypeReferenceParsing]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) Elem() FhirStoreComplexDataTypeReferenceParsingOutput {
@@ -865,6 +950,12 @@ func (in *fhirStoreComplexDataTypeReferenceParsingPtr) ToFhirStoreComplexDataTyp
 
 func (in *fhirStoreComplexDataTypeReferenceParsingPtr) ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FhirStoreComplexDataTypeReferenceParsingPtrOutput)
+}
+
+func (in *fhirStoreComplexDataTypeReferenceParsingPtr) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreComplexDataTypeReferenceParsing] {
+	return pulumix.Output[*FhirStoreComplexDataTypeReferenceParsing]{
+		OutputState: in.ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
@@ -941,6 +1032,12 @@ func (o FhirStoreVersionOutput) ToFhirStoreVersionPtrOutputWithContext(ctx conte
 	}).(FhirStoreVersionPtrOutput)
 }
 
+func (o FhirStoreVersionOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreVersion] {
+	return pulumix.Output[FhirStoreVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FhirStoreVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -974,6 +1071,12 @@ func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutput() FhirStoreVersio
 
 func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
 	return o
+}
+
+func (o FhirStoreVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreVersion] {
+	return pulumix.Output[*FhirStoreVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FhirStoreVersionPtrOutput) Elem() FhirStoreVersionOutput {
@@ -1036,6 +1139,12 @@ func (in *fhirStoreVersionPtr) ToFhirStoreVersionPtrOutput() FhirStoreVersionPtr
 
 func (in *fhirStoreVersionPtr) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FhirStoreVersionPtrOutput)
+}
+
+func (in *fhirStoreVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreVersion] {
+	return pulumix.Output[*FhirStoreVersion]{
+		OutputState: in.ToFhirStoreVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Deidentify action for one field.
@@ -1112,6 +1221,12 @@ func (o FieldMetadataActionOutput) ToFieldMetadataActionPtrOutputWithContext(ctx
 	}).(FieldMetadataActionPtrOutput)
 }
 
+func (o FieldMetadataActionOutput) ToOutput(ctx context.Context) pulumix.Output[FieldMetadataAction] {
+	return pulumix.Output[FieldMetadataAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FieldMetadataActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1145,6 +1260,12 @@ func (o FieldMetadataActionPtrOutput) ToFieldMetadataActionPtrOutput() FieldMeta
 
 func (o FieldMetadataActionPtrOutput) ToFieldMetadataActionPtrOutputWithContext(ctx context.Context) FieldMetadataActionPtrOutput {
 	return o
+}
+
+func (o FieldMetadataActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldMetadataAction] {
+	return pulumix.Output[*FieldMetadataAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FieldMetadataActionPtrOutput) Elem() FieldMetadataActionOutput {
@@ -1207,6 +1328,12 @@ func (in *fieldMetadataActionPtr) ToFieldMetadataActionPtrOutput() FieldMetadata
 
 func (in *fieldMetadataActionPtr) ToFieldMetadataActionPtrOutputWithContext(ctx context.Context) FieldMetadataActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FieldMetadataActionPtrOutput)
+}
+
+func (in *fieldMetadataActionPtr) ToOutput(ctx context.Context) pulumix.Output[*FieldMetadataAction] {
+	return pulumix.Output[*FieldMetadataAction]{
+		OutputState: in.ToFieldMetadataActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
@@ -1283,6 +1410,12 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) To
 	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 }
 
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition] {
+	return pulumix.Output[GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1316,6 +1449,12 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition] {
+	return pulumix.Output[*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) Elem() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
@@ -1378,6 +1517,12 @@ func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToG
 
 func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition] {
+	return pulumix.Output[*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition]{
+		OutputState: in.ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Determines how to redact text from image.
@@ -1454,6 +1599,12 @@ func (o ImageConfigTextRedactionModeOutput) ToImageConfigTextRedactionModePtrOut
 	}).(ImageConfigTextRedactionModePtrOutput)
 }
 
+func (o ImageConfigTextRedactionModeOutput) ToOutput(ctx context.Context) pulumix.Output[ImageConfigTextRedactionMode] {
+	return pulumix.Output[ImageConfigTextRedactionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageConfigTextRedactionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1487,6 +1638,12 @@ func (o ImageConfigTextRedactionModePtrOutput) ToImageConfigTextRedactionModePtr
 
 func (o ImageConfigTextRedactionModePtrOutput) ToImageConfigTextRedactionModePtrOutputWithContext(ctx context.Context) ImageConfigTextRedactionModePtrOutput {
 	return o
+}
+
+func (o ImageConfigTextRedactionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageConfigTextRedactionMode] {
+	return pulumix.Output[*ImageConfigTextRedactionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageConfigTextRedactionModePtrOutput) Elem() ImageConfigTextRedactionModeOutput {
@@ -1549,6 +1706,12 @@ func (in *imageConfigTextRedactionModePtr) ToImageConfigTextRedactionModePtrOutp
 
 func (in *imageConfigTextRedactionModePtr) ToImageConfigTextRedactionModePtrOutputWithContext(ctx context.Context) ImageConfigTextRedactionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImageConfigTextRedactionModePtrOutput)
+}
+
+func (in *imageConfigTextRedactionModePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageConfigTextRedactionMode] {
+	return pulumix.Output[*ImageConfigTextRedactionMode]{
+		OutputState: in.ToImageConfigTextRedactionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
@@ -1625,6 +1788,12 @@ func (o ParserConfigVersionOutput) ToParserConfigVersionPtrOutputWithContext(ctx
 	}).(ParserConfigVersionPtrOutput)
 }
 
+func (o ParserConfigVersionOutput) ToOutput(ctx context.Context) pulumix.Output[ParserConfigVersion] {
+	return pulumix.Output[ParserConfigVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ParserConfigVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1658,6 +1827,12 @@ func (o ParserConfigVersionPtrOutput) ToParserConfigVersionPtrOutput() ParserCon
 
 func (o ParserConfigVersionPtrOutput) ToParserConfigVersionPtrOutputWithContext(ctx context.Context) ParserConfigVersionPtrOutput {
 	return o
+}
+
+func (o ParserConfigVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParserConfigVersion] {
+	return pulumix.Output[*ParserConfigVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ParserConfigVersionPtrOutput) Elem() ParserConfigVersionOutput {
@@ -1720,6 +1895,12 @@ func (in *parserConfigVersionPtr) ToParserConfigVersionPtrOutput() ParserConfigV
 
 func (in *parserConfigVersionPtr) ToParserConfigVersionPtrOutputWithContext(ctx context.Context) ParserConfigVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ParserConfigVersionPtrOutput)
+}
+
+func (in *parserConfigVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ParserConfigVersion] {
+	return pulumix.Output[*ParserConfigVersion]{
+		OutputState: in.ToParserConfigVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the output schema type. Schema type is required.
@@ -1794,6 +1975,12 @@ func (o SchemaConfigSchemaTypeOutput) ToSchemaConfigSchemaTypePtrOutputWithConte
 	}).(SchemaConfigSchemaTypePtrOutput)
 }
 
+func (o SchemaConfigSchemaTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaType] {
+	return pulumix.Output[SchemaConfigSchemaType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchemaConfigSchemaTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1827,6 +2014,12 @@ func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutput() Sch
 
 func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
 	return o
+}
+
+func (o SchemaConfigSchemaTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaConfigSchemaType] {
+	return pulumix.Output[*SchemaConfigSchemaType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchemaConfigSchemaTypePtrOutput) Elem() SchemaConfigSchemaTypeOutput {
@@ -1889,6 +2082,12 @@ func (in *schemaConfigSchemaTypePtr) ToSchemaConfigSchemaTypePtrOutput() SchemaC
 
 func (in *schemaConfigSchemaTypePtr) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaConfigSchemaTypePtrOutput)
+}
+
+func (in *schemaConfigSchemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaConfigSchemaType] {
+	return pulumix.Output[*SchemaConfigSchemaType]{
+		OutputState: in.ToSchemaConfigSchemaTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Determines how messages that fail to parse are handled.
@@ -1963,6 +2162,12 @@ func (o SchemaPackageSchematizedParsingTypeOutput) ToSchemaPackageSchematizedPar
 	}).(SchemaPackageSchematizedParsingTypePtrOutput)
 }
 
+func (o SchemaPackageSchematizedParsingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaPackageSchematizedParsingType] {
+	return pulumix.Output[SchemaPackageSchematizedParsingType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchemaPackageSchematizedParsingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1996,6 +2201,12 @@ func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematized
 
 func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
 	return o
+}
+
+func (o SchemaPackageSchematizedParsingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaPackageSchematizedParsingType] {
+	return pulumix.Output[*SchemaPackageSchematizedParsingType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchemaPackageSchematizedParsingTypePtrOutput) Elem() SchemaPackageSchematizedParsingTypeOutput {
@@ -2058,6 +2269,12 @@ func (in *schemaPackageSchematizedParsingTypePtr) ToSchemaPackageSchematizedPars
 
 func (in *schemaPackageSchematizedParsingTypePtr) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaPackageSchematizedParsingTypePtrOutput)
+}
+
+func (in *schemaPackageSchematizedParsingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaPackageSchematizedParsingType] {
+	return pulumix.Output[*SchemaPackageSchematizedParsingType]{
+		OutputState: in.ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Determines how unexpected segments (segments not matched to the schema) are handled.
@@ -2134,6 +2351,12 @@ func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToSchemaPackageUnexpectedS
 	}).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
 }
 
+func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaPackageUnexpectedSegmentHandling] {
+	return pulumix.Output[SchemaPackageUnexpectedSegmentHandling]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2167,6 +2390,12 @@ func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToSchemaPackageUnexpect
 
 func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput {
 	return o
+}
+
+func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaPackageUnexpectedSegmentHandling] {
+	return pulumix.Output[*SchemaPackageUnexpectedSegmentHandling]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) Elem() SchemaPackageUnexpectedSegmentHandlingOutput {
@@ -2229,6 +2458,12 @@ func (in *schemaPackageUnexpectedSegmentHandlingPtr) ToSchemaPackageUnexpectedSe
 
 func (in *schemaPackageUnexpectedSegmentHandlingPtr) ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
+}
+
+func (in *schemaPackageUnexpectedSegmentHandlingPtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaPackageUnexpectedSegmentHandling] {
+	return pulumix.Output[*SchemaPackageUnexpectedSegmentHandling]{
+		OutputState: in.ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of partitioning.
@@ -2307,6 +2542,12 @@ func (o TimePartitioningTypeOutput) ToTimePartitioningTypePtrOutputWithContext(c
 	}).(TimePartitioningTypePtrOutput)
 }
 
+func (o TimePartitioningTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TimePartitioningType] {
+	return pulumix.Output[TimePartitioningType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TimePartitioningTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2340,6 +2581,12 @@ func (o TimePartitioningTypePtrOutput) ToTimePartitioningTypePtrOutput() TimePar
 
 func (o TimePartitioningTypePtrOutput) ToTimePartitioningTypePtrOutputWithContext(ctx context.Context) TimePartitioningTypePtrOutput {
 	return o
+}
+
+func (o TimePartitioningTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimePartitioningType] {
+	return pulumix.Output[*TimePartitioningType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimePartitioningTypePtrOutput) Elem() TimePartitioningTypeOutput {
@@ -2402,6 +2649,12 @@ func (in *timePartitioningTypePtr) ToTimePartitioningTypePtrOutput() TimePartiti
 
 func (in *timePartitioningTypePtr) ToTimePartitioningTypePtrOutputWithContext(ctx context.Context) TimePartitioningTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimePartitioningTypePtrOutput)
+}
+
+func (in *timePartitioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TimePartitioningType] {
+	return pulumix.Output[*TimePartitioningType]{
+		OutputState: in.ToTimePartitioningTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
@@ -2478,6 +2731,12 @@ func (o TypePrimitiveOutput) ToTypePrimitivePtrOutputWithContext(ctx context.Con
 	}).(TypePrimitivePtrOutput)
 }
 
+func (o TypePrimitiveOutput) ToOutput(ctx context.Context) pulumix.Output[TypePrimitive] {
+	return pulumix.Output[TypePrimitive]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TypePrimitiveOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2511,6 +2770,12 @@ func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutput() TypePrimitivePtrOutpu
 
 func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
 	return o
+}
+
+func (o TypePrimitivePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TypePrimitive] {
+	return pulumix.Output[*TypePrimitive]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TypePrimitivePtrOutput) Elem() TypePrimitiveOutput {
@@ -2573,6 +2838,12 @@ func (in *typePrimitivePtr) ToTypePrimitivePtrOutput() TypePrimitivePtrOutput {
 
 func (in *typePrimitivePtr) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePrimitivePtrOutput)
+}
+
+func (in *typePrimitivePtr) ToOutput(ctx context.Context) pulumix.Output[*TypePrimitive] {
+	return pulumix.Output[*TypePrimitive]{
+		OutputState: in.ToTypePrimitivePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

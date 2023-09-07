@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Reference resource.
@@ -74,6 +75,12 @@ func (o LookupReferenceResultOutput) ToLookupReferenceResultOutput() LookupRefer
 
 func (o LookupReferenceResultOutput) ToLookupReferenceResultOutputWithContext(ctx context.Context) LookupReferenceResultOutput {
 	return o
+}
+
+func (o LookupReferenceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReferenceResult] {
+	return pulumix.Output[LookupReferenceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A human-readable description of this reference.

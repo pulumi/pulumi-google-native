@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified ForwardingRule resource.
@@ -131,6 +132,12 @@ func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutput() L
 
 func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutputWithContext(ctx context.Context) LookupForwardingRuleResultOutput {
 	return o
+}
+
+func (o LookupForwardingRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupForwardingRuleResult] {
+	return pulumix.Output[LookupForwardingRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By internal TCP/UDP load balancers, backend service-based network load balancers, and internal and external protocol forwarding. Set this field to true to allow packets addressed to any port or packets lacking destination port information (for example, UDP fragments after the first fragment) to be forwarded to the backends configured with this forwarding rule. The ports, port_range, and allPorts fields are mutually exclusive.

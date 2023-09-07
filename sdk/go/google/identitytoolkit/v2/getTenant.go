@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a tenant. Requires read permission on the Tenant resource.
@@ -98,6 +99,12 @@ func (o LookupTenantResultOutput) ToLookupTenantResultOutput() LookupTenantResul
 
 func (o LookupTenantResultOutput) ToLookupTenantResultOutputWithContext(ctx context.Context) LookupTenantResultOutput {
 	return o
+}
+
+func (o LookupTenantResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTenantResult] {
+	return pulumix.Output[LookupTenantResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow email/password user authentication.

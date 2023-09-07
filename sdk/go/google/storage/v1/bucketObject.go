@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Stores a new object and metadata.
@@ -327,6 +328,12 @@ func (i *BucketObject) ToBucketObjectOutputWithContext(ctx context.Context) Buck
 	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOutput)
 }
 
+func (i *BucketObject) ToOutput(ctx context.Context) pulumix.Output[*BucketObject] {
+	return pulumix.Output[*BucketObject]{
+		OutputState: i.ToBucketObjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BucketObjectOutput struct{ *pulumi.OutputState }
 
 func (BucketObjectOutput) ElementType() reflect.Type {
@@ -339,6 +346,12 @@ func (o BucketObjectOutput) ToBucketObjectOutput() BucketObjectOutput {
 
 func (o BucketObjectOutput) ToBucketObjectOutputWithContext(ctx context.Context) BucketObjectOutput {
 	return o
+}
+
+func (o BucketObjectOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketObject] {
+	return pulumix.Output[*BucketObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access controls on the object.

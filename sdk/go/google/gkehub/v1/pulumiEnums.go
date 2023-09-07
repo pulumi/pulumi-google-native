@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The on prem cluster's type.
@@ -257,6 +276,12 @@ func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypePtrOutputWithC
 	}).(OnPremClusterClusterTypePtrOutput)
 }
 
+func (o OnPremClusterClusterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OnPremClusterClusterType] {
+	return pulumix.Output[OnPremClusterClusterType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OnPremClusterClusterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -290,6 +315,12 @@ func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutput()
 
 func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
 	return o
+}
+
+func (o OnPremClusterClusterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnPremClusterClusterType] {
+	return pulumix.Output[*OnPremClusterClusterType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OnPremClusterClusterTypePtrOutput) Elem() OnPremClusterClusterTypeOutput {
@@ -352,6 +383,12 @@ func (in *onPremClusterClusterTypePtr) ToOnPremClusterClusterTypePtrOutput() OnP
 
 func (in *onPremClusterClusterTypePtr) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OnPremClusterClusterTypePtrOutput)
+}
+
+func (in *onPremClusterClusterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OnPremClusterClusterType] {
+	return pulumix.Output[*OnPremClusterClusterType]{
+		OutputState: in.ToOnPremClusterClusterTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

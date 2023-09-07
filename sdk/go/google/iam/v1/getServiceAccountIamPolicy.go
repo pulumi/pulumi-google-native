@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the IAM policy that is attached to a ServiceAccount. This IAM policy specifies which principals have access to the service account. This method does not tell you whether the service account has been granted any roles on other resources. To check whether a service account has role grants on a resource, use the `getIamPolicy` method for that resource. For example, to view the role grants for a project, call the Resource Manager API's [`projects.getIamPolicy`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getIamPolicy) method.
@@ -74,6 +75,12 @@ func (o LookupServiceAccountIamPolicyResultOutput) ToLookupServiceAccountIamPoli
 
 func (o LookupServiceAccountIamPolicyResultOutput) ToLookupServiceAccountIamPolicyResultOutputWithContext(ctx context.Context) LookupServiceAccountIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupServiceAccountIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceAccountIamPolicyResult] {
+	return pulumix.Output[LookupServiceAccountIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Controls export of scan configurations and results to Security Command Center.
@@ -82,6 +83,12 @@ func (o ScanConfigExportToSecurityCommandCenterOutput) ToScanConfigExportToSecur
 	}).(ScanConfigExportToSecurityCommandCenterPtrOutput)
 }
 
+func (o ScanConfigExportToSecurityCommandCenterOutput) ToOutput(ctx context.Context) pulumix.Output[ScanConfigExportToSecurityCommandCenter] {
+	return pulumix.Output[ScanConfigExportToSecurityCommandCenter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScanConfigExportToSecurityCommandCenterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSe
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToScanConfigExportToSecurityCommandCenterPtrOutputWithContext(ctx context.Context) ScanConfigExportToSecurityCommandCenterPtrOutput {
 	return o
+}
+
+func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigExportToSecurityCommandCenter] {
+	return pulumix.Output[*ScanConfigExportToSecurityCommandCenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScanConfigExportToSecurityCommandCenterPtrOutput) Elem() ScanConfigExportToSecurityCommandCenterOutput {
@@ -177,6 +190,12 @@ func (in *scanConfigExportToSecurityCommandCenterPtr) ToScanConfigExportToSecuri
 
 func (in *scanConfigExportToSecurityCommandCenterPtr) ToScanConfigExportToSecurityCommandCenterPtrOutputWithContext(ctx context.Context) ScanConfigExportToSecurityCommandCenterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigExportToSecurityCommandCenterPtrOutput)
+}
+
+func (in *scanConfigExportToSecurityCommandCenterPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigExportToSecurityCommandCenter] {
+	return pulumix.Output[*ScanConfigExportToSecurityCommandCenter]{
+		OutputState: in.ToScanConfigExportToSecurityCommandCenterPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The risk level selected for the scan
@@ -251,6 +270,12 @@ func (o ScanConfigRiskLevelOutput) ToScanConfigRiskLevelPtrOutputWithContext(ctx
 	}).(ScanConfigRiskLevelPtrOutput)
 }
 
+func (o ScanConfigRiskLevelOutput) ToOutput(ctx context.Context) pulumix.Output[ScanConfigRiskLevel] {
+	return pulumix.Output[ScanConfigRiskLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScanConfigRiskLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutput() ScanConfi
 
 func (o ScanConfigRiskLevelPtrOutput) ToScanConfigRiskLevelPtrOutputWithContext(ctx context.Context) ScanConfigRiskLevelPtrOutput {
 	return o
+}
+
+func (o ScanConfigRiskLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigRiskLevel] {
+	return pulumix.Output[*ScanConfigRiskLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScanConfigRiskLevelPtrOutput) Elem() ScanConfigRiskLevelOutput {
@@ -346,6 +377,12 @@ func (in *scanConfigRiskLevelPtr) ToScanConfigRiskLevelPtrOutput() ScanConfigRis
 
 func (in *scanConfigRiskLevelPtr) ToScanConfigRiskLevelPtrOutputWithContext(ctx context.Context) ScanConfigRiskLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigRiskLevelPtrOutput)
+}
+
+func (in *scanConfigRiskLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigRiskLevel] {
+	return pulumix.Output[*ScanConfigRiskLevel]{
+		OutputState: in.ToScanConfigRiskLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The user agent used during scanning.
@@ -422,6 +459,12 @@ func (o ScanConfigUserAgentOutput) ToScanConfigUserAgentPtrOutputWithContext(ctx
 	}).(ScanConfigUserAgentPtrOutput)
 }
 
+func (o ScanConfigUserAgentOutput) ToOutput(ctx context.Context) pulumix.Output[ScanConfigUserAgent] {
+	return pulumix.Output[ScanConfigUserAgent]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScanConfigUserAgentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfi
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutputWithContext(ctx context.Context) ScanConfigUserAgentPtrOutput {
 	return o
+}
+
+func (o ScanConfigUserAgentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigUserAgent] {
+	return pulumix.Output[*ScanConfigUserAgent]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
@@ -517,6 +566,12 @@ func (in *scanConfigUserAgentPtr) ToScanConfigUserAgentPtrOutput() ScanConfigUse
 
 func (in *scanConfigUserAgentPtr) ToScanConfigUserAgentPtrOutputWithContext(ctx context.Context) ScanConfigUserAgentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigUserAgentPtrOutput)
+}
+
+func (in *scanConfigUserAgentPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigUserAgent] {
+	return pulumix.Output[*ScanConfigUserAgent]{
+		OutputState: in.ToScanConfigUserAgentPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

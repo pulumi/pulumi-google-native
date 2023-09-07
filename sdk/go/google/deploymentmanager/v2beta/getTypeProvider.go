@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a specific type provider.
@@ -86,6 +87,12 @@ func (o LookupTypeProviderResultOutput) ToLookupTypeProviderResultOutput() Looku
 
 func (o LookupTypeProviderResultOutput) ToLookupTypeProviderResultOutputWithContext(ctx context.Context) LookupTypeProviderResultOutput {
 	return o
+}
+
+func (o LookupTypeProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTypeProviderResult] {
+	return pulumix.Output[LookupTypeProviderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allows resource handling overrides for specific collections

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified interconnect attachment.
@@ -146,6 +147,12 @@ func (o LookupInterconnectAttachmentResultOutput) ToLookupInterconnectAttachment
 
 func (o LookupInterconnectAttachmentResultOutput) ToLookupInterconnectAttachmentResultOutputWithContext(ctx context.Context) LookupInterconnectAttachmentResultOutput {
 	return o
+}
+
+func (o LookupInterconnectAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInterconnectAttachmentResult] {
+	return pulumix.Output[LookupInterconnectAttachmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.

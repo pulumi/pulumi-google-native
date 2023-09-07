@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a ServiceAccount.
@@ -140,6 +141,12 @@ func (i *ServiceAccount) ToServiceAccountOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountOutput)
 }
 
+func (i *ServiceAccount) ToOutput(ctx context.Context) pulumix.Output[*ServiceAccount] {
+	return pulumix.Output[*ServiceAccount]{
+		OutputState: i.ToServiceAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (ServiceAccountOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o ServiceAccountOutput) ToServiceAccountOutput() ServiceAccountOutput {
 
 func (o ServiceAccountOutput) ToServiceAccountOutputWithContext(ctx context.Context) ServiceAccountOutput {
 	return o
+}
+
+func (o ServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAccount] {
+	return pulumix.Output[*ServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.

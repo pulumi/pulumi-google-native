@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The App Engine integration mode to use for this database.
@@ -82,6 +83,12 @@ func (o DatabaseAppEngineIntegrationModeOutput) ToDatabaseAppEngineIntegrationMo
 	}).(DatabaseAppEngineIntegrationModePtrOutput)
 }
 
+func (o DatabaseAppEngineIntegrationModeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseAppEngineIntegrationMode] {
+	return pulumix.Output[DatabaseAppEngineIntegrationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseAppEngineIntegrationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o DatabaseAppEngineIntegrationModePtrOutput) ToDatabaseAppEngineIntegratio
 
 func (o DatabaseAppEngineIntegrationModePtrOutput) ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModePtrOutput {
 	return o
+}
+
+func (o DatabaseAppEngineIntegrationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAppEngineIntegrationMode] {
+	return pulumix.Output[*DatabaseAppEngineIntegrationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseAppEngineIntegrationModePtrOutput) Elem() DatabaseAppEngineIntegrationModeOutput {
@@ -177,6 +190,12 @@ func (in *databaseAppEngineIntegrationModePtr) ToDatabaseAppEngineIntegrationMod
 
 func (in *databaseAppEngineIntegrationModePtr) ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAppEngineIntegrationModePtrOutput)
+}
+
+func (in *databaseAppEngineIntegrationModePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAppEngineIntegrationMode] {
+	return pulumix.Output[*DatabaseAppEngineIntegrationMode]{
+		OutputState: in.ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The concurrency control mode to use for this database.
@@ -253,6 +272,12 @@ func (o DatabaseConcurrencyModeOutput) ToDatabaseConcurrencyModePtrOutputWithCon
 	}).(DatabaseConcurrencyModePtrOutput)
 }
 
+func (o DatabaseConcurrencyModeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseConcurrencyMode] {
+	return pulumix.Output[DatabaseConcurrencyMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseConcurrencyModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o DatabaseConcurrencyModePtrOutput) ToDatabaseConcurrencyModePtrOutput() D
 
 func (o DatabaseConcurrencyModePtrOutput) ToDatabaseConcurrencyModePtrOutputWithContext(ctx context.Context) DatabaseConcurrencyModePtrOutput {
 	return o
+}
+
+func (o DatabaseConcurrencyModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseConcurrencyMode] {
+	return pulumix.Output[*DatabaseConcurrencyMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseConcurrencyModePtrOutput) Elem() DatabaseConcurrencyModeOutput {
@@ -348,6 +379,12 @@ func (in *databaseConcurrencyModePtr) ToDatabaseConcurrencyModePtrOutput() Datab
 
 func (in *databaseConcurrencyModePtr) ToDatabaseConcurrencyModePtrOutputWithContext(ctx context.Context) DatabaseConcurrencyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseConcurrencyModePtrOutput)
+}
+
+func (in *databaseConcurrencyModePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseConcurrencyMode] {
+	return pulumix.Output[*DatabaseConcurrencyMode]{
+		OutputState: in.ToDatabaseConcurrencyModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // State of delete protection for the database.
@@ -422,6 +459,12 @@ func (o DatabaseDeleteProtectionStateOutput) ToDatabaseDeleteProtectionStatePtrO
 	}).(DatabaseDeleteProtectionStatePtrOutput)
 }
 
+func (o DatabaseDeleteProtectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseDeleteProtectionState] {
+	return pulumix.Output[DatabaseDeleteProtectionState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseDeleteProtectionStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o DatabaseDeleteProtectionStatePtrOutput) ToDatabaseDeleteProtectionStateP
 
 func (o DatabaseDeleteProtectionStatePtrOutput) ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStatePtrOutput {
 	return o
+}
+
+func (o DatabaseDeleteProtectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDeleteProtectionState] {
+	return pulumix.Output[*DatabaseDeleteProtectionState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseDeleteProtectionStatePtrOutput) Elem() DatabaseDeleteProtectionStateOutput {
@@ -517,6 +566,12 @@ func (in *databaseDeleteProtectionStatePtr) ToDatabaseDeleteProtectionStatePtrOu
 
 func (in *databaseDeleteProtectionStatePtr) ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDeleteProtectionStatePtrOutput)
+}
+
+func (in *databaseDeleteProtectionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDeleteProtectionState] {
+	return pulumix.Output[*DatabaseDeleteProtectionState]{
+		OutputState: in.ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
@@ -591,6 +646,12 @@ func (o DatabaseTypeOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Conte
 	}).(DatabaseTypePtrOutput)
 }
 
+func (o DatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseType] {
+	return pulumix.Output[DatabaseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -624,6 +685,12 @@ func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
 
 func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
 	return o
+}
+
+func (o DatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
+	return pulumix.Output[*DatabaseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseTypePtrOutput) Elem() DatabaseTypeOutput {
@@ -686,6 +753,12 @@ func (in *databaseTypePtr) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
 
 func (in *databaseTypePtr) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypePtrOutput)
+}
+
+func (in *databaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
+	return pulumix.Output[*DatabaseType]{
+		OutputState: in.ToDatabaseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates that this field supports operations on `array_value`s.
@@ -758,6 +831,12 @@ func (o GoogleFirestoreAdminV1IndexFieldArrayConfigOutput) ToGoogleFirestoreAdmi
 	}).(GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput)
 }
 
+func (o GoogleFirestoreAdminV1IndexFieldArrayConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1IndexFieldArrayConfig] {
+	return pulumix.Output[GoogleFirestoreAdminV1IndexFieldArrayConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleFirestoreAdminV1IndexFieldArrayConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -791,6 +870,12 @@ func (o GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput) ToGoogleFirestoreA
 
 func (o GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput) ToGoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1IndexFieldArrayConfig] {
+	return pulumix.Output[*GoogleFirestoreAdminV1IndexFieldArrayConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput) Elem() GoogleFirestoreAdminV1IndexFieldArrayConfigOutput {
@@ -853,6 +938,12 @@ func (in *googleFirestoreAdminV1IndexFieldArrayConfigPtr) ToGoogleFirestoreAdmin
 
 func (in *googleFirestoreAdminV1IndexFieldArrayConfigPtr) ToGoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput)
+}
+
+func (in *googleFirestoreAdminV1IndexFieldArrayConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1IndexFieldArrayConfig] {
+	return pulumix.Output[*GoogleFirestoreAdminV1IndexFieldArrayConfig]{
+		OutputState: in.ToGoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
@@ -927,6 +1018,12 @@ func (o GoogleFirestoreAdminV1IndexFieldOrderOutput) ToGoogleFirestoreAdminV1Ind
 	}).(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput)
 }
 
+func (o GoogleFirestoreAdminV1IndexFieldOrderOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1IndexFieldOrder] {
+	return pulumix.Output[GoogleFirestoreAdminV1IndexFieldOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleFirestoreAdminV1IndexFieldOrderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -960,6 +1057,12 @@ func (o GoogleFirestoreAdminV1IndexFieldOrderPtrOutput) ToGoogleFirestoreAdminV1
 
 func (o GoogleFirestoreAdminV1IndexFieldOrderPtrOutput) ToGoogleFirestoreAdminV1IndexFieldOrderPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldOrderPtrOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1IndexFieldOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1IndexFieldOrder] {
+	return pulumix.Output[*GoogleFirestoreAdminV1IndexFieldOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleFirestoreAdminV1IndexFieldOrderPtrOutput) Elem() GoogleFirestoreAdminV1IndexFieldOrderOutput {
@@ -1022,6 +1125,12 @@ func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToGoogleFirestoreAdminV1Inde
 
 func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToGoogleFirestoreAdminV1IndexFieldOrderPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput)
+}
+
+func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1IndexFieldOrder] {
+	return pulumix.Output[*GoogleFirestoreAdminV1IndexFieldOrder]{
+		OutputState: in.ToGoogleFirestoreAdminV1IndexFieldOrderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
@@ -1106,6 +1215,12 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToGoogleFirestoreAdminV
 	}).(GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput)
 }
 
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrenceDay] {
+	return pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrenceDay]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1139,6 +1254,12 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToGoogleFirestoreAdm
 
 func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrenceDay] {
+	return pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrenceDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) Elem() GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput {
@@ -1201,6 +1322,12 @@ func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToGoogleFirestoreAdminV1
 
 func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput)
+}
+
+func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrenceDay] {
+	return pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrenceDay]{
+		OutputState: in.ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The API scope supported by this index.
@@ -1273,6 +1400,12 @@ func (o IndexApiScopeOutput) ToIndexApiScopePtrOutputWithContext(ctx context.Con
 	}).(IndexApiScopePtrOutput)
 }
 
+func (o IndexApiScopeOutput) ToOutput(ctx context.Context) pulumix.Output[IndexApiScope] {
+	return pulumix.Output[IndexApiScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IndexApiScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1306,6 +1439,12 @@ func (o IndexApiScopePtrOutput) ToIndexApiScopePtrOutput() IndexApiScopePtrOutpu
 
 func (o IndexApiScopePtrOutput) ToIndexApiScopePtrOutputWithContext(ctx context.Context) IndexApiScopePtrOutput {
 	return o
+}
+
+func (o IndexApiScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexApiScope] {
+	return pulumix.Output[*IndexApiScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IndexApiScopePtrOutput) Elem() IndexApiScopeOutput {
@@ -1368,6 +1507,12 @@ func (in *indexApiScopePtr) ToIndexApiScopePtrOutput() IndexApiScopePtrOutput {
 
 func (in *indexApiScopePtr) ToIndexApiScopePtrOutputWithContext(ctx context.Context) IndexApiScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexApiScopePtrOutput)
+}
+
+func (in *indexApiScopePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexApiScope] {
+	return pulumix.Output[*IndexApiScope]{
+		OutputState: in.ToIndexApiScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
@@ -1444,6 +1589,12 @@ func (o IndexQueryScopeOutput) ToIndexQueryScopePtrOutputWithContext(ctx context
 	}).(IndexQueryScopePtrOutput)
 }
 
+func (o IndexQueryScopeOutput) ToOutput(ctx context.Context) pulumix.Output[IndexQueryScope] {
+	return pulumix.Output[IndexQueryScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IndexQueryScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1477,6 +1628,12 @@ func (o IndexQueryScopePtrOutput) ToIndexQueryScopePtrOutput() IndexQueryScopePt
 
 func (o IndexQueryScopePtrOutput) ToIndexQueryScopePtrOutputWithContext(ctx context.Context) IndexQueryScopePtrOutput {
 	return o
+}
+
+func (o IndexQueryScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexQueryScope] {
+	return pulumix.Output[*IndexQueryScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IndexQueryScopePtrOutput) Elem() IndexQueryScopeOutput {
@@ -1539,6 +1696,12 @@ func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutput() IndexQueryScopePtrOut
 
 func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutputWithContext(ctx context.Context) IndexQueryScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexQueryScopePtrOutput)
+}
+
+func (in *indexQueryScopePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexQueryScope] {
+	return pulumix.Output[*IndexQueryScope]{
+		OutputState: in.ToIndexQueryScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

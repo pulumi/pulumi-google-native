@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
@@ -82,6 +83,12 @@ func (o LookupDashboardResultOutput) ToLookupDashboardResultOutput() LookupDashb
 
 func (o LookupDashboardResultOutput) ToLookupDashboardResultOutputWithContext(ctx context.Context) LookupDashboardResultOutput {
 	return o
+}
+
+func (o LookupDashboardResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDashboardResult] {
+	return pulumix.Output[LookupDashboardResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The content is divided into equally spaced columns and the widgets are arranged vertically.

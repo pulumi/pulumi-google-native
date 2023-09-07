@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Rollout.
@@ -110,6 +111,12 @@ func (o LookupRolloutResultOutput) ToLookupRolloutResultOutput() LookupRolloutRe
 
 func (o LookupRolloutResultOutput) ToLookupRolloutResultOutputWithContext(ctx context.Context) LookupRolloutResultOutput {
 	return o
+}
+
+func (o LookupRolloutResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRolloutResult] {
+	return pulumix.Output[LookupRolloutResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

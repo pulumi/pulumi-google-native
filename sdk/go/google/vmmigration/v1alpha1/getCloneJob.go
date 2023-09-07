@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single CloneJob.
@@ -94,6 +95,12 @@ func (o LookupCloneJobResultOutput) ToLookupCloneJobResultOutput() LookupCloneJo
 
 func (o LookupCloneJobResultOutput) ToLookupCloneJobResultOutputWithContext(ctx context.Context) LookupCloneJobResultOutput {
 	return o
+}
+
+func (o LookupCloneJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloneJobResult] {
+	return pulumix.Output[LookupCloneJobResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details of the target VM in Compute Engine.

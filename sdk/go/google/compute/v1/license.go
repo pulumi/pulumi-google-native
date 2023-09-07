@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -132,6 +133,12 @@ func (i *License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
 }
 
+func (i *License) ToOutput(ctx context.Context) pulumix.Output[*License] {
+	return pulumix.Output[*License]{
+		OutputState: i.ToLicenseOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LicenseOutput struct{ *pulumi.OutputState }
 
 func (LicenseOutput) ElementType() reflect.Type {
@@ -144,6 +151,12 @@ func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
 
 func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
 	return o
+}
+
+func (o LicenseOutput) ToOutput(ctx context.Context) pulumix.Output[*License] {
+	return pulumix.Output[*License]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated. This field no longer reflects whether a license charges a usage fee.

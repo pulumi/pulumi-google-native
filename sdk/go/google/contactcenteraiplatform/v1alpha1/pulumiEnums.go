@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The instance size of this the instance configuration.
@@ -90,6 +91,12 @@ func (o InstanceConfigInstanceSizeOutput) ToInstanceConfigInstanceSizePtrOutputW
 	}).(InstanceConfigInstanceSizePtrOutput)
 }
 
+func (o InstanceConfigInstanceSizeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfigInstanceSize] {
+	return pulumix.Output[InstanceConfigInstanceSize]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceConfigInstanceSizeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -123,6 +130,12 @@ func (o InstanceConfigInstanceSizePtrOutput) ToInstanceConfigInstanceSizePtrOutp
 
 func (o InstanceConfigInstanceSizePtrOutput) ToInstanceConfigInstanceSizePtrOutputWithContext(ctx context.Context) InstanceConfigInstanceSizePtrOutput {
 	return o
+}
+
+func (o InstanceConfigInstanceSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfigInstanceSize] {
+	return pulumix.Output[*InstanceConfigInstanceSize]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceConfigInstanceSizePtrOutput) Elem() InstanceConfigInstanceSizeOutput {
@@ -185,6 +198,12 @@ func (in *instanceConfigInstanceSizePtr) ToInstanceConfigInstanceSizePtrOutput()
 
 func (in *instanceConfigInstanceSizePtr) ToInstanceConfigInstanceSizePtrOutputWithContext(ctx context.Context) InstanceConfigInstanceSizePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConfigInstanceSizePtrOutput)
+}
+
+func (in *instanceConfigInstanceSizePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfigInstanceSize] {
+	return pulumix.Output[*InstanceConfigInstanceSize]{
+		OutputState: in.ToInstanceConfigInstanceSizePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

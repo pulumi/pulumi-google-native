@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the details of a single RestorePlan.
@@ -86,6 +87,12 @@ func (o LookupRestorePlanResultOutput) ToLookupRestorePlanResultOutput() LookupR
 
 func (o LookupRestorePlanResultOutput) ToLookupRestorePlanResultOutputWithContext(ctx context.Context) LookupRestorePlanResultOutput {
 	return o
+}
+
+func (o LookupRestorePlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRestorePlanResult] {
+	return pulumix.Output[LookupRestorePlanResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.

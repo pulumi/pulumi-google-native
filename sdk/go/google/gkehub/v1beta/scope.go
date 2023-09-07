@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Scope.
@@ -131,6 +132,12 @@ func (i *Scope) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput)
 }
 
+func (i *Scope) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
+	return pulumix.Output[*Scope]{
+		OutputState: i.ToScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeOutput struct{ *pulumi.OutputState }
 
 func (ScopeOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o ScopeOutput) ToScopeOutput() ScopeOutput {
 
 func (o ScopeOutput) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
 	return o
+}
+
+func (o ScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
+	return pulumix.Output[*Scope]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If true, all Memberships in the Fleet bind to this Scope.

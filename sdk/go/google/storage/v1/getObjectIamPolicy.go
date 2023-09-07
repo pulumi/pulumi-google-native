@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an IAM policy for the specified object.
@@ -78,6 +79,12 @@ func (o LookupObjectIamPolicyResultOutput) ToLookupObjectIamPolicyResultOutput()
 
 func (o LookupObjectIamPolicyResultOutput) ToLookupObjectIamPolicyResultOutputWithContext(ctx context.Context) LookupObjectIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupObjectIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupObjectIamPolicyResult] {
+	return pulumix.Output[LookupObjectIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An association between a role, which comes with a set of permissions, and members who may assume that role.

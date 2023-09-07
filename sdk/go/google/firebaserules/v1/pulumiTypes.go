@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i FileArgs) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileOutput)
 }
 
+func (i FileArgs) ToOutput(ctx context.Context) pulumix.Output[File] {
+	return pulumix.Output[File]{
+		OutputState: i.ToFileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FileArrayInput is an input type that accepts FileArray and FileArrayOutput values.
 // You can construct a concrete instance of `FileArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i FileArray) ToFileArrayOutputWithContext(ctx context.Context) FileArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(FileArrayOutput)
 }
 
+func (i FileArray) ToOutput(ctx context.Context) pulumix.Output[[]File] {
+	return pulumix.Output[[]File]{
+		OutputState: i.ToFileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // `File` containing source content.
 type FileOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o FileOutput) ToFileOutput() FileOutput {
 
 func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
+}
+
+func (o FileOutput) ToOutput(ctx context.Context) pulumix.Output[File] {
+	return pulumix.Output[File]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Textual Content.
@@ -123,6 +142,12 @@ func (o FileArrayOutput) ToFileArrayOutput() FileArrayOutput {
 
 func (o FileArrayOutput) ToFileArrayOutputWithContext(ctx context.Context) FileArrayOutput {
 	return o
+}
+
+func (o FileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]File] {
+	return pulumix.Output[[]File]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FileArrayOutput) Index(i pulumi.IntInput) FileOutput {
@@ -156,6 +181,12 @@ func (o FileResponseOutput) ToFileResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o FileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileResponse] {
+	return pulumix.Output[FileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Textual Content.
 func (o FileResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v FileResponse) string { return v.Content }).(pulumi.StringOutput)
@@ -185,6 +216,12 @@ func (o FileResponseArrayOutput) ToFileResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o FileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileResponse] {
+	return pulumix.Output[[]FileResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FileResponseArrayOutput) Index(i pulumi.IntInput) FileResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileResponse {
 		return vs[0].([]FileResponse)[vs[1].(int)]
@@ -210,6 +247,12 @@ func (o MetadataResponseOutput) ToMetadataResponseOutput() MetadataResponseOutpu
 
 func (o MetadataResponseOutput) ToMetadataResponseOutputWithContext(ctx context.Context) MetadataResponseOutput {
 	return o
+}
+
+func (o MetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataResponse] {
+	return pulumix.Output[MetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
@@ -252,6 +295,12 @@ func (i SourceArgs) ToSourceOutputWithContext(ctx context.Context) SourceOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
+func (i SourceArgs) ToOutput(ctx context.Context) pulumix.Output[Source] {
+	return pulumix.Output[Source]{
+		OutputState: i.ToSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // `Source` is one or more `File` messages comprising a logical set of rules.
 type SourceOutput struct{ *pulumi.OutputState }
 
@@ -265,6 +314,12 @@ func (o SourceOutput) ToSourceOutput() SourceOutput {
 
 func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return o
+}
+
+func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[Source] {
+	return pulumix.Output[Source]{
+		OutputState: o.OutputState,
+	}
 }
 
 // `File` set constituting the `Source` bundle.
@@ -291,6 +346,12 @@ func (o SourceResponseOutput) ToSourceResponseOutput() SourceResponseOutput {
 
 func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
 	return o
+}
+
+func (o SourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceResponse] {
+	return pulumix.Output[SourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // `File` set constituting the `Source` bundle.

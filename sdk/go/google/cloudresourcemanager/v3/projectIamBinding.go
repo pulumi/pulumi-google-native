@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123. CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings. Note: Removing service accounts from policies or changing their roles can render services completely inoperable. It is important to understand how the service account is being used before removing or updating its roles. The following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a project directly without any restrictions. However, to be added as an owner, a user must be invited using the Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + If the project is not part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. If the project is part of an organization, you can remove all owners, potentially making the organization inaccessible.
@@ -135,6 +136,12 @@ func (i *ProjectIamBinding) ToProjectIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectIamBindingOutput)
 }
 
+func (i *ProjectIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ProjectIamBinding] {
+	return pulumix.Output[*ProjectIamBinding]{
+		OutputState: i.ToProjectIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ProjectIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o ProjectIamBindingOutput) ToProjectIamBindingOutput() ProjectIamBindingOu
 
 func (o ProjectIamBindingOutput) ToProjectIamBindingOutputWithContext(ctx context.Context) ProjectIamBindingOutput {
 	return o
+}
+
+func (o ProjectIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectIamBinding] {
+	return pulumix.Output[*ProjectIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

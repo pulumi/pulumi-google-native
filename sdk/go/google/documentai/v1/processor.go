@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation.
@@ -134,6 +135,12 @@ func (i *Processor) ToProcessorOutputWithContext(ctx context.Context) ProcessorO
 	return pulumi.ToOutputWithContext(ctx, i).(ProcessorOutput)
 }
 
+func (i *Processor) ToOutput(ctx context.Context) pulumix.Output[*Processor] {
+	return pulumix.Output[*Processor]{
+		OutputState: i.ToProcessorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProcessorOutput struct{ *pulumi.OutputState }
 
 func (ProcessorOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o ProcessorOutput) ToProcessorOutput() ProcessorOutput {
 
 func (o ProcessorOutput) ToProcessorOutputWithContext(ctx context.Context) ProcessorOutput {
 	return o
+}
+
+func (o ProcessorOutput) ToOutput(ctx context.Context) pulumix.Output[*Processor] {
+	return pulumix.Output[*Processor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the processor was created.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an sfdc channel. If the channel doesn't exist, Code.NOT_FOUND exception will be thrown.
@@ -88,6 +89,12 @@ func (o LookupSfdcChannelResultOutput) ToLookupSfdcChannelResultOutput() LookupS
 
 func (o LookupSfdcChannelResultOutput) ToLookupSfdcChannelResultOutputWithContext(ctx context.Context) LookupSfdcChannelResultOutput {
 	return o
+}
+
+func (o LookupSfdcChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSfdcChannelResult] {
+	return pulumix.Output[LookupSfdcChannelResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Channel topic defined by salesforce once an channel is opened

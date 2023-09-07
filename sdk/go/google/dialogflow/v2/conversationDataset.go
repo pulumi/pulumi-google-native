@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new conversation dataset. This method is a [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned `Operation` type has the following method-specific fields: - `metadata`: CreateConversationDatasetOperationMetadata - `response`: ConversationDataset
@@ -124,6 +125,12 @@ func (i *ConversationDataset) ToConversationDatasetOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConversationDatasetOutput)
 }
 
+func (i *ConversationDataset) ToOutput(ctx context.Context) pulumix.Output[*ConversationDataset] {
+	return pulumix.Output[*ConversationDataset]{
+		OutputState: i.ToConversationDatasetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConversationDatasetOutput struct{ *pulumi.OutputState }
 
 func (ConversationDatasetOutput) ElementType() reflect.Type {
@@ -136,6 +143,12 @@ func (o ConversationDatasetOutput) ToConversationDatasetOutput() ConversationDat
 
 func (o ConversationDatasetOutput) ToConversationDatasetOutputWithContext(ctx context.Context) ConversationDatasetOutput {
 	return o
+}
+
+func (o ConversationDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversationDataset] {
+	return pulumix.Output[*ConversationDataset]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of conversations this conversation dataset contains.

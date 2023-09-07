@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ClientTlsPolicy in a given project and location.
@@ -148,6 +149,12 @@ func (i *ClientTlsPolicy) ToClientTlsPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyOutput)
 }
 
+func (i *ClientTlsPolicy) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicy] {
+	return pulumix.Output[*ClientTlsPolicy]{
+		OutputState: i.ToClientTlsPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClientTlsPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o ClientTlsPolicyOutput) ToClientTlsPolicyOutput() ClientTlsPolicyOutput {
 
 func (o ClientTlsPolicyOutput) ToClientTlsPolicyOutputWithContext(ctx context.Context) ClientTlsPolicyOutput {
 	return o
+}
+
+func (o ClientTlsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicy] {
+	return pulumix.Output[*ClientTlsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.

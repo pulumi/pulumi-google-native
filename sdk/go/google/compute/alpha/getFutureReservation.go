@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the specified future reservation.
@@ -92,6 +93,12 @@ func (o LookupFutureReservationResultOutput) ToLookupFutureReservationResultOutp
 
 func (o LookupFutureReservationResultOutput) ToLookupFutureReservationResultOutputWithContext(ctx context.Context) LookupFutureReservationResultOutput {
 	return o
+}
+
+func (o LookupFutureReservationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFutureReservationResult] {
+	return pulumix.Output[LookupFutureReservationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp for this future reservation in RFC3339 text format.

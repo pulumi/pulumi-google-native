@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *CertificateAuthorityCertificateRevocationListIamBinding) ToCertificateA
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityCertificateRevocationListIamBindingOutput)
 }
 
+func (i *CertificateAuthorityCertificateRevocationListIamBinding) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityCertificateRevocationListIamBinding] {
+	return pulumix.Output[*CertificateAuthorityCertificateRevocationListIamBinding]{
+		OutputState: i.ToCertificateAuthorityCertificateRevocationListIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificateAuthorityCertificateRevocationListIamBindingOutput struct{ *pulumi.OutputState }
 
 func (CertificateAuthorityCertificateRevocationListIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o CertificateAuthorityCertificateRevocationListIamBindingOutput) ToCertifi
 
 func (o CertificateAuthorityCertificateRevocationListIamBindingOutput) ToCertificateAuthorityCertificateRevocationListIamBindingOutputWithContext(ctx context.Context) CertificateAuthorityCertificateRevocationListIamBindingOutput {
 	return o
+}
+
+func (o CertificateAuthorityCertificateRevocationListIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityCertificateRevocationListIamBinding] {
+	return pulumix.Output[*CertificateAuthorityCertificateRevocationListIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a new Feature.
@@ -156,6 +157,12 @@ func (i *Feature) ToFeatureOutputWithContext(ctx context.Context) FeatureOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureOutput)
 }
 
+func (i *Feature) ToOutput(ctx context.Context) pulumix.Output[*Feature] {
+	return pulumix.Output[*Feature]{
+		OutputState: i.ToFeatureOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureOutput struct{ *pulumi.OutputState }
 
 func (FeatureOutput) ElementType() reflect.Type {
@@ -168,6 +175,12 @@ func (o FeatureOutput) ToFeatureOutput() FeatureOutput {
 
 func (o FeatureOutput) ToFeatureOutputWithContext(ctx context.Context) FeatureOutput {
 	return o
+}
+
+func (o FeatureOutput) ToOutput(ctx context.Context) pulumix.Output[*Feature] {
+	return pulumix.Output[*Feature]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the Feature resource was created.

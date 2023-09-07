@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an sfdc channel record. Store the sfdc channel in Spanner. Returns the sfdc channel.
@@ -155,6 +156,12 @@ func (i *SfdcChannel) ToSfdcChannelOutputWithContext(ctx context.Context) SfdcCh
 	return pulumi.ToOutputWithContext(ctx, i).(SfdcChannelOutput)
 }
 
+func (i *SfdcChannel) ToOutput(ctx context.Context) pulumix.Output[*SfdcChannel] {
+	return pulumix.Output[*SfdcChannel]{
+		OutputState: i.ToSfdcChannelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SfdcChannelOutput struct{ *pulumi.OutputState }
 
 func (SfdcChannelOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o SfdcChannelOutput) ToSfdcChannelOutput() SfdcChannelOutput {
 
 func (o SfdcChannelOutput) ToSfdcChannelOutputWithContext(ctx context.Context) SfdcChannelOutput {
 	return o
+}
+
+func (o SfdcChannelOutput) ToOutput(ctx context.Context) pulumix.Output[*SfdcChannel] {
+	return pulumix.Output[*SfdcChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Channel topic defined by salesforce once an channel is opened

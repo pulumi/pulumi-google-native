@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i GoogleFirestoreAdminV1beta2IndexFieldArgs) ToGoogleFirestoreAdminV1beta2
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1beta2IndexFieldOutput)
 }
 
+func (i GoogleFirestoreAdminV1beta2IndexFieldArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta2IndexField] {
+	return pulumix.Output[GoogleFirestoreAdminV1beta2IndexField]{
+		OutputState: i.ToGoogleFirestoreAdminV1beta2IndexFieldOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleFirestoreAdminV1beta2IndexFieldArrayInput is an input type that accepts GoogleFirestoreAdminV1beta2IndexFieldArray and GoogleFirestoreAdminV1beta2IndexFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i GoogleFirestoreAdminV1beta2IndexFieldArray) ToGoogleFirestoreAdminV1beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1beta2IndexFieldArrayOutput)
 }
 
+func (i GoogleFirestoreAdminV1beta2IndexFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1beta2IndexField] {
+	return pulumix.Output[[]GoogleFirestoreAdminV1beta2IndexField]{
+		OutputState: i.ToGoogleFirestoreAdminV1beta2IndexFieldArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 type GoogleFirestoreAdminV1beta2IndexFieldOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldOutput) ToGoogleFirestoreAdminV1bet
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldOutput) ToGoogleFirestoreAdminV1beta2IndexFieldOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1beta2IndexFieldOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta2IndexField] {
+	return pulumix.Output[GoogleFirestoreAdminV1beta2IndexField]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates that this field supports operations on `array_value`s.
@@ -129,6 +148,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldArrayOutput) ToGoogleFirestoreAdmin
 	return o
 }
 
+func (o GoogleFirestoreAdminV1beta2IndexFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1beta2IndexField] {
+	return pulumix.Output[[]GoogleFirestoreAdminV1beta2IndexField]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleFirestoreAdminV1beta2IndexFieldArrayOutput) Index(i pulumi.IntInput) GoogleFirestoreAdminV1beta2IndexFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleFirestoreAdminV1beta2IndexField {
 		return vs[0].([]GoogleFirestoreAdminV1beta2IndexField)[vs[1].(int)]
@@ -160,6 +185,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldResponseOutput) ToGoogleFirestoreAd
 	return o
 }
 
+func (o GoogleFirestoreAdminV1beta2IndexFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldResponse] {
+	return pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates that this field supports operations on `array_value`s.
 func (o GoogleFirestoreAdminV1beta2IndexFieldResponseOutput) ArrayConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleFirestoreAdminV1beta2IndexFieldResponse) string { return v.ArrayConfig }).(pulumi.StringOutput)
@@ -187,6 +218,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput) ToGoogleFirest
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput) ToGoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1beta2IndexFieldResponse] {
+	return pulumix.Output[[]GoogleFirestoreAdminV1beta2IndexFieldResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleFirestoreAdminV1beta2IndexFieldResponseOutput {

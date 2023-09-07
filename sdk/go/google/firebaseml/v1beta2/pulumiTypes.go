@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i ModelStateTypeArgs) ToModelStateTypeOutput() ModelStateTypeOutput {
 
 func (i ModelStateTypeArgs) ToModelStateTypeOutputWithContext(ctx context.Context) ModelStateTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModelStateTypeOutput)
+}
+
+func (i ModelStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ModelStateType] {
+	return pulumix.Output[ModelStateType]{
+		OutputState: i.ToModelStateTypeOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ModelStateTypeArgs) ToModelStateTypePtrOutput() ModelStateTypePtrOutput {
@@ -89,6 +96,12 @@ func (i *modelStateTypePtrType) ToModelStateTypePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ModelStateTypePtrOutput)
 }
 
+func (i *modelStateTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*ModelStateType] {
+	return pulumix.Output[*ModelStateType]{
+		OutputState: i.ToModelStateTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // State common to all model types. Includes publishing and validation information.
 type ModelStateTypeOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o ModelStateTypeOutput) ToModelStateTypePtrOutputWithContext(ctx context.C
 	}).(ModelStateTypePtrOutput)
 }
 
+func (o ModelStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ModelStateType] {
+	return pulumix.Output[ModelStateType]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates if this model has been published.
 func (o ModelStateTypeOutput) Published() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ModelStateType) *bool { return v.Published }).(pulumi.BoolPtrOutput)
@@ -131,6 +150,12 @@ func (o ModelStateTypePtrOutput) ToModelStateTypePtrOutput() ModelStateTypePtrOu
 
 func (o ModelStateTypePtrOutput) ToModelStateTypePtrOutputWithContext(ctx context.Context) ModelStateTypePtrOutput {
 	return o
+}
+
+func (o ModelStateTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelStateType] {
+	return pulumix.Output[*ModelStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ModelStateTypePtrOutput) Elem() ModelStateTypeOutput {
@@ -176,6 +201,12 @@ func (o ModelStateResponseOutput) ToModelStateResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ModelStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ModelStateResponse] {
+	return pulumix.Output[ModelStateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates if this model has been published.
 func (o ModelStateResponseOutput) Published() pulumi.BoolOutput {
 	return o.ApplyT(func(v ModelStateResponse) bool { return v.Published }).(pulumi.BoolOutput)
@@ -213,6 +244,12 @@ func (o OperationResponseOutput) ToOperationResponseOutput() OperationResponseOu
 
 func (o OperationResponseOutput) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
 	return o
+}
+
+func (o OperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OperationResponse] {
+	return pulumix.Output[OperationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
@@ -254,6 +291,12 @@ func (o OperationResponseArrayOutput) ToOperationResponseArrayOutputWithContext(
 	return o
 }
 
+func (o OperationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OperationResponse] {
+	return pulumix.Output[[]OperationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OperationResponseArrayOutput) Index(i pulumi.IntInput) OperationResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationResponse {
 		return vs[0].([]OperationResponse)[vs[1].(int)]
@@ -283,6 +326,12 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
+}
+
+func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
+	return pulumix.Output[StatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -339,6 +388,12 @@ func (i TfLiteModelArgs) ToTfLiteModelOutputWithContext(ctx context.Context) TfL
 	return pulumi.ToOutputWithContext(ctx, i).(TfLiteModelOutput)
 }
 
+func (i TfLiteModelArgs) ToOutput(ctx context.Context) pulumix.Output[TfLiteModel] {
+	return pulumix.Output[TfLiteModel]{
+		OutputState: i.ToTfLiteModelOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TfLiteModelArgs) ToTfLiteModelPtrOutput() TfLiteModelPtrOutput {
 	return i.ToTfLiteModelPtrOutputWithContext(context.Background())
 }
@@ -380,6 +435,12 @@ func (i *tfLiteModelPtrType) ToTfLiteModelPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TfLiteModelPtrOutput)
 }
 
+func (i *tfLiteModelPtrType) ToOutput(ctx context.Context) pulumix.Output[*TfLiteModel] {
+	return pulumix.Output[*TfLiteModel]{
+		OutputState: i.ToTfLiteModelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information that is specific to TfLite models.
 type TfLiteModelOutput struct{ *pulumi.OutputState }
 
@@ -405,6 +466,12 @@ func (o TfLiteModelOutput) ToTfLiteModelPtrOutputWithContext(ctx context.Context
 	}).(TfLiteModelPtrOutput)
 }
 
+func (o TfLiteModelOutput) ToOutput(ctx context.Context) pulumix.Output[TfLiteModel] {
+	return pulumix.Output[TfLiteModel]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
 func (o TfLiteModelOutput) AutomlModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TfLiteModel) *string { return v.AutomlModel }).(pulumi.StringPtrOutput)
@@ -427,6 +494,12 @@ func (o TfLiteModelPtrOutput) ToTfLiteModelPtrOutput() TfLiteModelPtrOutput {
 
 func (o TfLiteModelPtrOutput) ToTfLiteModelPtrOutputWithContext(ctx context.Context) TfLiteModelPtrOutput {
 	return o
+}
+
+func (o TfLiteModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TfLiteModel] {
+	return pulumix.Output[*TfLiteModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TfLiteModelPtrOutput) Elem() TfLiteModelOutput {
@@ -482,6 +555,12 @@ func (o TfLiteModelResponseOutput) ToTfLiteModelResponseOutput() TfLiteModelResp
 
 func (o TfLiteModelResponseOutput) ToTfLiteModelResponseOutputWithContext(ctx context.Context) TfLiteModelResponseOutput {
 	return o
+}
+
+func (o TfLiteModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TfLiteModelResponse] {
+	return pulumix.Output[TfLiteModelResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)

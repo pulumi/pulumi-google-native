@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a DataTaxonomy resource.
@@ -143,6 +144,12 @@ func (i *DataTaxonomy) ToDataTaxonomyOutputWithContext(ctx context.Context) Data
 	return pulumi.ToOutputWithContext(ctx, i).(DataTaxonomyOutput)
 }
 
+func (i *DataTaxonomy) ToOutput(ctx context.Context) pulumix.Output[*DataTaxonomy] {
+	return pulumix.Output[*DataTaxonomy]{
+		OutputState: i.ToDataTaxonomyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataTaxonomyOutput struct{ *pulumi.OutputState }
 
 func (DataTaxonomyOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o DataTaxonomyOutput) ToDataTaxonomyOutput() DataTaxonomyOutput {
 
 func (o DataTaxonomyOutput) ToDataTaxonomyOutputWithContext(ctx context.Context) DataTaxonomyOutput {
 	return o
+}
+
+func (o DataTaxonomyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataTaxonomy] {
+	return pulumix.Output[*DataTaxonomy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of attributes in the DataTaxonomy.

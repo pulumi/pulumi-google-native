@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a shared flow by name, including a list of its revisions.
@@ -72,6 +73,12 @@ func (o LookupSharedflowResultOutput) ToLookupSharedflowResultOutput() LookupSha
 
 func (o LookupSharedflowResultOutput) ToLookupSharedflowResultOutputWithContext(ctx context.Context) LookupSharedflowResultOutput {
 	return o
+}
+
+func (o LookupSharedflowResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSharedflowResult] {
+	return pulumix.Output[LookupSharedflowResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the most recently created revision for this shared flow.

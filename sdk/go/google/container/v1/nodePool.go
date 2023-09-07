@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a node pool for a cluster.
@@ -221,6 +222,12 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
 }
 
+func (i *NodePool) ToOutput(ctx context.Context) pulumix.Output[*NodePool] {
+	return pulumix.Output[*NodePool]{
+		OutputState: i.ToNodePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodePoolOutput struct{ *pulumi.OutputState }
 
 func (NodePoolOutput) ElementType() reflect.Type {
@@ -233,6 +240,12 @@ func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {
 
 func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
 	return o
+}
+
+func (o NodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*NodePool] {
+	return pulumix.Output[*NodePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.

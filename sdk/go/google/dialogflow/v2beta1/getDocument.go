@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified document. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
@@ -90,6 +91,12 @@ func (o LookupDocumentResultOutput) ToLookupDocumentResultOutput() LookupDocumen
 
 func (o LookupDocumentResultOutput) ToLookupDocumentResultOutputWithContext(ctx context.Context) LookupDocumentResultOutput {
 	return o
+}
+
+func (o LookupDocumentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDocumentResult] {
+	return pulumix.Output[LookupDocumentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types. Note: This field is in the process of being deprecated, please use raw_content instead.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the nodes operating system (default: LINUX).
@@ -80,6 +81,12 @@ func (o BareMetalNodePoolConfigOperatingSystemOutput) ToBareMetalNodePoolConfigO
 	}).(BareMetalNodePoolConfigOperatingSystemPtrOutput)
 }
 
+func (o BareMetalNodePoolConfigOperatingSystemOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolConfigOperatingSystem] {
+	return pulumix.Output[BareMetalNodePoolConfigOperatingSystem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BareMetalNodePoolConfigOperatingSystemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) ToBareMetalNodePoolConf
 
 func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) ToBareMetalNodePoolConfigOperatingSystemPtrOutputWithContext(ctx context.Context) BareMetalNodePoolConfigOperatingSystemPtrOutput {
 	return o
+}
+
+func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolConfigOperatingSystem] {
+	return pulumix.Output[*BareMetalNodePoolConfigOperatingSystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) Elem() BareMetalNodePoolConfigOperatingSystemOutput {
@@ -175,6 +188,12 @@ func (in *bareMetalNodePoolConfigOperatingSystemPtr) ToBareMetalNodePoolConfigOp
 
 func (in *bareMetalNodePoolConfigOperatingSystemPtr) ToBareMetalNodePoolConfigOperatingSystemPtrOutputWithContext(ctx context.Context) BareMetalNodePoolConfigOperatingSystemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BareMetalNodePoolConfigOperatingSystemPtrOutput)
+}
+
+func (in *bareMetalNodePoolConfigOperatingSystemPtr) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolConfigOperatingSystem] {
+	return pulumix.Output[*BareMetalNodePoolConfigOperatingSystem]{
+		OutputState: in.ToBareMetalNodePoolConfigOperatingSystemPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies which container runtime will be used.
@@ -247,6 +266,12 @@ func (o BareMetalWorkloadNodeConfigContainerRuntimeOutput) ToBareMetalWorkloadNo
 	}).(BareMetalWorkloadNodeConfigContainerRuntimePtrOutput)
 }
 
+func (o BareMetalWorkloadNodeConfigContainerRuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalWorkloadNodeConfigContainerRuntime] {
+	return pulumix.Output[BareMetalWorkloadNodeConfigContainerRuntime]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BareMetalWorkloadNodeConfigContainerRuntimeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -280,6 +305,12 @@ func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) ToBareMetalWorkloa
 
 func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) ToBareMetalWorkloadNodeConfigContainerRuntimePtrOutputWithContext(ctx context.Context) BareMetalWorkloadNodeConfigContainerRuntimePtrOutput {
 	return o
+}
+
+func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime] {
+	return pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) Elem() BareMetalWorkloadNodeConfigContainerRuntimeOutput {
@@ -342,6 +373,12 @@ func (in *bareMetalWorkloadNodeConfigContainerRuntimePtr) ToBareMetalWorkloadNod
 
 func (in *bareMetalWorkloadNodeConfigContainerRuntimePtr) ToBareMetalWorkloadNodeConfigContainerRuntimePtrOutputWithContext(ctx context.Context) BareMetalWorkloadNodeConfigContainerRuntimePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BareMetalWorkloadNodeConfigContainerRuntimePtrOutput)
+}
+
+func (in *bareMetalWorkloadNodeConfigContainerRuntimePtr) ToOutput(ctx context.Context) pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime] {
+	return pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime]{
+		OutputState: in.ToBareMetalWorkloadNodeConfigContainerRuntimePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The taint effect.
@@ -418,6 +455,12 @@ func (o NodeTaintEffectOutput) ToNodeTaintEffectPtrOutputWithContext(ctx context
 	}).(NodeTaintEffectPtrOutput)
 }
 
+func (o NodeTaintEffectOutput) ToOutput(ctx context.Context) pulumix.Output[NodeTaintEffect] {
+	return pulumix.Output[NodeTaintEffect]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeTaintEffectOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -451,6 +494,12 @@ func (o NodeTaintEffectPtrOutput) ToNodeTaintEffectPtrOutput() NodeTaintEffectPt
 
 func (o NodeTaintEffectPtrOutput) ToNodeTaintEffectPtrOutputWithContext(ctx context.Context) NodeTaintEffectPtrOutput {
 	return o
+}
+
+func (o NodeTaintEffectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeTaintEffect] {
+	return pulumix.Output[*NodeTaintEffect]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeTaintEffectPtrOutput) Elem() NodeTaintEffectOutput {
@@ -513,6 +562,12 @@ func (in *nodeTaintEffectPtr) ToNodeTaintEffectPtrOutput() NodeTaintEffectPtrOut
 
 func (in *nodeTaintEffectPtr) ToNodeTaintEffectPtrOutputWithContext(ctx context.Context) NodeTaintEffectPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTaintEffectPtrOutput)
+}
+
+func (in *nodeTaintEffectPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeTaintEffect] {
+	return pulumix.Output[*NodeTaintEffect]{
+		OutputState: in.ToNodeTaintEffectPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

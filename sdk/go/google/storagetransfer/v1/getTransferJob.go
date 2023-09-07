@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a transfer job.
@@ -90,6 +91,12 @@ func (o LookupTransferJobResultOutput) ToLookupTransferJobResultOutput() LookupT
 
 func (o LookupTransferJobResultOutput) ToLookupTransferJobResultOutputWithContext(ctx context.Context) LookupTransferJobResultOutput {
 	return o
+}
+
+func (o LookupTransferJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTransferJobResult] {
+	return pulumix.Output[LookupTransferJobResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time that the transfer job was created.

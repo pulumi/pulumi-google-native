@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a integration in the specified project.
@@ -114,6 +115,12 @@ func (o LookupVersionResultOutput) ToLookupVersionResultOutput() LookupVersionRe
 
 func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx context.Context) LookupVersionResultOutput {
 	return o
+}
+
+func (o LookupVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVersionResult] {
+	return pulumix.Output[LookupVersionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto-generated.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ServerTlsPolicy in a given project and location.
@@ -148,6 +149,12 @@ func (i *ServerTlsPolicy) ToServerTlsPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyOutput)
 }
 
+func (i *ServerTlsPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicy] {
+	return pulumix.Output[*ServerTlsPolicy]{
+		OutputState: i.ToServerTlsPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerTlsPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyOutput) ElementType() reflect.Type {
@@ -160,6 +167,12 @@ func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutput() ServerTlsPolicyOutput {
 
 func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutputWithContext(ctx context.Context) ServerTlsPolicyOutput {
 	return o
+}
+
+func (o ServerTlsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicy] {
+	return pulumix.Output[*ServerTlsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.

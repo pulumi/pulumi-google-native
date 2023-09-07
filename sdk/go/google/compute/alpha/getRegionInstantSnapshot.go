@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified InstantSnapshot resource in the specified region.
@@ -102,6 +103,12 @@ func (o LookupRegionInstantSnapshotResultOutput) ToLookupRegionInstantSnapshotRe
 
 func (o LookupRegionInstantSnapshotResultOutput) ToLookupRegionInstantSnapshotResultOutputWithContext(ctx context.Context) LookupRegionInstantSnapshotResultOutput {
 	return o
+}
+
+func (o LookupRegionInstantSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionInstantSnapshotResult] {
+	return pulumix.Output[LookupRegionInstantSnapshotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The architecture of the instant snapshot. Valid values are ARM64 or X86_64.

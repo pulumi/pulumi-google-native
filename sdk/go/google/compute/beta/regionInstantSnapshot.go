@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an instant snapshot in the specified region.
@@ -155,6 +156,12 @@ func (i *RegionInstantSnapshot) ToRegionInstantSnapshotOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstantSnapshotOutput)
 }
 
+func (i *RegionInstantSnapshot) ToOutput(ctx context.Context) pulumix.Output[*RegionInstantSnapshot] {
+	return pulumix.Output[*RegionInstantSnapshot]{
+		OutputState: i.ToRegionInstantSnapshotOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionInstantSnapshotOutput struct{ *pulumi.OutputState }
 
 func (RegionInstantSnapshotOutput) ElementType() reflect.Type {
@@ -167,6 +174,12 @@ func (o RegionInstantSnapshotOutput) ToRegionInstantSnapshotOutput() RegionInsta
 
 func (o RegionInstantSnapshotOutput) ToRegionInstantSnapshotOutputWithContext(ctx context.Context) RegionInstantSnapshotOutput {
 	return o
+}
+
+func (o RegionInstantSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstantSnapshot] {
+	return pulumix.Output[*RegionInstantSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The architecture of the instant snapshot. Valid values are ARM64 or X86_64.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o AddressableResponseOutput) ToAddressableResponseOutput() AddressableResp
 
 func (o AddressableResponseOutput) ToAddressableResponseOutputWithContext(ctx context.Context) AddressableResponseOutput {
 	return o
+}
+
+func (o AddressableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AddressableResponse] {
+	return pulumix.Output[AddressableResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressableResponseOutput) Url() pulumi.StringOutput {
@@ -81,6 +88,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -106,6 +119,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -119,6 +138,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -143,6 +168,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -174,6 +205,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -196,6 +233,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -243,6 +286,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -268,6 +317,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -281,6 +336,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -305,6 +366,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -336,6 +403,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -358,6 +431,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -409,6 +488,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -434,6 +519,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -447,6 +538,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -476,6 +573,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -509,6 +612,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -536,6 +645,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -587,6 +702,12 @@ func (i ConfigMapEnvSourceArgs) ToConfigMapEnvSourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourceOutput)
 }
 
+func (i ConfigMapEnvSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigMapEnvSource] {
+	return pulumix.Output[ConfigMapEnvSource]{
+		OutputState: i.ToConfigMapEnvSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConfigMapEnvSourceArgs) ToConfigMapEnvSourcePtrOutput() ConfigMapEnvSourcePtrOutput {
 	return i.ToConfigMapEnvSourcePtrOutputWithContext(context.Background())
 }
@@ -628,6 +749,12 @@ func (i *configMapEnvSourcePtrType) ToConfigMapEnvSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourcePtrOutput)
 }
 
+func (i *configMapEnvSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapEnvSource] {
+	return pulumix.Output[*ConfigMapEnvSource]{
+		OutputState: i.ToConfigMapEnvSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Not supported by Cloud Run. ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceOutput struct{ *pulumi.OutputState }
 
@@ -651,6 +778,12 @@ func (o ConfigMapEnvSourceOutput) ToConfigMapEnvSourcePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMapEnvSource) *ConfigMapEnvSource {
 		return &v
 	}).(ConfigMapEnvSourcePtrOutput)
+}
+
+func (o ConfigMapEnvSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigMapEnvSource] {
+	return pulumix.Output[ConfigMapEnvSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -680,6 +813,12 @@ func (o ConfigMapEnvSourcePtrOutput) ToConfigMapEnvSourcePtrOutput() ConfigMapEn
 
 func (o ConfigMapEnvSourcePtrOutput) ToConfigMapEnvSourcePtrOutputWithContext(ctx context.Context) ConfigMapEnvSourcePtrOutput {
 	return o
+}
+
+func (o ConfigMapEnvSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapEnvSource] {
+	return pulumix.Output[*ConfigMapEnvSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigMapEnvSourcePtrOutput) Elem() ConfigMapEnvSourceOutput {
@@ -747,6 +886,12 @@ func (o ConfigMapEnvSourceResponseOutput) ToConfigMapEnvSourceResponseOutputWith
 	return o
 }
 
+func (o ConfigMapEnvSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigMapEnvSourceResponse] {
+	return pulumix.Output[ConfigMapEnvSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 func (o ConfigMapEnvSourceResponseOutput) LocalObjectReference() LocalObjectReferenceResponseOutput {
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
@@ -809,6 +954,12 @@ func (i ConfigMapKeySelectorArgs) ToConfigMapKeySelectorOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorOutput)
 }
 
+func (i ConfigMapKeySelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigMapKeySelector] {
+	return pulumix.Output[ConfigMapKeySelector]{
+		OutputState: i.ToConfigMapKeySelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConfigMapKeySelectorArgs) ToConfigMapKeySelectorPtrOutput() ConfigMapKeySelectorPtrOutput {
 	return i.ToConfigMapKeySelectorPtrOutputWithContext(context.Background())
 }
@@ -850,6 +1001,12 @@ func (i *configMapKeySelectorPtrType) ToConfigMapKeySelectorPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorPtrOutput)
 }
 
+func (i *configMapKeySelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapKeySelector] {
+	return pulumix.Output[*ConfigMapKeySelector]{
+		OutputState: i.ToConfigMapKeySelectorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Not supported by Cloud Run.
 type ConfigMapKeySelectorOutput struct{ *pulumi.OutputState }
 
@@ -873,6 +1030,12 @@ func (o ConfigMapKeySelectorOutput) ToConfigMapKeySelectorPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMapKeySelector) *ConfigMapKeySelector {
 		return &v
 	}).(ConfigMapKeySelectorPtrOutput)
+}
+
+func (o ConfigMapKeySelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigMapKeySelector] {
+	return pulumix.Output[ConfigMapKeySelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Not supported by Cloud Run.
@@ -907,6 +1070,12 @@ func (o ConfigMapKeySelectorPtrOutput) ToConfigMapKeySelectorPtrOutput() ConfigM
 
 func (o ConfigMapKeySelectorPtrOutput) ToConfigMapKeySelectorPtrOutputWithContext(ctx context.Context) ConfigMapKeySelectorPtrOutput {
 	return o
+}
+
+func (o ConfigMapKeySelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapKeySelector] {
+	return pulumix.Output[*ConfigMapKeySelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigMapKeySelectorPtrOutput) Elem() ConfigMapKeySelectorOutput {
@@ -986,6 +1155,12 @@ func (o ConfigMapKeySelectorResponseOutput) ToConfigMapKeySelectorResponseOutput
 	return o
 }
 
+func (o ConfigMapKeySelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigMapKeySelectorResponse] {
+	return pulumix.Output[ConfigMapKeySelectorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not supported by Cloud Run.
 func (o ConfigMapKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -1053,6 +1228,12 @@ func (i ConfigMapVolumeSourceArgs) ToConfigMapVolumeSourceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourceOutput)
 }
 
+func (i ConfigMapVolumeSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigMapVolumeSource] {
+	return pulumix.Output[ConfigMapVolumeSource]{
+		OutputState: i.ToConfigMapVolumeSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConfigMapVolumeSourceArgs) ToConfigMapVolumeSourcePtrOutput() ConfigMapVolumeSourcePtrOutput {
 	return i.ToConfigMapVolumeSourcePtrOutputWithContext(context.Background())
 }
@@ -1094,6 +1275,12 @@ func (i *configMapVolumeSourcePtrType) ToConfigMapVolumeSourcePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourcePtrOutput)
 }
 
+func (i *configMapVolumeSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapVolumeSource] {
+	return pulumix.Output[*ConfigMapVolumeSource]{
+		OutputState: i.ToConfigMapVolumeSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Not supported by Cloud Run. Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceOutput struct{ *pulumi.OutputState }
 
@@ -1117,6 +1304,12 @@ func (o ConfigMapVolumeSourceOutput) ToConfigMapVolumeSourcePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMapVolumeSource) *ConfigMapVolumeSource {
 		return &v
 	}).(ConfigMapVolumeSourcePtrOutput)
+}
+
+func (o ConfigMapVolumeSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigMapVolumeSource] {
+	return pulumix.Output[ConfigMapVolumeSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
@@ -1151,6 +1344,12 @@ func (o ConfigMapVolumeSourcePtrOutput) ToConfigMapVolumeSourcePtrOutput() Confi
 
 func (o ConfigMapVolumeSourcePtrOutput) ToConfigMapVolumeSourcePtrOutputWithContext(ctx context.Context) ConfigMapVolumeSourcePtrOutput {
 	return o
+}
+
+func (o ConfigMapVolumeSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapVolumeSource] {
+	return pulumix.Output[*ConfigMapVolumeSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigMapVolumeSourcePtrOutput) Elem() ConfigMapVolumeSourceOutput {
@@ -1228,6 +1427,12 @@ func (o ConfigMapVolumeSourceResponseOutput) ToConfigMapVolumeSourceResponseOutp
 
 func (o ConfigMapVolumeSourceResponseOutput) ToConfigMapVolumeSourceResponseOutputWithContext(ctx context.Context) ConfigMapVolumeSourceResponseOutput {
 	return o
+}
+
+func (o ConfigMapVolumeSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigMapVolumeSourceResponse] {
+	return pulumix.Output[ConfigMapVolumeSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
@@ -1349,6 +1554,12 @@ func (i ContainerArgs) ToContainerOutputWithContext(ctx context.Context) Contain
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOutput)
 }
 
+func (i ContainerArgs) ToOutput(ctx context.Context) pulumix.Output[Container] {
+	return pulumix.Output[Container]{
+		OutputState: i.ToContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerArrayInput is an input type that accepts ContainerArray and ContainerArrayOutput values.
 // You can construct a concrete instance of `ContainerArrayInput` via:
 //
@@ -1374,6 +1585,12 @@ func (i ContainerArray) ToContainerArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerArrayOutput)
 }
 
+func (i ContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]Container] {
+	return pulumix.Output[[]Container]{
+		OutputState: i.ToContainerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerOutput struct{ *pulumi.OutputState }
 
@@ -1387,6 +1604,12 @@ func (o ContainerOutput) ToContainerOutput() ContainerOutput {
 
 func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
 	return o
+}
+
+func (o ContainerOutput) ToOutput(ctx context.Context) pulumix.Output[Container] {
+	return pulumix.Output[Container]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
@@ -1488,6 +1711,12 @@ func (o ContainerArrayOutput) ToContainerArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Container] {
+	return pulumix.Output[[]Container]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerArrayOutput) Index(i pulumi.IntInput) ContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Container {
 		return vs[0].([]Container)[vs[1].(int)]
@@ -1537,6 +1766,12 @@ func (i ContainerPortArgs) ToContainerPortOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerPortOutput)
 }
 
+func (i ContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerPort] {
+	return pulumix.Output[ContainerPort]{
+		OutputState: i.ToContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerPortArrayInput is an input type that accepts ContainerPortArray and ContainerPortArrayOutput values.
 // You can construct a concrete instance of `ContainerPortArrayInput` via:
 //
@@ -1562,6 +1797,12 @@ func (i ContainerPortArray) ToContainerPortArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerPortArrayOutput)
 }
 
+func (i ContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerPort] {
+	return pulumix.Output[[]ContainerPort]{
+		OutputState: i.ToContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerPort represents a network port in a single container.
 type ContainerPortOutput struct{ *pulumi.OutputState }
 
@@ -1575,6 +1816,12 @@ func (o ContainerPortOutput) ToContainerPortOutput() ContainerPortOutput {
 
 func (o ContainerPortOutput) ToContainerPortOutputWithContext(ctx context.Context) ContainerPortOutput {
 	return o
+}
+
+func (o ContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerPort] {
+	return pulumix.Output[ContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
@@ -1604,6 +1851,12 @@ func (o ContainerPortArrayOutput) ToContainerPortArrayOutput() ContainerPortArra
 
 func (o ContainerPortArrayOutput) ToContainerPortArrayOutputWithContext(ctx context.Context) ContainerPortArrayOutput {
 	return o
+}
+
+func (o ContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerPort] {
+	return pulumix.Output[[]ContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerPortArrayOutput) Index(i pulumi.IntInput) ContainerPortOutput {
@@ -1637,6 +1890,12 @@ func (o ContainerPortResponseOutput) ToContainerPortResponseOutputWithContext(ct
 	return o
 }
 
+func (o ContainerPortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerPortResponse] {
+	return pulumix.Output[ContainerPortResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
 func (o ContainerPortResponseOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v ContainerPortResponse) int { return v.ContainerPort }).(pulumi.IntOutput)
@@ -1664,6 +1923,12 @@ func (o ContainerPortResponseArrayOutput) ToContainerPortResponseArrayOutput() C
 
 func (o ContainerPortResponseArrayOutput) ToContainerPortResponseArrayOutputWithContext(ctx context.Context) ContainerPortResponseArrayOutput {
 	return o
+}
+
+func (o ContainerPortResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerPortResponse] {
+	return pulumix.Output[[]ContainerPortResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerPortResponseArrayOutput) Index(i pulumi.IntInput) ContainerPortResponseOutput {
@@ -1723,6 +1988,12 @@ func (o ContainerResponseOutput) ToContainerResponseOutput() ContainerResponseOu
 
 func (o ContainerResponseOutput) ToContainerResponseOutputWithContext(ctx context.Context) ContainerResponseOutput {
 	return o
+}
+
+func (o ContainerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerResponse] {
+	return pulumix.Output[ContainerResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
@@ -1824,6 +2095,12 @@ func (o ContainerResponseArrayOutput) ToContainerResponseArrayOutputWithContext(
 	return o
 }
 
+func (o ContainerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerResponse] {
+	return pulumix.Output[[]ContainerResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerResponseArrayOutput) Index(i pulumi.IntInput) ContainerResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerResponse {
 		return vs[0].([]ContainerResponse)[vs[1].(int)]
@@ -1873,6 +2150,12 @@ func (i DomainMappingSpecArgs) ToDomainMappingSpecOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecOutput)
 }
 
+func (i DomainMappingSpecArgs) ToOutput(ctx context.Context) pulumix.Output[DomainMappingSpec] {
+	return pulumix.Output[DomainMappingSpec]{
+		OutputState: i.ToDomainMappingSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DomainMappingSpecArgs) ToDomainMappingSpecPtrOutput() DomainMappingSpecPtrOutput {
 	return i.ToDomainMappingSpecPtrOutputWithContext(context.Background())
 }
@@ -1914,6 +2197,12 @@ func (i *domainMappingSpecPtrType) ToDomainMappingSpecPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecPtrOutput)
 }
 
+func (i *domainMappingSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSpec] {
+	return pulumix.Output[*DomainMappingSpec]{
+		OutputState: i.ToDomainMappingSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The desired state of the Domain Mapping.
 type DomainMappingSpecOutput struct{ *pulumi.OutputState }
 
@@ -1937,6 +2226,12 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingSpec) *DomainMappingSpec {
 		return &v
 	}).(DomainMappingSpecPtrOutput)
+}
+
+func (o DomainMappingSpecOutput) ToOutput(ctx context.Context) pulumix.Output[DomainMappingSpec] {
+	return pulumix.Output[DomainMappingSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The mode of the certificate.
@@ -1966,6 +2261,12 @@ func (o DomainMappingSpecPtrOutput) ToDomainMappingSpecPtrOutput() DomainMapping
 
 func (o DomainMappingSpecPtrOutput) ToDomainMappingSpecPtrOutputWithContext(ctx context.Context) DomainMappingSpecPtrOutput {
 	return o
+}
+
+func (o DomainMappingSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSpec] {
+	return pulumix.Output[*DomainMappingSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
@@ -2033,6 +2334,12 @@ func (o DomainMappingSpecResponseOutput) ToDomainMappingSpecResponseOutputWithCo
 	return o
 }
 
+func (o DomainMappingSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainMappingSpecResponse] {
+	return pulumix.Output[DomainMappingSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The mode of the certificate.
 func (o DomainMappingSpecResponseOutput) CertificateMode() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingSpecResponse) string { return v.CertificateMode }).(pulumi.StringOutput)
@@ -2089,6 +2396,12 @@ func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponseOutput()
 
 func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponseOutputWithContext(ctx context.Context) DomainMappingStatusResponseOutput {
 	return o
+}
+
+func (o DomainMappingStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainMappingStatusResponse] {
+	return pulumix.Output[DomainMappingStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
@@ -2155,6 +2468,12 @@ func (i EmptyDirVolumeSourceArgs) ToEmptyDirVolumeSourceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EmptyDirVolumeSourceOutput)
 }
 
+func (i EmptyDirVolumeSourceArgs) ToOutput(ctx context.Context) pulumix.Output[EmptyDirVolumeSource] {
+	return pulumix.Output[EmptyDirVolumeSource]{
+		OutputState: i.ToEmptyDirVolumeSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EmptyDirVolumeSourceArgs) ToEmptyDirVolumeSourcePtrOutput() EmptyDirVolumeSourcePtrOutput {
 	return i.ToEmptyDirVolumeSourcePtrOutputWithContext(context.Background())
 }
@@ -2196,6 +2515,12 @@ func (i *emptyDirVolumeSourcePtrType) ToEmptyDirVolumeSourcePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EmptyDirVolumeSourcePtrOutput)
 }
 
+func (i *emptyDirVolumeSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*EmptyDirVolumeSource] {
+	return pulumix.Output[*EmptyDirVolumeSource]{
+		OutputState: i.ToEmptyDirVolumeSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 type EmptyDirVolumeSourceOutput struct{ *pulumi.OutputState }
 
@@ -2221,6 +2546,12 @@ func (o EmptyDirVolumeSourceOutput) ToEmptyDirVolumeSourcePtrOutputWithContext(c
 	}).(EmptyDirVolumeSourcePtrOutput)
 }
 
+func (o EmptyDirVolumeSourceOutput) ToOutput(ctx context.Context) pulumix.Output[EmptyDirVolumeSource] {
+	return pulumix.Output[EmptyDirVolumeSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
 func (o EmptyDirVolumeSourceOutput) Medium() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmptyDirVolumeSource) *string { return v.Medium }).(pulumi.StringPtrOutput)
@@ -2243,6 +2574,12 @@ func (o EmptyDirVolumeSourcePtrOutput) ToEmptyDirVolumeSourcePtrOutput() EmptyDi
 
 func (o EmptyDirVolumeSourcePtrOutput) ToEmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) EmptyDirVolumeSourcePtrOutput {
 	return o
+}
+
+func (o EmptyDirVolumeSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmptyDirVolumeSource] {
+	return pulumix.Output[*EmptyDirVolumeSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EmptyDirVolumeSourcePtrOutput) Elem() EmptyDirVolumeSourceOutput {
@@ -2298,6 +2635,12 @@ func (o EmptyDirVolumeSourceResponseOutput) ToEmptyDirVolumeSourceResponseOutput
 	return o
 }
 
+func (o EmptyDirVolumeSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmptyDirVolumeSourceResponse] {
+	return pulumix.Output[EmptyDirVolumeSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
 func (o EmptyDirVolumeSourceResponseOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v EmptyDirVolumeSourceResponse) string { return v.Medium }).(pulumi.StringOutput)
@@ -2351,6 +2694,12 @@ func (i EnvFromSourceArgs) ToEnvFromSourceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceOutput)
 }
 
+func (i EnvFromSourceArgs) ToOutput(ctx context.Context) pulumix.Output[EnvFromSource] {
+	return pulumix.Output[EnvFromSource]{
+		OutputState: i.ToEnvFromSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnvFromSourceArrayInput is an input type that accepts EnvFromSourceArray and EnvFromSourceArrayOutput values.
 // You can construct a concrete instance of `EnvFromSourceArrayInput` via:
 //
@@ -2376,6 +2725,12 @@ func (i EnvFromSourceArray) ToEnvFromSourceArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceArrayOutput)
 }
 
+func (i EnvFromSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]EnvFromSource] {
+	return pulumix.Output[[]EnvFromSource]{
+		OutputState: i.ToEnvFromSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceOutput struct{ *pulumi.OutputState }
 
@@ -2389,6 +2744,12 @@ func (o EnvFromSourceOutput) ToEnvFromSourceOutput() EnvFromSourceOutput {
 
 func (o EnvFromSourceOutput) ToEnvFromSourceOutputWithContext(ctx context.Context) EnvFromSourceOutput {
 	return o
+}
+
+func (o EnvFromSourceOutput) ToOutput(ctx context.Context) pulumix.Output[EnvFromSource] {
+	return pulumix.Output[EnvFromSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ConfigMap to select from
@@ -2418,6 +2779,12 @@ func (o EnvFromSourceArrayOutput) ToEnvFromSourceArrayOutput() EnvFromSourceArra
 
 func (o EnvFromSourceArrayOutput) ToEnvFromSourceArrayOutputWithContext(ctx context.Context) EnvFromSourceArrayOutput {
 	return o
+}
+
+func (o EnvFromSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvFromSource] {
+	return pulumix.Output[[]EnvFromSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvFromSourceArrayOutput) Index(i pulumi.IntInput) EnvFromSourceOutput {
@@ -2451,6 +2818,12 @@ func (o EnvFromSourceResponseOutput) ToEnvFromSourceResponseOutputWithContext(ct
 	return o
 }
 
+func (o EnvFromSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvFromSourceResponse] {
+	return pulumix.Output[EnvFromSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ConfigMap to select from
 func (o EnvFromSourceResponseOutput) ConfigMapRef() ConfigMapEnvSourceResponseOutput {
 	return o.ApplyT(func(v EnvFromSourceResponse) ConfigMapEnvSourceResponse { return v.ConfigMapRef }).(ConfigMapEnvSourceResponseOutput)
@@ -2478,6 +2851,12 @@ func (o EnvFromSourceResponseArrayOutput) ToEnvFromSourceResponseArrayOutput() E
 
 func (o EnvFromSourceResponseArrayOutput) ToEnvFromSourceResponseArrayOutputWithContext(ctx context.Context) EnvFromSourceResponseArrayOutput {
 	return o
+}
+
+func (o EnvFromSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvFromSourceResponse] {
+	return pulumix.Output[[]EnvFromSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvFromSourceResponseArrayOutput) Index(i pulumi.IntInput) EnvFromSourceResponseOutput {
@@ -2529,6 +2908,12 @@ func (i EnvVarArgs) ToEnvVarOutputWithContext(ctx context.Context) EnvVarOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarOutput)
 }
 
+func (i EnvVarArgs) ToOutput(ctx context.Context) pulumix.Output[EnvVar] {
+	return pulumix.Output[EnvVar]{
+		OutputState: i.ToEnvVarOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnvVarArrayInput is an input type that accepts EnvVarArray and EnvVarArrayOutput values.
 // You can construct a concrete instance of `EnvVarArrayInput` via:
 //
@@ -2554,6 +2939,12 @@ func (i EnvVarArray) ToEnvVarArrayOutputWithContext(ctx context.Context) EnvVarA
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarArrayOutput)
 }
 
+func (i EnvVarArray) ToOutput(ctx context.Context) pulumix.Output[[]EnvVar] {
+	return pulumix.Output[[]EnvVar]{
+		OutputState: i.ToEnvVarArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnvVar represents an environment variable present in a Container.
 type EnvVarOutput struct{ *pulumi.OutputState }
 
@@ -2567,6 +2958,12 @@ func (o EnvVarOutput) ToEnvVarOutput() EnvVarOutput {
 
 func (o EnvVarOutput) ToEnvVarOutputWithContext(ctx context.Context) EnvVarOutput {
 	return o
+}
+
+func (o EnvVarOutput) ToOutput(ctx context.Context) pulumix.Output[EnvVar] {
+	return pulumix.Output[EnvVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the environment variable. Must be a C_IDENTIFIER.
@@ -2596,6 +2993,12 @@ func (o EnvVarArrayOutput) ToEnvVarArrayOutput() EnvVarArrayOutput {
 
 func (o EnvVarArrayOutput) ToEnvVarArrayOutputWithContext(ctx context.Context) EnvVarArrayOutput {
 	return o
+}
+
+func (o EnvVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvVar] {
+	return pulumix.Output[[]EnvVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvVarArrayOutput) Index(i pulumi.IntInput) EnvVarOutput {
@@ -2629,6 +3032,12 @@ func (o EnvVarResponseOutput) ToEnvVarResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o EnvVarResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvVarResponse] {
+	return pulumix.Output[EnvVarResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the environment variable. Must be a C_IDENTIFIER.
 func (o EnvVarResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2656,6 +3065,12 @@ func (o EnvVarResponseArrayOutput) ToEnvVarResponseArrayOutput() EnvVarResponseA
 
 func (o EnvVarResponseArrayOutput) ToEnvVarResponseArrayOutputWithContext(ctx context.Context) EnvVarResponseArrayOutput {
 	return o
+}
+
+func (o EnvVarResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvVarResponse] {
+	return pulumix.Output[[]EnvVarResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvVarResponseArrayOutput) Index(i pulumi.IntInput) EnvVarResponseOutput {
@@ -2703,6 +3118,12 @@ func (i EnvVarSourceArgs) ToEnvVarSourceOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourceOutput)
 }
 
+func (i EnvVarSourceArgs) ToOutput(ctx context.Context) pulumix.Output[EnvVarSource] {
+	return pulumix.Output[EnvVarSource]{
+		OutputState: i.ToEnvVarSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvVarSourceArgs) ToEnvVarSourcePtrOutput() EnvVarSourcePtrOutput {
 	return i.ToEnvVarSourcePtrOutputWithContext(context.Background())
 }
@@ -2744,6 +3165,12 @@ func (i *envVarSourcePtrType) ToEnvVarSourcePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourcePtrOutput)
 }
 
+func (i *envVarSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvVarSource] {
+	return pulumix.Output[*EnvVarSource]{
+		OutputState: i.ToEnvVarSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceOutput struct{ *pulumi.OutputState }
 
@@ -2769,6 +3196,12 @@ func (o EnvVarSourceOutput) ToEnvVarSourcePtrOutputWithContext(ctx context.Conte
 	}).(EnvVarSourcePtrOutput)
 }
 
+func (o EnvVarSourceOutput) ToOutput(ctx context.Context) pulumix.Output[EnvVarSource] {
+	return pulumix.Output[EnvVarSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not supported by Cloud Run. Not supported in Cloud Run.
 func (o EnvVarSourceOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *ConfigMapKeySelector { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorPtrOutput)
@@ -2791,6 +3224,12 @@ func (o EnvVarSourcePtrOutput) ToEnvVarSourcePtrOutput() EnvVarSourcePtrOutput {
 
 func (o EnvVarSourcePtrOutput) ToEnvVarSourcePtrOutputWithContext(ctx context.Context) EnvVarSourcePtrOutput {
 	return o
+}
+
+func (o EnvVarSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvVarSource] {
+	return pulumix.Output[*EnvVarSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvVarSourcePtrOutput) Elem() EnvVarSourceOutput {
@@ -2846,6 +3285,12 @@ func (o EnvVarSourceResponseOutput) ToEnvVarSourceResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o EnvVarSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvVarSourceResponse] {
+	return pulumix.Output[EnvVarSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not supported by Cloud Run. Not supported in Cloud Run.
 func (o EnvVarSourceResponseOutput) ConfigMapKeyRef() ConfigMapKeySelectorResponseOutput {
 	return o.ApplyT(func(v EnvVarSourceResponse) ConfigMapKeySelectorResponse { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorResponseOutput)
@@ -2891,6 +3336,12 @@ func (i ExecActionArgs) ToExecActionOutputWithContext(ctx context.Context) ExecA
 	return pulumi.ToOutputWithContext(ctx, i).(ExecActionOutput)
 }
 
+func (i ExecActionArgs) ToOutput(ctx context.Context) pulumix.Output[ExecAction] {
+	return pulumix.Output[ExecAction]{
+		OutputState: i.ToExecActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExecActionArgs) ToExecActionPtrOutput() ExecActionPtrOutput {
 	return i.ToExecActionPtrOutputWithContext(context.Background())
 }
@@ -2932,6 +3383,12 @@ func (i *execActionPtrType) ToExecActionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ExecActionPtrOutput)
 }
 
+func (i *execActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExecAction] {
+	return pulumix.Output[*ExecAction]{
+		OutputState: i.ToExecActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Not supported by Cloud Run. ExecAction describes a "run in container" action.
 type ExecActionOutput struct{ *pulumi.OutputState }
 
@@ -2957,6 +3414,12 @@ func (o ExecActionOutput) ToExecActionPtrOutputWithContext(ctx context.Context) 
 	}).(ExecActionPtrOutput)
 }
 
+func (o ExecActionOutput) ToOutput(ctx context.Context) pulumix.Output[ExecAction] {
+	return pulumix.Output[ExecAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecAction) []string { return v.Command }).(pulumi.StringArrayOutput)
@@ -2974,6 +3437,12 @@ func (o ExecActionPtrOutput) ToExecActionPtrOutput() ExecActionPtrOutput {
 
 func (o ExecActionPtrOutput) ToExecActionPtrOutputWithContext(ctx context.Context) ExecActionPtrOutput {
 	return o
+}
+
+func (o ExecActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecAction] {
+	return pulumix.Output[*ExecAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecActionPtrOutput) Elem() ExecActionOutput {
@@ -3017,6 +3486,12 @@ func (o ExecActionResponseOutput) ToExecActionResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ExecActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecActionResponse] {
+	return pulumix.Output[ExecActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
@@ -3045,6 +3520,12 @@ func (o ExecutionReferenceResponseOutput) ToExecutionReferenceResponseOutput() E
 
 func (o ExecutionReferenceResponseOutput) ToExecutionReferenceResponseOutputWithContext(ctx context.Context) ExecutionReferenceResponseOutput {
 	return o
+}
+
+func (o ExecutionReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionReferenceResponse] {
+	return pulumix.Output[ExecutionReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Completion timestamp of the execution.
@@ -3097,6 +3578,12 @@ func (o ExecutionSpecResponseOutput) ToExecutionSpecResponseOutputWithContext(ct
 	return o
 }
 
+func (o ExecutionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionSpecResponse] {
+	return pulumix.Output[ExecutionSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism.
 func (o ExecutionSpecResponseOutput) Parallelism() pulumi.IntOutput {
 	return o.ApplyT(func(v ExecutionSpecResponse) int { return v.Parallelism }).(pulumi.IntOutput)
@@ -3141,6 +3628,12 @@ func (o ExecutionTemplateSpecResponseOutput) ToExecutionTemplateSpecResponseOutp
 
 func (o ExecutionTemplateSpecResponseOutput) ToExecutionTemplateSpecResponseOutputWithContext(ctx context.Context) ExecutionTemplateSpecResponseOutput {
 	return o
+}
+
+func (o ExecutionTemplateSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionTemplateSpecResponse] {
+	return pulumix.Output[ExecutionTemplateSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
@@ -3200,6 +3693,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -3241,6 +3740,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -3264,6 +3769,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -3298,6 +3809,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -3377,6 +3894,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -3436,6 +3959,12 @@ func (i GRPCActionArgs) ToGRPCActionOutputWithContext(ctx context.Context) GRPCA
 	return pulumi.ToOutputWithContext(ctx, i).(GRPCActionOutput)
 }
 
+func (i GRPCActionArgs) ToOutput(ctx context.Context) pulumix.Output[GRPCAction] {
+	return pulumix.Output[GRPCAction]{
+		OutputState: i.ToGRPCActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GRPCActionArgs) ToGRPCActionPtrOutput() GRPCActionPtrOutput {
 	return i.ToGRPCActionPtrOutputWithContext(context.Background())
 }
@@ -3477,6 +4006,12 @@ func (i *grpcactionPtrType) ToGRPCActionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GRPCActionPtrOutput)
 }
 
+func (i *grpcactionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GRPCAction] {
+	return pulumix.Output[*GRPCAction]{
+		OutputState: i.ToGRPCActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GRPCAction describes an action involving a GRPC port.
 type GRPCActionOutput struct{ *pulumi.OutputState }
 
@@ -3502,6 +4037,12 @@ func (o GRPCActionOutput) ToGRPCActionPtrOutputWithContext(ctx context.Context) 
 	}).(GRPCActionPtrOutput)
 }
 
+func (o GRPCActionOutput) ToOutput(ctx context.Context) pulumix.Output[GRPCAction] {
+	return pulumix.Output[GRPCAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Port number of the gRPC service. Number must be in the range 1 to 65535.
 func (o GRPCActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
@@ -3524,6 +4065,12 @@ func (o GRPCActionPtrOutput) ToGRPCActionPtrOutput() GRPCActionPtrOutput {
 
 func (o GRPCActionPtrOutput) ToGRPCActionPtrOutputWithContext(ctx context.Context) GRPCActionPtrOutput {
 	return o
+}
+
+func (o GRPCActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GRPCAction] {
+	return pulumix.Output[*GRPCAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GRPCActionPtrOutput) Elem() GRPCActionOutput {
@@ -3577,6 +4124,12 @@ func (o GRPCActionResponseOutput) ToGRPCActionResponseOutput() GRPCActionRespons
 
 func (o GRPCActionResponseOutput) ToGRPCActionResponseOutputWithContext(ctx context.Context) GRPCActionResponseOutput {
 	return o
+}
+
+func (o GRPCActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GRPCActionResponse] {
+	return pulumix.Output[GRPCActionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port number of the gRPC service. Number must be in the range 1 to 65535.
@@ -3636,6 +4189,12 @@ func (o GoogleCloudRunV1ConditionResponseOutput) ToGoogleCloudRunV1ConditionResp
 	return o
 }
 
+func (o GoogleCloudRunV1ConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV1ConditionResponse] {
+	return pulumix.Output[GoogleCloudRunV1ConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Last time the condition transitioned from one status to another.
 func (o GoogleCloudRunV1ConditionResponseOutput) LastTransitionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.LastTransitionTime }).(pulumi.StringOutput)
@@ -3678,6 +4237,12 @@ func (o GoogleCloudRunV1ConditionResponseArrayOutput) ToGoogleCloudRunV1Conditio
 
 func (o GoogleCloudRunV1ConditionResponseArrayOutput) ToGoogleCloudRunV1ConditionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudRunV1ConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV1ConditionResponse] {
+	return pulumix.Output[[]GoogleCloudRunV1ConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudRunV1ConditionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV1ConditionResponseOutput {
@@ -3737,6 +4302,12 @@ func (i HTTPGetActionArgs) ToHTTPGetActionOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionOutput)
 }
 
+func (i HTTPGetActionArgs) ToOutput(ctx context.Context) pulumix.Output[HTTPGetAction] {
+	return pulumix.Output[HTTPGetAction]{
+		OutputState: i.ToHTTPGetActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HTTPGetActionArgs) ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutput {
 	return i.ToHTTPGetActionPtrOutputWithContext(context.Background())
 }
@@ -3778,6 +4349,12 @@ func (i *httpgetActionPtrType) ToHTTPGetActionPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionPtrOutput)
 }
 
+func (i *httpgetActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*HTTPGetAction] {
+	return pulumix.Output[*HTTPGetAction]{
+		OutputState: i.ToHTTPGetActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionOutput struct{ *pulumi.OutputState }
 
@@ -3801,6 +4378,12 @@ func (o HTTPGetActionOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HTTPGetAction) *HTTPGetAction {
 		return &v
 	}).(HTTPGetActionPtrOutput)
+}
+
+func (o HTTPGetActionOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPGetAction] {
+	return pulumix.Output[HTTPGetAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Not supported by Cloud Run.
@@ -3840,6 +4423,12 @@ func (o HTTPGetActionPtrOutput) ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutpu
 
 func (o HTTPGetActionPtrOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.Context) HTTPGetActionPtrOutput {
 	return o
+}
+
+func (o HTTPGetActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HTTPGetAction] {
+	return pulumix.Output[*HTTPGetAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPGetActionPtrOutput) Elem() HTTPGetActionOutput {
@@ -3931,6 +4520,12 @@ func (o HTTPGetActionResponseOutput) ToHTTPGetActionResponseOutputWithContext(ct
 	return o
 }
 
+func (o HTTPGetActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPGetActionResponse] {
+	return pulumix.Output[HTTPGetActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not supported by Cloud Run.
 func (o HTTPGetActionResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Host }).(pulumi.StringOutput)
@@ -3995,6 +4590,12 @@ func (i HTTPHeaderArgs) ToHTTPHeaderOutputWithContext(ctx context.Context) HTTPH
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderOutput)
 }
 
+func (i HTTPHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[HTTPHeader] {
+	return pulumix.Output[HTTPHeader]{
+		OutputState: i.ToHTTPHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HTTPHeaderArrayInput is an input type that accepts HTTPHeaderArray and HTTPHeaderArrayOutput values.
 // You can construct a concrete instance of `HTTPHeaderArrayInput` via:
 //
@@ -4020,6 +4621,12 @@ func (i HTTPHeaderArray) ToHTTPHeaderArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderArrayOutput)
 }
 
+func (i HTTPHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]HTTPHeader] {
+	return pulumix.Output[[]HTTPHeader]{
+		OutputState: i.ToHTTPHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderOutput struct{ *pulumi.OutputState }
 
@@ -4033,6 +4640,12 @@ func (o HTTPHeaderOutput) ToHTTPHeaderOutput() HTTPHeaderOutput {
 
 func (o HTTPHeaderOutput) ToHTTPHeaderOutputWithContext(ctx context.Context) HTTPHeaderOutput {
 	return o
+}
+
+func (o HTTPHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPHeader] {
+	return pulumix.Output[HTTPHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The header field name
@@ -4057,6 +4670,12 @@ func (o HTTPHeaderArrayOutput) ToHTTPHeaderArrayOutput() HTTPHeaderArrayOutput {
 
 func (o HTTPHeaderArrayOutput) ToHTTPHeaderArrayOutputWithContext(ctx context.Context) HTTPHeaderArrayOutput {
 	return o
+}
+
+func (o HTTPHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HTTPHeader] {
+	return pulumix.Output[[]HTTPHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPHeaderArrayOutput) Index(i pulumi.IntInput) HTTPHeaderOutput {
@@ -4088,6 +4707,12 @@ func (o HTTPHeaderResponseOutput) ToHTTPHeaderResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o HTTPHeaderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HTTPHeaderResponse] {
+	return pulumix.Output[HTTPHeaderResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The header field name
 func (o HTTPHeaderResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHeaderResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4110,6 +4735,12 @@ func (o HTTPHeaderResponseArrayOutput) ToHTTPHeaderResponseArrayOutput() HTTPHea
 
 func (o HTTPHeaderResponseArrayOutput) ToHTTPHeaderResponseArrayOutputWithContext(ctx context.Context) HTTPHeaderResponseArrayOutput {
 	return o
+}
+
+func (o HTTPHeaderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HTTPHeaderResponse] {
+	return pulumix.Output[[]HTTPHeaderResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) HTTPHeaderResponseOutput {
@@ -4145,6 +4776,12 @@ func (o JobSpecResponseOutput) ToJobSpecResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o JobSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobSpecResponse] {
+	return pulumix.Output[JobSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Describes the execution that will be created when running a job.
 func (o JobSpecResponseOutput) Template() ExecutionTemplateSpecResponseOutput {
 	return o.ApplyT(func(v JobSpecResponse) ExecutionTemplateSpecResponse { return v.Template }).(ExecutionTemplateSpecResponseOutput)
@@ -4175,6 +4812,12 @@ func (o JobStatusResponseOutput) ToJobStatusResponseOutput() JobStatusResponseOu
 
 func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
 	return o
+}
+
+func (o JobStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobStatusResponse] {
+	return pulumix.Output[JobStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed.
@@ -4240,6 +4883,12 @@ func (i KeyToPathArgs) ToKeyToPathOutputWithContext(ctx context.Context) KeyToPa
 	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathOutput)
 }
 
+func (i KeyToPathArgs) ToOutput(ctx context.Context) pulumix.Output[KeyToPath] {
+	return pulumix.Output[KeyToPath]{
+		OutputState: i.ToKeyToPathOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyToPathArrayInput is an input type that accepts KeyToPathArray and KeyToPathArrayOutput values.
 // You can construct a concrete instance of `KeyToPathArrayInput` via:
 //
@@ -4265,6 +4914,12 @@ func (i KeyToPathArray) ToKeyToPathArrayOutputWithContext(ctx context.Context) K
 	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathArrayOutput)
 }
 
+func (i KeyToPathArray) ToOutput(ctx context.Context) pulumix.Output[[]KeyToPath] {
+	return pulumix.Output[[]KeyToPath]{
+		OutputState: i.ToKeyToPathArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Maps a string key to a path within a volume.
 type KeyToPathOutput struct{ *pulumi.OutputState }
 
@@ -4278,6 +4933,12 @@ func (o KeyToPathOutput) ToKeyToPathOutput() KeyToPathOutput {
 
 func (o KeyToPathOutput) ToKeyToPathOutputWithContext(ctx context.Context) KeyToPathOutput {
 	return o
+}
+
+func (o KeyToPathOutput) ToOutput(ctx context.Context) pulumix.Output[KeyToPath] {
+	return pulumix.Output[KeyToPath]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
@@ -4307,6 +4968,12 @@ func (o KeyToPathArrayOutput) ToKeyToPathArrayOutput() KeyToPathArrayOutput {
 
 func (o KeyToPathArrayOutput) ToKeyToPathArrayOutputWithContext(ctx context.Context) KeyToPathArrayOutput {
 	return o
+}
+
+func (o KeyToPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyToPath] {
+	return pulumix.Output[[]KeyToPath]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyToPathArrayOutput) Index(i pulumi.IntInput) KeyToPathOutput {
@@ -4340,6 +5007,12 @@ func (o KeyToPathResponseOutput) ToKeyToPathResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o KeyToPathResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyToPathResponse] {
+	return pulumix.Output[KeyToPathResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
 func (o KeyToPathResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -4367,6 +5040,12 @@ func (o KeyToPathResponseArrayOutput) ToKeyToPathResponseArrayOutput() KeyToPath
 
 func (o KeyToPathResponseArrayOutput) ToKeyToPathResponseArrayOutputWithContext(ctx context.Context) KeyToPathResponseArrayOutput {
 	return o
+}
+
+func (o KeyToPathResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyToPathResponse] {
+	return pulumix.Output[[]KeyToPathResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyToPathResponseArrayOutput) Index(i pulumi.IntInput) KeyToPathResponseOutput {
@@ -4410,6 +5089,12 @@ func (i LocalObjectReferenceArgs) ToLocalObjectReferenceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceOutput)
 }
 
+func (i LocalObjectReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[LocalObjectReference] {
+	return pulumix.Output[LocalObjectReference]{
+		OutputState: i.ToLocalObjectReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LocalObjectReferenceArgs) ToLocalObjectReferencePtrOutput() LocalObjectReferencePtrOutput {
 	return i.ToLocalObjectReferencePtrOutputWithContext(context.Background())
 }
@@ -4451,6 +5136,12 @@ func (i *localObjectReferencePtrType) ToLocalObjectReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferencePtrOutput)
 }
 
+func (i *localObjectReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*LocalObjectReference] {
+	return pulumix.Output[*LocalObjectReference]{
+		OutputState: i.ToLocalObjectReferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LocalObjectReferenceArrayInput is an input type that accepts LocalObjectReferenceArray and LocalObjectReferenceArrayOutput values.
 // You can construct a concrete instance of `LocalObjectReferenceArrayInput` via:
 //
@@ -4474,6 +5165,12 @@ func (i LocalObjectReferenceArray) ToLocalObjectReferenceArrayOutput() LocalObje
 
 func (i LocalObjectReferenceArray) ToLocalObjectReferenceArrayOutputWithContext(ctx context.Context) LocalObjectReferenceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceArrayOutput)
+}
+
+func (i LocalObjectReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]LocalObjectReference] {
+	return pulumix.Output[[]LocalObjectReference]{
+		OutputState: i.ToLocalObjectReferenceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
@@ -4501,6 +5198,12 @@ func (o LocalObjectReferenceOutput) ToLocalObjectReferencePtrOutputWithContext(c
 	}).(LocalObjectReferencePtrOutput)
 }
 
+func (o LocalObjectReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[LocalObjectReference] {
+	return pulumix.Output[LocalObjectReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the referent.
 func (o LocalObjectReferenceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalObjectReference) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4518,6 +5221,12 @@ func (o LocalObjectReferencePtrOutput) ToLocalObjectReferencePtrOutput() LocalOb
 
 func (o LocalObjectReferencePtrOutput) ToLocalObjectReferencePtrOutputWithContext(ctx context.Context) LocalObjectReferencePtrOutput {
 	return o
+}
+
+func (o LocalObjectReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalObjectReference] {
+	return pulumix.Output[*LocalObjectReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LocalObjectReferencePtrOutput) Elem() LocalObjectReferenceOutput {
@@ -4554,6 +5263,12 @@ func (o LocalObjectReferenceArrayOutput) ToLocalObjectReferenceArrayOutputWithCo
 	return o
 }
 
+func (o LocalObjectReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LocalObjectReference] {
+	return pulumix.Output[[]LocalObjectReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LocalObjectReferenceArrayOutput) Index(i pulumi.IntInput) LocalObjectReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalObjectReference {
 		return vs[0].([]LocalObjectReference)[vs[1].(int)]
@@ -4581,6 +5296,12 @@ func (o LocalObjectReferenceResponseOutput) ToLocalObjectReferenceResponseOutput
 	return o
 }
 
+func (o LocalObjectReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocalObjectReferenceResponse] {
+	return pulumix.Output[LocalObjectReferenceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the referent.
 func (o LocalObjectReferenceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalObjectReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4598,6 +5319,12 @@ func (o LocalObjectReferenceResponseArrayOutput) ToLocalObjectReferenceResponseA
 
 func (o LocalObjectReferenceResponseArrayOutput) ToLocalObjectReferenceResponseArrayOutputWithContext(ctx context.Context) LocalObjectReferenceResponseArrayOutput {
 	return o
+}
+
+func (o LocalObjectReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LocalObjectReferenceResponse] {
+	return pulumix.Output[[]LocalObjectReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LocalObjectReferenceResponseArrayOutput) Index(i pulumi.IntInput) LocalObjectReferenceResponseOutput {
@@ -4697,6 +5424,12 @@ func (i ObjectMetaArgs) ToObjectMetaOutputWithContext(ctx context.Context) Objec
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaOutput)
 }
 
+func (i ObjectMetaArgs) ToOutput(ctx context.Context) pulumix.Output[ObjectMeta] {
+	return pulumix.Output[ObjectMeta]{
+		OutputState: i.ToObjectMetaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ObjectMetaArgs) ToObjectMetaPtrOutput() ObjectMetaPtrOutput {
 	return i.ToObjectMetaPtrOutputWithContext(context.Background())
 }
@@ -4738,6 +5471,12 @@ func (i *objectMetaPtrType) ToObjectMetaPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaPtrOutput)
 }
 
+func (i *objectMetaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ObjectMeta] {
+	return pulumix.Output[*ObjectMeta]{
+		OutputState: i.ToObjectMetaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaOutput struct{ *pulumi.OutputState }
 
@@ -4761,6 +5500,12 @@ func (o ObjectMetaOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectMeta) *ObjectMeta {
 		return &v
 	}).(ObjectMetaPtrOutput)
+}
+
+func (o ObjectMetaOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectMeta] {
+	return pulumix.Output[ObjectMeta]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
@@ -4850,6 +5595,12 @@ func (o ObjectMetaPtrOutput) ToObjectMetaPtrOutput() ObjectMetaPtrOutput {
 
 func (o ObjectMetaPtrOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) ObjectMetaPtrOutput {
 	return o
+}
+
+func (o ObjectMetaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ObjectMeta] {
+	return pulumix.Output[*ObjectMeta]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ObjectMetaPtrOutput) Elem() ObjectMetaOutput {
@@ -5061,6 +5812,12 @@ func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o ObjectMetaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectMetaResponse] {
+	return pulumix.Output[ObjectMetaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 func (o ObjectMetaResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
@@ -5191,6 +5948,12 @@ func (i OwnerReferenceArgs) ToOwnerReferenceOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferenceOutput)
 }
 
+func (i OwnerReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[OwnerReference] {
+	return pulumix.Output[OwnerReference]{
+		OutputState: i.ToOwnerReferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OwnerReferenceArrayInput is an input type that accepts OwnerReferenceArray and OwnerReferenceArrayOutput values.
 // You can construct a concrete instance of `OwnerReferenceArrayInput` via:
 //
@@ -5216,6 +5979,12 @@ func (i OwnerReferenceArray) ToOwnerReferenceArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferenceArrayOutput)
 }
 
+func (i OwnerReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]OwnerReference] {
+	return pulumix.Output[[]OwnerReference]{
+		OutputState: i.ToOwnerReferenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This is not supported or used by Cloud Run.
 type OwnerReferenceOutput struct{ *pulumi.OutputState }
 
@@ -5229,6 +5998,12 @@ func (o OwnerReferenceOutput) ToOwnerReferenceOutput() OwnerReferenceOutput {
 
 func (o OwnerReferenceOutput) ToOwnerReferenceOutputWithContext(ctx context.Context) OwnerReferenceOutput {
 	return o
+}
+
+func (o OwnerReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[OwnerReference] {
+	return pulumix.Output[OwnerReference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is not supported or used by Cloud Run.
@@ -5275,6 +6050,12 @@ func (o OwnerReferenceArrayOutput) ToOwnerReferenceArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o OwnerReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OwnerReference] {
+	return pulumix.Output[[]OwnerReference]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OwnerReferenceArrayOutput) Index(i pulumi.IntInput) OwnerReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnerReference {
 		return vs[0].([]OwnerReference)[vs[1].(int)]
@@ -5310,6 +6091,12 @@ func (o OwnerReferenceResponseOutput) ToOwnerReferenceResponseOutput() OwnerRefe
 
 func (o OwnerReferenceResponseOutput) ToOwnerReferenceResponseOutputWithContext(ctx context.Context) OwnerReferenceResponseOutput {
 	return o
+}
+
+func (o OwnerReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OwnerReferenceResponse] {
+	return pulumix.Output[OwnerReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is not supported or used by Cloud Run.
@@ -5354,6 +6141,12 @@ func (o OwnerReferenceResponseArrayOutput) ToOwnerReferenceResponseArrayOutput()
 
 func (o OwnerReferenceResponseArrayOutput) ToOwnerReferenceResponseArrayOutputWithContext(ctx context.Context) OwnerReferenceResponseArrayOutput {
 	return o
+}
+
+func (o OwnerReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OwnerReferenceResponse] {
+	return pulumix.Output[[]OwnerReferenceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OwnerReferenceResponseArrayOutput) Index(i pulumi.IntInput) OwnerReferenceResponseOutput {
@@ -5429,6 +6222,12 @@ func (i ProbeArgs) ToProbeOutputWithContext(ctx context.Context) ProbeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProbeOutput)
 }
 
+func (i ProbeArgs) ToOutput(ctx context.Context) pulumix.Output[Probe] {
+	return pulumix.Output[Probe]{
+		OutputState: i.ToProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ProbeArgs) ToProbePtrOutput() ProbePtrOutput {
 	return i.ToProbePtrOutputWithContext(context.Background())
 }
@@ -5470,6 +6269,12 @@ func (i *probePtrType) ToProbePtrOutputWithContext(ctx context.Context) ProbePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ProbePtrOutput)
 }
 
+func (i *probePtrType) ToOutput(ctx context.Context) pulumix.Output[*Probe] {
+	return pulumix.Output[*Probe]{
+		OutputState: i.ToProbePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeOutput struct{ *pulumi.OutputState }
 
@@ -5493,6 +6298,12 @@ func (o ProbeOutput) ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Probe) *Probe {
 		return &v
 	}).(ProbePtrOutput)
+}
+
+func (o ProbeOutput) ToOutput(ctx context.Context) pulumix.Output[Probe] {
+	return pulumix.Output[Probe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Not supported by Cloud Run.
@@ -5552,6 +6363,12 @@ func (o ProbePtrOutput) ToProbePtrOutput() ProbePtrOutput {
 
 func (o ProbePtrOutput) ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOutput {
 	return o
+}
+
+func (o ProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Probe] {
+	return pulumix.Output[*Probe]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProbePtrOutput) Elem() ProbeOutput {
@@ -5691,6 +6508,12 @@ func (o ProbeResponseOutput) ToProbeResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ProbeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProbeResponse] {
+	return pulumix.Output[ProbeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not supported by Cloud Run.
 func (o ProbeResponseOutput) Exec() ExecActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) ExecActionResponse { return v.Exec }).(ExecActionResponseOutput)
@@ -5771,6 +6594,12 @@ func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutputWithContext(
 	return o
 }
 
+func (o ResourceRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRecordResponse] {
+	return pulumix.Output[ResourceRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
 func (o ResourceRecordResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5798,6 +6627,12 @@ func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutput()
 
 func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
 	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceRecordResponse] {
+	return pulumix.Output[[]ResourceRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRecordResponseArrayOutput) Index(i pulumi.IntInput) ResourceRecordResponseOutput {
@@ -5845,6 +6680,12 @@ func (i ResourceRequirementsArgs) ToResourceRequirementsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequirementsOutput)
 }
 
+func (i ResourceRequirementsArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceRequirements] {
+	return pulumix.Output[ResourceRequirements]{
+		OutputState: i.ToResourceRequirementsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceRequirementsArgs) ToResourceRequirementsPtrOutput() ResourceRequirementsPtrOutput {
 	return i.ToResourceRequirementsPtrOutputWithContext(context.Background())
 }
@@ -5886,6 +6727,12 @@ func (i *resourceRequirementsPtrType) ToResourceRequirementsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequirementsPtrOutput)
 }
 
+func (i *resourceRequirementsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRequirements] {
+	return pulumix.Output[*ResourceRequirements]{
+		OutputState: i.ToResourceRequirementsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsOutput struct{ *pulumi.OutputState }
 
@@ -5911,6 +6758,12 @@ func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutputWithContext(c
 	}).(ResourceRequirementsPtrOutput)
 }
 
+func (o ResourceRequirementsOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRequirements] {
+	return pulumix.Output[ResourceRequirements]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
@@ -5933,6 +6786,12 @@ func (o ResourceRequirementsPtrOutput) ToResourceRequirementsPtrOutput() Resourc
 
 func (o ResourceRequirementsPtrOutput) ToResourceRequirementsPtrOutputWithContext(ctx context.Context) ResourceRequirementsPtrOutput {
 	return o
+}
+
+func (o ResourceRequirementsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRequirements] {
+	return pulumix.Output[*ResourceRequirements]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRequirementsPtrOutput) Elem() ResourceRequirementsOutput {
@@ -5986,6 +6845,12 @@ func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutput
 
 func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutputWithContext(ctx context.Context) ResourceRequirementsResponseOutput {
 	return o
+}
+
+func (o ResourceRequirementsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRequirementsResponse] {
+	return pulumix.Output[ResourceRequirementsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
@@ -6055,6 +6920,12 @@ func (i RevisionSpecArgs) ToRevisionSpecOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RevisionSpecOutput)
 }
 
+func (i RevisionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[RevisionSpec] {
+	return pulumix.Output[RevisionSpec]{
+		OutputState: i.ToRevisionSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RevisionSpecArgs) ToRevisionSpecPtrOutput() RevisionSpecPtrOutput {
 	return i.ToRevisionSpecPtrOutputWithContext(context.Background())
 }
@@ -6096,6 +6967,12 @@ func (i *revisionSpecPtrType) ToRevisionSpecPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RevisionSpecPtrOutput)
 }
 
+func (i *revisionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*RevisionSpec] {
+	return pulumix.Output[*RevisionSpec]{
+		OutputState: i.ToRevisionSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecOutput struct{ *pulumi.OutputState }
 
@@ -6119,6 +6996,12 @@ func (o RevisionSpecOutput) ToRevisionSpecPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RevisionSpec) *RevisionSpec {
 		return &v
 	}).(RevisionSpecPtrOutput)
+}
+
+func (o RevisionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[RevisionSpec] {
+	return pulumix.Output[RevisionSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
@@ -6167,6 +7050,12 @@ func (o RevisionSpecPtrOutput) ToRevisionSpecPtrOutput() RevisionSpecPtrOutput {
 
 func (o RevisionSpecPtrOutput) ToRevisionSpecPtrOutputWithContext(ctx context.Context) RevisionSpecPtrOutput {
 	return o
+}
+
+func (o RevisionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RevisionSpec] {
+	return pulumix.Output[*RevisionSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RevisionSpecPtrOutput) Elem() RevisionSpecOutput {
@@ -6280,6 +7169,12 @@ func (o RevisionSpecResponseOutput) ToRevisionSpecResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o RevisionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RevisionSpecResponse] {
+	return pulumix.Output[RevisionSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 func (o RevisionSpecResponseOutput) ContainerConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
@@ -6353,6 +7248,12 @@ func (i RevisionTemplateArgs) ToRevisionTemplateOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RevisionTemplateOutput)
 }
 
+func (i RevisionTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[RevisionTemplate] {
+	return pulumix.Output[RevisionTemplate]{
+		OutputState: i.ToRevisionTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RevisionTemplateArgs) ToRevisionTemplatePtrOutput() RevisionTemplatePtrOutput {
 	return i.ToRevisionTemplatePtrOutputWithContext(context.Background())
 }
@@ -6394,6 +7295,12 @@ func (i *revisionTemplatePtrType) ToRevisionTemplatePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RevisionTemplatePtrOutput)
 }
 
+func (i *revisionTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*RevisionTemplate] {
+	return pulumix.Output[*RevisionTemplate]{
+		OutputState: i.ToRevisionTemplatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RevisionTemplateSpec describes the data a revision should have when created from a template.
 type RevisionTemplateOutput struct{ *pulumi.OutputState }
 
@@ -6419,6 +7326,12 @@ func (o RevisionTemplateOutput) ToRevisionTemplatePtrOutputWithContext(ctx conte
 	}).(RevisionTemplatePtrOutput)
 }
 
+func (o RevisionTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[RevisionTemplate] {
+	return pulumix.Output[RevisionTemplate]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 func (o RevisionTemplateOutput) Metadata() ObjectMetaPtrOutput {
 	return o.ApplyT(func(v RevisionTemplate) *ObjectMeta { return v.Metadata }).(ObjectMetaPtrOutput)
@@ -6441,6 +7354,12 @@ func (o RevisionTemplatePtrOutput) ToRevisionTemplatePtrOutput() RevisionTemplat
 
 func (o RevisionTemplatePtrOutput) ToRevisionTemplatePtrOutputWithContext(ctx context.Context) RevisionTemplatePtrOutput {
 	return o
+}
+
+func (o RevisionTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RevisionTemplate] {
+	return pulumix.Output[*RevisionTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RevisionTemplatePtrOutput) Elem() RevisionTemplateOutput {
@@ -6496,6 +7415,12 @@ func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponseOutputWithCont
 	return o
 }
 
+func (o RevisionTemplateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RevisionTemplateResponse] {
+	return pulumix.Output[RevisionTemplateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 func (o RevisionTemplateResponseOutput) Metadata() ObjectMetaResponseOutput {
 	return o.ApplyT(func(v RevisionTemplateResponse) ObjectMetaResponse { return v.Metadata }).(ObjectMetaResponseOutput)
@@ -6549,6 +7474,12 @@ func (i SecretEnvSourceArgs) ToSecretEnvSourceOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourceOutput)
 }
 
+func (i SecretEnvSourceArgs) ToOutput(ctx context.Context) pulumix.Output[SecretEnvSource] {
+	return pulumix.Output[SecretEnvSource]{
+		OutputState: i.ToSecretEnvSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretEnvSourceArgs) ToSecretEnvSourcePtrOutput() SecretEnvSourcePtrOutput {
 	return i.ToSecretEnvSourcePtrOutputWithContext(context.Background())
 }
@@ -6590,6 +7521,12 @@ func (i *secretEnvSourcePtrType) ToSecretEnvSourcePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourcePtrOutput)
 }
 
+func (i *secretEnvSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretEnvSource] {
+	return pulumix.Output[*SecretEnvSource]{
+		OutputState: i.ToSecretEnvSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Not supported by Cloud Run. SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceOutput struct{ *pulumi.OutputState }
 
@@ -6613,6 +7550,12 @@ func (o SecretEnvSourceOutput) ToSecretEnvSourcePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretEnvSource) *SecretEnvSource {
 		return &v
 	}).(SecretEnvSourcePtrOutput)
+}
+
+func (o SecretEnvSourceOutput) ToOutput(ctx context.Context) pulumix.Output[SecretEnvSource] {
+	return pulumix.Output[SecretEnvSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -6642,6 +7585,12 @@ func (o SecretEnvSourcePtrOutput) ToSecretEnvSourcePtrOutput() SecretEnvSourcePt
 
 func (o SecretEnvSourcePtrOutput) ToSecretEnvSourcePtrOutputWithContext(ctx context.Context) SecretEnvSourcePtrOutput {
 	return o
+}
+
+func (o SecretEnvSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretEnvSource] {
+	return pulumix.Output[*SecretEnvSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretEnvSourcePtrOutput) Elem() SecretEnvSourceOutput {
@@ -6709,6 +7658,12 @@ func (o SecretEnvSourceResponseOutput) ToSecretEnvSourceResponseOutputWithContex
 	return o
 }
 
+func (o SecretEnvSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretEnvSourceResponse] {
+	return pulumix.Output[SecretEnvSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 func (o SecretEnvSourceResponseOutput) LocalObjectReference() LocalObjectReferenceResponseOutput {
 	return o.ApplyT(func(v SecretEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
@@ -6771,6 +7726,12 @@ func (i SecretKeySelectorArgs) ToSecretKeySelectorOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorOutput)
 }
 
+func (i SecretKeySelectorArgs) ToOutput(ctx context.Context) pulumix.Output[SecretKeySelector] {
+	return pulumix.Output[SecretKeySelector]{
+		OutputState: i.ToSecretKeySelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretKeySelectorArgs) ToSecretKeySelectorPtrOutput() SecretKeySelectorPtrOutput {
 	return i.ToSecretKeySelectorPtrOutputWithContext(context.Background())
 }
@@ -6812,6 +7773,12 @@ func (i *secretKeySelectorPtrType) ToSecretKeySelectorPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorPtrOutput)
 }
 
+func (i *secretKeySelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretKeySelector] {
+	return pulumix.Output[*SecretKeySelector]{
+		OutputState: i.ToSecretKeySelectorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorOutput struct{ *pulumi.OutputState }
 
@@ -6835,6 +7802,12 @@ func (o SecretKeySelectorOutput) ToSecretKeySelectorPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretKeySelector) *SecretKeySelector {
 		return &v
 	}).(SecretKeySelectorPtrOutput)
+}
+
+func (o SecretKeySelectorOutput) ToOutput(ctx context.Context) pulumix.Output[SecretKeySelector] {
+	return pulumix.Output[SecretKeySelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
@@ -6869,6 +7842,12 @@ func (o SecretKeySelectorPtrOutput) ToSecretKeySelectorPtrOutput() SecretKeySele
 
 func (o SecretKeySelectorPtrOutput) ToSecretKeySelectorPtrOutputWithContext(ctx context.Context) SecretKeySelectorPtrOutput {
 	return o
+}
+
+func (o SecretKeySelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretKeySelector] {
+	return pulumix.Output[*SecretKeySelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretKeySelectorPtrOutput) Elem() SecretKeySelectorOutput {
@@ -6948,6 +7927,12 @@ func (o SecretKeySelectorResponseOutput) ToSecretKeySelectorResponseOutputWithCo
 	return o
 }
 
+func (o SecretKeySelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretKeySelectorResponse] {
+	return pulumix.Output[SecretKeySelectorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -7015,6 +8000,12 @@ func (i SecretVolumeSourceArgs) ToSecretVolumeSourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourceOutput)
 }
 
+func (i SecretVolumeSourceArgs) ToOutput(ctx context.Context) pulumix.Output[SecretVolumeSource] {
+	return pulumix.Output[SecretVolumeSource]{
+		OutputState: i.ToSecretVolumeSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretVolumeSourceArgs) ToSecretVolumeSourcePtrOutput() SecretVolumeSourcePtrOutput {
 	return i.ToSecretVolumeSourcePtrOutputWithContext(context.Background())
 }
@@ -7056,6 +8047,12 @@ func (i *secretVolumeSourcePtrType) ToSecretVolumeSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourcePtrOutput)
 }
 
+func (i *secretVolumeSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretVolumeSource] {
+	return pulumix.Output[*SecretVolumeSource]{
+		OutputState: i.ToSecretVolumeSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceOutput struct{ *pulumi.OutputState }
 
@@ -7079,6 +8076,12 @@ func (o SecretVolumeSourceOutput) ToSecretVolumeSourcePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretVolumeSource) *SecretVolumeSource {
 		return &v
 	}).(SecretVolumeSourcePtrOutput)
+}
+
+func (o SecretVolumeSourceOutput) ToOutput(ctx context.Context) pulumix.Output[SecretVolumeSource] {
+	return pulumix.Output[SecretVolumeSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
@@ -7113,6 +8116,12 @@ func (o SecretVolumeSourcePtrOutput) ToSecretVolumeSourcePtrOutput() SecretVolum
 
 func (o SecretVolumeSourcePtrOutput) ToSecretVolumeSourcePtrOutputWithContext(ctx context.Context) SecretVolumeSourcePtrOutput {
 	return o
+}
+
+func (o SecretVolumeSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretVolumeSource] {
+	return pulumix.Output[*SecretVolumeSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretVolumeSourcePtrOutput) Elem() SecretVolumeSourceOutput {
@@ -7192,6 +8201,12 @@ func (o SecretVolumeSourceResponseOutput) ToSecretVolumeSourceResponseOutputWith
 	return o
 }
 
+func (o SecretVolumeSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretVolumeSourceResponse] {
+	return pulumix.Output[SecretVolumeSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
@@ -7247,6 +8262,12 @@ func (i SecurityContextArgs) ToSecurityContextOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextOutput)
 }
 
+func (i SecurityContextArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityContext] {
+	return pulumix.Output[SecurityContext]{
+		OutputState: i.ToSecurityContextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecurityContextArgs) ToSecurityContextPtrOutput() SecurityContextPtrOutput {
 	return i.ToSecurityContextPtrOutputWithContext(context.Background())
 }
@@ -7288,6 +8309,12 @@ func (i *securityContextPtrType) ToSecurityContextPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextPtrOutput)
 }
 
+func (i *securityContextPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityContext] {
+	return pulumix.Output[*SecurityContext]{
+		OutputState: i.ToSecurityContextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Not supported by Cloud Run. SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextOutput struct{ *pulumi.OutputState }
 
@@ -7313,6 +8340,12 @@ func (o SecurityContextOutput) ToSecurityContextPtrOutputWithContext(ctx context
 	}).(SecurityContextPtrOutput)
 }
 
+func (o SecurityContextOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityContext] {
+	return pulumix.Output[SecurityContext]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 func (o SecurityContextOutput) RunAsUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityContext) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
@@ -7330,6 +8363,12 @@ func (o SecurityContextPtrOutput) ToSecurityContextPtrOutput() SecurityContextPt
 
 func (o SecurityContextPtrOutput) ToSecurityContextPtrOutputWithContext(ctx context.Context) SecurityContextPtrOutput {
 	return o
+}
+
+func (o SecurityContextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityContext] {
+	return pulumix.Output[*SecurityContext]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityContextPtrOutput) Elem() SecurityContextOutput {
@@ -7371,6 +8410,12 @@ func (o SecurityContextResponseOutput) ToSecurityContextResponseOutput() Securit
 
 func (o SecurityContextResponseOutput) ToSecurityContextResponseOutputWithContext(ctx context.Context) SecurityContextResponseOutput {
 	return o
+}
+
+func (o SecurityContextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityContextResponse] {
+	return pulumix.Output[SecurityContextResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -7417,6 +8462,12 @@ func (i ServiceSpecArgs) ToServiceSpecOutputWithContext(ctx context.Context) Ser
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSpecOutput)
 }
 
+func (i ServiceSpecArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceSpec] {
+	return pulumix.Output[ServiceSpec]{
+		OutputState: i.ToServiceSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceSpecArgs) ToServiceSpecPtrOutput() ServiceSpecPtrOutput {
 	return i.ToServiceSpecPtrOutputWithContext(context.Background())
 }
@@ -7458,6 +8509,12 @@ func (i *serviceSpecPtrType) ToServiceSpecPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSpecPtrOutput)
 }
 
+func (i *serviceSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceSpec] {
+	return pulumix.Output[*ServiceSpec]{
+		OutputState: i.ToServiceSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
 type ServiceSpecOutput struct{ *pulumi.OutputState }
 
@@ -7483,6 +8540,12 @@ func (o ServiceSpecOutput) ToServiceSpecPtrOutputWithContext(ctx context.Context
 	}).(ServiceSpecPtrOutput)
 }
 
+func (o ServiceSpecOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceSpec] {
+	return pulumix.Output[ServiceSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Holds the latest specification for the Revision to be stamped out.
 func (o ServiceSpecOutput) Template() RevisionTemplatePtrOutput {
 	return o.ApplyT(func(v ServiceSpec) *RevisionTemplate { return v.Template }).(RevisionTemplatePtrOutput)
@@ -7505,6 +8568,12 @@ func (o ServiceSpecPtrOutput) ToServiceSpecPtrOutput() ServiceSpecPtrOutput {
 
 func (o ServiceSpecPtrOutput) ToServiceSpecPtrOutputWithContext(ctx context.Context) ServiceSpecPtrOutput {
 	return o
+}
+
+func (o ServiceSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceSpec] {
+	return pulumix.Output[*ServiceSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceSpecPtrOutput) Elem() ServiceSpecOutput {
@@ -7558,6 +8627,12 @@ func (o ServiceSpecResponseOutput) ToServiceSpecResponseOutput() ServiceSpecResp
 
 func (o ServiceSpecResponseOutput) ToServiceSpecResponseOutputWithContext(ctx context.Context) ServiceSpecResponseOutput {
 	return o
+}
+
+func (o ServiceSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceSpecResponse] {
+	return pulumix.Output[ServiceSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Holds the latest specification for the Revision to be stamped out.
@@ -7619,6 +8694,12 @@ func (o ServiceStatusResponseOutput) ToServiceStatusResponseOutput() ServiceStat
 
 func (o ServiceStatusResponseOutput) ToServiceStatusResponseOutputWithContext(ctx context.Context) ServiceStatusResponseOutput {
 	return o
+}
+
+func (o ServiceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceStatusResponse] {
+	return pulumix.Output[ServiceStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Similar to url, information on where the service is available on HTTP.
@@ -7695,6 +8776,12 @@ func (i TCPSocketActionArgs) ToTCPSocketActionOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionOutput)
 }
 
+func (i TCPSocketActionArgs) ToOutput(ctx context.Context) pulumix.Output[TCPSocketAction] {
+	return pulumix.Output[TCPSocketAction]{
+		OutputState: i.ToTCPSocketActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TCPSocketActionArgs) ToTCPSocketActionPtrOutput() TCPSocketActionPtrOutput {
 	return i.ToTCPSocketActionPtrOutputWithContext(context.Background())
 }
@@ -7736,6 +8823,12 @@ func (i *tcpsocketActionPtrType) ToTCPSocketActionPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionPtrOutput)
 }
 
+func (i *tcpsocketActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TCPSocketAction] {
+	return pulumix.Output[*TCPSocketAction]{
+		OutputState: i.ToTCPSocketActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionOutput struct{ *pulumi.OutputState }
 
@@ -7761,6 +8854,12 @@ func (o TCPSocketActionOutput) ToTCPSocketActionPtrOutputWithContext(ctx context
 	}).(TCPSocketActionPtrOutput)
 }
 
+func (o TCPSocketActionOutput) ToOutput(ctx context.Context) pulumix.Output[TCPSocketAction] {
+	return pulumix.Output[TCPSocketAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not supported by Cloud Run.
 func (o TCPSocketActionOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPSocketAction) *string { return v.Host }).(pulumi.StringPtrOutput)
@@ -7783,6 +8882,12 @@ func (o TCPSocketActionPtrOutput) ToTCPSocketActionPtrOutput() TCPSocketActionPt
 
 func (o TCPSocketActionPtrOutput) ToTCPSocketActionPtrOutputWithContext(ctx context.Context) TCPSocketActionPtrOutput {
 	return o
+}
+
+func (o TCPSocketActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TCPSocketAction] {
+	return pulumix.Output[*TCPSocketAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TCPSocketActionPtrOutput) Elem() TCPSocketActionOutput {
@@ -7838,6 +8943,12 @@ func (o TCPSocketActionResponseOutput) ToTCPSocketActionResponseOutputWithContex
 	return o
 }
 
+func (o TCPSocketActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TCPSocketActionResponse] {
+	return pulumix.Output[TCPSocketActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not supported by Cloud Run.
 func (o TCPSocketActionResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPSocketActionResponse) string { return v.Host }).(pulumi.StringOutput)
@@ -7891,6 +9002,12 @@ func (o TaskSpecResponseOutput) ToTaskSpecResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o TaskSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TaskSpecResponse] {
+	return pulumix.Output[TaskSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
 func (o TaskSpecResponseOutput) Containers() ContainerResponseArrayOutput {
 	return o.ApplyT(func(v TaskSpecResponse) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
@@ -7941,6 +9058,12 @@ func (o TaskTemplateSpecResponseOutput) ToTaskTemplateSpecResponseOutput() TaskT
 
 func (o TaskTemplateSpecResponseOutput) ToTaskTemplateSpecResponseOutputWithContext(ctx context.Context) TaskTemplateSpecResponseOutput {
 	return o
+}
+
+func (o TaskTemplateSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TaskTemplateSpecResponse] {
+	return pulumix.Output[TaskTemplateSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Specification of the desired behavior of the task.
@@ -8003,6 +9126,12 @@ func (i TrafficTargetArgs) ToTrafficTargetOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficTargetOutput)
 }
 
+func (i TrafficTargetArgs) ToOutput(ctx context.Context) pulumix.Output[TrafficTarget] {
+	return pulumix.Output[TrafficTarget]{
+		OutputState: i.ToTrafficTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrafficTargetArrayInput is an input type that accepts TrafficTargetArray and TrafficTargetArrayOutput values.
 // You can construct a concrete instance of `TrafficTargetArrayInput` via:
 //
@@ -8028,6 +9157,12 @@ func (i TrafficTargetArray) ToTrafficTargetArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficTargetArrayOutput)
 }
 
+func (i TrafficTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]TrafficTarget] {
+	return pulumix.Output[[]TrafficTarget]{
+		OutputState: i.ToTrafficTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrafficTarget holds a single entry of the routing table for a Route.
 type TrafficTargetOutput struct{ *pulumi.OutputState }
 
@@ -8041,6 +9176,12 @@ func (o TrafficTargetOutput) ToTrafficTargetOutput() TrafficTargetOutput {
 
 func (o TrafficTargetOutput) ToTrafficTargetOutputWithContext(ctx context.Context) TrafficTargetOutput {
 	return o
+}
+
+func (o TrafficTargetOutput) ToOutput(ctx context.Context) pulumix.Output[TrafficTarget] {
+	return pulumix.Output[TrafficTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [Deprecated] Not supported in Cloud Run. It must be empty.
@@ -8084,6 +9225,12 @@ func (o TrafficTargetArrayOutput) ToTrafficTargetArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o TrafficTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrafficTarget] {
+	return pulumix.Output[[]TrafficTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TrafficTargetArrayOutput) Index(i pulumi.IntInput) TrafficTargetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficTarget {
 		return vs[0].([]TrafficTarget)[vs[1].(int)]
@@ -8121,6 +9268,12 @@ func (o TrafficTargetResponseOutput) ToTrafficTargetResponseOutput() TrafficTarg
 
 func (o TrafficTargetResponseOutput) ToTrafficTargetResponseOutputWithContext(ctx context.Context) TrafficTargetResponseOutput {
 	return o
+}
+
+func (o TrafficTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrafficTargetResponse] {
+	return pulumix.Output[TrafficTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [Deprecated] Not supported in Cloud Run. It must be empty.
@@ -8167,6 +9320,12 @@ func (o TrafficTargetResponseArrayOutput) ToTrafficTargetResponseArrayOutput() T
 
 func (o TrafficTargetResponseArrayOutput) ToTrafficTargetResponseArrayOutputWithContext(ctx context.Context) TrafficTargetResponseArrayOutput {
 	return o
+}
+
+func (o TrafficTargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrafficTargetResponse] {
+	return pulumix.Output[[]TrafficTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrafficTargetResponseArrayOutput) Index(i pulumi.IntInput) TrafficTargetResponseOutput {
@@ -8222,6 +9381,12 @@ func (i VolumeArgs) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeOutput)
 }
 
+func (i VolumeArgs) ToOutput(ctx context.Context) pulumix.Output[Volume] {
+	return pulumix.Output[Volume]{
+		OutputState: i.ToVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VolumeArrayInput is an input type that accepts VolumeArray and VolumeArrayOutput values.
 // You can construct a concrete instance of `VolumeArrayInput` via:
 //
@@ -8247,6 +9412,12 @@ func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeA
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeArrayOutput)
 }
 
+func (i VolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]Volume] {
+	return pulumix.Output[[]Volume]{
+		OutputState: i.ToVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Volume represents a named volume in a container.
 type VolumeOutput struct{ *pulumi.OutputState }
 
@@ -8260,6 +9431,12 @@ func (o VolumeOutput) ToVolumeOutput() VolumeOutput {
 
 func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
 	return o
+}
+
+func (o VolumeOutput) ToOutput(ctx context.Context) pulumix.Output[Volume] {
+	return pulumix.Output[Volume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Not supported in Cloud Run.
@@ -8294,6 +9471,12 @@ func (o VolumeArrayOutput) ToVolumeArrayOutput() VolumeArrayOutput {
 
 func (o VolumeArrayOutput) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeArrayOutput {
 	return o
+}
+
+func (o VolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Volume] {
+	return pulumix.Output[[]Volume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
@@ -8349,6 +9532,12 @@ func (i VolumeMountArgs) ToVolumeMountOutputWithContext(ctx context.Context) Vol
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountOutput)
 }
 
+func (i VolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeMount] {
+	return pulumix.Output[VolumeMount]{
+		OutputState: i.ToVolumeMountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VolumeMountArrayInput is an input type that accepts VolumeMountArray and VolumeMountArrayOutput values.
 // You can construct a concrete instance of `VolumeMountArrayInput` via:
 //
@@ -8374,6 +9563,12 @@ func (i VolumeMountArray) ToVolumeMountArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountArrayOutput)
 }
 
+func (i VolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeMount] {
+	return pulumix.Output[[]VolumeMount]{
+		OutputState: i.ToVolumeMountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountOutput struct{ *pulumi.OutputState }
 
@@ -8387,6 +9582,12 @@ func (o VolumeMountOutput) ToVolumeMountOutput() VolumeMountOutput {
 
 func (o VolumeMountOutput) ToVolumeMountOutputWithContext(ctx context.Context) VolumeMountOutput {
 	return o
+}
+
+func (o VolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeMount] {
+	return pulumix.Output[VolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Path within the container at which the volume should be mounted. Must not contain ':'.
@@ -8423,6 +9624,12 @@ func (o VolumeMountArrayOutput) ToVolumeMountArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o VolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeMount] {
+	return pulumix.Output[[]VolumeMount]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeMountArrayOutput) Index(i pulumi.IntInput) VolumeMountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeMount {
 		return vs[0].([]VolumeMount)[vs[1].(int)]
@@ -8454,6 +9661,12 @@ func (o VolumeMountResponseOutput) ToVolumeMountResponseOutput() VolumeMountResp
 
 func (o VolumeMountResponseOutput) ToVolumeMountResponseOutputWithContext(ctx context.Context) VolumeMountResponseOutput {
 	return o
+}
+
+func (o VolumeMountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeMountResponse] {
+	return pulumix.Output[VolumeMountResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Path within the container at which the volume should be mounted. Must not contain ':'.
@@ -8490,6 +9703,12 @@ func (o VolumeMountResponseArrayOutput) ToVolumeMountResponseArrayOutputWithCont
 	return o
 }
 
+func (o VolumeMountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeMountResponse] {
+	return pulumix.Output[[]VolumeMountResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeMountResponse {
 		return vs[0].([]VolumeMountResponse)[vs[1].(int)]
@@ -8521,6 +9740,12 @@ func (o VolumeResponseOutput) ToVolumeResponseOutput() VolumeResponseOutput {
 
 func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
 	return o
+}
+
+func (o VolumeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeResponse] {
+	return pulumix.Output[VolumeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Not supported in Cloud Run.
@@ -8555,6 +9780,12 @@ func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutput() VolumeResponseA
 
 func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
 	return o
+}
+
+func (o VolumeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeResponse] {
+	return pulumix.Output[[]VolumeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput {

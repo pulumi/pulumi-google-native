@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new GatewaySecurityPolicy in a given project and location.
@@ -130,6 +131,12 @@ func (i *GatewaySecurityPolicy) ToGatewaySecurityPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityPolicyOutput)
 }
 
+func (i *GatewaySecurityPolicy) ToOutput(ctx context.Context) pulumix.Output[*GatewaySecurityPolicy] {
+	return pulumix.Output[*GatewaySecurityPolicy]{
+		OutputState: i.ToGatewaySecurityPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewaySecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (GatewaySecurityPolicyOutput) ElementType() reflect.Type {
@@ -142,6 +149,12 @@ func (o GatewaySecurityPolicyOutput) ToGatewaySecurityPolicyOutput() GatewaySecu
 
 func (o GatewaySecurityPolicyOutput) ToGatewaySecurityPolicyOutputWithContext(ctx context.Context) GatewaySecurityPolicyOutput {
 	return o
+}
+
+func (o GatewaySecurityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewaySecurityPolicy] {
+	return pulumix.Output[*GatewaySecurityPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the resource was created.

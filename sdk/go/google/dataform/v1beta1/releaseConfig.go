@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ReleaseConfig in a given Repository.
@@ -153,6 +154,12 @@ func (i *ReleaseConfig) ToReleaseConfigOutputWithContext(ctx context.Context) Re
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseConfigOutput)
 }
 
+func (i *ReleaseConfig) ToOutput(ctx context.Context) pulumix.Output[*ReleaseConfig] {
+	return pulumix.Output[*ReleaseConfig]{
+		OutputState: i.ToReleaseConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReleaseConfigOutput struct{ *pulumi.OutputState }
 
 func (ReleaseConfigOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o ReleaseConfigOutput) ToReleaseConfigOutput() ReleaseConfigOutput {
 
 func (o ReleaseConfigOutput) ToReleaseConfigOutputWithContext(ctx context.Context) ReleaseConfigOutput {
 	return o
+}
+
+func (o ReleaseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ReleaseConfig] {
+	return pulumix.Output[*ReleaseConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.

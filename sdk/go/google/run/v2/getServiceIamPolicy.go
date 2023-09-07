@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
@@ -76,6 +77,12 @@ func (o LookupServiceIamPolicyResultOutput) ToLookupServiceIamPolicyResultOutput
 
 func (o LookupServiceIamPolicyResultOutput) ToLookupServiceIamPolicyResultOutputWithContext(ctx context.Context) LookupServiceIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupServiceIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceIamPolicyResult] {
+	return pulumix.Output[LookupServiceIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

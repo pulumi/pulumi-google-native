@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Mount permissions.
@@ -82,6 +83,12 @@ func (o AllowedClientMountPermissionsOutput) ToAllowedClientMountPermissionsPtrO
 	}).(AllowedClientMountPermissionsPtrOutput)
 }
 
+func (o AllowedClientMountPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedClientMountPermissions] {
+	return pulumix.Output[AllowedClientMountPermissions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AllowedClientMountPermissionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AllowedClientMountPermissionsPtrOutput) ToAllowedClientMountPermissionsP
 
 func (o AllowedClientMountPermissionsPtrOutput) ToAllowedClientMountPermissionsPtrOutputWithContext(ctx context.Context) AllowedClientMountPermissionsPtrOutput {
 	return o
+}
+
+func (o AllowedClientMountPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllowedClientMountPermissions] {
+	return pulumix.Output[*AllowedClientMountPermissions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllowedClientMountPermissionsPtrOutput) Elem() AllowedClientMountPermissionsOutput {
@@ -177,6 +190,12 @@ func (in *allowedClientMountPermissionsPtr) ToAllowedClientMountPermissionsPtrOu
 
 func (in *allowedClientMountPermissionsPtr) ToAllowedClientMountPermissionsPtrOutputWithContext(ctx context.Context) AllowedClientMountPermissionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AllowedClientMountPermissionsPtrOutput)
+}
+
+func (in *allowedClientMountPermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*AllowedClientMountPermissions] {
+	return pulumix.Output[*AllowedClientMountPermissions]{
+		OutputState: in.ToAllowedClientMountPermissionsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of network configuration on the instance.
@@ -251,6 +270,12 @@ func (o InstanceConfigNetworkConfigOutput) ToInstanceConfigNetworkConfigPtrOutpu
 	}).(InstanceConfigNetworkConfigPtrOutput)
 }
 
+func (o InstanceConfigNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfigNetworkConfig] {
+	return pulumix.Output[InstanceConfigNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceConfigNetworkConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o InstanceConfigNetworkConfigPtrOutput) ToInstanceConfigNetworkConfigPtrOu
 
 func (o InstanceConfigNetworkConfigPtrOutput) ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigPtrOutput {
 	return o
+}
+
+func (o InstanceConfigNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfigNetworkConfig] {
+	return pulumix.Output[*InstanceConfigNetworkConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceConfigNetworkConfigPtrOutput) Elem() InstanceConfigNetworkConfigOutput {
@@ -346,6 +377,12 @@ func (in *instanceConfigNetworkConfigPtr) ToInstanceConfigNetworkConfigPtrOutput
 
 func (in *instanceConfigNetworkConfigPtr) ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConfigNetworkConfigPtrOutput)
+}
+
+func (in *instanceConfigNetworkConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfigNetworkConfig] {
+	return pulumix.Output[*InstanceConfigNetworkConfig]{
+		OutputState: in.ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The workload profile for the instance.
@@ -420,6 +457,12 @@ func (o InstanceWorkloadProfileOutput) ToInstanceWorkloadProfilePtrOutputWithCon
 	}).(InstanceWorkloadProfilePtrOutput)
 }
 
+func (o InstanceWorkloadProfileOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceWorkloadProfile] {
+	return pulumix.Output[InstanceWorkloadProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceWorkloadProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -453,6 +496,12 @@ func (o InstanceWorkloadProfilePtrOutput) ToInstanceWorkloadProfilePtrOutput() I
 
 func (o InstanceWorkloadProfilePtrOutput) ToInstanceWorkloadProfilePtrOutputWithContext(ctx context.Context) InstanceWorkloadProfilePtrOutput {
 	return o
+}
+
+func (o InstanceWorkloadProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceWorkloadProfile] {
+	return pulumix.Output[*InstanceWorkloadProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceWorkloadProfilePtrOutput) Elem() InstanceWorkloadProfileOutput {
@@ -515,6 +564,12 @@ func (in *instanceWorkloadProfilePtr) ToInstanceWorkloadProfilePtrOutput() Insta
 
 func (in *instanceWorkloadProfilePtr) ToInstanceWorkloadProfilePtrOutputWithContext(ctx context.Context) InstanceWorkloadProfilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceWorkloadProfilePtrOutput)
+}
+
+func (in *instanceWorkloadProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceWorkloadProfile] {
+	return pulumix.Output[*InstanceWorkloadProfile]{
+		OutputState: in.ToInstanceWorkloadProfilePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of network.
@@ -589,6 +644,12 @@ func (o LogicalNetworkInterfaceNetworkTypeOutput) ToLogicalNetworkInterfaceNetwo
 	}).(LogicalNetworkInterfaceNetworkTypePtrOutput)
 }
 
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkInterfaceNetworkType] {
+	return pulumix.Output[LogicalNetworkInterfaceNetworkType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogicalNetworkInterfaceNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -622,6 +683,12 @@ func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToLogicalNetworkInterfaceNe
 
 func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
 	return o
+}
+
+func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkInterfaceNetworkType] {
+	return pulumix.Output[*LogicalNetworkInterfaceNetworkType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogicalNetworkInterfaceNetworkTypePtrOutput) Elem() LogicalNetworkInterfaceNetworkTypeOutput {
@@ -684,6 +751,12 @@ func (in *logicalNetworkInterfaceNetworkTypePtr) ToLogicalNetworkInterfaceNetwor
 
 func (in *logicalNetworkInterfaceNetworkTypePtr) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogicalNetworkInterfaceNetworkTypePtrOutput)
+}
+
+func (in *logicalNetworkInterfaceNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkInterfaceNetworkType] {
+	return pulumix.Output[*LogicalNetworkInterfaceNetworkType]{
+		OutputState: in.ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
@@ -756,6 +829,12 @@ func (o LunMultiprotocolTypeOutput) ToLunMultiprotocolTypePtrOutputWithContext(c
 	}).(LunMultiprotocolTypePtrOutput)
 }
 
+func (o LunMultiprotocolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LunMultiprotocolType] {
+	return pulumix.Output[LunMultiprotocolType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LunMultiprotocolTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -789,6 +868,12 @@ func (o LunMultiprotocolTypePtrOutput) ToLunMultiprotocolTypePtrOutput() LunMult
 
 func (o LunMultiprotocolTypePtrOutput) ToLunMultiprotocolTypePtrOutputWithContext(ctx context.Context) LunMultiprotocolTypePtrOutput {
 	return o
+}
+
+func (o LunMultiprotocolTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LunMultiprotocolType] {
+	return pulumix.Output[*LunMultiprotocolType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LunMultiprotocolTypePtrOutput) Elem() LunMultiprotocolTypeOutput {
@@ -851,6 +936,12 @@ func (in *lunMultiprotocolTypePtr) ToLunMultiprotocolTypePtrOutput() LunMultipro
 
 func (in *lunMultiprotocolTypePtr) ToLunMultiprotocolTypePtrOutputWithContext(ctx context.Context) LunMultiprotocolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LunMultiprotocolTypePtrOutput)
+}
+
+func (in *lunMultiprotocolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LunMultiprotocolType] {
+	return pulumix.Output[*LunMultiprotocolType]{
+		OutputState: in.ToLunMultiprotocolTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The state of this storage volume.
@@ -931,6 +1022,12 @@ func (o LunStateOutput) ToLunStatePtrOutputWithContext(ctx context.Context) LunS
 	}).(LunStatePtrOutput)
 }
 
+func (o LunStateOutput) ToOutput(ctx context.Context) pulumix.Output[LunState] {
+	return pulumix.Output[LunState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LunStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -964,6 +1061,12 @@ func (o LunStatePtrOutput) ToLunStatePtrOutput() LunStatePtrOutput {
 
 func (o LunStatePtrOutput) ToLunStatePtrOutputWithContext(ctx context.Context) LunStatePtrOutput {
 	return o
+}
+
+func (o LunStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LunState] {
+	return pulumix.Output[*LunState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LunStatePtrOutput) Elem() LunStateOutput {
@@ -1026,6 +1129,12 @@ func (in *lunStatePtr) ToLunStatePtrOutput() LunStatePtrOutput {
 
 func (in *lunStatePtr) ToLunStatePtrOutputWithContext(ctx context.Context) LunStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LunStatePtrOutput)
+}
+
+func (in *lunStatePtr) ToOutput(ctx context.Context) pulumix.Output[*LunState] {
+	return pulumix.Output[*LunState]{
+		OutputState: in.ToLunStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The storage type for this LUN.
@@ -1100,6 +1209,12 @@ func (o LunStorageTypeOutput) ToLunStorageTypePtrOutputWithContext(ctx context.C
 	}).(LunStorageTypePtrOutput)
 }
 
+func (o LunStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LunStorageType] {
+	return pulumix.Output[LunStorageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LunStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1133,6 +1248,12 @@ func (o LunStorageTypePtrOutput) ToLunStorageTypePtrOutput() LunStorageTypePtrOu
 
 func (o LunStorageTypePtrOutput) ToLunStorageTypePtrOutputWithContext(ctx context.Context) LunStorageTypePtrOutput {
 	return o
+}
+
+func (o LunStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LunStorageType] {
+	return pulumix.Output[*LunStorageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LunStorageTypePtrOutput) Elem() LunStorageTypeOutput {
@@ -1195,6 +1316,12 @@ func (in *lunStorageTypePtr) ToLunStorageTypePtrOutput() LunStorageTypePtrOutput
 
 func (in *lunStorageTypePtr) ToLunStorageTypePtrOutputWithContext(ctx context.Context) LunStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LunStorageTypePtrOutput)
+}
+
+func (in *lunStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LunStorageType] {
+	return pulumix.Output[*LunStorageType]{
+		OutputState: in.ToLunStorageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Interconnect bandwidth. Set only when type is CLIENT.
@@ -1273,6 +1400,12 @@ func (o NetworkConfigBandwidthOutput) ToNetworkConfigBandwidthPtrOutputWithConte
 	}).(NetworkConfigBandwidthPtrOutput)
 }
 
+func (o NetworkConfigBandwidthOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigBandwidth] {
+	return pulumix.Output[NetworkConfigBandwidth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkConfigBandwidthOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1306,6 +1439,12 @@ func (o NetworkConfigBandwidthPtrOutput) ToNetworkConfigBandwidthPtrOutput() Net
 
 func (o NetworkConfigBandwidthPtrOutput) ToNetworkConfigBandwidthPtrOutputWithContext(ctx context.Context) NetworkConfigBandwidthPtrOutput {
 	return o
+}
+
+func (o NetworkConfigBandwidthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigBandwidth] {
+	return pulumix.Output[*NetworkConfigBandwidth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkConfigBandwidthPtrOutput) Elem() NetworkConfigBandwidthOutput {
@@ -1368,6 +1507,12 @@ func (in *networkConfigBandwidthPtr) ToNetworkConfigBandwidthPtrOutput() Network
 
 func (in *networkConfigBandwidthPtr) ToNetworkConfigBandwidthPtrOutputWithContext(ctx context.Context) NetworkConfigBandwidthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigBandwidthPtrOutput)
+}
+
+func (in *networkConfigBandwidthPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigBandwidth] {
+	return pulumix.Output[*NetworkConfigBandwidth]{
+		OutputState: in.ToNetworkConfigBandwidthPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Service CIDR, if any.
@@ -1446,6 +1591,12 @@ func (o NetworkConfigServiceCidrOutput) ToNetworkConfigServiceCidrPtrOutputWithC
 	}).(NetworkConfigServiceCidrPtrOutput)
 }
 
+func (o NetworkConfigServiceCidrOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigServiceCidr] {
+	return pulumix.Output[NetworkConfigServiceCidr]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkConfigServiceCidrOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1479,6 +1630,12 @@ func (o NetworkConfigServiceCidrPtrOutput) ToNetworkConfigServiceCidrPtrOutput()
 
 func (o NetworkConfigServiceCidrPtrOutput) ToNetworkConfigServiceCidrPtrOutputWithContext(ctx context.Context) NetworkConfigServiceCidrPtrOutput {
 	return o
+}
+
+func (o NetworkConfigServiceCidrPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigServiceCidr] {
+	return pulumix.Output[*NetworkConfigServiceCidr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkConfigServiceCidrPtrOutput) Elem() NetworkConfigServiceCidrOutput {
@@ -1541,6 +1698,12 @@ func (in *networkConfigServiceCidrPtr) ToNetworkConfigServiceCidrPtrOutput() Net
 
 func (in *networkConfigServiceCidrPtr) ToNetworkConfigServiceCidrPtrOutputWithContext(ctx context.Context) NetworkConfigServiceCidrPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigServiceCidrPtrOutput)
+}
+
+func (in *networkConfigServiceCidrPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigServiceCidr] {
+	return pulumix.Output[*NetworkConfigServiceCidr]{
+		OutputState: in.ToNetworkConfigServiceCidrPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of this network, either Client or Private.
@@ -1615,6 +1778,12 @@ func (o NetworkConfigTypeOutput) ToNetworkConfigTypePtrOutputWithContext(ctx con
 	}).(NetworkConfigTypePtrOutput)
 }
 
+func (o NetworkConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigType] {
+	return pulumix.Output[NetworkConfigType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1648,6 +1817,12 @@ func (o NetworkConfigTypePtrOutput) ToNetworkConfigTypePtrOutput() NetworkConfig
 
 func (o NetworkConfigTypePtrOutput) ToNetworkConfigTypePtrOutputWithContext(ctx context.Context) NetworkConfigTypePtrOutput {
 	return o
+}
+
+func (o NetworkConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigType] {
+	return pulumix.Output[*NetworkConfigType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkConfigTypePtrOutput) Elem() NetworkConfigTypeOutput {
@@ -1710,6 +1885,12 @@ func (in *networkConfigTypePtr) ToNetworkConfigTypePtrOutput() NetworkConfigType
 
 func (in *networkConfigTypePtr) ToNetworkConfigTypePtrOutputWithContext(ctx context.Context) NetworkConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigTypePtrOutput)
+}
+
+func (in *networkConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigType] {
+	return pulumix.Output[*NetworkConfigType]{
+		OutputState: in.ToNetworkConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Export permissions.
@@ -1784,6 +1965,12 @@ func (o NfsExportPermissionsOutput) ToNfsExportPermissionsPtrOutputWithContext(c
 	}).(NfsExportPermissionsPtrOutput)
 }
 
+func (o NfsExportPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExportPermissions] {
+	return pulumix.Output[NfsExportPermissions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NfsExportPermissionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1817,6 +2004,12 @@ func (o NfsExportPermissionsPtrOutput) ToNfsExportPermissionsPtrOutput() NfsExpo
 
 func (o NfsExportPermissionsPtrOutput) ToNfsExportPermissionsPtrOutputWithContext(ctx context.Context) NfsExportPermissionsPtrOutput {
 	return o
+}
+
+func (o NfsExportPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NfsExportPermissions] {
+	return pulumix.Output[*NfsExportPermissions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NfsExportPermissionsPtrOutput) Elem() NfsExportPermissionsOutput {
@@ -1879,6 +2072,12 @@ func (in *nfsExportPermissionsPtr) ToNfsExportPermissionsPtrOutput() NfsExportPe
 
 func (in *nfsExportPermissionsPtr) ToNfsExportPermissionsPtrOutputWithContext(ctx context.Context) NfsExportPermissionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportPermissionsPtrOutput)
+}
+
+func (in *nfsExportPermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*NfsExportPermissions] {
+	return pulumix.Output[*NfsExportPermissions]{
+		OutputState: in.ToNfsExportPermissionsPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The storage type of the underlying volume.
@@ -1953,6 +2152,12 @@ func (o NfsShareStorageTypeOutput) ToNfsShareStorageTypePtrOutputWithContext(ctx
 	}).(NfsShareStorageTypePtrOutput)
 }
 
+func (o NfsShareStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NfsShareStorageType] {
+	return pulumix.Output[NfsShareStorageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NfsShareStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1986,6 +2191,12 @@ func (o NfsShareStorageTypePtrOutput) ToNfsShareStorageTypePtrOutput() NfsShareS
 
 func (o NfsShareStorageTypePtrOutput) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
 	return o
+}
+
+func (o NfsShareStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NfsShareStorageType] {
+	return pulumix.Output[*NfsShareStorageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NfsShareStorageTypePtrOutput) Elem() NfsShareStorageTypeOutput {
@@ -2048,6 +2259,12 @@ func (in *nfsShareStorageTypePtr) ToNfsShareStorageTypePtrOutput() NfsShareStora
 
 func (in *nfsShareStorageTypePtr) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsShareStorageTypePtrOutput)
+}
+
+func (in *nfsShareStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsShareStorageType] {
+	return pulumix.Output[*NfsShareStorageType]{
+		OutputState: in.ToNfsShareStorageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Performance tier of the Volume. Default is SHARED.
@@ -2124,6 +2341,12 @@ func (o VolumeConfigPerformanceTierOutput) ToVolumeConfigPerformanceTierPtrOutpu
 	}).(VolumeConfigPerformanceTierPtrOutput)
 }
 
+func (o VolumeConfigPerformanceTierOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfigPerformanceTier] {
+	return pulumix.Output[VolumeConfigPerformanceTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeConfigPerformanceTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2157,6 +2380,12 @@ func (o VolumeConfigPerformanceTierPtrOutput) ToVolumeConfigPerformanceTierPtrOu
 
 func (o VolumeConfigPerformanceTierPtrOutput) ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierPtrOutput {
 	return o
+}
+
+func (o VolumeConfigPerformanceTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigPerformanceTier] {
+	return pulumix.Output[*VolumeConfigPerformanceTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeConfigPerformanceTierPtrOutput) Elem() VolumeConfigPerformanceTierOutput {
@@ -2219,6 +2448,12 @@ func (in *volumeConfigPerformanceTierPtr) ToVolumeConfigPerformanceTierPtrOutput
 
 func (in *volumeConfigPerformanceTierPtr) ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigPerformanceTierPtrOutput)
+}
+
+func (in *volumeConfigPerformanceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigPerformanceTier] {
+	return pulumix.Output[*VolumeConfigPerformanceTier]{
+		OutputState: in.ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Volume protocol.
@@ -2293,6 +2528,12 @@ func (o VolumeConfigProtocolOutput) ToVolumeConfigProtocolPtrOutputWithContext(c
 	}).(VolumeConfigProtocolPtrOutput)
 }
 
+func (o VolumeConfigProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfigProtocol] {
+	return pulumix.Output[VolumeConfigProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeConfigProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2326,6 +2567,12 @@ func (o VolumeConfigProtocolPtrOutput) ToVolumeConfigProtocolPtrOutput() VolumeC
 
 func (o VolumeConfigProtocolPtrOutput) ToVolumeConfigProtocolPtrOutputWithContext(ctx context.Context) VolumeConfigProtocolPtrOutput {
 	return o
+}
+
+func (o VolumeConfigProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigProtocol] {
+	return pulumix.Output[*VolumeConfigProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeConfigProtocolPtrOutput) Elem() VolumeConfigProtocolOutput {
@@ -2388,6 +2635,12 @@ func (in *volumeConfigProtocolPtr) ToVolumeConfigProtocolPtrOutput() VolumeConfi
 
 func (in *volumeConfigProtocolPtr) ToVolumeConfigProtocolPtrOutputWithContext(ctx context.Context) VolumeConfigProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigProtocolPtrOutput)
+}
+
+func (in *volumeConfigProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigProtocol] {
+	return pulumix.Output[*VolumeConfigProtocol]{
+		OutputState: in.ToVolumeConfigProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of this Volume.
@@ -2462,6 +2715,12 @@ func (o VolumeConfigTypeOutput) ToVolumeConfigTypePtrOutputWithContext(ctx conte
 	}).(VolumeConfigTypePtrOutput)
 }
 
+func (o VolumeConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfigType] {
+	return pulumix.Output[VolumeConfigType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2495,6 +2754,12 @@ func (o VolumeConfigTypePtrOutput) ToVolumeConfigTypePtrOutput() VolumeConfigTyp
 
 func (o VolumeConfigTypePtrOutput) ToVolumeConfigTypePtrOutputWithContext(ctx context.Context) VolumeConfigTypePtrOutput {
 	return o
+}
+
+func (o VolumeConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigType] {
+	return pulumix.Output[*VolumeConfigType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeConfigTypePtrOutput) Elem() VolumeConfigTypeOutput {
@@ -2557,6 +2822,12 @@ func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutput() VolumeConfigTypePtr
 
 func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutputWithContext(ctx context.Context) VolumeConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigTypePtrOutput)
+}
+
+func (in *volumeConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigType] {
+	return pulumix.Output[*VolumeConfigType]{
+		OutputState: in.ToVolumeConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. Performance tier of the Volume. Default is SHARED.
@@ -2633,6 +2904,12 @@ func (o VolumePerformanceTierOutput) ToVolumePerformanceTierPtrOutputWithContext
 	}).(VolumePerformanceTierPtrOutput)
 }
 
+func (o VolumePerformanceTierOutput) ToOutput(ctx context.Context) pulumix.Output[VolumePerformanceTier] {
+	return pulumix.Output[VolumePerformanceTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumePerformanceTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2666,6 +2943,12 @@ func (o VolumePerformanceTierPtrOutput) ToVolumePerformanceTierPtrOutput() Volum
 
 func (o VolumePerformanceTierPtrOutput) ToVolumePerformanceTierPtrOutputWithContext(ctx context.Context) VolumePerformanceTierPtrOutput {
 	return o
+}
+
+func (o VolumePerformanceTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumePerformanceTier] {
+	return pulumix.Output[*VolumePerformanceTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumePerformanceTierPtrOutput) Elem() VolumePerformanceTierOutput {
@@ -2728,6 +3011,12 @@ func (in *volumePerformanceTierPtr) ToVolumePerformanceTierPtrOutput() VolumePer
 
 func (in *volumePerformanceTierPtr) ToVolumePerformanceTierPtrOutputWithContext(ctx context.Context) VolumePerformanceTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumePerformanceTierPtrOutput)
+}
+
+func (in *volumePerformanceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumePerformanceTier] {
+	return pulumix.Output[*VolumePerformanceTier]{
+		OutputState: in.ToVolumePerformanceTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The behavior to use when snapshot reserved space is full.
@@ -2804,6 +3093,12 @@ func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToVolumeSnapshotAutoDeleteBehavi
 	}).(VolumeSnapshotAutoDeleteBehaviorPtrOutput)
 }
 
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeSnapshotAutoDeleteBehavior] {
+	return pulumix.Output[VolumeSnapshotAutoDeleteBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2837,6 +3132,12 @@ func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToVolumeSnapshotAutoDeleteBeh
 
 func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorPtrOutput {
 	return o
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshotAutoDeleteBehavior] {
+	return pulumix.Output[*VolumeSnapshotAutoDeleteBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) Elem() VolumeSnapshotAutoDeleteBehaviorOutput {
@@ -2899,6 +3200,12 @@ func (in *volumeSnapshotAutoDeleteBehaviorPtr) ToVolumeSnapshotAutoDeleteBehavio
 
 func (in *volumeSnapshotAutoDeleteBehaviorPtr) ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeSnapshotAutoDeleteBehaviorPtrOutput)
+}
+
+func (in *volumeSnapshotAutoDeleteBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshotAutoDeleteBehavior] {
+	return pulumix.Output[*VolumeSnapshotAutoDeleteBehavior]{
+		OutputState: in.ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The state of this storage volume.
@@ -2979,6 +3286,12 @@ func (o VolumeStateOutput) ToVolumeStatePtrOutputWithContext(ctx context.Context
 	}).(VolumeStatePtrOutput)
 }
 
+func (o VolumeStateOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeState] {
+	return pulumix.Output[VolumeState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3012,6 +3325,12 @@ func (o VolumeStatePtrOutput) ToVolumeStatePtrOutput() VolumeStatePtrOutput {
 
 func (o VolumeStatePtrOutput) ToVolumeStatePtrOutputWithContext(ctx context.Context) VolumeStatePtrOutput {
 	return o
+}
+
+func (o VolumeStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeState] {
+	return pulumix.Output[*VolumeState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeStatePtrOutput) Elem() VolumeStateOutput {
@@ -3074,6 +3393,12 @@ func (in *volumeStatePtr) ToVolumeStatePtrOutput() VolumeStatePtrOutput {
 
 func (in *volumeStatePtr) ToVolumeStatePtrOutputWithContext(ctx context.Context) VolumeStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeStatePtrOutput)
+}
+
+func (in *volumeStatePtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeState] {
+	return pulumix.Output[*VolumeState]{
+		OutputState: in.ToVolumeStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The storage type for this volume.
@@ -3148,6 +3473,12 @@ func (o VolumeStorageTypeOutput) ToVolumeStorageTypePtrOutputWithContext(ctx con
 	}).(VolumeStorageTypePtrOutput)
 }
 
+func (o VolumeStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeStorageType] {
+	return pulumix.Output[VolumeStorageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3181,6 +3512,12 @@ func (o VolumeStorageTypePtrOutput) ToVolumeStorageTypePtrOutput() VolumeStorage
 
 func (o VolumeStorageTypePtrOutput) ToVolumeStorageTypePtrOutputWithContext(ctx context.Context) VolumeStorageTypePtrOutput {
 	return o
+}
+
+func (o VolumeStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeStorageType] {
+	return pulumix.Output[*VolumeStorageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeStorageTypePtrOutput) Elem() VolumeStorageTypeOutput {
@@ -3243,6 +3580,12 @@ func (in *volumeStorageTypePtr) ToVolumeStorageTypePtrOutput() VolumeStorageType
 
 func (in *volumeStorageTypePtr) ToVolumeStorageTypePtrOutputWithContext(ctx context.Context) VolumeStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeStorageTypePtrOutput)
+}
+
+func (in *volumeStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeStorageType] {
+	return pulumix.Output[*VolumeStorageType]{
+		OutputState: in.ToVolumeStorageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The workload profile for the volume.
@@ -3317,6 +3660,12 @@ func (o VolumeWorkloadProfileOutput) ToVolumeWorkloadProfilePtrOutputWithContext
 	}).(VolumeWorkloadProfilePtrOutput)
 }
 
+func (o VolumeWorkloadProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeWorkloadProfile] {
+	return pulumix.Output[VolumeWorkloadProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeWorkloadProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3350,6 +3699,12 @@ func (o VolumeWorkloadProfilePtrOutput) ToVolumeWorkloadProfilePtrOutput() Volum
 
 func (o VolumeWorkloadProfilePtrOutput) ToVolumeWorkloadProfilePtrOutputWithContext(ctx context.Context) VolumeWorkloadProfilePtrOutput {
 	return o
+}
+
+func (o VolumeWorkloadProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeWorkloadProfile] {
+	return pulumix.Output[*VolumeWorkloadProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeWorkloadProfilePtrOutput) Elem() VolumeWorkloadProfileOutput {
@@ -3412,6 +3767,12 @@ func (in *volumeWorkloadProfilePtr) ToVolumeWorkloadProfilePtrOutput() VolumeWor
 
 func (in *volumeWorkloadProfilePtr) ToVolumeWorkloadProfilePtrOutputWithContext(ctx context.Context) VolumeWorkloadProfilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeWorkloadProfilePtrOutput)
+}
+
+func (in *volumeWorkloadProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeWorkloadProfile] {
+	return pulumix.Output[*VolumeWorkloadProfile]{
+		OutputState: in.ToVolumeWorkloadProfilePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

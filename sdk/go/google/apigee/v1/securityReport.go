@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Submit a report request to be processed in the background. If the submission succeeds, the API returns a 200 status and an ID that refer to the report request. In addition to the HTTP status 200, the `state` of "enqueued" means that the request succeeded.
@@ -180,6 +181,12 @@ func (i *SecurityReport) ToSecurityReportOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityReportOutput)
 }
 
+func (i *SecurityReport) ToOutput(ctx context.Context) pulumix.Output[*SecurityReport] {
+	return pulumix.Output[*SecurityReport]{
+		OutputState: i.ToSecurityReportOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityReportOutput struct{ *pulumi.OutputState }
 
 func (SecurityReportOutput) ElementType() reflect.Type {
@@ -192,6 +199,12 @@ func (o SecurityReportOutput) ToSecurityReportOutput() SecurityReportOutput {
 
 func (o SecurityReportOutput) ToSecurityReportOutputWithContext(ctx context.Context) SecurityReportOutput {
 	return o
+}
+
+func (o SecurityReportOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityReport] {
+	return pulumix.Output[*SecurityReport]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation time of the query.

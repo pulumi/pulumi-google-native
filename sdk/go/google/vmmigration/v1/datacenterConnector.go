@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new DatacenterConnector in a given Source.
@@ -162,6 +163,12 @@ func (i *DatacenterConnector) ToDatacenterConnectorOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DatacenterConnectorOutput)
 }
 
+func (i *DatacenterConnector) ToOutput(ctx context.Context) pulumix.Output[*DatacenterConnector] {
+	return pulumix.Output[*DatacenterConnector]{
+		OutputState: i.ToDatacenterConnectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatacenterConnectorOutput struct{ *pulumi.OutputState }
 
 func (DatacenterConnectorOutput) ElementType() reflect.Type {
@@ -174,6 +181,12 @@ func (o DatacenterConnectorOutput) ToDatacenterConnectorOutput() DatacenterConne
 
 func (o DatacenterConnectorOutput) ToDatacenterConnectorOutputWithContext(ctx context.Context) DatacenterConnectorOutput {
 	return o
+}
+
+func (o DatacenterConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*DatacenterConnector] {
+	return pulumix.Output[*DatacenterConnector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.

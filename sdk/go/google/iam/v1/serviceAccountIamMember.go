@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy that is attached to a ServiceAccount. Use this method to grant or revoke access to the service account. For example, you could grant a principal the ability to impersonate the service account. This method does not enable the service account to access other resources. To grant roles to a service account on a resource, follow these steps: 1. Call the resource's `getIamPolicy` method to get its current IAM policy. 2. Edit the policy so that it binds the service account to an IAM role for the resource. 3. Call the resource's `setIamPolicy` method to update its IAM policy. For detailed instructions, see [Manage access to project, folders, and organizations](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts) or [Manage access to other resources](https://cloud.google.com/iam/help/access/manage-other-resources).
@@ -134,6 +135,12 @@ func (i *ServiceAccountIamMember) ToServiceAccountIamMemberOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountIamMemberOutput)
 }
 
+func (i *ServiceAccountIamMember) ToOutput(ctx context.Context) pulumix.Output[*ServiceAccountIamMember] {
+	return pulumix.Output[*ServiceAccountIamMember]{
+		OutputState: i.ToServiceAccountIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceAccountIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ServiceAccountIamMemberOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o ServiceAccountIamMemberOutput) ToServiceAccountIamMemberOutput() Service
 
 func (o ServiceAccountIamMemberOutput) ToServiceAccountIamMemberOutputWithContext(ctx context.Context) ServiceAccountIamMemberOutput {
 	return o
+}
+
+func (o ServiceAccountIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAccountIamMember] {
+	return pulumix.Output[*ServiceAccountIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a model. This method is a [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned `Operation` type has the following method-specific fields: - `metadata`: CreateConversationModelOperationMetadata - `response`: ConversationModel
@@ -144,6 +145,12 @@ func (i *ConversationModel) ToConversationModelOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConversationModelOutput)
 }
 
+func (i *ConversationModel) ToOutput(ctx context.Context) pulumix.Output[*ConversationModel] {
+	return pulumix.Output[*ConversationModel]{
+		OutputState: i.ToConversationModelOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConversationModelOutput struct{ *pulumi.OutputState }
 
 func (ConversationModelOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o ConversationModelOutput) ToConversationModelOutput() ConversationModelOu
 
 func (o ConversationModelOutput) ToConversationModelOutputWithContext(ctx context.Context) ConversationModelOutput {
 	return o
+}
+
+func (o ConversationModelOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversationModel] {
+	return pulumix.Output[*ConversationModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Metadata for article suggestion models.

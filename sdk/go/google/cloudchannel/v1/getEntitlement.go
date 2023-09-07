@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested Entitlement resource.
@@ -92,6 +93,12 @@ func (o LookupEntitlementResultOutput) ToLookupEntitlementResultOutput() LookupE
 
 func (o LookupEntitlementResultOutput) ToLookupEntitlementResultOutputWithContext(ctx context.Context) LookupEntitlementResultOutput {
 	return o
+}
+
+func (o LookupEntitlementResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntitlementResult] {
+	return pulumix.Output[LookupEntitlementResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Association information to other entitlements.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the details of a single BackupPlan.
@@ -92,6 +93,12 @@ func (o LookupBackupPlanResultOutput) ToLookupBackupPlanResultOutput() LookupBac
 
 func (o LookupBackupPlanResultOutput) ToLookupBackupPlanResultOutputWithContext(ctx context.Context) LookupBackupPlanResultOutput {
 	return o
+}
+
+func (o LookupBackupPlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupPlanResult] {
+	return pulumix.Output[LookupBackupPlanResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines the configuration of Backups created via this BackupPlan.

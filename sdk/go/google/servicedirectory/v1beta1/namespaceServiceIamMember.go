@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM Policy for a resource
@@ -135,6 +136,12 @@ func (i *NamespaceServiceIamMember) ToNamespaceServiceIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceServiceIamMemberOutput)
 }
 
+func (i *NamespaceServiceIamMember) ToOutput(ctx context.Context) pulumix.Output[*NamespaceServiceIamMember] {
+	return pulumix.Output[*NamespaceServiceIamMember]{
+		OutputState: i.ToNamespaceServiceIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceServiceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NamespaceServiceIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o NamespaceServiceIamMemberOutput) ToNamespaceServiceIamMemberOutput() Nam
 
 func (o NamespaceServiceIamMemberOutput) ToNamespaceServiceIamMemberOutputWithContext(ctx context.Context) NamespaceServiceIamMemberOutput {
 	return o
+}
+
+func (o NamespaceServiceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceServiceIamMember] {
+	return pulumix.Output[*NamespaceServiceIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a default supported Idp configuration for an Identity Toolkit project.
@@ -76,6 +77,12 @@ func (o LookupDefaultSupportedIdpConfigResultOutput) ToLookupDefaultSupportedIdp
 
 func (o LookupDefaultSupportedIdpConfigResultOutput) ToLookupDefaultSupportedIdpConfigResultOutputWithContext(ctx context.Context) LookupDefaultSupportedIdpConfigResultOutput {
 	return o
+}
+
+func (o LookupDefaultSupportedIdpConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDefaultSupportedIdpConfigResult] {
+	return pulumix.Output[LookupDefaultSupportedIdpConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional config for Apple-based projects.

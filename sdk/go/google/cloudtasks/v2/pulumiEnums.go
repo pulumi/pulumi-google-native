@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
@@ -92,6 +93,12 @@ func (o AppEngineHttpRequestHttpMethodOutput) ToAppEngineHttpRequestHttpMethodPt
 	}).(AppEngineHttpRequestHttpMethodPtrOutput)
 }
 
+func (o AppEngineHttpRequestHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpRequestHttpMethod] {
+	return pulumix.Output[AppEngineHttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEngineHttpRequestHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,6 +132,12 @@ func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMetho
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
 	return o
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpRequestHttpMethod] {
+	return pulumix.Output[*AppEngineHttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) Elem() AppEngineHttpRequestHttpMethodOutput {
@@ -187,6 +200,12 @@ func (in *appEngineHttpRequestHttpMethodPtr) ToAppEngineHttpRequestHttpMethodPtr
 
 func (in *appEngineHttpRequestHttpMethodPtr) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppEngineHttpRequestHttpMethodPtrOutput)
+}
+
+func (in *appEngineHttpRequestHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpRequestHttpMethod] {
+	return pulumix.Output[*AppEngineHttpRequestHttpMethod]{
+		OutputState: in.ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The HTTP method to use for the request. The default is POST.
@@ -271,6 +290,12 @@ func (o HttpRequestHttpMethodOutput) ToHttpRequestHttpMethodPtrOutputWithContext
 	}).(HttpRequestHttpMethodPtrOutput)
 }
 
+func (o HttpRequestHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRequestHttpMethod] {
+	return pulumix.Output[HttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpRequestHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -304,6 +329,12 @@ func (o HttpRequestHttpMethodPtrOutput) ToHttpRequestHttpMethodPtrOutput() HttpR
 
 func (o HttpRequestHttpMethodPtrOutput) ToHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) HttpRequestHttpMethodPtrOutput {
 	return o
+}
+
+func (o HttpRequestHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRequestHttpMethod] {
+	return pulumix.Output[*HttpRequestHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRequestHttpMethodPtrOutput) Elem() HttpRequestHttpMethodOutput {
@@ -366,6 +397,12 @@ func (in *httpRequestHttpMethodPtr) ToHttpRequestHttpMethodPtrOutput() HttpReque
 
 func (in *httpRequestHttpMethodPtr) ToHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) HttpRequestHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpRequestHttpMethodPtrOutput)
+}
+
+func (in *httpRequestHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpRequestHttpMethod] {
+	return pulumix.Output[*HttpRequestHttpMethod]{
+		OutputState: in.ToHttpRequestHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
@@ -440,6 +477,12 @@ func (o TaskResponseViewOutput) ToTaskResponseViewPtrOutputWithContext(ctx conte
 	}).(TaskResponseViewPtrOutput)
 }
 
+func (o TaskResponseViewOutput) ToOutput(ctx context.Context) pulumix.Output[TaskResponseView] {
+	return pulumix.Output[TaskResponseView]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TaskResponseViewOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -473,6 +516,12 @@ func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutput() TaskResponseVie
 
 func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
 	return o
+}
+
+func (o TaskResponseViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskResponseView] {
+	return pulumix.Output[*TaskResponseView]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaskResponseViewPtrOutput) Elem() TaskResponseViewOutput {
@@ -535,6 +584,12 @@ func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutput() TaskResponseViewPtr
 
 func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TaskResponseViewPtrOutput)
+}
+
+func (in *taskResponseViewPtr) ToOutput(ctx context.Context) pulumix.Output[*TaskResponseView] {
+	return pulumix.Output[*TaskResponseView]{
+		OutputState: in.ToTaskResponseViewPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

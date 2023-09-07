@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -123,6 +142,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -156,6 +181,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -183,6 +214,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -230,6 +267,12 @@ func (i CardinalityArgs) ToCardinalityOutputWithContext(ctx context.Context) Car
 	return pulumi.ToOutputWithContext(ctx, i).(CardinalityOutput)
 }
 
+func (i CardinalityArgs) ToOutput(ctx context.Context) pulumix.Output[Cardinality] {
+	return pulumix.Output[Cardinality]{
+		OutputState: i.ToCardinalityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CardinalityArgs) ToCardinalityPtrOutput() CardinalityPtrOutput {
 	return i.ToCardinalityPtrOutputWithContext(context.Background())
 }
@@ -271,6 +314,12 @@ func (i *cardinalityPtrType) ToCardinalityPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CardinalityPtrOutput)
 }
 
+func (i *cardinalityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Cardinality] {
+	return pulumix.Output[*Cardinality]{
+		OutputState: i.ToCardinalityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would meet the condition in a RuntimeConfig resource: + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"` It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are counted.
 type CardinalityOutput struct{ *pulumi.OutputState }
 
@@ -296,6 +345,12 @@ func (o CardinalityOutput) ToCardinalityPtrOutputWithContext(ctx context.Context
 	}).(CardinalityPtrOutput)
 }
 
+func (o CardinalityOutput) ToOutput(ctx context.Context) pulumix.Output[Cardinality] {
+	return pulumix.Output[Cardinality]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
 func (o CardinalityOutput) Number() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Cardinality) *int { return v.Number }).(pulumi.IntPtrOutput)
@@ -318,6 +373,12 @@ func (o CardinalityPtrOutput) ToCardinalityPtrOutput() CardinalityPtrOutput {
 
 func (o CardinalityPtrOutput) ToCardinalityPtrOutputWithContext(ctx context.Context) CardinalityPtrOutput {
 	return o
+}
+
+func (o CardinalityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Cardinality] {
+	return pulumix.Output[*Cardinality]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CardinalityPtrOutput) Elem() CardinalityOutput {
@@ -373,6 +434,12 @@ func (o CardinalityResponseOutput) ToCardinalityResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o CardinalityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CardinalityResponse] {
+	return pulumix.Output[CardinalityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
 func (o CardinalityResponseOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v CardinalityResponse) int { return v.Number }).(pulumi.IntOutput)
@@ -418,6 +485,12 @@ func (i EndConditionArgs) ToEndConditionOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EndConditionOutput)
 }
 
+func (i EndConditionArgs) ToOutput(ctx context.Context) pulumix.Output[EndCondition] {
+	return pulumix.Output[EndCondition]{
+		OutputState: i.ToEndConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EndConditionArgs) ToEndConditionPtrOutput() EndConditionPtrOutput {
 	return i.ToEndConditionPtrOutputWithContext(context.Background())
 }
@@ -459,6 +532,12 @@ func (i *endConditionPtrType) ToEndConditionPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EndConditionPtrOutput)
 }
 
+func (i *endConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EndCondition] {
+	return pulumix.Output[*EndCondition]{
+		OutputState: i.ToEndConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The condition that a Waiter resource is waiting for.
 type EndConditionOutput struct{ *pulumi.OutputState }
 
@@ -484,6 +563,12 @@ func (o EndConditionOutput) ToEndConditionPtrOutputWithContext(ctx context.Conte
 	}).(EndConditionPtrOutput)
 }
 
+func (o EndConditionOutput) ToOutput(ctx context.Context) pulumix.Output[EndCondition] {
+	return pulumix.Output[EndCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The cardinality of the `EndCondition`.
 func (o EndConditionOutput) Cardinality() CardinalityPtrOutput {
 	return o.ApplyT(func(v EndCondition) *Cardinality { return v.Cardinality }).(CardinalityPtrOutput)
@@ -501,6 +586,12 @@ func (o EndConditionPtrOutput) ToEndConditionPtrOutput() EndConditionPtrOutput {
 
 func (o EndConditionPtrOutput) ToEndConditionPtrOutputWithContext(ctx context.Context) EndConditionPtrOutput {
 	return o
+}
+
+func (o EndConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndCondition] {
+	return pulumix.Output[*EndCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndConditionPtrOutput) Elem() EndConditionOutput {
@@ -542,6 +633,12 @@ func (o EndConditionResponseOutput) ToEndConditionResponseOutput() EndConditionR
 
 func (o EndConditionResponseOutput) ToEndConditionResponseOutputWithContext(ctx context.Context) EndConditionResponseOutput {
 	return o
+}
+
+func (o EndConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndConditionResponse] {
+	return pulumix.Output[EndConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cardinality of the `EndCondition`.
@@ -596,6 +693,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -637,6 +740,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -660,6 +769,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -694,6 +809,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -773,6 +894,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -816,6 +943,12 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
+}
+
+func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
+	return pulumix.Output[StatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

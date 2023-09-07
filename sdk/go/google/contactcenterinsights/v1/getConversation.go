@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a conversation.
@@ -108,6 +109,12 @@ func (o LookupConversationResultOutput) ToLookupConversationResultOutput() Looku
 
 func (o LookupConversationResultOutput) ToLookupConversationResultOutputWithContext(ctx context.Context) LookupConversationResultOutput {
 	return o
+}
+
+func (o LookupConversationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConversationResult] {
+	return pulumix.Output[LookupConversationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An opaque, user-specified string representing the human agent who handled the conversation.

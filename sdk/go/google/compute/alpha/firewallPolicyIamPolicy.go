@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -129,6 +130,12 @@ func (i *FirewallPolicyIamPolicy) ToFirewallPolicyIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIamPolicyOutput)
 }
 
+func (i *FirewallPolicyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIamPolicy] {
+	return pulumix.Output[*FirewallPolicyIamPolicy]{
+		OutputState: i.ToFirewallPolicyIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyIamPolicyOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o FirewallPolicyIamPolicyOutput) ToFirewallPolicyIamPolicyOutput() Firewal
 
 func (o FirewallPolicyIamPolicyOutput) ToFirewallPolicyIamPolicyOutputWithContext(ctx context.Context) FirewallPolicyIamPolicyOutput {
 	return o
+}
+
+func (o FirewallPolicyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIamPolicy] {
+	return pulumix.Output[*FirewallPolicyIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

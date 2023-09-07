@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new default object ACL entry on the specified bucket.
@@ -209,6 +210,12 @@ func (i *DefaultObjectAccessControl) ToDefaultObjectAccessControlOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlOutput)
 }
 
+func (i *DefaultObjectAccessControl) ToOutput(ctx context.Context) pulumix.Output[*DefaultObjectAccessControl] {
+	return pulumix.Output[*DefaultObjectAccessControl]{
+		OutputState: i.ToDefaultObjectAccessControlOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DefaultObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectAccessControlOutput) ElementType() reflect.Type {
@@ -221,6 +228,12 @@ func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlOutput() D
 
 func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlOutputWithContext(ctx context.Context) DefaultObjectAccessControlOutput {
 	return o
+}
+
+func (o DefaultObjectAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultObjectAccessControl] {
+	return pulumix.Output[*DefaultObjectAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultObjectAccessControlOutput) Bucket() pulumi.StringOutput {

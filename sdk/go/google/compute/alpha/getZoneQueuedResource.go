@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified QueuedResource resource.
@@ -88,6 +89,12 @@ func (o LookupZoneQueuedResourceResultOutput) ToLookupZoneQueuedResourceResultOu
 
 func (o LookupZoneQueuedResourceResultOutput) ToLookupZoneQueuedResourceResultOutputWithContext(ctx context.Context) LookupZoneQueuedResourceResultOutput {
 	return o
+}
+
+func (o LookupZoneQueuedResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupZoneQueuedResourceResult] {
+	return pulumix.Output[LookupZoneQueuedResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specification of VM instances to create.

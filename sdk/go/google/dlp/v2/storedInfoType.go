@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
@@ -122,6 +123,12 @@ func (i *StoredInfoType) ToStoredInfoTypeOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(StoredInfoTypeOutput)
 }
 
+func (i *StoredInfoType) ToOutput(ctx context.Context) pulumix.Output[*StoredInfoType] {
+	return pulumix.Output[*StoredInfoType]{
+		OutputState: i.ToStoredInfoTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StoredInfoTypeOutput struct{ *pulumi.OutputState }
 
 func (StoredInfoTypeOutput) ElementType() reflect.Type {
@@ -134,6 +141,12 @@ func (o StoredInfoTypeOutput) ToStoredInfoTypeOutput() StoredInfoTypeOutput {
 
 func (o StoredInfoTypeOutput) ToStoredInfoTypeOutputWithContext(ctx context.Context) StoredInfoTypeOutput {
 	return o
+}
+
+func (o StoredInfoTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*StoredInfoType] {
+	return pulumix.Output[*StoredInfoType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current version of the stored info type.

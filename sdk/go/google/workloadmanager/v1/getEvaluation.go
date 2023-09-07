@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Evaluation.
@@ -86,6 +87,12 @@ func (o LookupEvaluationResultOutput) ToLookupEvaluationResultOutput() LookupEva
 
 func (o LookupEvaluationResultOutput) ToLookupEvaluationResultOutputWithContext(ctx context.Context) LookupEvaluationResultOutput {
 	return o
+}
+
+func (o LookupEvaluationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEvaluationResult] {
+	return pulumix.Output[LookupEvaluationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [Output only] Create time stamp

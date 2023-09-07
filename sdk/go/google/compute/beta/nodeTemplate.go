@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a NodeTemplate resource in the specified project using the data included in the request.
@@ -165,6 +166,12 @@ func (i *NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) Node
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOutput)
 }
 
+func (i *NodeTemplate) ToOutput(ctx context.Context) pulumix.Output[*NodeTemplate] {
+	return pulumix.Output[*NodeTemplate]{
+		OutputState: i.ToNodeTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeTemplateOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o NodeTemplateOutput) ToNodeTemplateOutput() NodeTemplateOutput {
 
 func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context) NodeTemplateOutput {
 	return o
+}
+
+func (o NodeTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeTemplate] {
+	return pulumix.Output[*NodeTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeTemplateOutput) Accelerators() AcceleratorConfigResponseArrayOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ServiceClass.
@@ -80,6 +81,12 @@ func (o LookupServiceClassResultOutput) ToLookupServiceClassResultOutput() Looku
 
 func (o LookupServiceClassResultOutput) ToLookupServiceClassResultOutputWithContext(ctx context.Context) LookupServiceClassResultOutput {
 	return o
+}
+
+func (o LookupServiceClassResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceClassResult] {
+	return pulumix.Output[LookupServiceClassResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time when the ServiceClass was created.

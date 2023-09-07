@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new DebugToken for the specified app. For security reasons, after the creation operation completes, the `token` field cannot be updated or retrieved, but you can revoke the debug token using DeleteDebugToken. Each app can have a maximum of 20 debug tokens.
@@ -125,6 +126,12 @@ func (i *DebugToken) ToDebugTokenOutputWithContext(ctx context.Context) DebugTok
 	return pulumi.ToOutputWithContext(ctx, i).(DebugTokenOutput)
 }
 
+func (i *DebugToken) ToOutput(ctx context.Context) pulumix.Output[*DebugToken] {
+	return pulumix.Output[*DebugToken]{
+		OutputState: i.ToDebugTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DebugTokenOutput struct{ *pulumi.OutputState }
 
 func (DebugTokenOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o DebugTokenOutput) ToDebugTokenOutput() DebugTokenOutput {
 
 func (o DebugTokenOutput) ToDebugTokenOutputWithContext(ctx context.Context) DebugTokenOutput {
 	return o
+}
+
+func (o DebugTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*DebugToken] {
+	return pulumix.Output[*DebugToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DebugTokenOutput) AppId() pulumi.StringOutput {

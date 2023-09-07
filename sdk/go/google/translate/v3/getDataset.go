@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Dataset.
@@ -86,6 +87,12 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutput() LookupDatasetRe
 
 func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx context.Context) LookupDatasetResultOutput {
 	return o
+}
+
+func (o LookupDatasetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatasetResult] {
+	return pulumix.Output[LookupDatasetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamp when this dataset was created.

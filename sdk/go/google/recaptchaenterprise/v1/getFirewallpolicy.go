@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified firewall policy.
@@ -74,6 +75,12 @@ func (o LookupFirewallpolicyResultOutput) ToLookupFirewallpolicyResultOutput() L
 
 func (o LookupFirewallpolicyResultOutput) ToLookupFirewallpolicyResultOutputWithContext(ctx context.Context) LookupFirewallpolicyResultOutput {
 	return o
+}
+
+func (o LookupFirewallpolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallpolicyResult] {
+	return pulumix.Output[LookupFirewallpolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as AllowAction, BlockAction or SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy can contain up to 16 actions.

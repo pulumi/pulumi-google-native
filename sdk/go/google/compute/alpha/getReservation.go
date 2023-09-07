@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the specified reservation.
@@ -98,6 +99,12 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupR
 
 func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
 	return o
+}
+
+func (o LookupReservationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReservationResult] {
+	return pulumix.Output[LookupReservationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Reservation for aggregated resources, providing shape flexibility.

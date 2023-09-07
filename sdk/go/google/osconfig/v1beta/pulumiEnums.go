@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of archive files in this repository. The default behavior is DEB.
@@ -82,6 +83,12 @@ func (o AptRepositoryArchiveTypeOutput) ToAptRepositoryArchiveTypePtrOutputWithC
 	}).(AptRepositoryArchiveTypePtrOutput)
 }
 
+func (o AptRepositoryArchiveTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AptRepositoryArchiveType] {
+	return pulumix.Output[AptRepositoryArchiveType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AptRepositoryArchiveTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AptRepositoryArchiveTypePtrOutput) ToAptRepositoryArchiveTypePtrOutput()
 
 func (o AptRepositoryArchiveTypePtrOutput) ToAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) AptRepositoryArchiveTypePtrOutput {
 	return o
+}
+
+func (o AptRepositoryArchiveTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AptRepositoryArchiveType] {
+	return pulumix.Output[*AptRepositoryArchiveType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AptRepositoryArchiveTypePtrOutput) Elem() AptRepositoryArchiveTypeOutput {
@@ -177,6 +190,12 @@ func (in *aptRepositoryArchiveTypePtr) ToAptRepositoryArchiveTypePtrOutput() Apt
 
 func (in *aptRepositoryArchiveTypePtr) ToAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) AptRepositoryArchiveTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AptRepositoryArchiveTypePtrOutput)
+}
+
+func (in *aptRepositoryArchiveTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AptRepositoryArchiveType] {
+	return pulumix.Output[*AptRepositoryArchiveType]{
+		OutputState: in.ToAptRepositoryArchiveTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
@@ -251,6 +270,12 @@ func (o AptSettingsTypeOutput) ToAptSettingsTypePtrOutputWithContext(ctx context
 	}).(AptSettingsTypePtrOutput)
 }
 
+func (o AptSettingsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AptSettingsType] {
+	return pulumix.Output[AptSettingsType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AptSettingsTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutput() AptSettingsTypePt
 
 func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
 	return o
+}
+
+func (o AptSettingsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AptSettingsType] {
+	return pulumix.Output[*AptSettingsType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AptSettingsTypePtrOutput) Elem() AptSettingsTypeOutput {
@@ -346,6 +377,12 @@ func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOut
 
 func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AptSettingsTypePtrOutput)
+}
+
+func (in *aptSettingsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AptSettingsType] {
+	return pulumix.Output[*AptSettingsType]{
+		OutputState: in.ToAptSettingsTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
@@ -422,6 +459,12 @@ func (o ExecStepConfigInterpreterOutput) ToExecStepConfigInterpreterPtrOutputWit
 	}).(ExecStepConfigInterpreterPtrOutput)
 }
 
+func (o ExecStepConfigInterpreterOutput) ToOutput(ctx context.Context) pulumix.Output[ExecStepConfigInterpreter] {
+	return pulumix.Output[ExecStepConfigInterpreter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExecStepConfigInterpreterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutput
 
 func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
 	return o
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfigInterpreter] {
+	return pulumix.Output[*ExecStepConfigInterpreter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecStepConfigInterpreterPtrOutput) Elem() ExecStepConfigInterpreterOutput {
@@ -517,6 +566,12 @@ func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutput() E
 
 func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecStepConfigInterpreterPtrOutput)
+}
+
+func (in *execStepConfigInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfigInterpreter] {
+	return pulumix.Output[*ExecStepConfigInterpreter]{
+		OutputState: in.ToExecStepConfigInterpreterPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
@@ -593,6 +648,12 @@ func (o PackageDesiredStateOutput) ToPackageDesiredStatePtrOutputWithContext(ctx
 	}).(PackageDesiredStatePtrOutput)
 }
 
+func (o PackageDesiredStateOutput) ToOutput(ctx context.Context) pulumix.Output[PackageDesiredState] {
+	return pulumix.Output[PackageDesiredState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PackageDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -626,6 +687,12 @@ func (o PackageDesiredStatePtrOutput) ToPackageDesiredStatePtrOutput() PackageDe
 
 func (o PackageDesiredStatePtrOutput) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
 	return o
+}
+
+func (o PackageDesiredStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PackageDesiredState] {
+	return pulumix.Output[*PackageDesiredState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PackageDesiredStatePtrOutput) Elem() PackageDesiredStateOutput {
@@ -688,6 +755,12 @@ func (in *packageDesiredStatePtr) ToPackageDesiredStatePtrOutput() PackageDesire
 
 func (in *packageDesiredStatePtr) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PackageDesiredStatePtrOutput)
+}
+
+func (in *packageDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PackageDesiredState] {
+	return pulumix.Output[*PackageDesiredState]{
+		OutputState: in.ToPackageDesiredStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
@@ -768,6 +841,12 @@ func (o PackageManagerOutput) ToPackageManagerPtrOutputWithContext(ctx context.C
 	}).(PackageManagerPtrOutput)
 }
 
+func (o PackageManagerOutput) ToOutput(ctx context.Context) pulumix.Output[PackageManager] {
+	return pulumix.Output[PackageManager]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PackageManagerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -801,6 +880,12 @@ func (o PackageManagerPtrOutput) ToPackageManagerPtrOutput() PackageManagerPtrOu
 
 func (o PackageManagerPtrOutput) ToPackageManagerPtrOutputWithContext(ctx context.Context) PackageManagerPtrOutput {
 	return o
+}
+
+func (o PackageManagerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PackageManager] {
+	return pulumix.Output[*PackageManager]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PackageManagerPtrOutput) Elem() PackageManagerOutput {
@@ -863,6 +948,12 @@ func (in *packageManagerPtr) ToPackageManagerPtrOutput() PackageManagerPtrOutput
 
 func (in *packageManagerPtr) ToPackageManagerPtrOutputWithContext(ctx context.Context) PackageManagerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PackageManagerPtrOutput)
+}
+
+func (in *packageManagerPtr) ToOutput(ctx context.Context) pulumix.Output[*PackageManager] {
+	return pulumix.Output[*PackageManager]{
+		OutputState: in.ToPackageManagerPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Post-patch reboot settings.
@@ -939,6 +1030,12 @@ func (o PatchConfigRebootConfigOutput) ToPatchConfigRebootConfigPtrOutputWithCon
 	}).(PatchConfigRebootConfigPtrOutput)
 }
 
+func (o PatchConfigRebootConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchConfigRebootConfig] {
+	return pulumix.Output[PatchConfigRebootConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PatchConfigRebootConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -972,6 +1069,12 @@ func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutput() P
 
 func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
 	return o
+}
+
+func (o PatchConfigRebootConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchConfigRebootConfig] {
+	return pulumix.Output[*PatchConfigRebootConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PatchConfigRebootConfigPtrOutput) Elem() PatchConfigRebootConfigOutput {
@@ -1034,6 +1137,12 @@ func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutput() Patch
 
 func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PatchConfigRebootConfigPtrOutput)
+}
+
+func (in *patchConfigRebootConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*PatchConfigRebootConfig] {
+	return pulumix.Output[*PatchConfigRebootConfig]{
+		OutputState: in.ToPatchConfigRebootConfigPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Mode of the patch rollout.
@@ -1108,6 +1217,12 @@ func (o PatchRolloutModeOutput) ToPatchRolloutModePtrOutputWithContext(ctx conte
 	}).(PatchRolloutModePtrOutput)
 }
 
+func (o PatchRolloutModeOutput) ToOutput(ctx context.Context) pulumix.Output[PatchRolloutMode] {
+	return pulumix.Output[PatchRolloutMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PatchRolloutModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1141,6 +1256,12 @@ func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutput() PatchRolloutMod
 
 func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
 	return o
+}
+
+func (o PatchRolloutModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchRolloutMode] {
+	return pulumix.Output[*PatchRolloutMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PatchRolloutModePtrOutput) Elem() PatchRolloutModeOutput {
@@ -1203,6 +1324,12 @@ func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutput() PatchRolloutModePtr
 
 func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PatchRolloutModePtrOutput)
+}
+
+func (in *patchRolloutModePtr) ToOutput(ctx context.Context) pulumix.Output[*PatchRolloutMode] {
+	return pulumix.Output[*PatchRolloutMode]{
+		OutputState: in.ToPatchRolloutModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The frequency unit of this recurring schedule.
@@ -1279,6 +1406,12 @@ func (o RecurringScheduleFrequencyOutput) ToRecurringScheduleFrequencyPtrOutputW
 	}).(RecurringScheduleFrequencyPtrOutput)
 }
 
+func (o RecurringScheduleFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[RecurringScheduleFrequency] {
+	return pulumix.Output[RecurringScheduleFrequency]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecurringScheduleFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1312,6 +1445,12 @@ func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutp
 
 func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
 	return o
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurringScheduleFrequency] {
+	return pulumix.Output[*RecurringScheduleFrequency]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecurringScheduleFrequencyPtrOutput) Elem() RecurringScheduleFrequencyOutput {
@@ -1374,6 +1513,12 @@ func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutput()
 
 func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurringScheduleFrequencyPtrOutput)
+}
+
+func (in *recurringScheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurringScheduleFrequency] {
+	return pulumix.Output[*RecurringScheduleFrequency]{
+		OutputState: in.ToRecurringScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
@@ -1450,6 +1595,12 @@ func (o SoftwareRecipeDesiredStateOutput) ToSoftwareRecipeDesiredStatePtrOutputW
 	}).(SoftwareRecipeDesiredStatePtrOutput)
 }
 
+func (o SoftwareRecipeDesiredStateOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeDesiredState] {
+	return pulumix.Output[SoftwareRecipeDesiredState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SoftwareRecipeDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1483,6 +1634,12 @@ func (o SoftwareRecipeDesiredStatePtrOutput) ToSoftwareRecipeDesiredStatePtrOutp
 
 func (o SoftwareRecipeDesiredStatePtrOutput) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
 	return o
+}
+
+func (o SoftwareRecipeDesiredStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeDesiredState] {
+	return pulumix.Output[*SoftwareRecipeDesiredState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareRecipeDesiredStatePtrOutput) Elem() SoftwareRecipeDesiredStateOutput {
@@ -1545,6 +1702,12 @@ func (in *softwareRecipeDesiredStatePtr) ToSoftwareRecipeDesiredStatePtrOutput()
 
 func (in *softwareRecipeDesiredStatePtr) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeDesiredStatePtrOutput)
+}
+
+func (in *softwareRecipeDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeDesiredState] {
+	return pulumix.Output[*SoftwareRecipeDesiredState]{
+		OutputState: in.ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of the archive to extract.
@@ -1627,6 +1790,12 @@ func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToSoftwareRecipeStepExtractA
 	}).(SoftwareRecipeStepExtractArchiveTypePtrOutput)
 }
 
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepExtractArchiveType] {
+	return pulumix.Output[SoftwareRecipeStepExtractArchiveType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1660,6 +1829,12 @@ func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToSoftwareRecipeStepExtra
 
 func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput {
 	return o
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepExtractArchiveType] {
+	return pulumix.Output[*SoftwareRecipeStepExtractArchiveType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) Elem() SoftwareRecipeStepExtractArchiveTypeOutput {
@@ -1722,6 +1897,12 @@ func (in *softwareRecipeStepExtractArchiveTypePtr) ToSoftwareRecipeStepExtractAr
 
 func (in *softwareRecipeStepExtractArchiveTypePtr) ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeStepExtractArchiveTypePtrOutput)
+}
+
+func (in *softwareRecipeStepExtractArchiveTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepExtractArchiveType] {
+	return pulumix.Output[*SoftwareRecipeStepExtractArchiveType]{
+		OutputState: in.ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
@@ -1796,6 +1977,12 @@ func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToSoftwareRecipeStepRunScr
 	}).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
 }
 
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepRunScriptInterpreter] {
+	return pulumix.Output[SoftwareRecipeStepRunScriptInterpreter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1829,6 +2016,12 @@ func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToSoftwareRecipeStepRun
 
 func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
 	return o
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepRunScriptInterpreter] {
+	return pulumix.Output[*SoftwareRecipeStepRunScriptInterpreter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) Elem() SoftwareRecipeStepRunScriptInterpreterOutput {
@@ -1891,6 +2084,12 @@ func (in *softwareRecipeStepRunScriptInterpreterPtr) ToSoftwareRecipeStepRunScri
 
 func (in *softwareRecipeStepRunScriptInterpreterPtr) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
+}
+
+func (in *softwareRecipeStepRunScriptInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepRunScriptInterpreter] {
+	return pulumix.Output[*SoftwareRecipeStepRunScriptInterpreter]{
+		OutputState: in.ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. A day of the week.
@@ -1975,6 +2174,12 @@ func (o WeekDayOfMonthDayOfWeekOutput) ToWeekDayOfMonthDayOfWeekPtrOutputWithCon
 	}).(WeekDayOfMonthDayOfWeekPtrOutput)
 }
 
+func (o WeekDayOfMonthDayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[WeekDayOfMonthDayOfWeek] {
+	return pulumix.Output[WeekDayOfMonthDayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WeekDayOfMonthDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2008,6 +2213,12 @@ func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutput() W
 
 func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
 	return o
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeekDayOfMonthDayOfWeek] {
+	return pulumix.Output[*WeekDayOfMonthDayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WeekDayOfMonthDayOfWeekPtrOutput) Elem() WeekDayOfMonthDayOfWeekOutput {
@@ -2070,6 +2281,12 @@ func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutput() WeekD
 
 func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayOfMonthDayOfWeekPtrOutput)
+}
+
+func (in *weekDayOfMonthDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDayOfMonthDayOfWeek] {
+	return pulumix.Output[*WeekDayOfMonthDayOfWeek]{
+		OutputState: in.ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Day of the week.
@@ -2154,6 +2371,12 @@ func (o WeeklyScheduleDayOfWeekOutput) ToWeeklyScheduleDayOfWeekPtrOutputWithCon
 	}).(WeeklyScheduleDayOfWeekPtrOutput)
 }
 
+func (o WeeklyScheduleDayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyScheduleDayOfWeek] {
+	return pulumix.Output[WeeklyScheduleDayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WeeklyScheduleDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2187,6 +2410,12 @@ func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutput() W
 
 func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
 	return o
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleDayOfWeek] {
+	return pulumix.Output[*WeeklyScheduleDayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WeeklyScheduleDayOfWeekPtrOutput) Elem() WeeklyScheduleDayOfWeekOutput {
@@ -2249,6 +2478,12 @@ func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutput() Weekl
 
 func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeklyScheduleDayOfWeekPtrOutput)
+}
+
+func (in *weeklyScheduleDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleDayOfWeek] {
+	return pulumix.Output[*WeeklyScheduleDayOfWeek]{
+		OutputState: in.ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type WindowsUpdateSettingsClassificationsItem string
@@ -2336,6 +2571,12 @@ func (o WindowsUpdateSettingsClassificationsItemOutput) ToWindowsUpdateSettingsC
 	}).(WindowsUpdateSettingsClassificationsItemPtrOutput)
 }
 
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[WindowsUpdateSettingsClassificationsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WindowsUpdateSettingsClassificationsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2369,6 +2610,12 @@ func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettin
 
 func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
 	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[*WindowsUpdateSettingsClassificationsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WindowsUpdateSettingsClassificationsItemPtrOutput) Elem() WindowsUpdateSettingsClassificationsItemOutput {
@@ -2433,6 +2680,12 @@ func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsCl
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsUpdateSettingsClassificationsItemPtrOutput)
 }
 
+func (in *windowsUpdateSettingsClassificationsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[*WindowsUpdateSettingsClassificationsItem]{
+		OutputState: in.ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WindowsUpdateSettingsClassificationsItemArrayInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArray and WindowsUpdateSettingsClassificationsItemArrayOutput values.
 // You can construct a concrete instance of `WindowsUpdateSettingsClassificationsItemArrayInput` via:
 //
@@ -2458,6 +2711,12 @@ func (i WindowsUpdateSettingsClassificationsItemArray) ToWindowsUpdateSettingsCl
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsClassificationsItemArrayOutput)
 }
 
+func (i WindowsUpdateSettingsClassificationsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[[]WindowsUpdateSettingsClassificationsItem]{
+		OutputState: i.ToWindowsUpdateSettingsClassificationsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WindowsUpdateSettingsClassificationsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (WindowsUpdateSettingsClassificationsItemArrayOutput) ElementType() reflect.Type {
@@ -2470,6 +2729,12 @@ func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToWindowsUpdateSett
 
 func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToWindowsUpdateSettingsClassificationsItemArrayOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemArrayOutput {
 	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WindowsUpdateSettingsClassificationsItem] {
+	return pulumix.Output[[]WindowsUpdateSettingsClassificationsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WindowsUpdateSettingsClassificationsItemArrayOutput) Index(i pulumi.IntInput) WindowsUpdateSettingsClassificationsItemOutput {

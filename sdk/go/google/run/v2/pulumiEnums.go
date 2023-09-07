@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
@@ -80,6 +81,12 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToGoogleCloudRunV2Empt
 	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
 }
 
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSourceMedium] {
+	return pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSourceMedium]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToGoogleCloudRunV2E
 
 func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
 	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium] {
+	return pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) Elem() GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput {
@@ -175,6 +188,12 @@ func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToGoogleCloudRunV2Empty
 
 func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
+}
+
+func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium] {
+	return pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium]{
+		OutputState: in.ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The sandbox environment to host this Revision.
@@ -249,6 +268,12 @@ func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleClou
 	}).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionTemplateExecutionEnvironment] {
+	return pulumix.Output[GoogleCloudRunV2RevisionTemplateExecutionEnvironment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -282,6 +307,12 @@ func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleC
 
 func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment] {
+	return pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) Elem() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput {
@@ -344,6 +375,12 @@ func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloud
 
 func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
+}
+
+func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment] {
+	return pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment]{
+		OutputState: in.ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The execution environment being used to host this Task.
@@ -418,6 +455,12 @@ func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToGoogleCloudRun
 	}).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
 }
 
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TaskTemplateExecutionEnvironment] {
+	return pulumix.Output[GoogleCloudRunV2TaskTemplateExecutionEnvironment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -451,6 +494,12 @@ func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
 	return o
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment] {
+	return pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) Elem() GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput {
@@ -513,6 +562,12 @@ func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV
 
 func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
+}
+
+func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment] {
+	return pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment]{
+		OutputState: in.ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The allocation type for this traffic target.
@@ -587,6 +642,12 @@ func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToGoogleCloudRunV2TrafficTarget
 	}).(GoogleCloudRunV2TrafficTargetTypePtrOutput)
 }
 
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TrafficTargetType] {
+	return pulumix.Output[GoogleCloudRunV2TrafficTargetType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -620,6 +681,12 @@ func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToGoogleCloudRunV2TrafficTar
 
 func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TrafficTargetType] {
+	return pulumix.Output[*GoogleCloudRunV2TrafficTargetType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) Elem() GoogleCloudRunV2TrafficTargetTypeOutput {
@@ -682,6 +749,12 @@ func (in *googleCloudRunV2TrafficTargetTypePtr) ToGoogleCloudRunV2TrafficTargetT
 
 func (in *googleCloudRunV2TrafficTargetTypePtr) ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2TrafficTargetTypePtrOutput)
+}
+
+func (in *googleCloudRunV2TrafficTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TrafficTargetType] {
+	return pulumix.Output[*GoogleCloudRunV2TrafficTargetType]{
+		OutputState: in.ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Traffic VPC egress settings.
@@ -756,6 +829,12 @@ func (o GoogleCloudRunV2VpcAccessEgressOutput) ToGoogleCloudRunV2VpcAccessEgress
 	}).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
 }
 
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VpcAccessEgress] {
+	return pulumix.Output[GoogleCloudRunV2VpcAccessEgress]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudRunV2VpcAccessEgressOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -789,6 +868,12 @@ func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToGoogleCloudRunV2VpcAccessEgr
 
 func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return o
+}
+
+func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2VpcAccessEgress] {
+	return pulumix.Output[*GoogleCloudRunV2VpcAccessEgress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) Elem() GoogleCloudRunV2VpcAccessEgressOutput {
@@ -851,6 +936,12 @@ func (in *googleCloudRunV2VpcAccessEgressPtr) ToGoogleCloudRunV2VpcAccessEgressP
 
 func (in *googleCloudRunV2VpcAccessEgressPtr) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
+}
+
+func (in *googleCloudRunV2VpcAccessEgressPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2VpcAccessEgress] {
+	return pulumix.Output[*GoogleCloudRunV2VpcAccessEgress]{
+		OutputState: in.ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -927,6 +1018,12 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -960,6 +1057,12 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -1022,6 +1125,12 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
@@ -1106,6 +1215,12 @@ func (o JobLaunchStageOutput) ToJobLaunchStagePtrOutputWithContext(ctx context.C
 	}).(JobLaunchStagePtrOutput)
 }
 
+func (o JobLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[JobLaunchStage] {
+	return pulumix.Output[JobLaunchStage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1139,6 +1254,12 @@ func (o JobLaunchStagePtrOutput) ToJobLaunchStagePtrOutput() JobLaunchStagePtrOu
 
 func (o JobLaunchStagePtrOutput) ToJobLaunchStagePtrOutputWithContext(ctx context.Context) JobLaunchStagePtrOutput {
 	return o
+}
+
+func (o JobLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobLaunchStage] {
+	return pulumix.Output[*JobLaunchStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobLaunchStagePtrOutput) Elem() JobLaunchStageOutput {
@@ -1201,6 +1322,12 @@ func (in *jobLaunchStagePtr) ToJobLaunchStagePtrOutput() JobLaunchStagePtrOutput
 
 func (in *jobLaunchStagePtr) ToJobLaunchStagePtrOutputWithContext(ctx context.Context) JobLaunchStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobLaunchStagePtrOutput)
+}
+
+func (in *jobLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*JobLaunchStage] {
+	return pulumix.Output[*JobLaunchStage]{
+		OutputState: in.ToJobLaunchStagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -1277,6 +1404,12 @@ func (o ServiceIngressOutput) ToServiceIngressPtrOutputWithContext(ctx context.C
 	}).(ServiceIngressPtrOutput)
 }
 
+func (o ServiceIngressOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIngress] {
+	return pulumix.Output[ServiceIngress]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceIngressOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1310,6 +1443,12 @@ func (o ServiceIngressPtrOutput) ToServiceIngressPtrOutput() ServiceIngressPtrOu
 
 func (o ServiceIngressPtrOutput) ToServiceIngressPtrOutputWithContext(ctx context.Context) ServiceIngressPtrOutput {
 	return o
+}
+
+func (o ServiceIngressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIngress] {
+	return pulumix.Output[*ServiceIngress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIngressPtrOutput) Elem() ServiceIngressOutput {
@@ -1372,6 +1511,12 @@ func (in *serviceIngressPtr) ToServiceIngressPtrOutput() ServiceIngressPtrOutput
 
 func (in *serviceIngressPtr) ToServiceIngressPtrOutputWithContext(ctx context.Context) ServiceIngressPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceIngressPtrOutput)
+}
+
+func (in *serviceIngressPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceIngress] {
+	return pulumix.Output[*ServiceIngress]{
+		OutputState: in.ToServiceIngressPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
@@ -1456,6 +1601,12 @@ func (o ServiceLaunchStageOutput) ToServiceLaunchStagePtrOutputWithContext(ctx c
 	}).(ServiceLaunchStagePtrOutput)
 }
 
+func (o ServiceLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLaunchStage] {
+	return pulumix.Output[ServiceLaunchStage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1489,6 +1640,12 @@ func (o ServiceLaunchStagePtrOutput) ToServiceLaunchStagePtrOutput() ServiceLaun
 
 func (o ServiceLaunchStagePtrOutput) ToServiceLaunchStagePtrOutputWithContext(ctx context.Context) ServiceLaunchStagePtrOutput {
 	return o
+}
+
+func (o ServiceLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLaunchStage] {
+	return pulumix.Output[*ServiceLaunchStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceLaunchStagePtrOutput) Elem() ServiceLaunchStageOutput {
@@ -1551,6 +1708,12 @@ func (in *serviceLaunchStagePtr) ToServiceLaunchStagePtrOutput() ServiceLaunchSt
 
 func (in *serviceLaunchStagePtr) ToServiceLaunchStagePtrOutputWithContext(ctx context.Context) ServiceLaunchStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLaunchStagePtrOutput)
+}
+
+func (in *serviceLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLaunchStage] {
+	return pulumix.Output[*ServiceLaunchStage]{
+		OutputState: in.ToServiceLaunchStagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

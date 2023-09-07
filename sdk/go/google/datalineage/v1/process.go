@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new process.
@@ -127,6 +128,12 @@ func (i *Process) ToProcessOutputWithContext(ctx context.Context) ProcessOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProcessOutput)
 }
 
+func (i *Process) ToOutput(ctx context.Context) pulumix.Output[*Process] {
+	return pulumix.Output[*Process]{
+		OutputState: i.ToProcessOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProcessOutput struct{ *pulumi.OutputState }
 
 func (ProcessOutput) ElementType() reflect.Type {
@@ -139,6 +146,12 @@ func (o ProcessOutput) ToProcessOutput() ProcessOutput {
 
 func (o ProcessOutput) ToProcessOutputWithContext(ctx context.Context) ProcessOutput {
 	return o
+}
+
+func (o ProcessOutput) ToOutput(ctx context.Context) pulumix.Output[*Process] {
+	return pulumix.Output[*Process]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.

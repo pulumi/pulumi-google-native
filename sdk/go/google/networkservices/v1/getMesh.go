@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Mesh.
@@ -80,6 +81,12 @@ func (o LookupMeshResultOutput) ToLookupMeshResultOutput() LookupMeshResultOutpu
 
 func (o LookupMeshResultOutput) ToLookupMeshResultOutputWithContext(ctx context.Context) LookupMeshResultOutput {
 	return o
+}
+
+func (o LookupMeshResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMeshResult] {
+	return pulumix.Output[LookupMeshResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the resource was created.

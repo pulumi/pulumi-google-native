@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new preference set in a given project and location.
@@ -131,6 +132,12 @@ func (i *PreferenceSet) ToPreferenceSetOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(PreferenceSetOutput)
 }
 
+func (i *PreferenceSet) ToOutput(ctx context.Context) pulumix.Output[*PreferenceSet] {
+	return pulumix.Output[*PreferenceSet]{
+		OutputState: i.ToPreferenceSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PreferenceSetOutput struct{ *pulumi.OutputState }
 
 func (PreferenceSetOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o PreferenceSetOutput) ToPreferenceSetOutput() PreferenceSetOutput {
 
 func (o PreferenceSetOutput) ToPreferenceSetOutputWithContext(ctx context.Context) PreferenceSetOutput {
 	return o
+}
+
+func (o PreferenceSetOutput) ToOutput(ctx context.Context) pulumix.Output[*PreferenceSet] {
+	return pulumix.Output[*PreferenceSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the preference set was created.

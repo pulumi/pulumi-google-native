@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
@@ -82,6 +83,12 @@ func (o ApiProductQuotaCounterScopeOutput) ToApiProductQuotaCounterScopePtrOutpu
 	}).(ApiProductQuotaCounterScopePtrOutput)
 }
 
+func (o ApiProductQuotaCounterScopeOutput) ToOutput(ctx context.Context) pulumix.Output[ApiProductQuotaCounterScope] {
+	return pulumix.Output[ApiProductQuotaCounterScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApiProductQuotaCounterScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o ApiProductQuotaCounterScopePtrOutput) ToApiProductQuotaCounterScopePtrOu
 
 func (o ApiProductQuotaCounterScopePtrOutput) ToApiProductQuotaCounterScopePtrOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopePtrOutput {
 	return o
+}
+
+func (o ApiProductQuotaCounterScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiProductQuotaCounterScope] {
+	return pulumix.Output[*ApiProductQuotaCounterScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiProductQuotaCounterScopePtrOutput) Elem() ApiProductQuotaCounterScopeOutput {
@@ -177,6 +190,12 @@ func (in *apiProductQuotaCounterScopePtr) ToApiProductQuotaCounterScopePtrOutput
 
 func (in *apiProductQuotaCounterScopePtr) ToApiProductQuotaCounterScopePtrOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApiProductQuotaCounterScopePtrOutput)
+}
+
+func (in *apiProductQuotaCounterScopePtr) ToOutput(ctx context.Context) pulumix.Output[*ApiProductQuotaCounterScope] {
+	return pulumix.Output[*ApiProductQuotaCounterScope]{
+		OutputState: in.ToApiProductQuotaCounterScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The type of data this data collector will collect.
@@ -257,6 +276,12 @@ func (o DataCollectorTypeOutput) ToDataCollectorTypePtrOutputWithContext(ctx con
 	}).(DataCollectorTypePtrOutput)
 }
 
+func (o DataCollectorTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataCollectorType] {
+	return pulumix.Output[DataCollectorType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataCollectorTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -290,6 +315,12 @@ func (o DataCollectorTypePtrOutput) ToDataCollectorTypePtrOutput() DataCollector
 
 func (o DataCollectorTypePtrOutput) ToDataCollectorTypePtrOutputWithContext(ctx context.Context) DataCollectorTypePtrOutput {
 	return o
+}
+
+func (o DataCollectorTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCollectorType] {
+	return pulumix.Output[*DataCollectorType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataCollectorTypePtrOutput) Elem() DataCollectorTypeOutput {
@@ -352,6 +383,12 @@ func (in *dataCollectorTypePtr) ToDataCollectorTypePtrOutput() DataCollectorType
 
 func (in *dataCollectorTypePtr) ToDataCollectorTypePtrOutputWithContext(ctx context.Context) DataCollectorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataCollectorTypePtrOutput)
+}
+
+func (in *dataCollectorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataCollectorType] {
+	return pulumix.Output[*DataCollectorType]{
+		OutputState: in.ToDataCollectorTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
@@ -426,6 +463,12 @@ func (o EnvironmentApiProxyTypeOutput) ToEnvironmentApiProxyTypePtrOutputWithCon
 	}).(EnvironmentApiProxyTypePtrOutput)
 }
 
+func (o EnvironmentApiProxyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentApiProxyType] {
+	return pulumix.Output[EnvironmentApiProxyType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentApiProxyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -459,6 +502,12 @@ func (o EnvironmentApiProxyTypePtrOutput) ToEnvironmentApiProxyTypePtrOutput() E
 
 func (o EnvironmentApiProxyTypePtrOutput) ToEnvironmentApiProxyTypePtrOutputWithContext(ctx context.Context) EnvironmentApiProxyTypePtrOutput {
 	return o
+}
+
+func (o EnvironmentApiProxyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentApiProxyType] {
+	return pulumix.Output[*EnvironmentApiProxyType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentApiProxyTypePtrOutput) Elem() EnvironmentApiProxyTypeOutput {
@@ -521,6 +570,12 @@ func (in *environmentApiProxyTypePtr) ToEnvironmentApiProxyTypePtrOutput() Envir
 
 func (in *environmentApiProxyTypePtr) ToEnvironmentApiProxyTypePtrOutputWithContext(ctx context.Context) EnvironmentApiProxyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentApiProxyTypePtrOutput)
+}
+
+func (in *environmentApiProxyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentApiProxyType] {
+	return pulumix.Output[*EnvironmentApiProxyType]{
+		OutputState: in.ToEnvironmentApiProxyTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
@@ -595,6 +650,12 @@ func (o EnvironmentDeploymentTypeOutput) ToEnvironmentDeploymentTypePtrOutputWit
 	}).(EnvironmentDeploymentTypePtrOutput)
 }
 
+func (o EnvironmentDeploymentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentDeploymentType] {
+	return pulumix.Output[EnvironmentDeploymentType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentDeploymentTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -628,6 +689,12 @@ func (o EnvironmentDeploymentTypePtrOutput) ToEnvironmentDeploymentTypePtrOutput
 
 func (o EnvironmentDeploymentTypePtrOutput) ToEnvironmentDeploymentTypePtrOutputWithContext(ctx context.Context) EnvironmentDeploymentTypePtrOutput {
 	return o
+}
+
+func (o EnvironmentDeploymentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentDeploymentType] {
+	return pulumix.Output[*EnvironmentDeploymentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentDeploymentTypePtrOutput) Elem() EnvironmentDeploymentTypeOutput {
@@ -690,6 +757,12 @@ func (in *environmentDeploymentTypePtr) ToEnvironmentDeploymentTypePtrOutput() E
 
 func (in *environmentDeploymentTypePtr) ToEnvironmentDeploymentTypePtrOutputWithContext(ctx context.Context) EnvironmentDeploymentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentDeploymentTypePtrOutput)
+}
+
+func (in *environmentDeploymentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentDeploymentType] {
+	return pulumix.Output[*EnvironmentDeploymentType]{
+		OutputState: in.ToEnvironmentDeploymentTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Sampler of distributed tracing. OFF is the default value.
@@ -764,6 +837,12 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToGoogleCloudApigee
 	}).(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput)
 }
 
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfigSampler] {
+	return pulumix.Output[GoogleCloudApigeeV1TraceSamplingConfigSampler]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -797,6 +876,12 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToGoogleCloudApi
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfigSampler] {
+	return pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfigSampler]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
@@ -859,6 +944,12 @@ func (in *googleCloudApigeeV1TraceSamplingConfigSamplerPtr) ToGoogleCloudApigeeV
 
 func (in *googleCloudApigeeV1TraceSamplingConfigSamplerPtr) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput)
+}
+
+func (in *googleCloudApigeeV1TraceSamplingConfigSamplerPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfigSampler] {
+	return pulumix.Output[*GoogleCloudApigeeV1TraceSamplingConfigSampler]{
+		OutputState: in.ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -935,6 +1026,12 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -968,6 +1065,12 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -1030,6 +1133,12 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
@@ -1114,6 +1223,12 @@ func (o InstancePeeringCidrRangeOutput) ToInstancePeeringCidrRangePtrOutputWithC
 	}).(InstancePeeringCidrRangePtrOutput)
 }
 
+func (o InstancePeeringCidrRangeOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePeeringCidrRange] {
+	return pulumix.Output[InstancePeeringCidrRange]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstancePeeringCidrRangeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1147,6 +1262,12 @@ func (o InstancePeeringCidrRangePtrOutput) ToInstancePeeringCidrRangePtrOutput()
 
 func (o InstancePeeringCidrRangePtrOutput) ToInstancePeeringCidrRangePtrOutputWithContext(ctx context.Context) InstancePeeringCidrRangePtrOutput {
 	return o
+}
+
+func (o InstancePeeringCidrRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePeeringCidrRange] {
+	return pulumix.Output[*InstancePeeringCidrRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePeeringCidrRangePtrOutput) Elem() InstancePeeringCidrRangeOutput {
@@ -1209,6 +1330,12 @@ func (in *instancePeeringCidrRangePtr) ToInstancePeeringCidrRangePtrOutput() Ins
 
 func (in *instancePeeringCidrRangePtr) ToInstancePeeringCidrRangePtrOutputWithContext(ctx context.Context) InstancePeeringCidrRangePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePeeringCidrRangePtrOutput)
+}
+
+func (in *instancePeeringCidrRangePtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePeeringCidrRange] {
+	return pulumix.Output[*InstancePeeringCidrRange]{
+		OutputState: in.ToInstancePeeringCidrRangePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
@@ -1285,6 +1412,12 @@ func (o OrganizationBillingTypeOutput) ToOrganizationBillingTypePtrOutputWithCon
 	}).(OrganizationBillingTypePtrOutput)
 }
 
+func (o OrganizationBillingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationBillingType] {
+	return pulumix.Output[OrganizationBillingType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationBillingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1318,6 +1451,12 @@ func (o OrganizationBillingTypePtrOutput) ToOrganizationBillingTypePtrOutput() O
 
 func (o OrganizationBillingTypePtrOutput) ToOrganizationBillingTypePtrOutputWithContext(ctx context.Context) OrganizationBillingTypePtrOutput {
 	return o
+}
+
+func (o OrganizationBillingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBillingType] {
+	return pulumix.Output[*OrganizationBillingType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationBillingTypePtrOutput) Elem() OrganizationBillingTypeOutput {
@@ -1380,6 +1519,12 @@ func (in *organizationBillingTypePtr) ToOrganizationBillingTypePtrOutput() Organ
 
 func (in *organizationBillingTypePtr) ToOrganizationBillingTypePtrOutputWithContext(ctx context.Context) OrganizationBillingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationBillingTypePtrOutput)
+}
+
+func (in *organizationBillingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBillingType] {
+	return pulumix.Output[*OrganizationBillingType]{
+		OutputState: in.ToOrganizationBillingTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
@@ -1454,6 +1599,12 @@ func (o OrganizationRuntimeTypeOutput) ToOrganizationRuntimeTypePtrOutputWithCon
 	}).(OrganizationRuntimeTypePtrOutput)
 }
 
+func (o OrganizationRuntimeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationRuntimeType] {
+	return pulumix.Output[OrganizationRuntimeType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationRuntimeTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1487,6 +1638,12 @@ func (o OrganizationRuntimeTypePtrOutput) ToOrganizationRuntimeTypePtrOutput() O
 
 func (o OrganizationRuntimeTypePtrOutput) ToOrganizationRuntimeTypePtrOutputWithContext(ctx context.Context) OrganizationRuntimeTypePtrOutput {
 	return o
+}
+
+func (o OrganizationRuntimeTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationRuntimeType] {
+	return pulumix.Output[*OrganizationRuntimeType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationRuntimeTypePtrOutput) Elem() OrganizationRuntimeTypeOutput {
@@ -1549,6 +1706,12 @@ func (in *organizationRuntimeTypePtr) ToOrganizationRuntimeTypePtrOutput() Organ
 
 func (in *organizationRuntimeTypePtr) ToOrganizationRuntimeTypePtrOutputWithContext(ctx context.Context) OrganizationRuntimeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationRuntimeTypePtrOutput)
+}
+
+func (in *organizationRuntimeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationRuntimeType] {
+	return pulumix.Output[*OrganizationRuntimeType]{
+		OutputState: in.ToOrganizationRuntimeTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Not used by Apigee.
@@ -1625,6 +1788,12 @@ func (o OrganizationTypeOutput) ToOrganizationTypePtrOutputWithContext(ctx conte
 	}).(OrganizationTypePtrOutput)
 }
 
+func (o OrganizationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationType] {
+	return pulumix.Output[OrganizationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1658,6 +1827,12 @@ func (o OrganizationTypePtrOutput) ToOrganizationTypePtrOutput() OrganizationTyp
 
 func (o OrganizationTypePtrOutput) ToOrganizationTypePtrOutputWithContext(ctx context.Context) OrganizationTypePtrOutput {
 	return o
+}
+
+func (o OrganizationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationType] {
+	return pulumix.Output[*OrganizationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationTypePtrOutput) Elem() OrganizationTypeOutput {
@@ -1720,6 +1895,12 @@ func (in *organizationTypePtr) ToOrganizationTypePtrOutput() OrganizationTypePtr
 
 func (in *organizationTypePtr) ToOrganizationTypePtrOutputWithContext(ctx context.Context) OrganizationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationTypePtrOutput)
+}
+
+func (in *organizationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationType] {
+	return pulumix.Output[*OrganizationType]{
+		OutputState: in.ToOrganizationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Frequency at which the customer will be billed.
@@ -1794,6 +1975,12 @@ func (o RatePlanBillingPeriodOutput) ToRatePlanBillingPeriodPtrOutputWithContext
 	}).(RatePlanBillingPeriodPtrOutput)
 }
 
+func (o RatePlanBillingPeriodOutput) ToOutput(ctx context.Context) pulumix.Output[RatePlanBillingPeriod] {
+	return pulumix.Output[RatePlanBillingPeriod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RatePlanBillingPeriodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1827,6 +2014,12 @@ func (o RatePlanBillingPeriodPtrOutput) ToRatePlanBillingPeriodPtrOutput() RateP
 
 func (o RatePlanBillingPeriodPtrOutput) ToRatePlanBillingPeriodPtrOutputWithContext(ctx context.Context) RatePlanBillingPeriodPtrOutput {
 	return o
+}
+
+func (o RatePlanBillingPeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RatePlanBillingPeriod] {
+	return pulumix.Output[*RatePlanBillingPeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RatePlanBillingPeriodPtrOutput) Elem() RatePlanBillingPeriodOutput {
@@ -1889,6 +2082,12 @@ func (in *ratePlanBillingPeriodPtr) ToRatePlanBillingPeriodPtrOutput() RatePlanB
 
 func (in *ratePlanBillingPeriodPtr) ToRatePlanBillingPeriodPtrOutputWithContext(ctx context.Context) RatePlanBillingPeriodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RatePlanBillingPeriodPtrOutput)
+}
+
+func (in *ratePlanBillingPeriodPtr) ToOutput(ctx context.Context) pulumix.Output[*RatePlanBillingPeriod] {
+	return pulumix.Output[*RatePlanBillingPeriod]{
+		OutputState: in.ToRatePlanBillingPeriodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Pricing model used for consumption-based charges.
@@ -1967,6 +2166,12 @@ func (o RatePlanConsumptionPricingTypeOutput) ToRatePlanConsumptionPricingTypePt
 	}).(RatePlanConsumptionPricingTypePtrOutput)
 }
 
+func (o RatePlanConsumptionPricingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RatePlanConsumptionPricingType] {
+	return pulumix.Output[RatePlanConsumptionPricingType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RatePlanConsumptionPricingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2000,6 +2205,12 @@ func (o RatePlanConsumptionPricingTypePtrOutput) ToRatePlanConsumptionPricingTyp
 
 func (o RatePlanConsumptionPricingTypePtrOutput) ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypePtrOutput {
 	return o
+}
+
+func (o RatePlanConsumptionPricingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RatePlanConsumptionPricingType] {
+	return pulumix.Output[*RatePlanConsumptionPricingType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RatePlanConsumptionPricingTypePtrOutput) Elem() RatePlanConsumptionPricingTypeOutput {
@@ -2062,6 +2273,12 @@ func (in *ratePlanConsumptionPricingTypePtr) ToRatePlanConsumptionPricingTypePtr
 
 func (in *ratePlanConsumptionPricingTypePtr) ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RatePlanConsumptionPricingTypePtrOutput)
+}
+
+func (in *ratePlanConsumptionPricingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RatePlanConsumptionPricingType] {
+	return pulumix.Output[*RatePlanConsumptionPricingType]{
+		OutputState: in.ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
@@ -2136,6 +2353,12 @@ func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelPtrOutpu
 	}).(RatePlanPaymentFundingModelPtrOutput)
 }
 
+func (o RatePlanPaymentFundingModelOutput) ToOutput(ctx context.Context) pulumix.Output[RatePlanPaymentFundingModel] {
+	return pulumix.Output[RatePlanPaymentFundingModel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RatePlanPaymentFundingModelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2169,6 +2392,12 @@ func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOu
 
 func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
 	return o
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RatePlanPaymentFundingModel] {
+	return pulumix.Output[*RatePlanPaymentFundingModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RatePlanPaymentFundingModelPtrOutput) Elem() RatePlanPaymentFundingModelOutput {
@@ -2231,6 +2460,12 @@ func (in *ratePlanPaymentFundingModelPtr) ToRatePlanPaymentFundingModelPtrOutput
 
 func (in *ratePlanPaymentFundingModelPtr) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RatePlanPaymentFundingModelPtrOutput)
+}
+
+func (in *ratePlanPaymentFundingModelPtr) ToOutput(ctx context.Context) pulumix.Output[*RatePlanPaymentFundingModel] {
+	return pulumix.Output[*RatePlanPaymentFundingModel]{
+		OutputState: in.ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Method used to calculate the revenue that is shared with developers.
@@ -2305,6 +2540,12 @@ func (o RatePlanRevenueShareTypeOutput) ToRatePlanRevenueShareTypePtrOutputWithC
 	}).(RatePlanRevenueShareTypePtrOutput)
 }
 
+func (o RatePlanRevenueShareTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RatePlanRevenueShareType] {
+	return pulumix.Output[RatePlanRevenueShareType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RatePlanRevenueShareTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2338,6 +2579,12 @@ func (o RatePlanRevenueShareTypePtrOutput) ToRatePlanRevenueShareTypePtrOutput()
 
 func (o RatePlanRevenueShareTypePtrOutput) ToRatePlanRevenueShareTypePtrOutputWithContext(ctx context.Context) RatePlanRevenueShareTypePtrOutput {
 	return o
+}
+
+func (o RatePlanRevenueShareTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RatePlanRevenueShareType] {
+	return pulumix.Output[*RatePlanRevenueShareType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RatePlanRevenueShareTypePtrOutput) Elem() RatePlanRevenueShareTypeOutput {
@@ -2400,6 +2647,12 @@ func (in *ratePlanRevenueShareTypePtr) ToRatePlanRevenueShareTypePtrOutput() Rat
 
 func (in *ratePlanRevenueShareTypePtr) ToRatePlanRevenueShareTypePtrOutputWithContext(ctx context.Context) RatePlanRevenueShareTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RatePlanRevenueShareTypePtrOutput)
+}
+
+func (in *ratePlanRevenueShareTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RatePlanRevenueShareType] {
+	return pulumix.Output[*RatePlanRevenueShareType]{
+		OutputState: in.ToRatePlanRevenueShareTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Current state of the rate plan (draft or published).
@@ -2474,6 +2727,12 @@ func (o RatePlanStateEnumOutput) ToRatePlanStateEnumPtrOutputWithContext(ctx con
 	}).(RatePlanStateEnumPtrOutput)
 }
 
+func (o RatePlanStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[RatePlanStateEnum] {
+	return pulumix.Output[RatePlanStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RatePlanStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2507,6 +2766,12 @@ func (o RatePlanStateEnumPtrOutput) ToRatePlanStateEnumPtrOutput() RatePlanState
 
 func (o RatePlanStateEnumPtrOutput) ToRatePlanStateEnumPtrOutputWithContext(ctx context.Context) RatePlanStateEnumPtrOutput {
 	return o
+}
+
+func (o RatePlanStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RatePlanStateEnum] {
+	return pulumix.Output[*RatePlanStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RatePlanStateEnumPtrOutput) Elem() RatePlanStateEnumOutput {
@@ -2569,6 +2834,12 @@ func (in *ratePlanStateEnumPtr) ToRatePlanStateEnumPtrOutput() RatePlanStateEnum
 
 func (in *ratePlanStateEnumPtr) ToRatePlanStateEnumPtrOutputWithContext(ctx context.Context) RatePlanStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RatePlanStateEnumPtrOutput)
+}
+
+func (in *ratePlanStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*RatePlanStateEnum] {
+	return pulumix.Output[*RatePlanStateEnum]{
+		OutputState: in.ToRatePlanStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The protocol used by this TargetServer.
@@ -2643,6 +2914,12 @@ func (o TargetServerProtocolOutput) ToTargetServerProtocolPtrOutputWithContext(c
 	}).(TargetServerProtocolPtrOutput)
 }
 
+func (o TargetServerProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[TargetServerProtocol] {
+	return pulumix.Output[TargetServerProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetServerProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2676,6 +2953,12 @@ func (o TargetServerProtocolPtrOutput) ToTargetServerProtocolPtrOutput() TargetS
 
 func (o TargetServerProtocolPtrOutput) ToTargetServerProtocolPtrOutputWithContext(ctx context.Context) TargetServerProtocolPtrOutput {
 	return o
+}
+
+func (o TargetServerProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetServerProtocol] {
+	return pulumix.Output[*TargetServerProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetServerProtocolPtrOutput) Elem() TargetServerProtocolOutput {
@@ -2738,6 +3021,12 @@ func (in *targetServerProtocolPtr) ToTargetServerProtocolPtrOutput() TargetServe
 
 func (in *targetServerProtocolPtr) ToTargetServerProtocolPtrOutputWithContext(ctx context.Context) TargetServerProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetServerProtocolPtrOutput)
+}
+
+func (in *targetServerProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetServerProtocol] {
+	return pulumix.Output[*TargetServerProtocol]{
+		OutputState: in.ToTargetServerProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

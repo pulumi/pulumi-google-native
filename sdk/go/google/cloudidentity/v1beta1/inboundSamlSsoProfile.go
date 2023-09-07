@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an InboundSamlSsoProfile for a customer.
@@ -113,6 +114,12 @@ func (i *InboundSamlSsoProfile) ToInboundSamlSsoProfileOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlSsoProfileOutput)
 }
 
+func (i *InboundSamlSsoProfile) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlSsoProfile] {
+	return pulumix.Output[*InboundSamlSsoProfile]{
+		OutputState: i.ToInboundSamlSsoProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InboundSamlSsoProfileOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlSsoProfileOutput) ElementType() reflect.Type {
@@ -125,6 +132,12 @@ func (o InboundSamlSsoProfileOutput) ToInboundSamlSsoProfileOutput() InboundSaml
 
 func (o InboundSamlSsoProfileOutput) ToInboundSamlSsoProfileOutputWithContext(ctx context.Context) InboundSamlSsoProfileOutput {
 	return o
+}
+
+func (o InboundSamlSsoProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlSsoProfile] {
+	return pulumix.Output[*InboundSamlSsoProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Immutable. The customer. For example: `customers/C0123abc`.

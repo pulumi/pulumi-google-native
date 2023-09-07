@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a snapshot.
@@ -136,6 +137,12 @@ func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotOutput)
 }
 
+func (i *Snapshot) ToOutput(ctx context.Context) pulumix.Output[*Snapshot] {
+	return pulumix.Output[*Snapshot]{
+		OutputState: i.ToSnapshotOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SnapshotOutput struct{ *pulumi.OutputState }
 
 func (SnapshotOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o SnapshotOutput) ToSnapshotOutput() SnapshotOutput {
 
 func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
 	return o
+}
+
+func (o SnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*Snapshot] {
+	return pulumix.Output[*Snapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the snapshot was created.

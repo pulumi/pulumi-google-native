@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a taxonomy.
@@ -80,6 +81,12 @@ func (o LookupTaxonomyResultOutput) ToLookupTaxonomyResultOutput() LookupTaxonom
 
 func (o LookupTaxonomyResultOutput) ToLookupTaxonomyResultOutputWithContext(ctx context.Context) LookupTaxonomyResultOutput {
 	return o
+}
+
+func (o LookupTaxonomyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTaxonomyResult] {
+	return pulumix.Output[LookupTaxonomyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.

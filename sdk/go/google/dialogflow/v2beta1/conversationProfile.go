@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
@@ -183,6 +184,12 @@ func (i *ConversationProfile) ToConversationProfileOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileOutput)
 }
 
+func (i *ConversationProfile) ToOutput(ctx context.Context) pulumix.Output[*ConversationProfile] {
+	return pulumix.Output[*ConversationProfile]{
+		OutputState: i.ToConversationProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConversationProfileOutput struct{ *pulumi.OutputState }
 
 func (ConversationProfileOutput) ElementType() reflect.Type {
@@ -195,6 +202,12 @@ func (o ConversationProfileOutput) ToConversationProfileOutput() ConversationPro
 
 func (o ConversationProfileOutput) ToConversationProfileOutputWithContext(ctx context.Context) ConversationProfileOutput {
 	return o
+}
+
+func (o ConversationProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversationProfile] {
+	return pulumix.Output[*ConversationProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration for an automated agent to use with this profile.

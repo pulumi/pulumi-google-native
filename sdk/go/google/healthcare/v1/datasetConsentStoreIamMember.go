@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *DatasetConsentStoreIamMember) ToDatasetConsentStoreIamMemberOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetConsentStoreIamMemberOutput)
 }
 
+func (i *DatasetConsentStoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*DatasetConsentStoreIamMember] {
+	return pulumix.Output[*DatasetConsentStoreIamMember]{
+		OutputState: i.ToDatasetConsentStoreIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatasetConsentStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DatasetConsentStoreIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o DatasetConsentStoreIamMemberOutput) ToDatasetConsentStoreIamMemberOutput
 
 func (o DatasetConsentStoreIamMemberOutput) ToDatasetConsentStoreIamMemberOutputWithContext(ctx context.Context) DatasetConsentStoreIamMemberOutput {
 	return o
+}
+
+func (o DatasetConsentStoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetConsentStoreIamMember] {
+	return pulumix.Output[*DatasetConsentStoreIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

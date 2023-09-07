@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s).
@@ -137,6 +138,12 @@ func (i *Release) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseOutput)
 }
 
+func (i *Release) ToOutput(ctx context.Context) pulumix.Output[*Release] {
+	return pulumix.Output[*Release]{
+		OutputState: i.ToReleaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReleaseOutput struct{ *pulumi.OutputState }
 
 func (ReleaseOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o ReleaseOutput) ToReleaseOutput() ReleaseOutput {
 
 func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput {
 	return o
+}
+
+func (o ReleaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Release] {
+	return pulumix.Output[*Release]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReleaseOutput) ChannelId() pulumi.StringOutput {
