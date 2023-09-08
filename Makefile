@@ -39,7 +39,7 @@ debug_provider::
 	(cd provider && go install -gcflags="all=-N -l" $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(PROVIDER))
 
 test_provider::
-	(cd provider && go test -v -coverprofile="coverage.txt" $(PROVIDER_PKGS))
+	(cd provider && go test -v -coverprofile="coverage.txt" -coverpkg=./... $(PROVIDER_PKGS))
 
 lint_provider:: provider # lint the provider code
 	cd provider && GOGC=20 golangci-lint run -c ../.golangci.yml
