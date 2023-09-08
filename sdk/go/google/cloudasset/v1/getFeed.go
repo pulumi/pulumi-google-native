@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about an asset feed.
@@ -80,6 +81,12 @@ func (o LookupFeedResultOutput) ToLookupFeedResultOutput() LookupFeedResultOutpu
 
 func (o LookupFeedResultOutput) ToLookupFeedResultOutputWithContext(ctx context.Context) LookupFeedResultOutput {
 	return o
+}
+
+func (o LookupFeedResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeedResult] {
+	return pulumix.Output[LookupFeedResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. For a list of the full names for supported asset types, see [Resource name format](/asset-inventory/docs/resource-name-format).

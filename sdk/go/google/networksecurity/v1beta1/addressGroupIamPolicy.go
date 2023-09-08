@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *AddressGroupIamPolicy) ToAddressGroupIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupIamPolicyOutput)
 }
 
+func (i *AddressGroupIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupIamPolicy] {
+	return pulumix.Output[*AddressGroupIamPolicy]{
+		OutputState: i.ToAddressGroupIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddressGroupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AddressGroupIamPolicyOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o AddressGroupIamPolicyOutput) ToAddressGroupIamPolicyOutput() AddressGrou
 
 func (o AddressGroupIamPolicyOutput) ToAddressGroupIamPolicyOutputWithContext(ctx context.Context) AddressGroupIamPolicyOutput {
 	return o
+}
+
+func (o AddressGroupIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupIamPolicy] {
+	return pulumix.Output[*AddressGroupIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressGroupIamPolicyOutput) AddressGroupId() pulumi.StringOutput {

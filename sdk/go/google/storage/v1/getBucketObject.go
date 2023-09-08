@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an object or its metadata.
@@ -140,6 +141,12 @@ func (o LookupBucketObjectResultOutput) ToLookupBucketObjectResultOutput() Looku
 
 func (o LookupBucketObjectResultOutput) ToLookupBucketObjectResultOutputWithContext(ctx context.Context) LookupBucketObjectResultOutput {
 	return o
+}
+
+func (o LookupBucketObjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBucketObjectResult] {
+	return pulumix.Output[LookupBucketObjectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access controls on the object.

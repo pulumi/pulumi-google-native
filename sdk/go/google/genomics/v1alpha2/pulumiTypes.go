@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -76,6 +77,12 @@ func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
+func (i DiskArgs) ToOutput(ctx context.Context) pulumix.Output[Disk] {
+	return pulumix.Output[Disk]{
+		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
@@ -101,6 +108,12 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
 }
 
+func (i DiskArray) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
+	return pulumix.Output[[]Disk]{
+		OutputState: i.ToDiskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A Google Compute Engine disk resource specification.
 type DiskOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[Disk] {
+	return pulumix.Output[Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
@@ -167,6 +186,12 @@ func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskA
 	return o
 }
 
+func (o DiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
+	return pulumix.Output[[]Disk]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Disk {
 		return vs[0].([]Disk)[vs[1].(int)]
@@ -206,6 +231,12 @@ func (o DiskResponseOutput) ToDiskResponseOutput() DiskResponseOutput {
 
 func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context) DiskResponseOutput {
 	return o
+}
+
+func (o DiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskResponse] {
+	return pulumix.Output[DiskResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
@@ -259,6 +290,12 @@ func (o DiskResponseArrayOutput) ToDiskResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o DiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskResponse] {
+	return pulumix.Output[[]DiskResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskResponse {
 		return vs[0].([]DiskResponse)[vs[1].(int)]
@@ -304,6 +341,12 @@ func (i DockerExecutorArgs) ToDockerExecutorOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DockerExecutorOutput)
 }
 
+func (i DockerExecutorArgs) ToOutput(ctx context.Context) pulumix.Output[DockerExecutor] {
+	return pulumix.Output[DockerExecutor]{
+		OutputState: i.ToDockerExecutorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DockerExecutorArgs) ToDockerExecutorPtrOutput() DockerExecutorPtrOutput {
 	return i.ToDockerExecutorPtrOutputWithContext(context.Background())
 }
@@ -345,6 +388,12 @@ func (i *dockerExecutorPtrType) ToDockerExecutorPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DockerExecutorPtrOutput)
 }
 
+func (i *dockerExecutorPtrType) ToOutput(ctx context.Context) pulumix.Output[*DockerExecutor] {
+	return pulumix.Output[*DockerExecutor]{
+		OutputState: i.ToDockerExecutorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Docker execuctor specification.
 type DockerExecutorOutput struct{ *pulumi.OutputState }
 
@@ -370,6 +419,12 @@ func (o DockerExecutorOutput) ToDockerExecutorPtrOutputWithContext(ctx context.C
 	}).(DockerExecutorPtrOutput)
 }
 
+func (o DockerExecutorOutput) ToOutput(ctx context.Context) pulumix.Output[DockerExecutor] {
+	return pulumix.Output[DockerExecutor]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 func (o DockerExecutorOutput) Cmd() pulumi.StringOutput {
 	return o.ApplyT(func(v DockerExecutor) string { return v.Cmd }).(pulumi.StringOutput)
@@ -392,6 +447,12 @@ func (o DockerExecutorPtrOutput) ToDockerExecutorPtrOutput() DockerExecutorPtrOu
 
 func (o DockerExecutorPtrOutput) ToDockerExecutorPtrOutputWithContext(ctx context.Context) DockerExecutorPtrOutput {
 	return o
+}
+
+func (o DockerExecutorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DockerExecutor] {
+	return pulumix.Output[*DockerExecutor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DockerExecutorPtrOutput) Elem() DockerExecutorOutput {
@@ -447,6 +508,12 @@ func (o DockerExecutorResponseOutput) ToDockerExecutorResponseOutputWithContext(
 	return o
 }
 
+func (o DockerExecutorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DockerExecutorResponse] {
+	return pulumix.Output[DockerExecutorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 func (o DockerExecutorResponseOutput) Cmd() pulumi.StringOutput {
 	return o.ApplyT(func(v DockerExecutorResponse) string { return v.Cmd }).(pulumi.StringOutput)
@@ -496,6 +563,12 @@ func (i LocalCopyArgs) ToLocalCopyOutputWithContext(ctx context.Context) LocalCo
 	return pulumi.ToOutputWithContext(ctx, i).(LocalCopyOutput)
 }
 
+func (i LocalCopyArgs) ToOutput(ctx context.Context) pulumix.Output[LocalCopy] {
+	return pulumix.Output[LocalCopy]{
+		OutputState: i.ToLocalCopyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LocalCopyArgs) ToLocalCopyPtrOutput() LocalCopyPtrOutput {
 	return i.ToLocalCopyPtrOutputWithContext(context.Background())
 }
@@ -537,6 +610,12 @@ func (i *localCopyPtrType) ToLocalCopyPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(LocalCopyPtrOutput)
 }
 
+func (i *localCopyPtrType) ToOutput(ctx context.Context) pulumix.Output[*LocalCopy] {
+	return pulumix.Output[*LocalCopy]{
+		OutputState: i.ToLocalCopyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LocalCopy defines how a remote file should be copied to and from the VM.
 type LocalCopyOutput struct{ *pulumi.OutputState }
 
@@ -562,6 +641,12 @@ func (o LocalCopyOutput) ToLocalCopyPtrOutputWithContext(ctx context.Context) Lo
 	}).(LocalCopyPtrOutput)
 }
 
+func (o LocalCopyOutput) ToOutput(ctx context.Context) pulumix.Output[LocalCopy] {
+	return pulumix.Output[LocalCopy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
 func (o LocalCopyOutput) Disk() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalCopy) string { return v.Disk }).(pulumi.StringOutput)
@@ -584,6 +669,12 @@ func (o LocalCopyPtrOutput) ToLocalCopyPtrOutput() LocalCopyPtrOutput {
 
 func (o LocalCopyPtrOutput) ToLocalCopyPtrOutputWithContext(ctx context.Context) LocalCopyPtrOutput {
 	return o
+}
+
+func (o LocalCopyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalCopy] {
+	return pulumix.Output[*LocalCopy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LocalCopyPtrOutput) Elem() LocalCopyOutput {
@@ -637,6 +728,12 @@ func (o LocalCopyResponseOutput) ToLocalCopyResponseOutput() LocalCopyResponseOu
 
 func (o LocalCopyResponseOutput) ToLocalCopyResponseOutputWithContext(ctx context.Context) LocalCopyResponseOutput {
 	return o
+}
+
+func (o LocalCopyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocalCopyResponse] {
+	return pulumix.Output[LocalCopyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
@@ -696,6 +793,12 @@ func (i PipelineParameterArgs) ToPipelineParameterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineParameterOutput)
 }
 
+func (i PipelineParameterArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineParameter] {
+	return pulumix.Output[PipelineParameter]{
+		OutputState: i.ToPipelineParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PipelineParameterArrayInput is an input type that accepts PipelineParameterArray and PipelineParameterArrayOutput values.
 // You can construct a concrete instance of `PipelineParameterArrayInput` via:
 //
@@ -721,6 +824,12 @@ func (i PipelineParameterArray) ToPipelineParameterArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineParameterArrayOutput)
 }
 
+func (i PipelineParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]PipelineParameter] {
+	return pulumix.Output[[]PipelineParameter]{
+		OutputState: i.ToPipelineParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Parameters facilitate setting and delivering data into the pipeline's execution environment. They are defined at create time, with optional defaults, and can be overridden at run time. If `localCopy` is unset, then the parameter specifies a string that is passed as-is into the pipeline, as the value of the environment variable with the given name. A default value can be optionally specified at create time. The default can be overridden at run time using the inputs map. If no default is given, a value must be supplied at runtime. If `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and on the Docker container where the pipeline computation is run. The service account associated with the Pipeline (by default the project's Compute Engine service account) must have access to the Google Cloud Storage paths. At run time, the Google Cloud Storage paths can be overridden if a default was provided at create time, or must be set otherwise. The pipeline runner should add a key/value pair to either the inputs or outputs map. The indicated data copies will be carried out before/after pipeline execution, just as if the corresponding arguments were provided to `gsutil cp`. For example: Given the following `PipelineParameter`, specified in the `inputParameters` list: ```{name: "input_file", localCopy: {path: "file.txt", disk: "pd1"}}``` where `disk` is defined in the `PipelineResources` object as: ```{name: "pd1", mountPoint: "/mnt/disk/"}``` We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/mnt/disk` in the docker container. At runtime, an entry for `input_file` would be required in the inputs map, such as: ```inputs["input_file"] = "gs://my-bucket/bar.txt"``` This would generate the following gsutil call: ```gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt``` The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the Docker container. Acceptable paths are: Google Cloud storage pathLocal path file file glob directory For outputs, the direction of the copy is reversed: ```gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt``` Acceptable paths are: Local pathGoogle Cloud Storage path file file file directory - directory must already exist glob directory - directory will be created if it doesn't exist One restriction due to docker limitations, is that for outputs that are found on the boot disk, the local path cannot be a glob and must be a file.
 type PipelineParameterOutput struct{ *pulumi.OutputState }
 
@@ -734,6 +843,12 @@ func (o PipelineParameterOutput) ToPipelineParameterOutput() PipelineParameterOu
 
 func (o PipelineParameterOutput) ToPipelineParameterOutputWithContext(ctx context.Context) PipelineParameterOutput {
 	return o
+}
+
+func (o PipelineParameterOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineParameter] {
+	return pulumix.Output[PipelineParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then this must be a Google Cloud Storage path beginning with `gs://`.
@@ -770,6 +885,12 @@ func (o PipelineParameterArrayOutput) ToPipelineParameterArrayOutputWithContext(
 	return o
 }
 
+func (o PipelineParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PipelineParameter] {
+	return pulumix.Output[[]PipelineParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PipelineParameterArrayOutput) Index(i pulumi.IntInput) PipelineParameterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineParameter {
 		return vs[0].([]PipelineParameter)[vs[1].(int)]
@@ -801,6 +922,12 @@ func (o PipelineParameterResponseOutput) ToPipelineParameterResponseOutput() Pip
 
 func (o PipelineParameterResponseOutput) ToPipelineParameterResponseOutputWithContext(ctx context.Context) PipelineParameterResponseOutput {
 	return o
+}
+
+func (o PipelineParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineParameterResponse] {
+	return pulumix.Output[PipelineParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then this must be a Google Cloud Storage path beginning with `gs://`.
@@ -835,6 +962,12 @@ func (o PipelineParameterResponseArrayOutput) ToPipelineParameterResponseArrayOu
 
 func (o PipelineParameterResponseArrayOutput) ToPipelineParameterResponseArrayOutputWithContext(ctx context.Context) PipelineParameterResponseArrayOutput {
 	return o
+}
+
+func (o PipelineParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PipelineParameterResponse] {
+	return pulumix.Output[[]PipelineParameterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PipelineParameterResponseArrayOutput) Index(i pulumi.IntInput) PipelineParameterResponseOutput {
@@ -910,6 +1043,12 @@ func (i PipelineResourcesArgs) ToPipelineResourcesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineResourcesOutput)
 }
 
+func (i PipelineResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineResources] {
+	return pulumix.Output[PipelineResources]{
+		OutputState: i.ToPipelineResourcesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The system resources for the pipeline run.
 type PipelineResourcesOutput struct{ *pulumi.OutputState }
 
@@ -923,6 +1062,12 @@ func (o PipelineResourcesOutput) ToPipelineResourcesOutput() PipelineResourcesOu
 
 func (o PipelineResourcesOutput) ToPipelineResourcesOutputWithContext(ctx context.Context) PipelineResourcesOutput {
 	return o
+}
+
+func (o PipelineResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineResources] {
+	return pulumix.Output[PipelineResources]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
@@ -1005,6 +1150,12 @@ func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponseOutput() Pip
 
 func (o PipelineResourcesResponseOutput) ToPipelineResourcesResponseOutputWithContext(ctx context.Context) PipelineResourcesResponseOutput {
 	return o
+}
+
+func (o PipelineResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineResourcesResponse] {
+	return pulumix.Output[PipelineResourcesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.

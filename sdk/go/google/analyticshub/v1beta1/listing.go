@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new listing.
@@ -186,6 +187,12 @@ func (i *Listing) ToListingOutputWithContext(ctx context.Context) ListingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ListingOutput)
 }
 
+func (i *Listing) ToOutput(ctx context.Context) pulumix.Output[*Listing] {
+	return pulumix.Output[*Listing]{
+		OutputState: i.ToListingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingOutput struct{ *pulumi.OutputState }
 
 func (ListingOutput) ElementType() reflect.Type {
@@ -198,6 +205,12 @@ func (o ListingOutput) ToListingOutput() ListingOutput {
 
 func (o ListingOutput) ToListingOutputWithContext(ctx context.Context) ListingOutput {
 	return o
+}
+
+func (o ListingOutput) ToOutput(ctx context.Context) pulumix.Output[*Listing] {
+	return pulumix.Output[*Listing]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Shared dataset i.e. BigQuery dataset source.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a resource containing information about a backup run.
@@ -98,6 +99,12 @@ func (o LookupBackupRunResultOutput) ToLookupBackupRunResultOutput() LookupBacku
 
 func (o LookupBackupRunResultOutput) ToLookupBackupRunResultOutputWithContext(ctx context.Context) LookupBackupRunResultOutput {
 	return o
+}
+
+func (o LookupBackupRunResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupRunResult] {
+	return pulumix.Output[LookupBackupRunResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.

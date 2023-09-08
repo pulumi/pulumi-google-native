@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a listing.
@@ -92,6 +93,12 @@ func (o LookupListingResultOutput) ToLookupListingResultOutput() LookupListingRe
 
 func (o LookupListingResultOutput) ToLookupListingResultOutputWithContext(ctx context.Context) LookupListingResultOutput {
 	return o
+}
+
+func (o LookupListingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupListingResult] {
+	return pulumix.Output[LookupListingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Shared dataset i.e. BigQuery dataset source.

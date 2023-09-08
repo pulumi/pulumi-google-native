@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new bucket.
@@ -298,6 +299,12 @@ func (i *Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketOutput)
 }
 
+func (i *Bucket) ToOutput(ctx context.Context) pulumix.Output[*Bucket] {
+	return pulumix.Output[*Bucket]{
+		OutputState: i.ToBucketOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BucketOutput struct{ *pulumi.OutputState }
 
 func (BucketOutput) ElementType() reflect.Type {
@@ -310,6 +317,12 @@ func (o BucketOutput) ToBucketOutput() BucketOutput {
 
 func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 	return o
+}
+
+func (o BucketOutput) ToOutput(ctx context.Context) pulumix.Output[*Bucket] {
+	return pulumix.Output[*Bucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access controls on the bucket.

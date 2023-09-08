@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
@@ -117,6 +118,12 @@ func (i *V1beta1IamPolicy) ToV1beta1IamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(V1beta1IamPolicyOutput)
 }
 
+func (i *V1beta1IamPolicy) ToOutput(ctx context.Context) pulumix.Output[*V1beta1IamPolicy] {
+	return pulumix.Output[*V1beta1IamPolicy]{
+		OutputState: i.ToV1beta1IamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type V1beta1IamPolicyOutput struct{ *pulumi.OutputState }
 
 func (V1beta1IamPolicyOutput) ElementType() reflect.Type {
@@ -129,6 +136,12 @@ func (o V1beta1IamPolicyOutput) ToV1beta1IamPolicyOutput() V1beta1IamPolicyOutpu
 
 func (o V1beta1IamPolicyOutput) ToV1beta1IamPolicyOutputWithContext(ctx context.Context) V1beta1IamPolicyOutput {
 	return o
+}
+
+func (o V1beta1IamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*V1beta1IamPolicy] {
+	return pulumix.Output[*V1beta1IamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.

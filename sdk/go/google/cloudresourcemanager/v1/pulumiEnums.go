@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The Project lifecycle state. Read-only.
@@ -255,6 +274,12 @@ func (o ProjectLifecycleStateOutput) ToProjectLifecycleStatePtrOutputWithContext
 	}).(ProjectLifecycleStatePtrOutput)
 }
 
+func (o ProjectLifecycleStateOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectLifecycleState] {
+	return pulumix.Output[ProjectLifecycleState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectLifecycleStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -288,6 +313,12 @@ func (o ProjectLifecycleStatePtrOutput) ToProjectLifecycleStatePtrOutput() Proje
 
 func (o ProjectLifecycleStatePtrOutput) ToProjectLifecycleStatePtrOutputWithContext(ctx context.Context) ProjectLifecycleStatePtrOutput {
 	return o
+}
+
+func (o ProjectLifecycleStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectLifecycleState] {
+	return pulumix.Output[*ProjectLifecycleState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectLifecycleStatePtrOutput) Elem() ProjectLifecycleStateOutput {
@@ -350,6 +381,12 @@ func (in *projectLifecycleStatePtr) ToProjectLifecycleStatePtrOutput() ProjectLi
 
 func (in *projectLifecycleStatePtr) ToProjectLifecycleStatePtrOutputWithContext(ctx context.Context) ProjectLifecycleStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectLifecycleStatePtrOutput)
+}
+
+func (in *projectLifecycleStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectLifecycleState] {
+	return pulumix.Output[*ProjectLifecycleState]{
+		OutputState: in.ToProjectLifecycleStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

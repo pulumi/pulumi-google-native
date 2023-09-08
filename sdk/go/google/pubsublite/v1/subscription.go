@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new subscription.
@@ -138,6 +139,12 @@ func (i *Subscription) ToSubscriptionOutputWithContext(ctx context.Context) Subs
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionOutput)
 }
 
+func (i *Subscription) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
+	return pulumix.Output[*Subscription]{
+		OutputState: i.ToSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubscriptionOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionOutput) ElementType() reflect.Type {
@@ -150,6 +157,12 @@ func (o SubscriptionOutput) ToSubscriptionOutput() SubscriptionOutput {
 
 func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
 	return o
+}
+
+func (o SubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
+	return pulumix.Output[*Subscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The settings for this subscription's message delivery.

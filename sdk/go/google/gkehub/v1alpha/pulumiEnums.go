@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. Specifies CA configuration.
@@ -253,6 +272,12 @@ func (o FeatureSpecProvisionGoogleCaOutput) ToFeatureSpecProvisionGoogleCaPtrOut
 	}).(FeatureSpecProvisionGoogleCaPtrOutput)
 }
 
+func (o FeatureSpecProvisionGoogleCaOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecProvisionGoogleCa] {
+	return pulumix.Output[FeatureSpecProvisionGoogleCa]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FeatureSpecProvisionGoogleCaOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o FeatureSpecProvisionGoogleCaPtrOutput) ToFeatureSpecProvisionGoogleCaPtr
 
 func (o FeatureSpecProvisionGoogleCaPtrOutput) ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaPtrOutput {
 	return o
+}
+
+func (o FeatureSpecProvisionGoogleCaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecProvisionGoogleCa] {
+	return pulumix.Output[*FeatureSpecProvisionGoogleCa]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureSpecProvisionGoogleCaPtrOutput) Elem() FeatureSpecProvisionGoogleCaOutput {
@@ -348,6 +379,12 @@ func (in *featureSpecProvisionGoogleCaPtr) ToFeatureSpecProvisionGoogleCaPtrOutp
 
 func (in *featureSpecProvisionGoogleCaPtr) ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureSpecProvisionGoogleCaPtrOutput)
+}
+
+func (in *featureSpecProvisionGoogleCaPtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecProvisionGoogleCa] {
+	return pulumix.Output[*FeatureSpecProvisionGoogleCa]{
+		OutputState: in.ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // mode configures the logs routing mode.
@@ -422,6 +459,12 @@ func (o FleetObservabilityRoutingConfigModeOutput) ToFleetObservabilityRoutingCo
 	}).(FleetObservabilityRoutingConfigModePtrOutput)
 }
 
+func (o FleetObservabilityRoutingConfigModeOutput) ToOutput(ctx context.Context) pulumix.Output[FleetObservabilityRoutingConfigMode] {
+	return pulumix.Output[FleetObservabilityRoutingConfigMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FleetObservabilityRoutingConfigModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o FleetObservabilityRoutingConfigModePtrOutput) ToFleetObservabilityRoutin
 
 func (o FleetObservabilityRoutingConfigModePtrOutput) ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModePtrOutput {
 	return o
+}
+
+func (o FleetObservabilityRoutingConfigModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FleetObservabilityRoutingConfigMode] {
+	return pulumix.Output[*FleetObservabilityRoutingConfigMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FleetObservabilityRoutingConfigModePtrOutput) Elem() FleetObservabilityRoutingConfigModeOutput {
@@ -517,6 +566,12 @@ func (in *fleetObservabilityRoutingConfigModePtr) ToFleetObservabilityRoutingCon
 
 func (in *fleetObservabilityRoutingConfigModePtr) ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
+func (in *fleetObservabilityRoutingConfigModePtr) ToOutput(ctx context.Context) pulumix.Output[*FleetObservabilityRoutingConfigMode] {
+	return pulumix.Output[*FleetObservabilityRoutingConfigMode]{
+		OutputState: in.ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies workload certificate management.
@@ -591,6 +646,12 @@ func (o MembershipSpecCertificateManagementOutput) ToMembershipSpecCertificateMa
 	}).(MembershipSpecCertificateManagementPtrOutput)
 }
 
+func (o MembershipSpecCertificateManagementOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipSpecCertificateManagement] {
+	return pulumix.Output[MembershipSpecCertificateManagement]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MembershipSpecCertificateManagementOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -624,6 +685,12 @@ func (o MembershipSpecCertificateManagementPtrOutput) ToMembershipSpecCertificat
 
 func (o MembershipSpecCertificateManagementPtrOutput) ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementPtrOutput {
 	return o
+}
+
+func (o MembershipSpecCertificateManagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipSpecCertificateManagement] {
+	return pulumix.Output[*MembershipSpecCertificateManagement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipSpecCertificateManagementPtrOutput) Elem() MembershipSpecCertificateManagementOutput {
@@ -686,6 +753,12 @@ func (in *membershipSpecCertificateManagementPtr) ToMembershipSpecCertificateMan
 
 func (in *membershipSpecCertificateManagementPtr) ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MembershipSpecCertificateManagementPtrOutput)
+}
+
+func (in *membershipSpecCertificateManagementPtr) ToOutput(ctx context.Context) pulumix.Output[*MembershipSpecCertificateManagement] {
+	return pulumix.Output[*MembershipSpecCertificateManagement]{
+		OutputState: in.ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Deprecated: This field will be ignored and should not be set. Customer's billing structure.
@@ -760,6 +833,12 @@ func (o MultiClusterIngressFeatureSpecBillingOutput) ToMultiClusterIngressFeatur
 	}).(MultiClusterIngressFeatureSpecBillingPtrOutput)
 }
 
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToOutput(ctx context.Context) pulumix.Output[MultiClusterIngressFeatureSpecBilling] {
+	return pulumix.Output[MultiClusterIngressFeatureSpecBilling]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MultiClusterIngressFeatureSpecBillingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -793,6 +872,12 @@ func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToMultiClusterIngressFea
 
 func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
 	return o
+}
+
+func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterIngressFeatureSpecBilling] {
+	return pulumix.Output[*MultiClusterIngressFeatureSpecBilling]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MultiClusterIngressFeatureSpecBillingPtrOutput) Elem() MultiClusterIngressFeatureSpecBillingOutput {
@@ -855,6 +940,12 @@ func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeature
 
 func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MultiClusterIngressFeatureSpecBillingPtrOutput)
+}
+
+func (in *multiClusterIngressFeatureSpecBillingPtr) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterIngressFeatureSpecBilling] {
+	return pulumix.Output[*MultiClusterIngressFeatureSpecBilling]{
+		OutputState: in.ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The on prem cluster's type.
@@ -933,6 +1024,12 @@ func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypePtrOutputWithC
 	}).(OnPremClusterClusterTypePtrOutput)
 }
 
+func (o OnPremClusterClusterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OnPremClusterClusterType] {
+	return pulumix.Output[OnPremClusterClusterType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OnPremClusterClusterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -966,6 +1063,12 @@ func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutput()
 
 func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
 	return o
+}
+
+func (o OnPremClusterClusterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnPremClusterClusterType] {
+	return pulumix.Output[*OnPremClusterClusterType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OnPremClusterClusterTypePtrOutput) Elem() OnPremClusterClusterTypeOutput {
@@ -1028,6 +1131,12 @@ func (in *onPremClusterClusterTypePtr) ToOnPremClusterClusterTypePtrOutput() OnP
 
 func (in *onPremClusterClusterTypePtr) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OnPremClusterClusterTypePtrOutput)
+}
+
+func (in *onPremClusterClusterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OnPremClusterClusterType] {
+	return pulumix.Output[*OnPremClusterClusterType]{
+		OutputState: in.ToOnPremClusterClusterTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // predefined_role is the Kubernetes default role to use
@@ -1104,6 +1213,12 @@ func (o RolePredefinedRoleOutput) ToRolePredefinedRolePtrOutputWithContext(ctx c
 	}).(RolePredefinedRolePtrOutput)
 }
 
+func (o RolePredefinedRoleOutput) ToOutput(ctx context.Context) pulumix.Output[RolePredefinedRole] {
+	return pulumix.Output[RolePredefinedRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RolePredefinedRoleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1137,6 +1252,12 @@ func (o RolePredefinedRolePtrOutput) ToRolePredefinedRolePtrOutput() RolePredefi
 
 func (o RolePredefinedRolePtrOutput) ToRolePredefinedRolePtrOutputWithContext(ctx context.Context) RolePredefinedRolePtrOutput {
 	return o
+}
+
+func (o RolePredefinedRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RolePredefinedRole] {
+	return pulumix.Output[*RolePredefinedRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RolePredefinedRolePtrOutput) Elem() RolePredefinedRoleOutput {
@@ -1199,6 +1320,12 @@ func (in *rolePredefinedRolePtr) ToRolePredefinedRolePtrOutput() RolePredefinedR
 
 func (in *rolePredefinedRolePtr) ToRolePredefinedRolePtrOutputWithContext(ctx context.Context) RolePredefinedRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RolePredefinedRolePtrOutput)
+}
+
+func (in *rolePredefinedRolePtr) ToOutput(ctx context.Context) pulumix.Output[*RolePredefinedRole] {
+	return pulumix.Output[*RolePredefinedRole]{
+		OutputState: in.ToRolePredefinedRolePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy.
@@ -135,6 +136,12 @@ func (i *DataExchangeIamMember) ToDataExchangeIamMemberOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberOutput)
 }
 
+func (i *DataExchangeIamMember) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamMember] {
+	return pulumix.Output[*DataExchangeIamMember]{
+		OutputState: i.ToDataExchangeIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataExchangeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o DataExchangeIamMemberOutput) ToDataExchangeIamMemberOutput() DataExchang
 
 func (o DataExchangeIamMemberOutput) ToDataExchangeIamMemberOutputWithContext(ctx context.Context) DataExchangeIamMemberOutput {
 	return o
+}
+
+func (o DataExchangeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamMember] {
+	return pulumix.Output[*DataExchangeIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

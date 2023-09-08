@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Job.
@@ -191,6 +192,12 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
 }
 
+func (i *Job) ToOutput(ctx context.Context) pulumix.Output[*Job] {
+	return pulumix.Output[*Job]{
+		OutputState: i.ToJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobOutput struct{ *pulumi.OutputState }
 
 func (JobOutput) ElementType() reflect.Type {
@@ -203,6 +210,12 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
+}
+
+func (o JobOutput) ToOutput(ctx context.Context) pulumix.Output[*Job] {
+	return pulumix.Output[*Job]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes annotations' namespacing, limits, and rules.

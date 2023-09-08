@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
@@ -72,6 +73,12 @@ func (o LookupStoredInfoTypeResultOutput) ToLookupStoredInfoTypeResultOutput() L
 
 func (o LookupStoredInfoTypeResultOutput) ToLookupStoredInfoTypeResultOutputWithContext(ctx context.Context) LookupStoredInfoTypeResultOutput {
 	return o
+}
+
+func (o LookupStoredInfoTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStoredInfoTypeResult] {
+	return pulumix.Output[LookupStoredInfoTypeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Current version of the stored info type.

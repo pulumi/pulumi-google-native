@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an HMAC key's metadata
@@ -84,6 +85,12 @@ func (o LookupHmacKeyResultOutput) ToLookupHmacKeyResultOutput() LookupHmacKeyRe
 
 func (o LookupHmacKeyResultOutput) ToLookupHmacKeyResultOutputWithContext(ctx context.Context) LookupHmacKeyResultOutput {
 	return o
+}
+
+func (o LookupHmacKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHmacKeyResult] {
+	return pulumix.Output[LookupHmacKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the HMAC Key.

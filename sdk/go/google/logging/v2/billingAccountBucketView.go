@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
@@ -141,6 +142,12 @@ func (i *BillingAccountBucketView) ToBillingAccountBucketViewOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketViewOutput)
 }
 
+func (i *BillingAccountBucketView) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketView] {
+	return pulumix.Output[*BillingAccountBucketView]{
+		OutputState: i.ToBillingAccountBucketViewOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BillingAccountBucketViewOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketViewOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o BillingAccountBucketViewOutput) ToBillingAccountBucketViewOutput() Billi
 
 func (o BillingAccountBucketViewOutput) ToBillingAccountBucketViewOutputWithContext(ctx context.Context) BillingAccountBucketViewOutput {
 	return o
+}
+
+func (o BillingAccountBucketViewOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketView] {
+	return pulumix.Output[*BillingAccountBucketView]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingAccountBucketViewOutput) BillingAccountId() pulumi.StringOutput {

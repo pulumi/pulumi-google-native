@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following: * Set the `name` query parameter to the name of the API proxy. * Set the `action` query parameter to `import`. * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.
@@ -143,6 +144,12 @@ func (i *Api) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOutput)
 }
 
+func (i *Api) ToOutput(ctx context.Context) pulumix.Output[*Api] {
+	return pulumix.Output[*Api]{
+		OutputState: i.ToApiOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiOutput struct{ *pulumi.OutputState }
 
 func (ApiOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o ApiOutput) ToApiOutput() ApiOutput {
 
 func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
+}
+
+func (o ApiOutput) ToOutput(ctx context.Context) pulumix.Output[*Api] {
+	return pulumix.Output[*Api]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.

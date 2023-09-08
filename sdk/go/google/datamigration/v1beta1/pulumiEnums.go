@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -253,6 +272,12 @@ func (o CloudSqlSettingsActivationPolicyOutput) ToCloudSqlSettingsActivationPoli
 	}).(CloudSqlSettingsActivationPolicyPtrOutput)
 }
 
+func (o CloudSqlSettingsActivationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsActivationPolicy] {
+	return pulumix.Output[CloudSqlSettingsActivationPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudSqlSettingsActivationPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationP
 
 func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
 	return o
+}
+
+func (o CloudSqlSettingsActivationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsActivationPolicy] {
+	return pulumix.Output[*CloudSqlSettingsActivationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSqlSettingsActivationPolicyPtrOutput) Elem() CloudSqlSettingsActivationPolicyOutput {
@@ -348,6 +379,12 @@ func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolic
 
 func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsActivationPolicyPtrOutput)
+}
+
+func (in *cloudSqlSettingsActivationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsActivationPolicy] {
+	return pulumix.Output[*CloudSqlSettingsActivationPolicy]{
+		OutputState: in.ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of storage: `PD_SSD` (default) or `PD_HDD`.
@@ -422,6 +459,12 @@ func (o CloudSqlSettingsDataDiskTypeOutput) ToCloudSqlSettingsDataDiskTypePtrOut
 	}).(CloudSqlSettingsDataDiskTypePtrOutput)
 }
 
+func (o CloudSqlSettingsDataDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsDataDiskType] {
+	return pulumix.Output[CloudSqlSettingsDataDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudSqlSettingsDataDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtr
 
 func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
 	return o
+}
+
+func (o CloudSqlSettingsDataDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDataDiskType] {
+	return pulumix.Output[*CloudSqlSettingsDataDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSqlSettingsDataDiskTypePtrOutput) Elem() CloudSqlSettingsDataDiskTypeOutput {
@@ -517,6 +566,12 @@ func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutp
 
 func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDataDiskTypePtrOutput)
+}
+
+func (in *cloudSqlSettingsDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDataDiskType] {
+	return pulumix.Output[*CloudSqlSettingsDataDiskType]{
+		OutputState: in.ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The database engine type and version.
@@ -593,6 +648,12 @@ func (o CloudSqlSettingsDatabaseVersionOutput) ToCloudSqlSettingsDatabaseVersion
 	}).(CloudSqlSettingsDatabaseVersionPtrOutput)
 }
 
+func (o CloudSqlSettingsDatabaseVersionOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsDatabaseVersion] {
+	return pulumix.Output[CloudSqlSettingsDatabaseVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudSqlSettingsDatabaseVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -626,6 +687,12 @@ func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVers
 
 func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
 	return o
+}
+
+func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDatabaseVersion] {
+	return pulumix.Output[*CloudSqlSettingsDatabaseVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSqlSettingsDatabaseVersionPtrOutput) Elem() CloudSqlSettingsDatabaseVersionOutput {
@@ -688,6 +755,12 @@ func (in *cloudSqlSettingsDatabaseVersionPtr) ToCloudSqlSettingsDatabaseVersionP
 
 func (in *cloudSqlSettingsDatabaseVersionPtr) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDatabaseVersionPtrOutput)
+}
+
+func (in *cloudSqlSettingsDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDatabaseVersion] {
+	return pulumix.Output[*CloudSqlSettingsDatabaseVersion]{
+		OutputState: in.ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The database provider.
@@ -762,6 +835,12 @@ func (o ConnectionProfileProviderOutput) ToConnectionProfileProviderPtrOutputWit
 	}).(ConnectionProfileProviderPtrOutput)
 }
 
+func (o ConnectionProfileProviderOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileProvider] {
+	return pulumix.Output[ConnectionProfileProvider]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionProfileProviderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -795,6 +874,12 @@ func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutput
 
 func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
 	return o
+}
+
+func (o ConnectionProfileProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileProvider] {
+	return pulumix.Output[*ConnectionProfileProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionProfileProviderPtrOutput) Elem() ConnectionProfileProviderOutput {
@@ -857,6 +942,12 @@ func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutput() C
 
 func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileProviderPtrOutput)
+}
+
+func (in *connectionProfileProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileProvider] {
+	return pulumix.Output[*ConnectionProfileProvider]{
+		OutputState: in.ToConnectionProfileProviderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -941,6 +1032,12 @@ func (o ConnectionProfileStateEnumOutput) ToConnectionProfileStateEnumPtrOutputW
 	}).(ConnectionProfileStateEnumPtrOutput)
 }
 
+func (o ConnectionProfileStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileStateEnum] {
+	return pulumix.Output[ConnectionProfileStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionProfileStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -974,6 +1071,12 @@ func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutp
 
 func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
 	return o
+}
+
+func (o ConnectionProfileStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileStateEnum] {
+	return pulumix.Output[*ConnectionProfileStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionProfileStateEnumPtrOutput) Elem() ConnectionProfileStateEnumOutput {
@@ -1036,6 +1139,12 @@ func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutput()
 
 func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileStateEnumPtrOutput)
+}
+
+func (in *connectionProfileStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileStateEnum] {
+	return pulumix.Output[*ConnectionProfileStateEnum]{
+		OutputState: in.ToConnectionProfileStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The database engine.
@@ -1108,6 +1217,12 @@ func (o DatabaseTypeEngineOutput) ToDatabaseTypeEnginePtrOutputWithContext(ctx c
 	}).(DatabaseTypeEnginePtrOutput)
 }
 
+func (o DatabaseTypeEngineOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTypeEngine] {
+	return pulumix.Output[DatabaseTypeEngine]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseTypeEngineOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1141,6 +1256,12 @@ func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutput() DatabaseTyp
 
 func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
 	return o
+}
+
+func (o DatabaseTypeEnginePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeEngine] {
+	return pulumix.Output[*DatabaseTypeEngine]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseTypeEnginePtrOutput) Elem() DatabaseTypeEngineOutput {
@@ -1203,6 +1324,12 @@ func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEng
 
 func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeEnginePtrOutput)
+}
+
+func (in *databaseTypeEnginePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeEngine] {
+	return pulumix.Output[*DatabaseTypeEngine]{
+		OutputState: in.ToDatabaseTypeEnginePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The database provider.
@@ -1277,6 +1404,12 @@ func (o DatabaseTypeProviderOutput) ToDatabaseTypeProviderPtrOutputWithContext(c
 	}).(DatabaseTypeProviderPtrOutput)
 }
 
+func (o DatabaseTypeProviderOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTypeProvider] {
+	return pulumix.Output[DatabaseTypeProvider]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseTypeProviderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1310,6 +1443,12 @@ func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutput() Databas
 
 func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
 	return o
+}
+
+func (o DatabaseTypeProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeProvider] {
+	return pulumix.Output[*DatabaseTypeProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseTypeProviderPtrOutput) Elem() DatabaseTypeProviderOutput {
@@ -1372,6 +1511,12 @@ func (in *databaseTypeProviderPtr) ToDatabaseTypeProviderPtrOutput() DatabaseTyp
 
 func (in *databaseTypeProviderPtr) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeProviderPtrOutput)
+}
+
+func (in *databaseTypeProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeProvider] {
+	return pulumix.Output[*DatabaseTypeProvider]{
+		OutputState: in.ToDatabaseTypeProviderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current migration job state.
@@ -1472,6 +1617,12 @@ func (o MigrationJobStateEnumOutput) ToMigrationJobStateEnumPtrOutputWithContext
 	}).(MigrationJobStateEnumPtrOutput)
 }
 
+func (o MigrationJobStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationJobStateEnum] {
+	return pulumix.Output[MigrationJobStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MigrationJobStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1505,6 +1656,12 @@ func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutput() Migra
 
 func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
 	return o
+}
+
+func (o MigrationJobStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobStateEnum] {
+	return pulumix.Output[*MigrationJobStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationJobStateEnumPtrOutput) Elem() MigrationJobStateEnumOutput {
@@ -1567,6 +1724,12 @@ func (in *migrationJobStateEnumPtr) ToMigrationJobStateEnumPtrOutput() Migration
 
 func (in *migrationJobStateEnumPtr) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobStateEnumPtrOutput)
+}
+
+func (in *migrationJobStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobStateEnum] {
+	return pulumix.Output[*MigrationJobStateEnum]{
+		OutputState: in.ToMigrationJobStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The migration job type.
@@ -1641,6 +1804,12 @@ func (o MigrationJobTypeOutput) ToMigrationJobTypePtrOutputWithContext(ctx conte
 	}).(MigrationJobTypePtrOutput)
 }
 
+func (o MigrationJobTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationJobType] {
+	return pulumix.Output[MigrationJobType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MigrationJobTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1674,6 +1843,12 @@ func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutput() MigrationJobTyp
 
 func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
 	return o
+}
+
+func (o MigrationJobTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobType] {
+	return pulumix.Output[*MigrationJobType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationJobTypePtrOutput) Elem() MigrationJobTypeOutput {
@@ -1736,6 +1911,12 @@ func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutput() MigrationJobTypePtr
 
 func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobTypePtrOutput)
+}
+
+func (in *migrationJobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobType] {
+	return pulumix.Output[*MigrationJobType]{
+		OutputState: in.ToMigrationJobTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

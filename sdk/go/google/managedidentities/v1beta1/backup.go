@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Backup for a domain.
@@ -136,6 +137,12 @@ func (i *Backup) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupOutput)
 }
 
+func (i *Backup) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
+	return pulumix.Output[*Backup]{
+		OutputState: i.ToBackupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupOutput struct{ *pulumi.OutputState }
 
 func (BackupOutput) ElementType() reflect.Type {
@@ -148,6 +155,12 @@ func (o BackupOutput) ToBackupOutput() BackupOutput {
 
 func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return o
+}
+
+func (o BackupOutput) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
+	return pulumix.Output[*Backup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.

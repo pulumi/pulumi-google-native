@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume.
@@ -78,6 +79,12 @@ func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutput() LookupSnapsho
 
 func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutputWithContext(ctx context.Context) LookupSnapshotResultOutput {
 	return o
+}
+
+func (o LookupSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSnapshotResult] {
+	return pulumix.Output[LookupSnapshotResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the snapshot.

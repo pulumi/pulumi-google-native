@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
@@ -172,6 +173,12 @@ func (i *OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkOutput)
 }
 
+func (i *OrganizationSink) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSink] {
+	return pulumix.Output[*OrganizationSink]{
+		OutputState: i.ToOrganizationSinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationSinkOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkOutput) ElementType() reflect.Type {
@@ -184,6 +191,12 @@ func (o OrganizationSinkOutput) ToOrganizationSinkOutput() OrganizationSinkOutpu
 
 func (o OrganizationSinkOutput) ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput {
 	return o
+}
+
+func (o OrganizationSinkOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSink] {
+	return pulumix.Output[*OrganizationSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Options that affect sinks exporting data to BigQuery.

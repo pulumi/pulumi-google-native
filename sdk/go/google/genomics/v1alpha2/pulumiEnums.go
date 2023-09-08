@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The type of the disk to create.
@@ -84,6 +85,12 @@ func (o DiskTypeOutput) ToDiskTypePtrOutputWithContext(ctx context.Context) Disk
 	}).(DiskTypePtrOutput)
 }
 
+func (o DiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DiskType] {
+	return pulumix.Output[DiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o DiskTypePtrOutput) ToDiskTypePtrOutput() DiskTypePtrOutput {
 
 func (o DiskTypePtrOutput) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
 	return o
+}
+
+func (o DiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskType] {
+	return pulumix.Output[*DiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskTypePtrOutput) Elem() DiskTypeOutput {
@@ -179,6 +192,12 @@ func (in *diskTypePtr) ToDiskTypePtrOutput() DiskTypePtrOutput {
 
 func (in *diskTypePtr) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskTypePtrOutput)
+}
+
+func (in *diskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskType] {
+	return pulumix.Output[*DiskType]{
+		OutputState: in.ToDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

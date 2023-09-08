@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type InternalRangeOverlapsItem string
@@ -250,6 +269,12 @@ func (o InternalRangeOverlapsItemOutput) ToInternalRangeOverlapsItemPtrOutputWit
 	}).(InternalRangeOverlapsItemPtrOutput)
 }
 
+func (o InternalRangeOverlapsItemOutput) ToOutput(ctx context.Context) pulumix.Output[InternalRangeOverlapsItem] {
+	return pulumix.Output[InternalRangeOverlapsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InternalRangeOverlapsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -283,6 +308,12 @@ func (o InternalRangeOverlapsItemPtrOutput) ToInternalRangeOverlapsItemPtrOutput
 
 func (o InternalRangeOverlapsItemPtrOutput) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
 	return o
+}
+
+func (o InternalRangeOverlapsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeOverlapsItem] {
+	return pulumix.Output[*InternalRangeOverlapsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InternalRangeOverlapsItemPtrOutput) Elem() InternalRangeOverlapsItemOutput {
@@ -347,6 +378,12 @@ func (in *internalRangeOverlapsItemPtr) ToInternalRangeOverlapsItemPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeOverlapsItemPtrOutput)
 }
 
+func (in *internalRangeOverlapsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeOverlapsItem] {
+	return pulumix.Output[*InternalRangeOverlapsItem]{
+		OutputState: in.ToInternalRangeOverlapsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InternalRangeOverlapsItemArrayInput is an input type that accepts InternalRangeOverlapsItemArray and InternalRangeOverlapsItemArrayOutput values.
 // You can construct a concrete instance of `InternalRangeOverlapsItemArrayInput` via:
 //
@@ -372,6 +409,12 @@ func (i InternalRangeOverlapsItemArray) ToInternalRangeOverlapsItemArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeOverlapsItemArrayOutput)
 }
 
+func (i InternalRangeOverlapsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]InternalRangeOverlapsItem] {
+	return pulumix.Output[[]InternalRangeOverlapsItem]{
+		OutputState: i.ToInternalRangeOverlapsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InternalRangeOverlapsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (InternalRangeOverlapsItemArrayOutput) ElementType() reflect.Type {
@@ -384,6 +427,12 @@ func (o InternalRangeOverlapsItemArrayOutput) ToInternalRangeOverlapsItemArrayOu
 
 func (o InternalRangeOverlapsItemArrayOutput) ToInternalRangeOverlapsItemArrayOutputWithContext(ctx context.Context) InternalRangeOverlapsItemArrayOutput {
 	return o
+}
+
+func (o InternalRangeOverlapsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InternalRangeOverlapsItem] {
+	return pulumix.Output[[]InternalRangeOverlapsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InternalRangeOverlapsItemArrayOutput) Index(i pulumi.IntInput) InternalRangeOverlapsItemOutput {
@@ -466,6 +515,12 @@ func (o InternalRangePeeringOutput) ToInternalRangePeeringPtrOutputWithContext(c
 	}).(InternalRangePeeringPtrOutput)
 }
 
+func (o InternalRangePeeringOutput) ToOutput(ctx context.Context) pulumix.Output[InternalRangePeering] {
+	return pulumix.Output[InternalRangePeering]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InternalRangePeeringOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -499,6 +554,12 @@ func (o InternalRangePeeringPtrOutput) ToInternalRangePeeringPtrOutput() Interna
 
 func (o InternalRangePeeringPtrOutput) ToInternalRangePeeringPtrOutputWithContext(ctx context.Context) InternalRangePeeringPtrOutput {
 	return o
+}
+
+func (o InternalRangePeeringPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRangePeering] {
+	return pulumix.Output[*InternalRangePeering]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InternalRangePeeringPtrOutput) Elem() InternalRangePeeringOutput {
@@ -561,6 +622,12 @@ func (in *internalRangePeeringPtr) ToInternalRangePeeringPtrOutput() InternalRan
 
 func (in *internalRangePeeringPtr) ToInternalRangePeeringPtrOutputWithContext(ctx context.Context) InternalRangePeeringPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangePeeringPtrOutput)
+}
+
+func (in *internalRangePeeringPtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangePeering] {
+	return pulumix.Output[*InternalRangePeering]{
+		OutputState: in.ToInternalRangePeeringPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of usage set for this InternalRange.
@@ -635,6 +702,12 @@ func (o InternalRangeUsageOutput) ToInternalRangeUsagePtrOutputWithContext(ctx c
 	}).(InternalRangeUsagePtrOutput)
 }
 
+func (o InternalRangeUsageOutput) ToOutput(ctx context.Context) pulumix.Output[InternalRangeUsage] {
+	return pulumix.Output[InternalRangeUsage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InternalRangeUsageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -668,6 +741,12 @@ func (o InternalRangeUsagePtrOutput) ToInternalRangeUsagePtrOutput() InternalRan
 
 func (o InternalRangeUsagePtrOutput) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
 	return o
+}
+
+func (o InternalRangeUsagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeUsage] {
+	return pulumix.Output[*InternalRangeUsage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InternalRangeUsagePtrOutput) Elem() InternalRangeUsageOutput {
@@ -730,6 +809,12 @@ func (in *internalRangeUsagePtr) ToInternalRangeUsagePtrOutput() InternalRangeUs
 
 func (in *internalRangeUsagePtr) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeUsagePtrOutput)
+}
+
+func (in *internalRangeUsagePtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeUsage] {
+	return pulumix.Output[*InternalRangeUsage]{
+		OutputState: in.ToInternalRangeUsagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
@@ -114,6 +115,12 @@ func (o LookupInterconnectResultOutput) ToLookupInterconnectResultOutput() Looku
 
 func (o LookupInterconnectResultOutput) ToLookupInterconnectResultOutputWithContext(ctx context.Context) LookupInterconnectResultOutput {
 	return o
+}
+
+func (o LookupInterconnectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInterconnectResult] {
+	return pulumix.Output[LookupInterconnectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a trace configuration override.
@@ -72,6 +73,12 @@ func (o LookupOverrideResultOutput) ToLookupOverrideResultOutput() LookupOverrid
 
 func (o LookupOverrideResultOutput) ToLookupOverrideResultOutputWithContext(ctx context.Context) LookupOverrideResultOutput {
 	return o
+}
+
+func (o LookupOverrideResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOverrideResult] {
+	return pulumix.Output[LookupOverrideResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the API proxy that will have its trace configuration overridden.

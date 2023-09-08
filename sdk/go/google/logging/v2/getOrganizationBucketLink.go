@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a link.
@@ -78,6 +79,12 @@ func (o LookupOrganizationBucketLinkResultOutput) ToLookupOrganizationBucketLink
 
 func (o LookupOrganizationBucketLinkResultOutput) ToLookupOrganizationBucketLinkResultOutputWithContext(ctx context.Context) LookupOrganizationBucketLinkResultOutput {
 	return o
+}
+
+func (o LookupOrganizationBucketLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationBucketLinkResult] {
+	return pulumix.Output[LookupOrganizationBucketLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.

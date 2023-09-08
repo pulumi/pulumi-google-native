@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single TlsInspectionPolicy.
@@ -76,6 +77,12 @@ func (o LookupTlsInspectionPolicyResultOutput) ToLookupTlsInspectionPolicyResult
 
 func (o LookupTlsInspectionPolicyResultOutput) ToLookupTlsInspectionPolicyResultOutputWithContext(ctx context.Context) LookupTlsInspectionPolicyResultOutput {
 	return o
+}
+
+func (o LookupTlsInspectionPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTlsInspectionPolicyResult] {
+	return pulumix.Output[LookupTlsInspectionPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A CA pool resource used to issue interception certificates. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".

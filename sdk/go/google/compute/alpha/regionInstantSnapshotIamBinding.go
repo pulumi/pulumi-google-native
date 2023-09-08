@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -135,6 +136,12 @@ func (i *RegionInstantSnapshotIamBinding) ToRegionInstantSnapshotIamBindingOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstantSnapshotIamBindingOutput)
 }
 
+func (i *RegionInstantSnapshotIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RegionInstantSnapshotIamBinding] {
+	return pulumix.Output[*RegionInstantSnapshotIamBinding]{
+		OutputState: i.ToRegionInstantSnapshotIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionInstantSnapshotIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RegionInstantSnapshotIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RegionInstantSnapshotIamBindingOutput) ToRegionInstantSnapshotIamBinding
 
 func (o RegionInstantSnapshotIamBindingOutput) ToRegionInstantSnapshotIamBindingOutputWithContext(ctx context.Context) RegionInstantSnapshotIamBindingOutput {
 	return o
+}
+
+func (o RegionInstantSnapshotIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstantSnapshotIamBinding] {
+	return pulumix.Output[*RegionInstantSnapshotIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

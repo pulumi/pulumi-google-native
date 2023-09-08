@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a Table resource. Replaces any existing policy.
@@ -145,6 +146,12 @@ func (i *InstanceClusterBackupIamPolicy) ToInstanceClusterBackupIamPolicyOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterBackupIamPolicyOutput)
 }
 
+func (i *InstanceClusterBackupIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*InstanceClusterBackupIamPolicy] {
+	return pulumix.Output[*InstanceClusterBackupIamPolicy]{
+		OutputState: i.ToInstanceClusterBackupIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceClusterBackupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterBackupIamPolicyOutput) ElementType() reflect.Type {
@@ -157,6 +164,12 @@ func (o InstanceClusterBackupIamPolicyOutput) ToInstanceClusterBackupIamPolicyOu
 
 func (o InstanceClusterBackupIamPolicyOutput) ToInstanceClusterBackupIamPolicyOutputWithContext(ctx context.Context) InstanceClusterBackupIamPolicyOutput {
 	return o
+}
+
+func (o InstanceClusterBackupIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceClusterBackupIamPolicy] {
+	return pulumix.Output[*InstanceClusterBackupIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Response Policy
@@ -133,6 +134,12 @@ func (i *ResponsePolicy) ToResponsePolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyOutput)
 }
 
+func (i *ResponsePolicy) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicy] {
+	return pulumix.Output[*ResponsePolicy]{
+		OutputState: i.ToResponsePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResponsePolicyOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o ResponsePolicyOutput) ToResponsePolicyOutput() ResponsePolicyOutput {
 
 func (o ResponsePolicyOutput) ToResponsePolicyOutputWithContext(ctx context.Context) ResponsePolicyOutput {
 	return o
+}
+
+func (o ResponsePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicy] {
+	return pulumix.Output[*ResponsePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.

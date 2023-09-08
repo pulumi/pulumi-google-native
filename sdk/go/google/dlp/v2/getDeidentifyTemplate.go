@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
@@ -78,6 +79,12 @@ func (o LookupDeidentifyTemplateResultOutput) ToLookupDeidentifyTemplateResultOu
 
 func (o LookupDeidentifyTemplateResultOutput) ToLookupDeidentifyTemplateResultOutputWithContext(ctx context.Context) LookupDeidentifyTemplateResultOutput {
 	return o
+}
+
+func (o LookupDeidentifyTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeidentifyTemplateResult] {
+	return pulumix.Output[LookupDeidentifyTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp of an inspectTemplate.

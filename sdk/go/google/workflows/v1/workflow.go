@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error.
@@ -162,6 +163,12 @@ func (i *Workflow) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowOutput)
 }
 
+func (i *Workflow) ToOutput(ctx context.Context) pulumix.Output[*Workflow] {
+	return pulumix.Output[*Workflow]{
+		OutputState: i.ToWorkflowOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkflowOutput struct{ *pulumi.OutputState }
 
 func (WorkflowOutput) ElementType() reflect.Type {
@@ -174,6 +181,12 @@ func (o WorkflowOutput) ToWorkflowOutput() WorkflowOutput {
 
 func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput {
 	return o
+}
+
+func (o WorkflowOutput) ToOutput(ctx context.Context) pulumix.Output[*Workflow] {
+	return pulumix.Output[*Workflow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.

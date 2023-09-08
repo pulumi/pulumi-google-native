@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single CutoverJob.
@@ -90,6 +91,12 @@ func (o LookupCutoverJobResultOutput) ToLookupCutoverJobResultOutput() LookupCut
 
 func (o LookupCutoverJobResultOutput) ToLookupCutoverJobResultOutputWithContext(ctx context.Context) LookupCutoverJobResultOutput {
 	return o
+}
+
+func (o LookupCutoverJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCutoverJobResult] {
+	return pulumix.Output[LookupCutoverJobResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details of the target VM in Compute Engine.

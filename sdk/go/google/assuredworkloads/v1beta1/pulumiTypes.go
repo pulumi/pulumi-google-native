@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs) ToGoogleClou
 
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput)
+}
+
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput {
@@ -89,6 +96,12 @@ func (i *googleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput)
 }
 
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings specific to resources needed for CJIS.
 type GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput) ToGoogleCl
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Immutable. Settings used to create a CMEK crypto key.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput) KmsSettings() GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings) *GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
@@ -133,6 +152,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput) ToGoogl
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput {
@@ -176,6 +201,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponseOutput) To
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Immutable. Settings used to create a CMEK crypto key.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponseOutput) KmsSettings() GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse) GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse {
@@ -206,6 +237,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyCon
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Constraint name of the org policy control Example: constraints/gcp.resourcelocations
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput) Constraint() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse) string {
@@ -234,6 +271,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyCon
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse] {
+	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse {
 		return vs[0].([]GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse)[vs[1].(int)]
@@ -259,6 +302,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutp
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Org policies currently applied by this Assured Workload
@@ -289,6 +338,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponseOutput
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponseOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Count of active Violations which are acknowledged in the Workload.
@@ -348,6 +403,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutputWithContext(context.Background())
 }
@@ -389,6 +450,12 @@ func (i *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput)
 }
 
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // External key management systems(EKM) Provisioning response
 type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput struct{ *pulumi.OutputState }
 
@@ -412,6 +479,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse {
 		return &v
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput)
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates Ekm provisioning error if any.
@@ -447,6 +520,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutp
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput {
@@ -514,6 +593,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseRespons
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates Ekm provisioning error if any.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponseOutput) EkmProvisioningErrorDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse) string {
@@ -570,6 +655,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsArgs) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutputWithContext(context.Background())
 }
@@ -611,6 +702,12 @@ func (i *googleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput)
 }
 
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings specific to resources needed for FedRAMP High.
 type GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsOutput struct{ *pulumi.OutputState }
 
@@ -636,6 +733,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsOutput) ToG
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Immutable. Settings used to create a CMEK crypto key.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsOutput) KmsSettings() GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings) *GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
@@ -655,6 +758,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput) 
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsOutput {
@@ -696,6 +805,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponseOut
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input only. Immutable. Settings used to create a CMEK crypto key.
@@ -740,6 +855,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutputWithContext(context.Background())
 }
@@ -781,6 +902,12 @@ func (i *googleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput)
 }
 
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings specific to resources needed for FedRAMP Moderate.
 type GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsOutput struct{ *pulumi.OutputState }
 
@@ -806,6 +933,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsOutput)
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Immutable. Settings used to create a CMEK crypto key.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsOutput) KmsSettings() GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings) *GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
@@ -825,6 +958,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutp
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsOutput {
@@ -866,6 +1005,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsRespons
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input only. Immutable. Settings used to create a CMEK crypto key.
@@ -910,6 +1055,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutputWithContext(context.Background())
 }
@@ -951,6 +1102,12 @@ func (i *googleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput)
 }
 
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings specific to resources needed for IL4.
 type GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsOutput struct{ *pulumi.OutputState }
 
@@ -976,6 +1133,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsOutput) ToGoogleClo
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Immutable. Settings used to create a CMEK crypto key.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsOutput) KmsSettings() GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings) *GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
@@ -995,6 +1158,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput) ToGoogle
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsOutput {
@@ -1036,6 +1205,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponseOutput) ToG
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input only. Immutable. Settings used to create a CMEK crypto key.
@@ -1084,6 +1259,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutputWithContext(context.Background())
 }
@@ -1125,6 +1306,12 @@ func (i *googleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput)
 }
 
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1150,6 +1337,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutput) ToGoogleClo
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings) string { return v.NextRotationTime }).(pulumi.StringOutput)
@@ -1172,6 +1365,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput) ToGoogle
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutput {
@@ -1227,6 +1426,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponseOutput) ToG
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponseOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse) string {
@@ -1278,6 +1483,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
 }
@@ -1319,6 +1530,12 @@ func (i *googleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput)
 }
 
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Permissions granted to the AW Partner SA account for the customer workload
 type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput struct{ *pulumi.OutputState }
 
@@ -1342,6 +1559,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) ToGo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions) *GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions {
 		return &v
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput)
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allow the partner to view inspectability logs and monitoring violations.
@@ -1368,6 +1591,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) T
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput {
@@ -1423,6 +1652,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutp
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Allow the partner to view inspectability logs and monitoring violations.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput) DataLogsViewer() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse) bool {
@@ -1460,6 +1695,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseOutput) To
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource identifier. For a project this represents project_number.
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse) string { return v.ResourceId }).(pulumi.StringOutput)
@@ -1482,6 +1723,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutpu
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse] {
+	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseOutput {
@@ -1533,6 +1780,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayInput is an input type that accepts GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArray and GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayInput` via:
 //
@@ -1558,6 +1811,12 @@ func (i GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArray) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayOutput)
 }
 
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings] {
+	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings]{
+		OutputState: i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represent the custom settings for the resources to be created.
 type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1571,6 +1830,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput) ToGoog
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
@@ -1604,6 +1869,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayOutput) T
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings] {
+	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings {
 		return vs[0].([]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings)[vs[1].(int)]
@@ -1633,6 +1904,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseOutput
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
@@ -1668,6 +1945,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseArrayO
 	return o
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse] {
+	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse {
 		return vs[0].([]GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse)[vs[1].(int)]
@@ -1695,6 +1978,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseO
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates SAA enrollment setup error if any.

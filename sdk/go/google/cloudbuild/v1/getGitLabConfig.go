@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `GitLabConfig`. This API is experimental
@@ -80,6 +81,12 @@ func (o LookupGitLabConfigResultOutput) ToLookupGitLabConfigResultOutput() Looku
 
 func (o LookupGitLabConfigResultOutput) ToLookupGitLabConfigResultOutputWithContext(ctx context.Context) LookupGitLabConfigResultOutput {
 	return o
+}
+
+func (o LookupGitLabConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGitLabConfigResult] {
+	return pulumix.Output[LookupGitLabConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Connected GitLab.com or GitLabEnterprise repositories for this config.

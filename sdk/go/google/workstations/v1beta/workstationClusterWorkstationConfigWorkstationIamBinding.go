@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *WorkstationClusterWorkstationConfigWorkstationIamBinding) ToWorkstation
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterWorkstationConfigWorkstationIamBindingOutput)
 }
 
+func (i *WorkstationClusterWorkstationConfigWorkstationIamBinding) ToOutput(ctx context.Context) pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamBinding] {
+	return pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamBinding]{
+		OutputState: i.ToWorkstationClusterWorkstationConfigWorkstationIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationClusterWorkstationConfigWorkstationIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WorkstationClusterWorkstationConfigWorkstationIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o WorkstationClusterWorkstationConfigWorkstationIamBindingOutput) ToWorkst
 
 func (o WorkstationClusterWorkstationConfigWorkstationIamBindingOutput) ToWorkstationClusterWorkstationConfigWorkstationIamBindingOutputWithContext(ctx context.Context) WorkstationClusterWorkstationConfigWorkstationIamBindingOutput {
 	return o
+}
+
+func (o WorkstationClusterWorkstationConfigWorkstationIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamBinding] {
+	return pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

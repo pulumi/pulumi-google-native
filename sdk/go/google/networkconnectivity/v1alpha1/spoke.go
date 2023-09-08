@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Network Connectivity Center spoke.
@@ -167,6 +168,12 @@ func (i *Spoke) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeOutput)
 }
 
+func (i *Spoke) ToOutput(ctx context.Context) pulumix.Output[*Spoke] {
+	return pulumix.Output[*Spoke]{
+		OutputState: i.ToSpokeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpokeOutput struct{ *pulumi.OutputState }
 
 func (SpokeOutput) ElementType() reflect.Type {
@@ -179,6 +186,12 @@ func (o SpokeOutput) ToSpokeOutput() SpokeOutput {
 
 func (o SpokeOutput) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return o
+}
+
+func (o SpokeOutput) ToOutput(ctx context.Context) pulumix.Output[*Spoke] {
+	return pulumix.Output[*Spoke]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the Spoke was created.

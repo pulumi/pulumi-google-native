@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given parent. These modules are enabled by default.
@@ -128,6 +129,12 @@ func (i *FolderCustomModule) ToFolderCustomModuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FolderCustomModuleOutput)
 }
 
+func (i *FolderCustomModule) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModule] {
+	return pulumix.Output[*FolderCustomModule]{
+		OutputState: i.ToFolderCustomModuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FolderCustomModuleOutput struct{ *pulumi.OutputState }
 
 func (FolderCustomModuleOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o FolderCustomModuleOutput) ToFolderCustomModuleOutput() FolderCustomModul
 
 func (o FolderCustomModuleOutput) ToFolderCustomModuleOutputWithContext(ctx context.Context) FolderCustomModuleOutput {
 	return o
+}
+
+func (o FolderCustomModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModule] {
+	return pulumix.Output[*FolderCustomModule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.

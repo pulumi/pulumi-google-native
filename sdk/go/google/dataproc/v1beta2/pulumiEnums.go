@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The type of IPv6 access for a cluster.
@@ -84,6 +85,12 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToGceClusterConfigPrivate
 	}).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToOutput(ctx context.Context) pulumix.Output[GceClusterConfigPrivateIpv6GoogleAccess] {
+	return pulumix.Output[GceClusterConfigPrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPriv
 
 func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
 	return o
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess] {
+	return pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) Elem() GceClusterConfigPrivateIpv6GoogleAccessOutput {
@@ -179,6 +192,12 @@ func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToGceClusterConfigPrivateI
 
 func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
+}
+
+func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess] {
+	return pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess]{
+		OutputState: in.ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
@@ -253,6 +272,12 @@ func (o InstanceGroupConfigPreemptibilityOutput) ToInstanceGroupConfigPreemptibi
 	}).(InstanceGroupConfigPreemptibilityPtrOutput)
 }
 
+func (o InstanceGroupConfigPreemptibilityOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupConfigPreemptibility] {
+	return pulumix.Output[InstanceGroupConfigPreemptibility]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupConfigPreemptibilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreempt
 
 func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
 	return o
+}
+
+func (o InstanceGroupConfigPreemptibilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupConfigPreemptibility] {
+	return pulumix.Output[*InstanceGroupConfigPreemptibility]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupConfigPreemptibilityPtrOutput) Elem() InstanceGroupConfigPreemptibilityOutput {
@@ -348,6 +379,12 @@ func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibil
 
 func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupConfigPreemptibilityPtrOutput)
+}
+
+func (in *instanceGroupConfigPreemptibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupConfigPreemptibility] {
+	return pulumix.Output[*InstanceGroupConfigPreemptibility]{
+		OutputState: in.ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Type of reservation to consume
@@ -423,6 +460,12 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityCo
 	}).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
+func (o ReservationAffinityConsumeReservationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[ReservationAffinityConsumeReservationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -456,6 +499,12 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
@@ -518,6 +567,12 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 
 func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (in *reservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
+		OutputState: in.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SoftwareConfigOptionalComponentsItem string
@@ -613,6 +668,12 @@ func (o SoftwareConfigOptionalComponentsItemOutput) ToSoftwareConfigOptionalComp
 	}).(SoftwareConfigOptionalComponentsItemPtrOutput)
 }
 
+func (o SoftwareConfigOptionalComponentsItemOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareConfigOptionalComponentsItem] {
+	return pulumix.Output[SoftwareConfigOptionalComponentsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SoftwareConfigOptionalComponentsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -646,6 +707,12 @@ func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalC
 
 func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
 	return o
+}
+
+func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareConfigOptionalComponentsItem] {
+	return pulumix.Output[*SoftwareConfigOptionalComponentsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareConfigOptionalComponentsItemPtrOutput) Elem() SoftwareConfigOptionalComponentsItemOutput {
@@ -710,6 +777,12 @@ func (in *softwareConfigOptionalComponentsItemPtr) ToSoftwareConfigOptionalCompo
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareConfigOptionalComponentsItemPtrOutput)
 }
 
+func (in *softwareConfigOptionalComponentsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareConfigOptionalComponentsItem] {
+	return pulumix.Output[*SoftwareConfigOptionalComponentsItem]{
+		OutputState: in.ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SoftwareConfigOptionalComponentsItemArrayInput is an input type that accepts SoftwareConfigOptionalComponentsItemArray and SoftwareConfigOptionalComponentsItemArrayOutput values.
 // You can construct a concrete instance of `SoftwareConfigOptionalComponentsItemArrayInput` via:
 //
@@ -735,6 +808,12 @@ func (i SoftwareConfigOptionalComponentsItemArray) ToSoftwareConfigOptionalCompo
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigOptionalComponentsItemArrayOutput)
 }
 
+func (i SoftwareConfigOptionalComponentsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareConfigOptionalComponentsItem] {
+	return pulumix.Output[[]SoftwareConfigOptionalComponentsItem]{
+		OutputState: i.ToSoftwareConfigOptionalComponentsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SoftwareConfigOptionalComponentsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (SoftwareConfigOptionalComponentsItemArrayOutput) ElementType() reflect.Type {
@@ -747,6 +826,12 @@ func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToSoftwareConfigOptiona
 
 func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToSoftwareConfigOptionalComponentsItemArrayOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemArrayOutput {
 	return o
+}
+
+func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareConfigOptionalComponentsItem] {
+	return pulumix.Output[[]SoftwareConfigOptionalComponentsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput) SoftwareConfigOptionalComponentsItemOutput {

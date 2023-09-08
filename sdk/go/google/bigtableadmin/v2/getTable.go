@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets metadata information about the specified table.
@@ -82,6 +83,12 @@ func (o LookupTableResultOutput) ToLookupTableResultOutput() LookupTableResultOu
 
 func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx context.Context) LookupTableResultOutput {
 	return o
+}
+
+func (o LookupTableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTableResult] {
+	return pulumix.Output[LookupTableResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`

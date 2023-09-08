@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
@@ -80,6 +81,12 @@ func (o GcsDestinationConfigGcsFileFormatOutput) ToGcsDestinationConfigGcsFileFo
 	}).(GcsDestinationConfigGcsFileFormatPtrOutput)
 }
 
+func (o GcsDestinationConfigGcsFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GcsDestinationConfigGcsFileFormat] {
+	return pulumix.Output[GcsDestinationConfigGcsFileFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GcsDestinationConfigGcsFileFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToGcsDestinationConfigGcsFil
 
 func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatPtrOutput {
 	return o
+}
+
+func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcsDestinationConfigGcsFileFormat] {
+	return pulumix.Output[*GcsDestinationConfigGcsFileFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GcsDestinationConfigGcsFileFormatPtrOutput) Elem() GcsDestinationConfigGcsFileFormatOutput {
@@ -175,6 +188,12 @@ func (in *gcsDestinationConfigGcsFileFormatPtr) ToGcsDestinationConfigGcsFileFor
 
 func (in *gcsDestinationConfigGcsFileFormatPtr) ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GcsDestinationConfigGcsFileFormatPtrOutput)
+}
+
+func (in *gcsDestinationConfigGcsFileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GcsDestinationConfigGcsFileFormat] {
+	return pulumix.Output[*GcsDestinationConfigGcsFileFormat]{
+		OutputState: in.ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Compression of the loaded JSON file.
@@ -249,6 +268,12 @@ func (o JsonFileFormatCompressionOutput) ToJsonFileFormatCompressionPtrOutputWit
 	}).(JsonFileFormatCompressionPtrOutput)
 }
 
+func (o JsonFileFormatCompressionOutput) ToOutput(ctx context.Context) pulumix.Output[JsonFileFormatCompression] {
+	return pulumix.Output[JsonFileFormatCompression]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JsonFileFormatCompressionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -282,6 +307,12 @@ func (o JsonFileFormatCompressionPtrOutput) ToJsonFileFormatCompressionPtrOutput
 
 func (o JsonFileFormatCompressionPtrOutput) ToJsonFileFormatCompressionPtrOutputWithContext(ctx context.Context) JsonFileFormatCompressionPtrOutput {
 	return o
+}
+
+func (o JsonFileFormatCompressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormatCompression] {
+	return pulumix.Output[*JsonFileFormatCompression]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JsonFileFormatCompressionPtrOutput) Elem() JsonFileFormatCompressionOutput {
@@ -344,6 +375,12 @@ func (in *jsonFileFormatCompressionPtr) ToJsonFileFormatCompressionPtrOutput() J
 
 func (in *jsonFileFormatCompressionPtr) ToJsonFileFormatCompressionPtrOutputWithContext(ctx context.Context) JsonFileFormatCompressionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JsonFileFormatCompressionPtrOutput)
+}
+
+func (in *jsonFileFormatCompressionPtr) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormatCompression] {
+	return pulumix.Output[*JsonFileFormatCompression]{
+		OutputState: in.ToJsonFileFormatCompressionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The schema file format along JSON data files.
@@ -418,6 +455,12 @@ func (o JsonFileFormatSchemaFileFormatOutput) ToJsonFileFormatSchemaFileFormatPt
 	}).(JsonFileFormatSchemaFileFormatPtrOutput)
 }
 
+func (o JsonFileFormatSchemaFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[JsonFileFormatSchemaFileFormat] {
+	return pulumix.Output[JsonFileFormatSchemaFileFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JsonFileFormatSchemaFileFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -451,6 +494,12 @@ func (o JsonFileFormatSchemaFileFormatPtrOutput) ToJsonFileFormatSchemaFileForma
 
 func (o JsonFileFormatSchemaFileFormatPtrOutput) ToJsonFileFormatSchemaFileFormatPtrOutputWithContext(ctx context.Context) JsonFileFormatSchemaFileFormatPtrOutput {
 	return o
+}
+
+func (o JsonFileFormatSchemaFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormatSchemaFileFormat] {
+	return pulumix.Output[*JsonFileFormatSchemaFileFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JsonFileFormatSchemaFileFormatPtrOutput) Elem() JsonFileFormatSchemaFileFormatOutput {
@@ -513,6 +562,12 @@ func (in *jsonFileFormatSchemaFileFormatPtr) ToJsonFileFormatSchemaFileFormatPtr
 
 func (in *jsonFileFormatSchemaFileFormatPtr) ToJsonFileFormatSchemaFileFormatPtrOutputWithContext(ctx context.Context) JsonFileFormatSchemaFileFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JsonFileFormatSchemaFileFormatPtrOutput)
+}
+
+func (in *jsonFileFormatSchemaFileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormatSchemaFileFormat] {
+	return pulumix.Output[*JsonFileFormatSchemaFileFormat]{
+		OutputState: in.ToJsonFileFormatSchemaFileFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The state of the stream.
@@ -599,6 +654,12 @@ func (o StreamStateEnumOutput) ToStreamStateEnumPtrOutputWithContext(ctx context
 	}).(StreamStateEnumPtrOutput)
 }
 
+func (o StreamStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[StreamStateEnum] {
+	return pulumix.Output[StreamStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StreamStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -632,6 +693,12 @@ func (o StreamStateEnumPtrOutput) ToStreamStateEnumPtrOutput() StreamStateEnumPt
 
 func (o StreamStateEnumPtrOutput) ToStreamStateEnumPtrOutputWithContext(ctx context.Context) StreamStateEnumPtrOutput {
 	return o
+}
+
+func (o StreamStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamStateEnum] {
+	return pulumix.Output[*StreamStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StreamStateEnumPtrOutput) Elem() StreamStateEnumOutput {
@@ -694,6 +761,12 @@ func (in *streamStateEnumPtr) ToStreamStateEnumPtrOutput() StreamStateEnumPtrOut
 
 func (in *streamStateEnumPtr) ToStreamStateEnumPtrOutputWithContext(ctx context.Context) StreamStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StreamStateEnumPtrOutput)
+}
+
+func (in *streamStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*StreamStateEnum] {
+	return pulumix.Output[*StreamStateEnum]{
+		OutputState: in.ToStreamStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

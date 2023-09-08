@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
@@ -173,6 +174,12 @@ func (i *HostSecurityReport) ToHostSecurityReportOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(HostSecurityReportOutput)
 }
 
+func (i *HostSecurityReport) ToOutput(ctx context.Context) pulumix.Output[*HostSecurityReport] {
+	return pulumix.Output[*HostSecurityReport]{
+		OutputState: i.ToHostSecurityReportOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostSecurityReportOutput struct{ *pulumi.OutputState }
 
 func (HostSecurityReportOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o HostSecurityReportOutput) ToHostSecurityReportOutput() HostSecurityRepor
 
 func (o HostSecurityReportOutput) ToHostSecurityReportOutputWithContext(ctx context.Context) HostSecurityReportOutput {
 	return o
+}
+
+func (o HostSecurityReportOutput) ToOutput(ctx context.Context) pulumix.Output[*HostSecurityReport] {
+	return pulumix.Output[*HostSecurityReport]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation time of the query.

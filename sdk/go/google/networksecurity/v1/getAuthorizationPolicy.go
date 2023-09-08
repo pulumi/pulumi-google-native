@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single AuthorizationPolicy.
@@ -80,6 +81,12 @@ func (o LookupAuthorizationPolicyResultOutput) ToLookupAuthorizationPolicyResult
 
 func (o LookupAuthorizationPolicyResultOutput) ToLookupAuthorizationPolicyResultOutputWithContext(ctx context.Context) LookupAuthorizationPolicyResultOutput {
 	return o
+}
+
+func (o LookupAuthorizationPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorizationPolicyResult] {
+	return pulumix.Output[LookupAuthorizationPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
@@ -152,6 +153,12 @@ func (o LookupTableResultOutput) ToLookupTableResultOutput() LookupTableResultOu
 
 func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx context.Context) LookupTableResultOutput {
 	return o
+}
+
+func (o LookupTableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTableResult] {
+	return pulumix.Output[LookupTableResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Clone definition.

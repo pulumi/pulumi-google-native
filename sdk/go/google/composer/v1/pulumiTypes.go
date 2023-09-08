@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AllowedIpRangeArgs) ToAllowedIpRangeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedIpRangeOutput)
 }
 
+func (i AllowedIpRangeArgs) ToOutput(ctx context.Context) pulumix.Output[AllowedIpRange] {
+	return pulumix.Output[AllowedIpRange]{
+		OutputState: i.ToAllowedIpRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AllowedIpRangeArrayInput is an input type that accepts AllowedIpRangeArray and AllowedIpRangeArrayOutput values.
 // You can construct a concrete instance of `AllowedIpRangeArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i AllowedIpRangeArray) ToAllowedIpRangeArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedIpRangeArrayOutput)
 }
 
+func (i AllowedIpRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]AllowedIpRange] {
+	return pulumix.Output[[]AllowedIpRange]{
+		OutputState: i.ToAllowedIpRangeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Allowed IP range with user-provided description.
 type AllowedIpRangeOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o AllowedIpRangeOutput) ToAllowedIpRangeOutput() AllowedIpRangeOutput {
 
 func (o AllowedIpRangeOutput) ToAllowedIpRangeOutputWithContext(ctx context.Context) AllowedIpRangeOutput {
 	return o
+}
+
+func (o AllowedIpRangeOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedIpRange] {
+	return pulumix.Output[AllowedIpRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-provided description. It must contain at most 300 characters.
@@ -114,6 +133,12 @@ func (o AllowedIpRangeArrayOutput) ToAllowedIpRangeArrayOutput() AllowedIpRangeA
 
 func (o AllowedIpRangeArrayOutput) ToAllowedIpRangeArrayOutputWithContext(ctx context.Context) AllowedIpRangeArrayOutput {
 	return o
+}
+
+func (o AllowedIpRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowedIpRange] {
+	return pulumix.Output[[]AllowedIpRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllowedIpRangeArrayOutput) Index(i pulumi.IntInput) AllowedIpRangeOutput {
@@ -145,6 +170,12 @@ func (o AllowedIpRangeResponseOutput) ToAllowedIpRangeResponseOutputWithContext(
 	return o
 }
 
+func (o AllowedIpRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedIpRangeResponse] {
+	return pulumix.Output[AllowedIpRangeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. User-provided description. It must contain at most 300 characters.
 func (o AllowedIpRangeResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v AllowedIpRangeResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -167,6 +198,12 @@ func (o AllowedIpRangeResponseArrayOutput) ToAllowedIpRangeResponseArrayOutput()
 
 func (o AllowedIpRangeResponseArrayOutput) ToAllowedIpRangeResponseArrayOutputWithContext(ctx context.Context) AllowedIpRangeResponseArrayOutput {
 	return o
+}
+
+func (o AllowedIpRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowedIpRangeResponse] {
+	return pulumix.Output[[]AllowedIpRangeResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AllowedIpRangeResponseArrayOutput) Index(i pulumi.IntInput) AllowedIpRangeResponseOutput {
@@ -214,6 +251,12 @@ func (i CidrBlockArgs) ToCidrBlockOutputWithContext(ctx context.Context) CidrBlo
 	return pulumi.ToOutputWithContext(ctx, i).(CidrBlockOutput)
 }
 
+func (i CidrBlockArgs) ToOutput(ctx context.Context) pulumix.Output[CidrBlock] {
+	return pulumix.Output[CidrBlock]{
+		OutputState: i.ToCidrBlockOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CidrBlockArrayInput is an input type that accepts CidrBlockArray and CidrBlockArrayOutput values.
 // You can construct a concrete instance of `CidrBlockArrayInput` via:
 //
@@ -239,6 +282,12 @@ func (i CidrBlockArray) ToCidrBlockArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CidrBlockArrayOutput)
 }
 
+func (i CidrBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]CidrBlock] {
+	return pulumix.Output[[]CidrBlock]{
+		OutputState: i.ToCidrBlockArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CIDR block with an optional name.
 type CidrBlockOutput struct{ *pulumi.OutputState }
 
@@ -252,6 +301,12 @@ func (o CidrBlockOutput) ToCidrBlockOutput() CidrBlockOutput {
 
 func (o CidrBlockOutput) ToCidrBlockOutputWithContext(ctx context.Context) CidrBlockOutput {
 	return o
+}
+
+func (o CidrBlockOutput) ToOutput(ctx context.Context) pulumix.Output[CidrBlock] {
+	return pulumix.Output[CidrBlock]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CIDR block that must be specified in CIDR notation.
@@ -276,6 +331,12 @@ func (o CidrBlockArrayOutput) ToCidrBlockArrayOutput() CidrBlockArrayOutput {
 
 func (o CidrBlockArrayOutput) ToCidrBlockArrayOutputWithContext(ctx context.Context) CidrBlockArrayOutput {
 	return o
+}
+
+func (o CidrBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CidrBlock] {
+	return pulumix.Output[[]CidrBlock]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CidrBlockArrayOutput) Index(i pulumi.IntInput) CidrBlockOutput {
@@ -307,6 +368,12 @@ func (o CidrBlockResponseOutput) ToCidrBlockResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o CidrBlockResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CidrBlockResponse] {
+	return pulumix.Output[CidrBlockResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // CIDR block that must be specified in CIDR notation.
 func (o CidrBlockResponseOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v CidrBlockResponse) string { return v.CidrBlock }).(pulumi.StringOutput)
@@ -329,6 +396,12 @@ func (o CidrBlockResponseArrayOutput) ToCidrBlockResponseArrayOutput() CidrBlock
 
 func (o CidrBlockResponseArrayOutput) ToCidrBlockResponseArrayOutputWithContext(ctx context.Context) CidrBlockResponseArrayOutput {
 	return o
+}
+
+func (o CidrBlockResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CidrBlockResponse] {
+	return pulumix.Output[[]CidrBlockResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CidrBlockResponseArrayOutput) Index(i pulumi.IntInput) CidrBlockResponseOutput {
@@ -372,6 +445,12 @@ func (i DatabaseConfigArgs) ToDatabaseConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigOutput)
 }
 
+func (i DatabaseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseConfig] {
+	return pulumix.Output[DatabaseConfig]{
+		OutputState: i.ToDatabaseConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DatabaseConfigArgs) ToDatabaseConfigPtrOutput() DatabaseConfigPtrOutput {
 	return i.ToDatabaseConfigPtrOutputWithContext(context.Background())
 }
@@ -413,6 +492,12 @@ func (i *databaseConfigPtrType) ToDatabaseConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigPtrOutput)
 }
 
+func (i *databaseConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseConfig] {
+	return pulumix.Output[*DatabaseConfig]{
+		OutputState: i.ToDatabaseConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfigOutput struct{ *pulumi.OutputState }
 
@@ -438,6 +523,12 @@ func (o DatabaseConfigOutput) ToDatabaseConfigPtrOutputWithContext(ctx context.C
 	}).(DatabaseConfigPtrOutput)
 }
 
+func (o DatabaseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseConfig] {
+	return pulumix.Output[DatabaseConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o DatabaseConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -455,6 +546,12 @@ func (o DatabaseConfigPtrOutput) ToDatabaseConfigPtrOutput() DatabaseConfigPtrOu
 
 func (o DatabaseConfigPtrOutput) ToDatabaseConfigPtrOutputWithContext(ctx context.Context) DatabaseConfigPtrOutput {
 	return o
+}
+
+func (o DatabaseConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseConfig] {
+	return pulumix.Output[*DatabaseConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseConfigPtrOutput) Elem() DatabaseConfigOutput {
@@ -498,6 +595,12 @@ func (o DatabaseConfigResponseOutput) ToDatabaseConfigResponseOutputWithContext(
 	return o
 }
 
+func (o DatabaseConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseConfigResponse] {
+	return pulumix.Output[DatabaseConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o DatabaseConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
@@ -536,6 +639,12 @@ func (i EncryptionConfigArgs) ToEncryptionConfigOutput() EncryptionConfigOutput 
 
 func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
+}
+
+func (i EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
+	return pulumix.Output[EncryptionConfig]{
+		OutputState: i.ToEncryptionConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
@@ -579,6 +688,12 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
+func (i *encryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
+	return pulumix.Output[*EncryptionConfig]{
+		OutputState: i.ToEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -604,6 +719,12 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
+func (o EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
+	return pulumix.Output[EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -621,6 +742,12 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfi
 
 func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
 	return o
+}
+
+func (o EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
+	return pulumix.Output[*EncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
@@ -662,6 +789,12 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutput() Encry
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
 	return o
+}
+
+func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigResponse] {
+	return pulumix.Output[EncryptionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
@@ -752,6 +885,12 @@ func (i EnvironmentConfigArgs) ToEnvironmentConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigOutput)
 }
 
+func (i EnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfig] {
+	return pulumix.Output[EnvironmentConfig]{
+		OutputState: i.ToEnvironmentConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvironmentConfigArgs) ToEnvironmentConfigPtrOutput() EnvironmentConfigPtrOutput {
 	return i.ToEnvironmentConfigPtrOutputWithContext(context.Background())
 }
@@ -793,6 +932,12 @@ func (i *environmentConfigPtrType) ToEnvironmentConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigPtrOutput)
 }
 
+func (i *environmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfig] {
+	return pulumix.Output[*EnvironmentConfig]{
+		OutputState: i.ToEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration information for an environment.
 type EnvironmentConfigOutput struct{ *pulumi.OutputState }
 
@@ -816,6 +961,12 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfig) *EnvironmentConfig {
 		return &v
 	}).(EnvironmentConfigPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfig] {
+	return pulumix.Output[EnvironmentConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
@@ -895,6 +1046,12 @@ func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutput() EnvironmentCo
 
 func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
 	return o
+}
+
+func (o EnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfig] {
+	return pulumix.Output[*EnvironmentConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
@@ -1090,6 +1247,12 @@ func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponseOutputWithCo
 	return o
 }
 
+func (o EnvironmentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigResponse] {
+	return pulumix.Output[EnvironmentConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
 func (o EnvironmentConfigResponseOutput) AirflowByoidUri() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.AirflowByoidUri }).(pulumi.StringOutput)
@@ -1230,6 +1393,12 @@ func (i IPAllocationPolicyArgs) ToIPAllocationPolicyOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IPAllocationPolicyOutput)
 }
 
+func (i IPAllocationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[IPAllocationPolicy] {
+	return pulumix.Output[IPAllocationPolicy]{
+		OutputState: i.ToIPAllocationPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IPAllocationPolicyArgs) ToIPAllocationPolicyPtrOutput() IPAllocationPolicyPtrOutput {
 	return i.ToIPAllocationPolicyPtrOutputWithContext(context.Background())
 }
@@ -1271,6 +1440,12 @@ func (i *ipallocationPolicyPtrType) ToIPAllocationPolicyPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IPAllocationPolicyPtrOutput)
 }
 
+func (i *ipallocationPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationPolicy] {
+	return pulumix.Output[*IPAllocationPolicy]{
+		OutputState: i.ToIPAllocationPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
 type IPAllocationPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1294,6 +1469,12 @@ func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicy) *IPAllocationPolicy {
 		return &v
 	}).(IPAllocationPolicyPtrOutput)
+}
+
+func (o IPAllocationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[IPAllocationPolicy] {
+	return pulumix.Output[IPAllocationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -1333,6 +1514,12 @@ func (o IPAllocationPolicyPtrOutput) ToIPAllocationPolicyPtrOutput() IPAllocatio
 
 func (o IPAllocationPolicyPtrOutput) ToIPAllocationPolicyPtrOutputWithContext(ctx context.Context) IPAllocationPolicyPtrOutput {
 	return o
+}
+
+func (o IPAllocationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationPolicy] {
+	return pulumix.Output[*IPAllocationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IPAllocationPolicyPtrOutput) Elem() IPAllocationPolicyOutput {
@@ -1424,6 +1611,12 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponseOutputWith
 	return o
 }
 
+func (o IPAllocationPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPAllocationPolicyResponse] {
+	return pulumix.Output[IPAllocationPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
@@ -1492,6 +1685,12 @@ func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
 }
 
+func (i MaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
+	return pulumix.Output[MaintenanceWindow]{
+		OutputState: i.ToMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
 	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -1533,6 +1732,12 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
+func (i *maintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
+	return pulumix.Output[*MaintenanceWindow]{
+		OutputState: i.ToMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -1556,6 +1761,12 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
 		return &v
 	}).(MaintenanceWindowPtrOutput)
+}
+
+func (o MaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
+	return pulumix.Output[MaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
@@ -1585,6 +1796,12 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWi
 
 func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
+	return pulumix.Output[*MaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
@@ -1652,6 +1869,12 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
+func (o MaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowResponse] {
+	return pulumix.Output[MaintenanceWindowResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
 func (o MaintenanceWindowResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -1706,6 +1929,12 @@ func (i MasterAuthorizedNetworksConfigArgs) ToMasterAuthorizedNetworksConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigOutput)
 }
 
+func (i MasterAuthorizedNetworksConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MasterAuthorizedNetworksConfig] {
+	return pulumix.Output[MasterAuthorizedNetworksConfig]{
+		OutputState: i.ToMasterAuthorizedNetworksConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MasterAuthorizedNetworksConfigArgs) ToMasterAuthorizedNetworksConfigPtrOutput() MasterAuthorizedNetworksConfigPtrOutput {
 	return i.ToMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
 }
@@ -1747,6 +1976,12 @@ func (i *masterAuthorizedNetworksConfigPtrType) ToMasterAuthorizedNetworksConfig
 	return pulumi.ToOutputWithContext(ctx, i).(MasterAuthorizedNetworksConfigPtrOutput)
 }
 
+func (i *masterAuthorizedNetworksConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MasterAuthorizedNetworksConfig] {
+	return pulumix.Output[*MasterAuthorizedNetworksConfig]{
+		OutputState: i.ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 type MasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
 
@@ -1772,6 +2007,12 @@ func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigPt
 	}).(MasterAuthorizedNetworksConfigPtrOutput)
 }
 
+func (o MasterAuthorizedNetworksConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MasterAuthorizedNetworksConfig] {
+	return pulumix.Output[MasterAuthorizedNetworksConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o MasterAuthorizedNetworksConfigOutput) CidrBlocks() CidrBlockArrayOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) []CidrBlock { return v.CidrBlocks }).(CidrBlockArrayOutput)
@@ -1794,6 +2035,12 @@ func (o MasterAuthorizedNetworksConfigPtrOutput) ToMasterAuthorizedNetworksConfi
 
 func (o MasterAuthorizedNetworksConfigPtrOutput) ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigPtrOutput {
 	return o
+}
+
+func (o MasterAuthorizedNetworksConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MasterAuthorizedNetworksConfig] {
+	return pulumix.Output[*MasterAuthorizedNetworksConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MasterAuthorizedNetworksConfigPtrOutput) Elem() MasterAuthorizedNetworksConfigOutput {
@@ -1849,6 +2096,12 @@ func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworks
 	return o
 }
 
+func (o MasterAuthorizedNetworksConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MasterAuthorizedNetworksConfigResponse] {
+	return pulumix.Output[MasterAuthorizedNetworksConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o MasterAuthorizedNetworksConfigResponseOutput) CidrBlocks() CidrBlockResponseArrayOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) []CidrBlockResponse { return v.CidrBlocks }).(CidrBlockResponseArrayOutput)
@@ -1894,6 +2147,12 @@ func (i NetworkingConfigArgs) ToNetworkingConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkingConfigOutput)
 }
 
+func (i NetworkingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkingConfig] {
+	return pulumix.Output[NetworkingConfig]{
+		OutputState: i.ToNetworkingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NetworkingConfigArgs) ToNetworkingConfigPtrOutput() NetworkingConfigPtrOutput {
 	return i.ToNetworkingConfigPtrOutputWithContext(context.Background())
 }
@@ -1935,6 +2194,12 @@ func (i *networkingConfigPtrType) ToNetworkingConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkingConfigPtrOutput)
 }
 
+func (i *networkingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkingConfig] {
+	return pulumix.Output[*NetworkingConfig]{
+		OutputState: i.ToNetworkingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration options for networking connections in the Composer 2 environment.
 type NetworkingConfigOutput struct{ *pulumi.OutputState }
 
@@ -1960,6 +2225,12 @@ func (o NetworkingConfigOutput) ToNetworkingConfigPtrOutputWithContext(ctx conte
 	}).(NetworkingConfigPtrOutput)
 }
 
+func (o NetworkingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkingConfig] {
+	return pulumix.Output[NetworkingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
 func (o NetworkingConfigOutput) ConnectionType() NetworkingConfigConnectionTypePtrOutput {
 	return o.ApplyT(func(v NetworkingConfig) *NetworkingConfigConnectionType { return v.ConnectionType }).(NetworkingConfigConnectionTypePtrOutput)
@@ -1977,6 +2248,12 @@ func (o NetworkingConfigPtrOutput) ToNetworkingConfigPtrOutput() NetworkingConfi
 
 func (o NetworkingConfigPtrOutput) ToNetworkingConfigPtrOutputWithContext(ctx context.Context) NetworkingConfigPtrOutput {
 	return o
+}
+
+func (o NetworkingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkingConfig] {
+	return pulumix.Output[*NetworkingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkingConfigPtrOutput) Elem() NetworkingConfigOutput {
@@ -2018,6 +2295,12 @@ func (o NetworkingConfigResponseOutput) ToNetworkingConfigResponseOutput() Netwo
 
 func (o NetworkingConfigResponseOutput) ToNetworkingConfigResponseOutputWithContext(ctx context.Context) NetworkingConfigResponseOutput {
 	return o
+}
+
+func (o NetworkingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkingConfigResponse] {
+	return pulumix.Output[NetworkingConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
@@ -2096,6 +2379,12 @@ func (i NodeConfigArgs) ToNodeConfigOutputWithContext(ctx context.Context) NodeC
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigOutput)
 }
 
+func (i NodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NodeConfig] {
+	return pulumix.Output[NodeConfig]{
+		OutputState: i.ToNodeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NodeConfigArgs) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
 	return i.ToNodeConfigPtrOutputWithContext(context.Background())
 }
@@ -2137,6 +2426,12 @@ func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
 }
 
+func (i *nodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodeConfig] {
+	return pulumix.Output[*NodeConfig]{
+		OutputState: i.ToNodeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -2160,6 +2455,12 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfig) *NodeConfig {
 		return &v
 	}).(NodeConfigPtrOutput)
+}
+
+func (o NodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NodeConfig] {
+	return pulumix.Output[NodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2224,6 +2525,12 @@ func (o NodeConfigPtrOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
 
 func (o NodeConfigPtrOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
 	return o
+}
+
+func (o NodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeConfig] {
+	return pulumix.Output[*NodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
@@ -2375,6 +2682,12 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o NodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeConfigResponse] {
+	return pulumix.Output[NodeConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.DiskSizeGb }).(pulumi.IntOutput)
@@ -2464,6 +2777,12 @@ func (i PrivateClusterConfigArgs) ToPrivateClusterConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateClusterConfigOutput)
 }
 
+func (i PrivateClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateClusterConfig] {
+	return pulumix.Output[PrivateClusterConfig]{
+		OutputState: i.ToPrivateClusterConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateClusterConfigArgs) ToPrivateClusterConfigPtrOutput() PrivateClusterConfigPtrOutput {
 	return i.ToPrivateClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -2505,6 +2824,12 @@ func (i *privateClusterConfigPtrType) ToPrivateClusterConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateClusterConfigPtrOutput)
 }
 
+func (i *privateClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateClusterConfig] {
+	return pulumix.Output[*PrivateClusterConfig]{
+		OutputState: i.ToPrivateClusterConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration options for the private GKE cluster in a Cloud Composer environment.
 type PrivateClusterConfigOutput struct{ *pulumi.OutputState }
 
@@ -2530,6 +2855,12 @@ func (o PrivateClusterConfigOutput) ToPrivateClusterConfigPtrOutputWithContext(c
 	}).(PrivateClusterConfigPtrOutput)
 }
 
+func (o PrivateClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateClusterConfig] {
+	return pulumix.Output[PrivateClusterConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
 func (o PrivateClusterConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PrivateClusterConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
@@ -2552,6 +2883,12 @@ func (o PrivateClusterConfigPtrOutput) ToPrivateClusterConfigPtrOutput() Private
 
 func (o PrivateClusterConfigPtrOutput) ToPrivateClusterConfigPtrOutputWithContext(ctx context.Context) PrivateClusterConfigPtrOutput {
 	return o
+}
+
+func (o PrivateClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateClusterConfig] {
+	return pulumix.Output[*PrivateClusterConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateClusterConfigPtrOutput) Elem() PrivateClusterConfigOutput {
@@ -2607,6 +2944,12 @@ func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponseOutput
 
 func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponseOutputWithContext(ctx context.Context) PrivateClusterConfigResponseOutput {
 	return o
+}
+
+func (o PrivateClusterConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateClusterConfigResponse] {
+	return pulumix.Output[PrivateClusterConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
@@ -2687,6 +3030,12 @@ func (i PrivateEnvironmentConfigArgs) ToPrivateEnvironmentConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEnvironmentConfigOutput)
 }
 
+func (i PrivateEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEnvironmentConfig] {
+	return pulumix.Output[PrivateEnvironmentConfig]{
+		OutputState: i.ToPrivateEnvironmentConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateEnvironmentConfigArgs) ToPrivateEnvironmentConfigPtrOutput() PrivateEnvironmentConfigPtrOutput {
 	return i.ToPrivateEnvironmentConfigPtrOutputWithContext(context.Background())
 }
@@ -2728,6 +3077,12 @@ func (i *privateEnvironmentConfigPtrType) ToPrivateEnvironmentConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEnvironmentConfigPtrOutput)
 }
 
+func (i *privateEnvironmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEnvironmentConfig] {
+	return pulumix.Output[*PrivateEnvironmentConfig]{
+		OutputState: i.ToPrivateEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
@@ -2751,6 +3106,12 @@ func (o PrivateEnvironmentConfigOutput) ToPrivateEnvironmentConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEnvironmentConfig) *PrivateEnvironmentConfig {
 		return &v
 	}).(PrivateEnvironmentConfigPtrOutput)
+}
+
+func (o PrivateEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEnvironmentConfig] {
+	return pulumix.Output[PrivateEnvironmentConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
@@ -2805,6 +3166,12 @@ func (o PrivateEnvironmentConfigPtrOutput) ToPrivateEnvironmentConfigPtrOutput()
 
 func (o PrivateEnvironmentConfigPtrOutput) ToPrivateEnvironmentConfigPtrOutputWithContext(ctx context.Context) PrivateEnvironmentConfigPtrOutput {
 	return o
+}
+
+func (o PrivateEnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEnvironmentConfig] {
+	return pulumix.Output[*PrivateEnvironmentConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateEnvironmentConfigPtrOutput) Elem() PrivateEnvironmentConfigOutput {
@@ -2936,6 +3303,12 @@ func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigRespon
 	return o
 }
 
+func (o PrivateEnvironmentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEnvironmentConfigResponse] {
+	return pulumix.Output[PrivateEnvironmentConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
 func (o PrivateEnvironmentConfigResponseOutput) CloudComposerConnectionSubnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.CloudComposerConnectionSubnetwork }).(pulumi.StringOutput)
@@ -3021,6 +3394,12 @@ func (i RecoveryConfigArgs) ToRecoveryConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigOutput)
 }
 
+func (i RecoveryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RecoveryConfig] {
+	return pulumix.Output[RecoveryConfig]{
+		OutputState: i.ToRecoveryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecoveryConfigArgs) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
 	return i.ToRecoveryConfigPtrOutputWithContext(context.Background())
 }
@@ -3062,6 +3441,12 @@ func (i *recoveryConfigPtrType) ToRecoveryConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigPtrOutput)
 }
 
+func (i *recoveryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecoveryConfig] {
+	return pulumix.Output[*RecoveryConfig]{
+		OutputState: i.ToRecoveryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Recovery settings of an environment.
 type RecoveryConfigOutput struct{ *pulumi.OutputState }
 
@@ -3087,6 +3472,12 @@ func (o RecoveryConfigOutput) ToRecoveryConfigPtrOutputWithContext(ctx context.C
 	}).(RecoveryConfigPtrOutput)
 }
 
+func (o RecoveryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RecoveryConfig] {
+	return pulumix.Output[RecoveryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The configuration for scheduled snapshot creation mechanism.
 func (o RecoveryConfigOutput) ScheduledSnapshotsConfig() ScheduledSnapshotsConfigPtrOutput {
 	return o.ApplyT(func(v RecoveryConfig) *ScheduledSnapshotsConfig { return v.ScheduledSnapshotsConfig }).(ScheduledSnapshotsConfigPtrOutput)
@@ -3104,6 +3495,12 @@ func (o RecoveryConfigPtrOutput) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOu
 
 func (o RecoveryConfigPtrOutput) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
 	return o
+}
+
+func (o RecoveryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecoveryConfig] {
+	return pulumix.Output[*RecoveryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecoveryConfigPtrOutput) Elem() RecoveryConfigOutput {
@@ -3145,6 +3542,12 @@ func (o RecoveryConfigResponseOutput) ToRecoveryConfigResponseOutput() RecoveryC
 
 func (o RecoveryConfigResponseOutput) ToRecoveryConfigResponseOutputWithContext(ctx context.Context) RecoveryConfigResponseOutput {
 	return o
+}
+
+func (o RecoveryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecoveryConfigResponse] {
+	return pulumix.Output[RecoveryConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The configuration for scheduled snapshot creation mechanism.
@@ -3199,6 +3602,12 @@ func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigOutput)
 }
 
+func (i ScheduledSnapshotsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ScheduledSnapshotsConfig] {
+	return pulumix.Output[ScheduledSnapshotsConfig]{
+		OutputState: i.ToScheduledSnapshotsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
 	return i.ToScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
 }
@@ -3240,6 +3649,12 @@ func (i *scheduledSnapshotsConfigPtrType) ToScheduledSnapshotsConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigPtrOutput)
 }
 
+func (i *scheduledSnapshotsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScheduledSnapshotsConfig] {
+	return pulumix.Output[*ScheduledSnapshotsConfig]{
+		OutputState: i.ToScheduledSnapshotsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration for scheduled snapshot creation mechanism.
 type ScheduledSnapshotsConfigOutput struct{ *pulumi.OutputState }
 
@@ -3263,6 +3678,12 @@ func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledSnapshotsConfig) *ScheduledSnapshotsConfig {
 		return &v
 	}).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduledSnapshotsConfig] {
+	return pulumix.Output[ScheduledSnapshotsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Whether scheduled snapshots creation is enabled.
@@ -3297,6 +3718,12 @@ func (o ScheduledSnapshotsConfigPtrOutput) ToScheduledSnapshotsConfigPtrOutput()
 
 func (o ScheduledSnapshotsConfigPtrOutput) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
 	return o
+}
+
+func (o ScheduledSnapshotsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledSnapshotsConfig] {
+	return pulumix.Output[*ScheduledSnapshotsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduledSnapshotsConfigPtrOutput) Elem() ScheduledSnapshotsConfigOutput {
@@ -3376,6 +3803,12 @@ func (o ScheduledSnapshotsConfigResponseOutput) ToScheduledSnapshotsConfigRespon
 	return o
 }
 
+func (o ScheduledSnapshotsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduledSnapshotsConfigResponse] {
+	return pulumix.Output[ScheduledSnapshotsConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Whether scheduled snapshots creation is enabled.
 func (o ScheduledSnapshotsConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -3443,6 +3876,12 @@ func (i SchedulerResourceArgs) ToSchedulerResourceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerResourceOutput)
 }
 
+func (i SchedulerResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SchedulerResource] {
+	return pulumix.Output[SchedulerResource]{
+		OutputState: i.ToSchedulerResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SchedulerResourceArgs) ToSchedulerResourcePtrOutput() SchedulerResourcePtrOutput {
 	return i.ToSchedulerResourcePtrOutputWithContext(context.Background())
 }
@@ -3484,6 +3923,12 @@ func (i *schedulerResourcePtrType) ToSchedulerResourcePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerResourcePtrOutput)
 }
 
+func (i *schedulerResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SchedulerResource] {
+	return pulumix.Output[*SchedulerResource]{
+		OutputState: i.ToSchedulerResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for resources used by Airflow schedulers.
 type SchedulerResourceOutput struct{ *pulumi.OutputState }
 
@@ -3507,6 +3952,12 @@ func (o SchedulerResourceOutput) ToSchedulerResourcePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulerResource) *SchedulerResource {
 		return &v
 	}).(SchedulerResourcePtrOutput)
+}
+
+func (o SchedulerResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulerResource] {
+	return pulumix.Output[SchedulerResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The number of schedulers.
@@ -3541,6 +3992,12 @@ func (o SchedulerResourcePtrOutput) ToSchedulerResourcePtrOutput() SchedulerReso
 
 func (o SchedulerResourcePtrOutput) ToSchedulerResourcePtrOutputWithContext(ctx context.Context) SchedulerResourcePtrOutput {
 	return o
+}
+
+func (o SchedulerResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulerResource] {
+	return pulumix.Output[*SchedulerResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulerResourcePtrOutput) Elem() SchedulerResourceOutput {
@@ -3620,6 +4077,12 @@ func (o SchedulerResourceResponseOutput) ToSchedulerResourceResponseOutputWithCo
 	return o
 }
 
+func (o SchedulerResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulerResourceResponse] {
+	return pulumix.Output[SchedulerResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. The number of schedulers.
 func (o SchedulerResourceResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v SchedulerResourceResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -3695,6 +4158,12 @@ func (i SoftwareConfigArgs) ToSoftwareConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigOutput)
 }
 
+func (i SoftwareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareConfig] {
+	return pulumix.Output[SoftwareConfig]{
+		OutputState: i.ToSoftwareConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SoftwareConfigArgs) ToSoftwareConfigPtrOutput() SoftwareConfigPtrOutput {
 	return i.ToSoftwareConfigPtrOutputWithContext(context.Background())
 }
@@ -3736,6 +4205,12 @@ func (i *softwareConfigPtrType) ToSoftwareConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigPtrOutput)
 }
 
+func (i *softwareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareConfig] {
+	return pulumix.Output[*SoftwareConfig]{
+		OutputState: i.ToSoftwareConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the selection and configuration of software inside the environment.
 type SoftwareConfigOutput struct{ *pulumi.OutputState }
 
@@ -3759,6 +4234,12 @@ func (o SoftwareConfigOutput) ToSoftwareConfigPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfig) *SoftwareConfig {
 		return &v
 	}).(SoftwareConfigPtrOutput)
+}
+
+func (o SoftwareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareConfig] {
+	return pulumix.Output[SoftwareConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
@@ -3803,6 +4284,12 @@ func (o SoftwareConfigPtrOutput) ToSoftwareConfigPtrOutput() SoftwareConfigPtrOu
 
 func (o SoftwareConfigPtrOutput) ToSoftwareConfigPtrOutputWithContext(ctx context.Context) SoftwareConfigPtrOutput {
 	return o
+}
+
+func (o SoftwareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareConfig] {
+	return pulumix.Output[*SoftwareConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SoftwareConfigPtrOutput) Elem() SoftwareConfigOutput {
@@ -3906,6 +4393,12 @@ func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponseOutputWithContext(
 	return o
 }
 
+func (o SoftwareConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareConfigResponse] {
+	return pulumix.Output[SoftwareConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
 func (o SoftwareConfigResponseOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
@@ -3971,6 +4464,12 @@ func (i WebServerConfigArgs) ToWebServerConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigOutput)
 }
 
+func (i WebServerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WebServerConfig] {
+	return pulumix.Output[WebServerConfig]{
+		OutputState: i.ToWebServerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WebServerConfigArgs) ToWebServerConfigPtrOutput() WebServerConfigPtrOutput {
 	return i.ToWebServerConfigPtrOutputWithContext(context.Background())
 }
@@ -4012,6 +4511,12 @@ func (i *webServerConfigPtrType) ToWebServerConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigPtrOutput)
 }
 
+func (i *webServerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebServerConfig] {
+	return pulumix.Output[*WebServerConfig]{
+		OutputState: i.ToWebServerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfigOutput struct{ *pulumi.OutputState }
 
@@ -4037,6 +4542,12 @@ func (o WebServerConfigOutput) ToWebServerConfigPtrOutputWithContext(ctx context
 	}).(WebServerConfigPtrOutput)
 }
 
+func (o WebServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WebServerConfig] {
+	return pulumix.Output[WebServerConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 func (o WebServerConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebServerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -4054,6 +4565,12 @@ func (o WebServerConfigPtrOutput) ToWebServerConfigPtrOutput() WebServerConfigPt
 
 func (o WebServerConfigPtrOutput) ToWebServerConfigPtrOutputWithContext(ctx context.Context) WebServerConfigPtrOutput {
 	return o
+}
+
+func (o WebServerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebServerConfig] {
+	return pulumix.Output[*WebServerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebServerConfigPtrOutput) Elem() WebServerConfigOutput {
@@ -4097,6 +4614,12 @@ func (o WebServerConfigResponseOutput) ToWebServerConfigResponseOutputWithContex
 	return o
 }
 
+func (o WebServerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebServerConfigResponse] {
+	return pulumix.Output[WebServerConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 func (o WebServerConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v WebServerConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
@@ -4135,6 +4658,12 @@ func (i WebServerNetworkAccessControlArgs) ToWebServerNetworkAccessControlOutput
 
 func (i WebServerNetworkAccessControlArgs) ToWebServerNetworkAccessControlOutputWithContext(ctx context.Context) WebServerNetworkAccessControlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlOutput)
+}
+
+func (i WebServerNetworkAccessControlArgs) ToOutput(ctx context.Context) pulumix.Output[WebServerNetworkAccessControl] {
+	return pulumix.Output[WebServerNetworkAccessControl]{
+		OutputState: i.ToWebServerNetworkAccessControlOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i WebServerNetworkAccessControlArgs) ToWebServerNetworkAccessControlPtrOutput() WebServerNetworkAccessControlPtrOutput {
@@ -4178,6 +4707,12 @@ func (i *webServerNetworkAccessControlPtrType) ToWebServerNetworkAccessControlPt
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlPtrOutput)
 }
 
+func (i *webServerNetworkAccessControlPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebServerNetworkAccessControl] {
+	return pulumix.Output[*WebServerNetworkAccessControl]{
+		OutputState: i.ToWebServerNetworkAccessControlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControlOutput struct{ *pulumi.OutputState }
 
@@ -4203,6 +4738,12 @@ func (o WebServerNetworkAccessControlOutput) ToWebServerNetworkAccessControlPtrO
 	}).(WebServerNetworkAccessControlPtrOutput)
 }
 
+func (o WebServerNetworkAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[WebServerNetworkAccessControl] {
+	return pulumix.Output[WebServerNetworkAccessControl]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A collection of allowed IP ranges with descriptions.
 func (o WebServerNetworkAccessControlOutput) AllowedIpRanges() AllowedIpRangeArrayOutput {
 	return o.ApplyT(func(v WebServerNetworkAccessControl) []AllowedIpRange { return v.AllowedIpRanges }).(AllowedIpRangeArrayOutput)
@@ -4220,6 +4761,12 @@ func (o WebServerNetworkAccessControlPtrOutput) ToWebServerNetworkAccessControlP
 
 func (o WebServerNetworkAccessControlPtrOutput) ToWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) WebServerNetworkAccessControlPtrOutput {
 	return o
+}
+
+func (o WebServerNetworkAccessControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebServerNetworkAccessControl] {
+	return pulumix.Output[*WebServerNetworkAccessControl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebServerNetworkAccessControlPtrOutput) Elem() WebServerNetworkAccessControlOutput {
@@ -4261,6 +4808,12 @@ func (o WebServerNetworkAccessControlResponseOutput) ToWebServerNetworkAccessCon
 
 func (o WebServerNetworkAccessControlResponseOutput) ToWebServerNetworkAccessControlResponseOutputWithContext(ctx context.Context) WebServerNetworkAccessControlResponseOutput {
 	return o
+}
+
+func (o WebServerNetworkAccessControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebServerNetworkAccessControlResponse] {
+	return pulumix.Output[WebServerNetworkAccessControlResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of allowed IP ranges with descriptions.
@@ -4311,6 +4864,12 @@ func (i WebServerResourceArgs) ToWebServerResourceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerResourceOutput)
 }
 
+func (i WebServerResourceArgs) ToOutput(ctx context.Context) pulumix.Output[WebServerResource] {
+	return pulumix.Output[WebServerResource]{
+		OutputState: i.ToWebServerResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WebServerResourceArgs) ToWebServerResourcePtrOutput() WebServerResourcePtrOutput {
 	return i.ToWebServerResourcePtrOutputWithContext(context.Background())
 }
@@ -4352,6 +4911,12 @@ func (i *webServerResourcePtrType) ToWebServerResourcePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WebServerResourcePtrOutput)
 }
 
+func (i *webServerResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*WebServerResource] {
+	return pulumix.Output[*WebServerResource]{
+		OutputState: i.ToWebServerResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for resources used by Airflow web server.
 type WebServerResourceOutput struct{ *pulumi.OutputState }
 
@@ -4375,6 +4940,12 @@ func (o WebServerResourceOutput) ToWebServerResourcePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerResource) *WebServerResource {
 		return &v
 	}).(WebServerResourcePtrOutput)
+}
+
+func (o WebServerResourceOutput) ToOutput(ctx context.Context) pulumix.Output[WebServerResource] {
+	return pulumix.Output[WebServerResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. CPU request and limit for Airflow web server.
@@ -4404,6 +4975,12 @@ func (o WebServerResourcePtrOutput) ToWebServerResourcePtrOutput() WebServerReso
 
 func (o WebServerResourcePtrOutput) ToWebServerResourcePtrOutputWithContext(ctx context.Context) WebServerResourcePtrOutput {
 	return o
+}
+
+func (o WebServerResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebServerResource] {
+	return pulumix.Output[*WebServerResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebServerResourcePtrOutput) Elem() WebServerResourceOutput {
@@ -4469,6 +5046,12 @@ func (o WebServerResourceResponseOutput) ToWebServerResourceResponseOutput() Web
 
 func (o WebServerResourceResponseOutput) ToWebServerResourceResponseOutputWithContext(ctx context.Context) WebServerResourceResponseOutput {
 	return o
+}
+
+func (o WebServerResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebServerResourceResponse] {
+	return pulumix.Output[WebServerResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. CPU request and limit for Airflow web server.
@@ -4537,6 +5120,12 @@ func (i WorkerResourceArgs) ToWorkerResourceOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerResourceOutput)
 }
 
+func (i WorkerResourceArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerResource] {
+	return pulumix.Output[WorkerResource]{
+		OutputState: i.ToWorkerResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkerResourceArgs) ToWorkerResourcePtrOutput() WorkerResourcePtrOutput {
 	return i.ToWorkerResourcePtrOutputWithContext(context.Background())
 }
@@ -4578,6 +5167,12 @@ func (i *workerResourcePtrType) ToWorkerResourcePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerResourcePtrOutput)
 }
 
+func (i *workerResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkerResource] {
+	return pulumix.Output[*WorkerResource]{
+		OutputState: i.ToWorkerResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for resources used by Airflow workers.
 type WorkerResourceOutput struct{ *pulumi.OutputState }
 
@@ -4601,6 +5196,12 @@ func (o WorkerResourceOutput) ToWorkerResourcePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerResource) *WorkerResource {
 		return &v
 	}).(WorkerResourcePtrOutput)
+}
+
+func (o WorkerResourceOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerResource] {
+	return pulumix.Output[WorkerResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. CPU request and limit for a single Airflow worker replica.
@@ -4640,6 +5241,12 @@ func (o WorkerResourcePtrOutput) ToWorkerResourcePtrOutput() WorkerResourcePtrOu
 
 func (o WorkerResourcePtrOutput) ToWorkerResourcePtrOutputWithContext(ctx context.Context) WorkerResourcePtrOutput {
 	return o
+}
+
+func (o WorkerResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerResource] {
+	return pulumix.Output[*WorkerResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerResourcePtrOutput) Elem() WorkerResourceOutput {
@@ -4731,6 +5338,12 @@ func (o WorkerResourceResponseOutput) ToWorkerResourceResponseOutputWithContext(
 	return o
 }
 
+func (o WorkerResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerResourceResponse] {
+	return pulumix.Output[WorkerResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. CPU request and limit for a single Airflow worker replica.
 func (o WorkerResourceResponseOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v WorkerResourceResponse) float64 { return v.Cpu }).(pulumi.Float64Output)
@@ -4799,6 +5412,12 @@ func (i WorkloadsConfigArgs) ToWorkloadsConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadsConfigOutput)
 }
 
+func (i WorkloadsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadsConfig] {
+	return pulumix.Output[WorkloadsConfig]{
+		OutputState: i.ToWorkloadsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkloadsConfigArgs) ToWorkloadsConfigPtrOutput() WorkloadsConfigPtrOutput {
 	return i.ToWorkloadsConfigPtrOutputWithContext(context.Background())
 }
@@ -4840,6 +5459,12 @@ func (i *workloadsConfigPtrType) ToWorkloadsConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadsConfigPtrOutput)
 }
 
+func (i *workloadsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkloadsConfig] {
+	return pulumix.Output[*WorkloadsConfig]{
+		OutputState: i.ToWorkloadsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 type WorkloadsConfigOutput struct{ *pulumi.OutputState }
 
@@ -4863,6 +5488,12 @@ func (o WorkloadsConfigOutput) ToWorkloadsConfigPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadsConfig) *WorkloadsConfig {
 		return &v
 	}).(WorkloadsConfigPtrOutput)
+}
+
+func (o WorkloadsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadsConfig] {
+	return pulumix.Output[WorkloadsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Resources used by Airflow schedulers.
@@ -4892,6 +5523,12 @@ func (o WorkloadsConfigPtrOutput) ToWorkloadsConfigPtrOutput() WorkloadsConfigPt
 
 func (o WorkloadsConfigPtrOutput) ToWorkloadsConfigPtrOutputWithContext(ctx context.Context) WorkloadsConfigPtrOutput {
 	return o
+}
+
+func (o WorkloadsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadsConfig] {
+	return pulumix.Output[*WorkloadsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadsConfigPtrOutput) Elem() WorkloadsConfigOutput {
@@ -4957,6 +5594,12 @@ func (o WorkloadsConfigResponseOutput) ToWorkloadsConfigResponseOutput() Workloa
 
 func (o WorkloadsConfigResponseOutput) ToWorkloadsConfigResponseOutputWithContext(ctx context.Context) WorkloadsConfigResponseOutput {
 	return o
+}
+
+func (o WorkloadsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadsConfigResponse] {
+	return pulumix.Output[WorkloadsConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Resources used by Airflow schedulers.

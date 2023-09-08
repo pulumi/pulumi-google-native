@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Atomically updates the ResourceRecordSet collection.
@@ -135,6 +136,12 @@ func (i *Change) ToChangeOutputWithContext(ctx context.Context) ChangeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeOutput)
 }
 
+func (i *Change) ToOutput(ctx context.Context) pulumix.Output[*Change] {
+	return pulumix.Output[*Change]{
+		OutputState: i.ToChangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChangeOutput struct{ *pulumi.OutputState }
 
 func (ChangeOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o ChangeOutput) ToChangeOutput() ChangeOutput {
 
 func (o ChangeOutput) ToChangeOutputWithContext(ctx context.Context) ChangeOutput {
 	return o
+}
+
+func (o ChangeOutput) ToOutput(ctx context.Context) pulumix.Output[*Change] {
+	return pulumix.Output[*Change]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Which ResourceRecordSets to add?

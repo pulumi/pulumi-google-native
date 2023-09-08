@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Peering.
@@ -80,6 +81,12 @@ func (o LookupPeeringResultOutput) ToLookupPeeringResultOutput() LookupPeeringRe
 
 func (o LookupPeeringResultOutput) ToLookupPeeringResultOutputWithContext(ctx context.Context) LookupPeeringResultOutput {
 	return o
+}
+
+func (o LookupPeeringResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringResult] {
+	return pulumix.Output[LookupPeeringResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.

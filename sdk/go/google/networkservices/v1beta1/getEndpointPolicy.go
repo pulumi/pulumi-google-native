@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single EndpointPolicy.
@@ -88,6 +89,12 @@ func (o LookupEndpointPolicyResultOutput) ToLookupEndpointPolicyResultOutput() L
 
 func (o LookupEndpointPolicyResultOutput) ToLookupEndpointPolicyResultOutputWithContext(ctx context.Context) LookupEndpointPolicyResultOutput {
 	return o
+}
+
+func (o LookupEndpointPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEndpointPolicyResult] {
+	return pulumix.Output[LookupEndpointPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a Snooze by name.
@@ -72,6 +73,12 @@ func (o LookupSnoozeResultOutput) ToLookupSnoozeResultOutput() LookupSnoozeResul
 
 func (o LookupSnoozeResultOutput) ToLookupSnoozeResultOutputWithContext(ctx context.Context) LookupSnoozeResultOutput {
 	return o
+}
+
+func (o LookupSnoozeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSnoozeResult] {
+	return pulumix.Output[LookupSnoozeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This defines the criteria for applying the Snooze. See Criteria for more information.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single HttpRoute.
@@ -86,6 +87,12 @@ func (o LookupHttpRouteResultOutput) ToLookupHttpRouteResultOutput() LookupHttpR
 
 func (o LookupHttpRouteResultOutput) ToLookupHttpRouteResultOutputWithContext(ctx context.Context) LookupHttpRouteResultOutput {
 	return o
+}
+
+func (o LookupHttpRouteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHttpRouteResult] {
+	return pulumix.Output[LookupHttpRouteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the resource was created.

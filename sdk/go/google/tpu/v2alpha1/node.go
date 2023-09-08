@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a node.
@@ -216,6 +217,12 @@ func (i *Node) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeOutput)
 }
 
+func (i *Node) ToOutput(ctx context.Context) pulumix.Output[*Node] {
+	return pulumix.Output[*Node]{
+		OutputState: i.ToNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeOutput struct{ *pulumi.OutputState }
 
 func (NodeOutput) ElementType() reflect.Type {
@@ -228,6 +235,12 @@ func (o NodeOutput) ToNodeOutput() NodeOutput {
 
 func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return o
+}
+
+func (o NodeOutput) ToOutput(ctx context.Context) pulumix.Output[*Node] {
+	return pulumix.Output[*Node]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AccleratorConfig for the TPU Node.

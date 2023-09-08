@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether the entity type can be automatically expanded.
@@ -80,6 +81,12 @@ func (o EntityTypeAutoExpansionModeOutput) ToEntityTypeAutoExpansionModePtrOutpu
 	}).(EntityTypeAutoExpansionModePtrOutput)
 }
 
+func (o EntityTypeAutoExpansionModeOutput) ToOutput(ctx context.Context) pulumix.Output[EntityTypeAutoExpansionMode] {
+	return pulumix.Output[EntityTypeAutoExpansionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityTypeAutoExpansionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOu
 
 func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
 	return o
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeAutoExpansionMode] {
+	return pulumix.Output[*EntityTypeAutoExpansionMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypeAutoExpansionModePtrOutput) Elem() EntityTypeAutoExpansionModeOutput {
@@ -175,6 +188,12 @@ func (in *entityTypeAutoExpansionModePtr) ToEntityTypeAutoExpansionModePtrOutput
 
 func (in *entityTypeAutoExpansionModePtr) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeAutoExpansionModePtrOutput)
+}
+
+func (in *entityTypeAutoExpansionModePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeAutoExpansionMode] {
+	return pulumix.Output[*EntityTypeAutoExpansionMode]{
+		OutputState: in.ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Indicates the kind of entity type.
@@ -251,6 +270,12 @@ func (o EntityTypeKindOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.C
 	}).(EntityTypeKindPtrOutput)
 }
 
+func (o EntityTypeKindOutput) ToOutput(ctx context.Context) pulumix.Output[EntityTypeKind] {
+	return pulumix.Output[EntityTypeKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityTypeKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOu
 
 func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
 	return o
+}
+
+func (o EntityTypeKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeKind] {
+	return pulumix.Output[*EntityTypeKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypeKindPtrOutput) Elem() EntityTypeKindOutput {
@@ -346,6 +377,12 @@ func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput
 
 func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeKindPtrOutput)
+}
+
+func (in *entityTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeKind] {
+	return pulumix.Output[*EntityTypeKind]{
+		OutputState: in.ToEntityTypeKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
@@ -424,6 +461,12 @@ func (o ExperimentStateEnumOutput) ToExperimentStateEnumPtrOutputWithContext(ctx
 	}).(ExperimentStateEnumPtrOutput)
 }
 
+func (o ExperimentStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ExperimentStateEnum] {
+	return pulumix.Output[ExperimentStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExperimentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -457,6 +500,12 @@ func (o ExperimentStateEnumPtrOutput) ToExperimentStateEnumPtrOutput() Experimen
 
 func (o ExperimentStateEnumPtrOutput) ToExperimentStateEnumPtrOutputWithContext(ctx context.Context) ExperimentStateEnumPtrOutput {
 	return o
+}
+
+func (o ExperimentStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExperimentStateEnum] {
+	return pulumix.Output[*ExperimentStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExperimentStateEnumPtrOutput) Elem() ExperimentStateEnumOutput {
@@ -519,6 +568,12 @@ func (in *experimentStateEnumPtr) ToExperimentStateEnumPtrOutput() ExperimentSta
 
 func (in *experimentStateEnumPtr) ToExperimentStateEnumPtrOutputWithContext(ctx context.Context) ExperimentStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExperimentStateEnumPtrOutput)
+}
+
+func (in *experimentStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ExperimentStateEnum] {
+	return pulumix.Output[*ExperimentStateEnum]{
+		OutputState: in.ToExperimentStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Count-based metric type. Only one of type or count_type is specified in each Metric.
@@ -595,6 +650,12 @@ func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeOutput) ToG
 	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -628,6 +689,12 @@ func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput) 
 
 func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypeOutput {
@@ -690,6 +757,12 @@ func (in *googleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtr) ToGo
 
 func (in *googleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtr) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Ratio-based metric type. Only one of type or count_type is specified in each Metric.
@@ -770,6 +843,12 @@ func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeOutput) ToGoogle
 	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -803,6 +882,12 @@ func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput) ToGoo
 
 func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypeOutput {
@@ -865,6 +950,12 @@ func (in *googleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtr) ToGoogleC
 
 func (in *googleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtr) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Audio encoding of the audio content to process.
@@ -949,6 +1040,12 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingOutput) ToGoo
 	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -982,6 +1079,12 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput) To
 
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput) ToGoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingOutput {
@@ -1044,6 +1147,12 @@ func (in *googleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtr) ToGoog
 
 func (in *googleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtr) ToGoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Which variant of the Speech model to use.
@@ -1120,6 +1229,12 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantOutput) ToGoog
 	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1153,6 +1268,12 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput) ToG
 
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput) ToGoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantOutput {
@@ -1215,6 +1336,12 @@ func (in *googleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtr) ToGoogl
 
 func (in *googleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtr) ToGoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates NLU model training mode.
@@ -1289,6 +1416,12 @@ func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModeOutput) ToGoog
 	}).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1322,6 +1455,12 @@ func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput) ToG
 
 func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput) ToGoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModeOutput {
@@ -1384,6 +1523,12 @@ func (in *googleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtr) ToGoogl
 
 func (in *googleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtr) ToGoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates the type of NLU model.
@@ -1458,6 +1603,12 @@ func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeOutput) ToGoogleCloudD
 	}).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1NluSettingsModelType] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1NluSettingsModelType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1491,6 +1642,12 @@ func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput) ToGoogleClo
 
 func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeOutput {
@@ -1553,6 +1710,12 @@ func (in *googleCloudDialogflowCxV3beta1NluSettingsModelTypePtr) ToGoogleCloudDi
 
 func (in *googleCloudDialogflowCxV3beta1NluSettingsModelTypePtr) ToGoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1NluSettingsModelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1NluSettingsModelType]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // File format for exported audio file. Currently only in telephony recordings.
@@ -1629,6 +1792,12 @@ func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFo
 	}).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1662,6 +1831,12 @@ func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFo
 
 func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput {
@@ -1724,6 +1899,12 @@ func (in *googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudio
 
 func (in *googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether the test case passed in the agent environment.
@@ -1798,6 +1979,12 @@ func (o GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultOutput) ToGoogleCl
 	}).(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1831,6 +2018,12 @@ func (o GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput) ToGoogl
 
 func (o GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput) ToGoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultOutput {
@@ -1893,6 +2086,12 @@ func (in *googleCloudDialogflowCxV3beta1TestCaseResultTestResultPtr) ToGoogleClo
 
 func (in *googleCloudDialogflowCxV3beta1TestCaseResultTestResultPtr) ToGoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1TestCaseResultTestResultPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
@@ -1977,6 +2176,12 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) 
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2010,6 +2215,12 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutpu
 
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput {
@@ -2072,6 +2283,12 @@ func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) T
 
 func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Type of the webhook.
@@ -2146,6 +2363,12 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput)
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput)
 }
 
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType] {
+	return pulumix.Output[GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2179,6 +2402,12 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutp
 
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput {
@@ -2241,6 +2470,12 @@ func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr) 
 
 func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type SecuritySettingPurgeDataTypesItem string
@@ -2312,6 +2547,12 @@ func (o SecuritySettingPurgeDataTypesItemOutput) ToSecuritySettingPurgeDataTypes
 	}).(SecuritySettingPurgeDataTypesItemPtrOutput)
 }
 
+func (o SecuritySettingPurgeDataTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[SecuritySettingPurgeDataTypesItem] {
+	return pulumix.Output[SecuritySettingPurgeDataTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecuritySettingPurgeDataTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2345,6 +2586,12 @@ func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToSecuritySettingPurgeDataTy
 
 func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemPtrOutput {
 	return o
+}
+
+func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingPurgeDataTypesItem] {
+	return pulumix.Output[*SecuritySettingPurgeDataTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecuritySettingPurgeDataTypesItemPtrOutput) Elem() SecuritySettingPurgeDataTypesItemOutput {
@@ -2409,6 +2656,12 @@ func (in *securitySettingPurgeDataTypesItemPtr) ToSecuritySettingPurgeDataTypesI
 	return pulumi.ToOutputWithContext(ctx, in).(SecuritySettingPurgeDataTypesItemPtrOutput)
 }
 
+func (in *securitySettingPurgeDataTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingPurgeDataTypesItem] {
+	return pulumix.Output[*SecuritySettingPurgeDataTypesItem]{
+		OutputState: in.ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecuritySettingPurgeDataTypesItemArrayInput is an input type that accepts SecuritySettingPurgeDataTypesItemArray and SecuritySettingPurgeDataTypesItemArrayOutput values.
 // You can construct a concrete instance of `SecuritySettingPurgeDataTypesItemArrayInput` via:
 //
@@ -2434,6 +2687,12 @@ func (i SecuritySettingPurgeDataTypesItemArray) ToSecuritySettingPurgeDataTypesI
 	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingPurgeDataTypesItemArrayOutput)
 }
 
+func (i SecuritySettingPurgeDataTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]SecuritySettingPurgeDataTypesItem] {
+	return pulumix.Output[[]SecuritySettingPurgeDataTypesItem]{
+		OutputState: i.ToSecuritySettingPurgeDataTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecuritySettingPurgeDataTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (SecuritySettingPurgeDataTypesItemArrayOutput) ElementType() reflect.Type {
@@ -2446,6 +2705,12 @@ func (o SecuritySettingPurgeDataTypesItemArrayOutput) ToSecuritySettingPurgeData
 
 func (o SecuritySettingPurgeDataTypesItemArrayOutput) ToSecuritySettingPurgeDataTypesItemArrayOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemArrayOutput {
 	return o
+}
+
+func (o SecuritySettingPurgeDataTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecuritySettingPurgeDataTypesItem] {
+	return pulumix.Output[[]SecuritySettingPurgeDataTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecuritySettingPurgeDataTypesItemArrayOutput) Index(i pulumi.IntInput) SecuritySettingPurgeDataTypesItemOutput {
@@ -2524,6 +2789,12 @@ func (o SecuritySettingRedactionScopeOutput) ToSecuritySettingRedactionScopePtrO
 	}).(SecuritySettingRedactionScopePtrOutput)
 }
 
+func (o SecuritySettingRedactionScopeOutput) ToOutput(ctx context.Context) pulumix.Output[SecuritySettingRedactionScope] {
+	return pulumix.Output[SecuritySettingRedactionScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecuritySettingRedactionScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2557,6 +2828,12 @@ func (o SecuritySettingRedactionScopePtrOutput) ToSecuritySettingRedactionScopeP
 
 func (o SecuritySettingRedactionScopePtrOutput) ToSecuritySettingRedactionScopePtrOutputWithContext(ctx context.Context) SecuritySettingRedactionScopePtrOutput {
 	return o
+}
+
+func (o SecuritySettingRedactionScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingRedactionScope] {
+	return pulumix.Output[*SecuritySettingRedactionScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecuritySettingRedactionScopePtrOutput) Elem() SecuritySettingRedactionScopeOutput {
@@ -2619,6 +2896,12 @@ func (in *securitySettingRedactionScopePtr) ToSecuritySettingRedactionScopePtrOu
 
 func (in *securitySettingRedactionScopePtr) ToSecuritySettingRedactionScopePtrOutputWithContext(ctx context.Context) SecuritySettingRedactionScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecuritySettingRedactionScopePtrOutput)
+}
+
+func (in *securitySettingRedactionScopePtr) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingRedactionScope] {
+	return pulumix.Output[*SecuritySettingRedactionScope]{
+		OutputState: in.ToSecuritySettingRedactionScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Strategy that defines how we do redaction.
@@ -2691,6 +2974,12 @@ func (o SecuritySettingRedactionStrategyOutput) ToSecuritySettingRedactionStrate
 	}).(SecuritySettingRedactionStrategyPtrOutput)
 }
 
+func (o SecuritySettingRedactionStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[SecuritySettingRedactionStrategy] {
+	return pulumix.Output[SecuritySettingRedactionStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecuritySettingRedactionStrategyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2724,6 +3013,12 @@ func (o SecuritySettingRedactionStrategyPtrOutput) ToSecuritySettingRedactionStr
 
 func (o SecuritySettingRedactionStrategyPtrOutput) ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyPtrOutput {
 	return o
+}
+
+func (o SecuritySettingRedactionStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingRedactionStrategy] {
+	return pulumix.Output[*SecuritySettingRedactionStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecuritySettingRedactionStrategyPtrOutput) Elem() SecuritySettingRedactionStrategyOutput {
@@ -2786,6 +3081,12 @@ func (in *securitySettingRedactionStrategyPtr) ToSecuritySettingRedactionStrateg
 
 func (in *securitySettingRedactionStrategyPtr) ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecuritySettingRedactionStrategyPtrOutput)
+}
+
+func (in *securitySettingRedactionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*SecuritySettingRedactionStrategy] {
+	return pulumix.Output[*SecuritySettingRedactionStrategy]{
+		OutputState: in.ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Indicates whether the additional data should override or supplement the custom entity type definition.
@@ -2860,6 +3161,12 @@ func (o SessionEntityTypeEntityOverrideModeOutput) ToSessionEntityTypeEntityOver
 	}).(SessionEntityTypeEntityOverrideModePtrOutput)
 }
 
+func (o SessionEntityTypeEntityOverrideModeOutput) ToOutput(ctx context.Context) pulumix.Output[SessionEntityTypeEntityOverrideMode] {
+	return pulumix.Output[SessionEntityTypeEntityOverrideMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SessionEntityTypeEntityOverrideModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2893,6 +3200,12 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityO
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
 	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SessionEntityTypeEntityOverrideMode] {
+	return pulumix.Output[*SessionEntityTypeEntityOverrideMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SessionEntityTypeEntityOverrideModePtrOutput) Elem() SessionEntityTypeEntityOverrideModeOutput {
@@ -2955,6 +3268,12 @@ func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverr
 
 func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionEntityTypeEntityOverrideModePtrOutput)
+}
+
+func (in *sessionEntityTypeEntityOverrideModePtr) ToOutput(ctx context.Context) pulumix.Output[*SessionEntityTypeEntityOverrideMode] {
+	return pulumix.Output[*SessionEntityTypeEntityOverrideMode]{
+		OutputState: in.ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

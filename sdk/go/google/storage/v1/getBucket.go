@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns metadata for the specified bucket.
@@ -128,6 +129,12 @@ func (o LookupBucketResultOutput) ToLookupBucketResultOutput() LookupBucketResul
 
 func (o LookupBucketResultOutput) ToLookupBucketResultOutputWithContext(ctx context.Context) LookupBucketResultOutput {
 	return o
+}
+
+func (o LookupBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBucketResult] {
+	return pulumix.Output[LookupBucketResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access controls on the bucket.

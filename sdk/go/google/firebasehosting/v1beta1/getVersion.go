@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the specified version that has been created for the specified site. This can include versions that were created for the default `live` channel or for any active preview channels for the specified site.
@@ -90,6 +91,12 @@ func (o LookupVersionResultOutput) ToLookupVersionResultOutput() LookupVersionRe
 
 func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx context.Context) LookupVersionResultOutput {
 	return o
+}
+
+func (o LookupVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVersionResult] {
+	return pulumix.Output[LookupVersionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.

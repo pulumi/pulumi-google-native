@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a commitment in the specified project using the data included in the request.
@@ -189,6 +190,12 @@ func (i *RegionCommitment) ToRegionCommitmentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionCommitmentOutput)
 }
 
+func (i *RegionCommitment) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitment] {
+	return pulumix.Output[*RegionCommitment]{
+		OutputState: i.ToRegionCommitmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionCommitmentOutput struct{ *pulumi.OutputState }
 
 func (RegionCommitmentOutput) ElementType() reflect.Type {
@@ -201,6 +208,12 @@ func (o RegionCommitmentOutput) ToRegionCommitmentOutput() RegionCommitmentOutpu
 
 func (o RegionCommitmentOutput) ToRegionCommitmentOutputWithContext(ctx context.Context) RegionCommitmentOutput {
 	return o
+}
+
+func (o RegionCommitmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitment] {
+	return pulumix.Output[*RegionCommitment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.

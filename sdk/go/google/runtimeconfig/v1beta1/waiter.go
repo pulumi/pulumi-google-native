@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts.
@@ -137,6 +138,12 @@ func (i *Waiter) ToWaiterOutputWithContext(ctx context.Context) WaiterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WaiterOutput)
 }
 
+func (i *Waiter) ToOutput(ctx context.Context) pulumix.Output[*Waiter] {
+	return pulumix.Output[*Waiter]{
+		OutputState: i.ToWaiterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WaiterOutput struct{ *pulumi.OutputState }
 
 func (WaiterOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o WaiterOutput) ToWaiterOutput() WaiterOutput {
 
 func (o WaiterOutput) ToWaiterOutputWithContext(ctx context.Context) WaiterOutput {
 	return o
+}
+
+func (o WaiterOutput) ToOutput(ctx context.Context) pulumix.Output[*Waiter] {
+	return pulumix.Output[*Waiter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WaiterOutput) ConfigId() pulumi.StringOutput {

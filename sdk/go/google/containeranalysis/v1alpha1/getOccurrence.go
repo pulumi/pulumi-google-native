@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the requested `Occurrence`.
@@ -112,6 +113,12 @@ func (o LookupOccurrenceResultOutput) ToLookupOccurrenceResultOutput() LookupOcc
 
 func (o LookupOccurrenceResultOutput) ToLookupOccurrenceResultOutputWithContext(ctx context.Context) LookupOccurrenceResultOutput {
 	return o
+}
+
+func (o LookupOccurrenceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOccurrenceResult] {
+	return pulumix.Output[LookupOccurrenceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes an attestation of an artifact.

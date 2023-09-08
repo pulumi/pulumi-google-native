@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a CanaryEvaluation for an organization.
@@ -84,6 +85,12 @@ func (o LookupCanaryEvaluationResultOutput) ToLookupCanaryEvaluationResultOutput
 
 func (o LookupCanaryEvaluationResultOutput) ToLookupCanaryEvaluationResultOutputWithContext(ctx context.Context) LookupCanaryEvaluationResultOutput {
 	return o
+}
+
+func (o LookupCanaryEvaluationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCanaryEvaluationResult] {
+	return pulumix.Output[LookupCanaryEvaluationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The stable version that is serving requests.

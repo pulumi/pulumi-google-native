@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
@@ -158,6 +159,12 @@ func (i *ProxyConfig) ToProxyConfigOutputWithContext(ctx context.Context) ProxyC
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyConfigOutput)
 }
 
+func (i *ProxyConfig) ToOutput(ctx context.Context) pulumix.Output[*ProxyConfig] {
+	return pulumix.Output[*ProxyConfig]{
+		OutputState: i.ToProxyConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProxyConfigOutput struct{ *pulumi.OutputState }
 
 func (ProxyConfigOutput) ElementType() reflect.Type {
@@ -170,6 +177,12 @@ func (o ProxyConfigOutput) ToProxyConfigOutput() ProxyConfigOutput {
 
 func (o ProxyConfigOutput) ToProxyConfigOutputWithContext(ctx context.Context) ProxyConfigOutput {
 	return o
+}
+
+func (o ProxyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ProxyConfig] {
+	return pulumix.Output[*ProxyConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Information to facilitate Authentication against the proxy server.

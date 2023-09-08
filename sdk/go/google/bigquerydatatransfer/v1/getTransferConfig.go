@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about a data transfer config.
@@ -102,6 +103,12 @@ func (o LookupTransferConfigResultOutput) ToLookupTransferConfigResultOutput() L
 
 func (o LookupTransferConfigResultOutput) ToLookupTransferConfigResultOutputWithContext(ctx context.Context) LookupTransferConfigResultOutput {
 	return o
+}
+
+func (o LookupTransferConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTransferConfigResult] {
+	return pulumix.Output[LookupTransferConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.

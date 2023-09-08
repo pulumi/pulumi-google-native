@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified VpnTunnel resource.
@@ -112,6 +113,12 @@ func (o LookupVpnTunnelResultOutput) ToLookupVpnTunnelResultOutput() LookupVpnTu
 
 func (o LookupVpnTunnelResultOutput) ToLookupVpnTunnelResultOutputWithContext(ctx context.Context) LookupVpnTunnelResultOutput {
 	return o
+}
+
+func (o LookupVpnTunnelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVpnTunnelResult] {
+	return pulumix.Output[LookupVpnTunnelResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

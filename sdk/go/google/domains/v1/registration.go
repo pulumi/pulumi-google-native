@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration.
@@ -172,6 +173,12 @@ func (i *Registration) ToRegistrationOutputWithContext(ctx context.Context) Regi
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationOutput)
 }
 
+func (i *Registration) ToOutput(ctx context.Context) pulumix.Output[*Registration] {
+	return pulumix.Output[*Registration]{
+		OutputState: i.ToRegistrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistrationOutput struct{ *pulumi.OutputState }
 
 func (RegistrationOutput) ElementType() reflect.Type {
@@ -184,6 +191,12 @@ func (o RegistrationOutput) ToRegistrationOutput() RegistrationOutput {
 
 func (o RegistrationOutput) ToRegistrationOutputWithContext(ctx context.Context) RegistrationOutput {
 	return o
+}
+
+func (o RegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*Registration] {
+	return pulumix.Output[*Registration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.

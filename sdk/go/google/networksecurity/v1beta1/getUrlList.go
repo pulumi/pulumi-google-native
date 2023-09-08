@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single UrlList.
@@ -76,6 +77,12 @@ func (o LookupUrlListResultOutput) ToLookupUrlListResultOutput() LookupUrlListRe
 
 func (o LookupUrlListResultOutput) ToLookupUrlListResultOutputWithContext(ctx context.Context) LookupUrlListResultOutput {
 	return o
+}
+
+func (o LookupUrlListResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUrlListResult] {
+	return pulumix.Output[LookupUrlListResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time when the security policy was created.

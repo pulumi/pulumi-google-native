@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem string
@@ -79,6 +80,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersIt
 	}).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersIt
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemOutput {
@@ -176,6 +189,12 @@ func (in *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProviders
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutput)
 }
 
+func (in *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem]{
+		OutputState: in.ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArray and GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayInput` via:
 //
@@ -201,6 +220,12 @@ func (i GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersIt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput)
 }
 
+func (i GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem]{
+		OutputState: i.ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput) ElementType() reflect.Type {
@@ -213,6 +238,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersIt
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem] {
+	return pulumix.Output[[]GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemOutput {
@@ -295,6 +326,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateOutput) ToGoo
 	}).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -328,6 +365,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput) To
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateOutput {
@@ -390,6 +433,12 @@ func (in *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtr) ToGoog
 
 func (in *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtr) ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState]{
+		OutputState: in.ToGoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Which enforcement mode to use for the password policy.
@@ -464,6 +513,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnfor
 	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -497,6 +552,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnfor
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateOutput {
@@ -559,6 +620,12 @@ func (in *googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnf
 
 func (in *googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtr) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState]{
+		OutputState: in.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Describes the state of the MultiFactor Authentication type.
@@ -635,6 +702,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToGoogleClou
 	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfigState] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2ProviderConfigState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -668,6 +741,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToGoogleC
 
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ProviderConfigState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ProviderConfigState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput {
@@ -730,6 +809,12 @@ func (in *googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr) ToGoogleCloud
 
 func (in *googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ProviderConfigState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2ProviderConfigState]{
+		OutputState: in.ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
@@ -806,6 +891,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcement
 	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -839,6 +930,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcement
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput {
@@ -901,6 +998,12 @@ func (in *googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforceme
 
 func (in *googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState]{
+		OutputState: in.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
@@ -973,6 +1076,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToGoo
 	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput)
 }
 
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction] {
+	return pulumix.Output[GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1006,6 +1115,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) To
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
 	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput {
@@ -1068,6 +1183,12 @@ func (in *googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr) ToGoog
 
 func (in *googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction] {
+	return pulumix.Output[*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction]{
+		OutputState: in.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -1144,6 +1265,12 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1177,6 +1304,12 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -1239,6 +1372,12 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

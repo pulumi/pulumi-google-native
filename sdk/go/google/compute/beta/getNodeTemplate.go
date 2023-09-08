@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified node template.
@@ -94,6 +95,12 @@ func (o LookupNodeTemplateResultOutput) ToLookupNodeTemplateResultOutput() Looku
 
 func (o LookupNodeTemplateResultOutput) ToLookupNodeTemplateResultOutputWithContext(ctx context.Context) LookupNodeTemplateResultOutput {
 	return o
+}
+
+func (o LookupNodeTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeTemplateResult] {
+	return pulumix.Output[LookupNodeTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupNodeTemplateResultOutput) Accelerators() AcceleratorConfigResponseArrayOutput {

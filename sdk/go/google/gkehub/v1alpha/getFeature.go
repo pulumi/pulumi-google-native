@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Feature.
@@ -92,6 +93,12 @@ func (o LookupFeatureResultOutput) ToLookupFeatureResultOutput() LookupFeatureRe
 
 func (o LookupFeatureResultOutput) ToLookupFeatureResultOutputWithContext(ctx context.Context) LookupFeatureResultOutput {
 	return o
+}
+
+func (o LookupFeatureResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeatureResult] {
+	return pulumix.Output[LookupFeatureResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the Feature resource was created.

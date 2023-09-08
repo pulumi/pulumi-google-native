@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
@@ -251,6 +270,12 @@ func (o TagKeyPurposeOutput) ToTagKeyPurposePtrOutputWithContext(ctx context.Con
 	}).(TagKeyPurposePtrOutput)
 }
 
+func (o TagKeyPurposeOutput) ToOutput(ctx context.Context) pulumix.Output[TagKeyPurpose] {
+	return pulumix.Output[TagKeyPurpose]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TagKeyPurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o TagKeyPurposePtrOutput) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutpu
 
 func (o TagKeyPurposePtrOutput) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
 	return o
+}
+
+func (o TagKeyPurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKeyPurpose] {
+	return pulumix.Output[*TagKeyPurpose]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagKeyPurposePtrOutput) Elem() TagKeyPurposeOutput {
@@ -346,6 +377,12 @@ func (in *tagKeyPurposePtr) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutput {
 
 func (in *tagKeyPurposePtr) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagKeyPurposePtrOutput)
+}
+
+func (in *tagKeyPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*TagKeyPurpose] {
+	return pulumix.Output[*TagKeyPurpose]{
+		OutputState: in.ToTagKeyPurposePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

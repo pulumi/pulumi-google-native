@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
@@ -212,6 +213,12 @@ func (i *Report) ToReportOutputWithContext(ctx context.Context) ReportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReportOutput)
 }
 
+func (i *Report) ToOutput(ctx context.Context) pulumix.Output[*Report] {
+	return pulumix.Output[*Report]{
+		OutputState: i.ToReportOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReportOutput struct{ *pulumi.OutputState }
 
 func (ReportOutput) ElementType() reflect.Type {
@@ -224,6 +231,12 @@ func (o ReportOutput) ToReportOutput() ReportOutput {
 
 func (o ReportOutput) ToReportOutputWithContext(ctx context.Context) ReportOutput {
 	return o
+}
+
+func (o ReportOutput) ToOutput(ctx context.Context) pulumix.Output[*Report] {
+	return pulumix.Output[*Report]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field contains the chart type for the report

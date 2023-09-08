@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag` value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
@@ -74,6 +75,12 @@ func (o LookupOrganizationPolicyResultOutput) ToLookupOrganizationPolicyResultOu
 
 func (o LookupOrganizationPolicyResultOutput) ToLookupOrganizationPolicyResultOutputWithContext(ctx context.Context) LookupOrganizationPolicyResultOutput {
 	return o
+}
+
+func (o LookupOrganizationPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationPolicyResult] {
+	return pulumix.Output[LookupOrganizationPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated.

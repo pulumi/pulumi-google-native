@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a rate plan that is associated with an API product in an organization. Using rate plans, API product owners can monetize their API products by configuring one or more of the following: - Billing frequency - Initial setup fees for using an API product - Payment funding model (postpaid only) - Fixed recurring or consumption-based charges for using an API product - Revenue sharing with developer partners An API product can have multiple rate plans associated with it but *only one* rate plan can be active at any point of time. **Note: From the developer's perspective, they purchase API products not rate plans.
@@ -213,6 +214,12 @@ func (i *RatePlan) ToRatePlanOutputWithContext(ctx context.Context) RatePlanOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RatePlanOutput)
 }
 
+func (i *RatePlan) ToOutput(ctx context.Context) pulumix.Output[*RatePlan] {
+	return pulumix.Output[*RatePlan]{
+		OutputState: i.ToRatePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RatePlanOutput struct{ *pulumi.OutputState }
 
 func (RatePlanOutput) ElementType() reflect.Type {
@@ -225,6 +232,12 @@ func (o RatePlanOutput) ToRatePlanOutput() RatePlanOutput {
 
 func (o RatePlanOutput) ToRatePlanOutputWithContext(ctx context.Context) RatePlanOutput {
 	return o
+}
+
+func (o RatePlanOutput) ToOutput(ctx context.Context) pulumix.Output[*RatePlan] {
+	return pulumix.Output[*RatePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the API product that the rate plan is associated with.

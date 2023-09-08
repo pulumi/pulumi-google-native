@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Document.
@@ -82,6 +83,12 @@ func (o LookupDocumentResultOutput) ToLookupDocumentResultOutput() LookupDocumen
 
 func (o LookupDocumentResultOutput) ToLookupDocumentResultOutputWithContext(ctx context.Context) LookupDocumentResultOutput {
 	return o
+}
+
+func (o LookupDocumentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDocumentResult] {
+	return pulumix.Output[LookupDocumentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.

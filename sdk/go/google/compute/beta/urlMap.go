@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a UrlMap resource in the specified project using the data included in the request.
@@ -169,6 +170,12 @@ func (i *UrlMap) ToUrlMapOutputWithContext(ctx context.Context) UrlMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UrlMapOutput)
 }
 
+func (i *UrlMap) ToOutput(ctx context.Context) pulumix.Output[*UrlMap] {
+	return pulumix.Output[*UrlMap]{
+		OutputState: i.ToUrlMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UrlMapOutput struct{ *pulumi.OutputState }
 
 func (UrlMapOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o UrlMapOutput) ToUrlMapOutput() UrlMapOutput {
 
 func (o UrlMapOutput) ToUrlMapOutputWithContext(ctx context.Context) UrlMapOutput {
 	return o
+}
+
+func (o UrlMapOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMap] {
+	return pulumix.Output[*UrlMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

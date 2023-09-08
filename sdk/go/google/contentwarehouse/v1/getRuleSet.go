@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a ruleset. Returns NOT_FOUND if the ruleset does not exist.
@@ -74,6 +75,12 @@ func (o LookupRuleSetResultOutput) ToLookupRuleSetResultOutput() LookupRuleSetRe
 
 func (o LookupRuleSetResultOutput) ToLookupRuleSetResultOutputWithContext(ctx context.Context) LookupRuleSetResultOutput {
 	return o
+}
+
+func (o LookupRuleSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRuleSetResult] {
+	return pulumix.Output[LookupRuleSetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Short description of the rule-set.

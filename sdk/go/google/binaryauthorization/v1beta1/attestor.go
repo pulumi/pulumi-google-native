@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
@@ -130,6 +131,12 @@ func (i *Attestor) ToAttestorOutputWithContext(ctx context.Context) AttestorOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorOutput)
 }
 
+func (i *Attestor) ToOutput(ctx context.Context) pulumix.Output[*Attestor] {
+	return pulumix.Output[*Attestor]{
+		OutputState: i.ToAttestorOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestorOutput struct{ *pulumi.OutputState }
 
 func (AttestorOutput) ElementType() reflect.Type {
@@ -142,6 +149,12 @@ func (o AttestorOutput) ToAttestorOutput() AttestorOutput {
 
 func (o AttestorOutput) ToAttestorOutputWithContext(ctx context.Context) AttestorOutput {
 	return o
+}
+
+func (o AttestorOutput) ToOutput(ctx context.Context) pulumix.Output[*Attestor] {
+	return pulumix.Output[*Attestor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The attestors ID.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -128,6 +129,12 @@ func (i *RegionClusterIamPolicy) ToRegionClusterIamPolicyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionClusterIamPolicyOutput)
 }
 
+func (i *RegionClusterIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*RegionClusterIamPolicy] {
+	return pulumix.Output[*RegionClusterIamPolicy]{
+		OutputState: i.ToRegionClusterIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionClusterIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionClusterIamPolicyOutput) ElementType() reflect.Type {
@@ -140,6 +147,12 @@ func (o RegionClusterIamPolicyOutput) ToRegionClusterIamPolicyOutput() RegionClu
 
 func (o RegionClusterIamPolicyOutput) ToRegionClusterIamPolicyOutputWithContext(ctx context.Context) RegionClusterIamPolicyOutput {
 	return o
+}
+
+func (o RegionClusterIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionClusterIamPolicy] {
+	return pulumix.Output[*RegionClusterIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member.

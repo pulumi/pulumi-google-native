@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
@@ -253,6 +272,12 @@ func (o ClusterDefaultStorageTypeOutput) ToClusterDefaultStorageTypePtrOutputWit
 	}).(ClusterDefaultStorageTypePtrOutput)
 }
 
+func (o ClusterDefaultStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterDefaultStorageType] {
+	return pulumix.Output[ClusterDefaultStorageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterDefaultStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o ClusterDefaultStorageTypePtrOutput) ToClusterDefaultStorageTypePtrOutput
 
 func (o ClusterDefaultStorageTypePtrOutput) ToClusterDefaultStorageTypePtrOutputWithContext(ctx context.Context) ClusterDefaultStorageTypePtrOutput {
 	return o
+}
+
+func (o ClusterDefaultStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterDefaultStorageType] {
+	return pulumix.Output[*ClusterDefaultStorageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterDefaultStorageTypePtrOutput) Elem() ClusterDefaultStorageTypeOutput {
@@ -348,6 +379,12 @@ func (in *clusterDefaultStorageTypePtr) ToClusterDefaultStorageTypePtrOutput() C
 
 func (in *clusterDefaultStorageTypePtr) ToClusterDefaultStorageTypePtrOutputWithContext(ctx context.Context) ClusterDefaultStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterDefaultStorageTypePtrOutput)
+}
+
+func (in *clusterDefaultStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterDefaultStorageType] {
+	return pulumix.Output[*ClusterDefaultStorageType]{
+		OutputState: in.ToClusterDefaultStorageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the instance. Defaults to `PRODUCTION`.
@@ -422,6 +459,12 @@ func (o InstanceTypeOutput) ToInstanceTypePtrOutputWithContext(ctx context.Conte
 	}).(InstanceTypePtrOutput)
 }
 
+func (o InstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceType] {
+	return pulumix.Output[InstanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
+	return pulumix.Output[*InstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
@@ -517,6 +566,12 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTypePtrOutput)
+}
+
+func (in *instanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
+	return pulumix.Output[*InstanceType]{
+		OutputState: in.ToInstanceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -589,6 +644,12 @@ func (o TableGranularityOutput) ToTableGranularityPtrOutputWithContext(ctx conte
 	}).(TableGranularityPtrOutput)
 }
 
+func (o TableGranularityOutput) ToOutput(ctx context.Context) pulumix.Output[TableGranularity] {
+	return pulumix.Output[TableGranularity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TableGranularityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -622,6 +683,12 @@ func (o TableGranularityPtrOutput) ToTableGranularityPtrOutput() TableGranularit
 
 func (o TableGranularityPtrOutput) ToTableGranularityPtrOutputWithContext(ctx context.Context) TableGranularityPtrOutput {
 	return o
+}
+
+func (o TableGranularityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableGranularity] {
+	return pulumix.Output[*TableGranularity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TableGranularityPtrOutput) Elem() TableGranularityOutput {
@@ -684,6 +751,12 @@ func (in *tableGranularityPtr) ToTableGranularityPtrOutput() TableGranularityPtr
 
 func (in *tableGranularityPtr) ToTableGranularityPtrOutputWithContext(ctx context.Context) TableGranularityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TableGranularityPtrOutput)
+}
+
+func (in *tableGranularityPtr) ToOutput(ctx context.Context) pulumix.Output[*TableGranularity] {
+	return pulumix.Output[*TableGranularity]{
+		OutputState: in.ToTableGranularityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

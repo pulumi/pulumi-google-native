@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Target.
@@ -96,6 +97,12 @@ func (o LookupTargetResultOutput) ToLookupTargetResultOutput() LookupTargetResul
 
 func (o LookupTargetResultOutput) ToLookupTargetResultOutputWithContext(ctx context.Context) LookupTargetResultOutput {
 	return o
+}
+
+func (o LookupTargetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTargetResult] {
+	return pulumix.Output[LookupTargetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

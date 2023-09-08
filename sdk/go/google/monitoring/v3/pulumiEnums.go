@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
@@ -104,6 +105,12 @@ func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerPtrO
 	}).(AggregationCrossSeriesReducerPtrOutput)
 }
 
+func (o AggregationCrossSeriesReducerOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationCrossSeriesReducer] {
+	return pulumix.Output[AggregationCrossSeriesReducer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AggregationCrossSeriesReducerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -137,6 +144,12 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerP
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
 	return o
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AggregationCrossSeriesReducer] {
+	return pulumix.Output[*AggregationCrossSeriesReducer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
@@ -199,6 +212,12 @@ func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOu
 
 func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AggregationCrossSeriesReducerPtrOutput)
+}
+
+func (in *aggregationCrossSeriesReducerPtr) ToOutput(ctx context.Context) pulumix.Output[*AggregationCrossSeriesReducer] {
+	return pulumix.Output[*AggregationCrossSeriesReducer]{
+		OutputState: in.ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
@@ -305,6 +324,12 @@ func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerPtrOutpu
 	}).(AggregationPerSeriesAlignerPtrOutput)
 }
 
+func (o AggregationPerSeriesAlignerOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationPerSeriesAligner] {
+	return pulumix.Output[AggregationPerSeriesAligner]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AggregationPerSeriesAlignerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -338,6 +363,12 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOu
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
 	return o
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AggregationPerSeriesAligner] {
+	return pulumix.Output[*AggregationPerSeriesAligner]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
@@ -400,6 +431,12 @@ func (in *aggregationPerSeriesAlignerPtr) ToAggregationPerSeriesAlignerPtrOutput
 
 func (in *aggregationPerSeriesAlignerPtr) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AggregationPerSeriesAlignerPtrOutput)
+}
+
+func (in *aggregationPerSeriesAlignerPtr) ToOutput(ctx context.Context) pulumix.Output[*AggregationPerSeriesAligner] {
+	return pulumix.Output[*AggregationPerSeriesAligner]{
+		OutputState: in.ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
@@ -476,6 +513,12 @@ func (o AlertPolicyCombinerOutput) ToAlertPolicyCombinerPtrOutputWithContext(ctx
 	}).(AlertPolicyCombinerPtrOutput)
 }
 
+func (o AlertPolicyCombinerOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyCombiner] {
+	return pulumix.Output[AlertPolicyCombiner]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlertPolicyCombinerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -509,6 +552,12 @@ func (o AlertPolicyCombinerPtrOutput) ToAlertPolicyCombinerPtrOutput() AlertPoli
 
 func (o AlertPolicyCombinerPtrOutput) ToAlertPolicyCombinerPtrOutputWithContext(ctx context.Context) AlertPolicyCombinerPtrOutput {
 	return o
+}
+
+func (o AlertPolicyCombinerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyCombiner] {
+	return pulumix.Output[*AlertPolicyCombiner]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyCombinerPtrOutput) Elem() AlertPolicyCombinerOutput {
@@ -571,6 +620,12 @@ func (in *alertPolicyCombinerPtr) ToAlertPolicyCombinerPtrOutput() AlertPolicyCo
 
 func (in *alertPolicyCombinerPtr) ToAlertPolicyCombinerPtrOutputWithContext(ctx context.Context) AlertPolicyCombinerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertPolicyCombinerPtrOutput)
+}
+
+func (in *alertPolicyCombinerPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyCombiner] {
+	return pulumix.Output[*AlertPolicyCombiner]{
+		OutputState: in.ToAlertPolicyCombinerPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
@@ -653,6 +708,12 @@ func (o ContentMatcherMatcherOutput) ToContentMatcherMatcherPtrOutputWithContext
 	}).(ContentMatcherMatcherPtrOutput)
 }
 
+func (o ContentMatcherMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[ContentMatcherMatcher] {
+	return pulumix.Output[ContentMatcherMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContentMatcherMatcherOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -686,6 +747,12 @@ func (o ContentMatcherMatcherPtrOutput) ToContentMatcherMatcherPtrOutput() Conte
 
 func (o ContentMatcherMatcherPtrOutput) ToContentMatcherMatcherPtrOutputWithContext(ctx context.Context) ContentMatcherMatcherPtrOutput {
 	return o
+}
+
+func (o ContentMatcherMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentMatcherMatcher] {
+	return pulumix.Output[*ContentMatcherMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentMatcherMatcherPtrOutput) Elem() ContentMatcherMatcherOutput {
@@ -748,6 +815,12 @@ func (in *contentMatcherMatcherPtr) ToContentMatcherMatcherPtrOutput() ContentMa
 
 func (in *contentMatcherMatcherPtr) ToContentMatcherMatcherPtrOutputWithContext(ctx context.Context) ContentMatcherMatcherPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContentMatcherMatcherPtrOutput)
+}
+
+func (in *contentMatcherMatcherPtr) ToOutput(ctx context.Context) pulumix.Output[*ContentMatcherMatcher] {
+	return pulumix.Output[*ContentMatcherMatcher]{
+		OutputState: in.ToContentMatcherMatcherPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
@@ -822,6 +895,12 @@ func (o HttpCheckContentTypeOutput) ToHttpCheckContentTypePtrOutputWithContext(c
 	}).(HttpCheckContentTypePtrOutput)
 }
 
+func (o HttpCheckContentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HttpCheckContentType] {
+	return pulumix.Output[HttpCheckContentType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpCheckContentTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -855,6 +934,12 @@ func (o HttpCheckContentTypePtrOutput) ToHttpCheckContentTypePtrOutput() HttpChe
 
 func (o HttpCheckContentTypePtrOutput) ToHttpCheckContentTypePtrOutputWithContext(ctx context.Context) HttpCheckContentTypePtrOutput {
 	return o
+}
+
+func (o HttpCheckContentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpCheckContentType] {
+	return pulumix.Output[*HttpCheckContentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpCheckContentTypePtrOutput) Elem() HttpCheckContentTypeOutput {
@@ -917,6 +1002,12 @@ func (in *httpCheckContentTypePtr) ToHttpCheckContentTypePtrOutput() HttpCheckCo
 
 func (in *httpCheckContentTypePtr) ToHttpCheckContentTypePtrOutputWithContext(ctx context.Context) HttpCheckContentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpCheckContentTypePtrOutput)
+}
+
+func (in *httpCheckContentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpCheckContentType] {
+	return pulumix.Output[*HttpCheckContentType]{
+		OutputState: in.ToHttpCheckContentTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
@@ -991,6 +1082,12 @@ func (o HttpCheckRequestMethodOutput) ToHttpCheckRequestMethodPtrOutputWithConte
 	}).(HttpCheckRequestMethodPtrOutput)
 }
 
+func (o HttpCheckRequestMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpCheckRequestMethod] {
+	return pulumix.Output[HttpCheckRequestMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpCheckRequestMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1024,6 +1121,12 @@ func (o HttpCheckRequestMethodPtrOutput) ToHttpCheckRequestMethodPtrOutput() Htt
 
 func (o HttpCheckRequestMethodPtrOutput) ToHttpCheckRequestMethodPtrOutputWithContext(ctx context.Context) HttpCheckRequestMethodPtrOutput {
 	return o
+}
+
+func (o HttpCheckRequestMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpCheckRequestMethod] {
+	return pulumix.Output[*HttpCheckRequestMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpCheckRequestMethodPtrOutput) Elem() HttpCheckRequestMethodOutput {
@@ -1086,6 +1189,12 @@ func (in *httpCheckRequestMethodPtr) ToHttpCheckRequestMethodPtrOutput() HttpChe
 
 func (in *httpCheckRequestMethodPtr) ToHttpCheckRequestMethodPtrOutputWithContext(ctx context.Context) HttpCheckRequestMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpCheckRequestMethodPtrOutput)
+}
+
+func (in *httpCheckRequestMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpCheckRequestMethod] {
+	return pulumix.Output[*HttpCheckRequestMethod]{
+		OutputState: in.ToHttpCheckRequestMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current operational state of the internal checker.
@@ -1160,6 +1269,12 @@ func (o InternalCheckerStateOutput) ToInternalCheckerStatePtrOutputWithContext(c
 	}).(InternalCheckerStatePtrOutput)
 }
 
+func (o InternalCheckerStateOutput) ToOutput(ctx context.Context) pulumix.Output[InternalCheckerState] {
+	return pulumix.Output[InternalCheckerState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InternalCheckerStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1193,6 +1308,12 @@ func (o InternalCheckerStatePtrOutput) ToInternalCheckerStatePtrOutput() Interna
 
 func (o InternalCheckerStatePtrOutput) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
 	return o
+}
+
+func (o InternalCheckerStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalCheckerState] {
+	return pulumix.Output[*InternalCheckerState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InternalCheckerStatePtrOutput) Elem() InternalCheckerStateOutput {
@@ -1255,6 +1376,12 @@ func (in *internalCheckerStatePtr) ToInternalCheckerStatePtrOutput() InternalChe
 
 func (in *internalCheckerStatePtr) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalCheckerStatePtrOutput)
+}
+
+func (in *internalCheckerStatePtr) ToOutput(ctx context.Context) pulumix.Output[*InternalCheckerState] {
+	return pulumix.Output[*InternalCheckerState]{
+		OutputState: in.ToInternalCheckerStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
@@ -1329,6 +1456,12 @@ func (o JsonPathMatcherJsonMatcherOutput) ToJsonPathMatcherJsonMatcherPtrOutputW
 	}).(JsonPathMatcherJsonMatcherPtrOutput)
 }
 
+func (o JsonPathMatcherJsonMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[JsonPathMatcherJsonMatcher] {
+	return pulumix.Output[JsonPathMatcherJsonMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JsonPathMatcherJsonMatcherOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1362,6 +1495,12 @@ func (o JsonPathMatcherJsonMatcherPtrOutput) ToJsonPathMatcherJsonMatcherPtrOutp
 
 func (o JsonPathMatcherJsonMatcherPtrOutput) ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherPtrOutput {
 	return o
+}
+
+func (o JsonPathMatcherJsonMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonPathMatcherJsonMatcher] {
+	return pulumix.Output[*JsonPathMatcherJsonMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JsonPathMatcherJsonMatcherPtrOutput) Elem() JsonPathMatcherJsonMatcherOutput {
@@ -1424,6 +1563,12 @@ func (in *jsonPathMatcherJsonMatcherPtr) ToJsonPathMatcherJsonMatcherPtrOutput()
 
 func (in *jsonPathMatcherJsonMatcherPtr) ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JsonPathMatcherJsonMatcherPtrOutput)
+}
+
+func (in *jsonPathMatcherJsonMatcherPtr) ToOutput(ctx context.Context) pulumix.Output[*JsonPathMatcherJsonMatcher] {
+	return pulumix.Output[*JsonPathMatcherJsonMatcher]{
+		OutputState: in.ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of data that can be assigned to the label.
@@ -1498,6 +1643,12 @@ func (o LabelDescriptorValueTypeOutput) ToLabelDescriptorValueTypePtrOutputWithC
 	}).(LabelDescriptorValueTypePtrOutput)
 }
 
+func (o LabelDescriptorValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptorValueType] {
+	return pulumix.Output[LabelDescriptorValueType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LabelDescriptorValueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1531,6 +1682,12 @@ func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutput()
 
 func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
 	return o
+}
+
+func (o LabelDescriptorValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LabelDescriptorValueType] {
+	return pulumix.Output[*LabelDescriptorValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LabelDescriptorValueTypePtrOutput) Elem() LabelDescriptorValueTypeOutput {
@@ -1593,6 +1750,12 @@ func (in *labelDescriptorValueTypePtr) ToLabelDescriptorValueTypePtrOutput() Lab
 
 func (in *labelDescriptorValueTypePtr) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LabelDescriptorValueTypePtrOutput)
+}
+
+func (in *labelDescriptorValueTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LabelDescriptorValueType] {
+	return pulumix.Output[*LabelDescriptorValueType]{
+		OutputState: in.ToLabelDescriptorValueTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The launch stage of the metric definition.
@@ -1677,6 +1840,12 @@ func (o MetricDescriptorLaunchStageOutput) ToMetricDescriptorLaunchStagePtrOutpu
 	}).(MetricDescriptorLaunchStagePtrOutput)
 }
 
+func (o MetricDescriptorLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorLaunchStage] {
+	return pulumix.Output[MetricDescriptorLaunchStage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricDescriptorLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1710,6 +1879,12 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOu
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
 	return o
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorLaunchStage] {
+	return pulumix.Output[*MetricDescriptorLaunchStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricDescriptorLaunchStagePtrOutput) Elem() MetricDescriptorLaunchStageOutput {
@@ -1772,6 +1947,12 @@ func (in *metricDescriptorLaunchStagePtr) ToMetricDescriptorLaunchStagePtrOutput
 
 func (in *metricDescriptorLaunchStagePtr) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorLaunchStagePtrOutput)
+}
+
+func (in *metricDescriptorLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorLaunchStage] {
+	return pulumix.Output[*MetricDescriptorLaunchStage]{
+		OutputState: in.ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Deprecated. Must use the MetricDescriptor.launch_stage instead.
@@ -1856,6 +2037,12 @@ func (o MetricDescriptorMetadataLaunchStageOutput) ToMetricDescriptorMetadataLau
 	}).(MetricDescriptorMetadataLaunchStagePtrOutput)
 }
 
+func (o MetricDescriptorMetadataLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadataLaunchStage] {
+	return pulumix.Output[MetricDescriptorMetadataLaunchStage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricDescriptorMetadataLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1889,6 +2076,12 @@ func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToMetricDescriptorMetadata
 
 func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStagePtrOutput {
 	return o
+}
+
+func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadataLaunchStage] {
+	return pulumix.Output[*MetricDescriptorMetadataLaunchStage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricDescriptorMetadataLaunchStagePtrOutput) Elem() MetricDescriptorMetadataLaunchStageOutput {
@@ -1951,6 +2144,12 @@ func (in *metricDescriptorMetadataLaunchStagePtr) ToMetricDescriptorMetadataLaun
 
 func (in *metricDescriptorMetadataLaunchStagePtr) ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorMetadataLaunchStagePtrOutput)
+}
+
+func (in *metricDescriptorMetadataLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadataLaunchStage] {
+	return pulumix.Output[*MetricDescriptorMetadataLaunchStage]{
+		OutputState: in.ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
@@ -2027,6 +2226,12 @@ func (o MetricDescriptorMetricKindOutput) ToMetricDescriptorMetricKindPtrOutputW
 	}).(MetricDescriptorMetricKindPtrOutput)
 }
 
+func (o MetricDescriptorMetricKindOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetricKind] {
+	return pulumix.Output[MetricDescriptorMetricKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricDescriptorMetricKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2060,6 +2265,12 @@ func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutp
 
 func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
 	return o
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetricKind] {
+	return pulumix.Output[*MetricDescriptorMetricKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricDescriptorMetricKindPtrOutput) Elem() MetricDescriptorMetricKindOutput {
@@ -2122,6 +2333,12 @@ func (in *metricDescriptorMetricKindPtr) ToMetricDescriptorMetricKindPtrOutput()
 
 func (in *metricDescriptorMetricKindPtr) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorMetricKindPtrOutput)
+}
+
+func (in *metricDescriptorMetricKindPtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetricKind] {
+	return pulumix.Output[*MetricDescriptorMetricKind]{
+		OutputState: in.ToMetricDescriptorMetricKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
@@ -2204,6 +2421,12 @@ func (o MetricDescriptorValueTypeOutput) ToMetricDescriptorValueTypePtrOutputWit
 	}).(MetricDescriptorValueTypePtrOutput)
 }
 
+func (o MetricDescriptorValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorValueType] {
+	return pulumix.Output[MetricDescriptorValueType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricDescriptorValueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2237,6 +2460,12 @@ func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutput
 
 func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
 	return o
+}
+
+func (o MetricDescriptorValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorValueType] {
+	return pulumix.Output[*MetricDescriptorValueType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricDescriptorValueTypePtrOutput) Elem() MetricDescriptorValueTypeOutput {
@@ -2299,6 +2528,12 @@ func (in *metricDescriptorValueTypePtr) ToMetricDescriptorValueTypePtrOutput() M
 
 func (in *metricDescriptorValueTypePtr) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorValueTypePtrOutput)
+}
+
+func (in *metricDescriptorValueTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorValueType] {
+	return pulumix.Output[*MetricDescriptorValueType]{
+		OutputState: in.ToMetricDescriptorValueTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
@@ -2381,6 +2616,12 @@ func (o MetricThresholdComparisonOutput) ToMetricThresholdComparisonPtrOutputWit
 	}).(MetricThresholdComparisonPtrOutput)
 }
 
+func (o MetricThresholdComparisonOutput) ToOutput(ctx context.Context) pulumix.Output[MetricThresholdComparison] {
+	return pulumix.Output[MetricThresholdComparison]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricThresholdComparisonOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2414,6 +2655,12 @@ func (o MetricThresholdComparisonPtrOutput) ToMetricThresholdComparisonPtrOutput
 
 func (o MetricThresholdComparisonPtrOutput) ToMetricThresholdComparisonPtrOutputWithContext(ctx context.Context) MetricThresholdComparisonPtrOutput {
 	return o
+}
+
+func (o MetricThresholdComparisonPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricThresholdComparison] {
+	return pulumix.Output[*MetricThresholdComparison]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricThresholdComparisonPtrOutput) Elem() MetricThresholdComparisonOutput {
@@ -2476,6 +2723,12 @@ func (in *metricThresholdComparisonPtr) ToMetricThresholdComparisonPtrOutput() M
 
 func (in *metricThresholdComparisonPtr) ToMetricThresholdComparisonPtrOutputWithContext(ctx context.Context) MetricThresholdComparisonPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricThresholdComparisonPtrOutput)
+}
+
+func (in *metricThresholdComparisonPtr) ToOutput(ctx context.Context) pulumix.Output[*MetricThresholdComparison] {
+	return pulumix.Output[*MetricThresholdComparison]{
+		OutputState: in.ToMetricThresholdComparisonPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
@@ -2552,6 +2805,12 @@ func (o MetricThresholdEvaluationMissingDataOutput) ToMetricThresholdEvaluationM
 	}).(MetricThresholdEvaluationMissingDataPtrOutput)
 }
 
+func (o MetricThresholdEvaluationMissingDataOutput) ToOutput(ctx context.Context) pulumix.Output[MetricThresholdEvaluationMissingData] {
+	return pulumix.Output[MetricThresholdEvaluationMissingData]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricThresholdEvaluationMissingDataOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2585,6 +2844,12 @@ func (o MetricThresholdEvaluationMissingDataPtrOutput) ToMetricThresholdEvaluati
 
 func (o MetricThresholdEvaluationMissingDataPtrOutput) ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataPtrOutput {
 	return o
+}
+
+func (o MetricThresholdEvaluationMissingDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricThresholdEvaluationMissingData] {
+	return pulumix.Output[*MetricThresholdEvaluationMissingData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricThresholdEvaluationMissingDataPtrOutput) Elem() MetricThresholdEvaluationMissingDataOutput {
@@ -2647,6 +2912,12 @@ func (in *metricThresholdEvaluationMissingDataPtr) ToMetricThresholdEvaluationMi
 
 func (in *metricThresholdEvaluationMissingDataPtr) ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MetricThresholdEvaluationMissingDataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricThresholdEvaluationMissingDataPtrOutput)
+}
+
+func (in *metricThresholdEvaluationMissingDataPtr) ToOutput(ctx context.Context) pulumix.Output[*MetricThresholdEvaluationMissingData] {
+	return pulumix.Output[*MetricThresholdEvaluationMissingData]{
+		OutputState: in.ToMetricThresholdEvaluationMissingDataPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
@@ -2723,6 +2994,12 @@ func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToMonitorin
 	}).(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput)
 }
 
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringQueryLanguageConditionEvaluationMissingData] {
+	return pulumix.Output[MonitoringQueryLanguageConditionEvaluationMissingData]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MonitoringQueryLanguageConditionEvaluationMissingDataOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2756,6 +3033,12 @@ func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToMonito
 
 func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
 	return o
+}
+
+func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringQueryLanguageConditionEvaluationMissingData] {
+	return pulumix.Output[*MonitoringQueryLanguageConditionEvaluationMissingData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) Elem() MonitoringQueryLanguageConditionEvaluationMissingDataOutput {
@@ -2818,6 +3101,12 @@ func (in *monitoringQueryLanguageConditionEvaluationMissingDataPtr) ToMonitoring
 
 func (in *monitoringQueryLanguageConditionEvaluationMissingDataPtr) ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput)
+}
+
+func (in *monitoringQueryLanguageConditionEvaluationMissingDataPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringQueryLanguageConditionEvaluationMissingData] {
+	return pulumix.Output[*MonitoringQueryLanguageConditionEvaluationMissingData]{
+		OutputState: in.ToMonitoringQueryLanguageConditionEvaluationMissingDataPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
@@ -2892,6 +3181,12 @@ func (o NotificationChannelVerificationStatusOutput) ToNotificationChannelVerifi
 	}).(NotificationChannelVerificationStatusPtrOutput)
 }
 
+func (o NotificationChannelVerificationStatusOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationChannelVerificationStatus] {
+	return pulumix.Output[NotificationChannelVerificationStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationChannelVerificationStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2925,6 +3220,12 @@ func (o NotificationChannelVerificationStatusPtrOutput) ToNotificationChannelVer
 
 func (o NotificationChannelVerificationStatusPtrOutput) ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusPtrOutput {
 	return o
+}
+
+func (o NotificationChannelVerificationStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannelVerificationStatus] {
+	return pulumix.Output[*NotificationChannelVerificationStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationChannelVerificationStatusPtrOutput) Elem() NotificationChannelVerificationStatusOutput {
@@ -2987,6 +3288,12 @@ func (in *notificationChannelVerificationStatusPtr) ToNotificationChannelVerific
 
 func (in *notificationChannelVerificationStatusPtr) ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationChannelVerificationStatusPtrOutput)
+}
+
+func (in *notificationChannelVerificationStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannelVerificationStatus] {
+	return pulumix.Output[*NotificationChannelVerificationStatus]{
+		OutputState: in.ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The resource type of the group members.
@@ -3061,6 +3368,12 @@ func (o ResourceGroupResourceTypeOutput) ToResourceGroupResourceTypePtrOutputWit
 	}).(ResourceGroupResourceTypePtrOutput)
 }
 
+func (o ResourceGroupResourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupResourceType] {
+	return pulumix.Output[ResourceGroupResourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceGroupResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3094,6 +3407,12 @@ func (o ResourceGroupResourceTypePtrOutput) ToResourceGroupResourceTypePtrOutput
 
 func (o ResourceGroupResourceTypePtrOutput) ToResourceGroupResourceTypePtrOutputWithContext(ctx context.Context) ResourceGroupResourceTypePtrOutput {
 	return o
+}
+
+func (o ResourceGroupResourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGroupResourceType] {
+	return pulumix.Output[*ResourceGroupResourceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceGroupResourceTypePtrOutput) Elem() ResourceGroupResourceTypeOutput {
@@ -3156,6 +3475,12 @@ func (in *resourceGroupResourceTypePtr) ToResourceGroupResourceTypePtrOutput() R
 
 func (in *resourceGroupResourceTypePtr) ToResourceGroupResourceTypePtrOutputWithContext(ctx context.Context) ResourceGroupResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceGroupResourceTypePtrOutput)
+}
+
+func (in *resourceGroupResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceGroupResourceType] {
+	return pulumix.Output[*ResourceGroupResourceType]{
+		OutputState: in.ToResourceGroupResourceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // A class of status codes to accept.
@@ -3238,6 +3563,12 @@ func (o ResponseStatusCodeStatusClassOutput) ToResponseStatusCodeStatusClassPtrO
 	}).(ResponseStatusCodeStatusClassPtrOutput)
 }
 
+func (o ResponseStatusCodeStatusClassOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseStatusCodeStatusClass] {
+	return pulumix.Output[ResponseStatusCodeStatusClass]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResponseStatusCodeStatusClassOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3271,6 +3602,12 @@ func (o ResponseStatusCodeStatusClassPtrOutput) ToResponseStatusCodeStatusClassP
 
 func (o ResponseStatusCodeStatusClassPtrOutput) ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassPtrOutput {
 	return o
+}
+
+func (o ResponseStatusCodeStatusClassPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseStatusCodeStatusClass] {
+	return pulumix.Output[*ResponseStatusCodeStatusClass]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponseStatusCodeStatusClassPtrOutput) Elem() ResponseStatusCodeStatusClassOutput {
@@ -3333,6 +3670,12 @@ func (in *responseStatusCodeStatusClassPtr) ToResponseStatusCodeStatusClassPtrOu
 
 func (in *responseStatusCodeStatusClassPtr) ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResponseStatusCodeStatusClassPtrOutput)
+}
+
+func (in *responseStatusCodeStatusClassPtr) ToOutput(ctx context.Context) pulumix.Output[*ResponseStatusCodeStatusClass] {
+	return pulumix.Output[*ResponseStatusCodeStatusClass]{
+		OutputState: in.ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
@@ -3417,6 +3760,12 @@ func (o ServiceLevelObjectiveCalendarPeriodOutput) ToServiceLevelObjectiveCalend
 	}).(ServiceLevelObjectiveCalendarPeriodPtrOutput)
 }
 
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLevelObjectiveCalendarPeriod] {
+	return pulumix.Output[ServiceLevelObjectiveCalendarPeriod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceLevelObjectiveCalendarPeriodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3450,6 +3799,12 @@ func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToServiceLevelObjectiveCal
 
 func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput {
 	return o
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLevelObjectiveCalendarPeriod] {
+	return pulumix.Output[*ServiceLevelObjectiveCalendarPeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) Elem() ServiceLevelObjectiveCalendarPeriodOutput {
@@ -3512,6 +3867,12 @@ func (in *serviceLevelObjectiveCalendarPeriodPtr) ToServiceLevelObjectiveCalenda
 
 func (in *serviceLevelObjectiveCalendarPeriodPtr) ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLevelObjectiveCalendarPeriodPtrOutput)
+}
+
+func (in *serviceLevelObjectiveCalendarPeriodPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLevelObjectiveCalendarPeriod] {
+	return pulumix.Output[*ServiceLevelObjectiveCalendarPeriod]{
+		OutputState: in.ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of checkers to use to execute the Uptime check.
@@ -3586,6 +3947,12 @@ func (o UptimeCheckConfigCheckerTypeOutput) ToUptimeCheckConfigCheckerTypePtrOut
 	}).(UptimeCheckConfigCheckerTypePtrOutput)
 }
 
+func (o UptimeCheckConfigCheckerTypeOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigCheckerType] {
+	return pulumix.Output[UptimeCheckConfigCheckerType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UptimeCheckConfigCheckerTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3619,6 +3986,12 @@ func (o UptimeCheckConfigCheckerTypePtrOutput) ToUptimeCheckConfigCheckerTypePtr
 
 func (o UptimeCheckConfigCheckerTypePtrOutput) ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypePtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigCheckerTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigCheckerType] {
+	return pulumix.Output[*UptimeCheckConfigCheckerType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigCheckerTypePtrOutput) Elem() UptimeCheckConfigCheckerTypeOutput {
@@ -3681,6 +4054,12 @@ func (in *uptimeCheckConfigCheckerTypePtr) ToUptimeCheckConfigCheckerTypePtrOutp
 
 func (in *uptimeCheckConfigCheckerTypePtr) ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx context.Context) UptimeCheckConfigCheckerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UptimeCheckConfigCheckerTypePtrOutput)
+}
+
+func (in *uptimeCheckConfigCheckerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigCheckerType] {
+	return pulumix.Output[*UptimeCheckConfigCheckerType]{
+		OutputState: in.ToUptimeCheckConfigCheckerTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type UptimeCheckConfigSelectedRegionsItem string
@@ -3764,6 +4143,12 @@ func (o UptimeCheckConfigSelectedRegionsItemOutput) ToUptimeCheckConfigSelectedR
 	}).(UptimeCheckConfigSelectedRegionsItemPtrOutput)
 }
 
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigSelectedRegionsItem] {
+	return pulumix.Output[UptimeCheckConfigSelectedRegionsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UptimeCheckConfigSelectedRegionsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3797,6 +4182,12 @@ func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToUptimeCheckConfigSelect
 
 func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigSelectedRegionsItem] {
+	return pulumix.Output[*UptimeCheckConfigSelectedRegionsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) Elem() UptimeCheckConfigSelectedRegionsItemOutput {
@@ -3861,6 +4252,12 @@ func (in *uptimeCheckConfigSelectedRegionsItemPtr) ToUptimeCheckConfigSelectedRe
 	return pulumi.ToOutputWithContext(ctx, in).(UptimeCheckConfigSelectedRegionsItemPtrOutput)
 }
 
+func (in *uptimeCheckConfigSelectedRegionsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigSelectedRegionsItem] {
+	return pulumix.Output[*UptimeCheckConfigSelectedRegionsItem]{
+		OutputState: in.ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UptimeCheckConfigSelectedRegionsItemArrayInput is an input type that accepts UptimeCheckConfigSelectedRegionsItemArray and UptimeCheckConfigSelectedRegionsItemArrayOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigSelectedRegionsItemArrayInput` via:
 //
@@ -3886,6 +4283,12 @@ func (i UptimeCheckConfigSelectedRegionsItemArray) ToUptimeCheckConfigSelectedRe
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSelectedRegionsItemArrayOutput)
 }
 
+func (i UptimeCheckConfigSelectedRegionsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]UptimeCheckConfigSelectedRegionsItem] {
+	return pulumix.Output[[]UptimeCheckConfigSelectedRegionsItem]{
+		OutputState: i.ToUptimeCheckConfigSelectedRegionsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigSelectedRegionsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigSelectedRegionsItemArrayOutput) ElementType() reflect.Type {
@@ -3898,6 +4301,12 @@ func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) ToUptimeCheckConfigSele
 
 func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) ToUptimeCheckConfigSelectedRegionsItemArrayOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemArrayOutput {
 	return o
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UptimeCheckConfigSelectedRegionsItem] {
+	return pulumix.Output[[]UptimeCheckConfigSelectedRegionsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigSelectedRegionsItemOutput {

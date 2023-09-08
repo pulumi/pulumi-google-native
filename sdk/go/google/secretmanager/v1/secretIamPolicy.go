@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
@@ -131,6 +132,12 @@ func (i *SecretIamPolicy) ToSecretIamPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyOutput)
 }
 
+func (i *SecretIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*SecretIamPolicy] {
+	return pulumix.Output[*SecretIamPolicy]{
+		OutputState: i.ToSecretIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o SecretIamPolicyOutput) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
 
 func (o SecretIamPolicyOutput) ToSecretIamPolicyOutputWithContext(ctx context.Context) SecretIamPolicyOutput {
 	return o
+}
+
+func (o SecretIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretIamPolicy] {
+	return pulumix.Output[*SecretIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

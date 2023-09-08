@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -74,6 +75,12 @@ func (o LookupRegionWorkflowTemplateIamPolicyResultOutput) ToLookupRegionWorkflo
 
 func (o LookupRegionWorkflowTemplateIamPolicyResultOutput) ToLookupRegionWorkflowTemplateIamPolicyResultOutputWithContext(ctx context.Context) LookupRegionWorkflowTemplateIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupRegionWorkflowTemplateIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionWorkflowTemplateIamPolicyResult] {
+	return pulumix.Output[LookupRegionWorkflowTemplateIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member.

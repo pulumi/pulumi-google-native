@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a notification config.
@@ -74,6 +75,12 @@ func (o LookupNotificationConfigResultOutput) ToLookupNotificationConfigResultOu
 
 func (o LookupNotificationConfigResultOutput) ToLookupNotificationConfigResultOutputWithContext(ctx context.Context) LookupNotificationConfigResultOutput {
 	return o
+}
+
+func (o LookupNotificationConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationConfigResult] {
+	return pulumix.Output[LookupNotificationConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the notification config (max of 1024 characters).

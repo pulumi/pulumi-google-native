@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it is a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT 1"`.
@@ -127,6 +128,12 @@ func (i *Session) ToSessionOutputWithContext(ctx context.Context) SessionOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SessionOutput)
 }
 
+func (i *Session) ToOutput(ctx context.Context) pulumix.Output[*Session] {
+	return pulumix.Output[*Session]{
+		OutputState: i.ToSessionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SessionOutput struct{ *pulumi.OutputState }
 
 func (SessionOutput) ElementType() reflect.Type {
@@ -139,6 +146,12 @@ func (o SessionOutput) ToSessionOutput() SessionOutput {
 
 func (o SessionOutput) ToSessionOutputWithContext(ctx context.Context) SessionOutput {
 	return o
+}
+
+func (o SessionOutput) ToOutput(ctx context.Context) pulumix.Output[*Session] {
+	return pulumix.Output[*Session]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.

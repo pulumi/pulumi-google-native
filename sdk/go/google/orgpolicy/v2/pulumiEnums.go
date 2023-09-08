@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allow or deny type.
@@ -82,6 +83,12 @@ func (o CustomConstraintActionTypeOutput) ToCustomConstraintActionTypePtrOutputW
 	}).(CustomConstraintActionTypePtrOutput)
 }
 
+func (o CustomConstraintActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CustomConstraintActionType] {
+	return pulumix.Output[CustomConstraintActionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomConstraintActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o CustomConstraintActionTypePtrOutput) ToCustomConstraintActionTypePtrOutp
 
 func (o CustomConstraintActionTypePtrOutput) ToCustomConstraintActionTypePtrOutputWithContext(ctx context.Context) CustomConstraintActionTypePtrOutput {
 	return o
+}
+
+func (o CustomConstraintActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraintActionType] {
+	return pulumix.Output[*CustomConstraintActionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomConstraintActionTypePtrOutput) Elem() CustomConstraintActionTypeOutput {
@@ -177,6 +190,12 @@ func (in *customConstraintActionTypePtr) ToCustomConstraintActionTypePtrOutput()
 
 func (in *customConstraintActionTypePtr) ToCustomConstraintActionTypePtrOutputWithContext(ctx context.Context) CustomConstraintActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CustomConstraintActionTypePtrOutput)
+}
+
+func (in *customConstraintActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraintActionType] {
+	return pulumix.Output[*CustomConstraintActionType]{
+		OutputState: in.ToCustomConstraintActionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type CustomConstraintMethodTypesItem string
@@ -252,6 +271,12 @@ func (o CustomConstraintMethodTypesItemOutput) ToCustomConstraintMethodTypesItem
 	}).(CustomConstraintMethodTypesItemPtrOutput)
 }
 
+func (o CustomConstraintMethodTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[CustomConstraintMethodTypesItem] {
+	return pulumix.Output[CustomConstraintMethodTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomConstraintMethodTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -285,6 +310,12 @@ func (o CustomConstraintMethodTypesItemPtrOutput) ToCustomConstraintMethodTypesI
 
 func (o CustomConstraintMethodTypesItemPtrOutput) ToCustomConstraintMethodTypesItemPtrOutputWithContext(ctx context.Context) CustomConstraintMethodTypesItemPtrOutput {
 	return o
+}
+
+func (o CustomConstraintMethodTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraintMethodTypesItem] {
+	return pulumix.Output[*CustomConstraintMethodTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomConstraintMethodTypesItemPtrOutput) Elem() CustomConstraintMethodTypesItemOutput {
@@ -349,6 +380,12 @@ func (in *customConstraintMethodTypesItemPtr) ToCustomConstraintMethodTypesItemP
 	return pulumi.ToOutputWithContext(ctx, in).(CustomConstraintMethodTypesItemPtrOutput)
 }
 
+func (in *customConstraintMethodTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraintMethodTypesItem] {
+	return pulumix.Output[*CustomConstraintMethodTypesItem]{
+		OutputState: in.ToCustomConstraintMethodTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomConstraintMethodTypesItemArrayInput is an input type that accepts CustomConstraintMethodTypesItemArray and CustomConstraintMethodTypesItemArrayOutput values.
 // You can construct a concrete instance of `CustomConstraintMethodTypesItemArrayInput` via:
 //
@@ -374,6 +411,12 @@ func (i CustomConstraintMethodTypesItemArray) ToCustomConstraintMethodTypesItemA
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintMethodTypesItemArrayOutput)
 }
 
+func (i CustomConstraintMethodTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]CustomConstraintMethodTypesItem] {
+	return pulumix.Output[[]CustomConstraintMethodTypesItem]{
+		OutputState: i.ToCustomConstraintMethodTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomConstraintMethodTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomConstraintMethodTypesItemArrayOutput) ElementType() reflect.Type {
@@ -386,6 +429,12 @@ func (o CustomConstraintMethodTypesItemArrayOutput) ToCustomConstraintMethodType
 
 func (o CustomConstraintMethodTypesItemArrayOutput) ToCustomConstraintMethodTypesItemArrayOutputWithContext(ctx context.Context) CustomConstraintMethodTypesItemArrayOutput {
 	return o
+}
+
+func (o CustomConstraintMethodTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomConstraintMethodTypesItem] {
+	return pulumix.Output[[]CustomConstraintMethodTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomConstraintMethodTypesItemArrayOutput) Index(i pulumi.IntInput) CustomConstraintMethodTypesItemOutput {

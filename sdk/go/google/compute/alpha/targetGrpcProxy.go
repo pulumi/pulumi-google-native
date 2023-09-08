@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TargetGrpcProxy in the specified project in the given scope using the parameters that are included in the request.
@@ -133,6 +134,12 @@ func (i *TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyOutput)
 }
 
+func (i *TargetGrpcProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetGrpcProxy] {
+	return pulumix.Output[*TargetGrpcProxy]{
+		OutputState: i.ToTargetGrpcProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetGrpcProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetGrpcProxyOutput) ElementType() reflect.Type {
@@ -145,6 +152,12 @@ func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutput() TargetGrpcProxyOutput {
 
 func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutputWithContext(ctx context.Context) TargetGrpcProxyOutput {
 	return o
+}
+
+func (o TargetGrpcProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetGrpcProxy] {
+	return pulumix.Output[*TargetGrpcProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

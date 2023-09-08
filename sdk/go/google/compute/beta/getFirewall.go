@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified firewall.
@@ -104,6 +105,12 @@ func (o LookupFirewallResultOutput) ToLookupFirewallResultOutput() LookupFirewal
 
 func (o LookupFirewallResultOutput) ToLookupFirewallResultOutputWithContext(ctx context.Context) LookupFirewallResultOutput {
 	return o
+}
+
+func (o LookupFirewallResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallResult] {
+	return pulumix.Output[LookupFirewallResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.

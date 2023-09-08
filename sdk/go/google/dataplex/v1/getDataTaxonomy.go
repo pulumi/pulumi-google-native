@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a DataTaxonomy resource.
@@ -84,6 +85,12 @@ func (o LookupDataTaxonomyResultOutput) ToLookupDataTaxonomyResultOutput() Looku
 
 func (o LookupDataTaxonomyResultOutput) ToLookupDataTaxonomyResultOutputWithContext(ctx context.Context) LookupDataTaxonomyResultOutput {
 	return o
+}
+
+func (o LookupDataTaxonomyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataTaxonomyResult] {
+	return pulumix.Output[LookupDataTaxonomyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of attributes in the DataTaxonomy.

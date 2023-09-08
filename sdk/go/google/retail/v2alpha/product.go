@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Product.
@@ -325,6 +326,12 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
 }
 
+func (i *Product) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: i.ToProductOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProductOutput struct{ *pulumi.OutputState }
 
 func (ProductOutput) ElementType() reflect.Type {
@@ -337,6 +344,12 @@ func (o ProductOutput) ToProductOutput() ProductOutput {
 
 func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOutput {
 	return o
+}
+
+func (o ProductOutput) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.

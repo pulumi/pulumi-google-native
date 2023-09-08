@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Hosting Site.
@@ -74,6 +75,12 @@ func (o LookupSiteResultOutput) ToLookupSiteResultOutput() LookupSiteResultOutpu
 
 func (o LookupSiteResultOutput) ToLookupSiteResultOutputWithContext(ctx context.Context) LookupSiteResultOutput {
 	return o
+}
+
+func (o LookupSiteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSiteResult] {
+	return pulumix.Output[LookupSiteResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.

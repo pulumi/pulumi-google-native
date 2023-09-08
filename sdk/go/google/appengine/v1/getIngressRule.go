@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified firewall rule.
@@ -72,6 +73,12 @@ func (o LookupIngressRuleResultOutput) ToLookupIngressRuleResultOutput() LookupI
 
 func (o LookupIngressRuleResultOutput) ToLookupIngressRuleResultOutputWithContext(ctx context.Context) LookupIngressRuleResultOutput {
 	return o
+}
+
+func (o LookupIngressRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIngressRuleResult] {
+	return pulumix.Output[LookupIngressRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action to take on matched requests.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a DataAttributeBinding resource.
@@ -159,6 +160,12 @@ func (i *DataAttributeBinding) ToDataAttributeBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DataAttributeBindingOutput)
 }
 
+func (i *DataAttributeBinding) ToOutput(ctx context.Context) pulumix.Output[*DataAttributeBinding] {
+	return pulumix.Output[*DataAttributeBinding]{
+		OutputState: i.ToDataAttributeBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataAttributeBindingOutput struct{ *pulumi.OutputState }
 
 func (DataAttributeBindingOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o DataAttributeBindingOutput) ToDataAttributeBindingOutput() DataAttribute
 
 func (o DataAttributeBindingOutput) ToDataAttributeBindingOutputWithContext(ctx context.Context) DataAttributeBindingOutput {
 	return o
+}
+
+func (o DataAttributeBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DataAttributeBinding] {
+	return pulumix.Output[*DataAttributeBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. List of attributes to be associated with the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ContactCenter in a given project and location.
@@ -182,6 +183,12 @@ func (i *ContactCenter) ToContactCenterOutputWithContext(ctx context.Context) Co
 	return pulumi.ToOutputWithContext(ctx, i).(ContactCenterOutput)
 }
 
+func (i *ContactCenter) ToOutput(ctx context.Context) pulumix.Output[*ContactCenter] {
+	return pulumix.Output[*ContactCenter]{
+		OutputState: i.ToContactCenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContactCenterOutput struct{ *pulumi.OutputState }
 
 func (ContactCenterOutput) ElementType() reflect.Type {
@@ -194,6 +201,12 @@ func (o ContactCenterOutput) ToContactCenterOutput() ContactCenterOutput {
 
 func (o ContactCenterOutput) ToContactCenterOutputWithContext(ctx context.Context) ContactCenterOutput {
 	return o
+}
+
+func (o ContactCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*ContactCenter] {
+	return pulumix.Output[*ContactCenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Info about the first admin user, such as given name and family name.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single conversion workspace.
@@ -86,6 +87,12 @@ func (o LookupConversionWorkspaceResultOutput) ToLookupConversionWorkspaceResult
 
 func (o LookupConversionWorkspaceResultOutput) ToLookupConversionWorkspaceResultOutputWithContext(ctx context.Context) LookupConversionWorkspaceResultOutput {
 	return o
+}
+
+func (o LookupConversionWorkspaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConversionWorkspaceResult] {
+	return pulumix.Output[LookupConversionWorkspaceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the workspace resource was created.

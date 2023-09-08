@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an HL7v2 message.
@@ -92,6 +93,12 @@ func (o LookupMessageResultOutput) ToLookupMessageResultOutput() LookupMessageRe
 
 func (o LookupMessageResultOutput) ToLookupMessageResultOutputWithContext(ctx context.Context) LookupMessageResultOutput {
 	return o
+}
+
+func (o LookupMessageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMessageResult] {
+	return pulumix.Output[LookupMessageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datetime when the message was created. Set by the server.

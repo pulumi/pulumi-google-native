@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The service tier of the instance.
@@ -92,6 +93,12 @@ func (o InstanceTierOutput) ToInstanceTierPtrOutputWithContext(ctx context.Conte
 	}).(InstanceTierPtrOutput)
 }
 
+func (o InstanceTierOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceTier] {
+	return pulumix.Output[InstanceTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,6 +132,12 @@ func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
 
 func (o InstanceTierPtrOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
 	return o
+}
+
+func (o InstanceTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceTier] {
+	return pulumix.Output[*InstanceTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
@@ -187,6 +200,12 @@ func (in *instanceTierPtr) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
 
 func (in *instanceTierPtr) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTierPtrOutput)
+}
+
+func (in *instanceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceTier] {
+	return pulumix.Output[*InstanceTier]{
+		OutputState: in.ToInstanceTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
@@ -261,6 +280,12 @@ func (o NetworkConfigConnectModeOutput) ToNetworkConfigConnectModePtrOutputWithC
 	}).(NetworkConfigConnectModePtrOutput)
 }
 
+func (o NetworkConfigConnectModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigConnectMode] {
+	return pulumix.Output[NetworkConfigConnectMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkConfigConnectModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -294,6 +319,12 @@ func (o NetworkConfigConnectModePtrOutput) ToNetworkConfigConnectModePtrOutput()
 
 func (o NetworkConfigConnectModePtrOutput) ToNetworkConfigConnectModePtrOutputWithContext(ctx context.Context) NetworkConfigConnectModePtrOutput {
 	return o
+}
+
+func (o NetworkConfigConnectModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigConnectMode] {
+	return pulumix.Output[*NetworkConfigConnectMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkConfigConnectModePtrOutput) Elem() NetworkConfigConnectModeOutput {
@@ -356,6 +387,12 @@ func (in *networkConfigConnectModePtr) ToNetworkConfigConnectModePtrOutput() Net
 
 func (in *networkConfigConnectModePtr) ToNetworkConfigConnectModePtrOutputWithContext(ctx context.Context) NetworkConfigConnectModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigConnectModePtrOutput)
+}
+
+func (in *networkConfigConnectModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigConnectMode] {
+	return pulumix.Output[*NetworkConfigConnectMode]{
+		OutputState: in.ToNetworkConfigConnectModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type NetworkConfigModesItem string
@@ -427,6 +464,12 @@ func (o NetworkConfigModesItemOutput) ToNetworkConfigModesItemPtrOutputWithConte
 	}).(NetworkConfigModesItemPtrOutput)
 }
 
+func (o NetworkConfigModesItemOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigModesItem] {
+	return pulumix.Output[NetworkConfigModesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkConfigModesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -460,6 +503,12 @@ func (o NetworkConfigModesItemPtrOutput) ToNetworkConfigModesItemPtrOutput() Net
 
 func (o NetworkConfigModesItemPtrOutput) ToNetworkConfigModesItemPtrOutputWithContext(ctx context.Context) NetworkConfigModesItemPtrOutput {
 	return o
+}
+
+func (o NetworkConfigModesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigModesItem] {
+	return pulumix.Output[*NetworkConfigModesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkConfigModesItemPtrOutput) Elem() NetworkConfigModesItemOutput {
@@ -524,6 +573,12 @@ func (in *networkConfigModesItemPtr) ToNetworkConfigModesItemPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigModesItemPtrOutput)
 }
 
+func (in *networkConfigModesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigModesItem] {
+	return pulumix.Output[*NetworkConfigModesItem]{
+		OutputState: in.ToNetworkConfigModesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkConfigModesItemArrayInput is an input type that accepts NetworkConfigModesItemArray and NetworkConfigModesItemArrayOutput values.
 // You can construct a concrete instance of `NetworkConfigModesItemArrayInput` via:
 //
@@ -549,6 +604,12 @@ func (i NetworkConfigModesItemArray) ToNetworkConfigModesItemArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigModesItemArrayOutput)
 }
 
+func (i NetworkConfigModesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfigModesItem] {
+	return pulumix.Output[[]NetworkConfigModesItem]{
+		OutputState: i.ToNetworkConfigModesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkConfigModesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigModesItemArrayOutput) ElementType() reflect.Type {
@@ -561,6 +622,12 @@ func (o NetworkConfigModesItemArrayOutput) ToNetworkConfigModesItemArrayOutput()
 
 func (o NetworkConfigModesItemArrayOutput) ToNetworkConfigModesItemArrayOutputWithContext(ctx context.Context) NetworkConfigModesItemArrayOutput {
 	return o
+}
+
+func (o NetworkConfigModesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfigModesItem] {
+	return pulumix.Output[[]NetworkConfigModesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkConfigModesItemArrayOutput) Index(i pulumi.IntInput) NetworkConfigModesItemOutput {
@@ -641,6 +708,12 @@ func (o NfsExportOptionsAccessModeOutput) ToNfsExportOptionsAccessModePtrOutputW
 	}).(NfsExportOptionsAccessModePtrOutput)
 }
 
+func (o NfsExportOptionsAccessModeOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExportOptionsAccessMode] {
+	return pulumix.Output[NfsExportOptionsAccessMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NfsExportOptionsAccessModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -674,6 +747,12 @@ func (o NfsExportOptionsAccessModePtrOutput) ToNfsExportOptionsAccessModePtrOutp
 
 func (o NfsExportOptionsAccessModePtrOutput) ToNfsExportOptionsAccessModePtrOutputWithContext(ctx context.Context) NfsExportOptionsAccessModePtrOutput {
 	return o
+}
+
+func (o NfsExportOptionsAccessModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NfsExportOptionsAccessMode] {
+	return pulumix.Output[*NfsExportOptionsAccessMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NfsExportOptionsAccessModePtrOutput) Elem() NfsExportOptionsAccessModeOutput {
@@ -736,6 +815,12 @@ func (in *nfsExportOptionsAccessModePtr) ToNfsExportOptionsAccessModePtrOutput()
 
 func (in *nfsExportOptionsAccessModePtr) ToNfsExportOptionsAccessModePtrOutputWithContext(ctx context.Context) NfsExportOptionsAccessModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsAccessModePtrOutput)
+}
+
+func (in *nfsExportOptionsAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsExportOptionsAccessMode] {
+	return pulumix.Output[*NfsExportOptionsAccessMode]{
+		OutputState: in.ToNfsExportOptionsAccessModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
@@ -810,6 +895,12 @@ func (o NfsExportOptionsSquashModeOutput) ToNfsExportOptionsSquashModePtrOutputW
 	}).(NfsExportOptionsSquashModePtrOutput)
 }
 
+func (o NfsExportOptionsSquashModeOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExportOptionsSquashMode] {
+	return pulumix.Output[NfsExportOptionsSquashMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NfsExportOptionsSquashModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -843,6 +934,12 @@ func (o NfsExportOptionsSquashModePtrOutput) ToNfsExportOptionsSquashModePtrOutp
 
 func (o NfsExportOptionsSquashModePtrOutput) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
 	return o
+}
+
+func (o NfsExportOptionsSquashModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NfsExportOptionsSquashMode] {
+	return pulumix.Output[*NfsExportOptionsSquashMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NfsExportOptionsSquashModePtrOutput) Elem() NfsExportOptionsSquashModeOutput {
@@ -905,6 +1002,12 @@ func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutput()
 
 func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsSquashModePtrOutput)
+}
+
+func (in *nfsExportOptionsSquashModePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsExportOptionsSquashMode] {
+	return pulumix.Output[*NfsExportOptionsSquashMode]{
+		OutputState: in.ToNfsExportOptionsSquashModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

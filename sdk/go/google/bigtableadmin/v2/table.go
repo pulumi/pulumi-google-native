@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request.
@@ -146,6 +147,12 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableOutput)
 }
 
+func (i *Table) ToOutput(ctx context.Context) pulumix.Output[*Table] {
+	return pulumix.Output[*Table]{
+		OutputState: i.ToTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TableOutput struct{ *pulumi.OutputState }
 
 func (TableOutput) ElementType() reflect.Type {
@@ -158,6 +165,12 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
+}
+
+func (o TableOutput) ToOutput(ctx context.Context) pulumix.Output[*Table] {
+	return pulumix.Output[*Table]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`

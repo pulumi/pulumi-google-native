@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an InterconnectAttachment in the specified project using the data included in the request.
@@ -273,6 +274,12 @@ func (i *InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput)
 }
 
+func (i *InterconnectAttachment) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachment] {
+	return pulumix.Output[*InterconnectAttachment]{
+		OutputState: i.ToInterconnectAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterconnectAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentOutput) ElementType() reflect.Type {
@@ -285,6 +292,12 @@ func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutput() Interconn
 
 func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
 	return o
+}
+
+func (o InterconnectAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachment] {
+	return pulumix.Output[*InterconnectAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.

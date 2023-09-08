@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an IntegrationTemplateVersion.
@@ -185,6 +186,12 @@ func (i *TemplatesVersion) ToTemplatesVersionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TemplatesVersionOutput)
 }
 
+func (i *TemplatesVersion) ToOutput(ctx context.Context) pulumix.Output[*TemplatesVersion] {
+	return pulumix.Output[*TemplatesVersion]{
+		OutputState: i.ToTemplatesVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TemplatesVersionOutput struct{ *pulumi.OutputState }
 
 func (TemplatesVersionOutput) ElementType() reflect.Type {
@@ -197,6 +204,12 @@ func (o TemplatesVersionOutput) ToTemplatesVersionOutput() TemplatesVersionOutpu
 
 func (o TemplatesVersionOutput) ToTemplatesVersionOutputWithContext(ctx context.Context) TemplatesVersionOutput {
 	return o
+}
+
+func (o TemplatesVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*TemplatesVersion] {
+	return pulumix.Output[*TemplatesVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto-generated.

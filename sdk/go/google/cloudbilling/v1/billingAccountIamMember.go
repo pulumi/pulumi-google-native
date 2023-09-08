@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
@@ -135,6 +136,12 @@ func (i *BillingAccountIamMember) ToBillingAccountIamMemberOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountIamMemberOutput)
 }
 
+func (i *BillingAccountIamMember) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountIamMember] {
+	return pulumix.Output[*BillingAccountIamMember]{
+		OutputState: i.ToBillingAccountIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BillingAccountIamMemberOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o BillingAccountIamMemberOutput) ToBillingAccountIamMemberOutput() Billing
 
 func (o BillingAccountIamMemberOutput) ToBillingAccountIamMemberOutputWithContext(ctx context.Context) BillingAccountIamMemberOutput {
 	return o
+}
+
+func (o BillingAccountIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountIamMember] {
+	return pulumix.Output[*BillingAccountIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

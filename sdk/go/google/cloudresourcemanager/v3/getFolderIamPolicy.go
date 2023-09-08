@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
@@ -70,6 +71,12 @@ func (o LookupFolderIamPolicyResultOutput) ToLookupFolderIamPolicyResultOutput()
 
 func (o LookupFolderIamPolicyResultOutput) ToLookupFolderIamPolicyResultOutputWithContext(ctx context.Context) LookupFolderIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupFolderIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFolderIamPolicyResult] {
+	return pulumix.Output[LookupFolderIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

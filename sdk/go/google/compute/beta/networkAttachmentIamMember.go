@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -135,6 +136,12 @@ func (i *NetworkAttachmentIamMember) ToNetworkAttachmentIamMemberOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentIamMemberOutput)
 }
 
+func (i *NetworkAttachmentIamMember) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachmentIamMember] {
+	return pulumix.Output[*NetworkAttachmentIamMember]{
+		OutputState: i.ToNetworkAttachmentIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkAttachmentIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NetworkAttachmentIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o NetworkAttachmentIamMemberOutput) ToNetworkAttachmentIamMemberOutput() N
 
 func (o NetworkAttachmentIamMemberOutput) ToNetworkAttachmentIamMemberOutputWithContext(ctx context.Context) NetworkAttachmentIamMemberOutput {
 	return o
+}
+
+func (o NetworkAttachmentIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachmentIamMember] {
+	return pulumix.Output[*NetworkAttachmentIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

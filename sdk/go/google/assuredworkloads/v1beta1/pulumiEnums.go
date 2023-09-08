@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates Ekm provisioning error if any.
@@ -88,6 +89,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProv
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,6 +128,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProv
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainOutput {
@@ -183,6 +196,12 @@ func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmPr
 
 func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtr) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput)
+}
+
+func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain]{
+		OutputState: in.ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Detailed error message if Ekm provisioning fails
@@ -259,6 +278,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProv
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -292,6 +317,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProv
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingOutput {
@@ -354,6 +385,12 @@ func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmPr
 
 func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtr) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput)
+}
+
+func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping]{
+		OutputState: in.ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates Ekm enrollment Provisioning of a given workload.
@@ -430,6 +467,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProv
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -463,6 +506,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProv
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStateOutput {
@@ -525,6 +574,12 @@ func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmPr
 
 func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtr) ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput)
+}
+
+func (in *googleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState]{
+		OutputState: in.ToGoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
@@ -603,6 +658,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeOu
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput)
 }
 
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType] {
+	return pulumix.Output[GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -636,6 +697,12 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePt
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeOutput {
@@ -698,6 +765,12 @@ func (in *googleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType
 
 func (in *googleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtr) ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput)
+}
+
+func (in *googleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType] {
+	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType]{
+		OutputState: in.ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Immutable. Compliance Regime associated with this workload.
@@ -798,6 +871,12 @@ func (o WorkloadComplianceRegimeOutput) ToWorkloadComplianceRegimePtrOutputWithC
 	}).(WorkloadComplianceRegimePtrOutput)
 }
 
+func (o WorkloadComplianceRegimeOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadComplianceRegime] {
+	return pulumix.Output[WorkloadComplianceRegime]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkloadComplianceRegimeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -831,6 +910,12 @@ func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutput()
 
 func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
 	return o
+}
+
+func (o WorkloadComplianceRegimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadComplianceRegime] {
+	return pulumix.Output[*WorkloadComplianceRegime]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadComplianceRegimePtrOutput) Elem() WorkloadComplianceRegimeOutput {
@@ -893,6 +978,12 @@ func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutput() Wor
 
 func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadComplianceRegimePtrOutput)
+}
+
+func (in *workloadComplianceRegimePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadComplianceRegime] {
+	return pulumix.Output[*WorkloadComplianceRegime]{
+		OutputState: in.ToWorkloadComplianceRegimePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Partner regime associated with this workload.
@@ -970,6 +1061,12 @@ func (o WorkloadPartnerOutput) ToWorkloadPartnerPtrOutputWithContext(ctx context
 	}).(WorkloadPartnerPtrOutput)
 }
 
+func (o WorkloadPartnerOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadPartner] {
+	return pulumix.Output[WorkloadPartner]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkloadPartnerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1003,6 +1100,12 @@ func (o WorkloadPartnerPtrOutput) ToWorkloadPartnerPtrOutput() WorkloadPartnerPt
 
 func (o WorkloadPartnerPtrOutput) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
 	return o
+}
+
+func (o WorkloadPartnerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadPartner] {
+	return pulumix.Output[*WorkloadPartner]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkloadPartnerPtrOutput) Elem() WorkloadPartnerOutput {
@@ -1065,6 +1168,12 @@ func (in *workloadPartnerPtr) ToWorkloadPartnerPtrOutput() WorkloadPartnerPtrOut
 
 func (in *workloadPartnerPtr) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadPartnerPtrOutput)
+}
+
+func (in *workloadPartnerPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadPartner] {
+	return pulumix.Output[*WorkloadPartner]{
+		OutputState: in.ToWorkloadPartnerPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an association between a GCP project and a GitHub Enterprise server.
@@ -163,6 +164,12 @@ func (i *GithubEnterpriseConfig) ToGithubEnterpriseConfigOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GithubEnterpriseConfigOutput)
 }
 
+func (i *GithubEnterpriseConfig) ToOutput(ctx context.Context) pulumix.Output[*GithubEnterpriseConfig] {
+	return pulumix.Output[*GithubEnterpriseConfig]{
+		OutputState: i.ToGithubEnterpriseConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GithubEnterpriseConfigOutput struct{ *pulumi.OutputState }
 
 func (GithubEnterpriseConfigOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o GithubEnterpriseConfigOutput) ToGithubEnterpriseConfigOutput() GithubEnt
 
 func (o GithubEnterpriseConfigOutput) ToGithubEnterpriseConfigOutputWithContext(ctx context.Context) GithubEnterpriseConfigOutput {
 	return o
+}
+
+func (o GithubEnterpriseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*GithubEnterpriseConfig] {
+	return pulumix.Output[*GithubEnterpriseConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The GitHub app id of the Cloud Build app on the GitHub Enterprise server.

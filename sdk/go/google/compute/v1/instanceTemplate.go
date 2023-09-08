@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
@@ -137,6 +138,12 @@ func (i *InstanceTemplate) ToInstanceTemplateOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateOutput)
 }
 
+func (i *InstanceTemplate) ToOutput(ctx context.Context) pulumix.Output[*InstanceTemplate] {
+	return pulumix.Output[*InstanceTemplate]{
+		OutputState: i.ToInstanceTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstanceTemplateOutput) ElementType() reflect.Type {
@@ -149,6 +156,12 @@ func (o InstanceTemplateOutput) ToInstanceTemplateOutput() InstanceTemplateOutpu
 
 func (o InstanceTemplateOutput) ToInstanceTemplateOutputWithContext(ctx context.Context) InstanceTemplateOutput {
 	return o
+}
+
+func (o InstanceTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceTemplate] {
+	return pulumix.Output[*InstanceTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp for this instance template in RFC3339 text format.

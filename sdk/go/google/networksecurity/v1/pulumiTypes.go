@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i CertificateProviderInstanceArgs) ToCertificateProviderInstanceOutput() C
 
 func (i CertificateProviderInstanceArgs) ToCertificateProviderInstanceOutputWithContext(ctx context.Context) CertificateProviderInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateProviderInstanceOutput)
+}
+
+func (i CertificateProviderInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateProviderInstance] {
+	return pulumix.Output[CertificateProviderInstance]{
+		OutputState: i.ToCertificateProviderInstanceOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CertificateProviderInstanceArgs) ToCertificateProviderInstancePtrOutput() CertificateProviderInstancePtrOutput {
@@ -89,6 +96,12 @@ func (i *certificateProviderInstancePtrType) ToCertificateProviderInstancePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateProviderInstancePtrOutput)
 }
 
+func (i *certificateProviderInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateProviderInstance] {
+	return pulumix.Output[*CertificateProviderInstance]{
+		OutputState: i.ToCertificateProviderInstancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of a TLS certificate provider instance. Workloads may have one or more CertificateProvider instances (plugins) and one of them is enabled and configured by specifying this message. Workloads use the values from this message to locate and load the CertificateProvider instance configuration.
 type CertificateProviderInstanceOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o CertificateProviderInstanceOutput) ToCertificateProviderInstancePtrOutpu
 	}).(CertificateProviderInstancePtrOutput)
 }
 
+func (o CertificateProviderInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateProviderInstance] {
+	return pulumix.Output[CertificateProviderInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
 func (o CertificateProviderInstanceOutput) PluginInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateProviderInstance) string { return v.PluginInstance }).(pulumi.StringOutput)
@@ -131,6 +150,12 @@ func (o CertificateProviderInstancePtrOutput) ToCertificateProviderInstancePtrOu
 
 func (o CertificateProviderInstancePtrOutput) ToCertificateProviderInstancePtrOutputWithContext(ctx context.Context) CertificateProviderInstancePtrOutput {
 	return o
+}
+
+func (o CertificateProviderInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateProviderInstance] {
+	return pulumix.Output[*CertificateProviderInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateProviderInstancePtrOutput) Elem() CertificateProviderInstanceOutput {
@@ -172,6 +197,12 @@ func (o CertificateProviderInstanceResponseOutput) ToCertificateProviderInstance
 
 func (o CertificateProviderInstanceResponseOutput) ToCertificateProviderInstanceResponseOutputWithContext(ctx context.Context) CertificateProviderInstanceResponseOutput {
 	return o
+}
+
+func (o CertificateProviderInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateProviderInstanceResponse] {
+	return pulumix.Output[CertificateProviderInstanceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
@@ -226,6 +257,12 @@ func (i DestinationArgs) ToDestinationOutputWithContext(ctx context.Context) Des
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationOutput)
 }
 
+func (i DestinationArgs) ToOutput(ctx context.Context) pulumix.Output[Destination] {
+	return pulumix.Output[Destination]{
+		OutputState: i.ToDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DestinationArrayInput is an input type that accepts DestinationArray and DestinationArrayOutput values.
 // You can construct a concrete instance of `DestinationArrayInput` via:
 //
@@ -251,6 +288,12 @@ func (i DestinationArray) ToDestinationArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationArrayOutput)
 }
 
+func (i DestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]Destination] {
+	return pulumix.Output[[]Destination]{
+		OutputState: i.ToDestinationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of traffic destination attributes.
 type DestinationOutput struct{ *pulumi.OutputState }
 
@@ -264,6 +307,12 @@ func (o DestinationOutput) ToDestinationOutput() DestinationOutput {
 
 func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) DestinationOutput {
 	return o
+}
+
+func (o DestinationOutput) ToOutput(ctx context.Context) pulumix.Output[Destination] {
+	return pulumix.Output[Destination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
@@ -300,6 +349,12 @@ func (o DestinationArrayOutput) ToDestinationArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o DestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Destination] {
+	return pulumix.Output[[]Destination]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DestinationArrayOutput) Index(i pulumi.IntInput) DestinationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Destination {
 		return vs[0].([]Destination)[vs[1].(int)]
@@ -331,6 +386,12 @@ func (o DestinationResponseOutput) ToDestinationResponseOutput() DestinationResp
 
 func (o DestinationResponseOutput) ToDestinationResponseOutputWithContext(ctx context.Context) DestinationResponseOutput {
 	return o
+}
+
+func (o DestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationResponse] {
+	return pulumix.Output[DestinationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
@@ -365,6 +426,12 @@ func (o DestinationResponseArrayOutput) ToDestinationResponseArrayOutput() Desti
 
 func (o DestinationResponseArrayOutput) ToDestinationResponseArrayOutputWithContext(ctx context.Context) DestinationResponseArrayOutput {
 	return o
+}
+
+func (o DestinationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DestinationResponse] {
+	return pulumix.Output[[]DestinationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DestinationResponseArrayOutput) Index(i pulumi.IntInput) DestinationResponseOutput {
@@ -420,6 +487,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -461,6 +534,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -484,6 +563,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -518,6 +603,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -597,6 +688,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -656,6 +753,12 @@ func (i GoogleCloudNetworksecurityV1CertificateProviderArgs) ToGoogleCloudNetwor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1CertificateProviderOutput)
 }
 
+func (i GoogleCloudNetworksecurityV1CertificateProviderArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudNetworksecurityV1CertificateProvider] {
+	return pulumix.Output[GoogleCloudNetworksecurityV1CertificateProvider]{
+		OutputState: i.ToGoogleCloudNetworksecurityV1CertificateProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudNetworksecurityV1CertificateProviderArgs) ToGoogleCloudNetworksecurityV1CertificateProviderPtrOutput() GoogleCloudNetworksecurityV1CertificateProviderPtrOutput {
 	return i.ToGoogleCloudNetworksecurityV1CertificateProviderPtrOutputWithContext(context.Background())
 }
@@ -697,6 +800,12 @@ func (i *googleCloudNetworksecurityV1CertificateProviderPtrType) ToGoogleCloudNe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1CertificateProviderPtrOutput)
 }
 
+func (i *googleCloudNetworksecurityV1CertificateProviderPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudNetworksecurityV1CertificateProvider] {
+	return pulumix.Output[*GoogleCloudNetworksecurityV1CertificateProvider]{
+		OutputState: i.ToGoogleCloudNetworksecurityV1CertificateProviderPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication.
 type GoogleCloudNetworksecurityV1CertificateProviderOutput struct{ *pulumi.OutputState }
 
@@ -720,6 +829,12 @@ func (o GoogleCloudNetworksecurityV1CertificateProviderOutput) ToGoogleCloudNetw
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudNetworksecurityV1CertificateProvider) *GoogleCloudNetworksecurityV1CertificateProvider {
 		return &v
 	}).(GoogleCloudNetworksecurityV1CertificateProviderPtrOutput)
+}
+
+func (o GoogleCloudNetworksecurityV1CertificateProviderOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudNetworksecurityV1CertificateProvider] {
+	return pulumix.Output[GoogleCloudNetworksecurityV1CertificateProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -748,6 +863,12 @@ func (o GoogleCloudNetworksecurityV1CertificateProviderPtrOutput) ToGoogleCloudN
 
 func (o GoogleCloudNetworksecurityV1CertificateProviderPtrOutput) ToGoogleCloudNetworksecurityV1CertificateProviderPtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1CertificateProviderPtrOutput {
 	return o
+}
+
+func (o GoogleCloudNetworksecurityV1CertificateProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudNetworksecurityV1CertificateProvider] {
+	return pulumix.Output[*GoogleCloudNetworksecurityV1CertificateProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudNetworksecurityV1CertificateProviderPtrOutput) Elem() GoogleCloudNetworksecurityV1CertificateProviderOutput {
@@ -803,6 +924,12 @@ func (o GoogleCloudNetworksecurityV1CertificateProviderResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudNetworksecurityV1CertificateProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudNetworksecurityV1CertificateProviderResponse] {
+	return pulumix.Output[GoogleCloudNetworksecurityV1CertificateProviderResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 func (o GoogleCloudNetworksecurityV1CertificateProviderResponseOutput) CertificateProviderInstance() CertificateProviderInstanceResponseOutput {
 	return o.ApplyT(func(v GoogleCloudNetworksecurityV1CertificateProviderResponse) CertificateProviderInstanceResponse {
@@ -852,6 +979,12 @@ func (i GoogleCloudNetworksecurityV1GrpcEndpointArgs) ToGoogleCloudNetworksecuri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1GrpcEndpointOutput)
 }
 
+func (i GoogleCloudNetworksecurityV1GrpcEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudNetworksecurityV1GrpcEndpoint] {
+	return pulumix.Output[GoogleCloudNetworksecurityV1GrpcEndpoint]{
+		OutputState: i.ToGoogleCloudNetworksecurityV1GrpcEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudNetworksecurityV1GrpcEndpointArgs) ToGoogleCloudNetworksecurityV1GrpcEndpointPtrOutput() GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput {
 	return i.ToGoogleCloudNetworksecurityV1GrpcEndpointPtrOutputWithContext(context.Background())
 }
@@ -893,6 +1026,12 @@ func (i *googleCloudNetworksecurityV1GrpcEndpointPtrType) ToGoogleCloudNetworkse
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput)
 }
 
+func (i *googleCloudNetworksecurityV1GrpcEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudNetworksecurityV1GrpcEndpoint] {
+	return pulumix.Output[*GoogleCloudNetworksecurityV1GrpcEndpoint]{
+		OutputState: i.ToGoogleCloudNetworksecurityV1GrpcEndpointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of the GRPC Endpoint.
 type GoogleCloudNetworksecurityV1GrpcEndpointOutput struct{ *pulumi.OutputState }
 
@@ -918,6 +1057,12 @@ func (o GoogleCloudNetworksecurityV1GrpcEndpointOutput) ToGoogleCloudNetworksecu
 	}).(GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput)
 }
 
+func (o GoogleCloudNetworksecurityV1GrpcEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudNetworksecurityV1GrpcEndpoint] {
+	return pulumix.Output[GoogleCloudNetworksecurityV1GrpcEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o GoogleCloudNetworksecurityV1GrpcEndpointOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudNetworksecurityV1GrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
@@ -935,6 +1080,12 @@ func (o GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput) ToGoogleCloudNetworks
 
 func (o GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput) ToGoogleCloudNetworksecurityV1GrpcEndpointPtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput {
 	return o
+}
+
+func (o GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudNetworksecurityV1GrpcEndpoint] {
+	return pulumix.Output[*GoogleCloudNetworksecurityV1GrpcEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput) Elem() GoogleCloudNetworksecurityV1GrpcEndpointOutput {
@@ -976,6 +1127,12 @@ func (o GoogleCloudNetworksecurityV1GrpcEndpointResponseOutput) ToGoogleCloudNet
 
 func (o GoogleCloudNetworksecurityV1GrpcEndpointResponseOutput) ToGoogleCloudNetworksecurityV1GrpcEndpointResponseOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1GrpcEndpointResponseOutput {
 	return o
+}
+
+func (o GoogleCloudNetworksecurityV1GrpcEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudNetworksecurityV1GrpcEndpointResponse] {
+	return pulumix.Output[GoogleCloudNetworksecurityV1GrpcEndpointResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
@@ -1022,6 +1179,12 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
 }
 
+func (i GoogleIamV1AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
+	return pulumix.Output[GoogleIamV1AuditConfig]{
+		OutputState: i.ToGoogleIamV1AuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
@@ -1047,6 +1210,12 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
+func (i GoogleIamV1AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditConfig]{
+		OutputState: i.ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -1060,6 +1229,12 @@ func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIam
 
 func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
+	return pulumix.Output[GoogleIamV1AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -1084,6 +1259,12 @@ func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput()
 
 func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
@@ -1115,6 +1296,12 @@ func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOu
 	return o
 }
 
+func (o GoogleIamV1AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfigResponse] {
+	return pulumix.Output[GoogleIamV1AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
@@ -1137,6 +1324,12 @@ func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigRespo
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
@@ -1184,6 +1377,12 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
 }
 
+func (i GoogleIamV1AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1AuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
@@ -1209,6 +1408,12 @@ func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
 }
 
+func (i GoogleIamV1AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
+		OutputState: i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -1222,6 +1427,12 @@ func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() Goo
 
 func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[GoogleIamV1AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -1246,6 +1457,12 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOu
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
@@ -1277,6 +1494,12 @@ func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResp
 	return o
 }
 
+func (o GoogleIamV1AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigResponse] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -1299,6 +1522,12 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfi
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfigResponse] {
+	return pulumix.Output[[]GoogleIamV1AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
@@ -1350,6 +1579,12 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
+func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
+	return pulumix.Output[GoogleIamV1Binding]{
+		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -1375,6 +1610,12 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
+func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
+	return pulumix.Output[[]GoogleIamV1Binding]{
+		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -1388,6 +1629,12 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
+	return pulumix.Output[GoogleIamV1Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -1417,6 +1664,12 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
+	return pulumix.Output[[]GoogleIamV1Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -1450,6 +1703,12 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
+func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
+	return pulumix.Output[GoogleIamV1BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -1477,6 +1736,12 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
+	return pulumix.Output[[]GoogleIamV1BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -1524,6 +1789,12 @@ func (i HttpHeaderMatchArgs) ToHttpHeaderMatchOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HttpHeaderMatchOutput)
 }
 
+func (i HttpHeaderMatchArgs) ToOutput(ctx context.Context) pulumix.Output[HttpHeaderMatch] {
+	return pulumix.Output[HttpHeaderMatch]{
+		OutputState: i.ToHttpHeaderMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpHeaderMatchArgs) ToHttpHeaderMatchPtrOutput() HttpHeaderMatchPtrOutput {
 	return i.ToHttpHeaderMatchPtrOutputWithContext(context.Background())
 }
@@ -1565,6 +1836,12 @@ func (i *httpHeaderMatchPtrType) ToHttpHeaderMatchPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(HttpHeaderMatchPtrOutput)
 }
 
+func (i *httpHeaderMatchPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpHeaderMatch] {
+	return pulumix.Output[*HttpHeaderMatch]{
+		OutputState: i.ToHttpHeaderMatchPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of HTTP header match attributes.
 type HttpHeaderMatchOutput struct{ *pulumi.OutputState }
 
@@ -1590,6 +1867,12 @@ func (o HttpHeaderMatchOutput) ToHttpHeaderMatchPtrOutputWithContext(ctx context
 	}).(HttpHeaderMatchPtrOutput)
 }
 
+func (o HttpHeaderMatchOutput) ToOutput(ctx context.Context) pulumix.Output[HttpHeaderMatch] {
+	return pulumix.Output[HttpHeaderMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
 func (o HttpHeaderMatchOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) string { return v.HeaderName }).(pulumi.StringOutput)
@@ -1612,6 +1895,12 @@ func (o HttpHeaderMatchPtrOutput) ToHttpHeaderMatchPtrOutput() HttpHeaderMatchPt
 
 func (o HttpHeaderMatchPtrOutput) ToHttpHeaderMatchPtrOutputWithContext(ctx context.Context) HttpHeaderMatchPtrOutput {
 	return o
+}
+
+func (o HttpHeaderMatchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpHeaderMatch] {
+	return pulumix.Output[*HttpHeaderMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpHeaderMatchPtrOutput) Elem() HttpHeaderMatchOutput {
@@ -1667,6 +1956,12 @@ func (o HttpHeaderMatchResponseOutput) ToHttpHeaderMatchResponseOutputWithContex
 	return o
 }
 
+func (o HttpHeaderMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpHeaderMatchResponse] {
+	return pulumix.Output[HttpHeaderMatchResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
 func (o HttpHeaderMatchResponseOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) string { return v.HeaderName }).(pulumi.StringOutput)
@@ -1720,6 +2015,12 @@ func (i MTLSPolicyArgs) ToMTLSPolicyOutputWithContext(ctx context.Context) MTLSP
 	return pulumi.ToOutputWithContext(ctx, i).(MTLSPolicyOutput)
 }
 
+func (i MTLSPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[MTLSPolicy] {
+	return pulumix.Output[MTLSPolicy]{
+		OutputState: i.ToMTLSPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MTLSPolicyArgs) ToMTLSPolicyPtrOutput() MTLSPolicyPtrOutput {
 	return i.ToMTLSPolicyPtrOutputWithContext(context.Background())
 }
@@ -1761,6 +2062,12 @@ func (i *mtlspolicyPtrType) ToMTLSPolicyPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(MTLSPolicyPtrOutput)
 }
 
+func (i *mtlspolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*MTLSPolicy] {
+	return pulumix.Output[*MTLSPolicy]{
+		OutputState: i.ToMTLSPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of the MTLSPolicy.
 type MTLSPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1784,6 +2091,12 @@ func (o MTLSPolicyOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MTLSPolicy) *MTLSPolicy {
 		return &v
 	}).(MTLSPolicyPtrOutput)
+}
+
+func (o MTLSPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[MTLSPolicy] {
+	return pulumix.Output[MTLSPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -1813,6 +2126,12 @@ func (o MTLSPolicyPtrOutput) ToMTLSPolicyPtrOutput() MTLSPolicyPtrOutput {
 
 func (o MTLSPolicyPtrOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) MTLSPolicyPtrOutput {
 	return o
+}
+
+func (o MTLSPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MTLSPolicy] {
+	return pulumix.Output[*MTLSPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MTLSPolicyPtrOutput) Elem() MTLSPolicyOutput {
@@ -1880,6 +2199,12 @@ func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o MTLSPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MTLSPolicyResponse] {
+	return pulumix.Output[MTLSPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyResponseOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
 	return o.ApplyT(func(v MTLSPolicyResponse) []ValidationCAResponse { return v.ClientValidationCa }).(ValidationCAResponseArrayOutput)
@@ -1934,6 +2259,12 @@ func (i RuleTypeArgs) ToRuleTypeOutputWithContext(ctx context.Context) RuleTypeO
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTypeOutput)
 }
 
+func (i RuleTypeArgs) ToOutput(ctx context.Context) pulumix.Output[RuleType] {
+	return pulumix.Output[RuleType]{
+		OutputState: i.ToRuleTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuleTypeArrayInput is an input type that accepts RuleTypeArray and RuleTypeArrayOutput values.
 // You can construct a concrete instance of `RuleTypeArrayInput` via:
 //
@@ -1959,6 +2290,12 @@ func (i RuleTypeArray) ToRuleTypeArrayOutputWithContext(ctx context.Context) Rul
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTypeArrayOutput)
 }
 
+func (i RuleTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]RuleType] {
+	return pulumix.Output[[]RuleType]{
+		OutputState: i.ToRuleTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of rules.
 type RuleTypeOutput struct{ *pulumi.OutputState }
 
@@ -1972,6 +2309,12 @@ func (o RuleTypeOutput) ToRuleTypeOutput() RuleTypeOutput {
 
 func (o RuleTypeOutput) ToRuleTypeOutputWithContext(ctx context.Context) RuleTypeOutput {
 	return o
+}
+
+func (o RuleTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RuleType] {
+	return pulumix.Output[RuleType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
@@ -1996,6 +2339,12 @@ func (o RuleTypeArrayOutput) ToRuleTypeArrayOutput() RuleTypeArrayOutput {
 
 func (o RuleTypeArrayOutput) ToRuleTypeArrayOutputWithContext(ctx context.Context) RuleTypeArrayOutput {
 	return o
+}
+
+func (o RuleTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleType] {
+	return pulumix.Output[[]RuleType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleTypeArrayOutput) Index(i pulumi.IntInput) RuleTypeOutput {
@@ -2027,6 +2376,12 @@ func (o RuleResponseOutput) ToRuleResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RuleResponse] {
+	return pulumix.Output[RuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
 func (o RuleResponseOutput) Destinations() DestinationResponseArrayOutput {
 	return o.ApplyT(func(v RuleResponse) []DestinationResponse { return v.Destinations }).(DestinationResponseArrayOutput)
@@ -2049,6 +2404,12 @@ func (o RuleResponseArrayOutput) ToRuleResponseArrayOutput() RuleResponseArrayOu
 
 func (o RuleResponseArrayOutput) ToRuleResponseArrayOutputWithContext(ctx context.Context) RuleResponseArrayOutput {
 	return o
+}
+
+func (o RuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleResponse] {
+	return pulumix.Output[[]RuleResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
@@ -2096,6 +2457,12 @@ func (i SourceArgs) ToSourceOutputWithContext(ctx context.Context) SourceOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
+func (i SourceArgs) ToOutput(ctx context.Context) pulumix.Output[Source] {
+	return pulumix.Output[Source]{
+		OutputState: i.ToSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SourceArrayInput is an input type that accepts SourceArray and SourceArrayOutput values.
 // You can construct a concrete instance of `SourceArrayInput` via:
 //
@@ -2121,6 +2488,12 @@ func (i SourceArray) ToSourceArrayOutputWithContext(ctx context.Context) SourceA
 	return pulumi.ToOutputWithContext(ctx, i).(SourceArrayOutput)
 }
 
+func (i SourceArray) ToOutput(ctx context.Context) pulumix.Output[[]Source] {
+	return pulumix.Output[[]Source]{
+		OutputState: i.ToSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of traffic source attributes.
 type SourceOutput struct{ *pulumi.OutputState }
 
@@ -2134,6 +2507,12 @@ func (o SourceOutput) ToSourceOutput() SourceOutput {
 
 func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return o
+}
+
+func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[Source] {
+	return pulumix.Output[Source]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
@@ -2158,6 +2537,12 @@ func (o SourceArrayOutput) ToSourceArrayOutput() SourceArrayOutput {
 
 func (o SourceArrayOutput) ToSourceArrayOutputWithContext(ctx context.Context) SourceArrayOutput {
 	return o
+}
+
+func (o SourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Source] {
+	return pulumix.Output[[]Source]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceArrayOutput) Index(i pulumi.IntInput) SourceOutput {
@@ -2189,6 +2574,12 @@ func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceResponse] {
+	return pulumix.Output[SourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
 func (o SourceResponseOutput) IpBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SourceResponse) []string { return v.IpBlocks }).(pulumi.StringArrayOutput)
@@ -2211,6 +2602,12 @@ func (o SourceResponseArrayOutput) ToSourceResponseArrayOutput() SourceResponseA
 
 func (o SourceResponseArrayOutput) ToSourceResponseArrayOutputWithContext(ctx context.Context) SourceResponseArrayOutput {
 	return o
+}
+
+func (o SourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceResponse] {
+	return pulumix.Output[[]SourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceResponseArrayOutput) Index(i pulumi.IntInput) SourceResponseOutput {
@@ -2258,6 +2655,12 @@ func (i ValidationCAArgs) ToValidationCAOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(ValidationCAOutput)
 }
 
+func (i ValidationCAArgs) ToOutput(ctx context.Context) pulumix.Output[ValidationCA] {
+	return pulumix.Output[ValidationCA]{
+		OutputState: i.ToValidationCAOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ValidationCAArrayInput is an input type that accepts ValidationCAArray and ValidationCAArrayOutput values.
 // You can construct a concrete instance of `ValidationCAArrayInput` via:
 //
@@ -2283,6 +2686,12 @@ func (i ValidationCAArray) ToValidationCAArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ValidationCAArrayOutput)
 }
 
+func (i ValidationCAArray) ToOutput(ctx context.Context) pulumix.Output[[]ValidationCA] {
+	return pulumix.Output[[]ValidationCA]{
+		OutputState: i.ToValidationCAArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
 type ValidationCAOutput struct{ *pulumi.OutputState }
 
@@ -2296,6 +2705,12 @@ func (o ValidationCAOutput) ToValidationCAOutput() ValidationCAOutput {
 
 func (o ValidationCAOutput) ToValidationCAOutputWithContext(ctx context.Context) ValidationCAOutput {
 	return o
+}
+
+func (o ValidationCAOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationCA] {
+	return pulumix.Output[ValidationCA]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -2320,6 +2735,12 @@ func (o ValidationCAArrayOutput) ToValidationCAArrayOutput() ValidationCAArrayOu
 
 func (o ValidationCAArrayOutput) ToValidationCAArrayOutputWithContext(ctx context.Context) ValidationCAArrayOutput {
 	return o
+}
+
+func (o ValidationCAArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ValidationCA] {
+	return pulumix.Output[[]ValidationCA]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ValidationCAArrayOutput) Index(i pulumi.IntInput) ValidationCAOutput {
@@ -2351,6 +2772,12 @@ func (o ValidationCAResponseOutput) ToValidationCAResponseOutputWithContext(ctx 
 	return o
 }
 
+func (o ValidationCAResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationCAResponse] {
+	return pulumix.Output[ValidationCAResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 func (o ValidationCAResponseOutput) CertificateProviderInstance() CertificateProviderInstanceResponseOutput {
 	return o.ApplyT(func(v ValidationCAResponse) CertificateProviderInstanceResponse { return v.CertificateProviderInstance }).(CertificateProviderInstanceResponseOutput)
@@ -2373,6 +2800,12 @@ func (o ValidationCAResponseArrayOutput) ToValidationCAResponseArrayOutput() Val
 
 func (o ValidationCAResponseArrayOutput) ToValidationCAResponseArrayOutputWithContext(ctx context.Context) ValidationCAResponseArrayOutput {
 	return o
+}
+
+func (o ValidationCAResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ValidationCAResponse] {
+	return pulumix.Output[[]ValidationCAResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ValidationCAResponseArrayOutput) Index(i pulumi.IntInput) ValidationCAResponseOutput {

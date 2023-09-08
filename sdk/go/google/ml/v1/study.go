@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a study.
@@ -126,6 +127,12 @@ func (i *Study) ToStudyOutputWithContext(ctx context.Context) StudyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StudyOutput)
 }
 
+func (i *Study) ToOutput(ctx context.Context) pulumix.Output[*Study] {
+	return pulumix.Output[*Study]{
+		OutputState: i.ToStudyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StudyOutput struct{ *pulumi.OutputState }
 
 func (StudyOutput) ElementType() reflect.Type {
@@ -138,6 +145,12 @@ func (o StudyOutput) ToStudyOutput() StudyOutput {
 
 func (o StudyOutput) ToStudyOutputWithContext(ctx context.Context) StudyOutput {
 	return o
+}
+
+func (o StudyOutput) ToOutput(ctx context.Context) pulumix.Output[*Study] {
+	return pulumix.Output[*Study]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the study was created.

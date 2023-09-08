@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a HealthCheck resource in the specified project using the data included in the request.
@@ -194,6 +195,12 @@ func (i *RegionHealthCheck) ToRegionHealthCheckOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckOutput)
 }
 
+func (i *RegionHealthCheck) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheck] {
+	return pulumix.Output[*RegionHealthCheck]{
+		OutputState: i.ToRegionHealthCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckOutput) ElementType() reflect.Type {
@@ -206,6 +213,12 @@ func (o RegionHealthCheckOutput) ToRegionHealthCheckOutput() RegionHealthCheckOu
 
 func (o RegionHealthCheckOutput) ToRegionHealthCheckOutputWithContext(ctx context.Context) RegionHealthCheckOutput {
 	return o
+}
+
+func (o RegionHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheck] {
+	return pulumix.Output[*RegionHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How often (in seconds) to send a health check. The default value is 5 seconds.

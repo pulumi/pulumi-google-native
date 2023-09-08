@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an OS Config guest policy.
@@ -153,6 +154,12 @@ func (i *GuestPolicy) ToGuestPolicyOutputWithContext(ctx context.Context) GuestP
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPolicyOutput)
 }
 
+func (i *GuestPolicy) ToOutput(ctx context.Context) pulumix.Output[*GuestPolicy] {
+	return pulumix.Output[*GuestPolicy]{
+		OutputState: i.ToGuestPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GuestPolicyOutput struct{ *pulumi.OutputState }
 
 func (GuestPolicyOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o GuestPolicyOutput) ToGuestPolicyOutput() GuestPolicyOutput {
 
 func (o GuestPolicyOutput) ToGuestPolicyOutputWithContext(ctx context.Context) GuestPolicyOutput {
 	return o
+}
+
+func (o GuestPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPolicy] {
+	return pulumix.Output[*GuestPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).

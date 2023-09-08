@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified ServiceAttachment resource in the given scope.
@@ -102,6 +103,12 @@ func (o LookupServiceAttachmentResultOutput) ToLookupServiceAttachmentResultOutp
 
 func (o LookupServiceAttachmentResultOutput) ToLookupServiceAttachmentResultOutputWithContext(ctx context.Context) LookupServiceAttachmentResultOutput {
 	return o
+}
+
+func (o LookupServiceAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceAttachmentResult] {
+	return pulumix.Output[LookupServiceAttachmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An array of connections for all the consumers connected to this service attachment.

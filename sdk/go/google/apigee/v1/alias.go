@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body.
@@ -166,6 +167,12 @@ func (i *Alias) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AliasOutput)
 }
 
+func (i *Alias) ToOutput(ctx context.Context) pulumix.Output[*Alias] {
+	return pulumix.Output[*Alias]{
+		OutputState: i.ToAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AliasOutput struct{ *pulumi.OutputState }
 
 func (AliasOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o AliasOutput) ToAliasOutput() AliasOutput {
 
 func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
+}
+
+func (o AliasOutput) ToOutput(ctx context.Context) pulumix.Output[*Alias] {
+	return pulumix.Output[*Alias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.

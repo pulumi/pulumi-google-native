@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *RowAccessPolicyIamMember) ToRowAccessPolicyIamMemberOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyIamMemberOutput)
 }
 
+func (i *RowAccessPolicyIamMember) ToOutput(ctx context.Context) pulumix.Output[*RowAccessPolicyIamMember] {
+	return pulumix.Output[*RowAccessPolicyIamMember]{
+		OutputState: i.ToRowAccessPolicyIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RowAccessPolicyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RowAccessPolicyIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RowAccessPolicyIamMemberOutput) ToRowAccessPolicyIamMemberOutput() RowAc
 
 func (o RowAccessPolicyIamMemberOutput) ToRowAccessPolicyIamMemberOutputWithContext(ctx context.Context) RowAccessPolicyIamMemberOutput {
 	return o
+}
+
+func (o RowAccessPolicyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RowAccessPolicyIamMember] {
+	return pulumix.Output[*RowAccessPolicyIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

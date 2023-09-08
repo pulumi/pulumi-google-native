@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified commitment resource.
@@ -106,6 +107,12 @@ func (o LookupRegionCommitmentResultOutput) ToLookupRegionCommitmentResultOutput
 
 func (o LookupRegionCommitmentResultOutput) ToLookupRegionCommitmentResultOutputWithContext(ctx context.Context) LookupRegionCommitmentResultOutput {
 	return o
+}
+
+func (o LookupRegionCommitmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionCommitmentResult] {
+	return pulumix.Output[LookupRegionCommitmentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.

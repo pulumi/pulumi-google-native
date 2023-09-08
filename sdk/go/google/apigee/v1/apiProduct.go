@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an API product in an organization. You create API products after you have proxied backend services using API proxies. An API product is a collection of API resources combined with quota settings and metadata that you can use to deliver customized and productized API bundles to your developer community. This metadata can include: - Scope - Environments - API proxies - Extensible profile API products enable you repackage APIs on the fly, without having to do any additional coding or configuration. Apigee recommends that you start with a simple API product including only required elements. You then provision credentials to apps to enable them to start testing your APIs. After you have authentication and authorization working against a simple API product, you can iterate to create finer-grained API products, defining different sets of API resources for each API product. **WARNING:** - If you don't specify an API proxy in the request body, *any* app associated with the product can make calls to *any* API in your entire organization. - If you don't specify an environment in the request body, the product allows access to all environments. For more information, see What is an API product?
@@ -199,6 +200,12 @@ func (i *ApiProduct) ToApiProductOutputWithContext(ctx context.Context) ApiProdu
 	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOutput)
 }
 
+func (i *ApiProduct) ToOutput(ctx context.Context) pulumix.Output[*ApiProduct] {
+	return pulumix.Output[*ApiProduct]{
+		OutputState: i.ToApiProductOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiProductOutput struct{ *pulumi.OutputState }
 
 func (ApiProductOutput) ElementType() reflect.Type {
@@ -211,6 +218,12 @@ func (o ApiProductOutput) ToApiProductOutput() ApiProductOutput {
 
 func (o ApiProductOutput) ToApiProductOutputWithContext(ctx context.Context) ApiProductOutput {
 	return o
+}
+
+func (o ApiProductOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiProduct] {
+	return pulumix.Output[*ApiProduct]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the `proxy.pathsuffix` variable. The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the `apiResources` element is defined to be `/forecastrss` and the base path defined for the API proxy is `/weather`, then only requests to `/weather/forecastrss` are permitted by the API product. You can select a specific path, or you can select all subpaths with the following wildcard: - `/**`: Indicates that all sub-URIs are included. - `/*` : Indicates that only URIs one level down are included. By default, / supports the same resources as /** as well as the base path defined by the API proxy. For example, if the base path of the API proxy is `/v1/weatherapikey`, then the API product supports requests to `/v1/weatherapikey` and to any sub-URIs, such as `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so on. For more information, see Managing API products.

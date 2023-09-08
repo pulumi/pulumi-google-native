@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The disk type to use in the VM.
@@ -84,6 +85,12 @@ func (o ComputeEngineTargetDefaultsDiskTypeOutput) ToComputeEngineTargetDefaults
 	}).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
 }
 
+func (o ComputeEngineTargetDefaultsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineTargetDefaultsDiskType] {
+	return pulumix.Output[ComputeEngineTargetDefaultsDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeEngineTargetDefaultsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToComputeEngineTargetDefau
 
 func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToComputeEngineTargetDefaultsDiskTypePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsDiskTypePtrOutput {
 	return o
+}
+
+func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsDiskType] {
+	return pulumix.Output[*ComputeEngineTargetDefaultsDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) Elem() ComputeEngineTargetDefaultsDiskTypeOutput {
@@ -179,6 +192,12 @@ func (in *computeEngineTargetDefaultsDiskTypePtr) ToComputeEngineTargetDefaultsD
 
 func (in *computeEngineTargetDefaultsDiskTypePtr) ToComputeEngineTargetDefaultsDiskTypePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
+}
+
+func (in *computeEngineTargetDefaultsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsDiskType] {
+	return pulumix.Output[*ComputeEngineTargetDefaultsDiskType]{
+		OutputState: in.ToComputeEngineTargetDefaultsDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The license type to use in OS adaptation.
@@ -253,6 +272,12 @@ func (o ComputeEngineTargetDefaultsLicenseTypeOutput) ToComputeEngineTargetDefau
 	}).(ComputeEngineTargetDefaultsLicenseTypePtrOutput)
 }
 
+func (o ComputeEngineTargetDefaultsLicenseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineTargetDefaultsLicenseType] {
+	return pulumix.Output[ComputeEngineTargetDefaultsLicenseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeEngineTargetDefaultsLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToComputeEngineTargetDe
 
 func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToComputeEngineTargetDefaultsLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsLicenseTypePtrOutput {
 	return o
+}
+
+func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsLicenseType] {
+	return pulumix.Output[*ComputeEngineTargetDefaultsLicenseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) Elem() ComputeEngineTargetDefaultsLicenseTypeOutput {
@@ -348,6 +379,12 @@ func (in *computeEngineTargetDefaultsLicenseTypePtr) ToComputeEngineTargetDefaul
 
 func (in *computeEngineTargetDefaultsLicenseTypePtr) ToComputeEngineTargetDefaultsLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeEngineTargetDefaultsLicenseTypePtrOutput)
+}
+
+func (in *computeEngineTargetDefaultsLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsLicenseType] {
+	return pulumix.Output[*ComputeEngineTargetDefaultsLicenseType]{
+		OutputState: in.ToComputeEngineTargetDefaultsLicenseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
@@ -422,6 +459,12 @@ func (o ComputeSchedulingOnHostMaintenanceOutput) ToComputeSchedulingOnHostMaint
 	}).(ComputeSchedulingOnHostMaintenancePtrOutput)
 }
 
+func (o ComputeSchedulingOnHostMaintenanceOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeSchedulingOnHostMaintenance] {
+	return pulumix.Output[ComputeSchedulingOnHostMaintenance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeSchedulingOnHostMaintenanceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToComputeSchedulingOnHostMa
 
 func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToComputeSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) ComputeSchedulingOnHostMaintenancePtrOutput {
 	return o
+}
+
+func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingOnHostMaintenance] {
+	return pulumix.Output[*ComputeSchedulingOnHostMaintenance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeSchedulingOnHostMaintenancePtrOutput) Elem() ComputeSchedulingOnHostMaintenanceOutput {
@@ -517,6 +566,12 @@ func (in *computeSchedulingOnHostMaintenancePtr) ToComputeSchedulingOnHostMainte
 
 func (in *computeSchedulingOnHostMaintenancePtr) ToComputeSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) ComputeSchedulingOnHostMaintenancePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeSchedulingOnHostMaintenancePtrOutput)
+}
+
+func (in *computeSchedulingOnHostMaintenancePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingOnHostMaintenance] {
+	return pulumix.Output[*ComputeSchedulingOnHostMaintenance]{
+		OutputState: in.ToComputeSchedulingOnHostMaintenancePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
@@ -591,6 +646,12 @@ func (o ComputeSchedulingRestartTypeOutput) ToComputeSchedulingRestartTypePtrOut
 	}).(ComputeSchedulingRestartTypePtrOutput)
 }
 
+func (o ComputeSchedulingRestartTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeSchedulingRestartType] {
+	return pulumix.Output[ComputeSchedulingRestartType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeSchedulingRestartTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -624,6 +685,12 @@ func (o ComputeSchedulingRestartTypePtrOutput) ToComputeSchedulingRestartTypePtr
 
 func (o ComputeSchedulingRestartTypePtrOutput) ToComputeSchedulingRestartTypePtrOutputWithContext(ctx context.Context) ComputeSchedulingRestartTypePtrOutput {
 	return o
+}
+
+func (o ComputeSchedulingRestartTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingRestartType] {
+	return pulumix.Output[*ComputeSchedulingRestartType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeSchedulingRestartTypePtrOutput) Elem() ComputeSchedulingRestartTypeOutput {
@@ -686,6 +753,12 @@ func (in *computeSchedulingRestartTypePtr) ToComputeSchedulingRestartTypePtrOutp
 
 func (in *computeSchedulingRestartTypePtr) ToComputeSchedulingRestartTypePtrOutputWithContext(ctx context.Context) ComputeSchedulingRestartTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeSchedulingRestartTypePtrOutput)
+}
+
+func (in *computeSchedulingRestartTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingRestartType] {
+	return pulumix.Output[*ComputeSchedulingRestartType]{
+		OutputState: in.ToComputeSchedulingRestartTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The operator to use for the node resources specified in the `values` parameter.
@@ -760,6 +833,12 @@ func (o SchedulingNodeAffinityOperatorOutput) ToSchedulingNodeAffinityOperatorPt
 	}).(SchedulingNodeAffinityOperatorPtrOutput)
 }
 
+func (o SchedulingNodeAffinityOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingNodeAffinityOperator] {
+	return pulumix.Output[SchedulingNodeAffinityOperator]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchedulingNodeAffinityOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -793,6 +872,12 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperato
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) SchedulingNodeAffinityOperatorPtrOutput {
 	return o
+}
+
+func (o SchedulingNodeAffinityOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingNodeAffinityOperator] {
+	return pulumix.Output[*SchedulingNodeAffinityOperator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) Elem() SchedulingNodeAffinityOperatorOutput {
@@ -855,6 +940,12 @@ func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtr
 
 func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) SchedulingNodeAffinityOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingNodeAffinityOperatorPtrOutput)
+}
+
+func (in *schedulingNodeAffinityOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingNodeAffinityOperator] {
+	return pulumix.Output[*SchedulingNodeAffinityOperator]{
+		OutputState: in.ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Time frame of the report.
@@ -931,6 +1022,12 @@ func (o UtilizationReportTimeFrameOutput) ToUtilizationReportTimeFramePtrOutputW
 	}).(UtilizationReportTimeFramePtrOutput)
 }
 
+func (o UtilizationReportTimeFrameOutput) ToOutput(ctx context.Context) pulumix.Output[UtilizationReportTimeFrame] {
+	return pulumix.Output[UtilizationReportTimeFrame]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UtilizationReportTimeFrameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -964,6 +1061,12 @@ func (o UtilizationReportTimeFramePtrOutput) ToUtilizationReportTimeFramePtrOutp
 
 func (o UtilizationReportTimeFramePtrOutput) ToUtilizationReportTimeFramePtrOutputWithContext(ctx context.Context) UtilizationReportTimeFramePtrOutput {
 	return o
+}
+
+func (o UtilizationReportTimeFramePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UtilizationReportTimeFrame] {
+	return pulumix.Output[*UtilizationReportTimeFrame]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UtilizationReportTimeFramePtrOutput) Elem() UtilizationReportTimeFrameOutput {
@@ -1026,6 +1129,12 @@ func (in *utilizationReportTimeFramePtr) ToUtilizationReportTimeFramePtrOutput()
 
 func (in *utilizationReportTimeFramePtr) ToUtilizationReportTimeFramePtrOutputWithContext(ctx context.Context) UtilizationReportTimeFramePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UtilizationReportTimeFramePtrOutput)
+}
+
+func (in *utilizationReportTimeFramePtr) ToOutput(ctx context.Context) pulumix.Output[*UtilizationReportTimeFrame] {
+	return pulumix.Output[*UtilizationReportTimeFrame]{
+		OutputState: in.ToUtilizationReportTimeFramePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The power state of the VM at the moment list was taken.
@@ -1102,6 +1211,12 @@ func (o VmwareVmDetailsPowerStateOutput) ToVmwareVmDetailsPowerStatePtrOutputWit
 	}).(VmwareVmDetailsPowerStatePtrOutput)
 }
 
+func (o VmwareVmDetailsPowerStateOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVmDetailsPowerState] {
+	return pulumix.Output[VmwareVmDetailsPowerState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VmwareVmDetailsPowerStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1135,6 +1250,12 @@ func (o VmwareVmDetailsPowerStatePtrOutput) ToVmwareVmDetailsPowerStatePtrOutput
 
 func (o VmwareVmDetailsPowerStatePtrOutput) ToVmwareVmDetailsPowerStatePtrOutputWithContext(ctx context.Context) VmwareVmDetailsPowerStatePtrOutput {
 	return o
+}
+
+func (o VmwareVmDetailsPowerStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareVmDetailsPowerState] {
+	return pulumix.Output[*VmwareVmDetailsPowerState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VmwareVmDetailsPowerStatePtrOutput) Elem() VmwareVmDetailsPowerStateOutput {
@@ -1197,6 +1318,12 @@ func (in *vmwareVmDetailsPowerStatePtr) ToVmwareVmDetailsPowerStatePtrOutput() V
 
 func (in *vmwareVmDetailsPowerStatePtr) ToVmwareVmDetailsPowerStatePtrOutputWithContext(ctx context.Context) VmwareVmDetailsPowerStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmwareVmDetailsPowerStatePtrOutput)
+}
+
+func (in *vmwareVmDetailsPowerStatePtr) ToOutput(ctx context.Context) pulumix.Output[*VmwareVmDetailsPowerState] {
+	return pulumix.Output[*VmwareVmDetailsPowerState]{
+		OutputState: in.ToVmwareVmDetailsPowerStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

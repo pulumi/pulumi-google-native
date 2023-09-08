@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ServiceBinding.
@@ -78,6 +79,12 @@ func (o LookupServiceBindingResultOutput) ToLookupServiceBindingResultOutput() L
 
 func (o LookupServiceBindingResultOutput) ToLookupServiceBindingResultOutputWithContext(ctx context.Context) LookupServiceBindingResultOutput {
 	return o
+}
+
+func (o LookupServiceBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceBindingResult] {
+	return pulumix.Output[LookupServiceBindingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the resource was created.

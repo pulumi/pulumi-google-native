@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single internal range.
@@ -92,6 +93,12 @@ func (o LookupInternalRangeResultOutput) ToLookupInternalRangeResultOutput() Loo
 
 func (o LookupInternalRangeResultOutput) ToLookupInternalRangeResultOutputWithContext(ctx context.Context) LookupInternalRangeResultOutput {
 	return o
+}
+
+func (o LookupInternalRangeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInternalRangeResult] {
+	return pulumix.Output[LookupInternalRangeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time when the internal range was created.

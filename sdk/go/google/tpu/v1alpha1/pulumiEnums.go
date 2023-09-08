@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The health status of the TPU node.
@@ -88,6 +89,12 @@ func (o NodeHealthOutput) ToNodeHealthPtrOutputWithContext(ctx context.Context) 
 	}).(NodeHealthPtrOutput)
 }
 
+func (o NodeHealthOutput) ToOutput(ctx context.Context) pulumix.Output[NodeHealth] {
+	return pulumix.Output[NodeHealth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeHealthOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,6 +128,12 @@ func (o NodeHealthPtrOutput) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
 
 func (o NodeHealthPtrOutput) ToNodeHealthPtrOutputWithContext(ctx context.Context) NodeHealthPtrOutput {
 	return o
+}
+
+func (o NodeHealthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeHealth] {
+	return pulumix.Output[*NodeHealth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeHealthPtrOutput) Elem() NodeHealthOutput {
@@ -183,6 +196,12 @@ func (in *nodeHealthPtr) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
 
 func (in *nodeHealthPtr) ToNodeHealthPtrOutputWithContext(ctx context.Context) NodeHealthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeHealthPtrOutput)
+}
+
+func (in *nodeHealthPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeHealth] {
+	return pulumix.Output[*NodeHealth]{
+		OutputState: in.ToNodeHealthPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

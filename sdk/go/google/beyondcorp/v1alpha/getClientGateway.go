@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ClientGateway.
@@ -76,6 +77,12 @@ func (o LookupClientGatewayResultOutput) ToLookupClientGatewayResultOutput() Loo
 
 func (o LookupClientGatewayResultOutput) ToLookupClientGatewayResultOutputWithContext(ctx context.Context) LookupClientGatewayResultOutput {
 	return o
+}
+
+func (o LookupClientGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClientGatewayResult] {
+	return pulumix.Output[LookupClientGatewayResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The client connector service name that the client gateway is associated to. Client Connector Services, named as follows: `projects/{project_id}/locations/{location_id}/client_connector_services/{client_connector_service_id}`.

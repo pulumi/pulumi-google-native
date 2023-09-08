@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
@@ -72,6 +73,12 @@ func (o LookupHistoryResultOutput) ToLookupHistoryResultOutput() LookupHistoryRe
 
 func (o LookupHistoryResultOutput) ToLookupHistoryResultOutputWithContext(ctx context.Context) LookupHistoryResultOutput {
 	return o
+}
+
+func (o LookupHistoryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHistoryResult] {
+	return pulumix.Output[LookupHistoryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional

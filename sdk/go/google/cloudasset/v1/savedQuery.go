@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a saved query in a parent project/folder/organization.
@@ -147,6 +148,12 @@ func (i *SavedQuery) ToSavedQueryOutputWithContext(ctx context.Context) SavedQue
 	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryOutput)
 }
 
+func (i *SavedQuery) ToOutput(ctx context.Context) pulumix.Output[*SavedQuery] {
+	return pulumix.Output[*SavedQuery]{
+		OutputState: i.ToSavedQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SavedQueryOutput struct{ *pulumi.OutputState }
 
 func (SavedQueryOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o SavedQueryOutput) ToSavedQueryOutput() SavedQueryOutput {
 
 func (o SavedQueryOutput) ToSavedQueryOutputWithContext(ctx context.Context) SavedQueryOutput {
 	return o
+}
+
+func (o SavedQueryOutput) ToOutput(ctx context.Context) pulumix.Output[*SavedQuery] {
+	return pulumix.Output[*SavedQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The query content.

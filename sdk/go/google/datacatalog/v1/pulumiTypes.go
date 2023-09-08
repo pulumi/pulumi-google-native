@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -94,6 +107,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -123,6 +142,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -156,6 +181,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -183,6 +214,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -238,6 +275,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -279,6 +322,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -302,6 +351,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -336,6 +391,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -415,6 +476,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -460,6 +527,12 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) ToGoogleCl
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specification for the BigQuery connection to a Cloud SQL instance.
 func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) CloudSql() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
@@ -502,6 +575,12 @@ func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ToGoogleC
 
 func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
@@ -559,6 +638,12 @@ func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs) ToGoogleCloudDatacatalo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BigQueryRoutineSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BigQueryRoutineSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1BigQueryRoutineSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutputWithContext(context.Background())
 }
@@ -600,6 +685,12 @@ func (i *googleCloudDatacatalogV1BigQueryRoutineSpecPtrType) ToGoogleCloudDataca
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1BigQueryRoutineSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1BigQueryRoutineSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1BigQueryRoutineSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Fields specific for BigQuery routines.
 type GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput struct{ *pulumi.OutputState }
 
@@ -625,6 +716,12 @@ func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput) ToGoogleCloudDatacata
 	}).(GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BigQueryRoutineSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BigQueryRoutineSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Paths of the imported libraries.
 func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput) ImportedLibraries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryRoutineSpec) []string { return v.ImportedLibraries }).(pulumi.StringArrayOutput)
@@ -642,6 +739,12 @@ func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput) ToGoogleCloudDatac
 
 func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1BigQueryRoutineSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1BigQueryRoutineSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput {
@@ -685,6 +788,12 @@ func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ToGoogleCloud
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Paths of the imported libraries.
 func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ImportedLibraries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse) []string { return v.ImportedLibraries }).(pulumi.StringArrayOutput)
@@ -713,6 +822,12 @@ func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BigQueryTableSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BigQueryTableSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The table source type.
@@ -773,6 +888,12 @@ func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToGoogleCloudDatacatalogV1B
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextOutput)
 }
 
+func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BusinessContext] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BusinessContext]{
+		OutputState: i.ToGoogleCloudDatacatalogV1BusinessContextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToGoogleCloudDatacatalogV1BusinessContextPtrOutput() GoogleCloudDatacatalogV1BusinessContextPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(context.Background())
 }
@@ -814,6 +935,12 @@ func (i *googleCloudDatacatalogV1BusinessContextPtrType) ToGoogleCloudDatacatalo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BusinessContextPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1BusinessContextPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1BusinessContext] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1BusinessContext]{
+		OutputState: i.ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Business Context of the entry.
 type GoogleCloudDatacatalogV1BusinessContextOutput struct{ *pulumi.OutputState }
 
@@ -837,6 +964,12 @@ func (o GoogleCloudDatacatalogV1BusinessContextOutput) ToGoogleCloudDatacatalogV
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BusinessContext) *GoogleCloudDatacatalogV1BusinessContext {
 		return &v
 	}).(GoogleCloudDatacatalogV1BusinessContextPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BusinessContext] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BusinessContext]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Contact people for the entry.
@@ -863,6 +996,12 @@ func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) ToGoogleCloudDatacatal
 
 func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) ToGoogleCloudDatacatalogV1BusinessContextPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BusinessContextPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1BusinessContext] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1BusinessContext]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1BusinessContextPtrOutput) Elem() GoogleCloudDatacatalogV1BusinessContextOutput {
@@ -918,6 +1057,12 @@ func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) ToGoogleCloudData
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1BusinessContextResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1BusinessContextResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Contact people for the entry.
 func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) Contacts() GoogleCloudDatacatalogV1ContactsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BusinessContextResponse) GoogleCloudDatacatalogV1ContactsResponse {
@@ -967,6 +1112,12 @@ func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(context.Background())
 }
@@ -1008,6 +1159,12 @@ func (i *googleCloudDatacatalogV1CloudBigtableInstanceSpecPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1CloudBigtableInstanceSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableInstanceSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableInstanceSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
 type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput struct{ *pulumi.OutputState }
 
@@ -1033,6 +1190,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) ToGoogleCloudDa
 	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of clusters for the Instance.
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) CloudBigtableClusterSpecs() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpec) []GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
@@ -1052,6 +1215,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableInstanceSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableInstanceSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) Elem() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput {
@@ -1121,6 +1290,12 @@ func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayInput is an input type that accepts GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray and GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayInput` via:
 //
@@ -1146,6 +1321,12 @@ func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput)
 }
 
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Spec that applies to clusters of an Instance of Cloud Bigtable.
 type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput struct{ *pulumi.OutputState }
 
@@ -1159,6 +1340,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpe
 
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the cluster.
@@ -1203,6 +1390,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpe
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
 		return vs[0].([]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec)[vs[1].(int)]
@@ -1234,6 +1427,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpe
 
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the cluster.
@@ -1278,6 +1477,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpe
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse {
 		return vs[0].([]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse)[vs[1].(int)]
@@ -1303,6 +1508,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput) ToGoogl
 
 func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of clusters for the Instance.
@@ -1347,6 +1558,12 @@ func (i GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ToGoogleCloudDataca
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableSystemSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableSystemSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(context.Background())
 }
@@ -1388,6 +1605,12 @@ func (i *googleCloudDatacatalogV1CloudBigtableSystemSpecPtrType) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1CloudBigtableSystemSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableSystemSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableSystemSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
 type GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput struct{ *pulumi.OutputState }
 
@@ -1413,6 +1636,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) ToGoogleCloudData
 	}).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableSystemSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableSystemSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Display name of the Instance. This is user specified and different from the resource name.
 func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) InstanceDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableSystemSpec) *string { return v.InstanceDisplayName }).(pulumi.StringPtrOutput)
@@ -1430,6 +1659,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableSystemSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1CloudBigtableSystemSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) Elem() GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput {
@@ -1473,6 +1708,12 @@ func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Display name of the Instance. This is user specified and different from the resource name.
 func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput) InstanceDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse) string { return v.InstanceDisplayName }).(pulumi.StringOutput)
@@ -1501,6 +1742,12 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) To
 
 func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Database name.
@@ -1589,6 +1836,12 @@ func (i GoogleCloudDatacatalogV1ColumnSchemaArgs) ToGoogleCloudDatacatalogV1Colu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaOutput)
 }
 
+func (i GoogleCloudDatacatalogV1ColumnSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ColumnSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudDatacatalogV1ColumnSchemaArrayInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaArray and GoogleCloudDatacatalogV1ColumnSchemaArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaArrayInput` via:
 //
@@ -1614,6 +1867,12 @@ func (i GoogleCloudDatacatalogV1ColumnSchemaArray) ToGoogleCloudDatacatalogV1Col
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaArrayOutput)
 }
 
+func (i GoogleCloudDatacatalogV1ColumnSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1ColumnSchema] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1ColumnSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ColumnSchemaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A column within a schema. Columns can be nested inside other columns.
 type GoogleCloudDatacatalogV1ColumnSchemaOutput struct{ *pulumi.OutputState }
 
@@ -1627,6 +1886,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaOutput) ToGoogleCloudDatacatalogV1Co
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaOutput) ToGoogleCloudDatacatalogV1ColumnSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
@@ -1699,6 +1964,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaArrayOutput) ToGoogleCloudDatacatalo
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1ColumnSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1ColumnSchema] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1ColumnSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1ColumnSchemaArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1ColumnSchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1ColumnSchema {
 		return vs[0].([]GoogleCloudDatacatalogV1ColumnSchema)[vs[1].(int)]
@@ -1738,6 +2009,12 @@ func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudD
 
 func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
@@ -1781,6 +2058,12 @@ func (i *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Column info specific to Looker System.
 type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput struct{ *pulumi.OutputState }
 
@@ -1806,6 +2089,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) ToGoogleClou
 	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Looker specific column type of this column.
 func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) Type() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec) *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType {
@@ -1825,6 +2114,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) ToGoogleC
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) Elem() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput {
@@ -1866,6 +2161,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput) ToGo
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Looker specific column type of this column.
@@ -1910,6 +2211,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaResponseOutput) ToGoogleCloudDatacat
 
 func (o GoogleCloudDatacatalogV1ColumnSchemaResponseOutput) ToGoogleCloudDatacatalogV1ColumnSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ColumnSchemaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
@@ -1980,6 +2287,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput) ToGoogleCloudDa
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1ColumnSchemaResponse] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1ColumnSchemaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1ColumnSchemaResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1ColumnSchemaResponse {
 		return vs[0].([]GoogleCloudDatacatalogV1ColumnSchemaResponse)[vs[1].(int)]
@@ -2019,6 +2332,12 @@ func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1Contacts
 
 func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1ContactsOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsOutput)
+}
+
+func (i GoogleCloudDatacatalogV1ContactsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1Contacts] {
+	return pulumix.Output[GoogleCloudDatacatalogV1Contacts]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ContactsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1ContactsPtrOutput() GoogleCloudDatacatalogV1ContactsPtrOutput {
@@ -2062,6 +2381,12 @@ func (i *googleCloudDatacatalogV1ContactsPtrType) ToGoogleCloudDatacatalogV1Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1ContactsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1Contacts] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1Contacts]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Contact people for the entry.
 type GoogleCloudDatacatalogV1ContactsOutput struct{ *pulumi.OutputState }
 
@@ -2087,6 +2412,12 @@ func (o GoogleCloudDatacatalogV1ContactsOutput) ToGoogleCloudDatacatalogV1Contac
 	}).(GoogleCloudDatacatalogV1ContactsPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1ContactsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1Contacts] {
+	return pulumix.Output[GoogleCloudDatacatalogV1Contacts]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of contact people for the entry.
 func (o GoogleCloudDatacatalogV1ContactsOutput) People() GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1Contacts) []GoogleCloudDatacatalogV1ContactsPerson { return v.People }).(GoogleCloudDatacatalogV1ContactsPersonArrayOutput)
@@ -2104,6 +2435,12 @@ func (o GoogleCloudDatacatalogV1ContactsPtrOutput) ToGoogleCloudDatacatalogV1Con
 
 func (o GoogleCloudDatacatalogV1ContactsPtrOutput) ToGoogleCloudDatacatalogV1ContactsPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1Contacts] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1Contacts]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1ContactsPtrOutput) Elem() GoogleCloudDatacatalogV1ContactsOutput {
@@ -2165,6 +2502,12 @@ func (i GoogleCloudDatacatalogV1ContactsPersonArgs) ToGoogleCloudDatacatalogV1Co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPersonOutput)
 }
 
+func (i GoogleCloudDatacatalogV1ContactsPersonArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ContactsPerson] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ContactsPerson]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ContactsPersonOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudDatacatalogV1ContactsPersonArrayInput is an input type that accepts GoogleCloudDatacatalogV1ContactsPersonArray and GoogleCloudDatacatalogV1ContactsPersonArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPersonArrayInput` via:
 //
@@ -2190,6 +2533,12 @@ func (i GoogleCloudDatacatalogV1ContactsPersonArray) ToGoogleCloudDatacatalogV1C
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ContactsPersonArrayOutput)
 }
 
+func (i GoogleCloudDatacatalogV1ContactsPersonArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1ContactsPerson] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1ContactsPerson]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ContactsPersonArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A contact person for the entry.
 type GoogleCloudDatacatalogV1ContactsPersonOutput struct{ *pulumi.OutputState }
 
@@ -2203,6 +2552,12 @@ func (o GoogleCloudDatacatalogV1ContactsPersonOutput) ToGoogleCloudDatacatalogV1
 
 func (o GoogleCloudDatacatalogV1ContactsPersonOutput) ToGoogleCloudDatacatalogV1ContactsPersonOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ContactsPerson] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ContactsPerson]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Designation of the person, for example, Data Steward.
@@ -2227,6 +2582,12 @@ func (o GoogleCloudDatacatalogV1ContactsPersonArrayOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1ContactsPersonArrayOutput) ToGoogleCloudDatacatalogV1ContactsPersonArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1ContactsPerson] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1ContactsPerson]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1ContactsPersonArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1ContactsPersonOutput {
@@ -2258,6 +2619,12 @@ func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) ToGoogleCloudDatac
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ContactsPersonResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ContactsPersonResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Designation of the person, for example, Data Steward.
 func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) Designation() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPersonResponse) string { return v.Designation }).(pulumi.StringOutput)
@@ -2280,6 +2647,12 @@ func (o GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) ToGoogleCloud
 
 func (o GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) ToGoogleCloudDatacatalogV1ContactsPersonResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1ContactsPersonResponse] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1ContactsPersonResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1ContactsPersonResponseOutput {
@@ -2307,6 +2680,12 @@ func (o GoogleCloudDatacatalogV1ContactsResponseOutput) ToGoogleCloudDatacatalog
 
 func (o GoogleCloudDatacatalogV1ContactsResponseOutput) ToGoogleCloudDatacatalogV1ContactsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ContactsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ContactsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ContactsResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ContactsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of contact people for the entry.
@@ -2345,6 +2724,12 @@ func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs) ToGoogleCloudDatac
 
 func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataSourceConnectionSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataSourceConnectionSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DataSourceConnectionSpecOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput {
@@ -2388,6 +2773,12 @@ func (i *googleCloudDatacatalogV1DataSourceConnectionSpecPtrType) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1DataSourceConnectionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DataSourceConnectionSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DataSourceConnectionSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput struct{ *pulumi.OutputState }
 
@@ -2413,6 +2804,12 @@ func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput) ToGoogleCloudDat
 	}).(GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataSourceConnectionSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataSourceConnectionSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput) ElementType() reflect.Type {
@@ -2425,6 +2822,12 @@ func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DataSourceConnectionSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DataSourceConnectionSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput {
@@ -2456,6 +2859,12 @@ func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) ToGoogle
 
 func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fields specific to BigQuery connections.
@@ -2490,6 +2899,12 @@ func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) ToGoogleCloudDatacatal
 
 func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) ToGoogleCloudDatacatalogV1DataSourceResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataSourceResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
@@ -2553,6 +2968,12 @@ func (i GoogleCloudDatacatalogV1DatabaseTableSpecArgs) ToGoogleCloudDatacatalogV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DatabaseTableSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1DatabaseTableSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DatabaseTableSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1DatabaseTableSpecArgs) ToGoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1DatabaseTableSpecPtrOutputWithContext(context.Background())
 }
@@ -2594,6 +3015,12 @@ func (i *googleCloudDatacatalogV1DatabaseTableSpecPtrType) ToGoogleCloudDatacata
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1DatabaseTableSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DatabaseTableSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpecOutput struct{ *pulumi.OutputState }
 
@@ -2617,6 +3044,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) ToGoogleCloudDatacatalo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DatabaseTableSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Spec what aplies to tables that are actually views. Not set for "real" tables.
@@ -2645,6 +3078,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) ToGoogleCloudDatacat
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecOutput {
@@ -2720,6 +3159,12 @@ func (i GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutputWithContext(context.Background())
 }
@@ -2761,6 +3206,12 @@ func (i *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to database view.
 type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecOutput struct{ *pulumi.OutputState }
 
@@ -2784,6 +3235,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecOutput) ToGoogl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec) *GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of a singular table this view reflects one to one.
@@ -2815,6 +3272,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput) ToGo
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecOutput {
@@ -2882,6 +3345,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponseOutput)
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of a singular table this view reflects one to one.
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponseOutput) BaseTable() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse) string { return v.BaseTable }).(pulumi.StringOutput)
@@ -2920,6 +3389,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DatabaseTableSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Spec what aplies to tables that are actually views. Not set for "real" tables.
@@ -2968,6 +3443,12 @@ func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) ToGoogleClo
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexExternalTableResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexExternalTableResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Data Catalog entry representing the external table.
 func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput) DataCatalogEntry() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTableResponse) string { return v.DataCatalogEntry }).(pulumi.StringOutput)
@@ -3000,6 +3481,12 @@ func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) ToGoog
 
 func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1DataplexExternalTableResponse] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1DataplexExternalTableResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput {
@@ -3043,6 +3530,12 @@ func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToGoogleCloudDatacatalo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexFilesetSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexFilesetSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexFilesetSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DataplexFilesetSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(context.Background())
 }
@@ -3084,6 +3577,12 @@ func (i *googleCloudDatacatalogV1DataplexFilesetSpecPtrType) ToGoogleCloudDataca
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1DataplexFilesetSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DataplexFilesetSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DataplexFilesetSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Entry specyfication for a Dataplex fileset.
 type GoogleCloudDatacatalogV1DataplexFilesetSpecOutput struct{ *pulumi.OutputState }
 
@@ -3109,6 +3608,12 @@ func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) ToGoogleCloudDatacata
 	}).(GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexFilesetSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexFilesetSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Common Dataplex fields.
 func (o GoogleCloudDatacatalogV1DataplexFilesetSpecOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexFilesetSpec) *GoogleCloudDatacatalogV1DataplexSpec {
@@ -3128,6 +3633,12 @@ func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) ToGoogleCloudDatac
 
 func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DataplexFilesetSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DataplexFilesetSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DataplexFilesetSpecOutput {
@@ -3169,6 +3680,12 @@ func (o GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexFilesetSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexFilesetSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Common Dataplex fields.
@@ -3225,6 +3742,12 @@ func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToGoogleCloudDatacatalogV1Data
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DataplexSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutput() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(context.Background())
 }
@@ -3266,6 +3789,12 @@ func (i *googleCloudDatacatalogV1DataplexSpecPtrType) ToGoogleCloudDatacatalogV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1DataplexSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DataplexSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DataplexSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Common Dataplex fields.
 type GoogleCloudDatacatalogV1DataplexSpecOutput struct{ *pulumi.OutputState }
 
@@ -3289,6 +3818,12 @@ func (o GoogleCloudDatacatalogV1DataplexSpecOutput) ToGoogleCloudDatacatalogV1Da
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataplexSpec) *GoogleCloudDatacatalogV1DataplexSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
@@ -3325,6 +3860,12 @@ func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) ToGoogleCloudDatacatalogV
 
 func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DataplexSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1DataplexSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1DataplexSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DataplexSpecOutput {
@@ -3404,6 +3945,12 @@ func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) ToGoogleCloudDatacat
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
 func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) Asset() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpecResponse) string { return v.Asset }).(pulumi.StringOutput)
@@ -3449,6 +3996,12 @@ func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1DataplexTableSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1DataplexTableSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Common Dataplex fields.
@@ -3505,6 +4058,12 @@ func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToGoogleCloudDatacatalogV1Ent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewOutput)
 }
 
+func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1EntryOverview] {
+	return pulumix.Output[GoogleCloudDatacatalogV1EntryOverview]{
+		OutputState: i.ToGoogleCloudDatacatalogV1EntryOverviewOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutput() GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(context.Background())
 }
@@ -3546,6 +4105,12 @@ func (i *googleCloudDatacatalogV1EntryOverviewPtrType) ToGoogleCloudDatacatalogV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1EntryOverviewPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1EntryOverviewPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1EntryOverview] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1EntryOverview]{
+		OutputState: i.ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Entry overview fields for rich text descriptions of entries.
 type GoogleCloudDatacatalogV1EntryOverviewOutput struct{ *pulumi.OutputState }
 
@@ -3571,6 +4136,12 @@ func (o GoogleCloudDatacatalogV1EntryOverviewOutput) ToGoogleCloudDatacatalogV1E
 	}).(GoogleCloudDatacatalogV1EntryOverviewPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1EntryOverviewOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1EntryOverview] {
+	return pulumix.Output[GoogleCloudDatacatalogV1EntryOverview]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
 func (o GoogleCloudDatacatalogV1EntryOverviewOutput) Overview() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1EntryOverview) *string { return v.Overview }).(pulumi.StringPtrOutput)
@@ -3588,6 +4159,12 @@ func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) ToGoogleCloudDatacatalog
 
 func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) ToGoogleCloudDatacatalogV1EntryOverviewPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1EntryOverviewPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1EntryOverview] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1EntryOverview]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1EntryOverviewPtrOutput) Elem() GoogleCloudDatacatalogV1EntryOverviewOutput {
@@ -3631,6 +4208,12 @@ func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ToGoogleCloudDataca
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1EntryOverviewResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1EntryOverviewResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
 func (o GoogleCloudDatacatalogV1EntryOverviewResponseOutput) Overview() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1EntryOverviewResponse) string { return v.Overview }).(pulumi.StringOutput)
@@ -3669,6 +4252,12 @@ func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1Files
 
 func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1FilesetSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1FilesetSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1FilesetSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1FilesetSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1FilesetSpecOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutput() GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
@@ -3712,6 +4301,12 @@ func (i *googleCloudDatacatalogV1FilesetSpecPtrType) ToGoogleCloudDatacatalogV1F
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1FilesetSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1FilesetSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1FilesetSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1FilesetSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
 type GoogleCloudDatacatalogV1FilesetSpecOutput struct{ *pulumi.OutputState }
 
@@ -3737,6 +4332,12 @@ func (o GoogleCloudDatacatalogV1FilesetSpecOutput) ToGoogleCloudDatacatalogV1Fil
 	}).(GoogleCloudDatacatalogV1FilesetSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1FilesetSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1FilesetSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1FilesetSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
 func (o GoogleCloudDatacatalogV1FilesetSpecOutput) DataplexFileset() GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1FilesetSpec) *GoogleCloudDatacatalogV1DataplexFilesetSpec {
@@ -3756,6 +4357,12 @@ func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1
 
 func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1FilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1FilesetSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1FilesetSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1FilesetSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1FilesetSpecPtrOutput) Elem() GoogleCloudDatacatalogV1FilesetSpecOutput {
@@ -3799,6 +4406,12 @@ func (o GoogleCloudDatacatalogV1FilesetSpecResponseOutput) ToGoogleCloudDatacata
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1FilesetSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1FilesetSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1FilesetSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
 func (o GoogleCloudDatacatalogV1FilesetSpecResponseOutput) DataplexFileset() GoogleCloudDatacatalogV1DataplexFilesetSpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1FilesetSpecResponse) GoogleCloudDatacatalogV1DataplexFilesetSpecResponse {
@@ -3831,6 +4444,12 @@ func (o GoogleCloudDatacatalogV1GcsFileSpecResponseOutput) ToGoogleCloudDatacata
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1GcsFileSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1GcsFileSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1GcsFileSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Full file path. Example: `gs://bucket_name/a/b.txt`.
 func (o GoogleCloudDatacatalogV1GcsFileSpecResponseOutput) FilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1GcsFileSpecResponse) string { return v.FilePath }).(pulumi.StringOutput)
@@ -3860,6 +4479,12 @@ func (o GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput) ToGoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1GcsFileSpecResponse] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1GcsFileSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1GcsFileSpecResponseOutput {
@@ -3903,6 +4528,12 @@ func (i GoogleCloudDatacatalogV1GcsFilesetSpecArgs) ToGoogleCloudDatacatalogV1Gc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1GcsFilesetSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1GcsFilesetSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1GcsFilesetSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1GcsFilesetSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1GcsFilesetSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1GcsFilesetSpecArgs) ToGoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput() GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1GcsFilesetSpecPtrOutputWithContext(context.Background())
 }
@@ -3944,6 +4575,12 @@ func (i *googleCloudDatacatalogV1GcsFilesetSpecPtrType) ToGoogleCloudDatacatalog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1GcsFilesetSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1GcsFilesetSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1GcsFilesetSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1GcsFilesetSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes a Cloud Storage fileset entry.
 type GoogleCloudDatacatalogV1GcsFilesetSpecOutput struct{ *pulumi.OutputState }
 
@@ -3969,6 +4606,12 @@ func (o GoogleCloudDatacatalogV1GcsFilesetSpecOutput) ToGoogleCloudDatacatalogV1
 	}).(GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1GcsFilesetSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1GcsFilesetSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1GcsFilesetSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g`
 func (o GoogleCloudDatacatalogV1GcsFilesetSpecOutput) FilePatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1GcsFilesetSpec) []string { return v.FilePatterns }).(pulumi.StringArrayOutput)
@@ -3986,6 +4629,12 @@ func (o GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput) ToGoogleCloudDatacatalo
 
 func (o GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput) ToGoogleCloudDatacatalogV1GcsFilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1GcsFilesetSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1GcsFilesetSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput) Elem() GoogleCloudDatacatalogV1GcsFilesetSpecOutput {
@@ -4029,6 +4678,12 @@ func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) ToGoogleCloudDatac
 
 func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1GcsFilesetSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1GcsFilesetSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g`
@@ -4098,6 +4753,12 @@ func (i GoogleCloudDatacatalogV1LookerSystemSpecArgs) ToGoogleCloudDatacatalogV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1LookerSystemSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1LookerSystemSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1LookerSystemSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1LookerSystemSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1LookerSystemSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1LookerSystemSpecArgs) ToGoogleCloudDatacatalogV1LookerSystemSpecPtrOutput() GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1LookerSystemSpecPtrOutputWithContext(context.Background())
 }
@@ -4139,6 +4800,12 @@ func (i *googleCloudDatacatalogV1LookerSystemSpecPtrType) ToGoogleCloudDatacatal
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1LookerSystemSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1LookerSystemSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1LookerSystemSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1LookerSystemSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to entries that are part `LOOKER` system (user_specified_type)
 type GoogleCloudDatacatalogV1LookerSystemSpecOutput struct{ *pulumi.OutputState }
 
@@ -4162,6 +4829,12 @@ func (o GoogleCloudDatacatalogV1LookerSystemSpecOutput) ToGoogleCloudDatacatalog
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1LookerSystemSpec) *GoogleCloudDatacatalogV1LookerSystemSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1LookerSystemSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1LookerSystemSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1LookerSystemSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the parent Looker Instance. Empty if it does not exist.
@@ -4206,6 +4879,12 @@ func (o GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput) ToGoogleCloudDatacatalogV1LookerSystemSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1LookerSystemSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1LookerSystemSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1LookerSystemSpecPtrOutput) Elem() GoogleCloudDatacatalogV1LookerSystemSpecOutput {
@@ -4309,6 +4988,12 @@ func (o GoogleCloudDatacatalogV1LookerSystemSpecResponseOutput) ToGoogleCloudDat
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1LookerSystemSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1LookerSystemSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1LookerSystemSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the parent Looker Instance. Empty if it does not exist.
 func (o GoogleCloudDatacatalogV1LookerSystemSpecResponseOutput) ParentInstanceDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1LookerSystemSpecResponse) string { return v.ParentInstanceDisplayName }).(pulumi.StringOutput)
@@ -4360,6 +5045,12 @@ func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ToGoogleCloudDatacatalogV1PersonalDetailsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PersonalDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PersonalDetailsResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PersonalDetailsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Set if the entry is starred; unset otherwise.
@@ -4427,6 +5118,12 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToGoogleCloudDatacatalogV1Ph
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOutput)
 }
 
+func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(context.Background())
 }
@@ -4468,6 +5165,12 @@ func (i *googleCloudDatacatalogV1PhysicalSchemaPtrType) ToGoogleCloudDatacatalog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1PhysicalSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
 type GoogleCloudDatacatalogV1PhysicalSchemaOutput struct{ *pulumi.OutputState }
 
@@ -4491,6 +5194,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) ToGoogleCloudDatacatalogV1
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1PhysicalSchema) *GoogleCloudDatacatalogV1PhysicalSchema {
 		return &v
 	}).(GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Schema in Avro JSON format.
@@ -4547,6 +5256,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) ToGoogleCloudDatacatalo
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaOutput {
@@ -4654,6 +5369,12 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToGoogleCloudDatac
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput)
 }
 
+func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(context.Background())
 }
@@ -4695,6 +5416,12 @@ func (i *googleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrType) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Schema in Avro JSON format.
 type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput struct{ *pulumi.OutputState }
 
@@ -4720,6 +5447,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) ToGoogleCloudDat
 	}).(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 // JSON source of the Avro schema.
 func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema) *string { return v.Text }).(pulumi.StringPtrOutput)
@@ -4737,6 +5470,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput {
@@ -4780,6 +5519,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput) ToGoogle
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // JSON source of the Avro schema.
 func (o GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse) string { return v.Text }).(pulumi.StringOutput)
@@ -4814,6 +5559,12 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDataca
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
@@ -4857,6 +5608,12 @@ func (i *googleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrType) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Marks a CSV-encoded data source.
 type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput struct{ *pulumi.OutputState }
 
@@ -4882,6 +5639,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput) ToGoogleCloudData
 	}).(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) ElementType() reflect.Type {
@@ -4894,6 +5657,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput {
@@ -4925,6 +5694,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Marks an ORC-encoded data source.
 type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema struct {
 }
@@ -4954,6 +5729,12 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDataca
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
@@ -4997,6 +5778,12 @@ func (i *googleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrType) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Marks an ORC-encoded data source.
 type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput struct{ *pulumi.OutputState }
 
@@ -5022,6 +5809,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput) ToGoogleCloudData
 	}).(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) ElementType() reflect.Type {
@@ -5034,6 +5827,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput {
@@ -5065,6 +5864,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput) ToGoogleC
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Marks a Parquet-encoded data source.
 type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema struct {
 }
@@ -5094,6 +5899,12 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDa
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
@@ -5137,6 +5948,12 @@ func (i *googleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Marks a Parquet-encoded data source.
 type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput struct{ *pulumi.OutputState }
 
@@ -5162,6 +5979,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput) ToGoogleCloud
 	}).(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) ElementType() reflect.Type {
@@ -5174,6 +5997,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput {
@@ -5203,6 +6032,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput) ToGoo
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Schema in protocol buffer format.
@@ -5238,6 +6073,12 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudD
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput)
+}
+
+func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
@@ -5281,6 +6122,12 @@ func (i *googleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Schema in protocol buffer format.
 type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput struct{ *pulumi.OutputState }
 
@@ -5306,6 +6153,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) ToGoogleClou
 	}).(GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Protocol buffer source of the schema.
 func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema) *string { return v.Text }).(pulumi.StringPtrOutput)
@@ -5323,6 +6176,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) ToGoogleC
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput {
@@ -5366,6 +6225,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput) ToGo
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Protocol buffer source of the schema.
 func (o GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse) string { return v.Text }).(pulumi.StringOutput)
@@ -5400,6 +6265,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) ToGoogleCloudDatac
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Schema in Avro JSON format.
@@ -5479,6 +6350,12 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput)
 }
 
+func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(context.Background())
 }
@@ -5520,6 +6397,12 @@ func (i *googleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Schema in Thrift format.
 type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput struct{ *pulumi.OutputState }
 
@@ -5545,6 +6428,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) ToGoogleCloudD
 	}).(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Thrift IDL source of the schema.
 func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema) *string { return v.Text }).(pulumi.StringPtrOutput)
@@ -5562,6 +6451,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) ToGoogleClo
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput) Elem() GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput {
@@ -5603,6 +6498,12 @@ func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput) ToGoog
 
 func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput) ToGoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Thrift IDL source of the schema.
@@ -5665,6 +6566,12 @@ func (i GoogleCloudDatacatalogV1RoutineSpecArgs) ToGoogleCloudDatacatalogV1Routi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1RoutineSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1RoutineSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1RoutineSpecArgs) ToGoogleCloudDatacatalogV1RoutineSpecPtrOutput() GoogleCloudDatacatalogV1RoutineSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1RoutineSpecPtrOutputWithContext(context.Background())
 }
@@ -5706,6 +6613,12 @@ func (i *googleCloudDatacatalogV1RoutineSpecPtrType) ToGoogleCloudDatacatalogV1R
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1RoutineSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1RoutineSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
 type GoogleCloudDatacatalogV1RoutineSpecOutput struct{ *pulumi.OutputState }
 
@@ -5729,6 +6642,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecOutput) ToGoogleCloudDatacatalogV1Rou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1RoutineSpec) *GoogleCloudDatacatalogV1RoutineSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1RoutineSpecPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fields specific for BigQuery routines.
@@ -5779,6 +6698,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecPtrOutput) ToGoogleCloudDatacatalogV1
 
 func (o GoogleCloudDatacatalogV1RoutineSpecPtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecPtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecOutput {
@@ -5894,6 +6819,12 @@ func (i GoogleCloudDatacatalogV1RoutineSpecArgumentArgs) ToGoogleCloudDatacatalo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecArgumentOutput)
 }
 
+func (i GoogleCloudDatacatalogV1RoutineSpecArgumentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgument] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgument]{
+		OutputState: i.ToGoogleCloudDatacatalogV1RoutineSpecArgumentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentArray and GoogleCloudDatacatalogV1RoutineSpecArgumentArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput` via:
 //
@@ -5919,6 +6850,12 @@ func (i GoogleCloudDatacatalogV1RoutineSpecArgumentArray) ToGoogleCloudDatacatal
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecArgumentArrayOutput)
 }
 
+func (i GoogleCloudDatacatalogV1RoutineSpecArgumentArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1RoutineSpecArgument] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1RoutineSpecArgument]{
+		OutputState: i.ToGoogleCloudDatacatalogV1RoutineSpecArgumentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Input or output argument of a function or stored procedure.
 type GoogleCloudDatacatalogV1RoutineSpecArgumentOutput struct{ *pulumi.OutputState }
 
@@ -5932,6 +6869,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgument] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgument]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether the argument is input or output.
@@ -5965,6 +6908,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentArrayOutput) ToGoogleCloudDat
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1RoutineSpecArgument] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1RoutineSpecArgument]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1RoutineSpecArgumentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1RoutineSpecArgument {
 		return vs[0].([]GoogleCloudDatacatalogV1RoutineSpecArgument)[vs[1].(int)]
@@ -5996,6 +6945,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput) ToGoogleCloud
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgumentResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecArgumentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies whether the argument is input or output.
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1RoutineSpecArgumentResponse) string { return v.Mode }).(pulumi.StringOutput)
@@ -6023,6 +6978,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput) ToGoogle
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogV1RoutineSpecArgumentResponse] {
+	return pulumix.Output[[]GoogleCloudDatacatalogV1RoutineSpecArgumentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput {
@@ -6060,6 +7021,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) ToGoogleCloudDatacatalogV1RoutineSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1RoutineSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fields specific for BigQuery routines.
@@ -6131,6 +7098,12 @@ func (i GoogleCloudDatacatalogV1SchemaArgs) ToGoogleCloudDatacatalogV1SchemaOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SchemaOutput)
 }
 
+func (i GoogleCloudDatacatalogV1SchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1Schema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1Schema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1SchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1SchemaArgs) ToGoogleCloudDatacatalogV1SchemaPtrOutput() GoogleCloudDatacatalogV1SchemaPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1SchemaPtrOutputWithContext(context.Background())
 }
@@ -6172,6 +7145,12 @@ func (i *googleCloudDatacatalogV1SchemaPtrType) ToGoogleCloudDatacatalogV1Schema
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SchemaPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1SchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1Schema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1Schema]{
+		OutputState: i.ToGoogleCloudDatacatalogV1SchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
 type GoogleCloudDatacatalogV1SchemaOutput struct{ *pulumi.OutputState }
 
@@ -6197,6 +7176,12 @@ func (o GoogleCloudDatacatalogV1SchemaOutput) ToGoogleCloudDatacatalogV1SchemaPt
 	}).(GoogleCloudDatacatalogV1SchemaPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1SchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1Schema] {
+	return pulumix.Output[GoogleCloudDatacatalogV1Schema]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
 func (o GoogleCloudDatacatalogV1SchemaOutput) Columns() GoogleCloudDatacatalogV1ColumnSchemaArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1Schema) []GoogleCloudDatacatalogV1ColumnSchema { return v.Columns }).(GoogleCloudDatacatalogV1ColumnSchemaArrayOutput)
@@ -6214,6 +7199,12 @@ func (o GoogleCloudDatacatalogV1SchemaPtrOutput) ToGoogleCloudDatacatalogV1Schem
 
 func (o GoogleCloudDatacatalogV1SchemaPtrOutput) ToGoogleCloudDatacatalogV1SchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SchemaPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1SchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1Schema] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1Schema]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1SchemaPtrOutput) Elem() GoogleCloudDatacatalogV1SchemaOutput {
@@ -6255,6 +7246,12 @@ func (o GoogleCloudDatacatalogV1SchemaResponseOutput) ToGoogleCloudDatacatalogV1
 
 func (o GoogleCloudDatacatalogV1SchemaResponseOutput) ToGoogleCloudDatacatalogV1SchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SchemaResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1SchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1SchemaResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1SchemaResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
@@ -6299,6 +7296,12 @@ func (i GoogleCloudDatacatalogV1ServiceSpecArgs) ToGoogleCloudDatacatalogV1Servi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ServiceSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1ServiceSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ServiceSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ServiceSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ServiceSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1ServiceSpecArgs) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutput() GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(context.Background())
 }
@@ -6340,6 +7343,12 @@ func (i *googleCloudDatacatalogV1ServiceSpecPtrType) ToGoogleCloudDatacatalogV1S
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ServiceSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1ServiceSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ServiceSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ServiceSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
 type GoogleCloudDatacatalogV1ServiceSpecOutput struct{ *pulumi.OutputState }
 
@@ -6365,6 +7374,12 @@ func (o GoogleCloudDatacatalogV1ServiceSpecOutput) ToGoogleCloudDatacatalogV1Ser
 	}).(GoogleCloudDatacatalogV1ServiceSpecPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1ServiceSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ServiceSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ServiceSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
 func (o GoogleCloudDatacatalogV1ServiceSpecOutput) CloudBigtableInstanceSpec() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ServiceSpec) *GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
@@ -6384,6 +7399,12 @@ func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) ToGoogleCloudDatacatalogV1
 
 func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ServiceSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1ServiceSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) Elem() GoogleCloudDatacatalogV1ServiceSpecOutput {
@@ -6425,6 +7446,12 @@ func (o GoogleCloudDatacatalogV1ServiceSpecResponseOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1ServiceSpecResponseOutput) ToGoogleCloudDatacatalogV1ServiceSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ServiceSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ServiceSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
@@ -6477,6 +7504,12 @@ func (i GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs) ToGoogleCloudDatacata
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SqlDatabaseSystemSpecOutput)
 }
 
+func (i GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1SqlDatabaseSystemSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1SqlDatabaseSystemSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1SqlDatabaseSystemSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs) ToGoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput() GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutputWithContext(context.Background())
 }
@@ -6518,6 +7551,12 @@ func (i *googleCloudDatacatalogV1SqlDatabaseSystemSpecPtrType) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1SqlDatabaseSystemSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1SqlDatabaseSystemSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1SqlDatabaseSystemSpec]{
+		OutputState: i.ToGoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
 type GoogleCloudDatacatalogV1SqlDatabaseSystemSpecOutput struct{ *pulumi.OutputState }
 
@@ -6541,6 +7580,12 @@ func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecOutput) ToGoogleCloudDataca
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1SqlDatabaseSystemSpec) *GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1SqlDatabaseSystemSpec] {
+	return pulumix.Output[GoogleCloudDatacatalogV1SqlDatabaseSystemSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Version of the database engine.
@@ -6570,6 +7615,12 @@ func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput) ToGoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1SqlDatabaseSystemSpec] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1SqlDatabaseSystemSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput) Elem() GoogleCloudDatacatalogV1SqlDatabaseSystemSpecOutput {
@@ -6637,6 +7688,12 @@ func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponseOutput) ToGoogleClo
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Version of the database engine.
 func (o GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponseOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse) string { return v.DatabaseVersion }).(pulumi.StringOutput)
@@ -6673,6 +7730,12 @@ func (o GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) ToGoogleCloudDatacatalogV1StoragePropertiesResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1StoragePropertiesResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1StoragePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1StoragePropertiesResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1StoragePropertiesResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
@@ -6724,6 +7787,12 @@ func (i GoogleCloudDatacatalogV1SystemTimestampsArgs) ToGoogleCloudDatacatalogV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SystemTimestampsOutput)
 }
 
+func (i GoogleCloudDatacatalogV1SystemTimestampsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1SystemTimestamps] {
+	return pulumix.Output[GoogleCloudDatacatalogV1SystemTimestamps]{
+		OutputState: i.ToGoogleCloudDatacatalogV1SystemTimestampsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1SystemTimestampsArgs) ToGoogleCloudDatacatalogV1SystemTimestampsPtrOutput() GoogleCloudDatacatalogV1SystemTimestampsPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1SystemTimestampsPtrOutputWithContext(context.Background())
 }
@@ -6765,6 +7834,12 @@ func (i *googleCloudDatacatalogV1SystemTimestampsPtrType) ToGoogleCloudDatacatal
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SystemTimestampsPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1SystemTimestampsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1SystemTimestamps] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1SystemTimestamps]{
+		OutputState: i.ToGoogleCloudDatacatalogV1SystemTimestampsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Timestamps associated with this resource in a particular system.
 type GoogleCloudDatacatalogV1SystemTimestampsOutput struct{ *pulumi.OutputState }
 
@@ -6790,6 +7865,12 @@ func (o GoogleCloudDatacatalogV1SystemTimestampsOutput) ToGoogleCloudDatacatalog
 	}).(GoogleCloudDatacatalogV1SystemTimestampsPtrOutput)
 }
 
+func (o GoogleCloudDatacatalogV1SystemTimestampsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1SystemTimestamps] {
+	return pulumix.Output[GoogleCloudDatacatalogV1SystemTimestamps]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Creation timestamp of the resource within the given system.
 func (o GoogleCloudDatacatalogV1SystemTimestampsOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1SystemTimestamps) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
@@ -6812,6 +7893,12 @@ func (o GoogleCloudDatacatalogV1SystemTimestampsPtrOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1SystemTimestampsPtrOutput) ToGoogleCloudDatacatalogV1SystemTimestampsPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SystemTimestampsPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1SystemTimestampsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1SystemTimestamps] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1SystemTimestamps]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1SystemTimestampsPtrOutput) Elem() GoogleCloudDatacatalogV1SystemTimestampsOutput {
@@ -6869,6 +7956,12 @@ func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) ToGoogleCloudDat
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1SystemTimestampsResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1SystemTimestampsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Creation timestamp of the resource within the given system.
 func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1SystemTimestampsResponse) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -6905,6 +7998,12 @@ func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) ToGoogleCloudDatacatalo
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1TableSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1TableSpecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty.
 func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) GroupedEntry() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1TableSpecResponse) string { return v.GroupedEntry }).(pulumi.StringOutput)
@@ -6931,6 +8030,12 @@ func (o GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput) ToGoogleCloudDatacatalogV1TaxonomyServiceResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1TaxonomyServiceResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1TaxonomyServiceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The service agent for the service.
@@ -6986,6 +8091,12 @@ func (i GoogleCloudDatacatalogV1UsageSignalArgs) ToGoogleCloudDatacatalogV1Usage
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1UsageSignalOutput)
 }
 
+func (i GoogleCloudDatacatalogV1UsageSignalArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1UsageSignal] {
+	return pulumix.Output[GoogleCloudDatacatalogV1UsageSignal]{
+		OutputState: i.ToGoogleCloudDatacatalogV1UsageSignalOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GoogleCloudDatacatalogV1UsageSignalArgs) ToGoogleCloudDatacatalogV1UsageSignalPtrOutput() GoogleCloudDatacatalogV1UsageSignalPtrOutput {
 	return i.ToGoogleCloudDatacatalogV1UsageSignalPtrOutputWithContext(context.Background())
 }
@@ -7027,6 +8138,12 @@ func (i *googleCloudDatacatalogV1UsageSignalPtrType) ToGoogleCloudDatacatalogV1U
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1UsageSignalPtrOutput)
 }
 
+func (i *googleCloudDatacatalogV1UsageSignalPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1UsageSignal] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1UsageSignal]{
+		OutputState: i.ToGoogleCloudDatacatalogV1UsageSignalPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
 type GoogleCloudDatacatalogV1UsageSignalOutput struct{ *pulumi.OutputState }
 
@@ -7050,6 +8167,12 @@ func (o GoogleCloudDatacatalogV1UsageSignalOutput) ToGoogleCloudDatacatalogV1Usa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1UsageSignal) *GoogleCloudDatacatalogV1UsageSignal {
 		return &v
 	}).(GoogleCloudDatacatalogV1UsageSignalPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1UsageSignalOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1UsageSignal] {
+	return pulumix.Output[GoogleCloudDatacatalogV1UsageSignal]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
@@ -7079,6 +8202,12 @@ func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) ToGoogleCloudDatacatalogV1
 
 func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) ToGoogleCloudDatacatalogV1UsageSignalPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1UsageSignalPtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1UsageSignal] {
+	return pulumix.Output[*GoogleCloudDatacatalogV1UsageSignal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) Elem() GoogleCloudDatacatalogV1UsageSignalOutput {
@@ -7148,6 +8277,12 @@ func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) ToGoogleCloudDatacata
 	return o
 }
 
+func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1UsageSignalResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1UsageSignalResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
 func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) CommonUsageWithinTimeRange() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1UsageSignalResponse) map[string]string {
@@ -7189,6 +8324,12 @@ func (o GoogleCloudDatacatalogV1ViewSpecResponseOutput) ToGoogleCloudDatacatalog
 
 func (o GoogleCloudDatacatalogV1ViewSpecResponseOutput) ToGoogleCloudDatacatalogV1ViewSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecResponseOutput {
 	return o
+}
+
+func (o GoogleCloudDatacatalogV1ViewSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogV1ViewSpecResponse] {
+	return pulumix.Output[GoogleCloudDatacatalogV1ViewSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The query that defines the table view.

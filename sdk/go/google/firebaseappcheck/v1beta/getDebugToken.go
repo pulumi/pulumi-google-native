@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
@@ -72,6 +73,12 @@ func (o LookupDebugTokenResultOutput) ToLookupDebugTokenResultOutput() LookupDeb
 
 func (o LookupDebugTokenResultOutput) ToLookupDebugTokenResultOutputWithContext(ctx context.Context) LookupDebugTokenResultOutput {
 	return o
+}
+
+func (o LookupDebugTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDebugTokenResult] {
+	return pulumix.Output[LookupDebugTokenResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A human readable display name used to identify this debug token.

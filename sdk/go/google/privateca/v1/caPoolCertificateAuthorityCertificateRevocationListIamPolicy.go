@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -149,6 +150,12 @@ func (i *CaPoolCertificateAuthorityCertificateRevocationListIamPolicy) ToCaPoolC
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput)
 }
 
+func (i *CaPoolCertificateAuthorityCertificateRevocationListIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamPolicy] {
+	return pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamPolicy]{
+		OutputState: i.ToCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput) ToCa
 
 func (o CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput) ToCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutputWithContext(ctx context.Context) CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput {
 	return o
+}
+
+func (o CaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamPolicy] {
+	return pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

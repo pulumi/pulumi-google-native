@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Version policy defines the versions that the registry will accept.
@@ -82,6 +83,12 @@ func (o MavenRepositoryConfigVersionPolicyOutput) ToMavenRepositoryConfigVersion
 	}).(MavenRepositoryConfigVersionPolicyPtrOutput)
 }
 
+func (o MavenRepositoryConfigVersionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryConfigVersionPolicy] {
+	return pulumix.Output[MavenRepositoryConfigVersionPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MavenRepositoryConfigVersionPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToMavenRepositoryConfigVers
 
 func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyPtrOutput {
 	return o
+}
+
+func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryConfigVersionPolicy] {
+	return pulumix.Output[*MavenRepositoryConfigVersionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MavenRepositoryConfigVersionPolicyPtrOutput) Elem() MavenRepositoryConfigVersionPolicyOutput {
@@ -177,6 +190,12 @@ func (in *mavenRepositoryConfigVersionPolicyPtr) ToMavenRepositoryConfigVersionP
 
 func (in *mavenRepositoryConfigVersionPolicyPtr) ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigVersionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MavenRepositoryConfigVersionPolicyPtrOutput)
+}
+
+func (in *mavenRepositoryConfigVersionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryConfigVersionPolicy] {
+	return pulumix.Output[*MavenRepositoryConfigVersionPolicy]{
+		OutputState: in.ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The format of packages that are stored in the repository.
@@ -261,6 +280,12 @@ func (o RepositoryFormatOutput) ToRepositoryFormatPtrOutputWithContext(ctx conte
 	}).(RepositoryFormatPtrOutput)
 }
 
+func (o RepositoryFormatOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryFormat] {
+	return pulumix.Output[RepositoryFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RepositoryFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -294,6 +319,12 @@ func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutput() RepositoryForma
 
 func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
 	return o
+}
+
+func (o RepositoryFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFormat] {
+	return pulumix.Output[*RepositoryFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepositoryFormatPtrOutput) Elem() RepositoryFormatOutput {
@@ -356,6 +387,12 @@ func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutput() RepositoryFormatPtr
 
 func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RepositoryFormatPtrOutput)
+}
+
+func (in *repositoryFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFormat] {
+	return pulumix.Output[*RepositoryFormat]{
+		OutputState: in.ToRepositoryFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

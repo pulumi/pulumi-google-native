@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Subscription.
@@ -84,6 +85,12 @@ func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutput() Looku
 
 func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutputWithContext(ctx context.Context) LookupSubscriptionResultOutput {
 	return o
+}
+
+func (o LookupSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubscriptionResult] {
+	return pulumix.Output[LookupSubscriptionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents that, if subscription will renew or end when the term ends.

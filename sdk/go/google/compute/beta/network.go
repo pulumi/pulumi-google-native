@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a network in the specified project using the data included in the request.
@@ -175,6 +176,12 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkOutput)
 }
 
+func (i *Network) ToOutput(ctx context.Context) pulumix.Output[*Network] {
+	return pulumix.Output[*Network]{
+		OutputState: i.ToNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkOutput struct{ *pulumi.OutputState }
 
 func (NetworkOutput) ElementType() reflect.Type {
@@ -187,6 +194,12 @@ func (o NetworkOutput) ToNetworkOutput() NetworkOutput {
 
 func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput {
 	return o
+}
+
+func (o NetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*Network] {
+	return pulumix.Output[*Network]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.

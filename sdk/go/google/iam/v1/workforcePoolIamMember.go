@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets IAM policies on a WorkforcePool.
@@ -134,6 +135,12 @@ func (i *WorkforcePoolIamMember) ToWorkforcePoolIamMemberOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolIamMemberOutput)
 }
 
+func (i *WorkforcePoolIamMember) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolIamMember] {
+	return pulumix.Output[*WorkforcePoolIamMember]{
+		OutputState: i.ToWorkforcePoolIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkforcePoolIamMemberOutput struct{ *pulumi.OutputState }
 
 func (WorkforcePoolIamMemberOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o WorkforcePoolIamMemberOutput) ToWorkforcePoolIamMemberOutput() Workforce
 
 func (o WorkforcePoolIamMemberOutput) ToWorkforcePoolIamMemberOutputWithContext(ctx context.Context) WorkforcePoolIamMemberOutput {
 	return o
+}
+
+func (o WorkforcePoolIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolIamMember] {
+	return pulumix.Output[*WorkforcePoolIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

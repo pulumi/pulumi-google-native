@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a mute config.
@@ -78,6 +79,12 @@ func (o LookupOrganizationMuteConfigResultOutput) ToLookupOrganizationMuteConfig
 
 func (o LookupOrganizationMuteConfigResultOutput) ToLookupOrganizationMuteConfigResultOutputWithContext(ctx context.Context) LookupOrganizationMuteConfigResultOutput {
 	return o
+}
+
+func (o LookupOrganizationMuteConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationMuteConfigResult] {
+	return pulumix.Output[LookupOrganizationMuteConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the mute config was created. This field is set by the server and will be ignored if provided on config creation.

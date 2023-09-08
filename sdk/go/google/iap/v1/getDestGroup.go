@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an existing TunnelDestGroup.
@@ -72,6 +73,12 @@ func (o LookupDestGroupResultOutput) ToLookupDestGroupResultOutput() LookupDestG
 
 func (o LookupDestGroupResultOutput) ToLookupDestGroupResultOutputWithContext(ctx context.Context) LookupDestGroupResultOutput {
 	return o
+}
+
+func (o LookupDestGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDestGroupResult] {
+	return pulumix.Output[LookupDestGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unordered list. List of CIDRs that this group applies to.

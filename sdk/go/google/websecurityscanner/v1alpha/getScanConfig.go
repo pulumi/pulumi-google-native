@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a ScanConfig.
@@ -84,6 +85,12 @@ func (o LookupScanConfigResultOutput) ToLookupScanConfigResultOutput() LookupSca
 
 func (o LookupScanConfigResultOutput) ToLookupScanConfigResultOutputWithContext(ctx context.Context) LookupScanConfigResultOutput {
 	return o
+}
+
+func (o LookupScanConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScanConfigResult] {
+	return pulumix.Output[LookupScanConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication configuration. If specified, service will use the authentication configuration during scanning.

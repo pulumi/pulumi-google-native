@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued".
@@ -154,6 +155,12 @@ func (i *Export) ToExportOutputWithContext(ctx context.Context) ExportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExportOutput)
 }
 
+func (i *Export) ToOutput(ctx context.Context) pulumix.Output[*Export] {
+	return pulumix.Output[*Export]{
+		OutputState: i.ToExportOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExportOutput struct{ *pulumi.OutputState }
 
 func (ExportOutput) ElementType() reflect.Type {
@@ -166,6 +173,12 @@ func (o ExportOutput) ToExportOutput() ExportOutput {
 
 func (o ExportOutput) ToExportOutputWithContext(ctx context.Context) ExportOutput {
 	return o
+}
+
+func (o ExportOutput) ToOutput(ctx context.Context) pulumix.Output[*Export] {
+	return pulumix.Output[*Export]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time the export job was created.

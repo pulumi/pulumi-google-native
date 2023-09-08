@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a datasource. **Note:** This API requires an admin account to execute.
@@ -144,6 +145,12 @@ func (i *DataSource) ToDataSourceOutputWithContext(ctx context.Context) DataSour
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceOutput)
 }
 
+func (i *DataSource) ToOutput(ctx context.Context) pulumix.Output[*DataSource] {
+	return pulumix.Output[*DataSource]{
+		OutputState: i.ToDataSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataSourceOutput struct{ *pulumi.OutputState }
 
 func (DataSourceOutput) ElementType() reflect.Type {
@@ -156,6 +163,12 @@ func (o DataSourceOutput) ToDataSourceOutput() DataSourceOutput {
 
 func (o DataSourceOutput) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
 	return o
+}
+
+func (o DataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*DataSource] {
+	return pulumix.Output[*DataSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.

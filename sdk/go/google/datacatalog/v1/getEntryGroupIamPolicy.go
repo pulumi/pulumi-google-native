@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
@@ -72,6 +73,12 @@ func (o LookupEntryGroupIamPolicyResultOutput) ToLookupEntryGroupIamPolicyResult
 
 func (o LookupEntryGroupIamPolicyResultOutput) ToLookupEntryGroupIamPolicyResultOutputWithContext(ctx context.Context) LookupEntryGroupIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupEntryGroupIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntryGroupIamPolicyResult] {
+	return pulumix.Output[LookupEntryGroupIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.

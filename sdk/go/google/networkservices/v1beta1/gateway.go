@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Gateway in a given project and location.
@@ -189,6 +190,12 @@ func (i *Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayOutput)
 }
 
+func (i *Gateway) ToOutput(ctx context.Context) pulumix.Output[*Gateway] {
+	return pulumix.Output[*Gateway]{
+		OutputState: i.ToGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayOutput struct{ *pulumi.OutputState }
 
 func (GatewayOutput) ElementType() reflect.Type {
@@ -201,6 +208,12 @@ func (o GatewayOutput) ToGatewayOutput() GatewayOutput {
 
 func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
 	return o
+}
+
+func (o GatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*Gateway] {
+	return pulumix.Output[*Gateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.

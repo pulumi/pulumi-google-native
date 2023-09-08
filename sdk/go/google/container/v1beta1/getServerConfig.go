@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns configuration info about the Google Kubernetes Engine service.
@@ -82,6 +83,12 @@ func (o GetServerConfigResultOutput) ToGetServerConfigResultOutput() GetServerCo
 
 func (o GetServerConfigResultOutput) ToGetServerConfigResultOutputWithContext(ctx context.Context) GetServerConfigResultOutput {
 	return o
+}
+
+func (o GetServerConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerConfigResult] {
+	return pulumix.Output[GetServerConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of release channel configurations.

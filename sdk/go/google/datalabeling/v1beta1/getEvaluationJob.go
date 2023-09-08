@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an evaluation job by resource name.
@@ -84,6 +85,12 @@ func (o LookupEvaluationJobResultOutput) ToLookupEvaluationJobResultOutput() Loo
 
 func (o LookupEvaluationJobResultOutput) ToLookupEvaluationJobResultOutputWithContext(ctx context.Context) LookupEvaluationJobResultOutput {
 	return o
+}
+
+func (o LookupEvaluationJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEvaluationJobResult] {
+	return pulumix.Output[LookupEvaluationJobResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"

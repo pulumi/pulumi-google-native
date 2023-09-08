@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
@@ -178,6 +179,12 @@ func (i *Developer) ToDeveloperOutputWithContext(ctx context.Context) DeveloperO
 	return pulumi.ToOutputWithContext(ctx, i).(DeveloperOutput)
 }
 
+func (i *Developer) ToOutput(ctx context.Context) pulumix.Output[*Developer] {
+	return pulumix.Output[*Developer]{
+		OutputState: i.ToDeveloperOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeveloperOutput struct{ *pulumi.OutputState }
 
 func (DeveloperOutput) ElementType() reflect.Type {
@@ -190,6 +197,12 @@ func (o DeveloperOutput) ToDeveloperOutput() DeveloperOutput {
 
 func (o DeveloperOutput) ToDeveloperOutputWithContext(ctx context.Context) DeveloperOutput {
 	return o
+}
+
+func (o DeveloperOutput) ToOutput(ctx context.Context) pulumix.Output[*Developer] {
+	return pulumix.Output[*Developer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access type.

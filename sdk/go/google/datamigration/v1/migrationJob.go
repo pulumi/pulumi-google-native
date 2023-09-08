@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new migration job in a given project and location.
@@ -237,6 +238,12 @@ func (i *MigrationJob) ToMigrationJobOutputWithContext(ctx context.Context) Migr
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobOutput)
 }
 
+func (i *MigrationJob) ToOutput(ctx context.Context) pulumix.Output[*MigrationJob] {
+	return pulumix.Output[*MigrationJob]{
+		OutputState: i.ToMigrationJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MigrationJobOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobOutput) ElementType() reflect.Type {
@@ -249,6 +256,12 @@ func (o MigrationJobOutput) ToMigrationJobOutput() MigrationJobOutput {
 
 func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context) MigrationJobOutput {
 	return o
+}
+
+func (o MigrationJobOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationJob] {
+	return pulumix.Output[*MigrationJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]

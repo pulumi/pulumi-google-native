@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new TcpRoute in a given project and location.
@@ -153,6 +154,12 @@ func (i *TcpRoute) ToTcpRouteOutputWithContext(ctx context.Context) TcpRouteOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteOutput)
 }
 
+func (i *TcpRoute) ToOutput(ctx context.Context) pulumix.Output[*TcpRoute] {
+	return pulumix.Output[*TcpRoute]{
+		OutputState: i.ToTcpRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TcpRouteOutput struct{ *pulumi.OutputState }
 
 func (TcpRouteOutput) ElementType() reflect.Type {
@@ -165,6 +172,12 @@ func (o TcpRouteOutput) ToTcpRouteOutput() TcpRouteOutput {
 
 func (o TcpRouteOutput) ToTcpRouteOutputWithContext(ctx context.Context) TcpRouteOutput {
 	return o
+}
+
+func (o TcpRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*TcpRoute] {
+	return pulumix.Output[*TcpRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp when the resource was created.

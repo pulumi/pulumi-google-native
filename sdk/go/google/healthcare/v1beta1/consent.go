@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Consent in the parent consent store.
@@ -173,6 +174,12 @@ func (i *Consent) ToConsentOutputWithContext(ctx context.Context) ConsentOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentOutput)
 }
 
+func (i *Consent) ToOutput(ctx context.Context) pulumix.Output[*Consent] {
+	return pulumix.Output[*Consent]{
+		OutputState: i.ToConsentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsentOutput struct{ *pulumi.OutputState }
 
 func (ConsentOutput) ElementType() reflect.Type {
@@ -185,6 +192,12 @@ func (o ConsentOutput) ToConsentOutput() ConsentOutput {
 
 func (o ConsentOutput) ToConsentOutputWithContext(ctx context.Context) ConsentOutput {
 	return o
+}
+
+func (o ConsentOutput) ToOutput(ctx context.Context) pulumix.Output[*Consent] {
+	return pulumix.Output[*Consent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.

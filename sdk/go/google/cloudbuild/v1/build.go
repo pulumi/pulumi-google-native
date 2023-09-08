@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
@@ -220,6 +221,12 @@ func (i *Build) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BuildOutput)
 }
 
+func (i *Build) ToOutput(ctx context.Context) pulumix.Output[*Build] {
+	return pulumix.Output[*Build]{
+		OutputState: i.ToBuildOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BuildOutput struct{ *pulumi.OutputState }
 
 func (BuildOutput) ElementType() reflect.Type {
@@ -232,6 +239,12 @@ func (o BuildOutput) ToBuildOutput() BuildOutput {
 
 func (o BuildOutput) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
 	return o
+}
+
+func (o BuildOutput) ToOutput(ctx context.Context) pulumix.Output[*Build] {
+	return pulumix.Output[*Build]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes this build's approval configuration, status, and result.

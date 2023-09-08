@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a metastore federation in a project and location.
@@ -150,6 +151,12 @@ func (i *Federation) ToFederationOutputWithContext(ctx context.Context) Federati
 	return pulumi.ToOutputWithContext(ctx, i).(FederationOutput)
 }
 
+func (i *Federation) ToOutput(ctx context.Context) pulumix.Output[*Federation] {
+	return pulumix.Output[*Federation]{
+		OutputState: i.ToFederationOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FederationOutput struct{ *pulumi.OutputState }
 
 func (FederationOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o FederationOutput) ToFederationOutput() FederationOutput {
 
 func (o FederationOutput) ToFederationOutputWithContext(ctx context.Context) FederationOutput {
 	return o
+}
+
+func (o FederationOutput) ToOutput(ctx context.Context) pulumix.Output[*Federation] {
+	return pulumix.Output[*Federation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.

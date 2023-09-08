@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single glossary entry by the given id.
@@ -76,6 +77,12 @@ func (o LookupGlossaryEntryResultOutput) ToLookupGlossaryEntryResultOutput() Loo
 
 func (o LookupGlossaryEntryResultOutput) ToLookupGlossaryEntryResultOutputWithContext(ctx context.Context) LookupGlossaryEntryResultOutput {
 	return o
+}
+
+func (o LookupGlossaryEntryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlossaryEntryResult] {
+	return pulumix.Output[LookupGlossaryEntryResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes the glossary entry.

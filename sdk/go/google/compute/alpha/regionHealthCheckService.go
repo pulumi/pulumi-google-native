@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a regional HealthCheckService resource in the specified project and region using the data included in the request.
@@ -165,6 +166,12 @@ func (i *RegionHealthCheckService) ToRegionHealthCheckServiceOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckServiceOutput)
 }
 
+func (i *RegionHealthCheckService) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckService] {
+	return pulumix.Output[*RegionHealthCheckService]{
+		OutputState: i.ToRegionHealthCheckServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionHealthCheckServiceOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckServiceOutput) ElementType() reflect.Type {
@@ -177,6 +184,12 @@ func (o RegionHealthCheckServiceOutput) ToRegionHealthCheckServiceOutput() Regio
 
 func (o RegionHealthCheckServiceOutput) ToRegionHealthCheckServiceOutputWithContext(ctx context.Context) RegionHealthCheckServiceOutput {
 	return o
+}
+
+func (o RegionHealthCheckServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckService] {
+	return pulumix.Output[*RegionHealthCheckService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

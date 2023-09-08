@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
@@ -159,6 +160,12 @@ func (i *OrganizationJobTrigger) ToOrganizationJobTriggerOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationJobTriggerOutput)
 }
 
+func (i *OrganizationJobTrigger) ToOutput(ctx context.Context) pulumix.Output[*OrganizationJobTrigger] {
+	return pulumix.Output[*OrganizationJobTrigger]{
+		OutputState: i.ToOrganizationJobTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationJobTriggerOutput struct{ *pulumi.OutputState }
 
 func (OrganizationJobTriggerOutput) ElementType() reflect.Type {
@@ -171,6 +178,12 @@ func (o OrganizationJobTriggerOutput) ToOrganizationJobTriggerOutput() Organizat
 
 func (o OrganizationJobTriggerOutput) ToOrganizationJobTriggerOutputWithContext(ctx context.Context) OrganizationJobTriggerOutput {
 	return o
+}
+
+func (o OrganizationJobTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationJobTrigger] {
+	return pulumix.Output[*OrganizationJobTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp of a triggeredJob.

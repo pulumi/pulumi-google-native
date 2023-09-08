@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new MigratingVm in a given Source.
@@ -186,6 +187,12 @@ func (i *MigratingVm) ToMigratingVmOutputWithContext(ctx context.Context) Migrat
 	return pulumi.ToOutputWithContext(ctx, i).(MigratingVmOutput)
 }
 
+func (i *MigratingVm) ToOutput(ctx context.Context) pulumix.Output[*MigratingVm] {
+	return pulumix.Output[*MigratingVm]{
+		OutputState: i.ToMigratingVmOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MigratingVmOutput struct{ *pulumi.OutputState }
 
 func (MigratingVmOutput) ElementType() reflect.Type {
@@ -198,6 +205,12 @@ func (o MigratingVmOutput) ToMigratingVmOutput() MigratingVmOutput {
 
 func (o MigratingVmOutput) ToMigratingVmOutputWithContext(ctx context.Context) MigratingVmOutput {
 	return o
+}
+
+func (o MigratingVmOutput) ToOutput(ctx context.Context) pulumix.Output[*MigratingVm] {
+	return pulumix.Output[*MigratingVm]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details of the VM from an AWS source.

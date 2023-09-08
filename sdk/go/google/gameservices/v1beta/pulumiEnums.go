@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the permission that was checked.
@@ -257,6 +276,12 @@ func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToAuthorizationLoggingO
 	}).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
 }
 
+func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationLoggingOptionsPermissionType] {
+	return pulumix.Output[AuthorizationLoggingOptionsPermissionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -290,6 +315,12 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggi
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPermissionTypePtrOutput {
 	return o
+}
+
+func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationLoggingOptionsPermissionType] {
+	return pulumix.Output[*AuthorizationLoggingOptionsPermissionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) Elem() AuthorizationLoggingOptionsPermissionTypeOutput {
@@ -352,6 +383,12 @@ func (in *authorizationLoggingOptionsPermissionTypePtr) ToAuthorizationLoggingOp
 
 func (in *authorizationLoggingOptionsPermissionTypePtr) ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPermissionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
+}
+
+func (in *authorizationLoggingOptionsPermissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationLoggingOptionsPermissionType] {
+	return pulumix.Output[*AuthorizationLoggingOptionsPermissionType]{
+		OutputState: in.ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log_name to populate in the Cloud Audit Record.
@@ -426,6 +463,12 @@ func (o CloudAuditOptionsLogNameOutput) ToCloudAuditOptionsLogNamePtrOutputWithC
 	}).(CloudAuditOptionsLogNamePtrOutput)
 }
 
+func (o CloudAuditOptionsLogNameOutput) ToOutput(ctx context.Context) pulumix.Output[CloudAuditOptionsLogName] {
+	return pulumix.Output[CloudAuditOptionsLogName]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudAuditOptionsLogNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -459,6 +502,12 @@ func (o CloudAuditOptionsLogNamePtrOutput) ToCloudAuditOptionsLogNamePtrOutput()
 
 func (o CloudAuditOptionsLogNamePtrOutput) ToCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) CloudAuditOptionsLogNamePtrOutput {
 	return o
+}
+
+func (o CloudAuditOptionsLogNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudAuditOptionsLogName] {
+	return pulumix.Output[*CloudAuditOptionsLogName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudAuditOptionsLogNamePtrOutput) Elem() CloudAuditOptionsLogNameOutput {
@@ -521,6 +570,12 @@ func (in *cloudAuditOptionsLogNamePtr) ToCloudAuditOptionsLogNamePtrOutput() Clo
 
 func (in *cloudAuditOptionsLogNamePtr) ToCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) CloudAuditOptionsLogNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudAuditOptionsLogNamePtrOutput)
+}
+
+func (in *cloudAuditOptionsLogNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudAuditOptionsLogName] {
+	return pulumix.Output[*CloudAuditOptionsLogName]{
+		OutputState: in.ToCloudAuditOptionsLogNamePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Trusted attributes supplied by the IAM system.
@@ -605,6 +660,12 @@ func (o ConditionIamOutput) ToConditionIamPtrOutputWithContext(ctx context.Conte
 	}).(ConditionIamPtrOutput)
 }
 
+func (o ConditionIamOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionIam] {
+	return pulumix.Output[ConditionIam]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionIamOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -638,6 +699,12 @@ func (o ConditionIamPtrOutput) ToConditionIamPtrOutput() ConditionIamPtrOutput {
 
 func (o ConditionIamPtrOutput) ToConditionIamPtrOutputWithContext(ctx context.Context) ConditionIamPtrOutput {
 	return o
+}
+
+func (o ConditionIamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionIam] {
+	return pulumix.Output[*ConditionIam]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionIamPtrOutput) Elem() ConditionIamOutput {
@@ -700,6 +767,12 @@ func (in *conditionIamPtr) ToConditionIamPtrOutput() ConditionIamPtrOutput {
 
 func (in *conditionIamPtr) ToConditionIamPtrOutputWithContext(ctx context.Context) ConditionIamPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionIamPtrOutput)
+}
+
+func (in *conditionIamPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionIam] {
+	return pulumix.Output[*ConditionIam]{
+		OutputState: in.ToConditionIamPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // An operator to apply the subject with.
@@ -780,6 +853,12 @@ func (o ConditionOpOutput) ToConditionOpPtrOutputWithContext(ctx context.Context
 	}).(ConditionOpPtrOutput)
 }
 
+func (o ConditionOpOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionOp] {
+	return pulumix.Output[ConditionOp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionOpOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -813,6 +892,12 @@ func (o ConditionOpPtrOutput) ToConditionOpPtrOutput() ConditionOpPtrOutput {
 
 func (o ConditionOpPtrOutput) ToConditionOpPtrOutputWithContext(ctx context.Context) ConditionOpPtrOutput {
 	return o
+}
+
+func (o ConditionOpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionOp] {
+	return pulumix.Output[*ConditionOp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionOpPtrOutput) Elem() ConditionOpOutput {
@@ -875,6 +960,12 @@ func (in *conditionOpPtr) ToConditionOpPtrOutput() ConditionOpPtrOutput {
 
 func (in *conditionOpPtr) ToConditionOpPtrOutputWithContext(ctx context.Context) ConditionOpPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOpPtrOutput)
+}
+
+func (in *conditionOpPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOp] {
+	return pulumix.Output[*ConditionOp]{
+		OutputState: in.ToConditionOpPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
@@ -953,6 +1044,12 @@ func (o ConditionSysOutput) ToConditionSysPtrOutputWithContext(ctx context.Conte
 	}).(ConditionSysPtrOutput)
 }
 
+func (o ConditionSysOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionSys] {
+	return pulumix.Output[ConditionSys]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionSysOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -986,6 +1083,12 @@ func (o ConditionSysPtrOutput) ToConditionSysPtrOutput() ConditionSysPtrOutput {
 
 func (o ConditionSysPtrOutput) ToConditionSysPtrOutputWithContext(ctx context.Context) ConditionSysPtrOutput {
 	return o
+}
+
+func (o ConditionSysPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionSys] {
+	return pulumix.Output[*ConditionSys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionSysPtrOutput) Elem() ConditionSysOutput {
@@ -1048,6 +1151,12 @@ func (in *conditionSysPtr) ToConditionSysPtrOutput() ConditionSysPtrOutput {
 
 func (in *conditionSysPtr) ToConditionSysPtrOutputWithContext(ctx context.Context) ConditionSysPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionSysPtrOutput)
+}
+
+func (in *conditionSysPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionSys] {
+	return pulumix.Output[*ConditionSys]{
+		OutputState: in.ToConditionSysPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type DataAccessOptionsLogMode string
@@ -1119,6 +1228,12 @@ func (o DataAccessOptionsLogModeOutput) ToDataAccessOptionsLogModePtrOutputWithC
 	}).(DataAccessOptionsLogModePtrOutput)
 }
 
+func (o DataAccessOptionsLogModeOutput) ToOutput(ctx context.Context) pulumix.Output[DataAccessOptionsLogMode] {
+	return pulumix.Output[DataAccessOptionsLogMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataAccessOptionsLogModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1152,6 +1267,12 @@ func (o DataAccessOptionsLogModePtrOutput) ToDataAccessOptionsLogModePtrOutput()
 
 func (o DataAccessOptionsLogModePtrOutput) ToDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) DataAccessOptionsLogModePtrOutput {
 	return o
+}
+
+func (o DataAccessOptionsLogModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataAccessOptionsLogMode] {
+	return pulumix.Output[*DataAccessOptionsLogMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataAccessOptionsLogModePtrOutput) Elem() DataAccessOptionsLogModeOutput {
@@ -1214,6 +1335,12 @@ func (in *dataAccessOptionsLogModePtr) ToDataAccessOptionsLogModePtrOutput() Dat
 
 func (in *dataAccessOptionsLogModePtr) ToDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) DataAccessOptionsLogModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataAccessOptionsLogModePtrOutput)
+}
+
+func (in *dataAccessOptionsLogModePtr) ToOutput(ctx context.Context) pulumix.Output[*DataAccessOptionsLogMode] {
+	return pulumix.Output[*DataAccessOptionsLogMode]{
+		OutputState: in.ToDataAccessOptionsLogModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required
@@ -1294,6 +1421,12 @@ func (o RuleActionOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) 
 	}).(RuleActionPtrOutput)
 }
 
+func (o RuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[RuleAction] {
+	return pulumix.Output[RuleAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuleActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1327,6 +1460,12 @@ func (o RuleActionPtrOutput) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (o RuleActionPtrOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return o
+}
+
+func (o RuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
+	return pulumix.Output[*RuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleActionPtrOutput) Elem() RuleActionOutput {
@@ -1389,6 +1528,12 @@ func (in *ruleActionPtr) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (in *ruleActionPtr) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleActionPtrOutput)
+}
+
+func (in *ruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
+	return pulumix.Output[*RuleAction]{
+		OutputState: in.ToRuleActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

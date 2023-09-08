@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ClientConnectorService.
@@ -80,6 +81,12 @@ func (o LookupClientConnectorServiceResultOutput) ToLookupClientConnectorService
 
 func (o LookupClientConnectorServiceResultOutput) ToLookupClientConnectorServiceResultOutputWithContext(ctx context.Context) LookupClientConnectorServiceResultOutput {
 	return o
+}
+
+func (o LookupClientConnectorServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClientConnectorServiceResult] {
+	return pulumix.Output[LookupClientConnectorServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [Output only] Create time stamp.

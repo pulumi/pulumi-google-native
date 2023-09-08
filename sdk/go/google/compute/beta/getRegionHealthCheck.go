@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified HealthCheck resource.
@@ -96,6 +97,12 @@ func (o LookupRegionHealthCheckResultOutput) ToLookupRegionHealthCheckResultOutp
 
 func (o LookupRegionHealthCheckResultOutput) ToLookupRegionHealthCheckResultOutputWithContext(ctx context.Context) LookupRegionHealthCheckResultOutput {
 	return o
+}
+
+func (o LookupRegionHealthCheckResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionHealthCheckResult] {
+	return pulumix.Output[LookupRegionHealthCheckResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How often (in seconds) to send a health check. The default value is 5 seconds.

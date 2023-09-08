@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ServiceClass in a given project and location.
@@ -135,6 +136,12 @@ func (i *ServiceClass) ToServiceClassOutputWithContext(ctx context.Context) Serv
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceClassOutput)
 }
 
+func (i *ServiceClass) ToOutput(ctx context.Context) pulumix.Output[*ServiceClass] {
+	return pulumix.Output[*ServiceClass]{
+		OutputState: i.ToServiceClassOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceClassOutput struct{ *pulumi.OutputState }
 
 func (ServiceClassOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o ServiceClassOutput) ToServiceClassOutput() ServiceClassOutput {
 
 func (o ServiceClassOutput) ToServiceClassOutputWithContext(ctx context.Context) ServiceClassOutput {
 	return o
+}
+
+func (o ServiceClassOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceClass] {
+	return pulumix.Output[*ServiceClass]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time when the ServiceClass was created.

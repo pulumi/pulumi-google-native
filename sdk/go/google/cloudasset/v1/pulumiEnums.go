@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Asset content type. If not specified, no content but the asset name and type will be returned.
@@ -90,6 +91,12 @@ func (o FeedContentTypeOutput) ToFeedContentTypePtrOutputWithContext(ctx context
 	}).(FeedContentTypePtrOutput)
 }
 
+func (o FeedContentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FeedContentType] {
+	return pulumix.Output[FeedContentType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FeedContentTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -123,6 +130,12 @@ func (o FeedContentTypePtrOutput) ToFeedContentTypePtrOutput() FeedContentTypePt
 
 func (o FeedContentTypePtrOutput) ToFeedContentTypePtrOutputWithContext(ctx context.Context) FeedContentTypePtrOutput {
 	return o
+}
+
+func (o FeedContentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeedContentType] {
+	return pulumix.Output[*FeedContentType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeedContentTypePtrOutput) Elem() FeedContentTypeOutput {
@@ -185,6 +198,12 @@ func (in *feedContentTypePtr) ToFeedContentTypePtrOutput() FeedContentTypePtrOut
 
 func (in *feedContentTypePtr) ToFeedContentTypePtrOutputWithContext(ctx context.Context) FeedContentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeedContentTypePtrOutput)
+}
+
+func (in *feedContentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FeedContentType] {
+	return pulumix.Output[*FeedContentType]{
+		OutputState: in.ToFeedContentTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

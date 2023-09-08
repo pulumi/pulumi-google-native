@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
@@ -82,6 +83,12 @@ func (o ApiConfigHandlerAuthFailActionOutput) ToApiConfigHandlerAuthFailActionPt
 	}).(ApiConfigHandlerAuthFailActionPtrOutput)
 }
 
+func (o ApiConfigHandlerAuthFailActionOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigHandlerAuthFailAction] {
+	return pulumix.Output[ApiConfigHandlerAuthFailAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApiConfigHandlerAuthFailActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o ApiConfigHandlerAuthFailActionPtrOutput) ToApiConfigHandlerAuthFailActio
 
 func (o ApiConfigHandlerAuthFailActionPtrOutput) ToApiConfigHandlerAuthFailActionPtrOutputWithContext(ctx context.Context) ApiConfigHandlerAuthFailActionPtrOutput {
 	return o
+}
+
+func (o ApiConfigHandlerAuthFailActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerAuthFailAction] {
+	return pulumix.Output[*ApiConfigHandlerAuthFailAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiConfigHandlerAuthFailActionPtrOutput) Elem() ApiConfigHandlerAuthFailActionOutput {
@@ -177,6 +190,12 @@ func (in *apiConfigHandlerAuthFailActionPtr) ToApiConfigHandlerAuthFailActionPtr
 
 func (in *apiConfigHandlerAuthFailActionPtr) ToApiConfigHandlerAuthFailActionPtrOutputWithContext(ctx context.Context) ApiConfigHandlerAuthFailActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApiConfigHandlerAuthFailActionPtrOutput)
+}
+
+func (in *apiConfigHandlerAuthFailActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerAuthFailAction] {
+	return pulumix.Output[*ApiConfigHandlerAuthFailAction]{
+		OutputState: in.ToApiConfigHandlerAuthFailActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Level of login required to access this resource. Defaults to optional.
@@ -253,6 +272,12 @@ func (o ApiConfigHandlerLoginOutput) ToApiConfigHandlerLoginPtrOutputWithContext
 	}).(ApiConfigHandlerLoginPtrOutput)
 }
 
+func (o ApiConfigHandlerLoginOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigHandlerLogin] {
+	return pulumix.Output[ApiConfigHandlerLogin]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApiConfigHandlerLoginOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o ApiConfigHandlerLoginPtrOutput) ToApiConfigHandlerLoginPtrOutput() ApiCo
 
 func (o ApiConfigHandlerLoginPtrOutput) ToApiConfigHandlerLoginPtrOutputWithContext(ctx context.Context) ApiConfigHandlerLoginPtrOutput {
 	return o
+}
+
+func (o ApiConfigHandlerLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerLogin] {
+	return pulumix.Output[*ApiConfigHandlerLogin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiConfigHandlerLoginPtrOutput) Elem() ApiConfigHandlerLoginOutput {
@@ -348,6 +379,12 @@ func (in *apiConfigHandlerLoginPtr) ToApiConfigHandlerLoginPtrOutput() ApiConfig
 
 func (in *apiConfigHandlerLoginPtr) ToApiConfigHandlerLoginPtrOutputWithContext(ctx context.Context) ApiConfigHandlerLoginPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApiConfigHandlerLoginPtrOutput)
+}
+
+func (in *apiConfigHandlerLoginPtr) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerLogin] {
+	return pulumix.Output[*ApiConfigHandlerLogin]{
+		OutputState: in.ToApiConfigHandlerLoginPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Security (HTTPS) enforcement for this URL.
@@ -426,6 +463,12 @@ func (o ApiConfigHandlerSecurityLevelOutput) ToApiConfigHandlerSecurityLevelPtrO
 	}).(ApiConfigHandlerSecurityLevelPtrOutput)
 }
 
+func (o ApiConfigHandlerSecurityLevelOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigHandlerSecurityLevel] {
+	return pulumix.Output[ApiConfigHandlerSecurityLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApiConfigHandlerSecurityLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -459,6 +502,12 @@ func (o ApiConfigHandlerSecurityLevelPtrOutput) ToApiConfigHandlerSecurityLevelP
 
 func (o ApiConfigHandlerSecurityLevelPtrOutput) ToApiConfigHandlerSecurityLevelPtrOutputWithContext(ctx context.Context) ApiConfigHandlerSecurityLevelPtrOutput {
 	return o
+}
+
+func (o ApiConfigHandlerSecurityLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerSecurityLevel] {
+	return pulumix.Output[*ApiConfigHandlerSecurityLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiConfigHandlerSecurityLevelPtrOutput) Elem() ApiConfigHandlerSecurityLevelOutput {
@@ -521,6 +570,12 @@ func (in *apiConfigHandlerSecurityLevelPtr) ToApiConfigHandlerSecurityLevelPtrOu
 
 func (in *apiConfigHandlerSecurityLevelPtr) ToApiConfigHandlerSecurityLevelPtrOutputWithContext(ctx context.Context) ApiConfigHandlerSecurityLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApiConfigHandlerSecurityLevelPtrOutput)
+}
+
+func (in *apiConfigHandlerSecurityLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerSecurityLevel] {
+	return pulumix.Output[*ApiConfigHandlerSecurityLevel]{
+		OutputState: in.ToApiConfigHandlerSecurityLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the Cloud Firestore or Cloud Datastore database associated with this application.
@@ -597,6 +652,12 @@ func (o AppDatabaseTypeOutput) ToAppDatabaseTypePtrOutputWithContext(ctx context
 	}).(AppDatabaseTypePtrOutput)
 }
 
+func (o AppDatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppDatabaseType] {
+	return pulumix.Output[AppDatabaseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppDatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -630,6 +691,12 @@ func (o AppDatabaseTypePtrOutput) ToAppDatabaseTypePtrOutput() AppDatabaseTypePt
 
 func (o AppDatabaseTypePtrOutput) ToAppDatabaseTypePtrOutputWithContext(ctx context.Context) AppDatabaseTypePtrOutput {
 	return o
+}
+
+func (o AppDatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppDatabaseType] {
+	return pulumix.Output[*AppDatabaseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppDatabaseTypePtrOutput) Elem() AppDatabaseTypeOutput {
@@ -692,6 +759,12 @@ func (in *appDatabaseTypePtr) ToAppDatabaseTypePtrOutput() AppDatabaseTypePtrOut
 
 func (in *appDatabaseTypePtr) ToAppDatabaseTypePtrOutputWithContext(ctx context.Context) AppDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppDatabaseTypePtrOutput)
+}
+
+func (in *appDatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppDatabaseType] {
+	return pulumix.Output[*AppDatabaseType]{
+		OutputState: in.ToAppDatabaseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Serving status of this application.
@@ -768,6 +841,12 @@ func (o AppServingStatusOutput) ToAppServingStatusPtrOutputWithContext(ctx conte
 	}).(AppServingStatusPtrOutput)
 }
 
+func (o AppServingStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AppServingStatus] {
+	return pulumix.Output[AppServingStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppServingStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -801,6 +880,12 @@ func (o AppServingStatusPtrOutput) ToAppServingStatusPtrOutput() AppServingStatu
 
 func (o AppServingStatusPtrOutput) ToAppServingStatusPtrOutputWithContext(ctx context.Context) AppServingStatusPtrOutput {
 	return o
+}
+
+func (o AppServingStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServingStatus] {
+	return pulumix.Output[*AppServingStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppServingStatusPtrOutput) Elem() AppServingStatusOutput {
@@ -863,6 +948,12 @@ func (in *appServingStatusPtr) ToAppServingStatusPtrOutput() AppServingStatusPtr
 
 func (in *appServingStatusPtr) ToAppServingStatusPtrOutputWithContext(ctx context.Context) AppServingStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppServingStatusPtrOutput)
+}
+
+func (in *appServingStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AppServingStatus] {
+	return pulumix.Output[*AppServingStatus]{
+		OutputState: in.ToAppServingStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the Cloud Firestore or Cloud Datastore database associated with this application.
@@ -939,6 +1030,12 @@ func (o ApplicationDatabaseTypeOutput) ToApplicationDatabaseTypePtrOutputWithCon
 	}).(ApplicationDatabaseTypePtrOutput)
 }
 
+func (o ApplicationDatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationDatabaseType] {
+	return pulumix.Output[ApplicationDatabaseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationDatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -972,6 +1069,12 @@ func (o ApplicationDatabaseTypePtrOutput) ToApplicationDatabaseTypePtrOutput() A
 
 func (o ApplicationDatabaseTypePtrOutput) ToApplicationDatabaseTypePtrOutputWithContext(ctx context.Context) ApplicationDatabaseTypePtrOutput {
 	return o
+}
+
+func (o ApplicationDatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDatabaseType] {
+	return pulumix.Output[*ApplicationDatabaseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationDatabaseTypePtrOutput) Elem() ApplicationDatabaseTypeOutput {
@@ -1034,6 +1137,12 @@ func (in *applicationDatabaseTypePtr) ToApplicationDatabaseTypePtrOutput() Appli
 
 func (in *applicationDatabaseTypePtr) ToApplicationDatabaseTypePtrOutputWithContext(ctx context.Context) ApplicationDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationDatabaseTypePtrOutput)
+}
+
+func (in *applicationDatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDatabaseType] {
+	return pulumix.Output[*ApplicationDatabaseType]{
+		OutputState: in.ToApplicationDatabaseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Serving status of this application.
@@ -1110,6 +1219,12 @@ func (o ApplicationServingStatusOutput) ToApplicationServingStatusPtrOutputWithC
 	}).(ApplicationServingStatusPtrOutput)
 }
 
+func (o ApplicationServingStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationServingStatus] {
+	return pulumix.Output[ApplicationServingStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationServingStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1143,6 +1258,12 @@ func (o ApplicationServingStatusPtrOutput) ToApplicationServingStatusPtrOutput()
 
 func (o ApplicationServingStatusPtrOutput) ToApplicationServingStatusPtrOutputWithContext(ctx context.Context) ApplicationServingStatusPtrOutput {
 	return o
+}
+
+func (o ApplicationServingStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationServingStatus] {
+	return pulumix.Output[*ApplicationServingStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationServingStatusPtrOutput) Elem() ApplicationServingStatusOutput {
@@ -1205,6 +1326,12 @@ func (in *applicationServingStatusPtr) ToApplicationServingStatusPtrOutput() App
 
 func (in *applicationServingStatusPtr) ToApplicationServingStatusPtrOutputWithContext(ctx context.Context) ApplicationServingStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationServingStatusPtrOutput)
+}
+
+func (in *applicationServingStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationServingStatus] {
+	return pulumix.Output[*ApplicationServingStatus]{
+		OutputState: in.ToApplicationServingStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
@@ -1279,6 +1406,12 @@ func (o EndpointsApiServiceRolloutStrategyOutput) ToEndpointsApiServiceRolloutSt
 	}).(EndpointsApiServiceRolloutStrategyPtrOutput)
 }
 
+func (o EndpointsApiServiceRolloutStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointsApiServiceRolloutStrategy] {
+	return pulumix.Output[EndpointsApiServiceRolloutStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointsApiServiceRolloutStrategyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1312,6 +1445,12 @@ func (o EndpointsApiServiceRolloutStrategyPtrOutput) ToEndpointsApiServiceRollou
 
 func (o EndpointsApiServiceRolloutStrategyPtrOutput) ToEndpointsApiServiceRolloutStrategyPtrOutputWithContext(ctx context.Context) EndpointsApiServiceRolloutStrategyPtrOutput {
 	return o
+}
+
+func (o EndpointsApiServiceRolloutStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointsApiServiceRolloutStrategy] {
+	return pulumix.Output[*EndpointsApiServiceRolloutStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointsApiServiceRolloutStrategyPtrOutput) Elem() EndpointsApiServiceRolloutStrategyOutput {
@@ -1374,6 +1513,12 @@ func (in *endpointsApiServiceRolloutStrategyPtr) ToEndpointsApiServiceRolloutStr
 
 func (in *endpointsApiServiceRolloutStrategyPtr) ToEndpointsApiServiceRolloutStrategyPtrOutputWithContext(ctx context.Context) EndpointsApiServiceRolloutStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointsApiServiceRolloutStrategyPtrOutput)
+}
+
+func (in *endpointsApiServiceRolloutStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointsApiServiceRolloutStrategy] {
+	return pulumix.Output[*EndpointsApiServiceRolloutStrategy]{
+		OutputState: in.ToEndpointsApiServiceRolloutStrategyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Error condition this handler applies to.
@@ -1452,6 +1597,12 @@ func (o ErrorHandlerErrorCodeOutput) ToErrorHandlerErrorCodePtrOutputWithContext
 	}).(ErrorHandlerErrorCodePtrOutput)
 }
 
+func (o ErrorHandlerErrorCodeOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorHandlerErrorCode] {
+	return pulumix.Output[ErrorHandlerErrorCode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ErrorHandlerErrorCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1485,6 +1636,12 @@ func (o ErrorHandlerErrorCodePtrOutput) ToErrorHandlerErrorCodePtrOutput() Error
 
 func (o ErrorHandlerErrorCodePtrOutput) ToErrorHandlerErrorCodePtrOutputWithContext(ctx context.Context) ErrorHandlerErrorCodePtrOutput {
 	return o
+}
+
+func (o ErrorHandlerErrorCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorHandlerErrorCode] {
+	return pulumix.Output[*ErrorHandlerErrorCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErrorHandlerErrorCodePtrOutput) Elem() ErrorHandlerErrorCodeOutput {
@@ -1547,6 +1704,12 @@ func (in *errorHandlerErrorCodePtr) ToErrorHandlerErrorCodePtrOutput() ErrorHand
 
 func (in *errorHandlerErrorCodePtr) ToErrorHandlerErrorCodePtrOutputWithContext(ctx context.Context) ErrorHandlerErrorCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ErrorHandlerErrorCodePtrOutput)
+}
+
+func (in *errorHandlerErrorCodePtr) ToOutput(ctx context.Context) pulumix.Output[*ErrorHandlerErrorCode] {
+	return pulumix.Output[*ErrorHandlerErrorCode]{
+		OutputState: in.ToErrorHandlerErrorCodePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The action to take on matched requests.
@@ -1620,6 +1783,12 @@ func (o IngressRuleActionOutput) ToIngressRuleActionPtrOutputWithContext(ctx con
 	}).(IngressRuleActionPtrOutput)
 }
 
+func (o IngressRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[IngressRuleAction] {
+	return pulumix.Output[IngressRuleAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IngressRuleActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1653,6 +1822,12 @@ func (o IngressRuleActionPtrOutput) ToIngressRuleActionPtrOutput() IngressRuleAc
 
 func (o IngressRuleActionPtrOutput) ToIngressRuleActionPtrOutputWithContext(ctx context.Context) IngressRuleActionPtrOutput {
 	return o
+}
+
+func (o IngressRuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IngressRuleAction] {
+	return pulumix.Output[*IngressRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressRuleActionPtrOutput) Elem() IngressRuleActionOutput {
@@ -1715,6 +1890,12 @@ func (in *ingressRuleActionPtr) ToIngressRuleActionPtrOutput() IngressRuleAction
 
 func (in *ingressRuleActionPtr) ToIngressRuleActionPtrOutputWithContext(ctx context.Context) IngressRuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IngressRuleActionPtrOutput)
+}
+
+func (in *ingressRuleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*IngressRuleAction] {
+	return pulumix.Output[*IngressRuleAction]{
+		OutputState: in.ToIngressRuleActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The IP mode for instances. Only applicable in the App Engine flexible environment.
@@ -1789,6 +1970,12 @@ func (o NetworkInstanceIpModeOutput) ToNetworkInstanceIpModePtrOutputWithContext
 	}).(NetworkInstanceIpModePtrOutput)
 }
 
+func (o NetworkInstanceIpModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInstanceIpMode] {
+	return pulumix.Output[NetworkInstanceIpMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkInstanceIpModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1822,6 +2009,12 @@ func (o NetworkInstanceIpModePtrOutput) ToNetworkInstanceIpModePtrOutput() Netwo
 
 func (o NetworkInstanceIpModePtrOutput) ToNetworkInstanceIpModePtrOutputWithContext(ctx context.Context) NetworkInstanceIpModePtrOutput {
 	return o
+}
+
+func (o NetworkInstanceIpModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInstanceIpMode] {
+	return pulumix.Output[*NetworkInstanceIpMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkInstanceIpModePtrOutput) Elem() NetworkInstanceIpModeOutput {
@@ -1884,6 +2077,12 @@ func (in *networkInstanceIpModePtr) ToNetworkInstanceIpModePtrOutput() NetworkIn
 
 func (in *networkInstanceIpModePtr) ToNetworkInstanceIpModePtrOutputWithContext(ctx context.Context) NetworkInstanceIpModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInstanceIpModePtrOutput)
+}
+
+func (in *networkInstanceIpModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInstanceIpMode] {
+	return pulumix.Output[*NetworkInstanceIpMode]{
+		OutputState: in.ToNetworkInstanceIpModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
@@ -1956,6 +2155,12 @@ func (o SslSettingsSslManagementTypeOutput) ToSslSettingsSslManagementTypePtrOut
 	}).(SslSettingsSslManagementTypePtrOutput)
 }
 
+func (o SslSettingsSslManagementTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SslSettingsSslManagementType] {
+	return pulumix.Output[SslSettingsSslManagementType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SslSettingsSslManagementTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1989,6 +2194,12 @@ func (o SslSettingsSslManagementTypePtrOutput) ToSslSettingsSslManagementTypePtr
 
 func (o SslSettingsSslManagementTypePtrOutput) ToSslSettingsSslManagementTypePtrOutputWithContext(ctx context.Context) SslSettingsSslManagementTypePtrOutput {
 	return o
+}
+
+func (o SslSettingsSslManagementTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslSettingsSslManagementType] {
+	return pulumix.Output[*SslSettingsSslManagementType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SslSettingsSslManagementTypePtrOutput) Elem() SslSettingsSslManagementTypeOutput {
@@ -2051,6 +2262,12 @@ func (in *sslSettingsSslManagementTypePtr) ToSslSettingsSslManagementTypePtrOutp
 
 func (in *sslSettingsSslManagementTypePtr) ToSslSettingsSslManagementTypePtrOutputWithContext(ctx context.Context) SslSettingsSslManagementTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslSettingsSslManagementTypePtrOutput)
+}
+
+func (in *sslSettingsSslManagementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SslSettingsSslManagementType] {
+	return pulumix.Output[*SslSettingsSslManagementType]{
+		OutputState: in.ToSslSettingsSslManagementTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
@@ -2125,6 +2342,12 @@ func (o UrlMapAuthFailActionOutput) ToUrlMapAuthFailActionPtrOutputWithContext(c
 	}).(UrlMapAuthFailActionPtrOutput)
 }
 
+func (o UrlMapAuthFailActionOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapAuthFailAction] {
+	return pulumix.Output[UrlMapAuthFailAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UrlMapAuthFailActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2158,6 +2381,12 @@ func (o UrlMapAuthFailActionPtrOutput) ToUrlMapAuthFailActionPtrOutput() UrlMapA
 
 func (o UrlMapAuthFailActionPtrOutput) ToUrlMapAuthFailActionPtrOutputWithContext(ctx context.Context) UrlMapAuthFailActionPtrOutput {
 	return o
+}
+
+func (o UrlMapAuthFailActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapAuthFailAction] {
+	return pulumix.Output[*UrlMapAuthFailAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UrlMapAuthFailActionPtrOutput) Elem() UrlMapAuthFailActionOutput {
@@ -2220,6 +2449,12 @@ func (in *urlMapAuthFailActionPtr) ToUrlMapAuthFailActionPtrOutput() UrlMapAuthF
 
 func (in *urlMapAuthFailActionPtr) ToUrlMapAuthFailActionPtrOutputWithContext(ctx context.Context) UrlMapAuthFailActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapAuthFailActionPtrOutput)
+}
+
+func (in *urlMapAuthFailActionPtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapAuthFailAction] {
+	return pulumix.Output[*UrlMapAuthFailAction]{
+		OutputState: in.ToUrlMapAuthFailActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
@@ -2296,6 +2531,12 @@ func (o UrlMapLoginOutput) ToUrlMapLoginPtrOutputWithContext(ctx context.Context
 	}).(UrlMapLoginPtrOutput)
 }
 
+func (o UrlMapLoginOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapLogin] {
+	return pulumix.Output[UrlMapLogin]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UrlMapLoginOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2329,6 +2570,12 @@ func (o UrlMapLoginPtrOutput) ToUrlMapLoginPtrOutput() UrlMapLoginPtrOutput {
 
 func (o UrlMapLoginPtrOutput) ToUrlMapLoginPtrOutputWithContext(ctx context.Context) UrlMapLoginPtrOutput {
 	return o
+}
+
+func (o UrlMapLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapLogin] {
+	return pulumix.Output[*UrlMapLogin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UrlMapLoginPtrOutput) Elem() UrlMapLoginOutput {
@@ -2391,6 +2638,12 @@ func (in *urlMapLoginPtr) ToUrlMapLoginPtrOutput() UrlMapLoginPtrOutput {
 
 func (in *urlMapLoginPtr) ToUrlMapLoginPtrOutputWithContext(ctx context.Context) UrlMapLoginPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapLoginPtrOutput)
+}
+
+func (in *urlMapLoginPtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapLogin] {
+	return pulumix.Output[*UrlMapLogin]{
+		OutputState: in.ToUrlMapLoginPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // 30x code to use when performing redirects for the secure field. Defaults to 302.
@@ -2469,6 +2722,12 @@ func (o UrlMapRedirectHttpResponseCodeOutput) ToUrlMapRedirectHttpResponseCodePt
 	}).(UrlMapRedirectHttpResponseCodePtrOutput)
 }
 
+func (o UrlMapRedirectHttpResponseCodeOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapRedirectHttpResponseCode] {
+	return pulumix.Output[UrlMapRedirectHttpResponseCode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UrlMapRedirectHttpResponseCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2502,6 +2761,12 @@ func (o UrlMapRedirectHttpResponseCodePtrOutput) ToUrlMapRedirectHttpResponseCod
 
 func (o UrlMapRedirectHttpResponseCodePtrOutput) ToUrlMapRedirectHttpResponseCodePtrOutputWithContext(ctx context.Context) UrlMapRedirectHttpResponseCodePtrOutput {
 	return o
+}
+
+func (o UrlMapRedirectHttpResponseCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapRedirectHttpResponseCode] {
+	return pulumix.Output[*UrlMapRedirectHttpResponseCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UrlMapRedirectHttpResponseCodePtrOutput) Elem() UrlMapRedirectHttpResponseCodeOutput {
@@ -2564,6 +2829,12 @@ func (in *urlMapRedirectHttpResponseCodePtr) ToUrlMapRedirectHttpResponseCodePtr
 
 func (in *urlMapRedirectHttpResponseCodePtr) ToUrlMapRedirectHttpResponseCodePtrOutputWithContext(ctx context.Context) UrlMapRedirectHttpResponseCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapRedirectHttpResponseCodePtrOutput)
+}
+
+func (in *urlMapRedirectHttpResponseCodePtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapRedirectHttpResponseCode] {
+	return pulumix.Output[*UrlMapRedirectHttpResponseCode]{
+		OutputState: in.ToUrlMapRedirectHttpResponseCodePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Security (HTTPS) enforcement for this URL.
@@ -2642,6 +2913,12 @@ func (o UrlMapSecurityLevelOutput) ToUrlMapSecurityLevelPtrOutputWithContext(ctx
 	}).(UrlMapSecurityLevelPtrOutput)
 }
 
+func (o UrlMapSecurityLevelOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapSecurityLevel] {
+	return pulumix.Output[UrlMapSecurityLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UrlMapSecurityLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2675,6 +2952,12 @@ func (o UrlMapSecurityLevelPtrOutput) ToUrlMapSecurityLevelPtrOutput() UrlMapSec
 
 func (o UrlMapSecurityLevelPtrOutput) ToUrlMapSecurityLevelPtrOutputWithContext(ctx context.Context) UrlMapSecurityLevelPtrOutput {
 	return o
+}
+
+func (o UrlMapSecurityLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapSecurityLevel] {
+	return pulumix.Output[*UrlMapSecurityLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UrlMapSecurityLevelPtrOutput) Elem() UrlMapSecurityLevelOutput {
@@ -2737,6 +3020,12 @@ func (in *urlMapSecurityLevelPtr) ToUrlMapSecurityLevelPtrOutput() UrlMapSecurit
 
 func (in *urlMapSecurityLevelPtr) ToUrlMapSecurityLevelPtrOutputWithContext(ctx context.Context) UrlMapSecurityLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapSecurityLevelPtrOutput)
+}
+
+func (in *urlMapSecurityLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapSecurityLevel] {
+	return pulumix.Output[*UrlMapSecurityLevel]{
+		OutputState: in.ToUrlMapSecurityLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type VersionInboundServicesItem string
@@ -2822,6 +3111,12 @@ func (o VersionInboundServicesItemOutput) ToVersionInboundServicesItemPtrOutputW
 	}).(VersionInboundServicesItemPtrOutput)
 }
 
+func (o VersionInboundServicesItemOutput) ToOutput(ctx context.Context) pulumix.Output[VersionInboundServicesItem] {
+	return pulumix.Output[VersionInboundServicesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VersionInboundServicesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2855,6 +3150,12 @@ func (o VersionInboundServicesItemPtrOutput) ToVersionInboundServicesItemPtrOutp
 
 func (o VersionInboundServicesItemPtrOutput) ToVersionInboundServicesItemPtrOutputWithContext(ctx context.Context) VersionInboundServicesItemPtrOutput {
 	return o
+}
+
+func (o VersionInboundServicesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VersionInboundServicesItem] {
+	return pulumix.Output[*VersionInboundServicesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VersionInboundServicesItemPtrOutput) Elem() VersionInboundServicesItemOutput {
@@ -2919,6 +3220,12 @@ func (in *versionInboundServicesItemPtr) ToVersionInboundServicesItemPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(VersionInboundServicesItemPtrOutput)
 }
 
+func (in *versionInboundServicesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionInboundServicesItem] {
+	return pulumix.Output[*VersionInboundServicesItem]{
+		OutputState: in.ToVersionInboundServicesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VersionInboundServicesItemArrayInput is an input type that accepts VersionInboundServicesItemArray and VersionInboundServicesItemArrayOutput values.
 // You can construct a concrete instance of `VersionInboundServicesItemArrayInput` via:
 //
@@ -2944,6 +3251,12 @@ func (i VersionInboundServicesItemArray) ToVersionInboundServicesItemArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(VersionInboundServicesItemArrayOutput)
 }
 
+func (i VersionInboundServicesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]VersionInboundServicesItem] {
+	return pulumix.Output[[]VersionInboundServicesItem]{
+		OutputState: i.ToVersionInboundServicesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VersionInboundServicesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (VersionInboundServicesItemArrayOutput) ElementType() reflect.Type {
@@ -2956,6 +3269,12 @@ func (o VersionInboundServicesItemArrayOutput) ToVersionInboundServicesItemArray
 
 func (o VersionInboundServicesItemArrayOutput) ToVersionInboundServicesItemArrayOutputWithContext(ctx context.Context) VersionInboundServicesItemArrayOutput {
 	return o
+}
+
+func (o VersionInboundServicesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VersionInboundServicesItem] {
+	return pulumix.Output[[]VersionInboundServicesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VersionInboundServicesItemArrayOutput) Index(i pulumi.IntInput) VersionInboundServicesItemOutput {
@@ -3036,6 +3355,12 @@ func (o VersionServingStatusOutput) ToVersionServingStatusPtrOutputWithContext(c
 	}).(VersionServingStatusPtrOutput)
 }
 
+func (o VersionServingStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VersionServingStatus] {
+	return pulumix.Output[VersionServingStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VersionServingStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3069,6 +3394,12 @@ func (o VersionServingStatusPtrOutput) ToVersionServingStatusPtrOutput() Version
 
 func (o VersionServingStatusPtrOutput) ToVersionServingStatusPtrOutputWithContext(ctx context.Context) VersionServingStatusPtrOutput {
 	return o
+}
+
+func (o VersionServingStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VersionServingStatus] {
+	return pulumix.Output[*VersionServingStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VersionServingStatusPtrOutput) Elem() VersionServingStatusOutput {
@@ -3131,6 +3462,12 @@ func (in *versionServingStatusPtr) ToVersionServingStatusPtrOutput() VersionServ
 
 func (in *versionServingStatusPtr) ToVersionServingStatusPtrOutputWithContext(ctx context.Context) VersionServingStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionServingStatusPtrOutput)
+}
+
+func (in *versionServingStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionServingStatus] {
+	return pulumix.Output[*VersionServingStatus]{
+		OutputState: in.ToVersionServingStatusPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The egress setting for the connector, controlling what traffic is diverted through it.
@@ -3204,6 +3541,12 @@ func (o VpcAccessConnectorEgressSettingOutput) ToVpcAccessConnectorEgressSetting
 	}).(VpcAccessConnectorEgressSettingPtrOutput)
 }
 
+func (o VpcAccessConnectorEgressSettingOutput) ToOutput(ctx context.Context) pulumix.Output[VpcAccessConnectorEgressSetting] {
+	return pulumix.Output[VpcAccessConnectorEgressSetting]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpcAccessConnectorEgressSettingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3237,6 +3580,12 @@ func (o VpcAccessConnectorEgressSettingPtrOutput) ToVpcAccessConnectorEgressSett
 
 func (o VpcAccessConnectorEgressSettingPtrOutput) ToVpcAccessConnectorEgressSettingPtrOutputWithContext(ctx context.Context) VpcAccessConnectorEgressSettingPtrOutput {
 	return o
+}
+
+func (o VpcAccessConnectorEgressSettingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcAccessConnectorEgressSetting] {
+	return pulumix.Output[*VpcAccessConnectorEgressSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcAccessConnectorEgressSettingPtrOutput) Elem() VpcAccessConnectorEgressSettingOutput {
@@ -3299,6 +3648,12 @@ func (in *vpcAccessConnectorEgressSettingPtr) ToVpcAccessConnectorEgressSettingP
 
 func (in *vpcAccessConnectorEgressSettingPtr) ToVpcAccessConnectorEgressSettingPtrOutputWithContext(ctx context.Context) VpcAccessConnectorEgressSettingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VpcAccessConnectorEgressSettingPtrOutput)
+}
+
+func (in *vpcAccessConnectorEgressSettingPtr) ToOutput(ctx context.Context) pulumix.Output[*VpcAccessConnectorEgressSetting] {
+	return pulumix.Output[*VpcAccessConnectorEgressSetting]{
+		OutputState: in.ToVpcAccessConnectorEgressSettingPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Consent artifact in the parent consent store.
@@ -163,6 +164,12 @@ func (i *ConsentArtifact) ToConsentArtifactOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentArtifactOutput)
 }
 
+func (i *ConsentArtifact) ToOutput(ctx context.Context) pulumix.Output[*ConsentArtifact] {
+	return pulumix.Output[*ConsentArtifact]{
+		OutputState: i.ToConsentArtifactOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsentArtifactOutput struct{ *pulumi.OutputState }
 
 func (ConsentArtifactOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o ConsentArtifactOutput) ToConsentArtifactOutput() ConsentArtifactOutput {
 
 func (o ConsentArtifactOutput) ToConsentArtifactOutputWithContext(ctx context.Context) ConsentArtifactOutput {
 	return o
+}
+
+func (o ConsentArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentArtifact] {
+	return pulumix.Output[*ConsentArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Screenshots, PDFs, or other binary information documenting the user's consent.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single DeliveryPipeline.
@@ -88,6 +89,12 @@ func (o LookupDeliveryPipelineResultOutput) ToLookupDeliveryPipelineResultOutput
 
 func (o LookupDeliveryPipelineResultOutput) ToLookupDeliveryPipelineResultOutputWithContext(ctx context.Context) LookupDeliveryPipelineResultOutput {
 	return o
+}
+
+func (o LookupDeliveryPipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeliveryPipelineResult] {
+	return pulumix.Output[LookupDeliveryPipelineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.

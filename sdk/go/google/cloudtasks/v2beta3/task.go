@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a task and adds it to a queue. Tasks cannot be updated after creation; there is no UpdateTask command. * The maximum task size is 100KB.
@@ -157,6 +158,12 @@ func (i *Task) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskOutput)
 }
 
+func (i *Task) ToOutput(ctx context.Context) pulumix.Output[*Task] {
+	return pulumix.Output[*Task]{
+		OutputState: i.ToTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaskOutput struct{ *pulumi.OutputState }
 
 func (TaskOutput) ElementType() reflect.Type {
@@ -169,6 +176,12 @@ func (o TaskOutput) ToTaskOutput() TaskOutput {
 
 func (o TaskOutput) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return o
+}
+
+func (o TaskOutput) ToOutput(ctx context.Context) pulumix.Output[*Task] {
+	return pulumix.Output[*Task]{
+		OutputState: o.OutputState,
+	}
 }
 
 // HTTP request that is sent to the App Engine app handler. An App Engine task is a task that has AppEngineHttpRequest set.

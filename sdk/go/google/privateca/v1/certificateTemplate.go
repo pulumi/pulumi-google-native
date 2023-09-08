@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new CertificateTemplate in a given Project and Location.
@@ -151,6 +152,12 @@ func (i *CertificateTemplate) ToCertificateTemplateOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateOutput)
 }
 
+func (i *CertificateTemplate) ToOutput(ctx context.Context) pulumix.Output[*CertificateTemplate] {
+	return pulumix.Output[*CertificateTemplate]{
+		OutputState: i.ToCertificateTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificateTemplateOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplateOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o CertificateTemplateOutput) ToCertificateTemplateOutput() CertificateTemp
 
 func (o CertificateTemplateOutput) ToCertificateTemplateOutputWithContext(ctx context.Context) CertificateTemplateOutput {
 	return o
+}
+
+func (o CertificateTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateTemplate] {
+	return pulumix.Output[*CertificateTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`

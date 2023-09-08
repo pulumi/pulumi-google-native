@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a lake resource.
@@ -149,6 +150,12 @@ func (i *Lake) ToLakeOutputWithContext(ctx context.Context) LakeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LakeOutput)
 }
 
+func (i *Lake) ToOutput(ctx context.Context) pulumix.Output[*Lake] {
+	return pulumix.Output[*Lake]{
+		OutputState: i.ToLakeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LakeOutput struct{ *pulumi.OutputState }
 
 func (LakeOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o LakeOutput) ToLakeOutput() LakeOutput {
 
 func (o LakeOutput) ToLakeOutputWithContext(ctx context.Context) LakeOutput {
 	return o
+}
+
+func (o LakeOutput) ToOutput(ctx context.Context) pulumix.Output[*Lake] {
+	return pulumix.Output[*Lake]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregated status of the underlying assets of the lake.

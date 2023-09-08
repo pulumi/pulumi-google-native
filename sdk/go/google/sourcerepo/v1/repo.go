@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.
@@ -123,6 +124,12 @@ func (i *Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepoOutput)
 }
 
+func (i *Repo) ToOutput(ctx context.Context) pulumix.Output[*Repo] {
+	return pulumix.Output[*Repo]{
+		OutputState: i.ToRepoOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RepoOutput struct{ *pulumi.OutputState }
 
 func (RepoOutput) ElementType() reflect.Type {
@@ -135,6 +142,12 @@ func (o RepoOutput) ToRepoOutput() RepoOutput {
 
 func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return o
+}
+
+func (o RepoOutput) ToOutput(ctx context.Context) pulumix.Output[*Repo] {
+	return pulumix.Output[*Repo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // How this repository mirrors a repository managed by another service. Read-only field.

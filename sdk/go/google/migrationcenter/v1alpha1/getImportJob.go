@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of an import job.
@@ -92,6 +93,12 @@ func (o LookupImportJobResultOutput) ToLookupImportJobResultOutput() LookupImpor
 
 func (o LookupImportJobResultOutput) ToLookupImportJobResultOutputWithContext(ctx context.Context) LookupImportJobResultOutput {
 	return o
+}
+
+func (o LookupImportJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImportJobResult] {
+	return pulumix.Output[LookupImportJobResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Reference to a source.

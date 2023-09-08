@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a log bucket.
@@ -88,6 +89,12 @@ func (o LookupBillingAccountBucketResultOutput) ToLookupBillingAccountBucketResu
 
 func (o LookupBillingAccountBucketResultOutput) ToLookupBillingAccountBucketResultOutputWithContext(ctx context.Context) LookupBillingAccountBucketResultOutput {
 	return o
+}
+
+func (o LookupBillingAccountBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBillingAccountBucketResult] {
+	return pulumix.Output[LookupBillingAccountBucketResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.

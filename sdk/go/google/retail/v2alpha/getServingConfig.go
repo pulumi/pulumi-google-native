@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
@@ -106,6 +107,12 @@ func (o LookupServingConfigResultOutput) ToLookupServingConfigResultOutput() Loo
 
 func (o LookupServingConfigResultOutput) ToLookupServingConfigResultOutputWithContext(ctx context.Context) LookupServingConfigResultOutput {
 	return o
+}
+
+func (o LookupServingConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServingConfigResult] {
+	return pulumix.Output[LookupServingConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.

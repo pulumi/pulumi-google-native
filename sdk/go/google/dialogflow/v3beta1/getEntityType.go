@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified entity type.
@@ -86,6 +87,12 @@ func (o LookupEntityTypeResultOutput) ToLookupEntityTypeResultOutput() LookupEnt
 
 func (o LookupEntityTypeResultOutput) ToLookupEntityTypeResultOutputWithContext(ctx context.Context) LookupEntityTypeResultOutput {
 	return o
+}
+
+func (o LookupEntityTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntityTypeResult] {
+	return pulumix.Output[LookupEntityTypeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether the entity type can be automatically expanded.

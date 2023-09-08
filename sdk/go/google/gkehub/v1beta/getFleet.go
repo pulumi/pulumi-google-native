@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the details of a fleet.
@@ -80,6 +81,12 @@ func (o LookupFleetResultOutput) ToLookupFleetResultOutput() LookupFleetResultOu
 
 func (o LookupFleetResultOutput) ToLookupFleetResultOutputWithContext(ctx context.Context) LookupFleetResultOutput {
 	return o
+}
+
+func (o LookupFleetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFleetResult] {
+	return pulumix.Output[LookupFleetResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the Fleet was created.

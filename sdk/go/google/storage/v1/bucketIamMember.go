@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Updates an IAM policy for the specified bucket.
@@ -154,6 +155,12 @@ func (i *BucketIamMember) ToBucketIamMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIamMemberOutput)
 }
 
+func (i *BucketIamMember) ToOutput(ctx context.Context) pulumix.Output[*BucketIamMember] {
+	return pulumix.Output[*BucketIamMember]{
+		OutputState: i.ToBucketIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BucketIamMemberOutput struct{ *pulumi.OutputState }
 
 func (BucketIamMemberOutput) ElementType() reflect.Type {
@@ -166,6 +173,12 @@ func (o BucketIamMemberOutput) ToBucketIamMemberOutput() BucketIamMemberOutput {
 
 func (o BucketIamMemberOutput) ToBucketIamMemberOutputWithContext(ctx context.Context) BucketIamMemberOutput {
 	return o
+}
+
+func (o BucketIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketIamMember] {
+	return pulumix.Output[*BucketIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

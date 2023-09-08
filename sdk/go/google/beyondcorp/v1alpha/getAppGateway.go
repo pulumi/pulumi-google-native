@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single AppGateway.
@@ -88,6 +89,12 @@ func (o LookupAppGatewayResultOutput) ToLookupAppGatewayResultOutput() LookupApp
 
 func (o LookupAppGatewayResultOutput) ToLookupAppGatewayResultOutputWithContext(ctx context.Context) LookupAppGatewayResultOutput {
 	return o
+}
+
+func (o LookupAppGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppGatewayResult] {
+	return pulumix.Output[LookupAppGatewayResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of connections allocated for the Gateway

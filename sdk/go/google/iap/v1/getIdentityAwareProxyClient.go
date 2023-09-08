@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
@@ -72,6 +73,12 @@ func (o LookupIdentityAwareProxyClientResultOutput) ToLookupIdentityAwareProxyCl
 
 func (o LookupIdentityAwareProxyClientResultOutput) ToLookupIdentityAwareProxyClientResultOutputWithContext(ctx context.Context) LookupIdentityAwareProxyClientResultOutput {
 	return o
+}
+
+func (o LookupIdentityAwareProxyClientResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIdentityAwareProxyClientResult] {
+	return pulumix.Output[LookupIdentityAwareProxyClientResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Human-friendly name given to the OAuth client.

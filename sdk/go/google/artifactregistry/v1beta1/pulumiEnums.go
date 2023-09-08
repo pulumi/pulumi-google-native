@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The format of packages that are stored in the repository.
@@ -92,6 +93,12 @@ func (o RepositoryFormatOutput) ToRepositoryFormatPtrOutputWithContext(ctx conte
 	}).(RepositoryFormatPtrOutput)
 }
 
+func (o RepositoryFormatOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryFormat] {
+	return pulumix.Output[RepositoryFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RepositoryFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,6 +132,12 @@ func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutput() RepositoryForma
 
 func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
 	return o
+}
+
+func (o RepositoryFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFormat] {
+	return pulumix.Output[*RepositoryFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepositoryFormatPtrOutput) Elem() RepositoryFormatOutput {
@@ -187,6 +200,12 @@ func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutput() RepositoryFormatPtr
 
 func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RepositoryFormatPtrOutput)
+}
+
+func (in *repositoryFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFormat] {
+	return pulumix.Output[*RepositoryFormat]{
+		OutputState: in.ToRepositoryFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

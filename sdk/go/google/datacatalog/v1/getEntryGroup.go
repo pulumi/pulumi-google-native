@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an entry group.
@@ -76,6 +77,12 @@ func (o LookupEntryGroupResultOutput) ToLookupEntryGroupResultOutput() LookupEnt
 
 func (o LookupEntryGroupResultOutput) ToLookupEntryGroupResultOutputWithContext(ctx context.Context) LookupEntryGroupResultOutput {
 	return o
+}
+
+func (o LookupEntryGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntryGroupResult] {
+	return pulumix.Output[LookupEntryGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamps of the entry group. Default value is empty.

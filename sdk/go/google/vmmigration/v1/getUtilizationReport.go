@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single Utilization Report.
@@ -90,6 +91,12 @@ func (o LookupUtilizationReportResultOutput) ToLookupUtilizationReportResultOutp
 
 func (o LookupUtilizationReportResultOutput) ToLookupUtilizationReportResultOutputWithContext(ctx context.Context) LookupUtilizationReportResultOutput {
 	return o
+}
+
+func (o LookupUtilizationReportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUtilizationReportResult] {
+	return pulumix.Output[LookupUtilizationReportResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the report was created (this refers to the time of the request, not the time the report creation completed).

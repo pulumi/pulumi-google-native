@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an analysis.
@@ -78,6 +79,12 @@ func (o LookupAnalysisResultOutput) ToLookupAnalysisResultOutput() LookupAnalysi
 
 func (o LookupAnalysisResultOutput) ToLookupAnalysisResultOutputWithContext(ctx context.Context) LookupAnalysisResultOutput {
 	return o
+}
+
+func (o LookupAnalysisResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAnalysisResult] {
+	return pulumix.Output[LookupAnalysisResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The result of the analysis, which is populated when the analysis finishes.

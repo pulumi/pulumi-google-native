@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified TargetSslProxy resource.
@@ -84,6 +85,12 @@ func (o LookupTargetSslProxyResultOutput) ToLookupTargetSslProxyResultOutput() L
 
 func (o LookupTargetSslProxyResultOutput) ToLookupTargetSslProxyResultOutputWithContext(ctx context.Context) LookupTargetSslProxyResultOutput {
 	return o
+}
+
+func (o LookupTargetSslProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTargetSslProxyResult] {
+	return pulumix.Output[LookupTargetSslProxyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.

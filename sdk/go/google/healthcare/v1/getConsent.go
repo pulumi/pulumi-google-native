@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
@@ -90,6 +91,12 @@ func (o LookupConsentResultOutput) ToLookupConsentResultOutput() LookupConsentRe
 
 func (o LookupConsentResultOutput) ToLookupConsentResultOutputWithContext(ctx context.Context) LookupConsentResultOutput {
 	return o
+}
+
+func (o LookupConsentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConsentResult] {
+	return pulumix.Output[LookupConsentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.

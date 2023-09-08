@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
@@ -88,6 +89,12 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutput() LookupConne
 
 func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ctx context.Context) LookupConnectorResultOutput {
 	return o
+}
+
+func (o LookupConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectorResult] {
+	return pulumix.Output[LookupConnectorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of projects using the connector.

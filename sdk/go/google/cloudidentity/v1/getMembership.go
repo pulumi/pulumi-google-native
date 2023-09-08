@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `Membership`.
@@ -78,6 +79,12 @@ func (o LookupMembershipResultOutput) ToLookupMembershipResultOutput() LookupMem
 
 func (o LookupMembershipResultOutput) ToLookupMembershipResultOutputWithContext(ctx context.Context) LookupMembershipResultOutput {
 	return o
+}
+
+func (o LookupMembershipResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMembershipResult] {
+	return pulumix.Output[LookupMembershipResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the `Membership` was created.

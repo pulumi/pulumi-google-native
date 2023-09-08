@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
@@ -92,6 +93,12 @@ func (o LookupCustomerResultOutput) ToLookupCustomerResultOutput() LookupCustome
 
 func (o LookupCustomerResultOutput) ToLookupCustomerResultOutputWithContext(ctx context.Context) LookupCustomerResultOutput {
 	return o
+}
+
+func (o LookupCustomerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomerResult] {
+	return pulumix.Output[LookupCustomerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.

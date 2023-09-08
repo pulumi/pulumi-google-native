@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i V2AndroidApplicationArgs) ToV2AndroidApplicationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidApplicationOutput)
 }
 
+func (i V2AndroidApplicationArgs) ToOutput(ctx context.Context) pulumix.Output[V2AndroidApplication] {
+	return pulumix.Output[V2AndroidApplication]{
+		OutputState: i.ToV2AndroidApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // V2AndroidApplicationArrayInput is an input type that accepts V2AndroidApplicationArray and V2AndroidApplicationArrayOutput values.
 // You can construct a concrete instance of `V2AndroidApplicationArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i V2AndroidApplicationArray) ToV2AndroidApplicationArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidApplicationArrayOutput)
 }
 
+func (i V2AndroidApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]V2AndroidApplication] {
+	return pulumix.Output[[]V2AndroidApplication]{
+		OutputState: i.ToV2AndroidApplicationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Identifier of an Android application for key use.
 type V2AndroidApplicationOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o V2AndroidApplicationOutput) ToV2AndroidApplicationOutput() V2AndroidAppl
 
 func (o V2AndroidApplicationOutput) ToV2AndroidApplicationOutputWithContext(ctx context.Context) V2AndroidApplicationOutput {
 	return o
+}
+
+func (o V2AndroidApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[V2AndroidApplication] {
+	return pulumix.Output[V2AndroidApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The package name of the application.
@@ -114,6 +133,12 @@ func (o V2AndroidApplicationArrayOutput) ToV2AndroidApplicationArrayOutput() V2A
 
 func (o V2AndroidApplicationArrayOutput) ToV2AndroidApplicationArrayOutputWithContext(ctx context.Context) V2AndroidApplicationArrayOutput {
 	return o
+}
+
+func (o V2AndroidApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]V2AndroidApplication] {
+	return pulumix.Output[[]V2AndroidApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2AndroidApplicationArrayOutput) Index(i pulumi.IntInput) V2AndroidApplicationOutput {
@@ -145,6 +170,12 @@ func (o V2AndroidApplicationResponseOutput) ToV2AndroidApplicationResponseOutput
 	return o
 }
 
+func (o V2AndroidApplicationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[V2AndroidApplicationResponse] {
+	return pulumix.Output[V2AndroidApplicationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The package name of the application.
 func (o V2AndroidApplicationResponseOutput) PackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v V2AndroidApplicationResponse) string { return v.PackageName }).(pulumi.StringOutput)
@@ -167,6 +198,12 @@ func (o V2AndroidApplicationResponseArrayOutput) ToV2AndroidApplicationResponseA
 
 func (o V2AndroidApplicationResponseArrayOutput) ToV2AndroidApplicationResponseArrayOutputWithContext(ctx context.Context) V2AndroidApplicationResponseArrayOutput {
 	return o
+}
+
+func (o V2AndroidApplicationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]V2AndroidApplicationResponse] {
+	return pulumix.Output[[]V2AndroidApplicationResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2AndroidApplicationResponseArrayOutput) Index(i pulumi.IntInput) V2AndroidApplicationResponseOutput {
@@ -210,6 +247,12 @@ func (i V2AndroidKeyRestrictionsArgs) ToV2AndroidKeyRestrictionsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidKeyRestrictionsOutput)
 }
 
+func (i V2AndroidKeyRestrictionsArgs) ToOutput(ctx context.Context) pulumix.Output[V2AndroidKeyRestrictions] {
+	return pulumix.Output[V2AndroidKeyRestrictions]{
+		OutputState: i.ToV2AndroidKeyRestrictionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i V2AndroidKeyRestrictionsArgs) ToV2AndroidKeyRestrictionsPtrOutput() V2AndroidKeyRestrictionsPtrOutput {
 	return i.ToV2AndroidKeyRestrictionsPtrOutputWithContext(context.Background())
 }
@@ -251,6 +294,12 @@ func (i *v2androidKeyRestrictionsPtrType) ToV2AndroidKeyRestrictionsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidKeyRestrictionsPtrOutput)
 }
 
+func (i *v2androidKeyRestrictionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*V2AndroidKeyRestrictions] {
+	return pulumix.Output[*V2AndroidKeyRestrictions]{
+		OutputState: i.ToV2AndroidKeyRestrictionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Android apps that are allowed to use the key.
 type V2AndroidKeyRestrictionsOutput struct{ *pulumi.OutputState }
 
@@ -276,6 +325,12 @@ func (o V2AndroidKeyRestrictionsOutput) ToV2AndroidKeyRestrictionsPtrOutputWithC
 	}).(V2AndroidKeyRestrictionsPtrOutput)
 }
 
+func (o V2AndroidKeyRestrictionsOutput) ToOutput(ctx context.Context) pulumix.Output[V2AndroidKeyRestrictions] {
+	return pulumix.Output[V2AndroidKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of Android applications that are allowed to make API calls with this key.
 func (o V2AndroidKeyRestrictionsOutput) AllowedApplications() V2AndroidApplicationArrayOutput {
 	return o.ApplyT(func(v V2AndroidKeyRestrictions) []V2AndroidApplication { return v.AllowedApplications }).(V2AndroidApplicationArrayOutput)
@@ -293,6 +348,12 @@ func (o V2AndroidKeyRestrictionsPtrOutput) ToV2AndroidKeyRestrictionsPtrOutput()
 
 func (o V2AndroidKeyRestrictionsPtrOutput) ToV2AndroidKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsPtrOutput {
 	return o
+}
+
+func (o V2AndroidKeyRestrictionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*V2AndroidKeyRestrictions] {
+	return pulumix.Output[*V2AndroidKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2AndroidKeyRestrictionsPtrOutput) Elem() V2AndroidKeyRestrictionsOutput {
@@ -334,6 +395,12 @@ func (o V2AndroidKeyRestrictionsResponseOutput) ToV2AndroidKeyRestrictionsRespon
 
 func (o V2AndroidKeyRestrictionsResponseOutput) ToV2AndroidKeyRestrictionsResponseOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsResponseOutput {
 	return o
+}
+
+func (o V2AndroidKeyRestrictionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[V2AndroidKeyRestrictionsResponse] {
+	return pulumix.Output[V2AndroidKeyRestrictionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Android applications that are allowed to make API calls with this key.
@@ -380,6 +447,12 @@ func (i V2ApiTargetArgs) ToV2ApiTargetOutputWithContext(ctx context.Context) V2A
 	return pulumi.ToOutputWithContext(ctx, i).(V2ApiTargetOutput)
 }
 
+func (i V2ApiTargetArgs) ToOutput(ctx context.Context) pulumix.Output[V2ApiTarget] {
+	return pulumix.Output[V2ApiTarget]{
+		OutputState: i.ToV2ApiTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // V2ApiTargetArrayInput is an input type that accepts V2ApiTargetArray and V2ApiTargetArrayOutput values.
 // You can construct a concrete instance of `V2ApiTargetArrayInput` via:
 //
@@ -405,6 +478,12 @@ func (i V2ApiTargetArray) ToV2ApiTargetArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(V2ApiTargetArrayOutput)
 }
 
+func (i V2ApiTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]V2ApiTarget] {
+	return pulumix.Output[[]V2ApiTarget]{
+		OutputState: i.ToV2ApiTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive.
 type V2ApiTargetOutput struct{ *pulumi.OutputState }
 
@@ -418,6 +497,12 @@ func (o V2ApiTargetOutput) ToV2ApiTargetOutput() V2ApiTargetOutput {
 
 func (o V2ApiTargetOutput) ToV2ApiTargetOutputWithContext(ctx context.Context) V2ApiTargetOutput {
 	return o
+}
+
+func (o V2ApiTargetOutput) ToOutput(ctx context.Context) pulumix.Output[V2ApiTarget] {
+	return pulumix.Output[V2ApiTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
@@ -442,6 +527,12 @@ func (o V2ApiTargetArrayOutput) ToV2ApiTargetArrayOutput() V2ApiTargetArrayOutpu
 
 func (o V2ApiTargetArrayOutput) ToV2ApiTargetArrayOutputWithContext(ctx context.Context) V2ApiTargetArrayOutput {
 	return o
+}
+
+func (o V2ApiTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]V2ApiTarget] {
+	return pulumix.Output[[]V2ApiTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2ApiTargetArrayOutput) Index(i pulumi.IntInput) V2ApiTargetOutput {
@@ -473,6 +564,12 @@ func (o V2ApiTargetResponseOutput) ToV2ApiTargetResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o V2ApiTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[V2ApiTargetResponse] {
+	return pulumix.Output[V2ApiTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
 func (o V2ApiTargetResponseOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2ApiTargetResponse) []string { return v.Methods }).(pulumi.StringArrayOutput)
@@ -495,6 +592,12 @@ func (o V2ApiTargetResponseArrayOutput) ToV2ApiTargetResponseArrayOutput() V2Api
 
 func (o V2ApiTargetResponseArrayOutput) ToV2ApiTargetResponseArrayOutputWithContext(ctx context.Context) V2ApiTargetResponseArrayOutput {
 	return o
+}
+
+func (o V2ApiTargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]V2ApiTargetResponse] {
+	return pulumix.Output[[]V2ApiTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2ApiTargetResponseArrayOutput) Index(i pulumi.IntInput) V2ApiTargetResponseOutput {
@@ -538,6 +641,12 @@ func (i V2BrowserKeyRestrictionsArgs) ToV2BrowserKeyRestrictionsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(V2BrowserKeyRestrictionsOutput)
 }
 
+func (i V2BrowserKeyRestrictionsArgs) ToOutput(ctx context.Context) pulumix.Output[V2BrowserKeyRestrictions] {
+	return pulumix.Output[V2BrowserKeyRestrictions]{
+		OutputState: i.ToV2BrowserKeyRestrictionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i V2BrowserKeyRestrictionsArgs) ToV2BrowserKeyRestrictionsPtrOutput() V2BrowserKeyRestrictionsPtrOutput {
 	return i.ToV2BrowserKeyRestrictionsPtrOutputWithContext(context.Background())
 }
@@ -579,6 +688,12 @@ func (i *v2browserKeyRestrictionsPtrType) ToV2BrowserKeyRestrictionsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(V2BrowserKeyRestrictionsPtrOutput)
 }
 
+func (i *v2browserKeyRestrictionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*V2BrowserKeyRestrictions] {
+	return pulumix.Output[*V2BrowserKeyRestrictions]{
+		OutputState: i.ToV2BrowserKeyRestrictionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The HTTP referrers (websites) that are allowed to use the key.
 type V2BrowserKeyRestrictionsOutput struct{ *pulumi.OutputState }
 
@@ -604,6 +719,12 @@ func (o V2BrowserKeyRestrictionsOutput) ToV2BrowserKeyRestrictionsPtrOutputWithC
 	}).(V2BrowserKeyRestrictionsPtrOutput)
 }
 
+func (o V2BrowserKeyRestrictionsOutput) ToOutput(ctx context.Context) pulumix.Output[V2BrowserKeyRestrictions] {
+	return pulumix.Output[V2BrowserKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
 func (o V2BrowserKeyRestrictionsOutput) AllowedReferrers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2BrowserKeyRestrictions) []string { return v.AllowedReferrers }).(pulumi.StringArrayOutput)
@@ -621,6 +742,12 @@ func (o V2BrowserKeyRestrictionsPtrOutput) ToV2BrowserKeyRestrictionsPtrOutput()
 
 func (o V2BrowserKeyRestrictionsPtrOutput) ToV2BrowserKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsPtrOutput {
 	return o
+}
+
+func (o V2BrowserKeyRestrictionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*V2BrowserKeyRestrictions] {
+	return pulumix.Output[*V2BrowserKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2BrowserKeyRestrictionsPtrOutput) Elem() V2BrowserKeyRestrictionsOutput {
@@ -664,6 +791,12 @@ func (o V2BrowserKeyRestrictionsResponseOutput) ToV2BrowserKeyRestrictionsRespon
 	return o
 }
 
+func (o V2BrowserKeyRestrictionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[V2BrowserKeyRestrictionsResponse] {
+	return pulumix.Output[V2BrowserKeyRestrictionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
 func (o V2BrowserKeyRestrictionsResponseOutput) AllowedReferrers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2BrowserKeyRestrictionsResponse) []string { return v.AllowedReferrers }).(pulumi.StringArrayOutput)
@@ -702,6 +835,12 @@ func (i V2IosKeyRestrictionsArgs) ToV2IosKeyRestrictionsOutput() V2IosKeyRestric
 
 func (i V2IosKeyRestrictionsArgs) ToV2IosKeyRestrictionsOutputWithContext(ctx context.Context) V2IosKeyRestrictionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V2IosKeyRestrictionsOutput)
+}
+
+func (i V2IosKeyRestrictionsArgs) ToOutput(ctx context.Context) pulumix.Output[V2IosKeyRestrictions] {
+	return pulumix.Output[V2IosKeyRestrictions]{
+		OutputState: i.ToV2IosKeyRestrictionsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i V2IosKeyRestrictionsArgs) ToV2IosKeyRestrictionsPtrOutput() V2IosKeyRestrictionsPtrOutput {
@@ -745,6 +884,12 @@ func (i *v2iosKeyRestrictionsPtrType) ToV2IosKeyRestrictionsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(V2IosKeyRestrictionsPtrOutput)
 }
 
+func (i *v2iosKeyRestrictionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*V2IosKeyRestrictions] {
+	return pulumix.Output[*V2IosKeyRestrictions]{
+		OutputState: i.ToV2IosKeyRestrictionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The iOS apps that are allowed to use the key.
 type V2IosKeyRestrictionsOutput struct{ *pulumi.OutputState }
 
@@ -770,6 +915,12 @@ func (o V2IosKeyRestrictionsOutput) ToV2IosKeyRestrictionsPtrOutputWithContext(c
 	}).(V2IosKeyRestrictionsPtrOutput)
 }
 
+func (o V2IosKeyRestrictionsOutput) ToOutput(ctx context.Context) pulumix.Output[V2IosKeyRestrictions] {
+	return pulumix.Output[V2IosKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of bundle IDs that are allowed when making API calls with this key.
 func (o V2IosKeyRestrictionsOutput) AllowedBundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2IosKeyRestrictions) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
@@ -787,6 +938,12 @@ func (o V2IosKeyRestrictionsPtrOutput) ToV2IosKeyRestrictionsPtrOutput() V2IosKe
 
 func (o V2IosKeyRestrictionsPtrOutput) ToV2IosKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2IosKeyRestrictionsPtrOutput {
 	return o
+}
+
+func (o V2IosKeyRestrictionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*V2IosKeyRestrictions] {
+	return pulumix.Output[*V2IosKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2IosKeyRestrictionsPtrOutput) Elem() V2IosKeyRestrictionsOutput {
@@ -828,6 +985,12 @@ func (o V2IosKeyRestrictionsResponseOutput) ToV2IosKeyRestrictionsResponseOutput
 
 func (o V2IosKeyRestrictionsResponseOutput) ToV2IosKeyRestrictionsResponseOutputWithContext(ctx context.Context) V2IosKeyRestrictionsResponseOutput {
 	return o
+}
+
+func (o V2IosKeyRestrictionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[V2IosKeyRestrictionsResponse] {
+	return pulumix.Output[V2IosKeyRestrictionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of bundle IDs that are allowed when making API calls with this key.
@@ -886,6 +1049,12 @@ func (i V2RestrictionsArgs) ToV2RestrictionsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(V2RestrictionsOutput)
 }
 
+func (i V2RestrictionsArgs) ToOutput(ctx context.Context) pulumix.Output[V2Restrictions] {
+	return pulumix.Output[V2Restrictions]{
+		OutputState: i.ToV2RestrictionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i V2RestrictionsArgs) ToV2RestrictionsPtrOutput() V2RestrictionsPtrOutput {
 	return i.ToV2RestrictionsPtrOutputWithContext(context.Background())
 }
@@ -927,6 +1096,12 @@ func (i *v2restrictionsPtrType) ToV2RestrictionsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(V2RestrictionsPtrOutput)
 }
 
+func (i *v2restrictionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*V2Restrictions] {
+	return pulumix.Output[*V2Restrictions]{
+		OutputState: i.ToV2RestrictionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Describes the restrictions on the key.
 type V2RestrictionsOutput struct{ *pulumi.OutputState }
 
@@ -950,6 +1125,12 @@ func (o V2RestrictionsOutput) ToV2RestrictionsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2Restrictions) *V2Restrictions {
 		return &v
 	}).(V2RestrictionsPtrOutput)
+}
+
+func (o V2RestrictionsOutput) ToOutput(ctx context.Context) pulumix.Output[V2Restrictions] {
+	return pulumix.Output[V2Restrictions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Android apps that are allowed to use the key.
@@ -989,6 +1170,12 @@ func (o V2RestrictionsPtrOutput) ToV2RestrictionsPtrOutput() V2RestrictionsPtrOu
 
 func (o V2RestrictionsPtrOutput) ToV2RestrictionsPtrOutputWithContext(ctx context.Context) V2RestrictionsPtrOutput {
 	return o
+}
+
+func (o V2RestrictionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*V2Restrictions] {
+	return pulumix.Output[*V2Restrictions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2RestrictionsPtrOutput) Elem() V2RestrictionsOutput {
@@ -1080,6 +1267,12 @@ func (o V2RestrictionsResponseOutput) ToV2RestrictionsResponseOutputWithContext(
 	return o
 }
 
+func (o V2RestrictionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[V2RestrictionsResponse] {
+	return pulumix.Output[V2RestrictionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Android apps that are allowed to use the key.
 func (o V2RestrictionsResponseOutput) AndroidKeyRestrictions() V2AndroidKeyRestrictionsResponseOutput {
 	return o.ApplyT(func(v V2RestrictionsResponse) V2AndroidKeyRestrictionsResponse { return v.AndroidKeyRestrictions }).(V2AndroidKeyRestrictionsResponseOutput)
@@ -1140,6 +1333,12 @@ func (i V2ServerKeyRestrictionsArgs) ToV2ServerKeyRestrictionsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(V2ServerKeyRestrictionsOutput)
 }
 
+func (i V2ServerKeyRestrictionsArgs) ToOutput(ctx context.Context) pulumix.Output[V2ServerKeyRestrictions] {
+	return pulumix.Output[V2ServerKeyRestrictions]{
+		OutputState: i.ToV2ServerKeyRestrictionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i V2ServerKeyRestrictionsArgs) ToV2ServerKeyRestrictionsPtrOutput() V2ServerKeyRestrictionsPtrOutput {
 	return i.ToV2ServerKeyRestrictionsPtrOutputWithContext(context.Background())
 }
@@ -1181,6 +1380,12 @@ func (i *v2serverKeyRestrictionsPtrType) ToV2ServerKeyRestrictionsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(V2ServerKeyRestrictionsPtrOutput)
 }
 
+func (i *v2serverKeyRestrictionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*V2ServerKeyRestrictions] {
+	return pulumix.Output[*V2ServerKeyRestrictions]{
+		OutputState: i.ToV2ServerKeyRestrictionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The IP addresses of callers that are allowed to use the key.
 type V2ServerKeyRestrictionsOutput struct{ *pulumi.OutputState }
 
@@ -1206,6 +1411,12 @@ func (o V2ServerKeyRestrictionsOutput) ToV2ServerKeyRestrictionsPtrOutputWithCon
 	}).(V2ServerKeyRestrictionsPtrOutput)
 }
 
+func (o V2ServerKeyRestrictionsOutput) ToOutput(ctx context.Context) pulumix.Output[V2ServerKeyRestrictions] {
+	return pulumix.Output[V2ServerKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of the caller IP addresses that are allowed to make API calls with this key.
 func (o V2ServerKeyRestrictionsOutput) AllowedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2ServerKeyRestrictions) []string { return v.AllowedIps }).(pulumi.StringArrayOutput)
@@ -1223,6 +1434,12 @@ func (o V2ServerKeyRestrictionsPtrOutput) ToV2ServerKeyRestrictionsPtrOutput() V
 
 func (o V2ServerKeyRestrictionsPtrOutput) ToV2ServerKeyRestrictionsPtrOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsPtrOutput {
 	return o
+}
+
+func (o V2ServerKeyRestrictionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*V2ServerKeyRestrictions] {
+	return pulumix.Output[*V2ServerKeyRestrictions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2ServerKeyRestrictionsPtrOutput) Elem() V2ServerKeyRestrictionsOutput {
@@ -1264,6 +1481,12 @@ func (o V2ServerKeyRestrictionsResponseOutput) ToV2ServerKeyRestrictionsResponse
 
 func (o V2ServerKeyRestrictionsResponseOutput) ToV2ServerKeyRestrictionsResponseOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsResponseOutput {
 	return o
+}
+
+func (o V2ServerKeyRestrictionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[V2ServerKeyRestrictionsResponse] {
+	return pulumix.Output[V2ServerKeyRestrictionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of the caller IP addresses that are allowed to make API calls with this key.

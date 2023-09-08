@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified subnetwork.
@@ -112,6 +113,12 @@ func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutput() LookupSub
 
 func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutputWithContext(ctx context.Context) LookupSubnetworkResultOutput {
 	return o
+}
+
+func (o LookupSubnetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubnetworkResult] {
+	return pulumix.Output[LookupSubnetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates that this field supports operations on `array_value`s.
@@ -80,6 +81,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput) ToGoogleFirestor
 	}).(GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput)
 }
 
+func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldArrayConfig] {
+	return pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldArrayConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToGoogleFires
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToGoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig] {
+	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) Elem() GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput {
@@ -175,6 +188,12 @@ func (in *googleFirestoreAdminV1beta2IndexFieldArrayConfigPtr) ToGoogleFirestore
 
 func (in *googleFirestoreAdminV1beta2IndexFieldArrayConfigPtr) ToGoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput)
+}
+
+func (in *googleFirestoreAdminV1beta2IndexFieldArrayConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig] {
+	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig]{
+		OutputState: in.ToGoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
@@ -249,6 +268,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldOrderOutput) ToGoogleFirestoreAdmin
 	}).(GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput)
 }
 
+func (o GoogleFirestoreAdminV1beta2IndexFieldOrderOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldOrder] {
+	return pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleFirestoreAdminV1beta2IndexFieldOrderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -282,6 +307,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToGoogleFirestoreAd
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToGoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput {
 	return o
+}
+
+func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder] {
+	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) Elem() GoogleFirestoreAdminV1beta2IndexFieldOrderOutput {
@@ -344,6 +375,12 @@ func (in *googleFirestoreAdminV1beta2IndexFieldOrderPtr) ToGoogleFirestoreAdminV
 
 func (in *googleFirestoreAdminV1beta2IndexFieldOrderPtr) ToGoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput)
+}
+
+func (in *googleFirestoreAdminV1beta2IndexFieldOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder] {
+	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder]{
+		OutputState: in.ToGoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
@@ -418,6 +455,12 @@ func (o IndexQueryScopeOutput) ToIndexQueryScopePtrOutputWithContext(ctx context
 	}).(IndexQueryScopePtrOutput)
 }
 
+func (o IndexQueryScopeOutput) ToOutput(ctx context.Context) pulumix.Output[IndexQueryScope] {
+	return pulumix.Output[IndexQueryScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IndexQueryScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -451,6 +494,12 @@ func (o IndexQueryScopePtrOutput) ToIndexQueryScopePtrOutput() IndexQueryScopePt
 
 func (o IndexQueryScopePtrOutput) ToIndexQueryScopePtrOutputWithContext(ctx context.Context) IndexQueryScopePtrOutput {
 	return o
+}
+
+func (o IndexQueryScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexQueryScope] {
+	return pulumix.Output[*IndexQueryScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IndexQueryScopePtrOutput) Elem() IndexQueryScopeOutput {
@@ -513,6 +562,12 @@ func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutput() IndexQueryScopePtrOut
 
 func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutputWithContext(ctx context.Context) IndexQueryScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexQueryScopePtrOutput)
+}
+
+func (in *indexQueryScopePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexQueryScope] {
+	return pulumix.Output[*IndexQueryScope]{
+		OutputState: in.ToIndexQueryScopePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

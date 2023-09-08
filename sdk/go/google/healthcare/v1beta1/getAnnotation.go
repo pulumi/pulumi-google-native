@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Annotation.
@@ -82,6 +83,12 @@ func (o LookupAnnotationResultOutput) ToLookupAnnotationResultOutput() LookupAnn
 
 func (o LookupAnnotationResultOutput) ToLookupAnnotationResultOutputWithContext(ctx context.Context) LookupAnnotationResultOutput {
 	return o
+}
+
+func (o LookupAnnotationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAnnotationResult] {
+	return pulumix.Output[LookupAnnotationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details of the source.

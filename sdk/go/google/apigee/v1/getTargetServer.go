@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a TargetServer resource.
@@ -80,6 +81,12 @@ func (o LookupTargetServerResultOutput) ToLookupTargetServerResultOutput() Looku
 
 func (o LookupTargetServerResultOutput) ToLookupTargetServerResultOutputWithContext(ctx context.Context) LookupTargetServerResultOutput {
 	return o
+}
+
+func (o LookupTargetServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTargetServerResult] {
+	return pulumix.Output[LookupTargetServerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A human-readable description of this TargetServer.

@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *CaPoolCertificateAuthorityCertificateRevocationListIamMember) ToCaPoolC
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolCertificateAuthorityCertificateRevocationListIamMemberOutput)
 }
 
+func (i *CaPoolCertificateAuthorityCertificateRevocationListIamMember) ToOutput(ctx context.Context) pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamMember] {
+	return pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamMember]{
+		OutputState: i.ToCaPoolCertificateAuthorityCertificateRevocationListIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CaPoolCertificateAuthorityCertificateRevocationListIamMemberOutput struct{ *pulumi.OutputState }
 
 func (CaPoolCertificateAuthorityCertificateRevocationListIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o CaPoolCertificateAuthorityCertificateRevocationListIamMemberOutput) ToCa
 
 func (o CaPoolCertificateAuthorityCertificateRevocationListIamMemberOutput) ToCaPoolCertificateAuthorityCertificateRevocationListIamMemberOutputWithContext(ctx context.Context) CaPoolCertificateAuthorityCertificateRevocationListIamMemberOutput {
 	return o
+}
+
+func (o CaPoolCertificateAuthorityCertificateRevocationListIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamMember] {
+	return pulumix.Output[*CaPoolCertificateAuthorityCertificateRevocationListIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

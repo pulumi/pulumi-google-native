@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an individual WorkforcePoolProvider.
@@ -84,6 +85,12 @@ func (o LookupWorkforcePoolProviderResultOutput) ToLookupWorkforcePoolProviderRe
 
 func (o LookupWorkforcePoolProviderResultOutput) ToLookupWorkforcePoolProviderResultOutputWithContext(ctx context.Context) LookupWorkforcePoolProviderResultOutput {
 	return o
+}
+
+func (o LookupWorkforcePoolProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkforcePoolProviderResult] {
+	return pulumix.Output[LookupWorkforcePoolProviderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A [Common Expression Language](https://opensource.google/projects/cel) expression, in plain text, to restrict what otherwise valid authentication credentials issued by the provider should not be accepted. The expression must output a boolean representing whether to allow the federation. The following keywords may be referenced in the expressions: * `assertion`: JSON representing the authentication credential issued by the provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`. `google.profile_photo` and `google.display_name` are not supported. * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length of the attribute condition expression is 4096 characters. If unspecified, all valid authentication credentials will be accepted. The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`: ```"'admins' in google.groups"```

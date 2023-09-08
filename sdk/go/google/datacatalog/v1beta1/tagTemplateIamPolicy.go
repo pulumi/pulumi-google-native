@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
@@ -125,6 +126,12 @@ func (i *TagTemplateIamPolicy) ToTagTemplateIamPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamPolicyOutput)
 }
 
+func (i *TagTemplateIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamPolicy] {
+	return pulumix.Output[*TagTemplateIamPolicy]{
+		OutputState: i.ToTagTemplateIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamPolicyOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o TagTemplateIamPolicyOutput) ToTagTemplateIamPolicyOutput() TagTemplateIa
 
 func (o TagTemplateIamPolicyOutput) ToTagTemplateIamPolicyOutputWithContext(ctx context.Context) TagTemplateIamPolicyOutput {
 	return o
+}
+
+func (o TagTemplateIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamPolicy] {
+	return pulumix.Output[*TagTemplateIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Updates an IAM policy for the specified bucket.
@@ -135,6 +136,12 @@ func (i *BucketIamPolicy) ToBucketIamPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIamPolicyOutput)
 }
 
+func (i *BucketIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*BucketIamPolicy] {
+	return pulumix.Output[*BucketIamPolicy]{
+		OutputState: i.ToBucketIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BucketIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (BucketIamPolicyOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o BucketIamPolicyOutput) ToBucketIamPolicyOutput() BucketIamPolicyOutput {
 
 func (o BucketIamPolicyOutput) ToBucketIamPolicyOutputWithContext(ctx context.Context) BucketIamPolicyOutput {
 	return o
+}
+
+func (o BucketIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketIamPolicy] {
+	return pulumix.Output[*BucketIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An association between a role, which comes with a set of permissions, and members who may assume that role.

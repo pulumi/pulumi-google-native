@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
@@ -134,6 +135,12 @@ func (i *OrganizationEnvironmentIamPolicy) ToOrganizationEnvironmentIamPolicyOut
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationEnvironmentIamPolicyOutput)
 }
 
+func (i *OrganizationEnvironmentIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEnvironmentIamPolicy] {
+	return pulumix.Output[*OrganizationEnvironmentIamPolicy]{
+		OutputState: i.ToOrganizationEnvironmentIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationEnvironmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationEnvironmentIamPolicyOutput) ElementType() reflect.Type {
@@ -146,6 +153,12 @@ func (o OrganizationEnvironmentIamPolicyOutput) ToOrganizationEnvironmentIamPoli
 
 func (o OrganizationEnvironmentIamPolicyOutput) ToOrganizationEnvironmentIamPolicyOutputWithContext(ctx context.Context) OrganizationEnvironmentIamPolicyOutput {
 	return o
+}
+
+func (o OrganizationEnvironmentIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEnvironmentIamPolicy] {
+	return pulumix.Output[*OrganizationEnvironmentIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

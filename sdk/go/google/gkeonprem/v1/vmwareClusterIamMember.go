@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *VmwareClusterIamMember) ToVmwareClusterIamMemberOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareClusterIamMemberOutput)
 }
 
+func (i *VmwareClusterIamMember) ToOutput(ctx context.Context) pulumix.Output[*VmwareClusterIamMember] {
+	return pulumix.Output[*VmwareClusterIamMember]{
+		OutputState: i.ToVmwareClusterIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VmwareClusterIamMemberOutput struct{ *pulumi.OutputState }
 
 func (VmwareClusterIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o VmwareClusterIamMemberOutput) ToVmwareClusterIamMemberOutput() VmwareClu
 
 func (o VmwareClusterIamMemberOutput) ToVmwareClusterIamMemberOutputWithContext(ctx context.Context) VmwareClusterIamMemberOutput {
 	return o
+}
+
+func (o VmwareClusterIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareClusterIamMember] {
+	return pulumix.Output[*VmwareClusterIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

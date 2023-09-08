@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new bare metal admin cluster in a given project and location. The API needs to be combined with creating a bootstrap cluster to work. See: https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/installing/creating-clusters/create-admin-cluster-api#prepare_bootstrap_environment
@@ -230,6 +231,12 @@ func (i *BareMetalAdminCluster) ToBareMetalAdminClusterOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterOutput)
 }
 
+func (i *BareMetalAdminCluster) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminCluster] {
+	return pulumix.Output[*BareMetalAdminCluster]{
+		OutputState: i.ToBareMetalAdminClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BareMetalAdminClusterOutput struct{ *pulumi.OutputState }
 
 func (BareMetalAdminClusterOutput) ElementType() reflect.Type {
@@ -242,6 +249,12 @@ func (o BareMetalAdminClusterOutput) ToBareMetalAdminClusterOutput() BareMetalAd
 
 func (o BareMetalAdminClusterOutput) ToBareMetalAdminClusterOutputWithContext(ctx context.Context) BareMetalAdminClusterOutput {
 	return o
+}
+
+func (o BareMetalAdminClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminCluster] {
+	return pulumix.Output[*BareMetalAdminCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

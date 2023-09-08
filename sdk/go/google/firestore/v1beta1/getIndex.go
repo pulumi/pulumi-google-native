@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an index.
@@ -74,6 +75,12 @@ func (o LookupIndexResultOutput) ToLookupIndexResultOutput() LookupIndexResultOu
 
 func (o LookupIndexResultOutput) ToLookupIndexResultOutputWithContext(ctx context.Context) LookupIndexResultOutput {
 	return o
+}
+
+func (o LookupIndexResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIndexResult] {
+	return pulumix.Output[LookupIndexResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The collection ID to which this index applies. Required.

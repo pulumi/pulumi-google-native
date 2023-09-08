@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i FixedOrPercentArgs) ToFixedOrPercentOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentOutput)
 }
 
+func (i FixedOrPercentArgs) ToOutput(ctx context.Context) pulumix.Output[FixedOrPercent] {
+	return pulumix.Output[FixedOrPercent]{
+		OutputState: i.ToFixedOrPercentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
 type FixedOrPercentOutput struct{ *pulumi.OutputState }
 
@@ -65,6 +72,12 @@ func (o FixedOrPercentOutput) ToFixedOrPercentOutput() FixedOrPercentOutput {
 
 func (o FixedOrPercentOutput) ToFixedOrPercentOutputWithContext(ctx context.Context) FixedOrPercentOutput {
 	return o
+}
+
+func (o FixedOrPercentOutput) ToOutput(ctx context.Context) pulumix.Output[FixedOrPercent] {
+	return pulumix.Output[FixedOrPercent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies a fixed value.
@@ -98,6 +111,12 @@ func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponseOutput() FixedOrPe
 
 func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponseOutputWithContext(ctx context.Context) FixedOrPercentResponseOutput {
 	return o
+}
+
+func (o FixedOrPercentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FixedOrPercentResponse] {
+	return pulumix.Output[FixedOrPercentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies a fixed value.
@@ -161,6 +180,12 @@ func (i OSPolicyArgs) ToOSPolicyOutputWithContext(ctx context.Context) OSPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyOutput)
 }
 
+func (i OSPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicy] {
+	return pulumix.Output[OSPolicy]{
+		OutputState: i.ToOSPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OSPolicyArrayInput is an input type that accepts OSPolicyArray and OSPolicyArrayOutput values.
 // You can construct a concrete instance of `OSPolicyArrayInput` via:
 //
@@ -186,6 +211,12 @@ func (i OSPolicyArray) ToOSPolicyArrayOutputWithContext(ctx context.Context) OSP
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyArrayOutput)
 }
 
+func (i OSPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicy] {
+	return pulumix.Output[[]OSPolicy]{
+		OutputState: i.ToOSPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An OS policy defines the desired state configuration for a VM.
 type OSPolicyOutput struct{ *pulumi.OutputState }
 
@@ -199,6 +230,12 @@ func (o OSPolicyOutput) ToOSPolicyOutput() OSPolicyOutput {
 
 func (o OSPolicyOutput) ToOSPolicyOutputWithContext(ctx context.Context) OSPolicyOutput {
 	return o
+}
+
+func (o OSPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicy] {
+	return pulumix.Output[OSPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
@@ -238,6 +275,12 @@ func (o OSPolicyArrayOutput) ToOSPolicyArrayOutput() OSPolicyArrayOutput {
 
 func (o OSPolicyArrayOutput) ToOSPolicyArrayOutputWithContext(ctx context.Context) OSPolicyArrayOutput {
 	return o
+}
+
+func (o OSPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicy] {
+	return pulumix.Output[[]OSPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyArrayOutput) Index(i pulumi.IntInput) OSPolicyOutput {
@@ -301,6 +344,12 @@ func (i OSPolicyAssignmentInstanceFilterArgs) ToOSPolicyAssignmentInstanceFilter
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterOutput)
 }
 
+func (i OSPolicyAssignmentInstanceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentInstanceFilter] {
+	return pulumix.Output[OSPolicyAssignmentInstanceFilter]{
+		OutputState: i.ToOSPolicyAssignmentInstanceFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
 type OSPolicyAssignmentInstanceFilterOutput struct{ *pulumi.OutputState }
 
@@ -314,6 +363,12 @@ func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilt
 
 func (o OSPolicyAssignmentInstanceFilterOutput) ToOSPolicyAssignmentInstanceFilterOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentInstanceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentInstanceFilter] {
+	return pulumix.Output[OSPolicyAssignmentInstanceFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Target all VMs in the project. If true, no other criteria is permitted.
@@ -384,6 +439,12 @@ func (i OSPolicyAssignmentInstanceFilterInventoryArgs) ToOSPolicyAssignmentInsta
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterInventoryOutput)
 }
 
+func (i OSPolicyAssignmentInstanceFilterInventoryArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentInstanceFilterInventory] {
+	return pulumix.Output[OSPolicyAssignmentInstanceFilterInventory]{
+		OutputState: i.ToOSPolicyAssignmentInstanceFilterInventoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OSPolicyAssignmentInstanceFilterInventoryArrayInput is an input type that accepts OSPolicyAssignmentInstanceFilterInventoryArray and OSPolicyAssignmentInstanceFilterInventoryArrayOutput values.
 // You can construct a concrete instance of `OSPolicyAssignmentInstanceFilterInventoryArrayInput` via:
 //
@@ -409,6 +470,12 @@ func (i OSPolicyAssignmentInstanceFilterInventoryArray) ToOSPolicyAssignmentInst
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentInstanceFilterInventoryArrayOutput)
 }
 
+func (i OSPolicyAssignmentInstanceFilterInventoryArray) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyAssignmentInstanceFilterInventory] {
+	return pulumix.Output[[]OSPolicyAssignmentInstanceFilterInventory]{
+		OutputState: i.ToOSPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VM inventory details.
 type OSPolicyAssignmentInstanceFilterInventoryOutput struct{ *pulumi.OutputState }
 
@@ -422,6 +489,12 @@ func (o OSPolicyAssignmentInstanceFilterInventoryOutput) ToOSPolicyAssignmentIns
 
 func (o OSPolicyAssignmentInstanceFilterInventoryOutput) ToOSPolicyAssignmentInstanceFilterInventoryOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterInventoryOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentInstanceFilterInventoryOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentInstanceFilterInventory] {
+	return pulumix.Output[OSPolicyAssignmentInstanceFilterInventory]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The OS short name
@@ -446,6 +519,12 @@ func (o OSPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOSPolicyAssignme
 
 func (o OSPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOSPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterInventoryArrayOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyAssignmentInstanceFilterInventory] {
+	return pulumix.Output[[]OSPolicyAssignmentInstanceFilterInventory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyAssignmentInstanceFilterInventoryArrayOutput) Index(i pulumi.IntInput) OSPolicyAssignmentInstanceFilterInventoryOutput {
@@ -477,6 +556,12 @@ func (o OSPolicyAssignmentInstanceFilterInventoryResponseOutput) ToOSPolicyAssig
 	return o
 }
 
+func (o OSPolicyAssignmentInstanceFilterInventoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentInstanceFilterInventoryResponse] {
+	return pulumix.Output[OSPolicyAssignmentInstanceFilterInventoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The OS short name
 func (o OSPolicyAssignmentInstanceFilterInventoryResponseOutput) OsShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilterInventoryResponse) string { return v.OsShortName }).(pulumi.StringOutput)
@@ -499,6 +584,12 @@ func (o OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput) ToOSPolicy
 
 func (o OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput) ToOSPolicyAssignmentInstanceFilterInventoryResponseArrayOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyAssignmentInstanceFilterInventoryResponse] {
+	return pulumix.Output[[]OSPolicyAssignmentInstanceFilterInventoryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput) Index(i pulumi.IntInput) OSPolicyAssignmentInstanceFilterInventoryResponseOutput {
@@ -536,6 +627,12 @@ func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInst
 
 func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOSPolicyAssignmentInstanceFilterResponseOutputWithContext(ctx context.Context) OSPolicyAssignmentInstanceFilterResponseOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentInstanceFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentInstanceFilterResponse] {
+	return pulumix.Output[OSPolicyAssignmentInstanceFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Target all VMs in the project. If true, no other criteria is permitted.
@@ -606,6 +703,12 @@ func (i OSPolicyAssignmentLabelSetArgs) ToOSPolicyAssignmentLabelSetOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentLabelSetOutput)
 }
 
+func (i OSPolicyAssignmentLabelSetArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentLabelSet] {
+	return pulumix.Output[OSPolicyAssignmentLabelSet]{
+		OutputState: i.ToOSPolicyAssignmentLabelSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OSPolicyAssignmentLabelSetArrayInput is an input type that accepts OSPolicyAssignmentLabelSetArray and OSPolicyAssignmentLabelSetArrayOutput values.
 // You can construct a concrete instance of `OSPolicyAssignmentLabelSetArrayInput` via:
 //
@@ -631,6 +734,12 @@ func (i OSPolicyAssignmentLabelSetArray) ToOSPolicyAssignmentLabelSetArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentLabelSetArrayOutput)
 }
 
+func (i OSPolicyAssignmentLabelSetArray) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyAssignmentLabelSet] {
+	return pulumix.Output[[]OSPolicyAssignmentLabelSet]{
+		OutputState: i.ToOSPolicyAssignmentLabelSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present.
 type OSPolicyAssignmentLabelSetOutput struct{ *pulumi.OutputState }
 
@@ -644,6 +753,12 @@ func (o OSPolicyAssignmentLabelSetOutput) ToOSPolicyAssignmentLabelSetOutput() O
 
 func (o OSPolicyAssignmentLabelSetOutput) ToOSPolicyAssignmentLabelSetOutputWithContext(ctx context.Context) OSPolicyAssignmentLabelSetOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentLabelSetOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentLabelSet] {
+	return pulumix.Output[OSPolicyAssignmentLabelSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
@@ -663,6 +778,12 @@ func (o OSPolicyAssignmentLabelSetArrayOutput) ToOSPolicyAssignmentLabelSetArray
 
 func (o OSPolicyAssignmentLabelSetArrayOutput) ToOSPolicyAssignmentLabelSetArrayOutputWithContext(ctx context.Context) OSPolicyAssignmentLabelSetArrayOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentLabelSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyAssignmentLabelSet] {
+	return pulumix.Output[[]OSPolicyAssignmentLabelSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyAssignmentLabelSetArrayOutput) Index(i pulumi.IntInput) OSPolicyAssignmentLabelSetOutput {
@@ -692,6 +813,12 @@ func (o OSPolicyAssignmentLabelSetResponseOutput) ToOSPolicyAssignmentLabelSetRe
 	return o
 }
 
+func (o OSPolicyAssignmentLabelSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentLabelSetResponse] {
+	return pulumix.Output[OSPolicyAssignmentLabelSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
 func (o OSPolicyAssignmentLabelSetResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OSPolicyAssignmentLabelSetResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -709,6 +836,12 @@ func (o OSPolicyAssignmentLabelSetResponseArrayOutput) ToOSPolicyAssignmentLabel
 
 func (o OSPolicyAssignmentLabelSetResponseArrayOutput) ToOSPolicyAssignmentLabelSetResponseArrayOutputWithContext(ctx context.Context) OSPolicyAssignmentLabelSetResponseArrayOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentLabelSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyAssignmentLabelSetResponse] {
+	return pulumix.Output[[]OSPolicyAssignmentLabelSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyAssignmentLabelSetResponseArrayOutput) Index(i pulumi.IntInput) OSPolicyAssignmentLabelSetResponseOutput {
@@ -756,6 +889,12 @@ func (i OSPolicyAssignmentRolloutArgs) ToOSPolicyAssignmentRolloutOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyAssignmentRolloutOutput)
 }
 
+func (i OSPolicyAssignmentRolloutArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentRollout] {
+	return pulumix.Output[OSPolicyAssignmentRollout]{
+		OutputState: i.ToOSPolicyAssignmentRolloutOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Message to configure the rollout at the zonal level for the OS policy assignment.
 type OSPolicyAssignmentRolloutOutput struct{ *pulumi.OutputState }
 
@@ -769,6 +908,12 @@ func (o OSPolicyAssignmentRolloutOutput) ToOSPolicyAssignmentRolloutOutput() OSP
 
 func (o OSPolicyAssignmentRolloutOutput) ToOSPolicyAssignmentRolloutOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentRolloutOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentRollout] {
+	return pulumix.Output[OSPolicyAssignmentRollout]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
@@ -802,6 +947,12 @@ func (o OSPolicyAssignmentRolloutResponseOutput) ToOSPolicyAssignmentRolloutResp
 
 func (o OSPolicyAssignmentRolloutResponseOutput) ToOSPolicyAssignmentRolloutResponseOutputWithContext(ctx context.Context) OSPolicyAssignmentRolloutResponseOutput {
 	return o
+}
+
+func (o OSPolicyAssignmentRolloutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyAssignmentRolloutResponse] {
+	return pulumix.Output[OSPolicyAssignmentRolloutResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
@@ -853,6 +1004,12 @@ func (i OSPolicyInventoryFilterArgs) ToOSPolicyInventoryFilterOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyInventoryFilterOutput)
 }
 
+func (i OSPolicyInventoryFilterArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyInventoryFilter] {
+	return pulumix.Output[OSPolicyInventoryFilter]{
+		OutputState: i.ToOSPolicyInventoryFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OSPolicyInventoryFilterArrayInput is an input type that accepts OSPolicyInventoryFilterArray and OSPolicyInventoryFilterArrayOutput values.
 // You can construct a concrete instance of `OSPolicyInventoryFilterArrayInput` via:
 //
@@ -878,6 +1035,12 @@ func (i OSPolicyInventoryFilterArray) ToOSPolicyInventoryFilterArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyInventoryFilterArrayOutput)
 }
 
+func (i OSPolicyInventoryFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyInventoryFilter] {
+	return pulumix.Output[[]OSPolicyInventoryFilter]{
+		OutputState: i.ToOSPolicyInventoryFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Filtering criteria to select VMs based on inventory details.
 type OSPolicyInventoryFilterOutput struct{ *pulumi.OutputState }
 
@@ -891,6 +1054,12 @@ func (o OSPolicyInventoryFilterOutput) ToOSPolicyInventoryFilterOutput() OSPolic
 
 func (o OSPolicyInventoryFilterOutput) ToOSPolicyInventoryFilterOutputWithContext(ctx context.Context) OSPolicyInventoryFilterOutput {
 	return o
+}
+
+func (o OSPolicyInventoryFilterOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyInventoryFilter] {
+	return pulumix.Output[OSPolicyInventoryFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The OS short name
@@ -915,6 +1084,12 @@ func (o OSPolicyInventoryFilterArrayOutput) ToOSPolicyInventoryFilterArrayOutput
 
 func (o OSPolicyInventoryFilterArrayOutput) ToOSPolicyInventoryFilterArrayOutputWithContext(ctx context.Context) OSPolicyInventoryFilterArrayOutput {
 	return o
+}
+
+func (o OSPolicyInventoryFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyInventoryFilter] {
+	return pulumix.Output[[]OSPolicyInventoryFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyInventoryFilterArrayOutput) Index(i pulumi.IntInput) OSPolicyInventoryFilterOutput {
@@ -946,6 +1121,12 @@ func (o OSPolicyInventoryFilterResponseOutput) ToOSPolicyInventoryFilterResponse
 	return o
 }
 
+func (o OSPolicyInventoryFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyInventoryFilterResponse] {
+	return pulumix.Output[OSPolicyInventoryFilterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The OS short name
 func (o OSPolicyInventoryFilterResponseOutput) OsShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyInventoryFilterResponse) string { return v.OsShortName }).(pulumi.StringOutput)
@@ -968,6 +1149,12 @@ func (o OSPolicyInventoryFilterResponseArrayOutput) ToOSPolicyInventoryFilterRes
 
 func (o OSPolicyInventoryFilterResponseArrayOutput) ToOSPolicyInventoryFilterResponseArrayOutputWithContext(ctx context.Context) OSPolicyInventoryFilterResponseArrayOutput {
 	return o
+}
+
+func (o OSPolicyInventoryFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyInventoryFilterResponse] {
+	return pulumix.Output[[]OSPolicyInventoryFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyInventoryFilterResponseArrayOutput) Index(i pulumi.IntInput) OSPolicyInventoryFilterResponseOutput {
@@ -1015,6 +1202,12 @@ func (i OSPolicyOSFilterArgs) ToOSPolicyOSFilterOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyOSFilterOutput)
 }
 
+func (i OSPolicyOSFilterArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyOSFilter] {
+	return pulumix.Output[OSPolicyOSFilter]{
+		OutputState: i.ToOSPolicyOSFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyOSFilterArgs) ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilterPtrOutput {
 	return i.ToOSPolicyOSFilterPtrOutputWithContext(context.Background())
 }
@@ -1056,6 +1249,12 @@ func (i *ospolicyOSFilterPtrType) ToOSPolicyOSFilterPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyOSFilterPtrOutput)
 }
 
+func (i *ospolicyOSFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyOSFilter] {
+	return pulumix.Output[*OSPolicyOSFilter]{
+		OutputState: i.ToOSPolicyOSFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Filtering criteria to select VMs based on OS details.
 type OSPolicyOSFilterOutput struct{ *pulumi.OutputState }
 
@@ -1081,6 +1280,12 @@ func (o OSPolicyOSFilterOutput) ToOSPolicyOSFilterPtrOutputWithContext(ctx conte
 	}).(OSPolicyOSFilterPtrOutput)
 }
 
+func (o OSPolicyOSFilterOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyOSFilter] {
+	return pulumix.Output[OSPolicyOSFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
 func (o OSPolicyOSFilterOutput) OsShortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSPolicyOSFilter) *string { return v.OsShortName }).(pulumi.StringPtrOutput)
@@ -1103,6 +1308,12 @@ func (o OSPolicyOSFilterPtrOutput) ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilte
 
 func (o OSPolicyOSFilterPtrOutput) ToOSPolicyOSFilterPtrOutputWithContext(ctx context.Context) OSPolicyOSFilterPtrOutput {
 	return o
+}
+
+func (o OSPolicyOSFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyOSFilter] {
+	return pulumix.Output[*OSPolicyOSFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyOSFilterPtrOutput) Elem() OSPolicyOSFilterOutput {
@@ -1156,6 +1367,12 @@ func (o OSPolicyOSFilterResponseOutput) ToOSPolicyOSFilterResponseOutput() OSPol
 
 func (o OSPolicyOSFilterResponseOutput) ToOSPolicyOSFilterResponseOutputWithContext(ctx context.Context) OSPolicyOSFilterResponseOutput {
 	return o
+}
+
+func (o OSPolicyOSFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyOSFilterResponse] {
+	return pulumix.Output[OSPolicyOSFilterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
@@ -1219,6 +1436,12 @@ func (i OSPolicyResourceArgs) ToOSPolicyResourceOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceOutput)
 }
 
+func (i OSPolicyResourceArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResource] {
+	return pulumix.Output[OSPolicyResource]{
+		OutputState: i.ToOSPolicyResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OSPolicyResourceArrayInput is an input type that accepts OSPolicyResourceArray and OSPolicyResourceArrayOutput values.
 // You can construct a concrete instance of `OSPolicyResourceArrayInput` via:
 //
@@ -1244,6 +1467,12 @@ func (i OSPolicyResourceArray) ToOSPolicyResourceArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceArrayOutput)
 }
 
+func (i OSPolicyResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyResource] {
+	return pulumix.Output[[]OSPolicyResource]{
+		OutputState: i.ToOSPolicyResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
 type OSPolicyResourceOutput struct{ *pulumi.OutputState }
 
@@ -1257,6 +1486,12 @@ func (o OSPolicyResourceOutput) ToOSPolicyResourceOutput() OSPolicyResourceOutpu
 
 func (o OSPolicyResourceOutput) ToOSPolicyResourceOutputWithContext(ctx context.Context) OSPolicyResourceOutput {
 	return o
+}
+
+func (o OSPolicyResourceOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResource] {
+	return pulumix.Output[OSPolicyResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Exec resource
@@ -1296,6 +1531,12 @@ func (o OSPolicyResourceArrayOutput) ToOSPolicyResourceArrayOutput() OSPolicyRes
 
 func (o OSPolicyResourceArrayOutput) ToOSPolicyResourceArrayOutputWithContext(ctx context.Context) OSPolicyResourceArrayOutput {
 	return o
+}
+
+func (o OSPolicyResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyResource] {
+	return pulumix.Output[[]OSPolicyResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceArrayOutput) Index(i pulumi.IntInput) OSPolicyResourceOutput {
@@ -1343,6 +1584,12 @@ func (i OSPolicyResourceExecResourceArgs) ToOSPolicyResourceExecResourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceExecResourceOutput)
 }
 
+func (i OSPolicyResourceExecResourceArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResource] {
+	return pulumix.Output[OSPolicyResourceExecResource]{
+		OutputState: i.ToOSPolicyResourceExecResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceExecResourceArgs) ToOSPolicyResourceExecResourcePtrOutput() OSPolicyResourceExecResourcePtrOutput {
 	return i.ToOSPolicyResourceExecResourcePtrOutputWithContext(context.Background())
 }
@@ -1384,6 +1631,12 @@ func (i *ospolicyResourceExecResourcePtrType) ToOSPolicyResourceExecResourcePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceExecResourcePtrOutput)
 }
 
+func (i *ospolicyResourceExecResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResource] {
+	return pulumix.Output[*OSPolicyResourceExecResource]{
+		OutputState: i.ToOSPolicyResourceExecResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce` and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being explicit, exit codes `100` and `101` were chosen.
 type OSPolicyResourceExecResourceOutput struct{ *pulumi.OutputState }
 
@@ -1409,6 +1662,12 @@ func (o OSPolicyResourceExecResourceOutput) ToOSPolicyResourceExecResourcePtrOut
 	}).(OSPolicyResourceExecResourcePtrOutput)
 }
 
+func (o OSPolicyResourceExecResourceOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResource] {
+	return pulumix.Output[OSPolicyResourceExecResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
 func (o OSPolicyResourceExecResourceOutput) Enforce() OSPolicyResourceExecResourceExecPtrOutput {
 	return o.ApplyT(func(v OSPolicyResourceExecResource) *OSPolicyResourceExecResourceExec { return v.Enforce }).(OSPolicyResourceExecResourceExecPtrOutput)
@@ -1431,6 +1690,12 @@ func (o OSPolicyResourceExecResourcePtrOutput) ToOSPolicyResourceExecResourcePtr
 
 func (o OSPolicyResourceExecResourcePtrOutput) ToOSPolicyResourceExecResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourcePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceExecResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResource] {
+	return pulumix.Output[*OSPolicyResourceExecResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceExecResourcePtrOutput) Elem() OSPolicyResourceExecResourceOutput {
@@ -1514,6 +1779,12 @@ func (i OSPolicyResourceExecResourceExecArgs) ToOSPolicyResourceExecResourceExec
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceExecResourceExecOutput)
 }
 
+func (i OSPolicyResourceExecResourceExecArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResourceExec] {
+	return pulumix.Output[OSPolicyResourceExecResourceExec]{
+		OutputState: i.ToOSPolicyResourceExecResourceExecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceExecResourceExecArgs) ToOSPolicyResourceExecResourceExecPtrOutput() OSPolicyResourceExecResourceExecPtrOutput {
 	return i.ToOSPolicyResourceExecResourceExecPtrOutputWithContext(context.Background())
 }
@@ -1555,6 +1826,12 @@ func (i *ospolicyResourceExecResourceExecPtrType) ToOSPolicyResourceExecResource
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceExecResourceExecPtrOutput)
 }
 
+func (i *ospolicyResourceExecResourceExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResourceExec] {
+	return pulumix.Output[*OSPolicyResourceExecResourceExec]{
+		OutputState: i.ToOSPolicyResourceExecResourceExecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A file or script to execute.
 type OSPolicyResourceExecResourceExecOutput struct{ *pulumi.OutputState }
 
@@ -1578,6 +1855,12 @@ func (o OSPolicyResourceExecResourceExecOutput) ToOSPolicyResourceExecResourceEx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceExecResourceExec) *OSPolicyResourceExecResourceExec {
 		return &v
 	}).(OSPolicyResourceExecResourceExecPtrOutput)
+}
+
+func (o OSPolicyResourceExecResourceExecOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResourceExec] {
+	return pulumix.Output[OSPolicyResourceExecResourceExec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional arguments to pass to the source during execution.
@@ -1619,6 +1902,12 @@ func (o OSPolicyResourceExecResourceExecPtrOutput) ToOSPolicyResourceExecResourc
 
 func (o OSPolicyResourceExecResourceExecPtrOutput) ToOSPolicyResourceExecResourceExecPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceExecResourceExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResourceExec] {
+	return pulumix.Output[*OSPolicyResourceExecResourceExec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceExecResourceExecPtrOutput) Elem() OSPolicyResourceExecResourceExecOutput {
@@ -1710,6 +1999,12 @@ func (o OSPolicyResourceExecResourceExecResponseOutput) ToOSPolicyResourceExecRe
 	return o
 }
 
+func (o OSPolicyResourceExecResourceExecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResourceExecResponse] {
+	return pulumix.Output[OSPolicyResourceExecResourceExecResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional arguments to pass to the source during execution.
 func (o OSPolicyResourceExecResourceExecResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OSPolicyResourceExecResourceExecResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -1756,6 +2051,12 @@ func (o OSPolicyResourceExecResourceResponseOutput) ToOSPolicyResourceExecResour
 
 func (o OSPolicyResourceExecResourceResponseOutput) ToOSPolicyResourceExecResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourceExecResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResourceResponse] {
+	return pulumix.Output[OSPolicyResourceExecResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
@@ -1819,6 +2120,12 @@ func (i OSPolicyResourceFileArgs) ToOSPolicyResourceFileOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileOutput)
 }
 
+func (i OSPolicyResourceFileArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFile] {
+	return pulumix.Output[OSPolicyResourceFile]{
+		OutputState: i.ToOSPolicyResourceFileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceFileArgs) ToOSPolicyResourceFilePtrOutput() OSPolicyResourceFilePtrOutput {
 	return i.ToOSPolicyResourceFilePtrOutputWithContext(context.Background())
 }
@@ -1860,6 +2167,12 @@ func (i *ospolicyResourceFilePtrType) ToOSPolicyResourceFilePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFilePtrOutput)
 }
 
+func (i *ospolicyResourceFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFile] {
+	return pulumix.Output[*OSPolicyResourceFile]{
+		OutputState: i.ToOSPolicyResourceFilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A remote or local file.
 type OSPolicyResourceFileOutput struct{ *pulumi.OutputState }
 
@@ -1883,6 +2196,12 @@ func (o OSPolicyResourceFileOutput) ToOSPolicyResourceFilePtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFile) *OSPolicyResourceFile {
 		return &v
 	}).(OSPolicyResourceFilePtrOutput)
+}
+
+func (o OSPolicyResourceFileOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFile] {
+	return pulumix.Output[OSPolicyResourceFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
@@ -1917,6 +2236,12 @@ func (o OSPolicyResourceFilePtrOutput) ToOSPolicyResourceFilePtrOutput() OSPolic
 
 func (o OSPolicyResourceFilePtrOutput) ToOSPolicyResourceFilePtrOutputWithContext(ctx context.Context) OSPolicyResourceFilePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFile] {
+	return pulumix.Output[*OSPolicyResourceFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceFilePtrOutput) Elem() OSPolicyResourceFileOutput {
@@ -2012,6 +2337,12 @@ func (i OSPolicyResourceFileGcsArgs) ToOSPolicyResourceFileGcsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileGcsOutput)
 }
 
+func (i OSPolicyResourceFileGcsArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileGcs] {
+	return pulumix.Output[OSPolicyResourceFileGcs]{
+		OutputState: i.ToOSPolicyResourceFileGcsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceFileGcsArgs) ToOSPolicyResourceFileGcsPtrOutput() OSPolicyResourceFileGcsPtrOutput {
 	return i.ToOSPolicyResourceFileGcsPtrOutputWithContext(context.Background())
 }
@@ -2053,6 +2384,12 @@ func (i *ospolicyResourceFileGcsPtrType) ToOSPolicyResourceFileGcsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileGcsPtrOutput)
 }
 
+func (i *ospolicyResourceFileGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileGcs] {
+	return pulumix.Output[*OSPolicyResourceFileGcs]{
+		OutputState: i.ToOSPolicyResourceFileGcsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies a file available as a Cloud Storage Object.
 type OSPolicyResourceFileGcsOutput struct{ *pulumi.OutputState }
 
@@ -2076,6 +2413,12 @@ func (o OSPolicyResourceFileGcsOutput) ToOSPolicyResourceFileGcsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFileGcs) *OSPolicyResourceFileGcs {
 		return &v
 	}).(OSPolicyResourceFileGcsPtrOutput)
+}
+
+func (o OSPolicyResourceFileGcsOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileGcs] {
+	return pulumix.Output[OSPolicyResourceFileGcs]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Bucket of the Cloud Storage object.
@@ -2105,6 +2448,12 @@ func (o OSPolicyResourceFileGcsPtrOutput) ToOSPolicyResourceFileGcsPtrOutput() O
 
 func (o OSPolicyResourceFileGcsPtrOutput) ToOSPolicyResourceFileGcsPtrOutputWithContext(ctx context.Context) OSPolicyResourceFileGcsPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileGcs] {
+	return pulumix.Output[*OSPolicyResourceFileGcs]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceFileGcsPtrOutput) Elem() OSPolicyResourceFileGcsOutput {
@@ -2172,6 +2521,12 @@ func (o OSPolicyResourceFileGcsResponseOutput) ToOSPolicyResourceFileGcsResponse
 	return o
 }
 
+func (o OSPolicyResourceFileGcsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileGcsResponse] {
+	return pulumix.Output[OSPolicyResourceFileGcsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Bucket of the Cloud Storage object.
 func (o OSPolicyResourceFileGcsResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceFileGcsResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -2226,6 +2581,12 @@ func (i OSPolicyResourceFileRemoteArgs) ToOSPolicyResourceFileRemoteOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileRemoteOutput)
 }
 
+func (i OSPolicyResourceFileRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileRemote] {
+	return pulumix.Output[OSPolicyResourceFileRemote]{
+		OutputState: i.ToOSPolicyResourceFileRemoteOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceFileRemoteArgs) ToOSPolicyResourceFileRemotePtrOutput() OSPolicyResourceFileRemotePtrOutput {
 	return i.ToOSPolicyResourceFileRemotePtrOutputWithContext(context.Background())
 }
@@ -2267,6 +2628,12 @@ func (i *ospolicyResourceFileRemotePtrType) ToOSPolicyResourceFileRemotePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileRemotePtrOutput)
 }
 
+func (i *ospolicyResourceFileRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileRemote] {
+	return pulumix.Output[*OSPolicyResourceFileRemote]{
+		OutputState: i.ToOSPolicyResourceFileRemotePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies a file available via some URI.
 type OSPolicyResourceFileRemoteOutput struct{ *pulumi.OutputState }
 
@@ -2292,6 +2659,12 @@ func (o OSPolicyResourceFileRemoteOutput) ToOSPolicyResourceFileRemotePtrOutputW
 	}).(OSPolicyResourceFileRemotePtrOutput)
 }
 
+func (o OSPolicyResourceFileRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileRemote] {
+	return pulumix.Output[OSPolicyResourceFileRemote]{
+		OutputState: o.OutputState,
+	}
+}
+
 // SHA256 checksum of the remote file.
 func (o OSPolicyResourceFileRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSPolicyResourceFileRemote) *string { return v.Sha256Checksum }).(pulumi.StringPtrOutput)
@@ -2314,6 +2687,12 @@ func (o OSPolicyResourceFileRemotePtrOutput) ToOSPolicyResourceFileRemotePtrOutp
 
 func (o OSPolicyResourceFileRemotePtrOutput) ToOSPolicyResourceFileRemotePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileRemotePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileRemote] {
+	return pulumix.Output[*OSPolicyResourceFileRemote]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceFileRemotePtrOutput) Elem() OSPolicyResourceFileRemoteOutput {
@@ -2367,6 +2746,12 @@ func (o OSPolicyResourceFileRemoteResponseOutput) ToOSPolicyResourceFileRemoteRe
 
 func (o OSPolicyResourceFileRemoteResponseOutput) ToOSPolicyResourceFileRemoteResponseOutputWithContext(ctx context.Context) OSPolicyResourceFileRemoteResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileRemoteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileRemoteResponse] {
+	return pulumix.Output[OSPolicyResourceFileRemoteResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SHA256 checksum of the remote file.
@@ -2430,6 +2815,12 @@ func (i OSPolicyResourceFileResourceArgs) ToOSPolicyResourceFileResourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileResourceOutput)
 }
 
+func (i OSPolicyResourceFileResourceArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileResource] {
+	return pulumix.Output[OSPolicyResourceFileResource]{
+		OutputState: i.ToOSPolicyResourceFileResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceFileResourceArgs) ToOSPolicyResourceFileResourcePtrOutput() OSPolicyResourceFileResourcePtrOutput {
 	return i.ToOSPolicyResourceFileResourcePtrOutputWithContext(context.Background())
 }
@@ -2471,6 +2862,12 @@ func (i *ospolicyResourceFileResourcePtrType) ToOSPolicyResourceFileResourcePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceFileResourcePtrOutput)
 }
 
+func (i *ospolicyResourceFileResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileResource] {
+	return pulumix.Output[*OSPolicyResourceFileResource]{
+		OutputState: i.ToOSPolicyResourceFileResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A resource that manages the state of a file.
 type OSPolicyResourceFileResourceOutput struct{ *pulumi.OutputState }
 
@@ -2494,6 +2891,12 @@ func (o OSPolicyResourceFileResourceOutput) ToOSPolicyResourceFileResourcePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFileResource) *OSPolicyResourceFileResource {
 		return &v
 	}).(OSPolicyResourceFileResourcePtrOutput)
+}
+
+func (o OSPolicyResourceFileResourceOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileResource] {
+	return pulumix.Output[OSPolicyResourceFileResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A a file with this content. The size of the content is limited to 32KiB.
@@ -2533,6 +2936,12 @@ func (o OSPolicyResourceFileResourcePtrOutput) ToOSPolicyResourceFileResourcePtr
 
 func (o OSPolicyResourceFileResourcePtrOutput) ToOSPolicyResourceFileResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourcePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileResource] {
+	return pulumix.Output[*OSPolicyResourceFileResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceFileResourcePtrOutput) Elem() OSPolicyResourceFileResourceOutput {
@@ -2624,6 +3033,12 @@ func (o OSPolicyResourceFileResourceResponseOutput) ToOSPolicyResourceFileResour
 	return o
 }
 
+func (o OSPolicyResourceFileResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileResourceResponse] {
+	return pulumix.Output[OSPolicyResourceFileResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A a file with this content. The size of the content is limited to 32KiB.
 func (o OSPolicyResourceFileResourceResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceFileResourceResponse) string { return v.Content }).(pulumi.StringOutput)
@@ -2674,6 +3089,12 @@ func (o OSPolicyResourceFileResponseOutput) ToOSPolicyResourceFileResponseOutput
 
 func (o OSPolicyResourceFileResponseOutput) ToOSPolicyResourceFileResponseOutputWithContext(ctx context.Context) OSPolicyResourceFileResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileResponse] {
+	return pulumix.Output[OSPolicyResourceFileResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
@@ -2743,6 +3164,12 @@ func (i OSPolicyResourceGroupArgs) ToOSPolicyResourceGroupOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceGroupOutput)
 }
 
+func (i OSPolicyResourceGroupArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceGroup] {
+	return pulumix.Output[OSPolicyResourceGroup]{
+		OutputState: i.ToOSPolicyResourceGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OSPolicyResourceGroupArrayInput is an input type that accepts OSPolicyResourceGroupArray and OSPolicyResourceGroupArrayOutput values.
 // You can construct a concrete instance of `OSPolicyResourceGroupArrayInput` via:
 //
@@ -2768,6 +3195,12 @@ func (i OSPolicyResourceGroupArray) ToOSPolicyResourceGroupArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceGroupArrayOutput)
 }
 
+func (i OSPolicyResourceGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyResourceGroup] {
+	return pulumix.Output[[]OSPolicyResourceGroup]{
+		OutputState: i.ToOSPolicyResourceGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group.
 type OSPolicyResourceGroupOutput struct{ *pulumi.OutputState }
 
@@ -2781,6 +3214,12 @@ func (o OSPolicyResourceGroupOutput) ToOSPolicyResourceGroupOutput() OSPolicyRes
 
 func (o OSPolicyResourceGroupOutput) ToOSPolicyResourceGroupOutputWithContext(ctx context.Context) OSPolicyResourceGroupOutput {
 	return o
+}
+
+func (o OSPolicyResourceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceGroup] {
+	return pulumix.Output[OSPolicyResourceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
@@ -2812,6 +3251,12 @@ func (o OSPolicyResourceGroupArrayOutput) ToOSPolicyResourceGroupArrayOutput() O
 
 func (o OSPolicyResourceGroupArrayOutput) ToOSPolicyResourceGroupArrayOutputWithContext(ctx context.Context) OSPolicyResourceGroupArrayOutput {
 	return o
+}
+
+func (o OSPolicyResourceGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyResourceGroup] {
+	return pulumix.Output[[]OSPolicyResourceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceGroupArrayOutput) Index(i pulumi.IntInput) OSPolicyResourceGroupOutput {
@@ -2847,6 +3292,12 @@ func (o OSPolicyResourceGroupResponseOutput) ToOSPolicyResourceGroupResponseOutp
 	return o
 }
 
+func (o OSPolicyResourceGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceGroupResponse] {
+	return pulumix.Output[OSPolicyResourceGroupResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
 func (o OSPolicyResourceGroupResponseOutput) InventoryFilters() OSPolicyInventoryFilterResponseArrayOutput {
 	return o.ApplyT(func(v OSPolicyResourceGroupResponse) []OSPolicyInventoryFilterResponse { return v.InventoryFilters }).(OSPolicyInventoryFilterResponseArrayOutput)
@@ -2876,6 +3327,12 @@ func (o OSPolicyResourceGroupResponseArrayOutput) ToOSPolicyResourceGroupRespons
 
 func (o OSPolicyResourceGroupResponseArrayOutput) ToOSPolicyResourceGroupResponseArrayOutputWithContext(ctx context.Context) OSPolicyResourceGroupResponseArrayOutput {
 	return o
+}
+
+func (o OSPolicyResourceGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyResourceGroupResponse] {
+	return pulumix.Output[[]OSPolicyResourceGroupResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceGroupResponseArrayOutput) Index(i pulumi.IntInput) OSPolicyResourceGroupResponseOutput {
@@ -2947,6 +3404,12 @@ func (i OSPolicyResourcePackageResourceArgs) ToOSPolicyResourcePackageResourceOu
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceOutput)
 }
 
+func (i OSPolicyResourcePackageResourceArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResource] {
+	return pulumix.Output[OSPolicyResourcePackageResource]{
+		OutputState: i.ToOSPolicyResourcePackageResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourcePackageResourceArgs) ToOSPolicyResourcePackageResourcePtrOutput() OSPolicyResourcePackageResourcePtrOutput {
 	return i.ToOSPolicyResourcePackageResourcePtrOutputWithContext(context.Background())
 }
@@ -2988,6 +3451,12 @@ func (i *ospolicyResourcePackageResourcePtrType) ToOSPolicyResourcePackageResour
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourcePtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResource] {
+	return pulumix.Output[*OSPolicyResourcePackageResource]{
+		OutputState: i.ToOSPolicyResourcePackageResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A resource that manages a system package.
 type OSPolicyResourcePackageResourceOutput struct{ *pulumi.OutputState }
 
@@ -3011,6 +3480,12 @@ func (o OSPolicyResourcePackageResourceOutput) ToOSPolicyResourcePackageResource
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResource) *OSPolicyResourcePackageResource {
 		return &v
 	}).(OSPolicyResourcePackageResourcePtrOutput)
+}
+
+func (o OSPolicyResourcePackageResourceOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResource] {
+	return pulumix.Output[OSPolicyResourcePackageResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A package managed by Apt.
@@ -3067,6 +3542,12 @@ func (o OSPolicyResourcePackageResourcePtrOutput) ToOSPolicyResourcePackageResou
 
 func (o OSPolicyResourcePackageResourcePtrOutput) ToOSPolicyResourcePackageResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourcePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResource] {
+	return pulumix.Output[*OSPolicyResourcePackageResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourcePtrOutput) Elem() OSPolicyResourcePackageResourceOutput {
@@ -3194,6 +3675,12 @@ func (i OSPolicyResourcePackageResourceAPTArgs) ToOSPolicyResourcePackageResourc
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceAPTOutput)
 }
 
+func (i OSPolicyResourcePackageResourceAPTArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceAPT] {
+	return pulumix.Output[OSPolicyResourcePackageResourceAPT]{
+		OutputState: i.ToOSPolicyResourcePackageResourceAPTOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourcePackageResourceAPTArgs) ToOSPolicyResourcePackageResourceAPTPtrOutput() OSPolicyResourcePackageResourceAPTPtrOutput {
 	return i.ToOSPolicyResourcePackageResourceAPTPtrOutputWithContext(context.Background())
 }
@@ -3235,6 +3722,12 @@ func (i *ospolicyResourcePackageResourceAPTPtrType) ToOSPolicyResourcePackageRes
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceAPTPtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourceAPTPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceAPT] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceAPT]{
+		OutputState: i.ToOSPolicyResourcePackageResourceAPTPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A package managed by APT. - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get -y remove [name]`
 type OSPolicyResourcePackageResourceAPTOutput struct{ *pulumi.OutputState }
 
@@ -3260,6 +3753,12 @@ func (o OSPolicyResourcePackageResourceAPTOutput) ToOSPolicyResourcePackageResou
 	}).(OSPolicyResourcePackageResourceAPTPtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceAPTOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceAPT] {
+	return pulumix.Output[OSPolicyResourcePackageResourceAPT]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Package name.
 func (o OSPolicyResourcePackageResourceAPTOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceAPT) string { return v.Name }).(pulumi.StringOutput)
@@ -3277,6 +3776,12 @@ func (o OSPolicyResourcePackageResourceAPTPtrOutput) ToOSPolicyResourcePackageRe
 
 func (o OSPolicyResourcePackageResourceAPTPtrOutput) ToOSPolicyResourcePackageResourceAPTPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceAPTPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceAPTPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceAPT] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceAPT]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceAPTPtrOutput) Elem() OSPolicyResourcePackageResourceAPTOutput {
@@ -3318,6 +3823,12 @@ func (o OSPolicyResourcePackageResourceAPTResponseOutput) ToOSPolicyResourcePack
 
 func (o OSPolicyResourcePackageResourceAPTResponseOutput) ToOSPolicyResourcePackageResourceAPTResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceAPTResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceAPTResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceAPTResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceAPTResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Package name.
@@ -3364,6 +3875,12 @@ func (i OSPolicyResourcePackageResourceDebArgs) ToOSPolicyResourcePackageResourc
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceDebOutput)
 }
 
+func (i OSPolicyResourcePackageResourceDebArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceDeb] {
+	return pulumix.Output[OSPolicyResourcePackageResourceDeb]{
+		OutputState: i.ToOSPolicyResourcePackageResourceDebOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourcePackageResourceDebArgs) ToOSPolicyResourcePackageResourceDebPtrOutput() OSPolicyResourcePackageResourceDebPtrOutput {
 	return i.ToOSPolicyResourcePackageResourceDebPtrOutputWithContext(context.Background())
 }
@@ -3405,6 +3922,12 @@ func (i *ospolicyResourcePackageResourceDebPtrType) ToOSPolicyResourcePackageRes
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceDebPtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourceDebPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceDeb] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceDeb]{
+		OutputState: i.ToOSPolicyResourcePackageResourceDebPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A deb package file. dpkg packages only support INSTALLED state.
 type OSPolicyResourcePackageResourceDebOutput struct{ *pulumi.OutputState }
 
@@ -3430,6 +3953,12 @@ func (o OSPolicyResourcePackageResourceDebOutput) ToOSPolicyResourcePackageResou
 	}).(OSPolicyResourcePackageResourceDebPtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceDebOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceDeb] {
+	return pulumix.Output[OSPolicyResourcePackageResourceDeb]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
 func (o OSPolicyResourcePackageResourceDebOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceDeb) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
@@ -3452,6 +3981,12 @@ func (o OSPolicyResourcePackageResourceDebPtrOutput) ToOSPolicyResourcePackageRe
 
 func (o OSPolicyResourcePackageResourceDebPtrOutput) ToOSPolicyResourcePackageResourceDebPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDebPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceDebPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceDeb] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceDeb]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceDebPtrOutput) Elem() OSPolicyResourcePackageResourceDebOutput {
@@ -3507,6 +4042,12 @@ func (o OSPolicyResourcePackageResourceDebResponseOutput) ToOSPolicyResourcePack
 	return o
 }
 
+func (o OSPolicyResourcePackageResourceDebResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceDebResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceDebResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
 func (o OSPolicyResourcePackageResourceDebResponseOutput) PullDeps() pulumi.BoolOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceDebResponse) bool { return v.PullDeps }).(pulumi.BoolOutput)
@@ -3552,6 +4093,12 @@ func (i OSPolicyResourcePackageResourceGooGetArgs) ToOSPolicyResourcePackageReso
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceGooGetOutput)
 }
 
+func (i OSPolicyResourcePackageResourceGooGetArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceGooGet] {
+	return pulumix.Output[OSPolicyResourcePackageResourceGooGet]{
+		OutputState: i.ToOSPolicyResourcePackageResourceGooGetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourcePackageResourceGooGetArgs) ToOSPolicyResourcePackageResourceGooGetPtrOutput() OSPolicyResourcePackageResourceGooGetPtrOutput {
 	return i.ToOSPolicyResourcePackageResourceGooGetPtrOutputWithContext(context.Background())
 }
@@ -3593,6 +4140,12 @@ func (i *ospolicyResourcePackageResourceGooGetPtrType) ToOSPolicyResourcePackage
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceGooGetPtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourceGooGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceGooGet] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceGooGet]{
+		OutputState: i.ToOSPolicyResourcePackageResourceGooGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package`
 type OSPolicyResourcePackageResourceGooGetOutput struct{ *pulumi.OutputState }
 
@@ -3618,6 +4171,12 @@ func (o OSPolicyResourcePackageResourceGooGetOutput) ToOSPolicyResourcePackageRe
 	}).(OSPolicyResourcePackageResourceGooGetPtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceGooGetOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceGooGet] {
+	return pulumix.Output[OSPolicyResourcePackageResourceGooGet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Package name.
 func (o OSPolicyResourcePackageResourceGooGetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceGooGet) string { return v.Name }).(pulumi.StringOutput)
@@ -3635,6 +4194,12 @@ func (o OSPolicyResourcePackageResourceGooGetPtrOutput) ToOSPolicyResourcePackag
 
 func (o OSPolicyResourcePackageResourceGooGetPtrOutput) ToOSPolicyResourcePackageResourceGooGetPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceGooGetPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceGooGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceGooGet] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceGooGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceGooGetPtrOutput) Elem() OSPolicyResourcePackageResourceGooGetOutput {
@@ -3676,6 +4241,12 @@ func (o OSPolicyResourcePackageResourceGooGetResponseOutput) ToOSPolicyResourceP
 
 func (o OSPolicyResourcePackageResourceGooGetResponseOutput) ToOSPolicyResourcePackageResourceGooGetResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceGooGetResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceGooGetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceGooGetResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceGooGetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Package name.
@@ -3722,6 +4293,12 @@ func (i OSPolicyResourcePackageResourceMSIArgs) ToOSPolicyResourcePackageResourc
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceMSIOutput)
 }
 
+func (i OSPolicyResourcePackageResourceMSIArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceMSI] {
+	return pulumix.Output[OSPolicyResourcePackageResourceMSI]{
+		OutputState: i.ToOSPolicyResourcePackageResourceMSIOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourcePackageResourceMSIArgs) ToOSPolicyResourcePackageResourceMSIPtrOutput() OSPolicyResourcePackageResourceMSIPtrOutput {
 	return i.ToOSPolicyResourcePackageResourceMSIPtrOutputWithContext(context.Background())
 }
@@ -3763,6 +4340,12 @@ func (i *ospolicyResourcePackageResourceMSIPtrType) ToOSPolicyResourcePackageRes
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceMSIPtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourceMSIPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceMSI] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceMSI]{
+		OutputState: i.ToOSPolicyResourcePackageResourceMSIPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An MSI package. MSI packages only support INSTALLED state.
 type OSPolicyResourcePackageResourceMSIOutput struct{ *pulumi.OutputState }
 
@@ -3788,6 +4371,12 @@ func (o OSPolicyResourcePackageResourceMSIOutput) ToOSPolicyResourcePackageResou
 	}).(OSPolicyResourcePackageResourceMSIPtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceMSIOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceMSI] {
+	return pulumix.Output[OSPolicyResourcePackageResourceMSI]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
 func (o OSPolicyResourcePackageResourceMSIOutput) Properties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceMSI) []string { return v.Properties }).(pulumi.StringArrayOutput)
@@ -3810,6 +4399,12 @@ func (o OSPolicyResourcePackageResourceMSIPtrOutput) ToOSPolicyResourcePackageRe
 
 func (o OSPolicyResourcePackageResourceMSIPtrOutput) ToOSPolicyResourcePackageResourceMSIPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceMSIPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceMSIPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceMSI] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceMSI]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceMSIPtrOutput) Elem() OSPolicyResourcePackageResourceMSIOutput {
@@ -3865,6 +4460,12 @@ func (o OSPolicyResourcePackageResourceMSIResponseOutput) ToOSPolicyResourcePack
 	return o
 }
 
+func (o OSPolicyResourcePackageResourceMSIResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceMSIResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceMSIResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
 func (o OSPolicyResourcePackageResourceMSIResponseOutput) Properties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceMSIResponse) []string { return v.Properties }).(pulumi.StringArrayOutput)
@@ -3914,6 +4515,12 @@ func (i OSPolicyResourcePackageResourceRPMArgs) ToOSPolicyResourcePackageResourc
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceRPMOutput)
 }
 
+func (i OSPolicyResourcePackageResourceRPMArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceRPM] {
+	return pulumix.Output[OSPolicyResourcePackageResourceRPM]{
+		OutputState: i.ToOSPolicyResourcePackageResourceRPMOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourcePackageResourceRPMArgs) ToOSPolicyResourcePackageResourceRPMPtrOutput() OSPolicyResourcePackageResourceRPMPtrOutput {
 	return i.ToOSPolicyResourcePackageResourceRPMPtrOutputWithContext(context.Background())
 }
@@ -3955,6 +4562,12 @@ func (i *ospolicyResourcePackageResourceRPMPtrType) ToOSPolicyResourcePackageRes
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceRPMPtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourceRPMPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceRPM] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceRPM]{
+		OutputState: i.ToOSPolicyResourcePackageResourceRPMPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An RPM package file. RPM packages only support INSTALLED state.
 type OSPolicyResourcePackageResourceRPMOutput struct{ *pulumi.OutputState }
 
@@ -3980,6 +4593,12 @@ func (o OSPolicyResourcePackageResourceRPMOutput) ToOSPolicyResourcePackageResou
 	}).(OSPolicyResourcePackageResourceRPMPtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceRPMOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceRPM] {
+	return pulumix.Output[OSPolicyResourcePackageResourceRPM]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 func (o OSPolicyResourcePackageResourceRPMOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceRPM) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
@@ -4002,6 +4621,12 @@ func (o OSPolicyResourcePackageResourceRPMPtrOutput) ToOSPolicyResourcePackageRe
 
 func (o OSPolicyResourcePackageResourceRPMPtrOutput) ToOSPolicyResourcePackageResourceRPMPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceRPMPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceRPMPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceRPM] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceRPM]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceRPMPtrOutput) Elem() OSPolicyResourcePackageResourceRPMOutput {
@@ -4057,6 +4682,12 @@ func (o OSPolicyResourcePackageResourceRPMResponseOutput) ToOSPolicyResourcePack
 	return o
 }
 
+func (o OSPolicyResourcePackageResourceRPMResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceRPMResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceRPMResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 func (o OSPolicyResourcePackageResourceRPMResponseOutput) PullDeps() pulumi.BoolOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceRPMResponse) bool { return v.PullDeps }).(pulumi.BoolOutput)
@@ -4100,6 +4731,12 @@ func (o OSPolicyResourcePackageResourceResponseOutput) ToOSPolicyResourcePackage
 
 func (o OSPolicyResourcePackageResourceResponseOutput) ToOSPolicyResourcePackageResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A package managed by Apt.
@@ -4191,6 +4828,12 @@ func (i OSPolicyResourcePackageResourceYUMArgs) ToOSPolicyResourcePackageResourc
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceYUMOutput)
 }
 
+func (i OSPolicyResourcePackageResourceYUMArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceYUM] {
+	return pulumix.Output[OSPolicyResourcePackageResourceYUM]{
+		OutputState: i.ToOSPolicyResourcePackageResourceYUMOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourcePackageResourceYUMArgs) ToOSPolicyResourcePackageResourceYUMPtrOutput() OSPolicyResourcePackageResourceYUMPtrOutput {
 	return i.ToOSPolicyResourcePackageResourceYUMPtrOutputWithContext(context.Background())
 }
@@ -4232,6 +4875,12 @@ func (i *ospolicyResourcePackageResourceYUMPtrType) ToOSPolicyResourcePackageRes
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceYUMPtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourceYUMPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceYUM] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceYUM]{
+		OutputState: i.ToOSPolicyResourcePackageResourceYUMPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
 type OSPolicyResourcePackageResourceYUMOutput struct{ *pulumi.OutputState }
 
@@ -4257,6 +4906,12 @@ func (o OSPolicyResourcePackageResourceYUMOutput) ToOSPolicyResourcePackageResou
 	}).(OSPolicyResourcePackageResourceYUMPtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceYUMOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceYUM] {
+	return pulumix.Output[OSPolicyResourcePackageResourceYUM]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Package name.
 func (o OSPolicyResourcePackageResourceYUMOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceYUM) string { return v.Name }).(pulumi.StringOutput)
@@ -4274,6 +4929,12 @@ func (o OSPolicyResourcePackageResourceYUMPtrOutput) ToOSPolicyResourcePackageRe
 
 func (o OSPolicyResourcePackageResourceYUMPtrOutput) ToOSPolicyResourcePackageResourceYUMPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceYUMPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceYUMPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceYUM] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceYUM]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceYUMPtrOutput) Elem() OSPolicyResourcePackageResourceYUMOutput {
@@ -4317,6 +4978,12 @@ func (o OSPolicyResourcePackageResourceYUMResponseOutput) ToOSPolicyResourcePack
 	return o
 }
 
+func (o OSPolicyResourcePackageResourceYUMResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceYUMResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceYUMResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Package name.
 func (o OSPolicyResourcePackageResourceYUMResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceYUMResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4355,6 +5022,12 @@ func (i OSPolicyResourcePackageResourceZypperArgs) ToOSPolicyResourcePackageReso
 
 func (i OSPolicyResourcePackageResourceZypperArgs) ToOSPolicyResourcePackageResourceZypperOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceZypperOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceZypperOutput)
+}
+
+func (i OSPolicyResourcePackageResourceZypperArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceZypper] {
+	return pulumix.Output[OSPolicyResourcePackageResourceZypper]{
+		OutputState: i.ToOSPolicyResourcePackageResourceZypperOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i OSPolicyResourcePackageResourceZypperArgs) ToOSPolicyResourcePackageResourceZypperPtrOutput() OSPolicyResourcePackageResourceZypperPtrOutput {
@@ -4398,6 +5071,12 @@ func (i *ospolicyResourcePackageResourceZypperPtrType) ToOSPolicyResourcePackage
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourcePackageResourceZypperPtrOutput)
 }
 
+func (i *ospolicyResourcePackageResourceZypperPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceZypper] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceZypper]{
+		OutputState: i.ToOSPolicyResourcePackageResourceZypperPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
 type OSPolicyResourcePackageResourceZypperOutput struct{ *pulumi.OutputState }
 
@@ -4423,6 +5102,12 @@ func (o OSPolicyResourcePackageResourceZypperOutput) ToOSPolicyResourcePackageRe
 	}).(OSPolicyResourcePackageResourceZypperPtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceZypperOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceZypper] {
+	return pulumix.Output[OSPolicyResourcePackageResourceZypper]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Package name.
 func (o OSPolicyResourcePackageResourceZypperOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourcePackageResourceZypper) string { return v.Name }).(pulumi.StringOutput)
@@ -4440,6 +5125,12 @@ func (o OSPolicyResourcePackageResourceZypperPtrOutput) ToOSPolicyResourcePackag
 
 func (o OSPolicyResourcePackageResourceZypperPtrOutput) ToOSPolicyResourcePackageResourceZypperPtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceZypperPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceZypperPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceZypper] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceZypper]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceZypperPtrOutput) Elem() OSPolicyResourcePackageResourceZypperOutput {
@@ -4481,6 +5172,12 @@ func (o OSPolicyResourcePackageResourceZypperResponseOutput) ToOSPolicyResourceP
 
 func (o OSPolicyResourcePackageResourceZypperResponseOutput) ToOSPolicyResourcePackageResourceZypperResponseOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceZypperResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceZypperResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceZypperResponse] {
+	return pulumix.Output[OSPolicyResourcePackageResourceZypperResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Package name.
@@ -4535,6 +5232,12 @@ func (i OSPolicyResourceRepositoryResourceArgs) ToOSPolicyResourceRepositoryReso
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceOutput)
 }
 
+func (i OSPolicyResourceRepositoryResourceArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResource] {
+	return pulumix.Output[OSPolicyResourceRepositoryResource]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceRepositoryResourceArgs) ToOSPolicyResourceRepositoryResourcePtrOutput() OSPolicyResourceRepositoryResourcePtrOutput {
 	return i.ToOSPolicyResourceRepositoryResourcePtrOutputWithContext(context.Background())
 }
@@ -4576,6 +5279,12 @@ func (i *ospolicyResourceRepositoryResourcePtrType) ToOSPolicyResourceRepository
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourcePtrOutput)
 }
 
+func (i *ospolicyResourceRepositoryResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResource] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResource]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A resource that manages a package repository.
 type OSPolicyResourceRepositoryResourceOutput struct{ *pulumi.OutputState }
 
@@ -4599,6 +5308,12 @@ func (o OSPolicyResourceRepositoryResourceOutput) ToOSPolicyResourceRepositoryRe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResource) *OSPolicyResourceRepositoryResource {
 		return &v
 	}).(OSPolicyResourceRepositoryResourcePtrOutput)
+}
+
+func (o OSPolicyResourceRepositoryResourceOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResource] {
+	return pulumix.Output[OSPolicyResourceRepositoryResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An Apt Repository.
@@ -4641,6 +5356,12 @@ func (o OSPolicyResourceRepositoryResourcePtrOutput) ToOSPolicyResourceRepositor
 
 func (o OSPolicyResourceRepositoryResourcePtrOutput) ToOSPolicyResourceRepositoryResourcePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourcePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResource] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceRepositoryResourcePtrOutput) Elem() OSPolicyResourceRepositoryResourceOutput {
@@ -4744,6 +5465,12 @@ func (i OSPolicyResourceRepositoryResourceAptRepositoryArgs) ToOSPolicyResourceR
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceAptRepositoryOutput)
 }
 
+func (i OSPolicyResourceRepositoryResourceAptRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceAptRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceAptRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceAptRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceRepositoryResourceAptRepositoryArgs) ToOSPolicyResourceRepositoryResourceAptRepositoryPtrOutput() OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput {
 	return i.ToOSPolicyResourceRepositoryResourceAptRepositoryPtrOutputWithContext(context.Background())
 }
@@ -4785,6 +5512,12 @@ func (i *ospolicyResourceRepositoryResourceAptRepositoryPtrType) ToOSPolicyResou
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput)
 }
 
+func (i *ospolicyResourceRepositoryResourceAptRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceAptRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
 type OSPolicyResourceRepositoryResourceAptRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -4808,6 +5541,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryOutput) ToOSPolicyResourc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceAptRepository) *OSPolicyResourceRepositoryResourceAptRepository {
 		return &v
 	}).(OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput)
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceAptRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceAptRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of archive files in this repository.
@@ -4849,6 +5588,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) ToOSPolicyReso
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceAptRepositoryOutput {
@@ -4940,6 +5685,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput) ToOSPolic
 	return o
 }
 
+func (o OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceAptRepositoryResponse] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceAptRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Type of archive files in this repository.
 func (o OSPolicyResourceRepositoryResourceAptRepositoryResponseOutput) ArchiveType() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceAptRepositoryResponse) string { return v.ArchiveType }).(pulumi.StringOutput)
@@ -5004,6 +5755,12 @@ func (i OSPolicyResourceRepositoryResourceGooRepositoryArgs) ToOSPolicyResourceR
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceGooRepositoryOutput)
 }
 
+func (i OSPolicyResourceRepositoryResourceGooRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceGooRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceGooRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceGooRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceRepositoryResourceGooRepositoryArgs) ToOSPolicyResourceRepositoryResourceGooRepositoryPtrOutput() OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput {
 	return i.ToOSPolicyResourceRepositoryResourceGooRepositoryPtrOutputWithContext(context.Background())
 }
@@ -5045,6 +5802,12 @@ func (i *ospolicyResourceRepositoryResourceGooRepositoryPtrType) ToOSPolicyResou
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput)
 }
 
+func (i *ospolicyResourceRepositoryResourceGooRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceGooRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceGooRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceGooRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
 type OSPolicyResourceRepositoryResourceGooRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -5070,6 +5833,12 @@ func (o OSPolicyResourceRepositoryResourceGooRepositoryOutput) ToOSPolicyResourc
 	}).(OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput)
 }
 
+func (o OSPolicyResourceRepositoryResourceGooRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceGooRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceGooRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the repository.
 func (o OSPolicyResourceRepositoryResourceGooRepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceGooRepository) string { return v.Name }).(pulumi.StringOutput)
@@ -5092,6 +5861,12 @@ func (o OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput) ToOSPolicyReso
 
 func (o OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput) ToOSPolicyResourceRepositoryResourceGooRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceGooRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceGooRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceRepositoryResourceGooRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceGooRepositoryOutput {
@@ -5147,6 +5922,12 @@ func (o OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput) ToOSPolic
 	return o
 }
 
+func (o OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceGooRepositoryResponse] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceGooRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the repository.
 func (o OSPolicyResourceRepositoryResourceGooRepositoryResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceGooRepositoryResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5182,6 +5963,12 @@ func (o OSPolicyResourceRepositoryResourceResponseOutput) ToOSPolicyResourceRepo
 
 func (o OSPolicyResourceRepositoryResourceResponseOutput) ToOSPolicyResourceRepositoryResourceResponseOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceResponseOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceResponse] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An Apt Repository.
@@ -5259,6 +6046,12 @@ func (i OSPolicyResourceRepositoryResourceYumRepositoryArgs) ToOSPolicyResourceR
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceYumRepositoryOutput)
 }
 
+func (i OSPolicyResourceRepositoryResourceYumRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceYumRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceYumRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceYumRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceRepositoryResourceYumRepositoryArgs) ToOSPolicyResourceRepositoryResourceYumRepositoryPtrOutput() OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput {
 	return i.ToOSPolicyResourceRepositoryResourceYumRepositoryPtrOutputWithContext(context.Background())
 }
@@ -5300,6 +6093,12 @@ func (i *ospolicyResourceRepositoryResourceYumRepositoryPtrType) ToOSPolicyResou
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput)
 }
 
+func (i *ospolicyResourceRepositoryResourceYumRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceYumRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceYumRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceYumRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
 type OSPolicyResourceRepositoryResourceYumRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -5323,6 +6122,12 @@ func (o OSPolicyResourceRepositoryResourceYumRepositoryOutput) ToOSPolicyResourc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceYumRepository) *OSPolicyResourceRepositoryResourceYumRepository {
 		return &v
 	}).(OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput)
+}
+
+func (o OSPolicyResourceRepositoryResourceYumRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceYumRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceYumRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the repository directory.
@@ -5357,6 +6162,12 @@ func (o OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput) ToOSPolicyReso
 
 func (o OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput) ToOSPolicyResourceRepositoryResourceYumRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceYumRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceYumRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceRepositoryResourceYumRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceYumRepositoryOutput {
@@ -5434,6 +6245,12 @@ func (o OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput) ToOSPolic
 	return o
 }
 
+func (o OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceYumRepositoryResponse] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceYumRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location of the repository directory.
 func (o OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceYumRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
@@ -5496,6 +6313,12 @@ func (i OSPolicyResourceRepositoryResourceZypperRepositoryArgs) ToOSPolicyResour
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceZypperRepositoryOutput)
 }
 
+func (i OSPolicyResourceRepositoryResourceZypperRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceZypperRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceZypperRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceZypperRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OSPolicyResourceRepositoryResourceZypperRepositoryArgs) ToOSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput() OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput {
 	return i.ToOSPolicyResourceRepositoryResourceZypperRepositoryPtrOutputWithContext(context.Background())
 }
@@ -5537,6 +6360,12 @@ func (i *ospolicyResourceRepositoryResourceZypperRepositoryPtrType) ToOSPolicyRe
 	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput)
 }
 
+func (i *ospolicyResourceRepositoryResourceZypperRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceZypperRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceZypperRepository]{
+		OutputState: i.ToOSPolicyResourceRepositoryResourceZypperRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
 type OSPolicyResourceRepositoryResourceZypperRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -5560,6 +6389,12 @@ func (o OSPolicyResourceRepositoryResourceZypperRepositoryOutput) ToOSPolicyReso
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceZypperRepository) *OSPolicyResourceRepositoryResourceZypperRepository {
 		return &v
 	}).(OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput)
+}
+
+func (o OSPolicyResourceRepositoryResourceZypperRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceZypperRepository] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceZypperRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location of the repository directory.
@@ -5594,6 +6429,12 @@ func (o OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput) ToOSPolicyR
 
 func (o OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput) ToOSPolicyResourceRepositoryResourceZypperRepositoryPtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceZypperRepository] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceZypperRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceRepositoryResourceZypperRepositoryPtrOutput) Elem() OSPolicyResourceRepositoryResourceZypperRepositoryOutput {
@@ -5671,6 +6512,12 @@ func (o OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput) ToOSPo
 	return o
 }
 
+func (o OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceZypperRepositoryResponse] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceZypperRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location of the repository directory.
 func (o OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceZypperRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
@@ -5713,6 +6560,12 @@ func (o OSPolicyResourceResponseOutput) ToOSPolicyResourceResponseOutputWithCont
 	return o
 }
 
+func (o OSPolicyResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceResponse] {
+	return pulumix.Output[OSPolicyResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Exec resource
 func (o OSPolicyResourceResponseOutput) Exec() OSPolicyResourceExecResourceResponseOutput {
 	return o.ApplyT(func(v OSPolicyResourceResponse) OSPolicyResourceExecResourceResponse { return v.Exec }).(OSPolicyResourceExecResourceResponseOutput)
@@ -5745,6 +6598,12 @@ func (o OSPolicyResourceResponseArrayOutput) ToOSPolicyResourceResponseArrayOutp
 
 func (o OSPolicyResourceResponseArrayOutput) ToOSPolicyResourceResponseArrayOutputWithContext(ctx context.Context) OSPolicyResourceResponseArrayOutput {
 	return o
+}
+
+func (o OSPolicyResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyResourceResponse] {
+	return pulumix.Output[[]OSPolicyResourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceResponseArrayOutput) Index(i pulumi.IntInput) OSPolicyResourceResponseOutput {
@@ -5780,6 +6639,12 @@ func (o OSPolicyResponseOutput) ToOSPolicyResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o OSPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResponse] {
+	return pulumix.Output[OSPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
 func (o OSPolicyResponseOutput) AllowNoResourceGroupMatch() pulumi.BoolOutput {
 	return o.ApplyT(func(v OSPolicyResponse) bool { return v.AllowNoResourceGroupMatch }).(pulumi.BoolOutput)
@@ -5812,6 +6677,12 @@ func (o OSPolicyResponseArrayOutput) ToOSPolicyResponseArrayOutput() OSPolicyRes
 
 func (o OSPolicyResponseArrayOutput) ToOSPolicyResponseArrayOutputWithContext(ctx context.Context) OSPolicyResponseArrayOutput {
 	return o
+}
+
+func (o OSPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OSPolicyResponse] {
+	return pulumix.Output[[]OSPolicyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResponseArrayOutput) Index(i pulumi.IntInput) OSPolicyResponseOutput {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. Defaults to FIXED_TYPE.
@@ -81,6 +82,12 @@ func (o ArgumentArgumentKindOutput) ToArgumentArgumentKindPtrOutputWithContext(c
 	}).(ArgumentArgumentKindPtrOutput)
 }
 
+func (o ArgumentArgumentKindOutput) ToOutput(ctx context.Context) pulumix.Output[ArgumentArgumentKind] {
+	return pulumix.Output[ArgumentArgumentKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ArgumentArgumentKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -114,6 +121,12 @@ func (o ArgumentArgumentKindPtrOutput) ToArgumentArgumentKindPtrOutput() Argumen
 
 func (o ArgumentArgumentKindPtrOutput) ToArgumentArgumentKindPtrOutputWithContext(ctx context.Context) ArgumentArgumentKindPtrOutput {
 	return o
+}
+
+func (o ArgumentArgumentKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArgumentArgumentKind] {
+	return pulumix.Output[*ArgumentArgumentKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArgumentArgumentKindPtrOutput) Elem() ArgumentArgumentKindOutput {
@@ -176,6 +189,12 @@ func (in *argumentArgumentKindPtr) ToArgumentArgumentKindPtrOutput() ArgumentArg
 
 func (in *argumentArgumentKindPtr) ToArgumentArgumentKindPtrOutputWithContext(ctx context.Context) ArgumentArgumentKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArgumentArgumentKindPtrOutput)
+}
+
+func (in *argumentArgumentKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ArgumentArgumentKind] {
+	return pulumix.Output[*ArgumentArgumentKind]{
+		OutputState: in.ToArgumentArgumentKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Specifies whether the argument is input or output. Can be set for procedures only.
@@ -251,6 +270,12 @@ func (o ArgumentModeOutput) ToArgumentModePtrOutputWithContext(ctx context.Conte
 	}).(ArgumentModePtrOutput)
 }
 
+func (o ArgumentModeOutput) ToOutput(ctx context.Context) pulumix.Output[ArgumentMode] {
+	return pulumix.Output[ArgumentMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ArgumentModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o ArgumentModePtrOutput) ToArgumentModePtrOutput() ArgumentModePtrOutput {
 
 func (o ArgumentModePtrOutput) ToArgumentModePtrOutputWithContext(ctx context.Context) ArgumentModePtrOutput {
 	return o
+}
+
+func (o ArgumentModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArgumentMode] {
+	return pulumix.Output[*ArgumentMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArgumentModePtrOutput) Elem() ArgumentModeOutput {
@@ -346,6 +377,12 @@ func (in *argumentModePtr) ToArgumentModePtrOutput() ArgumentModePtrOutput {
 
 func (in *argumentModePtr) ToArgumentModePtrOutputWithContext(ctx context.Context) ArgumentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArgumentModePtrOutput)
+}
+
+func (in *argumentModePtr) ToOutput(ctx context.Context) pulumix.Output[*ArgumentMode] {
+	return pulumix.Output[*ArgumentMode]{
+		OutputState: in.ToArgumentModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -422,6 +459,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -517,6 +566,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type DatasetAccessEntryTargetTypesItem string
@@ -590,6 +645,12 @@ func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypes
 	}).(DatasetAccessEntryTargetTypesItemPtrOutput)
 }
 
+func (o DatasetAccessEntryTargetTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetAccessEntryTargetTypesItem] {
+	return pulumix.Output[DatasetAccessEntryTargetTypesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatasetAccessEntryTargetTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -623,6 +684,12 @@ func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToDatasetAccessEntryTargetTy
 
 func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemPtrOutput {
 	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetAccessEntryTargetTypesItem] {
+	return pulumix.Output[*DatasetAccessEntryTargetTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatasetAccessEntryTargetTypesItemPtrOutput) Elem() DatasetAccessEntryTargetTypesItemOutput {
@@ -687,6 +754,12 @@ func (in *datasetAccessEntryTargetTypesItemPtr) ToDatasetAccessEntryTargetTypesI
 	return pulumi.ToOutputWithContext(ctx, in).(DatasetAccessEntryTargetTypesItemPtrOutput)
 }
 
+func (in *datasetAccessEntryTargetTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DatasetAccessEntryTargetTypesItem] {
+	return pulumix.Output[*DatasetAccessEntryTargetTypesItem]{
+		OutputState: in.ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatasetAccessEntryTargetTypesItemArrayInput is an input type that accepts DatasetAccessEntryTargetTypesItemArray and DatasetAccessEntryTargetTypesItemArrayOutput values.
 // You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemArrayInput` via:
 //
@@ -712,6 +785,12 @@ func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesI
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemArrayOutput)
 }
 
+func (i DatasetAccessEntryTargetTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DatasetAccessEntryTargetTypesItem] {
+	return pulumix.Output[[]DatasetAccessEntryTargetTypesItem]{
+		OutputState: i.ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatasetAccessEntryTargetTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessEntryTargetTypesItemArrayOutput) ElementType() reflect.Type {
@@ -724,6 +803,12 @@ func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTarget
 
 func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
 	return o
+}
+
+func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatasetAccessEntryTargetTypesItem] {
+	return pulumix.Output[[]DatasetAccessEntryTargetTypesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTargetTypesItemOutput {
@@ -804,6 +889,12 @@ func (o RoutineDeterminismLevelOutput) ToRoutineDeterminismLevelPtrOutputWithCon
 	}).(RoutineDeterminismLevelPtrOutput)
 }
 
+func (o RoutineDeterminismLevelOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineDeterminismLevel] {
+	return pulumix.Output[RoutineDeterminismLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoutineDeterminismLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -837,6 +928,12 @@ func (o RoutineDeterminismLevelPtrOutput) ToRoutineDeterminismLevelPtrOutput() R
 
 func (o RoutineDeterminismLevelPtrOutput) ToRoutineDeterminismLevelPtrOutputWithContext(ctx context.Context) RoutineDeterminismLevelPtrOutput {
 	return o
+}
+
+func (o RoutineDeterminismLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineDeterminismLevel] {
+	return pulumix.Output[*RoutineDeterminismLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutineDeterminismLevelPtrOutput) Elem() RoutineDeterminismLevelOutput {
@@ -899,6 +996,12 @@ func (in *routineDeterminismLevelPtr) ToRoutineDeterminismLevelPtrOutput() Routi
 
 func (in *routineDeterminismLevelPtr) ToRoutineDeterminismLevelPtrOutputWithContext(ctx context.Context) RoutineDeterminismLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineDeterminismLevelPtrOutput)
+}
+
+func (in *routineDeterminismLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineDeterminismLevel] {
+	return pulumix.Output[*RoutineDeterminismLevel]{
+		OutputState: in.ToRoutineDeterminismLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
@@ -978,6 +1081,12 @@ func (o RoutineLanguageOutput) ToRoutineLanguagePtrOutputWithContext(ctx context
 	}).(RoutineLanguagePtrOutput)
 }
 
+func (o RoutineLanguageOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineLanguage] {
+	return pulumix.Output[RoutineLanguage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoutineLanguageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1011,6 +1120,12 @@ func (o RoutineLanguagePtrOutput) ToRoutineLanguagePtrOutput() RoutineLanguagePt
 
 func (o RoutineLanguagePtrOutput) ToRoutineLanguagePtrOutputWithContext(ctx context.Context) RoutineLanguagePtrOutput {
 	return o
+}
+
+func (o RoutineLanguagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineLanguage] {
+	return pulumix.Output[*RoutineLanguage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutineLanguagePtrOutput) Elem() RoutineLanguageOutput {
@@ -1073,6 +1188,12 @@ func (in *routineLanguagePtr) ToRoutineLanguagePtrOutput() RoutineLanguagePtrOut
 
 func (in *routineLanguagePtr) ToRoutineLanguagePtrOutputWithContext(ctx context.Context) RoutineLanguagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineLanguagePtrOutput)
+}
+
+func (in *routineLanguagePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineLanguage] {
+	return pulumix.Output[*RoutineLanguage]{
+		OutputState: in.ToRoutineLanguagePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of routine.
@@ -1150,6 +1271,12 @@ func (o RoutineRoutineTypeOutput) ToRoutineRoutineTypePtrOutputWithContext(ctx c
 	}).(RoutineRoutineTypePtrOutput)
 }
 
+func (o RoutineRoutineTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineRoutineType] {
+	return pulumix.Output[RoutineRoutineType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoutineRoutineTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1183,6 +1310,12 @@ func (o RoutineRoutineTypePtrOutput) ToRoutineRoutineTypePtrOutput() RoutineRout
 
 func (o RoutineRoutineTypePtrOutput) ToRoutineRoutineTypePtrOutputWithContext(ctx context.Context) RoutineRoutineTypePtrOutput {
 	return o
+}
+
+func (o RoutineRoutineTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineRoutineType] {
+	return pulumix.Output[*RoutineRoutineType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutineRoutineTypePtrOutput) Elem() RoutineRoutineTypeOutput {
@@ -1245,6 +1378,12 @@ func (in *routineRoutineTypePtr) ToRoutineRoutineTypePtrOutput() RoutineRoutineT
 
 func (in *routineRoutineTypePtr) ToRoutineRoutineTypePtrOutputWithContext(ctx context.Context) RoutineRoutineTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineRoutineTypePtrOutput)
+}
+
+func (in *routineRoutineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineRoutineType] {
+	return pulumix.Output[*RoutineRoutineType]{
+		OutputState: in.ToRoutineRoutineTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -1347,6 +1486,12 @@ func (o StandardSqlDataTypeTypeKindOutput) ToStandardSqlDataTypeTypeKindPtrOutpu
 	}).(StandardSqlDataTypeTypeKindPtrOutput)
 }
 
+func (o StandardSqlDataTypeTypeKindOutput) ToOutput(ctx context.Context) pulumix.Output[StandardSqlDataTypeTypeKind] {
+	return pulumix.Output[StandardSqlDataTypeTypeKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StandardSqlDataTypeTypeKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1380,6 +1525,12 @@ func (o StandardSqlDataTypeTypeKindPtrOutput) ToStandardSqlDataTypeTypeKindPtrOu
 
 func (o StandardSqlDataTypeTypeKindPtrOutput) ToStandardSqlDataTypeTypeKindPtrOutputWithContext(ctx context.Context) StandardSqlDataTypeTypeKindPtrOutput {
 	return o
+}
+
+func (o StandardSqlDataTypeTypeKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardSqlDataTypeTypeKind] {
+	return pulumix.Output[*StandardSqlDataTypeTypeKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StandardSqlDataTypeTypeKindPtrOutput) Elem() StandardSqlDataTypeTypeKindOutput {
@@ -1442,6 +1593,12 @@ func (in *standardSqlDataTypeTypeKindPtr) ToStandardSqlDataTypeTypeKindPtrOutput
 
 func (in *standardSqlDataTypeTypeKindPtr) ToStandardSqlDataTypeTypeKindPtrOutputWithContext(ctx context.Context) StandardSqlDataTypeTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StandardSqlDataTypeTypeKindPtrOutput)
+}
+
+func (in *standardSqlDataTypeTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardSqlDataTypeTypeKind] {
+	return pulumix.Output[*StandardSqlDataTypeTypeKind]{
+		OutputState: in.ToStandardSqlDataTypeTypeKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the given organization.
@@ -141,6 +142,12 @@ func (i *CustomConstraint) ToCustomConstraintOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintOutput)
 }
 
+func (i *CustomConstraint) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraint] {
+	return pulumix.Output[*CustomConstraint]{
+		OutputState: i.ToCustomConstraintOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomConstraintOutput struct{ *pulumi.OutputState }
 
 func (CustomConstraintOutput) ElementType() reflect.Type {
@@ -153,6 +160,12 @@ func (o CustomConstraintOutput) ToCustomConstraintOutput() CustomConstraintOutpu
 
 func (o CustomConstraintOutput) ToCustomConstraintOutputWithContext(ctx context.Context) CustomConstraintOutput {
 	return o
+}
+
+func (o CustomConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraint] {
+	return pulumix.Output[*CustomConstraint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allow or deny type.

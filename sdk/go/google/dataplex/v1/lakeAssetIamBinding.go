@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -140,6 +141,12 @@ func (i *LakeAssetIamBinding) ToLakeAssetIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(LakeAssetIamBindingOutput)
 }
 
+func (i *LakeAssetIamBinding) ToOutput(ctx context.Context) pulumix.Output[*LakeAssetIamBinding] {
+	return pulumix.Output[*LakeAssetIamBinding]{
+		OutputState: i.ToLakeAssetIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LakeAssetIamBindingOutput struct{ *pulumi.OutputState }
 
 func (LakeAssetIamBindingOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o LakeAssetIamBindingOutput) ToLakeAssetIamBindingOutput() LakeAssetIamBin
 
 func (o LakeAssetIamBindingOutput) ToLakeAssetIamBindingOutputWithContext(ctx context.Context) LakeAssetIamBindingOutput {
 	return o
+}
+
+func (o LakeAssetIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*LakeAssetIamBinding] {
+	return pulumix.Output[*LakeAssetIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a backup schedule.
@@ -78,6 +79,12 @@ func (o LookupBackupScheduleResultOutput) ToLookupBackupScheduleResultOutput() L
 
 func (o LookupBackupScheduleResultOutput) ToLookupBackupScheduleResultOutputWithContext(ctx context.Context) LookupBackupScheduleResultOutput {
 	return o
+}
+
+func (o LookupBackupScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupScheduleResult] {
+	return pulumix.Output[LookupBackupScheduleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp at which this backup schedule was created and effective since. No backups will be created for this schedule before this time.

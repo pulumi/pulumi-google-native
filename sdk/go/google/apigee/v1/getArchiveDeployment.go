@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified ArchiveDeployment.
@@ -78,6 +79,12 @@ func (o LookupArchiveDeploymentResultOutput) ToLookupArchiveDeploymentResultOutp
 
 func (o LookupArchiveDeploymentResultOutput) ToLookupArchiveDeploymentResultOutputWithContext(ctx context.Context) LookupArchiveDeploymentResultOutput {
 	return o
+}
+
+func (o LookupArchiveDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArchiveDeploymentResult] {
+	return pulumix.Output[LookupArchiveDeploymentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the Archive Deployment was created in milliseconds since the epoch.

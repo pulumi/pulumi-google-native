@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new bare metal cluster in a given project and location.
@@ -250,6 +251,12 @@ func (i *BareMetalCluster) ToBareMetalClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterOutput)
 }
 
+func (i *BareMetalCluster) ToOutput(ctx context.Context) pulumix.Output[*BareMetalCluster] {
+	return pulumix.Output[*BareMetalCluster]{
+		OutputState: i.ToBareMetalClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BareMetalClusterOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterOutput) ElementType() reflect.Type {
@@ -262,6 +269,12 @@ func (o BareMetalClusterOutput) ToBareMetalClusterOutput() BareMetalClusterOutpu
 
 func (o BareMetalClusterOutput) ToBareMetalClusterOutputWithContext(ctx context.Context) BareMetalClusterOutput {
 	return o
+}
+
+func (o BareMetalClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalCluster] {
+	return pulumix.Output[*BareMetalCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership.

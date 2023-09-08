@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified User data mapping.
@@ -82,6 +83,12 @@ func (o LookupUserDataMappingResultOutput) ToLookupUserDataMappingResultOutput()
 
 func (o LookupUserDataMappingResultOutput) ToLookupUserDataMappingResultOutputWithContext(ctx context.Context) LookupUserDataMappingResultOutput {
 	return o
+}
+
+func (o LookupUserDataMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUserDataMappingResult] {
+	return pulumix.Output[LookupUserDataMappingResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates the time when this mapping was archived.

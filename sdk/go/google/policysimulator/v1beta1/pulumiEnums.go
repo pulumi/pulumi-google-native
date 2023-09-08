@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The logs to use as input for the Replay.
@@ -80,6 +81,12 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToGoogleCl
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput)
 }
 
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource] {
+	return pulumix.Output[GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogl
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
 	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource] {
+	return pulumix.Output[*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
@@ -175,6 +188,12 @@ func (in *googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr) ToGoogleClo
 
 func (in *googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput)
+}
+
+func (in *googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource] {
+	return pulumix.Output[*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource]{
+		OutputState: in.ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

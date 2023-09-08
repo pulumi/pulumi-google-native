@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
@@ -149,6 +150,12 @@ func (i *PublicAdvertisedPrefix) ToPublicAdvertisedPrefixOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixOutput)
 }
 
+func (i *PublicAdvertisedPrefix) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefix] {
+	return pulumix.Output[*PublicAdvertisedPrefix]{
+		OutputState: i.ToPublicAdvertisedPrefixOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PublicAdvertisedPrefixOutput struct{ *pulumi.OutputState }
 
 func (PublicAdvertisedPrefixOutput) ElementType() reflect.Type {
@@ -161,6 +168,12 @@ func (o PublicAdvertisedPrefixOutput) ToPublicAdvertisedPrefixOutput() PublicAdv
 
 func (o PublicAdvertisedPrefixOutput) ToPublicAdvertisedPrefixOutputWithContext(ctx context.Context) PublicAdvertisedPrefixOutput {
 	return o
+}
+
+func (o PublicAdvertisedPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefix] {
+	return pulumix.Output[*PublicAdvertisedPrefix]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

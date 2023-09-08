@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an agent in the specified location. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
@@ -197,6 +198,12 @@ func (i *Agent) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentOutput)
 }
 
+func (i *Agent) ToOutput(ctx context.Context) pulumix.Output[*Agent] {
+	return pulumix.Output[*Agent]{
+		OutputState: i.ToAgentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AgentOutput struct{ *pulumi.OutputState }
 
 func (AgentOutput) ElementType() reflect.Type {
@@ -209,6 +216,12 @@ func (o AgentOutput) ToAgentOutput() AgentOutput {
 
 func (o AgentOutput) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return o
+}
+
+func (o AgentOutput) ToOutput(ctx context.Context) pulumix.Output[*Agent] {
+	return pulumix.Output[*Agent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.

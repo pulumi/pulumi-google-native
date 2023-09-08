@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i OutputConfigArgs) ToOutputConfigOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OutputConfigOutput)
 }
 
+func (i OutputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OutputConfig] {
+	return pulumix.Output[OutputConfig]{
+		OutputState: i.ToOutputConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OutputConfig contains a destination for writing trace data.
 type OutputConfigOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o OutputConfigOutput) ToOutputConfigOutput() OutputConfigOutput {
 
 func (o OutputConfigOutput) ToOutputConfigOutputWithContext(ctx context.Context) OutputConfigOutput {
 	return o
+}
+
+func (o OutputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OutputConfig] {
+	return pulumix.Output[OutputConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
@@ -87,6 +100,12 @@ func (o OutputConfigResponseOutput) ToOutputConfigResponseOutput() OutputConfigR
 
 func (o OutputConfigResponseOutput) ToOutputConfigResponseOutputWithContext(ctx context.Context) OutputConfigResponseOutput {
 	return o
+}
+
+func (o OutputConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OutputConfigResponse] {
+	return pulumix.Output[OutputConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a subnetwork in the specified project using the data included in the request.
@@ -265,6 +266,12 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
 }
 
+func (i *Subnetwork) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
+	return pulumix.Output[*Subnetwork]{
+		OutputState: i.ToSubnetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
@@ -277,6 +284,12 @@ func (o SubnetworkOutput) ToSubnetworkOutput() SubnetworkOutput {
 
 func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) SubnetworkOutput {
 	return o
+}
+
+func (o SubnetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
+	return pulumix.Output[*Subnetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.

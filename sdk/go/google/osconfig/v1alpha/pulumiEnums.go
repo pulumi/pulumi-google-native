@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. Policy mode
@@ -82,6 +83,12 @@ func (o OSPolicyModeOutput) ToOSPolicyModePtrOutputWithContext(ctx context.Conte
 	}).(OSPolicyModePtrOutput)
 }
 
+func (o OSPolicyModeOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyMode] {
+	return pulumix.Output[OSPolicyMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
 
 func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
 	return o
+}
+
+func (o OSPolicyModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyMode] {
+	return pulumix.Output[*OSPolicyMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyModePtrOutput) Elem() OSPolicyModeOutput {
@@ -177,6 +190,12 @@ func (in *ospolicyModePtr) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
 
 func (in *ospolicyModePtr) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyModePtrOutput)
+}
+
+func (in *ospolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyMode] {
+	return pulumix.Output[*OSPolicyMode]{
+		OutputState: in.ToOSPolicyModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The script interpreter to use.
@@ -253,6 +272,12 @@ func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOSPolicyResourceExe
 	}).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
 }
 
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceExecResourceExecInterpreter] {
+	return pulumix.Output[OSPolicyResourceExecResourceExecInterpreter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResource
 
 func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter] {
+	return pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) Elem() OSPolicyResourceExecResourceExecInterpreterOutput {
@@ -348,6 +379,12 @@ func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOSPolicyResourceExec
 
 func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
+}
+
+func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter] {
+	return pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter]{
+		OutputState: in.ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Desired state of the file.
@@ -424,6 +461,12 @@ func (o OSPolicyResourceFileResourceStateOutput) ToOSPolicyResourceFileResourceS
 	}).(OSPolicyResourceFileResourceStatePtrOutput)
 }
 
+func (o OSPolicyResourceFileResourceStateOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceFileResourceState] {
+	return pulumix.Output[OSPolicyResourceFileResourceState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourceFileResourceStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -457,6 +500,12 @@ func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResour
 
 func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileResourceState] {
+	return pulumix.Output[*OSPolicyResourceFileResourceState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceFileResourceStatePtrOutput) Elem() OSPolicyResourceFileResourceStateOutput {
@@ -519,6 +568,12 @@ func (in *ospolicyResourceFileResourceStatePtr) ToOSPolicyResourceFileResourceSt
 
 func (in *ospolicyResourceFileResourceStatePtr) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceFileResourceStatePtrOutput)
+}
+
+func (in *ospolicyResourceFileResourceStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileResourceState] {
+	return pulumix.Output[*OSPolicyResourceFileResourceState]{
+		OutputState: in.ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The desired state the agent should maintain for this package.
@@ -593,6 +648,12 @@ func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOSPolicyResourcePac
 	}).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
 }
 
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourcePackageResourceDesiredState] {
+	return pulumix.Output[OSPolicyResourcePackageResourceDesiredState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -626,6 +687,12 @@ func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResource
 
 func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceDesiredState] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceDesiredState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) Elem() OSPolicyResourcePackageResourceDesiredStateOutput {
@@ -688,6 +755,12 @@ func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOSPolicyResourcePack
 
 func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
+}
+
+func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceDesiredState] {
+	return pulumix.Output[*OSPolicyResourcePackageResourceDesiredState]{
+		OutputState: in.ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Type of archive files in this repository.
@@ -762,6 +835,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOSPo
 	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
 }
 
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OSPolicyResourceRepositoryResourceAptRepositoryArchiveType] {
+	return pulumix.Output[OSPolicyResourceRepositoryResourceAptRepositoryArchiveType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -795,6 +874,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToO
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
 	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) Elem() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
@@ -857,6 +942,12 @@ func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPol
 
 func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
+}
+
+func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType] {
+	return pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType]{
+		OutputState: in.ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

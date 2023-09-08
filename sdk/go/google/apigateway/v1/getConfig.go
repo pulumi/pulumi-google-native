@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ApiConfig.
@@ -92,6 +93,12 @@ func (o LookupConfigResultOutput) ToLookupConfigResultOutput() LookupConfigResul
 
 func (o LookupConfigResultOutput) ToLookupConfigResultOutputWithContext(ctx context.Context) LookupConfigResultOutput {
 	return o
+}
+
+func (o LookupConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigResult] {
+	return pulumix.Output[LookupConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Created time.

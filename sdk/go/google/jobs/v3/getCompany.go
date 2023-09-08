@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves specified company.
@@ -92,6 +93,12 @@ func (o LookupCompanyResultOutput) ToLookupCompanyResultOutput() LookupCompanyRe
 
 func (o LookupCompanyResultOutput) ToLookupCompanyResultOutputWithContext(ctx context.Context) LookupCompanyResultOutput {
 	return o
+}
+
+func (o LookupCompanyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCompanyResult] {
+	return pulumix.Output[LookupCompanyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".

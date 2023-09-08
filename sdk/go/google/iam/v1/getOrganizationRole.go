@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the definition of a Role.
@@ -78,6 +79,12 @@ func (o LookupOrganizationRoleResultOutput) ToLookupOrganizationRoleResultOutput
 
 func (o LookupOrganizationRoleResultOutput) ToLookupOrganizationRoleResultOutputWithContext(ctx context.Context) LookupOrganizationRoleResultOutput {
 	return o
+}
+
+func (o LookupOrganizationRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationRoleResult] {
+	return pulumix.Output[LookupOrganizationRoleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.

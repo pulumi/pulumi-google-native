@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.
@@ -150,6 +151,12 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
 }
 
+func (i *Database) ToOutput(ctx context.Context) pulumix.Output[*Database] {
+	return pulumix.Output[*Database]{
+		OutputState: i.ToDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseOutput) ElementType() reflect.Type {
@@ -162,6 +169,12 @@ func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
 
 func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return o
+}
+
+func (o DatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Database] {
+	return pulumix.Output[*Database]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Cloud SQL charset value.

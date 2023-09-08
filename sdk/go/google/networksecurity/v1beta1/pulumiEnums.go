@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
@@ -82,6 +83,12 @@ func (o AddressGroupTypeOutput) ToAddressGroupTypePtrOutputWithContext(ctx conte
 	}).(AddressGroupTypePtrOutput)
 }
 
+func (o AddressGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AddressGroupType] {
+	return pulumix.Output[AddressGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutput() AddressGroupTyp
 
 func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
 	return o
+}
+
+func (o AddressGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupType] {
+	return pulumix.Output[*AddressGroupType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressGroupTypePtrOutput) Elem() AddressGroupTypeOutput {
@@ -177,6 +190,12 @@ func (in *addressGroupTypePtr) ToAddressGroupTypePtrOutput() AddressGroupTypePtr
 
 func (in *addressGroupTypePtr) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressGroupTypePtrOutput)
+}
+
+func (in *addressGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupType] {
+	return pulumix.Output[*AddressGroupType]{
+		OutputState: in.ToAddressGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -251,6 +270,12 @@ func (o AuthorizationPolicyActionOutput) ToAuthorizationPolicyActionPtrOutputWit
 	}).(AuthorizationPolicyActionPtrOutput)
 }
 
+func (o AuthorizationPolicyActionOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyAction] {
+	return pulumix.Output[AuthorizationPolicyAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthorizationPolicyActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o AuthorizationPolicyActionPtrOutput) ToAuthorizationPolicyActionPtrOutput
 
 func (o AuthorizationPolicyActionPtrOutput) ToAuthorizationPolicyActionPtrOutputWithContext(ctx context.Context) AuthorizationPolicyActionPtrOutput {
 	return o
+}
+
+func (o AuthorizationPolicyActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicyAction] {
+	return pulumix.Output[*AuthorizationPolicyAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorizationPolicyActionPtrOutput) Elem() AuthorizationPolicyActionOutput {
@@ -346,6 +377,12 @@ func (in *authorizationPolicyActionPtr) ToAuthorizationPolicyActionPtrOutput() A
 
 func (in *authorizationPolicyActionPtr) ToAuthorizationPolicyActionPtrOutputWithContext(ctx context.Context) AuthorizationPolicyActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationPolicyActionPtrOutput)
+}
+
+func (in *authorizationPolicyActionPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicyAction] {
+	return pulumix.Output[*AuthorizationPolicyAction]{
+		OutputState: in.ToAuthorizationPolicyActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The log type that this config enables.
@@ -422,6 +459,12 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -517,6 +566,12 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
@@ -591,6 +646,12 @@ func (o MTLSPolicyClientValidationModeOutput) ToMTLSPolicyClientValidationModePt
 	}).(MTLSPolicyClientValidationModePtrOutput)
 }
 
+func (o MTLSPolicyClientValidationModeOutput) ToOutput(ctx context.Context) pulumix.Output[MTLSPolicyClientValidationMode] {
+	return pulumix.Output[MTLSPolicyClientValidationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MTLSPolicyClientValidationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -624,6 +685,12 @@ func (o MTLSPolicyClientValidationModePtrOutput) ToMTLSPolicyClientValidationMod
 
 func (o MTLSPolicyClientValidationModePtrOutput) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
 	return o
+}
+
+func (o MTLSPolicyClientValidationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MTLSPolicyClientValidationMode] {
+	return pulumix.Output[*MTLSPolicyClientValidationMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MTLSPolicyClientValidationModePtrOutput) Elem() MTLSPolicyClientValidationModeOutput {
@@ -686,6 +753,12 @@ func (in *mtlspolicyClientValidationModePtr) ToMTLSPolicyClientValidationModePtr
 
 func (in *mtlspolicyClientValidationModePtr) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MTLSPolicyClientValidationModePtrOutput)
+}
+
+func (in *mtlspolicyClientValidationModePtr) ToOutput(ctx context.Context) pulumix.Output[*MTLSPolicyClientValidationMode] {
+	return pulumix.Output[*MTLSPolicyClientValidationMode]{
+		OutputState: in.ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
@@ -760,6 +833,12 @@ func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypePtrOut
 	}).(OrganizationAddressGroupTypePtrOutput)
 }
 
+func (o OrganizationAddressGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationAddressGroupType] {
+	return pulumix.Output[OrganizationAddressGroupType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationAddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -793,6 +872,12 @@ func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtr
 
 func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
 	return o
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroupType] {
+	return pulumix.Output[*OrganizationAddressGroupType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationAddressGroupTypePtrOutput) Elem() OrganizationAddressGroupTypeOutput {
@@ -855,6 +940,12 @@ func (in *organizationAddressGroupTypePtr) ToOrganizationAddressGroupTypePtrOutp
 
 func (in *organizationAddressGroupTypePtr) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationAddressGroupTypePtrOutput)
+}
+
+func (in *organizationAddressGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroupType] {
+	return pulumix.Output[*OrganizationAddressGroupType]{
+		OutputState: in.ToOrganizationAddressGroupTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Profile which tells what the primitive action should be.
@@ -929,6 +1020,12 @@ func (o RuleBasicProfileOutput) ToRuleBasicProfilePtrOutputWithContext(ctx conte
 	}).(RuleBasicProfilePtrOutput)
 }
 
+func (o RuleBasicProfileOutput) ToOutput(ctx context.Context) pulumix.Output[RuleBasicProfile] {
+	return pulumix.Output[RuleBasicProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuleBasicProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -962,6 +1059,12 @@ func (o RuleBasicProfilePtrOutput) ToRuleBasicProfilePtrOutput() RuleBasicProfil
 
 func (o RuleBasicProfilePtrOutput) ToRuleBasicProfilePtrOutputWithContext(ctx context.Context) RuleBasicProfilePtrOutput {
 	return o
+}
+
+func (o RuleBasicProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleBasicProfile] {
+	return pulumix.Output[*RuleBasicProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleBasicProfilePtrOutput) Elem() RuleBasicProfileOutput {
@@ -1024,6 +1127,12 @@ func (in *ruleBasicProfilePtr) ToRuleBasicProfilePtrOutput() RuleBasicProfilePtr
 
 func (in *ruleBasicProfilePtr) ToRuleBasicProfilePtrOutputWithContext(ctx context.Context) RuleBasicProfilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleBasicProfilePtrOutput)
+}
+
+func (in *ruleBasicProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*RuleBasicProfile] {
+	return pulumix.Output[*RuleBasicProfile]{
+		OutputState: in.ToRuleBasicProfilePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

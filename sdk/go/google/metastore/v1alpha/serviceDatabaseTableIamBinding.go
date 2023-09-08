@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -135,6 +136,12 @@ func (i *ServiceDatabaseTableIamBinding) ToServiceDatabaseTableIamBindingOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceDatabaseTableIamBindingOutput)
 }
 
+func (i *ServiceDatabaseTableIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ServiceDatabaseTableIamBinding] {
+	return pulumix.Output[*ServiceDatabaseTableIamBinding]{
+		OutputState: i.ToServiceDatabaseTableIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceDatabaseTableIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ServiceDatabaseTableIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o ServiceDatabaseTableIamBindingOutput) ToServiceDatabaseTableIamBindingOu
 
 func (o ServiceDatabaseTableIamBindingOutput) ToServiceDatabaseTableIamBindingOutputWithContext(ctx context.Context) ServiceDatabaseTableIamBindingOutput {
 	return o
+}
+
+func (o ServiceDatabaseTableIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceDatabaseTableIamBinding] {
+	return pulumix.Output[*ServiceDatabaseTableIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ServiceConnectionMap in a given project and location.
@@ -161,6 +162,12 @@ func (i *ServiceConnectionMap) ToServiceConnectionMapOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionMapOutput)
 }
 
+func (i *ServiceConnectionMap) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionMap] {
+	return pulumix.Output[*ServiceConnectionMap]{
+		OutputState: i.ToServiceConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceConnectionMapOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionMapOutput) ElementType() reflect.Type {
@@ -173,6 +180,12 @@ func (o ServiceConnectionMapOutput) ToServiceConnectionMapOutput() ServiceConnec
 
 func (o ServiceConnectionMapOutput) ToServiceConnectionMapOutputWithContext(ctx context.Context) ServiceConnectionMapOutput {
 	return o
+}
+
+func (o ServiceConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionMap] {
+	return pulumix.Output[*ServiceConnectionMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The PSC configurations on consumer side.

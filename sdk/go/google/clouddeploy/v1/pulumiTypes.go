@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -30,6 +31,12 @@ func (o AdvanceChildRolloutJobResponseOutput) ToAdvanceChildRolloutJobResponseOu
 
 func (o AdvanceChildRolloutJobResponseOutput) ToAdvanceChildRolloutJobResponseOutputWithContext(ctx context.Context) AdvanceChildRolloutJobResponseOutput {
 	return o
+}
+
+func (o AdvanceChildRolloutJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdvanceChildRolloutJobResponse] {
+	return pulumix.Output[AdvanceChildRolloutJobResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Information specifying an Anthos Cluster.
@@ -65,6 +72,12 @@ func (i AnthosClusterArgs) ToAnthosClusterOutput() AnthosClusterOutput {
 
 func (i AnthosClusterArgs) ToAnthosClusterOutputWithContext(ctx context.Context) AnthosClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnthosClusterOutput)
+}
+
+func (i AnthosClusterArgs) ToOutput(ctx context.Context) pulumix.Output[AnthosCluster] {
+	return pulumix.Output[AnthosCluster]{
+		OutputState: i.ToAnthosClusterOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AnthosClusterArgs) ToAnthosClusterPtrOutput() AnthosClusterPtrOutput {
@@ -108,6 +121,12 @@ func (i *anthosClusterPtrType) ToAnthosClusterPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AnthosClusterPtrOutput)
 }
 
+func (i *anthosClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*AnthosCluster] {
+	return pulumix.Output[*AnthosCluster]{
+		OutputState: i.ToAnthosClusterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information specifying an Anthos Cluster.
 type AnthosClusterOutput struct{ *pulumi.OutputState }
 
@@ -133,6 +152,12 @@ func (o AnthosClusterOutput) ToAnthosClusterPtrOutputWithContext(ctx context.Con
 	}).(AnthosClusterPtrOutput)
 }
 
+func (o AnthosClusterOutput) ToOutput(ctx context.Context) pulumix.Output[AnthosCluster] {
+	return pulumix.Output[AnthosCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 func (o AnthosClusterOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnthosCluster) *string { return v.Membership }).(pulumi.StringPtrOutput)
@@ -150,6 +175,12 @@ func (o AnthosClusterPtrOutput) ToAnthosClusterPtrOutput() AnthosClusterPtrOutpu
 
 func (o AnthosClusterPtrOutput) ToAnthosClusterPtrOutputWithContext(ctx context.Context) AnthosClusterPtrOutput {
 	return o
+}
+
+func (o AnthosClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AnthosCluster] {
+	return pulumix.Output[*AnthosCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AnthosClusterPtrOutput) Elem() AnthosClusterOutput {
@@ -191,6 +222,12 @@ func (o AnthosClusterResponseOutput) ToAnthosClusterResponseOutput() AnthosClust
 
 func (o AnthosClusterResponseOutput) ToAnthosClusterResponseOutputWithContext(ctx context.Context) AnthosClusterResponseOutput {
 	return o
+}
+
+func (o AnthosClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnthosClusterResponse] {
+	return pulumix.Output[AnthosClusterResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
@@ -237,6 +274,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -262,6 +305,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -275,6 +324,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -299,6 +354,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -330,6 +391,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -352,6 +419,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -399,6 +472,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -424,6 +503,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -437,6 +522,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -461,6 +552,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -492,6 +589,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -514,6 +617,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -565,6 +674,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -590,6 +705,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -603,6 +724,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -632,6 +759,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -665,6 +798,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -692,6 +831,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -739,6 +884,12 @@ func (i BuildArtifactArgs) ToBuildArtifactOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BuildArtifactOutput)
 }
 
+func (i BuildArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[BuildArtifact] {
+	return pulumix.Output[BuildArtifact]{
+		OutputState: i.ToBuildArtifactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BuildArtifactArrayInput is an input type that accepts BuildArtifactArray and BuildArtifactArrayOutput values.
 // You can construct a concrete instance of `BuildArtifactArrayInput` via:
 //
@@ -764,6 +915,12 @@ func (i BuildArtifactArray) ToBuildArtifactArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BuildArtifactArrayOutput)
 }
 
+func (i BuildArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]BuildArtifact] {
+	return pulumix.Output[[]BuildArtifact]{
+		OutputState: i.ToBuildArtifactArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Description of an a image to use during Skaffold rendering.
 type BuildArtifactOutput struct{ *pulumi.OutputState }
 
@@ -777,6 +934,12 @@ func (o BuildArtifactOutput) ToBuildArtifactOutput() BuildArtifactOutput {
 
 func (o BuildArtifactOutput) ToBuildArtifactOutputWithContext(ctx context.Context) BuildArtifactOutput {
 	return o
+}
+
+func (o BuildArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[BuildArtifact] {
+	return pulumix.Output[BuildArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Image name in Skaffold configuration.
@@ -801,6 +964,12 @@ func (o BuildArtifactArrayOutput) ToBuildArtifactArrayOutput() BuildArtifactArra
 
 func (o BuildArtifactArrayOutput) ToBuildArtifactArrayOutputWithContext(ctx context.Context) BuildArtifactArrayOutput {
 	return o
+}
+
+func (o BuildArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BuildArtifact] {
+	return pulumix.Output[[]BuildArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BuildArtifactArrayOutput) Index(i pulumi.IntInput) BuildArtifactOutput {
@@ -832,6 +1001,12 @@ func (o BuildArtifactResponseOutput) ToBuildArtifactResponseOutputWithContext(ct
 	return o
 }
 
+func (o BuildArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildArtifactResponse] {
+	return pulumix.Output[BuildArtifactResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Image name in Skaffold configuration.
 func (o BuildArtifactResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildArtifactResponse) string { return v.Image }).(pulumi.StringOutput)
@@ -854,6 +1029,12 @@ func (o BuildArtifactResponseArrayOutput) ToBuildArtifactResponseArrayOutput() B
 
 func (o BuildArtifactResponseArrayOutput) ToBuildArtifactResponseArrayOutputWithContext(ctx context.Context) BuildArtifactResponseArrayOutput {
 	return o
+}
+
+func (o BuildArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BuildArtifactResponse] {
+	return pulumix.Output[[]BuildArtifactResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BuildArtifactResponseArrayOutput) Index(i pulumi.IntInput) BuildArtifactResponseOutput {
@@ -905,6 +1086,12 @@ func (i CanaryArgs) ToCanaryOutputWithContext(ctx context.Context) CanaryOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CanaryOutput)
 }
 
+func (i CanaryArgs) ToOutput(ctx context.Context) pulumix.Output[Canary] {
+	return pulumix.Output[Canary]{
+		OutputState: i.ToCanaryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CanaryArgs) ToCanaryPtrOutput() CanaryPtrOutput {
 	return i.ToCanaryPtrOutputWithContext(context.Background())
 }
@@ -946,6 +1133,12 @@ func (i *canaryPtrType) ToCanaryPtrOutputWithContext(ctx context.Context) Canary
 	return pulumi.ToOutputWithContext(ctx, i).(CanaryPtrOutput)
 }
 
+func (i *canaryPtrType) ToOutput(ctx context.Context) pulumix.Output[*Canary] {
+	return pulumix.Output[*Canary]{
+		OutputState: i.ToCanaryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Canary represents the canary deployment strategy.
 type CanaryOutput struct{ *pulumi.OutputState }
 
@@ -969,6 +1162,12 @@ func (o CanaryOutput) ToCanaryPtrOutputWithContext(ctx context.Context) CanaryPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Canary) *Canary {
 		return &v
 	}).(CanaryPtrOutput)
+}
+
+func (o CanaryOutput) ToOutput(ctx context.Context) pulumix.Output[Canary] {
+	return pulumix.Output[Canary]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configures the progressive based deployment for a Target.
@@ -998,6 +1197,12 @@ func (o CanaryPtrOutput) ToCanaryPtrOutput() CanaryPtrOutput {
 
 func (o CanaryPtrOutput) ToCanaryPtrOutputWithContext(ctx context.Context) CanaryPtrOutput {
 	return o
+}
+
+func (o CanaryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Canary] {
+	return pulumix.Output[*Canary]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CanaryPtrOutput) Elem() CanaryOutput {
@@ -1079,6 +1284,12 @@ func (i CanaryDeploymentArgs) ToCanaryDeploymentOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CanaryDeploymentOutput)
 }
 
+func (i CanaryDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[CanaryDeployment] {
+	return pulumix.Output[CanaryDeployment]{
+		OutputState: i.ToCanaryDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CanaryDeploymentArgs) ToCanaryDeploymentPtrOutput() CanaryDeploymentPtrOutput {
 	return i.ToCanaryDeploymentPtrOutputWithContext(context.Background())
 }
@@ -1120,6 +1331,12 @@ func (i *canaryDeploymentPtrType) ToCanaryDeploymentPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CanaryDeploymentPtrOutput)
 }
 
+func (i *canaryDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CanaryDeployment] {
+	return pulumix.Output[*CanaryDeployment]{
+		OutputState: i.ToCanaryDeploymentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CanaryDeployment represents the canary deployment configuration
 type CanaryDeploymentOutput struct{ *pulumi.OutputState }
 
@@ -1145,6 +1362,12 @@ func (o CanaryDeploymentOutput) ToCanaryDeploymentPtrOutputWithContext(ctx conte
 	}).(CanaryDeploymentPtrOutput)
 }
 
+func (o CanaryDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[CanaryDeployment] {
+	return pulumix.Output[CanaryDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 func (o CanaryDeploymentOutput) Percentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CanaryDeployment) []int { return v.Percentages }).(pulumi.IntArrayOutput)
@@ -1167,6 +1390,12 @@ func (o CanaryDeploymentPtrOutput) ToCanaryDeploymentPtrOutput() CanaryDeploymen
 
 func (o CanaryDeploymentPtrOutput) ToCanaryDeploymentPtrOutputWithContext(ctx context.Context) CanaryDeploymentPtrOutput {
 	return o
+}
+
+func (o CanaryDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CanaryDeployment] {
+	return pulumix.Output[*CanaryDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CanaryDeploymentPtrOutput) Elem() CanaryDeploymentOutput {
@@ -1222,6 +1451,12 @@ func (o CanaryDeploymentResponseOutput) ToCanaryDeploymentResponseOutputWithCont
 	return o
 }
 
+func (o CanaryDeploymentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CanaryDeploymentResponse] {
+	return pulumix.Output[CanaryDeploymentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 func (o CanaryDeploymentResponseOutput) Percentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CanaryDeploymentResponse) []int { return v.Percentages }).(pulumi.IntArrayOutput)
@@ -1255,6 +1490,12 @@ func (o CanaryResponseOutput) ToCanaryResponseOutput() CanaryResponseOutput {
 
 func (o CanaryResponseOutput) ToCanaryResponseOutputWithContext(ctx context.Context) CanaryResponseOutput {
 	return o
+}
+
+func (o CanaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CanaryResponse] {
+	return pulumix.Output[CanaryResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configures the progressive based deployment for a Target.
@@ -1293,6 +1534,12 @@ func (o ChildRolloutJobsResponseOutput) ToChildRolloutJobsResponseOutput() Child
 
 func (o ChildRolloutJobsResponseOutput) ToChildRolloutJobsResponseOutputWithContext(ctx context.Context) ChildRolloutJobsResponseOutput {
 	return o
+}
+
+func (o ChildRolloutJobsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ChildRolloutJobsResponse] {
+	return pulumix.Output[ChildRolloutJobsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of AdvanceChildRolloutJobs
@@ -1340,6 +1587,12 @@ func (i CloudRunConfigArgs) ToCloudRunConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunConfigOutput)
 }
 
+func (i CloudRunConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CloudRunConfig] {
+	return pulumix.Output[CloudRunConfig]{
+		OutputState: i.ToCloudRunConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CloudRunConfigArgs) ToCloudRunConfigPtrOutput() CloudRunConfigPtrOutput {
 	return i.ToCloudRunConfigPtrOutputWithContext(context.Background())
 }
@@ -1381,6 +1634,12 @@ func (i *cloudRunConfigPtrType) ToCloudRunConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunConfigPtrOutput)
 }
 
+func (i *cloudRunConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudRunConfig] {
+	return pulumix.Output[*CloudRunConfig]{
+		OutputState: i.ToCloudRunConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudRunConfig contains the Cloud Run runtime configuration.
 type CloudRunConfigOutput struct{ *pulumi.OutputState }
 
@@ -1406,6 +1665,12 @@ func (o CloudRunConfigOutput) ToCloudRunConfigPtrOutputWithContext(ctx context.C
 	}).(CloudRunConfigPtrOutput)
 }
 
+func (o CloudRunConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunConfig] {
+	return pulumix.Output[CloudRunConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 func (o CloudRunConfigOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CloudRunConfig) *bool { return v.AutomaticTrafficControl }).(pulumi.BoolPtrOutput)
@@ -1423,6 +1688,12 @@ func (o CloudRunConfigPtrOutput) ToCloudRunConfigPtrOutput() CloudRunConfigPtrOu
 
 func (o CloudRunConfigPtrOutput) ToCloudRunConfigPtrOutputWithContext(ctx context.Context) CloudRunConfigPtrOutput {
 	return o
+}
+
+func (o CloudRunConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudRunConfig] {
+	return pulumix.Output[*CloudRunConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudRunConfigPtrOutput) Elem() CloudRunConfigOutput {
@@ -1466,6 +1737,12 @@ func (o CloudRunConfigResponseOutput) ToCloudRunConfigResponseOutputWithContext(
 	return o
 }
 
+func (o CloudRunConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunConfigResponse] {
+	return pulumix.Output[CloudRunConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 func (o CloudRunConfigResponseOutput) AutomaticTrafficControl() pulumi.BoolOutput {
 	return o.ApplyT(func(v CloudRunConfigResponse) bool { return v.AutomaticTrafficControl }).(pulumi.BoolOutput)
@@ -1504,6 +1781,12 @@ func (i CloudRunLocationArgs) ToCloudRunLocationOutput() CloudRunLocationOutput 
 
 func (i CloudRunLocationArgs) ToCloudRunLocationOutputWithContext(ctx context.Context) CloudRunLocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunLocationOutput)
+}
+
+func (i CloudRunLocationArgs) ToOutput(ctx context.Context) pulumix.Output[CloudRunLocation] {
+	return pulumix.Output[CloudRunLocation]{
+		OutputState: i.ToCloudRunLocationOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CloudRunLocationArgs) ToCloudRunLocationPtrOutput() CloudRunLocationPtrOutput {
@@ -1547,6 +1830,12 @@ func (i *cloudRunLocationPtrType) ToCloudRunLocationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunLocationPtrOutput)
 }
 
+func (i *cloudRunLocationPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudRunLocation] {
+	return pulumix.Output[*CloudRunLocation]{
+		OutputState: i.ToCloudRunLocationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information specifying where to deploy a Cloud Run Service.
 type CloudRunLocationOutput struct{ *pulumi.OutputState }
 
@@ -1572,6 +1861,12 @@ func (o CloudRunLocationOutput) ToCloudRunLocationPtrOutputWithContext(ctx conte
 	}).(CloudRunLocationPtrOutput)
 }
 
+func (o CloudRunLocationOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunLocation] {
+	return pulumix.Output[CloudRunLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 func (o CloudRunLocationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunLocation) string { return v.Location }).(pulumi.StringOutput)
@@ -1589,6 +1884,12 @@ func (o CloudRunLocationPtrOutput) ToCloudRunLocationPtrOutput() CloudRunLocatio
 
 func (o CloudRunLocationPtrOutput) ToCloudRunLocationPtrOutputWithContext(ctx context.Context) CloudRunLocationPtrOutput {
 	return o
+}
+
+func (o CloudRunLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudRunLocation] {
+	return pulumix.Output[*CloudRunLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudRunLocationPtrOutput) Elem() CloudRunLocationOutput {
@@ -1632,6 +1933,12 @@ func (o CloudRunLocationResponseOutput) ToCloudRunLocationResponseOutputWithCont
 	return o
 }
 
+func (o CloudRunLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunLocationResponse] {
+	return pulumix.Output[CloudRunLocationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 func (o CloudRunLocationResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunLocationResponse) string { return v.Location }).(pulumi.StringOutput)
@@ -1660,6 +1967,12 @@ func (o CloudRunMetadataResponseOutput) ToCloudRunMetadataResponseOutput() Cloud
 
 func (o CloudRunMetadataResponseOutput) ToCloudRunMetadataResponseOutputWithContext(ctx context.Context) CloudRunMetadataResponseOutput {
 	return o
+}
+
+func (o CloudRunMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunMetadataResponse] {
+	return pulumix.Output[CloudRunMetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Cloud Run Revision id associated with a `Rollout`.
@@ -1696,6 +2009,12 @@ func (o CreateChildRolloutJobResponseOutput) ToCreateChildRolloutJobResponseOutp
 	return o
 }
 
+func (o CreateChildRolloutJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreateChildRolloutJobResponse] {
+	return pulumix.Output[CreateChildRolloutJobResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // CustomCanaryDeployment represents the custom canary deployment configuration.
 type CustomCanaryDeployment struct {
 	// Configuration for each phase in the canary deployment in the order executed.
@@ -1729,6 +2048,12 @@ func (i CustomCanaryDeploymentArgs) ToCustomCanaryDeploymentOutput() CustomCanar
 
 func (i CustomCanaryDeploymentArgs) ToCustomCanaryDeploymentOutputWithContext(ctx context.Context) CustomCanaryDeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomCanaryDeploymentOutput)
+}
+
+func (i CustomCanaryDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[CustomCanaryDeployment] {
+	return pulumix.Output[CustomCanaryDeployment]{
+		OutputState: i.ToCustomCanaryDeploymentOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CustomCanaryDeploymentArgs) ToCustomCanaryDeploymentPtrOutput() CustomCanaryDeploymentPtrOutput {
@@ -1772,6 +2097,12 @@ func (i *customCanaryDeploymentPtrType) ToCustomCanaryDeploymentPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CustomCanaryDeploymentPtrOutput)
 }
 
+func (i *customCanaryDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomCanaryDeployment] {
+	return pulumix.Output[*CustomCanaryDeployment]{
+		OutputState: i.ToCustomCanaryDeploymentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomCanaryDeployment represents the custom canary deployment configuration.
 type CustomCanaryDeploymentOutput struct{ *pulumi.OutputState }
 
@@ -1797,6 +2128,12 @@ func (o CustomCanaryDeploymentOutput) ToCustomCanaryDeploymentPtrOutputWithConte
 	}).(CustomCanaryDeploymentPtrOutput)
 }
 
+func (o CustomCanaryDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[CustomCanaryDeployment] {
+	return pulumix.Output[CustomCanaryDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Configuration for each phase in the canary deployment in the order executed.
 func (o CustomCanaryDeploymentOutput) PhaseConfigs() PhaseConfigArrayOutput {
 	return o.ApplyT(func(v CustomCanaryDeployment) []PhaseConfig { return v.PhaseConfigs }).(PhaseConfigArrayOutput)
@@ -1814,6 +2151,12 @@ func (o CustomCanaryDeploymentPtrOutput) ToCustomCanaryDeploymentPtrOutput() Cus
 
 func (o CustomCanaryDeploymentPtrOutput) ToCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) CustomCanaryDeploymentPtrOutput {
 	return o
+}
+
+func (o CustomCanaryDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomCanaryDeployment] {
+	return pulumix.Output[*CustomCanaryDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomCanaryDeploymentPtrOutput) Elem() CustomCanaryDeploymentOutput {
@@ -1855,6 +2198,12 @@ func (o CustomCanaryDeploymentResponseOutput) ToCustomCanaryDeploymentResponseOu
 
 func (o CustomCanaryDeploymentResponseOutput) ToCustomCanaryDeploymentResponseOutputWithContext(ctx context.Context) CustomCanaryDeploymentResponseOutput {
 	return o
+}
+
+func (o CustomCanaryDeploymentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomCanaryDeploymentResponse] {
+	return pulumix.Output[CustomCanaryDeploymentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration for each phase in the canary deployment in the order executed.
@@ -1901,6 +2250,12 @@ func (i DefaultPoolArgs) ToDefaultPoolOutputWithContext(ctx context.Context) Def
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPoolOutput)
 }
 
+func (i DefaultPoolArgs) ToOutput(ctx context.Context) pulumix.Output[DefaultPool] {
+	return pulumix.Output[DefaultPool]{
+		OutputState: i.ToDefaultPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DefaultPoolArgs) ToDefaultPoolPtrOutput() DefaultPoolPtrOutput {
 	return i.ToDefaultPoolPtrOutputWithContext(context.Background())
 }
@@ -1942,6 +2297,12 @@ func (i *defaultPoolPtrType) ToDefaultPoolPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPoolPtrOutput)
 }
 
+func (i *defaultPoolPtrType) ToOutput(ctx context.Context) pulumix.Output[*DefaultPool] {
+	return pulumix.Output[*DefaultPool]{
+		OutputState: i.ToDefaultPoolPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Execution using the default Cloud Build pool.
 type DefaultPoolOutput struct{ *pulumi.OutputState }
 
@@ -1967,6 +2328,12 @@ func (o DefaultPoolOutput) ToDefaultPoolPtrOutputWithContext(ctx context.Context
 	}).(DefaultPoolPtrOutput)
 }
 
+func (o DefaultPoolOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultPool] {
+	return pulumix.Output[DefaultPool]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 func (o DefaultPoolOutput) ArtifactStorage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultPool) *string { return v.ArtifactStorage }).(pulumi.StringPtrOutput)
@@ -1989,6 +2356,12 @@ func (o DefaultPoolPtrOutput) ToDefaultPoolPtrOutput() DefaultPoolPtrOutput {
 
 func (o DefaultPoolPtrOutput) ToDefaultPoolPtrOutputWithContext(ctx context.Context) DefaultPoolPtrOutput {
 	return o
+}
+
+func (o DefaultPoolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultPool] {
+	return pulumix.Output[*DefaultPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultPoolPtrOutput) Elem() DefaultPoolOutput {
@@ -2044,6 +2417,12 @@ func (o DefaultPoolResponseOutput) ToDefaultPoolResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o DefaultPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultPoolResponse] {
+	return pulumix.Output[DefaultPoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 func (o DefaultPoolResponseOutput) ArtifactStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v DefaultPoolResponse) string { return v.ArtifactStorage }).(pulumi.StringOutput)
@@ -2093,6 +2472,12 @@ func (o DeliveryPipelineResponseOutput) ToDeliveryPipelineResponseOutput() Deliv
 
 func (o DeliveryPipelineResponseOutput) ToDeliveryPipelineResponseOutputWithContext(ctx context.Context) DeliveryPipelineResponseOutput {
 	return o
+}
+
+func (o DeliveryPipelineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryPipelineResponse] {
+	return pulumix.Output[DeliveryPipelineResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
@@ -2169,6 +2554,12 @@ func (o DeployJobResponseOutput) ToDeployJobResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o DeployJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeployJobResponse] {
+	return pulumix.Output[DeployJobResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Deployment job composition.
 type DeploymentJobsResponse struct {
 	// The deploy Job. This is the deploy job in the phase.
@@ -2190,6 +2581,12 @@ func (o DeploymentJobsResponseOutput) ToDeploymentJobsResponseOutput() Deploymen
 
 func (o DeploymentJobsResponseOutput) ToDeploymentJobsResponseOutputWithContext(ctx context.Context) DeploymentJobsResponseOutput {
 	return o
+}
+
+func (o DeploymentJobsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentJobsResponse] {
+	return pulumix.Output[DeploymentJobsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The deploy Job. This is the deploy job in the phase.
@@ -2261,6 +2658,12 @@ func (i ExecutionConfigArgs) ToExecutionConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigOutput)
 }
 
+func (i ExecutionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExecutionConfig] {
+	return pulumix.Output[ExecutionConfig]{
+		OutputState: i.ToExecutionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExecutionConfigArrayInput is an input type that accepts ExecutionConfigArray and ExecutionConfigArrayOutput values.
 // You can construct a concrete instance of `ExecutionConfigArrayInput` via:
 //
@@ -2286,6 +2689,12 @@ func (i ExecutionConfigArray) ToExecutionConfigArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigArrayOutput)
 }
 
+func (i ExecutionConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionConfig] {
+	return pulumix.Output[[]ExecutionConfig]{
+		OutputState: i.ToExecutionConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration of the environment to use when calling Skaffold.
 type ExecutionConfigOutput struct{ *pulumi.OutputState }
 
@@ -2299,6 +2708,12 @@ func (o ExecutionConfigOutput) ToExecutionConfigOutput() ExecutionConfigOutput {
 
 func (o ExecutionConfigOutput) ToExecutionConfigOutputWithContext(ctx context.Context) ExecutionConfigOutput {
 	return o
+}
+
+func (o ExecutionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionConfig] {
+	return pulumix.Output[ExecutionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -2350,6 +2765,12 @@ func (o ExecutionConfigArrayOutput) ToExecutionConfigArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ExecutionConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionConfig] {
+	return pulumix.Output[[]ExecutionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExecutionConfigArrayOutput) Index(i pulumi.IntInput) ExecutionConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExecutionConfig {
 		return vs[0].([]ExecutionConfig)[vs[1].(int)]
@@ -2387,6 +2808,12 @@ func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutput() Executi
 
 func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutputWithContext(ctx context.Context) ExecutionConfigResponseOutput {
 	return o
+}
+
+func (o ExecutionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionConfigResponse] {
+	return pulumix.Output[ExecutionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -2436,6 +2863,12 @@ func (o ExecutionConfigResponseArrayOutput) ToExecutionConfigResponseArrayOutput
 
 func (o ExecutionConfigResponseArrayOutput) ToExecutionConfigResponseArrayOutputWithContext(ctx context.Context) ExecutionConfigResponseArrayOutput {
 	return o
+}
+
+func (o ExecutionConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionConfigResponse] {
+	return pulumix.Output[[]ExecutionConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecutionConfigResponseArrayOutput) Index(i pulumi.IntInput) ExecutionConfigResponseOutput {
@@ -2491,6 +2924,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -2532,6 +2971,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -2555,6 +3000,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2589,6 +3040,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -2668,6 +3125,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -2731,6 +3194,12 @@ func (i GatewayServiceMeshArgs) ToGatewayServiceMeshOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayServiceMeshOutput)
 }
 
+func (i GatewayServiceMeshArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayServiceMesh] {
+	return pulumix.Output[GatewayServiceMesh]{
+		OutputState: i.ToGatewayServiceMeshOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GatewayServiceMeshArgs) ToGatewayServiceMeshPtrOutput() GatewayServiceMeshPtrOutput {
 	return i.ToGatewayServiceMeshPtrOutputWithContext(context.Background())
 }
@@ -2772,6 +3241,12 @@ func (i *gatewayServiceMeshPtrType) ToGatewayServiceMeshPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayServiceMeshPtrOutput)
 }
 
+func (i *gatewayServiceMeshPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayServiceMesh] {
+	return pulumix.Output[*GatewayServiceMesh]{
+		OutputState: i.ToGatewayServiceMeshPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information about the Kubernetes Gateway API service mesh configuration.
 type GatewayServiceMeshOutput struct{ *pulumi.OutputState }
 
@@ -2795,6 +3270,12 @@ func (o GatewayServiceMeshOutput) ToGatewayServiceMeshPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayServiceMesh) *GatewayServiceMesh {
 		return &v
 	}).(GatewayServiceMeshPtrOutput)
+}
+
+func (o GatewayServiceMeshOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayServiceMesh] {
+	return pulumix.Output[GatewayServiceMesh]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
@@ -2824,6 +3305,12 @@ func (o GatewayServiceMeshPtrOutput) ToGatewayServiceMeshPtrOutput() GatewayServ
 
 func (o GatewayServiceMeshPtrOutput) ToGatewayServiceMeshPtrOutputWithContext(ctx context.Context) GatewayServiceMeshPtrOutput {
 	return o
+}
+
+func (o GatewayServiceMeshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayServiceMesh] {
+	return pulumix.Output[*GatewayServiceMesh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayServiceMeshPtrOutput) Elem() GatewayServiceMeshOutput {
@@ -2891,6 +3378,12 @@ func (o GatewayServiceMeshResponseOutput) ToGatewayServiceMeshResponseOutputWith
 	return o
 }
 
+func (o GatewayServiceMeshResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayServiceMeshResponse] {
+	return pulumix.Output[GatewayServiceMeshResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
 func (o GatewayServiceMeshResponseOutput) Deployment() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.Deployment }).(pulumi.StringOutput)
@@ -2945,6 +3438,12 @@ func (i GkeClusterArgs) ToGkeClusterOutputWithContext(ctx context.Context) GkeCl
 	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterOutput)
 }
 
+func (i GkeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GkeCluster] {
+	return pulumix.Output[GkeCluster]{
+		OutputState: i.ToGkeClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GkeClusterArgs) ToGkeClusterPtrOutput() GkeClusterPtrOutput {
 	return i.ToGkeClusterPtrOutputWithContext(context.Background())
 }
@@ -2986,6 +3485,12 @@ func (i *gkeClusterPtrType) ToGkeClusterPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterPtrOutput)
 }
 
+func (i *gkeClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*GkeCluster] {
+	return pulumix.Output[*GkeCluster]{
+		OutputState: i.ToGkeClusterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information specifying a GKE Cluster.
 type GkeClusterOutput struct{ *pulumi.OutputState }
 
@@ -3011,6 +3516,12 @@ func (o GkeClusterOutput) ToGkeClusterPtrOutputWithContext(ctx context.Context) 
 	}).(GkeClusterPtrOutput)
 }
 
+func (o GkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GkeCluster] {
+	return pulumix.Output[GkeCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 func (o GkeClusterOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
@@ -3033,6 +3544,12 @@ func (o GkeClusterPtrOutput) ToGkeClusterPtrOutput() GkeClusterPtrOutput {
 
 func (o GkeClusterPtrOutput) ToGkeClusterPtrOutputWithContext(ctx context.Context) GkeClusterPtrOutput {
 	return o
+}
+
+func (o GkeClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GkeCluster] {
+	return pulumix.Output[*GkeCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GkeClusterPtrOutput) Elem() GkeClusterOutput {
@@ -3088,6 +3605,12 @@ func (o GkeClusterResponseOutput) ToGkeClusterResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o GkeClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GkeClusterResponse] {
+	return pulumix.Output[GkeClusterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 func (o GkeClusterResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterResponse) string { return v.Cluster }).(pulumi.StringOutput)
@@ -3129,6 +3652,12 @@ func (o JobResponseOutput) ToJobResponseOutput() JobResponseOutput {
 
 func (o JobResponseOutput) ToJobResponseOutputWithContext(ctx context.Context) JobResponseOutput {
 	return o
+}
+
+func (o JobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobResponse] {
+	return pulumix.Output[JobResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An advanceChildRollout Job.
@@ -3180,6 +3709,12 @@ func (o JobResponseArrayOutput) ToJobResponseArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o JobResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobResponse] {
+	return pulumix.Output[[]JobResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobResponseArrayOutput) Index(i pulumi.IntInput) JobResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobResponse {
 		return vs[0].([]JobResponse)[vs[1].(int)]
@@ -3225,6 +3760,12 @@ func (i KubernetesConfigArgs) ToKubernetesConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConfigOutput)
 }
 
+func (i KubernetesConfigArgs) ToOutput(ctx context.Context) pulumix.Output[KubernetesConfig] {
+	return pulumix.Output[KubernetesConfig]{
+		OutputState: i.ToKubernetesConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KubernetesConfigArgs) ToKubernetesConfigPtrOutput() KubernetesConfigPtrOutput {
 	return i.ToKubernetesConfigPtrOutputWithContext(context.Background())
 }
@@ -3266,6 +3807,12 @@ func (i *kubernetesConfigPtrType) ToKubernetesConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConfigPtrOutput)
 }
 
+func (i *kubernetesConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*KubernetesConfig] {
+	return pulumix.Output[*KubernetesConfig]{
+		OutputState: i.ToKubernetesConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KubernetesConfig contains the Kubernetes runtime configuration.
 type KubernetesConfigOutput struct{ *pulumi.OutputState }
 
@@ -3291,6 +3838,12 @@ func (o KubernetesConfigOutput) ToKubernetesConfigPtrOutputWithContext(ctx conte
 	}).(KubernetesConfigPtrOutput)
 }
 
+func (o KubernetesConfigOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesConfig] {
+	return pulumix.Output[KubernetesConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Kubernetes Gateway API service mesh configuration.
 func (o KubernetesConfigOutput) GatewayServiceMesh() GatewayServiceMeshPtrOutput {
 	return o.ApplyT(func(v KubernetesConfig) *GatewayServiceMesh { return v.GatewayServiceMesh }).(GatewayServiceMeshPtrOutput)
@@ -3313,6 +3866,12 @@ func (o KubernetesConfigPtrOutput) ToKubernetesConfigPtrOutput() KubernetesConfi
 
 func (o KubernetesConfigPtrOutput) ToKubernetesConfigPtrOutputWithContext(ctx context.Context) KubernetesConfigPtrOutput {
 	return o
+}
+
+func (o KubernetesConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesConfig] {
+	return pulumix.Output[*KubernetesConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubernetesConfigPtrOutput) Elem() KubernetesConfigOutput {
@@ -3368,6 +3927,12 @@ func (o KubernetesConfigResponseOutput) ToKubernetesConfigResponseOutputWithCont
 	return o
 }
 
+func (o KubernetesConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesConfigResponse] {
+	return pulumix.Output[KubernetesConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Kubernetes Gateway API service mesh configuration.
 func (o KubernetesConfigResponseOutput) GatewayServiceMesh() GatewayServiceMeshResponseOutput {
 	return o.ApplyT(func(v KubernetesConfigResponse) GatewayServiceMeshResponse { return v.GatewayServiceMesh }).(GatewayServiceMeshResponseOutput)
@@ -3397,6 +3962,12 @@ func (o MetadataResponseOutput) ToMetadataResponseOutput() MetadataResponseOutpu
 
 func (o MetadataResponseOutput) ToMetadataResponseOutputWithContext(ctx context.Context) MetadataResponseOutput {
 	return o
+}
+
+func (o MetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataResponse] {
+	return pulumix.Output[MetadataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Cloud Run Service that is associated with a `Rollout`.
@@ -3437,6 +4008,12 @@ func (i MultiTargetArgs) ToMultiTargetOutput() MultiTargetOutput {
 
 func (i MultiTargetArgs) ToMultiTargetOutputWithContext(ctx context.Context) MultiTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MultiTargetOutput)
+}
+
+func (i MultiTargetArgs) ToOutput(ctx context.Context) pulumix.Output[MultiTarget] {
+	return pulumix.Output[MultiTarget]{
+		OutputState: i.ToMultiTargetOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i MultiTargetArgs) ToMultiTargetPtrOutput() MultiTargetPtrOutput {
@@ -3480,6 +4057,12 @@ func (i *multiTargetPtrType) ToMultiTargetPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MultiTargetPtrOutput)
 }
 
+func (i *multiTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*MultiTarget] {
+	return pulumix.Output[*MultiTarget]{
+		OutputState: i.ToMultiTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information specifying a multiTarget.
 type MultiTargetOutput struct{ *pulumi.OutputState }
 
@@ -3505,6 +4088,12 @@ func (o MultiTargetOutput) ToMultiTargetPtrOutputWithContext(ctx context.Context
 	}).(MultiTargetPtrOutput)
 }
 
+func (o MultiTargetOutput) ToOutput(ctx context.Context) pulumix.Output[MultiTarget] {
+	return pulumix.Output[MultiTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The target_ids of this multiTarget.
 func (o MultiTargetOutput) TargetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MultiTarget) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
@@ -3522,6 +4111,12 @@ func (o MultiTargetPtrOutput) ToMultiTargetPtrOutput() MultiTargetPtrOutput {
 
 func (o MultiTargetPtrOutput) ToMultiTargetPtrOutputWithContext(ctx context.Context) MultiTargetPtrOutput {
 	return o
+}
+
+func (o MultiTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiTarget] {
+	return pulumix.Output[*MultiTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MultiTargetPtrOutput) Elem() MultiTargetOutput {
@@ -3563,6 +4158,12 @@ func (o MultiTargetResponseOutput) ToMultiTargetResponseOutput() MultiTargetResp
 
 func (o MultiTargetResponseOutput) ToMultiTargetResponseOutputWithContext(ctx context.Context) MultiTargetResponseOutput {
 	return o
+}
+
+func (o MultiTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiTargetResponse] {
+	return pulumix.Output[MultiTargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target_ids of this multiTarget.
@@ -3617,6 +4218,12 @@ func (i PhaseConfigArgs) ToPhaseConfigOutputWithContext(ctx context.Context) Pha
 	return pulumi.ToOutputWithContext(ctx, i).(PhaseConfigOutput)
 }
 
+func (i PhaseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PhaseConfig] {
+	return pulumix.Output[PhaseConfig]{
+		OutputState: i.ToPhaseConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PhaseConfigArrayInput is an input type that accepts PhaseConfigArray and PhaseConfigArrayOutput values.
 // You can construct a concrete instance of `PhaseConfigArrayInput` via:
 //
@@ -3642,6 +4249,12 @@ func (i PhaseConfigArray) ToPhaseConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PhaseConfigArrayOutput)
 }
 
+func (i PhaseConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]PhaseConfig] {
+	return pulumix.Output[[]PhaseConfig]{
+		OutputState: i.ToPhaseConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PhaseConfig represents the configuration for a phase in the custom canary deployment.
 type PhaseConfigOutput struct{ *pulumi.OutputState }
 
@@ -3655,6 +4268,12 @@ func (o PhaseConfigOutput) ToPhaseConfigOutput() PhaseConfigOutput {
 
 func (o PhaseConfigOutput) ToPhaseConfigOutputWithContext(ctx context.Context) PhaseConfigOutput {
 	return o
+}
+
+func (o PhaseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PhaseConfig] {
+	return pulumix.Output[PhaseConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Percentage deployment for the phase.
@@ -3691,6 +4310,12 @@ func (o PhaseConfigArrayOutput) ToPhaseConfigArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o PhaseConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PhaseConfig] {
+	return pulumix.Output[[]PhaseConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PhaseConfigArrayOutput) Index(i pulumi.IntInput) PhaseConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhaseConfig {
 		return vs[0].([]PhaseConfig)[vs[1].(int)]
@@ -3722,6 +4347,12 @@ func (o PhaseConfigResponseOutput) ToPhaseConfigResponseOutput() PhaseConfigResp
 
 func (o PhaseConfigResponseOutput) ToPhaseConfigResponseOutputWithContext(ctx context.Context) PhaseConfigResponseOutput {
 	return o
+}
+
+func (o PhaseConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PhaseConfigResponse] {
+	return pulumix.Output[PhaseConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Percentage deployment for the phase.
@@ -3758,6 +4389,12 @@ func (o PhaseConfigResponseArrayOutput) ToPhaseConfigResponseArrayOutputWithCont
 	return o
 }
 
+func (o PhaseConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PhaseConfigResponse] {
+	return pulumix.Output[[]PhaseConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PhaseConfigResponseArrayOutput) Index(i pulumi.IntInput) PhaseConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhaseConfigResponse {
 		return vs[0].([]PhaseConfigResponse)[vs[1].(int)]
@@ -3789,6 +4426,12 @@ func (o PhaseResponseOutput) ToPhaseResponseOutput() PhaseResponseOutput {
 
 func (o PhaseResponseOutput) ToPhaseResponseOutputWithContext(ctx context.Context) PhaseResponseOutput {
 	return o
+}
+
+func (o PhaseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PhaseResponse] {
+	return pulumix.Output[PhaseResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ChildRollout job composition.
@@ -3825,6 +4468,12 @@ func (o PhaseResponseArrayOutput) ToPhaseResponseArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o PhaseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PhaseResponse] {
+	return pulumix.Output[[]PhaseResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PhaseResponseArrayOutput) Index(i pulumi.IntInput) PhaseResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhaseResponse {
 		return vs[0].([]PhaseResponse)[vs[1].(int)]
@@ -3854,6 +4503,12 @@ func (o PipelineConditionResponseOutput) ToPipelineConditionResponseOutput() Pip
 
 func (o PipelineConditionResponseOutput) ToPipelineConditionResponseOutputWithContext(ctx context.Context) PipelineConditionResponseOutput {
 	return o
+}
+
+func (o PipelineConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineConditionResponse] {
+	return pulumix.Output[PipelineConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details around the Pipeline's overall status.
@@ -3892,6 +4547,12 @@ func (o PipelineReadyConditionResponseOutput) ToPipelineReadyConditionResponseOu
 
 func (o PipelineReadyConditionResponseOutput) ToPipelineReadyConditionResponseOutputWithContext(ctx context.Context) PipelineReadyConditionResponseOutput {
 	return o
+}
+
+func (o PipelineReadyConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineReadyConditionResponse] {
+	return pulumix.Output[PipelineReadyConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
@@ -3947,6 +4608,12 @@ func (i PrivatePoolArgs) ToPrivatePoolOutputWithContext(ctx context.Context) Pri
 	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolOutput)
 }
 
+func (i PrivatePoolArgs) ToOutput(ctx context.Context) pulumix.Output[PrivatePool] {
+	return pulumix.Output[PrivatePool]{
+		OutputState: i.ToPrivatePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivatePoolArgs) ToPrivatePoolPtrOutput() PrivatePoolPtrOutput {
 	return i.ToPrivatePoolPtrOutputWithContext(context.Background())
 }
@@ -3988,6 +4655,12 @@ func (i *privatePoolPtrType) ToPrivatePoolPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolPtrOutput)
 }
 
+func (i *privatePoolPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivatePool] {
+	return pulumix.Output[*PrivatePool]{
+		OutputState: i.ToPrivatePoolPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Execution using a private Cloud Build pool.
 type PrivatePoolOutput struct{ *pulumi.OutputState }
 
@@ -4011,6 +4684,12 @@ func (o PrivatePoolOutput) ToPrivatePoolPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivatePool) *PrivatePool {
 		return &v
 	}).(PrivatePoolPtrOutput)
+}
+
+func (o PrivatePoolOutput) ToOutput(ctx context.Context) pulumix.Output[PrivatePool] {
+	return pulumix.Output[PrivatePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -4040,6 +4719,12 @@ func (o PrivatePoolPtrOutput) ToPrivatePoolPtrOutput() PrivatePoolPtrOutput {
 
 func (o PrivatePoolPtrOutput) ToPrivatePoolPtrOutputWithContext(ctx context.Context) PrivatePoolPtrOutput {
 	return o
+}
+
+func (o PrivatePoolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivatePool] {
+	return pulumix.Output[*PrivatePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivatePoolPtrOutput) Elem() PrivatePoolOutput {
@@ -4107,6 +4792,12 @@ func (o PrivatePoolResponseOutput) ToPrivatePoolResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o PrivatePoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivatePoolResponse] {
+	return pulumix.Output[PrivatePoolResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 func (o PrivatePoolResponseOutput) ArtifactStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivatePoolResponse) string { return v.ArtifactStorage }).(pulumi.StringOutput)
@@ -4145,6 +4836,12 @@ func (o ReleaseConditionResponseOutput) ToReleaseConditionResponseOutputWithCont
 	return o
 }
 
+func (o ReleaseConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReleaseConditionResponse] {
+	return pulumix.Output[ReleaseConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Details around the Releases's overall status.
 func (o ReleaseConditionResponseOutput) ReleaseReadyCondition() ReleaseReadyConditionResponseOutput {
 	return o.ApplyT(func(v ReleaseConditionResponse) ReleaseReadyConditionResponse { return v.ReleaseReadyCondition }).(ReleaseReadyConditionResponseOutput)
@@ -4176,6 +4873,12 @@ func (o ReleaseReadyConditionResponseOutput) ToReleaseReadyConditionResponseOutp
 
 func (o ReleaseReadyConditionResponseOutput) ToReleaseReadyConditionResponseOutputWithContext(ctx context.Context) ReleaseReadyConditionResponseOutput {
 	return o
+}
+
+func (o ReleaseReadyConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReleaseReadyConditionResponse] {
+	return pulumix.Output[ReleaseReadyConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
@@ -4222,6 +4925,12 @@ func (i RuntimeConfigArgs) ToRuntimeConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigOutput)
 }
 
+func (i RuntimeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeConfig] {
+	return pulumix.Output[RuntimeConfig]{
+		OutputState: i.ToRuntimeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeConfigArgs) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
 	return i.ToRuntimeConfigPtrOutputWithContext(context.Background())
 }
@@ -4263,6 +4972,12 @@ func (i *runtimeConfigPtrType) ToRuntimeConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigPtrOutput)
 }
 
+func (i *runtimeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeConfig] {
+	return pulumix.Output[*RuntimeConfig]{
+		OutputState: i.ToRuntimeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuntimeConfig contains the runtime specific configurations for a deployment strategy.
 type RuntimeConfigOutput struct{ *pulumi.OutputState }
 
@@ -4288,6 +5003,12 @@ func (o RuntimeConfigOutput) ToRuntimeConfigPtrOutputWithContext(ctx context.Con
 	}).(RuntimeConfigPtrOutput)
 }
 
+func (o RuntimeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeConfig] {
+	return pulumix.Output[RuntimeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cloud Run runtime configuration.
 func (o RuntimeConfigOutput) CloudRun() CloudRunConfigPtrOutput {
 	return o.ApplyT(func(v RuntimeConfig) *CloudRunConfig { return v.CloudRun }).(CloudRunConfigPtrOutput)
@@ -4310,6 +5031,12 @@ func (o RuntimeConfigPtrOutput) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutpu
 
 func (o RuntimeConfigPtrOutput) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
 	return o
+}
+
+func (o RuntimeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeConfig] {
+	return pulumix.Output[*RuntimeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeConfigPtrOutput) Elem() RuntimeConfigOutput {
@@ -4365,6 +5092,12 @@ func (o RuntimeConfigResponseOutput) ToRuntimeConfigResponseOutputWithContext(ct
 	return o
 }
 
+func (o RuntimeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeConfigResponse] {
+	return pulumix.Output[RuntimeConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cloud Run runtime configuration.
 func (o RuntimeConfigResponseOutput) CloudRun() CloudRunConfigResponseOutput {
 	return o.ApplyT(func(v RuntimeConfigResponse) CloudRunConfigResponse { return v.CloudRun }).(CloudRunConfigResponseOutput)
@@ -4410,6 +5143,12 @@ func (i SerialPipelineArgs) ToSerialPipelineOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SerialPipelineOutput)
 }
 
+func (i SerialPipelineArgs) ToOutput(ctx context.Context) pulumix.Output[SerialPipeline] {
+	return pulumix.Output[SerialPipeline]{
+		OutputState: i.ToSerialPipelineOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SerialPipelineArgs) ToSerialPipelinePtrOutput() SerialPipelinePtrOutput {
 	return i.ToSerialPipelinePtrOutputWithContext(context.Background())
 }
@@ -4451,6 +5190,12 @@ func (i *serialPipelinePtrType) ToSerialPipelinePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SerialPipelinePtrOutput)
 }
 
+func (i *serialPipelinePtrType) ToOutput(ctx context.Context) pulumix.Output[*SerialPipeline] {
+	return pulumix.Output[*SerialPipeline]{
+		OutputState: i.ToSerialPipelinePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 type SerialPipelineOutput struct{ *pulumi.OutputState }
 
@@ -4476,6 +5221,12 @@ func (o SerialPipelineOutput) ToSerialPipelinePtrOutputWithContext(ctx context.C
 	}).(SerialPipelinePtrOutput)
 }
 
+func (o SerialPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[SerialPipeline] {
+	return pulumix.Output[SerialPipeline]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
 func (o SerialPipelineOutput) Stages() StageArrayOutput {
 	return o.ApplyT(func(v SerialPipeline) []Stage { return v.Stages }).(StageArrayOutput)
@@ -4493,6 +5244,12 @@ func (o SerialPipelinePtrOutput) ToSerialPipelinePtrOutput() SerialPipelinePtrOu
 
 func (o SerialPipelinePtrOutput) ToSerialPipelinePtrOutputWithContext(ctx context.Context) SerialPipelinePtrOutput {
 	return o
+}
+
+func (o SerialPipelinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SerialPipeline] {
+	return pulumix.Output[*SerialPipeline]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SerialPipelinePtrOutput) Elem() SerialPipelineOutput {
@@ -4534,6 +5291,12 @@ func (o SerialPipelineResponseOutput) ToSerialPipelineResponseOutput() SerialPip
 
 func (o SerialPipelineResponseOutput) ToSerialPipelineResponseOutputWithContext(ctx context.Context) SerialPipelineResponseOutput {
 	return o
+}
+
+func (o SerialPipelineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SerialPipelineResponse] {
+	return pulumix.Output[SerialPipelineResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
@@ -4580,6 +5343,12 @@ func (i ServiceNetworkingArgs) ToServiceNetworkingOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkingOutput)
 }
 
+func (i ServiceNetworkingArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceNetworking] {
+	return pulumix.Output[ServiceNetworking]{
+		OutputState: i.ToServiceNetworkingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceNetworkingArgs) ToServiceNetworkingPtrOutput() ServiceNetworkingPtrOutput {
 	return i.ToServiceNetworkingPtrOutputWithContext(context.Background())
 }
@@ -4621,6 +5390,12 @@ func (i *serviceNetworkingPtrType) ToServiceNetworkingPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkingPtrOutput)
 }
 
+func (i *serviceNetworkingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceNetworking] {
+	return pulumix.Output[*ServiceNetworking]{
+		OutputState: i.ToServiceNetworkingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Information about the Kubernetes Service networking configuration.
 type ServiceNetworkingOutput struct{ *pulumi.OutputState }
 
@@ -4646,6 +5421,12 @@ func (o ServiceNetworkingOutput) ToServiceNetworkingPtrOutputWithContext(ctx con
 	}).(ServiceNetworkingPtrOutput)
 }
 
+func (o ServiceNetworkingOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceNetworking] {
+	return pulumix.Output[ServiceNetworking]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 func (o ServiceNetworkingOutput) Deployment() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNetworking) string { return v.Deployment }).(pulumi.StringOutput)
@@ -4668,6 +5449,12 @@ func (o ServiceNetworkingPtrOutput) ToServiceNetworkingPtrOutput() ServiceNetwor
 
 func (o ServiceNetworkingPtrOutput) ToServiceNetworkingPtrOutputWithContext(ctx context.Context) ServiceNetworkingPtrOutput {
 	return o
+}
+
+func (o ServiceNetworkingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceNetworking] {
+	return pulumix.Output[*ServiceNetworking]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceNetworkingPtrOutput) Elem() ServiceNetworkingOutput {
@@ -4723,6 +5510,12 @@ func (o ServiceNetworkingResponseOutput) ToServiceNetworkingResponseOutputWithCo
 	return o
 }
 
+func (o ServiceNetworkingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceNetworkingResponse] {
+	return pulumix.Output[ServiceNetworkingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 func (o ServiceNetworkingResponseOutput) Deployment() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNetworkingResponse) string { return v.Deployment }).(pulumi.StringOutput)
@@ -4758,6 +5551,12 @@ func (o SkaffoldSupportedConditionResponseOutput) ToSkaffoldSupportedConditionRe
 
 func (o SkaffoldSupportedConditionResponseOutput) ToSkaffoldSupportedConditionResponseOutputWithContext(ctx context.Context) SkaffoldSupportedConditionResponseOutput {
 	return o
+}
+
+func (o SkaffoldSupportedConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkaffoldSupportedConditionResponse] {
+	return pulumix.Output[SkaffoldSupportedConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which this release's version of skaffold will enter maintenance mode.
@@ -4823,6 +5622,12 @@ func (i StageArgs) ToStageOutputWithContext(ctx context.Context) StageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StageOutput)
 }
 
+func (i StageArgs) ToOutput(ctx context.Context) pulumix.Output[Stage] {
+	return pulumix.Output[Stage]{
+		OutputState: i.ToStageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StageArrayInput is an input type that accepts StageArray and StageArrayOutput values.
 // You can construct a concrete instance of `StageArrayInput` via:
 //
@@ -4848,6 +5653,12 @@ func (i StageArray) ToStageArrayOutputWithContext(ctx context.Context) StageArra
 	return pulumi.ToOutputWithContext(ctx, i).(StageArrayOutput)
 }
 
+func (i StageArray) ToOutput(ctx context.Context) pulumix.Output[[]Stage] {
+	return pulumix.Output[[]Stage]{
+		OutputState: i.ToStageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Stage specifies a location to which to deploy.
 type StageOutput struct{ *pulumi.OutputState }
 
@@ -4861,6 +5672,12 @@ func (o StageOutput) ToStageOutput() StageOutput {
 
 func (o StageOutput) ToStageOutputWithContext(ctx context.Context) StageOutput {
 	return o
+}
+
+func (o StageOutput) ToOutput(ctx context.Context) pulumix.Output[Stage] {
+	return pulumix.Output[Stage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Skaffold profiles to use when rendering the manifest for this stage's `Target`.
@@ -4890,6 +5707,12 @@ func (o StageArrayOutput) ToStageArrayOutput() StageArrayOutput {
 
 func (o StageArrayOutput) ToStageArrayOutputWithContext(ctx context.Context) StageArrayOutput {
 	return o
+}
+
+func (o StageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Stage] {
+	return pulumix.Output[[]Stage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StageArrayOutput) Index(i pulumi.IntInput) StageOutput {
@@ -4923,6 +5746,12 @@ func (o StageResponseOutput) ToStageResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o StageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StageResponse] {
+	return pulumix.Output[StageResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 func (o StageResponseOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StageResponse) []string { return v.Profiles }).(pulumi.StringArrayOutput)
@@ -4950,6 +5779,12 @@ func (o StageResponseArrayOutput) ToStageResponseArrayOutput() StageResponseArra
 
 func (o StageResponseArrayOutput) ToStageResponseArrayOutputWithContext(ctx context.Context) StageResponseArrayOutput {
 	return o
+}
+
+func (o StageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StageResponse] {
+	return pulumix.Output[[]StageResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StageResponseArrayOutput) Index(i pulumi.IntInput) StageResponseOutput {
@@ -4993,6 +5828,12 @@ func (i StandardArgs) ToStandardOutputWithContext(ctx context.Context) StandardO
 	return pulumi.ToOutputWithContext(ctx, i).(StandardOutput)
 }
 
+func (i StandardArgs) ToOutput(ctx context.Context) pulumix.Output[Standard] {
+	return pulumix.Output[Standard]{
+		OutputState: i.ToStandardOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StandardArgs) ToStandardPtrOutput() StandardPtrOutput {
 	return i.ToStandardPtrOutputWithContext(context.Background())
 }
@@ -5034,6 +5875,12 @@ func (i *standardPtrType) ToStandardPtrOutputWithContext(ctx context.Context) St
 	return pulumi.ToOutputWithContext(ctx, i).(StandardPtrOutput)
 }
 
+func (i *standardPtrType) ToOutput(ctx context.Context) pulumix.Output[*Standard] {
+	return pulumix.Output[*Standard]{
+		OutputState: i.ToStandardPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Standard represents the standard deployment strategy.
 type StandardOutput struct{ *pulumi.OutputState }
 
@@ -5059,6 +5906,12 @@ func (o StandardOutput) ToStandardPtrOutputWithContext(ctx context.Context) Stan
 	}).(StandardPtrOutput)
 }
 
+func (o StandardOutput) ToOutput(ctx context.Context) pulumix.Output[Standard] {
+	return pulumix.Output[Standard]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to verify a deployment.
 func (o StandardOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Standard) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
@@ -5076,6 +5929,12 @@ func (o StandardPtrOutput) ToStandardPtrOutput() StandardPtrOutput {
 
 func (o StandardPtrOutput) ToStandardPtrOutputWithContext(ctx context.Context) StandardPtrOutput {
 	return o
+}
+
+func (o StandardPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Standard] {
+	return pulumix.Output[*Standard]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StandardPtrOutput) Elem() StandardOutput {
@@ -5117,6 +5976,12 @@ func (o StandardResponseOutput) ToStandardResponseOutput() StandardResponseOutpu
 
 func (o StandardResponseOutput) ToStandardResponseOutputWithContext(ctx context.Context) StandardResponseOutput {
 	return o
+}
+
+func (o StandardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StandardResponse] {
+	return pulumix.Output[StandardResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to verify a deployment.
@@ -5163,6 +6028,12 @@ func (i StrategyArgs) ToStrategyOutputWithContext(ctx context.Context) StrategyO
 	return pulumi.ToOutputWithContext(ctx, i).(StrategyOutput)
 }
 
+func (i StrategyArgs) ToOutput(ctx context.Context) pulumix.Output[Strategy] {
+	return pulumix.Output[Strategy]{
+		OutputState: i.ToStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i StrategyArgs) ToStrategyPtrOutput() StrategyPtrOutput {
 	return i.ToStrategyPtrOutputWithContext(context.Background())
 }
@@ -5204,6 +6075,12 @@ func (i *strategyPtrType) ToStrategyPtrOutputWithContext(ctx context.Context) St
 	return pulumi.ToOutputWithContext(ctx, i).(StrategyPtrOutput)
 }
 
+func (i *strategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Strategy] {
+	return pulumix.Output[*Strategy]{
+		OutputState: i.ToStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Strategy contains deployment strategy information.
 type StrategyOutput struct{ *pulumi.OutputState }
 
@@ -5229,6 +6106,12 @@ func (o StrategyOutput) ToStrategyPtrOutputWithContext(ctx context.Context) Stra
 	}).(StrategyPtrOutput)
 }
 
+func (o StrategyOutput) ToOutput(ctx context.Context) pulumix.Output[Strategy] {
+	return pulumix.Output[Strategy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Canary deployment strategy provides progressive percentage based deployments to a Target.
 func (o StrategyOutput) Canary() CanaryPtrOutput {
 	return o.ApplyT(func(v Strategy) *Canary { return v.Canary }).(CanaryPtrOutput)
@@ -5251,6 +6134,12 @@ func (o StrategyPtrOutput) ToStrategyPtrOutput() StrategyPtrOutput {
 
 func (o StrategyPtrOutput) ToStrategyPtrOutputWithContext(ctx context.Context) StrategyPtrOutput {
 	return o
+}
+
+func (o StrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Strategy] {
+	return pulumix.Output[*Strategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StrategyPtrOutput) Elem() StrategyOutput {
@@ -5304,6 +6193,12 @@ func (o StrategyResponseOutput) ToStrategyResponseOutput() StrategyResponseOutpu
 
 func (o StrategyResponseOutput) ToStrategyResponseOutputWithContext(ctx context.Context) StrategyResponseOutput {
 	return o
+}
+
+func (o StrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StrategyResponse] {
+	return pulumix.Output[StrategyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Canary deployment strategy provides progressive percentage based deployments to a Target.
@@ -5363,6 +6258,12 @@ func (o TargetResponseOutput) ToTargetResponseOutput() TargetResponseOutput {
 
 func (o TargetResponseOutput) ToTargetResponseOutputWithContext(ctx context.Context) TargetResponseOutput {
 	return o
+}
+
+func (o TargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetResponse] {
+	return pulumix.Output[TargetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -5454,6 +6355,12 @@ func (o TargetResponseArrayOutput) ToTargetResponseArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o TargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetResponse] {
+	return pulumix.Output[[]TargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetResponseArrayOutput) Index(i pulumi.IntInput) TargetResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetResponse {
 		return vs[0].([]TargetResponse)[vs[1].(int)]
@@ -5483,6 +6390,12 @@ func (o TargetsPresentConditionResponseOutput) ToTargetsPresentConditionResponse
 
 func (o TargetsPresentConditionResponseOutput) ToTargetsPresentConditionResponseOutputWithContext(ctx context.Context) TargetsPresentConditionResponseOutput {
 	return o
+}
+
+func (o TargetsPresentConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetsPresentConditionResponse] {
+	return pulumix.Output[TargetsPresentConditionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
@@ -5523,6 +6436,12 @@ func (o TargetsTypeConditionResponseOutput) ToTargetsTypeConditionResponseOutput
 	return o
 }
 
+func (o TargetsTypeConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetsTypeConditionResponse] {
+	return pulumix.Output[TargetsTypeConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Human readable error message.
 func (o TargetsTypeConditionResponseOutput) ErrorDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetsTypeConditionResponse) string { return v.ErrorDetails }).(pulumi.StringOutput)
@@ -5550,6 +6469,12 @@ func (o VerifyJobResponseOutput) ToVerifyJobResponseOutput() VerifyJobResponseOu
 
 func (o VerifyJobResponseOutput) ToVerifyJobResponseOutputWithContext(ctx context.Context) VerifyJobResponseOutput {
 	return o
+}
+
+func (o VerifyJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VerifyJobResponse] {
+	return pulumix.Output[VerifyJobResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func init() {

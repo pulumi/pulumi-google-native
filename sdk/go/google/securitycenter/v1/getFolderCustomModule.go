@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a SecurityHealthAnalyticsCustomModule.
@@ -78,6 +79,12 @@ func (o LookupFolderCustomModuleResultOutput) ToLookupFolderCustomModuleResultOu
 
 func (o LookupFolderCustomModuleResultOutput) ToLookupFolderCustomModuleResultOutputWithContext(ctx context.Context) LookupFolderCustomModuleResultOutput {
 	return o
+}
+
+func (o LookupFolderCustomModuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFolderCustomModuleResult] {
+	return pulumix.Output[LookupFolderCustomModuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
@@ -72,6 +73,12 @@ func (o LookupBillingAccountIamPolicyResultOutput) ToLookupBillingAccountIamPoli
 
 func (o LookupBillingAccountIamPolicyResultOutput) ToLookupBillingAccountIamPolicyResultOutputWithContext(ctx context.Context) LookupBillingAccountIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupBillingAccountIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBillingAccountIamPolicyResult] {
+	return pulumix.Output[LookupBillingAccountIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

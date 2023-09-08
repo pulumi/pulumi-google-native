@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a session entity type.
@@ -143,6 +144,12 @@ func (i *SessionEntityType) ToSessionEntityTypeOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SessionEntityTypeOutput)
 }
 
+func (i *SessionEntityType) ToOutput(ctx context.Context) pulumix.Output[*SessionEntityType] {
+	return pulumix.Output[*SessionEntityType]{
+		OutputState: i.ToSessionEntityTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SessionEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (SessionEntityTypeOutput) ElementType() reflect.Type {
@@ -155,6 +162,12 @@ func (o SessionEntityTypeOutput) ToSessionEntityTypeOutput() SessionEntityTypeOu
 
 func (o SessionEntityTypeOutput) ToSessionEntityTypeOutputWithContext(ctx context.Context) SessionEntityTypeOutput {
 	return o
+}
+
+func (o SessionEntityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*SessionEntityType] {
+	return pulumix.Output[*SessionEntityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SessionEntityTypeOutput) AgentId() pulumi.StringOutput {

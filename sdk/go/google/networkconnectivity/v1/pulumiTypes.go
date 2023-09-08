@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
+func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -77,6 +84,12 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
+func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -90,6 +103,12 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
+}
+
+func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
+	return pulumix.Output[AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.
@@ -114,6 +133,12 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
+}
+
+func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
+	return pulumix.Output[[]AuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -145,6 +170,12 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
+	return pulumix.Output[AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -167,6 +198,12 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
+	return pulumix.Output[[]AuditConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -214,6 +251,12 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -239,6 +282,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -252,6 +301,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
+	return pulumix.Output[AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -276,6 +331,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
+	return pulumix.Output[[]AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -307,6 +368,12 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
+func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
+	return pulumix.Output[AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -329,6 +396,12 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
+	return pulumix.Output[[]AuditLogConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -380,6 +453,12 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -405,6 +484,12 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -418,6 +503,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
+	return pulumix.Output[Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -447,6 +538,12 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
+}
+
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
+	return pulumix.Output[[]Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -480,6 +577,12 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
+	return pulumix.Output[BindingResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -507,6 +610,12 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
+}
+
+func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
+	return pulumix.Output[[]BindingResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -558,6 +667,12 @@ func (i ConsumerPscConfigArgs) ToConsumerPscConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerPscConfigOutput)
 }
 
+func (i ConsumerPscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConsumerPscConfig] {
+	return pulumix.Output[ConsumerPscConfig]{
+		OutputState: i.ToConsumerPscConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConsumerPscConfigArrayInput is an input type that accepts ConsumerPscConfigArray and ConsumerPscConfigArrayOutput values.
 // You can construct a concrete instance of `ConsumerPscConfigArrayInput` via:
 //
@@ -583,6 +698,12 @@ func (i ConsumerPscConfigArray) ToConsumerPscConfigArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerPscConfigArrayOutput)
 }
 
+func (i ConsumerPscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ConsumerPscConfig] {
+	return pulumix.Output[[]ConsumerPscConfig]{
+		OutputState: i.ToConsumerPscConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Allow the producer to specify which consumers can connect to it.
 type ConsumerPscConfigOutput struct{ *pulumi.OutputState }
 
@@ -596,6 +717,12 @@ func (o ConsumerPscConfigOutput) ToConsumerPscConfigOutput() ConsumerPscConfigOu
 
 func (o ConsumerPscConfigOutput) ToConsumerPscConfigOutputWithContext(ctx context.Context) ConsumerPscConfigOutput {
 	return o
+}
+
+func (o ConsumerPscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConsumerPscConfig] {
+	return pulumix.Output[ConsumerPscConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
@@ -625,6 +752,12 @@ func (o ConsumerPscConfigArrayOutput) ToConsumerPscConfigArrayOutput() ConsumerP
 
 func (o ConsumerPscConfigArrayOutput) ToConsumerPscConfigArrayOutputWithContext(ctx context.Context) ConsumerPscConfigArrayOutput {
 	return o
+}
+
+func (o ConsumerPscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConsumerPscConfig] {
+	return pulumix.Output[[]ConsumerPscConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumerPscConfigArrayOutput) Index(i pulumi.IntInput) ConsumerPscConfigOutput {
@@ -658,6 +791,12 @@ func (o ConsumerPscConfigResponseOutput) ToConsumerPscConfigResponseOutputWithCo
 	return o
 }
 
+func (o ConsumerPscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsumerPscConfigResponse] {
+	return pulumix.Output[ConsumerPscConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 func (o ConsumerPscConfigResponseOutput) DisableGlobalAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConsumerPscConfigResponse) bool { return v.DisableGlobalAccess }).(pulumi.BoolOutput)
@@ -685,6 +824,12 @@ func (o ConsumerPscConfigResponseArrayOutput) ToConsumerPscConfigResponseArrayOu
 
 func (o ConsumerPscConfigResponseArrayOutput) ToConsumerPscConfigResponseArrayOutputWithContext(ctx context.Context) ConsumerPscConfigResponseArrayOutput {
 	return o
+}
+
+func (o ConsumerPscConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConsumerPscConfigResponse] {
+	return pulumix.Output[[]ConsumerPscConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumerPscConfigResponseArrayOutput) Index(i pulumi.IntInput) ConsumerPscConfigResponseOutput {
@@ -730,6 +875,12 @@ func (o ConsumerPscConnectionResponseOutput) ToConsumerPscConnectionResponseOutp
 
 func (o ConsumerPscConnectionResponseOutput) ToConsumerPscConnectionResponseOutputWithContext(ctx context.Context) ConsumerPscConnectionResponseOutput {
 	return o
+}
+
+func (o ConsumerPscConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsumerPscConnectionResponse] {
+	return pulumix.Output[ConsumerPscConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The most recent error during operating this connection.
@@ -796,6 +947,12 @@ func (o ConsumerPscConnectionResponseArrayOutput) ToConsumerPscConnectionRespons
 	return o
 }
 
+func (o ConsumerPscConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConsumerPscConnectionResponse] {
+	return pulumix.Output[[]ConsumerPscConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConsumerPscConnectionResponseArrayOutput) Index(i pulumi.IntInput) ConsumerPscConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerPscConnectionResponse {
 		return vs[0].([]ConsumerPscConnectionResponse)[vs[1].(int)]
@@ -849,6 +1006,12 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
+func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -890,6 +1053,12 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
+func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -913,6 +1082,12 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
+}
+
+func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
+	return pulumix.Output[Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -947,6 +1122,12 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
+}
+
+func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
+	return pulumix.Output[*Expr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1026,6 +1207,12 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
+	return pulumix.Output[ExprResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1069,6 +1256,12 @@ func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutput() GoogleR
 
 func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
 	return o
+}
+
+func (o GoogleRpcStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleRpcStatusResponse] {
+	return pulumix.Output[GoogleRpcStatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -1125,6 +1318,12 @@ func (i LinkedInterconnectAttachmentsArgs) ToLinkedInterconnectAttachmentsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedInterconnectAttachmentsOutput)
 }
 
+func (i LinkedInterconnectAttachmentsArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedInterconnectAttachments] {
+	return pulumix.Output[LinkedInterconnectAttachments]{
+		OutputState: i.ToLinkedInterconnectAttachmentsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LinkedInterconnectAttachmentsArgs) ToLinkedInterconnectAttachmentsPtrOutput() LinkedInterconnectAttachmentsPtrOutput {
 	return i.ToLinkedInterconnectAttachmentsPtrOutputWithContext(context.Background())
 }
@@ -1166,6 +1365,12 @@ func (i *linkedInterconnectAttachmentsPtrType) ToLinkedInterconnectAttachmentsPt
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedInterconnectAttachmentsPtrOutput)
 }
 
+func (i *linkedInterconnectAttachmentsPtrType) ToOutput(ctx context.Context) pulumix.Output[*LinkedInterconnectAttachments] {
+	return pulumix.Output[*LinkedInterconnectAttachments]{
+		OutputState: i.ToLinkedInterconnectAttachmentsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 type LinkedInterconnectAttachmentsOutput struct{ *pulumi.OutputState }
 
@@ -1191,6 +1396,12 @@ func (o LinkedInterconnectAttachmentsOutput) ToLinkedInterconnectAttachmentsPtrO
 	}).(LinkedInterconnectAttachmentsPtrOutput)
 }
 
+func (o LinkedInterconnectAttachmentsOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedInterconnectAttachments] {
+	return pulumix.Output[LinkedInterconnectAttachments]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedInterconnectAttachmentsOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinkedInterconnectAttachments) *bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolPtrOutput)
@@ -1213,6 +1424,12 @@ func (o LinkedInterconnectAttachmentsPtrOutput) ToLinkedInterconnectAttachmentsP
 
 func (o LinkedInterconnectAttachmentsPtrOutput) ToLinkedInterconnectAttachmentsPtrOutputWithContext(ctx context.Context) LinkedInterconnectAttachmentsPtrOutput {
 	return o
+}
+
+func (o LinkedInterconnectAttachmentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedInterconnectAttachments] {
+	return pulumix.Output[*LinkedInterconnectAttachments]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedInterconnectAttachmentsPtrOutput) Elem() LinkedInterconnectAttachmentsOutput {
@@ -1270,6 +1487,12 @@ func (o LinkedInterconnectAttachmentsResponseOutput) ToLinkedInterconnectAttachm
 	return o
 }
 
+func (o LinkedInterconnectAttachmentsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedInterconnectAttachmentsResponse] {
+	return pulumix.Output[LinkedInterconnectAttachmentsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedInterconnectAttachmentsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedInterconnectAttachmentsResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1324,6 +1547,12 @@ func (i LinkedRouterApplianceInstancesArgs) ToLinkedRouterApplianceInstancesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedRouterApplianceInstancesOutput)
 }
 
+func (i LinkedRouterApplianceInstancesArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedRouterApplianceInstances] {
+	return pulumix.Output[LinkedRouterApplianceInstances]{
+		OutputState: i.ToLinkedRouterApplianceInstancesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LinkedRouterApplianceInstancesArgs) ToLinkedRouterApplianceInstancesPtrOutput() LinkedRouterApplianceInstancesPtrOutput {
 	return i.ToLinkedRouterApplianceInstancesPtrOutputWithContext(context.Background())
 }
@@ -1365,6 +1594,12 @@ func (i *linkedRouterApplianceInstancesPtrType) ToLinkedRouterApplianceInstances
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedRouterApplianceInstancesPtrOutput)
 }
 
+func (i *linkedRouterApplianceInstancesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LinkedRouterApplianceInstances] {
+	return pulumix.Output[*LinkedRouterApplianceInstances]{
+		OutputState: i.ToLinkedRouterApplianceInstancesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 type LinkedRouterApplianceInstancesOutput struct{ *pulumi.OutputState }
 
@@ -1390,6 +1625,12 @@ func (o LinkedRouterApplianceInstancesOutput) ToLinkedRouterApplianceInstancesPt
 	}).(LinkedRouterApplianceInstancesPtrOutput)
 }
 
+func (o LinkedRouterApplianceInstancesOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedRouterApplianceInstances] {
+	return pulumix.Output[LinkedRouterApplianceInstances]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of router appliance instances.
 func (o LinkedRouterApplianceInstancesOutput) Instances() RouterApplianceInstanceArrayOutput {
 	return o.ApplyT(func(v LinkedRouterApplianceInstances) []RouterApplianceInstance { return v.Instances }).(RouterApplianceInstanceArrayOutput)
@@ -1412,6 +1653,12 @@ func (o LinkedRouterApplianceInstancesPtrOutput) ToLinkedRouterApplianceInstance
 
 func (o LinkedRouterApplianceInstancesPtrOutput) ToLinkedRouterApplianceInstancesPtrOutputWithContext(ctx context.Context) LinkedRouterApplianceInstancesPtrOutput {
 	return o
+}
+
+func (o LinkedRouterApplianceInstancesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedRouterApplianceInstances] {
+	return pulumix.Output[*LinkedRouterApplianceInstances]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedRouterApplianceInstancesPtrOutput) Elem() LinkedRouterApplianceInstancesOutput {
@@ -1469,6 +1716,12 @@ func (o LinkedRouterApplianceInstancesResponseOutput) ToLinkedRouterApplianceIns
 	return o
 }
 
+func (o LinkedRouterApplianceInstancesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedRouterApplianceInstancesResponse] {
+	return pulumix.Output[LinkedRouterApplianceInstancesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of router appliance instances.
 func (o LinkedRouterApplianceInstancesResponseOutput) Instances() RouterApplianceInstanceResponseArrayOutput {
 	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) []RouterApplianceInstanceResponse { return v.Instances }).(RouterApplianceInstanceResponseArrayOutput)
@@ -1523,6 +1776,12 @@ func (i LinkedVpnTunnelsArgs) ToLinkedVpnTunnelsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpnTunnelsOutput)
 }
 
+func (i LinkedVpnTunnelsArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedVpnTunnels] {
+	return pulumix.Output[LinkedVpnTunnels]{
+		OutputState: i.ToLinkedVpnTunnelsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LinkedVpnTunnelsArgs) ToLinkedVpnTunnelsPtrOutput() LinkedVpnTunnelsPtrOutput {
 	return i.ToLinkedVpnTunnelsPtrOutputWithContext(context.Background())
 }
@@ -1564,6 +1823,12 @@ func (i *linkedVpnTunnelsPtrType) ToLinkedVpnTunnelsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedVpnTunnelsPtrOutput)
 }
 
+func (i *linkedVpnTunnelsPtrType) ToOutput(ctx context.Context) pulumix.Output[*LinkedVpnTunnels] {
+	return pulumix.Output[*LinkedVpnTunnels]{
+		OutputState: i.ToLinkedVpnTunnelsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
 type LinkedVpnTunnelsOutput struct{ *pulumi.OutputState }
 
@@ -1589,6 +1854,12 @@ func (o LinkedVpnTunnelsOutput) ToLinkedVpnTunnelsPtrOutputWithContext(ctx conte
 	}).(LinkedVpnTunnelsPtrOutput)
 }
 
+func (o LinkedVpnTunnelsOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedVpnTunnels] {
+	return pulumix.Output[LinkedVpnTunnels]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedVpnTunnelsOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinkedVpnTunnels) *bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolPtrOutput)
@@ -1611,6 +1882,12 @@ func (o LinkedVpnTunnelsPtrOutput) ToLinkedVpnTunnelsPtrOutput() LinkedVpnTunnel
 
 func (o LinkedVpnTunnelsPtrOutput) ToLinkedVpnTunnelsPtrOutputWithContext(ctx context.Context) LinkedVpnTunnelsPtrOutput {
 	return o
+}
+
+func (o LinkedVpnTunnelsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedVpnTunnels] {
+	return pulumix.Output[*LinkedVpnTunnels]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LinkedVpnTunnelsPtrOutput) Elem() LinkedVpnTunnelsOutput {
@@ -1668,6 +1945,12 @@ func (o LinkedVpnTunnelsResponseOutput) ToLinkedVpnTunnelsResponseOutputWithCont
 	return o
 }
 
+func (o LinkedVpnTunnelsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedVpnTunnelsResponse] {
+	return pulumix.Output[LinkedVpnTunnelsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedVpnTunnelsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedVpnTunnelsResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1718,6 +2001,12 @@ func (i ProducerPscConfigArgs) ToProducerPscConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProducerPscConfigOutput)
 }
 
+func (i ProducerPscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ProducerPscConfig] {
+	return pulumix.Output[ProducerPscConfig]{
+		OutputState: i.ToProducerPscConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProducerPscConfigArrayInput is an input type that accepts ProducerPscConfigArray and ProducerPscConfigArrayOutput values.
 // You can construct a concrete instance of `ProducerPscConfigArrayInput` via:
 //
@@ -1743,6 +2032,12 @@ func (i ProducerPscConfigArray) ToProducerPscConfigArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProducerPscConfigArrayOutput)
 }
 
+func (i ProducerPscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ProducerPscConfig] {
+	return pulumix.Output[[]ProducerPscConfig]{
+		OutputState: i.ToProducerPscConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The PSC configurations on producer side.
 type ProducerPscConfigOutput struct{ *pulumi.OutputState }
 
@@ -1756,6 +2051,12 @@ func (o ProducerPscConfigOutput) ToProducerPscConfigOutput() ProducerPscConfigOu
 
 func (o ProducerPscConfigOutput) ToProducerPscConfigOutputWithContext(ctx context.Context) ProducerPscConfigOutput {
 	return o
+}
+
+func (o ProducerPscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ProducerPscConfig] {
+	return pulumix.Output[ProducerPscConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
@@ -1775,6 +2076,12 @@ func (o ProducerPscConfigArrayOutput) ToProducerPscConfigArrayOutput() ProducerP
 
 func (o ProducerPscConfigArrayOutput) ToProducerPscConfigArrayOutputWithContext(ctx context.Context) ProducerPscConfigArrayOutput {
 	return o
+}
+
+func (o ProducerPscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProducerPscConfig] {
+	return pulumix.Output[[]ProducerPscConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProducerPscConfigArrayOutput) Index(i pulumi.IntInput) ProducerPscConfigOutput {
@@ -1804,6 +2111,12 @@ func (o ProducerPscConfigResponseOutput) ToProducerPscConfigResponseOutputWithCo
 	return o
 }
 
+func (o ProducerPscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProducerPscConfigResponse] {
+	return pulumix.Output[ProducerPscConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
 func (o ProducerPscConfigResponseOutput) ServiceAttachmentUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ProducerPscConfigResponse) string { return v.ServiceAttachmentUri }).(pulumi.StringOutput)
@@ -1821,6 +2134,12 @@ func (o ProducerPscConfigResponseArrayOutput) ToProducerPscConfigResponseArrayOu
 
 func (o ProducerPscConfigResponseArrayOutput) ToProducerPscConfigResponseArrayOutputWithContext(ctx context.Context) ProducerPscConfigResponseArrayOutput {
 	return o
+}
+
+func (o ProducerPscConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProducerPscConfigResponse] {
+	return pulumix.Output[[]ProducerPscConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProducerPscConfigResponseArrayOutput) Index(i pulumi.IntInput) ProducerPscConfigResponseOutput {
@@ -1868,6 +2187,12 @@ func (i PscConfigArgs) ToPscConfigOutputWithContext(ctx context.Context) PscConf
 	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput)
 }
 
+func (i PscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
+	return pulumix.Output[PscConfig]{
+		OutputState: i.ToPscConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PscConfigArgs) ToPscConfigPtrOutput() PscConfigPtrOutput {
 	return i.ToPscConfigPtrOutputWithContext(context.Background())
 }
@@ -1909,6 +2234,12 @@ func (i *pscConfigPtrType) ToPscConfigPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PscConfigPtrOutput)
 }
 
+func (i *pscConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PscConfig] {
+	return pulumix.Output[*PscConfig]{
+		OutputState: i.ToPscConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
 type PscConfigOutput struct{ *pulumi.OutputState }
 
@@ -1934,6 +2265,12 @@ func (o PscConfigOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) Ps
 	}).(PscConfigPtrOutput)
 }
 
+func (o PscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
+	return pulumix.Output[PscConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Max number of PSC connections for this policy.
 func (o PscConfigOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PscConfig) *string { return v.Limit }).(pulumi.StringPtrOutput)
@@ -1956,6 +2293,12 @@ func (o PscConfigPtrOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
 
 func (o PscConfigPtrOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
 	return o
+}
+
+func (o PscConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PscConfig] {
+	return pulumix.Output[*PscConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PscConfigPtrOutput) Elem() PscConfigOutput {
@@ -2011,6 +2354,12 @@ func (o PscConfigResponseOutput) ToPscConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o PscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfigResponse] {
+	return pulumix.Output[PscConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Max number of PSC connections for this policy.
 func (o PscConfigResponseOutput) Limit() pulumi.StringOutput {
 	return o.ApplyT(func(v PscConfigResponse) string { return v.Limit }).(pulumi.StringOutput)
@@ -2054,6 +2403,12 @@ func (o PscConnectionResponseOutput) ToPscConnectionResponseOutput() PscConnecti
 
 func (o PscConnectionResponseOutput) ToPscConnectionResponseOutputWithContext(ctx context.Context) PscConnectionResponseOutput {
 	return o
+}
+
+func (o PscConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConnectionResponse] {
+	return pulumix.Output[PscConnectionResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource reference of the consumer address.
@@ -2110,6 +2465,12 @@ func (o PscConnectionResponseArrayOutput) ToPscConnectionResponseArrayOutputWith
 	return o
 }
 
+func (o PscConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PscConnectionResponse] {
+	return pulumix.Output[[]PscConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PscConnectionResponseArrayOutput) Index(i pulumi.IntInput) PscConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PscConnectionResponse {
 		return vs[0].([]PscConnectionResponse)[vs[1].(int)]
@@ -2155,6 +2516,12 @@ func (i RouterApplianceInstanceArgs) ToRouterApplianceInstanceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RouterApplianceInstanceOutput)
 }
 
+func (i RouterApplianceInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[RouterApplianceInstance] {
+	return pulumix.Output[RouterApplianceInstance]{
+		OutputState: i.ToRouterApplianceInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouterApplianceInstanceArrayInput is an input type that accepts RouterApplianceInstanceArray and RouterApplianceInstanceArrayOutput values.
 // You can construct a concrete instance of `RouterApplianceInstanceArrayInput` via:
 //
@@ -2180,6 +2547,12 @@ func (i RouterApplianceInstanceArray) ToRouterApplianceInstanceArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(RouterApplianceInstanceArrayOutput)
 }
 
+func (i RouterApplianceInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]RouterApplianceInstance] {
+	return pulumix.Output[[]RouterApplianceInstance]{
+		OutputState: i.ToRouterApplianceInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.
 type RouterApplianceInstanceOutput struct{ *pulumi.OutputState }
 
@@ -2193,6 +2566,12 @@ func (o RouterApplianceInstanceOutput) ToRouterApplianceInstanceOutput() RouterA
 
 func (o RouterApplianceInstanceOutput) ToRouterApplianceInstanceOutputWithContext(ctx context.Context) RouterApplianceInstanceOutput {
 	return o
+}
+
+func (o RouterApplianceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[RouterApplianceInstance] {
+	return pulumix.Output[RouterApplianceInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address on the VM to use for peering.
@@ -2217,6 +2596,12 @@ func (o RouterApplianceInstanceArrayOutput) ToRouterApplianceInstanceArrayOutput
 
 func (o RouterApplianceInstanceArrayOutput) ToRouterApplianceInstanceArrayOutputWithContext(ctx context.Context) RouterApplianceInstanceArrayOutput {
 	return o
+}
+
+func (o RouterApplianceInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouterApplianceInstance] {
+	return pulumix.Output[[]RouterApplianceInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterApplianceInstanceArrayOutput) Index(i pulumi.IntInput) RouterApplianceInstanceOutput {
@@ -2248,6 +2633,12 @@ func (o RouterApplianceInstanceResponseOutput) ToRouterApplianceInstanceResponse
 	return o
 }
 
+func (o RouterApplianceInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RouterApplianceInstanceResponse] {
+	return pulumix.Output[RouterApplianceInstanceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The IP address on the VM to use for peering.
 func (o RouterApplianceInstanceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterApplianceInstanceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
@@ -2270,6 +2661,12 @@ func (o RouterApplianceInstanceResponseArrayOutput) ToRouterApplianceInstanceRes
 
 func (o RouterApplianceInstanceResponseArrayOutput) ToRouterApplianceInstanceResponseArrayOutputWithContext(ctx context.Context) RouterApplianceInstanceResponseArrayOutput {
 	return o
+}
+
+func (o RouterApplianceInstanceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouterApplianceInstanceResponse] {
+	return pulumix.Output[[]RouterApplianceInstanceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouterApplianceInstanceResponseArrayOutput) Index(i pulumi.IntInput) RouterApplianceInstanceResponseOutput {
@@ -2313,6 +2710,12 @@ func (i RoutingVPCArgs) ToRoutingVPCOutputWithContext(ctx context.Context) Routi
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingVPCOutput)
 }
 
+func (i RoutingVPCArgs) ToOutput(ctx context.Context) pulumix.Output[RoutingVPC] {
+	return pulumix.Output[RoutingVPC]{
+		OutputState: i.ToRoutingVPCOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RoutingVPCArrayInput is an input type that accepts RoutingVPCArray and RoutingVPCArrayOutput values.
 // You can construct a concrete instance of `RoutingVPCArrayInput` via:
 //
@@ -2338,6 +2741,12 @@ func (i RoutingVPCArray) ToRoutingVPCArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingVPCArrayOutput)
 }
 
+func (i RoutingVPCArray) ToOutput(ctx context.Context) pulumix.Output[[]RoutingVPC] {
+	return pulumix.Output[[]RoutingVPC]{
+		OutputState: i.ToRoutingVPCArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 type RoutingVPCOutput struct{ *pulumi.OutputState }
 
@@ -2351,6 +2760,12 @@ func (o RoutingVPCOutput) ToRoutingVPCOutput() RoutingVPCOutput {
 
 func (o RoutingVPCOutput) ToRoutingVPCOutputWithContext(ctx context.Context) RoutingVPCOutput {
 	return o
+}
+
+func (o RoutingVPCOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingVPC] {
+	return pulumix.Output[RoutingVPC]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URI of the VPC network.
@@ -2370,6 +2785,12 @@ func (o RoutingVPCArrayOutput) ToRoutingVPCArrayOutput() RoutingVPCArrayOutput {
 
 func (o RoutingVPCArrayOutput) ToRoutingVPCArrayOutputWithContext(ctx context.Context) RoutingVPCArrayOutput {
 	return o
+}
+
+func (o RoutingVPCArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoutingVPC] {
+	return pulumix.Output[[]RoutingVPC]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutingVPCArrayOutput) Index(i pulumi.IntInput) RoutingVPCOutput {
@@ -2401,6 +2822,12 @@ func (o RoutingVPCResponseOutput) ToRoutingVPCResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o RoutingVPCResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingVPCResponse] {
+	return pulumix.Output[RoutingVPCResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true.
 func (o RoutingVPCResponseOutput) RequiredForNewSiteToSiteDataTransferSpokes() pulumi.BoolOutput {
 	return o.ApplyT(func(v RoutingVPCResponse) bool { return v.RequiredForNewSiteToSiteDataTransferSpokes }).(pulumi.BoolOutput)
@@ -2423,6 +2850,12 @@ func (o RoutingVPCResponseArrayOutput) ToRoutingVPCResponseArrayOutput() Routing
 
 func (o RoutingVPCResponseArrayOutput) ToRoutingVPCResponseArrayOutputWithContext(ctx context.Context) RoutingVPCResponseArrayOutput {
 	return o
+}
+
+func (o RoutingVPCResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoutingVPCResponse] {
+	return pulumix.Output[[]RoutingVPCResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutingVPCResponseArrayOutput) Index(i pulumi.IntInput) RoutingVPCResponseOutput {

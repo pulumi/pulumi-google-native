@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a NodeGroup resource in the specified project using the data included in the request.
@@ -169,6 +170,12 @@ func (i *NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupO
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupOutput)
 }
 
+func (i *NodeGroup) ToOutput(ctx context.Context) pulumix.Output[*NodeGroup] {
+	return pulumix.Output[*NodeGroup]{
+		OutputState: i.ToNodeGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeGroupOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupOutput) ElementType() reflect.Type {
@@ -181,6 +188,12 @@ func (o NodeGroupOutput) ToNodeGroupOutput() NodeGroupOutput {
 
 func (o NodeGroupOutput) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupOutput {
 	return o
+}
+
+func (o NodeGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroup] {
+	return pulumix.Output[*NodeGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies how autoscaling should behave.

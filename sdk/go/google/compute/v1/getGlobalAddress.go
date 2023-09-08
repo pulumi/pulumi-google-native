@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified address resource.
@@ -102,6 +103,12 @@ func (o LookupGlobalAddressResultOutput) ToLookupGlobalAddressResultOutput() Loo
 
 func (o LookupGlobalAddressResultOutput) ToLookupGlobalAddressResultOutputWithContext(ctx context.Context) LookupGlobalAddressResultOutput {
 	return o
+}
+
+func (o LookupGlobalAddressResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalAddressResult] {
+	return pulumix.Output[LookupGlobalAddressResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The static IP address represented by this resource.

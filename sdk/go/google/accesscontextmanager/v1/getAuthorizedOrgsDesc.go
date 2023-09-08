@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an authorized orgs desc based on the resource name.
@@ -74,6 +75,12 @@ func (o LookupAuthorizedOrgsDescResultOutput) ToLookupAuthorizedOrgsDescResultOu
 
 func (o LookupAuthorizedOrgsDescResultOutput) ToLookupAuthorizedOrgsDescResultOutputWithContext(ctx context.Context) LookupAuthorizedOrgsDescResultOutput {
 	return o
+}
+
+func (o LookupAuthorizedOrgsDescResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorizedOrgsDescResult] {
+	return pulumix.Output[LookupAuthorizedOrgsDescResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.

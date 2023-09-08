@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a NotificationEndpoint in the specified project in the given region using the parameters that are included in the request.
@@ -131,6 +132,12 @@ func (i *RegionNotificationEndpoint) ToRegionNotificationEndpointOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNotificationEndpointOutput)
 }
 
+func (i *RegionNotificationEndpoint) ToOutput(ctx context.Context) pulumix.Output[*RegionNotificationEndpoint] {
+	return pulumix.Output[*RegionNotificationEndpoint]{
+		OutputState: i.ToRegionNotificationEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionNotificationEndpointOutput struct{ *pulumi.OutputState }
 
 func (RegionNotificationEndpointOutput) ElementType() reflect.Type {
@@ -143,6 +150,12 @@ func (o RegionNotificationEndpointOutput) ToRegionNotificationEndpointOutput() R
 
 func (o RegionNotificationEndpointOutput) ToRegionNotificationEndpointOutputWithContext(ctx context.Context) RegionNotificationEndpointOutput {
 	return o
+}
+
+func (o RegionNotificationEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNotificationEndpoint] {
+	return pulumix.Output[*RegionNotificationEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

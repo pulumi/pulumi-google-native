@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
@@ -129,6 +130,12 @@ func (i *TagTemplate) ToTagTemplateOutputWithContext(ctx context.Context) TagTem
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateOutput)
 }
 
+func (i *TagTemplate) ToOutput(ctx context.Context) pulumix.Output[*TagTemplate] {
+	return pulumix.Output[*TagTemplate]{
+		OutputState: i.ToTagTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o TagTemplateOutput) ToTagTemplateOutput() TagTemplateOutput {
 
 func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) TagTemplateOutput {
 	return o
+}
+
+func (o TagTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplate] {
+	return pulumix.Output[*TagTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The display name for this template. Defaults to an empty string.

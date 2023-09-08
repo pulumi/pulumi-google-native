@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the batch workload resource representation.
@@ -100,6 +101,12 @@ func (o LookupBatchResultOutput) ToLookupBatchResultOutput() LookupBatchResultOu
 
 func (o LookupBatchResultOutput) ToLookupBatchResultOutputWithContext(ctx context.Context) LookupBatchResultOutput {
 	return o
+}
+
+func (o LookupBatchResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBatchResult] {
+	return pulumix.Output[LookupBatchResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the batch was created.

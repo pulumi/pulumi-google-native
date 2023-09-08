@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *DeliveryPipelineIamBinding) ToDeliveryPipelineIamBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineIamBindingOutput)
 }
 
+func (i *DeliveryPipelineIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineIamBinding] {
+	return pulumix.Output[*DeliveryPipelineIamBinding]{
+		OutputState: i.ToDeliveryPipelineIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeliveryPipelineIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o DeliveryPipelineIamBindingOutput) ToDeliveryPipelineIamBindingOutput() D
 
 func (o DeliveryPipelineIamBindingOutput) ToDeliveryPipelineIamBindingOutputWithContext(ctx context.Context) DeliveryPipelineIamBindingOutput {
 	return o
+}
+
+func (o DeliveryPipelineIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipelineIamBinding] {
+	return pulumix.Output[*DeliveryPipelineIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a mute config.
@@ -140,6 +141,12 @@ func (i *OrganizationMuteConfig) ToOrganizationMuteConfigOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationMuteConfigOutput)
 }
 
+func (i *OrganizationMuteConfig) ToOutput(ctx context.Context) pulumix.Output[*OrganizationMuteConfig] {
+	return pulumix.Output[*OrganizationMuteConfig]{
+		OutputState: i.ToOrganizationMuteConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationMuteConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationMuteConfigOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o OrganizationMuteConfigOutput) ToOrganizationMuteConfigOutput() Organizat
 
 func (o OrganizationMuteConfigOutput) ToOrganizationMuteConfigOutputWithContext(ctx context.Context) OrganizationMuteConfigOutput {
 	return o
+}
+
+func (o OrganizationMuteConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationMuteConfig] {
+	return pulumix.Output[*OrganizationMuteConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the mute config was created. This field is set by the server and will be ignored if provided on config creation.

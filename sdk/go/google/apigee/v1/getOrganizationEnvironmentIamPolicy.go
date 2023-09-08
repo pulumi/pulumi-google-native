@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
@@ -74,6 +75,12 @@ func (o LookupOrganizationEnvironmentIamPolicyResultOutput) ToLookupOrganization
 
 func (o LookupOrganizationEnvironmentIamPolicyResultOutput) ToLookupOrganizationEnvironmentIamPolicyResultOutputWithContext(ctx context.Context) LookupOrganizationEnvironmentIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupOrganizationEnvironmentIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationEnvironmentIamPolicyResult] {
+	return pulumix.Output[LookupOrganizationEnvironmentIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

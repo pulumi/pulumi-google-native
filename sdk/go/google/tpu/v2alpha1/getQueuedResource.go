@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a queued resource.
@@ -80,6 +81,12 @@ func (o LookupQueuedResourceResultOutput) ToLookupQueuedResourceResultOutput() L
 
 func (o LookupQueuedResourceResultOutput) ToLookupQueuedResourceResultOutputWithContext(ctx context.Context) LookupQueuedResourceResultOutput {
 	return o
+}
+
+func (o LookupQueuedResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQueuedResourceResult] {
+	return pulumix.Output[LookupQueuedResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The BestEffort tier.

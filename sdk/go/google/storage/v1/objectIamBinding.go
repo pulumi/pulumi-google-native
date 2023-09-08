@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Updates an IAM policy for the specified object.
@@ -154,6 +155,12 @@ func (i *ObjectIamBinding) ToObjectIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectIamBindingOutput)
 }
 
+func (i *ObjectIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ObjectIamBinding] {
+	return pulumix.Output[*ObjectIamBinding]{
+		OutputState: i.ToObjectIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ObjectIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ObjectIamBindingOutput) ElementType() reflect.Type {
@@ -166,6 +173,12 @@ func (o ObjectIamBindingOutput) ToObjectIamBindingOutput() ObjectIamBindingOutpu
 
 func (o ObjectIamBindingOutput) ToObjectIamBindingOutputWithContext(ctx context.Context) ObjectIamBindingOutput {
 	return o
+}
+
+func (o ObjectIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ObjectIamBinding] {
+	return pulumix.Output[*ObjectIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

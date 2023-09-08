@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about a `WorkerPool`.
@@ -84,6 +85,12 @@ func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutput() LookupWor
 
 func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutputWithContext(ctx context.Context) LookupWorkerPoolResultOutput {
 	return o
+}
+
+func (o LookupWorkerPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkerPoolResult] {
+	return pulumix.Output[LookupWorkerPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the request to create the `WorkerPool` was received.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a policy tag.
@@ -78,6 +79,12 @@ func (o LookupPolicyTagResultOutput) ToLookupPolicyTagResultOutput() LookupPolic
 
 func (o LookupPolicyTagResultOutput) ToLookupPolicyTagResultOutputWithContext(ctx context.Context) LookupPolicyTagResultOutput {
 	return o
+}
+
+func (o LookupPolicyTagResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyTagResult] {
+	return pulumix.Output[LookupPolicyTagResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource names of child policy tags of this policy tag.

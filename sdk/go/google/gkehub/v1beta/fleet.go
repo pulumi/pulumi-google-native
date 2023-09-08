@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a fleet.
@@ -116,6 +117,12 @@ func (i *Fleet) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FleetOutput)
 }
 
+func (i *Fleet) ToOutput(ctx context.Context) pulumix.Output[*Fleet] {
+	return pulumix.Output[*Fleet]{
+		OutputState: i.ToFleetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FleetOutput struct{ *pulumi.OutputState }
 
 func (FleetOutput) ElementType() reflect.Type {
@@ -128,6 +135,12 @@ func (o FleetOutput) ToFleetOutput() FleetOutput {
 
 func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return o
+}
+
+func (o FleetOutput) ToOutput(ctx context.Context) pulumix.Output[*Fleet] {
+	return pulumix.Output[*Fleet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the Fleet was created.

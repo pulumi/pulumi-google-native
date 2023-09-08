@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a page in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
@@ -163,6 +164,12 @@ func (i *Page) ToPageOutputWithContext(ctx context.Context) PageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PageOutput)
 }
 
+func (i *Page) ToOutput(ctx context.Context) pulumix.Output[*Page] {
+	return pulumix.Output[*Page]{
+		OutputState: i.ToPageOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PageOutput struct{ *pulumi.OutputState }
 
 func (PageOutput) ElementType() reflect.Type {
@@ -175,6 +182,12 @@ func (o PageOutput) ToPageOutput() PageOutput {
 
 func (o PageOutput) ToPageOutputWithContext(ctx context.Context) PageOutput {
 	return o
+}
+
+func (o PageOutput) ToOutput(ctx context.Context) pulumix.Output[*Page] {
+	return pulumix.Output[*Page]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PageOutput) AgentId() pulumi.StringOutput {

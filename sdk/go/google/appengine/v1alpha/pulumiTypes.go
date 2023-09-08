@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i CertificateRawDataArgs) ToCertificateRawDataOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataOutput)
 }
 
+func (i CertificateRawDataArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateRawData] {
+	return pulumix.Output[CertificateRawData]{
+		OutputState: i.ToCertificateRawDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CertificateRawDataArgs) ToCertificateRawDataPtrOutput() CertificateRawDataPtrOutput {
 	return i.ToCertificateRawDataPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *certificateRawDataPtrType) ToCertificateRawDataPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataPtrOutput)
 }
 
+func (i *certificateRawDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateRawData] {
+	return pulumix.Output[*CertificateRawData]{
+		OutputState: i.ToCertificateRawDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An SSL certificate obtained from a certificate authority.
 type CertificateRawDataOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o CertificateRawDataOutput) ToCertificateRawDataPtrOutputWithContext(ctx c
 	}).(CertificateRawDataPtrOutput)
 }
 
+func (o CertificateRawDataOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateRawData] {
+	return pulumix.Output[CertificateRawData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
 func (o CertificateRawDataOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateRawData) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
@@ -140,6 +159,12 @@ func (o CertificateRawDataPtrOutput) ToCertificateRawDataPtrOutput() Certificate
 
 func (o CertificateRawDataPtrOutput) ToCertificateRawDataPtrOutputWithContext(ctx context.Context) CertificateRawDataPtrOutput {
 	return o
+}
+
+func (o CertificateRawDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateRawData] {
+	return pulumix.Output[*CertificateRawData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateRawDataPtrOutput) Elem() CertificateRawDataOutput {
@@ -195,6 +220,12 @@ func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponseOutputWith
 	return o
 }
 
+func (o CertificateRawDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateRawDataResponse] {
+	return pulumix.Output[CertificateRawDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
 func (o CertificateRawDataResponseOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateRawDataResponse) string { return v.PrivateKey }).(pulumi.StringOutput)
@@ -226,6 +257,12 @@ func (o ManagedCertificateResponseOutput) ToManagedCertificateResponseOutput() M
 
 func (o ManagedCertificateResponseOutput) ToManagedCertificateResponseOutputWithContext(ctx context.Context) ManagedCertificateResponseOutput {
 	return o
+}
+
+func (o ManagedCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedCertificateResponse] {
+	return pulumix.Output[ManagedCertificateResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
@@ -263,6 +300,12 @@ func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutputWithContext(
 	return o
 }
 
+func (o ResourceRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRecordResponse] {
+	return pulumix.Output[ResourceRecordResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 func (o ResourceRecordResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -290,6 +333,12 @@ func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutput()
 
 func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
 	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceRecordResponse] {
+	return pulumix.Output[[]ResourceRecordResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRecordResponseArrayOutput) Index(i pulumi.IntInput) ResourceRecordResponseOutput {
@@ -333,6 +382,12 @@ func (i SslSettingsArgs) ToSslSettingsOutputWithContext(ctx context.Context) Ssl
 	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsOutput)
 }
 
+func (i SslSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SslSettings] {
+	return pulumix.Output[SslSettings]{
+		OutputState: i.ToSslSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SslSettingsArgs) ToSslSettingsPtrOutput() SslSettingsPtrOutput {
 	return i.ToSslSettingsPtrOutputWithContext(context.Background())
 }
@@ -374,6 +429,12 @@ func (i *sslSettingsPtrType) ToSslSettingsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsPtrOutput)
 }
 
+func (i *sslSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SslSettings] {
+	return pulumix.Output[*SslSettings]{
+		OutputState: i.ToSslSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSL configuration for a DomainMapping resource.
 type SslSettingsOutput struct{ *pulumi.OutputState }
 
@@ -399,6 +460,12 @@ func (o SslSettingsOutput) ToSslSettingsPtrOutputWithContext(ctx context.Context
 	}).(SslSettingsPtrOutput)
 }
 
+func (o SslSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SslSettings] {
+	return pulumix.Output[SslSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
 func (o SslSettingsOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
@@ -416,6 +483,12 @@ func (o SslSettingsPtrOutput) ToSslSettingsPtrOutput() SslSettingsPtrOutput {
 
 func (o SslSettingsPtrOutput) ToSslSettingsPtrOutputWithContext(ctx context.Context) SslSettingsPtrOutput {
 	return o
+}
+
+func (o SslSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslSettings] {
+	return pulumix.Output[*SslSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SslSettingsPtrOutput) Elem() SslSettingsOutput {
@@ -459,6 +532,12 @@ func (o SslSettingsResponseOutput) ToSslSettingsResponseOutput() SslSettingsResp
 
 func (o SslSettingsResponseOutput) ToSslSettingsResponseOutputWithContext(ctx context.Context) SslSettingsResponseOutput {
 	return o
+}
+
+func (o SslSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SslSettingsResponse] {
+	return pulumix.Output[SslSettingsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.

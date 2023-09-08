@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied.
@@ -122,6 +123,12 @@ func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienOutput)
 }
 
+func (i *Lien) ToOutput(ctx context.Context) pulumix.Output[*Lien] {
+	return pulumix.Output[*Lien]{
+		OutputState: i.ToLienOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LienOutput struct{ *pulumi.OutputState }
 
 func (LienOutput) ElementType() reflect.Type {
@@ -134,6 +141,12 @@ func (o LienOutput) ToLienOutput() LienOutput {
 
 func (o LienOutput) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return o
+}
+
+func (o LienOutput) ToOutput(ctx context.Context) pulumix.Output[*Lien] {
+	return pulumix.Output[*Lien]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of this Lien.

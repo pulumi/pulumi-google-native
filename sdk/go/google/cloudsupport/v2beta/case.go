@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new case and associate it with the given Google Cloud Resource. The case object must have the following fields set: `display_name`, `description`, `classification`, and `priority`.
@@ -190,6 +191,12 @@ func (i *Case) ToCaseOutputWithContext(ctx context.Context) CaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaseOutput)
 }
 
+func (i *Case) ToOutput(ctx context.Context) pulumix.Output[*Case] {
+	return pulumix.Output[*Case]{
+		OutputState: i.ToCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CaseOutput struct{ *pulumi.OutputState }
 
 func (CaseOutput) ElementType() reflect.Type {
@@ -202,6 +209,12 @@ func (o CaseOutput) ToCaseOutput() CaseOutput {
 
 func (o CaseOutput) ToCaseOutputWithContext(ctx context.Context) CaseOutput {
 	return o
+}
+
+func (o CaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Case] {
+	return pulumix.Output[*Case]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The issue classification applicable to this case.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Rollout in a given project and location.
@@ -204,6 +205,12 @@ func (i *Rollout) ToRolloutOutputWithContext(ctx context.Context) RolloutOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RolloutOutput)
 }
 
+func (i *Rollout) ToOutput(ctx context.Context) pulumix.Output[*Rollout] {
+	return pulumix.Output[*Rollout]{
+		OutputState: i.ToRolloutOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RolloutOutput struct{ *pulumi.OutputState }
 
 func (RolloutOutput) ElementType() reflect.Type {
@@ -216,6 +223,12 @@ func (o RolloutOutput) ToRolloutOutput() RolloutOutput {
 
 func (o RolloutOutput) ToRolloutOutputWithContext(ctx context.Context) RolloutOutput {
 	return o
+}
+
+func (o RolloutOutput) ToOutput(ctx context.Context) pulumix.Output[*Rollout] {
+	return pulumix.Output[*Rollout]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

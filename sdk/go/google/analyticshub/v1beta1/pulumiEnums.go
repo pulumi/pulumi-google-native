@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ListingCategoriesItem string
@@ -266,6 +285,12 @@ func (o ListingCategoriesItemOutput) ToListingCategoriesItemPtrOutputWithContext
 	}).(ListingCategoriesItemPtrOutput)
 }
 
+func (o ListingCategoriesItemOutput) ToOutput(ctx context.Context) pulumix.Output[ListingCategoriesItem] {
+	return pulumix.Output[ListingCategoriesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ListingCategoriesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -299,6 +324,12 @@ func (o ListingCategoriesItemPtrOutput) ToListingCategoriesItemPtrOutput() Listi
 
 func (o ListingCategoriesItemPtrOutput) ToListingCategoriesItemPtrOutputWithContext(ctx context.Context) ListingCategoriesItemPtrOutput {
 	return o
+}
+
+func (o ListingCategoriesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingCategoriesItem] {
+	return pulumix.Output[*ListingCategoriesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingCategoriesItemPtrOutput) Elem() ListingCategoriesItemOutput {
@@ -363,6 +394,12 @@ func (in *listingCategoriesItemPtr) ToListingCategoriesItemPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ListingCategoriesItemPtrOutput)
 }
 
+func (in *listingCategoriesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ListingCategoriesItem] {
+	return pulumix.Output[*ListingCategoriesItem]{
+		OutputState: in.ToListingCategoriesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ListingCategoriesItemArrayInput is an input type that accepts ListingCategoriesItemArray and ListingCategoriesItemArrayOutput values.
 // You can construct a concrete instance of `ListingCategoriesItemArrayInput` via:
 //
@@ -388,6 +425,12 @@ func (i ListingCategoriesItemArray) ToListingCategoriesItemArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ListingCategoriesItemArrayOutput)
 }
 
+func (i ListingCategoriesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ListingCategoriesItem] {
+	return pulumix.Output[[]ListingCategoriesItem]{
+		OutputState: i.ToListingCategoriesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingCategoriesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ListingCategoriesItemArrayOutput) ElementType() reflect.Type {
@@ -400,6 +443,12 @@ func (o ListingCategoriesItemArrayOutput) ToListingCategoriesItemArrayOutput() L
 
 func (o ListingCategoriesItemArrayOutput) ToListingCategoriesItemArrayOutputWithContext(ctx context.Context) ListingCategoriesItemArrayOutput {
 	return o
+}
+
+func (o ListingCategoriesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ListingCategoriesItem] {
+	return pulumix.Output[[]ListingCategoriesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingCategoriesItemArrayOutput) Index(i pulumi.IntInput) ListingCategoriesItemOutput {

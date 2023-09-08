@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *EkmConnectionIamBinding) ToEkmConnectionIamBindingOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionIamBindingOutput)
 }
 
+func (i *EkmConnectionIamBinding) ToOutput(ctx context.Context) pulumix.Output[*EkmConnectionIamBinding] {
+	return pulumix.Output[*EkmConnectionIamBinding]{
+		OutputState: i.ToEkmConnectionIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EkmConnectionIamBindingOutput struct{ *pulumi.OutputState }
 
 func (EkmConnectionIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o EkmConnectionIamBindingOutput) ToEkmConnectionIamBindingOutput() EkmConn
 
 func (o EkmConnectionIamBindingOutput) ToEkmConnectionIamBindingOutputWithContext(ctx context.Context) EkmConnectionIamBindingOutput {
 	return o
+}
+
+func (o EkmConnectionIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*EkmConnectionIamBinding] {
+	return pulumix.Output[*EkmConnectionIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

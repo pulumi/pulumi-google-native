@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The unit that 'retained_backups' represents.
@@ -80,6 +81,12 @@ func (o BackupRetentionSettingsRetentionUnitOutput) ToBackupRetentionSettingsRet
 	}).(BackupRetentionSettingsRetentionUnitPtrOutput)
 }
 
+func (o BackupRetentionSettingsRetentionUnitOutput) ToOutput(ctx context.Context) pulumix.Output[BackupRetentionSettingsRetentionUnit] {
+	return pulumix.Output[BackupRetentionSettingsRetentionUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupRetentionSettingsRetentionUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToBackupRetentionSettings
 
 func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToBackupRetentionSettingsRetentionUnitPtrOutputWithContext(ctx context.Context) BackupRetentionSettingsRetentionUnitPtrOutput {
 	return o
+}
+
+func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupRetentionSettingsRetentionUnit] {
+	return pulumix.Output[*BackupRetentionSettingsRetentionUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupRetentionSettingsRetentionUnitPtrOutput) Elem() BackupRetentionSettingsRetentionUnitOutput {
@@ -175,6 +188,12 @@ func (in *backupRetentionSettingsRetentionUnitPtr) ToBackupRetentionSettingsRete
 
 func (in *backupRetentionSettingsRetentionUnitPtr) ToBackupRetentionSettingsRetentionUnitPtrOutputWithContext(ctx context.Context) BackupRetentionSettingsRetentionUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupRetentionSettingsRetentionUnitPtrOutput)
+}
+
+func (in *backupRetentionSettingsRetentionUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupRetentionSettingsRetentionUnit] {
+	return pulumix.Output[*BackupRetentionSettingsRetentionUnit]{
+		OutputState: in.ToBackupRetentionSettingsRetentionUnitPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
@@ -249,6 +268,12 @@ func (o BackupRunBackupKindOutput) ToBackupRunBackupKindPtrOutputWithContext(ctx
 	}).(BackupRunBackupKindPtrOutput)
 }
 
+func (o BackupRunBackupKindOutput) ToOutput(ctx context.Context) pulumix.Output[BackupRunBackupKind] {
+	return pulumix.Output[BackupRunBackupKind]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupRunBackupKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -282,6 +307,12 @@ func (o BackupRunBackupKindPtrOutput) ToBackupRunBackupKindPtrOutput() BackupRun
 
 func (o BackupRunBackupKindPtrOutput) ToBackupRunBackupKindPtrOutputWithContext(ctx context.Context) BackupRunBackupKindPtrOutput {
 	return o
+}
+
+func (o BackupRunBackupKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupRunBackupKind] {
+	return pulumix.Output[*BackupRunBackupKind]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupRunBackupKindPtrOutput) Elem() BackupRunBackupKindOutput {
@@ -344,6 +375,12 @@ func (in *backupRunBackupKindPtr) ToBackupRunBackupKindPtrOutput() BackupRunBack
 
 func (in *backupRunBackupKindPtr) ToBackupRunBackupKindPtrOutputWithContext(ctx context.Context) BackupRunBackupKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupRunBackupKindPtrOutput)
+}
+
+func (in *backupRunBackupKindPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupRunBackupKind] {
+	return pulumix.Output[*BackupRunBackupKind]{
+		OutputState: in.ToBackupRunBackupKindPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The status of this run.
@@ -444,6 +481,12 @@ func (o BackupRunTypeOutput) ToBackupRunTypePtrOutputWithContext(ctx context.Con
 	}).(BackupRunTypePtrOutput)
 }
 
+func (o BackupRunTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BackupRunType] {
+	return pulumix.Output[BackupRunType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupRunTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -477,6 +520,12 @@ func (o BackupRunTypePtrOutput) ToBackupRunTypePtrOutput() BackupRunTypePtrOutpu
 
 func (o BackupRunTypePtrOutput) ToBackupRunTypePtrOutputWithContext(ctx context.Context) BackupRunTypePtrOutput {
 	return o
+}
+
+func (o BackupRunTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupRunType] {
+	return pulumix.Output[*BackupRunType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupRunTypePtrOutput) Elem() BackupRunTypeOutput {
@@ -539,6 +588,12 @@ func (in *backupRunTypePtr) ToBackupRunTypePtrOutput() BackupRunTypePtrOutput {
 
 func (in *backupRunTypePtr) ToBackupRunTypePtrOutputWithContext(ctx context.Context) BackupRunTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupRunTypePtrOutput)
+}
+
+func (in *backupRunTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupRunType] {
+	return pulumix.Output[*BackupRunType]{
+		OutputState: in.ToBackupRunTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
@@ -615,6 +670,12 @@ func (o InstanceBackendTypeOutput) ToInstanceBackendTypePtrOutputWithContext(ctx
 	}).(InstanceBackendTypePtrOutput)
 }
 
+func (o InstanceBackendTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceBackendType] {
+	return pulumix.Output[InstanceBackendType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceBackendTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -648,6 +709,12 @@ func (o InstanceBackendTypePtrOutput) ToInstanceBackendTypePtrOutput() InstanceB
 
 func (o InstanceBackendTypePtrOutput) ToInstanceBackendTypePtrOutputWithContext(ctx context.Context) InstanceBackendTypePtrOutput {
 	return o
+}
+
+func (o InstanceBackendTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceBackendType] {
+	return pulumix.Output[*InstanceBackendType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceBackendTypePtrOutput) Elem() InstanceBackendTypeOutput {
@@ -710,6 +777,12 @@ func (in *instanceBackendTypePtr) ToInstanceBackendTypePtrOutput() InstanceBacke
 
 func (in *instanceBackendTypePtr) ToInstanceBackendTypePtrOutputWithContext(ctx context.Context) InstanceBackendTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceBackendTypePtrOutput)
+}
+
+func (in *instanceBackendTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceBackendType] {
+	return pulumix.Output[*InstanceBackendType]{
+		OutputState: in.ToInstanceBackendTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
@@ -844,6 +917,12 @@ func (o InstanceDatabaseVersionOutput) ToInstanceDatabaseVersionPtrOutputWithCon
 	}).(InstanceDatabaseVersionPtrOutput)
 }
 
+func (o InstanceDatabaseVersionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDatabaseVersion] {
+	return pulumix.Output[InstanceDatabaseVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceDatabaseVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -877,6 +956,12 @@ func (o InstanceDatabaseVersionPtrOutput) ToInstanceDatabaseVersionPtrOutput() I
 
 func (o InstanceDatabaseVersionPtrOutput) ToInstanceDatabaseVersionPtrOutputWithContext(ctx context.Context) InstanceDatabaseVersionPtrOutput {
 	return o
+}
+
+func (o InstanceDatabaseVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDatabaseVersion] {
+	return pulumix.Output[*InstanceDatabaseVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDatabaseVersionPtrOutput) Elem() InstanceDatabaseVersionOutput {
@@ -939,6 +1024,12 @@ func (in *instanceDatabaseVersionPtr) ToInstanceDatabaseVersionPtrOutput() Insta
 
 func (in *instanceDatabaseVersionPtr) ToInstanceDatabaseVersionPtrOutputWithContext(ctx context.Context) InstanceDatabaseVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceDatabaseVersionPtrOutput)
+}
+
+func (in *instanceDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceDatabaseVersion] {
+	return pulumix.Output[*InstanceDatabaseVersion]{
+		OutputState: in.ToInstanceDatabaseVersionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The instance type.
@@ -1015,6 +1106,12 @@ func (o InstanceInstanceTypeOutput) ToInstanceInstanceTypePtrOutputWithContext(c
 	}).(InstanceInstanceTypePtrOutput)
 }
 
+func (o InstanceInstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceInstanceType] {
+	return pulumix.Output[InstanceInstanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceInstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1048,6 +1145,12 @@ func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutput() Instanc
 
 func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutputWithContext(ctx context.Context) InstanceInstanceTypePtrOutput {
 	return o
+}
+
+func (o InstanceInstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
+	return pulumix.Output[*InstanceInstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceInstanceTypePtrOutput) Elem() InstanceInstanceTypeOutput {
@@ -1110,6 +1213,12 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutput() InstanceIns
 
 func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ctx context.Context) InstanceInstanceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceInstanceTypePtrOutput)
+}
+
+func (in *instanceInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
+	return pulumix.Output[*InstanceInstanceType]{
+		OutputState: in.ToInstanceInstanceTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The current serving state of the Cloud SQL instance.
@@ -1194,6 +1303,12 @@ func (o InstanceStateEnumOutput) ToInstanceStateEnumPtrOutputWithContext(ctx con
 	}).(InstanceStateEnumPtrOutput)
 }
 
+func (o InstanceStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceStateEnum] {
+	return pulumix.Output[InstanceStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1227,6 +1342,12 @@ func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutput() InstanceState
 
 func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
 	return o
+}
+
+func (o InstanceStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceStateEnum] {
+	return pulumix.Output[*InstanceStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceStateEnumPtrOutput) Elem() InstanceStateEnumOutput {
@@ -1289,6 +1410,12 @@ func (in *instanceStateEnumPtr) ToInstanceStateEnumPtrOutput() InstanceStateEnum
 
 func (in *instanceStateEnumPtr) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceStateEnumPtrOutput)
+}
+
+func (in *instanceStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceStateEnum] {
+	return pulumix.Output[*InstanceStateEnum]{
+		OutputState: in.ToInstanceStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type InstanceSuspensionReasonItem string
@@ -1366,6 +1493,12 @@ func (o InstanceSuspensionReasonItemOutput) ToInstanceSuspensionReasonItemPtrOut
 	}).(InstanceSuspensionReasonItemPtrOutput)
 }
 
+func (o InstanceSuspensionReasonItemOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSuspensionReasonItem] {
+	return pulumix.Output[InstanceSuspensionReasonItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceSuspensionReasonItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1399,6 +1532,12 @@ func (o InstanceSuspensionReasonItemPtrOutput) ToInstanceSuspensionReasonItemPtr
 
 func (o InstanceSuspensionReasonItemPtrOutput) ToInstanceSuspensionReasonItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonItemPtrOutput {
 	return o
+}
+
+func (o InstanceSuspensionReasonItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceSuspensionReasonItem] {
+	return pulumix.Output[*InstanceSuspensionReasonItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSuspensionReasonItemPtrOutput) Elem() InstanceSuspensionReasonItemOutput {
@@ -1463,6 +1602,12 @@ func (in *instanceSuspensionReasonItemPtr) ToInstanceSuspensionReasonItemPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceSuspensionReasonItemPtrOutput)
 }
 
+func (in *instanceSuspensionReasonItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSuspensionReasonItem] {
+	return pulumix.Output[*InstanceSuspensionReasonItem]{
+		OutputState: in.ToInstanceSuspensionReasonItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceSuspensionReasonItemArrayInput is an input type that accepts InstanceSuspensionReasonItemArray and InstanceSuspensionReasonItemArrayOutput values.
 // You can construct a concrete instance of `InstanceSuspensionReasonItemArrayInput` via:
 //
@@ -1488,6 +1633,12 @@ func (i InstanceSuspensionReasonItemArray) ToInstanceSuspensionReasonItemArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSuspensionReasonItemArrayOutput)
 }
 
+func (i InstanceSuspensionReasonItemArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSuspensionReasonItem] {
+	return pulumix.Output[[]InstanceSuspensionReasonItem]{
+		OutputState: i.ToInstanceSuspensionReasonItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceSuspensionReasonItemArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceSuspensionReasonItemArrayOutput) ElementType() reflect.Type {
@@ -1500,6 +1651,12 @@ func (o InstanceSuspensionReasonItemArrayOutput) ToInstanceSuspensionReasonItemA
 
 func (o InstanceSuspensionReasonItemArrayOutput) ToInstanceSuspensionReasonItemArrayOutputWithContext(ctx context.Context) InstanceSuspensionReasonItemArrayOutput {
 	return o
+}
+
+func (o InstanceSuspensionReasonItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSuspensionReasonItem] {
+	return pulumix.Output[[]InstanceSuspensionReasonItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSuspensionReasonItemArrayOutput) Index(i pulumi.IntInput) InstanceSuspensionReasonItemOutput {
@@ -1584,6 +1741,12 @@ func (o IpMappingTypeOutput) ToIpMappingTypePtrOutputWithContext(ctx context.Con
 	}).(IpMappingTypePtrOutput)
 }
 
+func (o IpMappingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpMappingType] {
+	return pulumix.Output[IpMappingType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IpMappingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1617,6 +1780,12 @@ func (o IpMappingTypePtrOutput) ToIpMappingTypePtrOutput() IpMappingTypePtrOutpu
 
 func (o IpMappingTypePtrOutput) ToIpMappingTypePtrOutputWithContext(ctx context.Context) IpMappingTypePtrOutput {
 	return o
+}
+
+func (o IpMappingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpMappingType] {
+	return pulumix.Output[*IpMappingType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpMappingTypePtrOutput) Elem() IpMappingTypeOutput {
@@ -1679,6 +1848,12 @@ func (in *ipMappingTypePtr) ToIpMappingTypePtrOutput() IpMappingTypePtrOutput {
 
 func (in *ipMappingTypePtr) ToIpMappingTypePtrOutputWithContext(ctx context.Context) IpMappingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpMappingTypePtrOutput)
+}
+
+func (in *ipMappingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpMappingType] {
+	return pulumix.Output[*IpMappingType]{
+		OutputState: in.ToIpMappingTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
@@ -1753,6 +1928,12 @@ func (o MaintenanceWindowUpdateTrackOutput) ToMaintenanceWindowUpdateTrackPtrOut
 	}).(MaintenanceWindowUpdateTrackPtrOutput)
 }
 
+func (o MaintenanceWindowUpdateTrackOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowUpdateTrack] {
+	return pulumix.Output[MaintenanceWindowUpdateTrack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MaintenanceWindowUpdateTrackOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1786,6 +1967,12 @@ func (o MaintenanceWindowUpdateTrackPtrOutput) ToMaintenanceWindowUpdateTrackPtr
 
 func (o MaintenanceWindowUpdateTrackPtrOutput) ToMaintenanceWindowUpdateTrackPtrOutputWithContext(ctx context.Context) MaintenanceWindowUpdateTrackPtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowUpdateTrackPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowUpdateTrack] {
+	return pulumix.Output[*MaintenanceWindowUpdateTrack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowUpdateTrackPtrOutput) Elem() MaintenanceWindowUpdateTrackOutput {
@@ -1848,6 +2035,12 @@ func (in *maintenanceWindowUpdateTrackPtr) ToMaintenanceWindowUpdateTrackPtrOutp
 
 func (in *maintenanceWindowUpdateTrackPtr) ToMaintenanceWindowUpdateTrackPtrOutputWithContext(ctx context.Context) MaintenanceWindowUpdateTrackPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowUpdateTrackPtrOutput)
+}
+
+func (in *maintenanceWindowUpdateTrackPtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowUpdateTrack] {
+	return pulumix.Output[*MaintenanceWindowUpdateTrack]{
+		OutputState: in.ToMaintenanceWindowUpdateTrackPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The complexity of the password.
@@ -1920,6 +2113,12 @@ func (o PasswordValidationPolicyComplexityOutput) ToPasswordValidationPolicyComp
 	}).(PasswordValidationPolicyComplexityPtrOutput)
 }
 
+func (o PasswordValidationPolicyComplexityOutput) ToOutput(ctx context.Context) pulumix.Output[PasswordValidationPolicyComplexity] {
+	return pulumix.Output[PasswordValidationPolicyComplexity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PasswordValidationPolicyComplexityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1953,6 +2152,12 @@ func (o PasswordValidationPolicyComplexityPtrOutput) ToPasswordValidationPolicyC
 
 func (o PasswordValidationPolicyComplexityPtrOutput) ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityPtrOutput {
 	return o
+}
+
+func (o PasswordValidationPolicyComplexityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PasswordValidationPolicyComplexity] {
+	return pulumix.Output[*PasswordValidationPolicyComplexity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PasswordValidationPolicyComplexityPtrOutput) Elem() PasswordValidationPolicyComplexityOutput {
@@ -2015,6 +2220,12 @@ func (in *passwordValidationPolicyComplexityPtr) ToPasswordValidationPolicyCompl
 
 func (in *passwordValidationPolicyComplexityPtr) ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PasswordValidationPolicyComplexityPtrOutput)
+}
+
+func (in *passwordValidationPolicyComplexityPtr) ToOutput(ctx context.Context) pulumix.Output[*PasswordValidationPolicyComplexity] {
+	return pulumix.Output[*PasswordValidationPolicyComplexity]{
+		OutputState: in.ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -2091,6 +2302,12 @@ func (o SettingsActivationPolicyOutput) ToSettingsActivationPolicyPtrOutputWithC
 	}).(SettingsActivationPolicyPtrOutput)
 }
 
+func (o SettingsActivationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[SettingsActivationPolicy] {
+	return pulumix.Output[SettingsActivationPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SettingsActivationPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2124,6 +2341,12 @@ func (o SettingsActivationPolicyPtrOutput) ToSettingsActivationPolicyPtrOutput()
 
 func (o SettingsActivationPolicyPtrOutput) ToSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) SettingsActivationPolicyPtrOutput {
 	return o
+}
+
+func (o SettingsActivationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingsActivationPolicy] {
+	return pulumix.Output[*SettingsActivationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SettingsActivationPolicyPtrOutput) Elem() SettingsActivationPolicyOutput {
@@ -2186,6 +2409,12 @@ func (in *settingsActivationPolicyPtr) ToSettingsActivationPolicyPtrOutput() Set
 
 func (in *settingsActivationPolicyPtr) ToSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) SettingsActivationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsActivationPolicyPtrOutput)
+}
+
+func (in *settingsActivationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsActivationPolicy] {
+	return pulumix.Output[*SettingsActivationPolicy]{
+		OutputState: in.ToSettingsActivationPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
@@ -2260,6 +2489,12 @@ func (o SettingsAvailabilityTypeOutput) ToSettingsAvailabilityTypePtrOutputWithC
 	}).(SettingsAvailabilityTypePtrOutput)
 }
 
+func (o SettingsAvailabilityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SettingsAvailabilityType] {
+	return pulumix.Output[SettingsAvailabilityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SettingsAvailabilityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2293,6 +2528,12 @@ func (o SettingsAvailabilityTypePtrOutput) ToSettingsAvailabilityTypePtrOutput()
 
 func (o SettingsAvailabilityTypePtrOutput) ToSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) SettingsAvailabilityTypePtrOutput {
 	return o
+}
+
+func (o SettingsAvailabilityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingsAvailabilityType] {
+	return pulumix.Output[*SettingsAvailabilityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SettingsAvailabilityTypePtrOutput) Elem() SettingsAvailabilityTypeOutput {
@@ -2355,6 +2596,12 @@ func (in *settingsAvailabilityTypePtr) ToSettingsAvailabilityTypePtrOutput() Set
 
 func (in *settingsAvailabilityTypePtr) ToSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) SettingsAvailabilityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsAvailabilityTypePtrOutput)
+}
+
+func (in *settingsAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsAvailabilityType] {
+	return pulumix.Output[*SettingsAvailabilityType]{
+		OutputState: in.ToSettingsAvailabilityTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors) Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
@@ -2429,6 +2676,12 @@ func (o SettingsConnectorEnforcementOutput) ToSettingsConnectorEnforcementPtrOut
 	}).(SettingsConnectorEnforcementPtrOutput)
 }
 
+func (o SettingsConnectorEnforcementOutput) ToOutput(ctx context.Context) pulumix.Output[SettingsConnectorEnforcement] {
+	return pulumix.Output[SettingsConnectorEnforcement]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SettingsConnectorEnforcementOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2462,6 +2715,12 @@ func (o SettingsConnectorEnforcementPtrOutput) ToSettingsConnectorEnforcementPtr
 
 func (o SettingsConnectorEnforcementPtrOutput) ToSettingsConnectorEnforcementPtrOutputWithContext(ctx context.Context) SettingsConnectorEnforcementPtrOutput {
 	return o
+}
+
+func (o SettingsConnectorEnforcementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingsConnectorEnforcement] {
+	return pulumix.Output[*SettingsConnectorEnforcement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SettingsConnectorEnforcementPtrOutput) Elem() SettingsConnectorEnforcementOutput {
@@ -2524,6 +2783,12 @@ func (in *settingsConnectorEnforcementPtr) ToSettingsConnectorEnforcementPtrOutp
 
 func (in *settingsConnectorEnforcementPtr) ToSettingsConnectorEnforcementPtrOutputWithContext(ctx context.Context) SettingsConnectorEnforcementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsConnectorEnforcementPtrOutput)
+}
+
+func (in *settingsConnectorEnforcementPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsConnectorEnforcement] {
+	return pulumix.Output[*SettingsConnectorEnforcement]{
+		OutputState: in.ToSettingsConnectorEnforcementPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -2600,6 +2865,12 @@ func (o SettingsDataDiskTypeOutput) ToSettingsDataDiskTypePtrOutputWithContext(c
 	}).(SettingsDataDiskTypePtrOutput)
 }
 
+func (o SettingsDataDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SettingsDataDiskType] {
+	return pulumix.Output[SettingsDataDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SettingsDataDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2633,6 +2904,12 @@ func (o SettingsDataDiskTypePtrOutput) ToSettingsDataDiskTypePtrOutput() Setting
 
 func (o SettingsDataDiskTypePtrOutput) ToSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) SettingsDataDiskTypePtrOutput {
 	return o
+}
+
+func (o SettingsDataDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingsDataDiskType] {
+	return pulumix.Output[*SettingsDataDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SettingsDataDiskTypePtrOutput) Elem() SettingsDataDiskTypeOutput {
@@ -2695,6 +2972,12 @@ func (in *settingsDataDiskTypePtr) ToSettingsDataDiskTypePtrOutput() SettingsDat
 
 func (in *settingsDataDiskTypePtr) ToSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) SettingsDataDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsDataDiskTypePtrOutput)
+}
+
+func (in *settingsDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsDataDiskType] {
+	return pulumix.Output[*SettingsDataDiskType]{
+		OutputState: in.ToSettingsDataDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
@@ -2769,6 +3052,12 @@ func (o SettingsPricingPlanOutput) ToSettingsPricingPlanPtrOutputWithContext(ctx
 	}).(SettingsPricingPlanPtrOutput)
 }
 
+func (o SettingsPricingPlanOutput) ToOutput(ctx context.Context) pulumix.Output[SettingsPricingPlan] {
+	return pulumix.Output[SettingsPricingPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SettingsPricingPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2802,6 +3091,12 @@ func (o SettingsPricingPlanPtrOutput) ToSettingsPricingPlanPtrOutput() SettingsP
 
 func (o SettingsPricingPlanPtrOutput) ToSettingsPricingPlanPtrOutputWithContext(ctx context.Context) SettingsPricingPlanPtrOutput {
 	return o
+}
+
+func (o SettingsPricingPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingsPricingPlan] {
+	return pulumix.Output[*SettingsPricingPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SettingsPricingPlanPtrOutput) Elem() SettingsPricingPlanOutput {
@@ -2864,6 +3159,12 @@ func (in *settingsPricingPlanPtr) ToSettingsPricingPlanPtrOutput() SettingsPrici
 
 func (in *settingsPricingPlanPtr) ToSettingsPricingPlanPtrOutputWithContext(ctx context.Context) SettingsPricingPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsPricingPlanPtrOutput)
+}
+
+func (in *settingsPricingPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsPricingPlan] {
+	return pulumix.Output[*SettingsPricingPlan]{
+		OutputState: in.ToSettingsPricingPlanPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
@@ -2938,6 +3239,12 @@ func (o SettingsReplicationTypeOutput) ToSettingsReplicationTypePtrOutputWithCon
 	}).(SettingsReplicationTypePtrOutput)
 }
 
+func (o SettingsReplicationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SettingsReplicationType] {
+	return pulumix.Output[SettingsReplicationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SettingsReplicationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2971,6 +3278,12 @@ func (o SettingsReplicationTypePtrOutput) ToSettingsReplicationTypePtrOutput() S
 
 func (o SettingsReplicationTypePtrOutput) ToSettingsReplicationTypePtrOutputWithContext(ctx context.Context) SettingsReplicationTypePtrOutput {
 	return o
+}
+
+func (o SettingsReplicationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingsReplicationType] {
+	return pulumix.Output[*SettingsReplicationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SettingsReplicationTypePtrOutput) Elem() SettingsReplicationTypeOutput {
@@ -3033,6 +3346,12 @@ func (in *settingsReplicationTypePtr) ToSettingsReplicationTypePtrOutput() Setti
 
 func (in *settingsReplicationTypePtr) ToSettingsReplicationTypePtrOutputWithContext(ctx context.Context) SettingsReplicationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsReplicationTypePtrOutput)
+}
+
+func (in *settingsReplicationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsReplicationType] {
+	return pulumix.Output[*SettingsReplicationType]{
+		OutputState: in.ToSettingsReplicationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
@@ -3107,6 +3426,12 @@ func (o SqlOutOfDiskReportSqlOutOfDiskStateOutput) ToSqlOutOfDiskReportSqlOutOfD
 	}).(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput)
 }
 
+func (o SqlOutOfDiskReportSqlOutOfDiskStateOutput) ToOutput(ctx context.Context) pulumix.Output[SqlOutOfDiskReportSqlOutOfDiskState] {
+	return pulumix.Output[SqlOutOfDiskReportSqlOutOfDiskState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlOutOfDiskReportSqlOutOfDiskStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3140,6 +3465,12 @@ func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToSqlOutOfDiskReportSqlOut
 
 func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToSqlOutOfDiskReportSqlOutOfDiskStatePtrOutputWithContext(ctx context.Context) SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
 	return o
+}
+
+func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlOutOfDiskReportSqlOutOfDiskState] {
+	return pulumix.Output[*SqlOutOfDiskReportSqlOutOfDiskState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) Elem() SqlOutOfDiskReportSqlOutOfDiskStateOutput {
@@ -3202,6 +3533,12 @@ func (in *sqlOutOfDiskReportSqlOutOfDiskStatePtr) ToSqlOutOfDiskReportSqlOutOfDi
 
 func (in *sqlOutOfDiskReportSqlOutOfDiskStatePtr) ToSqlOutOfDiskReportSqlOutOfDiskStatePtrOutputWithContext(ctx context.Context) SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput)
+}
+
+func (in *sqlOutOfDiskReportSqlOutOfDiskStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlOutOfDiskReportSqlOutOfDiskState] {
+	return pulumix.Output[*SqlOutOfDiskReportSqlOutOfDiskState]{
+		OutputState: in.ToSqlOutOfDiskReportSqlOutOfDiskStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Dual password status for the user.
@@ -3278,6 +3615,12 @@ func (o UserDualPasswordTypeOutput) ToUserDualPasswordTypePtrOutputWithContext(c
 	}).(UserDualPasswordTypePtrOutput)
 }
 
+func (o UserDualPasswordTypeOutput) ToOutput(ctx context.Context) pulumix.Output[UserDualPasswordType] {
+	return pulumix.Output[UserDualPasswordType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserDualPasswordTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3311,6 +3654,12 @@ func (o UserDualPasswordTypePtrOutput) ToUserDualPasswordTypePtrOutput() UserDua
 
 func (o UserDualPasswordTypePtrOutput) ToUserDualPasswordTypePtrOutputWithContext(ctx context.Context) UserDualPasswordTypePtrOutput {
 	return o
+}
+
+func (o UserDualPasswordTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserDualPasswordType] {
+	return pulumix.Output[*UserDualPasswordType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserDualPasswordTypePtrOutput) Elem() UserDualPasswordTypeOutput {
@@ -3373,6 +3722,12 @@ func (in *userDualPasswordTypePtr) ToUserDualPasswordTypePtrOutput() UserDualPas
 
 func (in *userDualPasswordTypePtr) ToUserDualPasswordTypePtrOutputWithContext(ctx context.Context) UserDualPasswordTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserDualPasswordTypePtrOutput)
+}
+
+func (in *userDualPasswordTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UserDualPasswordType] {
+	return pulumix.Output[*UserDualPasswordType]{
+		OutputState: in.ToUserDualPasswordTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
@@ -3447,6 +3802,12 @@ func (o UserTypeOutput) ToUserTypePtrOutputWithContext(ctx context.Context) User
 	}).(UserTypePtrOutput)
 }
 
+func (o UserTypeOutput) ToOutput(ctx context.Context) pulumix.Output[UserType] {
+	return pulumix.Output[UserType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3480,6 +3841,12 @@ func (o UserTypePtrOutput) ToUserTypePtrOutput() UserTypePtrOutput {
 
 func (o UserTypePtrOutput) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
 	return o
+}
+
+func (o UserTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserType] {
+	return pulumix.Output[*UserType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserTypePtrOutput) Elem() UserTypeOutput {
@@ -3542,6 +3909,12 @@ func (in *userTypePtr) ToUserTypePtrOutput() UserTypePtrOutput {
 
 func (in *userTypePtr) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserTypePtrOutput)
+}
+
+func (in *userTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UserType] {
+	return pulumix.Output[*UserType]{
+		OutputState: in.ToUserTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

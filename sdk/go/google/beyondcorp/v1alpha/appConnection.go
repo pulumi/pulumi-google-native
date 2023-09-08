@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new AppConnection in a given project and location.
@@ -166,6 +167,12 @@ func (i *AppConnection) ToAppConnectionOutputWithContext(ctx context.Context) Ap
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionOutput)
 }
 
+func (i *AppConnection) ToOutput(ctx context.Context) pulumix.Output[*AppConnection] {
+	return pulumix.Output[*AppConnection]{
+		OutputState: i.ToAppConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppConnectionOutput struct{ *pulumi.OutputState }
 
 func (AppConnectionOutput) ElementType() reflect.Type {
@@ -178,6 +185,12 @@ func (o AppConnectionOutput) ToAppConnectionOutput() AppConnectionOutput {
 
 func (o AppConnectionOutput) ToAppConnectionOutputWithContext(ctx context.Context) AppConnectionOutput {
 	return o
+}
+
+func (o AppConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnection] {
+	return pulumix.Output[*AppConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.

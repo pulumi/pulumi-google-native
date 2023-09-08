@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -135,6 +136,12 @@ func (i *RegionNetworkFirewallPolicyIamBinding) ToRegionNetworkFirewallPolicyIam
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkFirewallPolicyIamBindingOutput)
 }
 
+func (i *RegionNetworkFirewallPolicyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkFirewallPolicyIamBinding] {
+	return pulumix.Output[*RegionNetworkFirewallPolicyIamBinding]{
+		OutputState: i.ToRegionNetworkFirewallPolicyIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionNetworkFirewallPolicyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkFirewallPolicyIamBindingOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RegionNetworkFirewallPolicyIamBindingOutput) ToRegionNetworkFirewallPoli
 
 func (o RegionNetworkFirewallPolicyIamBindingOutput) ToRegionNetworkFirewallPolicyIamBindingOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyIamBindingOutput {
 	return o
+}
+
+func (o RegionNetworkFirewallPolicyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkFirewallPolicyIamBinding] {
+	return pulumix.Output[*RegionNetworkFirewallPolicyIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

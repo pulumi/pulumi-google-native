@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -36,6 +37,12 @@ func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
 
 func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
 	return o
+}
+
+func (o ErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponse] {
+	return pulumix.Output[ErrorResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Human-readable stack trace string.
@@ -78,6 +85,12 @@ func (o PositionResponseOutput) ToPositionResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o PositionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PositionResponse] {
+	return pulumix.Output[PositionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The source code column position (of the line) the current instruction was generated from.
 func (o PositionResponseOutput) Column() pulumi.StringOutput {
 	return o.ApplyT(func(v PositionResponse) string { return v.Column }).(pulumi.StringOutput)
@@ -118,6 +131,12 @@ func (o StackTraceElementResponseOutput) ToStackTraceElementResponseOutputWithCo
 	return o
 }
 
+func (o StackTraceElementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StackTraceElementResponse] {
+	return pulumix.Output[StackTraceElementResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The source position information of the stack trace element.
 func (o StackTraceElementResponseOutput) Position() PositionResponseOutput {
 	return o.ApplyT(func(v StackTraceElementResponse) PositionResponse { return v.Position }).(PositionResponseOutput)
@@ -147,6 +166,12 @@ func (o StackTraceElementResponseArrayOutput) ToStackTraceElementResponseArrayOu
 	return o
 }
 
+func (o StackTraceElementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StackTraceElementResponse] {
+	return pulumix.Output[[]StackTraceElementResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StackTraceElementResponseArrayOutput) Index(i pulumi.IntInput) StackTraceElementResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackTraceElementResponse {
 		return vs[0].([]StackTraceElementResponse)[vs[1].(int)]
@@ -174,6 +199,12 @@ func (o StackTraceResponseOutput) ToStackTraceResponseOutputWithContext(ctx cont
 	return o
 }
 
+func (o StackTraceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StackTraceResponse] {
+	return pulumix.Output[StackTraceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // An array of stack elements.
 func (o StackTraceResponseOutput) Elements() StackTraceElementResponseArrayOutput {
 	return o.ApplyT(func(v StackTraceResponse) []StackTraceElementResponse { return v.Elements }).(StackTraceElementResponseArrayOutput)
@@ -198,6 +229,12 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
+}
+
+func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
+	return pulumix.Output[StatusResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step.
@@ -228,6 +265,12 @@ func (o StepResponseOutput) ToStepResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o StepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StepResponse] {
+	return pulumix.Output[StepResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of a routine within the workflow.
 func (o StepResponseOutput) Routine() pulumi.StringOutput {
 	return o.ApplyT(func(v StepResponse) string { return v.Routine }).(pulumi.StringOutput)
@@ -250,6 +293,12 @@ func (o StepResponseArrayOutput) ToStepResponseArrayOutput() StepResponseArrayOu
 
 func (o StepResponseArrayOutput) ToStepResponseArrayOutputWithContext(ctx context.Context) StepResponseArrayOutput {
 	return o
+}
+
+func (o StepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StepResponse] {
+	return pulumix.Output[[]StepResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {

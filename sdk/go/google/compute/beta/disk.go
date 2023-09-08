@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
@@ -339,6 +340,12 @@ func (i *Disk) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
+func (i *Disk) ToOutput(ctx context.Context) pulumix.Output[*Disk] {
+	return pulumix.Output[*Disk]{
+		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DiskOutput struct{ *pulumi.OutputState }
 
 func (DiskOutput) ElementType() reflect.Type {
@@ -351,6 +358,12 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[*Disk] {
+	return pulumix.Output[*Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The architecture of the disk. Valid values are ARM64 or X86_64.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an entity type in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -147,6 +148,12 @@ func (i *EntityType) ToEntityTypeOutputWithContext(ctx context.Context) EntityTy
 	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeOutput)
 }
 
+func (i *EntityType) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
+	return pulumix.Output[*EntityType]{
+		OutputState: i.ToEntityTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntityTypeOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o EntityTypeOutput) ToEntityTypeOutput() EntityTypeOutput {
 
 func (o EntityTypeOutput) ToEntityTypeOutputWithContext(ctx context.Context) EntityTypeOutput {
 	return o
+}
+
+func (o EntityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
+	return pulumix.Output[*EntityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Indicates whether the entity type can be automatically expanded.

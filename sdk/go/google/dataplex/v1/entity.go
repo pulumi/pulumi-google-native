@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a metadata entity.
@@ -209,6 +210,12 @@ func (i *Entity) ToEntityOutputWithContext(ctx context.Context) EntityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntityOutput)
 }
 
+func (i *Entity) ToOutput(ctx context.Context) pulumix.Output[*Entity] {
+	return pulumix.Output[*Entity]{
+		OutputState: i.ToEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntityOutput struct{ *pulumi.OutputState }
 
 func (EntityOutput) ElementType() reflect.Type {
@@ -221,6 +228,12 @@ func (o EntityOutput) ToEntityOutput() EntityOutput {
 
 func (o EntityOutput) ToEntityOutputWithContext(ctx context.Context) EntityOutput {
 	return o
+}
+
+func (o EntityOutput) ToOutput(ctx context.Context) pulumix.Output[*Entity] {
+	return pulumix.Output[*Entity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifies the access mechanism to the entity. Not user settable.

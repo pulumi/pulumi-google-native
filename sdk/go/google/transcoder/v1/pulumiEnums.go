@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
@@ -82,6 +83,12 @@ func (o AnimationFadeFadeTypeOutput) ToAnimationFadeFadeTypePtrOutputWithContext
 	}).(AnimationFadeFadeTypePtrOutput)
 }
 
+func (o AnimationFadeFadeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationFadeFadeType] {
+	return pulumix.Output[AnimationFadeFadeType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AnimationFadeFadeTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o AnimationFadeFadeTypePtrOutput) ToAnimationFadeFadeTypePtrOutput() Anima
 
 func (o AnimationFadeFadeTypePtrOutput) ToAnimationFadeFadeTypePtrOutputWithContext(ctx context.Context) AnimationFadeFadeTypePtrOutput {
 	return o
+}
+
+func (o AnimationFadeFadeTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AnimationFadeFadeType] {
+	return pulumix.Output[*AnimationFadeFadeType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AnimationFadeFadeTypePtrOutput) Elem() AnimationFadeFadeTypeOutput {
@@ -177,6 +190,12 @@ func (in *animationFadeFadeTypePtr) ToAnimationFadeFadeTypePtrOutput() Animation
 
 func (in *animationFadeFadeTypePtr) ToAnimationFadeFadeTypePtrOutputWithContext(ctx context.Context) AnimationFadeFadeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AnimationFadeFadeTypePtrOutput)
+}
+
+func (in *animationFadeFadeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AnimationFadeFadeType] {
+	return pulumix.Output[*AnimationFadeFadeType]{
+		OutputState: in.ToAnimationFadeFadeTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
@@ -251,6 +270,12 @@ func (o JobModeOutput) ToJobModePtrOutputWithContext(ctx context.Context) JobMod
 	}).(JobModePtrOutput)
 }
 
+func (o JobModeOutput) ToOutput(ctx context.Context) pulumix.Output[JobMode] {
+	return pulumix.Output[JobMode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o JobModePtrOutput) ToJobModePtrOutput() JobModePtrOutput {
 
 func (o JobModePtrOutput) ToJobModePtrOutputWithContext(ctx context.Context) JobModePtrOutput {
 	return o
+}
+
+func (o JobModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobMode] {
+	return pulumix.Output[*JobMode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobModePtrOutput) Elem() JobModeOutput {
@@ -346,6 +377,12 @@ func (in *jobModePtr) ToJobModePtrOutput() JobModePtrOutput {
 
 func (in *jobModePtr) ToJobModePtrOutputWithContext(ctx context.Context) JobModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobModePtrOutput)
+}
+
+func (in *jobModePtr) ToOutput(ctx context.Context) pulumix.Output[*JobMode] {
+	return pulumix.Output[*JobMode]{
+		OutputState: in.ToJobModePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Type of the manifest.
@@ -420,6 +457,12 @@ func (o ManifestTypeOutput) ToManifestTypePtrOutputWithContext(ctx context.Conte
 	}).(ManifestTypePtrOutput)
 }
 
+func (o ManifestTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManifestType] {
+	return pulumix.Output[ManifestType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManifestTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -453,6 +496,12 @@ func (o ManifestTypePtrOutput) ToManifestTypePtrOutput() ManifestTypePtrOutput {
 
 func (o ManifestTypePtrOutput) ToManifestTypePtrOutputWithContext(ctx context.Context) ManifestTypePtrOutput {
 	return o
+}
+
+func (o ManifestTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManifestType] {
+	return pulumix.Output[*ManifestType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManifestTypePtrOutput) Elem() ManifestTypeOutput {
@@ -515,6 +564,12 @@ func (in *manifestTypePtr) ToManifestTypePtrOutput() ManifestTypePtrOutput {
 
 func (in *manifestTypePtr) ToManifestTypePtrOutputWithContext(ctx context.Context) ManifestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManifestTypePtrOutput)
+}
+
+func (in *manifestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManifestType] {
+	return pulumix.Output[*ManifestType]{
+		OutputState: in.ToManifestTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

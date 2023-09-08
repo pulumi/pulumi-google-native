@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
@@ -92,6 +93,12 @@ func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutput() Loo
 
 func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutputWithContext(ctx context.Context) LookupInstanceGroupResultOutput {
 	return o
+}
+
+func (o LookupInstanceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceGroupResult] {
+	return pulumix.Output[LookupInstanceGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp for this instance group in RFC3339 text format.

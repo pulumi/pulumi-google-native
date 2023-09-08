@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The provisioning model.
@@ -84,6 +85,12 @@ func (o InstancePolicyProvisioningModelOutput) ToInstancePolicyProvisioningModel
 	}).(InstancePolicyProvisioningModelPtrOutput)
 }
 
+func (o InstancePolicyProvisioningModelOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePolicyProvisioningModel] {
+	return pulumix.Output[InstancePolicyProvisioningModel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstancePolicyProvisioningModelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o InstancePolicyProvisioningModelPtrOutput) ToInstancePolicyProvisioningMo
 
 func (o InstancePolicyProvisioningModelPtrOutput) ToInstancePolicyProvisioningModelPtrOutputWithContext(ctx context.Context) InstancePolicyProvisioningModelPtrOutput {
 	return o
+}
+
+func (o InstancePolicyProvisioningModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePolicyProvisioningModel] {
+	return pulumix.Output[*InstancePolicyProvisioningModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePolicyProvisioningModelPtrOutput) Elem() InstancePolicyProvisioningModelOutput {
@@ -179,6 +192,12 @@ func (in *instancePolicyProvisioningModelPtr) ToInstancePolicyProvisioningModelP
 
 func (in *instancePolicyProvisioningModelPtr) ToInstancePolicyProvisioningModelPtrOutputWithContext(ctx context.Context) InstancePolicyProvisioningModelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePolicyProvisioningModelPtrOutput)
+}
+
+func (in *instancePolicyProvisioningModelPtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePolicyProvisioningModel] {
+	return pulumix.Output[*InstancePolicyProvisioningModel]{
+		OutputState: in.ToInstancePolicyProvisioningModelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
@@ -253,6 +272,12 @@ func (o LifecyclePolicyActionOutput) ToLifecyclePolicyActionPtrOutputWithContext
 	}).(LifecyclePolicyActionPtrOutput)
 }
 
+func (o LifecyclePolicyActionOutput) ToOutput(ctx context.Context) pulumix.Output[LifecyclePolicyAction] {
+	return pulumix.Output[LifecyclePolicyAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LifecyclePolicyActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o LifecyclePolicyActionPtrOutput) ToLifecyclePolicyActionPtrOutput() Lifec
 
 func (o LifecyclePolicyActionPtrOutput) ToLifecyclePolicyActionPtrOutputWithContext(ctx context.Context) LifecyclePolicyActionPtrOutput {
 	return o
+}
+
+func (o LifecyclePolicyActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LifecyclePolicyAction] {
+	return pulumix.Output[*LifecyclePolicyAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LifecyclePolicyActionPtrOutput) Elem() LifecyclePolicyActionOutput {
@@ -348,6 +379,12 @@ func (in *lifecyclePolicyActionPtr) ToLifecyclePolicyActionPtrOutput() Lifecycle
 
 func (in *lifecyclePolicyActionPtr) ToLifecyclePolicyActionPtrOutputWithContext(ctx context.Context) LifecyclePolicyActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LifecyclePolicyActionPtrOutput)
+}
+
+func (in *lifecyclePolicyActionPtr) ToOutput(ctx context.Context) pulumix.Output[*LifecyclePolicyAction] {
+	return pulumix.Output[*LifecyclePolicyAction]{
+		OutputState: in.ToLifecyclePolicyActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Where logs should be saved.
@@ -422,6 +459,12 @@ func (o LogsPolicyDestinationOutput) ToLogsPolicyDestinationPtrOutputWithContext
 	}).(LogsPolicyDestinationPtrOutput)
 }
 
+func (o LogsPolicyDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[LogsPolicyDestination] {
+	return pulumix.Output[LogsPolicyDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogsPolicyDestinationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -455,6 +498,12 @@ func (o LogsPolicyDestinationPtrOutput) ToLogsPolicyDestinationPtrOutput() LogsP
 
 func (o LogsPolicyDestinationPtrOutput) ToLogsPolicyDestinationPtrOutputWithContext(ctx context.Context) LogsPolicyDestinationPtrOutput {
 	return o
+}
+
+func (o LogsPolicyDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsPolicyDestination] {
+	return pulumix.Output[*LogsPolicyDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogsPolicyDestinationPtrOutput) Elem() LogsPolicyDestinationOutput {
@@ -517,6 +566,12 @@ func (in *logsPolicyDestinationPtr) ToLogsPolicyDestinationPtrOutput() LogsPolic
 
 func (in *logsPolicyDestinationPtr) ToLogsPolicyDestinationPtrOutputWithContext(ctx context.Context) LogsPolicyDestinationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogsPolicyDestinationPtrOutput)
+}
+
+func (in *logsPolicyDestinationPtr) ToOutput(ctx context.Context) pulumix.Output[*LogsPolicyDestination] {
+	return pulumix.Output[*LogsPolicyDestination]{
+		OutputState: in.ToLogsPolicyDestinationPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The new job state.
@@ -598,6 +653,12 @@ func (o MessageNewJobStateOutput) ToMessageNewJobStatePtrOutputWithContext(ctx c
 	}).(MessageNewJobStatePtrOutput)
 }
 
+func (o MessageNewJobStateOutput) ToOutput(ctx context.Context) pulumix.Output[MessageNewJobState] {
+	return pulumix.Output[MessageNewJobState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MessageNewJobStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -631,6 +692,12 @@ func (o MessageNewJobStatePtrOutput) ToMessageNewJobStatePtrOutput() MessageNewJ
 
 func (o MessageNewJobStatePtrOutput) ToMessageNewJobStatePtrOutputWithContext(ctx context.Context) MessageNewJobStatePtrOutput {
 	return o
+}
+
+func (o MessageNewJobStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageNewJobState] {
+	return pulumix.Output[*MessageNewJobState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MessageNewJobStatePtrOutput) Elem() MessageNewJobStateOutput {
@@ -693,6 +760,12 @@ func (in *messageNewJobStatePtr) ToMessageNewJobStatePtrOutput() MessageNewJobSt
 
 func (in *messageNewJobStatePtr) ToMessageNewJobStatePtrOutputWithContext(ctx context.Context) MessageNewJobStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MessageNewJobStatePtrOutput)
+}
+
+func (in *messageNewJobStatePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageNewJobState] {
+	return pulumix.Output[*MessageNewJobState]{
+		OutputState: in.ToMessageNewJobStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The new task state.
@@ -775,6 +848,12 @@ func (o MessageNewTaskStateOutput) ToMessageNewTaskStatePtrOutputWithContext(ctx
 	}).(MessageNewTaskStatePtrOutput)
 }
 
+func (o MessageNewTaskStateOutput) ToOutput(ctx context.Context) pulumix.Output[MessageNewTaskState] {
+	return pulumix.Output[MessageNewTaskState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MessageNewTaskStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -808,6 +887,12 @@ func (o MessageNewTaskStatePtrOutput) ToMessageNewTaskStatePtrOutput() MessageNe
 
 func (o MessageNewTaskStatePtrOutput) ToMessageNewTaskStatePtrOutputWithContext(ctx context.Context) MessageNewTaskStatePtrOutput {
 	return o
+}
+
+func (o MessageNewTaskStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageNewTaskState] {
+	return pulumix.Output[*MessageNewTaskState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MessageNewTaskStatePtrOutput) Elem() MessageNewTaskStateOutput {
@@ -870,6 +955,12 @@ func (in *messageNewTaskStatePtr) ToMessageNewTaskStatePtrOutput() MessageNewTas
 
 func (in *messageNewTaskStatePtr) ToMessageNewTaskStatePtrOutputWithContext(ctx context.Context) MessageNewTaskStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MessageNewTaskStatePtrOutput)
+}
+
+func (in *messageNewTaskStatePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageNewTaskState] {
+	return pulumix.Output[*MessageNewTaskState]{
+		OutputState: in.ToMessageNewTaskStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The message type.
@@ -944,6 +1035,12 @@ func (o MessageTypeOutput) ToMessageTypePtrOutputWithContext(ctx context.Context
 	}).(MessageTypePtrOutput)
 }
 
+func (o MessageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MessageType] {
+	return pulumix.Output[MessageType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MessageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -977,6 +1074,12 @@ func (o MessageTypePtrOutput) ToMessageTypePtrOutput() MessageTypePtrOutput {
 
 func (o MessageTypePtrOutput) ToMessageTypePtrOutputWithContext(ctx context.Context) MessageTypePtrOutput {
 	return o
+}
+
+func (o MessageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageType] {
+	return pulumix.Output[*MessageType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MessageTypePtrOutput) Elem() MessageTypeOutput {
@@ -1039,6 +1142,12 @@ func (in *messageTypePtr) ToMessageTypePtrOutput() MessageTypePtrOutput {
 
 func (in *messageTypePtr) ToMessageTypePtrOutputWithContext(ctx context.Context) MessageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MessageTypePtrOutput)
+}
+
+func (in *messageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageType] {
+	return pulumix.Output[*MessageType]{
+		OutputState: in.ToMessageTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

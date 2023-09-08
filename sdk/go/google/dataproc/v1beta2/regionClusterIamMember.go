@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -135,6 +136,12 @@ func (i *RegionClusterIamMember) ToRegionClusterIamMemberOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionClusterIamMemberOutput)
 }
 
+func (i *RegionClusterIamMember) ToOutput(ctx context.Context) pulumix.Output[*RegionClusterIamMember] {
+	return pulumix.Output[*RegionClusterIamMember]{
+		OutputState: i.ToRegionClusterIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionClusterIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegionClusterIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o RegionClusterIamMemberOutput) ToRegionClusterIamMemberOutput() RegionClu
 
 func (o RegionClusterIamMemberOutput) ToRegionClusterIamMemberOutputWithContext(ctx context.Context) RegionClusterIamMemberOutput {
 	return o
+}
+
+func (o RegionClusterIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionClusterIamMember] {
+	return pulumix.Output[*RegionClusterIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

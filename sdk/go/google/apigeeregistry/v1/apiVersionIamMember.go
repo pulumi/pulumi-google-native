@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *ApiVersionIamMember) ToApiVersionIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApiVersionIamMemberOutput)
 }
 
+func (i *ApiVersionIamMember) ToOutput(ctx context.Context) pulumix.Output[*ApiVersionIamMember] {
+	return pulumix.Output[*ApiVersionIamMember]{
+		OutputState: i.ToApiVersionIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiVersionIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ApiVersionIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o ApiVersionIamMemberOutput) ToApiVersionIamMemberOutput() ApiVersionIamMe
 
 func (o ApiVersionIamMemberOutput) ToApiVersionIamMemberOutputWithContext(ctx context.Context) ApiVersionIamMemberOutput {
 	return o
+}
+
+func (o ApiVersionIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiVersionIamMember] {
+	return pulumix.Output[*ApiVersionIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

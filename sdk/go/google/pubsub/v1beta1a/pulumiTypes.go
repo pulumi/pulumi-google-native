@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i PushConfigArgs) ToPushConfigOutput() PushConfigOutput {
 
 func (i PushConfigArgs) ToPushConfigOutputWithContext(ctx context.Context) PushConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PushConfigOutput)
+}
+
+func (i PushConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PushConfig] {
+	return pulumix.Output[PushConfig]{
+		OutputState: i.ToPushConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i PushConfigArgs) ToPushConfigPtrOutput() PushConfigPtrOutput {
@@ -89,6 +96,12 @@ func (i *pushConfigPtrType) ToPushConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PushConfigPtrOutput)
 }
 
+func (i *pushConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PushConfig] {
+	return pulumix.Output[*PushConfig]{
+		OutputState: i.ToPushConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for a push delivery endpoint.
 type PushConfigOutput struct{ *pulumi.OutputState }
 
@@ -114,6 +127,12 @@ func (o PushConfigOutput) ToPushConfigPtrOutputWithContext(ctx context.Context) 
 	}).(PushConfigPtrOutput)
 }
 
+func (o PushConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PushConfig] {
+	return pulumix.Output[PushConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
 func (o PushConfigOutput) PushEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PushConfig) *string { return v.PushEndpoint }).(pulumi.StringPtrOutput)
@@ -131,6 +150,12 @@ func (o PushConfigPtrOutput) ToPushConfigPtrOutput() PushConfigPtrOutput {
 
 func (o PushConfigPtrOutput) ToPushConfigPtrOutputWithContext(ctx context.Context) PushConfigPtrOutput {
 	return o
+}
+
+func (o PushConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PushConfig] {
+	return pulumix.Output[*PushConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PushConfigPtrOutput) Elem() PushConfigOutput {
@@ -172,6 +197,12 @@ func (o PushConfigResponseOutput) ToPushConfigResponseOutput() PushConfigRespons
 
 func (o PushConfigResponseOutput) ToPushConfigResponseOutputWithContext(ctx context.Context) PushConfigResponseOutput {
 	return o
+}
+
+func (o PushConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PushConfigResponse] {
+	return pulumix.Output[PushConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".

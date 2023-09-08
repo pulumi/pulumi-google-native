@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get details of a single NFS share.
@@ -82,6 +83,12 @@ func (o LookupNfsShareResultOutput) ToLookupNfsShareResultOutput() LookupNfsShar
 
 func (o LookupNfsShareResultOutput) ToLookupNfsShareResultOutputWithContext(ctx context.Context) LookupNfsShareResultOutput {
 	return o
+}
+
+func (o LookupNfsShareResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNfsShareResult] {
+	return pulumix.Output[LookupNfsShareResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of allowed access points.

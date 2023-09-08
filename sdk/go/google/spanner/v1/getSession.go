@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.
@@ -78,6 +79,12 @@ func (o LookupSessionResultOutput) ToLookupSessionResultOutput() LookupSessionRe
 
 func (o LookupSessionResultOutput) ToLookupSessionResultOutputWithContext(ctx context.Context) LookupSessionResultOutput {
 	return o
+}
+
+func (o LookupSessionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSessionResult] {
+	return pulumix.Output[LookupSessionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.

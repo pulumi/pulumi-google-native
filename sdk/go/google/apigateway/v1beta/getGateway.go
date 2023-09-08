@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Gateway.
@@ -82,6 +83,12 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutput() LookupGatewayRe
 
 func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx context.Context) LookupGatewayResultOutput {
 	return o
+}
+
+func (o LookupGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGatewayResult] {
+	return pulumix.Output[LookupGatewayResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}

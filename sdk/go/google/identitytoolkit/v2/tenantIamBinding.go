@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for a resource. If the policy exists, it is replaced. Caller must have the right Google IAM permission on the resource.
@@ -140,6 +141,12 @@ func (i *TenantIamBinding) ToTenantIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TenantIamBindingOutput)
 }
 
+func (i *TenantIamBinding) ToOutput(ctx context.Context) pulumix.Output[*TenantIamBinding] {
+	return pulumix.Output[*TenantIamBinding]{
+		OutputState: i.ToTenantIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TenantIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TenantIamBindingOutput) ElementType() reflect.Type {
@@ -152,6 +159,12 @@ func (o TenantIamBindingOutput) ToTenantIamBindingOutput() TenantIamBindingOutpu
 
 func (o TenantIamBindingOutput) ToTenantIamBindingOutputWithContext(ctx context.Context) TenantIamBindingOutput {
 	return o
+}
+
+func (o TenantIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantIamBinding] {
+	return pulumix.Output[*TenantIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

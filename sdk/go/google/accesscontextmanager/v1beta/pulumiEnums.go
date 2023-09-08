@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
@@ -80,6 +81,12 @@ func (o BasicLevelCombiningFunctionOutput) ToBasicLevelCombiningFunctionPtrOutpu
 	}).(BasicLevelCombiningFunctionPtrOutput)
 }
 
+func (o BasicLevelCombiningFunctionOutput) ToOutput(ctx context.Context) pulumix.Output[BasicLevelCombiningFunction] {
+	return pulumix.Output[BasicLevelCombiningFunction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BasicLevelCombiningFunctionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (o BasicLevelCombiningFunctionPtrOutput) ToBasicLevelCombiningFunctionPtrOu
 
 func (o BasicLevelCombiningFunctionPtrOutput) ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx context.Context) BasicLevelCombiningFunctionPtrOutput {
 	return o
+}
+
+func (o BasicLevelCombiningFunctionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicLevelCombiningFunction] {
+	return pulumix.Output[*BasicLevelCombiningFunction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicLevelCombiningFunctionPtrOutput) Elem() BasicLevelCombiningFunctionOutput {
@@ -175,6 +188,12 @@ func (in *basicLevelCombiningFunctionPtr) ToBasicLevelCombiningFunctionPtrOutput
 
 func (in *basicLevelCombiningFunctionPtr) ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx context.Context) BasicLevelCombiningFunctionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BasicLevelCombiningFunctionPtrOutput)
+}
+
+func (in *basicLevelCombiningFunctionPtr) ToOutput(ctx context.Context) pulumix.Output[*BasicLevelCombiningFunction] {
+	return pulumix.Output[*BasicLevelCombiningFunction]{
+		OutputState: in.ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type DevicePolicyAllowedDeviceManagementLevelsItem string
@@ -250,6 +269,12 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemOutput) ToDevicePolicyAllow
 	}).(DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput)
 }
 
+func (o DevicePolicyAllowedDeviceManagementLevelsItemOutput) ToOutput(ctx context.Context) pulumix.Output[DevicePolicyAllowedDeviceManagementLevelsItem] {
+	return pulumix.Output[DevicePolicyAllowedDeviceManagementLevelsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DevicePolicyAllowedDeviceManagementLevelsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -283,6 +308,12 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToDevicePolicyAl
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput {
 	return o
+}
+
+func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem] {
+	return pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) Elem() DevicePolicyAllowedDeviceManagementLevelsItemOutput {
@@ -347,6 +378,12 @@ func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToDevicePolicyAllowe
 	return pulumi.ToOutputWithContext(ctx, in).(DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput)
 }
 
+func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem] {
+	return pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem]{
+		OutputState: in.ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DevicePolicyAllowedDeviceManagementLevelsItemArrayInput is an input type that accepts DevicePolicyAllowedDeviceManagementLevelsItemArray and DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput values.
 // You can construct a concrete instance of `DevicePolicyAllowedDeviceManagementLevelsItemArrayInput` via:
 //
@@ -372,6 +409,12 @@ func (i DevicePolicyAllowedDeviceManagementLevelsItemArray) ToDevicePolicyAllowe
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput)
 }
 
+func (i DevicePolicyAllowedDeviceManagementLevelsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DevicePolicyAllowedDeviceManagementLevelsItem] {
+	return pulumix.Output[[]DevicePolicyAllowedDeviceManagementLevelsItem]{
+		OutputState: i.ToDevicePolicyAllowedDeviceManagementLevelsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput) ElementType() reflect.Type {
@@ -384,6 +427,12 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput) ToDevicePolicy
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput) ToDevicePolicyAllowedDeviceManagementLevelsItemArrayOutputWithContext(ctx context.Context) DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput {
 	return o
+}
+
+func (o DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DevicePolicyAllowedDeviceManagementLevelsItem] {
+	return pulumix.Output[[]DevicePolicyAllowedDeviceManagementLevelsItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput) Index(i pulumi.IntInput) DevicePolicyAllowedDeviceManagementLevelsItemOutput {
@@ -465,6 +514,12 @@ func (o DevicePolicyAllowedEncryptionStatusesItemOutput) ToDevicePolicyAllowedEn
 	}).(DevicePolicyAllowedEncryptionStatusesItemPtrOutput)
 }
 
+func (o DevicePolicyAllowedEncryptionStatusesItemOutput) ToOutput(ctx context.Context) pulumix.Output[DevicePolicyAllowedEncryptionStatusesItem] {
+	return pulumix.Output[DevicePolicyAllowedEncryptionStatusesItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DevicePolicyAllowedEncryptionStatusesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,6 +553,12 @@ func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToDevicePolicyAllowe
 
 func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToDevicePolicyAllowedEncryptionStatusesItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedEncryptionStatusesItemPtrOutput {
 	return o
+}
+
+func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem] {
+	return pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) Elem() DevicePolicyAllowedEncryptionStatusesItemOutput {
@@ -562,6 +623,12 @@ func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToDevicePolicyAllowedEnc
 	return pulumi.ToOutputWithContext(ctx, in).(DevicePolicyAllowedEncryptionStatusesItemPtrOutput)
 }
 
+func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem] {
+	return pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem]{
+		OutputState: in.ToDevicePolicyAllowedEncryptionStatusesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DevicePolicyAllowedEncryptionStatusesItemArrayInput is an input type that accepts DevicePolicyAllowedEncryptionStatusesItemArray and DevicePolicyAllowedEncryptionStatusesItemArrayOutput values.
 // You can construct a concrete instance of `DevicePolicyAllowedEncryptionStatusesItemArrayInput` via:
 //
@@ -587,6 +654,12 @@ func (i DevicePolicyAllowedEncryptionStatusesItemArray) ToDevicePolicyAllowedEnc
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyAllowedEncryptionStatusesItemArrayOutput)
 }
 
+func (i DevicePolicyAllowedEncryptionStatusesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DevicePolicyAllowedEncryptionStatusesItem] {
+	return pulumix.Output[[]DevicePolicyAllowedEncryptionStatusesItem]{
+		OutputState: i.ToDevicePolicyAllowedEncryptionStatusesItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DevicePolicyAllowedEncryptionStatusesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (DevicePolicyAllowedEncryptionStatusesItemArrayOutput) ElementType() reflect.Type {
@@ -599,6 +672,12 @@ func (o DevicePolicyAllowedEncryptionStatusesItemArrayOutput) ToDevicePolicyAllo
 
 func (o DevicePolicyAllowedEncryptionStatusesItemArrayOutput) ToDevicePolicyAllowedEncryptionStatusesItemArrayOutputWithContext(ctx context.Context) DevicePolicyAllowedEncryptionStatusesItemArrayOutput {
 	return o
+}
+
+func (o DevicePolicyAllowedEncryptionStatusesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DevicePolicyAllowedEncryptionStatusesItem] {
+	return pulumix.Output[[]DevicePolicyAllowedEncryptionStatusesItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePolicyAllowedEncryptionStatusesItemArrayOutput) Index(i pulumi.IntInput) DevicePolicyAllowedEncryptionStatusesItemOutput {
@@ -687,6 +766,12 @@ func (o OsConstraintOsTypeOutput) ToOsConstraintOsTypePtrOutputWithContext(ctx c
 	}).(OsConstraintOsTypePtrOutput)
 }
 
+func (o OsConstraintOsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OsConstraintOsType] {
+	return pulumix.Output[OsConstraintOsType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OsConstraintOsTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -720,6 +805,12 @@ func (o OsConstraintOsTypePtrOutput) ToOsConstraintOsTypePtrOutput() OsConstrain
 
 func (o OsConstraintOsTypePtrOutput) ToOsConstraintOsTypePtrOutputWithContext(ctx context.Context) OsConstraintOsTypePtrOutput {
 	return o
+}
+
+func (o OsConstraintOsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsConstraintOsType] {
+	return pulumix.Output[*OsConstraintOsType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OsConstraintOsTypePtrOutput) Elem() OsConstraintOsTypeOutput {
@@ -782,6 +873,12 @@ func (in *osConstraintOsTypePtr) ToOsConstraintOsTypePtrOutput() OsConstraintOsT
 
 func (in *osConstraintOsTypePtr) ToOsConstraintOsTypePtrOutputWithContext(ctx context.Context) OsConstraintOsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OsConstraintOsTypePtrOutput)
+}
+
+func (in *osConstraintOsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsConstraintOsType] {
+	return pulumix.Output[*OsConstraintOsType]{
+		OutputState: in.ToOsConstraintOsTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
@@ -854,6 +951,12 @@ func (o ServicePerimeterPerimeterTypeOutput) ToServicePerimeterPerimeterTypePtrO
 	}).(ServicePerimeterPerimeterTypePtrOutput)
 }
 
+func (o ServicePerimeterPerimeterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterPerimeterType] {
+	return pulumix.Output[ServicePerimeterPerimeterType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServicePerimeterPerimeterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -887,6 +990,12 @@ func (o ServicePerimeterPerimeterTypePtrOutput) ToServicePerimeterPerimeterTypeP
 
 func (o ServicePerimeterPerimeterTypePtrOutput) ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx context.Context) ServicePerimeterPerimeterTypePtrOutput {
 	return o
+}
+
+func (o ServicePerimeterPerimeterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterPerimeterType] {
+	return pulumix.Output[*ServicePerimeterPerimeterType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePerimeterPerimeterTypePtrOutput) Elem() ServicePerimeterPerimeterTypeOutput {
@@ -949,6 +1058,12 @@ func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOu
 
 func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx context.Context) ServicePerimeterPerimeterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServicePerimeterPerimeterTypePtrOutput)
+}
+
+func (in *servicePerimeterPerimeterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterPerimeterType] {
+	return pulumix.Output[*ServicePerimeterPerimeterType]{
+		OutputState: in.ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

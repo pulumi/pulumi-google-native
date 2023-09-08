@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a folder, replacing any existing policy. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder.
@@ -135,6 +136,12 @@ func (i *FolderIamMember) ToFolderIamMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FolderIamMemberOutput)
 }
 
+func (i *FolderIamMember) ToOutput(ctx context.Context) pulumix.Output[*FolderIamMember] {
+	return pulumix.Output[*FolderIamMember]{
+		OutputState: i.ToFolderIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FolderIamMemberOutput struct{ *pulumi.OutputState }
 
 func (FolderIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o FolderIamMemberOutput) ToFolderIamMemberOutput() FolderIamMemberOutput {
 
 func (o FolderIamMemberOutput) ToFolderIamMemberOutputWithContext(ctx context.Context) FolderIamMemberOutput {
 	return o
+}
+
+func (o FolderIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderIamMember] {
+	return pulumix.Output[*FolderIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

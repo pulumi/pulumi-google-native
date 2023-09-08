@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
@@ -82,6 +83,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToGoogleDatastoreA
 	}).(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput)
 }
 
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDatastoreAdminV1IndexedPropertyDirection] {
+	return pulumix.Output[GoogleDatastoreAdminV1IndexedPropertyDirection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -115,6 +122,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatasto
 
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
 	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDatastoreAdminV1IndexedPropertyDirection] {
+	return pulumix.Output[*GoogleDatastoreAdminV1IndexedPropertyDirection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) Elem() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
@@ -177,6 +190,12 @@ func (in *googleDatastoreAdminV1IndexedPropertyDirectionPtr) ToGoogleDatastoreAd
 
 func (in *googleDatastoreAdminV1IndexedPropertyDirectionPtr) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput)
+}
+
+func (in *googleDatastoreAdminV1IndexedPropertyDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDatastoreAdminV1IndexedPropertyDirection] {
+	return pulumix.Output[*GoogleDatastoreAdminV1IndexedPropertyDirection]{
+		OutputState: in.ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
@@ -251,6 +270,12 @@ func (o IndexAncestorOutput) ToIndexAncestorPtrOutputWithContext(ctx context.Con
 	}).(IndexAncestorPtrOutput)
 }
 
+func (o IndexAncestorOutput) ToOutput(ctx context.Context) pulumix.Output[IndexAncestor] {
+	return pulumix.Output[IndexAncestor]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IndexAncestorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutput() IndexAncestorPtrOutpu
 
 func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
 	return o
+}
+
+func (o IndexAncestorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexAncestor] {
+	return pulumix.Output[*IndexAncestor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IndexAncestorPtrOutput) Elem() IndexAncestorOutput {
@@ -346,6 +377,12 @@ func (in *indexAncestorPtr) ToIndexAncestorPtrOutput() IndexAncestorPtrOutput {
 
 func (in *indexAncestorPtr) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexAncestorPtrOutput)
+}
+
+func (in *indexAncestorPtr) ToOutput(ctx context.Context) pulumix.Output[*IndexAncestor] {
+	return pulumix.Output[*IndexAncestor]{
+		OutputState: in.ToIndexAncestorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

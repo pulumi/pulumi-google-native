@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves autoscaling policy.
@@ -75,6 +76,12 @@ func (o LookupAutoscalingPolicyResultOutput) ToLookupAutoscalingPolicyResultOutp
 
 func (o LookupAutoscalingPolicyResultOutput) ToLookupAutoscalingPolicyResultOutputWithContext(ctx context.Context) LookupAutoscalingPolicyResultOutput {
 	return o
+}
+
+func (o LookupAutoscalingPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAutoscalingPolicyResult] {
+	return pulumix.Output[LookupAutoscalingPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupAutoscalingPolicyResultOutput) BasicAlgorithm() BasicAutoscalingAlgorithmResponseOutput {

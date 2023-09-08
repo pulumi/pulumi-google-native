@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -135,6 +136,12 @@ func (i *LicenseCodeIamMember) ToLicenseCodeIamMemberOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseCodeIamMemberOutput)
 }
 
+func (i *LicenseCodeIamMember) ToOutput(ctx context.Context) pulumix.Output[*LicenseCodeIamMember] {
+	return pulumix.Output[*LicenseCodeIamMember]{
+		OutputState: i.ToLicenseCodeIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LicenseCodeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (LicenseCodeIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o LicenseCodeIamMemberOutput) ToLicenseCodeIamMemberOutput() LicenseCodeIa
 
 func (o LicenseCodeIamMemberOutput) ToLicenseCodeIamMemberOutputWithContext(ctx context.Context) LicenseCodeIamMemberOutput {
 	return o
+}
+
+func (o LicenseCodeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*LicenseCodeIamMember] {
+	return pulumix.Output[*LicenseCodeIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

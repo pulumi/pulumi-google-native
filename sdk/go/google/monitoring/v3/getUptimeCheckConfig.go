@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single Uptime check configuration.
@@ -92,6 +93,12 @@ func (o LookupUptimeCheckConfigResultOutput) ToLookupUptimeCheckConfigResultOutp
 
 func (o LookupUptimeCheckConfigResultOutput) ToLookupUptimeCheckConfigResultOutputWithContext(ctx context.Context) LookupUptimeCheckConfigResultOutput {
 	return o
+}
+
+func (o LookupUptimeCheckConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUptimeCheckConfigResult] {
+	return pulumix.Output[LookupUptimeCheckConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of checkers to use to execute the Uptime check.

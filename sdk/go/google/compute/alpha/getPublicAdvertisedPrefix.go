@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified PublicAdvertisedPrefix resource.
@@ -90,6 +91,12 @@ func (o LookupPublicAdvertisedPrefixResultOutput) ToLookupPublicAdvertisedPrefix
 
 func (o LookupPublicAdvertisedPrefixResultOutput) ToLookupPublicAdvertisedPrefixResultOutputWithContext(ctx context.Context) LookupPublicAdvertisedPrefixResultOutput {
 	return o
+}
+
+func (o LookupPublicAdvertisedPrefixResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPublicAdvertisedPrefixResult] {
+	return pulumix.Output[LookupPublicAdvertisedPrefixResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.

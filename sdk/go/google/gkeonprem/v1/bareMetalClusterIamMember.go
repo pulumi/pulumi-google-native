@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *BareMetalClusterIamMember) ToBareMetalClusterIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterIamMemberOutput)
 }
 
+func (i *BareMetalClusterIamMember) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterIamMember] {
+	return pulumix.Output[*BareMetalClusterIamMember]{
+		OutputState: i.ToBareMetalClusterIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BareMetalClusterIamMemberOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o BareMetalClusterIamMemberOutput) ToBareMetalClusterIamMemberOutput() Bar
 
 func (o BareMetalClusterIamMemberOutput) ToBareMetalClusterIamMemberOutputWithContext(ctx context.Context) BareMetalClusterIamMemberOutput {
 	return o
+}
+
+func (o BareMetalClusterIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterIamMember] {
+	return pulumix.Output[*BareMetalClusterIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
@@ -94,6 +95,12 @@ func (o LookupDeveloperResultOutput) ToLookupDeveloperResultOutput() LookupDevel
 
 func (o LookupDeveloperResultOutput) ToLookupDeveloperResultOutputWithContext(ctx context.Context) LookupDeveloperResultOutput {
 	return o
+}
+
+func (o LookupDeveloperResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeveloperResult] {
+	return pulumix.Output[LookupDeveloperResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access type.

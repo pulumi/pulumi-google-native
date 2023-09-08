@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error.
@@ -139,6 +140,12 @@ func (i *ConsentStore) ToConsentStoreOutputWithContext(ctx context.Context) Cons
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreOutput)
 }
 
+func (i *ConsentStore) ToOutput(ctx context.Context) pulumix.Output[*ConsentStore] {
+	return pulumix.Output[*ConsentStore]{
+		OutputState: i.ToConsentStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsentStoreOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreOutput) ElementType() reflect.Type {
@@ -151,6 +158,12 @@ func (o ConsentStoreOutput) ToConsentStoreOutput() ConsentStoreOutput {
 
 func (o ConsentStoreOutput) ToConsentStoreOutputWithContext(ctx context.Context) ConsentStoreOutput {
 	return o
+}
+
+func (o ConsentStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStore] {
+	return pulumix.Output[*ConsentStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.

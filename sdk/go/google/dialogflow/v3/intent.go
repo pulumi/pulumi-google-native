@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an intent in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
@@ -162,6 +163,12 @@ func (i *Intent) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentOutput)
 }
 
+func (i *Intent) ToOutput(ctx context.Context) pulumix.Output[*Intent] {
+	return pulumix.Output[*Intent]{
+		OutputState: i.ToIntentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntentOutput struct{ *pulumi.OutputState }
 
 func (IntentOutput) ElementType() reflect.Type {
@@ -174,6 +181,12 @@ func (o IntentOutput) ToIntentOutput() IntentOutput {
 
 func (o IntentOutput) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 	return o
+}
+
+func (o IntentOutput) ToOutput(ctx context.Context) pulumix.Output[*Intent] {
+	return pulumix.Output[*Intent]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntentOutput) AgentId() pulumi.StringOutput {

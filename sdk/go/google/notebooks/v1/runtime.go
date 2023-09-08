@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Runtime in a given project and location.
@@ -151,6 +152,12 @@ func (i *Runtime) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeOutput)
 }
 
+func (i *Runtime) ToOutput(ctx context.Context) pulumix.Output[*Runtime] {
+	return pulumix.Output[*Runtime]{
+		OutputState: i.ToRuntimeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeOutput struct{ *pulumi.OutputState }
 
 func (RuntimeOutput) ElementType() reflect.Type {
@@ -163,6 +170,12 @@ func (o RuntimeOutput) ToRuntimeOutput() RuntimeOutput {
 
 func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput {
 	return o
+}
+
+func (o RuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[*Runtime] {
+	return pulumix.Output[*Runtime]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The config settings for accessing runtime.

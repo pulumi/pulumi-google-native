@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *MeshIamPolicy) ToMeshIamPolicyOutputWithContext(ctx context.Context) Me
 	return pulumi.ToOutputWithContext(ctx, i).(MeshIamPolicyOutput)
 }
 
+func (i *MeshIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*MeshIamPolicy] {
+	return pulumix.Output[*MeshIamPolicy]{
+		OutputState: i.ToMeshIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MeshIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MeshIamPolicyOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o MeshIamPolicyOutput) ToMeshIamPolicyOutput() MeshIamPolicyOutput {
 
 func (o MeshIamPolicyOutput) ToMeshIamPolicyOutputWithContext(ctx context.Context) MeshIamPolicyOutput {
 	return o
+}
+
+func (o MeshIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*MeshIamPolicy] {
+	return pulumix.Output[*MeshIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
@@ -92,6 +93,12 @@ func (o AppEngineHttpTargetHttpMethodOutput) ToAppEngineHttpTargetHttpMethodPtrO
 	}).(AppEngineHttpTargetHttpMethodPtrOutput)
 }
 
+func (o AppEngineHttpTargetHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpTargetHttpMethod] {
+	return pulumix.Output[AppEngineHttpTargetHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEngineHttpTargetHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,6 +132,12 @@ func (o AppEngineHttpTargetHttpMethodPtrOutput) ToAppEngineHttpTargetHttpMethodP
 
 func (o AppEngineHttpTargetHttpMethodPtrOutput) ToAppEngineHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpTargetHttpMethodPtrOutput {
 	return o
+}
+
+func (o AppEngineHttpTargetHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpTargetHttpMethod] {
+	return pulumix.Output[*AppEngineHttpTargetHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEngineHttpTargetHttpMethodPtrOutput) Elem() AppEngineHttpTargetHttpMethodOutput {
@@ -187,6 +200,12 @@ func (in *appEngineHttpTargetHttpMethodPtr) ToAppEngineHttpTargetHttpMethodPtrOu
 
 func (in *appEngineHttpTargetHttpMethodPtr) ToAppEngineHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpTargetHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppEngineHttpTargetHttpMethodPtrOutput)
+}
+
+func (in *appEngineHttpTargetHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpTargetHttpMethod] {
+	return pulumix.Output[*AppEngineHttpTargetHttpMethod]{
+		OutputState: in.ToAppEngineHttpTargetHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Which HTTP method to use for the request.
@@ -271,6 +290,12 @@ func (o HttpTargetHttpMethodOutput) ToHttpTargetHttpMethodPtrOutputWithContext(c
 	}).(HttpTargetHttpMethodPtrOutput)
 }
 
+func (o HttpTargetHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTargetHttpMethod] {
+	return pulumix.Output[HttpTargetHttpMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpTargetHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -304,6 +329,12 @@ func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutput() HttpTar
 
 func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return o
+}
+
+func (o HttpTargetHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpTargetHttpMethod] {
+	return pulumix.Output[*HttpTargetHttpMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpTargetHttpMethodPtrOutput) Elem() HttpTargetHttpMethodOutput {
@@ -366,6 +397,12 @@ func (in *httpTargetHttpMethodPtr) ToHttpTargetHttpMethodPtrOutput() HttpTargetH
 
 func (in *httpTargetHttpMethodPtr) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpTargetHttpMethodPtrOutput)
+}
+
+func (in *httpTargetHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpTargetHttpMethod] {
+	return pulumix.Output[*HttpTargetHttpMethod]{
+		OutputState: in.ToHttpTargetHttpMethodPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

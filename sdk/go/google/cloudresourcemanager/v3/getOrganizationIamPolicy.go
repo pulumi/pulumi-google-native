@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for an organization resource. The policy may be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization.
@@ -70,6 +71,12 @@ func (o LookupOrganizationIamPolicyResultOutput) ToLookupOrganizationIamPolicyRe
 
 func (o LookupOrganizationIamPolicyResultOutput) ToLookupOrganizationIamPolicyResultOutputWithContext(ctx context.Context) LookupOrganizationIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupOrganizationIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationIamPolicyResult] {
+	return pulumix.Output[LookupOrganizationIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

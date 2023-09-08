@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of the database.
@@ -251,6 +270,12 @@ func (o DatabaseDumpDatabaseTypeOutput) ToDatabaseDumpDatabaseTypePtrOutputWithC
 	}).(DatabaseDumpDatabaseTypePtrOutput)
 }
 
+func (o DatabaseDumpDatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseDumpDatabaseType] {
+	return pulumix.Output[DatabaseDumpDatabaseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseDumpDatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -284,6 +309,12 @@ func (o DatabaseDumpDatabaseTypePtrOutput) ToDatabaseDumpDatabaseTypePtrOutput()
 
 func (o DatabaseDumpDatabaseTypePtrOutput) ToDatabaseDumpDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseDumpDatabaseTypePtrOutput {
 	return o
+}
+
+func (o DatabaseDumpDatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDumpDatabaseType] {
+	return pulumix.Output[*DatabaseDumpDatabaseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseDumpDatabaseTypePtrOutput) Elem() DatabaseDumpDatabaseTypeOutput {
@@ -346,6 +377,12 @@ func (in *databaseDumpDatabaseTypePtr) ToDatabaseDumpDatabaseTypePtrOutput() Dat
 
 func (in *databaseDumpDatabaseTypePtr) ToDatabaseDumpDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseDumpDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDumpDatabaseTypePtrOutput)
+}
+
+func (in *databaseDumpDatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDumpDatabaseType] {
+	return pulumix.Output[*DatabaseDumpDatabaseType]{
+		OutputState: in.ToDatabaseDumpDatabaseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The type of the database dump. If unspecified, defaults to MYSQL.
@@ -420,6 +457,12 @@ func (o DatabaseDumpTypeOutput) ToDatabaseDumpTypePtrOutputWithContext(ctx conte
 	}).(DatabaseDumpTypePtrOutput)
 }
 
+func (o DatabaseDumpTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseDumpType] {
+	return pulumix.Output[DatabaseDumpType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseDumpTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -453,6 +496,12 @@ func (o DatabaseDumpTypePtrOutput) ToDatabaseDumpTypePtrOutput() DatabaseDumpTyp
 
 func (o DatabaseDumpTypePtrOutput) ToDatabaseDumpTypePtrOutputWithContext(ctx context.Context) DatabaseDumpTypePtrOutput {
 	return o
+}
+
+func (o DatabaseDumpTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDumpType] {
+	return pulumix.Output[*DatabaseDumpType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseDumpTypePtrOutput) Elem() DatabaseDumpTypeOutput {
@@ -515,6 +564,12 @@ func (in *databaseDumpTypePtr) ToDatabaseDumpTypePtrOutput() DatabaseDumpTypePtr
 
 func (in *databaseDumpTypePtr) ToDatabaseDumpTypePtrOutputWithContext(ctx context.Context) DatabaseDumpTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDumpTypePtrOutput)
+}
+
+func (in *databaseDumpTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDumpType] {
+	return pulumix.Output[*DatabaseDumpType]{
+		OutputState: in.ToDatabaseDumpTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
@@ -589,6 +644,12 @@ func (o HiveMetastoreConfigEndpointProtocolOutput) ToHiveMetastoreConfigEndpoint
 	}).(HiveMetastoreConfigEndpointProtocolPtrOutput)
 }
 
+func (o HiveMetastoreConfigEndpointProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[HiveMetastoreConfigEndpointProtocol] {
+	return pulumix.Output[HiveMetastoreConfigEndpointProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HiveMetastoreConfigEndpointProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -622,6 +683,12 @@ func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToHiveMetastoreConfigEndpo
 
 func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput {
 	return o
+}
+
+func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HiveMetastoreConfigEndpointProtocol] {
+	return pulumix.Output[*HiveMetastoreConfigEndpointProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HiveMetastoreConfigEndpointProtocolPtrOutput) Elem() HiveMetastoreConfigEndpointProtocolOutput {
@@ -684,6 +751,12 @@ func (in *hiveMetastoreConfigEndpointProtocolPtr) ToHiveMetastoreConfigEndpointP
 
 func (in *hiveMetastoreConfigEndpointProtocolPtr) ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HiveMetastoreConfigEndpointProtocolPtrOutput)
+}
+
+func (in *hiveMetastoreConfigEndpointProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*HiveMetastoreConfigEndpointProtocol] {
+	return pulumix.Output[*HiveMetastoreConfigEndpointProtocol]{
+		OutputState: in.ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The day of week, when the window starts.
@@ -768,6 +841,12 @@ func (o MaintenanceWindowDayOfWeekOutput) ToMaintenanceWindowDayOfWeekPtrOutputW
 	}).(MaintenanceWindowDayOfWeekPtrOutput)
 }
 
+func (o MaintenanceWindowDayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowDayOfWeek] {
+	return pulumix.Output[MaintenanceWindowDayOfWeek]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MaintenanceWindowDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -801,6 +880,12 @@ func (o MaintenanceWindowDayOfWeekPtrOutput) ToMaintenanceWindowDayOfWeekPtrOutp
 
 func (o MaintenanceWindowDayOfWeekPtrOutput) ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayOfWeekPtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowDayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowDayOfWeek] {
+	return pulumix.Output[*MaintenanceWindowDayOfWeek]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MaintenanceWindowDayOfWeekPtrOutput) Elem() MaintenanceWindowDayOfWeekOutput {
@@ -863,6 +948,12 @@ func (in *maintenanceWindowDayOfWeekPtr) ToMaintenanceWindowDayOfWeekPtrOutput()
 
 func (in *maintenanceWindowDayOfWeekPtr) ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowDayOfWeekPtrOutput)
+}
+
+func (in *maintenanceWindowDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowDayOfWeek] {
+	return pulumix.Output[*MaintenanceWindowDayOfWeek]{
+		OutputState: in.ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
@@ -943,6 +1034,12 @@ func (o ScalingConfigInstanceSizeOutput) ToScalingConfigInstanceSizePtrOutputWit
 	}).(ScalingConfigInstanceSizePtrOutput)
 }
 
+func (o ScalingConfigInstanceSizeOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigInstanceSize] {
+	return pulumix.Output[ScalingConfigInstanceSize]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScalingConfigInstanceSizeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -976,6 +1073,12 @@ func (o ScalingConfigInstanceSizePtrOutput) ToScalingConfigInstanceSizePtrOutput
 
 func (o ScalingConfigInstanceSizePtrOutput) ToScalingConfigInstanceSizePtrOutputWithContext(ctx context.Context) ScalingConfigInstanceSizePtrOutput {
 	return o
+}
+
+func (o ScalingConfigInstanceSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingConfigInstanceSize] {
+	return pulumix.Output[*ScalingConfigInstanceSize]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScalingConfigInstanceSizePtrOutput) Elem() ScalingConfigInstanceSizeOutput {
@@ -1038,6 +1141,12 @@ func (in *scalingConfigInstanceSizePtr) ToScalingConfigInstanceSizePtrOutput() S
 
 func (in *scalingConfigInstanceSizePtr) ToScalingConfigInstanceSizePtrOutputWithContext(ctx context.Context) ScalingConfigInstanceSizePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScalingConfigInstanceSizePtrOutput)
+}
+
+func (in *scalingConfigInstanceSizePtr) ToOutput(ctx context.Context) pulumix.Output[*ScalingConfigInstanceSize] {
+	return pulumix.Output[*ScalingConfigInstanceSize]{
+		OutputState: in.ToScalingConfigInstanceSizePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The database type that the Metastore service stores its data.
@@ -1112,6 +1221,12 @@ func (o ServiceDatabaseTypeOutput) ToServiceDatabaseTypePtrOutputWithContext(ctx
 	}).(ServiceDatabaseTypePtrOutput)
 }
 
+func (o ServiceDatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceDatabaseType] {
+	return pulumix.Output[ServiceDatabaseType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceDatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1145,6 +1260,12 @@ func (o ServiceDatabaseTypePtrOutput) ToServiceDatabaseTypePtrOutput() ServiceDa
 
 func (o ServiceDatabaseTypePtrOutput) ToServiceDatabaseTypePtrOutputWithContext(ctx context.Context) ServiceDatabaseTypePtrOutput {
 	return o
+}
+
+func (o ServiceDatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceDatabaseType] {
+	return pulumix.Output[*ServiceDatabaseType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceDatabaseTypePtrOutput) Elem() ServiceDatabaseTypeOutput {
@@ -1207,6 +1328,12 @@ func (in *serviceDatabaseTypePtr) ToServiceDatabaseTypePtrOutput() ServiceDataba
 
 func (in *serviceDatabaseTypePtr) ToServiceDatabaseTypePtrOutputWithContext(ctx context.Context) ServiceDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceDatabaseTypePtrOutput)
+}
+
+func (in *serviceDatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceDatabaseType] {
+	return pulumix.Output[*ServiceDatabaseType]{
+		OutputState: in.ToServiceDatabaseTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -1281,6 +1408,12 @@ func (o ServiceReleaseChannelOutput) ToServiceReleaseChannelPtrOutputWithContext
 	}).(ServiceReleaseChannelPtrOutput)
 }
 
+func (o ServiceReleaseChannelOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceReleaseChannel] {
+	return pulumix.Output[ServiceReleaseChannel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceReleaseChannelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1314,6 +1447,12 @@ func (o ServiceReleaseChannelPtrOutput) ToServiceReleaseChannelPtrOutput() Servi
 
 func (o ServiceReleaseChannelPtrOutput) ToServiceReleaseChannelPtrOutputWithContext(ctx context.Context) ServiceReleaseChannelPtrOutput {
 	return o
+}
+
+func (o ServiceReleaseChannelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceReleaseChannel] {
+	return pulumix.Output[*ServiceReleaseChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceReleaseChannelPtrOutput) Elem() ServiceReleaseChannelOutput {
@@ -1376,6 +1515,12 @@ func (in *serviceReleaseChannelPtr) ToServiceReleaseChannelPtrOutput() ServiceRe
 
 func (in *serviceReleaseChannelPtr) ToServiceReleaseChannelPtrOutputWithContext(ctx context.Context) ServiceReleaseChannelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceReleaseChannelPtrOutput)
+}
+
+func (in *serviceReleaseChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceReleaseChannel] {
+	return pulumix.Output[*ServiceReleaseChannel]{
+		OutputState: in.ToServiceReleaseChannelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The tier of the service.
@@ -1450,6 +1595,12 @@ func (o ServiceTierOutput) ToServiceTierPtrOutputWithContext(ctx context.Context
 	}).(ServiceTierPtrOutput)
 }
 
+func (o ServiceTierOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTier] {
+	return pulumix.Output[ServiceTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1483,6 +1634,12 @@ func (o ServiceTierPtrOutput) ToServiceTierPtrOutput() ServiceTierPtrOutput {
 
 func (o ServiceTierPtrOutput) ToServiceTierPtrOutputWithContext(ctx context.Context) ServiceTierPtrOutput {
 	return o
+}
+
+func (o ServiceTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTier] {
+	return pulumix.Output[*ServiceTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTierPtrOutput) Elem() ServiceTierOutput {
@@ -1545,6 +1702,12 @@ func (in *serviceTierPtr) ToServiceTierPtrOutput() ServiceTierPtrOutput {
 
 func (in *serviceTierPtr) ToServiceTierPtrOutputWithContext(ctx context.Context) ServiceTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceTierPtrOutput)
+}
+
+func (in *serviceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceTier] {
+	return pulumix.Output[*ServiceTier]{
+		OutputState: in.ToServiceTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The output format of the Dataproc Metastore service's logs.
@@ -1619,6 +1782,12 @@ func (o TelemetryConfigLogFormatOutput) ToTelemetryConfigLogFormatPtrOutputWithC
 	}).(TelemetryConfigLogFormatPtrOutput)
 }
 
+func (o TelemetryConfigLogFormatOutput) ToOutput(ctx context.Context) pulumix.Output[TelemetryConfigLogFormat] {
+	return pulumix.Output[TelemetryConfigLogFormat]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TelemetryConfigLogFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1652,6 +1821,12 @@ func (o TelemetryConfigLogFormatPtrOutput) ToTelemetryConfigLogFormatPtrOutput()
 
 func (o TelemetryConfigLogFormatPtrOutput) ToTelemetryConfigLogFormatPtrOutputWithContext(ctx context.Context) TelemetryConfigLogFormatPtrOutput {
 	return o
+}
+
+func (o TelemetryConfigLogFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TelemetryConfigLogFormat] {
+	return pulumix.Output[*TelemetryConfigLogFormat]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TelemetryConfigLogFormatPtrOutput) Elem() TelemetryConfigLogFormatOutput {
@@ -1714,6 +1889,12 @@ func (in *telemetryConfigLogFormatPtr) ToTelemetryConfigLogFormatPtrOutput() Tel
 
 func (in *telemetryConfigLogFormatPtr) ToTelemetryConfigLogFormatPtrOutputWithContext(ctx context.Context) TelemetryConfigLogFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TelemetryConfigLogFormatPtrOutput)
+}
+
+func (in *telemetryConfigLogFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*TelemetryConfigLogFormat] {
+	return pulumix.Output[*TelemetryConfigLogFormat]{
+		OutputState: in.ToTelemetryConfigLogFormatPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

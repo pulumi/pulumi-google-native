@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -135,6 +136,12 @@ func (i *ResourcePolicyIamMember) ToResourcePolicyIamMemberOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyIamMemberOutput)
 }
 
+func (i *ResourcePolicyIamMember) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyIamMember] {
+	return pulumix.Output[*ResourcePolicyIamMember]{
+		OutputState: i.ToResourcePolicyIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourcePolicyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ResourcePolicyIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o ResourcePolicyIamMemberOutput) ToResourcePolicyIamMemberOutput() Resourc
 
 func (o ResourcePolicyIamMemberOutput) ToResourcePolicyIamMemberOutputWithContext(ctx context.Context) ResourcePolicyIamMemberOutput {
 	return o
+}
+
+func (o ResourcePolicyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyIamMember] {
+	return pulumix.Output[*ResourcePolicyIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

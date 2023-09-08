@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Attribute definition in the parent consent store.
@@ -164,6 +165,12 @@ func (i *AttributeDefinition) ToAttributeDefinitionOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AttributeDefinitionOutput)
 }
 
+func (i *AttributeDefinition) ToOutput(ctx context.Context) pulumix.Output[*AttributeDefinition] {
+	return pulumix.Output[*AttributeDefinition]{
+		OutputState: i.ToAttributeDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttributeDefinitionOutput struct{ *pulumi.OutputState }
 
 func (AttributeDefinitionOutput) ElementType() reflect.Type {
@@ -176,6 +183,12 @@ func (o AttributeDefinitionOutput) ToAttributeDefinitionOutput() AttributeDefini
 
 func (o AttributeDefinitionOutput) ToAttributeDefinitionOutputWithContext(ctx context.Context) AttributeDefinitionOutput {
 	return o
+}
+
+func (o AttributeDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*AttributeDefinition] {
+	return pulumix.Output[*AttributeDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ClientGateway in a given project and location.
@@ -123,6 +124,12 @@ func (i *ClientGateway) ToClientGatewayOutputWithContext(ctx context.Context) Cl
 	return pulumi.ToOutputWithContext(ctx, i).(ClientGatewayOutput)
 }
 
+func (i *ClientGateway) ToOutput(ctx context.Context) pulumix.Output[*ClientGateway] {
+	return pulumix.Output[*ClientGateway]{
+		OutputState: i.ToClientGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClientGatewayOutput struct{ *pulumi.OutputState }
 
 func (ClientGatewayOutput) ElementType() reflect.Type {
@@ -135,6 +142,12 @@ func (o ClientGatewayOutput) ToClientGatewayOutput() ClientGatewayOutput {
 
 func (o ClientGatewayOutput) ToClientGatewayOutputWithContext(ctx context.Context) ClientGatewayOutput {
 	return o
+}
+
+func (o ClientGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientGateway] {
+	return pulumix.Output[*ClientGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The client connector service name that the client gateway is associated to. Client Connector Services, named as follows: `projects/{project_id}/locations/{location_id}/client_connector_services/{client_connector_service_id}`.

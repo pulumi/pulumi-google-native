@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Repository in a given project and location.
@@ -129,6 +130,12 @@ func (i *Repository) ToRepositoryOutputWithContext(ctx context.Context) Reposito
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryOutput)
 }
 
+func (i *Repository) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
+	return pulumix.Output[*Repository]{
+		OutputState: i.ToRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryOutput) ElementType() reflect.Type {
@@ -141,6 +148,12 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
+}
+
+func (o RepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
+	return pulumix.Output[*Repository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. If set, configures this repository to be linked to a Git remote.

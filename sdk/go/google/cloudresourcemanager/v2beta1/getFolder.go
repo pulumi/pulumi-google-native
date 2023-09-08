@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
@@ -72,6 +73,12 @@ func (o LookupFolderResultOutput) ToLookupFolderResultOutput() LookupFolderResul
 
 func (o LookupFolderResultOutput) ToLookupFolderResultOutputWithContext(ctx context.Context) LookupFolderResultOutput {
 	return o
+}
+
+func (o LookupFolderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFolderResult] {
+	return pulumix.Output[LookupFolderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Timestamp when the Folder was created. Assigned by the server.

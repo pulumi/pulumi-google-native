@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
@@ -174,6 +175,12 @@ func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyO
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyOutput)
 }
 
+func (i *CryptoKey) ToOutput(ctx context.Context) pulumix.Output[*CryptoKey] {
+	return pulumix.Output[*CryptoKey]{
+		OutputState: i.ToCryptoKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyOutput) ElementType() reflect.Type {
@@ -186,6 +193,12 @@ func (o CryptoKeyOutput) ToCryptoKeyOutput() CryptoKeyOutput {
 
 func (o CryptoKeyOutput) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyOutput {
 	return o
+}
+
+func (o CryptoKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKey] {
+	return pulumix.Output[*CryptoKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which this CryptoKey was created.

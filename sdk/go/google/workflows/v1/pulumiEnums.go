@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
@@ -84,6 +85,12 @@ func (o WorkflowCallLogLevelOutput) ToWorkflowCallLogLevelPtrOutputWithContext(c
 	}).(WorkflowCallLogLevelPtrOutput)
 }
 
+func (o WorkflowCallLogLevelOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowCallLogLevel] {
+	return pulumix.Output[WorkflowCallLogLevel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkflowCallLogLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o WorkflowCallLogLevelPtrOutput) ToWorkflowCallLogLevelPtrOutput() Workflo
 
 func (o WorkflowCallLogLevelPtrOutput) ToWorkflowCallLogLevelPtrOutputWithContext(ctx context.Context) WorkflowCallLogLevelPtrOutput {
 	return o
+}
+
+func (o WorkflowCallLogLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowCallLogLevel] {
+	return pulumix.Output[*WorkflowCallLogLevel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkflowCallLogLevelPtrOutput) Elem() WorkflowCallLogLevelOutput {
@@ -179,6 +192,12 @@ func (in *workflowCallLogLevelPtr) ToWorkflowCallLogLevelPtrOutput() WorkflowCal
 
 func (in *workflowCallLogLevelPtr) ToWorkflowCallLogLevelPtrOutputWithContext(ctx context.Context) WorkflowCallLogLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkflowCallLogLevelPtrOutput)
+}
+
+func (in *workflowCallLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkflowCallLogLevel] {
+	return pulumix.Output[*WorkflowCallLogLevel]{
+		OutputState: in.ToWorkflowCallLogLevelPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

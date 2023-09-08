@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Source.
@@ -80,6 +81,12 @@ func (o LookupSourceResultOutput) ToLookupSourceResultOutput() LookupSourceResul
 
 func (o LookupSourceResultOutput) ToLookupSourceResultOutputWithContext(ctx context.Context) LookupSourceResultOutput {
 	return o
+}
+
+func (o LookupSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSourceResult] {
+	return pulumix.Output[LookupSourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS type source details.

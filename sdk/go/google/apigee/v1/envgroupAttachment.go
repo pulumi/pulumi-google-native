@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new attachment of an environment to an environment group.
@@ -123,6 +124,12 @@ func (i *EnvgroupAttachment) ToEnvgroupAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EnvgroupAttachmentOutput)
 }
 
+func (i *EnvgroupAttachment) ToOutput(ctx context.Context) pulumix.Output[*EnvgroupAttachment] {
+	return pulumix.Output[*EnvgroupAttachment]{
+		OutputState: i.ToEnvgroupAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvgroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EnvgroupAttachmentOutput) ElementType() reflect.Type {
@@ -135,6 +142,12 @@ func (o EnvgroupAttachmentOutput) ToEnvgroupAttachmentOutput() EnvgroupAttachmen
 
 func (o EnvgroupAttachmentOutput) ToEnvgroupAttachmentOutputWithContext(ctx context.Context) EnvgroupAttachmentOutput {
 	return o
+}
+
+func (o EnvgroupAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvgroupAttachment] {
+	return pulumix.Output[*EnvgroupAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the environment group attachment was created as milliseconds since epoch.

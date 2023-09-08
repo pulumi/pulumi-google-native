@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
@@ -86,6 +87,12 @@ func (o LookupRuntimeResultOutput) ToLookupRuntimeResultOutput() LookupRuntimeRe
 
 func (o LookupRuntimeResultOutput) ToLookupRuntimeResultOutputWithContext(ctx context.Context) LookupRuntimeResultOutput {
 	return o
+}
+
+func (o LookupRuntimeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRuntimeResult] {
+	return pulumix.Output[LookupRuntimeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The config settings for accessing runtime.

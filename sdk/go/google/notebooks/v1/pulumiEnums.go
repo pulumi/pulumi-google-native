@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of this accelerator.
@@ -100,6 +101,12 @@ func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypePtrOutputWithContext
 	}).(AcceleratorConfigTypePtrOutput)
 }
 
+func (o AcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfigType] {
+	return pulumix.Output[AcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -133,6 +140,12 @@ func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutput() Accel
 
 func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o AcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
+	return pulumix.Output[*AcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AcceleratorConfigTypePtrOutput) Elem() AcceleratorConfigTypeOutput {
@@ -195,6 +208,12 @@ func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutput() Accelerat
 
 func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
+}
+
+func (in *acceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
+	return pulumix.Output[*AcceleratorConfigType]{
+		OutputState: in.ToAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of Job to be used on this execution.
@@ -269,6 +288,12 @@ func (o ExecutionTemplateJobTypeOutput) ToExecutionTemplateJobTypePtrOutputWithC
 	}).(ExecutionTemplateJobTypePtrOutput)
 }
 
+func (o ExecutionTemplateJobTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionTemplateJobType] {
+	return pulumix.Output[ExecutionTemplateJobType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExecutionTemplateJobTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -302,6 +327,12 @@ func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutput()
 
 func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
 	return o
+}
+
+func (o ExecutionTemplateJobTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateJobType] {
+	return pulumix.Output[*ExecutionTemplateJobType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecutionTemplateJobTypePtrOutput) Elem() ExecutionTemplateJobTypeOutput {
@@ -364,6 +395,12 @@ func (in *executionTemplateJobTypePtr) ToExecutionTemplateJobTypePtrOutput() Exe
 
 func (in *executionTemplateJobTypePtr) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateJobTypePtrOutput)
+}
+
+func (in *executionTemplateJobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateJobType] {
+	return pulumix.Output[*ExecutionTemplateJobType]{
+		OutputState: in.ToExecutionTemplateJobTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
@@ -446,6 +483,12 @@ func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierPtrOutputW
 	}).(ExecutionTemplateScaleTierPtrOutput)
 }
 
+func (o ExecutionTemplateScaleTierOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionTemplateScaleTier] {
+	return pulumix.Output[ExecutionTemplateScaleTier]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExecutionTemplateScaleTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -479,6 +522,12 @@ func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutp
 
 func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
 	return o
+}
+
+func (o ExecutionTemplateScaleTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateScaleTier] {
+	return pulumix.Output[*ExecutionTemplateScaleTier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExecutionTemplateScaleTierPtrOutput) Elem() ExecutionTemplateScaleTierOutput {
@@ -541,6 +590,12 @@ func (in *executionTemplateScaleTierPtr) ToExecutionTemplateScaleTierPtrOutput()
 
 func (in *executionTemplateScaleTierPtr) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateScaleTierPtrOutput)
+}
+
+func (in *executionTemplateScaleTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateScaleTier] {
+	return pulumix.Output[*ExecutionTemplateScaleTier]{
+		OutputState: in.ToExecutionTemplateScaleTierPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
@@ -619,6 +674,12 @@ func (o InstanceBootDiskTypeOutput) ToInstanceBootDiskTypePtrOutputWithContext(c
 	}).(InstanceBootDiskTypePtrOutput)
 }
 
+func (o InstanceBootDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceBootDiskType] {
+	return pulumix.Output[InstanceBootDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceBootDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -652,6 +713,12 @@ func (o InstanceBootDiskTypePtrOutput) ToInstanceBootDiskTypePtrOutput() Instanc
 
 func (o InstanceBootDiskTypePtrOutput) ToInstanceBootDiskTypePtrOutputWithContext(ctx context.Context) InstanceBootDiskTypePtrOutput {
 	return o
+}
+
+func (o InstanceBootDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceBootDiskType] {
+	return pulumix.Output[*InstanceBootDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceBootDiskTypePtrOutput) Elem() InstanceBootDiskTypeOutput {
@@ -714,6 +781,12 @@ func (in *instanceBootDiskTypePtr) ToInstanceBootDiskTypePtrOutput() InstanceBoo
 
 func (in *instanceBootDiskTypePtr) ToInstanceBootDiskTypePtrOutputWithContext(ctx context.Context) InstanceBootDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceBootDiskTypePtrOutput)
+}
+
+func (in *instanceBootDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceBootDiskType] {
+	return pulumix.Output[*InstanceBootDiskType]{
+		OutputState: in.ToInstanceBootDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
@@ -792,6 +865,12 @@ func (o InstanceDataDiskTypeOutput) ToInstanceDataDiskTypePtrOutputWithContext(c
 	}).(InstanceDataDiskTypePtrOutput)
 }
 
+func (o InstanceDataDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDataDiskType] {
+	return pulumix.Output[InstanceDataDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceDataDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -825,6 +904,12 @@ func (o InstanceDataDiskTypePtrOutput) ToInstanceDataDiskTypePtrOutput() Instanc
 
 func (o InstanceDataDiskTypePtrOutput) ToInstanceDataDiskTypePtrOutputWithContext(ctx context.Context) InstanceDataDiskTypePtrOutput {
 	return o
+}
+
+func (o InstanceDataDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDataDiskType] {
+	return pulumix.Output[*InstanceDataDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDataDiskTypePtrOutput) Elem() InstanceDataDiskTypeOutput {
@@ -887,6 +972,12 @@ func (in *instanceDataDiskTypePtr) ToInstanceDataDiskTypePtrOutput() InstanceDat
 
 func (in *instanceDataDiskTypePtr) ToInstanceDataDiskTypePtrOutputWithContext(ctx context.Context) InstanceDataDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceDataDiskTypePtrOutput)
+}
+
+func (in *instanceDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceDataDiskType] {
+	return pulumix.Output[*InstanceDataDiskType]{
+		OutputState: in.ToInstanceDataDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
@@ -961,6 +1052,12 @@ func (o InstanceDiskEncryptionOutput) ToInstanceDiskEncryptionPtrOutputWithConte
 	}).(InstanceDiskEncryptionPtrOutput)
 }
 
+func (o InstanceDiskEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDiskEncryption] {
+	return pulumix.Output[InstanceDiskEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceDiskEncryptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -994,6 +1091,12 @@ func (o InstanceDiskEncryptionPtrOutput) ToInstanceDiskEncryptionPtrOutput() Ins
 
 func (o InstanceDiskEncryptionPtrOutput) ToInstanceDiskEncryptionPtrOutputWithContext(ctx context.Context) InstanceDiskEncryptionPtrOutput {
 	return o
+}
+
+func (o InstanceDiskEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDiskEncryption] {
+	return pulumix.Output[*InstanceDiskEncryption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDiskEncryptionPtrOutput) Elem() InstanceDiskEncryptionOutput {
@@ -1056,6 +1159,12 @@ func (in *instanceDiskEncryptionPtr) ToInstanceDiskEncryptionPtrOutput() Instanc
 
 func (in *instanceDiskEncryptionPtr) ToInstanceDiskEncryptionPtrOutputWithContext(ctx context.Context) InstanceDiskEncryptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceDiskEncryptionPtrOutput)
+}
+
+func (in *instanceDiskEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceDiskEncryption] {
+	return pulumix.Output[*InstanceDiskEncryption]{
+		OutputState: in.ToInstanceDiskEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -1130,6 +1239,12 @@ func (o InstanceNicTypeOutput) ToInstanceNicTypePtrOutputWithContext(ctx context
 	}).(InstanceNicTypePtrOutput)
 }
 
+func (o InstanceNicTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceNicType] {
+	return pulumix.Output[InstanceNicType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceNicTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1163,6 +1278,12 @@ func (o InstanceNicTypePtrOutput) ToInstanceNicTypePtrOutput() InstanceNicTypePt
 
 func (o InstanceNicTypePtrOutput) ToInstanceNicTypePtrOutputWithContext(ctx context.Context) InstanceNicTypePtrOutput {
 	return o
+}
+
+func (o InstanceNicTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceNicType] {
+	return pulumix.Output[*InstanceNicType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceNicTypePtrOutput) Elem() InstanceNicTypeOutput {
@@ -1225,6 +1346,12 @@ func (in *instanceNicTypePtr) ToInstanceNicTypePtrOutput() InstanceNicTypePtrOut
 
 func (in *instanceNicTypePtr) ToInstanceNicTypePtrOutputWithContext(ctx context.Context) InstanceNicTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceNicTypePtrOutput)
+}
+
+func (in *instanceNicTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceNicType] {
+	return pulumix.Output[*InstanceNicType]{
+		OutputState: in.ToInstanceNicTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
@@ -1303,6 +1430,12 @@ func (o LocalDiskInitializeParamsDiskTypeOutput) ToLocalDiskInitializeParamsDisk
 	}).(LocalDiskInitializeParamsDiskTypePtrOutput)
 }
 
+func (o LocalDiskInitializeParamsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LocalDiskInitializeParamsDiskType] {
+	return pulumix.Output[LocalDiskInitializeParamsDiskType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LocalDiskInitializeParamsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1336,6 +1469,12 @@ func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToLocalDiskInitializeParamsD
 
 func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToLocalDiskInitializeParamsDiskTypePtrOutputWithContext(ctx context.Context) LocalDiskInitializeParamsDiskTypePtrOutput {
 	return o
+}
+
+func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalDiskInitializeParamsDiskType] {
+	return pulumix.Output[*LocalDiskInitializeParamsDiskType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LocalDiskInitializeParamsDiskTypePtrOutput) Elem() LocalDiskInitializeParamsDiskTypeOutput {
@@ -1398,6 +1537,12 @@ func (in *localDiskInitializeParamsDiskTypePtr) ToLocalDiskInitializeParamsDiskT
 
 func (in *localDiskInitializeParamsDiskTypePtr) ToLocalDiskInitializeParamsDiskTypePtrOutputWithContext(ctx context.Context) LocalDiskInitializeParamsDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LocalDiskInitializeParamsDiskTypePtrOutput)
+}
+
+func (in *localDiskInitializeParamsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LocalDiskInitializeParamsDiskType] {
+	return pulumix.Output[*LocalDiskInitializeParamsDiskType]{
+		OutputState: in.ToLocalDiskInitializeParamsDiskTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. Type of reservation to consume
@@ -1474,6 +1619,12 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityCo
 	}).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
+func (o ReservationAffinityConsumeReservationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[ReservationAffinityConsumeReservationType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1507,6 +1658,12 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
@@ -1569,6 +1726,12 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 
 func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (in *reservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
+	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
+		OutputState: in.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Accelerator model.
@@ -1661,6 +1824,12 @@ func (o RuntimeAcceleratorConfigTypeOutput) ToRuntimeAcceleratorConfigTypePtrOut
 	}).(RuntimeAcceleratorConfigTypePtrOutput)
 }
 
+func (o RuntimeAcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeAcceleratorConfigType] {
+	return pulumix.Output[RuntimeAcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuntimeAcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1694,6 +1863,12 @@ func (o RuntimeAcceleratorConfigTypePtrOutput) ToRuntimeAcceleratorConfigTypePtr
 
 func (o RuntimeAcceleratorConfigTypePtrOutput) ToRuntimeAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) RuntimeAcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o RuntimeAcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAcceleratorConfigType] {
+	return pulumix.Output[*RuntimeAcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeAcceleratorConfigTypePtrOutput) Elem() RuntimeAcceleratorConfigTypeOutput {
@@ -1756,6 +1931,12 @@ func (in *runtimeAcceleratorConfigTypePtr) ToRuntimeAcceleratorConfigTypePtrOutp
 
 func (in *runtimeAcceleratorConfigTypePtr) ToRuntimeAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) RuntimeAcceleratorConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeAcceleratorConfigTypePtrOutput)
+}
+
+func (in *runtimeAcceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAcceleratorConfigType] {
+	return pulumix.Output[*RuntimeAcceleratorConfigType]{
+		OutputState: in.ToRuntimeAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The type of access mode this instance.
@@ -1830,6 +2011,12 @@ func (o RuntimeAccessConfigAccessTypeOutput) ToRuntimeAccessConfigAccessTypePtrO
 	}).(RuntimeAccessConfigAccessTypePtrOutput)
 }
 
+func (o RuntimeAccessConfigAccessTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeAccessConfigAccessType] {
+	return pulumix.Output[RuntimeAccessConfigAccessType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuntimeAccessConfigAccessTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1863,6 +2050,12 @@ func (o RuntimeAccessConfigAccessTypePtrOutput) ToRuntimeAccessConfigAccessTypeP
 
 func (o RuntimeAccessConfigAccessTypePtrOutput) ToRuntimeAccessConfigAccessTypePtrOutputWithContext(ctx context.Context) RuntimeAccessConfigAccessTypePtrOutput {
 	return o
+}
+
+func (o RuntimeAccessConfigAccessTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAccessConfigAccessType] {
+	return pulumix.Output[*RuntimeAccessConfigAccessType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeAccessConfigAccessTypePtrOutput) Elem() RuntimeAccessConfigAccessTypeOutput {
@@ -1925,6 +2118,12 @@ func (in *runtimeAccessConfigAccessTypePtr) ToRuntimeAccessConfigAccessTypePtrOu
 
 func (in *runtimeAccessConfigAccessTypePtr) ToRuntimeAccessConfigAccessTypePtrOutputWithContext(ctx context.Context) RuntimeAccessConfigAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeAccessConfigAccessTypePtrOutput)
+}
+
+func (in *runtimeAccessConfigAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAccessConfigAccessType] {
+	return pulumix.Output[*RuntimeAccessConfigAccessType]{
+		OutputState: in.ToRuntimeAccessConfigAccessTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Behavior for the post startup script.
@@ -1999,6 +2198,12 @@ func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToRuntimeSoftwareC
 	}).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
 }
 
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeSoftwareConfigPostStartupScriptBehavior] {
+	return pulumix.Output[RuntimeSoftwareConfigPostStartupScriptBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2032,6 +2237,12 @@ func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToRuntimeSoftwa
 
 func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
 	return o
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior] {
+	return pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) Elem() RuntimeSoftwareConfigPostStartupScriptBehaviorOutput {
@@ -2094,6 +2305,12 @@ func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToRuntimeSoftwareCo
 
 func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
+}
+
+func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior] {
+	return pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior]{
+		OutputState: in.ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ScheduleStateEnum string
@@ -2175,6 +2392,12 @@ func (o ScheduleStateEnumOutput) ToScheduleStateEnumPtrOutputWithContext(ctx con
 	}).(ScheduleStateEnumPtrOutput)
 }
 
+func (o ScheduleStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleStateEnum] {
+	return pulumix.Output[ScheduleStateEnum]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScheduleStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2208,6 +2431,12 @@ func (o ScheduleStateEnumPtrOutput) ToScheduleStateEnumPtrOutput() ScheduleState
 
 func (o ScheduleStateEnumPtrOutput) ToScheduleStateEnumPtrOutputWithContext(ctx context.Context) ScheduleStateEnumPtrOutput {
 	return o
+}
+
+func (o ScheduleStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleStateEnum] {
+	return pulumix.Output[*ScheduleStateEnum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduleStateEnumPtrOutput) Elem() ScheduleStateEnumOutput {
@@ -2270,6 +2499,12 @@ func (in *scheduleStateEnumPtr) ToScheduleStateEnumPtrOutput() ScheduleStateEnum
 
 func (in *scheduleStateEnumPtr) ToScheduleStateEnumPtrOutputWithContext(ctx context.Context) ScheduleStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleStateEnumPtrOutput)
+}
+
+func (in *scheduleStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleStateEnum] {
+	return pulumix.Output[*ScheduleStateEnum]{
+		OutputState: in.ToScheduleStateEnumPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Type of this accelerator.
@@ -2356,6 +2591,12 @@ func (o SchedulerAcceleratorConfigTypeOutput) ToSchedulerAcceleratorConfigTypePt
 	}).(SchedulerAcceleratorConfigTypePtrOutput)
 }
 
+func (o SchedulerAcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulerAcceleratorConfigType] {
+	return pulumix.Output[SchedulerAcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SchedulerAcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2389,6 +2630,12 @@ func (o SchedulerAcceleratorConfigTypePtrOutput) ToSchedulerAcceleratorConfigTyp
 
 func (o SchedulerAcceleratorConfigTypePtrOutput) ToSchedulerAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o SchedulerAcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulerAcceleratorConfigType] {
+	return pulumix.Output[*SchedulerAcceleratorConfigType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulerAcceleratorConfigTypePtrOutput) Elem() SchedulerAcceleratorConfigTypeOutput {
@@ -2451,6 +2698,12 @@ func (in *schedulerAcceleratorConfigTypePtr) ToSchedulerAcceleratorConfigTypePtr
 
 func (in *schedulerAcceleratorConfigTypePtr) ToSchedulerAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulerAcceleratorConfigTypePtrOutput)
+}
+
+func (in *schedulerAcceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulerAcceleratorConfigType] {
+	return pulumix.Output[*SchedulerAcceleratorConfigType]{
+		OutputState: in.ToSchedulerAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Action. Rolloback or Upgrade.
@@ -2525,6 +2778,12 @@ func (o UpgradeHistoryEntryActionOutput) ToUpgradeHistoryEntryActionPtrOutputWit
 	}).(UpgradeHistoryEntryActionPtrOutput)
 }
 
+func (o UpgradeHistoryEntryActionOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeHistoryEntryAction] {
+	return pulumix.Output[UpgradeHistoryEntryAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UpgradeHistoryEntryActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2558,6 +2817,12 @@ func (o UpgradeHistoryEntryActionPtrOutput) ToUpgradeHistoryEntryActionPtrOutput
 
 func (o UpgradeHistoryEntryActionPtrOutput) ToUpgradeHistoryEntryActionPtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryActionPtrOutput {
 	return o
+}
+
+func (o UpgradeHistoryEntryActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryAction] {
+	return pulumix.Output[*UpgradeHistoryEntryAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpgradeHistoryEntryActionPtrOutput) Elem() UpgradeHistoryEntryActionOutput {
@@ -2620,6 +2885,12 @@ func (in *upgradeHistoryEntryActionPtr) ToUpgradeHistoryEntryActionPtrOutput() U
 
 func (in *upgradeHistoryEntryActionPtr) ToUpgradeHistoryEntryActionPtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeHistoryEntryActionPtrOutput)
+}
+
+func (in *upgradeHistoryEntryActionPtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryAction] {
+	return pulumix.Output[*UpgradeHistoryEntryAction]{
+		OutputState: in.ToUpgradeHistoryEntryActionPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The state of this instance upgrade history entry.
@@ -2696,6 +2967,12 @@ func (o UpgradeHistoryEntryStateOutput) ToUpgradeHistoryEntryStatePtrOutputWithC
 	}).(UpgradeHistoryEntryStatePtrOutput)
 }
 
+func (o UpgradeHistoryEntryStateOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeHistoryEntryState] {
+	return pulumix.Output[UpgradeHistoryEntryState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UpgradeHistoryEntryStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2729,6 +3006,12 @@ func (o UpgradeHistoryEntryStatePtrOutput) ToUpgradeHistoryEntryStatePtrOutput()
 
 func (o UpgradeHistoryEntryStatePtrOutput) ToUpgradeHistoryEntryStatePtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryStatePtrOutput {
 	return o
+}
+
+func (o UpgradeHistoryEntryStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryState] {
+	return pulumix.Output[*UpgradeHistoryEntryState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UpgradeHistoryEntryStatePtrOutput) Elem() UpgradeHistoryEntryStateOutput {
@@ -2791,6 +3074,12 @@ func (in *upgradeHistoryEntryStatePtr) ToUpgradeHistoryEntryStatePtrOutput() Upg
 
 func (in *upgradeHistoryEntryStatePtr) ToUpgradeHistoryEntryStatePtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeHistoryEntryStatePtrOutput)
+}
+
+func (in *upgradeHistoryEntryStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryState] {
+	return pulumix.Output[*UpgradeHistoryEntryState]{
+		OutputState: in.ToUpgradeHistoryEntryStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -2865,6 +3154,12 @@ func (o VirtualMachineConfigNicTypeOutput) ToVirtualMachineConfigNicTypePtrOutpu
 	}).(VirtualMachineConfigNicTypePtrOutput)
 }
 
+func (o VirtualMachineConfigNicTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineConfigNicType] {
+	return pulumix.Output[VirtualMachineConfigNicType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualMachineConfigNicTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2898,6 +3193,12 @@ func (o VirtualMachineConfigNicTypePtrOutput) ToVirtualMachineConfigNicTypePtrOu
 
 func (o VirtualMachineConfigNicTypePtrOutput) ToVirtualMachineConfigNicTypePtrOutputWithContext(ctx context.Context) VirtualMachineConfigNicTypePtrOutput {
 	return o
+}
+
+func (o VirtualMachineConfigNicTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineConfigNicType] {
+	return pulumix.Output[*VirtualMachineConfigNicType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualMachineConfigNicTypePtrOutput) Elem() VirtualMachineConfigNicTypeOutput {
@@ -2960,6 +3261,12 @@ func (in *virtualMachineConfigNicTypePtr) ToVirtualMachineConfigNicTypePtrOutput
 
 func (in *virtualMachineConfigNicTypePtr) ToVirtualMachineConfigNicTypePtrOutputWithContext(ctx context.Context) VirtualMachineConfigNicTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineConfigNicTypePtrOutput)
+}
+
+func (in *virtualMachineConfigNicTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineConfigNicType] {
+	return pulumix.Output[*VirtualMachineConfigNicType]{
+		OutputState: in.ToVirtualMachineConfigNicTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

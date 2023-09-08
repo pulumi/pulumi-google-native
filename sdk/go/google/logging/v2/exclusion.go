@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
@@ -125,6 +126,12 @@ func (i *Exclusion) ToExclusionOutputWithContext(ctx context.Context) ExclusionO
 	return pulumi.ToOutputWithContext(ctx, i).(ExclusionOutput)
 }
 
+func (i *Exclusion) ToOutput(ctx context.Context) pulumix.Output[*Exclusion] {
+	return pulumix.Output[*Exclusion]{
+		OutputState: i.ToExclusionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExclusionOutput struct{ *pulumi.OutputState }
 
 func (ExclusionOutput) ElementType() reflect.Type {
@@ -137,6 +144,12 @@ func (o ExclusionOutput) ToExclusionOutput() ExclusionOutput {
 
 func (o ExclusionOutput) ToExclusionOutputWithContext(ctx context.Context) ExclusionOutput {
 	return o
+}
+
+func (o ExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[*Exclusion] {
+	return pulumix.Output[*Exclusion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation timestamp of the exclusion.This field may not be present for older exclusions.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a ServiceAccount.
@@ -84,6 +85,12 @@ func (o LookupServiceAccountResultOutput) ToLookupServiceAccountResultOutput() L
 
 func (o LookupServiceAccountResultOutput) ToLookupServiceAccountResultOutputWithContext(ctx context.Context) LookupServiceAccountResultOutput {
 	return o
+}
+
+func (o LookupServiceAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceAccountResult] {
+	return pulumix.Output[LookupServiceAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.

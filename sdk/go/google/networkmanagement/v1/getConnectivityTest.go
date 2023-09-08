@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a specific Connectivity Test.
@@ -86,6 +87,12 @@ func (o LookupConnectivityTestResultOutput) ToLookupConnectivityTestResultOutput
 
 func (o LookupConnectivityTestResultOutput) ToLookupConnectivityTestResultOutputWithContext(ctx context.Context) LookupConnectivityTestResultOutput {
 	return o
+}
+
+func (o LookupConnectivityTestResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectivityTestResult] {
+	return pulumix.Output[LookupConnectivityTestResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time the test was created.

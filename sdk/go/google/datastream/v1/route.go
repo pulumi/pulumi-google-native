@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this method to create a route for a private connectivity configuration in a project and location.
@@ -158,6 +159,12 @@ func (i *Route) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteOutput)
 }
 
+func (i *Route) ToOutput(ctx context.Context) pulumix.Output[*Route] {
+	return pulumix.Output[*Route]{
+		OutputState: i.ToRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouteOutput struct{ *pulumi.OutputState }
 
 func (RouteOutput) ElementType() reflect.Type {
@@ -170,6 +177,12 @@ func (o RouteOutput) ToRouteOutput() RouteOutput {
 
 func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return o
+}
+
+func (o RouteOutput) ToOutput(ctx context.Context) pulumix.Output[*Route] {
+	return pulumix.Output[*Route]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The create time of the resource.

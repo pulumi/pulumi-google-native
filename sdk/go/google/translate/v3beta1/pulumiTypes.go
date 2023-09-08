@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i GcsSourceArgs) ToGcsSourceOutputWithContext(ctx context.Context) GcsSour
 	return pulumi.ToOutputWithContext(ctx, i).(GcsSourceOutput)
 }
 
+func (i GcsSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GcsSource] {
+	return pulumix.Output[GcsSource]{
+		OutputState: i.ToGcsSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The Google Cloud Storage location for the input content.
 type GcsSourceOutput struct{ *pulumi.OutputState }
 
@@ -61,6 +68,12 @@ func (o GcsSourceOutput) ToGcsSourceOutput() GcsSourceOutput {
 
 func (o GcsSourceOutput) ToGcsSourceOutputWithContext(ctx context.Context) GcsSourceOutput {
 	return o
+}
+
+func (o GcsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GcsSource] {
+	return pulumix.Output[GcsSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Source data URI. For example, `gs://my_bucket/my_object`.
@@ -87,6 +100,12 @@ func (o GcsSourceResponseOutput) ToGcsSourceResponseOutput() GcsSourceResponseOu
 
 func (o GcsSourceResponseOutput) ToGcsSourceResponseOutputWithContext(ctx context.Context) GcsSourceResponseOutput {
 	return o
+}
+
+func (o GcsSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcsSourceResponse] {
+	return pulumix.Output[GcsSourceResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Source data URI. For example, `gs://my_bucket/my_object`.
@@ -129,6 +148,12 @@ func (i GlossaryInputConfigArgs) ToGlossaryInputConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryInputConfigOutput)
 }
 
+func (i GlossaryInputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GlossaryInputConfig] {
+	return pulumix.Output[GlossaryInputConfig]{
+		OutputState: i.ToGlossaryInputConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Input configuration for glossaries.
 type GlossaryInputConfigOutput struct{ *pulumi.OutputState }
 
@@ -142,6 +167,12 @@ func (o GlossaryInputConfigOutput) ToGlossaryInputConfigOutput() GlossaryInputCo
 
 func (o GlossaryInputConfigOutput) ToGlossaryInputConfigOutputWithContext(ctx context.Context) GlossaryInputConfigOutput {
 	return o
+}
+
+func (o GlossaryInputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryInputConfig] {
+	return pulumix.Output[GlossaryInputConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
@@ -168,6 +199,12 @@ func (o GlossaryInputConfigResponseOutput) ToGlossaryInputConfigResponseOutput()
 
 func (o GlossaryInputConfigResponseOutput) ToGlossaryInputConfigResponseOutputWithContext(ctx context.Context) GlossaryInputConfigResponseOutput {
 	return o
+}
+
+func (o GlossaryInputConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlossaryInputConfigResponse] {
+	return pulumix.Output[GlossaryInputConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
@@ -214,6 +251,12 @@ func (i LanguageCodePairArgs) ToLanguageCodePairOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodePairOutput)
 }
 
+func (i LanguageCodePairArgs) ToOutput(ctx context.Context) pulumix.Output[LanguageCodePair] {
+	return pulumix.Output[LanguageCodePair]{
+		OutputState: i.ToLanguageCodePairOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LanguageCodePairArgs) ToLanguageCodePairPtrOutput() LanguageCodePairPtrOutput {
 	return i.ToLanguageCodePairPtrOutputWithContext(context.Background())
 }
@@ -255,6 +298,12 @@ func (i *languageCodePairPtrType) ToLanguageCodePairPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodePairPtrOutput)
 }
 
+func (i *languageCodePairPtrType) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodePair] {
+	return pulumix.Output[*LanguageCodePair]{
+		OutputState: i.ToLanguageCodePairPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Used with unidirectional glossaries.
 type LanguageCodePairOutput struct{ *pulumi.OutputState }
 
@@ -280,6 +329,12 @@ func (o LanguageCodePairOutput) ToLanguageCodePairPtrOutputWithContext(ctx conte
 	}).(LanguageCodePairPtrOutput)
 }
 
+func (o LanguageCodePairOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodePair] {
+	return pulumix.Output[LanguageCodePair]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairOutput) SourceLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePair) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
@@ -302,6 +357,12 @@ func (o LanguageCodePairPtrOutput) ToLanguageCodePairPtrOutput() LanguageCodePai
 
 func (o LanguageCodePairPtrOutput) ToLanguageCodePairPtrOutputWithContext(ctx context.Context) LanguageCodePairPtrOutput {
 	return o
+}
+
+func (o LanguageCodePairPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodePair] {
+	return pulumix.Output[*LanguageCodePair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LanguageCodePairPtrOutput) Elem() LanguageCodePairOutput {
@@ -357,6 +418,12 @@ func (o LanguageCodePairResponseOutput) ToLanguageCodePairResponseOutputWithCont
 	return o
 }
 
+func (o LanguageCodePairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodePairResponse] {
+	return pulumix.Output[LanguageCodePairResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponseOutput) SourceLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePairResponse) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
@@ -402,6 +469,12 @@ func (i LanguageCodesSetArgs) ToLanguageCodesSetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodesSetOutput)
 }
 
+func (i LanguageCodesSetArgs) ToOutput(ctx context.Context) pulumix.Output[LanguageCodesSet] {
+	return pulumix.Output[LanguageCodesSet]{
+		OutputState: i.ToLanguageCodesSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LanguageCodesSetArgs) ToLanguageCodesSetPtrOutput() LanguageCodesSetPtrOutput {
 	return i.ToLanguageCodesSetPtrOutputWithContext(context.Background())
 }
@@ -443,6 +516,12 @@ func (i *languageCodesSetPtrType) ToLanguageCodesSetPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LanguageCodesSetPtrOutput)
 }
 
+func (i *languageCodesSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodesSet] {
+	return pulumix.Output[*LanguageCodesSet]{
+		OutputState: i.ToLanguageCodesSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Used with equivalent term set glossaries.
 type LanguageCodesSetOutput struct{ *pulumi.OutputState }
 
@@ -468,6 +547,12 @@ func (o LanguageCodesSetOutput) ToLanguageCodesSetPtrOutputWithContext(ctx conte
 	}).(LanguageCodesSetPtrOutput)
 }
 
+func (o LanguageCodesSetOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodesSet] {
+	return pulumix.Output[LanguageCodesSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodesSetOutput) LanguageCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LanguageCodesSet) []string { return v.LanguageCodes }).(pulumi.StringArrayOutput)
@@ -485,6 +570,12 @@ func (o LanguageCodesSetPtrOutput) ToLanguageCodesSetPtrOutput() LanguageCodesSe
 
 func (o LanguageCodesSetPtrOutput) ToLanguageCodesSetPtrOutputWithContext(ctx context.Context) LanguageCodesSetPtrOutput {
 	return o
+}
+
+func (o LanguageCodesSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LanguageCodesSet] {
+	return pulumix.Output[*LanguageCodesSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LanguageCodesSetPtrOutput) Elem() LanguageCodesSetOutput {
@@ -526,6 +617,12 @@ func (o LanguageCodesSetResponseOutput) ToLanguageCodesSetResponseOutput() Langu
 
 func (o LanguageCodesSetResponseOutput) ToLanguageCodesSetResponseOutputWithContext(ctx context.Context) LanguageCodesSetResponseOutput {
 	return o
+}
+
+func (o LanguageCodesSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LanguageCodesSetResponse] {
+	return pulumix.Output[LanguageCodesSetResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.

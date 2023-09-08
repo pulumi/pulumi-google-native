@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i AwsAccessKeyArgs) ToAwsAccessKeyOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AwsAccessKeyOutput)
 }
 
+func (i AwsAccessKeyArgs) ToOutput(ctx context.Context) pulumix.Output[AwsAccessKey] {
+	return pulumix.Output[AwsAccessKey]{
+		OutputState: i.ToAwsAccessKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AwsAccessKeyArgs) ToAwsAccessKeyPtrOutput() AwsAccessKeyPtrOutput {
 	return i.ToAwsAccessKeyPtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *awsAccessKeyPtrType) ToAwsAccessKeyPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AwsAccessKeyPtrOutput)
 }
 
+func (i *awsAccessKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AwsAccessKey] {
+	return pulumix.Output[*AwsAccessKey]{
+		OutputState: i.ToAwsAccessKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AwsAccessKeyOutput struct{ *pulumi.OutputState }
 
@@ -118,6 +131,12 @@ func (o AwsAccessKeyOutput) ToAwsAccessKeyPtrOutputWithContext(ctx context.Conte
 	}).(AwsAccessKeyPtrOutput)
 }
 
+func (o AwsAccessKeyOutput) ToOutput(ctx context.Context) pulumix.Output[AwsAccessKey] {
+	return pulumix.Output[AwsAccessKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 // AWS access key ID.
 func (o AwsAccessKeyOutput) AccessKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsAccessKey) string { return v.AccessKeyId }).(pulumi.StringOutput)
@@ -140,6 +159,12 @@ func (o AwsAccessKeyPtrOutput) ToAwsAccessKeyPtrOutput() AwsAccessKeyPtrOutput {
 
 func (o AwsAccessKeyPtrOutput) ToAwsAccessKeyPtrOutputWithContext(ctx context.Context) AwsAccessKeyPtrOutput {
 	return o
+}
+
+func (o AwsAccessKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsAccessKey] {
+	return pulumix.Output[*AwsAccessKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsAccessKeyPtrOutput) Elem() AwsAccessKeyOutput {
@@ -193,6 +218,12 @@ func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponseOutput() AwsAccessKeyR
 
 func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponseOutputWithContext(ctx context.Context) AwsAccessKeyResponseOutput {
 	return o
+}
+
+func (o AwsAccessKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AwsAccessKeyResponse] {
+	return pulumix.Output[AwsAccessKeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS access key ID.
@@ -256,6 +287,12 @@ func (i AwsS3CompatibleDataArgs) ToAwsS3CompatibleDataOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AwsS3CompatibleDataOutput)
 }
 
+func (i AwsS3CompatibleDataArgs) ToOutput(ctx context.Context) pulumix.Output[AwsS3CompatibleData] {
+	return pulumix.Output[AwsS3CompatibleData]{
+		OutputState: i.ToAwsS3CompatibleDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AwsS3CompatibleDataArgs) ToAwsS3CompatibleDataPtrOutput() AwsS3CompatibleDataPtrOutput {
 	return i.ToAwsS3CompatibleDataPtrOutputWithContext(context.Background())
 }
@@ -297,6 +334,12 @@ func (i *awsS3CompatibleDataPtrType) ToAwsS3CompatibleDataPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AwsS3CompatibleDataPtrOutput)
 }
 
+func (i *awsS3CompatibleDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*AwsS3CompatibleData] {
+	return pulumix.Output[*AwsS3CompatibleData]{
+		OutputState: i.ToAwsS3CompatibleDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An AwsS3CompatibleData resource.
 type AwsS3CompatibleDataOutput struct{ *pulumi.OutputState }
 
@@ -320,6 +363,12 @@ func (o AwsS3CompatibleDataOutput) ToAwsS3CompatibleDataPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsS3CompatibleData) *AwsS3CompatibleData {
 		return &v
 	}).(AwsS3CompatibleDataPtrOutput)
+}
+
+func (o AwsS3CompatibleDataOutput) ToOutput(ctx context.Context) pulumix.Output[AwsS3CompatibleData] {
+	return pulumix.Output[AwsS3CompatibleData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the name of the bucket.
@@ -359,6 +408,12 @@ func (o AwsS3CompatibleDataPtrOutput) ToAwsS3CompatibleDataPtrOutput() AwsS3Comp
 
 func (o AwsS3CompatibleDataPtrOutput) ToAwsS3CompatibleDataPtrOutputWithContext(ctx context.Context) AwsS3CompatibleDataPtrOutput {
 	return o
+}
+
+func (o AwsS3CompatibleDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsS3CompatibleData] {
+	return pulumix.Output[*AwsS3CompatibleData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsS3CompatibleDataPtrOutput) Elem() AwsS3CompatibleDataOutput {
@@ -450,6 +505,12 @@ func (o AwsS3CompatibleDataResponseOutput) ToAwsS3CompatibleDataResponseOutputWi
 	return o
 }
 
+func (o AwsS3CompatibleDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AwsS3CompatibleDataResponse] {
+	return pulumix.Output[AwsS3CompatibleDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the name of the bucket.
 func (o AwsS3CompatibleDataResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3CompatibleDataResponse) string { return v.BucketName }).(pulumi.StringOutput)
@@ -526,6 +587,12 @@ func (i AwsS3DataArgs) ToAwsS3DataOutputWithContext(ctx context.Context) AwsS3Da
 	return pulumi.ToOutputWithContext(ctx, i).(AwsS3DataOutput)
 }
 
+func (i AwsS3DataArgs) ToOutput(ctx context.Context) pulumix.Output[AwsS3Data] {
+	return pulumix.Output[AwsS3Data]{
+		OutputState: i.ToAwsS3DataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AwsS3DataArgs) ToAwsS3DataPtrOutput() AwsS3DataPtrOutput {
 	return i.ToAwsS3DataPtrOutputWithContext(context.Background())
 }
@@ -567,6 +634,12 @@ func (i *awsS3DataPtrType) ToAwsS3DataPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AwsS3DataPtrOutput)
 }
 
+func (i *awsS3DataPtrType) ToOutput(ctx context.Context) pulumix.Output[*AwsS3Data] {
+	return pulumix.Output[*AwsS3Data]{
+		OutputState: i.ToAwsS3DataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3DataOutput struct{ *pulumi.OutputState }
 
@@ -590,6 +663,12 @@ func (o AwsS3DataOutput) ToAwsS3DataPtrOutputWithContext(ctx context.Context) Aw
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsS3Data) *AwsS3Data {
 		return &v
 	}).(AwsS3DataPtrOutput)
+}
+
+func (o AwsS3DataOutput) ToOutput(ctx context.Context) pulumix.Output[AwsS3Data] {
+	return pulumix.Output[AwsS3Data]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -629,6 +708,12 @@ func (o AwsS3DataPtrOutput) ToAwsS3DataPtrOutput() AwsS3DataPtrOutput {
 
 func (o AwsS3DataPtrOutput) ToAwsS3DataPtrOutputWithContext(ctx context.Context) AwsS3DataPtrOutput {
 	return o
+}
+
+func (o AwsS3DataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsS3Data] {
+	return pulumix.Output[*AwsS3Data]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsS3DataPtrOutput) Elem() AwsS3DataOutput {
@@ -720,6 +805,12 @@ func (o AwsS3DataResponseOutput) ToAwsS3DataResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o AwsS3DataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AwsS3DataResponse] {
+	return pulumix.Output[AwsS3DataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AwsS3DataResponseOutput) AwsAccessKey() AwsAccessKeyResponseOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) AwsAccessKeyResponse { return v.AwsAccessKey }).(AwsAccessKeyResponseOutput)
@@ -796,6 +887,12 @@ func (i AzureBlobStorageDataArgs) ToAzureBlobStorageDataOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageDataOutput)
 }
 
+func (i AzureBlobStorageDataArgs) ToOutput(ctx context.Context) pulumix.Output[AzureBlobStorageData] {
+	return pulumix.Output[AzureBlobStorageData]{
+		OutputState: i.ToAzureBlobStorageDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AzureBlobStorageDataArgs) ToAzureBlobStorageDataPtrOutput() AzureBlobStorageDataPtrOutput {
 	return i.ToAzureBlobStorageDataPtrOutputWithContext(context.Background())
 }
@@ -837,6 +934,12 @@ func (i *azureBlobStorageDataPtrType) ToAzureBlobStorageDataPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageDataPtrOutput)
 }
 
+func (i *azureBlobStorageDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureBlobStorageData] {
+	return pulumix.Output[*AzureBlobStorageData]{
+		OutputState: i.ToAzureBlobStorageDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
 type AzureBlobStorageDataOutput struct{ *pulumi.OutputState }
 
@@ -860,6 +963,12 @@ func (o AzureBlobStorageDataOutput) ToAzureBlobStorageDataPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBlobStorageData) *AzureBlobStorageData {
 		return &v
 	}).(AzureBlobStorageDataPtrOutput)
+}
+
+func (o AzureBlobStorageDataOutput) ToOutput(ctx context.Context) pulumix.Output[AzureBlobStorageData] {
+	return pulumix.Output[AzureBlobStorageData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -899,6 +1008,12 @@ func (o AzureBlobStorageDataPtrOutput) ToAzureBlobStorageDataPtrOutput() AzureBl
 
 func (o AzureBlobStorageDataPtrOutput) ToAzureBlobStorageDataPtrOutputWithContext(ctx context.Context) AzureBlobStorageDataPtrOutput {
 	return o
+}
+
+func (o AzureBlobStorageDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureBlobStorageData] {
+	return pulumix.Output[*AzureBlobStorageData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureBlobStorageDataPtrOutput) Elem() AzureBlobStorageDataOutput {
@@ -990,6 +1105,12 @@ func (o AzureBlobStorageDataResponseOutput) ToAzureBlobStorageDataResponseOutput
 	return o
 }
 
+func (o AzureBlobStorageDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureBlobStorageDataResponse] {
+	return pulumix.Output[AzureBlobStorageDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AzureBlobStorageDataResponseOutput) AzureCredentials() AzureCredentialsResponseOutput {
 	return o.ApplyT(func(v AzureBlobStorageDataResponse) AzureCredentialsResponse { return v.AzureCredentials }).(AzureCredentialsResponseOutput)
@@ -1050,6 +1171,12 @@ func (i AzureCredentialsArgs) ToAzureCredentialsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AzureCredentialsOutput)
 }
 
+func (i AzureCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[AzureCredentials] {
+	return pulumix.Output[AzureCredentials]{
+		OutputState: i.ToAzureCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AzureCredentialsArgs) ToAzureCredentialsPtrOutput() AzureCredentialsPtrOutput {
 	return i.ToAzureCredentialsPtrOutputWithContext(context.Background())
 }
@@ -1091,6 +1218,12 @@ func (i *azureCredentialsPtrType) ToAzureCredentialsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AzureCredentialsPtrOutput)
 }
 
+func (i *azureCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureCredentials] {
+	return pulumix.Output[*AzureCredentials]{
+		OutputState: i.ToAzureCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -1116,6 +1249,12 @@ func (o AzureCredentialsOutput) ToAzureCredentialsPtrOutputWithContext(ctx conte
 	}).(AzureCredentialsPtrOutput)
 }
 
+func (o AzureCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[AzureCredentials] {
+	return pulumix.Output[AzureCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureCredentials) string { return v.SasToken }).(pulumi.StringOutput)
@@ -1133,6 +1272,12 @@ func (o AzureCredentialsPtrOutput) ToAzureCredentialsPtrOutput() AzureCredential
 
 func (o AzureCredentialsPtrOutput) ToAzureCredentialsPtrOutputWithContext(ctx context.Context) AzureCredentialsPtrOutput {
 	return o
+}
+
+func (o AzureCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureCredentials] {
+	return pulumix.Output[*AzureCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AzureCredentialsPtrOutput) Elem() AzureCredentialsOutput {
@@ -1176,6 +1321,12 @@ func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponseOutputWithCont
 	return o
 }
 
+func (o AzureCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureCredentialsResponse] {
+	return pulumix.Output[AzureCredentialsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsResponseOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureCredentialsResponse) string { return v.SasToken }).(pulumi.StringOutput)
@@ -1214,6 +1365,12 @@ func (i BandwidthLimitArgs) ToBandwidthLimitOutput() BandwidthLimitOutput {
 
 func (i BandwidthLimitArgs) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitOutput)
+}
+
+func (i BandwidthLimitArgs) ToOutput(ctx context.Context) pulumix.Output[BandwidthLimit] {
+	return pulumix.Output[BandwidthLimit]{
+		OutputState: i.ToBandwidthLimitOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i BandwidthLimitArgs) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
@@ -1257,6 +1414,12 @@ func (i *bandwidthLimitPtrType) ToBandwidthLimitPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitPtrOutput)
 }
 
+func (i *bandwidthLimitPtrType) ToOutput(ctx context.Context) pulumix.Output[*BandwidthLimit] {
+	return pulumix.Output[*BandwidthLimit]{
+		OutputState: i.ToBandwidthLimitPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies a bandwidth limit for an agent pool.
 type BandwidthLimitOutput struct{ *pulumi.OutputState }
 
@@ -1282,6 +1445,12 @@ func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.C
 	}).(BandwidthLimitPtrOutput)
 }
 
+func (o BandwidthLimitOutput) ToOutput(ctx context.Context) pulumix.Output[BandwidthLimit] {
+	return pulumix.Output[BandwidthLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 func (o BandwidthLimitOutput) LimitMbps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BandwidthLimit) *string { return v.LimitMbps }).(pulumi.StringPtrOutput)
@@ -1299,6 +1468,12 @@ func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOu
 
 func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
 	return o
+}
+
+func (o BandwidthLimitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BandwidthLimit] {
+	return pulumix.Output[*BandwidthLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BandwidthLimitPtrOutput) Elem() BandwidthLimitOutput {
@@ -1340,6 +1515,12 @@ func (o BandwidthLimitResponseOutput) ToBandwidthLimitResponseOutput() Bandwidth
 
 func (o BandwidthLimitResponseOutput) ToBandwidthLimitResponseOutputWithContext(ctx context.Context) BandwidthLimitResponseOutput {
 	return o
+}
+
+func (o BandwidthLimitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BandwidthLimitResponse] {
+	return pulumix.Output[BandwidthLimitResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
@@ -1390,6 +1571,12 @@ func (i DateArgs) ToDateOutputWithContext(ctx context.Context) DateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DateOutput)
 }
 
+func (i DateArgs) ToOutput(ctx context.Context) pulumix.Output[Date] {
+	return pulumix.Output[Date]{
+		OutputState: i.ToDateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DateArgs) ToDatePtrOutput() DatePtrOutput {
 	return i.ToDatePtrOutputWithContext(context.Background())
 }
@@ -1431,6 +1618,12 @@ func (i *datePtrType) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DatePtrOutput)
 }
 
+func (i *datePtrType) ToOutput(ctx context.Context) pulumix.Output[*Date] {
+	return pulumix.Output[*Date]{
+		OutputState: i.ToDatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type DateOutput struct{ *pulumi.OutputState }
 
@@ -1454,6 +1647,12 @@ func (o DateOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Date) *Date {
 		return &v
 	}).(DatePtrOutput)
+}
+
+func (o DateOutput) ToOutput(ctx context.Context) pulumix.Output[Date] {
+	return pulumix.Output[Date]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -1483,6 +1682,12 @@ func (o DatePtrOutput) ToDatePtrOutput() DatePtrOutput {
 
 func (o DatePtrOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutput {
 	return o
+}
+
+func (o DatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Date] {
+	return pulumix.Output[*Date]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatePtrOutput) Elem() DateOutput {
@@ -1550,6 +1755,12 @@ func (o DateResponseOutput) ToDateResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o DateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DateResponse] {
+	return pulumix.Output[DateResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 func (o DateResponseOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v DateResponse) int { return v.Day }).(pulumi.IntOutput)
@@ -1608,6 +1819,12 @@ func (i EventStreamArgs) ToEventStreamOutputWithContext(ctx context.Context) Eve
 	return pulumi.ToOutputWithContext(ctx, i).(EventStreamOutput)
 }
 
+func (i EventStreamArgs) ToOutput(ctx context.Context) pulumix.Output[EventStream] {
+	return pulumix.Output[EventStream]{
+		OutputState: i.ToEventStreamOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EventStreamArgs) ToEventStreamPtrOutput() EventStreamPtrOutput {
 	return i.ToEventStreamPtrOutputWithContext(context.Background())
 }
@@ -1649,6 +1866,12 @@ func (i *eventStreamPtrType) ToEventStreamPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EventStreamPtrOutput)
 }
 
+func (i *eventStreamPtrType) ToOutput(ctx context.Context) pulumix.Output[*EventStream] {
+	return pulumix.Output[*EventStream]{
+		OutputState: i.ToEventStreamPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
 type EventStreamOutput struct{ *pulumi.OutputState }
 
@@ -1672,6 +1895,12 @@ func (o EventStreamOutput) ToEventStreamPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventStream) *EventStream {
 		return &v
 	}).(EventStreamPtrOutput)
+}
+
+func (o EventStreamOutput) ToOutput(ctx context.Context) pulumix.Output[EventStream] {
+	return pulumix.Output[EventStream]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
@@ -1701,6 +1930,12 @@ func (o EventStreamPtrOutput) ToEventStreamPtrOutput() EventStreamPtrOutput {
 
 func (o EventStreamPtrOutput) ToEventStreamPtrOutputWithContext(ctx context.Context) EventStreamPtrOutput {
 	return o
+}
+
+func (o EventStreamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventStream] {
+	return pulumix.Output[*EventStream]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventStreamPtrOutput) Elem() EventStreamOutput {
@@ -1768,6 +2003,12 @@ func (o EventStreamResponseOutput) ToEventStreamResponseOutputWithContext(ctx co
 	return o
 }
 
+func (o EventStreamResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventStreamResponse] {
+	return pulumix.Output[EventStreamResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
 func (o EventStreamResponseOutput) EventStreamExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v EventStreamResponse) string { return v.EventStreamExpirationTime }).(pulumi.StringOutput)
@@ -1822,6 +2063,12 @@ func (i GcsDataArgs) ToGcsDataOutputWithContext(ctx context.Context) GcsDataOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GcsDataOutput)
 }
 
+func (i GcsDataArgs) ToOutput(ctx context.Context) pulumix.Output[GcsData] {
+	return pulumix.Output[GcsData]{
+		OutputState: i.ToGcsDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GcsDataArgs) ToGcsDataPtrOutput() GcsDataPtrOutput {
 	return i.ToGcsDataPtrOutputWithContext(context.Background())
 }
@@ -1863,6 +2110,12 @@ func (i *gcsDataPtrType) ToGcsDataPtrOutputWithContext(ctx context.Context) GcsD
 	return pulumi.ToOutputWithContext(ctx, i).(GcsDataPtrOutput)
 }
 
+func (i *gcsDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GcsData] {
+	return pulumix.Output[*GcsData]{
+		OutputState: i.ToGcsDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 type GcsDataOutput struct{ *pulumi.OutputState }
 
@@ -1888,6 +2141,12 @@ func (o GcsDataOutput) ToGcsDataPtrOutputWithContext(ctx context.Context) GcsDat
 	}).(GcsDataPtrOutput)
 }
 
+func (o GcsDataOutput) ToOutput(ctx context.Context) pulumix.Output[GcsData] {
+	return pulumix.Output[GcsData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 func (o GcsDataOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsData) string { return v.BucketName }).(pulumi.StringOutput)
@@ -1910,6 +2169,12 @@ func (o GcsDataPtrOutput) ToGcsDataPtrOutput() GcsDataPtrOutput {
 
 func (o GcsDataPtrOutput) ToGcsDataPtrOutputWithContext(ctx context.Context) GcsDataPtrOutput {
 	return o
+}
+
+func (o GcsDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcsData] {
+	return pulumix.Output[*GcsData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GcsDataPtrOutput) Elem() GcsDataOutput {
@@ -1965,6 +2230,12 @@ func (o GcsDataResponseOutput) ToGcsDataResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o GcsDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcsDataResponse] {
+	return pulumix.Output[GcsDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 func (o GcsDataResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsDataResponse) string { return v.BucketName }).(pulumi.StringOutput)
@@ -2010,6 +2281,12 @@ func (i HttpDataArgs) ToHttpDataOutputWithContext(ctx context.Context) HttpDataO
 	return pulumi.ToOutputWithContext(ctx, i).(HttpDataOutput)
 }
 
+func (i HttpDataArgs) ToOutput(ctx context.Context) pulumix.Output[HttpData] {
+	return pulumix.Output[HttpData]{
+		OutputState: i.ToHttpDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpDataArgs) ToHttpDataPtrOutput() HttpDataPtrOutput {
 	return i.ToHttpDataPtrOutputWithContext(context.Background())
 }
@@ -2051,6 +2328,12 @@ func (i *httpDataPtrType) ToHttpDataPtrOutputWithContext(ctx context.Context) Ht
 	return pulumi.ToOutputWithContext(ctx, i).(HttpDataPtrOutput)
 }
 
+func (i *httpDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpData] {
+	return pulumix.Output[*HttpData]{
+		OutputState: i.ToHttpDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpDataOutput struct{ *pulumi.OutputState }
 
@@ -2076,6 +2359,12 @@ func (o HttpDataOutput) ToHttpDataPtrOutputWithContext(ctx context.Context) Http
 	}).(HttpDataPtrOutput)
 }
 
+func (o HttpDataOutput) ToOutput(ctx context.Context) pulumix.Output[HttpData] {
+	return pulumix.Output[HttpData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 func (o HttpDataOutput) ListUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpData) string { return v.ListUrl }).(pulumi.StringOutput)
@@ -2093,6 +2382,12 @@ func (o HttpDataPtrOutput) ToHttpDataPtrOutput() HttpDataPtrOutput {
 
 func (o HttpDataPtrOutput) ToHttpDataPtrOutputWithContext(ctx context.Context) HttpDataPtrOutput {
 	return o
+}
+
+func (o HttpDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpData] {
+	return pulumix.Output[*HttpData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpDataPtrOutput) Elem() HttpDataOutput {
@@ -2134,6 +2429,12 @@ func (o HttpDataResponseOutput) ToHttpDataResponseOutput() HttpDataResponseOutpu
 
 func (o HttpDataResponseOutput) ToHttpDataResponseOutputWithContext(ctx context.Context) HttpDataResponseOutput {
 	return o
+}
+
+func (o HttpDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpDataResponse] {
+	return pulumix.Output[HttpDataResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
@@ -2184,6 +2485,12 @@ func (i LoggingConfigArgs) ToLoggingConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput)
 }
 
+func (i LoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[LoggingConfig] {
+	return pulumix.Output[LoggingConfig]{
+		OutputState: i.ToLoggingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i LoggingConfigArgs) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
 	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -2225,6 +2532,12 @@ func (i *loggingConfigPtrType) ToLoggingConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigPtrOutput)
 }
 
+func (i *loggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*LoggingConfig] {
+	return pulumix.Output[*LoggingConfig]{
+		OutputState: i.ToLoggingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
 type LoggingConfigOutput struct{ *pulumi.OutputState }
 
@@ -2248,6 +2561,12 @@ func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfig) *LoggingConfig {
 		return &v
 	}).(LoggingConfigPtrOutput)
+}
+
+func (o LoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[LoggingConfig] {
+	return pulumix.Output[LoggingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
@@ -2277,6 +2596,12 @@ func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutpu
 
 func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
 	return o
+}
+
+func (o LoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoggingConfig] {
+	return pulumix.Output[*LoggingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
@@ -2342,6 +2667,12 @@ func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutput() LoggingConf
 
 func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
 	return o
+}
+
+func (o LoggingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoggingConfigResponse] {
+	return pulumix.Output[LoggingConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
@@ -2426,6 +2757,12 @@ func (i MetadataOptionsArgs) ToMetadataOptionsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsOutput)
 }
 
+func (i MetadataOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[MetadataOptions] {
+	return pulumix.Output[MetadataOptions]{
+		OutputState: i.ToMetadataOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetadataOptionsArgs) ToMetadataOptionsPtrOutput() MetadataOptionsPtrOutput {
 	return i.ToMetadataOptionsPtrOutputWithContext(context.Background())
 }
@@ -2467,6 +2804,12 @@ func (i *metadataOptionsPtrType) ToMetadataOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsPtrOutput)
 }
 
+func (i *metadataOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptions] {
+	return pulumix.Output[*MetadataOptions]{
+		OutputState: i.ToMetadataOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the metadata options for running a transfer.
 type MetadataOptionsOutput struct{ *pulumi.OutputState }
 
@@ -2490,6 +2833,12 @@ func (o MetadataOptionsOutput) ToMetadataOptionsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptions) *MetadataOptions {
 		return &v
 	}).(MetadataOptionsPtrOutput)
+}
+
+func (o MetadataOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataOptions] {
+	return pulumix.Output[MetadataOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
@@ -2549,6 +2898,12 @@ func (o MetadataOptionsPtrOutput) ToMetadataOptionsPtrOutput() MetadataOptionsPt
 
 func (o MetadataOptionsPtrOutput) ToMetadataOptionsPtrOutputWithContext(ctx context.Context) MetadataOptionsPtrOutput {
 	return o
+}
+
+func (o MetadataOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptions] {
+	return pulumix.Output[*MetadataOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetadataOptionsPtrOutput) Elem() MetadataOptionsOutput {
@@ -2688,6 +3043,12 @@ func (o MetadataOptionsResponseOutput) ToMetadataOptionsResponseOutputWithContex
 	return o
 }
 
+func (o MetadataOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataOptionsResponse] {
+	return pulumix.Output[MetadataOptionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
 func (o MetadataOptionsResponseOutput) Acl() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Acl }).(pulumi.StringOutput)
@@ -2776,6 +3137,12 @@ func (i NotificationConfigArgs) ToNotificationConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigOutput)
 }
 
+func (i NotificationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationConfig] {
+	return pulumix.Output[NotificationConfig]{
+		OutputState: i.ToNotificationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NotificationConfigArgs) ToNotificationConfigPtrOutput() NotificationConfigPtrOutput {
 	return i.ToNotificationConfigPtrOutputWithContext(context.Background())
 }
@@ -2817,6 +3184,12 @@ func (i *notificationConfigPtrType) ToNotificationConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigPtrOutput)
 }
 
+func (i *notificationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfig] {
+	return pulumix.Output[*NotificationConfig]{
+		OutputState: i.ToNotificationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfigOutput struct{ *pulumi.OutputState }
 
@@ -2840,6 +3213,12 @@ func (o NotificationConfigOutput) ToNotificationConfigPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfig) *NotificationConfig {
 		return &v
 	}).(NotificationConfigPtrOutput)
+}
+
+func (o NotificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationConfig] {
+	return pulumix.Output[NotificationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Event types for which a notification is desired. If empty, send notifications for all event types.
@@ -2869,6 +3248,12 @@ func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutput() Notificatio
 
 func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
 	return o
+}
+
+func (o NotificationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfig] {
+	return pulumix.Output[*NotificationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationConfigPtrOutput) Elem() NotificationConfigOutput {
@@ -2934,6 +3319,12 @@ func (o NotificationConfigResponseOutput) ToNotificationConfigResponseOutput() N
 
 func (o NotificationConfigResponseOutput) ToNotificationConfigResponseOutputWithContext(ctx context.Context) NotificationConfigResponseOutput {
 	return o
+}
+
+func (o NotificationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationConfigResponse] {
+	return pulumix.Output[NotificationConfigResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Event types for which a notification is desired. If empty, send notifications for all event types.
@@ -3006,6 +3397,12 @@ func (i ObjectConditionsArgs) ToObjectConditionsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsOutput)
 }
 
+func (i ObjectConditionsArgs) ToOutput(ctx context.Context) pulumix.Output[ObjectConditions] {
+	return pulumix.Output[ObjectConditions]{
+		OutputState: i.ToObjectConditionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ObjectConditionsArgs) ToObjectConditionsPtrOutput() ObjectConditionsPtrOutput {
 	return i.ToObjectConditionsPtrOutputWithContext(context.Background())
 }
@@ -3047,6 +3444,12 @@ func (i *objectConditionsPtrType) ToObjectConditionsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsPtrOutput)
 }
 
+func (i *objectConditionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ObjectConditions] {
+	return pulumix.Output[*ObjectConditions]{
+		OutputState: i.ToObjectConditionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
 type ObjectConditionsOutput struct{ *pulumi.OutputState }
 
@@ -3070,6 +3473,12 @@ func (o ObjectConditionsOutput) ToObjectConditionsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectConditions) *ObjectConditions {
 		return &v
 	}).(ObjectConditionsPtrOutput)
+}
+
+func (o ObjectConditionsOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectConditions] {
+	return pulumix.Output[ObjectConditions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
@@ -3114,6 +3523,12 @@ func (o ObjectConditionsPtrOutput) ToObjectConditionsPtrOutput() ObjectCondition
 
 func (o ObjectConditionsPtrOutput) ToObjectConditionsPtrOutputWithContext(ctx context.Context) ObjectConditionsPtrOutput {
 	return o
+}
+
+func (o ObjectConditionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ObjectConditions] {
+	return pulumix.Output[*ObjectConditions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ObjectConditionsPtrOutput) Elem() ObjectConditionsOutput {
@@ -3217,6 +3632,12 @@ func (o ObjectConditionsResponseOutput) ToObjectConditionsResponseOutputWithCont
 	return o
 }
 
+func (o ObjectConditionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectConditionsResponse] {
+	return pulumix.Output[ObjectConditionsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 func (o ObjectConditionsResponseOutput) ExcludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ObjectConditionsResponse) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
@@ -3282,6 +3703,12 @@ func (i PosixFilesystemArgs) ToPosixFilesystemOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemOutput)
 }
 
+func (i PosixFilesystemArgs) ToOutput(ctx context.Context) pulumix.Output[PosixFilesystem] {
+	return pulumix.Output[PosixFilesystem]{
+		OutputState: i.ToPosixFilesystemOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PosixFilesystemArgs) ToPosixFilesystemPtrOutput() PosixFilesystemPtrOutput {
 	return i.ToPosixFilesystemPtrOutputWithContext(context.Background())
 }
@@ -3323,6 +3750,12 @@ func (i *posixFilesystemPtrType) ToPosixFilesystemPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemPtrOutput)
 }
 
+func (i *posixFilesystemPtrType) ToOutput(ctx context.Context) pulumix.Output[*PosixFilesystem] {
+	return pulumix.Output[*PosixFilesystem]{
+		OutputState: i.ToPosixFilesystemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A POSIX filesystem resource.
 type PosixFilesystemOutput struct{ *pulumi.OutputState }
 
@@ -3348,6 +3781,12 @@ func (o PosixFilesystemOutput) ToPosixFilesystemPtrOutputWithContext(ctx context
 	}).(PosixFilesystemPtrOutput)
 }
 
+func (o PosixFilesystemOutput) ToOutput(ctx context.Context) pulumix.Output[PosixFilesystem] {
+	return pulumix.Output[PosixFilesystem]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Root directory path to the filesystem.
 func (o PosixFilesystemOutput) RootDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PosixFilesystem) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
@@ -3365,6 +3804,12 @@ func (o PosixFilesystemPtrOutput) ToPosixFilesystemPtrOutput() PosixFilesystemPt
 
 func (o PosixFilesystemPtrOutput) ToPosixFilesystemPtrOutputWithContext(ctx context.Context) PosixFilesystemPtrOutput {
 	return o
+}
+
+func (o PosixFilesystemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PosixFilesystem] {
+	return pulumix.Output[*PosixFilesystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PosixFilesystemPtrOutput) Elem() PosixFilesystemOutput {
@@ -3406,6 +3851,12 @@ func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponseOutput() PosixFi
 
 func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponseOutputWithContext(ctx context.Context) PosixFilesystemResponseOutput {
 	return o
+}
+
+func (o PosixFilesystemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PosixFilesystemResponse] {
+	return pulumix.Output[PosixFilesystemResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Root directory path to the filesystem.
@@ -3460,6 +3911,12 @@ func (i S3CompatibleMetadataArgs) ToS3CompatibleMetadataOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(S3CompatibleMetadataOutput)
 }
 
+func (i S3CompatibleMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[S3CompatibleMetadata] {
+	return pulumix.Output[S3CompatibleMetadata]{
+		OutputState: i.ToS3CompatibleMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i S3CompatibleMetadataArgs) ToS3CompatibleMetadataPtrOutput() S3CompatibleMetadataPtrOutput {
 	return i.ToS3CompatibleMetadataPtrOutputWithContext(context.Background())
 }
@@ -3501,6 +3958,12 @@ func (i *s3compatibleMetadataPtrType) ToS3CompatibleMetadataPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(S3CompatibleMetadataPtrOutput)
 }
 
+func (i *s3compatibleMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*S3CompatibleMetadata] {
+	return pulumix.Output[*S3CompatibleMetadata]{
+		OutputState: i.ToS3CompatibleMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
 type S3CompatibleMetadataOutput struct{ *pulumi.OutputState }
 
@@ -3524,6 +3987,12 @@ func (o S3CompatibleMetadataOutput) ToS3CompatibleMetadataPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3CompatibleMetadata) *S3CompatibleMetadata {
 		return &v
 	}).(S3CompatibleMetadataPtrOutput)
+}
+
+func (o S3CompatibleMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[S3CompatibleMetadata] {
+	return pulumix.Output[S3CompatibleMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
@@ -3558,6 +4027,12 @@ func (o S3CompatibleMetadataPtrOutput) ToS3CompatibleMetadataPtrOutput() S3Compa
 
 func (o S3CompatibleMetadataPtrOutput) ToS3CompatibleMetadataPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataPtrOutput {
 	return o
+}
+
+func (o S3CompatibleMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*S3CompatibleMetadata] {
+	return pulumix.Output[*S3CompatibleMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3CompatibleMetadataPtrOutput) Elem() S3CompatibleMetadataOutput {
@@ -3637,6 +4112,12 @@ func (o S3CompatibleMetadataResponseOutput) ToS3CompatibleMetadataResponseOutput
 	return o
 }
 
+func (o S3CompatibleMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[S3CompatibleMetadataResponse] {
+	return pulumix.Output[S3CompatibleMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
 func (o S3CompatibleMetadataResponseOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v S3CompatibleMetadataResponse) string { return v.AuthMethod }).(pulumi.StringOutput)
@@ -3708,6 +4189,12 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
+func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScheduleArgs) ToSchedulePtrOutput() SchedulePtrOutput {
 	return i.ToSchedulePtrOutputWithContext(context.Background())
 }
@@ -3749,6 +4236,12 @@ func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
 }
 
+func (i *schedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
+	return pulumix.Output[*Schedule]{
+		OutputState: i.ToSchedulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Transfers can be scheduled to recur or to run just once.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
@@ -3772,6 +4265,12 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Schedule) *Schedule {
 		return &v
 	}).(SchedulePtrOutput)
+}
+
+func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
+	return pulumix.Output[Schedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
@@ -3811,6 +4310,12 @@ func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 
 func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
 	return o
+}
+
+func (o SchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
+	return pulumix.Output[*Schedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
@@ -3902,6 +4407,12 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
+func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
+	return pulumix.Output[ScheduleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
 func (o ScheduleResponseOutput) EndTimeOfDay() TimeOfDayResponseOutput {
 	return o.ApplyT(func(v ScheduleResponse) TimeOfDayResponse { return v.EndTimeOfDay }).(TimeOfDayResponseOutput)
@@ -3974,6 +4485,12 @@ func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfD
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
 }
 
+func (i TimeOfDayArgs) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
+	return pulumix.Output[TimeOfDay]{
+		OutputState: i.ToTimeOfDayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TimeOfDayArgs) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
 	return i.ToTimeOfDayPtrOutputWithContext(context.Background())
 }
@@ -4015,6 +4532,12 @@ func (i *timeOfDayPtrType) ToTimeOfDayPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayPtrOutput)
 }
 
+func (i *timeOfDayPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeOfDay] {
+	return pulumix.Output[*TimeOfDay]{
+		OutputState: i.ToTimeOfDayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayOutput struct{ *pulumi.OutputState }
 
@@ -4038,6 +4561,12 @@ func (o TimeOfDayOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) Ti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDay) *TimeOfDay {
 		return &v
 	}).(TimeOfDayPtrOutput)
+}
+
+func (o TimeOfDayOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
+	return pulumix.Output[TimeOfDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -4072,6 +4601,12 @@ func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
 
 func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
 	return o
+}
+
+func (o TimeOfDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeOfDay] {
+	return pulumix.Output[*TimeOfDay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimeOfDayPtrOutput) Elem() TimeOfDayOutput {
@@ -4151,6 +4686,12 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o TimeOfDayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDayResponse] {
+	return pulumix.Output[TimeOfDayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 func (o TimeOfDayResponseOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Hours }).(pulumi.IntOutput)
@@ -4206,6 +4747,12 @@ func (i TransferManifestArgs) ToTransferManifestOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestOutput)
 }
 
+func (i TransferManifestArgs) ToOutput(ctx context.Context) pulumix.Output[TransferManifest] {
+	return pulumix.Output[TransferManifest]{
+		OutputState: i.ToTransferManifestOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TransferManifestArgs) ToTransferManifestPtrOutput() TransferManifestPtrOutput {
 	return i.ToTransferManifestPtrOutputWithContext(context.Background())
 }
@@ -4247,6 +4794,12 @@ func (i *transferManifestPtrType) ToTransferManifestPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestPtrOutput)
 }
 
+func (i *transferManifestPtrType) ToOutput(ctx context.Context) pulumix.Output[*TransferManifest] {
+	return pulumix.Output[*TransferManifest]{
+		OutputState: i.ToTransferManifestPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies where the manifest is located.
 type TransferManifestOutput struct{ *pulumi.OutputState }
 
@@ -4272,6 +4825,12 @@ func (o TransferManifestOutput) ToTransferManifestPtrOutputWithContext(ctx conte
 	}).(TransferManifestPtrOutput)
 }
 
+func (o TransferManifestOutput) ToOutput(ctx context.Context) pulumix.Output[TransferManifest] {
+	return pulumix.Output[TransferManifest]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 func (o TransferManifestOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferManifest) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -4289,6 +4848,12 @@ func (o TransferManifestPtrOutput) ToTransferManifestPtrOutput() TransferManifes
 
 func (o TransferManifestPtrOutput) ToTransferManifestPtrOutputWithContext(ctx context.Context) TransferManifestPtrOutput {
 	return o
+}
+
+func (o TransferManifestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferManifest] {
+	return pulumix.Output[*TransferManifest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransferManifestPtrOutput) Elem() TransferManifestOutput {
@@ -4330,6 +4895,12 @@ func (o TransferManifestResponseOutput) ToTransferManifestResponseOutput() Trans
 
 func (o TransferManifestResponseOutput) ToTransferManifestResponseOutputWithContext(ctx context.Context) TransferManifestResponseOutput {
 	return o
+}
+
+func (o TransferManifestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransferManifestResponse] {
+	return pulumix.Output[TransferManifestResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
@@ -4388,6 +4959,12 @@ func (i TransferOptionsArgs) ToTransferOptionsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TransferOptionsOutput)
 }
 
+func (i TransferOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[TransferOptions] {
+	return pulumix.Output[TransferOptions]{
+		OutputState: i.ToTransferOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TransferOptionsArgs) ToTransferOptionsPtrOutput() TransferOptionsPtrOutput {
 	return i.ToTransferOptionsPtrOutputWithContext(context.Background())
 }
@@ -4429,6 +5006,12 @@ func (i *transferOptionsPtrType) ToTransferOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TransferOptionsPtrOutput)
 }
 
+func (i *transferOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TransferOptions] {
+	return pulumix.Output[*TransferOptions]{
+		OutputState: i.ToTransferOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransferOptions define the actions to be performed on objects in a transfer.
 type TransferOptionsOutput struct{ *pulumi.OutputState }
 
@@ -4452,6 +5035,12 @@ func (o TransferOptionsOutput) ToTransferOptionsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferOptions) *TransferOptions {
 		return &v
 	}).(TransferOptionsPtrOutput)
+}
+
+func (o TransferOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[TransferOptions] {
+	return pulumix.Output[TransferOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
@@ -4491,6 +5080,12 @@ func (o TransferOptionsPtrOutput) ToTransferOptionsPtrOutput() TransferOptionsPt
 
 func (o TransferOptionsPtrOutput) ToTransferOptionsPtrOutputWithContext(ctx context.Context) TransferOptionsPtrOutput {
 	return o
+}
+
+func (o TransferOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferOptions] {
+	return pulumix.Output[*TransferOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransferOptionsPtrOutput) Elem() TransferOptionsOutput {
@@ -4580,6 +5175,12 @@ func (o TransferOptionsResponseOutput) ToTransferOptionsResponseOutput() Transfe
 
 func (o TransferOptionsResponseOutput) ToTransferOptionsResponseOutputWithContext(ctx context.Context) TransferOptionsResponseOutput {
 	return o
+}
+
+func (o TransferOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransferOptionsResponse] {
+	return pulumix.Output[TransferOptionsResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
@@ -4694,6 +5295,12 @@ func (i TransferSpecArgs) ToTransferSpecOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TransferSpecOutput)
 }
 
+func (i TransferSpecArgs) ToOutput(ctx context.Context) pulumix.Output[TransferSpec] {
+	return pulumix.Output[TransferSpec]{
+		OutputState: i.ToTransferSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TransferSpecArgs) ToTransferSpecPtrOutput() TransferSpecPtrOutput {
 	return i.ToTransferSpecPtrOutputWithContext(context.Background())
 }
@@ -4735,6 +5342,12 @@ func (i *transferSpecPtrType) ToTransferSpecPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TransferSpecPtrOutput)
 }
 
+func (i *transferSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*TransferSpec] {
+	return pulumix.Output[*TransferSpec]{
+		OutputState: i.ToTransferSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Configuration for running a transfer.
 type TransferSpecOutput struct{ *pulumi.OutputState }
 
@@ -4758,6 +5371,12 @@ func (o TransferSpecOutput) ToTransferSpecPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferSpec) *TransferSpec {
 		return &v
 	}).(TransferSpecPtrOutput)
+}
+
+func (o TransferSpecOutput) ToOutput(ctx context.Context) pulumix.Output[TransferSpec] {
+	return pulumix.Output[TransferSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An AWS S3 compatible data source.
@@ -4842,6 +5461,12 @@ func (o TransferSpecPtrOutput) ToTransferSpecPtrOutput() TransferSpecPtrOutput {
 
 func (o TransferSpecPtrOutput) ToTransferSpecPtrOutputWithContext(ctx context.Context) TransferSpecPtrOutput {
 	return o
+}
+
+func (o TransferSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferSpec] {
+	return pulumix.Output[*TransferSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransferSpecPtrOutput) Elem() TransferSpecOutput {
@@ -5039,6 +5664,12 @@ func (o TransferSpecResponseOutput) ToTransferSpecResponseOutput() TransferSpecR
 
 func (o TransferSpecResponseOutput) ToTransferSpecResponseOutputWithContext(ctx context.Context) TransferSpecResponseOutput {
 	return o
+}
+
+func (o TransferSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransferSpecResponse] {
+	return pulumix.Output[TransferSpecResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An AWS S3 compatible data source.

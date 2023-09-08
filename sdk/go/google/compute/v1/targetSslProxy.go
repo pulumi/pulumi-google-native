@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TargetSslProxy resource in the specified project using the data included in the request.
@@ -147,6 +148,12 @@ func (i *TargetSslProxy) ToTargetSslProxyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSslProxyOutput)
 }
 
+func (i *TargetSslProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetSslProxy] {
+	return pulumix.Output[*TargetSslProxy]{
+		OutputState: i.ToTargetSslProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetSslProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetSslProxyOutput) ElementType() reflect.Type {
@@ -159,6 +166,12 @@ func (o TargetSslProxyOutput) ToTargetSslProxyOutput() TargetSslProxyOutput {
 
 func (o TargetSslProxyOutput) ToTargetSslProxyOutputWithContext(ctx context.Context) TargetSslProxyOutput {
 	return o
+}
+
+func (o TargetSslProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetSslProxy] {
+	return pulumix.Output[*TargetSslProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.

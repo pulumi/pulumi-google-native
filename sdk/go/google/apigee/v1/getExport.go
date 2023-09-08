@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`.
@@ -84,6 +85,12 @@ func (o LookupExportResultOutput) ToLookupExportResultOutput() LookupExportResul
 
 func (o LookupExportResultOutput) ToLookupExportResultOutputWithContext(ctx context.Context) LookupExportResultOutput {
 	return o
+}
+
+func (o LookupExportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExportResult] {
+	return pulumix.Output[LookupExportResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time the export job was created.

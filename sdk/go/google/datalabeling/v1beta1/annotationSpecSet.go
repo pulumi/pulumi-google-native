@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an annotation spec set by providing a set of labels.
@@ -123,6 +124,12 @@ func (i *AnnotationSpecSet) ToAnnotationSpecSetOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AnnotationSpecSetOutput)
 }
 
+func (i *AnnotationSpecSet) ToOutput(ctx context.Context) pulumix.Output[*AnnotationSpecSet] {
+	return pulumix.Output[*AnnotationSpecSet]{
+		OutputState: i.ToAnnotationSpecSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AnnotationSpecSetOutput struct{ *pulumi.OutputState }
 
 func (AnnotationSpecSetOutput) ElementType() reflect.Type {
@@ -135,6 +142,12 @@ func (o AnnotationSpecSetOutput) ToAnnotationSpecSetOutput() AnnotationSpecSetOu
 
 func (o AnnotationSpecSetOutput) ToAnnotationSpecSetOutputWithContext(ctx context.Context) AnnotationSpecSetOutput {
 	return o
+}
+
+func (o AnnotationSpecSetOutput) ToOutput(ctx context.Context) pulumix.Output[*AnnotationSpecSet] {
+	return pulumix.Output[*AnnotationSpecSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.

@@ -11,6 +11,7 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -135,6 +136,12 @@ func (i *InternalRangeIamMember) ToInternalRangeIamMemberOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeIamMemberOutput)
 }
 
+func (i *InternalRangeIamMember) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeIamMember] {
+	return pulumix.Output[*InternalRangeIamMember]{
+		OutputState: i.ToInternalRangeIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InternalRangeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (InternalRangeIamMemberOutput) ElementType() reflect.Type {
@@ -147,6 +154,12 @@ func (o InternalRangeIamMemberOutput) ToInternalRangeIamMemberOutput() InternalR
 
 func (o InternalRangeIamMemberOutput) ToInternalRangeIamMemberOutputWithContext(ctx context.Context) InternalRangeIamMemberOutput {
 	return o
+}
+
+func (o InternalRangeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeIamMember] {
+	return pulumix.Output[*InternalRangeIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

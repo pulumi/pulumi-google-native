@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The enablement state of the custom module.
@@ -255,6 +274,12 @@ func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStatePtrOutpu
 	}).(CustomModuleEnablementStatePtrOutput)
 }
 
+func (o CustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[CustomModuleEnablementState] {
+	return pulumix.Output[CustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -288,6 +313,12 @@ func (o CustomModuleEnablementStatePtrOutput) ToCustomModuleEnablementStatePtrOu
 
 func (o CustomModuleEnablementStatePtrOutput) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
 	return o
+}
+
+func (o CustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomModuleEnablementState] {
+	return pulumix.Output[*CustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomModuleEnablementStatePtrOutput) Elem() CustomModuleEnablementStateOutput {
@@ -350,6 +381,12 @@ func (in *customModuleEnablementStatePtr) ToCustomModuleEnablementStatePtrOutput
 
 func (in *customModuleEnablementStatePtr) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CustomModuleEnablementStatePtrOutput)
+}
+
+func (in *customModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomModuleEnablementState] {
+	return pulumix.Output[*CustomModuleEnablementState]{
+		OutputState: in.ToCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The enablement state of the custom module.
@@ -426,6 +463,12 @@ func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementS
 	}).(FolderCustomModuleEnablementStatePtrOutput)
 }
 
+func (o FolderCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleEnablementState] {
+	return pulumix.Output[FolderCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FolderCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -459,6 +502,12 @@ func (o FolderCustomModuleEnablementStatePtrOutput) ToFolderCustomModuleEnableme
 
 func (o FolderCustomModuleEnablementStatePtrOutput) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
 	return o
+}
+
+func (o FolderCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleEnablementState] {
+	return pulumix.Output[*FolderCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FolderCustomModuleEnablementStatePtrOutput) Elem() FolderCustomModuleEnablementStateOutput {
@@ -521,6 +570,12 @@ func (in *folderCustomModuleEnablementStatePtr) ToFolderCustomModuleEnablementSt
 
 func (in *folderCustomModuleEnablementStatePtr) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FolderCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *folderCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleEnablementState] {
+	return pulumix.Output[*FolderCustomModuleEnablementState]{
+		OutputState: in.ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The severity to assign to findings generated by the module.
@@ -599,6 +654,12 @@ func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToGoogleCloudSecu
 	}).(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput)
 }
 
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomConfigSeverity] {
+	return pulumix.Output[GoogleCloudSecuritycenterV1CustomConfigSeverity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -632,6 +693,12 @@ func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToGoogleCloudS
 
 func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
 	return o
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfigSeverity] {
+	return pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfigSeverity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) Elem() GoogleCloudSecuritycenterV1CustomConfigSeverityOutput {
@@ -694,6 +761,12 @@ func (in *googleCloudSecuritycenterV1CustomConfigSeverityPtr) ToGoogleCloudSecur
 
 func (in *googleCloudSecuritycenterV1CustomConfigSeverityPtr) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput)
+}
+
+func (in *googleCloudSecuritycenterV1CustomConfigSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfigSeverity] {
+	return pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfigSeverity]{
+		OutputState: in.ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // The enablement state of the custom module.
@@ -770,6 +843,12 @@ func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModul
 	}).(OrganizationCustomModuleEnablementStatePtrOutput)
 }
 
+func (o OrganizationCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleEnablementState] {
+	return pulumix.Output[OrganizationCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -803,6 +882,12 @@ func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOrganizationCustomMo
 
 func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
 	return o
+}
+
+func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleEnablementState] {
+	return pulumix.Output[*OrganizationCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationCustomModuleEnablementStatePtrOutput) Elem() OrganizationCustomModuleEnablementStateOutput {
@@ -865,6 +950,12 @@ func (in *organizationCustomModuleEnablementStatePtr) ToOrganizationCustomModule
 
 func (in *organizationCustomModuleEnablementStatePtr) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *organizationCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleEnablementState] {
+	return pulumix.Output[*OrganizationCustomModuleEnablementState]{
+		OutputState: in.ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

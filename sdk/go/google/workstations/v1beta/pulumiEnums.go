@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -84,6 +85,12 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
+func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
+	return pulumix.Output[AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,6 +124,12 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -179,6 +192,12 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
+	return pulumix.Output[*AuditLogConfigLogType]{
+		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // What should happen to the disk after the workstation is deleted. Defaults to DELETE.
@@ -253,6 +272,12 @@ func (o GceRegionalPersistentDiskReclaimPolicyOutput) ToGceRegionalPersistentDis
 	}).(GceRegionalPersistentDiskReclaimPolicyPtrOutput)
 }
 
+func (o GceRegionalPersistentDiskReclaimPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GceRegionalPersistentDiskReclaimPolicy] {
+	return pulumix.Output[GceRegionalPersistentDiskReclaimPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GceRegionalPersistentDiskReclaimPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -286,6 +311,12 @@ func (o GceRegionalPersistentDiskReclaimPolicyPtrOutput) ToGceRegionalPersistent
 
 func (o GceRegionalPersistentDiskReclaimPolicyPtrOutput) ToGceRegionalPersistentDiskReclaimPolicyPtrOutputWithContext(ctx context.Context) GceRegionalPersistentDiskReclaimPolicyPtrOutput {
 	return o
+}
+
+func (o GceRegionalPersistentDiskReclaimPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceRegionalPersistentDiskReclaimPolicy] {
+	return pulumix.Output[*GceRegionalPersistentDiskReclaimPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GceRegionalPersistentDiskReclaimPolicyPtrOutput) Elem() GceRegionalPersistentDiskReclaimPolicyOutput {
@@ -348,6 +379,12 @@ func (in *gceRegionalPersistentDiskReclaimPolicyPtr) ToGceRegionalPersistentDisk
 
 func (in *gceRegionalPersistentDiskReclaimPolicyPtr) ToGceRegionalPersistentDiskReclaimPolicyPtrOutputWithContext(ctx context.Context) GceRegionalPersistentDiskReclaimPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GceRegionalPersistentDiskReclaimPolicyPtrOutput)
+}
+
+func (in *gceRegionalPersistentDiskReclaimPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*GceRegionalPersistentDiskReclaimPolicy] {
+	return pulumix.Output[*GceRegionalPersistentDiskReclaimPolicy]{
+		OutputState: in.ToGceRegionalPersistentDiskReclaimPolicyPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {
