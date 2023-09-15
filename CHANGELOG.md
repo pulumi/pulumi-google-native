@@ -11,6 +11,8 @@ Bug fixes:
   [#890](https://github.com/pulumi/pulumi-google-native/pull/890)
 - Fix issues when diffing config property keys with special characters
   [#911](https://github.com/pulumi/pulumi-google-native/pull/911)
+- Disable autonaming for `google-native:iam:v1/OrganizationRole` 
+  [#905](https://github.com/pulumi/pulumi-google-native/pull/905)
 
 ## v0.30.0 (2023-04-14)
 Upstream breaking changes:
