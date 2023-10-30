@@ -5,13 +5,13 @@
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-google-native/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-google-native/sdk/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fgoogle-native.svg)](https://github.com/pulumi/pulumi-google-native/blob/master/LICENSE)
 
-# Native Google Cloud Pulumi Provider (preview)
+# Native Google Cloud Pulumi Provider (developer preview)
 
 The native Google Cloud Provider for Pulumi lets you provision Google Cloud resources in your cloud programs.
 
 This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
 
-The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes will be introduced in minor version releases.
+> **Warning:** Google Cloud Native is available in developer preview. While upstream changes continue to be delivered, active development is paused. Breaking changes may be introduced in minor version releases.
 
 To use this package, [install the Pulumi CLI](https://www.pulumi.com/docs/get-started/install/).
 
