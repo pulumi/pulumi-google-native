@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     public sealed class GetCloneJobResult
     {
         /// <summary>
+        /// Details of the target Persistent Disks in Compute Engine.
+        /// </summary>
+        public readonly Outputs.ComputeEngineDisksTargetDetailsResponse ComputeEngineDisksTargetDetails;
+        /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
         public readonly Outputs.ComputeEngineTargetDetailsResponse ComputeEngineTargetDetails;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
         [OutputConstructor]
         private GetCloneJobResult(
+            Outputs.ComputeEngineDisksTargetDetailsResponse computeEngineDisksTargetDetails,
+
             Outputs.ComputeEngineTargetDetailsResponse computeEngineTargetDetails,
 
             string createTime,
@@ -126,6 +132,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
             ImmutableArray<Outputs.CloneStepResponse> steps)
         {
+            ComputeEngineDisksTargetDetails = computeEngineDisksTargetDetails;
             ComputeEngineTargetDetails = computeEngineTargetDetails;
             CreateTime = createTime;
             EndTime = endTime;

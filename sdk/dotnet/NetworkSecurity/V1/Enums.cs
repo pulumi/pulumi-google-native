@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.NetworkSecurity.V1
 {
     /// <summary>
+    /// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+    /// </summary>
+    [EnumType]
+    public readonly struct AddressGroupType : IEquatable<AddressGroupType>
+    {
+        private readonly string _value;
+
+        private AddressGroupType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static AddressGroupType TypeUnspecified { get; } = new AddressGroupType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// IP v4 ranges.
+        /// </summary>
+        public static AddressGroupType Ipv4 { get; } = new AddressGroupType("IPV4");
+        /// <summary>
+        /// IP v6 ranges.
+        /// </summary>
+        public static AddressGroupType Ipv6 { get; } = new AddressGroupType("IPV6");
+
+        public static bool operator ==(AddressGroupType left, AddressGroupType right) => left.Equals(right);
+        public static bool operator !=(AddressGroupType left, AddressGroupType right) => !left.Equals(right);
+
+        public static explicit operator string(AddressGroupType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AddressGroupType other && Equals(other);
+        public bool Equals(AddressGroupType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
     /// </summary>
     [EnumType]
@@ -168,6 +209,104 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RuleBasicProfile other && Equals(other);
         public bool Equals(RuleBasicProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+    /// </summary>
+    [EnumType]
+    public readonly struct TlsInspectionPolicyMinTlsVersion : IEquatable<TlsInspectionPolicyMinTlsVersion>
+    {
+        private readonly string _value;
+
+        private TlsInspectionPolicyMinTlsVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Indicates no TLS version was specified.
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion TlsVersionUnspecified { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// TLS 1.0
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls10 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_0");
+        /// <summary>
+        /// TLS 1.1
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls11 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_1");
+        /// <summary>
+        /// TLS 1.2
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls12 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_2");
+        /// <summary>
+        /// TLS 1.3
+        /// </summary>
+        public static TlsInspectionPolicyMinTlsVersion Tls13 { get; } = new TlsInspectionPolicyMinTlsVersion("TLS_1_3");
+
+        public static bool operator ==(TlsInspectionPolicyMinTlsVersion left, TlsInspectionPolicyMinTlsVersion right) => left.Equals(right);
+        public static bool operator !=(TlsInspectionPolicyMinTlsVersion left, TlsInspectionPolicyMinTlsVersion right) => !left.Equals(right);
+
+        public static explicit operator string(TlsInspectionPolicyMinTlsVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TlsInspectionPolicyMinTlsVersion other && Equals(other);
+        public bool Equals(TlsInspectionPolicyMinTlsVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+    /// </summary>
+    [EnumType]
+    public readonly struct TlsInspectionPolicyTlsFeatureProfile : IEquatable<TlsInspectionPolicyTlsFeatureProfile>
+    {
+        private readonly string _value;
+
+        private TlsInspectionPolicyTlsFeatureProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Indicates no profile was specified.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileUnspecified { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// Compatible profile. Allows the broadest set of clients, even those which support only out-of-date SSL features to negotiate with the TLS inspection proxy.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileCompatible { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_COMPATIBLE");
+        /// <summary>
+        /// Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the TLS inspection proxy.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileModern { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_MODERN");
+        /// <summary>
+        /// Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileRestricted { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_RESTRICTED");
+        /// <summary>
+        /// Custom profile. Allow only the set of allowed SSL features specified in the custom_features field of SslPolicy.
+        /// </summary>
+        public static TlsInspectionPolicyTlsFeatureProfile ProfileCustom { get; } = new TlsInspectionPolicyTlsFeatureProfile("PROFILE_CUSTOM");
+
+        public static bool operator ==(TlsInspectionPolicyTlsFeatureProfile left, TlsInspectionPolicyTlsFeatureProfile right) => left.Equals(right);
+        public static bool operator !=(TlsInspectionPolicyTlsFeatureProfile left, TlsInspectionPolicyTlsFeatureProfile right) => !left.Equals(right);
+
+        public static explicit operator string(TlsInspectionPolicyTlsFeatureProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TlsInspectionPolicyTlsFeatureProfile other && Equals(other);
+        public bool Equals(TlsInspectionPolicyTlsFeatureProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

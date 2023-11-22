@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+        /// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
         /// </summary>
         public readonly int Weight;
 

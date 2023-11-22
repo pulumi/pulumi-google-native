@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly Outputs.JobResponse DeployJob;
         /// <summary>
+        /// The postdeploy Job, which is the last job on the phase.
+        /// </summary>
+        public readonly Outputs.JobResponse PostdeployJob;
+        /// <summary>
+        /// The predeploy Job, which is the first job on the phase.
+        /// </summary>
+        public readonly Outputs.JobResponse PredeployJob;
+        /// <summary>
         /// The verify Job. Runs after a deploy if the deploy succeeds.
         /// </summary>
         public readonly Outputs.JobResponse VerifyJob;
@@ -29,9 +37,15 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         private DeploymentJobsResponse(
             Outputs.JobResponse deployJob,
 
+            Outputs.JobResponse postdeployJob,
+
+            Outputs.JobResponse predeployJob,
+
             Outputs.JobResponse verifyJob)
         {
             DeployJob = deployJob;
+            PostdeployJob = postdeployJob;
+            PredeployJob = predeployJob;
             VerifyJob = verifyJob;
         }
     }

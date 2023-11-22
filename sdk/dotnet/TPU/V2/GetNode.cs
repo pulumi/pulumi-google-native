@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.TPU.V2
         /// </summary>
         public readonly Outputs.AcceleratorConfigResponse AcceleratorConfig;
         /// <summary>
-        /// The type of hardware accelerators associated with this node.
+        /// Optional. The type of hardware accelerators associated with this node.
         /// </summary>
         public readonly string AcceleratorType;
         /// <summary>
@@ -108,6 +108,10 @@ namespace Pulumi.GoogleNative.TPU.V2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
+        /// Whether the Node belongs to a Multislice group.
+        /// </summary>
+        public readonly bool MultisliceNode;
+        /// <summary>
         /// Immutable. The name of the TPU.
         /// </summary>
         public readonly string Name;
@@ -119,6 +123,10 @@ namespace Pulumi.GoogleNative.TPU.V2
         /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkEndpointResponse> NetworkEndpoints;
+        /// <summary>
+        /// The qualified name of the QueuedResource that requested this Node.
+        /// </summary>
+        public readonly string QueuedResource;
         /// <summary>
         /// The runtime version running in the Node.
         /// </summary>
@@ -172,11 +180,15 @@ namespace Pulumi.GoogleNative.TPU.V2
 
             ImmutableDictionary<string, string> metadata,
 
+            bool multisliceNode,
+
             string name,
 
             Outputs.NetworkConfigResponse networkConfig,
 
             ImmutableArray<Outputs.NetworkEndpointResponse> networkEndpoints,
+
+            string queuedResource,
 
             string runtimeVersion,
 
@@ -203,9 +215,11 @@ namespace Pulumi.GoogleNative.TPU.V2
             HealthDescription = healthDescription;
             Labels = labels;
             Metadata = metadata;
+            MultisliceNode = multisliceNode;
             Name = name;
             NetworkConfig = networkConfig;
             NetworkEndpoints = networkEndpoints;
+            QueuedResource = queuedResource;
             RuntimeVersion = runtimeVersion;
             SchedulingConfig = schedulingConfig;
             ServiceAccount = serviceAccount;

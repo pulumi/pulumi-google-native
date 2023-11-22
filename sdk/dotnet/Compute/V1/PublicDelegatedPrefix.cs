@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.V1
     public partial class PublicDelegatedPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The version of BYOIP API.
+        /// </summary>
+        [Output("byoipApiVersion")]
+        public Output<string> ByoipApiVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -34,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -150,7 +156,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }

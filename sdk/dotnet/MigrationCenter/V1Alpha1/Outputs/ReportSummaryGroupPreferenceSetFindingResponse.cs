@@ -65,9 +65,17 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly string PricingTrack;
         /// <summary>
+        /// A set of findings that applies to Stole-Tenant machines in the input.
+        /// </summary>
+        public readonly Outputs.ReportSummarySoleTenantFindingResponse SoleTenantFinding;
+        /// <summary>
         /// Text describing the business priority specified for this Preference Set
         /// </summary>
         public readonly string TopPriority;
+        /// <summary>
+        /// A set of findings that applies to VMWare machines in the input.
+        /// </summary>
+        public readonly Outputs.ReportSummaryVMWareEngineFindingResponse VmwareEngineFinding;
 
         [OutputConstructor]
         private ReportSummaryGroupPreferenceSetFindingResponse(
@@ -95,7 +103,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
 
             string pricingTrack,
 
-            string topPriority)
+            Outputs.ReportSummarySoleTenantFindingResponse soleTenantFinding,
+
+            string topPriority,
+
+            Outputs.ReportSummaryVMWareEngineFindingResponse vmwareEngineFinding)
         {
             Description = description;
             DisplayName = displayName;
@@ -109,7 +121,9 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
             MonthlyCostTotal = monthlyCostTotal;
             PreferredRegion = preferredRegion;
             PricingTrack = pricingTrack;
+            SoleTenantFinding = soleTenantFinding;
             TopPriority = topPriority;
+            VmwareEngineFinding = vmwareEngineFinding;
         }
     }
 }

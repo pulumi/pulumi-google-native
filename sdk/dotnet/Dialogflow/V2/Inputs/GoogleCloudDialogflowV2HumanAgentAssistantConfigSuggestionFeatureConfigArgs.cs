@@ -28,7 +28,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public Input<Inputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs>? ConversationProcessConfig { get; set; }
 
         /// <summary>
-        /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+        /// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+        /// </summary>
+        [Input("disableAgentQueryLogging")]
+        public Input<bool>? DisableAgentQueryLogging { get; set; }
+
+        /// <summary>
+        /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
         /// </summary>
         [Input("enableEventBasedSuggestion")]
         public Input<bool>? EnableEventBasedSuggestion { get; set; }

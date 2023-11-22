@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// (Postgres only) Whether point in time recovery is enabled.
+        /// Whether point in time recovery is enabled.
         /// </summary>
         public readonly bool PointInTimeRecoveryEnabled;
         /// <summary>

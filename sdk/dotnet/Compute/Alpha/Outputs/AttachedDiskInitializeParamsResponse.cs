@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
-        /// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        /// Whether this disk is using confidential compute mode.
         /// </summary>
         public readonly bool EnableConfidentialCompute;
         /// <summary>
@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
-        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaZones;
         /// <summary>

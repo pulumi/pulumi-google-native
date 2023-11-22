@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Logging.V2
     public static class GetOrganizationBucketView
     {
         /// <summary>
-        /// Gets a view on a log bucket..
+        /// Gets a view on a log bucket.
         /// </summary>
         public static Task<GetOrganizationBucketViewResult> InvokeAsync(GetOrganizationBucketViewArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBucketViewResult>("google-native:logging/v2:getOrganizationBucketView", args ?? new GetOrganizationBucketViewArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a view on a log bucket..
+        /// Gets a view on a log bucket.
         /// </summary>
         public static Output<GetOrganizationBucketViewResult> Invoke(GetOrganizationBucketViewInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBucketViewResult>("google-native:logging/v2:getOrganizationBucketView", args ?? new GetOrganizationBucketViewInvokeArgs(), options.WithDefaults());

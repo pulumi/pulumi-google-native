@@ -22,67 +22,79 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<string>? Column { get; set; }
 
         /// <summary>
+        /// Optional. Description of the rule. The maximum length is 1,024 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
         /// </summary>
         [Input("dimension", required: true)]
         public Input<string> Dimension { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
         /// </summary>
         [Input("ignoreNull")]
         public Input<bool>? IgnoreNull { get; set; }
 
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value is null.
+        /// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Row-level rule which evaluates whether each column value is null.
         /// </summary>
         [Input("nonNullExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs>? NonNullExpectation { get; set; }
 
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value lies between a specified range.
+        /// Row-level rule which evaluates whether each column value lies between a specified range.
         /// </summary>
         [Input("rangeExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs>? RangeExpectation { get; set; }
 
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value matches a specified regex.
+        /// Row-level rule which evaluates whether each column value matches a specified regex.
         /// </summary>
         [Input("regexExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs>? RegexExpectation { get; set; }
 
         /// <summary>
-        /// Table rule which evaluates whether each row passes the specified condition.
+        /// Row-level rule which evaluates whether each row in a table passes the specified condition.
         /// </summary>
         [Input("rowConditionExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs>? RowConditionExpectation { get; set; }
 
         /// <summary>
-        /// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        /// Row-level rule which evaluates whether each column value is contained by a specified set.
         /// </summary>
         [Input("setExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs>? SetExpectation { get; set; }
 
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        /// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         /// </summary>
         [Input("statisticRangeExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs>? StatisticRangeExpectation { get; set; }
 
         /// <summary>
-        /// Table rule which evaluates whether the provided expression is true.
+        /// Aggregate rule which evaluates whether the provided expression is true for a table.
         /// </summary>
         [Input("tableConditionExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs>? TableConditionExpectation { get; set; }
 
         /// <summary>
-        /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+        /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
 
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column has duplicates.
+        /// Row-level rule which evaluates whether each column value is unique.
         /// </summary>
         [Input("uniquenessExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs>? UniquenessExpectation { get; set; }

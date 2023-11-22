@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<Inputs.TCPSocketActionArgs>? TcpSocket { get; set; }
 
         /// <summary>
-        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds; if period_seconds is not set, must be less or equal than 10.
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

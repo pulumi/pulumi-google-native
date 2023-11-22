@@ -13,22 +13,22 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     public sealed class RoutineReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Required] The ID of the dataset containing this routine.
+        /// The ID of the dataset containing this routine.
         /// </summary>
-        [Input("datasetId")]
-        public Input<string>? DatasetId { get; set; }
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// [Required] The ID of the project containing this routine.
+        /// The ID of the project containing this routine.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        /// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         /// </summary>
-        [Input("routineId")]
-        public Input<string>? RoutineId { get; set; }
+        [Input("routineId", required: true)]
+        public Input<string> RoutineId { get; set; } = null!;
 
         public RoutineReferenceArgs()
         {

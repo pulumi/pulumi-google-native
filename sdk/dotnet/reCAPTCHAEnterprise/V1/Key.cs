@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         public Output<Outputs.GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse> IosSettings { get; private set; } = null!;
 
         /// <summary>
-        /// See Creating and managing labels.
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name for the Key in the format "projects/{project}/keys/{key}".
+        /// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -55,13 +55,13 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Options for user acceptance testing.
+        /// Optional. Options for user acceptance testing.
         /// </summary>
         [Output("testingOptions")]
         public Output<Outputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse> TestingOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Settings for WAF
+        /// Optional. Settings for WAF
         /// </summary>
         [Output("wafSettings")]
         public Output<Outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse> WafSettings { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Key(string name, KeyArgs? args = null, CustomResourceOptions? options = null)
+        public Key(string name, KeyArgs args, CustomResourceOptions? options = null)
             : base("google-native:recaptchaenterprise/v1:Key", name, args ?? new KeyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -130,8 +130,8 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Settings for keys that can be used by iOS apps.
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// See Creating and managing labels.
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
         /// </summary>
         public InputMap<string> Labels
         {
@@ -152,7 +152,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         }
 
         /// <summary>
-        /// The resource name for the Key in the format "projects/{project}/keys/{key}".
+        /// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -161,13 +161,13 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Options for user acceptance testing.
+        /// Optional. Options for user acceptance testing.
         /// </summary>
         [Input("testingOptions")]
         public Input<Inputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs>? TestingOptions { get; set; }
 
         /// <summary>
-        /// Settings for WAF
+        /// Optional. Settings for WAF
         /// </summary>
         [Input("wafSettings")]
         public Input<Inputs.GoogleCloudRecaptchaenterpriseV1WafSettingsArgs>? WafSettings { get; set; }

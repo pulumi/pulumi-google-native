@@ -11,17 +11,17 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
 {
 
     /// <summary>
-    /// Configuration options for private clusters.
+    /// Configuration options for private workstation clusters.
     /// </summary>
     [OutputType]
     public sealed class PrivateClusterConfigResponse
     {
         /// <summary>
-        /// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
         /// </summary>
         public readonly ImmutableArray<string> AllowedProjects;
         /// <summary>
-        /// Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
+        /// Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
         /// </summary>
         public readonly string ClusterHostname;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// </summary>
         public readonly bool EnablePrivateEndpoint;
         /// <summary>
-        /// Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+        /// Service attachment URI for the workstation cluster. The service attachemnt is created when private endpoint is enabled. To access workstations in the workstation cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
         /// </summary>
         public readonly string ServiceAttachmentUri;
 

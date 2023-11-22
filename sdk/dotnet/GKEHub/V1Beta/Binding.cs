@@ -29,10 +29,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        /// Optional. Labels for this MembershipBinding.
         /// </summary>
-        [Output("fleet")]
-        public Output<bool> Fleet { get; private set; } = null!;
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        /// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
@@ -131,11 +131,17 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
 
     public sealed class BindingArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
         /// <summary>
-        /// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        /// Optional. Labels for this MembershipBinding.
         /// </summary>
-        [Input("fleet")]
-        public Input<bool>? Fleet { get; set; }
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -159,7 +165,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        /// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

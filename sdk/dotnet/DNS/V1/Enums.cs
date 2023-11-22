@@ -294,6 +294,9 @@ namespace Pulumi.GoogleNative.DNS.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The protocol of the load balancer to health check.
+    /// </summary>
     [EnumType]
     public readonly struct RRSetRoutingPolicyLoadBalancerTargetIpProtocol : IEquatable<RRSetRoutingPolicyLoadBalancerTargetIpProtocol>
     {
@@ -324,7 +327,7 @@ namespace Pulumi.GoogleNative.DNS.V1
     }
 
     /// <summary>
-    /// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+    /// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. 
     /// </summary>
     [EnumType]
     public readonly struct RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType : IEquatable<RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType>
@@ -337,7 +340,9 @@ namespace Pulumi.GoogleNative.DNS.V1
         }
 
         public static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType None { get; } = new RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("none");
+        public static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType GlobalL7ilb { get; } = new RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("globalL7ilb");
         public static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType RegionalL4ilb { get; } = new RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("regionalL4ilb");
+        public static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType RegionalL7ilb { get; } = new RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("regionalL7ilb");
 
         public static bool operator ==(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType left, RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType right) => left.Equals(right);
         public static bool operator !=(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType left, RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType right) => !left.Equals(right);

@@ -34,6 +34,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.CollapsibleGroupArgs>? CollapsibleGroup { get; set; }
 
         /// <summary>
+        /// A widget that displays a list of error groups.
+        /// </summary>
+        [Input("errorReportingPanel")]
+        public Input<Inputs.ErrorReportingPanelArgs>? ErrorReportingPanel { get; set; }
+
+        /// <summary>
+        /// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// A widget that shows list of incidents.
         /// </summary>
         [Input("incidentList")]
@@ -44,6 +56,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// </summary>
         [Input("logsPanel")]
         public Input<Inputs.LogsPanelArgs>? LogsPanel { get; set; }
+
+        /// <summary>
+        /// A widget that displays timeseries data as a pie chart.
+        /// </summary>
+        [Input("pieChart")]
+        public Input<Inputs.PieChartArgs>? PieChart { get; set; }
 
         /// <summary>
         /// A scorecard summarizing time series data.

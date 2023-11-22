@@ -11,23 +11,27 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
     /// <summary>
-    /// Location of the source in an archive file in Google Cloud Storage.
+    /// Location of the source in an archive file in Cloud Storage.
     /// </summary>
     [OutputType]
     public sealed class StorageSourceResponse
     {
         /// <summary>
-        /// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         /// </summary>
         public readonly string Generation;
         /// <summary>
-        /// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         /// </summary>
         public readonly string Object;
+        /// <summary>
+        /// Optional. Option to specify the tool to fetch the source file for the build.
+        /// </summary>
+        public readonly string SourceFetcher;
 
         [OutputConstructor]
         private StorageSourceResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             string generation,
 
-            string @object)
+            string @object,
+
+            string sourceFetcher)
         {
             Bucket = bucket;
             Generation = generation;
             Object = @object;
+            SourceFetcher = sourceFetcher;
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         }
 
         /// <summary>
-        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
         /// </summary>
         [Input("negate")]
         public Input<bool>? Negate { get; set; }
@@ -73,6 +73,18 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         {
             get => _requiredAccessLevels ?? (_requiredAccessLevels = new InputList<string>());
             set => _requiredAccessLevels = value;
+        }
+
+        [Input("vpcNetworkSources")]
+        private InputList<Inputs.VpcNetworkSourceArgs>? _vpcNetworkSources;
+
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// </summary>
+        public InputList<Inputs.VpcNetworkSourceArgs> VpcNetworkSources
+        {
+            get => _vpcNetworkSources ?? (_vpcNetworkSources = new InputList<Inputs.VpcNetworkSourceArgs>());
+            set => _vpcNetworkSources = value;
         }
 
         public ConditionArgs()

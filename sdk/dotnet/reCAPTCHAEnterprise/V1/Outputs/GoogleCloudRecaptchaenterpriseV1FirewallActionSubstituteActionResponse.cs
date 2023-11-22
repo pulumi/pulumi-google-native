@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
     public sealed class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse
     {
         /// <summary>
-        /// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        /// Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
         /// </summary>
         public readonly string Path;
 

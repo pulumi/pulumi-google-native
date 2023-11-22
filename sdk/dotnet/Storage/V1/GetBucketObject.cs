@@ -51,6 +51,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("projection")]
         public string? Projection { get; set; }
 
+        [Input("softDeleted")]
+        public bool? SoftDeleted { get; set; }
+
         [Input("userProject")]
         public string? UserProject { get; set; }
 
@@ -85,6 +88,9 @@ namespace Pulumi.GoogleNative.Storage.V1
 
         [Input("projection")]
         public Input<string>? Projection { get; set; }
+
+        [Input("softDeleted")]
+        public Input<bool>? SoftDeleted { get; set; }
 
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }
@@ -156,6 +162,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly string Generation;
         /// <summary>
+        /// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+        /// </summary>
+        public readonly string HardDeleteTime;
+        /// <summary>
         /// The kind of item this is. For objects, this is always storage#object.
         /// </summary>
         public readonly string Kind;
@@ -188,6 +198,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly Outputs.BucketObjectOwnerResponse Owner;
         /// <summary>
+        /// A collection of object level retention parameters.
+        /// </summary>
+        public readonly Outputs.BucketObjectRetentionResponse Retention;
+        /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         /// </summary>
         public readonly string RetentionExpirationTime;
@@ -199,6 +213,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Content-Length of the data in bytes.
         /// </summary>
         public readonly string Size;
+        /// <summary>
+        /// The time at which the object became soft-deleted in RFC 3339 format.
+        /// </summary>
+        public readonly string SoftDeleteTime;
         /// <summary>
         /// Storage class of the object.
         /// </summary>
@@ -212,7 +230,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly string TimeCreated;
         /// <summary>
-        /// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        /// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         /// </summary>
         public readonly string TimeDeleted;
         /// <summary>
@@ -254,6 +272,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string generation,
 
+            string hardDeleteTime,
+
             string kind,
 
             string kmsKeyName,
@@ -270,11 +290,15 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             Outputs.BucketObjectOwnerResponse owner,
 
+            Outputs.BucketObjectRetentionResponse retention,
+
             string retentionExpirationTime,
 
             string selfLink,
 
             string size,
+
+            string softDeleteTime,
 
             string storageClass,
 
@@ -302,6 +326,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             Etag = etag;
             EventBasedHold = eventBasedHold;
             Generation = generation;
+            HardDeleteTime = hardDeleteTime;
             Kind = kind;
             KmsKeyName = kmsKeyName;
             Md5Hash = md5Hash;
@@ -310,9 +335,11 @@ namespace Pulumi.GoogleNative.Storage.V1
             Metageneration = metageneration;
             Name = name;
             Owner = owner;
+            Retention = retention;
             RetentionExpirationTime = retentionExpirationTime;
             SelfLink = selfLink;
             Size = size;
+            SoftDeleteTime = softDeleteTime;
             StorageClass = storageClass;
             TemporaryHold = temporaryHold;
             TimeCreated = timeCreated;

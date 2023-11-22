@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         public Input<double>? Size { get; set; }
 
         /// <summary>
-        /// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+        /// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
         /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }

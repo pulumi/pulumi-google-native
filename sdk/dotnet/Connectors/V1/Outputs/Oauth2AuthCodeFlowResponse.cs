@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly string AuthCode;
         /// <summary>
+        /// Auth URL for Authorization Code Flow
+        /// </summary>
+        public readonly string AuthUri;
+        /// <summary>
         /// Client ID for user-provided OAuth app.
         /// </summary>
         public readonly string ClientId;
@@ -49,6 +53,8 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         private Oauth2AuthCodeFlowResponse(
             string authCode,
 
+            string authUri,
+
             string clientId,
 
             Outputs.SecretResponse clientSecret,
@@ -62,6 +68,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
             ImmutableArray<string> scopes)
         {
             AuthCode = authCode;
+            AuthUri = authUri;
             ClientId = clientId;
             ClientSecret = clientSecret;
             EnablePkce = enablePkce;

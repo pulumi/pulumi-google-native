@@ -24,6 +24,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
             set => _sourceNatActiveIps = value;
         }
 
+        [Input("sourceNatActiveRanges")]
+        private InputList<string>? _sourceNatActiveRanges;
+
+        /// <summary>
+        /// A list of URLs of the subnetworks used as source ranges for this NAT Rule. These subnetworks must have purpose set to PRIVATE_NAT. This field is used for private NAT.
+        /// </summary>
+        public InputList<string> SourceNatActiveRanges
+        {
+            get => _sourceNatActiveRanges ?? (_sourceNatActiveRanges = new InputList<string>());
+            set => _sourceNatActiveRanges = value;
+        }
+
         [Input("sourceNatDrainIps")]
         private InputList<string>? _sourceNatDrainIps;
 
@@ -34,6 +46,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         {
             get => _sourceNatDrainIps ?? (_sourceNatDrainIps = new InputList<string>());
             set => _sourceNatDrainIps = value;
+        }
+
+        [Input("sourceNatDrainRanges")]
+        private InputList<string>? _sourceNatDrainRanges;
+
+        /// <summary>
+        /// A list of URLs of subnetworks representing source ranges to be drained. This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule. This field is used for private NAT.
+        /// </summary>
+        public InputList<string> SourceNatDrainRanges
+        {
+            get => _sourceNatDrainRanges ?? (_sourceNatDrainRanges = new InputList<string>());
+            set => _sourceNatDrainRanges = value;
         }
 
         public RouterNatRuleActionArgs()

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }

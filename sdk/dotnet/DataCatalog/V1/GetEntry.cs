@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1DatabaseTableSpecResponse DatabaseTableSpec;
         /// <summary>
+        /// Specification that applies to a dataset.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1DatasetSpecResponse DatasetSpec;
+        /// <summary>
         /// Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         /// </summary>
         public readonly string Description;
@@ -134,6 +138,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1LookerSystemSpecResponse LookerSystemSpec;
         /// <summary>
+        /// Model specification.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1ModelSpecResponse ModelSpec;
+        /// <summary>
         /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         public readonly string Name;
@@ -162,7 +170,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse SqlDatabaseSystemSpec;
         /// <summary>
-        /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        /// The type of the entry. For details, see [`EntryType`](#entrytype).
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -194,6 +202,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             Outputs.GoogleCloudDatacatalogV1DatabaseTableSpecResponse databaseTableSpec,
 
+            Outputs.GoogleCloudDatacatalogV1DatasetSpecResponse datasetSpec,
+
             string description,
 
             string displayName,
@@ -211,6 +221,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             string linkedResource,
 
             Outputs.GoogleCloudDatacatalogV1LookerSystemSpecResponse lookerSystemSpec,
+
+            Outputs.GoogleCloudDatacatalogV1ModelSpecResponse modelSpec,
 
             string name,
 
@@ -241,6 +253,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             DataSource = dataSource;
             DataSourceConnectionSpec = dataSourceConnectionSpec;
             DatabaseTableSpec = databaseTableSpec;
+            DatasetSpec = datasetSpec;
             Description = description;
             DisplayName = displayName;
             FilesetSpec = filesetSpec;
@@ -250,6 +263,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             Labels = labels;
             LinkedResource = linkedResource;
             LookerSystemSpec = lookerSystemSpec;
+            ModelSpec = modelSpec;
             Name = name;
             PersonalDetails = personalDetails;
             RoutineSpec = routineSpec;

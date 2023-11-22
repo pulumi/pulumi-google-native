@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleRpcStatusResponse Error;
         /// <summary>
-        /// An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         /// </summary>
         public readonly string MimeType;
         /// <summary>

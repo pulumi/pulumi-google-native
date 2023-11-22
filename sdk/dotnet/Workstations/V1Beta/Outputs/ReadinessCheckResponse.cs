@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class ReadinessCheckResponse
     {
         /// <summary>
-        /// Path to which the request should be sent.
+        /// Optional. Path to which the request should be sent.
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Port to which the request should be sent.
+        /// Optional. Port to which the request should be sent.
         /// </summary>
         public readonly int Port;
 

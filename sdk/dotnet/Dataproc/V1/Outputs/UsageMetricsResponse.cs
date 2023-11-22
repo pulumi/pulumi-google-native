@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class UsageMetricsResponse
     {
         /// <summary>
+        /// Optional. Accelerator type being used, if any
+        /// </summary>
+        public readonly string AcceleratorType;
+        /// <summary>
+        /// Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        public readonly string MilliAcceleratorSeconds;
+        /// <summary>
         /// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         /// </summary>
         public readonly string MilliDcuSeconds;
@@ -27,10 +35,16 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
         [OutputConstructor]
         private UsageMetricsResponse(
+            string acceleratorType,
+
+            string milliAcceleratorSeconds,
+
             string milliDcuSeconds,
 
             string shuffleStorageGbSeconds)
         {
+            AcceleratorType = acceleratorType;
+            MilliAcceleratorSeconds = milliAcceleratorSeconds;
             MilliDcuSeconds = milliDcuSeconds;
             ShuffleStorageGbSeconds = shuffleStorageGbSeconds;
         }

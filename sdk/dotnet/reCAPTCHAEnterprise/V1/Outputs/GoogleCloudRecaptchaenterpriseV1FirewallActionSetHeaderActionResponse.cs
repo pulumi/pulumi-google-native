@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
     public sealed class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse
     {
         /// <summary>
-        /// The header key to set in the request to the backend server.
+        /// Optional. The header key to set in the request to the backend server.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The header value to set in the request to the backend server.
+        /// Optional. The header value to set in the request to the backend server.
         /// </summary>
         public readonly string Value;
 

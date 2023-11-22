@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("networkTags")]
         public Input<Inputs.NetworkTagsArgs>? NetworkTags { get; set; }
 
+        /// <summary>
+        /// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+        /// </summary>
+        [Input("resourceManagerTags")]
+        public Input<Inputs.ResourceManagerTagsArgs>? ResourceManagerTags { get; set; }
+
         public NodePoolAutoConfigArgs()
         {
         }

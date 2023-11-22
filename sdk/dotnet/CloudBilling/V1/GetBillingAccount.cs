@@ -67,6 +67,10 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         /// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
         /// </summary>
         public readonly bool Open;
+        /// <summary>
+        /// The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for example: organizations/12345678 - billingAccounts/{billing_account_id}, for example: `billingAccounts/012345-567890-ABCDEF`
+        /// </summary>
+        public readonly string Parent;
 
         [OutputConstructor]
         private GetBillingAccountResult(
@@ -76,12 +80,15 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
 
             string name,
 
-            bool open)
+            bool open,
+
+            string parent)
         {
             DisplayName = displayName;
             MasterBillingAccount = masterBillingAccount;
             Name = name;
             Open = open;
+            Parent = parent;
         }
     }
 }

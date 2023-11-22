@@ -116,7 +116,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+        /// Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
         /// </summary>
         public readonly Outputs.StateErrorResponse StateError;
         /// <summary>

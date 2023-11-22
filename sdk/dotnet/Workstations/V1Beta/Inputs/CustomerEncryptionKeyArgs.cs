@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
 {
 
     /// <summary>
-    /// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+    /// A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
     /// </summary>
     public sealed class CustomerEncryptionKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        /// Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }

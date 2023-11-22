@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Members;
         /// <summary>
-        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
         /// </summary>
         public readonly bool Negate;
         /// <summary>
@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
         /// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
         /// </summary>
         public readonly ImmutableArray<string> RequiredAccessLevels;
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.VpcNetworkSourceResponse> VpcNetworkSources;
 
         [OutputConstructor]
         private ConditionResponse(
@@ -53,7 +57,9 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 
             ImmutableArray<string> regions,
 
-            ImmutableArray<string> requiredAccessLevels)
+            ImmutableArray<string> requiredAccessLevels,
+
+            ImmutableArray<Outputs.VpcNetworkSourceResponse> vpcNetworkSources)
         {
             DevicePolicy = devicePolicy;
             IpSubnetworks = ipSubnetworks;
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
             Negate = negate;
             Regions = regions;
             RequiredAccessLevels = requiredAccessLevels;
+            VpcNetworkSources = vpcNetworkSources;
         }
     }
 }

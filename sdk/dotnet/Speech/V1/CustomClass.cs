@@ -16,10 +16,40 @@ namespace Pulumi.GoogleNative.Speech.V1
     public partial class CustomClass : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
         /// </summary>
         [Output("customClassId")]
         public Output<string> CustomClassId { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this resource was requested for deletion. This field is not used.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this resource will be purged. This field is not used.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
         /// A collection of class items.
@@ -50,6 +80,24 @@ namespace Pulumi.GoogleNative.Speech.V1
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not this CustomClass is in the process of being updated. This field is not used.
+        /// </summary>
+        [Output("reconciling")]
+        public Output<bool> Reconciling { get; private set; } = null!;
+
+        /// <summary>
+        /// The CustomClass lifecycle state. This field is not used.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// System-assigned unique identifier for the CustomClass. This field is not used.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
 
 
         /// <summary>

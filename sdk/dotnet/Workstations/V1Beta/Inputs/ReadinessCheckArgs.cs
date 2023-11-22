@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     public sealed class ReadinessCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Path to which the request should be sent.
+        /// Optional. Path to which the request should be sent.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Port to which the request should be sent.
+        /// Optional. Port to which the request should be sent.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

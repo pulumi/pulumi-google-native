@@ -35,6 +35,18 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<string> ApiVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Whether Autocheckpoint is enabled.
+        /// </summary>
+        [Output("autocheckpointEnabled")]
+        public Output<bool> AutocheckpointEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Boot disk configuration.
+        /// </summary>
+        [Output("bootDiskConfig")]
+        public Output<Outputs.BootDiskConfigResponse> BootDiskConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         /// </summary>
         [Output("cidrBlock")]
@@ -233,6 +245,18 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         [Input("acceleratorType")]
         public Input<string>? AcceleratorType { get; set; }
+
+        /// <summary>
+        /// Optional. Whether Autocheckpoint is enabled.
+        /// </summary>
+        [Input("autocheckpointEnabled")]
+        public Input<bool>? AutocheckpointEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Boot disk configuration.
+        /// </summary>
+        [Input("bootDiskConfig")]
+        public Input<Inputs.BootDiskConfigArgs>? BootDiskConfig { get; set; }
 
         /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.

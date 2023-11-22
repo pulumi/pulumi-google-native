@@ -16,6 +16,24 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        [Input("aggregateReservation")]
+        public Input<Inputs.AllocationAggregateReservationArgs>? AggregateReservation { get; set; }
+
+        /// <summary>
+        /// Duration time relative to reservation creation when GCE will automatically delete this resource.
+        /// </summary>
+        [Input("deleteAfterDuration")]
+        public Input<Inputs.DurationArgs>? DeleteAfterDuration { get; set; }
+
+        /// <summary>
+        /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        /// </summary>
+        [Input("deleteAtTime")]
+        public Input<string>? DeleteAtTime { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]

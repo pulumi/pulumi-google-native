@@ -80,13 +80,9 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         public readonly Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse ComplianceStatus;
         /// <summary>
-        /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         /// </summary>
         public readonly ImmutableArray<string> CompliantButDisallowedServices;
-        /// <summary>
-        /// Controls associated with the customer workload
-        /// </summary>
-        public readonly Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse Controls;
         /// <summary>
         /// Immutable. The Workload creation timestamp.
         /// </summary>
@@ -96,7 +92,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Optional. Represents the Ekm Provisioning State of the given workload.
+        /// Represents the Ekm Provisioning State of the given workload.
         /// </summary>
         public readonly Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse EkmProvisioningResponse;
         /// <summary>
@@ -148,6 +144,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         public readonly string ProvisionedResourcesParent;
         /// <summary>
+        /// Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+        /// </summary>
+        public readonly bool ResourceMonitoringEnabled;
+        /// <summary>
         /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse> ResourceSettings;
@@ -175,8 +175,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse complianceStatus,
 
             ImmutableArray<string> compliantButDisallowedServices,
-
-            Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse controls,
 
             string createTime,
 
@@ -208,6 +206,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
 
             string provisionedResourcesParent,
 
+            bool resourceMonitoringEnabled,
+
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse> resourceSettings,
 
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse> resources,
@@ -221,7 +221,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             ComplianceRegime = complianceRegime;
             ComplianceStatus = complianceStatus;
             CompliantButDisallowedServices = compliantButDisallowedServices;
-            Controls = controls;
             CreateTime = createTime;
             DisplayName = displayName;
             EkmProvisioningResponse = ekmProvisioningResponse;
@@ -237,6 +236,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             Partner = partner;
             PartnerPermissions = partnerPermissions;
             ProvisionedResourcesParent = provisionedResourcesParent;
+            ResourceMonitoringEnabled = resourceMonitoringEnabled;
             ResourceSettings = resourceSettings;
             Resources = resources;
             SaaEnrollmentResponse = saaEnrollmentResponse;

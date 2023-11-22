@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
         /// <summary>
         /// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
         /// </summary>
-        [Input("controlPlaneNodePoolConfig")]
-        public Input<Inputs.BareMetalAdminControlPlaneNodePoolConfigArgs>? ControlPlaneNodePoolConfig { get; set; }
+        [Input("controlPlaneNodePoolConfig", required: true)]
+        public Input<Inputs.BareMetalAdminControlPlaneNodePoolConfigArgs> ControlPlaneNodePoolConfig { get; set; } = null!;
 
         public BareMetalAdminControlPlaneConfigArgs()
         {

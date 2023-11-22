@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class AcceleratorResponse
     {
         /// <summary>
-        /// Number of accelerator cards exposed to the instance.
+        /// Optional. Number of accelerator cards exposed to the instance.
         /// </summary>
         public readonly int Count;
         /// <summary>
-        /// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        /// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
         /// </summary>
         public readonly string Type;
 

@@ -64,10 +64,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1
     public sealed class GetScopeResult
     {
         /// <summary>
-        /// If true, all Memberships in the Fleet bind to this Scope.
-        /// </summary>
-        public readonly bool AllMemberships;
-        /// <summary>
         /// When the scope was created.
         /// </summary>
         public readonly string CreateTime;
@@ -76,9 +72,17 @@ namespace Pulumi.GoogleNative.GKEHub.V1
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
+        /// Optional. Labels for this Scope.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> NamespaceLabels;
         /// <summary>
         /// State of the scope resource.
         /// </summary>
@@ -94,13 +98,15 @@ namespace Pulumi.GoogleNative.GKEHub.V1
 
         [OutputConstructor]
         private GetScopeResult(
-            bool allMemberships,
-
             string createTime,
 
             string deleteTime,
 
+            ImmutableDictionary<string, string> labels,
+
             string name,
+
+            ImmutableDictionary<string, string> namespaceLabels,
 
             Outputs.ScopeLifecycleStateResponse state,
 
@@ -108,10 +114,11 @@ namespace Pulumi.GoogleNative.GKEHub.V1
 
             string updateTime)
         {
-            AllMemberships = allMemberships;
             CreateTime = createTime;
             DeleteTime = deleteTime;
+            Labels = labels;
             Name = name;
+            NamespaceLabels = namespaceLabels;
             State = state;
             Uid = uid;
             UpdateTime = updateTime;

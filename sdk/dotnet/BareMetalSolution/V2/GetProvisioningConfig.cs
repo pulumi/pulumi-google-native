@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkConfigResponse> Networks;
         /// <summary>
+        /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+        /// </summary>
+        public readonly string Pod;
+        /// <summary>
         /// State of ProvisioningConfig.
         /// </summary>
         public readonly string State;
@@ -138,6 +142,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
             ImmutableArray<Outputs.NetworkConfigResponse> networks,
 
+            string pod,
+
             string state,
 
             string statusMessage,
@@ -158,6 +164,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             Location = location;
             Name = name;
             Networks = networks;
+            Pod = pod;
             State = state;
             StatusMessage = statusMessage;
             TicketId = ticketId;

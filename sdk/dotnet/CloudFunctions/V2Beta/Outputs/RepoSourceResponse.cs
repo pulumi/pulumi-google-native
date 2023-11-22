@@ -29,10 +29,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
         /// </summary>
         public readonly string Dir;
         /// <summary>
-        /// Only trigger a build if the revision regex does NOT match the revision regex.
-        /// </summary>
-        public readonly bool InvertRegex;
-        /// <summary>
         /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         /// </summary>
         public readonly string Project;
@@ -53,8 +49,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
             string dir,
 
-            bool invertRegex,
-
             string project,
 
             string repoName,
@@ -64,7 +58,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
             BranchName = branchName;
             CommitSha = commitSha;
             Dir = dir;
-            InvertRegex = invertRegex;
             Project = project;
             RepoName = repoName;
             TagName = tagName;

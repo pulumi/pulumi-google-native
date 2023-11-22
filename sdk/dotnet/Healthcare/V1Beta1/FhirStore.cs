@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Output("complexDataTypeReferenceParsing")]
         public Output<string> ComplexDataTypeReferenceParsing { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+        /// </summary>
+        [Output("consentConfig")]
+        public Output<Outputs.ConsentConfigResponse> ConsentConfig { get; private set; } = null!;
+
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
 
@@ -165,6 +171,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Input("complexDataTypeReferenceParsing")]
         public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.FhirStoreComplexDataTypeReferenceParsing>? ComplexDataTypeReferenceParsing { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+        /// </summary>
+        [Input("consentConfig")]
+        public Input<Inputs.ConsentConfigArgs>? ConsentConfig { get; set; }
 
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;

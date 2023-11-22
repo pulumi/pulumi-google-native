@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly string TempStoragePrefix;
         /// <summary>
+        /// Whether the job uses the new streaming engine billing model based on resource usage.
+        /// </summary>
+        public readonly bool UseStreamingEngineResourceBasedBilling;
+        /// <summary>
         /// A description of the process that generated the request.
         /// </summary>
         public readonly ImmutableDictionary<string, string> UserAgent;
@@ -111,6 +115,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string tempStoragePrefix,
 
+            bool useStreamingEngineResourceBasedBilling,
+
             ImmutableDictionary<string, string> userAgent,
 
             ImmutableDictionary<string, string> version,
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
             ServiceOptions = serviceOptions;
             ShuffleMode = shuffleMode;
             TempStoragePrefix = tempStoragePrefix;
+            UseStreamingEngineResourceBasedBilling = useStreamingEngineResourceBasedBilling;
             UserAgent = userAgent;
             Version = version;
             WorkerPools = workerPools;

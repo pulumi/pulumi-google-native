@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly string Collation;
         /// <summary>
+        /// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+        /// </summary>
+        public readonly Outputs.DataCacheConfigResponse DataCacheConfig;
+        /// <summary>
         /// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         /// </summary>
         public readonly string DataDiskSizeGb;
@@ -52,6 +56,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// The database engine type and version.
         /// </summary>
         public readonly string DatabaseVersion;
+        /// <summary>
+        /// Optional. The edition of the given Cloud SQL instance.
+        /// </summary>
+        public readonly string Edition;
         /// <summary>
         /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         /// </summary>
@@ -101,6 +109,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             string collation,
 
+            Outputs.DataCacheConfigResponse dataCacheConfig,
+
             string dataDiskSizeGb,
 
             string dataDiskType,
@@ -108,6 +118,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
             ImmutableDictionary<string, string> databaseFlags,
 
             string databaseVersion,
+
+            string edition,
 
             Outputs.SqlIpConfigResponse ipConfig,
 
@@ -132,10 +144,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
             AvailabilityType = availabilityType;
             CmekKeyName = cmekKeyName;
             Collation = collation;
+            DataCacheConfig = dataCacheConfig;
             DataDiskSizeGb = dataDiskSizeGb;
             DataDiskType = dataDiskType;
             DatabaseFlags = databaseFlags;
             DatabaseVersion = databaseVersion;
+            Edition = edition;
             IpConfig = ipConfig;
             RootPassword = rootPassword;
             RootPasswordSet = rootPasswordSet;

@@ -28,13 +28,31 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Output("customTlsFeatures")]
+        public Output<ImmutableArray<string>> CustomTlsFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Free-text description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Output("excludePublicCaSet")]
+        public Output<bool> ExcludePublicCaSet { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Output("minTlsVersion")]
+        public Output<string> MinTlsVersion { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
@@ -46,10 +64,22 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Output("tlsFeatureProfile")]
+        public Output<string> TlsFeatureProfile { get; private set; } = null!;
+
+        /// <summary>
         /// Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
         /// </summary>
         [Output("tlsInspectionPolicyId")]
         public Output<string> TlsInspectionPolicyId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Output("trustConfig")]
+        public Output<string> TrustConfig { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was updated.
@@ -114,14 +144,38 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         [Input("caPool", required: true)]
         public Input<string> CaPool { get; set; } = null!;
 
+        [Input("customTlsFeatures")]
+        private InputList<string>? _customTlsFeatures;
+
+        /// <summary>
+        /// Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        public InputList<string> CustomTlsFeatures
+        {
+            get => _customTlsFeatures ?? (_customTlsFeatures = new InputList<string>());
+            set => _customTlsFeatures = value;
+        }
+
         /// <summary>
         /// Optional. Free-text description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Input("excludePublicCaSet")]
+        public Input<bool>? ExcludePublicCaSet { get; set; }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Input("minTlsVersion")]
+        public Input<Pulumi.GoogleNative.NetworkSecurity.V1Beta1.TlsInspectionPolicyMinTlsVersion>? MinTlsVersion { get; set; }
 
         /// <summary>
         /// Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
@@ -133,10 +187,22 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Input("tlsFeatureProfile")]
+        public Input<Pulumi.GoogleNative.NetworkSecurity.V1Beta1.TlsInspectionPolicyTlsFeatureProfile>? TlsFeatureProfile { get; set; }
+
+        /// <summary>
         /// Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
         /// </summary>
         [Input("tlsInspectionPolicyId", required: true)]
         public Input<string> TlsInspectionPolicyId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+        /// </summary>
+        [Input("trustConfig")]
+        public Input<string>? TrustConfig { get; set; }
 
         public TlsInspectionPolicyArgs()
         {

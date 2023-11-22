@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class RouterNatResponse
     {
         /// <summary>
-        /// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        /// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
         /// </summary>
         public readonly string AutoNetworkTier;
         /// <summary>

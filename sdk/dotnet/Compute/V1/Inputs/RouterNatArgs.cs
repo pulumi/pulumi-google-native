@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// </summary>
     public sealed class RouterNatArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
+        /// </summary>
+        [Input("autoNetworkTier")]
+        public Input<Pulumi.GoogleNative.Compute.V1.RouterNatAutoNetworkTier>? AutoNetworkTier { get; set; }
+
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
 
@@ -143,6 +149,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// </summary>
         [Input("tcpTransitoryIdleTimeoutSec")]
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
+
+        /// <summary>
+        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.Compute.V1.RouterNatType>? Type { get; set; }
 
         /// <summary>
         /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.

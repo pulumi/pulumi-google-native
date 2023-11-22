@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        /// Required. Short name of the TcpRoute resource to be created.
         /// </summary>
         [Output("tcpRouteId")]
         public Output<string> TcpRouteId { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         }
 
         /// <summary>
-        /// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        /// Required. Short name of the TcpRoute resource to be created.
         /// </summary>
         [Input("tcpRouteId", required: true)]
         public Input<string> TcpRouteId { get; set; } = null!;

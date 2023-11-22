@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public Input<Pulumi.GoogleNative.AppEngine.V1.VpcAccessConnectorEgressSetting>? EgressSetting { get; set; }
 
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -85,6 +85,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
+        /// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+        /// </summary>
+        [Output("instanceEncryptionKey")]
+        public Output<Outputs.CustomerEncryptionKeyResponse> InstanceEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         /// </summary>
         [Output("keyRevocationActionType")]
@@ -385,6 +391,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+        /// </summary>
+        [Input("instanceEncryptionKey")]
+        public Input<Inputs.CustomerEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
 
         /// <summary>
         /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.

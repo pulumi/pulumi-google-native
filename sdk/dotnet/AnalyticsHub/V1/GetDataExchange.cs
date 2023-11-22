@@ -91,6 +91,10 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
         /// Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
         /// </summary>
         public readonly string PrimaryContact;
+        /// <summary>
+        /// Optional. Configurable data sharing environment option for a data exchange.
+        /// </summary>
+        public readonly Outputs.SharingEnvironmentConfigResponse SharingEnvironmentConfig;
 
         [OutputConstructor]
         private GetDataExchangeResult(
@@ -106,7 +110,9 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
 
             string name,
 
-            string primaryContact)
+            string primaryContact,
+
+            Outputs.SharingEnvironmentConfigResponse sharingEnvironmentConfig)
         {
             Description = description;
             DisplayName = displayName;
@@ -115,6 +121,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
             ListingCount = listingCount;
             Name = name;
             PrimaryContact = primaryContact;
+            SharingEnvironmentConfig = sharingEnvironmentConfig;
         }
     }
 }

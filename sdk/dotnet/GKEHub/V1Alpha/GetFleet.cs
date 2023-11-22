@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. The default cluster configurations to apply across the fleet.
+        /// </summary>
+        public readonly Outputs.DefaultClusterConfigResponse DefaultClusterConfig;
+        /// <summary>
         /// When the Fleet was deleted.
         /// </summary>
         public readonly string DeleteTime;
@@ -75,6 +79,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Optional. Labels for this Fleet.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
         /// </summary>
@@ -96,9 +104,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         private GetFleetResult(
             string createTime,
 
+            Outputs.DefaultClusterConfigResponse defaultClusterConfig,
+
             string deleteTime,
 
             string displayName,
+
+            ImmutableDictionary<string, string> labels,
 
             string name,
 
@@ -109,8 +121,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
             string updateTime)
         {
             CreateTime = createTime;
+            DefaultClusterConfig = defaultClusterConfig;
             DeleteTime = deleteTime;
             DisplayName = displayName;
+            Labels = labels;
             Name = name;
             State = state;
             Uid = uid;

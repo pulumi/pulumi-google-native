@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         /// </summary>
         [Output("retention")]
         public Output<string> Retention { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }

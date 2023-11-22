@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Number of seats in the subscription.
+        /// Optional. Number of seats in the subscription.
         /// </summary>
         public readonly string SeatCount;
         /// <summary>

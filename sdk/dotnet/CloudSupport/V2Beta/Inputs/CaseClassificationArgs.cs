@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
     public sealed class CaseClassificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name of the classification.
+        /// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

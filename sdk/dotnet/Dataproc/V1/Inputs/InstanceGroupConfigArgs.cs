@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? ImageUri { get; set; }
 
         /// <summary>
+        /// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.InstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>
         /// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
         /// </summary>
         [Input("machineTypeUri")]
@@ -52,6 +58,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
+        /// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+        /// </summary>
+        [Input("minNumInstances")]
+        public Input<int>? MinNumInstances { get; set; }
+
+        /// <summary>
         /// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
         /// </summary>
         [Input("numInstances")]
@@ -62,6 +74,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         /// </summary>
         [Input("preemptibility")]
         public Input<Pulumi.GoogleNative.Dataproc.V1.InstanceGroupConfigPreemptibility>? Preemptibility { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration to handle the startup of instances during cluster create and update process.
+        /// </summary>
+        [Input("startupConfig")]
+        public Input<Inputs.StartupConfigArgs>? StartupConfig { get; set; }
 
         public InstanceGroupConfigArgs()
         {

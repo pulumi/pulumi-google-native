@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> CustomMetadata;
         /// <summary>
+        /// Optional. The default values will pre-populate the parameter with the given value from the proto. If default_value is left empty, the parameter will be populated with a default of the relevant type, e.g. false for a boolean.
+        /// </summary>
+        public readonly string DefaultValue;
+        /// <summary>
+        /// Optional. The options shown when ENUM ParameterType is specified.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ParameterMetadataEnumOptionResponse> EnumOptions;
+        /// <summary>
         /// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
         /// </summary>
         public readonly string GroupName;
@@ -61,6 +69,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         private ParameterMetadataResponse(
             ImmutableDictionary<string, string> customMetadata,
 
+            string defaultValue,
+
+            ImmutableArray<Outputs.ParameterMetadataEnumOptionResponse> enumOptions,
+
             string groupName,
 
             string helpText,
@@ -80,6 +92,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
             ImmutableArray<string> regexes)
         {
             CustomMetadata = customMetadata;
+            DefaultValue = defaultValue;
+            EnumOptions = enumOptions;
             GroupName = groupName;
             HelpText = helpText;
             IsOptional = isOptional;

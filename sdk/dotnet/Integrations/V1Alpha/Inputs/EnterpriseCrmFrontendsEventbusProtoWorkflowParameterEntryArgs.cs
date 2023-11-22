@@ -43,6 +43,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs>? DefaultValue { get; set; }
 
         /// <summary>
+        /// Optional. The description about the parameter
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Specifies the input/output type for the parameter.
         /// </summary>
         [Input("inOutType")]

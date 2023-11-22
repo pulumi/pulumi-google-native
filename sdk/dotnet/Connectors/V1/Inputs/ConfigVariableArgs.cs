@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<bool>? BoolValue { get; set; }
 
         /// <summary>
+        /// Value is a Encryption Key.
+        /// </summary>
+        [Input("encryptionKeyValue")]
+        public Input<Inputs.EncryptionKeyArgs>? EncryptionKeyValue { get; set; }
+
+        /// <summary>
         /// Value is an integer
         /// </summary>
         [Input("intValue")]

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         private InputList<Inputs.ApkArgs>? _additionalApks;
 
         /// <summary>
-        /// APKs to install in addition to those being directly tested. Currently capped at 100.
+        /// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
         /// </summary>
         public InputList<Inputs.ApkArgs> AdditionalApks
         {
@@ -73,6 +73,18 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         {
             get => _filesToPush ?? (_filesToPush = new InputList<Inputs.DeviceFileArgs>());
             set => _filesToPush = value;
+        }
+
+        [Input("initialSetupApks")]
+        private InputList<Inputs.ApkArgs>? _initialSetupApks;
+
+        /// <summary>
+        /// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+        /// </summary>
+        public InputList<Inputs.ApkArgs> InitialSetupApks
+        {
+            get => _initialSetupApks ?? (_initialSetupApks = new InputList<Inputs.ApkArgs>());
+            set => _initialSetupApks = value;
         }
 
         /// <summary>

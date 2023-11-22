@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse
     {
         /// <summary>
-        /// Expected values for the column value.
+        /// Optional. Expected values for the column value.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

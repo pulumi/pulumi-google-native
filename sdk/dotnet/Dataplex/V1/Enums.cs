@@ -246,7 +246,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     }
 
     /// <summary>
-    /// The aggregate metric to evaluate.
+    /// Optional. The aggregate metric to evaluate.
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic : IEquatable<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic>

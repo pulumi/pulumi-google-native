@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
     public sealed class GetWorkstationConfigResult
     {
         /// <summary>
-        /// Client-specified annotations.
+        /// Optional. Client-specified annotations.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
@@ -78,75 +78,87 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.StatusResponse> Conditions;
         /// <summary>
-        /// Container that will be run for each workstation using this configuration when that workstation is started.
+        /// Optional. Container that runs upon startup for each workstation using this workstation configuration.
         /// </summary>
         public readonly Outputs.ContainerResponse Container;
         /// <summary>
-        /// Time when this resource was created.
+        /// Time when this workstation configuration was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+        /// Whether this resource is degraded, in which case it may require user action to restore full functionality. See also the conditions field.
         /// </summary>
         public readonly bool Degraded;
         /// <summary>
-        /// Time when this resource was soft-deleted.
+        /// Time when this workstation configuration was soft-deleted.
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
-        /// Human-readable name for this resource.
+        /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        /// </summary>
+        public readonly bool DisableTcpConnections;
+        /// <summary>
+        /// Optional. Human-readable name for this workstation configuration.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
         /// </summary>
         public readonly bool EnableAuditAgent;
         /// <summary>
-        /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
+        /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse EncryptionKey;
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        /// Optional. Ephemeral directories which won't persist across workstation sessions.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.EphemeralDirectoryResponse> EphemeralDirectories;
+        /// <summary>
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// Runtime host for the workstation.
+        /// Optional. Runtime host for the workstation.
         /// </summary>
         public readonly Outputs.HostResponse Host;
         /// <summary>
-        /// How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
+        /// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
         /// </summary>
         public readonly string IdleTimeout;
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation configuration and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Full name of this resource.
+        /// Identifier. Full name of this workstation configuration.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Directories to persist across workstation sessions.
+        /// Optional. Directories to persist across workstation sessions.
         /// </summary>
         public readonly ImmutableArray<Outputs.PersistentDirectoryResponse> PersistentDirectories;
         /// <summary>
-        /// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+        /// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
         /// </summary>
         public readonly ImmutableArray<Outputs.ReadinessCheckResponse> ReadinessChecks;
         /// <summary>
-        /// Indicates whether this resource is currently being updated to match its intended state.
+        /// Indicates whether this workstation configuration is currently being updated to match its intended state.
         /// </summary>
         public readonly bool Reconciling;
         /// <summary>
-        /// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+        /// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+        /// </summary>
+        public readonly ImmutableArray<string> ReplicaZones;
+        /// <summary>
+        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.
         /// </summary>
         public readonly string RunningTimeout;
         /// <summary>
-        /// A system-assigned unique identified for this resource.
+        /// A system-assigned unique identifier for this workstation configuration.
         /// </summary>
         public readonly string Uid;
         /// <summary>
-        /// Time when this resource was most recently updated.
+        /// Time when this workstation configuration was most recently updated.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -164,11 +176,15 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
 
             string deleteTime,
 
+            bool disableTcpConnections,
+
             string displayName,
 
             bool enableAuditAgent,
 
             Outputs.CustomerEncryptionKeyResponse encryptionKey,
+
+            ImmutableArray<Outputs.EphemeralDirectoryResponse> ephemeralDirectories,
 
             string etag,
 
@@ -186,6 +202,8 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
 
             bool reconciling,
 
+            ImmutableArray<string> replicaZones,
+
             string runningTimeout,
 
             string uid,
@@ -198,9 +216,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
             CreateTime = createTime;
             Degraded = degraded;
             DeleteTime = deleteTime;
+            DisableTcpConnections = disableTcpConnections;
             DisplayName = displayName;
             EnableAuditAgent = enableAuditAgent;
             EncryptionKey = encryptionKey;
+            EphemeralDirectories = ephemeralDirectories;
             Etag = etag;
             Host = host;
             IdleTimeout = idleTimeout;
@@ -209,6 +229,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
             PersistentDirectories = persistentDirectories;
             ReadinessChecks = readinessChecks;
             Reconciling = reconciling;
+            ReplicaZones = replicaZones;
             RunningTimeout = runningTimeout;
             Uid = uid;
             UpdateTime = updateTime;

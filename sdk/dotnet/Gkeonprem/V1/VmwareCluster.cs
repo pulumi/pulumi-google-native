@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Gkeonprem.V1
 {
     /// <summary>
-    /// Creates a new VMware cluster in a given project and location.
+    /// Creates a new VMware user cluster in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkeonprem/v1:VmwareCluster")]
     public partial class VmwareCluster : global::Pulumi.CustomResource
@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Disable bundled ingress.
+        /// </summary>
+        [Output("disableBundledIngress")]
+        public Output<bool> DisableBundledIngress { get; private set; } = null!;
+
+        /// <summary>
         /// Enable control plane V2. Default to false.
         /// </summary>
         [Output("enableControlPlaneV2")]
@@ -133,7 +139,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Output<Outputs.VmwareNetworkConfigResponse> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+        /// The Anthos clusters on the VMware version for your user cluster.
         /// </summary>
         [Output("onPremVersion")]
         public Output<string> OnPremVersion { get; private set; } = null!;
@@ -178,13 +184,19 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies upgrade policy for the cluster.
+        /// </summary>
+        [Output("upgradePolicy")]
+        public Output<Outputs.VmwareClusterUpgradePolicyResponse> UpgradePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// ValidationCheck represents the result of the preflight check job.
         /// </summary>
         [Output("validationCheck")]
         public Output<Outputs.ValidationCheckResponse> ValidationCheck { get; private set; } = null!;
 
         /// <summary>
-        /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
         /// </summary>
         [Output("vcenter")]
         public Output<Outputs.VmwareVCenterConfigResponse> Vcenter { get; private set; } = null!;
@@ -306,6 +318,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Disable bundled ingress.
+        /// </summary>
+        [Input("disableBundledIngress")]
+        public Input<bool>? DisableBundledIngress { get; set; }
+
+        /// <summary>
         /// Enable control plane V2. Default to false.
         /// </summary>
         [Input("enableControlPlaneV2")]
@@ -339,10 +357,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         public Input<Inputs.VmwareNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+        /// The Anthos clusters on the VMware version for your user cluster.
         /// </summary>
-        [Input("onPremVersion")]
-        public Input<string>? OnPremVersion { get; set; }
+        [Input("onPremVersion", required: true)]
+        public Input<string> OnPremVersion { get; set; } = null!;
 
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -352,6 +370,18 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         [Input("storage")]
         public Input<Inputs.VmwareStorageConfigArgs>? Storage { get; set; }
+
+        /// <summary>
+        /// Specifies upgrade policy for the cluster.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.VmwareClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
+
+        /// <summary>
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
+        /// </summary>
+        [Input("vcenter")]
+        public Input<Inputs.VmwareVCenterConfigArgs>? Vcenter { get; set; }
 
         /// <summary>
         /// Enable VM tracking.

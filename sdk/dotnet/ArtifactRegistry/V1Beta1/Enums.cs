@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 {
     /// <summary>
-    /// The format of packages that are stored in the repository.
+    /// Optional. The format of packages that are stored in the repository.
     /// </summary>
     [EnumType]
     public readonly struct RepositoryFormat : IEquatable<RepositoryFormat>

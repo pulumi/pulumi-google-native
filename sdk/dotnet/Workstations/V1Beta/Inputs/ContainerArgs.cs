@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         private InputList<string>? _args;
 
         /// <summary>
-        /// Arguments passed to the entrypoint.
+        /// Optional. Arguments passed to the entrypoint.
         /// </summary>
         public InputList<string> Args
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         private InputList<string>? _command;
 
         /// <summary>
-        /// If set, overrides the default ENTRYPOINT specified by the image.
+        /// Optional. If set, overrides the default ENTRYPOINT specified by the image.
         /// </summary>
         public InputList<string> Command
         {
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         private InputMap<string>? _env;
 
         /// <summary>
-        /// Environment variables passed to the container's entrypoint.
+        /// Optional. Environment variables passed to the container's entrypoint.
         /// </summary>
         public InputMap<string> Env
         {
@@ -52,19 +52,19 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         }
 
         /// <summary>
-        /// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+        /// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// If set, overrides the USER specified in the image with the given uid.
+        /// Optional. If set, overrides the USER specified in the image with the given uid.
         /// </summary>
         [Input("runAsUser")]
         public Input<int>? RunAsUser { get; set; }
 
         /// <summary>
-        /// If set, overrides the default DIR specified by the image.
+        /// Optional. If set, overrides the default DIR specified by the image.
         /// </summary>
         [Input("workingDir")]
         public Input<string>? WorkingDir { get; set; }

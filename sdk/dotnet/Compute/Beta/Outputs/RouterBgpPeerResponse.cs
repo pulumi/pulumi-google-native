@@ -46,6 +46,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Enable;
         /// <summary>
+        /// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        /// </summary>
+        public readonly bool EnableIpv4;
+        /// <summary>
         /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         /// </summary>
         public readonly bool EnableIpv6;
@@ -57,6 +61,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// IPv4 address of the interface inside Google Cloud Platform.
+        /// </summary>
+        public readonly string Ipv4NexthopAddress;
         /// <summary>
         /// IPv6 address of the interface inside Google Cloud Platform.
         /// </summary>
@@ -81,6 +89,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
         /// </summary>
         public readonly string PeerIpAddress;
+        /// <summary>
+        /// IPv4 address of the BGP interface outside Google Cloud Platform.
+        /// </summary>
+        public readonly string PeerIpv4NexthopAddress;
         /// <summary>
         /// IPv6 address of the BGP interface outside Google Cloud Platform.
         /// </summary>
@@ -108,11 +120,15 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string enable,
 
+            bool enableIpv4,
+
             bool enableIpv6,
 
             string interfaceName,
 
             string ipAddress,
+
+            string ipv4NexthopAddress,
 
             string ipv6NexthopAddress,
 
@@ -126,6 +142,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string peerIpAddress,
 
+            string peerIpv4NexthopAddress,
+
             string peerIpv6NexthopAddress,
 
             string routerApplianceInstance)
@@ -138,15 +156,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             CustomLearnedIpRanges = customLearnedIpRanges;
             CustomLearnedRoutePriority = customLearnedRoutePriority;
             Enable = enable;
+            EnableIpv4 = enableIpv4;
             EnableIpv6 = enableIpv6;
             InterfaceName = interfaceName;
             IpAddress = ipAddress;
+            Ipv4NexthopAddress = ipv4NexthopAddress;
             Ipv6NexthopAddress = ipv6NexthopAddress;
             ManagementType = managementType;
             Md5AuthenticationKeyName = md5AuthenticationKeyName;
             Name = name;
             PeerAsn = peerAsn;
             PeerIpAddress = peerIpAddress;
+            PeerIpv4NexthopAddress = peerIpv4NexthopAddress;
             PeerIpv6NexthopAddress = peerIpv6NexthopAddress;
             RouterApplianceInstance = routerApplianceInstance;
         }

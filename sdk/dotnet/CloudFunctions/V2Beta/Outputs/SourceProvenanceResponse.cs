@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
     public sealed class SourceProvenanceResponse
     {
         /// <summary>
+        /// A copy of the build's `source.git_uri`, if exists, with any commits resolved.
+        /// </summary>
+        public readonly string GitUri;
+        /// <summary>
         /// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
         /// </summary>
         public readonly Outputs.RepoSourceResponse ResolvedRepoSource;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
         [OutputConstructor]
         private SourceProvenanceResponse(
+            string gitUri,
+
             Outputs.RepoSourceResponse resolvedRepoSource,
 
             Outputs.StorageSourceResponse resolvedStorageSource)
         {
+            GitUri = gitUri;
             ResolvedRepoSource = resolvedRepoSource;
             ResolvedStorageSource = resolvedStorageSource;
         }

@@ -21,15 +21,23 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly string Container;
         /// <summary>
-        /// List of `ElementaryStream.key`s multiplexed in this stream.
+        /// List of ElementaryStream.key values multiplexed in this stream.
         /// </summary>
         public readonly ImmutableArray<string> ElementaryStreams;
         /// <summary>
-        /// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+        /// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+        /// </summary>
+        public readonly string EncryptionId;
+        /// <summary>
+        /// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
         /// </summary>
         public readonly string FileName;
         /// <summary>
-        /// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+        /// Optional. `fmp4` container configuration.
+        /// </summary>
+        public readonly Outputs.Fmp4ConfigResponse Fmp4;
+        /// <summary>
+        /// A unique key for this multiplexed stream.
         /// </summary>
         public readonly string Key;
         /// <summary>
@@ -43,7 +51,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
             ImmutableArray<string> elementaryStreams,
 
+            string encryptionId,
+
             string fileName,
+
+            Outputs.Fmp4ConfigResponse fmp4,
 
             string key,
 
@@ -51,7 +63,9 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         {
             Container = container;
             ElementaryStreams = elementaryStreams;
+            EncryptionId = encryptionId;
             FileName = fileName;
+            Fmp4 = fmp4;
             Key = key;
             SegmentSettings = segmentSettings;
         }

@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerBackendResponse> Backends;
         /// <summary>
-        /// URI of the health check for the load balancer.
+        /// URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
         /// </summary>
         public readonly string HealthCheckUri;
         /// <summary>

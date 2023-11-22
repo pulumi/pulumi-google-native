@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Inputs
     public sealed class AttestorPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
+        /// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The Binary Authorization API handlers will calculate the ID and fill it in automatically. Binary Authorization computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
         /// </summary>
         [Input("asciiArmoredPgpPublicKey")]
         public Input<string>? AsciiArmoredPgpPublicKey { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+        /// The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
     public sealed class BareMetalNodePoolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The modifiable kubelet configurations for the baremetal machines.
+        /// The modifiable kubelet configurations for the bare metal machines.
         /// </summary>
         [Input("kubeletConfig")]
         public Input<Inputs.BareMetalKubeletConfigArgs>? KubeletConfig { get; set; }

@@ -16,6 +16,24 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     public sealed class GoogleCloudDataplexV1DataProfileSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+        /// </summary>
+        [Input("excludeFields")]
+        public Input<Inputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs>? ExcludeFields { get; set; }
+
+        /// <summary>
+        /// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+        /// </summary>
+        [Input("includeFields")]
+        public Input<Inputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs>? IncludeFields { get; set; }
+
+        /// <summary>
+        /// Optional. Actions to take upon job completion..
+        /// </summary>
+        [Input("postScanActions")]
+        public Input<Inputs.GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs>? PostScanActions { get; set; }
+
+        /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
         /// </summary>
         [Input("rowFilter")]

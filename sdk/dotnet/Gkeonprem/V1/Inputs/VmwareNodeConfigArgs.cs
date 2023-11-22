@@ -81,6 +81,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
             set => _taints = value;
         }
 
+        /// <summary>
+        /// Specifies the vSphere config for node pool.
+        /// </summary>
+        [Input("vsphereConfig")]
+        public Input<Inputs.VmwareVsphereConfigArgs>? VsphereConfig { get; set; }
+
         public VmwareNodeConfigArgs()
         {
         }

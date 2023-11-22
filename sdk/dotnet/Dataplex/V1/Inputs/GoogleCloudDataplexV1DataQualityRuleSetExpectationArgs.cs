@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// Expected values for the column value.
+        /// Optional. Expected values for the column value.
         /// </summary>
         public InputList<string> Values
         {

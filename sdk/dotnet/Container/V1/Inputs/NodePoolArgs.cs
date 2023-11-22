@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("autoscaling")]
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
+        /// <summary>
+        /// Enable best effort provisioning for nodes
+        /// </summary>
+        [Input("bestEffortProvisioning")]
+        public Input<Inputs.BestEffortProvisioningArgs>? BestEffortProvisioning { get; set; }
+
         [Input("conditions")]
         private InputList<Inputs.StatusConditionArgs>? _conditions;
 
@@ -92,6 +98,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// </summary>
         [Input("placementPolicy")]
         public Input<Inputs.PlacementPolicyArgs>? PlacementPolicy { get; set; }
+
+        /// <summary>
+        /// Specifies the configuration of queued provisioning.
+        /// </summary>
+        [Input("queuedProvisioning")]
+        public Input<Inputs.QueuedProvisioningArgs>? QueuedProvisioning { get; set; }
 
         /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.

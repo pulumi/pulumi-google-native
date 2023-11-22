@@ -17,10 +17,22 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The repository's user-friendly name.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. If set, configures this repository to be linked to a Git remote.
         /// </summary>
         [Output("gitRemoteSettings")]
         public Output<Outputs.GitRemoteSettingsResponse> GitRemoteSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -45,6 +57,18 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The service account to run workflow invocations under.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+        /// </summary>
+        [Output("setAuthenticatedUserAdmin")]
+        public Output<bool> SetAuthenticatedUserAdmin { get; private set; } = null!;
 
         /// <summary>
         /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
@@ -104,10 +128,28 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The repository's user-friendly name.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Optional. If set, configures this repository to be linked to a Git remote.
         /// </summary>
         [Input("gitRemoteSettings")]
         public Input<Inputs.GitRemoteSettingsArgs>? GitRemoteSettings { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -126,6 +168,18 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. The service account to run workflow invocations under.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+        /// </summary>
+        [Input("setAuthenticatedUserAdmin")]
+        public Input<bool>? SetAuthenticatedUserAdmin { get; set; }
 
         /// <summary>
         /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.

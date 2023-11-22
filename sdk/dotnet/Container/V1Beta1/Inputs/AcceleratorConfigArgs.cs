@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
+        /// The configuration for auto installation of GPU driver.
+        /// </summary>
+        [Input("gpuDriverInstallationConfig")]
+        public Input<Inputs.GPUDriverInstallationConfigArgs>? GpuDriverInstallationConfig { get; set; }
+
+        /// <summary>
         /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         /// </summary>
         [Input("gpuPartitionSize")]

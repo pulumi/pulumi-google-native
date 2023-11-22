@@ -25,6 +25,14 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly string PhaseId;
         /// <summary>
+        /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+        /// </summary>
+        public readonly Outputs.PostdeployResponse Postdeploy;
+        /// <summary>
+        /// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+        /// </summary>
+        public readonly Outputs.PredeployResponse Predeploy;
+        /// <summary>
         /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         /// </summary>
         public readonly ImmutableArray<string> Profiles;
@@ -39,12 +47,18 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
             string phaseId,
 
+            Outputs.PostdeployResponse postdeploy,
+
+            Outputs.PredeployResponse predeploy,
+
             ImmutableArray<string> profiles,
 
             bool verify)
         {
             Percentage = percentage;
             PhaseId = phaseId;
+            Postdeploy = postdeploy;
+            Predeploy = predeploy;
             Profiles = profiles;
             Verify = verify;
         }

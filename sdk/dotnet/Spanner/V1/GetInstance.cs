@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
     public sealed class GetInstanceResult
     {
         /// <summary>
+        /// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+        /// </summary>
+        public readonly Outputs.AutoscalingConfigResponse AutoscalingConfig;
+        /// <summary>
         /// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         /// </summary>
         public readonly string Config;
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
         [OutputConstructor]
         private GetInstanceResult(
+            Outputs.AutoscalingConfigResponse autoscalingConfig,
+
             string config,
 
             string createTime,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             string updateTime)
         {
+            AutoscalingConfig = autoscalingConfig;
             Config = config;
             CreateTime = createTime;
             DisplayName = displayName;

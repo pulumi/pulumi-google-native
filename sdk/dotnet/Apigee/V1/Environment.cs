@@ -51,6 +51,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("forwardProxyUri")]
         public Output<string> ForwardProxyUri { get; private set; } = null!;
 
+        [Output("hasAttachedFlowHooks")]
+        public Output<bool> HasAttachedFlowHooks { get; private set; } = null!;
+
         /// <summary>
         /// Last modification time of this environment as milliseconds since epoch.
         /// </summary>
@@ -83,6 +86,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. EnvironmentType selected for the environment.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -163,6 +172,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("forwardProxyUri")]
         public Input<string>? ForwardProxyUri { get; set; }
 
+        [Input("hasAttachedFlowHooks")]
+        public Input<bool>? HasAttachedFlowHooks { get; set; }
+
         /// <summary>
         /// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         /// </summary>
@@ -183,6 +195,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("properties")]
         public Input<Inputs.GoogleCloudApigeeV1PropertiesArgs>? Properties { get; set; }
+
+        /// <summary>
+        /// Optional. EnvironmentType selected for the environment.
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.Apigee.V1.EnvironmentType>? Type { get; set; }
 
         public EnvironmentArgs()
         {

@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
+        /// Spec related to how a task is executed.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1TaskExecutionSpecResponse ExecutionSpec;
+        /// <summary>
+        /// User-defined labels for the task.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// Additional information about the current state.
         /// </summary>
         public readonly string Message;
@@ -49,6 +57,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Job execution trigger.
+        /// </summary>
+        public readonly string Trigger;
+        /// <summary>
         /// System generated globally unique ID for the job.
         /// </summary>
         public readonly string Uid;
@@ -56,6 +68,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         [OutputConstructor]
         private GoogleCloudDataplexV1JobResponse(
             string endTime,
+
+            Outputs.GoogleCloudDataplexV1TaskExecutionSpecResponse executionSpec,
+
+            ImmutableDictionary<string, string> labels,
 
             string message,
 
@@ -71,9 +87,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
             string state,
 
+            string trigger,
+
             string uid)
         {
             EndTime = endTime;
+            ExecutionSpec = executionSpec;
+            Labels = labels;
             Message = message;
             Name = name;
             RetryCount = retryCount;
@@ -81,6 +101,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
             ServiceJob = serviceJob;
             StartTime = startTime;
             State = state;
+            Trigger = trigger;
             Uid = uid;
         }
     }

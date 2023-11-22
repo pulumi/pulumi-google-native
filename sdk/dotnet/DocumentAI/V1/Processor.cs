@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string> KmsKeyName { get; private set; } = null!;
@@ -54,6 +54,12 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         /// </summary>
         [Output("processEndpoint")]
         public Output<string> ProcessEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The processor version aliases.
+        /// </summary>
+        [Output("processorVersionAliases")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDocumentaiV1ProcessorVersionAliasResponse>> ProcessorVersionAliases { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -139,7 +145,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }

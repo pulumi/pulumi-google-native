@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataProfileResultResponse
     {
         /// <summary>
+        /// The result of post scan actions.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse PostScanActionsResult;
+        /// <summary>
         /// The profile information per field.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataProfileResultProfileResponse Profile;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDataplexV1DataProfileResultResponse(
+            Outputs.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse postScanActionsResult,
+
             Outputs.GoogleCloudDataplexV1DataProfileResultProfileResponse profile,
 
             string rowCount,
 
             Outputs.GoogleCloudDataplexV1ScannedDataResponse scannedData)
         {
+            PostScanActionsResult = postScanActionsResult;
             Profile = profile;
             RowCount = rowCount;
             ScannedData = scannedData;

@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static CryptoKeyPurpose AsymmetricDecrypt { get; } = new CryptoKeyPurpose("ASYMMETRIC_DECRYPT");
         /// <summary>
+        /// CryptoKeys with this purpose may be used with RawEncrypt and RawDecrypt. This purpose is meant to be used for interoperable symmetric encryption and does not support automatic CryptoKey rotation.
+        /// </summary>
+        public static CryptoKeyPurpose RawEncryptDecrypt { get; } = new CryptoKeyPurpose("RAW_ENCRYPT_DECRYPT");
+        /// <summary>
         /// CryptoKeys with this purpose may be used with MacSign.
         /// </summary>
         public static CryptoKeyPurpose Mac { get; } = new CryptoKeyPurpose("MAC");
@@ -195,6 +199,30 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Creates symmetric encryption keys.
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm GoogleSymmetricEncryption { get; } = new CryptoKeyVersionTemplateAlgorithm("GOOGLE_SYMMETRIC_ENCRYPTION");
+        /// <summary>
+        /// AES-GCM (Galois Counter Mode) using 128-bit keys.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm Aes128Gcm { get; } = new CryptoKeyVersionTemplateAlgorithm("AES_128_GCM");
+        /// <summary>
+        /// AES-GCM (Galois Counter Mode) using 256-bit keys.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm Aes256Gcm { get; } = new CryptoKeyVersionTemplateAlgorithm("AES_256_GCM");
+        /// <summary>
+        /// AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm Aes128Cbc { get; } = new CryptoKeyVersionTemplateAlgorithm("AES_128_CBC");
+        /// <summary>
+        /// AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm Aes256Cbc { get; } = new CryptoKeyVersionTemplateAlgorithm("AES_256_CBC");
+        /// <summary>
+        /// AES-CTR (Counter Mode) using 128-bit keys.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm Aes128Ctr { get; } = new CryptoKeyVersionTemplateAlgorithm("AES_128_CTR");
+        /// <summary>
+        /// AES-CTR (Counter Mode) using 256-bit keys.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm Aes256Ctr { get; } = new CryptoKeyVersionTemplateAlgorithm("AES_256_CTR");
         /// <summary>
         /// RSASSA-PSS 2048 bit key with a SHA256 digest.
         /// </summary>

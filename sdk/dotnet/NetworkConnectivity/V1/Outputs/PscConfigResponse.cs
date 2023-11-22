@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
     public sealed class PscConfigResponse
     {
         /// <summary>
-        /// Max number of PSC connections for this policy.
+        /// Optional. Max number of PSC connections for this policy.
         /// </summary>
         public readonly string Limit;
         /// <summary>

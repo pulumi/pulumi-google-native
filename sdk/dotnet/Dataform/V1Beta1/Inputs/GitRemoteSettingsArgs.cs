@@ -16,16 +16,22 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Inputs
     public sealed class GitRemoteSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        /// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
         /// </summary>
-        [Input("authenticationTokenSecretVersion", required: true)]
-        public Input<string> AuthenticationTokenSecretVersion { get; set; } = null!;
+        [Input("authenticationTokenSecretVersion")]
+        public Input<string>? AuthenticationTokenSecretVersion { get; set; }
 
         /// <summary>
         /// The Git remote's default branch name.
         /// </summary>
         [Input("defaultBranch", required: true)]
         public Input<string> DefaultBranch { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Authentication fields for remote uris using SSH protocol.
+        /// </summary>
+        [Input("sshAuthenticationConfig")]
+        public Input<Inputs.SshAuthenticationConfigArgs>? SshAuthenticationConfig { get; set; }
 
         /// <summary>
         /// The Git remote's URL.

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class EncryptionConfigurationResponse
     {
         /// <summary>
-        /// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+        /// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
         /// </summary>
         public readonly string KmsKeyName;
 

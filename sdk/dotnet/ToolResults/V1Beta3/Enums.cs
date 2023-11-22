@@ -630,6 +630,10 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// Robo detected a splash screen provided by app (vs. Android OS splash screen).
         /// </summary>
         public static TestIssueType DetectedAppSplashScreen { get; } = new TestIssueType("detectedAppSplashScreen");
+        /// <summary>
+        /// There was an issue with the assets in this test.
+        /// </summary>
+        public static TestIssueType AssetIssue { get; } = new TestIssueType("assetIssue");
 
         public static bool operator ==(TestIssueType left, TestIssueType right) => left.Equals(right);
         public static bool operator !=(TestIssueType left, TestIssueType right) => !left.Equals(right);

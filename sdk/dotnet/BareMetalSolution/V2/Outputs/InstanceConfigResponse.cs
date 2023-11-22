@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly Outputs.NetworkAddressResponse PrivateNetwork;
         /// <summary>
+        /// Optional. List of names of ssh keys used to provision the instance.
+        /// </summary>
+        public readonly ImmutableArray<string> SshKeyNames;
+        /// <summary>
         /// User note field, it can be used by customers to add additional information for the BMS Ops team .
         /// </summary>
         public readonly string UserNote;
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             Outputs.NetworkAddressResponse privateNetwork,
 
+            ImmutableArray<string> sshKeyNames,
+
             string userNote)
         {
             AccountNetworksEnabled = accountNetworksEnabled;
@@ -95,6 +101,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             NetworkTemplate = networkTemplate;
             OsImage = osImage;
             PrivateNetwork = privateNetwork;
+            SshKeyNames = sshKeyNames;
             UserNote = userNote;
         }
     }

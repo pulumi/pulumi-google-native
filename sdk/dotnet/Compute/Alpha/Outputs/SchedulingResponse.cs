@@ -32,6 +32,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
         /// </summary>
         public readonly string CurrentMemoryMb;
+        public readonly Outputs.SchedulingGracefulShutdownResponse GracefulShutdown;
         /// <summary>
         /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
@@ -99,6 +100,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string currentMemoryMb,
 
+            Outputs.SchedulingGracefulShutdownResponse gracefulShutdown,
+
             int hostErrorTimeoutSeconds,
 
             string instanceTerminationAction,
@@ -131,6 +134,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             AvailabilityDomain = availabilityDomain;
             CurrentCpus = currentCpus;
             CurrentMemoryMb = currentMemoryMb;
+            GracefulShutdown = gracefulShutdown;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LatencyTolerant = latencyTolerant;

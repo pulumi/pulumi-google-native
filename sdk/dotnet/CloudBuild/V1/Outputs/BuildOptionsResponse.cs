@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
     public sealed class BuildOptionsResponse
     {
         /// <summary>
+        /// Option to include built-in and custom substitutions as env variables for all build steps.
+        /// </summary>
+        public readonly bool AutomapSubstitutions;
+        /// <summary>
         /// Optional. Option to specify how default logs buckets are setup.
         /// </summary>
         public readonly string DefaultLogsBucketBehavior;
@@ -33,7 +37,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Env;
         /// <summary>
-        /// Option to define build log streaming behavior to Google Cloud Storage.
+        /// Option to define build log streaming behavior to Cloud Storage.
         /// </summary>
         public readonly string LogStreamingOption;
         /// <summary>
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
         [OutputConstructor]
         private BuildOptionsResponse(
+            bool automapSubstitutions,
+
             string defaultLogsBucketBehavior,
 
             string diskSizeGb,
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             string workerPool)
         {
+            AutomapSubstitutions = automapSubstitutions;
             DefaultLogsBucketBehavior = defaultLogsBucketBehavior;
             DiskSizeGb = diskSizeGb;
             DynamicSubstitutions = dynamicSubstitutions;

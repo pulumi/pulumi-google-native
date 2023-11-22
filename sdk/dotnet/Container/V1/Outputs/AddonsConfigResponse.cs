@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.GcpFilestoreCsiDriverConfigResponse GcpFilestoreCsiDriverConfig;
         /// <summary>
+        /// Configuration for the Cloud Storage Fuse CSI driver.
+        /// </summary>
+        public readonly Outputs.GcsFuseCsiDriverConfigResponse GcsFuseCsiDriverConfig;
+        /// <summary>
         /// Configuration for the Backup for GKE agent addon.
         /// </summary>
         public readonly Outputs.GkeBackupAgentConfigResponse GkeBackupAgentConfig;
@@ -69,6 +73,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.GcpFilestoreCsiDriverConfigResponse gcpFilestoreCsiDriverConfig,
 
+            Outputs.GcsFuseCsiDriverConfigResponse gcsFuseCsiDriverConfig,
+
             Outputs.GkeBackupAgentConfigResponse gkeBackupAgentConfig,
 
             Outputs.HorizontalPodAutoscalingResponse horizontalPodAutoscaling,
@@ -84,6 +90,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             DnsCacheConfig = dnsCacheConfig;
             GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             GcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
+            GcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
             GkeBackupAgentConfig = gkeBackupAgentConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;

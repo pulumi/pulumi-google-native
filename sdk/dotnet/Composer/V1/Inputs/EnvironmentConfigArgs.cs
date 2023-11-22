@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Inputs.RecoveryConfigArgs>? RecoveryConfig { get; set; }
 
         /// <summary>
+        /// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("resilienceMode")]
+        public Input<Pulumi.GoogleNative.Composer.V1.EnvironmentConfigResilienceMode>? ResilienceMode { get; set; }
+
+        /// <summary>
         /// The configuration settings for software inside the environment.
         /// </summary>
         [Input("softwareConfig")]

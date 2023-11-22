@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class RuntimeInfoResponse
     {
         /// <summary>
-        /// Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// Approximate workload resource usage, calculated when the workload completes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).Note: This metric calculation may change in the future, for example, to capture cumulative workload resource consumption during workload execution (see the Dataproc Serverless release notes (https://cloud.google.com/dataproc-serverless/docs/release-notes) for announcements, changes, fixes and other Dataproc developments).
         /// </summary>
         public readonly Outputs.UsageMetricsResponse ApproximateUsage;
         /// <summary>

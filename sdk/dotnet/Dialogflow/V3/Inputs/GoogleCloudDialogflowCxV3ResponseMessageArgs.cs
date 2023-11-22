@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs>? ConversationSuccess { get; set; }
 
         /// <summary>
+        /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
+        /// </summary>
+        [Input("knowledgeInfoCard")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCardArgs>? KnowledgeInfoCard { get; set; }
+
+        /// <summary>
         /// Hands off conversation to a human agent.
         /// </summary>
         [Input("liveAgentHandoff")]
@@ -56,6 +62,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         /// </summary>
         [Input("playAudio")]
         public Input<Inputs.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs>? PlayAudio { get; set; }
+
+        /// <summary>
+        /// Response type.
+        /// </summary>
+        [Input("responseType")]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3ResponseMessageResponseType>? ResponseType { get; set; }
 
         /// <summary>
         /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.

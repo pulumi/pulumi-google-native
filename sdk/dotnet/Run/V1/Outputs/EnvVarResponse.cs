@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class EnvVarResponse
     {
         /// <summary>
-        /// Name of the environment variable. Must be a C_IDENTIFIER.
+        /// Name of the environment variable.
         /// </summary>
         public readonly string Name;
         /// <summary>

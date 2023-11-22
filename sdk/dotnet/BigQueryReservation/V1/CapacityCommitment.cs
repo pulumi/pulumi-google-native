@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         [Output("failureStatus")]
         public Output<Outputs.StatusResponse> FailureStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
+        /// </summary>
+        [Output("isFlatRate")]
+        public Output<bool> IsFlatRate { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

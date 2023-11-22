@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// Allow creation of static routes more specific than the current internal range.
         /// </summary>
         public static InternalRangeOverlapsItem OverlapRouteRange { get; } = new InternalRangeOverlapsItem("OVERLAP_ROUTE_RANGE");
+        /// <summary>
+        /// Allow creation of internal ranges that overlap with existing subnets.
+        /// </summary>
+        public static InternalRangeOverlapsItem OverlapExistingSubnetRange { get; } = new InternalRangeOverlapsItem("OVERLAP_EXISTING_SUBNET_RANGE");
 
         public static bool operator ==(InternalRangeOverlapsItem left, InternalRangeOverlapsItem right) => left.Equals(right);
         public static bool operator !=(InternalRangeOverlapsItem left, InternalRangeOverlapsItem right) => !left.Equals(right);

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Outputs
     public sealed class SubjectConfigResponse
     {
         /// <summary>
-        /// Contains distinguished name fields such as the common name, location and organization.
+        /// Optional. Contains distinguished name fields such as the common name, location and organization.
         /// </summary>
         public readonly Outputs.SubjectResponse Subject;
         /// <summary>

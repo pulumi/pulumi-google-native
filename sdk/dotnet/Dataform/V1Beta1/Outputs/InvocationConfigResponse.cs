@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.TargetResponse> IncludedTargets;
         /// <summary>
+        /// Optional. The service account to run workflow invocations under.
+        /// </summary>
+        public readonly string ServiceAccount;
+        /// <summary>
         /// Optional. When set to true, transitive dependencies of included actions will be executed.
         /// </summary>
         public readonly bool TransitiveDependenciesIncluded;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Outputs
 
             ImmutableArray<Outputs.TargetResponse> includedTargets,
 
+            string serviceAccount,
+
             bool transitiveDependenciesIncluded,
 
             bool transitiveDependentsIncluded)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1.Outputs
             FullyRefreshIncrementalTablesEnabled = fullyRefreshIncrementalTablesEnabled;
             IncludedTags = includedTags;
             IncludedTargets = includedTargets;
+            ServiceAccount = serviceAccount;
             TransitiveDependenciesIncluded = transitiveDependenciesIncluded;
             TransitiveDependentsIncluded = transitiveDependentsIncluded;
         }

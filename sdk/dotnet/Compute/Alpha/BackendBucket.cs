@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// Headers that the Application Load Balancer should add to proxied responses.
         /// </summary>
         [Output("customResponseHeaders")]
         public Output<ImmutableArray<string>> CustomResponseHeaders { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<string>? _customResponseHeaders;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// Headers that the Application Load Balancer should add to proxied responses.
         /// </summary>
         public InputList<string> CustomResponseHeaders
         {

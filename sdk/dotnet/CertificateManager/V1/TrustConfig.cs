@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Required. A user-provided name of the TrustConfig.
+        /// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
         /// </summary>
         [Output("trustConfigId")]
         public Output<string> TrustConfigId { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. A user-provided name of the TrustConfig.
+        /// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
         /// </summary>
         [Input("trustConfigId", required: true)]
         public Input<string> TrustConfigId { get; set; } = null!;

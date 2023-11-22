@@ -28,13 +28,19 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The name of the group that this spoke is associated with.
+        /// </summary>
+        [Output("group")]
+        public Output<string> Group { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The name of the hub that this spoke is attached to.
         /// </summary>
         [Output("hub")]
         public Output<string> Hub { get; private set; } = null!;
 
         /// <summary>
-        /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -50,6 +56,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         [Output("linkedRouterApplianceInstances")]
         public Output<Outputs.LinkedRouterApplianceInstancesResponse> LinkedRouterApplianceInstances { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. VPC network that is associated with the spoke.
+        /// </summary>
+        [Output("linkedVpcNetwork")]
+        public Output<Outputs.LinkedVpcNetworkResponse> LinkedVpcNetwork { get; private set; } = null!;
 
         /// <summary>
         /// VPN tunnels that are associated with the spoke.
@@ -70,7 +82,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+        /// </summary>
+        [Output("reasons")]
+        public Output<ImmutableArray<Outputs.StateReasonResponse>> Reasons { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
@@ -82,13 +100,19 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> SpokeId { get; private set; } = null!;
 
         /// <summary>
+        /// The type of resource associated with the spoke.
+        /// </summary>
+        [Output("spokeType")]
+        public Output<string> SpokeType { get; private set; } = null!;
+
+        /// <summary>
         /// The current lifecycle state of this spoke.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        /// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
         /// </summary>
         [Output("uniqueId")]
         public Output<string> UniqueId { get; private set; } = null!;
@@ -157,6 +181,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Optional. The name of the group that this spoke is associated with.
+        /// </summary>
+        [Input("group")]
+        public Input<string>? Group { get; set; }
+
+        /// <summary>
         /// Immutable. The name of the hub that this spoke is attached to.
         /// </summary>
         [Input("hub")]
@@ -166,7 +196,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         /// </summary>
         public InputMap<string> Labels
         {
@@ -187,6 +217,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Input<Inputs.LinkedRouterApplianceInstancesArgs>? LinkedRouterApplianceInstances { get; set; }
 
         /// <summary>
+        /// Optional. VPC network that is associated with the spoke.
+        /// </summary>
+        [Input("linkedVpcNetwork")]
+        public Input<Inputs.LinkedVpcNetworkArgs>? LinkedVpcNetwork { get; set; }
+
+        /// <summary>
         /// VPN tunnels that are associated with the spoke.
         /// </summary>
         [Input("linkedVpnTunnels")]
@@ -205,7 +241,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

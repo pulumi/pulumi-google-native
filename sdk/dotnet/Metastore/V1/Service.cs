@@ -67,6 +67,12 @@ namespace Pulumi.GoogleNative.Metastore.V1
         public Output<Outputs.MaintenanceWindowResponse> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// </summary>
+        [Output("metadataIntegration")]
+        public Output<Outputs.MetadataIntegrationResponse> MetadataIntegration { get; private set; } = null!;
+
+        /// <summary>
         /// The metadata management activities of the metastore service.
         /// </summary>
         [Output("metadataManagementActivity")]
@@ -248,6 +254,12 @@ namespace Pulumi.GoogleNative.Metastore.V1
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.MaintenanceWindowArgs>? MaintenanceWindow { get; set; }
+
+        /// <summary>
+        /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// </summary>
+        [Input("metadataIntegration")]
+        public Input<Inputs.MetadataIntegrationArgs>? MetadataIntegration { get; set; }
 
         /// <summary>
         /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.

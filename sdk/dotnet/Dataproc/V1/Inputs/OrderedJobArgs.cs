@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     public sealed class OrderedJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Job is a Flink job.
+        /// </summary>
+        [Input("flinkJob")]
+        public Input<Inputs.FlinkJobArgs>? FlinkJob { get; set; }
+
+        /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>
         [Input("hadoopJob")]

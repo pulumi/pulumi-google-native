@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
 {
 
     /// <summary>
-    /// Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
+    /// Defines scheduling parameters for automatically creating Backups via this BackupPlan.
     /// </summary>
     public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+        /// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
         /// </summary>
         [Input("cronSchedule")]
         public Input<string>? CronSchedule { get; set; }
 
         /// <summary>
-        /// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+        /// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }

@@ -347,6 +347,96 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
     }
 
     /// <summary>
+    /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+    /// </summary>
+    [EnumType]
+    public readonly struct SoleTenancyPreferencesCommitmentPlan : IEquatable<SoleTenancyPreferencesCommitmentPlan>
+    {
+        private readonly string _value;
+
+        private SoleTenancyPreferencesCommitmentPlan(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified commitment plan.
+        /// </summary>
+        public static SoleTenancyPreferencesCommitmentPlan CommitmentPlanUnspecified { get; } = new SoleTenancyPreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED");
+        /// <summary>
+        /// No commitment plan (on-demand usage).
+        /// </summary>
+        public static SoleTenancyPreferencesCommitmentPlan OnDemand { get; } = new SoleTenancyPreferencesCommitmentPlan("ON_DEMAND");
+        /// <summary>
+        /// 1 year commitment.
+        /// </summary>
+        public static SoleTenancyPreferencesCommitmentPlan Commitment1Year { get; } = new SoleTenancyPreferencesCommitmentPlan("COMMITMENT_1_YEAR");
+        /// <summary>
+        /// 3 years commitment.
+        /// </summary>
+        public static SoleTenancyPreferencesCommitmentPlan Commitment3Year { get; } = new SoleTenancyPreferencesCommitmentPlan("COMMITMENT_3_YEAR");
+
+        public static bool operator ==(SoleTenancyPreferencesCommitmentPlan left, SoleTenancyPreferencesCommitmentPlan right) => left.Equals(right);
+        public static bool operator !=(SoleTenancyPreferencesCommitmentPlan left, SoleTenancyPreferencesCommitmentPlan right) => !left.Equals(right);
+
+        public static explicit operator string(SoleTenancyPreferencesCommitmentPlan value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SoleTenancyPreferencesCommitmentPlan other && Equals(other);
+        public bool Equals(SoleTenancyPreferencesCommitmentPlan other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Sole Tenancy nodes maintenance policy.
+    /// </summary>
+    [EnumType]
+    public readonly struct SoleTenancyPreferencesHostMaintenancePolicy : IEquatable<SoleTenancyPreferencesHostMaintenancePolicy>
+    {
+        private readonly string _value;
+
+        private SoleTenancyPreferencesHostMaintenancePolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified host maintenance policy.
+        /// </summary>
+        public static SoleTenancyPreferencesHostMaintenancePolicy HostMaintenancePolicyUnspecified { get; } = new SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// Default host maintenance policy.
+        /// </summary>
+        public static SoleTenancyPreferencesHostMaintenancePolicy HostMaintenancePolicyDefault { get; } = new SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_DEFAULT");
+        /// <summary>
+        /// Restart in place host maintenance policy.
+        /// </summary>
+        public static SoleTenancyPreferencesHostMaintenancePolicy HostMaintenancePolicyRestartInPlace { get; } = new SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE");
+        /// <summary>
+        /// Migrate within node group host maintenance policy.
+        /// </summary>
+        public static SoleTenancyPreferencesHostMaintenancePolicy HostMaintenancePolicyMigrateWithinNodeGroup { get; } = new SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP");
+
+        public static bool operator ==(SoleTenancyPreferencesHostMaintenancePolicy left, SoleTenancyPreferencesHostMaintenancePolicy right) => left.Equals(right);
+        public static bool operator !=(SoleTenancyPreferencesHostMaintenancePolicy left, SoleTenancyPreferencesHostMaintenancePolicy right) => !left.Equals(right);
+
+        public static explicit operator string(SoleTenancyPreferencesHostMaintenancePolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SoleTenancyPreferencesHostMaintenancePolicy other && Equals(other);
+        public bool Equals(SoleTenancyPreferencesHostMaintenancePolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Data source type.
     /// </summary>
     [EnumType]
@@ -441,6 +531,55 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
     }
 
     /// <summary>
+    /// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+    /// </summary>
+    [EnumType]
+    public readonly struct VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod : IEquatable<VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod>
+    {
+        private readonly string _value;
+
+        private VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified aggregation method. Can be used for default value.
+        /// </summary>
+        public static VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod AggregationMethodUnspecified { get; } = new VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_UNSPECIFIED");
+        /// <summary>
+        /// Average of utilization data.
+        /// </summary>
+        public static VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod AggregationMethodAverage { get; } = new VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_AVERAGE");
+        /// <summary>
+        /// Median of utilization data.
+        /// </summary>
+        public static VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod AggregationMethodMedian { get; } = new VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_MEDIAN");
+        /// <summary>
+        /// 95th percentile of utilization data.
+        /// </summary>
+        public static VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod AggregationMethodNinetyFifthPercentile { get; } = new VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE");
+        /// <summary>
+        /// Peak of utilization data.
+        /// </summary>
+        public static VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod AggregationMethodPeak { get; } = new VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_PEAK");
+
+        public static bool operator ==(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod left, VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod right) => left.Equals(right);
+        public static bool operator !=(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod left, VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod right) => !left.Equals(right);
+
+        public static explicit operator string(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod other && Equals(other);
+        public bool Equals(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
     /// </summary>
     [EnumType]
@@ -469,6 +608,10 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// Virtual machine sizing will match the reported usage, with little slack. Using this option can help reduce costs.
         /// </summary>
         public static VirtualMachinePreferencesSizingOptimizationStrategy SizingOptimizationStrategyAggressive { get; } = new VirtualMachinePreferencesSizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE");
+        /// <summary>
+        /// Virtual machine sizing will be determined by custom parameters. While not supported in the v1 API, this value is converted to UNSPECIFIED in conversions to the v1 API.
+        /// </summary>
+        public static VirtualMachinePreferencesSizingOptimizationStrategy SizingOptimizationStrategyCustom { get; } = new VirtualMachinePreferencesSizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_CUSTOM");
 
         public static bool operator ==(VirtualMachinePreferencesSizingOptimizationStrategy left, VirtualMachinePreferencesSizingOptimizationStrategy right) => left.Equals(right);
         public static bool operator !=(VirtualMachinePreferencesSizingOptimizationStrategy left, VirtualMachinePreferencesSizingOptimizationStrategy right) => !left.Equals(right);
@@ -478,6 +621,104 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VirtualMachinePreferencesSizingOptimizationStrategy other && Equals(other);
         public bool Equals(VirtualMachinePreferencesSizingOptimizationStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+    /// </summary>
+    [EnumType]
+    public readonly struct VirtualMachinePreferencesTargetProduct : IEquatable<VirtualMachinePreferencesTargetProduct>
+    {
+        private readonly string _value;
+
+        private VirtualMachinePreferencesTargetProduct(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified (default value).
+        /// </summary>
+        public static VirtualMachinePreferencesTargetProduct ComputeMigrationTargetProductUnspecified { get; } = new VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED");
+        /// <summary>
+        /// Prefer to migrate to Google Cloud Compute Engine.
+        /// </summary>
+        public static VirtualMachinePreferencesTargetProduct ComputeMigrationTargetProductComputeEngine { get; } = new VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE");
+        /// <summary>
+        /// Prefer to migrate to Google Cloud VMware Engine.
+        /// </summary>
+        public static VirtualMachinePreferencesTargetProduct ComputeMigrationTargetProductVmwareEngine { get; } = new VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE");
+        /// <summary>
+        /// Prefer to migrate to Google Cloud Sole Tenant Nodes.
+        /// </summary>
+        public static VirtualMachinePreferencesTargetProduct ComputeMigrationTargetProductSoleTenancy { get; } = new VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY");
+
+        public static bool operator ==(VirtualMachinePreferencesTargetProduct left, VirtualMachinePreferencesTargetProduct right) => left.Equals(right);
+        public static bool operator !=(VirtualMachinePreferencesTargetProduct left, VirtualMachinePreferencesTargetProduct right) => !left.Equals(right);
+
+        public static explicit operator string(VirtualMachinePreferencesTargetProduct value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VirtualMachinePreferencesTargetProduct other && Equals(other);
+        public bool Equals(VirtualMachinePreferencesTargetProduct other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+    /// </summary>
+    [EnumType]
+    public readonly struct VmwareEnginePreferencesCommitmentPlan : IEquatable<VmwareEnginePreferencesCommitmentPlan>
+    {
+        private readonly string _value;
+
+        private VmwareEnginePreferencesCommitmentPlan(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified commitment plan.
+        /// </summary>
+        public static VmwareEnginePreferencesCommitmentPlan CommitmentPlanUnspecified { get; } = new VmwareEnginePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED");
+        /// <summary>
+        /// No commitment plan (on-demand usage).
+        /// </summary>
+        public static VmwareEnginePreferencesCommitmentPlan OnDemand { get; } = new VmwareEnginePreferencesCommitmentPlan("ON_DEMAND");
+        /// <summary>
+        /// 1 year commitment (monthly payments).
+        /// </summary>
+        public static VmwareEnginePreferencesCommitmentPlan Commitment1YearMonthlyPayments { get; } = new VmwareEnginePreferencesCommitmentPlan("COMMITMENT_1_YEAR_MONTHLY_PAYMENTS");
+        /// <summary>
+        /// 3 year commitment (monthly payments).
+        /// </summary>
+        public static VmwareEnginePreferencesCommitmentPlan Commitment3YearMonthlyPayments { get; } = new VmwareEnginePreferencesCommitmentPlan("COMMITMENT_3_YEAR_MONTHLY_PAYMENTS");
+        /// <summary>
+        /// 1 year commitment (upfront payment).
+        /// </summary>
+        public static VmwareEnginePreferencesCommitmentPlan Commitment1YearUpfrontPayment { get; } = new VmwareEnginePreferencesCommitmentPlan("COMMITMENT_1_YEAR_UPFRONT_PAYMENT");
+        /// <summary>
+        /// 3 years commitment (upfront payment).
+        /// </summary>
+        public static VmwareEnginePreferencesCommitmentPlan Commitment3YearUpfrontPayment { get; } = new VmwareEnginePreferencesCommitmentPlan("COMMITMENT_3_YEAR_UPFRONT_PAYMENT");
+
+        public static bool operator ==(VmwareEnginePreferencesCommitmentPlan left, VmwareEnginePreferencesCommitmentPlan right) => left.Equals(right);
+        public static bool operator !=(VmwareEnginePreferencesCommitmentPlan left, VmwareEnginePreferencesCommitmentPlan right) => !left.Equals(right);
+
+        public static explicit operator string(VmwareEnginePreferencesCommitmentPlan value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VmwareEnginePreferencesCommitmentPlan other && Equals(other);
+        public bool Equals(VmwareEnginePreferencesCommitmentPlan other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         /// </summary>
         public readonly Outputs.SourceProvenanceResponse SourceProvenance;
         /// <summary>
+        /// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+        /// </summary>
+        public readonly string SourceToken;
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         /// </summary>
         public readonly string WorkerPool;
@@ -71,6 +75,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
 
             Outputs.SourceProvenanceResponse sourceProvenance,
 
+            string sourceToken,
+
             string workerPool)
         {
             Build = build;
@@ -81,6 +87,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
             Runtime = runtime;
             Source = source;
             SourceProvenance = sourceProvenance;
+            SourceToken = sourceToken;
             WorkerPool = workerPool;
         }
     }

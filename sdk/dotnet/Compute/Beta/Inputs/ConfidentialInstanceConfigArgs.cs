@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class ConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Defines the type of technology used by the confidential instance.
+        /// </summary>
+        [Input("confidentialInstanceType")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.ConfidentialInstanceConfigConfidentialInstanceType>? ConfidentialInstanceType { get; set; }
+
+        /// <summary>
         /// Defines whether the instance should have confidential compute enabled.
         /// </summary>
         [Input("enableConfidentialCompute")]

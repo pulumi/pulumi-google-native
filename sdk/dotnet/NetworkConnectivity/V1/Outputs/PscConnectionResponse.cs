@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleRpcStatusResponse Error;
         /// <summary>
+        /// The error info for the latest error during operating this connection.
+        /// </summary>
+        public readonly Outputs.GoogleRpcErrorInfoResponse ErrorInfo;
+        /// <summary>
         /// The error type indicates whether the error is consumer facing, producer facing or system internal.
         /// </summary>
         public readonly string ErrorType;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
 
             Outputs.GoogleRpcStatusResponse error,
 
+            Outputs.GoogleRpcErrorInfoResponse errorInfo,
+
             string errorType,
 
             string gceOperation,
@@ -71,6 +77,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
             ConsumerForwardingRule = consumerForwardingRule;
             ConsumerTargetProject = consumerTargetProject;
             Error = error;
+            ErrorInfo = errorInfo;
             ErrorType = errorType;
             GceOperation = gceOperation;
             PscConnectionId = pscConnectionId;

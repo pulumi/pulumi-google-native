@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Percentages;
         /// <summary>
+        /// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+        /// </summary>
+        public readonly Outputs.PostdeployResponse Postdeploy;
+        /// <summary>
+        /// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+        /// </summary>
+        public readonly Outputs.PredeployResponse Predeploy;
+        /// <summary>
         /// Whether to run verify tests after each percentage deployment.
         /// </summary>
         public readonly bool Verify;
@@ -29,9 +37,15 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         private CanaryDeploymentResponse(
             ImmutableArray<int> percentages,
 
+            Outputs.PostdeployResponse postdeploy,
+
+            Outputs.PredeployResponse predeploy,
+
             bool verify)
         {
             Percentages = percentages;
+            Postdeploy = postdeploy;
+            Predeploy = predeploy;
             Verify = verify;
         }
     }

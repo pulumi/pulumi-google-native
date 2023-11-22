@@ -30,6 +30,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
+        [Input("includeExtraData")]
+        public string? IncludeExtraData { get; set; }
+
         [Input("serviceId", required: true)]
         public string ServiceId { get; set; } = null!;
 
@@ -49,6 +52,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
+
+        [Input("includeExtraData")]
+        public Input<string>? IncludeExtraData { get; set; }
 
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -138,11 +144,15 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         public readonly Outputs.FlexibleRuntimeSettingsResponse FlexibleRuntimeSettings;
         /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> GeneratedCustomerMetadata;
+        /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         /// </summary>
         public readonly ImmutableArray<Outputs.UrlMapResponse> Handlers;
         /// <summary>
-        /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         /// </summary>
         public readonly Outputs.HealthCheckResponse HealthCheck;
         /// <summary>
@@ -158,7 +168,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.LibraryResponse> Libraries;
         /// <summary>
-        /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         /// </summary>
         public readonly Outputs.LivenessCheckResponse LivenessCheck;
         /// <summary>
@@ -178,7 +188,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         public readonly string NobuildFilesRegex;
         /// <summary>
-        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         /// </summary>
         public readonly Outputs.ReadinessCheckResponse ReadinessCheck;
         /// <summary>
@@ -266,6 +276,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 
             Outputs.FlexibleRuntimeSettingsResponse flexibleRuntimeSettings,
 
+            ImmutableDictionary<string, string> generatedCustomerMetadata,
+
             ImmutableArray<Outputs.UrlMapResponse> handlers,
 
             Outputs.HealthCheckResponse healthCheck,
@@ -329,6 +341,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
             EnvVariables = envVariables;
             ErrorHandlers = errorHandlers;
             FlexibleRuntimeSettings = flexibleRuntimeSettings;
+            GeneratedCustomerMetadata = generatedCustomerMetadata;
             Handlers = handlers;
             HealthCheck = healthCheck;
             InboundServices = inboundServices;

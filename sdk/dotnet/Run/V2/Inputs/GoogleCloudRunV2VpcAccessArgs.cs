@@ -11,21 +11,33 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
 {
 
     /// <summary>
-    /// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+    /// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     /// </summary>
     public sealed class GoogleCloudRunV2VpcAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
         /// </summary>
         [Input("connector")]
         public Input<string>? Connector { get; set; }
 
         /// <summary>
-        /// Traffic VPC egress settings.
+        /// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
         /// </summary>
         [Input("egress")]
         public Input<Pulumi.GoogleNative.Run.V2.GoogleCloudRunV2VpcAccessEgress>? Egress { get; set; }
+
+        [Input("networkInterfaces")]
+        private InputList<Inputs.GoogleCloudRunV2NetworkInterfaceArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Direct VPC egress settings. Currently only single network interface is supported.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudRunV2NetworkInterfaceArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.GoogleCloudRunV2NetworkInterfaceArgs>());
+            set => _networkInterfaces = value;
+        }
 
         public GoogleCloudRunV2VpcAccessArgs()
         {

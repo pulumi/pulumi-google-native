@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         /// </summary>
         public readonly Outputs.InstanceConfigResponse InstanceConfig;
         /// <summary>
+        /// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+        /// </summary>
+        public readonly string KmsKey;
+        /// <summary>
         /// Labels as key value pairs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
 
             Outputs.InstanceConfigResponse instanceConfig,
 
+            string kmsKey,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -150,6 +156,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
             CustomerDomainPrefix = customerDomainPrefix;
             DisplayName = displayName;
             InstanceConfig = instanceConfig;
+            KmsKey = kmsKey;
             Labels = labels;
             Name = name;
             SamlParams = samlParams;

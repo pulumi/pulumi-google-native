@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunV2EnvVarResponse
     {
         /// <summary>
-        /// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        /// Name of the environment variable. Must not exceed 32768 characters.
         /// </summary>
         public readonly string Name;
         /// <summary>

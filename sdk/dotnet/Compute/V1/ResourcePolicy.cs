@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Resource policy for disk consistency groups.
+        /// </summary>
+        [Output("diskConsistencyGroupPolicy")]
+        public Output<Outputs.ResourcePolicyDiskConsistencyGroupPolicyResponse> DiskConsistencyGroupPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Resource policy for instances for placement configuration.
         /// </summary>
         [Output("groupPlacementPolicy")]
@@ -136,6 +142,12 @@ namespace Pulumi.GoogleNative.Compute.V1
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Resource policy for disk consistency groups.
+        /// </summary>
+        [Input("diskConsistencyGroupPolicy")]
+        public Input<Inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs>? DiskConsistencyGroupPolicy { get; set; }
 
         /// <summary>
         /// Resource policy for instances for placement configuration.

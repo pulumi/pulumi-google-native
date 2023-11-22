@@ -16,7 +16,13 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     public sealed class ManifestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+        /// `DASH` manifest configuration.
+        /// </summary>
+        [Input("dash")]
+        public Input<Inputs.DashConfigArgs>? Dash { get; set; }
+
+        /// <summary>
+        /// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }
@@ -25,7 +31,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         private InputList<string>? _muxStreams;
 
         /// <summary>
-        /// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        /// List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
         /// </summary>
         public InputList<string> MuxStreams
         {

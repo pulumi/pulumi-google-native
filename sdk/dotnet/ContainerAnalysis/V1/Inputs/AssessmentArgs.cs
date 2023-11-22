@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     public sealed class AssessmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
         /// </summary>
         [Input("cve")]
         public Input<string>? Cve { get; set; }
@@ -80,6 +80,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1.AssessmentState>? State { get; set; }
+
+        /// <summary>
+        /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        /// </summary>
+        [Input("vulnerabilityId")]
+        public Input<string>? VulnerabilityId { get; set; }
 
         public AssessmentArgs()
         {

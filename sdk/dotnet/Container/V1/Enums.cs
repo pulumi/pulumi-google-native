@@ -8,6 +8,51 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Container.V1
 {
     /// <summary>
+    /// Method used to make Relay available
+    /// </summary>
+    [EnumType]
+    public readonly struct AdvancedDatapathObservabilityConfigRelayMode : IEquatable<AdvancedDatapathObservabilityConfigRelayMode>
+    {
+        private readonly string _value;
+
+        private AdvancedDatapathObservabilityConfigRelayMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This shouldn't be used.
+        /// </summary>
+        public static AdvancedDatapathObservabilityConfigRelayMode RelayModeUnspecified { get; } = new AdvancedDatapathObservabilityConfigRelayMode("RELAY_MODE_UNSPECIFIED");
+        /// <summary>
+        /// disabled
+        /// </summary>
+        public static AdvancedDatapathObservabilityConfigRelayMode Disabled { get; } = new AdvancedDatapathObservabilityConfigRelayMode("DISABLED");
+        /// <summary>
+        /// exposed via internal load balancer
+        /// </summary>
+        public static AdvancedDatapathObservabilityConfigRelayMode InternalVpcLb { get; } = new AdvancedDatapathObservabilityConfigRelayMode("INTERNAL_VPC_LB");
+        /// <summary>
+        /// exposed via external load balancer
+        /// </summary>
+        public static AdvancedDatapathObservabilityConfigRelayMode ExternalLb { get; } = new AdvancedDatapathObservabilityConfigRelayMode("EXTERNAL_LB");
+
+        public static bool operator ==(AdvancedDatapathObservabilityConfigRelayMode left, AdvancedDatapathObservabilityConfigRelayMode right) => left.Equals(right);
+        public static bool operator !=(AdvancedDatapathObservabilityConfigRelayMode left, AdvancedDatapathObservabilityConfigRelayMode right) => !left.Equals(right);
+
+        public static explicit operator string(AdvancedDatapathObservabilityConfigRelayMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AdvancedDatapathObservabilityConfigRelayMode other && Equals(other);
+        public bool Equals(AdvancedDatapathObservabilityConfigRelayMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
     /// </summary>
     [EnumType]
@@ -123,6 +168,43 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ClusterAutoscalingAutoscalingProfile other && Equals(other);
         public bool Equals(ClusterAutoscalingAutoscalingProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the total network bandwidth tier for NodePools in the cluster.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterNetworkPerformanceConfigTotalEgressBandwidthTier : IEquatable<ClusterNetworkPerformanceConfigTotalEgressBandwidthTier>
+    {
+        private readonly string _value;
+
+        private ClusterNetworkPerformanceConfigTotalEgressBandwidthTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value
+        /// </summary>
+        public static ClusterNetworkPerformanceConfigTotalEgressBandwidthTier TierUnspecified { get; } = new ClusterNetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED");
+        /// <summary>
+        /// Higher bandwidth, actual values based on VM size.
+        /// </summary>
+        public static ClusterNetworkPerformanceConfigTotalEgressBandwidthTier Tier1 { get; } = new ClusterNetworkPerformanceConfigTotalEgressBandwidthTier("TIER_1");
+
+        public static bool operator ==(ClusterNetworkPerformanceConfigTotalEgressBandwidthTier left, ClusterNetworkPerformanceConfigTotalEgressBandwidthTier right) => left.Equals(right);
+        public static bool operator !=(ClusterNetworkPerformanceConfigTotalEgressBandwidthTier left, ClusterNetworkPerformanceConfigTotalEgressBandwidthTier right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterNetworkPerformanceConfigTotalEgressBandwidthTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterNetworkPerformanceConfigTotalEgressBandwidthTier other && Equals(other);
+        public bool Equals(ClusterNetworkPerformanceConfigTotalEgressBandwidthTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -282,6 +364,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// Use CloudDNS for DNS resolution.
         /// </summary>
         public static DNSConfigClusterDns CloudDns { get; } = new DNSConfigClusterDns("CLOUD_DNS");
+        /// <summary>
+        /// Use KubeDNS for DNS resolution.
+        /// </summary>
+        public static DNSConfigClusterDns KubeDns { get; } = new DNSConfigClusterDns("KUBE_DNS");
 
         public static bool operator ==(DNSConfigClusterDns left, DNSConfigClusterDns right) => left.Equals(right);
         public static bool operator !=(DNSConfigClusterDns left, DNSConfigClusterDns right) => !left.Equals(right);
@@ -415,6 +501,51 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is FilterEventTypeItem other && Equals(other);
         public bool Equals(FilterEventTypeItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Mode for how the GPU driver is installed.
+    /// </summary>
+    [EnumType]
+    public readonly struct GPUDriverInstallationConfigGpuDriverVersion : IEquatable<GPUDriverInstallationConfigGpuDriverVersion>
+    {
+        private readonly string _value;
+
+        private GPUDriverInstallationConfigGpuDriverVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value is to not install any GPU driver.
+        /// </summary>
+        public static GPUDriverInstallationConfigGpuDriverVersion GpuDriverVersionUnspecified { get; } = new GPUDriverInstallationConfigGpuDriverVersion("GPU_DRIVER_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// Disable GPU driver auto installation and needs manual installation
+        /// </summary>
+        public static GPUDriverInstallationConfigGpuDriverVersion InstallationDisabled { get; } = new GPUDriverInstallationConfigGpuDriverVersion("INSTALLATION_DISABLED");
+        /// <summary>
+        /// "Default" GPU driver in COS and Ubuntu.
+        /// </summary>
+        public static GPUDriverInstallationConfigGpuDriverVersion Default { get; } = new GPUDriverInstallationConfigGpuDriverVersion("DEFAULT");
+        /// <summary>
+        /// "Latest" GPU driver in COS.
+        /// </summary>
+        public static GPUDriverInstallationConfigGpuDriverVersion Latest { get; } = new GPUDriverInstallationConfigGpuDriverVersion("LATEST");
+
+        public static bool operator ==(GPUDriverInstallationConfigGpuDriverVersion left, GPUDriverInstallationConfigGpuDriverVersion right) => left.Equals(right);
+        public static bool operator !=(GPUDriverInstallationConfigGpuDriverVersion left, GPUDriverInstallationConfigGpuDriverVersion right) => !left.Equals(right);
+
+        public static explicit operator string(GPUDriverInstallationConfigGpuDriverVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GPUDriverInstallationConfigGpuDriverVersion other && Equals(other);
+        public bool Equals(GPUDriverInstallationConfigGpuDriverVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -789,6 +920,30 @@ namespace Pulumi.GoogleNative.Container.V1
         /// kube-controller-manager
         /// </summary>
         public static MonitoringComponentConfigEnableComponentsItem ControllerManager { get; } = new MonitoringComponentConfigEnableComponentsItem("CONTROLLER_MANAGER");
+        /// <summary>
+        /// Storage
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Storage { get; } = new MonitoringComponentConfigEnableComponentsItem("STORAGE");
+        /// <summary>
+        /// Horizontal Pod Autoscaling
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Hpa { get; } = new MonitoringComponentConfigEnableComponentsItem("HPA");
+        /// <summary>
+        /// Pod
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Pod { get; } = new MonitoringComponentConfigEnableComponentsItem("POD");
+        /// <summary>
+        /// DaemonSet
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Daemonset { get; } = new MonitoringComponentConfigEnableComponentsItem("DAEMONSET");
+        /// <summary>
+        /// Deployment
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Deployment { get; } = new MonitoringComponentConfigEnableComponentsItem("DEPLOYMENT");
+        /// <summary>
+        /// Statefulset
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Statefulset { get; } = new MonitoringComponentConfigEnableComponentsItem("STATEFULSET");
 
         public static bool operator ==(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => left.Equals(right);
         public static bool operator !=(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => !left.Equals(right);
@@ -958,6 +1113,47 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NetworkPolicyProvider other && Equals(other);
         public bool Equals(NetworkPolicyProvider other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Operator for NodeAffinity.
+    /// </summary>
+    [EnumType]
+    public readonly struct NodeAffinityOperator : IEquatable<NodeAffinityOperator>
+    {
+        private readonly string _value;
+
+        private NodeAffinityOperator(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Invalid or unspecified affinity operator.
+        /// </summary>
+        public static NodeAffinityOperator OperatorUnspecified { get; } = new NodeAffinityOperator("OPERATOR_UNSPECIFIED");
+        /// <summary>
+        /// Affinity operator.
+        /// </summary>
+        public static NodeAffinityOperator In { get; } = new NodeAffinityOperator("IN");
+        /// <summary>
+        /// Anti-affinity operator.
+        /// </summary>
+        public static NodeAffinityOperator NotIn { get; } = new NodeAffinityOperator("NOT_IN");
+
+        public static bool operator ==(NodeAffinityOperator left, NodeAffinityOperator right) => left.Equals(right);
+        public static bool operator !=(NodeAffinityOperator left, NodeAffinityOperator right) => !left.Equals(right);
+
+        public static explicit operator string(NodeAffinityOperator value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NodeAffinityOperator other && Equals(other);
+        public bool Equals(NodeAffinityOperator other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1208,6 +1404,88 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SandboxConfigType other && Equals(other);
         public bool Equals(SandboxConfigType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Sets which mode to use for Security Posture features.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPostureConfigMode : IEquatable<SecurityPostureConfigMode>
+    {
+        private readonly string _value;
+
+        private SecurityPostureConfigMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value not specified.
+        /// </summary>
+        public static SecurityPostureConfigMode ModeUnspecified { get; } = new SecurityPostureConfigMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// Disables Security Posture features on the cluster.
+        /// </summary>
+        public static SecurityPostureConfigMode Disabled { get; } = new SecurityPostureConfigMode("DISABLED");
+        /// <summary>
+        /// Applies Security Posture features on the cluster.
+        /// </summary>
+        public static SecurityPostureConfigMode Basic { get; } = new SecurityPostureConfigMode("BASIC");
+
+        public static bool operator ==(SecurityPostureConfigMode left, SecurityPostureConfigMode right) => left.Equals(right);
+        public static bool operator !=(SecurityPostureConfigMode left, SecurityPostureConfigMode right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPostureConfigMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPostureConfigMode other && Equals(other);
+        public bool Equals(SecurityPostureConfigMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Sets which mode to use for vulnerability scanning.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPostureConfigVulnerabilityMode : IEquatable<SecurityPostureConfigVulnerabilityMode>
+    {
+        private readonly string _value;
+
+        private SecurityPostureConfigVulnerabilityMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value not specified.
+        /// </summary>
+        public static SecurityPostureConfigVulnerabilityMode VulnerabilityModeUnspecified { get; } = new SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Disables vulnerability scanning on the cluster.
+        /// </summary>
+        public static SecurityPostureConfigVulnerabilityMode VulnerabilityDisabled { get; } = new SecurityPostureConfigVulnerabilityMode("VULNERABILITY_DISABLED");
+        /// <summary>
+        /// Applies basic vulnerability scanning on the cluster.
+        /// </summary>
+        public static SecurityPostureConfigVulnerabilityMode VulnerabilityBasic { get; } = new SecurityPostureConfigVulnerabilityMode("VULNERABILITY_BASIC");
+
+        public static bool operator ==(SecurityPostureConfigVulnerabilityMode left, SecurityPostureConfigVulnerabilityMode right) => left.Equals(right);
+        public static bool operator !=(SecurityPostureConfigVulnerabilityMode left, SecurityPostureConfigVulnerabilityMode right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPostureConfigVulnerabilityMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPostureConfigVulnerabilityMode other && Equals(other);
+        public bool Equals(SecurityPostureConfigVulnerabilityMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

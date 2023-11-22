@@ -16,12 +16,24 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputMap<string>? _instanceSelectionLists;
 
         /// <summary>
-        /// List of instance selection options that the group will use when creating new VMs.
+        /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
         public InputMap<string> InstanceSelectionLists
         {
             get => _instanceSelectionLists ?? (_instanceSelectionLists = new InputMap<string>());
             set => _instanceSelectionLists = value;
+        }
+
+        [Input("instanceSelections")]
+        private InputMap<string>? _instanceSelections;
+
+        /// <summary>
+        /// Named instance selections configuring properties that the group will use when creating new VMs.
+        /// </summary>
+        public InputMap<string> InstanceSelections
+        {
+            get => _instanceSelections ?? (_instanceSelections = new InputMap<string>());
+            set => _instanceSelections = value;
         }
 
         public InstanceGroupManagerInstanceFlexibilityPolicyArgs()

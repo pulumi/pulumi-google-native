@@ -17,23 +17,23 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse
     {
         /// <summary>
-        /// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        /// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         /// </summary>
         public readonly string MaxValue;
         /// <summary>
-        /// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        /// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         /// </summary>
         public readonly string MinValue;
         /// <summary>
-        /// The aggregate metric to evaluate.
+        /// Optional. The aggregate metric to evaluate.
         /// </summary>
         public readonly string Statistic;
         /// <summary>
-        /// Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        /// Optional. Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
         /// </summary>
         public readonly bool StrictMaxEnabled;
         /// <summary>
-        /// Whether column statistic needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        /// Optional. Whether column statistic needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
         /// </summary>
         public readonly bool StrictMinEnabled;
 

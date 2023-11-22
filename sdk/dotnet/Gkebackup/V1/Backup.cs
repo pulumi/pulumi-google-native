@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<bool> AllNamespaces { get; private set; } = null!;
 
         /// <summary>
-        /// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+        /// Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
         /// </summary>
         [Output("backupId")]
         public Output<string?> BackupId { get; private set; } = null!;
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+        /// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
         /// </summary>
         [Output("deleteLockDays")]
         public Output<int> DeleteLockDays { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> DeleteLockExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// User specified descriptive string for this Backup.
+        /// Optional. User specified descriptive string for this Backup.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// A set of custom labels supplied by user.
+        /// Optional. A set of custom labels supplied by user.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<int> ResourceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Output("retainDays")]
         public Output<int> RetainDays { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public sealed class BackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+        /// Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
@@ -254,13 +254,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string> BackupPlanId { get; set; } = null!;
 
         /// <summary>
-        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+        /// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
         /// </summary>
         [Input("deleteLockDays")]
         public Input<int>? DeleteLockDays { get; set; }
 
         /// <summary>
-        /// User specified descriptive string for this Backup.
+        /// Optional. User specified descriptive string for this Backup.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -269,7 +269,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of custom labels supplied by user.
+        /// Optional. A set of custom labels supplied by user.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -284,7 +284,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Input("retainDays")]
         public Input<int>? RetainDays { get; set; }

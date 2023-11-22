@@ -35,10 +35,28 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
+        /// Connection revision. This field is only updated when the connection is created or updated by User.
+        /// </summary>
+        [Output("connectionRevision")]
+        public Output<string> ConnectionRevision { get; private set; } = null!;
+
+        /// <summary>
         /// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         /// </summary>
         [Output("connectorVersion")]
         public Output<string> ConnectorVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Infra configs supported by Connector Version.
+        /// </summary>
+        [Output("connectorVersionInfraConfig")]
+        public Output<Outputs.ConnectorVersionInfraConfigResponse> ConnectorVersionInfraConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to mark the version indicating the launch stage.
+        /// </summary>
+        [Output("connectorVersionLaunchStage")]
+        public Output<string> ConnectorVersionLaunchStage { get; private set; } = null!;
 
         /// <summary>
         /// Created time.
@@ -65,10 +83,34 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> EnvoyImageLocation { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Eventing config of a connection
+        /// </summary>
+        [Output("eventingConfig")]
+        public Output<Outputs.EventingConfigResponse> EventingConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+        /// </summary>
+        [Output("eventingEnablementType")]
+        public Output<string> EventingEnablementType { get; private set; } = null!;
+
+        /// <summary>
+        /// Eventing Runtime Data.
+        /// </summary>
+        [Output("eventingRuntimeData")]
+        public Output<Outputs.EventingRuntimeDataResponse> EventingRuntimeData { get; private set; } = null!;
+
+        /// <summary>
         /// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         /// </summary>
         [Output("imageLocation")]
         public Output<string> ImageLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// Is trusted tester program enabled for the project.
+        /// </summary>
+        [Output("isTrustedTester")]
+        public Output<bool> IsTrustedTester { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -107,7 +149,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Service account needed for runtime plane to access GCP resources.
+        /// Optional. Service account needed for runtime plane to access Google Cloud resources.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
@@ -247,6 +289,18 @@ namespace Pulumi.GoogleNative.Connectors.V1
             set => _destinationConfigs = value;
         }
 
+        /// <summary>
+        /// Optional. Eventing config of a connection
+        /// </summary>
+        [Input("eventingConfig")]
+        public Input<Inputs.EventingConfigArgs>? EventingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+        /// </summary>
+        [Input("eventingEnablementType")]
+        public Input<Pulumi.GoogleNative.Connectors.V1.ConnectionEventingEnablementType>? EventingEnablementType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -284,7 +338,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. Service account needed for runtime plane to access GCP resources.
+        /// Optional. Service account needed for runtime plane to access Google Cloud resources.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

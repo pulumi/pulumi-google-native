@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 {
 
     /// <summary>
-    /// Either an InstancePolicy or an instance template.
+    /// InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks.
     /// </summary>
     [OutputType]
     public sealed class InstancePolicyOrTemplateResponse
     {
         /// <summary>
-        /// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.
+        /// Set this field true if users want Batch to help fetch drivers from a third party location and install them for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For Container-Optimized Image cases, Batch will install the accelerator driver following milestones of https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases, following https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
         /// </summary>
         public readonly bool InstallGpuDrivers;
         /// <summary>

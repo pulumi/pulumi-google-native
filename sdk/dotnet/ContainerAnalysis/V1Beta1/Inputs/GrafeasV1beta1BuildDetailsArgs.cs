@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// </summary>
     public sealed class GrafeasV1beta1BuildDetailsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("inTotoSlsaProvenanceV1")]
+        public Input<Inputs.InTotoSlsaProvenanceV1Args>? InTotoSlsaProvenanceV1 { get; set; }
+
         /// <summary>
         /// The actual provenance for the build.
         /// </summary>

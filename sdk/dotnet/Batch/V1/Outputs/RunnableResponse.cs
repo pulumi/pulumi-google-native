@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.ContainerResponse Container;
         /// <summary>
+        /// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
         /// </summary>
         public readonly Outputs.EnvironmentResponse Environment;
@@ -63,6 +67,8 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             Outputs.ContainerResponse container,
 
+            string displayName,
+
             Outputs.EnvironmentResponse environment,
 
             bool ignoreExitStatus,
@@ -77,6 +83,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
             Background = background;
             Barrier = barrier;
             Container = container;
+            DisplayName = displayName;
             Environment = environment;
             IgnoreExitStatus = ignoreExitStatus;
             Labels = labels;

@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.MaintenanceWindowResponse MaintenanceWindow;
         /// <summary>
-        /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         /// </summary>
         public readonly Outputs.MetadataIntegrationResponse MetadataIntegration;
         /// <summary>

@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly bool DisableVideoRecording;
         /// <summary>
+        /// An iOS Robo test.
+        /// </summary>
+        public readonly Outputs.IosRoboTestResponse IosRoboTest;
+        /// <summary>
         /// An iOS application with a test loop.
         /// </summary>
         public readonly Outputs.IosTestLoopResponse IosTestLoop;
@@ -69,6 +73,8 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             bool disableVideoRecording,
 
+            Outputs.IosRoboTestResponse iosRoboTest,
+
             Outputs.IosTestLoopResponse iosTestLoop,
 
             Outputs.IosTestSetupResponse iosTestSetup,
@@ -84,6 +90,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
             AndroidTestLoop = androidTestLoop;
             DisablePerformanceMetrics = disablePerformanceMetrics;
             DisableVideoRecording = disableVideoRecording;
+            IosRoboTest = iosRoboTest;
             IosTestLoop = iosTestLoop;
             IosTestSetup = iosTestSetup;
             IosXcTest = iosXcTest;

@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         private InputList<Inputs.AttachedDiskArgs>? _disks;
 
         /// <summary>
-        /// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
+        /// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
         /// </summary>
         public InputList<Inputs.AttachedDiskArgs> Disks
         {
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
+        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
@@ -62,6 +62,12 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         /// </summary>
         [Input("provisioningModel")]
         public Input<Pulumi.GoogleNative.Batch.V1.InstancePolicyProvisioningModel>? ProvisioningModel { get; set; }
+
+        /// <summary>
+        /// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
+        /// </summary>
+        [Input("reservation")]
+        public Input<string>? Reservation { get; set; }
 
         public InstancePolicyArgs()
         {

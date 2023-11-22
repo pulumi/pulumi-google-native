@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
     public sealed class CloudStorageConfigResponse
     {
         /// <summary>
-        /// If set, message data will be written to Cloud Storage in Avro format.
+        /// Optional. If set, message data will be written to Cloud Storage in Avro format.
         /// </summary>
         public readonly Outputs.AvroConfigResponse AvroConfig;
         /// <summary>
@@ -25,19 +25,19 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        /// Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
         /// </summary>
         public readonly string FilenamePrefix;
         /// <summary>
-        /// User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        /// Optional. User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming). Must not end in "/".
         /// </summary>
         public readonly string FilenameSuffix;
         /// <summary>
-        /// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+        /// Optional. The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
         /// </summary>
         public readonly string MaxBytes;
         /// <summary>
-        /// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+        /// Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
         /// </summary>
         public readonly string MaxDuration;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// If set, message data will be written to Cloud Storage in text format.
+        /// Optional. If set, message data will be written to Cloud Storage in text format.
         /// </summary>
         public readonly Outputs.TextConfigResponse TextConfig;
 

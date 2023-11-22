@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Properties;
         /// <summary>
+        /// Optional. Dependency repository configuration.
+        /// </summary>
+        public readonly Outputs.RepositoryConfigResponse RepositoryConfig;
+        /// <summary>
         /// Optional. Version of the batch runtime.
         /// </summary>
         public readonly string Version;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
             ImmutableDictionary<string, string> properties,
 
+            Outputs.RepositoryConfigResponse repositoryConfig,
+
             string version)
         {
             ContainerImage = containerImage;
             Properties = properties;
+            RepositoryConfig = repositoryConfig;
             Version = version;
         }
     }

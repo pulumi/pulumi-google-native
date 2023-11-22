@@ -78,9 +78,21 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.ConfigVariableResponse> ConfigVariables;
         /// <summary>
+        /// Connection revision. This field is only updated when the connection is created or updated by User.
+        /// </summary>
+        public readonly string ConnectionRevision;
+        /// <summary>
         /// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         /// </summary>
         public readonly string ConnectorVersion;
+        /// <summary>
+        /// Infra configs supported by Connector Version.
+        /// </summary>
+        public readonly Outputs.ConnectorVersionInfraConfigResponse ConnectorVersionInfraConfig;
+        /// <summary>
+        /// Flag to mark the version indicating the launch stage.
+        /// </summary>
+        public readonly string ConnectorVersionLaunchStage;
         /// <summary>
         /// Created time.
         /// </summary>
@@ -98,9 +110,25 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string EnvoyImageLocation;
         /// <summary>
+        /// Optional. Eventing config of a connection
+        /// </summary>
+        public readonly Outputs.EventingConfigResponse EventingConfig;
+        /// <summary>
+        /// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+        /// </summary>
+        public readonly string EventingEnablementType;
+        /// <summary>
+        /// Eventing Runtime Data.
+        /// </summary>
+        public readonly Outputs.EventingRuntimeDataResponse EventingRuntimeData;
+        /// <summary>
         /// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         /// </summary>
         public readonly string ImageLocation;
+        /// <summary>
+        /// Is trusted tester program enabled for the project.
+        /// </summary>
+        public readonly bool IsTrustedTester;
         /// <summary>
         /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         /// </summary>
@@ -122,7 +150,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly Outputs.NodeConfigResponse NodeConfig;
         /// <summary>
-        /// Optional. Service account needed for runtime plane to access GCP resources.
+        /// Optional. Service account needed for runtime plane to access Google Cloud resources.
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
@@ -156,7 +184,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             ImmutableArray<Outputs.ConfigVariableResponse> configVariables,
 
+            string connectionRevision,
+
             string connectorVersion,
+
+            Outputs.ConnectorVersionInfraConfigResponse connectorVersionInfraConfig,
+
+            string connectorVersionLaunchStage,
 
             string createTime,
 
@@ -166,7 +200,15 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string envoyImageLocation,
 
+            Outputs.EventingConfigResponse eventingConfig,
+
+            string eventingEnablementType,
+
+            Outputs.EventingRuntimeDataResponse eventingRuntimeData,
+
             string imageLocation,
+
+            bool isTrustedTester,
 
             ImmutableDictionary<string, string> labels,
 
@@ -194,12 +236,19 @@ namespace Pulumi.GoogleNative.Connectors.V1
         {
             AuthConfig = authConfig;
             ConfigVariables = configVariables;
+            ConnectionRevision = connectionRevision;
             ConnectorVersion = connectorVersion;
+            ConnectorVersionInfraConfig = connectorVersionInfraConfig;
+            ConnectorVersionLaunchStage = connectorVersionLaunchStage;
             CreateTime = createTime;
             Description = description;
             DestinationConfigs = destinationConfigs;
             EnvoyImageLocation = envoyImageLocation;
+            EventingConfig = eventingConfig;
+            EventingEnablementType = eventingEnablementType;
+            EventingRuntimeData = eventingRuntimeData;
             ImageLocation = imageLocation;
+            IsTrustedTester = isTrustedTester;
             Labels = labels;
             LockConfig = lockConfig;
             LogConfig = logConfig;

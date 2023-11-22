@@ -36,6 +36,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
 
+        [Input("view")]
+        public string? View { get; set; }
+
         public GetRegionInstanceTemplateArgs()
         {
         }
@@ -52,6 +55,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
 
         public GetRegionInstanceTemplateInvokeArgs()
         {

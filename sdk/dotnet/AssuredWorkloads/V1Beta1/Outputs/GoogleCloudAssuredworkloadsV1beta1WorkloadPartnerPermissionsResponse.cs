@@ -17,22 +17,29 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1.Outputs
     public sealed class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse
     {
         /// <summary>
+        /// Optional. Allow partner to view violation alerts.
+        /// </summary>
+        public readonly bool AssuredWorkloadsMonitoring;
+        /// <summary>
         /// Allow the partner to view inspectability logs and monitoring violations.
         /// </summary>
         public readonly bool DataLogsViewer;
         /// <summary>
-        /// Allow partner to monitor folder and remediate violations
+        /// Optional. Allow partner to view access approval logs.
         /// </summary>
-        public readonly bool RemediateFolderViolations;
+        public readonly bool ServiceAccessApprover;
 
         [OutputConstructor]
         private GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse(
+            bool assuredWorkloadsMonitoring,
+
             bool dataLogsViewer,
 
-            bool remediateFolderViolations)
+            bool serviceAccessApprover)
         {
+            AssuredWorkloadsMonitoring = assuredWorkloadsMonitoring;
             DataLogsViewer = dataLogsViewer;
-            RemediateFolderViolations = remediateFolderViolations;
+            ServiceAccessApprover = serviceAccessApprover;
         }
     }
 }

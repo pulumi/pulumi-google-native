@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// How the text content is formatted.
         /// </summary>
         public readonly string Format;
+        /// <summary>
+        /// How the text is styled
+        /// </summary>
+        public readonly Outputs.TextStyleResponse Style;
 
         [OutputConstructor]
         private TextResponse(
             string content,
 
-            string format)
+            string format,
+
+            Outputs.TextStyleResponse style)
         {
             Content = content;
             Format = format;
+            Style = style;
         }
     }
 }

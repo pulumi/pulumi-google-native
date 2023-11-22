@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         public Input<Pulumi.GoogleNative.VMMigration.V1Alpha1.ComputeEngineTargetDefaultsDiskType>? DiskType { get; set; }
 
         /// <summary>
+        /// Optional. Immutable. The encryption to apply to the VM disks.
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.EncryptionArgs>? Encryption { get; set; }
+
+        /// <summary>
         /// The hostname to assign to the VM.
         /// </summary>
         [Input("hostname")]
@@ -103,7 +109,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         private InputList<string>? _networkTags;
 
         /// <summary>
-        /// A map of network tags to associate with the VM.
+        /// A list of network tags to associate with the VM.
         /// </summary>
         public InputList<string> NetworkTags
         {
@@ -112,7 +118,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         }
 
         /// <summary>
-        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         /// </summary>
         [Input("secureBoot")]
         public Input<bool>? SecureBoot { get; set; }

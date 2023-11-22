@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
 {
 
     /// <summary>
-    /// Image Quality Scores for the page image
+    /// Image quality scores for the page image.
     /// </summary>
     public sealed class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs : global::Pulumi.ResourceArgs
     {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         }
 
         /// <summary>
-        /// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+        /// The overall quality score. Range `[0, 1]` where `1` is perfect quality.
         /// </summary>
         [Input("qualityScore")]
         public Input<double>? QualityScore { get; set; }

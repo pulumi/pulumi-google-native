@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     public sealed class MetadataIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The integration config for the Data Catalog service.
+        /// Optional. The integration config for the Data Catalog service.
         /// </summary>
         [Input("dataCatalogConfig")]
         public Input<Inputs.DataCatalogConfigArgs>? DataCatalogConfig { get; set; }

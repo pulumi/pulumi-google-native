@@ -94,6 +94,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.QueuingPolicyResponse QueuingPolicy;
         /// <summary>
+        /// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        /// </summary>
+        public readonly Outputs.DurationResponse RequestedRunDuration;
+        /// <summary>
+        /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+        /// </summary>
+        public readonly int ResizeBy;
+        /// <summary>
         /// The URL for this resize request. The server defines this URL.
         /// </summary>
         public readonly string SelfLink;
@@ -106,7 +114,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+        /// [Output only] Status of the request.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerResizeRequestStatusResponse Status;
         /// <summary>
@@ -128,6 +136,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.QueuingPolicyResponse queuingPolicy,
 
+            Outputs.DurationResponse requestedRunDuration,
+
+            int resizeBy,
+
             string selfLink,
 
             string selfLinkWithId,
@@ -144,6 +156,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Kind = kind;
             Name = name;
             QueuingPolicy = queuingPolicy;
+            RequestedRunDuration = requestedRunDuration;
+            ResizeBy = resizeBy;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             State = state;

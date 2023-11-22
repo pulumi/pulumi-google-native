@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class AdditionalPodRangesConfigResponse
     {
         /// <summary>
+        /// [Output only] Information for additional pod range.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RangeInfoResponse> PodRangeInfo;
+        /// <summary>
         /// Name for pod secondary ipv4 range which has the actual range defined ahead.
         /// </summary>
         public readonly ImmutableArray<string> PodRangeNames;
 
         [OutputConstructor]
-        private AdditionalPodRangesConfigResponse(ImmutableArray<string> podRangeNames)
+        private AdditionalPodRangesConfigResponse(
+            ImmutableArray<Outputs.RangeInfoResponse> podRangeInfo,
+
+            ImmutableArray<string> podRangeNames)
         {
+            PodRangeInfo = podRangeInfo;
             PodRangeNames = podRangeNames;
         }
     }

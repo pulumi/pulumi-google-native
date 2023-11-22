@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<Inputs.ContainerArgs>? Container { get; set; }
 
         /// <summary>
+        /// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
         /// </summary>
         [Input("environment")]

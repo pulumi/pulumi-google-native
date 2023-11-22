@@ -61,6 +61,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
+        /// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        /// </summary>
+        [Input("fileSetSpecType")]
+        public Input<string>? FileSetSpecType { get; set; }
+
+        /// <summary>
         /// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         /// </summary>
         [Input("googleSheetsOptions")]
@@ -77,6 +83,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// </summary>
         [Input("ignoreUnknownValues")]
         public Input<bool>? IgnoreUnknownValues { get; set; }
+
+        /// <summary>
+        /// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+        /// </summary>
+        [Input("jsonOptions")]
+        public Input<Inputs.JsonOptionsArgs>? JsonOptions { get; set; }
 
         /// <summary>
         /// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.

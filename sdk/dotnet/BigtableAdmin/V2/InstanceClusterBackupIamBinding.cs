@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
-    /// Sets the access control policy on a Table resource. Replaces any existing policy.
+    /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceClusterBackupIamBinding")]
     public partial class InstanceClusterBackupIamBinding : global::Pulumi.CustomResource

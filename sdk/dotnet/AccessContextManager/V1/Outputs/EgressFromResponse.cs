@@ -24,15 +24,29 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
         /// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
         /// </summary>
         public readonly string IdentityType;
+        /// <summary>
+        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// </summary>
+        public readonly string SourceRestriction;
+        /// <summary>
+        /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.EgressSourceResponse> Sources;
 
         [OutputConstructor]
         private EgressFromResponse(
             ImmutableArray<string> identities,
 
-            string identityType)
+            string identityType,
+
+            string sourceRestriction,
+
+            ImmutableArray<Outputs.EgressSourceResponse> sources)
         {
             Identities = identities;
             IdentityType = identityType;
+            SourceRestriction = sourceRestriction;
+            Sources = sources;
         }
     }
 }

@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string ImageType;
         /// <summary>
+        /// Enable or disable Kubelet read only port.
+        /// </summary>
+        public readonly bool InsecureKubeletReadonlyPortEnabled;
+        /// <summary>
         /// NodeManagement configuration for this NodePool.
         /// </summary>
         public readonly Outputs.NodeManagementResponse Management;
@@ -67,6 +71,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string imageType,
 
+            bool insecureKubeletReadonlyPortEnabled,
+
             Outputs.NodeManagementResponse management,
 
             string minCpuPlatform,
@@ -83,6 +89,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             ImageType = imageType;
+            InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             Management = management;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;

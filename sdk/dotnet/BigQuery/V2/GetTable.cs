@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class GetTableResult
     {
         /// <summary>
+        /// [Optional] Specifies the configuration of a BigLake managed table.
+        /// </summary>
+        public readonly Outputs.BigLakeConfigurationResponse BiglakeConfiguration;
+        /// <summary>
         /// Clone definition.
         /// </summary>
         public readonly Outputs.CloneDefinitionResponse CloneDefinition;
@@ -204,6 +208,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly bool RequirePartitionFilter;
         /// <summary>
+        /// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ResourceTags;
+        /// <summary>
         /// [Optional] Describes the schema of this table.
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
@@ -242,6 +250,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         [OutputConstructor]
         private GetTableResult(
+            Outputs.BigLakeConfigurationResponse biglakeConfiguration,
+
             Outputs.CloneDefinitionResponse cloneDefinition,
 
             Outputs.ClusteringResponse clustering,
@@ -306,6 +316,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             bool requirePartitionFilter,
 
+            ImmutableDictionary<string, string> resourceTags,
+
             Outputs.TableSchemaResponse schema,
 
             string selfLink,
@@ -324,6 +336,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.ViewDefinitionResponse view)
         {
+            BiglakeConfiguration = biglakeConfiguration;
             CloneDefinition = cloneDefinition;
             Clustering = clustering;
             CreationTime = creationTime;
@@ -356,6 +369,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             NumTotalPhysicalBytes = numTotalPhysicalBytes;
             RangePartitioning = rangePartitioning;
             RequirePartitionFilter = requirePartitionFilter;
+            ResourceTags = resourceTags;
             Schema = schema;
             SelfLink = selfLink;
             SnapshotDefinition = snapshotDefinition;

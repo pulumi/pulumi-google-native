@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class VexAssessmentResponse
     {
         /// <summary>
-        /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
         /// </summary>
         public readonly string Cve;
         /// <summary>
@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// Provides the state of this Vulnerability assessment.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        /// </summary>
+        public readonly string VulnerabilityId;
 
         [OutputConstructor]
         private VexAssessmentResponse(
@@ -59,7 +63,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 
             ImmutableArray<Outputs.RemediationResponse> remediations,
 
-            string state)
+            string state,
+
+            string vulnerabilityId)
         {
             Cve = cve;
             Impacts = impacts;
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
             RelatedUris = relatedUris;
             Remediations = remediations;
             State = state;
+            VulnerabilityId = vulnerabilityId;
         }
     }
 }

@@ -114,6 +114,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Disable bundled ingress.
+        /// </summary>
+        public readonly bool DisableBundledIngress;
+        /// <summary>
         /// Enable control plane V2. Default to false.
         /// </summary>
         public readonly bool EnableControlPlaneV2;
@@ -146,7 +150,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         public readonly Outputs.VmwareNetworkConfigResponse NetworkConfig;
         /// <summary>
-        /// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
+        /// The Anthos clusters on the VMware version for your user cluster.
         /// </summary>
         public readonly string OnPremVersion;
         /// <summary>
@@ -174,11 +178,15 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
+        /// Specifies upgrade policy for the cluster.
+        /// </summary>
+        public readonly Outputs.VmwareClusterUpgradePolicyResponse UpgradePolicy;
+        /// <summary>
         /// ValidationCheck represents the result of the preflight check job.
         /// </summary>
         public readonly Outputs.ValidationCheckResponse ValidationCheck;
         /// <summary>
-        /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
         /// </summary>
         public readonly Outputs.VmwareVCenterConfigResponse Vcenter;
         /// <summary>
@@ -210,6 +218,8 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
             string description,
 
+            bool disableBundledIngress,
+
             bool enableControlPlaneV2,
 
             string endpoint,
@@ -240,6 +250,8 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
             string updateTime,
 
+            Outputs.VmwareClusterUpgradePolicyResponse upgradePolicy,
+
             Outputs.ValidationCheckResponse validationCheck,
 
             Outputs.VmwareVCenterConfigResponse vcenter,
@@ -257,6 +269,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
             DataplaneV2 = dataplaneV2;
             DeleteTime = deleteTime;
             Description = description;
+            DisableBundledIngress = disableBundledIngress;
             EnableControlPlaneV2 = enableControlPlaneV2;
             Endpoint = endpoint;
             Etag = etag;
@@ -272,6 +285,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
             Storage = storage;
             Uid = uid;
             UpdateTime = updateTime;
+            UpgradePolicy = upgradePolicy;
             ValidationCheck = validationCheck;
             Vcenter = vcenter;
             VmTrackingEnabled = vmTrackingEnabled;

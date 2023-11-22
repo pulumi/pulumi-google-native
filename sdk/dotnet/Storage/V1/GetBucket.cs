@@ -148,6 +148,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The bucket's object retention config.
+        /// </summary>
+        public readonly Outputs.BucketObjectRetentionResponse ObjectRetention;
+        /// <summary>
         /// The owner of the bucket. This is always the project team's owner group.
         /// </summary>
         public readonly Outputs.BucketOwnerResponse Owner;
@@ -171,6 +175,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// The URI of this bucket.
         /// </summary>
         public readonly string SelfLink;
+        /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+        /// </summary>
+        public readonly Outputs.BucketSoftDeletePolicyResponse SoftDeletePolicy;
         /// <summary>
         /// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         /// </summary>
@@ -230,6 +238,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string name,
 
+            Outputs.BucketObjectRetentionResponse objectRetention,
+
             Outputs.BucketOwnerResponse owner,
 
             string projectNumber,
@@ -241,6 +251,8 @@ namespace Pulumi.GoogleNative.Storage.V1
             bool satisfiesPZS,
 
             string selfLink,
+
+            Outputs.BucketSoftDeletePolicyResponse softDeletePolicy,
 
             string storageClass,
 
@@ -270,12 +282,14 @@ namespace Pulumi.GoogleNative.Storage.V1
             Logging = logging;
             Metageneration = metageneration;
             Name = name;
+            ObjectRetention = objectRetention;
             Owner = owner;
             ProjectNumber = projectNumber;
             RetentionPolicy = retentionPolicy;
             Rpo = rpo;
             SatisfiesPZS = satisfiesPZS;
             SelfLink = selfLink;
+            SoftDeletePolicy = softDeletePolicy;
             StorageClass = storageClass;
             TimeCreated = timeCreated;
             Updated = updated;

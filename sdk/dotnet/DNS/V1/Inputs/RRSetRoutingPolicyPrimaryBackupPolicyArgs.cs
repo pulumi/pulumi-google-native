@@ -24,6 +24,9 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        /// <summary>
+        /// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
+        /// </summary>
         [Input("primaryTargets")]
         public Input<Inputs.RRSetRoutingPolicyHealthCheckTargetsArgs>? PrimaryTargets { get; set; }
 

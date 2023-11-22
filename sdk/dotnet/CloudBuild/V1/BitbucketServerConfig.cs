@@ -60,6 +60,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Output("peeredNetwork")]
         public Output<string> PeeredNetwork { get; private set; } = null!;
 
+        /// <summary>
+        /// Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+        /// </summary>
+        [Output("peeredNetworkIpRange")]
+        public Output<string> PeeredNetworkIpRange { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -175,6 +181,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         [Input("peeredNetwork")]
         public Input<string>? PeeredNetwork { get; set; }
+
+        /// <summary>
+        /// Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+        /// </summary>
+        [Input("peeredNetworkIpRange")]
+        public Input<string>? PeeredNetworkIpRange { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

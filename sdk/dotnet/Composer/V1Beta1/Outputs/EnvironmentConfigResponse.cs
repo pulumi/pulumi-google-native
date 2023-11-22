@@ -69,6 +69,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.RecoveryConfigResponse RecoveryConfig;
         /// <summary>
+        /// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly string ResilienceMode;
+        /// <summary>
         /// The configuration settings for software inside the environment.
         /// </summary>
         public readonly Outputs.SoftwareConfigResponse SoftwareConfig;
@@ -113,6 +117,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             Outputs.RecoveryConfigResponse recoveryConfig,
 
+            string resilienceMode,
+
             Outputs.SoftwareConfigResponse softwareConfig,
 
             Outputs.WebServerConfigResponse webServerConfig,
@@ -134,6 +140,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;
             RecoveryConfig = recoveryConfig;
+            ResilienceMode = resilienceMode;
             SoftwareConfig = softwareConfig;
             WebServerConfig = webServerConfig;
             WebServerNetworkAccessControl = webServerNetworkAccessControl;

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
     public sealed class SdkVersionResponse
     {
         /// <summary>
+        /// Known bugs found in this SDK version.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SdkBugResponse> Bugs;
+        /// <summary>
         /// The support status for this SDK version.
         /// </summary>
         public readonly string SdkSupportStatus;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
         [OutputConstructor]
         private SdkVersionResponse(
+            ImmutableArray<Outputs.SdkBugResponse> bugs,
+
             string sdkSupportStatus,
 
             string version,
 
             string versionDisplayName)
         {
+            Bugs = bugs;
             SdkSupportStatus = sdkSupportStatus;
             Version = version;
             VersionDisplayName = versionDisplayName;

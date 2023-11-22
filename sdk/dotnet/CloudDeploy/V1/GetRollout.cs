@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     public sealed class GetRolloutResult
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string ApproveTime;
         /// <summary>
-        /// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         public readonly string ControllerRollout;
         /// <summary>
@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string FailureReason;
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -136,13 +136,21 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly Outputs.MetadataResponse Metadata;
         /// <summary>
-        /// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         public readonly string Name;
         /// <summary>
         /// The phases that represent the workflows of this `Rollout`.
         /// </summary>
         public readonly ImmutableArray<Outputs.PhaseResponse> Phases;
+        /// <summary>
+        /// Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't created as a rollback.
+        /// </summary>
+        public readonly string RollbackOfRollout;
+        /// <summary>
+        /// Names of `Rollouts` that rolled back this `Rollout`.
+        /// </summary>
+        public readonly ImmutableArray<string> RolledBackByRollouts;
         /// <summary>
         /// Current state of the `Rollout`.
         /// </summary>
@@ -192,6 +200,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             ImmutableArray<Outputs.PhaseResponse> phases,
 
+            string rollbackOfRollout,
+
+            ImmutableArray<string> rolledBackByRollouts,
+
             string state,
 
             string targetId,
@@ -215,6 +227,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Metadata = metadata;
             Name = name;
             Phases = phases;
+            RollbackOfRollout = rollbackOfRollout;
+            RolledBackByRollouts = rolledBackByRollouts;
             State = state;
             TargetId = targetId;
             Uid = uid;

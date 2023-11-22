@@ -64,11 +64,11 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public sealed class GetBackupPlanResult
     {
         /// <summary>
-        /// Defines the configuration of Backups created via this BackupPlan.
+        /// Optional. Defines the configuration of Backups created via this BackupPlan.
         /// </summary>
         public readonly Outputs.BackupConfigResponse BackupConfig;
         /// <summary>
-        /// Defines a schedule for automatic Backup creation via this BackupPlan.
+        /// Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         /// </summary>
         public readonly Outputs.ScheduleResponse BackupSchedule;
         /// <summary>
@@ -80,11 +80,11 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        /// Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         /// </summary>
         public readonly bool Deactivated;
         /// <summary>
-        /// User specified descriptive string for this BackupPlan.
+        /// Optional. User specified descriptive string for this BackupPlan.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// A set of custom labels supplied by user.
+        /// Optional. A set of custom labels supplied by user.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -104,9 +104,17 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly int ProtectedPodCount;
         /// <summary>
-        /// RetentionPolicy governs lifecycle of Backups created under this plan.
+        /// Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         /// </summary>
         public readonly Outputs.RetentionPolicyResponse RetentionPolicy;
+        /// <summary>
+        /// State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// Human-readable description of why BackupPlan is in the current `state`
+        /// </summary>
+        public readonly string StateReason;
         /// <summary>
         /// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
@@ -140,6 +148,10 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
 
             Outputs.RetentionPolicyResponse retentionPolicy,
 
+            string state,
+
+            string stateReason,
+
             string uid,
 
             string updateTime)
@@ -155,6 +167,8 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
             Name = name;
             ProtectedPodCount = protectedPodCount;
             RetentionPolicy = retentionPolicy;
+            State = state;
+            StateReason = stateReason;
             Uid = uid;
             UpdateTime = updateTime;
         }

@@ -68,7 +68,11 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         public readonly Outputs.BestEffortResponse BestEffort;
         /// <summary>
-        /// The Guaranteed tier
+        /// The time when the QueuedResource was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
+        /// The Guaranteed tier.
         /// </summary>
         public readonly Outputs.GuaranteedResponse Guaranteed;
         /// <summary>
@@ -84,6 +88,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         public readonly string ReservationName;
         /// <summary>
+        /// Optional. The Spot tier.
+        /// </summary>
+        public readonly Outputs.SpotResponse Spot;
+        /// <summary>
         /// State of the QueuedResource request.
         /// </summary>
         public readonly Outputs.QueuedResourceStateResponse State;
@@ -96,6 +104,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         private GetQueuedResourceResult(
             Outputs.BestEffortResponse bestEffort,
 
+            string createTime,
+
             Outputs.GuaranteedResponse guaranteed,
 
             string name,
@@ -104,15 +114,19 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
             string reservationName,
 
+            Outputs.SpotResponse spot,
+
             Outputs.QueuedResourceStateResponse state,
 
             Outputs.TpuResponse tpu)
         {
             BestEffort = bestEffort;
+            CreateTime = createTime;
             Guaranteed = guaranteed;
             Name = name;
             QueueingPolicy = queueingPolicy;
             ReservationName = reservationName;
+            Spot = spot;
             State = state;
             Tpu = tpu;
         }

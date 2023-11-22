@@ -50,6 +50,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+        /// </summary>
+        [Output("maximumLifetime")]
+        public Output<string> MaximumLifetime { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         /// </summary>
         [Output("name")]
@@ -165,6 +171,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+        /// </summary>
+        [Input("maximumLifetime")]
+        public Input<string>? MaximumLifetime { get; set; }
 
         /// <summary>
         /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.

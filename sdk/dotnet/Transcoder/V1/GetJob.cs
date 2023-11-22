@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     public sealed class GetJobResult
     {
         /// <summary>
+        /// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        /// </summary>
+        public readonly int BatchModePriority;
+        /// <summary>
         /// The configuration for this job.
         /// </summary>
         public readonly Outputs.JobConfigResponse Config;
@@ -76,7 +80,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+        /// An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.
         /// </summary>
         public readonly Outputs.StatusResponse Error;
         /// <summary>
@@ -95,6 +99,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+        /// </summary>
+        public readonly string Optimization;
         /// <summary>
         /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
@@ -118,6 +126,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1
 
         [OutputConstructor]
         private GetJobResult(
+            int batchModePriority,
+
             Outputs.JobConfigResponse config,
 
             string createTime,
@@ -134,6 +144,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1
 
             string name,
 
+            string optimization,
+
             string outputUri,
 
             string startTime,
@@ -144,6 +156,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
 
             int ttlAfterCompletionDays)
         {
+            BatchModePriority = batchModePriority;
             Config = config;
             CreateTime = createTime;
             EndTime = endTime;
@@ -152,6 +165,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
             Labels = labels;
             Mode = mode;
             Name = name;
+            Optimization = optimization;
             OutputUri = outputUri;
             StartTime = startTime;
             State = state;

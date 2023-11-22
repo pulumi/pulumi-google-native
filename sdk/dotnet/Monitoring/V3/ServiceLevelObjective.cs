@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<Outputs.ServiceLevelIndicatorResponse> ServiceLevelIndicator { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        /// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
         /// </summary>
         [Output("serviceLevelObjectiveId")]
         public Output<string?> ServiceLevelObjectiveId { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Input<Inputs.ServiceLevelIndicatorArgs>? ServiceLevelIndicator { get; set; }
 
         /// <summary>
-        /// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        /// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
         /// </summary>
         [Input("serviceLevelObjectiveId")]
         public Input<string>? ServiceLevelObjectiveId { get; set; }

@@ -8,6 +8,51 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
     /// <summary>
+    /// Optional. Controls the amount of detail to include as part of the audit logs.
+    /// </summary>
+    [EnumType]
+    public readonly struct AccessDeterminationLogConfigLogLevel : IEquatable<AccessDeterminationLogConfigLogLevel>
+    {
+        private readonly string _value;
+
+        private AccessDeterminationLogConfigLogLevel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No log level specified. This value is unused.
+        /// </summary>
+        public static AccessDeterminationLogConfigLogLevel LogLevelUnspecified { get; } = new AccessDeterminationLogConfigLogLevel("LOG_LEVEL_UNSPECIFIED");
+        /// <summary>
+        /// No additional consent-related logging is added to audit logs.
+        /// </summary>
+        public static AccessDeterminationLogConfigLogLevel Disabled { get; } = new AccessDeterminationLogConfigLogLevel("DISABLED");
+        /// <summary>
+        /// The following information is included: - One of the following [`consentMode`](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent#audit_logs) fields: (`off`|`emptyScope`|`enforced`|`btg`|`bypass`). - The accessor's request headers - The `log_level` of the [AccessDeterminationLogConfig](google.cloud.healthcare.v1beta1.fhir.FhirStore.ConsentConfig.AccessDeterminationLogConfig) - The final consent evaluation (`PERMIT`, `DENY`, or `NO_CONSENT`) - A human-readable summary of the evaluation
+        /// </summary>
+        public static AccessDeterminationLogConfigLogLevel Minimum { get; } = new AccessDeterminationLogConfigLogLevel("MINIMUM");
+        /// <summary>
+        /// Includes `MINIMUM` and, for each resource owner, returns: - The resource owner's name - Most specific part of the `X-Consent-Scope` resulting in consensual determination - Timestamp of the applied enforcement leading to the decision - Enforcement version at the time the applicable consents were applied - The Consent resource name - The timestamp of the Consent resource used for enforcement - Policy type (PATIENT or ADMIN) Note that this mode adds some overhead to CRUD operations.
+        /// </summary>
+        public static AccessDeterminationLogConfigLogLevel Verbose { get; } = new AccessDeterminationLogConfigLogLevel("VERBOSE");
+
+        public static bool operator ==(AccessDeterminationLogConfigLogLevel left, AccessDeterminationLogConfigLogLevel right) => left.Equals(right);
+        public static bool operator !=(AccessDeterminationLogConfigLogLevel left, AccessDeterminationLogConfigLogLevel right) => !left.Equals(right);
+
+        public static explicit operator string(AccessDeterminationLogConfigLogLevel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AccessDeterminationLogConfigLogLevel other && Equals(other);
+        public bool Equals(AccessDeterminationLogConfigLogLevel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The category of the attribute. The value of this field cannot be changed after creation.
     /// </summary>
     [EnumType]
@@ -86,6 +131,84 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is AuditLogConfigLogType other && Equals(other);
         public bool Equals(AuditLogConfigLogType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConsentConfigVersion : IEquatable<ConsentConfigVersion>
+    {
+        private readonly string _value;
+
+        private ConsentConfigVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Users must specify an enforcement version or an error is returned.
+        /// </summary>
+        public static ConsentConfigVersion ConsentEnforcementVersionUnspecified { get; } = new ConsentConfigVersion("CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// Enforcement version 1. See the [FHIR Consent resources in the Cloud Healthcare API](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent) guide for more details.
+        /// </summary>
+        public static ConsentConfigVersion V1 { get; } = new ConsentConfigVersion("V1");
+
+        public static bool operator ==(ConsentConfigVersion left, ConsentConfigVersion right) => left.Equals(right);
+        public static bool operator !=(ConsentConfigVersion left, ConsentConfigVersion right) => !left.Equals(right);
+
+        public static explicit operator string(ConsentConfigVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConsentConfigVersion other && Equals(other);
+        public bool Equals(ConsentConfigVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConsentHeaderHandlingProfile : IEquatable<ConsentHeaderHandlingProfile>
+    {
+        private readonly string _value;
+
+        private ConsentHeaderHandlingProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If not specified, the default value `PERMIT_EMPTY_SCOPE` is used.
+        /// </summary>
+        public static ConsentHeaderHandlingProfile ScopeProfileUnspecified { get; } = new ConsentHeaderHandlingProfile("SCOPE_PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// When no consent scopes are provided (for example, if there's an empty or missing header), then consent check is disabled, similar to when `access_enforced` is `false`. You can use audit logs to differentiate these two cases by looking at the value of `protopayload.metadata.consentMode`. If consents scopes are present, they must be valid and within the allowed limits, otherwise the request will be rejected with a `4xx` code.
+        /// </summary>
+        public static ConsentHeaderHandlingProfile PermitEmptyScope { get; } = new ConsentHeaderHandlingProfile("PERMIT_EMPTY_SCOPE");
+        /// <summary>
+        /// The consent header must be non-empty when performing read and search operations, otherwise the request is rejected with a `4xx` code. Additionally, invalid consent scopes or scopes exceeding the allowed limits are rejected.
+        /// </summary>
+        public static ConsentHeaderHandlingProfile RequiredOnRead { get; } = new ConsentHeaderHandlingProfile("REQUIRED_ON_READ");
+
+        public static bool operator ==(ConsentHeaderHandlingProfile left, ConsentHeaderHandlingProfile right) => left.Equals(right);
+        public static bool operator !=(ConsentHeaderHandlingProfile left, ConsentHeaderHandlingProfile right) => !left.Equals(right);
+
+        public static explicit operator string(ConsentHeaderHandlingProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConsentHeaderHandlingProfile other && Equals(other);
+        public bool Equals(ConsentHeaderHandlingProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -262,15 +385,15 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static FhirFieldConfigProfileType ProfileTypeUnspecified { get; } = new FhirFieldConfigProfileType("PROFILE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// `Keep` all fields.
+        /// Keep all fields.
         /// </summary>
         public static FhirFieldConfigProfileType KeepAll { get; } = new FhirFieldConfigProfileType("KEEP_ALL");
         /// <summary>
-        /// Transforms known HIPAA 18 fields and cleans known unstructured text fields.
+        /// Transforms known [HIPAA 18](https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html#standard) fields and cleans known unstructured text fields.
         /// </summary>
         public static FhirFieldConfigProfileType Basic { get; } = new FhirFieldConfigProfileType("BASIC");
         /// <summary>
-        /// Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        /// Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         /// </summary>
         public static FhirFieldConfigProfileType CleanAll { get; } = new FhirFieldConfigProfileType("CLEAN_ALL");
 
@@ -790,7 +913,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
 
         /// <summary>
-        /// Same as BASIC.
+        /// No profile provided. Same as BASIC.
         /// </summary>
         public static TextConfigProfileType ProfileTypeUnspecified { get; } = new TextConfigProfileType("PROFILE_TYPE_UNSPECIFIED");
         /// <summary>
@@ -798,7 +921,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static TextConfigProfileType Empty { get; } = new TextConfigProfileType("EMPTY");
         /// <summary>
-        /// Basic profile applies: DATE -&gt; DateShift Default -&gt; ReplaceWithInfoType
+        /// Automatically converts "DATE" infoTypes using a DateShiftConfig, and all other infoTypes using a ReplaceWithInfoTypeConfig.
         /// </summary>
         public static TextConfigProfileType Basic { get; } = new TextConfigProfileType("BASIC");
 

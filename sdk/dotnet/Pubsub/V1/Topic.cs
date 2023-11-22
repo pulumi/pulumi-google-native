@@ -10,31 +10,31 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsub.V1
 {
     /// <summary>
-    /// Creates the given topic with the given name. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names).
+    /// Creates the given topic with the given name. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsub/v1:Topic")]
     public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
+        /// Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Output("messageRetentionDuration")]
         public Output<string> MessageRetentionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+        /// Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         /// </summary>
         [Output("messageStoragePolicy")]
         public Output<Outputs.MessageStoragePolicyResponse> MessageStoragePolicy { get; private set; } = null!;
@@ -49,13 +49,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        /// Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
-        /// Settings for validating messages published against a schema.
+        /// Optional. Settings for validating messages published against a schema.
         /// </summary>
         [Output("schemaSettings")]
         public Output<Outputs.SchemaSettingsResponse> SchemaSettings { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         /// </summary>
         public InputMap<string> Labels
         {
@@ -132,13 +132,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         }
 
         /// <summary>
-        /// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
+        /// Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }
 
         /// <summary>
-        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+        /// Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         /// </summary>
         [Input("messageStoragePolicy")]
         public Input<Inputs.MessageStoragePolicyArgs>? MessageStoragePolicy { get; set; }
@@ -153,13 +153,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        /// Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         /// </summary>
         [Input("satisfiesPzs")]
         public Input<bool>? SatisfiesPzs { get; set; }
 
         /// <summary>
-        /// Settings for validating messages published against a schema.
+        /// Optional. Settings for validating messages published against a schema.
         /// </summary>
         [Input("schemaSettings")]
         public Input<Inputs.SchemaSettingsArgs>? SchemaSettings { get; set; }

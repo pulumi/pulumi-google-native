@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
     public sealed class RRSetRoutingPolicyGeoPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+        /// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
         /// </summary>
         [Input("enableFencing")]
         public Input<bool>? EnableFencing { get; set; }

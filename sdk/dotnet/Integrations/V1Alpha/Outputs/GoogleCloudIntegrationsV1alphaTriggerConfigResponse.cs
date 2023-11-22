@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaNextTaskResponse> StartTasks;
         /// <summary>
+        /// Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
+        /// </summary>
+        public readonly string Trigger;
+        /// <summary>
         /// Optional. The backend trigger ID.
         /// </summary>
         public readonly string TriggerId;
@@ -85,6 +89,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaNextTaskResponse> startTasks,
 
+            string trigger,
+
             string triggerId,
 
             string triggerNumber,
@@ -100,6 +106,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             Position = position;
             Properties = properties;
             StartTasks = startTasks;
+            Trigger = trigger;
             TriggerId = triggerId;
             TriggerNumber = triggerNumber;
             TriggerType = triggerType;

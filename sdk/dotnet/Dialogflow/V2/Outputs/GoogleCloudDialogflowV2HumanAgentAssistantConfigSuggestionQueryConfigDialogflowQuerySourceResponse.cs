@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
         /// </summary>
         public readonly string Agent;
+        /// <summary>
+        /// Optional. The Dialogflow assist configuration for human agent.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse HumanAgentSideConfig;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse(string agent)
+        private GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse(
+            string agent,
+
+            Outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse humanAgentSideConfig)
         {
             Agent = agent;
+            HumanAgentSideConfig = humanAgentSideConfig;
         }
     }
 }

@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityDimensionResultResponse
     {
         /// <summary>
+        /// The dimension config specified in the DataQualitySpec, as is.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataQualityDimensionResponse Dimension;
+        /// <summary>
         /// Whether the dimension passed or failed.
         /// </summary>
         public readonly bool Passed;
 
         [OutputConstructor]
-        private GoogleCloudDataplexV1DataQualityDimensionResultResponse(bool passed)
+        private GoogleCloudDataplexV1DataQualityDimensionResultResponse(
+            Outputs.GoogleCloudDataplexV1DataQualityDimensionResponse dimension,
+
+            bool passed)
         {
+            Dimension = dimension;
             Passed = passed;
         }
     }

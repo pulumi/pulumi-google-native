@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A regular expression the column value is expected to match.
+        /// Optional. A regular expression the column value is expected to match.
         /// </summary>
         [Input("regex")]
         public Input<string>? Regex { get; set; }

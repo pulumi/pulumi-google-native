@@ -56,11 +56,11 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     /// The enablement state of the custom module.
     /// </summary>
     [EnumType]
-    public readonly struct CustomModuleEnablementState : IEquatable<CustomModuleEnablementState>
+    public readonly struct FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState : IEquatable<FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState>
     {
         private readonly string _value;
 
-        private CustomModuleEnablementState(string value)
+        private FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -68,73 +68,28 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// <summary>
         /// Unspecified enablement state.
         /// </summary>
-        public static CustomModuleEnablementState EnablementStateUnspecified { get; } = new CustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
+        public static FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState EnablementStateUnspecified { get; } = new FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
         /// <summary>
         /// The module is enabled at the given CRM resource.
         /// </summary>
-        public static CustomModuleEnablementState Enabled { get; } = new CustomModuleEnablementState("ENABLED");
+        public static FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState Enabled { get; } = new FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLED");
         /// <summary>
         /// The module is disabled at the given CRM resource.
         /// </summary>
-        public static CustomModuleEnablementState Disabled { get; } = new CustomModuleEnablementState("DISABLED");
+        public static FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState Disabled { get; } = new FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("DISABLED");
         /// <summary>
         /// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
         /// </summary>
-        public static CustomModuleEnablementState Inherited { get; } = new CustomModuleEnablementState("INHERITED");
+        public static FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState Inherited { get; } = new FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("INHERITED");
 
-        public static bool operator ==(CustomModuleEnablementState left, CustomModuleEnablementState right) => left.Equals(right);
-        public static bool operator !=(CustomModuleEnablementState left, CustomModuleEnablementState right) => !left.Equals(right);
+        public static bool operator ==(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState left, FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState right) => left.Equals(right);
+        public static bool operator !=(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState left, FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState right) => !left.Equals(right);
 
-        public static explicit operator string(CustomModuleEnablementState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is CustomModuleEnablementState other && Equals(other);
-        public bool Equals(CustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public static explicit operator string(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// The enablement state of the custom module.
-    /// </summary>
-    [EnumType]
-    public readonly struct FolderCustomModuleEnablementState : IEquatable<FolderCustomModuleEnablementState>
-    {
-        private readonly string _value;
-
-        private FolderCustomModuleEnablementState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Unspecified enablement state.
-        /// </summary>
-        public static FolderCustomModuleEnablementState EnablementStateUnspecified { get; } = new FolderCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
-        /// <summary>
-        /// The module is enabled at the given CRM resource.
-        /// </summary>
-        public static FolderCustomModuleEnablementState Enabled { get; } = new FolderCustomModuleEnablementState("ENABLED");
-        /// <summary>
-        /// The module is disabled at the given CRM resource.
-        /// </summary>
-        public static FolderCustomModuleEnablementState Disabled { get; } = new FolderCustomModuleEnablementState("DISABLED");
-        /// <summary>
-        /// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
-        /// </summary>
-        public static FolderCustomModuleEnablementState Inherited { get; } = new FolderCustomModuleEnablementState("INHERITED");
-
-        public static bool operator ==(FolderCustomModuleEnablementState left, FolderCustomModuleEnablementState right) => left.Equals(right);
-        public static bool operator !=(FolderCustomModuleEnablementState left, FolderCustomModuleEnablementState right) => !left.Equals(right);
-
-        public static explicit operator string(FolderCustomModuleEnablementState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is FolderCustomModuleEnablementState other && Equals(other);
-        public bool Equals(FolderCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState other && Equals(other);
+        public bool Equals(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -192,14 +147,14 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     }
 
     /// <summary>
-    /// The enablement state of the custom module.
+    /// The state of enablement for the module at the given level of the hierarchy.
     /// </summary>
     [EnumType]
-    public readonly struct OrganizationCustomModuleEnablementState : IEquatable<OrganizationCustomModuleEnablementState>
+    public readonly struct OrganizationEventThreatDetectionSettingCustomModuleEnablementState : IEquatable<OrganizationEventThreatDetectionSettingCustomModuleEnablementState>
     {
         private readonly string _value;
 
-        private OrganizationCustomModuleEnablementState(string value)
+        private OrganizationEventThreatDetectionSettingCustomModuleEnablementState(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -207,28 +162,114 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// <summary>
         /// Unspecified enablement state.
         /// </summary>
-        public static OrganizationCustomModuleEnablementState EnablementStateUnspecified { get; } = new OrganizationCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
+        public static OrganizationEventThreatDetectionSettingCustomModuleEnablementState EnablementStateUnspecified { get; } = new OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The module is enabled at the given level.
+        /// </summary>
+        public static OrganizationEventThreatDetectionSettingCustomModuleEnablementState Enabled { get; } = new OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLED");
+        /// <summary>
+        /// The module is disabled at the given level.
+        /// </summary>
+        public static OrganizationEventThreatDetectionSettingCustomModuleEnablementState Disabled { get; } = new OrganizationEventThreatDetectionSettingCustomModuleEnablementState("DISABLED");
+
+        public static bool operator ==(OrganizationEventThreatDetectionSettingCustomModuleEnablementState left, OrganizationEventThreatDetectionSettingCustomModuleEnablementState right) => left.Equals(right);
+        public static bool operator !=(OrganizationEventThreatDetectionSettingCustomModuleEnablementState left, OrganizationEventThreatDetectionSettingCustomModuleEnablementState right) => !left.Equals(right);
+
+        public static explicit operator string(OrganizationEventThreatDetectionSettingCustomModuleEnablementState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OrganizationEventThreatDetectionSettingCustomModuleEnablementState other && Equals(other);
+        public bool Equals(OrganizationEventThreatDetectionSettingCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The enablement state of the custom module.
+    /// </summary>
+    [EnumType]
+    public readonly struct OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState : IEquatable<OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState>
+    {
+        private readonly string _value;
+
+        private OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified enablement state.
+        /// </summary>
+        public static OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState EnablementStateUnspecified { get; } = new OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
         /// <summary>
         /// The module is enabled at the given CRM resource.
         /// </summary>
-        public static OrganizationCustomModuleEnablementState Enabled { get; } = new OrganizationCustomModuleEnablementState("ENABLED");
+        public static OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState Enabled { get; } = new OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLED");
         /// <summary>
         /// The module is disabled at the given CRM resource.
         /// </summary>
-        public static OrganizationCustomModuleEnablementState Disabled { get; } = new OrganizationCustomModuleEnablementState("DISABLED");
+        public static OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState Disabled { get; } = new OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("DISABLED");
         /// <summary>
         /// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
         /// </summary>
-        public static OrganizationCustomModuleEnablementState Inherited { get; } = new OrganizationCustomModuleEnablementState("INHERITED");
+        public static OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState Inherited { get; } = new OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("INHERITED");
 
-        public static bool operator ==(OrganizationCustomModuleEnablementState left, OrganizationCustomModuleEnablementState right) => left.Equals(right);
-        public static bool operator !=(OrganizationCustomModuleEnablementState left, OrganizationCustomModuleEnablementState right) => !left.Equals(right);
+        public static bool operator ==(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState left, OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState right) => left.Equals(right);
+        public static bool operator !=(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState left, OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState right) => !left.Equals(right);
 
-        public static explicit operator string(OrganizationCustomModuleEnablementState value) => value._value;
+        public static explicit operator string(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is OrganizationCustomModuleEnablementState other && Equals(other);
-        public bool Equals(OrganizationCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState other && Equals(other);
+        public bool Equals(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The enablement state of the custom module.
+    /// </summary>
+    [EnumType]
+    public readonly struct ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState : IEquatable<ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState>
+    {
+        private readonly string _value;
+
+        private ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified enablement state.
+        /// </summary>
+        public static ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState EnablementStateUnspecified { get; } = new ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The module is enabled at the given CRM resource.
+        /// </summary>
+        public static ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState Enabled { get; } = new ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLED");
+        /// <summary>
+        /// The module is disabled at the given CRM resource.
+        /// </summary>
+        public static ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState Disabled { get; } = new ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("DISABLED");
+        /// <summary>
+        /// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+        /// </summary>
+        public static ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState Inherited { get; } = new ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("INHERITED");
+
+        public static bool operator ==(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState left, ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState right) => left.Equals(right);
+        public static bool operator !=(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState left, ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState right) => !left.Equals(right);
+
+        public static explicit operator string(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState other && Equals(other);
+        public bool Equals(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

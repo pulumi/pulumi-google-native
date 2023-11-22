@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<Inputs.PreprocessingConfigArgs>? PreprocessingConfig { get; set; }
 
         /// <summary>
-        /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+        /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }

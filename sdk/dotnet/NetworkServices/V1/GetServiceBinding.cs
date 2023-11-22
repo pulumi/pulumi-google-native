@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// </summary>
         public readonly string Service;
         /// <summary>
+        /// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+        /// </summary>
+        public readonly string ServiceId;
+        /// <summary>
         /// The timestamp when the resource was updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
 
             string service,
 
+            string serviceId,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -107,6 +113,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
             Labels = labels;
             Name = name;
             Service = service;
+            ServiceId = serviceId;
             UpdateTime = updateTime;
         }
     }

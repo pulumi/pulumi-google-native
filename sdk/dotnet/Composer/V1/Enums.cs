@@ -53,6 +53,43 @@ namespace Pulumi.GoogleNative.Composer.V1
     }
 
     /// <summary>
+    /// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+    /// </summary>
+    [EnumType]
+    public readonly struct EnvironmentConfigResilienceMode : IEquatable<EnvironmentConfigResilienceMode>
+    {
+        private readonly string _value;
+
+        private EnvironmentConfigResilienceMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default mode doesn't change environment parameters.
+        /// </summary>
+        public static EnvironmentConfigResilienceMode ResilienceModeUnspecified { get; } = new EnvironmentConfigResilienceMode("RESILIENCE_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Enabled High Resilience mode, including Cloud SQL HA.
+        /// </summary>
+        public static EnvironmentConfigResilienceMode HighResilience { get; } = new EnvironmentConfigResilienceMode("HIGH_RESILIENCE");
+
+        public static bool operator ==(EnvironmentConfigResilienceMode left, EnvironmentConfigResilienceMode right) => left.Equals(right);
+        public static bool operator !=(EnvironmentConfigResilienceMode left, EnvironmentConfigResilienceMode right) => !left.Equals(right);
+
+        public static explicit operator string(EnvironmentConfigResilienceMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EnvironmentConfigResilienceMode other && Equals(other);
+        public bool Equals(EnvironmentConfigResilienceMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The current state of the environment.
     /// </summary>
     [EnumType]

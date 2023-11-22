@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// User-friendly display name. Maximum length is 63 characters.
+        /// Optional. User-friendly display name. Maximum length is 256 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

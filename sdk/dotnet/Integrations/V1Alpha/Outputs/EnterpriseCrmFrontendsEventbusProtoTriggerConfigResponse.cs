@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// Configuration detail of a trigger. Next available id: 19
+    /// Configuration detail of a trigger. Next available id: 20
     /// </summary>
     [OutputType]
     public sealed class EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse
@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string TriggerId;
         /// <summary>
+        /// Optional. Name of the trigger This is added to identify the type of trigger. This is avoid the logic on triggerId to identify the trigger_type and push the same to monitoring.
+        /// </summary>
+        public readonly string TriggerName;
+        /// <summary>
         /// A number to uniquely identify each trigger config within the workflow on UI.
         /// </summary>
         public readonly string TriggerNumber;
@@ -99,6 +103,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             string triggerId,
 
+            string triggerName,
+
             string triggerNumber,
 
             string triggerType)
@@ -116,6 +122,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             StartTasks = startTasks;
             TriggerCriteria = triggerCriteria;
             TriggerId = triggerId;
+            TriggerName = triggerName;
             TriggerNumber = triggerNumber;
             TriggerType = triggerType;
         }

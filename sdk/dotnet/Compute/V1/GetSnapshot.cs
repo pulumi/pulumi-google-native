@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string DownloadBytes;
         /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
+        /// <summary>
         /// Type of the resource. Always compute#snapshot for Snapshot resources.
         /// </summary>
         public readonly string Kind;
@@ -142,6 +146,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceDiskEncryptionKey;
         /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        public readonly string SourceDiskForRecoveryCheckpoint;
+        /// <summary>
         /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         public readonly string SourceDiskId;
@@ -188,6 +196,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string downloadBytes,
 
+            ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
+
             string kind,
 
             string labelFingerprint,
@@ -214,6 +224,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.CustomerEncryptionKeyResponse sourceDiskEncryptionKey,
 
+            string sourceDiskForRecoveryCheckpoint,
+
             string sourceDiskId,
 
             string sourceSnapshotSchedulePolicy,
@@ -236,6 +248,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Description = description;
             DiskSizeGb = diskSizeGb;
             DownloadBytes = downloadBytes;
+            GuestOsFeatures = guestOsFeatures;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;
@@ -249,6 +262,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             SnapshotType = snapshotType;
             SourceDisk = sourceDisk;
             SourceDiskEncryptionKey = sourceDiskEncryptionKey;
+            SourceDiskForRecoveryCheckpoint = sourceDiskForRecoveryCheckpoint;
             SourceDiskId = sourceDiskId;
             SourceSnapshotSchedulePolicy = sourceSnapshotSchedulePolicy;
             SourceSnapshotSchedulePolicyId = sourceSnapshotSchedulePolicyId;

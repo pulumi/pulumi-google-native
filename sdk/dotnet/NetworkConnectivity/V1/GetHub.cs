@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -74,9 +74,17 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub.
+        /// </summary>
+        public readonly ImmutableArray<string> RouteTables;
+        /// <summary>
         /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         public readonly ImmutableArray<Outputs.RoutingVPCResponse> RoutingVpcs;
+        /// <summary>
+        /// A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+        /// </summary>
+        public readonly Outputs.SpokeSummaryResponse SpokeSummary;
         /// <summary>
         /// The current lifecycle state of this hub.
         /// </summary>
@@ -100,7 +108,11 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 
             string name,
 
+            ImmutableArray<string> routeTables,
+
             ImmutableArray<Outputs.RoutingVPCResponse> routingVpcs,
+
+            Outputs.SpokeSummaryResponse spokeSummary,
 
             string state,
 
@@ -112,7 +124,9 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
             Description = description;
             Labels = labels;
             Name = name;
+            RouteTables = routeTables;
             RoutingVpcs = routingVpcs;
+            SpokeSummary = spokeSummary;
             State = state;
             UniqueId = uniqueId;
             UpdateTime = updateTime;

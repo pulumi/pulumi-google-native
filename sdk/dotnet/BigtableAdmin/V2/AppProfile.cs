@@ -54,6 +54,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+        /// </summary>
+        [Output("priority")]
+        public Output<string> Priority { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -62,6 +68,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Output("singleClusterRouting")]
         public Output<Outputs.SingleClusterRoutingResponse> SingleClusterRouting { get; private set; } = null!;
+
+        /// <summary>
+        /// The standard options used for isolating this app profile's traffic from other use cases.
+        /// </summary>
+        [Output("standardIsolation")]
+        public Output<Outputs.StandardIsolationResponse> StandardIsolation { get; private set; } = null!;
 
 
         /// <summary>
@@ -153,6 +165,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+        /// </summary>
+        [Input("priority")]
+        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.AppProfilePriority>? Priority { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -161,6 +179,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Input("singleClusterRouting")]
         public Input<Inputs.SingleClusterRoutingArgs>? SingleClusterRouting { get; set; }
+
+        /// <summary>
+        /// The standard options used for isolating this app profile's traffic from other use cases.
+        /// </summary>
+        [Input("standardIsolation")]
+        public Input<Inputs.StandardIsolationArgs>? StandardIsolation { get; set; }
 
         public AppProfileArgs()
         {

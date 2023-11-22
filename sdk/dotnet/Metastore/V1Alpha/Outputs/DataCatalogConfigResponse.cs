@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
     public sealed class DataCatalogConfigResponse
     {
         /// <summary>
-        /// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        /// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
         /// </summary>
         public readonly bool Enabled;
 

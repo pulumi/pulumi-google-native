@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
 {
 
     /// <summary>
-    /// Configuration of a restore. Next id: 12
+    /// Configuration of a restore. Next id: 13
     /// </summary>
     public sealed class RestoreConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -22,22 +22,34 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public Input<bool>? AllNamespaces { get; set; }
 
         /// <summary>
-        /// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+        /// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
         /// </summary>
         [Input("clusterResourceConflictPolicy")]
         public Input<Pulumi.GoogleNative.Gkebackup.V1.RestoreConfigClusterResourceConflictPolicy>? ClusterResourceConflictPolicy { get; set; }
 
         /// <summary>
-        /// Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+        /// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
         /// </summary>
         [Input("clusterResourceRestoreScope")]
         public Input<Inputs.ClusterResourceRestoreScopeArgs>? ClusterResourceRestoreScope { get; set; }
 
         /// <summary>
-        /// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+        /// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+        /// </summary>
+        [Input("excludedNamespaces")]
+        public Input<Inputs.NamespacesArgs>? ExcludedNamespaces { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         /// </summary>
         [Input("namespacedResourceRestoreMode")]
         public Input<Pulumi.GoogleNative.Gkebackup.V1.RestoreConfigNamespacedResourceRestoreMode>? NamespacedResourceRestoreMode { get; set; }
+
+        /// <summary>
+        /// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+        /// </summary>
+        [Input("noNamespaces")]
+        public Input<bool>? NoNamespaces { get; set; }
 
         /// <summary>
         /// A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
@@ -55,7 +67,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         private InputList<Inputs.SubstitutionRuleArgs>? _substitutionRules;
 
         /// <summary>
-        /// A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+        /// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
         /// </summary>
         public InputList<Inputs.SubstitutionRuleArgs> SubstitutionRules
         {
@@ -63,8 +75,20 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
             set => _substitutionRules = value;
         }
 
+        [Input("transformationRules")]
+        private InputList<Inputs.TransformationRuleArgs>? _transformationRules;
+
         /// <summary>
-        /// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+        /// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+        /// </summary>
+        public InputList<Inputs.TransformationRuleArgs> TransformationRules
+        {
+            get => _transformationRules ?? (_transformationRules = new InputList<Inputs.TransformationRuleArgs>());
+            set => _transformationRules = value;
+        }
+
+        /// <summary>
+        /// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
         /// </summary>
         [Input("volumeDataRestorePolicy")]
         public Input<Pulumi.GoogleNative.Gkebackup.V1.RestoreConfigVolumeDataRestorePolicy>? VolumeDataRestorePolicy { get; set; }

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.IdentityServiceAzureADConfigResponse AzureadConfig;
         /// <summary>
-        /// GoogleConfig specific configuration
+        /// GoogleConfig specific configuration.
         /// </summary>
         public readonly Outputs.IdentityServiceGoogleConfigResponse GoogleConfig;
         /// <summary>

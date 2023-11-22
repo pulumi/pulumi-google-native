@@ -11,27 +11,33 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
 {
 
     /// <summary>
-    /// Location of the source in an archive file in Google Cloud Storage.
+    /// Location of the source in an archive file in Cloud Storage.
     /// </summary>
     public sealed class StorageSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         /// </summary>
         [Input("object")]
         public Input<string>? Object { get; set; }
+
+        /// <summary>
+        /// Optional. Option to specify the tool to fetch the source file for the build.
+        /// </summary>
+        [Input("sourceFetcher")]
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.StorageSourceSourceFetcher>? SourceFetcher { get; set; }
 
         public StorageSourceArgs()
         {

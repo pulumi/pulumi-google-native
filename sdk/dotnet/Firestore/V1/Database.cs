@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+        /// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
         /// </summary>
         [Output("databaseId")]
         public Output<string> DatabaseId { get; private set; } = null!;
@@ -44,6 +44,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Output("deleteProtectionState")]
         public Output<string> DeleteProtectionState { get; private set; } = null!;
+
+        /// <summary>
+        /// The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        /// </summary>
+        [Output("earliestVersionTime")]
+        public Output<string> EarliestVersionTime { get; private set; } = null!;
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -58,7 +64,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Output<string> KeyPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+        /// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -68,6 +74,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the PITR feature on this database.
+        /// </summary>
+        [Output("pointInTimeRecoveryEnablement")]
+        public Output<string> PointInTimeRecoveryEnablement { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -89,6 +101,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        /// </summary>
+        [Output("versionRetentionPeriod")]
+        public Output<string> VersionRetentionPeriod { get; private set; } = null!;
 
 
         /// <summary>
@@ -153,7 +171,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Input<Pulumi.GoogleNative.Firestore.V1.DatabaseConcurrencyMode>? ConcurrencyMode { get; set; }
 
         /// <summary>
-        /// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+        /// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
         /// </summary>
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;
@@ -171,7 +189,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+        /// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -181,6 +199,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether to enable the PITR feature on this database.
+        /// </summary>
+        [Input("pointInTimeRecoveryEnablement")]
+        public Input<Pulumi.GoogleNative.Firestore.V1.DatabasePointInTimeRecoveryEnablement>? PointInTimeRecoveryEnablement { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly bool BoolValue;
         /// <summary>
+        /// Value is a Encryption Key.
+        /// </summary>
+        public readonly Outputs.EncryptionKeyResponse EncryptionKeyValue;
+        /// <summary>
         /// Value is an integer
         /// </summary>
         public readonly string IntValue;
@@ -41,6 +45,8 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         private ConfigVariableResponse(
             bool boolValue,
 
+            Outputs.EncryptionKeyResponse encryptionKeyValue,
+
             string intValue,
 
             string key,
@@ -50,6 +56,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
             string stringValue)
         {
             BoolValue = boolValue;
+            EncryptionKeyValue = encryptionKeyValue;
             IntValue = intValue;
             Key = key;
             SecretValue = secretValue;

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class UpcomingMaintenanceResponse
     {
         /// <summary>
-        /// Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
+        /// Indicates if the maintenance can be customer triggered.
         /// </summary>
         public readonly bool CanReschedule;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         public readonly string LatestWindowStartTime;
         public readonly string MaintenanceStatus;
         /// <summary>
-        /// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
+        /// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in "yyyy-MM-dd'T'HH:mm:ssZ" text format.
         /// </summary>
         public readonly Outputs.UpcomingMaintenanceTimeWindowResponse StartTimeWindow;
         /// <summary>

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.GcfsConfigResponse GcfsConfig;
         /// <summary>
+        /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
+        /// </summary>
+        public readonly Outputs.HostMaintenancePolicyResponse HostMaintenancePolicy;
+        /// <summary>
         /// Logging configuration for node pools.
         /// </summary>
         public readonly Outputs.NodePoolLoggingConfigResponse LoggingConfig;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         private NodeConfigDefaultsResponse(
             Outputs.GcfsConfigResponse gcfsConfig,
 
+            Outputs.HostMaintenancePolicyResponse hostMaintenancePolicy,
+
             Outputs.NodePoolLoggingConfigResponse loggingConfig)
         {
             GcfsConfig = gcfsConfig;
+            HostMaintenancePolicy = hostMaintenancePolicy;
             LoggingConfig = loggingConfig;
         }
     }

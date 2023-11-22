@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1GraphQLOperationGroupResponse GraphqlOperationGroup;
         /// <summary>
+        /// Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        /// </summary>
+        public readonly Outputs.GoogleCloudApigeeV1GrpcOperationGroupResponse GrpcOperationGroup;
+        /// <summary>
         /// Response only. Modified time of this environment as milliseconds since epoch.
         /// </summary>
         public readonly string LastModifiedAt;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             Outputs.GoogleCloudApigeeV1GraphQLOperationGroupResponse graphqlOperationGroup,
 
+            Outputs.GoogleCloudApigeeV1GrpcOperationGroupResponse grpcOperationGroup,
+
             string lastModifiedAt,
 
             string name,
@@ -170,6 +176,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             DisplayName = displayName;
             Environments = environments;
             GraphqlOperationGroup = graphqlOperationGroup;
+            GrpcOperationGroup = grpcOperationGroup;
             LastModifiedAt = lastModifiedAt;
             Name = name;
             OperationGroup = operationGroup;

@@ -82,7 +82,15 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     public sealed class GetDocumentResult
     {
         /// <summary>
-        /// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        /// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDiscoveryengineV1alphaDocumentContentResponse Content;
+        /// <summary>
+        /// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> DerivedStructData;
+        /// <summary>
+        /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         public readonly string JsonData;
         /// <summary>
@@ -98,12 +106,16 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// </summary>
         public readonly string SchemaId;
         /// <summary>
-        /// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         public readonly ImmutableDictionary<string, string> StructData;
 
         [OutputConstructor]
         private GetDocumentResult(
+            Outputs.GoogleCloudDiscoveryengineV1alphaDocumentContentResponse content,
+
+            ImmutableDictionary<string, string> derivedStructData,
+
             string jsonData,
 
             string name,
@@ -114,6 +126,8 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
             ImmutableDictionary<string, string> structData)
         {
+            Content = content;
+            DerivedStructData = derivedStructData;
             JsonData = jsonData;
             Name = name;
             ParentDocumentId = parentDocumentId;

@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     public partial class CutoverJob : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Details of the target Persistent Disks in Compute Engine.
+        /// </summary>
+        [Output("computeEngineDisksTargetDetails")]
+        public Output<Outputs.ComputeEngineDisksTargetDetailsResponse> ComputeEngineDisksTargetDetails { get; private set; } = null!;
+
+        /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
         [Output("computeEngineTargetDetails")]

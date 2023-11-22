@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 {
     /// <summary>
     /// Creates a new Release in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -25,7 +24,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<bool> Abandoned { get; private set; } = null!;
 
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
@@ -58,6 +57,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<Outputs.DeliveryPipelineResponse> DeliveryPipelineSnapshot { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The deploy parameters to use for all targets in this release.
+        /// </summary>
+        [Output("deployParameters")]
+        public Output<ImmutableDictionary<string, string>> DeployParameters { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the `Release`. Max length is 255 characters.
         /// </summary>
         [Output("description")]
@@ -70,7 +75,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -79,7 +84,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        /// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -130,7 +135,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> SkaffoldConfigUri { get; private set; } = null!;
 
         /// <summary>
-        /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         /// </summary>
         [Output("skaffoldVersion")]
         public Output<string> SkaffoldVersion { get; private set; } = null!;
@@ -215,7 +220,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -238,6 +243,18 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         [Input("deliveryPipelineId", required: true)]
         public Input<string> DeliveryPipelineId { get; set; } = null!;
 
+        [Input("deployParameters")]
+        private InputMap<string>? _deployParameters;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for all targets in this release.
+        /// </summary>
+        public InputMap<string> DeployParameters
+        {
+            get => _deployParameters ?? (_deployParameters = new InputMap<string>());
+            set => _deployParameters = value;
+        }
+
         /// <summary>
         /// Description of the `Release`. Max length is 255 characters.
         /// </summary>
@@ -254,7 +271,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -266,7 +283,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        /// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -299,7 +316,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Input<string>? SkaffoldConfigUri { get; set; }
 
         /// <summary>
-        /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         /// </summary>
         [Input("skaffoldVersion")]
         public Input<string>? SkaffoldVersion { get; set; }

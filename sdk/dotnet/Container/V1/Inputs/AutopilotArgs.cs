@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Workload policy configuration for Autopilot.
+        /// </summary>
+        [Input("workloadPolicyConfig")]
+        public Input<Inputs.WorkloadPolicyConfigArgs>? WorkloadPolicyConfig { get; set; }
+
         public AutopilotArgs()
         {
         }

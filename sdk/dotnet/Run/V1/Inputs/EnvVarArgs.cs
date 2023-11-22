@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class EnvVarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the environment variable. Must be a C_IDENTIFIER.
+        /// Name of the environment variable.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

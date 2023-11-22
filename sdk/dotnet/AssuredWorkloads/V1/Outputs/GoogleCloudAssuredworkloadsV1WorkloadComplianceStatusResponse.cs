@@ -17,21 +17,35 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse
     {
         /// <summary>
-        /// Count of active Violations which are acknowledged in the Workload.
+        /// Number of current resource violations which are not acknowledged.
+        /// </summary>
+        public readonly int AcknowledgedResourceViolationCount;
+        /// <summary>
+        /// Number of current orgPolicy violations which are acknowledged.
         /// </summary>
         public readonly int AcknowledgedViolationCount;
         /// <summary>
-        /// Count of active Violations which haven't been acknowledged.
+        /// Number of current resource violations which are acknowledged.
+        /// </summary>
+        public readonly int ActiveResourceViolationCount;
+        /// <summary>
+        /// Number of current orgPolicy violations which are not acknowledged.
         /// </summary>
         public readonly int ActiveViolationCount;
 
         [OutputConstructor]
         private GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse(
+            int acknowledgedResourceViolationCount,
+
             int acknowledgedViolationCount,
+
+            int activeResourceViolationCount,
 
             int activeViolationCount)
         {
+            AcknowledgedResourceViolationCount = acknowledgedResourceViolationCount;
             AcknowledgedViolationCount = acknowledgedViolationCount;
+            ActiveResourceViolationCount = activeResourceViolationCount;
             ActiveViolationCount = activeViolationCount;
         }
     }

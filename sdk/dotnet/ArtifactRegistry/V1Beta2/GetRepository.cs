@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The format of packages that are stored in the repository.
+        /// Optional. The format of packages that are stored in the repository.
         /// </summary>
         public readonly string Format;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// </summary>
         public readonly Outputs.MavenRepositoryConfigResponse MavenConfig;
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         public readonly string Name;
         /// <summary>

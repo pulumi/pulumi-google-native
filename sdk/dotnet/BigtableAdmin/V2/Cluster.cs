@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        /// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         /// </summary>
         [Output("serveNodes")]
         public Output<int> ServeNodes { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        /// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         /// </summary>
         [Input("serveNodes")]
         public Input<int>? ServeNodes { get; set; }

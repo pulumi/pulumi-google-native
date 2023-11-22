@@ -42,6 +42,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DecimalTargetTypes;
         /// <summary>
+        /// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        /// </summary>
+        public readonly string FileSetSpecType;
+        /// <summary>
         /// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         /// </summary>
         public readonly Outputs.GoogleSheetsOptionsResponse GoogleSheetsOptions;
@@ -53,6 +57,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
         /// </summary>
         public readonly bool IgnoreUnknownValues;
+        /// <summary>
+        /// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+        /// </summary>
+        public readonly Outputs.JsonOptionsResponse JsonOptions;
         /// <summary>
         /// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         /// </summary>
@@ -102,11 +110,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<string> decimalTargetTypes,
 
+            string fileSetSpecType,
+
             Outputs.GoogleSheetsOptionsResponse googleSheetsOptions,
 
             Outputs.HivePartitioningOptionsResponse hivePartitioningOptions,
 
             bool ignoreUnknownValues,
+
+            Outputs.JsonOptionsResponse jsonOptions,
 
             int maxBadRecords,
 
@@ -131,9 +143,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ConnectionId = connectionId;
             CsvOptions = csvOptions;
             DecimalTargetTypes = decimalTargetTypes;
+            FileSetSpecType = fileSetSpecType;
             GoogleSheetsOptions = googleSheetsOptions;
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
+            JsonOptions = jsonOptions;
             MaxBadRecords = maxBadRecords;
             MetadataCacheMode = metadataCacheMode;
             ObjectMetadata = objectMetadata;

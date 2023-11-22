@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public sealed class GetTableResult
     {
         /// <summary>
+        /// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+        /// </summary>
+        public readonly Outputs.ChangeStreamConfigResponse ChangeStreamConfig;
+        /// <summary>
         /// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
         /// </summary>
         public readonly ImmutableDictionary<string, string> ClusterStates;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
         [OutputConstructor]
         private GetTableResult(
+            Outputs.ChangeStreamConfigResponse changeStreamConfig,
+
             ImmutableDictionary<string, string> clusterStates,
 
             ImmutableDictionary<string, string> columnFamilies,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             Outputs.TableStatsResponse stats)
         {
+            ChangeStreamConfig = changeStreamConfig;
             ClusterStates = clusterStates;
             ColumnFamilies = columnFamilies;
             DeletionProtection = deletionProtection;

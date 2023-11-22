@@ -7,6 +7,44 @@ using Pulumi;
 
 namespace Pulumi.GoogleNative.Billingbudgets.V1
 {
+    [EnumType]
+    public readonly struct BudgetOwnershipScope : IEquatable<BudgetOwnershipScope>
+    {
+        private readonly string _value;
+
+        private BudgetOwnershipScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified ownership scope, same as ALL_USERS.
+        /// </summary>
+        public static BudgetOwnershipScope OwnershipScopeUnspecified { get; } = new BudgetOwnershipScope("OWNERSHIP_SCOPE_UNSPECIFIED");
+        /// <summary>
+        /// Both billing account-level users and project-level users have full access to the budget, if the users have the required IAM permissions.
+        /// </summary>
+        public static BudgetOwnershipScope AllUsers { get; } = new BudgetOwnershipScope("ALL_USERS");
+        /// <summary>
+        /// Only billing account-level users have full access to the budget. Project-level users have read-only access, even if they have the required IAM permissions.
+        /// </summary>
+        public static BudgetOwnershipScope BillingAccount { get; } = new BudgetOwnershipScope("BILLING_ACCOUNT");
+
+        public static bool operator ==(BudgetOwnershipScope left, BudgetOwnershipScope right) => left.Equals(right);
+        public static bool operator !=(BudgetOwnershipScope left, BudgetOwnershipScope right) => !left.Equals(right);
+
+        public static explicit operator string(BudgetOwnershipScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BudgetOwnershipScope other && Equals(other);
+        public bool Equals(BudgetOwnershipScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget tracks usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it tracks usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
     /// </summary>

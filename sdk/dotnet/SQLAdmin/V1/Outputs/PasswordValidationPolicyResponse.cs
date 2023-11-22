@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string Complexity;
         /// <summary>
+        /// Disallow credentials that have been previously compromised by a public data breach.
+        /// </summary>
+        public readonly bool DisallowCompromisedCredentials;
+        /// <summary>
         /// Disallow username as a part of the password.
         /// </summary>
         public readonly bool DisallowUsernameSubstring;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         private PasswordValidationPolicyResponse(
             string complexity,
 
+            bool disallowCompromisedCredentials,
+
             bool disallowUsernameSubstring,
 
             bool enablePasswordPolicy,
@@ -56,6 +62,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
             int reuseInterval)
         {
             Complexity = complexity;
+            DisallowCompromisedCredentials = disallowCompromisedCredentials;
             DisallowUsernameSubstring = disallowUsernameSubstring;
             EnablePasswordPolicy = enablePasswordPolicy;
             MinLength = minLength;

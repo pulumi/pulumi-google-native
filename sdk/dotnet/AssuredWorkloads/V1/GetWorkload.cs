@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly Outputs.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse ComplianceStatus;
         /// <summary>
-        /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         /// </summary>
         public readonly ImmutableArray<string> CompliantButDisallowedServices;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Optional. Represents the Ekm Provisioning State of the given workload.
+        /// Represents the Ekm Provisioning State of the given workload.
         /// </summary>
         public readonly Outputs.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse EkmProvisioningResponse;
         /// <summary>
@@ -127,6 +127,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         /// </summary>
         public readonly string ProvisionedResourcesParent;
+        /// <summary>
+        /// Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+        /// </summary>
+        public readonly bool ResourceMonitoringEnabled;
         /// <summary>
         /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         /// </summary>
@@ -178,6 +182,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
             string provisionedResourcesParent,
 
+            bool resourceMonitoringEnabled,
+
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse> resourceSettings,
 
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse> resources,
@@ -202,6 +208,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             Partner = partner;
             PartnerPermissions = partnerPermissions;
             ProvisionedResourcesParent = provisionedResourcesParent;
+            ResourceMonitoringEnabled = resourceMonitoringEnabled;
             ResourceSettings = resourceSettings;
             Resources = resources;
             SaaEnrollmentResponse = saaEnrollmentResponse;

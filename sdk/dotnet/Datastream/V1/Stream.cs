@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+        /// </summary>
+        [Output("lastRecoveryTime")]
+        public Output<string> LastRecoveryTime { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

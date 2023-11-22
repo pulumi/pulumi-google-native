@@ -64,67 +64,71 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
     public sealed class GetWorkstationClusterResult
     {
         /// <summary>
-        /// Client-specified annotations.
+        /// Optional. Client-specified annotations.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// Status conditions describing the current resource state.
+        /// Status conditions describing the workstation cluster's current state.
         /// </summary>
         public readonly ImmutableArray<Outputs.StatusResponse> Conditions;
         /// <summary>
-        /// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        /// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
         /// </summary>
         public readonly string ControlPlaneIp;
         /// <summary>
-        /// Time when this resource was created.
+        /// Time when this workstation cluster was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+        /// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
         /// </summary>
         public readonly bool Degraded;
         /// <summary>
-        /// Time when this resource was soft-deleted.
+        /// Time when this workstation cluster was soft-deleted.
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
-        /// Human-readable name for this resource.
+        /// Optional. Human-readable name for this workstation cluster.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        /// Optional. Configuration options for a custom domain.
+        /// </summary>
+        public readonly Outputs.DomainConfigResponse DomainConfig;
+        /// <summary>
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Full name of this resource.
+        /// Identifier. Full name of this workstation cluster.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+        /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// Configuration for private cluster.
+        /// Optional. Configuration for private workstation cluster.
         /// </summary>
         public readonly Outputs.PrivateClusterConfigResponse PrivateClusterConfig;
         /// <summary>
-        /// Indicates whether this resource is currently being updated to match its intended state.
+        /// Indicates whether this workstation cluster is currently being updated to match its intended state.
         /// </summary>
         public readonly bool Reconciling;
         /// <summary>
-        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         /// </summary>
         public readonly string Subnetwork;
         /// <summary>
-        /// A system-assigned unique identified for this resource.
+        /// A system-assigned unique identifier for this workstation cluster.
         /// </summary>
         public readonly string Uid;
         /// <summary>
-        /// Time when this resource was most recently updated.
+        /// Time when this workstation cluster was most recently updated.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -143,6 +147,8 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
             string deleteTime,
 
             string displayName,
+
+            Outputs.DomainConfigResponse domainConfig,
 
             string etag,
 
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
             Degraded = degraded;
             DeleteTime = deleteTime;
             DisplayName = displayName;
+            DomainConfig = domainConfig;
             Etag = etag;
             Labels = labels;
             Name = name;

@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
     /// </summary>
     public sealed class AuthorizationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("adminUsers", required: true)]
+        [Input("adminUsers")]
         private InputList<Inputs.ClusterUserArgs>? _adminUsers;
 
         /// <summary>
-        /// For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+        /// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
         /// </summary>
         public InputList<Inputs.ClusterUserArgs> AdminUsers
         {

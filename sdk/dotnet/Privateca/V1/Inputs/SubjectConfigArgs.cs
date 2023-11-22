@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     public sealed class SubjectConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Contains distinguished name fields such as the common name, location and organization.
+        /// Optional. Contains distinguished name fields such as the common name, location and organization.
         /// </summary>
-        [Input("subject", required: true)]
-        public Input<Inputs.SubjectArgs> Subject { get; set; } = null!;
+        [Input("subject")]
+        public Input<Inputs.SubjectArgs>? Subject { get; set; }
 
         /// <summary>
         /// Optional. The subject alternative name fields.

@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// Time after which the workload identity pool will be permanently purged and cannot be recovered.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

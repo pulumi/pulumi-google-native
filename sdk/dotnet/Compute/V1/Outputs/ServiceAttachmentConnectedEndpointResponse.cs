@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class ServiceAttachmentConnectedEndpointResponse
     {
         /// <summary>
+        /// The url of the consumer network.
+        /// </summary>
+        public readonly string ConsumerNetwork;
+        /// <summary>
         /// The url of a connected endpoint.
         /// </summary>
         public readonly string Endpoint;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
         [OutputConstructor]
         private ServiceAttachmentConnectedEndpointResponse(
+            string consumerNetwork,
+
             string endpoint,
 
             string pscConnectionId,
 
             string status)
         {
+            ConsumerNetwork = consumerNetwork;
             Endpoint = endpoint;
             PscConnectionId = pscConnectionId;
             Status = status;

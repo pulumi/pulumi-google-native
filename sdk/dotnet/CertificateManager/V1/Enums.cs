@@ -103,9 +103,13 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// </summary>
         public static CertificateScope Default { get; } = new CertificateScope("DEFAULT");
         /// <summary>
-        /// Certificates with scope EDGE_CACHE are special-purposed certificates, served from non-core Google data centers.
+        /// Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence. See https://cloud.google.com/vpc/docs/edge-locations.
         /// </summary>
         public static CertificateScope EdgeCache { get; } = new CertificateScope("EDGE_CACHE");
+        /// <summary>
+        /// Certificates with ALL_REGIONS scope are served from all Google Cloud regions. See https://cloud.google.com/compute/docs/regions-zones.
+        /// </summary>
+        public static CertificateScope AllRegions { get; } = new CertificateScope("ALL_REGIONS");
 
         public static bool operator ==(CertificateScope left, CertificateScope right) => left.Equals(right);
         public static bool operator !=(CertificateScope left, CertificateScope right) => !left.Equals(right);

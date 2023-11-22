@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         public Input<Inputs.GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs>? FontSize { get; set; }
 
         /// <summary>
-        /// Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
+        /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
         /// </summary>
         [Input("fontWeight")]
         public Input<string>? FontWeight { get; set; }
@@ -52,13 +52,13 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         public Input<Inputs.GoogleCloudDocumentaiV1DocumentTextAnchorArgs>? TextAnchor { get; set; }
 
         /// <summary>
-        /// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard. 
         /// </summary>
         [Input("textDecoration")]
         public Input<string>? TextDecoration { get; set; }
 
         /// <summary>
-        /// Text style. Possible values are normal, italic, and oblique. https://www.w3schools.com/cssref/pr_font_font-style.asp
+        /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
         /// </summary>
         [Input("textStyle")]
         public Input<string>? TextStyle { get; set; }

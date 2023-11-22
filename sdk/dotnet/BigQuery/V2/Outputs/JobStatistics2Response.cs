@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string DdlOperationPerformed;
         /// <summary>
-        /// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        /// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
         /// </summary>
         public readonly Outputs.DatasetReferenceResponse DdlTargetDataset;
         /// <summary>

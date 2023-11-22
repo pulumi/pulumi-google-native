@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly bool Abandoned;
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly Outputs.DeliveryPipelineResponse DeliveryPipelineSnapshot;
         /// <summary>
+        /// Optional. The deploy parameters to use for all targets in this release.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> DeployParameters;
+        /// <summary>
         /// Description of the `Release`. Max length is 255 characters.
         /// </summary>
         public readonly string Description;
@@ -102,11 +106,11 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        /// Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -130,7 +134,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string SkaffoldConfigUri;
         /// <summary>
-        /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         /// </summary>
         public readonly string SkaffoldVersion;
         /// <summary>
@@ -163,6 +167,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             string createTime,
 
             Outputs.DeliveryPipelineResponse deliveryPipelineSnapshot,
+
+            ImmutableDictionary<string, string> deployParameters,
 
             string description,
 
@@ -198,6 +204,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Condition = condition;
             CreateTime = createTime;
             DeliveryPipelineSnapshot = deliveryPipelineSnapshot;
+            DeployParameters = deployParameters;
             Description = description;
             Etag = etag;
             Labels = labels;

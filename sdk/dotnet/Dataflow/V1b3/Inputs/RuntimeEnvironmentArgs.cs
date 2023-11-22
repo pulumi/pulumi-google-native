@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public Input<bool>? BypassTempDirValidation { get; set; }
 
         /// <summary>
+        /// Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
+        /// </summary>
+        [Input("diskSizeGb")]
+        public Input<int>? DiskSizeGb { get; set; }
+
+        /// <summary>
         /// Optional. Whether to enable Streaming Engine for the job.
         /// </summary>
         [Input("enableStreamingEngine")]

@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         private InputList<string>? _networkTags;
 
         /// <summary>
-        /// A map of network tags to associate with the VM.
+        /// A list of network tags to associate with the VM.
         /// </summary>
         public InputList<string> NetworkTags
         {

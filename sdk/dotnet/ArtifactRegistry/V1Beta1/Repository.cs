@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The format of packages that are stored in the repository.
+        /// Optional. The format of packages that are stored in the repository.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -58,10 +58,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The repository id to use for this repository.
+        /// Required. The repository id to use for this repository.
         /// </summary>
         [Output("repositoryId")]
-        public Output<string?> RepositoryId { get; private set; } = null!;
+        public Output<string> RepositoryId { get; private set; } = null!;
 
         /// <summary>
         /// If set, the repository satisfies physical zone separation.
@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Repository(string name, RepositoryArgs? args = null, CustomResourceOptions? options = null)
+        public Repository(string name, RepositoryArgs args, CustomResourceOptions? options = null)
             : base("google-native:artifactregistry/v1beta1:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -108,6 +108,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
                 {
                     "location",
                     "project",
+                    "repositoryId",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -138,7 +139,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The format of packages that are stored in the repository.
+        /// Optional. The format of packages that are stored in the repository.
         /// </summary>
         [Input("format")]
         public Input<Pulumi.GoogleNative.ArtifactRegistry.V1Beta1.RepositoryFormat>? Format { get; set; }
@@ -165,7 +166,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -174,10 +175,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The repository id to use for this repository.
+        /// Required. The repository id to use for this repository.
         /// </summary>
-        [Input("repositoryId")]
-        public Input<string>? RepositoryId { get; set; }
+        [Input("repositoryId", required: true)]
+        public Input<string> RepositoryId { get; set; } = null!;
 
         public RepositoryArgs()
         {

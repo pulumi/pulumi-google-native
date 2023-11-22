@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string InstanceTerminationAction;
         /// <summary>
+        /// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+        /// </summary>
+        public readonly Outputs.DurationResponse LocalSsdRecoveryTimeout;
+        /// <summary>
         /// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         /// </summary>
         public readonly string LocationHint;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string instanceTerminationAction,
 
+            Outputs.DurationResponse localSsdRecoveryTimeout,
+
             string locationHint,
 
             int minNodeCpus,
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         {
             AutomaticRestart = automaticRestart;
             InstanceTerminationAction = instanceTerminationAction;
+            LocalSsdRecoveryTimeout = localSsdRecoveryTimeout;
             LocationHint = locationHint;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;

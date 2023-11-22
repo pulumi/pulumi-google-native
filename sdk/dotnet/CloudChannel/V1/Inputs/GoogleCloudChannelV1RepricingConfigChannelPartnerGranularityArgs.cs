@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
 {
 
     /// <summary>
-    /// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+    /// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object. Deprecated: This is no longer supported. Use RepricingConfig.EntitlementGranularity instead.
     /// </summary>
     public sealed class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs : global::Pulumi.ResourceArgs
     {

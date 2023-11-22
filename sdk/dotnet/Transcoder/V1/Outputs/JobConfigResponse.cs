@@ -21,13 +21,17 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AdBreakResponse> AdBreaks;
         /// <summary>
-        /// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+        /// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
         /// </summary>
         public readonly ImmutableArray<Outputs.EditAtomResponse> EditList;
         /// <summary>
         /// List of elementary streams.
         /// </summary>
         public readonly ImmutableArray<Outputs.ElementaryStreamResponse> ElementaryStreams;
+        /// <summary>
+        /// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.EncryptionResponse> Encryptions;
         /// <summary>
         /// List of input assets stored in Cloud Storage.
         /// </summary>
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
             ImmutableArray<Outputs.ElementaryStreamResponse> elementaryStreams,
 
+            ImmutableArray<Outputs.EncryptionResponse> encryptions,
+
             ImmutableArray<Outputs.InputResponse> inputs,
 
             ImmutableArray<Outputs.ManifestResponse> manifests,
@@ -82,6 +88,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
             AdBreaks = adBreaks;
             EditList = editList;
             ElementaryStreams = elementaryStreams;
+            Encryptions = encryptions;
             Inputs = inputs;
             Manifests = manifests;
             MuxStreams = muxStreams;

@@ -117,6 +117,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceLabels;
         /// <summary>
+        /// A map of resource manager tag keys and values to be attached to the nodes.
+        /// </summary>
+        public readonly Outputs.ResourceManagerTagsResponse ResourceManagerTags;
+        /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>
         public readonly Outputs.SandboxConfigResponse SandboxConfig;
@@ -128,6 +132,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Shielded Instance options.
         /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
+        /// <summary>
+        /// Parameters for node pools to be backed by shared sole tenant node groups.
+        /// </summary>
+        public readonly Outputs.SoleTenantConfigResponse SoleTenantConfig;
         /// <summary>
         /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         /// </summary>
@@ -201,11 +209,15 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             ImmutableDictionary<string, string> resourceLabels,
 
+            Outputs.ResourceManagerTagsResponse resourceManagerTags,
+
             Outputs.SandboxConfigResponse sandboxConfig,
 
             string serviceAccount,
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
+
+            Outputs.SoleTenantConfigResponse soleTenantConfig,
 
             bool spot,
 
@@ -242,9 +254,11 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             Preemptible = preemptible;
             ReservationAffinity = reservationAffinity;
             ResourceLabels = resourceLabels;
+            ResourceManagerTags = resourceManagerTags;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            SoleTenantConfig = soleTenantConfig;
             Spot = spot;
             Tags = tags;
             Taints = taints;

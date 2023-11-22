@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         [Input("pubsubTopic")]
         public Input<string>? PubsubTopic { get; set; }
 
+        /// <summary>
+        /// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        /// </summary>
+        [Input("sendForBulkImport")]
+        public Input<bool>? SendForBulkImport { get; set; }
+
         public NotificationConfigArgs()
         {
         }

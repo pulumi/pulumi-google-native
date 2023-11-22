@@ -102,6 +102,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The worker node pool upgrade policy.
+        /// </summary>
+        [Output("upgradePolicy")]
+        public Output<Outputs.BareMetalNodePoolUpgradePolicyResponse> UpgradePolicy { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a BareMetalNodePool resource with the given unique name, arguments, and options.
@@ -203,6 +209,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The worker node pool upgrade policy.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.BareMetalNodePoolUpgradePolicyArgs>? UpgradePolicy { get; set; }
 
         public BareMetalNodePoolArgs()
         {

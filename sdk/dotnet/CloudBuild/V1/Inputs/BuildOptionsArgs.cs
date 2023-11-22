@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     public sealed class BuildOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Option to include built-in and custom substitutions as env variables for all build steps.
+        /// </summary>
+        [Input("automapSubstitutions")]
+        public Input<bool>? AutomapSubstitutions { get; set; }
+
+        /// <summary>
         /// Optional. Option to specify how default logs buckets are setup.
         /// </summary>
         [Input("defaultLogsBucketBehavior")]
@@ -46,7 +52,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         }
 
         /// <summary>
-        /// Option to define build log streaming behavior to Google Cloud Storage.
+        /// Option to define build log streaming behavior to Cloud Storage.
         /// </summary>
         [Input("logStreamingOption")]
         public Input<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsLogStreamingOption>? LogStreamingOption { get; set; }

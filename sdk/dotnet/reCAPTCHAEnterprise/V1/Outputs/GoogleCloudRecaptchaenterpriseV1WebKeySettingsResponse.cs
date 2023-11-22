@@ -17,19 +17,19 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
     public sealed class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse
     {
         /// <summary>
-        /// If set to true, it means allowed_domains will not be enforced.
+        /// Optional. If set to true, it means allowed_domains will not be enforced.
         /// </summary>
         public readonly bool AllowAllDomains;
         /// <summary>
-        /// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+        /// Optional. If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         /// </summary>
         public readonly bool AllowAmpTraffic;
         /// <summary>
-        /// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
+        /// Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
         /// </summary>
         public readonly ImmutableArray<string> AllowedDomains;
         /// <summary>
-        /// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+        /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
         /// </summary>
         public readonly string ChallengeSecurityPreference;
         /// <summary>

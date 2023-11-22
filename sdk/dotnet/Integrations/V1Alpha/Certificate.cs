@@ -151,8 +151,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// <summary>
         /// Name of the certificate
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         [Input("location")]
         public Input<string>? Location { get; set; }

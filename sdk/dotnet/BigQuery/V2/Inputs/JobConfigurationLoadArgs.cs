@@ -103,6 +103,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? FieldDelimiter { get; set; }
 
         /// <summary>
+        /// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        /// </summary>
+        [Input("fileSetSpecType")]
+        public Input<string>? FileSetSpecType { get; set; }
+
+        /// <summary>
         /// [Optional] Options to configure hive partitioning support.
         /// </summary>
         [Input("hivePartitioningOptions")]

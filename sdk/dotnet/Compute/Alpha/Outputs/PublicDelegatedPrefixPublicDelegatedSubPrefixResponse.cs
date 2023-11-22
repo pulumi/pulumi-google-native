@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse
     {
         /// <summary>
+        /// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+        /// </summary>
+        public readonly int AllocatablePrefixLength;
+        /// <summary>
         /// Name of the project scoping this PublicDelegatedSubPrefix.
         /// </summary>
         public readonly string DelegateeProject;
@@ -25,13 +29,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
         /// </summary>
         public readonly string IpCidrRange;
         /// <summary>
         /// Whether the sub prefix is delegated to create Address resources in the delegatee project.
         /// </summary>
         public readonly bool IsAddress;
+        /// <summary>
+        /// The PublicDelegatedSubPrefix mode for IPv6 only.
+        /// </summary>
+        public readonly string Mode;
         /// <summary>
         /// The name of the sub public delegated prefix.
         /// </summary>
@@ -47,6 +55,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(
+            int allocatablePrefixLength,
+
             string delegateeProject,
 
             string description,
@@ -55,16 +65,20 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             bool isAddress,
 
+            string mode,
+
             string name,
 
             string region,
 
             string status)
         {
+            AllocatablePrefixLength = allocatablePrefixLength;
             DelegateeProject = delegateeProject;
             Description = description;
             IpCidrRange = ipCidrRange;
             IsAddress = isAddress;
+            Mode = mode;
             Name = name;
             Region = region;
             Status = status;

@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     public sealed class TimeSeriesQueryResponse
     {
         /// <summary>
+        /// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+        /// </summary>
+        public readonly Outputs.OpsAnalyticsQueryResponse OpsAnalyticsQuery;
+        /// <summary>
+        /// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+        /// </summary>
+        public readonly bool OutputFullDuration;
+        /// <summary>
         /// A query used to fetch time series with PromQL.
         /// </summary>
         public readonly string PrometheusQuery;
@@ -39,6 +47,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
         [OutputConstructor]
         private TimeSeriesQueryResponse(
+            Outputs.OpsAnalyticsQueryResponse opsAnalyticsQuery,
+
+            bool outputFullDuration,
+
             string prometheusQuery,
 
             Outputs.TimeSeriesFilterResponse timeSeriesFilter,
@@ -49,6 +61,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             string unitOverride)
         {
+            OpsAnalyticsQuery = opsAnalyticsQuery;
+            OutputFullDuration = outputFullDuration;
             PrometheusQuery = prometheusQuery;
             TimeSeriesFilter = timeSeriesFilter;
             TimeSeriesFilterRatio = timeSeriesFilterRatio;

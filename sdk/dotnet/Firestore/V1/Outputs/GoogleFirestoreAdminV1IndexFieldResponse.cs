@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Firestore.V1.Outputs
         /// Indicates that this field supports ordering by the specified order or comparing using =, !=, &lt;, &lt;=, &gt;, &gt;=.
         /// </summary>
         public readonly string Order;
+        /// <summary>
+        /// Indicates that this field supports nearest neighbors and distance operations on vector.
+        /// </summary>
+        public readonly Outputs.GoogleFirestoreAdminV1VectorConfigResponse VectorConfig;
 
         [OutputConstructor]
         private GoogleFirestoreAdminV1IndexFieldResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Firestore.V1.Outputs
 
             string fieldPath,
 
-            string order)
+            string order,
+
+            Outputs.GoogleFirestoreAdminV1VectorConfigResponse vectorConfig)
         {
             ArrayConfig = arrayConfig;
             FieldPath = fieldPath;
             Order = order;
+            VectorConfig = vectorConfig;
         }
     }
 }

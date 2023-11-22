@@ -16,9 +16,37 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
     [OutputType]
     public sealed class CommonFleetDefaultMemberConfigSpecResponse
     {
+        /// <summary>
+        /// Config Management-specific spec.
+        /// </summary>
+        public readonly Outputs.ConfigManagementMembershipSpecResponse Configmanagement;
+        /// <summary>
+        /// Identity Service-specific spec.
+        /// </summary>
+        public readonly Outputs.IdentityServiceMembershipSpecResponse Identityservice;
+        /// <summary>
+        /// Anthos Service Mesh-specific spec
+        /// </summary>
+        public readonly Outputs.ServiceMeshMembershipSpecResponse Mesh;
+        /// <summary>
+        /// Policy Controller spec.
+        /// </summary>
+        public readonly Outputs.PolicyControllerMembershipSpecResponse Policycontroller;
+
         [OutputConstructor]
-        private CommonFleetDefaultMemberConfigSpecResponse()
+        private CommonFleetDefaultMemberConfigSpecResponse(
+            Outputs.ConfigManagementMembershipSpecResponse configmanagement,
+
+            Outputs.IdentityServiceMembershipSpecResponse identityservice,
+
+            Outputs.ServiceMeshMembershipSpecResponse mesh,
+
+            Outputs.PolicyControllerMembershipSpecResponse policycontroller)
         {
+            Configmanagement = configmanagement;
+            Identityservice = identityservice;
+            Mesh = mesh;
+            Policycontroller = policycontroller;
         }
     }
 }

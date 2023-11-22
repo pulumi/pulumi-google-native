@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public Input<Inputs.HttpRouteRedirectArgs>? Redirect { get; set; }
 
         /// <summary>
-        /// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        /// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         /// </summary>
         [Input("requestHeaderModifier")]
         public Input<Inputs.HttpRouteHeaderModifierArgs>? RequestHeaderModifier { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public Input<Inputs.HttpRouteRequestMirrorPolicyArgs>? RequestMirrorPolicy { get; set; }
 
         /// <summary>
-        /// The specification for modifying the headers of a response prior to sending the response back to the client.
+        /// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         /// </summary>
         [Input("responseHeaderModifier")]
         public Input<Inputs.HttpRouteHeaderModifierArgs>? ResponseHeaderModifier { get; set; }
@@ -68,6 +68,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         /// </summary>
         [Input("retryPolicy")]
         public Input<Inputs.HttpRouteRetryPolicyArgs>? RetryPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies cookie-based stateful session affinity.
+        /// </summary>
+        [Input("statefulSessionAffinity")]
+        public Input<Inputs.HttpRouteStatefulSessionAffinityPolicyArgs>? StatefulSessionAffinity { get; set; }
 
         /// <summary>
         /// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.

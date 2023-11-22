@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public Input<Inputs.CloudAuditLoggingFeatureSpecArgs>? Cloudauditlogging { get; set; }
 
         /// <summary>
+        /// ClusterUpgrade (fleet-based) feature spec.
+        /// </summary>
+        [Input("clusterupgrade")]
+        public Input<Inputs.ClusterUpgradeFleetSpecArgs>? Clusterupgrade { get; set; }
+
+        /// <summary>
         /// FleetObservability feature spec.
         /// </summary>
         [Input("fleetobservability")]
@@ -44,6 +50,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         /// </summary>
         [Input("multiclusteringress")]
         public Input<Inputs.MultiClusterIngressFeatureSpecArgs>? Multiclusteringress { get; set; }
+
+        /// <summary>
+        /// Namespace Actuation feature spec
+        /// </summary>
+        [Input("namespaceactuation")]
+        public Input<Inputs.NamespaceActuationFeatureSpecArgs>? Namespaceactuation { get; set; }
 
         /// <summary>
         /// Workload Certificate spec.

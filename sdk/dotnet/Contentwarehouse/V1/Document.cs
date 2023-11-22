@@ -69,6 +69,12 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         [Output("inlineRawDocument")]
         public Output<string> InlineRawDocument { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates if the document has a legal hold on it.
+        /// </summary>
+        [Output("legalHold")]
+        public Output<bool> LegalHold { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

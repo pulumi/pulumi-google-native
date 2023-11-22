@@ -33,6 +33,14 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly string JobRun;
         /// <summary>
+        /// A postdeploy Job.
+        /// </summary>
+        public readonly Outputs.PostdeployJobResponse PostdeployJob;
+        /// <summary>
+        /// A predeploy Job.
+        /// </summary>
+        public readonly Outputs.PredeployJobResponse PredeployJob;
+        /// <summary>
         /// Additional information on why the Job was skipped, if available.
         /// </summary>
         public readonly string SkipMessage;
@@ -55,6 +63,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
             string jobRun,
 
+            Outputs.PostdeployJobResponse postdeployJob,
+
+            Outputs.PredeployJobResponse predeployJob,
+
             string skipMessage,
 
             string state,
@@ -65,6 +77,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
             CreateChildRolloutJob = createChildRolloutJob;
             DeployJob = deployJob;
             JobRun = jobRun;
+            PostdeployJob = postdeployJob;
+            PredeployJob = predeployJob;
             SkipMessage = skipMessage;
             State = state;
             VerifyJob = verifyJob;

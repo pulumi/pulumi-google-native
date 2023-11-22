@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1PageResponse
     {
         /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse AdvancedSettings;
+        /// <summary>
         /// The human-readable name of the page, unique within the flow.
         /// </summary>
         public readonly string DisplayName;
@@ -33,11 +37,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1FormResponse Form;
         /// <summary>
+        /// Optional. Knowledge connector configuration.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse KnowledgeConnectorSettings;
+        /// <summary>
         /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         public readonly ImmutableArray<string> TransitionRouteGroups;
         /// <summary>
@@ -47,6 +55,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3beta1PageResponse(
+            Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse advancedSettings,
+
             string displayName,
 
             Outputs.GoogleCloudDialogflowCxV3beta1FulfillmentResponse entryFulfillment,
@@ -55,16 +65,20 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3beta1FormResponse form,
 
+            Outputs.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse knowledgeConnectorSettings,
+
             string name,
 
             ImmutableArray<string> transitionRouteGroups,
 
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse> transitionRoutes)
         {
+            AdvancedSettings = advancedSettings;
             DisplayName = displayName;
             EntryFulfillment = entryFulfillment;
             EventHandlers = eventHandlers;
             Form = form;
+            KnowledgeConnectorSettings = knowledgeConnectorSettings;
             Name = name;
             TransitionRouteGroups = transitionRouteGroups;
             TransitionRoutes = transitionRoutes;

@@ -40,16 +40,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         public Output<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse> ComplianceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         /// </summary>
         [Output("compliantButDisallowedServices")]
         public Output<ImmutableArray<string>> CompliantButDisallowedServices { get; private set; } = null!;
-
-        /// <summary>
-        /// Controls associated with the customer workload
-        /// </summary>
-        [Output("controls")]
-        public Output<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse> Controls { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The Workload creation timestamp.
@@ -64,7 +58,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Represents the Ekm Provisioning State of the given workload.
+        /// Represents the Ekm Provisioning State of the given workload.
         /// </summary>
         [Output("ekmProvisioningResponse")]
         public Output<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse> EkmProvisioningResponse { get; private set; } = null!;
@@ -152,6 +146,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         [Output("provisionedResourcesParent")]
         public Output<string> ProvisionedResourcesParent { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+        /// </summary>
+        [Output("resourceMonitoringEnabled")]
+        public Output<bool> ResourceMonitoringEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
@@ -250,12 +250,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. Represents the Ekm Provisioning State of the given workload.
-        /// </summary>
-        [Input("ekmProvisioningResponse")]
-        public Input<Inputs.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs>? EkmProvisioningResponse { get; set; }
 
         /// <summary>
         /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.

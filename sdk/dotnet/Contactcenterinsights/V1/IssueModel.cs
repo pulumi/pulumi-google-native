@@ -39,8 +39,20 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("issueCount")]
         public Output<string> IssueCount { get; private set; } = null!;
 
+        /// <summary>
+        /// Language of the model.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string> LanguageCode { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of the model.
+        /// </summary>
+        [Output("modelType")]
+        public Output<string> ModelType { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
@@ -131,8 +143,20 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Input("inputDataConfig")]
         public Input<Inputs.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs>? InputDataConfig { get; set; }
 
+        /// <summary>
+        /// Language of the model.
+        /// </summary>
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Type of the model.
+        /// </summary>
+        [Input("modelType")]
+        public Input<Pulumi.GoogleNative.Contactcenterinsights.V1.IssueModelModelType>? ModelType { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}

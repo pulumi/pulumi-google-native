@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
 {
 
     /// <summary>
-    /// Database instance IP Mapping.
+    /// Database instance IP mapping
     /// </summary>
     public sealed class IpMappingArgs : global::Pulumi.ResourceArgs
     {

@@ -184,6 +184,51 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
     /// <summary>
+    /// Optional. EnvironmentType selected for the environment.
+    /// </summary>
+    [EnumType]
+    public readonly struct EnvironmentType : IEquatable<EnvironmentType>
+    {
+        private readonly string _value;
+
+        private EnvironmentType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Environment type not specified.
+        /// </summary>
+        public static EnvironmentType EnvironmentTypeUnspecified { get; } = new EnvironmentType("ENVIRONMENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
+        /// </summary>
+        public static EnvironmentType Base { get; } = new EnvironmentType("BASE");
+        /// <summary>
+        /// This is the default type and it supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
+        /// </summary>
+        public static EnvironmentType Intermediate { get; } = new EnvironmentType("INTERMEDIATE");
+        /// <summary>
+        /// Comprehensive environment supports advanced capabilites and even higher capacity than Intermediate environment. Refer to Apigee's public documentation for more details.
+        /// </summary>
+        public static EnvironmentType Comprehensive { get; } = new EnvironmentType("COMPREHENSIVE");
+
+        public static bool operator ==(EnvironmentType left, EnvironmentType right) => left.Equals(right);
+        public static bool operator !=(EnvironmentType left, EnvironmentType right) => !left.Equals(right);
+
+        public static explicit operator string(EnvironmentType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EnvironmentType other && Equals(other);
+        public bool Equals(EnvironmentType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Sampler of distributed tracing. OFF is the default value.
     /// </summary>
     [EnumType]
@@ -352,7 +397,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static OrganizationBillingType Subscription { get; } = new OrganizationBillingType("SUBSCRIPTION");
         /// <summary>
-        /// Free and limited access to Apigee for evaluation purposes only. only.
+        /// Free and limited access to Apigee for evaluation purposes only.
         /// </summary>
         public static OrganizationBillingType Evaluation { get; } = new OrganizationBillingType("EVALUATION");
         /// <summary>
@@ -675,6 +720,47 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
     /// <summary>
+    /// Required. Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityActionState : IEquatable<SecurityActionState>
+    {
+        private readonly string _value;
+
+        private SecurityActionState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default value. This only exists for forward compatibility. A create request with this value will be rejected.
+        /// </summary>
+        public static SecurityActionState StateUnspecified { get; } = new SecurityActionState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// An ENABLED SecurityAction is actively enforced if the `expiration_time` is in the future.
+        /// </summary>
+        public static SecurityActionState Enabled { get; } = new SecurityActionState("ENABLED");
+        /// <summary>
+        /// A disabled SecurityAction is never enforced.
+        /// </summary>
+        public static SecurityActionState Disabled { get; } = new SecurityActionState("DISABLED");
+
+        public static bool operator ==(SecurityActionState left, SecurityActionState right) => left.Equals(right);
+        public static bool operator !=(SecurityActionState left, SecurityActionState right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityActionState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityActionState other && Equals(other);
+        public bool Equals(SecurityActionState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Immutable. The protocol used by this TargetServer.
     /// </summary>
     [EnumType]
@@ -696,9 +782,21 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static TargetServerProtocol Http { get; } = new TargetServerProtocol("HTTP");
         /// <summary>
+        /// The TargetSever uses HTTP2.
+        /// </summary>
+        public static TargetServerProtocol Http2 { get; } = new TargetServerProtocol("HTTP2");
+        /// <summary>
+        /// The TargetServer uses GRPC.
+        /// </summary>
+        public static TargetServerProtocol GrpcTarget { get; } = new TargetServerProtocol("GRPC_TARGET");
+        /// <summary>
         /// GRPC TargetServer to be used in ExternalCallout Policy. Prefer to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL _CALLOUT generally available.
         /// </summary>
         public static TargetServerProtocol Grpc { get; } = new TargetServerProtocol("GRPC");
+        /// <summary>
+        /// The TargetServer is to be used in the ExternalCallout Policy
+        /// </summary>
+        public static TargetServerProtocol ExternalCallout { get; } = new TargetServerProtocol("EXTERNAL_CALLOUT");
 
         public static bool operator ==(TargetServerProtocol left, TargetServerProtocol right) => left.Equals(right);
         public static bool operator !=(TargetServerProtocol left, TargetServerProtocol right) => !left.Equals(right);

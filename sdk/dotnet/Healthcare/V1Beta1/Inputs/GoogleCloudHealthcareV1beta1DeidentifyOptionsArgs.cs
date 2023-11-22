@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// Specifies additional options to apply to the base `profile`.
+    /// Specifies additional options to apply to the base ProfileType.
     /// </summary>
     public sealed class GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+        /// Character mask config for CharacterMaskField.
         /// </summary>
         [Input("characterMaskConfig")]
         public Input<Inputs.CharacterMaskConfigArgs>? CharacterMaskConfig { get; set; }
@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public Input<Inputs.ContextualDeidConfigArgs>? ContextualDeid { get; set; }
 
         /// <summary>
-        /// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+        /// Crypto hash config for CharacterMaskField.
         /// </summary>
         [Input("cryptoHashConfig")]
         public Input<Inputs.CryptoHashConfigArgs>? CryptoHashConfig { get; set; }
 
         /// <summary>
-        /// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+        /// Date shifting config for CharacterMaskField.
         /// </summary>
         [Input("dateShiftConfig")]
         public Input<Inputs.DateShiftConfigArgs>? DateShiftConfig { get; set; }

@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Firestore.V1.Inputs
         [Input("order")]
         public Input<Pulumi.GoogleNative.Firestore.V1.GoogleFirestoreAdminV1IndexFieldOrder>? Order { get; set; }
 
+        /// <summary>
+        /// Indicates that this field supports nearest neighbors and distance operations on vector.
+        /// </summary>
+        [Input("vectorConfig")]
+        public Input<Inputs.GoogleFirestoreAdminV1VectorConfigArgs>? VectorConfig { get; set; }
+
         public GoogleFirestoreAdminV1IndexFieldArgs()
         {
         }

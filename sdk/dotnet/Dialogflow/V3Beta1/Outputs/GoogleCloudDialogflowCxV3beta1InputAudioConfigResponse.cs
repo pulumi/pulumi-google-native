@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly string AudioEncoding;
         /// <summary>
+        /// Configuration of barge-in behavior during the streaming of input audio.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1BargeInConfigResponse BargeInConfig;
+        /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
         /// </summary>
         public readonly bool EnableWordInfo;
@@ -49,6 +53,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         private GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse(
             string audioEncoding,
 
+            Outputs.GoogleCloudDialogflowCxV3beta1BargeInConfigResponse bargeInConfig,
+
             bool enableWordInfo,
 
             string model,
@@ -62,6 +68,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
             bool singleUtterance)
         {
             AudioEncoding = audioEncoding;
+            BargeInConfig = bargeInConfig;
             EnableWordInfo = enableWordInfo;
             Model = model;
             ModelVariant = modelVariant;

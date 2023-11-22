@@ -64,6 +64,14 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     public sealed class GetRepositoryResult
     {
         /// <summary>
+        /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> CleanupPolicies;
+        /// <summary>
+        /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// </summary>
+        public readonly bool CleanupPolicyDryRun;
+        /// <summary>
         /// The time when the repository was created.
         /// </summary>
         public readonly string CreateTime;
@@ -76,7 +84,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         public readonly Outputs.DockerRepositoryConfigResponse DockerConfig;
         /// <summary>
-        /// The format of packages that are stored in the repository.
+        /// Optional. The format of packages that are stored in the repository.
         /// </summary>
         public readonly string Format;
         /// <summary>
@@ -92,11 +100,11 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         public readonly Outputs.MavenRepositoryConfigResponse MavenConfig;
         /// <summary>
-        /// The mode of the repository.
+        /// Optional. The mode of the repository.
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -122,6 +130,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
         [OutputConstructor]
         private GetRepositoryResult(
+            ImmutableDictionary<string, string> cleanupPolicies,
+
+            bool cleanupPolicyDryRun,
+
             string createTime,
 
             string description,
@@ -150,6 +162,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
             Outputs.VirtualRepositoryConfigResponse virtualRepositoryConfig)
         {
+            CleanupPolicies = cleanupPolicies;
+            CleanupPolicyDryRun = cleanupPolicyDryRun;
             CreateTime = createTime;
             Description = description;
             DockerConfig = dockerConfig;

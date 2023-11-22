@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         }
 
         /// <summary>
+        /// Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
+        /// </summary>
+        [Input("trigger")]
+        public Input<string>? Trigger { get; set; }
+
+        /// <summary>
         /// Optional. The backend trigger ID.
         /// </summary>
         [Input("triggerId")]

@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1AddonsConfigResponse> AddonsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         [Output("analyticsRegion")]
         public Output<string> AnalyticsRegion { get; private set; } = null!;
@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+        /// </summary>
+        [Output("disableVpcPeering")]
+        public Output<bool> DisableVpcPeering { get; private set; } = null!;
 
         /// <summary>
         /// Display name for the Apigee organization. Unused, but reserved for future use.
@@ -167,6 +173,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// Subscription plan that the customer has purchased. Output only.
+        /// </summary>
+        [Output("subscriptionPlan")]
+        public Output<string> SubscriptionPlan { get; private set; } = null!;
+
+        /// <summary>
         /// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
         /// </summary>
         [Output("subscriptionType")]
@@ -234,7 +246,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<Inputs.GoogleCloudApigeeV1AddonsConfigArgs>? AddonsConfig { get; set; }
 
         /// <summary>
-        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         [Input("analyticsRegion", required: true)]
         public Input<string> AnalyticsRegion { get; set; } = null!;
@@ -292,6 +304,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+        /// </summary>
+        [Input("disableVpcPeering")]
+        public Input<bool>? DisableVpcPeering { get; set; }
 
         /// <summary>
         /// Display name for the Apigee organization. Unused, but reserved for future use.

@@ -7,6 +7,47 @@ using Pulumi;
 
 namespace Pulumi.GoogleNative.DLP.V2
 {
+    /// <summary>
+    /// Required. A status for this configuration.
+    /// </summary>
+    [EnumType]
+    public readonly struct DiscoveryConfigStatus : IEquatable<DiscoveryConfigStatus>
+    {
+        private readonly string _value;
+
+        private DiscoveryConfigStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused
+        /// </summary>
+        public static DiscoveryConfigStatus StatusUnspecified { get; } = new DiscoveryConfigStatus("STATUS_UNSPECIFIED");
+        /// <summary>
+        /// The discovery config is currently active.
+        /// </summary>
+        public static DiscoveryConfigStatus Running { get; } = new DiscoveryConfigStatus("RUNNING");
+        /// <summary>
+        /// The discovery config is paused temporarily.
+        /// </summary>
+        public static DiscoveryConfigStatus Paused { get; } = new DiscoveryConfigStatus("PAUSED");
+
+        public static bool operator ==(DiscoveryConfigStatus left, DiscoveryConfigStatus right) => left.Equals(right);
+        public static bool operator !=(DiscoveryConfigStatus left, DiscoveryConfigStatus right) => !left.Equals(right);
+
+        public static explicit operator string(DiscoveryConfigStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DiscoveryConfigStatus other && Equals(other);
+        public bool Equals(DiscoveryConfigStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct GooglePrivacyDlpV2BigQueryOptionsSampleMethod : IEquatable<GooglePrivacyDlpV2BigQueryOptionsSampleMethod>
     {
@@ -35,6 +76,44 @@ namespace Pulumi.GoogleNative.DLP.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2BigQueryOptionsSampleMethod other && Equals(other);
         public bool Equals(GooglePrivacyDlpV2BigQueryOptionsSampleMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2BigQueryTableTypesTypesItem : IEquatable<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2BigQueryTableTypesTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2BigQueryTableTypesTypesItem BigQueryTableTypeUnspecified { get; } = new GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A normal BigQuery table.
+        /// </summary>
+        public static GooglePrivacyDlpV2BigQueryTableTypesTypesItem BigQueryTableTypeTable { get; } = new GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_TABLE");
+        /// <summary>
+        /// A table that references data stored in Cloud Storage.
+        /// </summary>
+        public static GooglePrivacyDlpV2BigQueryTableTypesTypesItem BigQueryTableTypeExternalBigLake { get; } = new GooglePrivacyDlpV2BigQueryTableTypesTypesItem("BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE");
+
+        public static bool operator ==(GooglePrivacyDlpV2BigQueryTableTypesTypesItem left, GooglePrivacyDlpV2BigQueryTableTypesTypesItem right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2BigQueryTableTypesTypesItem left, GooglePrivacyDlpV2BigQueryTableTypesTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2BigQueryTableTypesTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2BigQueryTableTypesTypesItem other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2BigQueryTableTypesTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -110,7 +189,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem FileTypeUnspecified { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("FILE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+        /// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem BinaryFile { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("BINARY_FILE");
         /// <summary>
@@ -118,15 +197,15 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem TextFile { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TEXT_FILE");
         /// <summary>
-        /// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+        /// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Image { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("IMAGE");
         /// <summary>
-        /// Word files &gt;30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+        /// Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Word { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("WORD");
         /// <summary>
-        /// PDF files &gt;30 MB will be scanned as binary files. Included file extensions: pdf
+        /// PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Pdf { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("PDF");
         /// <summary>
@@ -142,11 +221,11 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Tsv { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TSV");
         /// <summary>
-        /// Powerpoint files &gt;30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+        /// Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Powerpoint { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("POWERPOINT");
         /// <summary>
-        /// Excel files &gt;30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+        /// Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Excel { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("EXCEL");
 
@@ -415,7 +494,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem FileTypeUnspecified { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+        /// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem BinaryFile { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("BINARY_FILE");
         /// <summary>
@@ -423,15 +502,15 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem TextFile { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TEXT_FILE");
         /// <summary>
-        /// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+        /// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Image { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("IMAGE");
         /// <summary>
-        /// Word files &gt;30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+        /// Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Word { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("WORD");
         /// <summary>
-        /// PDF files &gt;30 MB will be scanned as binary files. Included file extensions: pdf
+        /// PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Pdf { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("PDF");
         /// <summary>
@@ -447,11 +526,11 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Tsv { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TSV");
         /// <summary>
-        /// Powerpoint files &gt;30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+        /// Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Powerpoint { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("POWERPOINT");
         /// <summary>
-        /// Excel files &gt;30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+        /// Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Excel { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("EXCEL");
 
@@ -463,6 +542,209 @@ namespace Pulumi.GoogleNative.DLP.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem other && Equals(other);
         public bool Equals(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Restrict discovery to categories of table types.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection : IEquatable<GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection BigQueryCollectionUnspecified { get; } = new GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_UNSPECIFIED");
+        /// <summary>
+        /// Automatically generate profiles for all tables, even if the table type is not yet fully supported for analysis. Profiles for unsupported tables will be generated with errors to indicate their partial support. When full support is added, the tables will automatically be profiled during the next scheduled run.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection BigQueryCollectionAllTypes { get; } = new GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_ALL_TYPES");
+        /// <summary>
+        /// Only those types fully supported will be profiled. Will expand automatically as Cloud DLP adds support for new table types. Unsupported table types will not have partial profiles generated.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection BigQueryCollectionOnlySupportedTypes { get; } = new GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection("BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES");
+
+        public static bool operator ==(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection left, GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection left, GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency : IEquatable<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency UpdateFrequencyUnspecified { get; } = new GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED");
+        /// <summary>
+        /// After the data profile is created, it will never be updated.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency UpdateFrequencyNever { get; } = new GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_NEVER");
+        /// <summary>
+        /// The data profile can be updated up to once every 24 hours.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency UpdateFrequencyDaily { get; } = new GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_DAILY");
+        /// <summary>
+        /// The data profile can be updated up to once every 30 days. Default.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency UpdateFrequencyMonthly { get; } = new GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency("UPDATE_FREQUENCY_MONTHLY");
+
+        public static bool operator ==(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency left, GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency left, GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem : IEquatable<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem SchemaModificationUnspecified { get; } = new GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_MODIFICATION_UNSPECIFIED");
+        /// <summary>
+        /// Profiles should be regenerated when new columns are added to the table. Default.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem SchemaNewColumns { get; } = new GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_NEW_COLUMNS");
+        /// <summary>
+        /// Profiles should be regenerated when columns are removed from the table.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem SchemaRemovedColumns { get; } = new GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem("SCHEMA_REMOVED_COLUMNS");
+
+        public static bool operator ==(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem left, GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem left, GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// How frequently data profiles can be updated when tables are modified. Defaults to never.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency : IEquatable<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency UpdateFrequencyUnspecified { get; } = new GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_UNSPECIFIED");
+        /// <summary>
+        /// After the data profile is created, it will never be updated.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency UpdateFrequencyNever { get; } = new GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_NEVER");
+        /// <summary>
+        /// The data profile can be updated up to once every 24 hours.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency UpdateFrequencyDaily { get; } = new GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_DAILY");
+        /// <summary>
+        /// The data profile can be updated up to once every 30 days. Default.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency UpdateFrequencyMonthly { get; } = new GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency("UPDATE_FREQUENCY_MONTHLY");
+
+        public static bool operator ==(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency left, GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency left, GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem : IEquatable<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem TableModificationUnspecified { get; } = new GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem("TABLE_MODIFICATION_UNSPECIFIED");
+        /// <summary>
+        /// A table will be considered modified when the last_modified_time from BigQuery has been updated.
+        /// </summary>
+        public static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem TableModifiedTimestamp { get; } = new GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem("TABLE_MODIFIED_TIMESTAMP");
+
+        public static bool operator ==(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem left, GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem left, GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -552,6 +834,59 @@ namespace Pulumi.GoogleNative.DLP.V2
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood : IEquatable<GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value; same as POSSIBLE.
+        /// </summary>
+        public static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood LikelihoodUnspecified { get; } = new GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("LIKELIHOOD_UNSPECIFIED");
+        /// <summary>
+        /// Highest chance of a false positive.
+        /// </summary>
+        public static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood VeryUnlikely { get; } = new GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("VERY_UNLIKELY");
+        /// <summary>
+        /// High chance of a false positive.
+        /// </summary>
+        public static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood Unlikely { get; } = new GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("UNLIKELY");
+        /// <summary>
+        /// Some matching signals. The default value.
+        /// </summary>
+        public static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood Possible { get; } = new GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("POSSIBLE");
+        /// <summary>
+        /// Low chance of a false positive.
+        /// </summary>
+        public static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood Likely { get; } = new GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("LIKELY");
+        /// <summary>
+        /// Confidence level is high. Lowest chance of a false positive.
+        /// </summary>
+        public static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood VeryLikely { get; } = new GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood("VERY_LIKELY");
+
+        public static bool operator ==(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood left, GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood left, GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct GooglePrivacyDlpV2InspectConfigContentOptionsItem : IEquatable<GooglePrivacyDlpV2InspectConfigContentOptionsItem>
     {
@@ -591,7 +926,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
     /// <summary>
-    /// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+    /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
     /// </summary>
     [EnumType]
     public readonly struct GooglePrivacyDlpV2InspectConfigMinLikelihood : IEquatable<GooglePrivacyDlpV2InspectConfigMinLikelihood>
@@ -742,6 +1077,219 @@ namespace Pulumi.GoogleNative.DLP.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2OutputStorageConfigOutputSchema other && Equals(other);
         public bool Equals(GooglePrivacyDlpV2OutputStorageConfigOutputSchema other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The minimum data risk score that triggers the condition.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2PubSubConditionMinimumRiskScore : IEquatable<GooglePrivacyDlpV2PubSubConditionMinimumRiskScore>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2PubSubConditionMinimumRiskScore(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubConditionMinimumRiskScore ProfileScoreBucketUnspecified { get; } = new GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("PROFILE_SCORE_BUCKET_UNSPECIFIED");
+        /// <summary>
+        /// High risk/sensitivity detected.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubConditionMinimumRiskScore High { get; } = new GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("HIGH");
+        /// <summary>
+        /// Medium or high risk/sensitivity detected.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubConditionMinimumRiskScore MediumOrHigh { get; } = new GooglePrivacyDlpV2PubSubConditionMinimumRiskScore("MEDIUM_OR_HIGH");
+
+        public static bool operator ==(GooglePrivacyDlpV2PubSubConditionMinimumRiskScore left, GooglePrivacyDlpV2PubSubConditionMinimumRiskScore right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2PubSubConditionMinimumRiskScore left, GooglePrivacyDlpV2PubSubConditionMinimumRiskScore right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2PubSubConditionMinimumRiskScore value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2PubSubConditionMinimumRiskScore other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2PubSubConditionMinimumRiskScore other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The minimum sensitivity level that triggers the condition.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore : IEquatable<GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore ProfileScoreBucketUnspecified { get; } = new GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("PROFILE_SCORE_BUCKET_UNSPECIFIED");
+        /// <summary>
+        /// High risk/sensitivity detected.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore High { get; } = new GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("HIGH");
+        /// <summary>
+        /// Medium or high risk/sensitivity detected.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore MediumOrHigh { get; } = new GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore("MEDIUM_OR_HIGH");
+
+        public static bool operator ==(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore left, GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore left, GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The operator to apply to the collection of conditions.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2PubSubExpressionsLogicalOperator : IEquatable<GooglePrivacyDlpV2PubSubExpressionsLogicalOperator>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2PubSubExpressionsLogicalOperator(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubExpressionsLogicalOperator LogicalOperatorUnspecified { get; } = new GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("LOGICAL_OPERATOR_UNSPECIFIED");
+        /// <summary>
+        /// Conditional OR.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubExpressionsLogicalOperator Or { get; } = new GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("OR");
+        /// <summary>
+        /// Conditional AND.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubExpressionsLogicalOperator And { get; } = new GooglePrivacyDlpV2PubSubExpressionsLogicalOperator("AND");
+
+        public static bool operator ==(GooglePrivacyDlpV2PubSubExpressionsLogicalOperator left, GooglePrivacyDlpV2PubSubExpressionsLogicalOperator right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2PubSubExpressionsLogicalOperator left, GooglePrivacyDlpV2PubSubExpressionsLogicalOperator right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2PubSubExpressionsLogicalOperator value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2PubSubExpressionsLogicalOperator other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2PubSubExpressionsLogicalOperator other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2PubSubNotificationDetailOfMessage : IEquatable<GooglePrivacyDlpV2PubSubNotificationDetailOfMessage>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2PubSubNotificationDetailOfMessage(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage DetailLevelUnspecified { get; } = new GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("DETAIL_LEVEL_UNSPECIFIED");
+        /// <summary>
+        /// The full table data profile.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage TableProfile { get; } = new GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("TABLE_PROFILE");
+        /// <summary>
+        /// The resource name of the table.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage ResourceName { get; } = new GooglePrivacyDlpV2PubSubNotificationDetailOfMessage("RESOURCE_NAME");
+
+        public static bool operator ==(GooglePrivacyDlpV2PubSubNotificationDetailOfMessage left, GooglePrivacyDlpV2PubSubNotificationDetailOfMessage right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2PubSubNotificationDetailOfMessage left, GooglePrivacyDlpV2PubSubNotificationDetailOfMessage right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2PubSubNotificationDetailOfMessage value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2PubSubNotificationDetailOfMessage other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2PubSubNotificationDetailOfMessage other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2PubSubNotificationEvent : IEquatable<GooglePrivacyDlpV2PubSubNotificationEvent>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2PubSubNotificationEvent(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationEvent EventTypeUnspecified { get; } = new GooglePrivacyDlpV2PubSubNotificationEvent("EVENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// New profile (not a re-profile).
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationEvent NewProfile { get; } = new GooglePrivacyDlpV2PubSubNotificationEvent("NEW_PROFILE");
+        /// <summary>
+        /// Changed one of the following profile metrics: * Table data risk score * Table sensitivity score * Table resource visibility * Table encryption type * Table predicted infoTypes * Table other infoTypes
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationEvent ChangedProfile { get; } = new GooglePrivacyDlpV2PubSubNotificationEvent("CHANGED_PROFILE");
+        /// <summary>
+        /// Table data risk score or sensitivity score increased.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationEvent ScoreIncreased { get; } = new GooglePrivacyDlpV2PubSubNotificationEvent("SCORE_INCREASED");
+        /// <summary>
+        /// A user (non-internal) error occurred.
+        /// </summary>
+        public static GooglePrivacyDlpV2PubSubNotificationEvent ErrorChanged { get; } = new GooglePrivacyDlpV2PubSubNotificationEvent("ERROR_CHANGED");
+
+        public static bool operator ==(GooglePrivacyDlpV2PubSubNotificationEvent left, GooglePrivacyDlpV2PubSubNotificationEvent right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2PubSubNotificationEvent left, GooglePrivacyDlpV2PubSubNotificationEvent right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2PubSubNotificationEvent value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2PubSubNotificationEvent other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2PubSubNotificationEvent other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

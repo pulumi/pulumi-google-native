@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// Headers that the Application Load Balancer should add to proxied responses.
         /// </summary>
         public readonly ImmutableArray<string> CustomResponseHeaders;
         /// <summary>

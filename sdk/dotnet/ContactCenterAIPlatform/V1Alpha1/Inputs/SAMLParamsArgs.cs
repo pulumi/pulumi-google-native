@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1.Inputs
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
+        /// IdP field that maps to the user’s email address
+        /// </summary>
+        [Input("emailMapping")]
+        public Input<string>? EmailMapping { get; set; }
+
+        /// <summary>
         /// Entity id URL
         /// </summary>
         [Input("entityId")]

@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+        /// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
         /// </summary>
         public readonly string StartTime;
 

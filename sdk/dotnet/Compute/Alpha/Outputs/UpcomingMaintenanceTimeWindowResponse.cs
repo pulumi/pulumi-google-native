@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
     /// <summary>
-    /// Represents a window of time using two timestamps: `earliest` and `latest`. This timestamp values are in RFC3339 text format.
+    /// Represents a window of time using two timestamps: `earliest` and `latest`.
     /// </summary>
     [OutputType]
     public sealed class UpcomingMaintenanceTimeWindowResponse

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string Count;
         /// <summary>
+        /// Ratio of the corresponding value in the field against the total number of rows in the scanned data.
+        /// </summary>
+        public readonly double Ratio;
+        /// <summary>
         /// String value of a top N non-null value.
         /// </summary>
         public readonly string Value;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         private GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse(
             string count,
 
+            double ratio,
+
             string value)
         {
             Count = count;
+            Ratio = ratio;
             Value = value;
         }
     }

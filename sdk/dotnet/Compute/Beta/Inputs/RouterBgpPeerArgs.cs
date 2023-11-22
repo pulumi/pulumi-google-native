@@ -79,6 +79,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Pulumi.GoogleNative.Compute.Beta.RouterBgpPeerEnable>? Enable { get; set; }
 
         /// <summary>
+        /// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        /// </summary>
+        [Input("enableIpv4")]
+        public Input<bool>? EnableIpv4 { get; set; }
+
+        /// <summary>
         /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         /// </summary>
         [Input("enableIpv6")]
@@ -95,6 +101,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the interface inside Google Cloud Platform.
+        /// </summary>
+        [Input("ipv4NexthopAddress")]
+        public Input<string>? Ipv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the interface inside Google Cloud Platform.
@@ -125,6 +137,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the BGP interface outside Google Cloud Platform.
+        /// </summary>
+        [Input("peerIpv4NexthopAddress")]
+        public Input<string>? PeerIpv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the BGP interface outside Google Cloud Platform.

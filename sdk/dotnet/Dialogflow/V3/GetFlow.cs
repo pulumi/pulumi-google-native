@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     public sealed class GetFlowResult
     {
         /// <summary>
+        /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse AdvancedSettings;
+        /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
         public readonly string Description;
@@ -88,6 +92,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EventHandlerResponse> EventHandlers;
         /// <summary>
+        /// Optional. Knowledge connector configuration.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse KnowledgeConnectorSettings;
+        /// <summary>
         /// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
         /// </summary>
         public readonly string Name;
@@ -96,7 +104,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3NluSettingsResponse NluSettings;
         /// <summary>
-        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         public readonly ImmutableArray<string> TransitionRouteGroups;
         /// <summary>
@@ -106,11 +114,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
         [OutputConstructor]
         private GetFlowResult(
+            Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse advancedSettings,
+
             string description,
 
             string displayName,
 
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EventHandlerResponse> eventHandlers,
+
+            Outputs.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse knowledgeConnectorSettings,
 
             string name,
 
@@ -120,9 +132,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3TransitionRouteResponse> transitionRoutes)
         {
+            AdvancedSettings = advancedSettings;
             Description = description;
             DisplayName = displayName;
             EventHandlers = eventHandlers;
+            KnowledgeConnectorSettings = knowledgeConnectorSettings;
             Name = name;
             NluSettings = nluSettings;
             TransitionRouteGroups = transitionRouteGroups;

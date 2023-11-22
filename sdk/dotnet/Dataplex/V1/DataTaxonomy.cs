@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<int> AttributeCount { get; private set; } = null!;
 
         /// <summary>
+        /// The number of classes in the DataTaxonomy.
+        /// </summary>
+        [Output("classCount")]
+        public Output<int> ClassCount { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the DataTaxonomy was created.
         /// </summary>
         [Output("createTime")]

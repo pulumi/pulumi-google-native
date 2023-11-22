@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.AppliedLicenseResponse AppliedLicense;
         /// <summary>
-        /// The VM Boot Option, as set in the source vm.
+        /// The VM Boot Option, as set in the source VM.
         /// </summary>
         public readonly string BootOption;
         /// <summary>
@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         /// <summary>
-        /// A map of network tags to associate with the VM.
+        /// A list of network tags to associate with the VM.
         /// </summary>
         public readonly ImmutableArray<string> NetworkTags;
         /// <summary>

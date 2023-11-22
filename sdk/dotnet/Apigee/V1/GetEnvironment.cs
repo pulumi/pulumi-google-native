@@ -81,6 +81,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
         /// </summary>
         public readonly string ForwardProxyUri;
+        public readonly bool HasAttachedFlowHooks;
         /// <summary>
         /// Last modification time of this environment as milliseconds since epoch.
         /// </summary>
@@ -101,6 +102,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// State of the environment. Values other than ACTIVE means the resource is not ready to use.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Optional. EnvironmentType selected for the environment.
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetEnvironmentResult(
@@ -116,6 +121,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string forwardProxyUri,
 
+            bool hasAttachedFlowHooks,
+
             string lastModifiedAt,
 
             string name,
@@ -124,7 +131,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             Outputs.GoogleCloudApigeeV1PropertiesResponse properties,
 
-            string state)
+            string state,
+
+            string type)
         {
             ApiProxyType = apiProxyType;
             CreatedAt = createdAt;
@@ -132,11 +141,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
             Description = description;
             DisplayName = displayName;
             ForwardProxyUri = forwardProxyUri;
+            HasAttachedFlowHooks = hasAttachedFlowHooks;
             LastModifiedAt = lastModifiedAt;
             Name = name;
             NodeConfig = nodeConfig;
             Properties = properties;
             State = state;
+            Type = type;
         }
     }
 }

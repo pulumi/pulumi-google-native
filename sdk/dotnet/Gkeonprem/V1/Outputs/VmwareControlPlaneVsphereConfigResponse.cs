@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
         /// The Vsphere datastore used by the control plane Node.
         /// </summary>
         public readonly string Datastore;
+        /// <summary>
+        /// The Vsphere storage policy used by the control plane Node.
+        /// </summary>
+        public readonly string StoragePolicyName;
 
         [OutputConstructor]
-        private VmwareControlPlaneVsphereConfigResponse(string datastore)
+        private VmwareControlPlaneVsphereConfigResponse(
+            string datastore,
+
+            string storagePolicyName)
         {
             Datastore = datastore;
+            StoragePolicyName = storagePolicyName;
         }
     }
 }

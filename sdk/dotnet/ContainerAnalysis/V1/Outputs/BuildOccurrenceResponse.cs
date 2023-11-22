@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     public sealed class BuildOccurrenceResponse
     {
         /// <summary>
+        /// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
+        /// </summary>
+        public readonly Outputs.InTotoSlsaProvenanceV1Response InTotoSlsaProvenanceV1;
+        /// <summary>
         /// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         /// </summary>
         public readonly Outputs.InTotoProvenanceResponse IntotoProvenance;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
         [OutputConstructor]
         private BuildOccurrenceResponse(
+            Outputs.InTotoSlsaProvenanceV1Response inTotoSlsaProvenanceV1,
+
             Outputs.InTotoProvenanceResponse intotoProvenance,
 
             Outputs.InTotoStatementResponse intotoStatement,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
             string provenanceBytes)
         {
+            InTotoSlsaProvenanceV1 = inTotoSlsaProvenanceV1;
             IntotoProvenance = intotoProvenance;
             IntotoStatement = intotoStatement;
             Provenance = provenance;

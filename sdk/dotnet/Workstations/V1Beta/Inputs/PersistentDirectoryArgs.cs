@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         public Input<Inputs.GceRegionalPersistentDiskArgs>? GcePd { get; set; }
 
         /// <summary>
-        /// Location of this directory in the running workstation.
+        /// Optional. Location of this directory in the running workstation.
         /// </summary>
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }

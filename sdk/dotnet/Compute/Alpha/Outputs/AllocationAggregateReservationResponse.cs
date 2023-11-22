@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The VM family that all instances scheduled against this reservation must belong to.
         /// </summary>
         public readonly string VmFamily;
+        /// <summary>
+        /// The workload type of the instances that will target this reservation.
+        /// </summary>
+        public readonly string WorkloadType;
 
         [OutputConstructor]
         private AllocationAggregateReservationResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<Outputs.AllocationAggregateReservationReservedResourceInfoResponse> reservedResources,
 
-            string vmFamily)
+            string vmFamily,
+
+            string workloadType)
         {
             InUseResources = inUseResources;
             ReservedResources = reservedResources;
             VmFamily = vmFamily;
+            WorkloadType = workloadType;
         }
     }
 }

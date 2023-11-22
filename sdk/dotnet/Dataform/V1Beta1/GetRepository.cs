@@ -64,9 +64,17 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public sealed class GetRepositoryResult
     {
         /// <summary>
+        /// Optional. The repository's user-friendly name.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// Optional. If set, configures this repository to be linked to a Git remote.
         /// </summary>
         public readonly Outputs.GitRemoteSettingsResponse GitRemoteSettings;
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The repository's name.
         /// </summary>
@@ -76,23 +84,43 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly string NpmrcEnvironmentVariablesSecretVersion;
         /// <summary>
+        /// Optional. The service account to run workflow invocations under.
+        /// </summary>
+        public readonly string ServiceAccount;
+        /// <summary>
+        /// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+        /// </summary>
+        public readonly bool SetAuthenticatedUserAdmin;
+        /// <summary>
         /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
         /// </summary>
         public readonly Outputs.WorkspaceCompilationOverridesResponse WorkspaceCompilationOverrides;
 
         [OutputConstructor]
         private GetRepositoryResult(
+            string displayName,
+
             Outputs.GitRemoteSettingsResponse gitRemoteSettings,
+
+            ImmutableDictionary<string, string> labels,
 
             string name,
 
             string npmrcEnvironmentVariablesSecretVersion,
 
+            string serviceAccount,
+
+            bool setAuthenticatedUserAdmin,
+
             Outputs.WorkspaceCompilationOverridesResponse workspaceCompilationOverrides)
         {
+            DisplayName = displayName;
             GitRemoteSettings = gitRemoteSettings;
+            Labels = labels;
             Name = name;
             NpmrcEnvironmentVariablesSecretVersion = npmrcEnvironmentVariablesSecretVersion;
+            ServiceAccount = serviceAccount;
+            SetAuthenticatedUserAdmin = setAuthenticatedUserAdmin;
             WorkspaceCompilationOverrides = workspaceCompilationOverrides;
         }
     }

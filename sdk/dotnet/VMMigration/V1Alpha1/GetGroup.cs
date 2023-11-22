@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Immutable. The target type of this group.
+        /// </summary>
+        public readonly string MigrationTargetType;
+        /// <summary>
         /// The Group name.
         /// </summary>
         public readonly string Name;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             string displayName,
 
+            string migrationTargetType,
+
             string name,
 
             string updateTime)
@@ -99,6 +105,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
             CreateTime = createTime;
             Description = description;
             DisplayName = displayName;
+            MigrationTargetType = migrationTargetType;
             Name = name;
             UpdateTime = updateTime;
         }

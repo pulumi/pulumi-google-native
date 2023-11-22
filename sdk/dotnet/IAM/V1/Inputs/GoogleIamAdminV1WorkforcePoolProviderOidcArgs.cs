@@ -22,10 +22,22 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
         public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
+        /// The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        /// </summary>
+        [Input("clientSecret")]
+        public Input<Inputs.GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretArgs>? ClientSecret { get; set; }
+
+        /// <summary>
         /// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         /// </summary>
         [Input("issuerUri", required: true)]
         public Input<string> IssuerUri { get; set; } = null!;
+
+        /// <summary>
+        /// OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
+        /// </summary>
+        [Input("jwksJson")]
+        public Input<string>? JwksJson { get; set; }
 
         /// <summary>
         /// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.

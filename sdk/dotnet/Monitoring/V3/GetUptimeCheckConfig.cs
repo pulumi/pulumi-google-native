@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public readonly Outputs.MonitoredResourceResponse MonitoredResource;
         /// <summary>
-        /// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        /// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -101,6 +101,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         /// </summary>
         public readonly ImmutableArray<string> SelectedRegions;
+        /// <summary>
+        /// Specifies a Synthetic Monitor to invoke.
+        /// </summary>
+        public readonly Outputs.SyntheticMonitorTargetResponse SyntheticMonitor;
         /// <summary>
         /// Contains information needed to make a TCP check.
         /// </summary>
@@ -138,6 +142,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
             ImmutableArray<string> selectedRegions,
 
+            Outputs.SyntheticMonitorTargetResponse syntheticMonitor,
+
             Outputs.TcpCheckResponse tcpCheck,
 
             string timeout,
@@ -155,6 +161,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
             Period = period;
             ResourceGroup = resourceGroup;
             SelectedRegions = selectedRegions;
+            SyntheticMonitor = syntheticMonitor;
             TcpCheck = tcpCheck;
             Timeout = timeout;
             UserLabels = userLabels;

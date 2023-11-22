@@ -23,7 +23,13 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<Outputs.BestEffortResponse> BestEffort { get; private set; } = null!;
 
         /// <summary>
-        /// The Guaranteed tier
+        /// The time when the QueuedResource was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The Guaranteed tier.
         /// </summary>
         [Output("guaranteed")]
         public Output<Outputs.GuaranteedResponse> Guaranteed { get; private set; } = null!;
@@ -63,6 +69,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         [Output("reservationName")]
         public Output<string> ReservationName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The Spot tier.
+        /// </summary>
+        [Output("spot")]
+        public Output<Outputs.SpotResponse> Spot { get; private set; } = null!;
 
         /// <summary>
         /// State of the QueuedResource request.
@@ -133,7 +145,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Input<Inputs.BestEffortArgs>? BestEffort { get; set; }
 
         /// <summary>
-        /// The Guaranteed tier
+        /// The Guaranteed tier.
         /// </summary>
         [Input("guaranteed")]
         public Input<Inputs.GuaranteedArgs>? Guaranteed { get; set; }
@@ -167,6 +179,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         [Input("reservationName")]
         public Input<string>? ReservationName { get; set; }
+
+        /// <summary>
+        /// Optional. The Spot tier.
+        /// </summary>
+        [Input("spot")]
+        public Input<Inputs.SpotArgs>? Spot { get; set; }
 
         /// <summary>
         /// Defines a TPU resource.

@@ -24,6 +24,12 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The Cloud Storage bucket name for custom rules.
+        /// </summary>
+        [Output("customRulesBucket")]
+        public Output<string> CustomRulesBucket { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the Evaluation
         /// </summary>
         [Output("description")]
@@ -84,7 +90,7 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         public Output<ImmutableArray<string>> RuleVersions { get; private set; } = null!;
 
         /// <summary>
-        /// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        /// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
@@ -147,6 +153,12 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
     public sealed class EvaluationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The Cloud Storage bucket name for custom rules.
+        /// </summary>
+        [Input("customRulesBucket")]
+        public Input<string>? CustomRulesBucket { get; set; }
+
+        /// <summary>
         /// Description of the Evaluation
         /// </summary>
         [Input("description")]
@@ -207,7 +219,7 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         }
 
         /// <summary>
-        /// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        /// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }

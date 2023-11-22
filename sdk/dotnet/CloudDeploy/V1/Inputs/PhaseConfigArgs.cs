@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         [Input("phaseId", required: true)]
         public Input<string> PhaseId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+        /// </summary>
+        [Input("postdeploy")]
+        public Input<Inputs.PostdeployArgs>? Postdeploy { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+        /// </summary>
+        [Input("predeploy")]
+        public Input<Inputs.PredeployArgs>? Predeploy { get; set; }
+
         [Input("profiles")]
         private InputList<string>? _profiles;
 

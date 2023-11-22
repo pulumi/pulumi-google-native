@@ -135,6 +135,47 @@ namespace Pulumi.GoogleNative.Firestore.V1
     }
 
     /// <summary>
+    /// Whether to enable the PITR feature on this database.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatabasePointInTimeRecoveryEnablement : IEquatable<DatabasePointInTimeRecoveryEnablement>
+    {
+        private readonly string _value;
+
+        private DatabasePointInTimeRecoveryEnablement(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not used.
+        /// </summary>
+        public static DatabasePointInTimeRecoveryEnablement PointInTimeRecoveryEnablementUnspecified { get; } = new DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED");
+        /// <summary>
+        /// Reads are supported on selected versions of the data from within the past 7 days: * Reads against any timestamp within the past hour * Reads against 1-minute snapshots beyond 1 hour and within 7 days `version_retention_period` and `earliest_version_time` can be used to determine the supported versions.
+        /// </summary>
+        public static DatabasePointInTimeRecoveryEnablement PointInTimeRecoveryEnabled { get; } = new DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLED");
+        /// <summary>
+        /// Reads are supported on any version of the data from within the past 1 hour.
+        /// </summary>
+        public static DatabasePointInTimeRecoveryEnablement PointInTimeRecoveryDisabled { get; } = new DatabasePointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_DISABLED");
+
+        public static bool operator ==(DatabasePointInTimeRecoveryEnablement left, DatabasePointInTimeRecoveryEnablement right) => left.Equals(right);
+        public static bool operator !=(DatabasePointInTimeRecoveryEnablement left, DatabasePointInTimeRecoveryEnablement right) => !left.Equals(right);
+
+        public static explicit operator string(DatabasePointInTimeRecoveryEnablement value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatabasePointInTimeRecoveryEnablement other && Equals(other);
+        public bool Equals(DatabasePointInTimeRecoveryEnablement other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
     /// </summary>
     [EnumType]
@@ -328,7 +369,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         }
 
         /// <summary>
-        /// The index can be used by both Firestore Native and Firestore in Datastore Mode query API. This is the default.
+        /// The index can only be used by the Firestore Native query API. This is the default.
         /// </summary>
         public static IndexApiScope AnyApi { get; } = new IndexApiScope("ANY_API");
         /// <summary>

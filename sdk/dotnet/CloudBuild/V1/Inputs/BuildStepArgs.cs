@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         }
 
         /// <summary>
+        /// Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+        /// </summary>
+        [Input("automapSubstitutions")]
+        public Input<bool>? AutomapSubstitutions { get; set; }
+
+        /// <summary>
         /// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         /// </summary>
         [Input("dir")]

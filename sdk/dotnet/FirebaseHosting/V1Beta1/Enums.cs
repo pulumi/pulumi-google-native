@@ -8,6 +8,55 @@ using Pulumi;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
     /// <summary>
+    /// A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
+    /// </summary>
+    [EnumType]
+    public readonly struct CustomDomainCertPreference : IEquatable<CustomDomainCertPreference>
+    {
+        private readonly string _value;
+
+        private CustomDomainCertPreference(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The certificate's type is unspecified. The message is invalid if this is unspecified.
+        /// </summary>
+        public static CustomDomainCertPreference TypeUnspecified { get; } = new CustomDomainCertPreference("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A short-lived certificate type that covers a domain name temporarily, while Hosting creates a more permanent certificate.
+        /// </summary>
+        public static CustomDomainCertPreference Temporary { get; } = new CustomDomainCertPreference("TEMPORARY");
+        /// <summary>
+        /// The standard certificate for Spark plan custom domains.
+        /// </summary>
+        public static CustomDomainCertPreference Grouped { get; } = new CustomDomainCertPreference("GROUPED");
+        /// <summary>
+        /// Blaze plan only. A certificate that covers from 1 to 100 domain names with custom domains on the same Firebase project.
+        /// </summary>
+        public static CustomDomainCertPreference ProjectGrouped { get; } = new CustomDomainCertPreference("PROJECT_GROUPED");
+        /// <summary>
+        /// Blaze plan only. A certificate that covers a single domain name.
+        /// </summary>
+        public static CustomDomainCertPreference Dedicated { get; } = new CustomDomainCertPreference("DEDICATED");
+
+        public static bool operator ==(CustomDomainCertPreference left, CustomDomainCertPreference right) => left.Equals(right);
+        public static bool operator !=(CustomDomainCertPreference left, CustomDomainCertPreference right) => !left.Equals(right);
+
+        public static explicit operator string(CustomDomainCertPreference value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CustomDomainCertPreference other && Equals(other);
+        public bool Equals(CustomDomainCertPreference other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The redirect status code.
     /// </summary>
     [EnumType]

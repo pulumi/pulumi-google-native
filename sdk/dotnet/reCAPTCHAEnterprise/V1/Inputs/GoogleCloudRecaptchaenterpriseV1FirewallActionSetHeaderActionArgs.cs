@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     public sealed class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The header key to set in the request to the backend server.
+        /// Optional. The header key to set in the request to the backend server.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The header value to set in the request to the backend server.
+        /// Optional. The header value to set in the request to the backend server.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

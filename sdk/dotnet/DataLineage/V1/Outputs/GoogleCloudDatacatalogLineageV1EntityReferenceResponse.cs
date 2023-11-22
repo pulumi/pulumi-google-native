@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1.Outputs
     public sealed class GoogleCloudDatacatalogLineageV1EntityReferenceResponse
     {
         /// <summary>
-        /// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+        /// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
         /// </summary>
         public readonly string FullyQualifiedName;
 

@@ -64,10 +64,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> DownloadBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Output("enableConfidentialCompute")]
+        public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
+
+        /// <summary>
         /// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Output("guestFlush")]
         public Output<bool> GuestFlush { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// </summary>
+        [Output("guestOsFeatures")]
+        public Output<ImmutableArray<Outputs.GuestOsFeatureResponse>> GuestOsFeatures { get; private set; } = null!;
 
         /// <summary>
         /// Type of the resource. Always compute#snapshot for Snapshot resources.
@@ -157,6 +169,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        [Output("sourceDiskForRecoveryCheckpoint")]
+        public Output<string> SourceDiskForRecoveryCheckpoint { get; private set; } = null!;
+
+        /// <summary>
         /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         [Output("sourceDiskId")]
@@ -167,6 +185,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("sourceInstantSnapshot")]
         public Output<string> SourceInstantSnapshot { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        /// </summary>
+        [Output("sourceInstantSnapshotEncryptionKey")]
+        public Output<Outputs.CustomerEncryptionKeyResponse> SourceInstantSnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
@@ -278,6 +302,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
+        /// <summary>
         /// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Input("guestFlush")]
@@ -341,10 +371,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
 
         /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        [Input("sourceDiskForRecoveryCheckpoint")]
+        public Input<string>? SourceDiskForRecoveryCheckpoint { get; set; }
+
+        /// <summary>
         /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         /// </summary>
         [Input("sourceInstantSnapshot")]
         public Input<string>? SourceInstantSnapshot { get; set; }
+
+        /// <summary>
+        /// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        /// </summary>
+        [Input("sourceInstantSnapshotEncryptionKey")]
+        public Input<Inputs.CustomerEncryptionKeyArgs>? SourceInstantSnapshotEncryptionKey { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

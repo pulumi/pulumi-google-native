@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     public sealed class ChartOptionsResponse
     {
         /// <summary>
+        /// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+        /// </summary>
+        public readonly bool DisplayHorizontal;
+        /// <summary>
         /// The chart mode.
         /// </summary>
         public readonly string Mode;
 
         [OutputConstructor]
-        private ChartOptionsResponse(string mode)
+        private ChartOptionsResponse(
+            bool displayHorizontal,
+
+            string mode)
         {
+            DisplayHorizontal = displayHorizontal;
             Mode = mode;
         }
     }

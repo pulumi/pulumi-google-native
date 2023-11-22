@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+        /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
         /// </summary>
         public readonly string IpCidrRange;
         /// <summary>

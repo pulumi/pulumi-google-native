@@ -122,13 +122,19 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<Outputs.FlexibleRuntimeSettingsResponse> FlexibleRuntimeSettings { get; private set; } = null!;
 
         /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+        /// </summary>
+        [Output("generatedCustomerMetadata")]
+        public Output<ImmutableDictionary<string, string>> GeneratedCustomerMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         /// </summary>
         [Output("handlers")]
         public Output<ImmutableArray<Outputs.UrlMapResponse>> Handlers { get; private set; } = null!;
 
         /// <summary>
-        /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         /// </summary>
         [Output("healthCheck")]
         public Output<Outputs.HealthCheckResponse> HealthCheck { get; private set; } = null!;
@@ -152,7 +158,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<ImmutableArray<Outputs.LibraryResponse>> Libraries { get; private set; } = null!;
 
         /// <summary>
-        /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         /// </summary>
         [Output("livenessCheck")]
         public Output<Outputs.LivenessCheckResponse> LivenessCheck { get; private set; } = null!;
@@ -182,7 +188,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<string> NobuildFilesRegex { get; private set; } = null!;
 
         /// <summary>
-        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         /// </summary>
         [Output("readinessCheck")]
         public Output<Outputs.ReadinessCheckResponse> ReadinessCheck { get; private set; } = null!;
@@ -423,6 +429,18 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         [Input("flexibleRuntimeSettings")]
         public Input<Inputs.FlexibleRuntimeSettingsArgs>? FlexibleRuntimeSettings { get; set; }
 
+        [Input("generatedCustomerMetadata")]
+        private InputMap<string>? _generatedCustomerMetadata;
+
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+        /// </summary>
+        public InputMap<string> GeneratedCustomerMetadata
+        {
+            get => _generatedCustomerMetadata ?? (_generatedCustomerMetadata = new InputMap<string>());
+            set => _generatedCustomerMetadata = value;
+        }
+
         [Input("handlers")]
         private InputList<Inputs.UrlMapArgs>? _handlers;
 
@@ -436,7 +454,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         }
 
         /// <summary>
-        /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.HealthCheckArgs>? HealthCheck { get; set; }
@@ -478,7 +496,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         }
 
         /// <summary>
-        /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
         /// </summary>
         [Input("livenessCheck")]
         public Input<Inputs.LivenessCheckArgs>? LivenessCheck { get; set; }
@@ -502,7 +520,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Input<string>? NobuildFilesRegex { get; set; }
 
         /// <summary>
-        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         /// </summary>
         [Input("readinessCheck")]
         public Input<Inputs.ReadinessCheckArgs>? ReadinessCheck { get; set; }

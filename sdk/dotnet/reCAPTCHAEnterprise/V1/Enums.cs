@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
 {
     /// <summary>
-    /// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+    /// Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge : IEquatable<GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge>
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
     }
 
     /// <summary>
-    /// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+    /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference : IEquatable<GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference>

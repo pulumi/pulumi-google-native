@@ -17,27 +17,27 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class ContainerResponse
     {
         /// <summary>
-        /// Arguments passed to the entrypoint.
+        /// Optional. Arguments passed to the entrypoint.
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// If set, overrides the default ENTRYPOINT specified by the image.
+        /// Optional. If set, overrides the default ENTRYPOINT specified by the image.
         /// </summary>
         public readonly ImmutableArray<string> Command;
         /// <summary>
-        /// Environment variables passed to the container's entrypoint.
+        /// Optional. Environment variables passed to the container's entrypoint.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Env;
         /// <summary>
-        /// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
+        /// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// If set, overrides the USER specified in the image with the given uid.
+        /// Optional. If set, overrides the USER specified in the image with the given uid.
         /// </summary>
         public readonly int RunAsUser;
         /// <summary>
-        /// If set, overrides the default DIR specified by the image.
+        /// Optional. If set, overrides the default DIR specified by the image.
         /// </summary>
         public readonly string WorkingDir;
 

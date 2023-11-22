@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> RedactionStrategy { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+        /// </summary>
+        [Output("retentionStrategy")]
+        public Output<string> RetentionStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
         /// </summary>
         [Output("retentionWindowDays")]
@@ -196,6 +202,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Input("redactionStrategy")]
         public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.SecuritySettingRedactionStrategy>? RedactionStrategy { get; set; }
+
+        /// <summary>
+        /// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+        /// </summary>
+        [Input("retentionStrategy")]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.SecuritySettingRetentionStrategy>? RetentionStrategy { get; set; }
 
         /// <summary>
         /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.

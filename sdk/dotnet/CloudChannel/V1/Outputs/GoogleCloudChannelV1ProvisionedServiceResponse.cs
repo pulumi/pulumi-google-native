@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
         /// </summary>
         public readonly string ProductId;
         /// <summary>
-        /// Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount."
+        /// Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.
         /// </summary>
         public readonly string ProvisioningId;
         /// <summary>

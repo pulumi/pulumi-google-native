@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<Outputs.DatabaseEngineInfoResponse> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// The display name for the workspace.
+        /// Optional. The display name for the workspace.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        /// Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         /// </summary>
         [Output("globalSettings")]
         public Output<ImmutableDictionary<string, string>> GlobalSettings { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<Inputs.DatabaseEngineInfoArgs> Destination { get; set; } = null!;
 
         /// <summary>
-        /// The display name for the workspace.
+        /// Optional. The display name for the workspace.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         private InputMap<string>? _globalSettings;
 
         /// <summary>
-        /// A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        /// Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         /// </summary>
         public InputMap<string> GlobalSettings
         {

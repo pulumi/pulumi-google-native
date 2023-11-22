@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// </summary>
         public readonly int Height;
         /// <summary>
-        /// Encoding mime type for the image.
+        /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
         /// </summary>
         public readonly string MimeType;
         /// <summary>

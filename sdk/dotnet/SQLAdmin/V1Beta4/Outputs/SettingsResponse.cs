@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly bool CrashSafeReplicationEnabled;
         /// <summary>
+        /// Configuration for data cache.
+        /// </summary>
+        public readonly Outputs.DataCacheConfigResponse DataCacheConfig;
+        /// <summary>
         /// The size of data disk, in GB. The data disk size minimum is 10GB.
         /// </summary>
         public readonly string DataDiskSizeGb;
@@ -76,6 +80,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// Deny maintenance periods
         /// </summary>
         public readonly ImmutableArray<Outputs.DenyMaintenancePeriodResponse> DenyMaintenancePeriods;
+        /// <summary>
+        /// Optional. The edition of the instance.
+        /// </summary>
+        public readonly string Edition;
         /// <summary>
         /// Insights configuration, for now relevant only for Postgres.
         /// </summary>
@@ -157,6 +165,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             bool crashSafeReplicationEnabled,
 
+            Outputs.DataCacheConfigResponse dataCacheConfig,
+
             string dataDiskSizeGb,
 
             string dataDiskType,
@@ -168,6 +178,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
             bool deletionProtectionEnabled,
 
             ImmutableArray<Outputs.DenyMaintenancePeriodResponse> denyMaintenancePeriods,
+
+            string edition,
 
             Outputs.InsightsConfigResponse insightsConfig,
 
@@ -208,12 +220,14 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
             CrashSafeReplicationEnabled = crashSafeReplicationEnabled;
+            DataCacheConfig = dataCacheConfig;
             DataDiskSizeGb = dataDiskSizeGb;
             DataDiskType = dataDiskType;
             DatabaseFlags = databaseFlags;
             DatabaseReplicationEnabled = databaseReplicationEnabled;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriods = denyMaintenancePeriods;
+            Edition = edition;
             InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;
             Kind = kind;

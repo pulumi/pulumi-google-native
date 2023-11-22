@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string FieldDelimiter;
         /// <summary>
+        /// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        /// </summary>
+        public readonly string FileSetSpecType;
+        /// <summary>
         /// [Optional] Options to configure hive partitioning support.
         /// </summary>
         public readonly Outputs.HivePartitioningOptionsResponse HivePartitioningOptions;
@@ -178,6 +182,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string fieldDelimiter,
 
+            string fileSetSpecType,
+
             Outputs.HivePartitioningOptionsResponse hivePartitioningOptions,
 
             bool ignoreUnknownValues,
@@ -233,6 +239,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             DestinationTableProperties = destinationTableProperties;
             Encoding = encoding;
             FieldDelimiter = fieldDelimiter;
+            FileSetSpecType = fileSetSpecType;
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
             JsonExtension = jsonExtension;

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
+        /// Optional. SSL configuration for the Oracle connection.
+        /// </summary>
+        [Input("oracleSslConfig")]
+        public Input<Inputs.OracleSslConfigArgs>? OracleSslConfig { get; set; }
+
+        /// <summary>
         /// Password for the Oracle connection.
         /// </summary>
         [Input("password", required: true)]

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class PublicAdvertisedPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The version of BYOIP API.
+        /// </summary>
+        [Output("byoipApiVersion")]
+        public Output<string> ByoipApiVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -28,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address to be used for reverse DNS verification.
+        /// The address to be used for reverse DNS verification.
         /// </summary>
         [Output("dnsVerificationIp")]
         public Output<string> DnsVerificationIp { get; private set; } = null!;
@@ -40,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -56,6 +62,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+        /// </summary>
+        [Output("pdpScope")]
+        public Output<string> PdpScope { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -146,13 +158,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IPv4 address to be used for reverse DNS verification.
+        /// The address to be used for reverse DNS verification.
         /// </summary>
         [Input("dnsVerificationIp")]
         public Input<string>? DnsVerificationIp { get; set; }
 
         /// <summary>
-        /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        /// The address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -162,6 +174,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+        /// </summary>
+        [Input("pdpScope")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.PublicAdvertisedPrefixPdpScope>? PdpScope { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

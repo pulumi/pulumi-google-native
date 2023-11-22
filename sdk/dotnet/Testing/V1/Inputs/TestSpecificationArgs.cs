@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<bool>? DisableVideoRecording { get; set; }
 
         /// <summary>
+        /// An iOS Robo test.
+        /// </summary>
+        [Input("iosRoboTest")]
+        public Input<Inputs.IosRoboTestArgs>? IosRoboTest { get; set; }
+
+        /// <summary>
         /// An iOS application with a test loop.
         /// </summary>
         [Input("iosTestLoop")]

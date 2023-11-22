@@ -44,6 +44,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The target type of this group.
+        /// </summary>
+        [Output("migrationTargetType")]
+        public Output<string> MigrationTargetType { get; private set; } = null!;
+
+        /// <summary>
         /// The Group name.
         /// </summary>
         [Output("name")]
@@ -135,6 +141,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Immutable. The target type of this group.
+        /// </summary>
+        [Input("migrationTargetType")]
+        public Input<Pulumi.GoogleNative.VMMigration.V1Alpha1.GroupMigrationTargetType>? MigrationTargetType { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

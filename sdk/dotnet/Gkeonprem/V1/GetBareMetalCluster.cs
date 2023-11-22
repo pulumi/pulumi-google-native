@@ -86,6 +86,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         public readonly string BareMetalVersion;
         /// <summary>
+        /// Binary Authorization related configurations.
+        /// </summary>
+        public readonly Outputs.BinaryAuthorizationResponse BinaryAuthorization;
+        /// <summary>
         /// Cluster operations configuration.
         /// </summary>
         public readonly Outputs.BareMetalClusterOperationsConfigResponse ClusterOperations;
@@ -186,6 +190,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
+        /// The cluster upgrade policy.
+        /// </summary>
+        public readonly Outputs.BareMetalClusterUpgradePolicyResponse UpgradePolicy;
+        /// <summary>
         /// The result of the preflight check.
         /// </summary>
         public readonly Outputs.ValidationCheckResponse ValidationCheck;
@@ -199,6 +207,8 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
             ImmutableDictionary<string, string> annotations,
 
             string bareMetalVersion,
+
+            Outputs.BinaryAuthorizationResponse binaryAuthorization,
 
             Outputs.BareMetalClusterOperationsConfigResponse clusterOperations,
 
@@ -250,12 +260,15 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
             string updateTime,
 
+            Outputs.BareMetalClusterUpgradePolicyResponse upgradePolicy,
+
             Outputs.ValidationCheckResponse validationCheck)
         {
             AdminClusterMembership = adminClusterMembership;
             AdminClusterName = adminClusterName;
             Annotations = annotations;
             BareMetalVersion = bareMetalVersion;
+            BinaryAuthorization = binaryAuthorization;
             ClusterOperations = clusterOperations;
             ControlPlane = controlPlane;
             CreateTime = createTime;
@@ -281,6 +294,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
             Storage = storage;
             Uid = uid;
             UpdateTime = updateTime;
+            UpgradePolicy = upgradePolicy;
             ValidationCheck = validationCheck;
         }
     }

@@ -10,10 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// The representation of a SQL STRUCT type.
+    /// </summary>
     public sealed class StandardSqlStructTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<Inputs.StandardSqlFieldArgs>? _fields;
+
+        /// <summary>
+        /// Fields within the struct.
+        /// </summary>
         public InputList<Inputs.StandardSqlFieldArgs> Fields
         {
             get => _fields ?? (_fields = new InputList<Inputs.StandardSqlFieldArgs>());

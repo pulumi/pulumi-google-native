@@ -17,9 +17,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentResponse
     {
         /// <summary>
+        /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse AdvancedSettings;
+        /// <summary>
         /// Conditional cases for this fulfillment.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse> ConditionalCases;
+        /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        /// </summary>
+        public readonly bool EnableGenerativeFallback;
         /// <summary>
         /// The list of rich message responses to present to the user.
         /// </summary>
@@ -43,7 +51,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3beta1FulfillmentResponse(
+            Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse advancedSettings,
+
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse> conditionalCases,
+
+            bool enableGenerativeFallback,
 
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageResponse> messages,
 
@@ -55,7 +67,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             string webhook)
         {
+            AdvancedSettings = advancedSettings;
             ConditionalCases = conditionalCases;
+            EnableGenerativeFallback = enableGenerativeFallback;
             Messages = messages;
             ReturnPartialResponses = returnPartialResponses;
             SetParameterActions = setParameterActions;

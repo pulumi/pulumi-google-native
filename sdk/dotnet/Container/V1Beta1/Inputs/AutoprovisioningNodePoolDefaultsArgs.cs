@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<string>? ImageType { get; set; }
 
         /// <summary>
+        /// Enable or disable Kubelet read only port.
+        /// </summary>
+        [Input("insecureKubeletReadonlyPortEnabled")]
+        public Input<bool>? InsecureKubeletReadonlyPortEnabled { get; set; }
+
+        /// <summary>
         /// NodeManagement configuration for this NodePool.
         /// </summary>
         [Input("management")]

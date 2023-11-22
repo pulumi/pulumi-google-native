@@ -22,6 +22,18 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+        /// </summary>
+        [Input("terminalStorageClass")]
+        public Input<string>? TerminalStorageClass { get; set; }
+
+        /// <summary>
+        /// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+        /// </summary>
+        [Input("terminalStorageClassUpdateTime")]
+        public Input<string>? TerminalStorageClassUpdateTime { get; set; }
+
+        /// <summary>
         /// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
         /// </summary>
         [Input("toggleTime")]

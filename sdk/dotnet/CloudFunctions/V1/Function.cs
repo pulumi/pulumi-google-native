@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> DockerRepository { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        /// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         /// </summary>
         [Output("entryPoint")]
         public Output<string> EntryPoint { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        /// Deprecated: use vpc_connector
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Input<string>? DockerRepository { get; set; }
 
         /// <summary>
-        /// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        /// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         /// </summary>
         [Input("entryPoint")]
         public Input<string>? EntryPoint { get; set; }
@@ -387,7 +387,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        /// Deprecated: use vpc_connector
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

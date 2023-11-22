@@ -76,27 +76,27 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
     public sealed class GetWorkstationResult
     {
         /// <summary>
-        /// Client-specified annotations.
+        /// Optional. Client-specified annotations.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// Time when this resource was created.
+        /// Time when this workstation was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Time when this resource was soft-deleted.
+        /// Time when this workstation was soft-deleted.
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
-        /// Human-readable name for this resource.
+        /// Optional. Human-readable name for this workstation.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Environment variables passed to the workstation container's entrypoint.
+        /// Optional. Environment variables passed to the workstation container's entrypoint.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Env;
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -104,27 +104,31 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Full name of this resource.
+        /// Identifier. Full name of this workstation.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Indicates whether this resource is currently being updated to match its intended state.
+        /// Indicates whether this workstation is currently being updated to match its intended state.
         /// </summary>
         public readonly bool Reconciling;
+        /// <summary>
+        /// Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
+        /// </summary>
+        public readonly string StartTime;
         /// <summary>
         /// Current state of the workstation.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// A system-assigned unique identified for this resource.
+        /// A system-assigned unique identifier for this workstation.
         /// </summary>
         public readonly string Uid;
         /// <summary>
-        /// Time when this resource was most recently updated.
+        /// Time when this workstation was most recently updated.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -150,6 +154,8 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
 
             bool reconciling,
 
+            string startTime,
+
             string state,
 
             string uid,
@@ -166,6 +172,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
             Labels = labels;
             Name = name;
             Reconciling = reconciling;
+            StartTime = startTime;
             State = state;
             Uid = uid;
             UpdateTime = updateTime;

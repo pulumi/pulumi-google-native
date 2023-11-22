@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse DiskEncryptionKey;
         /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         /// </summary>
         public readonly bool EraseWindowsVssSignature;
@@ -188,7 +192,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         /// </summary>
         public readonly string SizeGb;
         /// <summary>
@@ -281,6 +285,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             string description,
 
             Outputs.CustomerEncryptionKeyResponse diskEncryptionKey,
+
+            bool enableConfidentialCompute,
 
             bool eraseWindowsVssSignature,
 
@@ -378,6 +384,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKey = diskEncryptionKey;
+            EnableConfidentialCompute = enableConfidentialCompute;
             EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
             Interface = @interface;

@@ -52,10 +52,22 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public Input<int>? OrdinalPosition { get; set; }
 
         /// <summary>
+        /// Column precision.
+        /// </summary>
+        [Input("precision")]
+        public Input<int>? Precision { get; set; }
+
+        /// <summary>
         /// Whether or not the column represents a primary key.
         /// </summary>
         [Input("primaryKey")]
         public Input<bool>? PrimaryKey { get; set; }
+
+        /// <summary>
+        /// Column scale.
+        /// </summary>
+        [Input("scale")]
+        public Input<int>? Scale { get; set; }
 
         public MysqlColumnArgs()
         {

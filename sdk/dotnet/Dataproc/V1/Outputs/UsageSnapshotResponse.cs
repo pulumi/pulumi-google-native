@@ -11,19 +11,35 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
     /// <summary>
-    /// The usage snaphot represents the resources consumed by a workload at a specified time.
+    /// The usage snapshot represents the resources consumed by a workload at a specified time.
     /// </summary>
     [OutputType]
     public sealed class UsageSnapshotResponse
     {
         /// <summary>
+        /// Optional. Accelerator type being used, if any
+        /// </summary>
+        public readonly string AcceleratorType;
+        /// <summary>
+        /// Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        public readonly string MilliAccelerator;
+        /// <summary>
         /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         /// </summary>
         public readonly string MilliDcu;
         /// <summary>
+        /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        public readonly string MilliDcuPremium;
+        /// <summary>
         /// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
         /// </summary>
         public readonly string ShuffleStorageGb;
+        /// <summary>
+        /// Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        public readonly string ShuffleStorageGbPremium;
         /// <summary>
         /// Optional. The timestamp of the usage snapshot.
         /// </summary>
@@ -31,14 +47,26 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
         [OutputConstructor]
         private UsageSnapshotResponse(
+            string acceleratorType,
+
+            string milliAccelerator,
+
             string milliDcu,
+
+            string milliDcuPremium,
 
             string shuffleStorageGb,
 
+            string shuffleStorageGbPremium,
+
             string snapshotTime)
         {
+            AcceleratorType = acceleratorType;
+            MilliAccelerator = milliAccelerator;
             MilliDcu = milliDcu;
+            MilliDcuPremium = milliDcuPremium;
             ShuffleStorageGb = shuffleStorageGb;
+            ShuffleStorageGbPremium = shuffleStorageGbPremium;
             SnapshotTime = snapshotTime;
         }
     }

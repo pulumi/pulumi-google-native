@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class StageResponse
     {
         /// <summary>
+        /// Optional. The deploy parameters to use for the target in this stage.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DeployParametersResponse> DeployParameters;
+        /// <summary>
         /// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
         /// </summary>
         public readonly ImmutableArray<string> Profiles;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
         [OutputConstructor]
         private StageResponse(
+            ImmutableArray<Outputs.DeployParametersResponse> deployParameters,
+
             ImmutableArray<string> profiles,
 
             Outputs.StrategyResponse strategy,
 
             string targetId)
         {
+            DeployParameters = deployParameters;
             Profiles = profiles;
             Strategy = strategy;
             TargetId = targetId;

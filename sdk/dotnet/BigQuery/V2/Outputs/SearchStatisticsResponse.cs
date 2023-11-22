@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
         /// </summary>
-        public readonly ImmutableArray<Outputs.IndexUnusedReasonResponse> IndexUnusedReason;
+        public readonly ImmutableArray<Outputs.IndexUnusedReasonResponse> IndexUnusedReasons;
         /// <summary>
         /// Specifies index usage mode for the query.
         /// </summary>
@@ -24,11 +24,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
         [OutputConstructor]
         private SearchStatisticsResponse(
-            ImmutableArray<Outputs.IndexUnusedReasonResponse> indexUnusedReason,
+            ImmutableArray<Outputs.IndexUnusedReasonResponse> indexUnusedReasons,
 
             string indexUsageMode)
         {
-            IndexUnusedReason = indexUnusedReason;
+            IndexUnusedReasons = indexUnusedReasons;
             IndexUsageMode = indexUsageMode;
         }
     }

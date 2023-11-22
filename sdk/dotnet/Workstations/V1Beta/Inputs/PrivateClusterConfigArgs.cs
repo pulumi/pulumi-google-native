@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
 {
 
     /// <summary>
-    /// Configuration options for private clusters.
+    /// Configuration options for private workstation clusters.
     /// </summary>
     public sealed class PrivateClusterConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         private InputList<string>? _allowedProjects;
 
         /// <summary>
-        /// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
         /// </summary>
         public InputList<string> AllowedProjects
         {

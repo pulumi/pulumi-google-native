@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse AdvancedApiOpsConfig;
         /// <summary>
+        /// Configuration for the Analytics add-on.
+        /// </summary>
+        public readonly Outputs.GoogleCloudApigeeV1AnalyticsConfigResponse AnalyticsConfig;
+        /// <summary>
         /// Configuration for the API Security add-on.
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1ApiSecurityConfigResponse ApiSecurityConfig;
@@ -41,6 +45,8 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         private GoogleCloudApigeeV1AddonsConfigResponse(
             Outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse advancedApiOpsConfig,
 
+            Outputs.GoogleCloudApigeeV1AnalyticsConfigResponse analyticsConfig,
+
             Outputs.GoogleCloudApigeeV1ApiSecurityConfigResponse apiSecurityConfig,
 
             Outputs.GoogleCloudApigeeV1ConnectorsPlatformConfigResponse connectorsPlatformConfig,
@@ -50,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
             Outputs.GoogleCloudApigeeV1MonetizationConfigResponse monetizationConfig)
         {
             AdvancedApiOpsConfig = advancedApiOpsConfig;
+            AnalyticsConfig = analyticsConfig;
             ApiSecurityConfig = apiSecurityConfig;
             ConnectorsPlatformConfig = connectorsPlatformConfig;
             IntegrationConfig = integrationConfig;

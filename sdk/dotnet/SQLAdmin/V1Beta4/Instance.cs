@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<Outputs.DiskEncryptionStatusResponse> DiskEncryptionStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The dns name of the instance.
+        /// </summary>
+        [Output("dnsName")]
+        public Output<string> DnsName { get; private set; } = null!;
+
+        /// <summary>
         /// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
         /// </summary>
         [Output("etag")]
@@ -147,8 +153,20 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Output("outOfDiskReport")]
         public Output<Outputs.SqlOutOfDiskReportResponse> OutOfDiskReport { get; private set; } = null!;
 
+        /// <summary>
+        /// DEPRECATED: please use write_endpoint instead.
+        /// </summary>
+        [Output("primaryDnsName")]
+        public Output<string> PrimaryDnsName { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The link to service attachment of PSC instance.
+        /// </summary>
+        [Output("pscServiceAttachmentLink")]
+        public Output<string> PscServiceAttachmentLink { get; private set; } = null!;
 
         /// <summary>
         /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
@@ -217,6 +235,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<Outputs.SettingsResponse> Settings { get; private set; } = null!;
 
         /// <summary>
+        /// The SQL network architecture for the instance.
+        /// </summary>
+        [Output("sqlNetworkArchitecture")]
+        public Output<string> SqlNetworkArchitecture { get; private set; } = null!;
+
+        /// <summary>
         /// The current serving state of the Cloud SQL instance.
         /// </summary>
         [Output("state")]
@@ -227,6 +251,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Output("suspensionReason")]
         public Output<ImmutableArray<string>> SuspensionReason { get; private set; } = null!;
+
+        /// <summary>
+        /// The dns name of the primary instance in a replication group.
+        /// </summary>
+        [Output("writeEndpoint")]
+        public Output<string> WriteEndpoint { get; private set; } = null!;
 
 
         /// <summary>
@@ -474,6 +504,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Input("settings")]
         public Input<Inputs.SettingsArgs>? Settings { get; set; }
+
+        /// <summary>
+        /// The SQL network architecture for the instance.
+        /// </summary>
+        [Input("sqlNetworkArchitecture")]
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceSqlNetworkArchitecture>? SqlNetworkArchitecture { get; set; }
 
         /// <summary>
         /// The current serving state of the Cloud SQL instance.

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public partial class BackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines the configuration of Backups created via this BackupPlan.
+        /// Optional. Defines the configuration of Backups created via this BackupPlan.
         /// </summary>
         [Output("backupConfig")]
         public Output<Outputs.BackupConfigResponse> BackupConfig { get; private set; } = null!;
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> BackupPlanId { get; private set; } = null!;
 
         /// <summary>
-        /// Defines a schedule for automatic Backup creation via this BackupPlan.
+        /// Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         /// </summary>
         [Output("backupSchedule")]
         public Output<Outputs.ScheduleResponse> BackupSchedule { get; private set; } = null!;
@@ -47,13 +47,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        /// Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         /// </summary>
         [Output("deactivated")]
         public Output<bool> Deactivated { get; private set; } = null!;
 
         /// <summary>
-        /// User specified descriptive string for this BackupPlan.
+        /// Optional. User specified descriptive string for this BackupPlan.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// A set of custom labels supplied by user.
+        /// Optional. A set of custom labels supplied by user.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -89,10 +89,22 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<int> ProtectedPodCount { get; private set; } = null!;
 
         /// <summary>
-        /// RetentionPolicy governs lifecycle of Backups created under this plan.
+        /// Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         /// </summary>
         [Output("retentionPolicy")]
         public Output<Outputs.RetentionPolicyResponse> RetentionPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Human-readable description of why BackupPlan is in the current `state`
+        /// </summary>
+        [Output("stateReason")]
+        public Output<string> StateReason { get; private set; } = null!;
 
         /// <summary>
         /// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
@@ -158,7 +170,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public sealed class BackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines the configuration of Backups created via this BackupPlan.
+        /// Optional. Defines the configuration of Backups created via this BackupPlan.
         /// </summary>
         [Input("backupConfig")]
         public Input<Inputs.BackupConfigArgs>? BackupConfig { get; set; }
@@ -170,7 +182,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string> BackupPlanId { get; set; } = null!;
 
         /// <summary>
-        /// Defines a schedule for automatic Backup creation via this BackupPlan.
+        /// Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         /// </summary>
         [Input("backupSchedule")]
         public Input<Inputs.ScheduleArgs>? BackupSchedule { get; set; }
@@ -182,13 +194,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        /// Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         /// </summary>
         [Input("deactivated")]
         public Input<bool>? Deactivated { get; set; }
 
         /// <summary>
-        /// User specified descriptive string for this BackupPlan.
+        /// Optional. User specified descriptive string for this BackupPlan.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -197,7 +209,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of custom labels supplied by user.
+        /// Optional. A set of custom labels supplied by user.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -212,7 +224,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// RetentionPolicy governs lifecycle of Backups created under this plan.
+        /// Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         /// </summary>
         [Input("retentionPolicy")]
         public Input<Inputs.RetentionPolicyArgs>? RetentionPolicy { get; set; }

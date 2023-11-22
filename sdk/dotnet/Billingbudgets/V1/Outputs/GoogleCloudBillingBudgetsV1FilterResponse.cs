@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Projects;
         /// <summary>
+        /// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
+        /// </summary>
+        public readonly ImmutableArray<string> ResourceAncestors;
+        /// <summary>
         /// Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
         /// </summary>
         public readonly ImmutableArray<string> Services;
@@ -63,6 +67,8 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Outputs
 
             ImmutableArray<string> projects,
 
+            ImmutableArray<string> resourceAncestors,
+
             ImmutableArray<string> services,
 
             ImmutableArray<string> subaccounts)
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Outputs
             CustomPeriod = customPeriod;
             Labels = labels;
             Projects = projects;
+            ResourceAncestors = resourceAncestors;
             Services = services;
             Subaccounts = subaccounts;
         }

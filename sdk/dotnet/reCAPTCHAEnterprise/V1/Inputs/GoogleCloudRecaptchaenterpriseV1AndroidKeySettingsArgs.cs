@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     public sealed class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to true, allowed_package_names are not enforced.
+        /// Optional. If set to true, allowed_package_names are not enforced.
         /// </summary>
         [Input("allowAllPackageNames")]
         public Input<bool>? AllowAllPackageNames { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         private InputList<string>? _allowedPackageNames;
 
         /// <summary>
-        /// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+        /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         /// </summary>
         public InputList<string> AllowedPackageNames
         {
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         }
 
         /// <summary>
-        /// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+        /// Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
         /// </summary>
         [Input("supportNonGoogleAppStoreDistribution")]
         public Input<bool>? SupportNonGoogleAppStoreDistribution { get; set; }

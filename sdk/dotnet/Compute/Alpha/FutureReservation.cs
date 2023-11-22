@@ -16,6 +16,24 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class FutureReservation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt"&gt;RFC3339 value.
+        /// </summary>
+        [Output("autoCreatedReservationsDeleteTime")]
+        public Output<string> AutoCreatedReservationsDeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        /// </summary>
+        [Output("autoCreatedReservationsDuration")]
+        public Output<Outputs.DurationResponse> AutoCreatedReservationsDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
+        /// </summary>
+        [Output("autoDeleteAutoCreatedReservations")]
+        public Output<bool> AutoDeleteAutoCreatedReservations { get; private set; } = null!;
+
+        /// <summary>
         /// The creation timestamp for this future reservation in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -149,6 +167,24 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class FutureReservationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt"&gt;RFC3339 value.
+        /// </summary>
+        [Input("autoCreatedReservationsDeleteTime")]
+        public Input<string>? AutoCreatedReservationsDeleteTime { get; set; }
+
+        /// <summary>
+        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        /// </summary>
+        [Input("autoCreatedReservationsDuration")]
+        public Input<Inputs.DurationArgs>? AutoCreatedReservationsDuration { get; set; }
+
+        /// <summary>
+        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
+        /// </summary>
+        [Input("autoDeleteAutoCreatedReservations")]
+        public Input<bool>? AutoDeleteAutoCreatedReservations { get; set; }
+
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the future reservation.
         /// </summary>

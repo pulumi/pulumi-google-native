@@ -45,6 +45,108 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     }
 
     /// <summary>
+    /// A common public repository base for Apt.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase : IEquatable<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase>
+    {
+        private readonly string _value;
+
+        private GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified repository base.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase RepositoryBaseUnspecified { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase("REPOSITORY_BASE_UNSPECIFIED");
+        /// <summary>
+        /// Debian.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase Debian { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase("DEBIAN");
+        /// <summary>
+        /// Ubuntu LTS/Pro.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase Ubuntu { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase("UBUNTU");
+        /// <summary>
+        /// Archived Debian.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase DebianSnapshot { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase("DEBIAN_SNAPSHOT");
+
+        public static bool operator ==(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase left, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase right) => left.Equals(right);
+        public static bool operator !=(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase left, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase other && Equals(other);
+        public bool Equals(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// A common public repository base for Yum.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase : IEquatable<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase>
+    {
+        private readonly string _value;
+
+        private GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified repository base.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase RepositoryBaseUnspecified { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase("REPOSITORY_BASE_UNSPECIFIED");
+        /// <summary>
+        /// CentOS.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase Centos { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase("CENTOS");
+        /// <summary>
+        /// CentOS Debug.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase CentosDebug { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase("CENTOS_DEBUG");
+        /// <summary>
+        /// CentOS Vault.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase CentosVault { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase("CENTOS_VAULT");
+        /// <summary>
+        /// CentOS Stream.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase CentosStream { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase("CENTOS_STREAM");
+        /// <summary>
+        /// Rocky.
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase Rocky { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase("ROCKY");
+        /// <summary>
+        /// Fedora Extra Packages for Enterprise Linux (EPEL).
+        /// </summary>
+        public static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase Epel { get; } = new GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase("EPEL");
+
+        public static bool operator ==(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase left, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase right) => left.Equals(right);
+        public static bool operator !=(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase left, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase other && Equals(other);
+        public bool Equals(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Version policy defines the versions that the registry will accept.
     /// </summary>
     [EnumType]
@@ -197,7 +299,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     }
 
     /// <summary>
-    /// The format of packages that are stored in the repository.
+    /// Optional. The format of packages that are stored in the repository.
     /// </summary>
     [EnumType]
     public readonly struct RepositoryFormat : IEquatable<RepositoryFormat>
@@ -245,6 +347,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// Kubeflow Pipelines package format.
         /// </summary>
         public static RepositoryFormat Kfp { get; } = new RepositoryFormat("KFP");
+        /// <summary>
+        /// Go package format.
+        /// </summary>
+        public static RepositoryFormat Go { get; } = new RepositoryFormat("GO");
 
         public static bool operator ==(RepositoryFormat left, RepositoryFormat right) => left.Equals(right);
         public static bool operator !=(RepositoryFormat left, RepositoryFormat right) => !left.Equals(right);
@@ -262,7 +368,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     }
 
     /// <summary>
-    /// The mode of the repository.
+    /// Optional. The mode of the repository.
     /// </summary>
     [EnumType]
     public readonly struct RepositoryMode : IEquatable<RepositoryMode>

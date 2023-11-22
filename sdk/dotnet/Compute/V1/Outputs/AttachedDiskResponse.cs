@@ -73,6 +73,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string Mode;
         /// <summary>
+        /// For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
+        /// </summary>
+        public readonly string SavedState;
+        /// <summary>
         /// shielded vm initial state stored on disk
         /// </summary>
         public readonly Outputs.InitialStateConfigResponse ShieldedInstanceInitialState;
@@ -115,6 +119,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string mode,
 
+            string savedState,
+
             Outputs.InitialStateConfigResponse shieldedInstanceInitialState,
 
             string source,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Kind = kind;
             Licenses = licenses;
             Mode = mode;
+            SavedState = savedState;
             ShieldedInstanceInitialState = shieldedInstanceInitialState;
             Source = source;
             Type = type;

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
 {
 
     /// <summary>
-    /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+    /// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
     /// </summary>
     [OutputType]
     public sealed class VirtualMachinePreferencesResponse
@@ -25,13 +25,33 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.ComputeEnginePreferencesResponse ComputeEnginePreferences;
         /// <summary>
-        /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+        /// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+        /// </summary>
+        public readonly Outputs.VirtualMachinePreferencesNetworkCostParametersResponse NetworkCostParameters;
+        /// <summary>
+        /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
         /// </summary>
         public readonly Outputs.RegionPreferencesResponse RegionPreferences;
+        /// <summary>
+        /// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+        /// </summary>
+        public readonly Outputs.VirtualMachinePreferencesSizingOptimizationCustomParametersResponse SizingOptimizationCustomParameters;
         /// <summary>
         /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
         /// </summary>
         public readonly string SizingOptimizationStrategy;
+        /// <summary>
+        /// Preferences concerning Sole Tenant nodes and virtual machines.
+        /// </summary>
+        public readonly Outputs.SoleTenancyPreferencesResponse SoleTenancyPreferences;
+        /// <summary>
+        /// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+        /// </summary>
+        public readonly string TargetProduct;
+        /// <summary>
+        /// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+        /// </summary>
+        public readonly Outputs.VmwareEnginePreferencesResponse VmwareEnginePreferences;
 
         [OutputConstructor]
         private VirtualMachinePreferencesResponse(
@@ -39,14 +59,29 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
 
             Outputs.ComputeEnginePreferencesResponse computeEnginePreferences,
 
+            Outputs.VirtualMachinePreferencesNetworkCostParametersResponse networkCostParameters,
+
             Outputs.RegionPreferencesResponse regionPreferences,
 
-            string sizingOptimizationStrategy)
+            Outputs.VirtualMachinePreferencesSizingOptimizationCustomParametersResponse sizingOptimizationCustomParameters,
+
+            string sizingOptimizationStrategy,
+
+            Outputs.SoleTenancyPreferencesResponse soleTenancyPreferences,
+
+            string targetProduct,
+
+            Outputs.VmwareEnginePreferencesResponse vmwareEnginePreferences)
         {
             CommitmentPlan = commitmentPlan;
             ComputeEnginePreferences = computeEnginePreferences;
+            NetworkCostParameters = networkCostParameters;
             RegionPreferences = regionPreferences;
+            SizingOptimizationCustomParameters = sizingOptimizationCustomParameters;
             SizingOptimizationStrategy = sizingOptimizationStrategy;
+            SoleTenancyPreferences = soleTenancyPreferences;
+            TargetProduct = targetProduct;
+            VmwareEnginePreferences = vmwareEnginePreferences;
         }
     }
 }

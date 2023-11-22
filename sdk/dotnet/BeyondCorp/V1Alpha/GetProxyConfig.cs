@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public static class GetProxyConfig
     {
         /// <summary>
-        /// Gets details of a single Tenant.
+        /// Gets details of a single ProxyConfig.
         /// </summary>
         public static Task<GetProxyConfigResult> InvokeAsync(GetProxyConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProxyConfigResult>("google-native:beyondcorp/v1alpha:getProxyConfig", args ?? new GetProxyConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets details of a single Tenant.
+        /// Gets details of a single ProxyConfig.
         /// </summary>
         public static Output<GetProxyConfigResult> Invoke(GetProxyConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProxyConfigResult>("google-native:beyondcorp/v1alpha:getProxyConfig", args ?? new GetProxyConfigInvokeArgs(), options.WithDefaults());
@@ -30,11 +30,11 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
+        [Input("partnerTenantId", required: true)]
+        public string PartnerTenantId { get; set; } = null!;
+
         [Input("proxyConfigId", required: true)]
         public string ProxyConfigId { get; set; } = null!;
-
-        [Input("tenantId", required: true)]
-        public string TenantId { get; set; } = null!;
 
         public GetProxyConfigArgs()
         {
@@ -47,11 +47,11 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
+        [Input("partnerTenantId", required: true)]
+        public Input<string> PartnerTenantId { get; set; } = null!;
+
         [Input("proxyConfigId", required: true)]
         public Input<string> ProxyConfigId { get; set; } = null!;
-
-        [Input("tenantId", required: true)]
-        public Input<string> TenantId { get; set; } = null!;
 
         public GetProxyConfigInvokeArgs()
         {
@@ -64,10 +64,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public sealed class GetProxyConfigResult
     {
         /// <summary>
-        /// Optional. Information to facilitate Authentication against the proxy server.
-        /// </summary>
-        public readonly Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse AuthenticationInfo;
-        /// <summary>
         /// Timestamp when the resource was created.
         /// </summary>
         public readonly string CreateTime;
@@ -75,6 +71,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Optional. Information to encrypt JWT for the proxy server.
+        /// </summary>
+        public readonly Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse EncryptionInfo;
         /// <summary>
         /// ProxyConfig resource name.
         /// </summary>
@@ -98,11 +98,11 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
 
         [OutputConstructor]
         private GetProxyConfigResult(
-            Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse authenticationInfo,
-
             string createTime,
 
             string displayName,
+
+            Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse encryptionInfo,
 
             string name,
 
@@ -114,9 +114,9 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
 
             string updateTime)
         {
-            AuthenticationInfo = authenticationInfo;
             CreateTime = createTime;
             DisplayName = displayName;
+            EncryptionInfo = encryptionInfo;
             Name = name;
             ProxyUri = proxyUri;
             RoutingInfo = routingInfo;

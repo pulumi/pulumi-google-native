@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Retail.V2.Inputs
         public Input<Inputs.GoogleCloudRetailV2RuleFilterActionArgs>? FilterAction { get; set; }
 
         /// <summary>
+        /// Force returns an attribute as a facet in the request.
+        /// </summary>
+        [Input("forceReturnFacetAction")]
+        public Input<Inputs.GoogleCloudRetailV2RuleForceReturnFacetActionArgs>? ForceReturnFacetAction { get; set; }
+
+        /// <summary>
         /// Ignores specific terms from query during search.
         /// </summary>
         [Input("ignoreAction")]
@@ -56,6 +62,12 @@ namespace Pulumi.GoogleNative.Retail.V2.Inputs
         /// </summary>
         [Input("redirectAction")]
         public Input<Inputs.GoogleCloudRetailV2RuleRedirectActionArgs>? RedirectAction { get; set; }
+
+        /// <summary>
+        /// Remove an attribute as a facet in the request (if present).
+        /// </summary>
+        [Input("removeFacetAction")]
+        public Input<Inputs.GoogleCloudRetailV2RuleRemoveFacetActionArgs>? RemoveFacetAction { get; set; }
 
         /// <summary>
         /// Replaces specific terms in the query.

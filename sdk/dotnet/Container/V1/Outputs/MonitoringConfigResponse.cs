@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
     public sealed class MonitoringConfigResponse
     {
         /// <summary>
+        /// Configuration of Advanced Datapath Observability features.
+        /// </summary>
+        public readonly Outputs.AdvancedDatapathObservabilityConfigResponse AdvancedDatapathObservabilityConfig;
+        /// <summary>
         /// Monitoring components configuration
         /// </summary>
         public readonly Outputs.MonitoringComponentConfigResponse ComponentConfig;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
         [OutputConstructor]
         private MonitoringConfigResponse(
+            Outputs.AdvancedDatapathObservabilityConfigResponse advancedDatapathObservabilityConfig,
+
             Outputs.MonitoringComponentConfigResponse componentConfig,
 
             Outputs.ManagedPrometheusConfigResponse managedPrometheusConfig)
         {
+            AdvancedDatapathObservabilityConfig = advancedDatapathObservabilityConfig;
             ComponentConfig = componentConfig;
             ManagedPrometheusConfig = managedPrometheusConfig;
         }

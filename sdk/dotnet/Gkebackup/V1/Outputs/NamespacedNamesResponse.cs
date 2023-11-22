@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
     public sealed class NamespacedNamesResponse
     {
         /// <summary>
-        /// A list of namespaced Kubernetes resources.
+        /// Optional. A list of namespaced Kubernetes resources.
         /// </summary>
         public readonly ImmutableArray<Outputs.NamespacedNameResponse> NamespacedNames;
 

@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         [Input("speechModelVariant")]
         public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant>? SpeechModelVariant { get; set; }
 
+        /// <summary>
+        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// </summary>
+        [Input("useTimeoutBasedEndpointing")]
+        public Input<bool>? UseTimeoutBasedEndpointing { get; set; }
+
         public GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs()
         {
         }

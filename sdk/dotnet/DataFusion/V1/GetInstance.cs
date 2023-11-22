@@ -144,6 +144,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         /// </summary>
         public readonly string P4ServiceAccount;
         /// <summary>
+        /// Optional. Current patch revision of the Data Fusion.
+        /// </summary>
+        public readonly string PatchRevision;
+        /// <summary>
         /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
         /// </summary>
         public readonly bool PrivateInstance;
@@ -183,6 +187,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         /// Current version of the Data Fusion. Only specifiable in Update.
         /// </summary>
         public readonly string Version;
+        /// <summary>
+        /// Endpoint on which the Data Fusion UI is accessible to third-party users
+        /// </summary>
+        public readonly string WorkforceIdentityServiceEndpoint;
         /// <summary>
         /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         /// </summary>
@@ -230,6 +238,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1
 
             string p4ServiceAccount,
 
+            string patchRevision,
+
             bool privateInstance,
 
             bool satisfiesPzs,
@@ -249,6 +259,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1
             string updateTime,
 
             string version,
+
+            string workforceIdentityServiceEndpoint,
 
             string zone)
         {
@@ -272,6 +284,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
             NetworkConfig = networkConfig;
             Options = options;
             P4ServiceAccount = p4ServiceAccount;
+            PatchRevision = patchRevision;
             PrivateInstance = privateInstance;
             SatisfiesPzs = satisfiesPzs;
             ServiceAccount = serviceAccount;
@@ -282,6 +295,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
             Type = type;
             UpdateTime = updateTime;
             Version = version;
+            WorkforceIdentityServiceEndpoint = workforceIdentityServiceEndpoint;
             Zone = zone;
         }
     }

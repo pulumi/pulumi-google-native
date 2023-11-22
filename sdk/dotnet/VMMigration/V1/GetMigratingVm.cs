@@ -80,6 +80,14 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// </summary>
         public readonly Outputs.AwsSourceVmDetailsResponse AwsSourceVmDetails;
         /// <summary>
+        /// Details of the VM from an Azure source.
+        /// </summary>
+        public readonly Outputs.AzureSourceVmDetailsResponse AzureSourceVmDetails;
+        /// <summary>
+        /// Details of the target Persistent Disks in Compute Engine.
+        /// </summary>
+        public readonly Outputs.ComputeEngineDisksTargetDefaultsResponse ComputeEngineDisksTargetDefaults;
+        /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
         public readonly Outputs.ComputeEngineTargetDefaultsResponse ComputeEngineTargetDefaults;
@@ -155,10 +163,18 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// The last time the migrating VM resource was updated.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// Details of the VM from a Vmware source.
+        /// </summary>
+        public readonly Outputs.VmwareSourceVmDetailsResponse VmwareSourceVmDetails;
 
         [OutputConstructor]
         private GetMigratingVmResult(
             Outputs.AwsSourceVmDetailsResponse awsSourceVmDetails,
+
+            Outputs.AzureSourceVmDetailsResponse azureSourceVmDetails,
+
+            Outputs.ComputeEngineDisksTargetDefaultsResponse computeEngineDisksTargetDefaults,
 
             Outputs.ComputeEngineTargetDefaultsResponse computeEngineTargetDefaults,
 
@@ -196,9 +212,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
             string stateTime,
 
-            string updateTime)
+            string updateTime,
+
+            Outputs.VmwareSourceVmDetailsResponse vmwareSourceVmDetails)
         {
             AwsSourceVmDetails = awsSourceVmDetails;
+            AzureSourceVmDetails = azureSourceVmDetails;
+            ComputeEngineDisksTargetDefaults = computeEngineDisksTargetDefaults;
             ComputeEngineTargetDefaults = computeEngineTargetDefaults;
             CreateTime = createTime;
             CurrentSyncInfo = currentSyncInfo;
@@ -218,6 +238,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
             State = state;
             StateTime = stateTime;
             UpdateTime = updateTime;
+            VmwareSourceVmDetails = vmwareSourceVmDetails;
         }
     }
 }

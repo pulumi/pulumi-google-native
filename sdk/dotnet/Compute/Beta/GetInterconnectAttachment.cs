@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string OperationalStatus;
         /// <summary>
-        /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+        /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
         /// </summary>
         public readonly string PairingKey;
         /// <summary>
@@ -172,7 +172,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string PartnerAsn;
         /// <summary>
-        /// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+        /// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
         /// </summary>
         public readonly Outputs.InterconnectAttachmentPartnerMetadataResponse PartnerMetadata;
         /// <summary>

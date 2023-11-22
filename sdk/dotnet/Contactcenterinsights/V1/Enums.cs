@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public static GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel SummarizationModelUnspecified { get; } = new GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("SUMMARIZATION_MODEL_UNSPECIFIED");
         /// <summary>
-        /// The Insights baseline model.
+        /// The CCAI baseline model.
         /// </summary>
         public static GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel BaselineModel { get; } = new GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("BASELINE_MODEL");
 
@@ -160,6 +160,47 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType other && Equals(other);
         public bool Equals(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of the model.
+    /// </summary>
+    [EnumType]
+    public readonly struct IssueModelModelType : IEquatable<IssueModelModelType>
+    {
+        private readonly string _value;
+
+        private IssueModelModelType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified model type.
+        /// </summary>
+        public static IssueModelModelType ModelTypeUnspecified { get; } = new IssueModelModelType("MODEL_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Type V1.
+        /// </summary>
+        public static IssueModelModelType TypeV1 { get; } = new IssueModelModelType("TYPE_V1");
+        /// <summary>
+        /// Type V2.
+        /// </summary>
+        public static IssueModelModelType TypeV2 { get; } = new IssueModelModelType("TYPE_V2");
+
+        public static bool operator ==(IssueModelModelType left, IssueModelModelType right) => left.Equals(right);
+        public static bool operator !=(IssueModelModelType left, IssueModelModelType right) => !left.Equals(right);
+
+        public static explicit operator string(IssueModelModelType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IssueModelModelType other && Equals(other);
+        public bool Equals(IssueModelModelType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -21,15 +21,19 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string PhysicalHost;
         public readonly Outputs.ResourceStatusSchedulingResponse Scheduling;
+        public readonly Outputs.UpcomingMaintenanceResponse UpcomingMaintenance;
 
         [OutputConstructor]
         private ResourceStatusResponse(
             string physicalHost,
 
-            Outputs.ResourceStatusSchedulingResponse scheduling)
+            Outputs.ResourceStatusSchedulingResponse scheduling,
+
+            Outputs.UpcomingMaintenanceResponse upcomingMaintenance)
         {
             PhysicalHost = physicalHost;
             Scheduling = scheduling;
+            UpcomingMaintenance = upcomingMaintenance;
         }
     }
 }

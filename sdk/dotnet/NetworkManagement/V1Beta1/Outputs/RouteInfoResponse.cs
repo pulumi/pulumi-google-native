@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestPortRanges;
         /// <summary>
-        /// Name of a Compute Engine route.
+        /// Name of a route.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -33,7 +33,15 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InstanceTags;
         /// <summary>
-        /// URI of a Compute Engine network.
+        /// URI of a NCC Hub. NCC_HUB routes only.
+        /// </summary>
+        public readonly string NccHubUri;
+        /// <summary>
+        /// URI of a NCC Spoke. NCC_HUB routes only.
+        /// </summary>
+        public readonly string NccSpokeUri;
+        /// <summary>
+        /// URI of a Compute Engine network. NETWORK routes only.
         /// </summary>
         public readonly string NetworkUri;
         /// <summary>
@@ -53,6 +61,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         /// <summary>
+        /// Indicates where route is applicable.
+        /// </summary>
+        public readonly string RouteScope;
+        /// <summary>
         /// Type of route.
         /// </summary>
         public readonly string RouteType;
@@ -65,7 +77,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcPortRanges;
         /// <summary>
-        /// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
+        /// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
         /// </summary>
         public readonly string Uri;
 
@@ -79,6 +91,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 
             ImmutableArray<string> instanceTags,
 
+            string nccHubUri,
+
+            string nccSpokeUri,
+
             string networkUri,
 
             string nextHop,
@@ -88,6 +104,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
             int priority,
 
             ImmutableArray<string> protocols,
+
+            string routeScope,
 
             string routeType,
 
@@ -101,11 +119,14 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
             DestPortRanges = destPortRanges;
             DisplayName = displayName;
             InstanceTags = instanceTags;
+            NccHubUri = nccHubUri;
+            NccSpokeUri = nccSpokeUri;
             NetworkUri = networkUri;
             NextHop = nextHop;
             NextHopType = nextHopType;
             Priority = priority;
             Protocols = protocols;
+            RouteScope = routeScope;
             RouteType = routeType;
             SrcIpRange = srcIpRange;
             SrcPortRanges = srcPortRanges;

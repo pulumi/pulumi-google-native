@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<string>? Condition { get; set; }
 
         /// <summary>
+        /// Optional. The description of the transition route. The maximum length is 500 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that the transition can only happen when the given intent is matched. At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
         /// </summary>
         [Input("intent")]

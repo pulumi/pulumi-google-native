@@ -17,6 +17,18 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
     public partial class Version : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Cloud Logging details for the integration version
+        /// </summary>
+        [Output("cloudLoggingDetails")]
+        public Output<Outputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse> CloudLoggingDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Optional. Indicates if sample workflow should be created.
+        /// </summary>
+        [Output("createSampleIntegrations")]
+        public Output<bool?> CreateSampleIntegrations { get; private set; } = null!;
+
+        /// <summary>
         /// Auto-generated.
         /// </summary>
         [Output("createTime")]
@@ -218,6 +230,18 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
     public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Cloud Logging details for the integration version
+        /// </summary>
+        [Input("cloudLoggingDetails")]
+        public Input<Inputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs>? CloudLoggingDetails { get; set; }
+
+        /// <summary>
+        /// Optional. Optional. Indicates if sample workflow should be created.
+        /// </summary>
+        [Input("createSampleIntegrations")]
+        public Input<bool>? CreateSampleIntegrations { get; set; }
+
         /// <summary>
         /// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         /// </summary>

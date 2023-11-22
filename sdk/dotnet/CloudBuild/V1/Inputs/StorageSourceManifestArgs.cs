@@ -11,24 +11,24 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
 {
 
     /// <summary>
-    /// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+    /// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
     /// </summary>
     public sealed class StorageSourceManifestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+        /// Cloud Storage object containing the source manifest. This object must be a JSON file.
         /// </summary>
         [Input("object")]
         public Input<string>? Object { get; set; }

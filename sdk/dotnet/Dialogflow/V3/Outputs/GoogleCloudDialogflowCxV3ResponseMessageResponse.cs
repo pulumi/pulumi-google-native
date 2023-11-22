@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessageEndInteractionResponse EndInteraction;
         /// <summary>
+        /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCardResponse KnowledgeInfoCard;
+        /// <summary>
         /// Hands off conversation to a human agent.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffResponse LiveAgentHandoff;
@@ -49,6 +53,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponse PlayAudio;
         /// <summary>
+        /// Response type.
+        /// </summary>
+        public readonly string ResponseType;
+        /// <summary>
         /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse TelephonyTransferCall;
@@ -65,6 +73,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3ResponseMessageEndInteractionResponse endInteraction,
 
+            Outputs.GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCardResponse knowledgeInfoCard,
+
             Outputs.GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffResponse liveAgentHandoff,
 
             Outputs.GoogleCloudDialogflowCxV3ResponseMessageMixedAudioResponse mixedAudio,
@@ -75,6 +85,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponse playAudio,
 
+            string responseType,
+
             Outputs.GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallResponse telephonyTransferCall,
 
             Outputs.GoogleCloudDialogflowCxV3ResponseMessageTextResponse text)
@@ -82,11 +94,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
             Channel = channel;
             ConversationSuccess = conversationSuccess;
             EndInteraction = endInteraction;
+            KnowledgeInfoCard = knowledgeInfoCard;
             LiveAgentHandoff = liveAgentHandoff;
             MixedAudio = mixedAudio;
             OutputAudioText = outputAudioText;
             Payload = payload;
             PlayAudio = playAudio;
+            ResponseType = responseType;
             TelephonyTransferCall = telephonyTransferCall;
             Text = text;
         }

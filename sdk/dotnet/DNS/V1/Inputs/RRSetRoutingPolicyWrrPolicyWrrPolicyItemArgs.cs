@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
     public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+        /// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
         /// </summary>
         [Input("healthCheckedTargets")]
         public Input<Inputs.RRSetRoutingPolicyHealthCheckTargetsArgs>? HealthCheckedTargets { get; set; }
@@ -36,7 +36,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         private InputList<string>? _signatureRrdatas;
 
         /// <summary>
-        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         /// </summary>
         public InputList<string> SignatureRrdatas
         {
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         }
 
         /// <summary>
-        /// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        /// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
         /// </summary>
         [Input("weight")]
         public Input<double>? Weight { get; set; }

@@ -17,11 +17,15 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class CloudRunMetadataResponse
     {
         /// <summary>
+        /// The name of the Cloud Run job that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/jobs/{job_name}`.
+        /// </summary>
+        public readonly string Job;
+        /// <summary>
         /// The Cloud Run Revision id associated with a `Rollout`.
         /// </summary>
         public readonly string Revision;
         /// <summary>
-        /// The name of the Cloud Run Service that is associated with a `Rollout`. Format is projects/{project}/locations/{location}/services/{service}.
+        /// The name of the Cloud Run Service that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/services/{service}`.
         /// </summary>
         public readonly string Service;
         /// <summary>
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
         [OutputConstructor]
         private CloudRunMetadataResponse(
+            string job,
+
             string revision,
 
             string service,
 
             ImmutableArray<string> serviceUrls)
         {
+            Job = job;
             Revision = revision;
             Service = service;
             ServiceUrls = serviceUrls;

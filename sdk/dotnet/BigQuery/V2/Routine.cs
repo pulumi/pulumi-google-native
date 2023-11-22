@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+        /// </summary>
+        [Output("dataGovernanceType")]
+        public Output<string> DataGovernanceType { get; private set; } = null!;
+
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
 
@@ -107,6 +113,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> RoutineType { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+        /// </summary>
+        [Output("securityMode")]
+        public Output<string> SecurityMode { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Spark specific options.
         /// </summary>
         [Output("sparkOptions")]
@@ -180,6 +192,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             set => _arguments = value;
         }
 
+        /// <summary>
+        /// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+        /// </summary>
+        [Input("dataGovernanceType")]
+        public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineDataGovernanceType>? DataGovernanceType { get; set; }
+
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
@@ -251,6 +269,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("routineType", required: true)]
         public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineRoutineType> RoutineType { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+        /// </summary>
+        [Input("securityMode")]
+        public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineSecurityMode>? SecurityMode { get; set; }
 
         /// <summary>
         /// Optional. Spark specific options.

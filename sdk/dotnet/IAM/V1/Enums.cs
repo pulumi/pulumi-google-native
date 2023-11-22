@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior AssertionClaimsBehaviorUnspecified { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED");
         /// <summary>
+        /// Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
+        /// </summary>
+        public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior MergeUserInfoOverIdTokenClaims { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS");
+        /// <summary>
         /// Only include ID Token Claims.
         /// </summary>
         public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior OnlyIdTokenClaims { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ONLY_ID_TOKEN_CLAIMS");
@@ -90,7 +94,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
     /// <summary>
-    /// Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+    /// Required. The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
     /// </summary>
     [EnumType]
     public readonly struct GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType : IEquatable<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType>
@@ -106,6 +110,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// No Response Type specified.
         /// </summary>
         public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType ResponseTypeUnspecified { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("RESPONSE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
+        /// </summary>
+        public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType Code { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("CODE");
         /// <summary>
         /// The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
         /// </summary>

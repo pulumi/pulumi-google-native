@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<string>? Count { get; set; }
 
         /// <summary>
+        /// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific driver version such as "470.103.01", following the driver version requirements in https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the specific accelerator driver if qualified.
+        /// </summary>
+        [Input("driverVersion")]
+        public Input<string>? DriverVersion { get; set; }
+
+        /// <summary>
         /// Deprecated: please use instances[0].install_gpu_drivers instead.
         /// </summary>
         [Input("installGpuDrivers")]

@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<string>? AuthCode { get; set; }
 
         /// <summary>
+        /// Auth URL for Authorization Code Flow
+        /// </summary>
+        [Input("authUri")]
+        public Input<string>? AuthUri { get; set; }
+
+        /// <summary>
         /// Client ID for user-provided OAuth app.
         /// </summary>
         [Input("clientId")]

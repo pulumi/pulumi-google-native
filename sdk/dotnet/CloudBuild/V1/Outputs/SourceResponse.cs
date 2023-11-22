@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
     public sealed class SourceResponse
     {
         /// <summary>
+        /// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+        /// </summary>
+        public readonly Outputs.ConnectedRepositoryResponse ConnectedRepository;
+        /// <summary>
         /// If provided, get the source from this Git repository.
         /// </summary>
         public readonly Outputs.GitSourceResponse GitSource;
@@ -25,16 +29,18 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly Outputs.RepoSourceResponse RepoSource;
         /// <summary>
-        /// If provided, get the source from this location in Google Cloud Storage.
+        /// If provided, get the source from this location in Cloud Storage.
         /// </summary>
         public readonly Outputs.StorageSourceResponse StorageSource;
         /// <summary>
-        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        /// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         /// </summary>
         public readonly Outputs.StorageSourceManifestResponse StorageSourceManifest;
 
         [OutputConstructor]
         private SourceResponse(
+            Outputs.ConnectedRepositoryResponse connectedRepository,
+
             Outputs.GitSourceResponse gitSource,
 
             Outputs.RepoSourceResponse repoSource,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             Outputs.StorageSourceManifestResponse storageSourceManifest)
         {
+            ConnectedRepository = connectedRepository;
             GitSource = gitSource;
             RepoSource = repoSource;
             StorageSource = storageSource;

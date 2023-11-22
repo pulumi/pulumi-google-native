@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Configuration detail of a trigger. Next available id: 19
+    /// Configuration detail of a trigger. Next available id: 20
     /// </summary>
     public sealed class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -113,6 +113,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the trigger This is added to identify the type of trigger. This is avoid the logic on triggerId to identify the trigger_type and push the same to monitoring.
+        /// </summary>
+        [Input("triggerName")]
+        public Input<string>? TriggerName { get; set; }
 
         /// <summary>
         /// A number to uniquely identify each trigger config within the workflow on UI.

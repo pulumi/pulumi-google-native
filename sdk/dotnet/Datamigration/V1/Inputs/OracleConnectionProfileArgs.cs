@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<Inputs.PrivateConnectivityArgs>? PrivateConnectivity { get; set; }
 
         /// <summary>
+        /// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+        /// </summary>
+        [Input("ssl")]
+        public Input<Inputs.SslConfigArgs>? Ssl { get; set; }
+
+        /// <summary>
         /// Static Service IP connectivity.
         /// </summary>
         [Input("staticServiceIpConnectivity")]

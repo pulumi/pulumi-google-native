@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<Outputs.MonitoredResourceResponse> MonitoredResource { get; private set; } = null!;
 
         /// <summary>
-        /// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        /// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -83,6 +83,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         [Output("selectedRegions")]
         public Output<ImmutableArray<string>> SelectedRegions { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies a Synthetic Monitor to invoke.
+        /// </summary>
+        [Output("syntheticMonitor")]
+        public Output<Outputs.SyntheticMonitorTargetResponse> SyntheticMonitor { get; private set; } = null!;
 
         /// <summary>
         /// Contains information needed to make a TCP check.
@@ -206,7 +212,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Input<Inputs.MonitoredResourceArgs>? MonitoredResource { get; set; }
 
         /// <summary>
-        /// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        /// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -237,6 +243,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
             get => _selectedRegions ?? (_selectedRegions = new InputList<Pulumi.GoogleNative.Monitoring.V3.UptimeCheckConfigSelectedRegionsItem>());
             set => _selectedRegions = value;
         }
+
+        /// <summary>
+        /// Specifies a Synthetic Monitor to invoke.
+        /// </summary>
+        [Input("syntheticMonitor")]
+        public Input<Inputs.SyntheticMonitorTargetArgs>? SyntheticMonitor { get; set; }
 
         /// <summary>
         /// Contains information needed to make a TCP check.

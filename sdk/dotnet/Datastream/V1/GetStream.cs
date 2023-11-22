@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+        /// </summary>
+        public readonly string LastRecoveryTime;
+        /// <summary>
         /// The stream's name.
         /// </summary>
         public readonly string Name;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.Datastream.V1
 
             ImmutableDictionary<string, string> labels,
 
+            string lastRecoveryTime,
+
             string name,
 
             Outputs.SourceConfigResponse sourceConfig,
@@ -146,6 +152,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
             DisplayName = displayName;
             Errors = errors;
             Labels = labels;
+            LastRecoveryTime = lastRecoveryTime;
             Name = name;
             SourceConfig = sourceConfig;
             State = state;

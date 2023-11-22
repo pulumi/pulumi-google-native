@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         public Output<ImmutableArray<string>> SupportedPrivacy { get; private set; } = null!;
 
         /// <summary>
-        /// The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
         /// </summary>
         [Output("transferFailureReason")]
         public Output<string> TransferFailureReason { get; private set; } = null!;

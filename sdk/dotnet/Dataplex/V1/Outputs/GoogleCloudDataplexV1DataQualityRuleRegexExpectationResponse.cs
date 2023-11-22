@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse
     {
         /// <summary>
-        /// A regular expression the column value is expected to match.
+        /// Optional. A regular expression the column value is expected to match.
         /// </summary>
         public readonly string Regex;
 

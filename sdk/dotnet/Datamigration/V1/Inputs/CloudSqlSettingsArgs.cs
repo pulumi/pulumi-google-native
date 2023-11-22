@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<string>? Collation { get; set; }
 
         /// <summary>
+        /// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+        /// </summary>
+        [Input("dataCacheConfig")]
+        public Input<Inputs.DataCacheConfigArgs>? DataCacheConfig { get; set; }
+
+        /// <summary>
         /// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         /// </summary>
         [Input("dataDiskSizeGb")]
@@ -74,6 +80,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         /// </summary>
         [Input("databaseVersion")]
         public Input<Pulumi.GoogleNative.Datamigration.V1.CloudSqlSettingsDatabaseVersion>? DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The edition of the given Cloud SQL instance.
+        /// </summary>
+        [Input("edition")]
+        public Input<Pulumi.GoogleNative.Datamigration.V1.CloudSqlSettingsEdition>? Edition { get; set; }
 
         /// <summary>
         /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.

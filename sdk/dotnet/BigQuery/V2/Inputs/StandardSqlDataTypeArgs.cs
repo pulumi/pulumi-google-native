@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.StandardSqlDataTypeArgs>? ArrayElementType { get; set; }
 
         /// <summary>
+        /// The type of the range's elements, if type_kind = "RANGE".
+        /// </summary>
+        [Input("rangeElementType")]
+        public Input<Inputs.StandardSqlDataTypeArgs>? RangeElementType { get; set; }
+
+        /// <summary>
         /// The fields of this struct, in order, if type_kind = "STRUCT".
         /// </summary>
         [Input("structType")]

@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
         /// </summary>
         [Output("serviceConfig")]
@@ -92,6 +98,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The deployed url for the function.
+        /// </summary>
+        [Output("url")]
+        public Output<string> Url { get; private set; } = null!;
 
 
         /// <summary>

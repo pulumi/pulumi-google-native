@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         private InputList<Inputs.NamespacedNameArgs>? _namespacedNames;
 
         /// <summary>
-        /// A list of namespaced Kubernetes resources.
+        /// Optional. A list of namespaced Kubernetes resources.
         /// </summary>
         public InputList<Inputs.NamespacedNameArgs> NamespacedNames
         {

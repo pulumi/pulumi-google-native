@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
 {
 
     /// <summary>
-    /// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
+    /// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources.
     /// </summary>
     [OutputType]
     public sealed class OperationResponse
@@ -48,6 +48,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
         /// The time that this operation was requested. This value is in RFC3339 text format.
         /// </summary>
         public readonly string InsertTime;
+        public readonly Outputs.InstancesBulkInsertOperationMetadataResponse InstancesBulkInsertOperationMetadata;
         /// <summary>
         /// Type of the resource. Always `compute#operation` for Operation resources.
         /// </summary>
@@ -77,6 +78,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
+        /// If the operation is for projects.setCommonInstanceMetadata, this field will contain information on all underlying zonal actions and their state.
+        /// </summary>
+        public readonly Outputs.SetCommonInstanceMetadataOperationMetadataResponse SetCommonInstanceMetadataOperationMetadata;
+        /// <summary>
         /// The time that this operation was started by the server. This value is in RFC3339 text format.
         /// </summary>
         public readonly string StartTime;
@@ -97,7 +102,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
         /// </summary>
         public readonly string TargetLink;
         /// <summary>
-        /// User who requested the operation, for example: `user@example.com`.
+        /// User who requested the operation, for example: `user@example.com` or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
         /// </summary>
         public readonly string User;
         /// <summary>
@@ -127,6 +132,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
 
             string insertTime,
 
+            Outputs.InstancesBulkInsertOperationMetadataResponse instancesBulkInsertOperationMetadata,
+
             string kind,
 
             string name,
@@ -140,6 +147,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
             string region,
 
             string selfLink,
+
+            Outputs.SetCommonInstanceMetadataOperationMetadataResponse setCommonInstanceMetadataOperationMetadata,
 
             string startTime,
 
@@ -165,6 +174,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
             HttpErrorMessage = httpErrorMessage;
             HttpErrorStatusCode = httpErrorStatusCode;
             InsertTime = insertTime;
+            InstancesBulkInsertOperationMetadata = instancesBulkInsertOperationMetadata;
             Kind = kind;
             Name = name;
             OperationGroupId = operationGroupId;
@@ -172,6 +182,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
             Progress = progress;
             Region = region;
             SelfLink = selfLink;
+            SetCommonInstanceMetadataOperationMetadata = setCommonInstanceMetadataOperationMetadata;
             StartTime = startTime;
             Status = status;
             StatusMessage = statusMessage;

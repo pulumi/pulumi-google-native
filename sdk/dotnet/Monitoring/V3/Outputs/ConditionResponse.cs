@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly Outputs.MonitoringQueryLanguageConditionResponse ConditionMonitoringQueryLanguage;
         /// <summary>
+        /// A condition that uses the Prometheus query language to define alerts.
+        /// </summary>
+        public readonly Outputs.PrometheusQueryLanguageConditionResponse ConditionPrometheusQueryLanguage;
+        /// <summary>
         /// A condition that compares a time series against a threshold.
         /// </summary>
         public readonly Outputs.MetricThresholdResponse ConditionThreshold;
@@ -49,6 +53,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 
             Outputs.MonitoringQueryLanguageConditionResponse conditionMonitoringQueryLanguage,
 
+            Outputs.PrometheusQueryLanguageConditionResponse conditionPrometheusQueryLanguage,
+
             Outputs.MetricThresholdResponse conditionThreshold,
 
             string displayName,
@@ -58,6 +64,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
             ConditionAbsent = conditionAbsent;
             ConditionMatchedLog = conditionMatchedLog;
             ConditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
+            ConditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
             ConditionThreshold = conditionThreshold;
             DisplayName = displayName;
             Name = name;

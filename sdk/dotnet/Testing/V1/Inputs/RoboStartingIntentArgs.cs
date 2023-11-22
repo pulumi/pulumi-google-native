@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<Inputs.LauncherActivityIntentArgs>? LauncherActivity { get; set; }
 
         /// <summary>
+        /// Skips the starting activity
+        /// </summary>
+        [Input("noActivity")]
+        public Input<Inputs.NoActivityIntentArgs>? NoActivity { get; set; }
+
+        /// <summary>
         /// An intent that starts an activity with specific details.
         /// </summary>
         [Input("startActivity")]

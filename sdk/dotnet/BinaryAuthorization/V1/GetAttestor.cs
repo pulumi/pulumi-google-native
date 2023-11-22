@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
     public static class GetAttestor
     {
         /// <summary>
-        /// Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+        /// Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
         /// </summary>
         public static Task<GetAttestorResult> InvokeAsync(GetAttestorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttestorResult>("google-native:binaryauthorization/v1:getAttestor", args ?? new GetAttestorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+        /// Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
         /// </summary>
         public static Output<GetAttestorResult> Invoke(GetAttestorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttestorResult>("google-native:binaryauthorization/v1:getAttestor", args ?? new GetAttestorInvokeArgs(), options.WithDefaults());

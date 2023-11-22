@@ -116,11 +116,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string ProducerForwardingRule;
         /// <summary>
+        /// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+        /// </summary>
+        public readonly int PropagatedConnectionLimit;
+        /// <summary>
         /// An 128-bit global unique ID of the PSC service attachment.
         /// </summary>
         public readonly Outputs.Uint128Response PscServiceAttachmentId;
         /// <summary>
-        /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         /// </summary>
         public readonly bool ReconcileConnections;
         /// <summary>
@@ -135,6 +139,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The URL of a service serving the endpoint identified by this service attachment.
         /// </summary>
         public readonly string TargetService;
+        /// <summary>
+        /// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+        /// </summary>
+        public readonly Outputs.ServiceAttachmentTunnelingConfigResponse TunnelingConfig;
 
         [OutputConstructor]
         private GetServiceAttachmentResult(
@@ -164,6 +172,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string producerForwardingRule,
 
+            int propagatedConnectionLimit,
+
             Outputs.Uint128Response pscServiceAttachmentId,
 
             bool reconcileConnections,
@@ -172,7 +182,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string selfLink,
 
-            string targetService)
+            string targetService,
+
+            Outputs.ServiceAttachmentTunnelingConfigResponse tunnelingConfig)
         {
             ConnectedEndpoints = connectedEndpoints;
             ConnectionPreference = connectionPreference;
@@ -187,11 +199,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Name = name;
             NatSubnets = natSubnets;
             ProducerForwardingRule = producerForwardingRule;
+            PropagatedConnectionLimit = propagatedConnectionLimit;
             PscServiceAttachmentId = pscServiceAttachmentId;
             ReconcileConnections = reconcileConnections;
             Region = region;
             SelfLink = selfLink;
             TargetService = targetService;
+            TunnelingConfig = tunnelingConfig;
         }
     }
 }

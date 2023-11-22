@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+        /// Name used to identify the key. Must be unique within a router. Must be referenced by exactly one bgpPeer. Must comply with RFC1035.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

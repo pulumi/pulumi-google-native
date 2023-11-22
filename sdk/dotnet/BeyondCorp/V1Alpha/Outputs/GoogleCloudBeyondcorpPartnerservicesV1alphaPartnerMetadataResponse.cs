@@ -11,19 +11,27 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// Metadata associated with Tenant and is provided by the Partner.
+    /// Metadata associated with PartnerTenant and is provided by the Partner.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse
     {
         /// <summary>
-        /// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        /// </summary>
+        public readonly string InternalTenantId;
+        /// <summary>
+        /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
         /// </summary>
         public readonly string PartnerTenantId;
 
         [OutputConstructor]
-        private GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse(string partnerTenantId)
+        private GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse(
+            string internalTenantId,
+
+            string partnerTenantId)
         {
+            InternalTenantId = internalTenantId;
             PartnerTenantId = partnerTenantId;
         }
     }

@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         public readonly string RuleVisibility;
+        /// <summary>
+        /// Configuration options for layer7 adaptive protection for various customizable thresholds.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse> ThresholdConfigs;
 
         [OutputConstructor]
         private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse(
             bool enable,
 
-            string ruleVisibility)
+            string ruleVisibility,
+
+            ImmutableArray<Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse> thresholdConfigs)
         {
             Enable = enable;
             RuleVisibility = ruleVisibility;
+            ThresholdConfigs = thresholdConfigs;
         }
     }
 }

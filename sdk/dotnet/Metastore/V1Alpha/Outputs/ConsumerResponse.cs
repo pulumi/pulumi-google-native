@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
     public sealed class ConsumerResponse
     {
         /// <summary>
+        /// The location of the endpoint URI. Format: projects/{project}/locations/{location}.
+        /// </summary>
+        public readonly string EndpointLocation;
+        /// <summary>
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         public readonly string EndpointUri;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
 
         [OutputConstructor]
         private ConsumerResponse(
+            string endpointLocation,
+
             string endpointUri,
 
             string subnetwork)
         {
+            EndpointLocation = endpointLocation;
             EndpointUri = endpointUri;
             Subnetwork = subnetwork;
         }

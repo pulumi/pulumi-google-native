@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly Outputs.LauncherActivityIntentResponse LauncherActivity;
         /// <summary>
+        /// Skips the starting activity
+        /// </summary>
+        public readonly Outputs.NoActivityIntentResponse NoActivity;
+        /// <summary>
         /// An intent that starts an activity with specific details.
         /// </summary>
         public readonly Outputs.StartActivityIntentResponse StartActivity;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         private RoboStartingIntentResponse(
             Outputs.LauncherActivityIntentResponse launcherActivity,
 
+            Outputs.NoActivityIntentResponse noActivity,
+
             Outputs.StartActivityIntentResponse startActivity,
 
             string timeout)
         {
             LauncherActivity = launcherActivity;
+            NoActivity = noActivity;
             StartActivity = startActivity;
             Timeout = timeout;
         }

@@ -102,6 +102,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        /// </summary>
+        [Output("userDefinedFields")]
+        public Output<ImmutableArray<Outputs.SecurityPolicyUserDefinedFieldResponse>> UserDefinedFields { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -213,6 +219,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.SecurityPolicyType>? Type { get; set; }
+
+        [Input("userDefinedFields")]
+        private InputList<Inputs.SecurityPolicyUserDefinedFieldArgs>? _userDefinedFields;
+
+        /// <summary>
+        /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        /// </summary>
+        public InputList<Inputs.SecurityPolicyUserDefinedFieldArgs> UserDefinedFields
+        {
+            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.SecurityPolicyUserDefinedFieldArgs>());
+            set => _userDefinedFields = value;
+        }
 
         public SecurityPolicyArgs()
         {

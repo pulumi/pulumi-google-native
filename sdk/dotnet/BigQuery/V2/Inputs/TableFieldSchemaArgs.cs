@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? Precision { get; set; }
 
         /// <summary>
+        /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        /// </summary>
+        [Input("rangeElementType")]
+        public Input<Inputs.TableFieldSchemaRangeElementTypeArgs>? RangeElementType { get; set; }
+
+        /// <summary>
         /// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
         /// </summary>
         [Input("roundingMode")]

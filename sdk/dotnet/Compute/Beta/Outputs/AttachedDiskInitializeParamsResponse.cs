@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
@@ -65,7 +69,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
-        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaZones;
         /// <summary>
@@ -84,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceImageEncryptionKey;
+        /// <summary>
+        /// The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
+        /// </summary>
+        public readonly string SourceInstantSnapshot;
         /// <summary>
         /// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         /// </summary>
@@ -104,6 +112,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             string diskSizeGb,
 
             string diskType,
+
+            bool enableConfidentialCompute,
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
@@ -129,6 +139,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             Outputs.CustomerEncryptionKeyResponse sourceImageEncryptionKey,
 
+            string sourceInstantSnapshot,
+
             string sourceSnapshot,
 
             Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey)
@@ -138,6 +150,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             DiskName = diskName;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;
             Labels = labels;
             Licenses = licenses;
@@ -150,6 +163,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             ResourcePolicies = resourcePolicies;
             SourceImage = sourceImage;
             SourceImageEncryptionKey = sourceImageEncryptionKey;
+            SourceInstantSnapshot = sourceInstantSnapshot;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
         }

@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string OrgDisplayName;
         /// <summary>
-        /// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+        /// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         /// </summary>
         public readonly Outputs.GoogleTypePostalAddressResponse OrgPostalAddress;
         /// <summary>

@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
     public sealed class GetVersionResult
     {
         /// <summary>
+        /// Optional. Cloud Logging details for the integration version
+        /// </summary>
+        public readonly Outputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse CloudLoggingDetails;
+        /// <summary>
         /// Auto-generated.
         /// </summary>
         public readonly string CreateTime;
@@ -166,6 +170,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
         [OutputConstructor]
         private GetVersionResult(
+            Outputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse cloudLoggingDetails,
+
             string createTime,
 
             string databasePersistencePolicy,
@@ -210,6 +216,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
             string userLabel)
         {
+            CloudLoggingDetails = cloudLoggingDetails;
             CreateTime = createTime;
             DatabasePersistencePolicy = databasePersistencePolicy;
             Description = description;

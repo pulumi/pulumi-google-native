@@ -34,12 +34,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public Input<string>? Dir { get; set; }
 
         /// <summary>
-        /// Only trigger a build if the revision regex does NOT match the revision regex.
-        /// </summary>
-        [Input("invertRegex")]
-        public Input<bool>? InvertRegex { get; set; }
-
-        /// <summary>
         /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         /// </summary>
         [Input("project")]

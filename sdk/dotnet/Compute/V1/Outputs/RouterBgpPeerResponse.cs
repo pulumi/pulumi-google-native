@@ -34,6 +34,14 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly Outputs.RouterBgpPeerBfdResponse Bfd;
         /// <summary>
+        /// A list of user-defined custom learned route IP address ranges for a BGP session.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RouterBgpPeerCustomLearnedIpRangeResponse> CustomLearnedIpRanges;
+        /// <summary>
+        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+        /// </summary>
+        public readonly int CustomLearnedRoutePriority;
+        /// <summary>
         /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         /// </summary>
         public readonly string Enable;
@@ -94,6 +102,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             Outputs.RouterBgpPeerBfdResponse bfd,
 
+            ImmutableArray<Outputs.RouterBgpPeerCustomLearnedIpRangeResponse> customLearnedIpRanges,
+
+            int customLearnedRoutePriority,
+
             string enable,
 
             bool enableIpv6,
@@ -123,6 +135,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             AdvertisedIpRanges = advertisedIpRanges;
             AdvertisedRoutePriority = advertisedRoutePriority;
             Bfd = bfd;
+            CustomLearnedIpRanges = customLearnedIpRanges;
+            CustomLearnedRoutePriority = customLearnedRoutePriority;
             Enable = enable;
             EnableIpv6 = enableIpv6;
             InterfaceName = interfaceName;

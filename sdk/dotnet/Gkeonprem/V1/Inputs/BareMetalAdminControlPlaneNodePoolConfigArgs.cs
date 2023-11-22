@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
         /// <summary>
         /// The generic configuration for a node pool running the control plane.
         /// </summary>
-        [Input("nodePoolConfig")]
-        public Input<Inputs.BareMetalNodePoolConfigArgs>? NodePoolConfig { get; set; }
+        [Input("nodePoolConfig", required: true)]
+        public Input<Inputs.BareMetalNodePoolConfigArgs> NodePoolConfig { get; set; } = null!;
 
         public BareMetalAdminControlPlaneNodePoolConfigArgs()
         {

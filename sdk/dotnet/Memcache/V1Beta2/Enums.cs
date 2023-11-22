@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         /// Memcached 1.5 version.
         /// </summary>
         public static InstanceMemcacheVersion Memcache15 { get; } = new InstanceMemcacheVersion("MEMCACHE_1_5");
+        /// <summary>
+        /// Memcached 1.6.15 version.
+        /// </summary>
+        public static InstanceMemcacheVersion Memcache1615 { get; } = new InstanceMemcacheVersion("MEMCACHE_1_6_15");
 
         public static bool operator ==(InstanceMemcacheVersion left, InstanceMemcacheVersion right) => left.Equals(right);
         public static bool operator !=(InstanceMemcacheVersion left, InstanceMemcacheVersion right) => !left.Equals(right);

@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// (Postgres only) Whether point in time recovery is enabled.
+        /// Whether point in time recovery is enabled.
         /// </summary>
         [Input("pointInTimeRecoveryEnabled")]
         public Input<bool>? PointInTimeRecoveryEnabled { get; set; }

@@ -48,6 +48,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// Provides the state of this Vulnerability assessment.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        /// </summary>
+        public readonly string VulnerabilityId;
 
         [OutputConstructor]
         private AssessmentResponse(
@@ -65,7 +69,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string shortDescription,
 
-            string state)
+            string state,
+
+            string vulnerabilityId)
         {
             Cve = cve;
             Impacts = impacts;
@@ -75,6 +81,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             Remediations = remediations;
             ShortDescription = shortDescription;
             State = state;
+            VulnerabilityId = vulnerabilityId;
         }
     }
 }

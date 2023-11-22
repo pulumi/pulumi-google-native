@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
         public Input<Inputs.IdentityServiceAzureADConfigArgs>? AzureadConfig { get; set; }
 
         /// <summary>
-        /// GoogleConfig specific configuration
+        /// GoogleConfig specific configuration.
         /// </summary>
         [Input("googleConfig")]
         public Input<Inputs.IdentityServiceGoogleConfigArgs>? GoogleConfig { get; set; }

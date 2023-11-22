@@ -80,9 +80,17 @@ namespace Pulumi.GoogleNative.Composer.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// The current state of the environment.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Optional. Storage configuration for this environment.
+        /// </summary>
+        public readonly Outputs.StorageConfigResponse StorageConfig;
         /// <summary>
         /// The time at which this environment was last modified.
         /// </summary>
@@ -102,7 +110,11 @@ namespace Pulumi.GoogleNative.Composer.V1
 
             string name,
 
+            bool satisfiesPzs,
+
             string state,
+
+            Outputs.StorageConfigResponse storageConfig,
 
             string updateTime,
 
@@ -112,7 +124,9 @@ namespace Pulumi.GoogleNative.Composer.V1
             CreateTime = createTime;
             Labels = labels;
             Name = name;
+            SatisfiesPzs = satisfiesPzs;
             State = state;
+            StorageConfig = storageConfig;
             UpdateTime = updateTime;
             Uuid = uuid;
         }

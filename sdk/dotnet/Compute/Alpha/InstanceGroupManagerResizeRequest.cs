@@ -64,6 +64,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        /// </summary>
+        [Output("requestedRunDuration")]
+        public Output<Outputs.DurationResponse> RequestedRunDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+        /// </summary>
+        [Output("resizeBy")]
+        public Output<int> ResizeBy { get; private set; } = null!;
+
+        /// <summary>
         /// The URL for this resize request. The server defines this URL.
         /// </summary>
         [Output("selfLink")]
@@ -82,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+        /// [Output only] Status of the request.
         /// </summary>
         [Output("status")]
         public Output<Outputs.InstanceGroupManagerResizeRequestStatusResponse> Status { get; private set; } = null!;
@@ -176,6 +188,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        /// </summary>
+        [Input("requestedRunDuration")]
+        public Input<Inputs.DurationArgs>? RequestedRunDuration { get; set; }
+
+        /// <summary>
+        /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+        /// </summary>
+        [Input("resizeBy")]
+        public Input<int>? ResizeBy { get; set; }
 
         [Input("zone")]
         public Input<string>? Zone { get; set; }

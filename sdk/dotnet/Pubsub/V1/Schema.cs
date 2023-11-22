@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<string> RevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
         /// </summary>
         [Output("schemaId")]
         public Output<string?> SchemaId { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
         /// </summary>
         [Input("schemaId")]
         public Input<string>? SchemaId { get; set; }

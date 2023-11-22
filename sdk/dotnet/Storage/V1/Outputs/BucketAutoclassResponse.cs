@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+        /// </summary>
+        public readonly string TerminalStorageClass;
+        /// <summary>
+        /// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+        /// </summary>
+        public readonly string TerminalStorageClassUpdateTime;
+        /// <summary>
         /// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
         /// </summary>
         public readonly string ToggleTime;
@@ -29,9 +37,15 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         private BucketAutoclassResponse(
             bool enabled,
 
+            string terminalStorageClass,
+
+            string terminalStorageClassUpdateTime,
+
             string toggleTime)
         {
             Enabled = enabled;
+            TerminalStorageClass = terminalStorageClass;
+            TerminalStorageClassUpdateTime = terminalStorageClassUpdateTime;
             ToggleTime = toggleTime;
         }
     }

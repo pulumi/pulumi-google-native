@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// The resource URL for the security policy associated with this target pool.
+        /// </summary>
+        [Output("securityPolicy")]
+        public Output<string> SecurityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]

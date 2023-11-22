@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Pubsub.V1
 {
     /// <summary>
-    /// The encoding of messages validated against `schema`.
+    /// Optional. The encoding of messages validated against `schema`.
     /// </summary>
     [EnumType]
     public readonly struct SchemaSettingsEncoding : IEquatable<SchemaSettingsEncoding>

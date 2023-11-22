@@ -74,19 +74,19 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse IosSettings;
         /// <summary>
-        /// See Creating and managing labels.
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The resource name for the Key in the format "projects/{project}/keys/{key}".
+        /// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Options for user acceptance testing.
+        /// Optional. Options for user acceptance testing.
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse TestingOptions;
         /// <summary>
-        /// Settings for WAF
+        /// Optional. Settings for WAF
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse WafSettings;
         /// <summary>

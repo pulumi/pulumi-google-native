@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1GcsDestinationResponse AudioExportGcsDestination;
         /// <summary>
+        /// Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsResponse DtmfSettings;
+        /// <summary>
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsResponse LoggingSettings;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         private GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse(
             Outputs.GoogleCloudDialogflowCxV3beta1GcsDestinationResponse audioExportGcsDestination,
 
+            Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsResponse dtmfSettings,
+
             Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsResponse loggingSettings)
         {
             AudioExportGcsDestination = audioExportGcsDestination;
+            DtmfSettings = dtmfSettings;
             LoggingSettings = loggingSettings;
         }
     }

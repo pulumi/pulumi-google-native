@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Inputs.ExprArgs>? Expr { get; set; }
 
         /// <summary>
+        /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        /// </summary>
+        [Input("exprOptions")]
+        public Input<Inputs.SecurityPolicyRuleMatcherExprOptionsArgs>? ExprOptions { get; set; }
+
+        /// <summary>
         /// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
         /// </summary>
         [Input("versionedExpr")]

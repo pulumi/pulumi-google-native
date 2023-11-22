@@ -17,14 +17,29 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class AutopilotResponse
     {
         /// <summary>
+        /// ConversionStatus shows conversion status.
+        /// </summary>
+        public readonly Outputs.AutopilotConversionStatusResponse ConversionStatus;
+        /// <summary>
         /// Enable Autopilot
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Workload policy configuration for Autopilot.
+        /// </summary>
+        public readonly Outputs.WorkloadPolicyConfigResponse WorkloadPolicyConfig;
 
         [OutputConstructor]
-        private AutopilotResponse(bool enabled)
+        private AutopilotResponse(
+            Outputs.AutopilotConversionStatusResponse conversionStatus,
+
+            bool enabled,
+
+            Outputs.WorkloadPolicyConfigResponse workloadPolicyConfig)
         {
+            ConversionStatus = conversionStatus;
             Enabled = enabled;
+            WorkloadPolicyConfig = workloadPolicyConfig;
         }
     }
 }

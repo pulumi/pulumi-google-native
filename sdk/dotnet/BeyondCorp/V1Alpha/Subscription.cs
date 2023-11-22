@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Number of seats in the subscription.
+        /// Optional. Number of seats in the subscription.
         /// </summary>
         [Output("seatCount")]
         public Output<string> SeatCount { get; private set; } = null!;
@@ -138,6 +138,12 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Number of seats in the subscription.
+        /// </summary>
+        [Input("seatCount")]
+        public Input<string>? SeatCount { get; set; }
 
         /// <summary>
         /// SKU of subscription.

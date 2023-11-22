@@ -22,6 +22,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         public readonly string Description;
         public readonly Outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse FutureReservationSpecs;
         /// <summary>
+        /// The lock time of the FutureReservation before an amendment was requested.
+        /// </summary>
+        public readonly string LockTime;
+        /// <summary>
         /// The name prefix of the Future Reservation before an amendment was requested.
         /// </summary>
         public readonly string NamePrefix;
@@ -36,12 +40,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse futureReservationSpecs,
 
+            string lockTime,
+
             string namePrefix,
 
             string procurementStatus)
         {
             Description = description;
             FutureReservationSpecs = futureReservationSpecs;
+            LockTime = lockTime;
             NamePrefix = namePrefix;
             ProcurementStatus = procurementStatus;
         }

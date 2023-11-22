@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public partial class WorkflowInvocation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         [Output("compilationResult")]
         public Output<string> CompilationResult { get; private set; } = null!;
@@ -48,6 +48,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
+
+        /// <summary>
+        /// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// </summary>
+        [Output("resolvedCompilationResult")]
+        public Output<string> ResolvedCompilationResult { get; private set; } = null!;
 
         /// <summary>
         /// This workflow invocation's current state.
@@ -113,7 +119,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public sealed class WorkflowInvocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         [Input("compilationResult")]
         public Input<string>? CompilationResult { get; set; }

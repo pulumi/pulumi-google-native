@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Output<Outputs.MaintenanceWindowResponse> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
-        /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         /// </summary>
         [Output("metadataIntegration")]
         public Output<Outputs.MetadataIntegrationResponse> MetadataIntegration { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Input<Inputs.MaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         /// </summary>
         [Input("metadataIntegration")]
         public Input<Inputs.MetadataIntegrationArgs>? MetadataIntegration { get; set; }

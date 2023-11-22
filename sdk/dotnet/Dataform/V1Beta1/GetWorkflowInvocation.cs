@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public sealed class GetWorkflowInvocationResult
     {
         /// <summary>
-        /// Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         public readonly string CompilationResult;
         /// <summary>
@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// The workflow invocation's name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// </summary>
+        public readonly string ResolvedCompilationResult;
         /// <summary>
         /// This workflow invocation's current state.
         /// </summary>
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
             string name,
 
+            string resolvedCompilationResult,
+
             string state,
 
             string workflowConfig)
@@ -112,6 +118,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
             InvocationConfig = invocationConfig;
             InvocationTiming = invocationTiming;
             Name = name;
+            ResolvedCompilationResult = resolvedCompilationResult;
             State = state;
             WorkflowConfig = workflowConfig;
         }

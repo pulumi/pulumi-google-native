@@ -29,6 +29,14 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
         /// </summary>
         public readonly string ApiVersion;
         /// <summary>
+        /// Optional. Whether Autocheckpoint is enabled.
+        /// </summary>
+        public readonly bool AutocheckpointEnabled;
+        /// <summary>
+        /// Optional. Boot disk configuration.
+        /// </summary>
+        public readonly Outputs.BootDiskConfigResponse BootDiskConfig;
+        /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         /// </summary>
         public readonly string CidrBlock;
@@ -117,6 +125,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
 
             string apiVersion,
 
+            bool autocheckpointEnabled,
+
+            Outputs.BootDiskConfigResponse bootDiskConfig,
+
             string cidrBlock,
 
             string createTime,
@@ -160,6 +172,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
             AcceleratorConfig = acceleratorConfig;
             AcceleratorType = acceleratorType;
             ApiVersion = apiVersion;
+            AutocheckpointEnabled = autocheckpointEnabled;
+            BootDiskConfig = bootDiskConfig;
             CidrBlock = cidrBlock;
             CreateTime = createTime;
             DataDisks = dataDisks;

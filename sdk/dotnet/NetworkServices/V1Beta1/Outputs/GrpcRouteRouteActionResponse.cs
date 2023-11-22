@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.GrpcRouteRetryPolicyResponse RetryPolicy;
         /// <summary>
+        /// Optional. Specifies cookie-based stateful session affinity.
+        /// </summary>
+        public readonly Outputs.GrpcRouteStatefulSessionAffinityPolicyResponse StatefulSessionAffinity;
+        /// <summary>
         /// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         /// </summary>
         public readonly string Timeout;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
 
             Outputs.GrpcRouteRetryPolicyResponse retryPolicy,
 
+            Outputs.GrpcRouteStatefulSessionAffinityPolicyResponse statefulSessionAffinity,
+
             string timeout)
         {
             Destinations = destinations;
             FaultInjectionPolicy = faultInjectionPolicy;
             RetryPolicy = retryPolicy;
+            StatefulSessionAffinity = statefulSessionAffinity;
             Timeout = timeout;
         }
     }

@@ -52,6 +52,43 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Required. Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+    /// </summary>
+    [EnumType]
+    public readonly struct FilterProtocolVersion : IEquatable<FilterProtocolVersion>
+    {
+        private readonly string _value;
+
+        private FilterProtocolVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static FilterProtocolVersion ProtocolVersionUnspecified { get; } = new FilterProtocolVersion("PROTOCOL_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// The PBR is for IPv4 internet protocol traffic.
+        /// </summary>
+        public static FilterProtocolVersion Ipv4 { get; } = new FilterProtocolVersion("IPV4");
+
+        public static bool operator ==(FilterProtocolVersion left, FilterProtocolVersion right) => left.Equals(right);
+        public static bool operator !=(FilterProtocolVersion left, FilterProtocolVersion right) => !left.Equals(right);
+
+        public static explicit operator string(FilterProtocolVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FilterProtocolVersion other && Equals(other);
+        public bool Equals(FilterProtocolVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct InternalRangeOverlapsItem : IEquatable<InternalRangeOverlapsItem>
     {
@@ -70,6 +107,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// Allow creation of static routes more specific that the current internal range.
         /// </summary>
         public static InternalRangeOverlapsItem OverlapRouteRange { get; } = new InternalRangeOverlapsItem("OVERLAP_ROUTE_RANGE");
+        /// <summary>
+        /// Allow creation of internal ranges that overlap with existing subnets.
+        /// </summary>
+        public static InternalRangeOverlapsItem OverlapExistingSubnetRange { get; } = new InternalRangeOverlapsItem("OVERLAP_EXISTING_SUBNET_RANGE");
 
         public static bool operator ==(InternalRangeOverlapsItem left, InternalRangeOverlapsItem right) => left.Equals(right);
         public static bool operator !=(InternalRangeOverlapsItem left, InternalRangeOverlapsItem right) => !left.Equals(right);
@@ -165,6 +206,43 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InternalRangeUsage other && Equals(other);
         public bool Equals(InternalRangeUsage other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Other routes that will be referenced to determine the next hop of the packet.
+    /// </summary>
+    [EnumType]
+    public readonly struct PolicyBasedRouteNextHopOtherRoutes : IEquatable<PolicyBasedRouteNextHopOtherRoutes>
+    {
+        private readonly string _value;
+
+        private PolicyBasedRouteNextHopOtherRoutes(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static PolicyBasedRouteNextHopOtherRoutes OtherRoutesUnspecified { get; } = new PolicyBasedRouteNextHopOtherRoutes("OTHER_ROUTES_UNSPECIFIED");
+        /// <summary>
+        /// Use the routes from the default routing tables (system-generated routes, custom routes, peering route) to determine the next hop. This will effectively exclude matching packets being applied on other PBRs with a lower priority.
+        /// </summary>
+        public static PolicyBasedRouteNextHopOtherRoutes DefaultRouting { get; } = new PolicyBasedRouteNextHopOtherRoutes("DEFAULT_ROUTING");
+
+        public static bool operator ==(PolicyBasedRouteNextHopOtherRoutes left, PolicyBasedRouteNextHopOtherRoutes right) => left.Equals(right);
+        public static bool operator !=(PolicyBasedRouteNextHopOtherRoutes left, PolicyBasedRouteNextHopOtherRoutes right) => !left.Equals(right);
+
+        public static explicit operator string(PolicyBasedRouteNextHopOtherRoutes value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PolicyBasedRouteNextHopOtherRoutes other && Equals(other);
+        public bool Equals(PolicyBasedRouteNextHopOtherRoutes other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

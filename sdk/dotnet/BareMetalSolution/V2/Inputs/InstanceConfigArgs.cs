@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         }
 
         /// <summary>
+        /// The name of the instance config.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// The type of network configuration on the instance.
         /// </summary>
         [Input("networkConfig")]
@@ -80,6 +86,18 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         /// </summary>
         [Input("privateNetwork")]
         public Input<Inputs.NetworkAddressArgs>? PrivateNetwork { get; set; }
+
+        [Input("sshKeyNames")]
+        private InputList<string>? _sshKeyNames;
+
+        /// <summary>
+        /// Optional. List of names of ssh keys used to provision the instance.
+        /// </summary>
+        public InputList<string> SshKeyNames
+        {
+            get => _sshKeyNames ?? (_sshKeyNames = new InputList<string>());
+            set => _sshKeyNames = value;
+        }
 
         /// <summary>
         /// User note field, it can be used by customers to add additional information for the BMS Ops team .

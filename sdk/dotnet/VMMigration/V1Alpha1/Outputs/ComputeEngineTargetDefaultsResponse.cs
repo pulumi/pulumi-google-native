@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.AppliedLicenseResponse AppliedLicense;
         /// <summary>
-        /// The VM Boot Option, as set in the source vm.
+        /// The VM Boot Option, as set in the source VM.
         /// </summary>
         public readonly string BootOption;
         /// <summary>
@@ -36,6 +36,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// The disk type to use in the VM.
         /// </summary>
         public readonly string DiskType;
+        /// <summary>
+        /// Optional. Immutable. The encryption to apply to the VM disks.
+        /// </summary>
+        public readonly Outputs.EncryptionResponse Encryption;
         /// <summary>
         /// The hostname to assign to the VM.
         /// </summary>
@@ -65,11 +69,11 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         /// <summary>
-        /// A map of network tags to associate with the VM.
+        /// A list of network tags to associate with the VM.
         /// </summary>
         public readonly ImmutableArray<string> NetworkTags;
         /// <summary>
-        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
         /// </summary>
         public readonly bool SecureBoot;
         /// <summary>
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
             Outputs.ComputeSchedulingResponse computeScheduling,
 
             string diskType,
+
+            Outputs.EncryptionResponse encryption,
 
             string hostname,
 
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
             BootOption = bootOption;
             ComputeScheduling = computeScheduling;
             DiskType = diskType;
+            Encryption = encryption;
             Hostname = hostname;
             Labels = labels;
             LicenseType = licenseType;

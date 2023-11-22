@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class RoutineReferenceResponse
     {
         /// <summary>
-        /// [Required] The ID of the dataset containing this routine.
+        /// The ID of the dataset containing this routine.
         /// </summary>
         public readonly string DatasetId;
         /// <summary>
-        /// [Required] The ID of the project containing this routine.
+        /// The ID of the project containing this routine.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        /// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         /// </summary>
         public readonly string RoutineId;
 

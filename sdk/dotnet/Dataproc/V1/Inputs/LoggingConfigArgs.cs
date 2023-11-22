@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         private InputMap<string>? _driverLogLevels;
 
         /// <summary>
-        /// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+        /// The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
         /// </summary>
         public InputMap<string> DriverLogLevels
         {

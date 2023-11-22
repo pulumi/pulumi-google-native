@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
     }
 
     /// <summary>
-    /// The format of packages that are stored in the repository.
+    /// Optional. The format of packages that are stored in the repository.
     /// </summary>
     [EnumType]
     public readonly struct RepositoryFormat : IEquatable<RepositoryFormat>

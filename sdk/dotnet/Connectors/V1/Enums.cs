@@ -106,6 +106,248 @@ namespace Pulumi.GoogleNative.Connectors.V1
     }
 
     /// <summary>
+    /// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConnectionEventingEnablementType : IEquatable<ConnectionEventingEnablementType>
+    {
+        private readonly string _value;
+
+        private ConnectionEventingEnablementType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Eventing Enablement Type Unspecifeied.
+        /// </summary>
+        public static ConnectionEventingEnablementType EventingEnablementTypeUnspecified { get; } = new ConnectionEventingEnablementType("EVENTING_ENABLEMENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Both connection and eventing.
+        /// </summary>
+        public static ConnectionEventingEnablementType EventingAndConnection { get; } = new ConnectionEventingEnablementType("EVENTING_AND_CONNECTION");
+        /// <summary>
+        /// Only Eventing.
+        /// </summary>
+        public static ConnectionEventingEnablementType OnlyEventing { get; } = new ConnectionEventingEnablementType("ONLY_EVENTING");
+
+        public static bool operator ==(ConnectionEventingEnablementType left, ConnectionEventingEnablementType right) => left.Equals(right);
+        public static bool operator !=(ConnectionEventingEnablementType left, ConnectionEventingEnablementType right) => !left.Equals(right);
+
+        public static explicit operator string(ConnectionEventingEnablementType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConnectionEventingEnablementType other && Equals(other);
+        public bool Equals(ConnectionEventingEnablementType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Type of the custom connector.
+    /// </summary>
+    [EnumType]
+    public readonly struct CustomConnectorCustomConnectorType : IEquatable<CustomConnectorCustomConnectorType>
+    {
+        private readonly string _value;
+
+        private CustomConnectorCustomConnectorType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Connector type is not specified.
+        /// </summary>
+        public static CustomConnectorCustomConnectorType CustomConnectorTypeUnspecified { get; } = new CustomConnectorCustomConnectorType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// OpenAPI connector.
+        /// </summary>
+        public static CustomConnectorCustomConnectorType OpenApi { get; } = new CustomConnectorCustomConnectorType("OPEN_API");
+        /// <summary>
+        /// Proto connector.
+        /// </summary>
+        public static CustomConnectorCustomConnectorType Proto { get; } = new CustomConnectorCustomConnectorType("PROTO");
+
+        public static bool operator ==(CustomConnectorCustomConnectorType left, CustomConnectorCustomConnectorType right) => left.Equals(right);
+        public static bool operator !=(CustomConnectorCustomConnectorType left, CustomConnectorCustomConnectorType right) => !left.Equals(right);
+
+        public static explicit operator string(CustomConnectorCustomConnectorType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CustomConnectorCustomConnectorType other && Equals(other);
+        public bool Equals(CustomConnectorCustomConnectorType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Type of the customConnector.
+    /// </summary>
+    [EnumType]
+    public readonly struct CustomConnectorVersionType : IEquatable<CustomConnectorVersionType>
+    {
+        private readonly string _value;
+
+        private CustomConnectorVersionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Connector type is not specified.
+        /// </summary>
+        public static CustomConnectorVersionType CustomConnectorTypeUnspecified { get; } = new CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// OpenAPI connector.
+        /// </summary>
+        public static CustomConnectorVersionType OpenApi { get; } = new CustomConnectorVersionType("OPEN_API");
+        /// <summary>
+        /// Proto connector.
+        /// </summary>
+        public static CustomConnectorVersionType Proto { get; } = new CustomConnectorVersionType("PROTO");
+
+        public static bool operator ==(CustomConnectorVersionType left, CustomConnectorVersionType right) => left.Equals(right);
+        public static bool operator !=(CustomConnectorVersionType left, CustomConnectorVersionType right) => !left.Equals(right);
+
+        public static explicit operator string(CustomConnectorVersionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CustomConnectorVersionType other && Equals(other);
+        public bool Equals(CustomConnectorVersionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type.
+    /// </summary>
+    [EnumType]
+    public readonly struct EncryptionKeyType : IEquatable<EncryptionKeyType>
+    {
+        private readonly string _value;
+
+        private EncryptionKeyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value type is not specified.
+        /// </summary>
+        public static EncryptionKeyType TypeUnspecified { get; } = new EncryptionKeyType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Google Managed.
+        /// </summary>
+        public static EncryptionKeyType GoogleManaged { get; } = new EncryptionKeyType("GOOGLE_MANAGED");
+        /// <summary>
+        /// Customer Managed.
+        /// </summary>
+        public static EncryptionKeyType CustomerManaged { get; } = new EncryptionKeyType("CUSTOMER_MANAGED");
+
+        public static bool operator ==(EncryptionKeyType left, EncryptionKeyType right) => left.Equals(right);
+        public static bool operator !=(EncryptionKeyType left, EncryptionKeyType right) => !left.Equals(right);
+
+        public static explicit operator string(EncryptionKeyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EncryptionKeyType other && Equals(other);
+        public bool Equals(EncryptionKeyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// type of the destination
+    /// </summary>
+    [EnumType]
+    public readonly struct EventSubscriptionDestinationType : IEquatable<EventSubscriptionDestinationType>
+    {
+        private readonly string _value;
+
+        private EventSubscriptionDestinationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default state.
+        /// </summary>
+        public static EventSubscriptionDestinationType TypeUnspecified { get; } = new EventSubscriptionDestinationType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Endpoint - Hit the value of endpoint when event is received
+        /// </summary>
+        public static EventSubscriptionDestinationType Endpoint { get; } = new EventSubscriptionDestinationType("ENDPOINT");
+
+        public static bool operator ==(EventSubscriptionDestinationType left, EventSubscriptionDestinationType right) => left.Equals(right);
+        public static bool operator !=(EventSubscriptionDestinationType left, EventSubscriptionDestinationType right) => !left.Equals(right);
+
+        public static explicit operator string(EventSubscriptionDestinationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EventSubscriptionDestinationType other && Equals(other);
+        public bool Equals(EventSubscriptionDestinationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Type of the JMS Source. i.e. Queue or Topic
+    /// </summary>
+    [EnumType]
+    public readonly struct JMSType : IEquatable<JMSType>
+    {
+        private readonly string _value;
+
+        private JMSType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default state.
+        /// </summary>
+        public static JMSType TypeUnspecified { get; } = new JMSType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// JMS Queue.
+        /// </summary>
+        public static JMSType Queue { get; } = new JMSType("QUEUE");
+        /// <summary>
+        /// JMS Topic.
+        /// </summary>
+        public static JMSType Topic { get; } = new JMSType("TOPIC");
+
+        public static bool operator ==(JMSType left, JMSType right) => left.Equals(right);
+        public static bool operator !=(JMSType left, JMSType right) => !left.Equals(right);
+
+        public static explicit operator string(JMSType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JMSType other && Equals(other);
+        public bool Equals(JMSType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Type of Client Cert (PEM/JKS/.. etc.)
     /// </summary>
     [EnumType]

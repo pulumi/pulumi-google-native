@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class RegionDisk : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+        /// </summary>
+        [Output("accessMode")]
+        public Output<string> AccessMode { get; private set; } = null!;
+
+        /// <summary>
         /// The architecture of the disk. Valid values are ARM64 or X86_64.
         /// </summary>
         [Output("architecture")]
@@ -52,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        /// Whether this disk is using confidential compute mode.
         /// </summary>
         [Output("enableConfidentialCompute")]
         public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
@@ -220,7 +226,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         /// </summary>
         [Output("sizeGb")]
         public Output<string> SizeGb { get; private set; } = null!;
@@ -396,6 +402,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class RegionDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+        /// </summary>
+        [Input("accessMode")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RegionDiskAccessMode>? AccessMode { get; set; }
+
+        /// <summary>
         /// The architecture of the disk. Valid values are ARM64 or X86_64.
         /// </summary>
         [Input("architecture")]
@@ -420,7 +432,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.CustomerEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        /// Whether this disk is using confidential compute mode.
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
@@ -570,7 +582,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         /// </summary>
         [Input("sizeGb")]
         public Input<string>? SizeGb { get; set; }

@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// [Optional] Specifies the configuration of a BigLake managed table.
+        /// </summary>
+        [Output("biglakeConfiguration")]
+        public Output<Outputs.BigLakeConfigurationResponse> BiglakeConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Clone definition.
         /// </summary>
         [Output("cloneDefinition")]
@@ -215,6 +221,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<bool> RequirePartitionFilter { get; private set; } = null!;
 
         /// <summary>
+        /// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+        /// </summary>
+        [Output("resourceTags")]
+        public Output<ImmutableDictionary<string, string>> ResourceTags { get; private set; } = null!;
+
+        /// <summary>
         /// [Optional] Describes the schema of this table.
         /// </summary>
         [Output("schema")]
@@ -319,6 +331,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// [Optional] Specifies the configuration of a BigLake managed table.
+        /// </summary>
+        [Input("biglakeConfiguration")]
+        public Input<Inputs.BigLakeConfigurationArgs>? BiglakeConfiguration { get; set; }
+
+        /// <summary>
         /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
         /// </summary>
         [Input("clustering")]
@@ -401,6 +419,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("requirePartitionFilter")]
         public Input<bool>? RequirePartitionFilter { get; set; }
+
+        [Input("resourceTags")]
+        private InputMap<string>? _resourceTags;
+
+        /// <summary>
+        /// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+        /// </summary>
+        public InputMap<string> ResourceTags
+        {
+            get => _resourceTags ?? (_resourceTags = new InputMap<string>());
+            set => _resourceTags = value;
+        }
 
         /// <summary>
         /// [Optional] Describes the schema of this table.

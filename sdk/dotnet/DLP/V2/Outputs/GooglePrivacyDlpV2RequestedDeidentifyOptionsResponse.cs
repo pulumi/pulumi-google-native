@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// De-id options.
+    /// De-identification options.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse

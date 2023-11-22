@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Enable Autopilot
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Workload policy configuration for Autopilot.
+        /// </summary>
+        public readonly Outputs.WorkloadPolicyConfigResponse WorkloadPolicyConfig;
 
         [OutputConstructor]
-        private AutopilotResponse(bool enabled)
+        private AutopilotResponse(
+            bool enabled,
+
+            Outputs.WorkloadPolicyConfigResponse workloadPolicyConfig)
         {
             Enabled = enabled;
+            WorkloadPolicyConfig = workloadPolicyConfig;
         }
     }
 }

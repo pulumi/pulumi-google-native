@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Flow")]
     public partial class Flow : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Output("advancedSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse> AdvancedSettings { get; private set; } = null!;
+
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
 
@@ -35,6 +41,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Output("eventHandlers")]
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EventHandlerResponse>> EventHandlers { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Knowledge connector configuration.
+        /// </summary>
+        [Output("knowledgeConnectorSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse> KnowledgeConnectorSettings { get; private set; } = null!;
 
         /// <summary>
         /// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
@@ -61,7 +73,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         [Output("transitionRouteGroups")]
         public Output<ImmutableArray<string>> TransitionRouteGroups { get; private set; } = null!;
@@ -123,6 +135,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class FlowArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
@@ -149,6 +167,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
             get => _eventHandlers ?? (_eventHandlers = new InputList<Inputs.GoogleCloudDialogflowCxV3beta1EventHandlerArgs>());
             set => _eventHandlers = value;
         }
+
+        /// <summary>
+        /// Optional. Knowledge connector configuration.
+        /// </summary>
+        [Input("knowledgeConnectorSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs>? KnowledgeConnectorSettings { get; set; }
 
         /// <summary>
         /// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
@@ -178,7 +202,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         private InputList<string>? _transitionRouteGroups;
 
         /// <summary>
-        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         public InputList<string> TransitionRouteGroups
         {

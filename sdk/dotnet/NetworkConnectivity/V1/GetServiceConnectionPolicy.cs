@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The type of underlying resources used to create the connection.
         /// </summary>
         public readonly string Infrastructure;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 
             string description,
 
+            string etag,
+
             string infrastructure,
 
             ImmutableDictionary<string, string> labels,
@@ -128,6 +134,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         {
             CreateTime = createTime;
             Description = description;
+            Etag = etag;
             Infrastructure = infrastructure;
             Labels = labels;
             Name = name;

@@ -120,6 +120,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        /// </summary>
+        public readonly Outputs.PerformanceConfigResponse PerformanceConfig;
+        /// <summary>
         /// The current migration job phase.
         /// </summary>
         public readonly string Phase;
@@ -186,6 +190,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
             string name,
 
+            Outputs.PerformanceConfigResponse performanceConfig,
+
             string phase,
 
             Outputs.ReverseSshConnectivityResponse reverseSshConnectivity,
@@ -218,6 +224,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             Filter = filter;
             Labels = labels;
             Name = name;
+            PerformanceConfig = performanceConfig;
             Phase = phase;
             ReverseSshConnectivity = reverseSshConnectivity;
             Source = source;

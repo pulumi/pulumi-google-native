@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.DNSConfigResponse DnsConfig;
         /// <summary>
+        /// Whether FQDN Network Policy is enabled on this cluster.
+        /// </summary>
+        public readonly bool EnableFqdnNetworkPolicy;
+        /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         public readonly bool EnableIntraNodeVisibility;
@@ -37,13 +41,25 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool EnableL4ilbSubsetting;
         /// <summary>
+        /// Whether multi-networking is enabled for this cluster.
+        /// </summary>
+        public readonly bool EnableMultiNetworking;
+        /// <summary>
         /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         /// </summary>
         public readonly Outputs.GatewayAPIConfigResponse GatewayApiConfig;
         /// <summary>
+        /// Specify the details of in-transit encryption.
+        /// </summary>
+        public readonly string InTransitEncryptionConfig;
+        /// <summary>
         /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        public readonly Outputs.ClusterNetworkPerformanceConfigResponse NetworkPerformanceConfig;
         /// <summary>
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         /// </summary>
@@ -65,13 +81,21 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             Outputs.DNSConfigResponse dnsConfig,
 
+            bool enableFqdnNetworkPolicy,
+
             bool enableIntraNodeVisibility,
 
             bool enableL4ilbSubsetting,
 
+            bool enableMultiNetworking,
+
             Outputs.GatewayAPIConfigResponse gatewayApiConfig,
 
+            string inTransitEncryptionConfig,
+
             string network,
+
+            Outputs.ClusterNetworkPerformanceConfigResponse networkPerformanceConfig,
 
             string privateIpv6GoogleAccess,
 
@@ -82,10 +106,14 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             DatapathProvider = datapathProvider;
             DefaultSnatStatus = defaultSnatStatus;
             DnsConfig = dnsConfig;
+            EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             EnableIntraNodeVisibility = enableIntraNodeVisibility;
             EnableL4ilbSubsetting = enableL4ilbSubsetting;
+            EnableMultiNetworking = enableMultiNetworking;
             GatewayApiConfig = gatewayApiConfig;
+            InTransitEncryptionConfig = inTransitEncryptionConfig;
             Network = network;
+            NetworkPerformanceConfig = networkPerformanceConfig;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ServiceExternalIpsConfig = serviceExternalIpsConfig;
             Subnetwork = subnetwork;

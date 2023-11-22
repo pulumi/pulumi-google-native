@@ -52,6 +52,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// An operation that indicates the status of the current scan. This field is deprecated, do not use.
         /// </summary>
         public readonly Outputs.OperationResponse Operation;
+        /// <summary>
+        /// The status of an SBOM generation.
+        /// </summary>
+        public readonly Outputs.SBOMStatusResponse SbomStatus;
 
         [OutputConstructor]
         private DiscoveredResponse(
@@ -71,7 +75,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string lastScanTime,
 
-            Outputs.OperationResponse operation)
+            Outputs.OperationResponse operation,
+
+            Outputs.SBOMStatusResponse sbomStatus)
         {
             AnalysisCompleted = analysisCompleted;
             AnalysisError = analysisError;
@@ -82,6 +88,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             Cpe = cpe;
             LastScanTime = lastScanTime;
             Operation = operation;
+            SbomStatus = sbomStatus;
         }
     }
 }

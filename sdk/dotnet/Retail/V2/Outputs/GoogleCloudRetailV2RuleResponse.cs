@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Retail.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudRetailV2RuleFilterActionResponse FilterAction;
         /// <summary>
+        /// Force returns an attribute as a facet in the request.
+        /// </summary>
+        public readonly Outputs.GoogleCloudRetailV2RuleForceReturnFacetActionResponse ForceReturnFacetAction;
+        /// <summary>
         /// Ignores specific terms from query during search.
         /// </summary>
         public readonly Outputs.GoogleCloudRetailV2RuleIgnoreActionResponse IgnoreAction;
@@ -44,6 +48,10 @@ namespace Pulumi.GoogleNative.Retail.V2.Outputs
         /// Redirects a shopper to a specific page.
         /// </summary>
         public readonly Outputs.GoogleCloudRetailV2RuleRedirectActionResponse RedirectAction;
+        /// <summary>
+        /// Remove an attribute as a facet in the request (if present).
+        /// </summary>
+        public readonly Outputs.GoogleCloudRetailV2RuleRemoveFacetActionResponse RemoveFacetAction;
         /// <summary>
         /// Replaces specific terms in the query.
         /// </summary>
@@ -63,11 +71,15 @@ namespace Pulumi.GoogleNative.Retail.V2.Outputs
 
             Outputs.GoogleCloudRetailV2RuleFilterActionResponse filterAction,
 
+            Outputs.GoogleCloudRetailV2RuleForceReturnFacetActionResponse forceReturnFacetAction,
+
             Outputs.GoogleCloudRetailV2RuleIgnoreActionResponse ignoreAction,
 
             Outputs.GoogleCloudRetailV2RuleOnewaySynonymsActionResponse onewaySynonymsAction,
 
             Outputs.GoogleCloudRetailV2RuleRedirectActionResponse redirectAction,
+
+            Outputs.GoogleCloudRetailV2RuleRemoveFacetActionResponse removeFacetAction,
 
             Outputs.GoogleCloudRetailV2RuleReplacementActionResponse replacementAction,
 
@@ -77,9 +89,11 @@ namespace Pulumi.GoogleNative.Retail.V2.Outputs
             Condition = condition;
             DoNotAssociateAction = doNotAssociateAction;
             FilterAction = filterAction;
+            ForceReturnFacetAction = forceReturnFacetAction;
             IgnoreAction = ignoreAction;
             OnewaySynonymsAction = onewaySynonymsAction;
             RedirectAction = redirectAction;
+            RemoveFacetAction = removeFacetAction;
             ReplacementAction = replacementAction;
             TwowaySynonymsAction = twowaySynonymsAction;
         }

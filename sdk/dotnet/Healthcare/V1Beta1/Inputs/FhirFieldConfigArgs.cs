@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         private InputList<Inputs.GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs>? _fieldMetadataList;
 
         /// <summary>
-        /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
         /// </summary>
         public InputList<Inputs.GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs> FieldMetadataList
         {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Specifies additional options, overriding the base `profile`.
+        /// Specifies additional options, overriding the base ProfileType.
         /// </summary>
         [Input("options")]
         public Input<Inputs.GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs>? Options { get; set; }

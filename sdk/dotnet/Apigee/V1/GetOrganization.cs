@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1AddonsConfigResponse AddonsConfig;
         /// <summary>
-        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         public readonly string AnalyticsRegion;
         /// <summary>
@@ -104,6 +104,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+        /// </summary>
+        public readonly bool DisableVpcPeering;
+        /// <summary>
         /// Display name for the Apigee organization. Unused, but reserved for future use.
         /// </summary>
         public readonly string DisplayName;
@@ -148,6 +152,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Subscription plan that the customer has purchased. Output only.
+        /// </summary>
+        public readonly string SubscriptionPlan;
+        /// <summary>
         /// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
         /// </summary>
         public readonly string SubscriptionType;
@@ -184,6 +192,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string description,
 
+            bool disableVpcPeering,
+
             string displayName,
 
             ImmutableArray<string> environments,
@@ -206,6 +216,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string state,
 
+            string subscriptionPlan,
+
             string subscriptionType,
 
             string type)
@@ -223,6 +235,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             CreatedAt = createdAt;
             CustomerName = customerName;
             Description = description;
+            DisableVpcPeering = disableVpcPeering;
             DisplayName = displayName;
             Environments = environments;
             ExpiresAt = expiresAt;
@@ -234,6 +247,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             RuntimeDatabaseEncryptionKeyName = runtimeDatabaseEncryptionKeyName;
             RuntimeType = runtimeType;
             State = state;
+            SubscriptionPlan = subscriptionPlan;
             SubscriptionType = subscriptionType;
             Type = type;
         }

@@ -68,11 +68,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The description of the resource.
+        /// Optional. The description of the group.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// User-friendly display name.
+        /// Optional. User-friendly display name.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

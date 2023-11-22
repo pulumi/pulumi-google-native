@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> DiskSizeGb { get; private set; } = null!;
 
         /// <summary>
+        /// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Output("enableConfidentialCompute")]
+        public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
         /// </summary>
         [Output("family")]
@@ -312,6 +318,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("diskSizeGb")]
         public Input<string>? DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
 
         /// <summary>
         /// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
