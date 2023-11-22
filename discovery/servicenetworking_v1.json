@@ -548,6 +548,88 @@
                 "https://www.googleapis.com/auth/service.management"
               ]
             },
+            "get": {
+              "description": "Producers can use this method to retrieve information about the DNS record set added to the private zone inside the shared tenant host project associated with a consumer network.",
+              "flatPath": "v1/services/{servicesId}/dnsRecordSets:get",
+              "httpMethod": "GET",
+              "id": "servicenetworking.services.dnsRecordSets.get",
+              "parameterOrder": [
+                "parent"
+              ],
+              "parameters": {
+                "consumerNetwork": {
+                  "description": "Required. The consumer network containing the record set. Must be in the form of projects/{project}/global/networks/{network}",
+                  "location": "query",
+                  "type": "string"
+                },
+                "domain": {
+                  "description": "Required. The domain name of the zone containing the recordset.",
+                  "location": "query",
+                  "type": "string"
+                },
+                "parent": {
+                  "description": "Required. Parent resource identifying the connection which owns this collection of DNS zones in the format services/{service}.",
+                  "location": "path",
+                  "pattern": "^services/[^/]+$",
+                  "required": true,
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Required. RecordSet Type eg. type='A'. See the list of [Supported DNS Types](https://cloud.google.com/dns/records/json-record).",
+                  "location": "query",
+                  "type": "string"
+                },
+                "zone": {
+                  "description": "Required. The name of the zone containing the record set.",
+                  "location": "query",
+                  "type": "string"
+                }
+              },
+              "path": "v1/{+parent}/dnsRecordSets:get",
+              "response": {
+                "$ref": "DnsRecordSet"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/service.management"
+              ]
+            },
+            "list": {
+              "description": "Producers can use this method to retrieve a list of available DNS RecordSets available inside the private zone on the tenant host project accessible from their network.",
+              "flatPath": "v1/services/{servicesId}/dnsRecordSets:list",
+              "httpMethod": "GET",
+              "id": "servicenetworking.services.dnsRecordSets.list",
+              "parameterOrder": [
+                "parent"
+              ],
+              "parameters": {
+                "consumerNetwork": {
+                  "description": "Required. The network that the consumer is using to connect with services. Must be in the form of projects/{project}/global/networks/{network} {project} is the project number, as in '12345' {network} is the network name.",
+                  "location": "query",
+                  "type": "string"
+                },
+                "parent": {
+                  "description": "Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`.",
+                  "location": "path",
+                  "pattern": "^services/[^/]+$",
+                  "required": true,
+                  "type": "string"
+                },
+                "zone": {
+                  "description": "Required. The name of the private DNS zone in the shared producer host project from which the record set will be removed.",
+                  "location": "query",
+                  "type": "string"
+                }
+              },
+              "path": "v1/{+parent}/dnsRecordSets:list",
+              "response": {
+                "$ref": "ListDnsRecordSetsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/service.management"
+              ]
+            },
             "remove": {
               "description": "Service producers can use this method to remove DNS record sets from private DNS zones in the shared producer host project.",
               "flatPath": "v1/services/{servicesId}/dnsRecordSets:remove",
@@ -707,6 +789,32 @@
                         "https://www.googleapis.com/auth/service.management"
                       ]
                     },
+                    "getVpcServiceControls": {
+                      "description": "Consumers use this method to find out the state of VPC Service Controls. The controls could be enabled or disabled for a connection.",
+                      "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/vpcServiceControls",
+                      "httpMethod": "GET",
+                      "id": "servicenetworking.services.projects.global.networks.getVpcServiceControls",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the VPC Service Controls config to retrieve in the format: `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is a project number e.g. `12345` that contains the service consumer's VPC network. {network} is the name of the service consumer's VPC network.",
+                          "location": "path",
+                          "pattern": "^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "path": "v1/{+name}/vpcServiceControls",
+                      "response": {
+                        "$ref": "VpcServiceControls"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/service.management"
+                      ]
+                    },
                     "updateConsumerConfig": {
                       "description": "Service producers use this method to update the configuration of their connection including the import/export of custom routes and subnetwork routes with public IP.",
                       "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}:updateConsumerConfig",
@@ -738,6 +846,62 @@
                     }
                   },
                   "resources": {
+                    "dnsZones": {
+                      "methods": {
+                        "get": {
+                          "description": "Service producers can use this method to retrieve a DNS zone in the shared producer host project and the matching peering zones in consumer project",
+                          "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/dnsZones/{dnsZonesId}",
+                          "httpMethod": "GET",
+                          "id": "servicenetworking.services.projects.global.networks.dnsZones.get",
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "parameters": {
+                            "name": {
+                              "description": "Required. The network that the consumer is using to connect with services. Must be in the form of services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName} Where {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this {project} is the project number, as in '12345' {network} is the network name. {zoneName} is the DNS zone name",
+                              "location": "path",
+                              "pattern": "^services/[^/]+/projects/[^/]+/global/networks/[^/]+/dnsZones/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v1/{+name}",
+                          "response": {
+                            "$ref": "GetDnsZoneResponse"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform",
+                            "https://www.googleapis.com/auth/service.management"
+                          ]
+                        },
+                        "list": {
+                          "description": "* Service producers can use this method to retrieve a list of available DNS zones in the shared producer host project and the matching peering zones in the consumer project. *",
+                          "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/dnsZones:list",
+                          "httpMethod": "GET",
+                          "id": "servicenetworking.services.projects.global.networks.dnsZones.list",
+                          "parameterOrder": [
+                            "parent"
+                          ],
+                          "parameters": {
+                            "parent": {
+                              "description": "Required. Parent resource identifying the connection which owns this collection of DNS zones in the format services/{service}/projects/{project}/global/networks/{network} Service: The service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. Projects: the consumer project containing the consumer network. Network: The consumer network accessible from the tenant project.",
+                              "location": "path",
+                              "pattern": "^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v1/{+parent}/dnsZones:list",
+                          "response": {
+                            "$ref": "ListDnsZonesResponse"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform",
+                            "https://www.googleapis.com/auth/service.management"
+                          ]
+                        }
+                      }
+                    },
                     "peeredDnsDomains": {
                       "methods": {
                         "create": {
@@ -865,7 +1029,7 @@
       }
     }
   },
-  "revision": "20230515",
+  "revision": "20231119",
   "rootUrl": "https://servicenetworking.googleapis.com/",
   "schemas": {
     "AddDnsRecordSetMetadata": {
@@ -998,6 +1162,10 @@
         },
         "description": {
           "description": "Optional. Description of the subnet.",
+          "type": "string"
+        },
+        "internalRange": {
+          "description": "Optional. The url of an Internal Range. Eg: `projects//locations/global/internalRanges/`. If specified, it means that the subnetwork cidr will be created using the combination of requested_address/ip_prefix_length. Note that the subnet cidr has to be within the cidr range of this Internal Range.",
           "type": "string"
         },
         "ipPrefixLength": {
@@ -1247,6 +1415,7 @@
           "type": "string"
         },
         "minDeadline": {
+          "deprecated": true,
           "description": "Deprecated, do not use.",
           "format": "double",
           "type": "number"
@@ -1438,6 +1607,7 @@
           "type": "array"
         },
         "referenceDocsUri": {
+          "deprecated": true,
           "description": "Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest",
           "type": "string"
         }
@@ -1622,6 +1792,13 @@
         "environment": {
           "description": "The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com",
           "type": "string"
+        },
+        "methodPolicies": {
+          "description": "Defines policies applying to the API methods of the service.",
+          "items": {
+            "$ref": "MethodPolicy"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -1764,8 +1941,23 @@
       },
       "type": "object"
     },
+    "DnsZonePair": {
+      "description": "* Represents a pair of private and peering DNS zone resources. *",
+      "id": "DnsZonePair",
+      "properties": {
+        "consumerPeeringZone": {
+          "$ref": "DnsZone",
+          "description": "The DNS peering zone in the consumer project."
+        },
+        "producerPrivateZone": {
+          "$ref": "DnsZone",
+          "description": "The private DNS zone in the shared producer host project."
+        }
+      },
+      "type": "object"
+    },
     "Documentation": {
-      "description": "`Documentation` provides the information for describing a service. Example: documentation: summary: \u003e The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: \u003e ... - selector: google.calendar.Calendar.Put description: \u003e ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.",
+      "description": "`Documentation` provides the information for describing a service. Example: documentation: summary: \u003e The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: \u003e ... - selector: google.calendar.Calendar.Put description: \u003e ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.",
       "id": "Documentation",
       "properties": {
         "documentationRootUrl": {
@@ -1787,6 +1979,13 @@
           "description": "A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow \"last one wins\" order.",
           "items": {
             "$ref": "DocumentationRule"
+          },
+          "type": "array"
+        },
+        "sectionOverrides": {
+          "description": "Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries",
+          "items": {
+            "$ref": "Page"
           },
           "type": "array"
         },
@@ -1892,6 +2091,7 @@
       "id": "Endpoint",
       "properties": {
         "aliases": {
+          "deprecated": true,
           "description": "Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.",
           "items": {
             "type": "string"
@@ -2085,6 +2285,40 @@
         "typeUrl": {
           "description": "The field type URL, without the scheme, for message or enumeration types. Example: `\"type.googleapis.com/google.protobuf.Timestamp\"`.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "FieldPolicy": {
+      "description": "Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation.",
+      "id": "FieldPolicy",
+      "properties": {
+        "resourcePermission": {
+          "description": "Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, \"resourcemanager.projects.get\".",
+          "type": "string"
+        },
+        "resourceType": {
+          "description": "Specifies the resource type for the resource referred to by the field.",
+          "type": "string"
+        },
+        "selector": {
+          "description": "Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as \"foo.bar\" or \"foo.bar,foo.baz\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GetDnsZoneResponse": {
+      "description": "Represents managed DNS zones created in the shared Producer host and consumer projects.",
+      "id": "GetDnsZoneResponse",
+      "properties": {
+        "consumerPeeringZone": {
+          "$ref": "DnsZone",
+          "description": "The DNS peering zone created in the consumer project."
+        },
+        "producerPrivateZone": {
+          "$ref": "DnsZone",
+          "description": "The private DNS zone created in the shared producer host project."
         }
       },
       "type": "object"
@@ -2325,6 +2559,34 @@
       },
       "type": "object"
     },
+    "ListDnsRecordSetsResponse": {
+      "description": "Represents all DNS RecordSets associated with the producer network",
+      "id": "ListDnsRecordSetsResponse",
+      "properties": {
+        "dnsRecordSets": {
+          "description": "DNS record Set Resource",
+          "items": {
+            "$ref": "DnsRecordSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ListDnsZonesResponse": {
+      "description": "Represents all DNS zones in the shared producer host project and the matching peering zones in the consumer project.",
+      "id": "ListDnsZonesResponse",
+      "properties": {
+        "dnsZonePairs": {
+          "description": "All pairs of private DNS zones in the shared producer host project and the matching peering zones in the consumer project..",
+          "items": {
+            "$ref": "DnsZonePair"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "ListOperationsResponse": {
       "description": "The response message for Operations.ListOperations.",
       "id": "ListOperationsResponse",
@@ -2497,10 +2759,35 @@
       },
       "type": "object"
     },
+    "MethodPolicy": {
+      "description": "Defines policies applying to an RPC method.",
+      "id": "MethodPolicy",
+      "properties": {
+        "requestPolicies": {
+          "description": "Policies that are applicable to the request message.",
+          "items": {
+            "$ref": "FieldPolicy"
+          },
+          "type": "array"
+        },
+        "selector": {
+          "description": "Selects a method to which these policies should be enforced, for example, \"google.pubsub.v1.Subscriber.CreateSubscription\". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "MethodSettings": {
       "description": "Describes the generator configuration for a method.",
       "id": "MethodSettings",
       "properties": {
+        "autoPopulatedFields": {
+          "description": "List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "longRunning": {
           "$ref": "LongRunning",
           "description": "Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes"
@@ -2629,6 +2916,7 @@
           "type": "string"
         },
         "launchStage": {
+          "deprecated": true,
           "description": "Deprecated. Must use the MetricDescriptor.launch_stage instead.",
           "enum": [
             "LAUNCH_STAGE_UNSPECIFIED",
@@ -2838,7 +3126,7 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
         }
       },
@@ -2932,7 +3220,7 @@
           "type": "string"
         },
         "role": {
-          "description": "Required. Role to apply. Only allowlisted roles can be used at the specified granularity. The role must be one of the following: - 'roles/container.hostServiceAgentUser' applied on the shared VPC host project - 'roles/compute.securityAdmin' applied on the shared VPC host project",
+          "description": "Required. Role to apply. Only allowlisted roles can be used at the specified granularity. The role must be one of the following: - 'roles/container.hostServiceAgentUser' applied on the shared VPC host project - 'roles/compute.securityAdmin' applied on the shared VPC host project - 'roles/compute.networkAdmin' applied on the shared VPC host project - 'roles/compute.xpnAdmin' applied on the shared VPC host project - 'roles/dns.admin' applied on the shared VPC host project",
           "type": "string"
         }
       },
@@ -3794,6 +4082,18 @@
             "The consumer project does not have the permission from the host project."
           ],
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "VpcServiceControls": {
+      "description": "Response for the get VPC Service Controls request.",
+      "id": "VpcServiceControls",
+      "properties": {
+        "enabled": {
+          "description": "Output only. Indicates whether the VPC Service Controls are enabled or disabled for the connection. If the consumer called the EnableVpcServiceControls method, then this is true. If the consumer called DisableVpcServiceControls, then this is false. The default is false.",
+          "readOnly": true,
+          "type": "boolean"
         }
       },
       "type": "object"

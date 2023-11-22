@@ -12,7 +12,7 @@
   "baseUrl": "https://migrationcenter.googleapis.com/",
   "batchPath": "batch",
   "canonicalName": "Migration Center API",
-  "description": "",
+  "description": "A unified platform that helps you accelerate your end-to-end cloud journey from your current on-premises or cloud environments to Google Cloud.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/migration-center",
   "fullyEncodeReservedExpansion": true,
@@ -435,6 +435,11 @@
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "required": true,
                       "type": "string"
+                    },
+                    "showHidden": {
+                      "description": "Optional. When this value is set to 'true' the response will include all assets, including those that are hidden.",
+                      "location": "query",
+                      "type": "boolean"
                     },
                     "view": {
                       "description": "View of the assets. Defaults to BASIC.",
@@ -2102,7 +2107,7 @@
       }
     }
   },
-  "revision": "20230505",
+  "revision": "20231101",
   "rootUrl": "https://migrationcenter.googleapis.com/",
   "schemas": {
     "AddAssetsToGroupRequest": {
@@ -2138,6 +2143,10 @@
         "filter": {
           "description": "The aggregation will be performed on assets that match the provided filter.",
           "type": "string"
+        },
+        "showHidden": {
+          "description": "Optional. When this value is set to 'true' the response will include all assets, including those that are hidden.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -2335,6 +2344,20 @@
           "readOnly": true,
           "type": "string"
         },
+        "hidden": {
+          "description": "Optional. Indicates if the asset is hidden.",
+          "type": "boolean"
+        },
+        "hideReason": {
+          "description": "Optional. An optional reason for marking this asset as hidden.",
+          "type": "string"
+        },
+        "hideTime": {
+          "description": "Output only. The timestamp when the asset was marked as hidden.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
         "insightList": {
           "$ref": "InsightList",
           "description": "Output only. The list of insights associated with the asset.",
@@ -2398,7 +2421,7 @@
           "type": "object"
         },
         "performanceSamples": {
-          "description": "Asset performance data samples.",
+          "description": "Asset performance data samples. Samples that are from more than 40 days ago or after tomorrow are ignored.",
           "items": {
             "$ref": "PerformanceSample"
           },
@@ -2439,7 +2462,7 @@
       "id": "AssetPerformanceData",
       "properties": {
         "dailyResourceUsageAggregations": {
-          "description": "Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 420 days.",
+          "description": "Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 420 days. Aggregations are sorted from oldest to most recent.",
           "items": {
             "$ref": "DailyResourceUsageAggregation"
           },
@@ -2491,7 +2514,7 @@
           "type": "boolean"
         },
         "names": {
-          "description": "Required. The IDs of the assets to delete. A maximum of 1000 assets can be deleted in a batch. format: projects/{project}/locations/{location}/asset/{name}.",
+          "description": "Required. The IDs of the assets to delete. A maximum of 1000 assets can be deleted in a batch. Format: projects/{project}/locations/{location}/assets/{name}.",
           "items": {
             "type": "string"
           },
@@ -2638,6 +2661,41 @@
         },
         "series": {
           "description": "Compute Engine machine series.",
+          "type": "string"
+        },
+        "storage": {
+          "description": "Compute Engine storage. Never empty.",
+          "items": {
+            "$ref": "ComputeStorageDescriptor"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ComputeStorageDescriptor": {
+      "description": "Compute Engine storage option descriptor.",
+      "id": "ComputeStorageDescriptor",
+      "properties": {
+        "sizeGb": {
+          "description": "Disk size in GiB.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "type": {
+          "description": "Disk type backing the storage.",
+          "enum": [
+            "PERSISTENT_DISK_TYPE_UNSPECIFIED",
+            "PERSISTENT_DISK_TYPE_STANDARD",
+            "PERSISTENT_DISK_TYPE_BALANCED",
+            "PERSISTENT_DISK_TYPE_SSD"
+          ],
+          "enumDescriptions": [
+            "Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.",
+            "Standard HDD Persistent Disk.",
+            "Balanced Persistent Disk.",
+            "SSD Persistent Disk."
+          ],
           "type": "string"
         }
       },
@@ -2830,6 +2888,23 @@
       },
       "type": "object"
     },
+    "DetectedSoftware": {
+      "description": "Information about software detected on an asset.",
+      "id": "DetectedSoftware",
+      "properties": {
+        "softwareFamily": {
+          "description": "Output only. Software family of the detected software, e.g. Database, SAP family.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "softwareName": {
+          "description": "Output only. Software's name.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "DiskEntry": {
       "description": "Single disk entry.",
       "id": "DiskEntry",
@@ -2945,7 +3020,7 @@
       "id": "DiskUsageSample",
       "properties": {
         "averageIops": {
-          "description": "Average IOPS sampled over a short window. Must be non-negative.",
+          "description": "Average IOPS sampled over a short window. Must be non-negative. Must be equal to the sum of read and write if one of them is positive. if both read and write are zero they are ignored.",
           "format": "float",
           "type": "number"
         }
@@ -3003,6 +3078,7 @@
           "type": "integer"
         },
         "jobErrors": {
+          "deprecated": true,
           "description": "List of job-level errors. Deprecated, use the job errors under execution_errors instead.",
           "items": {
             "$ref": "ImportError"
@@ -3160,6 +3236,15 @@
             "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV",
             "IMPORT_JOB_FORMAT_MANUAL_CSV"
           ],
+          "enumDeprecated": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
           "enumDescriptions": [
             "Default value.",
             "Configuration management DB format.",
@@ -3173,6 +3258,32 @@
         },
         "path": {
           "description": "The payload path in Google Cloud Storage.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GenericInsight": {
+      "description": "A generic insight about an asset.",
+      "id": "GenericInsight",
+      "properties": {
+        "additionalInformation": {
+          "description": "Output only. Additional information about the insight, each entry can be a logical entry and must make sense if it is displayed with line breaks between each entry. Text can contain md style links.",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "defaultMessage": {
+          "description": "Output only. In case message_code is not yet known by the client default_message will be the message to be used instead. Text can contain md file style links.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "messageId": {
+          "description": "Output only. Represents a globally unique message id for this insight, can be used for localization purposes, in case message_code is not yet known by the client use default_message instead.",
+          "format": "int64",
+          "readOnly": true,
           "type": "string"
         }
       },
@@ -3206,11 +3317,11 @@
           "type": "string"
         },
         "description": {
-          "description": "The description of the resource.",
+          "description": "Optional. The description of the group.",
           "type": "string"
         },
         "displayName": {
-          "description": "User-friendly display name.",
+          "description": "Optional. User-friendly display name.",
           "type": "string"
         },
         "labels": {
@@ -3399,7 +3510,7 @@
           "type": "string"
         },
         "displayName": {
-          "description": "User-friendly display name. Maximum length is 63 characters.",
+          "description": "Optional. User-friendly display name. Maximum length is 256 characters.",
           "type": "string"
         },
         "format": {
@@ -3412,6 +3523,15 @@
             "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV",
             "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV",
             "IMPORT_JOB_FORMAT_MANUAL_CSV"
+          ],
+          "enumDeprecated": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
           ],
           "enumDescriptions": [
             "Default value.",
@@ -3509,6 +3629,7 @@
         },
         "gcsPayload": {
           "$ref": "GCSPayloadInfo",
+          "deprecated": true,
           "description": "The payload is in Google Cloud Storage."
         },
         "inlinePayload": {
@@ -3578,6 +3699,7 @@
           "type": "array"
         },
         "rowNumber": {
+          "deprecated": true,
           "description": "The row number where the error was detected.",
           "format": "int32",
           "type": "integer"
@@ -3608,6 +3730,15 @@
             "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV",
             "IMPORT_JOB_FORMAT_MANUAL_CSV"
           ],
+          "enumDeprecated": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
           "enumDescriptions": [
             "Default value.",
             "Configuration management DB format.",
@@ -3633,9 +3764,19 @@
       "description": "An insight about an asset.",
       "id": "Insight",
       "properties": {
+        "genericInsight": {
+          "$ref": "GenericInsight",
+          "description": "Output only. A generic insight about an asset.",
+          "readOnly": true
+        },
         "migrationInsight": {
           "$ref": "MigrationInsight",
           "description": "Output only. An insight about potential migrations for an asset.",
+          "readOnly": true
+        },
+        "softwareInsight": {
+          "$ref": "SoftwareInsight",
+          "description": "Output only. An insight regarding software detected on an asset.",
           "readOnly": true
         }
       },
@@ -4296,7 +4437,7 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
         }
       },
@@ -4383,7 +4524,7 @@
           "description": "Network usage sample."
         },
         "sampleTime": {
-          "description": "Time the sample was collected.",
+          "description": "Time the sample was collected. If omitted, the frame report time will be used.",
           "format": "google-datetime",
           "type": "string"
         }
@@ -4646,6 +4787,7 @@
       "properties": {
         "assetAge": {
           "$ref": "ReportSummaryChartData",
+          "deprecated": true,
           "description": "Count of assets grouped by age."
         },
         "coreCountHistogram": {
@@ -4658,6 +4800,7 @@
         },
         "memoryUtilization": {
           "$ref": "ReportSummaryChartData",
+          "deprecated": true,
           "description": "Total memory split into Used/Free buckets."
         },
         "memoryUtilizationChart": {
@@ -4674,6 +4817,7 @@
         },
         "storageUtilization": {
           "$ref": "ReportSummaryChartData",
+          "deprecated": true,
           "description": "Total storage split into Used/Free buckets."
         },
         "storageUtilizationChart": {
@@ -4750,7 +4894,8 @@
           "type": "string"
         },
         "overlappingAssetCount": {
-          "description": "Count of the number of assets in this group which are also included in another group within the same report.",
+          "deprecated": true,
+          "description": "This field is deprecated, do not rely on it having a value.",
           "format": "int64",
           "type": "string"
         },
@@ -4809,16 +4954,27 @@
           "description": "Total monthly cost for this preference set."
         },
         "preferredRegion": {
+          "deprecated": true,
           "description": "Target region for this Preference Set",
           "type": "string"
         },
         "pricingTrack": {
+          "deprecated": true,
           "description": "Text describing the pricing track specified for this Preference Set",
           "type": "string"
         },
+        "soleTenantFinding": {
+          "$ref": "ReportSummarySoleTenantFinding",
+          "description": "A set of findings that applies to Stole-Tenant machines in the input."
+        },
         "topPriority": {
+          "deprecated": true,
           "description": "Text describing the business priority specified for this Preference Set",
           "type": "string"
+        },
+        "vmwareEngineFinding": {
+          "$ref": "ReportSummaryVMWareEngineFinding",
+          "description": "A set of findings that applies to VMWare machines in the input."
         }
       },
       "type": "object"
@@ -4920,6 +5076,53 @@
       },
       "type": "object"
     },
+    "ReportSummarySoleTenantFinding": {
+      "description": "A set of findings that applies to assets destined for Sole-Tenant nodes.",
+      "id": "ReportSummarySoleTenantFinding",
+      "properties": {
+        "allocatedAssetCount": {
+          "description": "Count of assets which are allocated",
+          "format": "int64",
+          "type": "string"
+        },
+        "allocatedRegions": {
+          "description": "Set of regions in which the assets are allocated",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nodeAllocations": {
+          "description": "Set of per-nodetype allocation records",
+          "items": {
+            "$ref": "ReportSummarySoleTenantNodeAllocation"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ReportSummarySoleTenantNodeAllocation": {
+      "description": "Represents the assets allocated to a specific Sole-Tenant node type.",
+      "id": "ReportSummarySoleTenantNodeAllocation",
+      "properties": {
+        "allocatedAssetCount": {
+          "description": "Count of assets allocated to these nodes",
+          "format": "int64",
+          "type": "string"
+        },
+        "node": {
+          "$ref": "SoleTenantNodeType",
+          "description": "Sole Tenant node type, e.g. \"m3-node-128-3904\""
+        },
+        "nodeCount": {
+          "description": "Count of this node type to be provisioned",
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ReportSummaryUtilizationChartData": {
       "description": "Utilization Chart is a specific type of visualization which displays a metric classified into \"Used\" and \"Free\" buckets.",
       "id": "ReportSummaryUtilizationChartData",
@@ -4933,6 +5136,64 @@
           "description": "Aggregate value which falls into the \"Used\" bucket.",
           "format": "int64",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ReportSummaryVMWareEngineFinding": {
+      "description": "A set of findings that applies to assets destined for VMWare Engine.",
+      "id": "ReportSummaryVMWareEngineFinding",
+      "properties": {
+        "allocatedAssetCount": {
+          "description": "Count of assets which are allocated",
+          "format": "int64",
+          "type": "string"
+        },
+        "allocatedRegions": {
+          "description": "Set of regions in which the assets were allocated",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nodeAllocations": {
+          "description": "Set of per-nodetype allocation records",
+          "items": {
+            "$ref": "ReportSummaryVMWareNodeAllocation"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ReportSummaryVMWareNode": {
+      "description": "A VMWare Engine Node",
+      "id": "ReportSummaryVMWareNode",
+      "properties": {
+        "code": {
+          "description": "Code to identify VMware Engine node series, e.g. \"ve1-standard-72\". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ReportSummaryVMWareNodeAllocation": {
+      "description": "Represents assets allocated to a specific VMWare Node type.",
+      "id": "ReportSummaryVMWareNodeAllocation",
+      "properties": {
+        "allocatedAssetCount": {
+          "description": "Count of assets allocated to these nodes",
+          "format": "int64",
+          "type": "string"
+        },
+        "nodeCount": {
+          "description": "Count of this node type to be provisioned",
+          "format": "int64",
+          "type": "string"
+        },
+        "vmwareNode": {
+          "$ref": "ReportSummaryVMWareNode",
+          "description": "VMWare node type, e.g. \"ve1-standard-72\""
         }
       },
       "type": "object"
@@ -5081,6 +5342,10 @@
       "description": "Describes the Migration Center settings related to the project.",
       "id": "Settings",
       "properties": {
+        "disableCloudLogging": {
+          "description": "Disable Cloud Logging for the Migration Center API. Users are billed for the logs.",
+          "type": "boolean"
+        },
         "name": {
           "description": "Output only. The name of the resource.",
           "readOnly": true,
@@ -5088,6 +5353,80 @@
         },
         "preferenceSet": {
           "description": "The preference set used by default for a project.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SoftwareInsight": {
+      "description": "An insight regarding software detected on an asset.",
+      "id": "SoftwareInsight",
+      "properties": {
+        "detectedSoftware": {
+          "$ref": "DetectedSoftware",
+          "description": "Output only. Information about the detected software.",
+          "readOnly": true
+        }
+      },
+      "type": "object"
+    },
+    "SoleTenancyPreferences": {
+      "description": "Preferences concerning Sole Tenancy nodes and VMs.",
+      "id": "SoleTenancyPreferences",
+      "properties": {
+        "commitmentPlan": {
+          "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.",
+          "enum": [
+            "COMMITMENT_PLAN_UNSPECIFIED",
+            "ON_DEMAND",
+            "COMMITMENT_1_YEAR",
+            "COMMITMENT_3_YEAR"
+          ],
+          "enumDescriptions": [
+            "Unspecified commitment plan.",
+            "No commitment plan (on-demand usage).",
+            "1 year commitment.",
+            "3 years commitment."
+          ],
+          "type": "string"
+        },
+        "cpuOvercommitRatio": {
+          "description": "CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.",
+          "format": "double",
+          "type": "number"
+        },
+        "hostMaintenancePolicy": {
+          "description": "Sole Tenancy nodes maintenance policy.",
+          "enum": [
+            "HOST_MAINTENANCE_POLICY_UNSPECIFIED",
+            "HOST_MAINTENANCE_POLICY_DEFAULT",
+            "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE",
+            "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP"
+          ],
+          "enumDescriptions": [
+            "Unspecified host maintenance policy.",
+            "Default host maintenance policy.",
+            "Restart in place host maintenance policy.",
+            "Migrate within node group host maintenance policy."
+          ],
+          "type": "string"
+        },
+        "nodeTypes": {
+          "description": "A list of sole tenant node types. An empty list means that all possible node types will be considered.",
+          "items": {
+            "$ref": "SoleTenantNodeType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SoleTenantNodeType": {
+      "description": "A Sole Tenant node type.",
+      "id": "SoleTenantNodeType",
+      "properties": {
+        "nodeName": {
+          "description": "Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes",
           "type": "string"
         }
       },
@@ -5499,7 +5838,7 @@
       "type": "object"
     },
     "VirtualMachinePreferences": {
-      "description": "VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.",
+      "description": "VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.",
       "id": "VirtualMachinePreferences",
       "properties": {
         "commitmentPlan": {
@@ -5522,9 +5861,17 @@
           "$ref": "ComputeEnginePreferences",
           "description": "Compute Engine preferences concern insights and recommendations for Compute Engine target."
         },
+        "networkCostParameters": {
+          "$ref": "VirtualMachinePreferencesNetworkCostParameters",
+          "description": "Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters."
+        },
         "regionPreferences": {
           "$ref": "RegionPreferences",
-          "description": "Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with."
+          "description": "Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field."
+        },
+        "sizingOptimizationCustomParameters": {
+          "$ref": "VirtualMachinePreferencesSizingOptimizationCustomParameters",
+          "description": "Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to \"custom\"."
         },
         "sizingOptimizationStrategy": {
           "description": "Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.",
@@ -5532,15 +5879,93 @@
             "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED",
             "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
             "SIZING_OPTIMIZATION_STRATEGY_MODERATE",
-            "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
+            "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE",
+            "SIZING_OPTIMIZATION_STRATEGY_CUSTOM"
           ],
           "enumDescriptions": [
             "Unspecified (default value).",
             "No optimization applied. Virtual machine sizing matches as closely as possible the machine shape on the source site, not considering any actual performance data.",
             "Virtual machine sizing will match the reported usage and shape, with some slack. This a good value to start with.",
-            "Virtual machine sizing will match the reported usage, with little slack. Using this option can help reduce costs."
+            "Virtual machine sizing will match the reported usage, with little slack. Using this option can help reduce costs.",
+            "Virtual machine sizing will be determined by custom parameters. While not supported in the v1 API, this value is converted to UNSPECIFIED in conversions to the v1 API."
           ],
           "type": "string"
+        },
+        "soleTenancyPreferences": {
+          "$ref": "SoleTenancyPreferences",
+          "description": "Preferences concerning Sole Tenant nodes and virtual machines."
+        },
+        "targetProduct": {
+          "description": "Target product for assets using this preference set. Specify either target product or business goal, but not both.",
+          "enum": [
+            "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED",
+            "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+            "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE",
+            "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY"
+          ],
+          "enumDescriptions": [
+            "Unspecified (default value).",
+            "Prefer to migrate to Google Cloud Compute Engine.",
+            "Prefer to migrate to Google Cloud VMware Engine.",
+            "Prefer to migrate to Google Cloud Sole Tenant Nodes."
+          ],
+          "type": "string"
+        },
+        "vmwareEnginePreferences": {
+          "$ref": "VmwareEnginePreferences",
+          "description": "Preferences concerning insights and recommendations for Google Cloud VMware Engine."
+        }
+      },
+      "type": "object"
+    },
+    "VirtualMachinePreferencesNetworkCostParameters": {
+      "description": "Parameters that affect network cost estimations.",
+      "id": "VirtualMachinePreferencesNetworkCostParameters",
+      "properties": {
+        "estimatedEgressTrafficPercentage": {
+          "description": "Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "VirtualMachinePreferencesSizingOptimizationCustomParameters": {
+      "description": "Custom data to use for sizing optimizations.",
+      "id": "VirtualMachinePreferencesSizingOptimizationCustomParameters",
+      "properties": {
+        "aggregationMethod": {
+          "description": "Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.",
+          "enum": [
+            "AGGREGATION_METHOD_UNSPECIFIED",
+            "AGGREGATION_METHOD_AVERAGE",
+            "AGGREGATION_METHOD_MEDIAN",
+            "AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE",
+            "AGGREGATION_METHOD_PEAK"
+          ],
+          "enumDescriptions": [
+            "Unspecified aggregation method. Can be used for default value.",
+            "Average of utilization data.",
+            "Median of utilization data.",
+            "95th percentile of utilization data.",
+            "Peak of utilization data."
+          ],
+          "type": "string"
+        },
+        "cpuUsagePercentage": {
+          "description": "Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).",
+          "format": "int32",
+          "type": "integer"
+        },
+        "memoryUsagePercentage": {
+          "description": "Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).",
+          "format": "int32",
+          "type": "integer"
+        },
+        "storageMultiplier": {
+          "description": "Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).",
+          "format": "double",
+          "type": "number"
         }
       },
       "type": "object"
@@ -5594,6 +6019,48 @@
       "description": "VMWare engine migration target.",
       "id": "VmwareEngineMigrationTarget",
       "properties": {},
+      "type": "object"
+    },
+    "VmwareEnginePreferences": {
+      "description": "The user preferences relating to Google Cloud VMware Engine target platform.",
+      "id": "VmwareEnginePreferences",
+      "properties": {
+        "commitmentPlan": {
+          "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.",
+          "enum": [
+            "COMMITMENT_PLAN_UNSPECIFIED",
+            "ON_DEMAND",
+            "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS",
+            "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS",
+            "COMMITMENT_1_YEAR_UPFRONT_PAYMENT",
+            "COMMITMENT_3_YEAR_UPFRONT_PAYMENT"
+          ],
+          "enumDescriptions": [
+            "Unspecified commitment plan.",
+            "No commitment plan (on-demand usage).",
+            "1 year commitment (monthly payments).",
+            "3 year commitment (monthly payments).",
+            "1 year commitment (upfront payment).",
+            "3 years commitment (upfront payment)."
+          ],
+          "type": "string"
+        },
+        "cpuOvercommitRatio": {
+          "description": "CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.",
+          "format": "double",
+          "type": "number"
+        },
+        "memoryOvercommitRatio": {
+          "description": "Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.",
+          "format": "double",
+          "type": "number"
+        },
+        "storageDeduplicationCompressionRatio": {
+          "description": "The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.",
+          "format": "double",
+          "type": "number"
+        }
+      },
       "type": "object"
     },
     "VmwarePlatformDetails": {

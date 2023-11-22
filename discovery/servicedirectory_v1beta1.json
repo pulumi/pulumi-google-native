@@ -428,94 +428,6 @@
                 }
               },
               "resources": {
-                "serviceWorkloads": {
-                  "methods": {
-                    "getIamPolicy": {
-                      "description": "Gets the IAM Policy for a resource",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/serviceWorkloads/{serviceWorkloadsId}:getIamPolicy",
-                      "httpMethod": "POST",
-                      "id": "servicedirectory.projects.locations.namespaces.serviceWorkloads.getIamPolicy",
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "parameters": {
-                        "resource": {
-                          "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/serviceWorkloads/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1beta1/{+resource}:getIamPolicy",
-                      "request": {
-                        "$ref": "GetIamPolicyRequest"
-                      },
-                      "response": {
-                        "$ref": "Policy"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "setIamPolicy": {
-                      "description": "Sets the IAM Policy for a resource",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/serviceWorkloads/{serviceWorkloadsId}:setIamPolicy",
-                      "httpMethod": "POST",
-                      "id": "servicedirectory.projects.locations.namespaces.serviceWorkloads.setIamPolicy",
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "parameters": {
-                        "resource": {
-                          "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/serviceWorkloads/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1beta1/{+resource}:setIamPolicy",
-                      "request": {
-                        "$ref": "SetIamPolicyRequest"
-                      },
-                      "response": {
-                        "$ref": "Policy"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "testIamPermissions": {
-                      "description": "Tests IAM permissions for a resource (namespace, service or service workload only).",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/serviceWorkloads/{serviceWorkloadsId}:testIamPermissions",
-                      "httpMethod": "POST",
-                      "id": "servicedirectory.projects.locations.namespaces.serviceWorkloads.testIamPermissions",
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "parameters": {
-                        "resource": {
-                          "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/serviceWorkloads/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1beta1/{+resource}:testIamPermissions",
-                      "request": {
-                        "$ref": "TestIamPermissionsRequest"
-                      },
-                      "response": {
-                        "$ref": "TestIamPermissionsResponse"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    }
-                  }
-                },
                 "services": {
                   "methods": {
                     "create": {
@@ -1053,101 +965,13 @@
                   }
                 }
               }
-            },
-            "registrationPolicies": {
-              "methods": {
-                "getIamPolicy": {
-                  "description": "Gets the IAM Policy for a resource",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrationPolicies/{registrationPoliciesId}:getIamPolicy",
-                  "httpMethod": "POST",
-                  "id": "servicedirectory.projects.locations.registrationPolicies.getIamPolicy",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "parameters": {
-                    "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/registrationPolicies/[^/]+$",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "path": "v1beta1/{+resource}:getIamPolicy",
-                  "request": {
-                    "$ref": "GetIamPolicyRequest"
-                  },
-                  "response": {
-                    "$ref": "Policy"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "setIamPolicy": {
-                  "description": "Sets the IAM Policy for a resource",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrationPolicies/{registrationPoliciesId}:setIamPolicy",
-                  "httpMethod": "POST",
-                  "id": "servicedirectory.projects.locations.registrationPolicies.setIamPolicy",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "parameters": {
-                    "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/registrationPolicies/[^/]+$",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "path": "v1beta1/{+resource}:setIamPolicy",
-                  "request": {
-                    "$ref": "SetIamPolicyRequest"
-                  },
-                  "response": {
-                    "$ref": "Policy"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "testIamPermissions": {
-                  "description": "Tests IAM permissions for a resource (namespace, service or service workload only).",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrationPolicies/{registrationPoliciesId}:testIamPermissions",
-                  "httpMethod": "POST",
-                  "id": "servicedirectory.projects.locations.registrationPolicies.testIamPermissions",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "parameters": {
-                    "resource": {
-                      "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/registrationPolicies/[^/]+$",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "path": "v1beta1/{+resource}:testIamPermissions",
-                  "request": {
-                    "$ref": "TestIamPermissionsRequest"
-                  },
-                  "response": {
-                    "$ref": "TestIamPermissionsResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                }
-              }
             }
           }
         }
       }
     }
   },
-  "revision": "20230330",
+  "revision": "20231112",
   "rootUrl": "https://servicedirectory.googleapis.com/",
   "schemas": {
     "Binding": {
@@ -1345,7 +1169,7 @@
       "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
+      "description": "A resource that represents a Google Cloud location.",
       "id": "Location",
       "properties": {
         "displayName": {
@@ -1414,7 +1238,7 @@
       "type": "object"
     },
     "Policy": {
-      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
       "id": "Policy",
       "properties": {
         "bindings": {
