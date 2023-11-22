@@ -54,7 +54,17 @@ var resourceNameByPathOverrides = map[string]string{
 	"run_v1.json:apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings": "",
 	"run_v1.json:apis/serving.knative.dev/v1/namespaces/{namespacesId}/services":        "",
 
+	// AI Platform.
+	"aiplatform_v1beta1.json:v1beta1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features":                             "FeatureGroupFeature",
+	"aiplatform_v1beta1.json:v1beta1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features": "FeatureStoreFeature",
+	"aiplatform_v1.json:v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features":                                       "FeatureGroupFeature",
+	"aiplatform_v1.json:v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features":           "FeatureStoreFeature",
+
 	// Apigee.
+	"apigee_v1.json:v1/organizations/{organizationsId}/appgroups/{appgroupsId}/apps":                                        "AppGroupApp",
+	"apigee_v1.json:v1/organizations/{organizationsId}/developers/{developersId}/apps":                                      "DeveloperApp",
+	"apigee_v1.json:v1/organizations/{organizationsId}/appgroups/{appgroupsId}/apps/{appsId}/keys":                          "AppGroupAppKey",
+	"apigee_v1.json:v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys":                        "DeveloperAppKey",
 	"apigee_v1.json:v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments":                                 "EnvgroupAttachment",
 	"apigee_v1.json:v1/organizations/{organizationsId}/instances/{instancesId}/attachments":                                 "InstanceAttachment",
 	"apigee_v1.json:v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries": "EnvironmentEntry",
@@ -73,6 +83,7 @@ var resourceNameByPathOverrides = map[string]string{
 	"dlp_v2.json:v2/organizations/{organizationsId}/deidentifyTemplates":                         "",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates": "OrganizationsDeidentifyTemplate",
 	"dlp_v2.json:v2/organizations/{organizationsId}/inspectTemplates":                            "",
+	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs":    "",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes":     "",
@@ -81,6 +92,12 @@ var resourceNameByPathOverrides = map[string]string{
 	// Essential Contacts.
 	"essentialcontacts_v1.json:v1/folders/{foldersId}/contacts":             "FolderContact",
 	"essentialcontacts_v1.json:v1/organizations/{organizationsId}/contacts": "OrganizationContact",
+
+	// GKE Hub.
+	"gkehub_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings": "MembershipRbacRoleBinding",
+	"gkehub_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/rbacrolebindings":           "ScopeRbacRoleBinding",
+	"gkehub_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings":   "MembershipRbacRoleBinding",
+	"gkehub_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/rbacrolebindings":             "ScopeRbacRoleBinding",
 
 	// IAM.
 	"iam_v1.json:v1/organizations/{organizationsId}/roles": "OrganizationRole",
@@ -114,6 +131,11 @@ var resourceNameByPathOverrides = map[string]string{
 	"logging_v2.json:v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/links":                 "FolderBucketLink",
 	"logging_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/links":     "OrganizationBucketLink",
 
+	// Network Security.
+	"networksecurity_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/addressGroups": "OrganizationAddressGroup",
+	"networksecurity_v1beta1.json:v1beta1/projects/{projectsId}/locations/{locationsId}/addressGroups":           "AddressGroup",
+	"networksecurity_v1.json:v1/organizations/{organizationsId}/locations/{locationsId}/addressGroups":           "",
+
 	// Org Policy.
 	"orgpolicy_v2.json:v2/folders/{foldersId}/policies":             "FolderPolicy",
 	"orgpolicy_v2.json:v2/organizations/{organizationsId}/policies": "OrganizationPolicy",
@@ -121,6 +143,10 @@ var resourceNameByPathOverrides = map[string]string{
 	// Policy Simulator.
 	"policysimulator_v1.json:v1/folders/{foldersId}/locations/{locationsId}/replays":                       "FolderReplay",
 	"policysimulator_v1.json:v1/organizations/{organizationsId}/locations/{locationsId}/replays":           "OrganizationReplay",
+	"policysimulator_v1alpha.json:v1alpha/folders/{foldersId}/locations/{locationsId}/replays":             "FolderReplay",
+	"policysimulator_v1alpha.json:v1alpha/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
+	"policysimulator_v1beta.json:v1beta/folders/{foldersId}/locations/{locationsId}/replays":               "FolderReplay",
+	"policysimulator_v1beta.json:v1beta/organizations/{organizationsId}/locations/{locationsId}/replays":   "OrganizationReplay",
 	"policysimulator_v1beta1.json:v1beta1/folders/{foldersId}/locations/{locationsId}/replays":             "FolderReplay",
 	"policysimulator_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
 
@@ -132,15 +158,14 @@ var resourceNameByPathOverrides = map[string]string{
 	"securitycenter_v1.json:v1/organizations/{organizationsId}/muteConfigs":                                   "OrganizationMuteConfig",
 	"securitycenter_v1.json:v1/organizations/{organizationsId}/notificationConfigs":                           "OrganizationNotificationConfig",
 	"securitycenter_v1.json:v1/projects/{projectsId}/bigQueryExports":                                         "ProjectBigQueryExport",
-	"securitycenter_v1.json:v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules":             "FolderCustomModule",
-	"securitycenter_v1.json:v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules": "OrganizationCustomModule",
+	"securitycenter_v1.json:v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules":             "FolderSecurityHealthAnalyticsSettingCustomModule",
+	"securitycenter_v1.json:v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules": "OrganizationSecurityHealthAnalyticsSettingCustomModule",
+	"securitycenter_v1.json:v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules":    "OrganizationEventThreatDetectionSettingCustomModule",
+	"securitycenter_v1.json:v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules":           "ProjectSecurityHealthAnalyticsSettingCustomModule",
 
 	// Storage.
-	"storage_v1.json:b/{bucket}/o": "BucketObject",
-
-	// Network Security
-	"networksecurity_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/addressGroups": "OrganizationAddressGroup",
-	"networksecurity_v1beta1.json:v1beta1/projects/{projectsId}/locations/{locationsId}/addressGroups":           "AddressGroup",
+	"storage_v1.json:b/{bucket}/o":              "BucketObject",
+	"storage_v1.json:b/{bucket}/anywhereCaches": "",
 }
 
 // resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.
