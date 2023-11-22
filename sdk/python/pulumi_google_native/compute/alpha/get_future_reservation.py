@@ -19,7 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetFutureReservationResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, name_prefix=None, planning_status=None, self_link=None, self_link_with_id=None, share_settings=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
+    def __init__(__self__, auto_created_reservations_delete_time=None, auto_created_reservations_duration=None, auto_delete_auto_created_reservations=None, creation_timestamp=None, description=None, kind=None, name=None, name_prefix=None, planning_status=None, self_link=None, self_link_with_id=None, share_settings=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
+        if auto_created_reservations_delete_time and not isinstance(auto_created_reservations_delete_time, str):
+            raise TypeError("Expected argument 'auto_created_reservations_delete_time' to be a str")
+        pulumi.set(__self__, "auto_created_reservations_delete_time", auto_created_reservations_delete_time)
+        if auto_created_reservations_duration and not isinstance(auto_created_reservations_duration, dict):
+            raise TypeError("Expected argument 'auto_created_reservations_duration' to be a dict")
+        pulumi.set(__self__, "auto_created_reservations_duration", auto_created_reservations_duration)
+        if auto_delete_auto_created_reservations and not isinstance(auto_delete_auto_created_reservations, bool):
+            raise TypeError("Expected argument 'auto_delete_auto_created_reservations' to be a bool")
+        pulumi.set(__self__, "auto_delete_auto_created_reservations", auto_delete_auto_created_reservations)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -59,6 +68,30 @@ class GetFutureReservationResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="autoCreatedReservationsDeleteTime")
+    def auto_created_reservations_delete_time(self) -> str:
+        """
+        Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        """
+        return pulumi.get(self, "auto_created_reservations_delete_time")
+
+    @property
+    @pulumi.getter(name="autoCreatedReservationsDuration")
+    def auto_created_reservations_duration(self) -> 'outputs.DurationResponse':
+        """
+        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        """
+        return pulumi.get(self, "auto_created_reservations_duration")
+
+    @property
+    @pulumi.getter(name="autoDeleteAutoCreatedReservations")
+    def auto_delete_auto_created_reservations(self) -> bool:
+        """
+        Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
+        """
+        return pulumi.get(self, "auto_delete_auto_created_reservations")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -171,6 +204,9 @@ class AwaitableGetFutureReservationResult(GetFutureReservationResult):
         if False:
             yield self
         return GetFutureReservationResult(
+            auto_created_reservations_delete_time=self.auto_created_reservations_delete_time,
+            auto_created_reservations_duration=self.auto_created_reservations_duration,
+            auto_delete_auto_created_reservations=self.auto_delete_auto_created_reservations,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             kind=self.kind,
@@ -201,6 +237,9 @@ def get_future_reservation(future_reservation: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getFutureReservation', __args__, opts=opts, typ=GetFutureReservationResult).value
 
     return AwaitableGetFutureReservationResult(
+        auto_created_reservations_delete_time=pulumi.get(__ret__, 'auto_created_reservations_delete_time'),
+        auto_created_reservations_duration=pulumi.get(__ret__, 'auto_created_reservations_duration'),
+        auto_delete_auto_created_reservations=pulumi.get(__ret__, 'auto_delete_auto_created_reservations'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         kind=pulumi.get(__ret__, 'kind'),

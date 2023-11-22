@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstanceGroupManagerResult:
-    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, service_account=None, stateful_policy=None, status=None, target_pools=None, target_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_flexibility_policy=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
         if all_instances_config and not isinstance(all_instances_config, dict):
             raise TypeError("Expected argument 'all_instances_config' to be a dict")
         pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -47,6 +47,9 @@ class GetRegionInstanceGroupManagerResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if instance_flexibility_policy and not isinstance(instance_flexibility_policy, dict):
+            raise TypeError("Expected argument 'instance_flexibility_policy' to be a dict")
+        pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_group and not isinstance(instance_group, str):
             raise TypeError("Expected argument 'instance_group' to be a str")
         pulumi.set(__self__, "instance_group", instance_group)
@@ -77,6 +80,9 @@ class GetRegionInstanceGroupManagerResult:
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
         pulumi.set(__self__, "service_account", service_account)
+        if standby_policy and not isinstance(standby_policy, dict):
+            raise TypeError("Expected argument 'standby_policy' to be a dict")
+        pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_policy and not isinstance(stateful_policy, dict):
             raise TypeError("Expected argument 'stateful_policy' to be a dict")
         pulumi.set(__self__, "stateful_policy", stateful_policy)
@@ -89,6 +95,12 @@ class GetRegionInstanceGroupManagerResult:
         if target_size and not isinstance(target_size, int):
             raise TypeError("Expected argument 'target_size' to be a int")
         pulumi.set(__self__, "target_size", target_size)
+        if target_stopped_size and not isinstance(target_stopped_size, int):
+            raise TypeError("Expected argument 'target_stopped_size' to be a int")
+        pulumi.set(__self__, "target_stopped_size", target_stopped_size)
+        if target_suspended_size and not isinstance(target_suspended_size, int):
+            raise TypeError("Expected argument 'target_suspended_size' to be a int")
+        pulumi.set(__self__, "target_suspended_size", target_suspended_size)
         if update_policy and not isinstance(update_policy, dict):
             raise TypeError("Expected argument 'update_policy' to be a dict")
         pulumi.set(__self__, "update_policy", update_policy)
@@ -172,6 +184,14 @@ class GetRegionInstanceGroupManagerResult:
         return pulumi.get(self, "fingerprint")
 
     @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse':
+        """
+        Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @property
     @pulumi.getter(name="instanceGroup")
     def instance_group(self) -> str:
         """
@@ -252,6 +272,14 @@ class GetRegionInstanceGroupManagerResult:
         return pulumi.get(self, "service_account")
 
     @property
+    @pulumi.getter(name="standbyPolicy")
+    def standby_policy(self) -> 'outputs.InstanceGroupManagerStandbyPolicyResponse':
+        """
+        Standby policy for stopped and suspended instances.
+        """
+        return pulumi.get(self, "standby_policy")
+
+    @property
     @pulumi.getter(name="statefulPolicy")
     def stateful_policy(self) -> 'outputs.StatefulPolicyResponse':
         """
@@ -282,6 +310,22 @@ class GetRegionInstanceGroupManagerResult:
         The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
         """
         return pulumi.get(self, "target_size")
+
+    @property
+    @pulumi.getter(name="targetStoppedSize")
+    def target_stopped_size(self) -> int:
+        """
+        The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+        """
+        return pulumi.get(self, "target_stopped_size")
+
+    @property
+    @pulumi.getter(name="targetSuspendedSize")
+    def target_suspended_size(self) -> int:
+        """
+        The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
+        """
+        return pulumi.get(self, "target_suspended_size")
 
     @property
     @pulumi.getter(name="updatePolicy")
@@ -323,6 +367,7 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             distribution_policy=self.distribution_policy,
             failover_action=self.failover_action,
             fingerprint=self.fingerprint,
+            instance_flexibility_policy=self.instance_flexibility_policy,
             instance_group=self.instance_group,
             instance_lifecycle_policy=self.instance_lifecycle_policy,
             instance_template=self.instance_template,
@@ -333,10 +378,13 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             region=self.region,
             self_link=self.self_link,
             service_account=self.service_account,
+            standby_policy=self.standby_policy,
             stateful_policy=self.stateful_policy,
             status=self.status,
             target_pools=self.target_pools,
             target_size=self.target_size,
+            target_stopped_size=self.target_stopped_size,
+            target_suspended_size=self.target_suspended_size,
             update_policy=self.update_policy,
             versions=self.versions,
             zone=self.zone)
@@ -366,6 +414,7 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
         distribution_policy=pulumi.get(__ret__, 'distribution_policy'),
         failover_action=pulumi.get(__ret__, 'failover_action'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        instance_flexibility_policy=pulumi.get(__ret__, 'instance_flexibility_policy'),
         instance_group=pulumi.get(__ret__, 'instance_group'),
         instance_lifecycle_policy=pulumi.get(__ret__, 'instance_lifecycle_policy'),
         instance_template=pulumi.get(__ret__, 'instance_template'),
@@ -376,10 +425,13 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
         service_account=pulumi.get(__ret__, 'service_account'),
+        standby_policy=pulumi.get(__ret__, 'standby_policy'),
         stateful_policy=pulumi.get(__ret__, 'stateful_policy'),
         status=pulumi.get(__ret__, 'status'),
         target_pools=pulumi.get(__ret__, 'target_pools'),
         target_size=pulumi.get(__ret__, 'target_size'),
+        target_stopped_size=pulumi.get(__ret__, 'target_stopped_size'),
+        target_suspended_size=pulumi.get(__ret__, 'target_suspended_size'),
         update_policy=pulumi.get(__ret__, 'update_policy'),
         versions=pulumi.get(__ret__, 'versions'),
         zone=pulumi.get(__ret__, 'zone'))

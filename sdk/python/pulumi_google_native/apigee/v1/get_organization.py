@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationResult:
-    def __init__(__self__, addons_config=None, analytics_region=None, api_consumer_data_encryption_key_name=None, api_consumer_data_location=None, apigee_project_id=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, control_plane_encryption_key_name=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, subscription_type=None, type=None):
+    def __init__(__self__, addons_config=None, analytics_region=None, api_consumer_data_encryption_key_name=None, api_consumer_data_location=None, apigee_project_id=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, control_plane_encryption_key_name=None, created_at=None, customer_name=None, description=None, disable_vpc_peering=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, subscription_plan=None, subscription_type=None, type=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -59,6 +59,9 @@ class GetOrganizationResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disable_vpc_peering and not isinstance(disable_vpc_peering, bool):
+            raise TypeError("Expected argument 'disable_vpc_peering' to be a bool")
+        pulumi.set(__self__, "disable_vpc_peering", disable_vpc_peering)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -92,6 +95,9 @@ class GetOrganizationResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if subscription_plan and not isinstance(subscription_plan, str):
+            raise TypeError("Expected argument 'subscription_plan' to be a str")
+        pulumi.set(__self__, "subscription_plan", subscription_plan)
         if subscription_type and not isinstance(subscription_type, str):
             raise TypeError("Expected argument 'subscription_type' to be a str")
         pulumi.set(__self__, "subscription_type", subscription_type)
@@ -111,10 +117,10 @@ class GetOrganizationResult:
     @pulumi.getter(name="analyticsRegion")
     def analytics_region(self) -> str:
         """
-        DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
-        warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
-        pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+        warnings.warn("""Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
+        pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
 
         return pulumi.get(self, "analytics_region")
 
@@ -207,6 +213,14 @@ class GetOrganizationResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="disableVpcPeering")
+    def disable_vpc_peering(self) -> bool:
+        """
+        Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+        """
+        return pulumi.get(self, "disable_vpc_peering")
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
@@ -295,6 +309,14 @@ class GetOrganizationResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="subscriptionPlan")
+    def subscription_plan(self) -> str:
+        """
+        Subscription plan that the customer has purchased. Output only.
+        """
+        return pulumi.get(self, "subscription_plan")
+
+    @property
     @pulumi.getter(name="subscriptionType")
     def subscription_type(self) -> str:
         """
@@ -333,6 +355,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             created_at=self.created_at,
             customer_name=self.customer_name,
             description=self.description,
+            disable_vpc_peering=self.disable_vpc_peering,
             display_name=self.display_name,
             environments=self.environments,
             expires_at=self.expires_at,
@@ -344,6 +367,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             runtime_database_encryption_key_name=self.runtime_database_encryption_key_name,
             runtime_type=self.runtime_type,
             state=self.state,
+            subscription_plan=self.subscription_plan,
             subscription_type=self.subscription_type,
             type=self.type)
 
@@ -372,6 +396,7 @@ def get_organization(organization_id: Optional[str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         customer_name=pulumi.get(__ret__, 'customer_name'),
         description=pulumi.get(__ret__, 'description'),
+        disable_vpc_peering=pulumi.get(__ret__, 'disable_vpc_peering'),
         display_name=pulumi.get(__ret__, 'display_name'),
         environments=pulumi.get(__ret__, 'environments'),
         expires_at=pulumi.get(__ret__, 'expires_at'),
@@ -383,6 +408,7 @@ def get_organization(organization_id: Optional[str] = None,
         runtime_database_encryption_key_name=pulumi.get(__ret__, 'runtime_database_encryption_key_name'),
         runtime_type=pulumi.get(__ret__, 'runtime_type'),
         state=pulumi.get(__ret__, 'state'),
+        subscription_plan=pulumi.get(__ret__, 'subscription_plan'),
         subscription_type=pulumi.get(__ret__, 'subscription_type'),
         type=pulumi.get(__ret__, 'type'))
 

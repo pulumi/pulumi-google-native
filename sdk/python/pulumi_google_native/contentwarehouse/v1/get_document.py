@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDocumentResult:
-    def __init__(__self__, cloud_ai_document=None, content_category=None, create_time=None, creator=None, display_name=None, display_uri=None, disposition_time=None, document_schema_name=None, inline_raw_document=None, name=None, plain_text=None, properties=None, raw_document_file_type=None, raw_document_path=None, reference_id=None, text_extraction_disabled=None, text_extraction_enabled=None, title=None, update_time=None, updater=None):
+    def __init__(__self__, cloud_ai_document=None, content_category=None, create_time=None, creator=None, display_name=None, display_uri=None, disposition_time=None, document_schema_name=None, inline_raw_document=None, legal_hold=None, name=None, plain_text=None, properties=None, raw_document_file_type=None, raw_document_path=None, reference_id=None, text_extraction_disabled=None, text_extraction_enabled=None, title=None, update_time=None, updater=None):
         if cloud_ai_document and not isinstance(cloud_ai_document, dict):
             raise TypeError("Expected argument 'cloud_ai_document' to be a dict")
         pulumi.set(__self__, "cloud_ai_document", cloud_ai_document)
@@ -47,6 +47,9 @@ class GetDocumentResult:
         if inline_raw_document and not isinstance(inline_raw_document, str):
             raise TypeError("Expected argument 'inline_raw_document' to be a str")
         pulumi.set(__self__, "inline_raw_document", inline_raw_document)
+        if legal_hold and not isinstance(legal_hold, bool):
+            raise TypeError("Expected argument 'legal_hold' to be a bool")
+        pulumi.set(__self__, "legal_hold", legal_hold)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -154,6 +157,14 @@ class GetDocumentResult:
         return pulumi.get(self, "inline_raw_document")
 
     @property
+    @pulumi.getter(name="legalHold")
+    def legal_hold(self) -> bool:
+        """
+        Indicates if the document has a legal hold on it.
+        """
+        return pulumi.get(self, "legal_hold")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -257,6 +268,7 @@ class AwaitableGetDocumentResult(GetDocumentResult):
             disposition_time=self.disposition_time,
             document_schema_name=self.document_schema_name,
             inline_raw_document=self.inline_raw_document,
+            legal_hold=self.legal_hold,
             name=self.name,
             plain_text=self.plain_text,
             properties=self.properties,
@@ -294,6 +306,7 @@ def get_document(document_id: Optional[str] = None,
         disposition_time=pulumi.get(__ret__, 'disposition_time'),
         document_schema_name=pulumi.get(__ret__, 'document_schema_name'),
         inline_raw_document=pulumi.get(__ret__, 'inline_raw_document'),
+        legal_hold=pulumi.get(__ret__, 'legal_hold'),
         name=pulumi.get(__ret__, 'name'),
         plain_text=pulumi.get(__ret__, 'plain_text'),
         properties=pulumi.get(__ret__, 'properties'),

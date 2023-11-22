@@ -12,13 +12,15 @@ __all__ = [
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
+    'GoogleCloudDatacatalogV1VertexDatasetSpecDataType',
+    'GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType',
     'TaxonomyActivatedPolicyTypesItem',
 ]
 
 
 class EntryType(str, Enum):
     """
-    The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+    The type of the entry. For details, see [`EntryType`](#entrytype).
     """
     ENTRY_TYPE_UNSPECIFIED = "ENTRY_TYPE_UNSPECIFIED"
     """
@@ -30,7 +32,7 @@ class EntryType(str, Enum):
     """
     MODEL = "MODEL"
     """
-    Output only. The type of models. For more information, see [Supported models in BigQuery ML] (https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in).
+    The type of models. For more information, see [Supported models in BigQuery ML](/bigquery/docs/bqml-introduction#supported_models).
     """
     DATA_STREAM = "DATA_STREAM"
     """
@@ -50,11 +52,11 @@ class EntryType(str, Enum):
     """
     DATA_SOURCE_CONNECTION = "DATA_SOURCE_CONNECTION"
     """
-    Output only. Connection to a data source. For example, a BigQuery connection.
+    Connection to a data source. For example, a BigQuery connection.
     """
     ROUTINE = "ROUTINE"
     """
-    Output only. Routine, for example, a BigQuery routine.
+    Routine, for example, a BigQuery routine.
     """
     LAKE = "LAKE"
     """
@@ -215,6 +217,90 @@ class GoogleCloudDatacatalogV1RoutineSpecRoutineType(str, Enum):
     PROCEDURE = "PROCEDURE"
     """
     Stored procedure.
+    """
+
+
+class GoogleCloudDatacatalogV1VertexDatasetSpecDataType(str, Enum):
+    """
+    Type of the dataset.
+    """
+    DATA_TYPE_UNSPECIFIED = "DATA_TYPE_UNSPECIFIED"
+    """
+    Should not be used.
+    """
+    TABLE = "TABLE"
+    """
+    Structured data dataset.
+    """
+    IMAGE = "IMAGE"
+    """
+    Image dataset which supports ImageClassification, ImageObjectDetection and ImageSegmentation problems.
+    """
+    TEXT = "TEXT"
+    """
+    Document dataset which supports TextClassification, TextExtraction and TextSentiment problems.
+    """
+    VIDEO = "VIDEO"
+    """
+    Video dataset which supports VideoClassification, VideoObjectTracking and VideoActionRecognition problems.
+    """
+    CONVERSATION = "CONVERSATION"
+    """
+    Conversation dataset which supports conversation problems.
+    """
+    TIME_SERIES = "TIME_SERIES"
+    """
+    TimeSeries dataset.
+    """
+    DOCUMENT = "DOCUMENT"
+    """
+    Document dataset which supports DocumentAnnotation problems.
+    """
+    TEXT_TO_SPEECH = "TEXT_TO_SPEECH"
+    """
+    TextToSpeech dataset which supports TextToSpeech problems.
+    """
+    TRANSLATION = "TRANSLATION"
+    """
+    Translation dataset which supports Translation problems.
+    """
+    STORE_VISION = "STORE_VISION"
+    """
+    Store Vision dataset which is used for HITL integration.
+    """
+    ENTERPRISE_KNOWLEDGE_GRAPH = "ENTERPRISE_KNOWLEDGE_GRAPH"
+    """
+    Enterprise Knowledge Graph dataset which is used for HITL labeling integration.
+    """
+    TEXT_PROMPT = "TEXT_PROMPT"
+    """
+    Text prompt dataset which supports Large Language Models.
+    """
+
+
+class GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType(str, Enum):
+    """
+    Type of the model source.
+    """
+    MODEL_SOURCE_TYPE_UNSPECIFIED = "MODEL_SOURCE_TYPE_UNSPECIFIED"
+    """
+    Should not be used.
+    """
+    AUTOML = "AUTOML"
+    """
+    The Model is uploaded by automl training pipeline.
+    """
+    CUSTOM = "CUSTOM"
+    """
+    The Model is uploaded by user or custom training pipeline.
+    """
+    BQML = "BQML"
+    """
+    The Model is registered and sync'ed from BigQuery ML.
+    """
+    MODEL_GARDEN = "MODEL_GARDEN"
+    """
+    The Model is saved or tuned from Model Garden.
     """
 
 

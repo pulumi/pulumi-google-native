@@ -17,13 +17,10 @@ __all__ = [
     'IntakeVlanAttachmentArgs',
     'LogicalNetworkInterfaceArgs',
     'LunRangeArgs',
-    'LunArgs',
     'NetworkAddressArgs',
     'NetworkConfigArgs',
     'NfsExportArgs',
-    'SnapshotReservationDetailArgs',
     'VolumeConfigArgs',
-    'VolumeArgs',
 ]
 
 @pulumi.input_type
@@ -201,10 +198,12 @@ class InstanceConfigArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  logical_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['InstanceConfigNetworkConfig']] = None,
                  network_template: Optional[pulumi.Input[str]] = None,
                  os_image: Optional[pulumi.Input[str]] = None,
                  private_network: Optional[pulumi.Input['NetworkAddressArgs']] = None,
+                 ssh_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_note: Optional[pulumi.Input[str]] = None):
         """
         Configuration parameters for a new instance.
@@ -214,10 +213,12 @@ class InstanceConfigArgs:
         :param pulumi.Input[str] id: A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         :param pulumi.Input[str] instance_type: Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]] logical_interfaces: List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+        :param pulumi.Input[str] name: The name of the instance config.
         :param pulumi.Input['InstanceConfigNetworkConfig'] network_config: The type of network configuration on the instance.
         :param pulumi.Input[str] network_template: Server network template name. Filled if InstanceConfig.multivlan_config is true.
         :param pulumi.Input[str] os_image: OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         :param pulumi.Input['NetworkAddressArgs'] private_network: Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_names: Optional. List of names of ssh keys used to provision the instance.
         :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
         if account_networks_enabled is not None:
@@ -232,6 +233,8 @@ class InstanceConfigArgs:
             pulumi.set(__self__, "instance_type", instance_type)
         if logical_interfaces is not None:
             pulumi.set(__self__, "logical_interfaces", logical_interfaces)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
         if network_template is not None:
@@ -240,6 +243,8 @@ class InstanceConfigArgs:
             pulumi.set(__self__, "os_image", os_image)
         if private_network is not None:
             pulumi.set(__self__, "private_network", private_network)
+        if ssh_key_names is not None:
+            pulumi.set(__self__, "ssh_key_names", ssh_key_names)
         if user_note is not None:
             pulumi.set(__self__, "user_note", user_note)
 
@@ -316,6 +321,18 @@ class InstanceConfigArgs:
         pulumi.set(self, "logical_interfaces", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance config.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['InstanceConfigNetworkConfig']]:
         """
@@ -362,6 +379,18 @@ class InstanceConfigArgs:
     @private_network.setter
     def private_network(self, value: Optional[pulumi.Input['NetworkAddressArgs']]):
         pulumi.set(self, "private_network", value)
+
+    @property
+    @pulumi.getter(name="sshKeyNames")
+    def ssh_key_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. List of names of ssh keys used to provision the instance.
+        """
+        return pulumi.get(self, "ssh_key_names")
+
+    @ssh_key_names.setter
+    def ssh_key_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ssh_key_names", value)
 
     @property
     @pulumi.getter(name="userNote")
@@ -542,158 +571,6 @@ class LunRangeArgs:
     @size_gb.setter
     def size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gb", value)
-
-
-@pulumi.input_type
-class LunArgs:
-    def __init__(__self__, *,
-                 boot_lun: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 multiprotocol_type: Optional[pulumi.Input['LunMultiprotocolType']] = None,
-                 shareable: Optional[pulumi.Input[bool]] = None,
-                 size_gb: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['LunState']] = None,
-                 storage_type: Optional[pulumi.Input['LunStorageType']] = None,
-                 storage_volume: Optional[pulumi.Input[str]] = None,
-                 wwid: Optional[pulumi.Input[str]] = None):
-        """
-        A storage volume logical unit number (LUN).
-        :param pulumi.Input[bool] boot_lun: Display if this LUN is a boot LUN.
-        :param pulumi.Input[str] id: An identifier for the LUN, generated by the backend.
-        :param pulumi.Input['LunMultiprotocolType'] multiprotocol_type: The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-        :param pulumi.Input[bool] shareable: Display if this LUN can be shared between multiple physical servers.
-        :param pulumi.Input[str] size_gb: The size of this LUN, in gigabytes.
-        :param pulumi.Input['LunState'] state: The state of this storage volume.
-        :param pulumi.Input['LunStorageType'] storage_type: The storage type for this LUN.
-        :param pulumi.Input[str] storage_volume: Display the storage volume for this LUN.
-        :param pulumi.Input[str] wwid: The WWID for this LUN.
-        """
-        if boot_lun is not None:
-            pulumi.set(__self__, "boot_lun", boot_lun)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if multiprotocol_type is not None:
-            pulumi.set(__self__, "multiprotocol_type", multiprotocol_type)
-        if shareable is not None:
-            pulumi.set(__self__, "shareable", shareable)
-        if size_gb is not None:
-            pulumi.set(__self__, "size_gb", size_gb)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
-        if storage_volume is not None:
-            pulumi.set(__self__, "storage_volume", storage_volume)
-        if wwid is not None:
-            pulumi.set(__self__, "wwid", wwid)
-
-    @property
-    @pulumi.getter(name="bootLun")
-    def boot_lun(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Display if this LUN is a boot LUN.
-        """
-        return pulumi.get(self, "boot_lun")
-
-    @boot_lun.setter
-    def boot_lun(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "boot_lun", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        An identifier for the LUN, generated by the backend.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="multiprotocolType")
-    def multiprotocol_type(self) -> Optional[pulumi.Input['LunMultiprotocolType']]:
-        """
-        The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-        """
-        return pulumi.get(self, "multiprotocol_type")
-
-    @multiprotocol_type.setter
-    def multiprotocol_type(self, value: Optional[pulumi.Input['LunMultiprotocolType']]):
-        pulumi.set(self, "multiprotocol_type", value)
-
-    @property
-    @pulumi.getter
-    def shareable(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Display if this LUN can be shared between multiple physical servers.
-        """
-        return pulumi.get(self, "shareable")
-
-    @shareable.setter
-    def shareable(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "shareable", value)
-
-    @property
-    @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[str]]:
-        """
-        The size of this LUN, in gigabytes.
-        """
-        return pulumi.get(self, "size_gb")
-
-    @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "size_gb", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['LunState']]:
-        """
-        The state of this storage volume.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['LunState']]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input['LunStorageType']]:
-        """
-        The storage type for this LUN.
-        """
-        return pulumi.get(self, "storage_type")
-
-    @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input['LunStorageType']]):
-        pulumi.set(self, "storage_type", value)
-
-    @property
-    @pulumi.getter(name="storageVolume")
-    def storage_volume(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display the storage volume for this LUN.
-        """
-        return pulumi.get(self, "storage_volume")
-
-    @storage_volume.setter
-    def storage_volume(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "storage_volume", value)
-
-    @property
-    @pulumi.getter
-    def wwid(self) -> Optional[pulumi.Input[str]]:
-        """
-        The WWID for this LUN.
-        """
-        return pulumi.get(self, "wwid")
-
-    @wwid.setter
-    def wwid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "wwid", value)
 
 
 @pulumi.input_type
@@ -1041,78 +918,6 @@ class NfsExportArgs:
 
 
 @pulumi.input_type
-class SnapshotReservationDetailArgs:
-    def __init__(__self__, *,
-                 reserved_space_gib: Optional[pulumi.Input[str]] = None,
-                 reserved_space_percent: Optional[pulumi.Input[int]] = None,
-                 reserved_space_remaining_gib: Optional[pulumi.Input[str]] = None,
-                 reserved_space_used_percent: Optional[pulumi.Input[int]] = None):
-        """
-        Details about snapshot space reservation and usage on the storage volume.
-        :param pulumi.Input[str] reserved_space_gib: The space on this storage volume reserved for snapshots, shown in GiB.
-        :param pulumi.Input[int] reserved_space_percent: Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-        :param pulumi.Input[str] reserved_space_remaining_gib: The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-        :param pulumi.Input[int] reserved_space_used_percent: The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-        """
-        if reserved_space_gib is not None:
-            pulumi.set(__self__, "reserved_space_gib", reserved_space_gib)
-        if reserved_space_percent is not None:
-            pulumi.set(__self__, "reserved_space_percent", reserved_space_percent)
-        if reserved_space_remaining_gib is not None:
-            pulumi.set(__self__, "reserved_space_remaining_gib", reserved_space_remaining_gib)
-        if reserved_space_used_percent is not None:
-            pulumi.set(__self__, "reserved_space_used_percent", reserved_space_used_percent)
-
-    @property
-    @pulumi.getter(name="reservedSpaceGib")
-    def reserved_space_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        The space on this storage volume reserved for snapshots, shown in GiB.
-        """
-        return pulumi.get(self, "reserved_space_gib")
-
-    @reserved_space_gib.setter
-    def reserved_space_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "reserved_space_gib", value)
-
-    @property
-    @pulumi.getter(name="reservedSpacePercent")
-    def reserved_space_percent(self) -> Optional[pulumi.Input[int]]:
-        """
-        Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
-        """
-        return pulumi.get(self, "reserved_space_percent")
-
-    @reserved_space_percent.setter
-    def reserved_space_percent(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "reserved_space_percent", value)
-
-    @property
-    @pulumi.getter(name="reservedSpaceRemainingGib")
-    def reserved_space_remaining_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        The amount, in GiB, of available space in this storage volume's reserved snapshot space.
-        """
-        return pulumi.get(self, "reserved_space_remaining_gib")
-
-    @reserved_space_remaining_gib.setter
-    def reserved_space_remaining_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "reserved_space_remaining_gib", value)
-
-    @property
-    @pulumi.getter(name="reservedSpaceUsedPercent")
-    def reserved_space_used_percent(self) -> Optional[pulumi.Input[int]]:
-        """
-        The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
-        """
-        return pulumi.get(self, "reserved_space_used_percent")
-
-    @reserved_space_used_percent.setter
-    def reserved_space_used_percent(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "reserved_space_used_percent", value)
-
-
-@pulumi.input_type
 class VolumeConfigArgs:
     def __init__(__self__, *,
                  gcp_service: Optional[pulumi.Input[str]] = None,
@@ -1124,7 +929,6 @@ class VolumeConfigArgs:
                  protocol: Optional[pulumi.Input['VolumeConfigProtocol']] = None,
                  size_gb: Optional[pulumi.Input[int]] = None,
                  snapshots_enabled: Optional[pulumi.Input[bool]] = None,
-                 storage_aggregate_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['VolumeConfigType']] = None,
                  user_note: Optional[pulumi.Input[str]] = None):
         """
@@ -1138,7 +942,6 @@ class VolumeConfigArgs:
         :param pulumi.Input['VolumeConfigProtocol'] protocol: Volume protocol.
         :param pulumi.Input[int] size_gb: The requested size of this volume, in GB.
         :param pulumi.Input[bool] snapshots_enabled: Whether snapshots should be enabled.
-        :param pulumi.Input[str] storage_aggregate_pool: Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
         :param pulumi.Input['VolumeConfigType'] type: The type of this Volume.
         :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
@@ -1160,8 +963,6 @@ class VolumeConfigArgs:
             pulumi.set(__self__, "size_gb", size_gb)
         if snapshots_enabled is not None:
             pulumi.set(__self__, "snapshots_enabled", snapshots_enabled)
-        if storage_aggregate_pool is not None:
-            pulumi.set(__self__, "storage_aggregate_pool", storage_aggregate_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_note is not None:
@@ -1276,18 +1077,6 @@ class VolumeConfigArgs:
         pulumi.set(self, "snapshots_enabled", value)
 
     @property
-    @pulumi.getter(name="storageAggregatePool")
-    def storage_aggregate_pool(self) -> Optional[pulumi.Input[str]]:
-        """
-        Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-        """
-        return pulumi.get(self, "storage_aggregate_pool")
-
-    @storage_aggregate_pool.setter
-    def storage_aggregate_pool(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "storage_aggregate_pool", value)
-
-    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['VolumeConfigType']]:
         """
@@ -1310,333 +1099,5 @@ class VolumeConfigArgs:
     @user_note.setter
     def user_note(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_note", value)
-
-
-@pulumi.input_type
-class VolumeArgs:
-    def __init__(__self__, *,
-                 auto_grown_size_gib: Optional[pulumi.Input[str]] = None,
-                 current_size_gib: Optional[pulumi.Input[str]] = None,
-                 emergency_size_gib: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 max_size_gib: Optional[pulumi.Input[str]] = None,
-                 notes: Optional[pulumi.Input[str]] = None,
-                 originally_requested_size_gib: Optional[pulumi.Input[str]] = None,
-                 performance_tier: Optional[pulumi.Input['VolumePerformanceTier']] = None,
-                 pod: Optional[pulumi.Input[str]] = None,
-                 remaining_space_gib: Optional[pulumi.Input[str]] = None,
-                 requested_size_gib: Optional[pulumi.Input[str]] = None,
-                 snapshot_auto_delete_behavior: Optional[pulumi.Input['VolumeSnapshotAutoDeleteBehavior']] = None,
-                 snapshot_enabled: Optional[pulumi.Input[bool]] = None,
-                 snapshot_reservation_detail: Optional[pulumi.Input['SnapshotReservationDetailArgs']] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['VolumeState']] = None,
-                 storage_aggregate_pool: Optional[pulumi.Input[str]] = None,
-                 storage_type: Optional[pulumi.Input['VolumeStorageType']] = None,
-                 workload_profile: Optional[pulumi.Input['VolumeWorkloadProfile']] = None):
-        """
-        A storage volume.
-        :param pulumi.Input[str] auto_grown_size_gib: The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
-        :param pulumi.Input[str] current_size_gib: The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
-        :param pulumi.Input[str] emergency_size_gib: Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-        :param pulumi.Input[str] id: An identifier for the `Volume`, generated by the backend.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
-        :param pulumi.Input[str] max_size_gib: Maximum size volume can be expanded to in case of evergency, in GiB.
-        :param pulumi.Input[str] notes: Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
-        :param pulumi.Input[str] originally_requested_size_gib: Originally requested size, in GiB.
-        :param pulumi.Input['VolumePerformanceTier'] performance_tier: Immutable. Performance tier of the Volume. Default is SHARED.
-        :param pulumi.Input[str] pod: Immutable. Pod name.
-        :param pulumi.Input[str] remaining_space_gib: The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
-        :param pulumi.Input[str] requested_size_gib: The requested size of this storage volume, in GiB.
-        :param pulumi.Input['VolumeSnapshotAutoDeleteBehavior'] snapshot_auto_delete_behavior: The behavior to use when snapshot reserved space is full.
-        :param pulumi.Input[bool] snapshot_enabled: Whether snapshots are enabled.
-        :param pulumi.Input['SnapshotReservationDetailArgs'] snapshot_reservation_detail: Details about snapshot space reservation and usage on the storage volume.
-        :param pulumi.Input[str] snapshot_schedule_policy: The name of the snapshot schedule policy in use for this volume, if any.
-        :param pulumi.Input['VolumeState'] state: The state of this storage volume.
-        :param pulumi.Input[str] storage_aggregate_pool: Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-        :param pulumi.Input['VolumeStorageType'] storage_type: The storage type for this volume.
-        :param pulumi.Input['VolumeWorkloadProfile'] workload_profile: The workload profile for the volume.
-        """
-        if auto_grown_size_gib is not None:
-            pulumi.set(__self__, "auto_grown_size_gib", auto_grown_size_gib)
-        if current_size_gib is not None:
-            pulumi.set(__self__, "current_size_gib", current_size_gib)
-        if emergency_size_gib is not None:
-            pulumi.set(__self__, "emergency_size_gib", emergency_size_gib)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if max_size_gib is not None:
-            pulumi.set(__self__, "max_size_gib", max_size_gib)
-        if notes is not None:
-            pulumi.set(__self__, "notes", notes)
-        if originally_requested_size_gib is not None:
-            pulumi.set(__self__, "originally_requested_size_gib", originally_requested_size_gib)
-        if performance_tier is not None:
-            pulumi.set(__self__, "performance_tier", performance_tier)
-        if pod is not None:
-            pulumi.set(__self__, "pod", pod)
-        if remaining_space_gib is not None:
-            pulumi.set(__self__, "remaining_space_gib", remaining_space_gib)
-        if requested_size_gib is not None:
-            pulumi.set(__self__, "requested_size_gib", requested_size_gib)
-        if snapshot_auto_delete_behavior is not None:
-            pulumi.set(__self__, "snapshot_auto_delete_behavior", snapshot_auto_delete_behavior)
-        if snapshot_enabled is not None:
-            pulumi.set(__self__, "snapshot_enabled", snapshot_enabled)
-        if snapshot_reservation_detail is not None:
-            pulumi.set(__self__, "snapshot_reservation_detail", snapshot_reservation_detail)
-        if snapshot_schedule_policy is not None:
-            pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if storage_aggregate_pool is not None:
-            pulumi.set(__self__, "storage_aggregate_pool", storage_aggregate_pool)
-        if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
-        if workload_profile is not None:
-            pulumi.set(__self__, "workload_profile", workload_profile)
-
-    @property
-    @pulumi.getter(name="autoGrownSizeGib")
-    def auto_grown_size_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
-        """
-        return pulumi.get(self, "auto_grown_size_gib")
-
-    @auto_grown_size_gib.setter
-    def auto_grown_size_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auto_grown_size_gib", value)
-
-    @property
-    @pulumi.getter(name="currentSizeGib")
-    def current_size_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
-        """
-        return pulumi.get(self, "current_size_gib")
-
-    @current_size_gib.setter
-    def current_size_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "current_size_gib", value)
-
-    @property
-    @pulumi.getter(name="emergencySizeGib")
-    def emergency_size_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-        """
-        return pulumi.get(self, "emergency_size_gib")
-
-    @emergency_size_gib.setter
-    def emergency_size_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "emergency_size_gib", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        An identifier for the `Volume`, generated by the backend.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Labels as key value pairs.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter(name="maxSizeGib")
-    def max_size_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        Maximum size volume can be expanded to in case of evergency, in GiB.
-        """
-        return pulumi.get(self, "max_size_gib")
-
-    @max_size_gib.setter
-    def max_size_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "max_size_gib", value)
-
-    @property
-    @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[str]]:
-        """
-        Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
-        """
-        return pulumi.get(self, "notes")
-
-    @notes.setter
-    def notes(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "notes", value)
-
-    @property
-    @pulumi.getter(name="originallyRequestedSizeGib")
-    def originally_requested_size_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        Originally requested size, in GiB.
-        """
-        return pulumi.get(self, "originally_requested_size_gib")
-
-    @originally_requested_size_gib.setter
-    def originally_requested_size_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "originally_requested_size_gib", value)
-
-    @property
-    @pulumi.getter(name="performanceTier")
-    def performance_tier(self) -> Optional[pulumi.Input['VolumePerformanceTier']]:
-        """
-        Immutable. Performance tier of the Volume. Default is SHARED.
-        """
-        return pulumi.get(self, "performance_tier")
-
-    @performance_tier.setter
-    def performance_tier(self, value: Optional[pulumi.Input['VolumePerformanceTier']]):
-        pulumi.set(self, "performance_tier", value)
-
-    @property
-    @pulumi.getter
-    def pod(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. Pod name.
-        """
-        return pulumi.get(self, "pod")
-
-    @pod.setter
-    def pod(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pod", value)
-
-    @property
-    @pulumi.getter(name="remainingSpaceGib")
-    def remaining_space_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
-        """
-        return pulumi.get(self, "remaining_space_gib")
-
-    @remaining_space_gib.setter
-    def remaining_space_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remaining_space_gib", value)
-
-    @property
-    @pulumi.getter(name="requestedSizeGib")
-    def requested_size_gib(self) -> Optional[pulumi.Input[str]]:
-        """
-        The requested size of this storage volume, in GiB.
-        """
-        return pulumi.get(self, "requested_size_gib")
-
-    @requested_size_gib.setter
-    def requested_size_gib(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "requested_size_gib", value)
-
-    @property
-    @pulumi.getter(name="snapshotAutoDeleteBehavior")
-    def snapshot_auto_delete_behavior(self) -> Optional[pulumi.Input['VolumeSnapshotAutoDeleteBehavior']]:
-        """
-        The behavior to use when snapshot reserved space is full.
-        """
-        return pulumi.get(self, "snapshot_auto_delete_behavior")
-
-    @snapshot_auto_delete_behavior.setter
-    def snapshot_auto_delete_behavior(self, value: Optional[pulumi.Input['VolumeSnapshotAutoDeleteBehavior']]):
-        pulumi.set(self, "snapshot_auto_delete_behavior", value)
-
-    @property
-    @pulumi.getter(name="snapshotEnabled")
-    def snapshot_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether snapshots are enabled.
-        """
-        return pulumi.get(self, "snapshot_enabled")
-
-    @snapshot_enabled.setter
-    def snapshot_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "snapshot_enabled", value)
-
-    @property
-    @pulumi.getter(name="snapshotReservationDetail")
-    def snapshot_reservation_detail(self) -> Optional[pulumi.Input['SnapshotReservationDetailArgs']]:
-        """
-        Details about snapshot space reservation and usage on the storage volume.
-        """
-        return pulumi.get(self, "snapshot_reservation_detail")
-
-    @snapshot_reservation_detail.setter
-    def snapshot_reservation_detail(self, value: Optional[pulumi.Input['SnapshotReservationDetailArgs']]):
-        pulumi.set(self, "snapshot_reservation_detail", value)
-
-    @property
-    @pulumi.getter(name="snapshotSchedulePolicy")
-    def snapshot_schedule_policy(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the snapshot schedule policy in use for this volume, if any.
-        """
-        return pulumi.get(self, "snapshot_schedule_policy")
-
-    @snapshot_schedule_policy.setter
-    def snapshot_schedule_policy(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "snapshot_schedule_policy", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['VolumeState']]:
-        """
-        The state of this storage volume.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['VolumeState']]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="storageAggregatePool")
-    def storage_aggregate_pool(self) -> Optional[pulumi.Input[str]]:
-        """
-        Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-        """
-        return pulumi.get(self, "storage_aggregate_pool")
-
-    @storage_aggregate_pool.setter
-    def storage_aggregate_pool(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "storage_aggregate_pool", value)
-
-    @property
-    @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input['VolumeStorageType']]:
-        """
-        The storage type for this volume.
-        """
-        return pulumi.get(self, "storage_type")
-
-    @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input['VolumeStorageType']]):
-        pulumi.set(self, "storage_type", value)
-
-    @property
-    @pulumi.getter(name="workloadProfile")
-    def workload_profile(self) -> Optional[pulumi.Input['VolumeWorkloadProfile']]:
-        """
-        The workload profile for the volume.
-        """
-        return pulumi.get(self, "workload_profile")
-
-    @workload_profile.setter
-    def workload_profile(self, value: Optional[pulumi.Input['VolumeWorkloadProfile']]):
-        pulumi.set(self, "workload_profile", value)
 
 

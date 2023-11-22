@@ -48,6 +48,10 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavi
     """
     No assertion claims behavior specified.
     """
+    MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"
+    """
+    Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
+    """
     ONLY_ID_TOKEN_CLAIMS = "ONLY_ID_TOKEN_CLAIMS"
     """
     Only include ID Token Claims.
@@ -56,11 +60,15 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavi
 
 class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType(str, Enum):
     """
-    Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+    Required. The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
     """
     RESPONSE_TYPE_UNSPECIFIED = "RESPONSE_TYPE_UNSPECIFIED"
     """
     No Response Type specified.
+    """
+    CODE = "CODE"
+    """
+    The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
     """
     ID_TOKEN = "ID_TOKEN"
     """

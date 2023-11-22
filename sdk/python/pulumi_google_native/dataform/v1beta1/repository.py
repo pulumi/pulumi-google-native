@@ -17,27 +17,43 @@ __all__ = ['RepositoryArgs', 'Repository']
 class RepositoryArgs:
     def __init__(__self__, *,
                  repository_id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input['GitRemoteSettingsArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 set_authenticated_user_admin: Optional[pulumi.Input[bool]] = None,
                  workspace_compilation_overrides: Optional[pulumi.Input['WorkspaceCompilationOverridesArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
+        :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input['GitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
+        :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
+        :param pulumi.Input[bool] set_authenticated_user_admin: Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
         :param pulumi.Input['WorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
         """
         pulumi.set(__self__, "repository_id", repository_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if git_remote_settings is not None:
             pulumi.set(__self__, "git_remote_settings", git_remote_settings)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if npmrc_environment_variables_secret_version is not None:
             pulumi.set(__self__, "npmrc_environment_variables_secret_version", npmrc_environment_variables_secret_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if set_authenticated_user_admin is not None:
+            pulumi.set(__self__, "set_authenticated_user_admin", set_authenticated_user_admin)
         if workspace_compilation_overrides is not None:
             pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
 
@@ -54,6 +70,18 @@ class RepositoryArgs:
         pulumi.set(self, "repository_id", value)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The repository's user-friendly name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
     @pulumi.getter(name="gitRemoteSettings")
     def git_remote_settings(self) -> Optional[pulumi.Input['GitRemoteSettingsArgs']]:
         """
@@ -64,6 +92,18 @@ class RepositoryArgs:
     @git_remote_settings.setter
     def git_remote_settings(self, value: Optional[pulumi.Input['GitRemoteSettingsArgs']]):
         pulumi.set(self, "git_remote_settings", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Repository user labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -96,6 +136,30 @@ class RepositoryArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="setAuthenticatedUserAdmin")
+    def set_authenticated_user_admin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+        """
+        return pulumi.get(self, "set_authenticated_user_admin")
+
+    @set_authenticated_user_admin.setter
+    def set_authenticated_user_admin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "set_authenticated_user_admin", value)
+
+    @property
     @pulumi.getter(name="workspaceCompilationOverrides")
     def workspace_compilation_overrides(self) -> Optional[pulumi.Input['WorkspaceCompilationOverridesArgs']]:
         """
@@ -113,11 +177,15 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 set_authenticated_user_admin: Optional[pulumi.Input[bool]] = None,
                  workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']]] = None,
                  __props__=None):
         """
@@ -126,9 +194,13 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
+        :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
+        :param pulumi.Input[bool] set_authenticated_user_admin: Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
         :param pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
         """
         ...
@@ -156,11 +228,15 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 set_authenticated_user_admin: Optional[pulumi.Input[bool]] = None,
                  workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -171,13 +247,17 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
+            __props__.__dict__["display_name"] = display_name
             __props__.__dict__["git_remote_settings"] = git_remote_settings
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["npmrc_environment_variables_secret_version"] = npmrc_environment_variables_secret_version
             __props__.__dict__["project"] = project
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
+            __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["set_authenticated_user_admin"] = set_authenticated_user_admin
             __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
             __props__.__dict__["name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
@@ -204,14 +284,26 @@ class Repository(pulumi.CustomResource):
 
         __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
+        __props__.__dict__["display_name"] = None
         __props__.__dict__["git_remote_settings"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["npmrc_environment_variables_secret_version"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["repository_id"] = None
+        __props__.__dict__["service_account"] = None
+        __props__.__dict__["set_authenticated_user_admin"] = None
         __props__.__dict__["workspace_compilation_overrides"] = None
         return Repository(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Optional. The repository's user-friendly name.
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="gitRemoteSettings")
@@ -220,6 +312,14 @@ class Repository(pulumi.CustomResource):
         Optional. If set, configures this repository to be linked to a Git remote.
         """
         return pulumi.get(self, "git_remote_settings")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Repository user labels.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -254,6 +354,22 @@ class Repository(pulumi.CustomResource):
         Required. The ID to use for the repository, which will become the final component of the repository's resource name.
         """
         return pulumi.get(self, "repository_id")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="setAuthenticatedUserAdmin")
+    def set_authenticated_user_admin(self) -> pulumi.Output[bool]:
+        """
+        Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+        """
+        return pulumi.get(self, "set_authenticated_user_admin")
 
     @property
     @pulumi.getter(name="workspaceCompilationOverrides")

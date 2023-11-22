@@ -1397,27 +1397,28 @@ class SubjectAltNamesArgs:
 @pulumi.input_type
 class SubjectConfigArgs:
     def __init__(__self__, *,
-                 subject: pulumi.Input['SubjectArgs'],
+                 subject: Optional[pulumi.Input['SubjectArgs']] = None,
                  subject_alt_name: Optional[pulumi.Input['SubjectAltNamesArgs']] = None):
         """
         These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
-        :param pulumi.Input['SubjectArgs'] subject: Contains distinguished name fields such as the common name, location and organization.
+        :param pulumi.Input['SubjectArgs'] subject: Optional. Contains distinguished name fields such as the common name, location and organization.
         :param pulumi.Input['SubjectAltNamesArgs'] subject_alt_name: Optional. The subject alternative name fields.
         """
-        pulumi.set(__self__, "subject", subject)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
         if subject_alt_name is not None:
             pulumi.set(__self__, "subject_alt_name", subject_alt_name)
 
     @property
     @pulumi.getter
-    def subject(self) -> pulumi.Input['SubjectArgs']:
+    def subject(self) -> Optional[pulumi.Input['SubjectArgs']]:
         """
-        Contains distinguished name fields such as the common name, location and organization.
+        Optional. Contains distinguished name fields such as the common name, location and organization.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: pulumi.Input['SubjectArgs']):
+    def subject(self, value: Optional[pulumi.Input['SubjectArgs']]):
         pulumi.set(self, "subject", value)
 
     @property

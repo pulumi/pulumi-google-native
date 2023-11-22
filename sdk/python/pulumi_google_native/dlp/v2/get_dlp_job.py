@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDlpJobResult:
-    def __init__(__self__, action_details=None, create_time=None, end_time=None, errors=None, inspect_details=None, job_trigger_name=None, name=None, risk_details=None, start_time=None, state=None, type=None):
+    def __init__(__self__, action_details=None, create_time=None, end_time=None, errors=None, inspect_details=None, job_trigger_name=None, last_modified=None, name=None, risk_details=None, start_time=None, state=None, type=None):
         if action_details and not isinstance(action_details, list):
             raise TypeError("Expected argument 'action_details' to be a list")
         pulumi.set(__self__, "action_details", action_details)
@@ -38,6 +38,9 @@ class GetDlpJobResult:
         if job_trigger_name and not isinstance(job_trigger_name, str):
             raise TypeError("Expected argument 'job_trigger_name' to be a str")
         pulumi.set(__self__, "job_trigger_name", job_trigger_name)
+        if last_modified and not isinstance(last_modified, str):
+            raise TypeError("Expected argument 'last_modified' to be a str")
+        pulumi.set(__self__, "last_modified", last_modified)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -103,6 +106,14 @@ class GetDlpJobResult:
         return pulumi.get(self, "job_trigger_name")
 
     @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> str:
+        """
+        Time when the job was last modified by the system.
+        """
+        return pulumi.get(self, "last_modified")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -155,6 +166,7 @@ class AwaitableGetDlpJobResult(GetDlpJobResult):
             errors=self.errors,
             inspect_details=self.inspect_details,
             job_trigger_name=self.job_trigger_name,
+            last_modified=self.last_modified,
             name=self.name,
             risk_details=self.risk_details,
             start_time=self.start_time,
@@ -183,6 +195,7 @@ def get_dlp_job(dlp_job_id: Optional[str] = None,
         errors=pulumi.get(__ret__, 'errors'),
         inspect_details=pulumi.get(__ret__, 'inspect_details'),
         job_trigger_name=pulumi.get(__ret__, 'job_trigger_name'),
+        last_modified=pulumi.get(__ret__, 'last_modified'),
         name=pulumi.get(__ret__, 'name'),
         risk_details=pulumi.get(__ret__, 'risk_details'),
         start_time=pulumi.get(__ret__, 'start_time'),

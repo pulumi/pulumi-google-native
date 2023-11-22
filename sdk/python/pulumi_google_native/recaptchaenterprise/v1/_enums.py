@@ -15,7 +15,7 @@ __all__ = [
 
 class GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge(str, Enum):
     """
-    For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+    Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
     """
     TESTING_CHALLENGE_UNSPECIFIED = "TESTING_CHALLENGE_UNSPECIFIED"
     """
@@ -77,7 +77,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettingsWafService(str, Enum):
 
 class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference(str, Enum):
     """
-    Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+    Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
     """
     CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED = "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"
     """

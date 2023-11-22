@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetUptimeCheckConfigResult:
-    def __init__(__self__, checker_type=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, name=None, period=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, user_labels=None):
+    def __init__(__self__, checker_type=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, name=None, period=None, resource_group=None, selected_regions=None, synthetic_monitor=None, tcp_check=None, timeout=None, user_labels=None):
         if checker_type and not isinstance(checker_type, str):
             raise TypeError("Expected argument 'checker_type' to be a str")
         pulumi.set(__self__, "checker_type", checker_type)
@@ -53,6 +53,9 @@ class GetUptimeCheckConfigResult:
         if selected_regions and not isinstance(selected_regions, list):
             raise TypeError("Expected argument 'selected_regions' to be a list")
         pulumi.set(__self__, "selected_regions", selected_regions)
+        if synthetic_monitor and not isinstance(synthetic_monitor, dict):
+            raise TypeError("Expected argument 'synthetic_monitor' to be a dict")
+        pulumi.set(__self__, "synthetic_monitor", synthetic_monitor)
         if tcp_check and not isinstance(tcp_check, dict):
             raise TypeError("Expected argument 'tcp_check' to be a dict")
         pulumi.set(__self__, "tcp_check", tcp_check)
@@ -123,7 +126,7 @@ class GetUptimeCheckConfigResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+        Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         """
         return pulumi.get(self, "name")
 
@@ -150,6 +153,14 @@ class GetUptimeCheckConfigResult:
         The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         """
         return pulumi.get(self, "selected_regions")
+
+    @property
+    @pulumi.getter(name="syntheticMonitor")
+    def synthetic_monitor(self) -> 'outputs.SyntheticMonitorTargetResponse':
+        """
+        Specifies a Synthetic Monitor to invoke.
+        """
+        return pulumi.get(self, "synthetic_monitor")
 
     @property
     @pulumi.getter(name="tcpCheck")
@@ -193,6 +204,7 @@ class AwaitableGetUptimeCheckConfigResult(GetUptimeCheckConfigResult):
             period=self.period,
             resource_group=self.resource_group,
             selected_regions=self.selected_regions,
+            synthetic_monitor=self.synthetic_monitor,
             tcp_check=self.tcp_check,
             timeout=self.timeout,
             user_labels=self.user_labels)
@@ -222,6 +234,7 @@ def get_uptime_check_config(project: Optional[str] = None,
         period=pulumi.get(__ret__, 'period'),
         resource_group=pulumi.get(__ret__, 'resource_group'),
         selected_regions=pulumi.get(__ret__, 'selected_regions'),
+        synthetic_monitor=pulumi.get(__ret__, 'synthetic_monitor'),
         tcp_check=pulumi.get(__ret__, 'tcp_check'),
         timeout=pulumi.get(__ret__, 'timeout'),
         user_labels=pulumi.get(__ret__, 'user_labels'))

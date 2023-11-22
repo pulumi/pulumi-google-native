@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvironmentResult:
-    def __init__(__self__, config=None, create_time=None, labels=None, name=None, state=None, update_time=None, uuid=None):
+    def __init__(__self__, config=None, create_time=None, labels=None, name=None, satisfies_pzs=None, state=None, storage_config=None, update_time=None, uuid=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -32,9 +32,15 @@ class GetEnvironmentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if storage_config and not isinstance(storage_config, dict):
+            raise TypeError("Expected argument 'storage_config' to be a dict")
+        pulumi.set(__self__, "storage_config", storage_config)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -75,12 +81,28 @@ class GetEnvironmentResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
         The current state of the environment.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageConfig")
+    def storage_config(self) -> 'outputs.StorageConfigResponse':
+        """
+        Optional. Storage configuration for this environment.
+        """
+        return pulumi.get(self, "storage_config")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -109,7 +131,9 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             create_time=self.create_time,
             labels=self.labels,
             name=self.name,
+            satisfies_pzs=self.satisfies_pzs,
             state=self.state,
+            storage_config=self.storage_config,
             update_time=self.update_time,
             uuid=self.uuid)
 
@@ -133,7 +157,9 @@ def get_environment(environment_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         state=pulumi.get(__ret__, 'state'),
+        storage_config=pulumi.get(__ret__, 'storage_config'),
         update_time=pulumi.get(__ret__, 'update_time'),
         uuid=pulumi.get(__ret__, 'uuid'))
 

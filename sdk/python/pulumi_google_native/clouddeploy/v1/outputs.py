@@ -13,9 +13,14 @@ from ._enums import *
 
 __all__ = [
     'AdvanceChildRolloutJobResponse',
+    'AdvanceRolloutRuleResponse',
     'AnthosClusterResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AutomationResourceSelectorResponse',
+    'AutomationRolloutMetadataResponse',
+    'AutomationRuleConditionResponse',
+    'AutomationRuleResponse',
     'BindingResponse',
     'BuildArtifactResponse',
     'CanaryDeploymentResponse',
@@ -29,6 +34,7 @@ __all__ = [
     'DefaultPoolResponse',
     'DeliveryPipelineResponse',
     'DeployJobResponse',
+    'DeployParametersResponse',
     'DeploymentJobsResponse',
     'ExecutionConfigResponse',
     'ExprResponse',
@@ -42,9 +48,18 @@ __all__ = [
     'PhaseResponse',
     'PipelineConditionResponse',
     'PipelineReadyConditionResponse',
+    'PostdeployJobResponse',
+    'PostdeployResponse',
+    'PredeployJobResponse',
+    'PredeployResponse',
     'PrivatePoolResponse',
+    'PromoteReleaseRuleResponse',
     'ReleaseConditionResponse',
     'ReleaseReadyConditionResponse',
+    'RepairModeResponse',
+    'RepairRolloutRuleResponse',
+    'RetryResponse',
+    'RollbackResponse',
     'RuntimeConfigResponse',
     'SerialPipelineResponse',
     'ServiceNetworkingResponse',
@@ -52,6 +67,7 @@ __all__ = [
     'StageResponse',
     'StandardResponse',
     'StrategyResponse',
+    'TargetAttributeResponse',
     'TargetResponse',
     'TargetsPresentConditionResponse',
     'TargetsTypeConditionResponse',
@@ -68,6 +84,67 @@ class AdvanceChildRolloutJobResponse(dict):
         An advanceChildRollout Job.
         """
         pass
+
+
+@pulumi.output_type
+class AdvanceRolloutRuleResponse(dict):
+    """
+    The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourcePhases":
+            suggest = "source_phases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdvanceRolloutRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdvanceRolloutRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdvanceRolloutRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: 'outputs.AutomationRuleConditionResponse',
+                 source_phases: Sequence[str],
+                 wait: str):
+        """
+        The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+        :param 'AutomationRuleConditionResponse' condition: Information around the state of the Automation rule.
+        :param Sequence[str] source_phases: Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param str wait: Optional. How long to wait after a rollout is finished.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "source_phases", source_phases)
+        pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.AutomationRuleConditionResponse':
+        """
+        Information around the state of the Automation rule.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="sourcePhases")
+    def source_phases(self) -> Sequence[str]:
+        """
+        Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "source_phases")
+
+    @property
+    @pulumi.getter
+    def wait(self) -> str:
+        """
+        Optional. How long to wait after a rollout is finished.
+        """
+        return pulumi.get(self, "wait")
 
 
 @pulumi.output_type
@@ -195,6 +272,197 @@ class AuditLogConfigResponse(dict):
 
 
 @pulumi.output_type
+class AutomationResourceSelectorResponse(dict):
+    """
+    AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+    """
+    def __init__(__self__, *,
+                 targets: Sequence['outputs.TargetAttributeResponse']):
+        """
+        AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+        :param Sequence['TargetAttributeResponse'] targets: Contains attributes about a target.
+        """
+        pulumi.set(__self__, "targets", targets)
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Sequence['outputs.TargetAttributeResponse']:
+        """
+        Contains attributes about a target.
+        """
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
+class AutomationRolloutMetadataResponse(dict):
+    """
+    AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advanceAutomationRuns":
+            suggest = "advance_automation_runs"
+        elif key == "promoteAutomationRun":
+            suggest = "promote_automation_run"
+        elif key == "repairAutomationRuns":
+            suggest = "repair_automation_runs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRolloutMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRolloutMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRolloutMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advance_automation_runs: Sequence[str],
+                 promote_automation_run: str,
+                 repair_automation_runs: Sequence[str]):
+        """
+        AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
+        :param Sequence[str] advance_automation_runs: The IDs of the AutomationRuns initiated by an advance rollout rule.
+        :param str promote_automation_run: The ID of the AutomationRun initiated by a promote release rule.
+        :param Sequence[str] repair_automation_runs: The IDs of the AutomationRuns initiated by a repair rollout rule.
+        """
+        pulumi.set(__self__, "advance_automation_runs", advance_automation_runs)
+        pulumi.set(__self__, "promote_automation_run", promote_automation_run)
+        pulumi.set(__self__, "repair_automation_runs", repair_automation_runs)
+
+    @property
+    @pulumi.getter(name="advanceAutomationRuns")
+    def advance_automation_runs(self) -> Sequence[str]:
+        """
+        The IDs of the AutomationRuns initiated by an advance rollout rule.
+        """
+        return pulumi.get(self, "advance_automation_runs")
+
+    @property
+    @pulumi.getter(name="promoteAutomationRun")
+    def promote_automation_run(self) -> str:
+        """
+        The ID of the AutomationRun initiated by a promote release rule.
+        """
+        return pulumi.get(self, "promote_automation_run")
+
+    @property
+    @pulumi.getter(name="repairAutomationRuns")
+    def repair_automation_runs(self) -> Sequence[str]:
+        """
+        The IDs of the AutomationRuns initiated by a repair rollout rule.
+        """
+        return pulumi.get(self, "repair_automation_runs")
+
+
+@pulumi.output_type
+class AutomationRuleConditionResponse(dict):
+    """
+    `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetsPresentCondition":
+            suggest = "targets_present_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 targets_present_condition: 'outputs.TargetsPresentConditionResponse'):
+        """
+        `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+        :param 'TargetsPresentConditionResponse' targets_present_condition: Optional. Details around targets enumerated in the rule.
+        """
+        pulumi.set(__self__, "targets_present_condition", targets_present_condition)
+
+    @property
+    @pulumi.getter(name="targetsPresentCondition")
+    def targets_present_condition(self) -> 'outputs.TargetsPresentConditionResponse':
+        """
+        Optional. Details around targets enumerated in the rule.
+        """
+        return pulumi.get(self, "targets_present_condition")
+
+
+@pulumi.output_type
+class AutomationRuleResponse(dict):
+    """
+    `AutomationRule` defines the automation activities.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advanceRolloutRule":
+            suggest = "advance_rollout_rule"
+        elif key == "promoteReleaseRule":
+            suggest = "promote_release_rule"
+        elif key == "repairRolloutRule":
+            suggest = "repair_rollout_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advance_rollout_rule: 'outputs.AdvanceRolloutRuleResponse',
+                 promote_release_rule: 'outputs.PromoteReleaseRuleResponse',
+                 repair_rollout_rule: 'outputs.RepairRolloutRuleResponse'):
+        """
+        `AutomationRule` defines the automation activities.
+        :param 'AdvanceRolloutRuleResponse' advance_rollout_rule: Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+        :param 'PromoteReleaseRuleResponse' promote_release_rule: Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+        :param 'RepairRolloutRuleResponse' repair_rollout_rule: Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+        """
+        pulumi.set(__self__, "advance_rollout_rule", advance_rollout_rule)
+        pulumi.set(__self__, "promote_release_rule", promote_release_rule)
+        pulumi.set(__self__, "repair_rollout_rule", repair_rollout_rule)
+
+    @property
+    @pulumi.getter(name="advanceRolloutRule")
+    def advance_rollout_rule(self) -> 'outputs.AdvanceRolloutRuleResponse':
+        """
+        Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+        """
+        return pulumi.get(self, "advance_rollout_rule")
+
+    @property
+    @pulumi.getter(name="promoteReleaseRule")
+    def promote_release_rule(self) -> 'outputs.PromoteReleaseRuleResponse':
+        """
+        Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+        """
+        return pulumi.get(self, "promote_release_rule")
+
+    @property
+    @pulumi.getter(name="repairRolloutRule")
+    def repair_rollout_rule(self) -> 'outputs.RepairRolloutRuleResponse':
+        """
+        Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+        """
+        return pulumi.get(self, "repair_rollout_rule")
+
+
+@pulumi.output_type
 class BindingResponse(dict):
     """
     Associates `members`, or principals, with a `role`.
@@ -278,13 +546,19 @@ class CanaryDeploymentResponse(dict):
     """
     def __init__(__self__, *,
                  percentages: Sequence[int],
+                 postdeploy: 'outputs.PostdeployResponse',
+                 predeploy: 'outputs.PredeployResponse',
                  verify: bool):
         """
         CanaryDeployment represents the canary deployment configuration
         :param Sequence[int] percentages: The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        :param 'PostdeployResponse' postdeploy: Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+        :param 'PredeployResponse' predeploy: Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
         :param bool verify: Whether to run verify tests after each percentage deployment.
         """
         pulumi.set(__self__, "percentages", percentages)
+        pulumi.set(__self__, "postdeploy", postdeploy)
+        pulumi.set(__self__, "predeploy", predeploy)
         pulumi.set(__self__, "verify", verify)
 
     @property
@@ -294,6 +568,22 @@ class CanaryDeploymentResponse(dict):
         The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
         """
         return pulumi.get(self, "percentages")
+
+    @property
+    @pulumi.getter
+    def postdeploy(self) -> 'outputs.PostdeployResponse':
+        """
+        Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> 'outputs.PredeployResponse':
+        """
+        Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+        """
+        return pulumi.get(self, "predeploy")
 
     @property
     @pulumi.getter
@@ -505,18 +795,29 @@ class CloudRunMetadataResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 job: str,
                  revision: str,
                  service: str,
                  service_urls: Sequence[str]):
         """
         CloudRunMetadata contains information from a Cloud Run deployment.
+        :param str job: The name of the Cloud Run job that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/jobs/{job_name}`.
         :param str revision: The Cloud Run Revision id associated with a `Rollout`.
-        :param str service: The name of the Cloud Run Service that is associated with a `Rollout`. Format is projects/{project}/locations/{location}/services/{service}.
+        :param str service: The name of the Cloud Run Service that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/services/{service}`.
         :param Sequence[str] service_urls: The Cloud Run Service urls that are associated with a `Rollout`.
         """
+        pulumi.set(__self__, "job", job)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "service_urls", service_urls)
+
+    @property
+    @pulumi.getter
+    def job(self) -> str:
+        """
+        The name of the Cloud Run job that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/jobs/{job_name}`.
+        """
+        return pulumi.get(self, "job")
 
     @property
     @pulumi.getter
@@ -530,7 +831,7 @@ class CloudRunMetadataResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        The name of the Cloud Run Service that is associated with a `Rollout`. Format is projects/{project}/locations/{location}/services/{service}.
+        The name of the Cloud Run Service that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/services/{service}`.
         """
         return pulumi.get(self, "service")
 
@@ -649,7 +950,7 @@ class DefaultPoolResponse(dict):
 @pulumi.output_type
 class DeliveryPipelineResponse(dict):
     """
-    A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
+    A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -685,14 +986,14 @@ class DeliveryPipelineResponse(dict):
                  uid: str,
                  update_time: str):
         """
-        A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
-        :param Mapping[str, str] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+        A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
+        :param Mapping[str, str] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
         :param 'PipelineConditionResponse' condition: Information around the state of the Delivery Pipeline.
         :param str create_time: Time at which the pipeline was created.
         :param str description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param str etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param Mapping[str, str] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param str name: Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+        :param Mapping[str, str] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param str name: Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
         :param 'SerialPipelineResponse' serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param bool suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param str uid: Unique identifier of the `DeliveryPipeline`.
@@ -714,7 +1015,7 @@ class DeliveryPipelineResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
         """
         return pulumi.get(self, "annotations")
 
@@ -754,7 +1055,7 @@ class DeliveryPipelineResponse(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -762,7 +1063,7 @@ class DeliveryPipelineResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+        Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
         """
         return pulumi.get(self, "name")
 
@@ -812,6 +1113,56 @@ class DeployJobResponse(dict):
 
 
 @pulumi.output_type
+class DeployParametersResponse(dict):
+    """
+    DeployParameters contains deploy parameters information.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchTargetLabels":
+            suggest = "match_target_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_target_labels: Mapping[str, str],
+                 values: Mapping[str, str]):
+        """
+        DeployParameters contains deploy parameters information.
+        :param Mapping[str, str] match_target_labels: Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+        :param Mapping[str, str] values: Values are deploy parameters in key-value pairs.
+        """
+        pulumi.set(__self__, "match_target_labels", match_target_labels)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="matchTargetLabels")
+    def match_target_labels(self) -> Mapping[str, str]:
+        """
+        Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+        """
+        return pulumi.get(self, "match_target_labels")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Mapping[str, str]:
+        """
+        Values are deploy parameters in key-value pairs.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class DeploymentJobsResponse(dict):
     """
     Deployment job composition.
@@ -821,6 +1172,10 @@ class DeploymentJobsResponse(dict):
         suggest = None
         if key == "deployJob":
             suggest = "deploy_job"
+        elif key == "postdeployJob":
+            suggest = "postdeploy_job"
+        elif key == "predeployJob":
+            suggest = "predeploy_job"
         elif key == "verifyJob":
             suggest = "verify_job"
 
@@ -837,13 +1192,19 @@ class DeploymentJobsResponse(dict):
 
     def __init__(__self__, *,
                  deploy_job: 'outputs.JobResponse',
+                 postdeploy_job: 'outputs.JobResponse',
+                 predeploy_job: 'outputs.JobResponse',
                  verify_job: 'outputs.JobResponse'):
         """
         Deployment job composition.
         :param 'JobResponse' deploy_job: The deploy Job. This is the deploy job in the phase.
+        :param 'JobResponse' postdeploy_job: The postdeploy Job, which is the last job on the phase.
+        :param 'JobResponse' predeploy_job: The predeploy Job, which is the first job on the phase.
         :param 'JobResponse' verify_job: The verify Job. Runs after a deploy if the deploy succeeds.
         """
         pulumi.set(__self__, "deploy_job", deploy_job)
+        pulumi.set(__self__, "postdeploy_job", postdeploy_job)
+        pulumi.set(__self__, "predeploy_job", predeploy_job)
         pulumi.set(__self__, "verify_job", verify_job)
 
     @property
@@ -853,6 +1214,22 @@ class DeploymentJobsResponse(dict):
         The deploy Job. This is the deploy job in the phase.
         """
         return pulumi.get(self, "deploy_job")
+
+    @property
+    @pulumi.getter(name="postdeployJob")
+    def postdeploy_job(self) -> 'outputs.JobResponse':
+        """
+        The postdeploy Job, which is the last job on the phase.
+        """
+        return pulumi.get(self, "postdeploy_job")
+
+    @property
+    @pulumi.getter(name="predeployJob")
+    def predeploy_job(self) -> 'outputs.JobResponse':
+        """
+        The predeploy Job, which is the first job on the phase.
+        """
+        return pulumi.get(self, "predeploy_job")
 
     @property
     @pulumi.getter(name="verifyJob")
@@ -1043,6 +1420,8 @@ class GatewayServiceMeshResponse(dict):
         suggest = None
         if key == "httpRoute":
             suggest = "http_route"
+        elif key == "routeUpdateWaitTime":
+            suggest = "route_update_wait_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayServiceMeshResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1058,15 +1437,18 @@ class GatewayServiceMeshResponse(dict):
     def __init__(__self__, *,
                  deployment: str,
                  http_route: str,
+                 route_update_wait_time: str,
                  service: str):
         """
         Information about the Kubernetes Gateway API service mesh configuration.
         :param str deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
         :param str http_route: Name of the Gateway API HTTPRoute.
+        :param str route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         :param str service: Name of the Kubernetes Service.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "http_route", http_route)
+        pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
         pulumi.set(__self__, "service", service)
 
     @property
@@ -1084,6 +1466,14 @@ class GatewayServiceMeshResponse(dict):
         Name of the Gateway API HTTPRoute.
         """
         return pulumi.get(self, "http_route")
+
+    @property
+    @pulumi.getter(name="routeUpdateWaitTime")
+    def route_update_wait_time(self) -> str:
+        """
+        Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+        """
+        return pulumi.get(self, "route_update_wait_time")
 
     @property
     @pulumi.getter
@@ -1121,7 +1511,7 @@ class GkeClusterResponse(dict):
                  internal_ip: bool):
         """
         Information specifying a GKE Cluster.
-        :param str cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        :param str cluster: Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         :param bool internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -1131,7 +1521,7 @@ class GkeClusterResponse(dict):
     @pulumi.getter
     def cluster(self) -> str:
         """
-        Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         """
         return pulumi.get(self, "cluster")
 
@@ -1160,6 +1550,10 @@ class JobResponse(dict):
             suggest = "deploy_job"
         elif key == "jobRun":
             suggest = "job_run"
+        elif key == "postdeployJob":
+            suggest = "postdeploy_job"
+        elif key == "predeployJob":
+            suggest = "predeploy_job"
         elif key == "skipMessage":
             suggest = "skip_message"
         elif key == "verifyJob":
@@ -1181,6 +1575,8 @@ class JobResponse(dict):
                  create_child_rollout_job: 'outputs.CreateChildRolloutJobResponse',
                  deploy_job: 'outputs.DeployJobResponse',
                  job_run: str,
+                 postdeploy_job: 'outputs.PostdeployJobResponse',
+                 predeploy_job: 'outputs.PredeployJobResponse',
                  skip_message: str,
                  state: str,
                  verify_job: 'outputs.VerifyJobResponse'):
@@ -1190,6 +1586,8 @@ class JobResponse(dict):
         :param 'CreateChildRolloutJobResponse' create_child_rollout_job: A createChildRollout Job.
         :param 'DeployJobResponse' deploy_job: A deploy Job.
         :param str job_run: The name of the `JobRun` responsible for the most recent invocation of this Job.
+        :param 'PostdeployJobResponse' postdeploy_job: A postdeploy Job.
+        :param 'PredeployJobResponse' predeploy_job: A predeploy Job.
         :param str skip_message: Additional information on why the Job was skipped, if available.
         :param str state: The current state of the Job.
         :param 'VerifyJobResponse' verify_job: A verify Job.
@@ -1198,6 +1596,8 @@ class JobResponse(dict):
         pulumi.set(__self__, "create_child_rollout_job", create_child_rollout_job)
         pulumi.set(__self__, "deploy_job", deploy_job)
         pulumi.set(__self__, "job_run", job_run)
+        pulumi.set(__self__, "postdeploy_job", postdeploy_job)
+        pulumi.set(__self__, "predeploy_job", predeploy_job)
         pulumi.set(__self__, "skip_message", skip_message)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "verify_job", verify_job)
@@ -1233,6 +1633,22 @@ class JobResponse(dict):
         The name of the `JobRun` responsible for the most recent invocation of this Job.
         """
         return pulumi.get(self, "job_run")
+
+    @property
+    @pulumi.getter(name="postdeployJob")
+    def postdeploy_job(self) -> 'outputs.PostdeployJobResponse':
+        """
+        A postdeploy Job.
+        """
+        return pulumi.get(self, "postdeploy_job")
+
+    @property
+    @pulumi.getter(name="predeployJob")
+    def predeploy_job(self) -> 'outputs.PredeployJobResponse':
+        """
+        A predeploy Job.
+        """
+        return pulumi.get(self, "predeploy_job")
 
     @property
     @pulumi.getter(name="skipMessage")
@@ -1334,12 +1750,23 @@ class MetadataResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 automation: 'outputs.AutomationRolloutMetadataResponse',
                  cloud_run: 'outputs.CloudRunMetadataResponse'):
         """
         Metadata includes information associated with a `Rollout`.
+        :param 'AutomationRolloutMetadataResponse' automation: AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
         :param 'CloudRunMetadataResponse' cloud_run: The name of the Cloud Run Service that is associated with a `Rollout`.
         """
+        pulumi.set(__self__, "automation", automation)
         pulumi.set(__self__, "cloud_run", cloud_run)
+
+    @property
+    @pulumi.getter
+    def automation(self) -> 'outputs.AutomationRolloutMetadataResponse':
+        """
+        AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
+        """
+        return pulumi.get(self, "automation")
 
     @property
     @pulumi.getter(name="cloudRun")
@@ -1414,17 +1841,23 @@ class PhaseConfigResponse(dict):
     def __init__(__self__, *,
                  percentage: int,
                  phase_id: str,
+                 postdeploy: 'outputs.PostdeployResponse',
+                 predeploy: 'outputs.PredeployResponse',
                  profiles: Sequence[str],
                  verify: bool):
         """
         PhaseConfig represents the configuration for a phase in the custom canary deployment.
         :param int percentage: Percentage deployment for the phase.
         :param str phase_id: The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param 'PostdeployResponse' postdeploy: Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+        :param 'PredeployResponse' predeploy: Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         :param bool verify: Whether to run verify tests after the deployment.
         """
         pulumi.set(__self__, "percentage", percentage)
         pulumi.set(__self__, "phase_id", phase_id)
+        pulumi.set(__self__, "postdeploy", postdeploy)
+        pulumi.set(__self__, "predeploy", predeploy)
         pulumi.set(__self__, "profiles", profiles)
         pulumi.set(__self__, "verify", verify)
 
@@ -1443,6 +1876,22 @@ class PhaseConfigResponse(dict):
         The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
         """
         return pulumi.get(self, "phase_id")
+
+    @property
+    @pulumi.getter
+    def postdeploy(self) -> 'outputs.PostdeployResponse':
+        """
+        Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> 'outputs.PredeployResponse':
+        """
+        Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+        """
+        return pulumi.get(self, "predeploy")
 
     @property
     @pulumi.getter
@@ -1653,6 +2102,94 @@ class PipelineReadyConditionResponse(dict):
 
 
 @pulumi.output_type
+class PostdeployJobResponse(dict):
+    """
+    A postdeploy Job.
+    """
+    def __init__(__self__, *,
+                 actions: Sequence[str]):
+        """
+        A postdeploy Job.
+        :param Sequence[str] actions: The custom actions that the postdeploy Job executes.
+        """
+        pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        The custom actions that the postdeploy Job executes.
+        """
+        return pulumi.get(self, "actions")
+
+
+@pulumi.output_type
+class PostdeployResponse(dict):
+    """
+    Postdeploy contains the postdeploy job configuration information.
+    """
+    def __init__(__self__, *,
+                 actions: Sequence[str]):
+        """
+        Postdeploy contains the postdeploy job configuration information.
+        :param Sequence[str] actions: Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+
+@pulumi.output_type
+class PredeployJobResponse(dict):
+    """
+    A predeploy Job.
+    """
+    def __init__(__self__, *,
+                 actions: Sequence[str]):
+        """
+        A predeploy Job.
+        :param Sequence[str] actions: The custom actions that the predeploy Job executes.
+        """
+        pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        The custom actions that the predeploy Job executes.
+        """
+        return pulumi.get(self, "actions")
+
+
+@pulumi.output_type
+class PredeployResponse(dict):
+    """
+    Predeploy contains the predeploy job configuration information.
+    """
+    def __init__(__self__, *,
+                 actions: Sequence[str]):
+        """
+        Predeploy contains the predeploy job configuration information.
+        :param Sequence[str] actions: Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+
+@pulumi.output_type
 class PrivatePoolResponse(dict):
     """
     Execution using a private Cloud Build pool.
@@ -1715,6 +2252,80 @@ class PrivatePoolResponse(dict):
         Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
         """
         return pulumi.get(self, "worker_pool")
+
+
+@pulumi.output_type
+class PromoteReleaseRuleResponse(dict):
+    """
+    `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationPhase":
+            suggest = "destination_phase"
+        elif key == "destinationTargetId":
+            suggest = "destination_target_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PromoteReleaseRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PromoteReleaseRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PromoteReleaseRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: 'outputs.AutomationRuleConditionResponse',
+                 destination_phase: str,
+                 destination_target_id: str,
+                 wait: str):
+        """
+        `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+        :param 'AutomationRuleConditionResponse' condition: Information around the state of the Automation rule.
+        :param str destination_phase: Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+        :param str destination_target_id: Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        :param str wait: Optional. How long the release need to be paused until being promoted to the next target.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "destination_phase", destination_phase)
+        pulumi.set(__self__, "destination_target_id", destination_target_id)
+        pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.AutomationRuleConditionResponse':
+        """
+        Information around the state of the Automation rule.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="destinationPhase")
+    def destination_phase(self) -> str:
+        """
+        Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+        """
+        return pulumi.get(self, "destination_phase")
+
+    @property
+    @pulumi.getter(name="destinationTargetId")
+    def destination_target_id(self) -> str:
+        """
+        Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        """
+        return pulumi.get(self, "destination_target_id")
+
+    @property
+    @pulumi.getter
+    def wait(self) -> str:
+        """
+        Optional. How long the release need to be paused until being promoted to the next target.
+        """
+        return pulumi.get(self, "wait")
 
 
 @pulumi.output_type
@@ -1789,6 +2400,213 @@ class ReleaseReadyConditionResponse(dict):
         True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class RepairModeResponse(dict):
+    """
+    Configuration of the repair action.
+    """
+    def __init__(__self__, *,
+                 retry: 'outputs.RetryResponse',
+                 rollback: 'outputs.RollbackResponse'):
+        """
+        Configuration of the repair action.
+        :param 'RetryResponse' retry: Optional. Retries a failed job.
+        :param 'RollbackResponse' rollback: Optional. Rolls back a `Rollout`.
+        """
+        pulumi.set(__self__, "retry", retry)
+        pulumi.set(__self__, "rollback", rollback)
+
+    @property
+    @pulumi.getter
+    def retry(self) -> 'outputs.RetryResponse':
+        """
+        Optional. Retries a failed job.
+        """
+        return pulumi.get(self, "retry")
+
+    @property
+    @pulumi.getter
+    def rollback(self) -> 'outputs.RollbackResponse':
+        """
+        Optional. Rolls back a `Rollout`.
+        """
+        return pulumi.get(self, "rollback")
+
+
+@pulumi.output_type
+class RepairRolloutRuleResponse(dict):
+    """
+    The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repairModes":
+            suggest = "repair_modes"
+        elif key == "sourcePhases":
+            suggest = "source_phases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepairRolloutRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepairRolloutRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepairRolloutRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: 'outputs.AutomationRuleConditionResponse',
+                 jobs: Sequence[str],
+                 repair_modes: Sequence['outputs.RepairModeResponse'],
+                 source_phases: Sequence[str]):
+        """
+        The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+        :param 'AutomationRuleConditionResponse' condition: Information around the state of the 'Automation' rule.
+        :param Sequence[str] jobs: Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param Sequence['RepairModeResponse'] repair_modes: Defines the types of automatic repair actions for failed jobs.
+        :param Sequence[str] source_phases: Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "jobs", jobs)
+        pulumi.set(__self__, "repair_modes", repair_modes)
+        pulumi.set(__self__, "source_phases", source_phases)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.AutomationRuleConditionResponse':
+        """
+        Information around the state of the 'Automation' rule.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def jobs(self) -> Sequence[str]:
+        """
+        Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "jobs")
+
+    @property
+    @pulumi.getter(name="repairModes")
+    def repair_modes(self) -> Sequence['outputs.RepairModeResponse']:
+        """
+        Defines the types of automatic repair actions for failed jobs.
+        """
+        return pulumi.get(self, "repair_modes")
+
+    @property
+    @pulumi.getter(name="sourcePhases")
+    def source_phases(self) -> Sequence[str]:
+        """
+        Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "source_phases")
+
+
+@pulumi.output_type
+class RetryResponse(dict):
+    """
+    Retries the failed job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backoffMode":
+            suggest = "backoff_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attempts: str,
+                 backoff_mode: str,
+                 wait: str):
+        """
+        Retries the failed job.
+        :param str attempts: Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        :param str backoff_mode: Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+        :param str wait: Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+        """
+        pulumi.set(__self__, "attempts", attempts)
+        pulumi.set(__self__, "backoff_mode", backoff_mode)
+        pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def attempts(self) -> str:
+        """
+        Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        """
+        return pulumi.get(self, "attempts")
+
+    @property
+    @pulumi.getter(name="backoffMode")
+    def backoff_mode(self) -> str:
+        """
+        Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+        """
+        return pulumi.get(self, "backoff_mode")
+
+    @property
+    @pulumi.getter
+    def wait(self) -> str:
+        """
+        Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+        """
+        return pulumi.get(self, "wait")
+
+
+@pulumi.output_type
+class RollbackResponse(dict):
+    """
+    Rolls back a `Rollout`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationPhase":
+            suggest = "destination_phase"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RollbackResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RollbackResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RollbackResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_phase: str):
+        """
+        Rolls back a `Rollout`.
+        :param str destination_phase: Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+        """
+        pulumi.set(__self__, "destination_phase", destination_phase)
+
+    @property
+    @pulumi.getter(name="destinationPhase")
+    def destination_phase(self) -> str:
+        """
+        Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+        """
+        return pulumi.get(self, "destination_phase")
 
 
 @pulumi.output_type
@@ -1868,15 +2686,35 @@ class ServiceNetworkingResponse(dict):
     """
     Information about the Kubernetes Service networking configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disablePodOverprovisioning":
+            suggest = "disable_pod_overprovisioning"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNetworkingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNetworkingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNetworkingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  deployment: str,
+                 disable_pod_overprovisioning: bool,
                  service: str):
         """
         Information about the Kubernetes Service networking configuration.
         :param str deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        :param bool disable_pod_overprovisioning: Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
         :param str service: Name of the Kubernetes Service.
         """
         pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "disable_pod_overprovisioning", disable_pod_overprovisioning)
         pulumi.set(__self__, "service", service)
 
     @property
@@ -1886,6 +2724,14 @@ class ServiceNetworkingResponse(dict):
         Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
         """
         return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="disablePodOverprovisioning")
+    def disable_pod_overprovisioning(self) -> bool:
+        """
+        Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+        """
+        return pulumi.get(self, "disable_pod_overprovisioning")
 
     @property
     @pulumi.getter
@@ -1980,7 +2826,9 @@ class StageResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "targetId":
+        if key == "deployParameters":
+            suggest = "deploy_parameters"
+        elif key == "targetId":
             suggest = "target_id"
 
         if suggest:
@@ -1995,18 +2843,29 @@ class StageResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 deploy_parameters: Sequence['outputs.DeployParametersResponse'],
                  profiles: Sequence[str],
                  strategy: 'outputs.StrategyResponse',
                  target_id: str):
         """
         Stage specifies a location to which to deploy.
+        :param Sequence['DeployParametersResponse'] deploy_parameters: Optional. The deploy parameters to use for the target in this stage.
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
         :param 'StrategyResponse' strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
+        pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         pulumi.set(__self__, "profiles", profiles)
         pulumi.set(__self__, "strategy", strategy)
         pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Sequence['outputs.DeployParametersResponse']:
+        """
+        Optional. The deploy parameters to use for the target in this stage.
+        """
+        return pulumi.get(self, "deploy_parameters")
 
     @property
     @pulumi.getter
@@ -2039,12 +2898,34 @@ class StandardResponse(dict):
     Standard represents the standard deployment strategy.
     """
     def __init__(__self__, *,
+                 postdeploy: 'outputs.PostdeployResponse',
+                 predeploy: 'outputs.PredeployResponse',
                  verify: bool):
         """
         Standard represents the standard deployment strategy.
+        :param 'PostdeployResponse' postdeploy: Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        :param 'PredeployResponse' predeploy: Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         :param bool verify: Whether to verify a deployment.
         """
+        pulumi.set(__self__, "postdeploy", postdeploy)
+        pulumi.set(__self__, "predeploy", predeploy)
         pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def postdeploy(self) -> 'outputs.PostdeployResponse':
+        """
+        Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> 'outputs.PredeployResponse':
+        """
+        Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        """
+        return pulumi.get(self, "predeploy")
 
     @property
     @pulumi.getter
@@ -2089,9 +2970,31 @@ class StrategyResponse(dict):
 
 
 @pulumi.output_type
+class TargetAttributeResponse(dict):
+    """
+    Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+    """
+    def __init__(__self__, *,
+                 labels: Mapping[str, str]):
+        """
+        Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+        :param Mapping[str, str] labels: Target labels.
+        """
+        pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Target labels.
+        """
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
 class TargetResponse(dict):
     """
-    A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
+    A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2100,6 +3003,8 @@ class TargetResponse(dict):
             suggest = "anthos_cluster"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "deployParameters":
+            suggest = "deploy_parameters"
         elif key == "executionConfigs":
             suggest = "execution_configs"
         elif key == "multiTarget":
@@ -2126,6 +3031,7 @@ class TargetResponse(dict):
                  annotations: Mapping[str, str],
                  anthos_cluster: 'outputs.AnthosClusterResponse',
                  create_time: str,
+                 deploy_parameters: Mapping[str, str],
                  description: str,
                  etag: str,
                  execution_configs: Sequence['outputs.ExecutionConfigResponse'],
@@ -2139,19 +3045,20 @@ class TargetResponse(dict):
                  uid: str,
                  update_time: str):
         """
-        A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
-        :param Mapping[str, str] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-        :param 'AnthosClusterResponse' anthos_cluster: Information specifying an Anthos Cluster.
+        A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
+        :param Mapping[str, str] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param 'AnthosClusterResponse' anthos_cluster: Optional. Information specifying an Anthos Cluster.
         :param str create_time: Time at which the `Target` was created.
+        :param Mapping[str, str] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param str description: Optional. Description of the `Target`. Max length is 255 characters.
         :param str etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param Sequence['ExecutionConfigResponse'] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-        :param 'GkeClusterResponse' gke: Information specifying a GKE Cluster.
-        :param Mapping[str, str] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param 'MultiTargetResponse' multi_target: Information specifying a multiTarget.
-        :param str name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+        :param 'GkeClusterResponse' gke: Optional. Information specifying a GKE Cluster.
+        :param Mapping[str, str] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param 'MultiTargetResponse' multi_target: Optional. Information specifying a multiTarget.
+        :param str name: Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
         :param bool require_approval: Optional. Whether or not the `Target` requires approval.
-        :param 'CloudRunLocationResponse' run: Information specifying a Cloud Run deployment target.
+        :param 'CloudRunLocationResponse' run: Optional. Information specifying a Cloud Run deployment target.
         :param str target_id: Resource id of the `Target`.
         :param str uid: Unique identifier of the `Target`.
         :param str update_time: Most recent time at which the `Target` was updated.
@@ -2159,6 +3066,7 @@ class TargetResponse(dict):
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "etag", etag)
         pulumi.set(__self__, "execution_configs", execution_configs)
@@ -2176,7 +3084,7 @@ class TargetResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
 
@@ -2184,7 +3092,7 @@ class TargetResponse(dict):
     @pulumi.getter(name="anthosCluster")
     def anthos_cluster(self) -> 'outputs.AnthosClusterResponse':
         """
-        Information specifying an Anthos Cluster.
+        Optional. Information specifying an Anthos Cluster.
         """
         return pulumi.get(self, "anthos_cluster")
 
@@ -2195,6 +3103,14 @@ class TargetResponse(dict):
         Time at which the `Target` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Mapping[str, str]:
+        """
+        Optional. The deploy parameters to use for this target.
+        """
+        return pulumi.get(self, "deploy_parameters")
 
     @property
     @pulumi.getter
@@ -2224,7 +3140,7 @@ class TargetResponse(dict):
     @pulumi.getter
     def gke(self) -> 'outputs.GkeClusterResponse':
         """
-        Information specifying a GKE Cluster.
+        Optional. Information specifying a GKE Cluster.
         """
         return pulumi.get(self, "gke")
 
@@ -2232,7 +3148,7 @@ class TargetResponse(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -2240,7 +3156,7 @@ class TargetResponse(dict):
     @pulumi.getter(name="multiTarget")
     def multi_target(self) -> 'outputs.MultiTargetResponse':
         """
-        Information specifying a multiTarget.
+        Optional. Information specifying a multiTarget.
         """
         return pulumi.get(self, "multi_target")
 
@@ -2248,7 +3164,7 @@ class TargetResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+        Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
         """
         return pulumi.get(self, "name")
 
@@ -2264,7 +3180,7 @@ class TargetResponse(dict):
     @pulumi.getter
     def run(self) -> 'outputs.CloudRunLocationResponse':
         """
-        Information specifying a Cloud Run deployment target.
+        Optional. Information specifying a Cloud Run deployment target.
         """
         return pulumi.get(self, "run")
 
@@ -2323,7 +3239,7 @@ class TargetsPresentConditionResponse(dict):
                  update_time: str):
         """
         TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
-        :param Sequence[str] missing_targets: The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        :param Sequence[str] missing_targets: The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
         :param bool status: True if there aren't any missing Targets.
         :param str update_time: Last time the condition was updated.
         """
@@ -2335,7 +3251,7 @@ class TargetsPresentConditionResponse(dict):
     @pulumi.getter(name="missingTargets")
     def missing_targets(self) -> Sequence[str]:
         """
-        The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
         """
         return pulumi.get(self, "missing_targets")
 

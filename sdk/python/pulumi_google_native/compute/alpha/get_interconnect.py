@@ -123,7 +123,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="availableFeatures")
     def available_features(self) -> Sequence[str]:
         """
-        [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+        [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
         """
         return pulumi.get(self, "available_features")
 
@@ -243,7 +243,7 @@ class GetInterconnectResult:
     @pulumi.getter
     def macsec(self) -> 'outputs.InterconnectMacsecResponse':
         """
-        Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
         """
         return pulumi.get(self, "macsec")
 
@@ -251,7 +251,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="macsecEnabled")
     def macsec_enabled(self) -> bool:
         """
-        Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         """
         return pulumi.get(self, "macsec_enabled")
 
@@ -307,7 +307,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="requestedFeatures")
     def requested_features(self) -> Sequence[str]:
         """
-        Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
         """
         return pulumi.get(self, "requested_features")
 

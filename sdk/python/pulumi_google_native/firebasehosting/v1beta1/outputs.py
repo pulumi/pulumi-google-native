@@ -15,15 +15,22 @@ __all__ = [
     'ActingUserResponse',
     'CertDnsChallengeResponse',
     'CertHttpChallengeResponse',
+    'CertVerificationResponse',
+    'CertificateResponse',
     'CloudRunRewriteResponse',
+    'DnsRecordResponse',
+    'DnsRecordSetResponse',
+    'DnsUpdatesResponse',
     'DomainProvisioningResponse',
     'DomainRedirectResponse',
     'HeaderResponse',
+    'HttpUpdateResponse',
     'I18nConfigResponse',
     'RedirectResponse',
     'ReleaseResponse',
     'RewriteResponse',
     'ServingConfigResponse',
+    'StatusResponse',
     'VersionResponse',
 ]
 
@@ -161,6 +168,135 @@ class CertHttpChallengeResponse(dict):
 
 
 @pulumi.output_type
+class CertVerificationResponse(dict):
+    """
+    A set of ACME challenges you can use to allow Hosting to create an SSL certificate for your domain name before directing traffic to Hosting servers. Use either the DNS or HTTP challenge; it's not necessary to provide both.
+    """
+    def __init__(__self__, *,
+                 dns: 'outputs.DnsUpdatesResponse',
+                 http: 'outputs.HttpUpdateResponse'):
+        """
+        A set of ACME challenges you can use to allow Hosting to create an SSL certificate for your domain name before directing traffic to Hosting servers. Use either the DNS or HTTP challenge; it's not necessary to provide both.
+        :param 'DnsUpdatesResponse' dns: A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
+        :param 'HttpUpdateResponse' http: A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
+        """
+        pulumi.set(__self__, "dns", dns)
+        pulumi.set(__self__, "http", http)
+
+    @property
+    @pulumi.getter
+    def dns(self) -> 'outputs.DnsUpdatesResponse':
+        """
+        A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
+        """
+        return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter
+    def http(self) -> 'outputs.HttpUpdateResponse':
+        """
+        A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
+        """
+        return pulumi.get(self, "http")
+
+
+@pulumi.output_type
+class CertificateResponse(dict):
+    """
+    An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: str,
+                 expire_time: str,
+                 issues: Sequence['outputs.StatusResponse'],
+                 state: str,
+                 type: str,
+                 verification: 'outputs.CertVerificationResponse'):
+        """
+        An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one.
+        :param str create_time: The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created.
+        :param str expire_time: The certificate's expiration time. After this time, the cert can no longer be used to provide secure communication between Hosting and your site's visitors.
+        :param Sequence['StatusResponse'] issues: A set of errors Hosting encountered when attempting to create a cert for your domain name. Resolve these issues to ensure Hosting is able to provide secure communication with your site's visitors.
+        :param str state: The state of the certificate. Only the `CERT_ACTIVE` and `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the state is `PROPAGATING` and Hosting had an active cert for the domain name before, that formerly-active cert provides SSL coverage for the domain name until the current cert propagates.
+        :param str type: The certificate's type.
+        :param 'CertVerificationResponse' verification: A set of ACME challenges you can add to your DNS records or existing, non-Hosting hosting provider to allow Hosting to create an SSL certificate for your domain name before you point traffic toward hosting. You can use thse challenges as part of a zero downtime transition from your old provider to Hosting.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "issues", issues)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "verification", verification)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The certificate's expiration time. After this time, the cert can no longer be used to provide secure communication between Hosting and your site's visitors.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def issues(self) -> Sequence['outputs.StatusResponse']:
+        """
+        A set of errors Hosting encountered when attempting to create a cert for your domain name. Resolve these issues to ensure Hosting is able to provide secure communication with your site's visitors.
+        """
+        return pulumi.get(self, "issues")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the certificate. Only the `CERT_ACTIVE` and `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the state is `PROPAGATING` and Hosting had an active cert for the domain name before, that formerly-active cert provides SSL coverage for the domain name until the current cert propagates.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The certificate's type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def verification(self) -> 'outputs.CertVerificationResponse':
+        """
+        A set of ACME challenges you can add to your DNS records or existing, non-Hosting hosting provider to allow Hosting to create an SSL certificate for your domain name before you point traffic toward hosting. You can use thse challenges as part of a zero downtime transition from your old provider to Hosting.
+        """
+        return pulumi.get(self, "verification")
+
+
+@pulumi.output_type
 class CloudRunRewriteResponse(dict):
     """
     A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
@@ -219,6 +355,204 @@ class CloudRunRewriteResponse(dict):
         Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class DnsRecordResponse(dict):
+    """
+    DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainName":
+            suggest = "domain_name"
+        elif key == "requiredAction":
+            suggest = "required_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsRecordResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsRecordResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsRecordResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain_name: str,
+                 rdata: str,
+                 required_action: str,
+                 type: str):
+        """
+        DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files).
+        :param str domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param str rdata: The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain name. Hosting uses TXT records to determine which Firebase projects have permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        :param str required_action: An enum that indicates the a required action for this record.
+        :param str type: The record's type, which determines what data the record contains.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "rdata", rdata)
+        pulumi.set(__self__, "required_action", required_action)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def rdata(self) -> str:
+        """
+        The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain name. Hosting uses TXT records to determine which Firebase projects have permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        return pulumi.get(self, "rdata")
+
+    @property
+    @pulumi.getter(name="requiredAction")
+    def required_action(self) -> str:
+        """
+        An enum that indicates the a required action for this record.
+        """
+        return pulumi.get(self, "required_action")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The record's type, which determines what data the record contains.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DnsRecordSetResponse(dict):
+    """
+    A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkError":
+            suggest = "check_error"
+        elif key == "domainName":
+            suggest = "domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsRecordSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsRecordSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsRecordSetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 check_error: 'outputs.StatusResponse',
+                 domain_name: str,
+                 records: Sequence['outputs.DnsRecordResponse']):
+        """
+        A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting.
+        :param 'StatusResponse' check_error: An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet.
+        :param str domain_name: The domain name the record set pertains to.
+        :param Sequence['DnsRecordResponse'] records: Records on the domain.
+        """
+        pulumi.set(__self__, "check_error", check_error)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "records", records)
+
+    @property
+    @pulumi.getter(name="checkError")
+    def check_error(self) -> 'outputs.StatusResponse':
+        """
+        An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet.
+        """
+        return pulumi.get(self, "check_error")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The domain name the record set pertains to.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def records(self) -> Sequence['outputs.DnsRecordResponse']:
+        """
+        Records on the domain.
+        """
+        return pulumi.get(self, "records")
+
+
+@pulumi.output_type
+class DnsUpdatesResponse(dict):
+    """
+    A set of DNS record updates that you should make to allow Hosting to serve secure content in response to requests against your domain name. These updates present the current state of your domain name's DNS records when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom domain can be fully active.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkTime":
+            suggest = "check_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsUpdatesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsUpdatesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsUpdatesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 check_time: str,
+                 desired: Sequence['outputs.DnsRecordSetResponse'],
+                 discovered: Sequence['outputs.DnsRecordSetResponse']):
+        """
+        A set of DNS record updates that you should make to allow Hosting to serve secure content in response to requests against your domain name. These updates present the current state of your domain name's DNS records when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom domain can be fully active.
+        :param str check_time: The last time Hosting checked your custom domain's DNS records.
+        :param Sequence['DnsRecordSetResponse'] desired: The set of DNS records Hosting needs to serve secure content on the domain.
+        :param Sequence['DnsRecordSetResponse'] discovered: The set of DNS records Hosting discovered when inspecting a domain.
+        """
+        pulumi.set(__self__, "check_time", check_time)
+        pulumi.set(__self__, "desired", desired)
+        pulumi.set(__self__, "discovered", discovered)
+
+    @property
+    @pulumi.getter(name="checkTime")
+    def check_time(self) -> str:
+        """
+        The last time Hosting checked your custom domain's DNS records.
+        """
+        return pulumi.get(self, "check_time")
+
+    @property
+    @pulumi.getter
+    def desired(self) -> Sequence['outputs.DnsRecordSetResponse']:
+        """
+        The set of DNS records Hosting needs to serve secure content on the domain.
+        """
+        return pulumi.get(self, "desired")
+
+    @property
+    @pulumi.getter
+    def discovered(self) -> Sequence['outputs.DnsRecordSetResponse']:
+        """
+        The set of DNS records Hosting discovered when inspecting a domain.
+        """
+        return pulumi.get(self, "discovered")
 
 
 @pulumi.output_type
@@ -443,6 +777,91 @@ class HeaderResponse(dict):
         The user-supplied RE2 regular expression to match against the request URL path.
         """
         return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class HttpUpdateResponse(dict):
+    """
+    A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkError":
+            suggest = "check_error"
+        elif key == "lastCheckTime":
+            suggest = "last_check_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpUpdateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpUpdateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpUpdateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 check_error: 'outputs.StatusResponse',
+                 desired: str,
+                 discovered: str,
+                 last_check_time: str,
+                 path: str):
+        """
+        A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain.
+        :param 'StatusResponse' check_error: An error encountered during the last contents check. If null, the check completed successfully.
+        :param str desired: A text string to serve at the path.
+        :param str discovered: Whether Hosting was able to find the required file contents on the specified path during its last check.
+        :param str last_check_time: The last time Hosting systems checked for the file contents.
+        :param str path: The path to the file.
+        """
+        pulumi.set(__self__, "check_error", check_error)
+        pulumi.set(__self__, "desired", desired)
+        pulumi.set(__self__, "discovered", discovered)
+        pulumi.set(__self__, "last_check_time", last_check_time)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="checkError")
+    def check_error(self) -> 'outputs.StatusResponse':
+        """
+        An error encountered during the last contents check. If null, the check completed successfully.
+        """
+        return pulumi.get(self, "check_error")
+
+    @property
+    @pulumi.getter
+    def desired(self) -> str:
+        """
+        A text string to serve at the path.
+        """
+        return pulumi.get(self, "desired")
+
+    @property
+    @pulumi.getter
+    def discovered(self) -> str:
+        """
+        Whether Hosting was able to find the required file contents on the specified path during its last check.
+        """
+        return pulumi.get(self, "discovered")
+
+    @property
+    @pulumi.getter(name="lastCheckTime")
+    def last_check_time(self) -> str:
+        """
+        The last time Hosting systems checked for the file contents.
+        """
+        return pulumi.get(self, "last_check_time")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path to the file.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type
@@ -849,6 +1268,50 @@ class ServingConfigResponse(dict):
         Defines how to handle a trailing slash in the URL path.
         """
         return pulumi.get(self, "trailing_slash_behavior")
+
+
+@pulumi.output_type
+class StatusResponse(dict):
+    """
+    The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 details: Sequence[Mapping[str, str]],
+                 message: str):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Sequence[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

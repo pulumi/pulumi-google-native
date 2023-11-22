@@ -520,6 +520,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["updater"] = updater
             __props__.__dict__["create_time"] = None
             __props__.__dict__["disposition_time"] = None
+            __props__.__dict__["legal_hold"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -554,6 +555,7 @@ class Document(pulumi.CustomResource):
         __props__.__dict__["disposition_time"] = None
         __props__.__dict__["document_schema_name"] = None
         __props__.__dict__["inline_raw_document"] = None
+        __props__.__dict__["legal_hold"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["plain_text"] = None
@@ -640,6 +642,14 @@ class Document(pulumi.CustomResource):
         Raw document content.
         """
         return pulumi.get(self, "inline_raw_document")
+
+    @property
+    @pulumi.getter(name="legalHold")
+    def legal_hold(self) -> pulumi.Output[bool]:
+        """
+        Indicates if the document has a legal hold on it.
+        """
+        return pulumi.get(self, "legal_hold")
 
     @property
     @pulumi.getter

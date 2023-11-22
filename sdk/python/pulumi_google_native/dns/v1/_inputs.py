@@ -983,7 +983,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs:
         ResourceRecordSet data for one geo location.
         :param pulumi.Input['RRSetRoutingPolicyHealthCheckTargetsArgs'] health_checked_targets: For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
         :param pulumi.Input[str] location: The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         """
         if health_checked_targets is not None:
             pulumi.set(__self__, "health_checked_targets", health_checked_targets)
@@ -1042,7 +1042,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs:
     @pulumi.getter(name="signatureRrdatas")
     def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+        DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         """
         return pulumi.get(self, "signature_rrdatas")
 
@@ -1059,7 +1059,7 @@ class RRSetRoutingPolicyGeoPolicyArgs:
                  kind: Optional[pulumi.Input[str]] = None):
         """
         Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
-        :param pulumi.Input[bool] enable_fencing: Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+        :param pulumi.Input[bool] enable_fencing: Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
         :param pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]] items: The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
         """
         if enable_fencing is not None:
@@ -1073,7 +1073,7 @@ class RRSetRoutingPolicyGeoPolicyArgs:
     @pulumi.getter(name="enableFencing")
     def enable_fencing(self) -> Optional[pulumi.Input[bool]]:
         """
-        Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+        Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
         """
         return pulumi.get(self, "enable_fencing")
 
@@ -1135,12 +1135,14 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ip_address: The frontend IP address of the Load Balancer to health check.
-        :param pulumi.Input['RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType'] load_balancer_type: The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
-        :param pulumi.Input[str] network_url: The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-        :param pulumi.Input[str] port: The configured port of the Load Balancer.
-        :param pulumi.Input[str] project: The project ID in which the ILB exists.
-        :param pulumi.Input[str] region: The region in which the ILB exists.
+        The configuration for an individual load balancer to health check.
+        :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer to health check.
+        :param pulumi.Input['RRSetRoutingPolicyLoadBalancerTargetIpProtocol'] ip_protocol: The protocol of the load balancer to health check.
+        :param pulumi.Input['RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType'] load_balancer_type: The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. 
+        :param pulumi.Input[str] network_url: The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
+        :param pulumi.Input[str] port: The configured port of the load balancer.
+        :param pulumi.Input[str] project: The project ID in which the load balancer is located.
+        :param pulumi.Input[str] region: The region in which the load balancer is located.
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -1163,7 +1165,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The frontend IP address of the Load Balancer to health check.
+        The frontend IP address of the load balancer to health check.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1174,6 +1176,9 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input['RRSetRoutingPolicyLoadBalancerTargetIpProtocol']]:
+        """
+        The protocol of the load balancer to health check.
+        """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
@@ -1193,7 +1198,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> Optional[pulumi.Input['RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType']]:
         """
-        The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. 
         """
         return pulumi.get(self, "load_balancer_type")
 
@@ -1205,7 +1210,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter(name="networkUrl")
     def network_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
         """
         return pulumi.get(self, "network_url")
 
@@ -1217,7 +1222,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        The configured port of the Load Balancer.
+        The configured port of the load balancer.
         """
         return pulumi.get(self, "port")
 
@@ -1229,7 +1234,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project ID in which the ILB exists.
+        The project ID in which the load balancer is located.
         """
         return pulumi.get(self, "project")
 
@@ -1241,7 +1246,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region in which the ILB exists.
+        The region in which the load balancer is located.
         """
         return pulumi.get(self, "region")
 
@@ -1260,6 +1265,7 @@ class RRSetRoutingPolicyPrimaryBackupPolicyArgs:
         """
         Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
         :param pulumi.Input['RRSetRoutingPolicyGeoPolicyArgs'] backup_geo_targets: Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+        :param pulumi.Input['RRSetRoutingPolicyHealthCheckTargetsArgs'] primary_targets: Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
         :param pulumi.Input[float] trickle_traffic: When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
         """
         if backup_geo_targets is not None:
@@ -1295,6 +1301,9 @@ class RRSetRoutingPolicyPrimaryBackupPolicyArgs:
     @property
     @pulumi.getter(name="primaryTargets")
     def primary_targets(self) -> Optional[pulumi.Input['RRSetRoutingPolicyHealthCheckTargetsArgs']]:
+        """
+        Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
+        """
         return pulumi.get(self, "primary_targets")
 
     @primary_targets.setter
@@ -1324,9 +1333,9 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
                  weight: Optional[pulumi.Input[float]] = None):
         """
         A routing block which contains the routing information for one WRR item.
-        :param pulumi.Input['RRSetRoutingPolicyHealthCheckTargetsArgs'] health_checked_targets: endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
-        :param pulumi.Input[float] weight: The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        :param pulumi.Input['RRSetRoutingPolicyHealthCheckTargetsArgs'] health_checked_targets: Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
+        :param pulumi.Input[float] weight: The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
         """
         if health_checked_targets is not None:
             pulumi.set(__self__, "health_checked_targets", health_checked_targets)
@@ -1343,7 +1352,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
     @pulumi.getter(name="healthCheckedTargets")
     def health_checked_targets(self) -> Optional[pulumi.Input['RRSetRoutingPolicyHealthCheckTargetsArgs']]:
         """
-        endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+        Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
         """
         return pulumi.get(self, "health_checked_targets")
 
@@ -1373,7 +1382,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
     @pulumi.getter(name="signatureRrdatas")
     def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+        DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         """
         return pulumi.get(self, "signature_rrdatas")
 
@@ -1385,7 +1394,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[float]]:
         """
-        The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
         """
         return pulumi.get(self, "weight")
 
@@ -1495,7 +1504,7 @@ class ResourceRecordSetArgs:
         """
         A unit of data that is returned by the DNS servers.
         :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input['RRSetRoutingPolicyArgs'] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        :param pulumi.Input['RRSetRoutingPolicyArgs'] routing_policy: Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -1541,7 +1550,7 @@ class ResourceRecordSetArgs:
     @pulumi.getter(name="routingPolicy")
     def routing_policy(self) -> Optional[pulumi.Input['RRSetRoutingPolicyArgs']]:
         """
-        Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
         """
         return pulumi.get(self, "routing_policy")
 

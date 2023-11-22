@@ -51,7 +51,7 @@ class GetImportDataFileResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        User-friendly display name. Maximum length is 63 characters.
+        Optional. User-friendly display name. Maximum length is 256 characters.
         """
         return pulumi.get(self, "display_name")
 

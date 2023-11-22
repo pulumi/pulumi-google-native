@@ -50,7 +50,7 @@ class GetGroupResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of the resource.
+        Optional. The description of the group.
         """
         return pulumi.get(self, "description")
 
@@ -58,7 +58,7 @@ class GetGroupResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        User-friendly display name.
+        Optional. User-friendly display name.
         """
         return pulumi.get(self, "display_name")
 

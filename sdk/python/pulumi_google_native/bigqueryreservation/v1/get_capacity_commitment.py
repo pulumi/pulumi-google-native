@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCapacityCommitmentResult:
-    def __init__(__self__, commitment_end_time=None, commitment_start_time=None, edition=None, failure_status=None, multi_region_auxiliary=None, name=None, plan=None, renewal_plan=None, slot_count=None, state=None):
+    def __init__(__self__, commitment_end_time=None, commitment_start_time=None, edition=None, failure_status=None, is_flat_rate=None, multi_region_auxiliary=None, name=None, plan=None, renewal_plan=None, slot_count=None, state=None):
         if commitment_end_time and not isinstance(commitment_end_time, str):
             raise TypeError("Expected argument 'commitment_end_time' to be a str")
         pulumi.set(__self__, "commitment_end_time", commitment_end_time)
@@ -32,6 +32,9 @@ class GetCapacityCommitmentResult:
         if failure_status and not isinstance(failure_status, dict):
             raise TypeError("Expected argument 'failure_status' to be a dict")
         pulumi.set(__self__, "failure_status", failure_status)
+        if is_flat_rate and not isinstance(is_flat_rate, bool):
+            raise TypeError("Expected argument 'is_flat_rate' to be a bool")
+        pulumi.set(__self__, "is_flat_rate", is_flat_rate)
         if multi_region_auxiliary and not isinstance(multi_region_auxiliary, bool):
             raise TypeError("Expected argument 'multi_region_auxiliary' to be a bool")
         pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
@@ -82,6 +85,14 @@ class GetCapacityCommitmentResult:
         For FAILED commitment plan, provides the reason of failure.
         """
         return pulumi.get(self, "failure_status")
+
+    @property
+    @pulumi.getter(name="isFlatRate")
+    def is_flat_rate(self) -> bool:
+        """
+        If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
+        """
+        return pulumi.get(self, "is_flat_rate")
 
     @property
     @pulumi.getter(name="multiRegionAuxiliary")
@@ -142,6 +153,7 @@ class AwaitableGetCapacityCommitmentResult(GetCapacityCommitmentResult):
             commitment_start_time=self.commitment_start_time,
             edition=self.edition,
             failure_status=self.failure_status,
+            is_flat_rate=self.is_flat_rate,
             multi_region_auxiliary=self.multi_region_auxiliary,
             name=self.name,
             plan=self.plan,
@@ -169,6 +181,7 @@ def get_capacity_commitment(capacity_commitment_id: Optional[str] = None,
         commitment_start_time=pulumi.get(__ret__, 'commitment_start_time'),
         edition=pulumi.get(__ret__, 'edition'),
         failure_status=pulumi.get(__ret__, 'failure_status'),
+        is_flat_rate=pulumi.get(__ret__, 'is_flat_rate'),
         multi_region_auxiliary=pulumi.get(__ret__, 'multi_region_auxiliary'),
         name=pulumi.get(__ret__, 'name'),
         plan=pulumi.get(__ret__, 'plan'),

@@ -57,6 +57,10 @@ class AcceleratorConfigType(str, Enum):
     """
     Accelerator type is Nvidia Tesla A100.
     """
+    NVIDIA_L4 = "NVIDIA_L4"
+    """
+    Accelerator type is Nvidia Tesla L4.
+    """
     NVIDIA_TESLA_T4_VWS = "NVIDIA_TESLA_T4_VWS"
     """
     Accelerator type is NVIDIA Tesla T4 Virtual Workstations.
@@ -297,7 +301,11 @@ class RuntimeAcceleratorConfigType(str, Enum):
     """
     NVIDIA_TESLA_A100 = "NVIDIA_TESLA_A100"
     """
-    Accelerator type is Nvidia Tesla A100.
+    Accelerator type is Nvidia Tesla A100 - 40GB.
+    """
+    NVIDIA_L4 = "NVIDIA_L4"
+    """
+    Accelerator type is Nvidia L4.
     """
     TPU_V2 = "TPU_V2"
     """

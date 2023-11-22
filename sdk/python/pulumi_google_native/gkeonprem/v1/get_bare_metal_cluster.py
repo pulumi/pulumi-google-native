@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBareMetalClusterResult:
-    def __init__(__self__, admin_cluster_membership=None, admin_cluster_name=None, annotations=None, bare_metal_version=None, cluster_operations=None, control_plane=None, create_time=None, delete_time=None, description=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, maintenance_config=None, maintenance_status=None, name=None, network_config=None, node_access_config=None, node_config=None, os_environment_config=None, proxy=None, reconciling=None, security_config=None, state=None, status=None, storage=None, uid=None, update_time=None, validation_check=None):
+    def __init__(__self__, admin_cluster_membership=None, admin_cluster_name=None, annotations=None, bare_metal_version=None, binary_authorization=None, cluster_operations=None, control_plane=None, create_time=None, delete_time=None, description=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, maintenance_config=None, maintenance_status=None, name=None, network_config=None, node_access_config=None, node_config=None, os_environment_config=None, proxy=None, reconciling=None, security_config=None, state=None, status=None, storage=None, uid=None, update_time=None, upgrade_policy=None, validation_check=None):
         if admin_cluster_membership and not isinstance(admin_cluster_membership, str):
             raise TypeError("Expected argument 'admin_cluster_membership' to be a str")
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
@@ -32,6 +32,9 @@ class GetBareMetalClusterResult:
         if bare_metal_version and not isinstance(bare_metal_version, str):
             raise TypeError("Expected argument 'bare_metal_version' to be a str")
         pulumi.set(__self__, "bare_metal_version", bare_metal_version)
+        if binary_authorization and not isinstance(binary_authorization, dict):
+            raise TypeError("Expected argument 'binary_authorization' to be a dict")
+        pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_operations and not isinstance(cluster_operations, dict):
             raise TypeError("Expected argument 'cluster_operations' to be a dict")
         pulumi.set(__self__, "cluster_operations", cluster_operations)
@@ -107,6 +110,9 @@ class GetBareMetalClusterResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if upgrade_policy and not isinstance(upgrade_policy, dict):
+            raise TypeError("Expected argument 'upgrade_policy' to be a dict")
+        pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if validation_check and not isinstance(validation_check, dict):
             raise TypeError("Expected argument 'validation_check' to be a dict")
         pulumi.set(__self__, "validation_check", validation_check)
@@ -142,6 +148,14 @@ class GetBareMetalClusterResult:
         The Anthos clusters on bare metal version for your user cluster.
         """
         return pulumi.get(self, "bare_metal_version")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> 'outputs.BinaryAuthorizationResponse':
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="clusterOperations")
@@ -344,6 +358,14 @@ class GetBareMetalClusterResult:
         return pulumi.get(self, "update_time")
 
     @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> 'outputs.BareMetalClusterUpgradePolicyResponse':
+        """
+        The cluster upgrade policy.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @property
     @pulumi.getter(name="validationCheck")
     def validation_check(self) -> 'outputs.ValidationCheckResponse':
         """
@@ -362,6 +384,7 @@ class AwaitableGetBareMetalClusterResult(GetBareMetalClusterResult):
             admin_cluster_name=self.admin_cluster_name,
             annotations=self.annotations,
             bare_metal_version=self.bare_metal_version,
+            binary_authorization=self.binary_authorization,
             cluster_operations=self.cluster_operations,
             control_plane=self.control_plane,
             create_time=self.create_time,
@@ -387,6 +410,7 @@ class AwaitableGetBareMetalClusterResult(GetBareMetalClusterResult):
             storage=self.storage,
             uid=self.uid,
             update_time=self.update_time,
+            upgrade_policy=self.upgrade_policy,
             validation_check=self.validation_check)
 
 
@@ -411,6 +435,7 @@ def get_bare_metal_cluster(bare_metal_cluster_id: Optional[str] = None,
         admin_cluster_name=pulumi.get(__ret__, 'admin_cluster_name'),
         annotations=pulumi.get(__ret__, 'annotations'),
         bare_metal_version=pulumi.get(__ret__, 'bare_metal_version'),
+        binary_authorization=pulumi.get(__ret__, 'binary_authorization'),
         cluster_operations=pulumi.get(__ret__, 'cluster_operations'),
         control_plane=pulumi.get(__ret__, 'control_plane'),
         create_time=pulumi.get(__ret__, 'create_time'),
@@ -436,6 +461,7 @@ def get_bare_metal_cluster(bare_metal_cluster_id: Optional[str] = None,
         storage=pulumi.get(__ret__, 'storage'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),
+        upgrade_policy=pulumi.get(__ret__, 'upgrade_policy'),
         validation_check=pulumi.get(__ret__, 'validation_check'))
 
 

@@ -154,7 +154,7 @@ class GetTargetHttpsProxyResult:
     @pulumi.getter(name="httpKeepAliveTimeoutSec")
     def http_keep_alive_timeout_sec(self) -> int:
         """
-        Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+        Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
         """
         return pulumi.get(self, "http_keep_alive_timeout_sec")
 

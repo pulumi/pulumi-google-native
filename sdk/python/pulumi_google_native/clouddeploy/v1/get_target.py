@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetResult:
-    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, multi_target=None, name=None, require_approval=None, run=None, target_id=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, deploy_parameters=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, multi_target=None, name=None, require_approval=None, run=None, target_id=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -29,6 +29,9 @@ class GetTargetResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deploy_parameters and not isinstance(deploy_parameters, dict):
+            raise TypeError("Expected argument 'deploy_parameters' to be a dict")
+        pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -70,7 +73,7 @@ class GetTargetResult:
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
 
@@ -78,7 +81,7 @@ class GetTargetResult:
     @pulumi.getter(name="anthosCluster")
     def anthos_cluster(self) -> 'outputs.AnthosClusterResponse':
         """
-        Information specifying an Anthos Cluster.
+        Optional. Information specifying an Anthos Cluster.
         """
         return pulumi.get(self, "anthos_cluster")
 
@@ -89,6 +92,14 @@ class GetTargetResult:
         Time at which the `Target` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Mapping[str, str]:
+        """
+        Optional. The deploy parameters to use for this target.
+        """
+        return pulumi.get(self, "deploy_parameters")
 
     @property
     @pulumi.getter
@@ -118,7 +129,7 @@ class GetTargetResult:
     @pulumi.getter
     def gke(self) -> 'outputs.GkeClusterResponse':
         """
-        Information specifying a GKE Cluster.
+        Optional. Information specifying a GKE Cluster.
         """
         return pulumi.get(self, "gke")
 
@@ -126,7 +137,7 @@ class GetTargetResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -134,7 +145,7 @@ class GetTargetResult:
     @pulumi.getter(name="multiTarget")
     def multi_target(self) -> 'outputs.MultiTargetResponse':
         """
-        Information specifying a multiTarget.
+        Optional. Information specifying a multiTarget.
         """
         return pulumi.get(self, "multi_target")
 
@@ -142,7 +153,7 @@ class GetTargetResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+        Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
         """
         return pulumi.get(self, "name")
 
@@ -158,7 +169,7 @@ class GetTargetResult:
     @pulumi.getter
     def run(self) -> 'outputs.CloudRunLocationResponse':
         """
-        Information specifying a Cloud Run deployment target.
+        Optional. Information specifying a Cloud Run deployment target.
         """
         return pulumi.get(self, "run")
 
@@ -196,6 +207,7 @@ class AwaitableGetTargetResult(GetTargetResult):
             annotations=self.annotations,
             anthos_cluster=self.anthos_cluster,
             create_time=self.create_time,
+            deploy_parameters=self.deploy_parameters,
             description=self.description,
             etag=self.etag,
             execution_configs=self.execution_configs,
@@ -228,6 +240,7 @@ def get_target(location: Optional[str] = None,
         annotations=pulumi.get(__ret__, 'annotations'),
         anthos_cluster=pulumi.get(__ret__, 'anthos_cluster'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deploy_parameters=pulumi.get(__ret__, 'deploy_parameters'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),
         execution_configs=pulumi.get(__ret__, 'execution_configs'),

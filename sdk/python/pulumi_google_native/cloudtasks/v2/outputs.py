@@ -17,13 +17,19 @@ __all__ = [
     'AttemptResponse',
     'BindingResponse',
     'ExprResponse',
+    'HeaderOverrideResponse',
+    'HeaderResponse',
     'HttpRequestResponse',
+    'HttpTargetResponse',
     'OAuthTokenResponse',
     'OidcTokenResponse',
+    'PathOverrideResponse',
+    'QueryOverrideResponse',
     'RateLimitsResponse',
     'RetryConfigResponse',
     'StackdriverLoggingConfigResponse',
     'StatusResponse',
+    'UriOverrideResponse',
 ]
 
 @pulumi.output_type
@@ -346,6 +352,61 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class HeaderOverrideResponse(dict):
+    """
+    Wraps the Header object.
+    """
+    def __init__(__self__, *,
+                 header: 'outputs.HeaderResponse'):
+        """
+        Wraps the Header object.
+        :param 'HeaderResponse' header: header embodying a key and a value.
+        """
+        pulumi.set(__self__, "header", header)
+
+    @property
+    @pulumi.getter
+    def header(self) -> 'outputs.HeaderResponse':
+        """
+        header embodying a key and a value.
+        """
+        return pulumi.get(self, "header")
+
+
+@pulumi.output_type
+class HeaderResponse(dict):
+    """
+    Defines a header message. A header can have a key and a value.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        Defines a header message. A header can have a key and a value.
+        :param str key: The Key of the header.
+        :param str value: The Value of the header.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The Key of the header.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The Value of the header.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class HttpRequestResponse(dict):
     """
     HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
@@ -441,6 +502,97 @@ class HttpRequestResponse(dict):
         The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class HttpTargetResponse(dict):
+    """
+    HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerOverrides":
+            suggest = "header_overrides"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+        elif key == "uriOverride":
+            suggest = "uri_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_overrides: Sequence['outputs.HeaderOverrideResponse'],
+                 http_method: str,
+                 oauth_token: 'outputs.OAuthTokenResponse',
+                 oidc_token: 'outputs.OidcTokenResponse',
+                 uri_override: 'outputs.UriOverrideResponse'):
+        """
+        HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+        :param Sequence['HeaderOverrideResponse'] header_overrides: HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-CloudTasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        :param str http_method: The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        :param 'OAuthTokenResponse' oauth_token: If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        :param 'OidcTokenResponse' oidc_token: If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        :param 'UriOverrideResponse' uri_override: URI override. When specified, overrides the execution URI for all the tasks in the queue.
+        """
+        pulumi.set(__self__, "header_overrides", header_overrides)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "oauth_token", oauth_token)
+        pulumi.set(__self__, "oidc_token", oidc_token)
+        pulumi.set(__self__, "uri_override", uri_override)
+
+    @property
+    @pulumi.getter(name="headerOverrides")
+    def header_overrides(self) -> Sequence['outputs.HeaderOverrideResponse']:
+        """
+        HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-CloudTasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        """
+        return pulumi.get(self, "header_overrides")
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> str:
+        """
+        The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        """
+        return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> 'outputs.OAuthTokenResponse':
+        """
+        If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        """
+        return pulumi.get(self, "oauth_token")
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> 'outputs.OidcTokenResponse':
+        """
+        If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        """
+        return pulumi.get(self, "oidc_token")
+
+    @property
+    @pulumi.getter(name="uriOverride")
+    def uri_override(self) -> 'outputs.UriOverrideResponse':
+        """
+        URI override. When specified, overrides the execution URI for all the tasks in the queue.
+        """
+        return pulumi.get(self, "uri_override")
 
 
 @pulumi.output_type
@@ -541,6 +693,67 @@ class OidcTokenResponse(dict):
         [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
         """
         return pulumi.get(self, "service_account_email")
+
+
+@pulumi.output_type
+class PathOverrideResponse(dict):
+    """
+    PathOverride. Path message defines path override for HTTP targets.
+    """
+    def __init__(__self__, *,
+                 path: str):
+        """
+        PathOverride. Path message defines path override for HTTP targets.
+        :param str path: The URI path (e.g., /users/1234). Default is an empty string.
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The URI path (e.g., /users/1234). Default is an empty string.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class QueryOverrideResponse(dict):
+    """
+    QueryOverride. Query message defines query override for HTTP targets.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryParams":
+            suggest = "query_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_params: str):
+        """
+        QueryOverride. Query message defines query override for HTTP targets.
+        :param str query_params: The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+        """
+        pulumi.set(__self__, "query_params", query_params)
+
+    @property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> str:
+        """
+        The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+        """
+        return pulumi.get(self, "query_params")
 
 
 @pulumi.output_type
@@ -647,10 +860,10 @@ class RetryConfigResponse(dict):
         """
         Retry config. These settings determine when a failed task attempt is retried.
         :param int max_attempts: Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-        :param str max_backoff: A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_backoff` will be truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+        :param str max_backoff: A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `max_backoff` will be truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         :param int max_doublings: The time between retries will double `max_doublings` times. A task's retry interval starts at min_backoff, then doubles `max_doublings` times, then increases linearly, and finally retries at intervals of max_backoff up to max_attempts times. For example, if min_backoff is 10s, max_backoff is 300s, and `max_doublings` is 3, then the a task will first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 * 10s. Finally, the task will retry at intervals of max_backoff until the task has been attempted max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... If unspecified when the queue is created, Cloud Tasks will pick the default. This field has the same meaning as [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-        :param str max_retry_duration: If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been attempted max_attempts times, no further attempts will be made and the task will be deleted. If zero, then the task age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_retry_duration` will be truncated to the nearest second. This field has the same meaning as [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-        :param str min_backoff: A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `min_backoff` will be truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+        :param str max_retry_duration: If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been attempted max_attempts times, no further attempts will be made and the task will be deleted. If zero, then the task age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For the maximum possible value or the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `max_retry_duration` will be truncated to the nearest second. This field has the same meaning as [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+        :param str min_backoff: A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `min_backoff` will be truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         """
         pulumi.set(__self__, "max_attempts", max_attempts)
         pulumi.set(__self__, "max_backoff", max_backoff)
@@ -670,7 +883,7 @@ class RetryConfigResponse(dict):
     @pulumi.getter(name="maxBackoff")
     def max_backoff(self) -> str:
         """
-        A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_backoff` will be truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+        A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `max_backoff` will be truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         """
         return pulumi.get(self, "max_backoff")
 
@@ -686,7 +899,7 @@ class RetryConfigResponse(dict):
     @pulumi.getter(name="maxRetryDuration")
     def max_retry_duration(self) -> str:
         """
-        If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been attempted max_attempts times, no further attempts will be made and the task will be deleted. If zero, then the task age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default. `max_retry_duration` will be truncated to the nearest second. This field has the same meaning as [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+        If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been attempted max_attempts times, no further attempts will be made and the task will be deleted. If zero, then the task age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For the maximum possible value or the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `max_retry_duration` will be truncated to the nearest second. This field has the same meaning as [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         """
         return pulumi.get(self, "max_retry_duration")
 
@@ -694,7 +907,7 @@ class RetryConfigResponse(dict):
     @pulumi.getter(name="minBackoff")
     def min_backoff(self) -> str:
         """
-        A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. `min_backoff` will be truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+        A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created, Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `min_backoff` will be truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         """
         return pulumi.get(self, "min_backoff")
 
@@ -780,5 +993,103 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class UriOverrideResponse(dict):
+    """
+    URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pathOverride":
+            suggest = "path_override"
+        elif key == "queryOverride":
+            suggest = "query_override"
+        elif key == "uriOverrideEnforceMode":
+            suggest = "uri_override_enforce_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UriOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UriOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UriOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: str,
+                 path_override: 'outputs.PathOverrideResponse',
+                 port: str,
+                 query_override: 'outputs.QueryOverrideResponse',
+                 scheme: str,
+                 uri_override_enforce_mode: str):
+        """
+        URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+        :param str host: Host override. When specified, replaces the host part of the task URL. For example, if the task URL is "https://www.google.com," and host value is set to "example.net", the overridden URI will be changed to "https://example.net." Host value cannot be an empty string (INVALID_ARGUMENT).
+        :param 'PathOverrideResponse' path_override: URI path. When specified, replaces the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+        :param str port: Port override. When specified, replaces the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+        :param 'QueryOverrideResponse' query_override: URI query. When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        :param str scheme: Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        :param str uri_override_enforce_mode: URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "path_override", path_override)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "query_override", query_override)
+        pulumi.set(__self__, "scheme", scheme)
+        pulumi.set(__self__, "uri_override_enforce_mode", uri_override_enforce_mode)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Host override. When specified, replaces the host part of the task URL. For example, if the task URL is "https://www.google.com," and host value is set to "example.net", the overridden URI will be changed to "https://example.net." Host value cannot be an empty string (INVALID_ARGUMENT).
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="pathOverride")
+    def path_override(self) -> 'outputs.PathOverrideResponse':
+        """
+        URI path. When specified, replaces the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+        """
+        return pulumi.get(self, "path_override")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        Port override. When specified, replaces the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="queryOverride")
+    def query_override(self) -> 'outputs.QueryOverrideResponse':
+        """
+        URI query. When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        """
+        return pulumi.get(self, "query_override")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> str:
+        """
+        Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        """
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter(name="uriOverrideEnforceMode")
+    def uri_override_enforce_mode(self) -> str:
+        """
+        URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+        """
+        return pulumi.get(self, "uri_override_enforce_mode")
 
 

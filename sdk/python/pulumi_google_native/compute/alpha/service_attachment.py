@@ -28,9 +28,11 @@ class ServiceAttachmentArgs:
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  producer_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 propagated_connection_limit: Optional[pulumi.Input[int]] = None,
                  reconcile_connections: Optional[pulumi.Input[bool]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 target_service: Optional[pulumi.Input[str]] = None):
+                 target_service: Optional[pulumi.Input[str]] = None,
+                 tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         The set of arguments for constructing a ServiceAttachment resource.
         :param pulumi.Input['ServiceAttachmentConnectionPreference'] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
@@ -42,9 +44,11 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
         :param pulumi.Input[str] producer_forwarding_rule: The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
-        :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        :param pulumi.Input[int] propagated_connection_limit: The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+        :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
+        :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
         """
         pulumi.set(__self__, "region", region)
         if connection_preference is not None:
@@ -67,12 +71,16 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "producer_forwarding_rule", producer_forwarding_rule)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if propagated_connection_limit is not None:
+            pulumi.set(__self__, "propagated_connection_limit", propagated_connection_limit)
         if reconcile_connections is not None:
             pulumi.set(__self__, "reconcile_connections", reconcile_connections)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if target_service is not None:
             pulumi.set(__self__, "target_service", target_service)
+        if tunneling_config is not None:
+            pulumi.set(__self__, "tunneling_config", tunneling_config)
 
     @property
     @pulumi.getter
@@ -201,10 +209,22 @@ class ServiceAttachmentArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="propagatedConnectionLimit")
+    def propagated_connection_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+        """
+        return pulumi.get(self, "propagated_connection_limit")
+
+    @propagated_connection_limit.setter
+    def propagated_connection_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "propagated_connection_limit", value)
+
+    @property
     @pulumi.getter(name="reconcileConnections")
     def reconcile_connections(self) -> Optional[pulumi.Input[bool]]:
         """
-        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         """
         return pulumi.get(self, "reconcile_connections")
 
@@ -236,6 +256,18 @@ class ServiceAttachmentArgs:
     def target_service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_service", value)
 
+    @property
+    @pulumi.getter(name="tunnelingConfig")
+    def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
+        """
+        When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+        """
+        return pulumi.get(self, "tunneling_config")
+
+    @tunneling_config.setter
+    def tunneling_config(self, value: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]):
+        pulumi.set(self, "tunneling_config", value)
+
 
 class ServiceAttachment(pulumi.CustomResource):
     @overload
@@ -252,10 +284,12 @@ class ServiceAttachment(pulumi.CustomResource):
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  producer_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 propagated_connection_limit: Optional[pulumi.Input[int]] = None,
                  reconcile_connections: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
+                 tunneling_config: Optional[pulumi.Input[pulumi.InputType['ServiceAttachmentTunnelingConfigArgs']]] = None,
                  __props__=None):
         """
         Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request.
@@ -271,9 +305,11 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
         :param pulumi.Input[str] producer_forwarding_rule: The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
-        :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        :param pulumi.Input[int] propagated_connection_limit: The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+        :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
+        :param pulumi.Input[pulumi.InputType['ServiceAttachmentTunnelingConfigArgs']] tunneling_config: When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
         """
         ...
     @overload
@@ -309,10 +345,12 @@ class ServiceAttachment(pulumi.CustomResource):
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  producer_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 propagated_connection_limit: Optional[pulumi.Input[int]] = None,
                  reconcile_connections: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
+                 tunneling_config: Optional[pulumi.Input[pulumi.InputType['ServiceAttachmentTunnelingConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -332,12 +370,14 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["nat_subnets"] = nat_subnets
             __props__.__dict__["producer_forwarding_rule"] = producer_forwarding_rule
             __props__.__dict__["project"] = project
+            __props__.__dict__["propagated_connection_limit"] = propagated_connection_limit
             __props__.__dict__["reconcile_connections"] = reconcile_connections
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["target_service"] = target_service
+            __props__.__dict__["tunneling_config"] = tunneling_config
             __props__.__dict__["connected_endpoints"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -382,12 +422,14 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["nat_subnets"] = None
         __props__.__dict__["producer_forwarding_rule"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["propagated_connection_limit"] = None
         __props__.__dict__["psc_service_attachment_id"] = None
         __props__.__dict__["reconcile_connections"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["target_service"] = None
+        __props__.__dict__["tunneling_config"] = None
         return ServiceAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -500,6 +542,14 @@ class ServiceAttachment(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="propagatedConnectionLimit")
+    def propagated_connection_limit(self) -> pulumi.Output[int]:
+        """
+        The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+        """
+        return pulumi.get(self, "propagated_connection_limit")
+
+    @property
     @pulumi.getter(name="pscServiceAttachmentId")
     def psc_service_attachment_id(self) -> pulumi.Output['outputs.Uint128Response']:
         """
@@ -511,7 +561,7 @@ class ServiceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="reconcileConnections")
     def reconcile_connections(self) -> pulumi.Output[bool]:
         """
-        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         """
         return pulumi.get(self, "reconcile_connections")
 
@@ -543,4 +593,12 @@ class ServiceAttachment(pulumi.CustomResource):
         The URL of a service serving the endpoint identified by this service attachment.
         """
         return pulumi.get(self, "target_service")
+
+    @property
+    @pulumi.getter(name="tunnelingConfig")
+    def tunneling_config(self) -> pulumi.Output['outputs.ServiceAttachmentTunnelingConfigResponse']:
+        """
+        When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+        """
+        return pulumi.get(self, "tunneling_config")
 

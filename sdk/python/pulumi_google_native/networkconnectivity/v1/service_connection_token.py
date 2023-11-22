@@ -15,6 +15,7 @@ __all__ = ['ServiceConnectionTokenArgs', 'ServiceConnectionToken']
 class ServiceConnectionTokenArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -25,6 +26,7 @@ class ServiceConnectionTokenArgs:
         """
         The set of arguments for constructing a ServiceConnectionToken resource.
         :param pulumi.Input[str] description: A description of this resource.
+        :param pulumi.Input[str] etag: Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. The name of a ServiceConnectionToken. Format: projects/{project}/locations/{location}/ServiceConnectionTokens/{service_connection_token} See: https://google.aip.dev/122#fields-representing-resource-names
         :param pulumi.Input[str] network: The resource path of the network associated with this token. Example: projects/{projectNumOrId}/global/networks/{resourceId}.
@@ -33,6 +35,8 @@ class ServiceConnectionTokenArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -59,6 +63,18 @@ class ServiceConnectionTokenArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter
@@ -145,6 +161,7 @@ class ServiceConnectionToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -159,6 +176,7 @@ class ServiceConnectionToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of this resource.
+        :param pulumi.Input[str] etag: Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. The name of a ServiceConnectionToken. Format: projects/{project}/locations/{location}/ServiceConnectionTokens/{service_connection_token} See: https://google.aip.dev/122#fields-representing-resource-names
         :param pulumi.Input[str] network: The resource path of the network associated with this token. Example: projects/{projectNumOrId}/global/networks/{resourceId}.
@@ -190,6 +208,7 @@ class ServiceConnectionToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -207,6 +226,7 @@ class ServiceConnectionToken(pulumi.CustomResource):
             __props__ = ServiceConnectionTokenArgs.__new__(ServiceConnectionTokenArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -244,6 +264,7 @@ class ServiceConnectionToken(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
@@ -271,6 +292,14 @@ class ServiceConnectionToken(pulumi.CustomResource):
         A description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="expireTime")

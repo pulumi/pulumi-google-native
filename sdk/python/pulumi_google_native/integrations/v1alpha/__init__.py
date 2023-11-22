@@ -13,10 +13,12 @@ from .get_certificate import *
 from .get_sfdc_channel import *
 from .get_sfdc_instance import *
 from .get_templates_version import *
+from .get_test_case import *
 from .get_version import *
 from .sfdc_channel import *
 from .sfdc_instance import *
 from .templates_version import *
+from .test_case import *
 from .version import *
 from ._inputs import *
 from . import outputs

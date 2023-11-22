@@ -83,7 +83,7 @@ class GetSubscriptionResult:
     @pulumi.getter(name="seatCount")
     def seat_count(self) -> str:
         """
-        Number of seats in the subscription.
+        Optional. Number of seats in the subscription.
         """
         return pulumi.get(self, "seat_count")
 

@@ -14,6 +14,7 @@ __all__ = [
     'AddressPurpose',
     'AdvancedMachineFeaturesPerformanceMonitoringUnit',
     'AllocationAggregateReservationVmFamily',
+    'AllocationAggregateReservationWorkloadType',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval',
     'AttachedDiskInitializeParamsArchitecture',
@@ -32,6 +33,7 @@ __all__ = [
     'BackendBalancingMode',
     'BackendBucketCdnPolicyCacheMode',
     'BackendBucketCompressionMode',
+    'BackendPreference',
     'BackendServiceCdnPolicyCacheMode',
     'BackendServiceCompressionMode',
     'BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends',
@@ -53,6 +55,7 @@ __all__ = [
     'ConditionSys',
     'ConfidentialInstanceConfigConfidentialInstanceType',
     'DeprecationStatusState',
+    'DiskAccessMode',
     'DiskArchitecture',
     'DiskInstantiationConfigInstantiateFrom',
     'DiskInterface',
@@ -81,8 +84,10 @@ __all__ = [
     'GlobalForwardingRuleLoadBalancingScheme',
     'GlobalForwardingRuleNetworkTier',
     'GlobalForwardingRulePscConnectionStatus',
+    'GlobalNetworkEndpointGroupClientPortMappingMode',
     'GlobalNetworkEndpointGroupNetworkEndpointType',
     'GlobalNetworkEndpointGroupType',
+    'GlobalPublicDelegatedPrefixMode',
     'GuestOsFeatureType',
     'HTTP2HealthCheckPortSpecification',
     'HTTP2HealthCheckProxyHeader',
@@ -103,6 +108,7 @@ __all__ = [
     'InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure',
     'InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair',
     'InstanceGroupManagerListManagedInstancesResults',
+    'InstanceGroupManagerStandbyPolicyMode',
     'InstanceGroupManagerTargetSizeUnit',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
     'InstanceGroupManagerUpdatePolicyMinimalAction',
@@ -129,6 +135,7 @@ __all__ = [
     'MetadataFilterFilterMatchCriteria',
     'MutualTlsMode',
     'NetworkAttachmentConnectionPreference',
+    'NetworkEndpointGroupClientPortMappingMode',
     'NetworkEndpointGroupNetworkEndpointType',
     'NetworkEndpointGroupType',
     'NetworkFirewallPolicyVpcNetworkScope',
@@ -138,6 +145,8 @@ __all__ = [
     'NetworkNetworkFirewallPolicyEnforcementOrder',
     'NetworkPerformanceConfigExternalIpEgressBandwidthTier',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
+    'NetworkRoutingConfigBgpBestPathSelectionMode',
+    'NetworkRoutingConfigBgpInterRegionCost',
     'NetworkRoutingConfigRoutingMode',
     'NodeGroupAutoscalingPolicyMode',
     'NodeGroupMaintenanceInterval',
@@ -149,6 +158,8 @@ __all__ = [
     'PacketMirroringFilterDirection',
     'PublicAdvertisedPrefixPdpScope',
     'PublicAdvertisedPrefixStatus',
+    'PublicDelegatedPrefixMode',
+    'PublicDelegatedPrefixPublicDelegatedSubPrefixMode',
     'RegionBackendServiceCompressionMode',
     'RegionBackendServiceIpAddressSelectionPolicy',
     'RegionBackendServiceLoadBalancingScheme',
@@ -159,6 +170,7 @@ __all__ = [
     'RegionCommitmentCategory',
     'RegionCommitmentPlan',
     'RegionCommitmentType',
+    'RegionDiskAccessMode',
     'RegionDiskArchitecture',
     'RegionDiskInterface',
     'RegionDiskStorageType',
@@ -168,10 +180,12 @@ __all__ = [
     'RegionInstanceGroupManagerFailoverAction',
     'RegionInstanceGroupManagerListManagedInstancesResults',
     'RegionInstanceGroupManagerTargetSizeUnit',
+    'RegionNetworkEndpointGroupClientPortMappingMode',
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionNetworkEndpointGroupType',
     'RegionNetworkFirewallPolicyVpcNetworkScope',
     'RegionSecurityPolicyType',
+    'RegionSnapshotSnapshotType',
     'RegionSslCertificateType',
     'RegionSslPolicyMinTlsVersion',
     'RegionSslPolicyProfile',
@@ -195,6 +209,7 @@ __all__ = [
     'RouterBgpPeerBfdPacketMode',
     'RouterBgpPeerBfdSessionInitializationMode',
     'RouterBgpPeerEnable',
+    'RouterInterfaceIpVersion',
     'RouterNatAutoNetworkTier',
     'RouterNatEndpointTypesItem',
     'RouterNatLogConfigFilter',
@@ -225,12 +240,15 @@ __all__ = [
     'ServerBindingType',
     'ServerTlsSettingsTlsMode',
     'ServiceAttachmentConnectionPreference',
+    'ServiceAttachmentTunnelingConfigEncapsulationProfile',
+    'ServiceAttachmentTunnelingConfigRoutingMode',
     'ShareSettingsShareType',
     'SnapshotSnapshotType',
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
-    'StoragePoolType',
+    'StoragePoolCapacityProvisioningType',
+    'StoragePoolPerformanceProvisioningType',
     'SubnetworkAggregationInterval',
     'SubnetworkIpv6AccessType',
     'SubnetworkLogConfigAggregationInterval',
@@ -310,7 +328,7 @@ class AddressAddressType(str, Enum):
 
 class AddressIpVersion(str, Enum):
     """
-    The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+    The IP version that will be used by this address. Valid options are IPV4 or IPV6.
     """
     IPV4 = "IPV4"
     IPV6 = "IPV6"
@@ -418,10 +436,24 @@ class AllocationAggregateReservationVmFamily(str, Enum):
     """
     The VM family that all instances scheduled against this reservation must belong to.
     """
+    VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L = "VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L"
+    VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP = "VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP"
     VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P = "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P"
-    VM_FAMILY_COMPUTE_OPTIMIZED_C3 = "VM_FAMILY_COMPUTE_OPTIMIZED_C3"
-    VM_FAMILY_GENERAL_PURPOSE_T2D = "VM_FAMILY_GENERAL_PURPOSE_T2D"
-    VM_FAMILY_MEMORY_OPTIMIZED_M3 = "VM_FAMILY_MEMORY_OPTIMIZED_M3"
+
+
+class AllocationAggregateReservationWorkloadType(str, Enum):
+    """
+    The workload type of the instances that will target this reservation.
+    """
+    BATCH = "BATCH"
+    """
+    Reserved resources will be optimized for BATCH workloads, such as ML training.
+    """
+    SERVING = "SERVING"
+    """
+    Reserved resources will be optimized for SERVING workloads, such as ML inference.
+    """
+    UNSPECIFIED = "UNSPECIFIED"
 
 
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface(str, Enum):
@@ -643,7 +675,7 @@ class AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType(str, Enum):
 
 class AutoscalingPolicyMode(str, Enum):
     """
-    Defines operating mode for this policy.
+    Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
     """
     OFF = "OFF"
     """
@@ -714,6 +746,24 @@ class BackendBucketCompressionMode(str, Enum):
     """
 
 
+class BackendPreference(str, Enum):
+    """
+    This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default 
+    """
+    DEFAULT = "DEFAULT"
+    """
+    No preference.
+    """
+    PREFERENCE_UNSPECIFIED = "PREFERENCE_UNSPECIFIED"
+    """
+    If preference is unspecified, we set it to the DEFAULT value
+    """
+    PREFERRED = "PREFERRED"
+    """
+    Traffic will be sent to this backend first.
+    """
+
+
 class BackendServiceCdnPolicyCacheMode(str, Enum):
     """
     Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
@@ -767,7 +817,7 @@ class BackendServiceConnectionTrackingPolicyTrackingMode(str, Enum):
 
 class BackendServiceIpAddressSelectionPolicy(str, Enum):
     """
-    Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
     """
     IPV4_ONLY = "IPV4_ONLY"
     """
@@ -816,7 +866,7 @@ class BackendServiceLoadBalancingScheme(str, Enum):
 
 class BackendServiceLocalityLbPolicy(str, Enum):
     """
-    The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     """
     INVALID_LB_POLICY = "INVALID_LB_POLICY"
     LEAST_REQUEST = "LEAST_REQUEST"
@@ -1185,6 +1235,24 @@ class DeprecationStatusState(str, Enum):
     OBSOLETE = "OBSOLETE"
 
 
+class DiskAccessMode(str, Enum):
+    """
+    The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+    """
+    READ_ONLY_MANY = "READ_ONLY_MANY"
+    """
+    The AccessMode means the disk can be attached to multiple instances in RO mode.
+    """
+    READ_WRITE_MANY = "READ_WRITE_MANY"
+    """
+    The AccessMode means the disk can be attached to multiple instances in RW mode.
+    """
+    READ_WRITE_SINGLE = "READ_WRITE_SINGLE"
+    """
+    The default AccessMode, means the disk can be attached to single instance in RW mode.
+    """
+
+
 class DiskArchitecture(str, Enum):
     """
     The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -1486,7 +1554,7 @@ class GlobalAddressAddressType(str, Enum):
 
 class GlobalAddressIpVersion(str, Enum):
     """
-    The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+    The IP version that will be used by this address. Valid options are IPV4 or IPV6.
     """
     IPV4 = "IPV4"
     IPV6 = "IPV6"
@@ -1656,6 +1724,20 @@ class GlobalForwardingRulePscConnectionStatus(str, Enum):
     STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
 
 
+class GlobalNetworkEndpointGroupClientPortMappingMode(str, Enum):
+    """
+    Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+    """
+    CLIENT_PORT_PER_ENDPOINT = "CLIENT_PORT_PER_ENDPOINT"
+    """
+    For each endpoint there is exactly one client port.
+    """
+    PORT_MAPPING_DISABLED = "PORT_MAPPING_DISABLED"
+    """
+    NEG should not be used for mapping client port to destination.
+    """
+
+
 class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -1667,10 +1749,6 @@ class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     GCE_VM_IP_PORT = "GCE_VM_IP_PORT"
     """
     The network endpoint is represented by IP address and port pair.
-    """
-    GCE_VM_PRIMARY_IP = "GCE_VM_PRIMARY_IP"
-    """
-    The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
     """
     INTERNET_FQDN_PORT = "INTERNET_FQDN_PORT"
     """
@@ -1704,17 +1782,33 @@ class GlobalNetworkEndpointGroupType(str, Enum):
     """
 
 
+class GlobalPublicDelegatedPrefixMode(str, Enum):
+    """
+    The public delegated prefix mode for IPv6 only.
+    """
+    DELEGATION = "DELEGATION"
+    """
+    The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+    """
+    EXTERNAL_IPV6_FORWARDING_RULE_CREATION = "EXTERNAL_IPV6_FORWARDING_RULE_CREATION"
+    """
+    The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+    """
+
+
 class GuestOsFeatureType(str, Enum):
     """
-    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
     """
     BARE_METAL_LINUX_COMPATIBLE = "BARE_METAL_LINUX_COMPATIBLE"
     FEATURE_TYPE_UNSPECIFIED = "FEATURE_TYPE_UNSPECIFIED"
     GVNIC = "GVNIC"
+    IDPF = "IDPF"
     MULTI_IP_SUBNET = "MULTI_IP_SUBNET"
     SECURE_BOOT = "SECURE_BOOT"
     SEV_CAPABLE = "SEV_CAPABLE"
     SEV_LIVE_MIGRATABLE = "SEV_LIVE_MIGRATABLE"
+    SEV_LIVE_MIGRATABLE_V2 = "SEV_LIVE_MIGRATABLE_V2"
     SEV_SNP_CAPABLE = "SEV_SNP_CAPABLE"
     TDX_CAPABLE = "TDX_CAPABLE"
     UEFI_COMPATIBLE = "UEFI_COMPATIBLE"
@@ -1950,15 +2044,19 @@ class InstanceGroupManagerFailoverAction(str, Enum):
 
 class InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure(str, Enum):
     """
-    Defines behaviour for all instance or failures
+    The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM. 
+    """
+    DELETE = "DELETE"
+    """
+    MIG deletes a failed or an unhealthy VM. Deleting the VM decreases the target size of the MIG.
     """
     DO_NOTHING = "DO_NOTHING"
     """
-    If any of the MIG's VMs is not running, or is failing, no repair action will be taken.
+    MIG does not repair a failed or an unhealthy VM.
     """
     REPAIR = "REPAIR"
     """
-    *[Default]* If any of the MIG's VMs is not running - for example, a VM cannot be created during a scale out or a VM fails – then the group will retry until it creates that VM successfully. For more information about how a MIG manages its VMs, see What is a managed instance."
+    (Default) MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG.
     """
 
 
@@ -1984,17 +2082,31 @@ class InstanceGroupManagerListManagedInstancesResults(str, Enum):
     """
 
 
+class InstanceGroupManagerStandbyPolicyMode(str, Enum):
+    """
+    Defines behaviour of using instances from standby pool to resize MIG.
+    """
+    MANUAL = "MANUAL"
+    """
+    MIG does not automatically stop/start or suspend/resume VMs.
+    """
+    SCALE_OUT_POOL = "SCALE_OUT_POOL"
+    """
+    MIG automatically resumes and starts VMs when it scales out, and replenishes the standby pool afterwards.
+    """
+
+
 class InstanceGroupManagerTargetSizeUnit(str, Enum):
     """
     The unit of measure for the target size.
     """
+    INSTANCE = "INSTANCE"
+    """
+    [Default] TargetSize is the target number of instances.
+    """
     VCPU = "VCPU"
     """
     TargetSize is the target count of vCPUs of VMs.
-    """
-    VM = "VM"
-    """
-    [Default] TargetSize is the target number of VMs.
     """
 
 
@@ -2022,21 +2134,21 @@ class InstanceGroupManagerUpdatePolicyMinimalAction(str, Enum):
     """
     REFRESH = "REFRESH"
     """
-    Updates applied in runtime, instances will not be disrupted.
+    Do not stop the instance.
     """
     REPLACE = "REPLACE"
     """
-    Old instances will be deleted. New instances will be created from the target template.
+    (Default.) Replace the instance according to the replacement method option.
     """
     RESTART = "RESTART"
     """
-    Every instance will be restarted.
+    Stop the instance and start it again.
     """
 
 
 class InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction(str, Enum):
     """
-    Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+    Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
     """
     NONE = "NONE"
     """
@@ -2044,15 +2156,15 @@ class InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction(str, Enum):
     """
     REFRESH = "REFRESH"
     """
-    Updates applied in runtime, instances will not be disrupted.
+    Do not stop the instance.
     """
     REPLACE = "REPLACE"
     """
-    Old instances will be deleted. New instances will be created from the target template.
+    (Default.) Replace the instance according to the replacement method option.
     """
     RESTART = "RESTART"
     """
-    Every instance will be restarted.
+    Stop the instance and start it again.
     """
 
 
@@ -2072,15 +2184,15 @@ class InstanceGroupManagerUpdatePolicyReplacementMethod(str, Enum):
 
 class InstanceGroupManagerUpdatePolicyType(str, Enum):
     """
-    The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+    The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
     """
     OPPORTUNISTIC = "OPPORTUNISTIC"
     """
-    No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+    MIG will apply new configurations to existing VMs only when you selectively target specific or all VMs to be updated.
     """
     PROACTIVE = "PROACTIVE"
     """
-    This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+    MIG will automatically apply new configurations to all or a subset of existing VMs and also to new VMs that are added to the group.
     """
 
 
@@ -2429,6 +2541,20 @@ class NetworkAttachmentConnectionPreference(str, Enum):
     INVALID = "INVALID"
 
 
+class NetworkEndpointGroupClientPortMappingMode(str, Enum):
+    """
+    Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+    """
+    CLIENT_PORT_PER_ENDPOINT = "CLIENT_PORT_PER_ENDPOINT"
+    """
+    For each endpoint there is exactly one client port.
+    """
+    PORT_MAPPING_DISABLED = "PORT_MAPPING_DISABLED"
+    """
+    NEG should not be used for mapping client port to destination.
+    """
+
+
 class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -2440,10 +2566,6 @@ class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     GCE_VM_IP_PORT = "GCE_VM_IP_PORT"
     """
     The network endpoint is represented by IP address and port pair.
-    """
-    GCE_VM_PRIMARY_IP = "GCE_VM_PRIMARY_IP"
-    """
-    The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
     """
     INTERNET_FQDN_PORT = "INTERNET_FQDN_PORT"
     """
@@ -2521,6 +2643,10 @@ class NetworkInterfaceStackType(str, Enum):
     """
     The network interface will be assigned IPv4 address.
     """
+    IPV6_ONLY = "IPV6_ONLY"
+    """
+    The network interface will only be assigned IPv6 addresses.
+    """
 
 
 class NetworkInterfaceSubInterfaceIpAllocationMode(str, Enum):
@@ -2551,6 +2677,22 @@ class NetworkPerformanceConfigExternalIpEgressBandwidthTier(str, Enum):
 class NetworkPerformanceConfigTotalEgressBandwidthTier(str, Enum):
     DEFAULT = "DEFAULT"
     TIER1 = "TIER_1"
+
+
+class NetworkRoutingConfigBgpBestPathSelectionMode(str, Enum):
+    """
+    The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+    """
+    LEGACY = "LEGACY"
+    STANDARD = "STANDARD"
+
+
+class NetworkRoutingConfigBgpInterRegionCost(str, Enum):
+    """
+    Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+    """
+    ADD_COST_TO_MED = "ADD_COST_TO_MED"
+    DEFAULT = "DEFAULT"
 
 
 class NetworkRoutingConfigRoutingMode(str, Enum):
@@ -2730,6 +2872,34 @@ class PublicAdvertisedPrefixStatus(str, Enum):
     """
 
 
+class PublicDelegatedPrefixMode(str, Enum):
+    """
+    The public delegated prefix mode for IPv6 only.
+    """
+    DELEGATION = "DELEGATION"
+    """
+    The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+    """
+    EXTERNAL_IPV6_FORWARDING_RULE_CREATION = "EXTERNAL_IPV6_FORWARDING_RULE_CREATION"
+    """
+    The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+    """
+
+
+class PublicDelegatedPrefixPublicDelegatedSubPrefixMode(str, Enum):
+    """
+    The PublicDelegatedSubPrefix mode for IPv6 only.
+    """
+    DELEGATION = "DELEGATION"
+    """
+    The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+    """
+    EXTERNAL_IPV6_FORWARDING_RULE_CREATION = "EXTERNAL_IPV6_FORWARDING_RULE_CREATION"
+    """
+    The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+    """
+
+
 class RegionBackendServiceCompressionMode(str, Enum):
     """
     Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -2746,7 +2916,7 @@ class RegionBackendServiceCompressionMode(str, Enum):
 
 class RegionBackendServiceIpAddressSelectionPolicy(str, Enum):
     """
-    Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
     """
     IPV4_ONLY = "IPV4_ONLY"
     """
@@ -2795,7 +2965,7 @@ class RegionBackendServiceLoadBalancingScheme(str, Enum):
 
 class RegionBackendServiceLocalityLbPolicy(str, Enum):
     """
-    The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     """
     INVALID_LB_POLICY = "INVALID_LB_POLICY"
     LEAST_REQUEST = "LEAST_REQUEST"
@@ -2939,10 +3109,12 @@ class RegionCommitmentType(str, Enum):
     The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
     """
     ACCELERATOR_OPTIMIZED = "ACCELERATOR_OPTIMIZED"
+    ACCELERATOR_OPTIMIZED_A3 = "ACCELERATOR_OPTIMIZED_A3"
     COMPUTE_OPTIMIZED = "COMPUTE_OPTIMIZED"
     COMPUTE_OPTIMIZED_C2D = "COMPUTE_OPTIMIZED_C2D"
     COMPUTE_OPTIMIZED_C3 = "COMPUTE_OPTIMIZED_C3"
     COMPUTE_OPTIMIZED_C3D = "COMPUTE_OPTIMIZED_C3D"
+    COMPUTE_OPTIMIZED_H3 = "COMPUTE_OPTIMIZED_H3"
     GENERAL_PURPOSE = "GENERAL_PURPOSE"
     GENERAL_PURPOSE_E2 = "GENERAL_PURPOSE_E2"
     GENERAL_PURPOSE_N2 = "GENERAL_PURPOSE_N2"
@@ -2952,6 +3124,24 @@ class RegionCommitmentType(str, Enum):
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
     MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+
+
+class RegionDiskAccessMode(str, Enum):
+    """
+    The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+    """
+    READ_ONLY_MANY = "READ_ONLY_MANY"
+    """
+    The AccessMode means the disk can be attached to multiple instances in RO mode.
+    """
+    READ_WRITE_MANY = "READ_WRITE_MANY"
+    """
+    The AccessMode means the disk can be attached to multiple instances in RW mode.
+    """
+    READ_WRITE_SINGLE = "READ_WRITE_SINGLE"
+    """
+    The default AccessMode, means the disk can be attached to single instance in RW mode.
+    """
 
 
 class RegionDiskArchitecture(str, Enum):
@@ -3057,13 +3247,27 @@ class RegionInstanceGroupManagerTargetSizeUnit(str, Enum):
     """
     The unit of measure for the target size.
     """
+    INSTANCE = "INSTANCE"
+    """
+    [Default] TargetSize is the target number of instances.
+    """
     VCPU = "VCPU"
     """
     TargetSize is the target count of vCPUs of VMs.
     """
-    VM = "VM"
+
+
+class RegionNetworkEndpointGroupClientPortMappingMode(str, Enum):
     """
-    [Default] TargetSize is the target number of VMs.
+    Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+    """
+    CLIENT_PORT_PER_ENDPOINT = "CLIENT_PORT_PER_ENDPOINT"
+    """
+    For each endpoint there is exactly one client port.
+    """
+    PORT_MAPPING_DISABLED = "PORT_MAPPING_DISABLED"
+    """
+    NEG should not be used for mapping client port to destination.
     """
 
 
@@ -3078,10 +3282,6 @@ class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     GCE_VM_IP_PORT = "GCE_VM_IP_PORT"
     """
     The network endpoint is represented by IP address and port pair.
-    """
-    GCE_VM_PRIMARY_IP = "GCE_VM_PRIMARY_IP"
-    """
-    The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
     """
     INTERNET_FQDN_PORT = "INTERNET_FQDN_PORT"
     """
@@ -3138,6 +3338,14 @@ class RegionSecurityPolicyType(str, Enum):
     CLOUD_ARMOR_INTERNAL_SERVICE = "CLOUD_ARMOR_INTERNAL_SERVICE"
     CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
     FIREWALL = "FIREWALL"
+
+
+class RegionSnapshotSnapshotType(str, Enum):
+    """
+    Indicates the type of the snapshot.
+    """
+    ARCHIVE = "ARCHIVE"
+    STANDARD = "STANDARD"
 
 
 class RegionSslCertificateType(str, Enum):
@@ -3240,6 +3448,10 @@ class ReservationAffinityConsumeReservationType(str, Enum):
     SPECIFIC_THEN_ANY_RESERVATION = "SPECIFIC_THEN_ANY_RESERVATION"
     """
     Prefer to consume from a specific reservation, but still consume any reservation available if the specified reservation is not available or exhausted. Must specify key value fields for specifying the reservations.
+    """
+    SPECIFIC_THEN_NO_RESERVATION = "SPECIFIC_THEN_NO_RESERVATION"
+    """
+    Prefer to consume from a specific reservation, but still consume from the on-demand pool if the specified reservation is exhausted. Must specify key value fields for specifying the reservations.
     """
     UNSPECIFIED = "UNSPECIFIED"
 
@@ -3428,9 +3640,17 @@ class RouterBgpPeerEnable(str, Enum):
     TRUE = "TRUE"
 
 
+class RouterInterfaceIpVersion(str, Enum):
+    """
+    IP version of this interface.
+    """
+    IPV4 = "IPV4"
+    IPV6 = "IPV6"
+
+
 class RouterNatAutoNetworkTier(str, Enum):
     """
-    The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+    The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
     """
     FIXED_STANDARD = "FIXED_STANDARD"
     """
@@ -3457,7 +3677,7 @@ class RouterNatAutoNetworkTier(str, Enum):
 class RouterNatEndpointTypesItem(str, Enum):
     ENDPOINT_TYPE_MANAGED_PROXY_LB = "ENDPOINT_TYPE_MANAGED_PROXY_LB"
     """
-    This is used for Regional Internal/External HTTP(S) and TCP Proxy load balancer endpoints.
+    This is used for regional Application Load Balancers (internal and external) and regional proxy Network Load Balancers (internal and external) endpoints.
     """
     ENDPOINT_TYPE_SWG = "ENDPOINT_TYPE_SWG"
     """
@@ -3694,6 +3914,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilit
 class SecurityPolicyAdvancedOptionsConfigJsonParsing(str, Enum):
     DISABLED = "DISABLED"
     STANDARD = "STANDARD"
+    STANDARD_WITH_GRAPHQL = "STANDARD_WITH_GRAPHQL"
 
 
 class SecurityPolicyAdvancedOptionsConfigLogLevel(str, Enum):
@@ -3847,6 +4068,32 @@ class ServiceAttachmentConnectionPreference(str, Enum):
     CONNECTION_PREFERENCE_UNSPECIFIED = "CONNECTION_PREFERENCE_UNSPECIFIED"
 
 
+class ServiceAttachmentTunnelingConfigEncapsulationProfile(str, Enum):
+    """
+    Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+    """
+    GENEVE_SECURITY_V1 = "GENEVE_SECURITY_V1"
+    """
+    Use GENEVE encapsulation protocol and include the SECURITY_V1 set of GENEVE headers.
+    """
+    UNSPECIFIED_ENCAPSULATION_PROFILE = "UNSPECIFIED_ENCAPSULATION_PROFILE"
+
+
+class ServiceAttachmentTunnelingConfigRoutingMode(str, Enum):
+    """
+    How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+    """
+    PACKET_INJECTION = "PACKET_INJECTION"
+    """
+    Traffic sent to this service attachment will be reinjected into the consumer network.
+    """
+    STANDARD_ROUTING = "STANDARD_ROUTING"
+    """
+    Response traffic, after de-encapsulation, will be returned to the client.
+    """
+    UNSPECIFIED_ROUTING_MODE = "UNSPECIFIED_ROUTING_MODE"
+
+
 class ShareSettingsShareType(str, Enum):
     """
     Type of sharing for this shared-reservation
@@ -3936,11 +4183,33 @@ class SslPolicyProfile(str, Enum):
     """
 
 
-class StoragePoolType(str, Enum):
+class StoragePoolCapacityProvisioningType(str, Enum):
     """
-    Type of the storage pool
+    Provisioning type of the byte capacity of the pool.
     """
-    SSD = "SSD"
+    ADVANCED = "ADVANCED"
+    """
+    Advanced provisioning "thinly" allocates the related resource.
+    """
+    STANDARD = "STANDARD"
+    """
+    Standard provisioning allocates the related resource for the pool disks' exclusive use.
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+
+
+class StoragePoolPerformanceProvisioningType(str, Enum):
+    """
+    Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+    """
+    ADVANCED = "ADVANCED"
+    """
+    Advanced provisioning "thinly" allocates the related resource.
+    """
+    STANDARD = "STANDARD"
+    """
+    Standard provisioning allocates the related resource for the pool disks' exclusive use.
+    """
     UNSPECIFIED = "UNSPECIFIED"
 
 
@@ -4031,7 +4300,7 @@ class SubnetworkPurpose(str, Enum):
     """
     GLOBAL_MANAGED_PROXY = "GLOBAL_MANAGED_PROXY"
     """
-    Subnet reserved for Global Internal HTTP(S) Load Balancing.
+    Subnet reserved for Global Envoy-based Load Balancing.
     """
     INTERNAL_HTTPS_LOAD_BALANCER = "INTERNAL_HTTPS_LOAD_BALANCER"
     """
@@ -4055,7 +4324,7 @@ class SubnetworkPurpose(str, Enum):
     """
     REGIONAL_MANAGED_PROXY = "REGIONAL_MANAGED_PROXY"
     """
-    Subnetwork used for Regional Internal/External HTTP(S) Load Balancing.
+    Subnetwork used for Regional Envoy-based Load Balancing.
     """
 
 
@@ -4084,6 +4353,10 @@ class SubnetworkStackType(str, Enum):
     IPV4_ONLY = "IPV4_ONLY"
     """
     New VMs in this subnet will only be assigned IPv4 addresses.
+    """
+    IPV6_ONLY = "IPV6_ONLY"
+    """
+    New VMs in this subnet will only be assigned IPv6 addresses.
     """
 
 

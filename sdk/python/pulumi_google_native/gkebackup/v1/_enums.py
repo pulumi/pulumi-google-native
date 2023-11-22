@@ -9,6 +9,7 @@ __all__ = [
     'RestoreConfigClusterResourceConflictPolicy',
     'RestoreConfigNamespacedResourceRestoreMode',
     'RestoreConfigVolumeDataRestorePolicy',
+    'TransformationRuleActionOp',
 ]
 
 
@@ -36,7 +37,7 @@ class AuditLogConfigLogType(str, Enum):
 
 class RestoreConfigClusterResourceConflictPolicy(str, Enum):
     """
-    Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+    Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
     """
     CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED = "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED"
     """
@@ -48,13 +49,13 @@ class RestoreConfigClusterResourceConflictPolicy(str, Enum):
     """
     USE_BACKUP_VERSION = "USE_BACKUP_VERSION"
     """
-    Delete the existing version before re-creating it from the Backup. Note that this is a dangerous option which could cause unintentional data loss if used inappropriately - for example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
+    Delete the existing version before re-creating it from the Backup. This is a dangerous option which could cause unintentional data loss if used inappropriately. For example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
     """
 
 
 class RestoreConfigNamespacedResourceRestoreMode(str, Enum):
     """
-    Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+    Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
     """
     NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED = "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"
     """
@@ -72,7 +73,7 @@ class RestoreConfigNamespacedResourceRestoreMode(str, Enum):
 
 class RestoreConfigVolumeDataRestorePolicy(str, Enum):
     """
-    Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+    Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
     """
     VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED = "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
     """
@@ -80,13 +81,47 @@ class RestoreConfigVolumeDataRestorePolicy(str, Enum):
     """
     RESTORE_VOLUME_DATA_FROM_BACKUP = "RESTORE_VOLUME_DATA_FROM_BACKUP"
     """
-    For each PVC to be restored, will create a new underlying volume (and PV) from the corresponding VolumeBackup contained within the Backup.
+    For each PVC to be restored, create a new underlying volume and PV from the corresponding VolumeBackup contained within the Backup.
     """
     REUSE_VOLUME_HANDLE_FROM_BACKUP = "REUSE_VOLUME_HANDLE_FROM_BACKUP"
     """
-    For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). Note that option is likely only usable when restoring a workload to its original cluster.
+    For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). This option is likely only usable when restoring a workload to its original cluster.
     """
     NO_VOLUME_DATA_RESTORATION = "NO_VOLUME_DATA_RESTORATION"
     """
-    For each PVC to be restored, PVCs will be created without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
+    For each PVC to be restored, create PVC without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
+    """
+
+
+class TransformationRuleActionOp(str, Enum):
+    """
+    Required. op specifies the operation to perform.
+    """
+    OP_UNSPECIFIED = "OP_UNSPECIFIED"
+    """
+    Unspecified operation
+    """
+    REMOVE = "REMOVE"
+    """
+    The "remove" operation removes the value at the target location.
+    """
+    MOVE = "MOVE"
+    """
+    The "move" operation removes the value at a specified location and adds it to the target location.
+    """
+    COPY = "COPY"
+    """
+    The "copy" operation copies the value at a specified location to the target location.
+    """
+    ADD = "ADD"
+    """
+    The "add" operation performs one of the following functions, depending upon what the target location references: 1. If the target location specifies an array index, a new value is inserted into the array at the specified index. 2. If the target location specifies an object member that does not already exist, a new member is added to the object. 3. If the target location specifies an object member that does exist, that member's value is replaced.
+    """
+    TEST = "TEST"
+    """
+    The "test" operation tests that a value at the target location is equal to a specified value.
+    """
+    REPLACE = "REPLACE"
+    """
+    The "replace" operation replaces the value at the target location with a new value. The operation object MUST contain a "value" member whose content specifies the replacement value.
     """

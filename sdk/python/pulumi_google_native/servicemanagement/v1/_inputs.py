@@ -40,6 +40,7 @@ __all__ = [
     'EnumValueArgs',
     'EnumArgs',
     'ExprArgs',
+    'FieldPolicyArgs',
     'FieldArgs',
     'GoSettingsArgs',
     'HttpRuleArgs',
@@ -51,6 +52,7 @@ __all__ = [
     'LoggingDestinationArgs',
     'LoggingArgs',
     'LongRunningArgs',
+    'MethodPolicyArgs',
     'MethodSettingsArgs',
     'MethodArgs',
     'MetricDescriptorMetadataArgs',
@@ -1189,13 +1191,17 @@ class ContextArgs:
 @pulumi.input_type
 class ControlArgs:
     def __init__(__self__, *,
-                 environment: Optional[pulumi.Input[str]] = None):
+                 environment: Optional[pulumi.Input[str]] = None,
+                 method_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MethodPolicyArgs']]]] = None):
         """
         Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
         :param pulumi.Input[str] environment: The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
+        :param pulumi.Input[Sequence[pulumi.Input['MethodPolicyArgs']]] method_policies: Defines policies applying to the API methods of the service.
         """
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
+        if method_policies is not None:
+            pulumi.set(__self__, "method_policies", method_policies)
 
     @property
     @pulumi.getter
@@ -1208,6 +1214,18 @@ class ControlArgs:
     @environment.setter
     def environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="methodPolicies")
+    def method_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MethodPolicyArgs']]]]:
+        """
+        Defines policies applying to the API methods of the service.
+        """
+        return pulumi.get(self, "method_policies")
+
+    @method_policies.setter
+    def method_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MethodPolicyArgs']]]]):
+        pulumi.set(self, "method_policies", value)
 
 
 @pulumi.input_type
@@ -1442,14 +1460,16 @@ class DocumentationArgs:
                  overview: Optional[pulumi.Input[str]] = None,
                  pages: Optional[pulumi.Input[Sequence[pulumi.Input['PageArgs']]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentationRuleArgs']]]] = None,
+                 section_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['PageArgs']]]] = None,
                  service_root_url: Optional[pulumi.Input[str]] = None,
                  summary: Optional[pulumi.Input[str]] = None):
         """
-        `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+        `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
         :param pulumi.Input[str] documentation_root_url: The URL to the root of documentation.
         :param pulumi.Input[str] overview: Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field.
         :param pulumi.Input[Sequence[pulumi.Input['PageArgs']]] pages: The top level pages for the documentation set.
         :param pulumi.Input[Sequence[pulumi.Input['DocumentationRuleArgs']]] rules: A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
+        :param pulumi.Input[Sequence[pulumi.Input['PageArgs']]] section_overrides: Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
         :param pulumi.Input[str] service_root_url: Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
         :param pulumi.Input[str] summary: A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
         """
@@ -1461,6 +1481,8 @@ class DocumentationArgs:
             pulumi.set(__self__, "pages", pages)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if section_overrides is not None:
+            pulumi.set(__self__, "section_overrides", section_overrides)
         if service_root_url is not None:
             pulumi.set(__self__, "service_root_url", service_root_url)
         if summary is not None:
@@ -1513,6 +1535,18 @@ class DocumentationArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentationRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="sectionOverrides")
+    def section_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PageArgs']]]]:
+        """
+        Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
+        """
+        return pulumi.get(self, "section_overrides")
+
+    @section_overrides.setter
+    def section_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PageArgs']]]]):
+        pulumi.set(self, "section_overrides", value)
 
     @property
     @pulumi.getter(name="serviceRootUrl")
@@ -1951,6 +1985,62 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FieldPolicyArgs:
+    def __init__(__self__, *,
+                 resource_permission: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 selector: Optional[pulumi.Input[str]] = None):
+        """
+        Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation.
+        :param pulumi.Input[str] resource_permission: Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
+        :param pulumi.Input[str] resource_type: Specifies the resource type for the resource referred to by the field.
+        :param pulumi.Input[str] selector: Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+        """
+        if resource_permission is not None:
+            pulumi.set(__self__, "resource_permission", resource_permission)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if selector is not None:
+            pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="resourcePermission")
+    def resource_permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
+        """
+        return pulumi.get(self, "resource_permission")
+
+    @resource_permission.setter
+    def resource_permission(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_permission", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the resource type for the resource referred to by the field.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> Optional[pulumi.Input[str]]:
+        """
+        Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "selector", value)
 
 
 @pulumi.input_type
@@ -2759,6 +2849,46 @@ class LongRunningArgs:
     @total_poll_timeout.setter
     def total_poll_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "total_poll_timeout", value)
+
+
+@pulumi.input_type
+class MethodPolicyArgs:
+    def __init__(__self__, *,
+                 request_policies: Optional[pulumi.Input[Sequence[pulumi.Input['FieldPolicyArgs']]]] = None,
+                 selector: Optional[pulumi.Input[str]] = None):
+        """
+        Defines policies applying to an RPC method.
+        :param pulumi.Input[Sequence[pulumi.Input['FieldPolicyArgs']]] request_policies: Policies that are applicable to the request message.
+        :param pulumi.Input[str] selector: Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+        """
+        if request_policies is not None:
+            pulumi.set(__self__, "request_policies", request_policies)
+        if selector is not None:
+            pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="requestPolicies")
+    def request_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FieldPolicyArgs']]]]:
+        """
+        Policies that are applicable to the request message.
+        """
+        return pulumi.get(self, "request_policies")
+
+    @request_policies.setter
+    def request_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldPolicyArgs']]]]):
+        pulumi.set(self, "request_policies", value)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> Optional[pulumi.Input[str]]:
+        """
+        Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "selector", value)
 
 
 @pulumi.input_type

@@ -12,7 +12,7 @@ __all__ = [
 
 class SchemaSettingsEncoding(str, Enum):
     """
-    The encoding of messages validated against `schema`.
+    Optional. The encoding of messages validated against `schema`.
     """
     ENCODING_UNSPECIFIED = "ENCODING_UNSPECIFIED"
     """

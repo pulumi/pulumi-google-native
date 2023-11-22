@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTlsRouteResult:
-    def __init__(__self__, create_time=None, description=None, gateways=None, meshes=None, name=None, rules=None, self_link=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, gateways=None, labels=None, meshes=None, name=None, rules=None, self_link=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -29,6 +29,9 @@ class GetTlsRouteResult:
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         pulumi.set(__self__, "gateways", gateways)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if meshes and not isinstance(meshes, list):
             raise TypeError("Expected argument 'meshes' to be a list")
         pulumi.set(__self__, "meshes", meshes)
@@ -68,6 +71,14 @@ class GetTlsRouteResult:
         Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
         """
         return pulumi.get(self, "gateways")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Set of label tags associated with the TlsRoute resource.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -119,6 +130,7 @@ class AwaitableGetTlsRouteResult(GetTlsRouteResult):
             create_time=self.create_time,
             description=self.description,
             gateways=self.gateways,
+            labels=self.labels,
             meshes=self.meshes,
             name=self.name,
             rules=self.rules,
@@ -144,6 +156,7 @@ def get_tls_route(location: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         gateways=pulumi.get(__ret__, 'gateways'),
+        labels=pulumi.get(__ret__, 'labels'),
         meshes=pulumi.get(__ret__, 'meshes'),
         name=pulumi.get(__ret__, 'name'),
         rules=pulumi.get(__ret__, 'rules'),

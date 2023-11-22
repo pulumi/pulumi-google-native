@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetStoragePoolResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, label_fingerprint=None, labels=None, name=None, provisioned_iops=None, resource_status=None, self_link=None, self_link_with_id=None, size_gb=None, state=None, type=None, zone=None):
+    def __init__(__self__, capacity_provisioning_type=None, creation_timestamp=None, description=None, kind=None, label_fingerprint=None, labels=None, name=None, performance_provisioning_type=None, provisioned_iops=None, provisioned_throughput=None, resource_status=None, self_link=None, self_link_with_id=None, size_gb=None, state=None, status=None, storage_pool_type=None, zone=None):
+        if capacity_provisioning_type and not isinstance(capacity_provisioning_type, str):
+            raise TypeError("Expected argument 'capacity_provisioning_type' to be a str")
+        pulumi.set(__self__, "capacity_provisioning_type", capacity_provisioning_type)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -38,9 +41,15 @@ class GetStoragePoolResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if performance_provisioning_type and not isinstance(performance_provisioning_type, str):
+            raise TypeError("Expected argument 'performance_provisioning_type' to be a str")
+        pulumi.set(__self__, "performance_provisioning_type", performance_provisioning_type)
         if provisioned_iops and not isinstance(provisioned_iops, str):
             raise TypeError("Expected argument 'provisioned_iops' to be a str")
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput and not isinstance(provisioned_throughput, str):
+            raise TypeError("Expected argument 'provisioned_throughput' to be a str")
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_status and not isinstance(resource_status, dict):
             raise TypeError("Expected argument 'resource_status' to be a dict")
         pulumi.set(__self__, "resource_status", resource_status)
@@ -56,12 +65,23 @@ class GetStoragePoolResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        pulumi.set(__self__, "type", type)
+        if status and not isinstance(status, dict):
+            raise TypeError("Expected argument 'status' to be a dict")
+        pulumi.set(__self__, "status", status)
+        if storage_pool_type and not isinstance(storage_pool_type, str):
+            raise TypeError("Expected argument 'storage_pool_type' to be a str")
+        pulumi.set(__self__, "storage_pool_type", storage_pool_type)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="capacityProvisioningType")
+    def capacity_provisioning_type(self) -> str:
+        """
+        Provisioning type of the byte capacity of the pool.
+        """
+        return pulumi.get(self, "capacity_provisioning_type")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -112,12 +132,28 @@ class GetStoragePoolResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceProvisioningType")
+    def performance_provisioning_type(self) -> str:
+        """
+        Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+        """
+        return pulumi.get(self, "performance_provisioning_type")
+
+    @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> str:
         """
         Provsioned IOPS of the storage pool.
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> str:
+        """
+        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceStatus")
@@ -161,11 +197,19 @@ class GetStoragePoolResult:
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def status(self) -> 'outputs.StoragePoolResourceStatusResponse':
         """
-        Type of the storage pool
+        Status information for the storage pool resource.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storagePoolType")
+    def storage_pool_type(self) -> str:
+        """
+        Type of the storage pool.
+        """
+        return pulumi.get(self, "storage_pool_type")
 
     @property
     @pulumi.getter
@@ -182,19 +226,23 @@ class AwaitableGetStoragePoolResult(GetStoragePoolResult):
         if False:
             yield self
         return GetStoragePoolResult(
+            capacity_provisioning_type=self.capacity_provisioning_type,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
             name=self.name,
+            performance_provisioning_type=self.performance_provisioning_type,
             provisioned_iops=self.provisioned_iops,
+            provisioned_throughput=self.provisioned_throughput,
             resource_status=self.resource_status,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             size_gb=self.size_gb,
             state=self.state,
-            type=self.type,
+            status=self.status,
+            storage_pool_type=self.storage_pool_type,
             zone=self.zone)
 
 
@@ -213,19 +261,23 @@ def get_storage_pool(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getStoragePool', __args__, opts=opts, typ=GetStoragePoolResult).value
 
     return AwaitableGetStoragePoolResult(
+        capacity_provisioning_type=pulumi.get(__ret__, 'capacity_provisioning_type'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         kind=pulumi.get(__ret__, 'kind'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        performance_provisioning_type=pulumi.get(__ret__, 'performance_provisioning_type'),
         provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
+        provisioned_throughput=pulumi.get(__ret__, 'provisioned_throughput'),
         resource_status=pulumi.get(__ret__, 'resource_status'),
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
         size_gb=pulumi.get(__ret__, 'size_gb'),
         state=pulumi.get(__ret__, 'state'),
-        type=pulumi.get(__ret__, 'type'),
+        status=pulumi.get(__ret__, 'status'),
+        storage_pool_type=pulumi.get(__ret__, 'storage_pool_type'),
         zone=pulumi.get(__ret__, 'zone'))
 
 

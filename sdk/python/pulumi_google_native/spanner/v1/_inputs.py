@@ -11,12 +11,163 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AutoscalingConfigArgs',
+    'AutoscalingLimitsArgs',
+    'AutoscalingTargetsArgs',
     'BindingArgs',
     'EncryptionConfigArgs',
     'ExprArgs',
     'FreeInstanceMetadataArgs',
     'ReplicaInfoArgs',
 ]
+
+@pulumi.input_type
+class AutoscalingConfigArgs:
+    def __init__(__self__, *,
+                 autoscaling_limits: pulumi.Input['AutoscalingLimitsArgs'],
+                 autoscaling_targets: pulumi.Input['AutoscalingTargetsArgs']):
+        """
+        Autoscaling config for an instance.
+        :param pulumi.Input['AutoscalingLimitsArgs'] autoscaling_limits: Autoscaling limits for an instance.
+        :param pulumi.Input['AutoscalingTargetsArgs'] autoscaling_targets: The autoscaling targets for an instance.
+        """
+        pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+        pulumi.set(__self__, "autoscaling_targets", autoscaling_targets)
+
+    @property
+    @pulumi.getter(name="autoscalingLimits")
+    def autoscaling_limits(self) -> pulumi.Input['AutoscalingLimitsArgs']:
+        """
+        Autoscaling limits for an instance.
+        """
+        return pulumi.get(self, "autoscaling_limits")
+
+    @autoscaling_limits.setter
+    def autoscaling_limits(self, value: pulumi.Input['AutoscalingLimitsArgs']):
+        pulumi.set(self, "autoscaling_limits", value)
+
+    @property
+    @pulumi.getter(name="autoscalingTargets")
+    def autoscaling_targets(self) -> pulumi.Input['AutoscalingTargetsArgs']:
+        """
+        The autoscaling targets for an instance.
+        """
+        return pulumi.get(self, "autoscaling_targets")
+
+    @autoscaling_targets.setter
+    def autoscaling_targets(self, value: pulumi.Input['AutoscalingTargetsArgs']):
+        pulumi.set(self, "autoscaling_targets", value)
+
+
+@pulumi.input_type
+class AutoscalingLimitsArgs:
+    def __init__(__self__, *,
+                 max_nodes: Optional[pulumi.Input[int]] = None,
+                 max_processing_units: Optional[pulumi.Input[int]] = None,
+                 min_nodes: Optional[pulumi.Input[int]] = None,
+                 min_processing_units: Optional[pulumi.Input[int]] = None):
+        """
+        The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit.
+        :param pulumi.Input[int] max_nodes: Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.
+        :param pulumi.Input[int] max_processing_units: Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units.
+        :param pulumi.Input[int] min_nodes: Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.
+        :param pulumi.Input[int] min_processing_units: Minimum number of processing units allocated to the instance. If set, this number should be multiples of 1000.
+        """
+        if max_nodes is not None:
+            pulumi.set(__self__, "max_nodes", max_nodes)
+        if max_processing_units is not None:
+            pulumi.set(__self__, "max_processing_units", max_processing_units)
+        if min_nodes is not None:
+            pulumi.set(__self__, "min_nodes", min_nodes)
+        if min_processing_units is not None:
+            pulumi.set(__self__, "min_processing_units", min_processing_units)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @max_nodes.setter
+    def max_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_nodes", value)
+
+    @property
+    @pulumi.getter(name="maxProcessingUnits")
+    def max_processing_units(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units.
+        """
+        return pulumi.get(self, "max_processing_units")
+
+    @max_processing_units.setter
+    def max_processing_units(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_processing_units", value)
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_nodes")
+
+    @min_nodes.setter
+    def min_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_nodes", value)
+
+    @property
+    @pulumi.getter(name="minProcessingUnits")
+    def min_processing_units(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of processing units allocated to the instance. If set, this number should be multiples of 1000.
+        """
+        return pulumi.get(self, "min_processing_units")
+
+    @min_processing_units.setter
+    def min_processing_units(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_processing_units", value)
+
+
+@pulumi.input_type
+class AutoscalingTargetsArgs:
+    def __init__(__self__, *,
+                 high_priority_cpu_utilization_percent: pulumi.Input[int],
+                 storage_utilization_percent: pulumi.Input[int]):
+        """
+        The autoscaling targets for an instance.
+        :param pulumi.Input[int] high_priority_cpu_utilization_percent: The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        :param pulumi.Input[int] storage_utilization_percent: The target storage utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 100] inclusive.
+        """
+        pulumi.set(__self__, "high_priority_cpu_utilization_percent", high_priority_cpu_utilization_percent)
+        pulumi.set(__self__, "storage_utilization_percent", storage_utilization_percent)
+
+    @property
+    @pulumi.getter(name="highPriorityCpuUtilizationPercent")
+    def high_priority_cpu_utilization_percent(self) -> pulumi.Input[int]:
+        """
+        The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        """
+        return pulumi.get(self, "high_priority_cpu_utilization_percent")
+
+    @high_priority_cpu_utilization_percent.setter
+    def high_priority_cpu_utilization_percent(self, value: pulumi.Input[int]):
+        pulumi.set(self, "high_priority_cpu_utilization_percent", value)
+
+    @property
+    @pulumi.getter(name="storageUtilizationPercent")
+    def storage_utilization_percent(self) -> pulumi.Input[int]:
+        """
+        The target storage utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 100] inclusive.
+        """
+        return pulumi.get(self, "storage_utilization_percent")
+
+    @storage_utilization_percent.setter
+    def storage_utilization_percent(self, value: pulumi.Input[int]):
+        pulumi.set(self, "storage_utilization_percent", value)
+
 
 @pulumi.input_type
 class BindingArgs:

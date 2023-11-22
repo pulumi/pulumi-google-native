@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DocumentArgs', 'Document']
 
@@ -18,6 +20,7 @@ class DocumentArgs:
                  collection_id: pulumi.Input[str],
                  data_store_id: pulumi.Input[str],
                  document_id: pulumi.Input[str],
+                 content: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentContentArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  json_data: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -29,17 +32,20 @@ class DocumentArgs:
         """
         The set of arguments for constructing a Document resource.
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentContentArgs'] content: The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
-        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         pulumi.set(__self__, "branch_id", branch_id)
         pulumi.set(__self__, "collection_id", collection_id)
         pulumi.set(__self__, "data_store_id", data_store_id)
         pulumi.set(__self__, "document_id", document_id)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if json_data is not None:
@@ -98,6 +104,18 @@ class DocumentArgs:
 
     @property
     @pulumi.getter
+    def content(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentContentArgs']]:
+        """
+        The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentContentArgs']]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
@@ -112,7 +130,7 @@ class DocumentArgs:
     @pulumi.getter(name="jsonData")
     def json_data(self) -> Optional[pulumi.Input[str]]:
         """
-        The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "json_data")
 
@@ -178,7 +196,7 @@ class DocumentArgs:
     @pulumi.getter(name="structData")
     def struct_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "struct_data")
 
@@ -194,6 +212,7 @@ class Document(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1betaDocumentContentArgs']]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  document_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -210,13 +229,14 @@ class Document(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1betaDocumentContentArgs']] content: The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
-        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         ...
     @overload
@@ -244,6 +264,7 @@ class Document(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1betaDocumentContentArgs']]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  document_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -269,6 +290,7 @@ class Document(pulumi.CustomResource):
             if collection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'collection_id'")
             __props__.__dict__["collection_id"] = collection_id
+            __props__.__dict__["content"] = content
             if data_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_store_id'")
             __props__.__dict__["data_store_id"] = data_store_id
@@ -283,6 +305,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["struct_data"] = struct_data
+            __props__.__dict__["derived_struct_data"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branch_id", "collection_id", "data_store_id", "document_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Document, __self__).__init__(
@@ -309,7 +332,9 @@ class Document(pulumi.CustomResource):
 
         __props__.__dict__["branch_id"] = None
         __props__.__dict__["collection_id"] = None
+        __props__.__dict__["content"] = None
         __props__.__dict__["data_store_id"] = None
+        __props__.__dict__["derived_struct_data"] = None
         __props__.__dict__["document_id"] = None
         __props__.__dict__["json_data"] = None
         __props__.__dict__["location"] = None
@@ -331,9 +356,25 @@ class Document(pulumi.CustomResource):
         return pulumi.get(self, "collection_id")
 
     @property
+    @pulumi.getter
+    def content(self) -> pulumi.Output['outputs.GoogleCloudDiscoveryengineV1betaDocumentContentResponse']:
+        """
+        The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+        """
+        return pulumi.get(self, "content")
+
+    @property
     @pulumi.getter(name="dataStoreId")
     def data_store_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "data_store_id")
+
+    @property
+    @pulumi.getter(name="derivedStructData")
+    def derived_struct_data(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+        """
+        return pulumi.get(self, "derived_struct_data")
 
     @property
     @pulumi.getter(name="documentId")
@@ -347,7 +388,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="jsonData")
     def json_data(self) -> pulumi.Output[str]:
         """
-        The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "json_data")
 
@@ -389,7 +430,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="structData")
     def struct_data(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "struct_data")
 

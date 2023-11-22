@@ -32,13 +32,13 @@ class RouteArgs:
         """
         The set of arguments for constructing a Route resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
-        :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to.
         :param pulumi.Input[str] next_hop_gateway: The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         :param pulumi.Input[str] next_hop_instance: The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
-        :param pulumi.Input[str] next_hop_ip: The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+        :param pulumi.Input[str] next_hop_ip: The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
         :param pulumi.Input[str] next_hop_network: The URL of the local network if it should handle matching packets.
         :param pulumi.Input[str] next_hop_vpn_tunnel: The URL to a VpnTunnel that should handle matching packets.
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
@@ -90,7 +90,7 @@ class RouteArgs:
     @pulumi.getter(name="destRange")
     def dest_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
         """
         return pulumi.get(self, "dest_range")
 
@@ -162,7 +162,7 @@ class RouteArgs:
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+        The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
         """
         return pulumi.get(self, "next_hop_ip")
 
@@ -266,13 +266,13 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
-        :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to.
         :param pulumi.Input[str] next_hop_gateway: The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         :param pulumi.Input[str] next_hop_instance: The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
-        :param pulumi.Input[str] next_hop_ip: The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+        :param pulumi.Input[str] next_hop_ip: The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
         :param pulumi.Input[str] next_hop_network: The URL of the local network if it should handle matching packets.
         :param pulumi.Input[str] next_hop_vpn_tunnel: The URL to a VpnTunnel that should handle matching packets.
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
@@ -343,6 +343,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["as_paths"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["next_hop_hub"] = None
             __props__.__dict__["next_hop_peering"] = None
             __props__.__dict__["route_status"] = None
             __props__.__dict__["route_type"] = None
@@ -380,6 +381,7 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["next_hop_gateway"] = None
+        __props__.__dict__["next_hop_hub"] = None
         __props__.__dict__["next_hop_ilb"] = None
         __props__.__dict__["next_hop_instance"] = None
         __props__.__dict__["next_hop_ip"] = None
@@ -424,7 +426,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="destRange")
     def dest_range(self) -> pulumi.Output[str]:
         """
-        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
         """
         return pulumi.get(self, "dest_range")
 
@@ -461,6 +463,14 @@ class Route(pulumi.CustomResource):
         return pulumi.get(self, "next_hop_gateway")
 
     @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> pulumi.Output[str]:
+        """
+        The full resource name of the Network Connectivity Center hub that will handle matching packets.
+        """
+        return pulumi.get(self, "next_hop_hub")
+
+    @property
     @pulumi.getter(name="nextHopIlb")
     def next_hop_ilb(self) -> pulumi.Output[str]:
         """
@@ -480,7 +490,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> pulumi.Output[str]:
         """
-        The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+        The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
         """
         return pulumi.get(self, "next_hop_ip")
 

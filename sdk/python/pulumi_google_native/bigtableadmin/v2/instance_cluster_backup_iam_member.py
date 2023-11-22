@@ -102,7 +102,7 @@ class InstanceClusterBackupIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Sets the access control policy on a Table resource. Replaces any existing policy.
+        Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -123,7 +123,7 @@ class InstanceClusterBackupIamMember(pulumi.CustomResource):
                  args: InstanceClusterBackupIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Sets the access control policy on a Table resource. Replaces any existing policy.
+        Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
 
         :param str resource_name: The name of the resource.
         :param InstanceClusterBackupIamMemberArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class AlertPolicyArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input['AlertPolicySeverity']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validity: Optional[pulumi.Input['StatusArgs']] = None):
         """
@@ -36,14 +37,15 @@ class AlertPolicyArgs:
         :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
         :param pulumi.Input['MutationRecordArgs'] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy.
         :param pulumi.Input['DocumentationArgs'] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. On write, the default interpretation if unset is that the policy is enabled. On read, clients should not make any assumption about the state if it has not been populated. The field should always be populated on List and Get operations, unless a field projection has been specified that strips it out.
         :param pulumi.Input['MutationRecordArgs'] mutation_record: A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] name: Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-        :param pulumi.Input['StatusArgs'] validity: Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
+        :param pulumi.Input['AlertPolicySeverity'] severity: Optional. The severity of an alert policy indicates how important alerts generated by that policy are. The severity level, if specified, will be displayed on the Incident detail page and in notifications.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus {alert name} is a valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels), whereas Prometheus {rule group} is an unrestricted UTF-8 string. This means that they cannot be stored as-is in user labels, because they may contain characters that are not allowed in user-label values.
+        :param pulumi.Input['StatusArgs'] validity: Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
         """
         if alert_strategy is not None:
             pulumi.set(__self__, "alert_strategy", alert_strategy)
@@ -67,6 +69,8 @@ class AlertPolicyArgs:
             pulumi.set(__self__, "notification_channels", notification_channels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if validity is not None:
@@ -124,7 +128,7 @@ class AlertPolicyArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
+        A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy.
         """
         return pulumi.get(self, "display_name")
 
@@ -202,10 +206,22 @@ class AlertPolicyArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input['AlertPolicySeverity']]:
+        """
+        Optional. The severity of an alert policy indicates how important alerts generated by that policy are. The severity level, if specified, will be displayed on the Incident detail page and in notifications.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input['AlertPolicySeverity']]):
+        pulumi.set(self, "severity", value)
+
+    @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus {alert name} is a valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels), whereas Prometheus {rule group} is an unrestricted UTF-8 string. This means that they cannot be stored as-is in user labels, because they may contain characters that are not allowed in user-label values.
         """
         return pulumi.get(self, "user_labels")
 
@@ -217,7 +233,7 @@ class AlertPolicyArgs:
     @pulumi.getter
     def validity(self) -> Optional[pulumi.Input['StatusArgs']]:
         """
-        Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
+        Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
         """
         return pulumi.get(self, "validity")
 
@@ -242,6 +258,7 @@ class AlertPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input['AlertPolicySeverity']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None):
@@ -254,14 +271,15 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
         :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy.
         :param pulumi.Input[pulumi.InputType['DocumentationArgs']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. On write, the default interpretation if unset is that the policy is enabled. On read, clients should not make any assumption about the state if it has not been populated. The field should always be populated on List and Get operations, unless a field projection has been specified that strips it out.
         :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] mutation_record: A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] name: Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] validity: Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
+        :param pulumi.Input['AlertPolicySeverity'] severity: Optional. The severity of an alert policy indicates how important alerts generated by that policy are. The severity level, if specified, will be displayed on the Incident detail page and in notifications.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus {alert name} is a valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels), whereas Prometheus {rule group} is an unrestricted UTF-8 string. This means that they cannot be stored as-is in user labels, because they may contain characters that are not allowed in user-label values.
+        :param pulumi.Input[pulumi.InputType['StatusArgs']] validity: Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
         """
         ...
     @overload
@@ -298,6 +316,7 @@ class AlertPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input['AlertPolicySeverity']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None):
@@ -320,6 +339,7 @@ class AlertPolicy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_channels"] = notification_channels
             __props__.__dict__["project"] = project
+            __props__.__dict__["severity"] = severity
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["validity"] = validity
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
@@ -357,6 +377,7 @@ class AlertPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_channels"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["severity"] = None
         __props__.__dict__["user_labels"] = None
         __props__.__dict__["validity"] = None
         return AlertPolicy(resource_name, opts=opts, __props__=__props__)
@@ -397,7 +418,7 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
+        A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy.
         """
         return pulumi.get(self, "display_name")
 
@@ -447,10 +468,18 @@ class AlertPolicy(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def severity(self) -> pulumi.Output[str]:
+        """
+        Optional. The severity of an alert policy indicates how important alerts generated by that policy are. The severity level, if specified, will be displayed on the Incident detail page and in notifications.
+        """
+        return pulumi.get(self, "severity")
+
+    @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus {alert name} is a valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels), whereas Prometheus {rule group} is an unrestricted UTF-8 string. This means that they cannot be stored as-is in user labels, because they may contain characters that are not allowed in user-label values.
         """
         return pulumi.get(self, "user_labels")
 
@@ -458,7 +487,7 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter
     def validity(self) -> pulumi.Output['outputs.StatusResponse']:
         """
-        Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
+        Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
         """
         return pulumi.get(self, "validity")
 

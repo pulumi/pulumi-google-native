@@ -94,7 +94,7 @@ def get_attestor(attestor_id: Optional[str] = None,
                  project: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAttestorResult:
     """
-    Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+    Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
     """
     __args__ = dict()
     __args__['attestorId'] = attestor_id
@@ -115,6 +115,6 @@ def get_attestor_output(attestor_id: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttestorResult]:
     """
-    Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+    Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
     """
     ...

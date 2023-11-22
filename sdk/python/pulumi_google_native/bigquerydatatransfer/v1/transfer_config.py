@@ -23,6 +23,7 @@ class TransferConfigArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input['EmailPreferencesArgs']] = None,
+                 encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
@@ -42,7 +43,8 @@ class TransferConfigArgs:
         :param pulumi.Input[bool] disabled: Is this config disabled. When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[str] display_name: User specified display name for the data transfer.
         :param pulumi.Input['EmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
-        :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        :param pulumi.Input['EncryptionConfigurationArgs'] encryption_configuration: The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+        :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
@@ -65,6 +67,8 @@ class TransferConfigArgs:
             pulumi.set(__self__, "display_name", display_name)
         if email_preferences is not None:
             pulumi.set(__self__, "email_preferences", email_preferences)
+        if encryption_configuration is not None:
+            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -174,6 +178,18 @@ class TransferConfigArgs:
         pulumi.set(self, "email_preferences", value)
 
     @property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> Optional[pulumi.Input['EncryptionConfigurationArgs']]:
+        """
+        The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @encryption_configuration.setter
+    def encryption_configuration(self, value: Optional[pulumi.Input['EncryptionConfigurationArgs']]):
+        pulumi.set(self, "encryption_configuration", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
@@ -186,7 +202,7 @@ class TransferConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         """
         return pulumi.get(self, "name")
 
@@ -303,6 +319,7 @@ class TransferConfig(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input[pulumi.InputType['EmailPreferencesArgs']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
@@ -316,6 +333,7 @@ class TransferConfig(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new data transfer configuration.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -326,7 +344,8 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Is this config disabled. When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[str] display_name: User specified display name for the data transfer.
         :param pulumi.Input[pulumi.InputType['EmailPreferencesArgs']] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
-        :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        :param pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']] encryption_configuration: The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+        :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
@@ -343,6 +362,7 @@ class TransferConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new data transfer configuration.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param TransferConfigArgs args: The arguments to use to populate this resource's properties.
@@ -366,6 +386,7 @@ class TransferConfig(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input[pulumi.InputType['EmailPreferencesArgs']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
@@ -392,6 +413,7 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["email_preferences"] = email_preferences
+            __props__.__dict__["encryption_configuration"] = encryption_configuration
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
@@ -442,6 +464,7 @@ class TransferConfig(pulumi.CustomResource):
         __props__.__dict__["disabled"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["email_preferences"] = None
+        __props__.__dict__["encryption_configuration"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["next_run_time"] = None
@@ -523,6 +546,14 @@ class TransferConfig(pulumi.CustomResource):
         return pulumi.get(self, "email_preferences")
 
     @property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> pulumi.Output['outputs.EncryptionConfigurationResponse']:
+        """
+        The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
@@ -531,7 +562,7 @@ class TransferConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         """
         return pulumi.get(self, "name")
 

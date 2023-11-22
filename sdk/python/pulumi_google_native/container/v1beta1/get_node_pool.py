@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodePoolResult:
-    def __init__(__self__, autoscaling=None, conditions=None, config=None, etag=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, placement_policy=None, pod_ipv4_cidr_size=None, self_link=None, status=None, status_message=None, update_info=None, upgrade_settings=None, version=None):
+    def __init__(__self__, autoscaling=None, best_effort_provisioning=None, conditions=None, config=None, etag=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, placement_policy=None, pod_ipv4_cidr_size=None, queued_provisioning=None, self_link=None, status=None, status_message=None, update_info=None, upgrade_settings=None, version=None):
         if autoscaling and not isinstance(autoscaling, dict):
             raise TypeError("Expected argument 'autoscaling' to be a dict")
         pulumi.set(__self__, "autoscaling", autoscaling)
+        if best_effort_provisioning and not isinstance(best_effort_provisioning, dict):
+            raise TypeError("Expected argument 'best_effort_provisioning' to be a dict")
+        pulumi.set(__self__, "best_effort_provisioning", best_effort_provisioning)
         if conditions and not isinstance(conditions, list):
             raise TypeError("Expected argument 'conditions' to be a list")
         pulumi.set(__self__, "conditions", conditions)
@@ -59,6 +62,9 @@ class GetNodePoolResult:
         if pod_ipv4_cidr_size and not isinstance(pod_ipv4_cidr_size, int):
             raise TypeError("Expected argument 'pod_ipv4_cidr_size' to be a int")
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
+        if queued_provisioning and not isinstance(queued_provisioning, dict):
+            raise TypeError("Expected argument 'queued_provisioning' to be a dict")
+        pulumi.set(__self__, "queued_provisioning", queued_provisioning)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -85,6 +91,14 @@ class GetNodePoolResult:
         Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         """
         return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> 'outputs.BestEffortProvisioningResponse':
+        """
+        Enable best effort provisioning for nodes
+        """
+        return pulumi.get(self, "best_effort_provisioning")
 
     @property
     @pulumi.getter
@@ -183,6 +197,14 @@ class GetNodePoolResult:
         return pulumi.get(self, "pod_ipv4_cidr_size")
 
     @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> 'outputs.QueuedProvisioningResponse':
+        """
+        Specifies the configuration of queued provisioning.
+        """
+        return pulumi.get(self, "queued_provisioning")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -241,6 +263,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             yield self
         return GetNodePoolResult(
             autoscaling=self.autoscaling,
+            best_effort_provisioning=self.best_effort_provisioning,
             conditions=self.conditions,
             config=self.config,
             etag=self.etag,
@@ -253,6 +276,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             network_config=self.network_config,
             placement_policy=self.placement_policy,
             pod_ipv4_cidr_size=self.pod_ipv4_cidr_size,
+            queued_provisioning=self.queued_provisioning,
             self_link=self.self_link,
             status=self.status,
             status_message=self.status_message,
@@ -283,6 +307,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
 
     return AwaitableGetNodePoolResult(
         autoscaling=pulumi.get(__ret__, 'autoscaling'),
+        best_effort_provisioning=pulumi.get(__ret__, 'best_effort_provisioning'),
         conditions=pulumi.get(__ret__, 'conditions'),
         config=pulumi.get(__ret__, 'config'),
         etag=pulumi.get(__ret__, 'etag'),
@@ -295,6 +320,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
         network_config=pulumi.get(__ret__, 'network_config'),
         placement_policy=pulumi.get(__ret__, 'placement_policy'),
         pod_ipv4_cidr_size=pulumi.get(__ret__, 'pod_ipv4_cidr_size'),
+        queued_provisioning=pulumi.get(__ret__, 'queued_provisioning'),
         self_link=pulumi.get(__ret__, 'self_link'),
         status=pulumi.get(__ret__, 'status'),
         status_message=pulumi.get(__ret__, 'status_message'),

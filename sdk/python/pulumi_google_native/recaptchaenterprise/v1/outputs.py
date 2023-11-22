@@ -58,9 +58,9 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
                  support_non_google_app_store_distribution: bool):
         """
         Settings specific to keys that can be used by Android apps.
-        :param bool allow_all_package_names: If set to true, allowed_package_names are not enforced.
-        :param Sequence[str] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
-        :param bool support_non_google_app_store_distribution: Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+        :param bool allow_all_package_names: Optional. If set to true, allowed_package_names are not enforced.
+        :param Sequence[str] allowed_package_names: Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+        :param bool support_non_google_app_store_distribution: Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
         """
         pulumi.set(__self__, "allow_all_package_names", allow_all_package_names)
         pulumi.set(__self__, "allowed_package_names", allowed_package_names)
@@ -70,7 +70,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
     @pulumi.getter(name="allowAllPackageNames")
     def allow_all_package_names(self) -> bool:
         """
-        If set to true, allowed_package_names are not enforced.
+        Optional. If set to true, allowed_package_names are not enforced.
         """
         return pulumi.get(self, "allow_all_package_names")
 
@@ -78,7 +78,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
     @pulumi.getter(name="allowedPackageNames")
     def allowed_package_names(self) -> Sequence[str]:
         """
-        Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+        Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
         return pulumi.get(self, "allowed_package_names")
 
@@ -86,7 +86,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
     @pulumi.getter(name="supportNonGoogleAppStoreDistribution")
     def support_non_google_app_store_distribution(self) -> bool:
         """
-        Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+        Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
         """
         return pulumi.get(self, "support_non_google_app_store_distribution")
 
@@ -124,7 +124,7 @@ class GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse(dict):
         """
         Contains fields that are required to perform Apple-specific integrity checks.
         :param str key_id: The Apple developer key ID (10-character string).
-        :param str private_key: Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+        :param str private_key: Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account. Ensure that Apple DeviceCheck is enabled for the private key.
         :param str team_id: The Apple team ID (10-character string) owning the provisioning profile used to build your application.
         """
         pulumi.set(__self__, "key_id", key_id)
@@ -143,7 +143,7 @@ class GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse(dict):
     @pulumi.getter(name="privateKey")
     def private_key(self) -> str:
         """
-        Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+        Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account. Ensure that Apple DeviceCheck is enabled for the private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -285,8 +285,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse(dict
                  value: str):
         """
         A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
-        :param str key: The header key to set in the request to the backend server.
-        :param str value: The header value to set in the request to the backend server.
+        :param str key: Optional. The header key to set in the request to the backend server.
+        :param str value: Optional. The header value to set in the request to the backend server.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -295,7 +295,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse(dict
     @pulumi.getter
     def key(self) -> str:
         """
-        The header key to set in the request to the backend server.
+        Optional. The header key to set in the request to the backend server.
         """
         return pulumi.get(self, "key")
 
@@ -303,7 +303,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse(dict
     @pulumi.getter
     def value(self) -> str:
         """
-        The header value to set in the request to the backend server.
+        Optional. The header value to set in the request to the backend server.
         """
         return pulumi.get(self, "value")
 
@@ -317,7 +317,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse(dic
                  path: str):
         """
         A substitute action transparently serves a different page than the one requested.
-        :param str path: The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        :param str path: Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
         """
         pulumi.set(__self__, "path", path)
 
@@ -325,7 +325,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse(dic
     @pulumi.getter
     def path(self) -> str:
         """
-        The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
         """
         return pulumi.get(self, "path")
 
@@ -362,9 +362,9 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
                  apple_developer_id: 'outputs.GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse'):
         """
         Settings specific to keys that can be used by iOS apps.
-        :param bool allow_all_bundle_ids: If set to true, allowed_bundle_ids are not enforced.
-        :param Sequence[str] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
-        :param 'GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse' apple_developer_id: Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        :param bool allow_all_bundle_ids: Optional. If set to true, allowed_bundle_ids are not enforced.
+        :param Sequence[str] allowed_bundle_ids: Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+        :param 'GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse' apple_developer_id: Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         """
         pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
         pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
@@ -374,7 +374,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
     @pulumi.getter(name="allowAllBundleIds")
     def allow_all_bundle_ids(self) -> bool:
         """
-        If set to true, allowed_bundle_ids are not enforced.
+        Optional. If set to true, allowed_bundle_ids are not enforced.
         """
         return pulumi.get(self, "allow_all_bundle_ids")
 
@@ -382,7 +382,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
     @pulumi.getter(name="allowedBundleIds")
     def allowed_bundle_ids(self) -> Sequence[str]:
         """
-        iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+        Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
         return pulumi.get(self, "allowed_bundle_ids")
 
@@ -390,7 +390,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
     @pulumi.getter(name="appleDeveloperId")
     def apple_developer_id(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse':
         """
-        Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         """
         return pulumi.get(self, "apple_developer_id")
 
@@ -424,8 +424,8 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse(dict):
                  testing_score: float):
         """
         Options for user acceptance testing.
-        :param str testing_challenge: For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
-        :param float testing_score: All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
+        :param str testing_challenge: Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+        :param float testing_score: Optional. All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         """
         pulumi.set(__self__, "testing_challenge", testing_challenge)
         pulumi.set(__self__, "testing_score", testing_score)
@@ -434,7 +434,7 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse(dict):
     @pulumi.getter(name="testingChallenge")
     def testing_challenge(self) -> str:
         """
-        For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+        Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
         """
         return pulumi.get(self, "testing_challenge")
 
@@ -442,7 +442,7 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse(dict):
     @pulumi.getter(name="testingScore")
     def testing_score(self) -> float:
         """
-        All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
+        Optional. All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         """
         return pulumi.get(self, "testing_score")
 
@@ -537,10 +537,10 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(dict):
                  integration_type: str):
         """
         Settings specific to keys that can be used by websites.
-        :param bool allow_all_domains: If set to true, it means allowed_domains will not be enforced.
-        :param bool allow_amp_traffic: If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
-        :param Sequence[str] allowed_domains: Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
-        :param str challenge_security_preference: Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+        :param bool allow_all_domains: Optional. If set to true, it means allowed_domains will not be enforced.
+        :param bool allow_amp_traffic: Optional. If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+        :param Sequence[str] allowed_domains: Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
+        :param str challenge_security_preference: Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
         :param str integration_type: Describes how this key is integrated with the website.
         """
         pulumi.set(__self__, "allow_all_domains", allow_all_domains)
@@ -553,7 +553,7 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(dict):
     @pulumi.getter(name="allowAllDomains")
     def allow_all_domains(self) -> bool:
         """
-        If set to true, it means allowed_domains will not be enforced.
+        Optional. If set to true, it means allowed_domains will not be enforced.
         """
         return pulumi.get(self, "allow_all_domains")
 
@@ -561,7 +561,7 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(dict):
     @pulumi.getter(name="allowAmpTraffic")
     def allow_amp_traffic(self) -> bool:
         """
-        If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+        Optional. If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         """
         return pulumi.get(self, "allow_amp_traffic")
 
@@ -569,7 +569,7 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(dict):
     @pulumi.getter(name="allowedDomains")
     def allowed_domains(self) -> Sequence[str]:
         """
-        Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
+        Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
         """
         return pulumi.get(self, "allowed_domains")
 
@@ -577,7 +577,7 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(dict):
     @pulumi.getter(name="challengeSecurityPreference")
     def challenge_security_preference(self) -> str:
         """
-        Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+        Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
         """
         return pulumi.get(self, "challenge_security_preference")
 

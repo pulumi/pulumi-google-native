@@ -39,14 +39,22 @@ class AndroidAttributesResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enabledUnknownSources":
+        if key == "ctsProfileMatch":
+            suggest = "cts_profile_match"
+        elif key == "enabledUnknownSources":
             suggest = "enabled_unknown_sources"
+        elif key == "hasPotentiallyHarmfulApps":
+            suggest = "has_potentially_harmful_apps"
         elif key == "ownerProfileAccount":
             suggest = "owner_profile_account"
         elif key == "ownershipPrivilege":
             suggest = "ownership_privilege"
         elif key == "supportsWorkProfile":
             suggest = "supports_work_profile"
+        elif key == "verifiedBoot":
+            suggest = "verified_boot"
+        elif key == "verifyAppsEnabled":
+            suggest = "verify_apps_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AndroidAttributesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -60,21 +68,41 @@ class AndroidAttributesResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cts_profile_match: bool,
                  enabled_unknown_sources: bool,
+                 has_potentially_harmful_apps: bool,
                  owner_profile_account: bool,
                  ownership_privilege: str,
-                 supports_work_profile: bool):
+                 supports_work_profile: bool,
+                 verified_boot: bool,
+                 verify_apps_enabled: bool):
         """
         Resource representing the Android specific attributes of a Device.
+        :param bool cts_profile_match: Whether the device passes Android CTS compliance.
         :param bool enabled_unknown_sources: Whether applications from unknown sources can be installed on device.
+        :param bool has_potentially_harmful_apps: Whether any potentially harmful apps were detected on the device.
         :param bool owner_profile_account: Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
         :param str ownership_privilege: Ownership privileges on device.
         :param bool supports_work_profile: Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
+        :param bool verified_boot: Whether Android verified boot status is GREEN.
+        :param bool verify_apps_enabled: Whether Google Play Protect Verify Apps is enabled.
         """
+        pulumi.set(__self__, "cts_profile_match", cts_profile_match)
         pulumi.set(__self__, "enabled_unknown_sources", enabled_unknown_sources)
+        pulumi.set(__self__, "has_potentially_harmful_apps", has_potentially_harmful_apps)
         pulumi.set(__self__, "owner_profile_account", owner_profile_account)
         pulumi.set(__self__, "ownership_privilege", ownership_privilege)
         pulumi.set(__self__, "supports_work_profile", supports_work_profile)
+        pulumi.set(__self__, "verified_boot", verified_boot)
+        pulumi.set(__self__, "verify_apps_enabled", verify_apps_enabled)
+
+    @property
+    @pulumi.getter(name="ctsProfileMatch")
+    def cts_profile_match(self) -> bool:
+        """
+        Whether the device passes Android CTS compliance.
+        """
+        return pulumi.get(self, "cts_profile_match")
 
     @property
     @pulumi.getter(name="enabledUnknownSources")
@@ -83,6 +111,14 @@ class AndroidAttributesResponse(dict):
         Whether applications from unknown sources can be installed on device.
         """
         return pulumi.get(self, "enabled_unknown_sources")
+
+    @property
+    @pulumi.getter(name="hasPotentiallyHarmfulApps")
+    def has_potentially_harmful_apps(self) -> bool:
+        """
+        Whether any potentially harmful apps were detected on the device.
+        """
+        return pulumi.get(self, "has_potentially_harmful_apps")
 
     @property
     @pulumi.getter(name="ownerProfileAccount")
@@ -107,6 +143,22 @@ class AndroidAttributesResponse(dict):
         Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
         """
         return pulumi.get(self, "supports_work_profile")
+
+    @property
+    @pulumi.getter(name="verifiedBoot")
+    def verified_boot(self) -> bool:
+        """
+        Whether Android verified boot status is GREEN.
+        """
+        return pulumi.get(self, "verified_boot")
+
+    @property
+    @pulumi.getter(name="verifyAppsEnabled")
+    def verify_apps_enabled(self) -> bool:
+        """
+        Whether Google Play Protect Verify Apps is enabled.
+        """
+        return pulumi.get(self, "verify_apps_enabled")
 
 
 @pulumi.output_type

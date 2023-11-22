@@ -17,27 +17,33 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
+                 batch_mode_priority: Optional[pulumi.Input[int]] = None,
                  config: Optional[pulumi.Input['JobConfigArgs']] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input['JobMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 optimization: Optional[pulumi.Input['JobOptimization']] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  ttl_after_completion_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Job resource.
+        :param pulumi.Input[int] batch_mode_priority: The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this job.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobMode'] mode: The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
+        :param pulumi.Input['JobOptimization'] optimization: Optional. The optimization strategy of the job. The default is `AUTODETECT`.
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
         """
+        if batch_mode_priority is not None:
+            pulumi.set(__self__, "batch_mode_priority", batch_mode_priority)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if input_uri is not None:
@@ -50,6 +56,8 @@ class JobArgs:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if optimization is not None:
+            pulumi.set(__self__, "optimization", optimization)
         if output_uri is not None:
             pulumi.set(__self__, "output_uri", output_uri)
         if project is not None:
@@ -58,6 +66,18 @@ class JobArgs:
             pulumi.set(__self__, "template_id", template_id)
         if ttl_after_completion_days is not None:
             pulumi.set(__self__, "ttl_after_completion_days", ttl_after_completion_days)
+
+    @property
+    @pulumi.getter(name="batchModePriority")
+    def batch_mode_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        """
+        return pulumi.get(self, "batch_mode_priority")
+
+    @batch_mode_priority.setter
+    def batch_mode_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_mode_priority", value)
 
     @property
     @pulumi.getter
@@ -129,6 +149,18 @@ class JobArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def optimization(self) -> Optional[pulumi.Input['JobOptimization']]:
+        """
+        Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+        """
+        return pulumi.get(self, "optimization")
+
+    @optimization.setter
+    def optimization(self, value: Optional[pulumi.Input['JobOptimization']]):
+        pulumi.set(self, "optimization", value)
+
+    @property
     @pulumi.getter(name="outputUri")
     def output_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -179,12 +211,14 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 batch_mode_priority: Optional[pulumi.Input[int]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input['JobMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 optimization: Optional[pulumi.Input['JobOptimization']] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
@@ -195,11 +229,13 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] batch_mode_priority: The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
         :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this job.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobMode'] mode: The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
+        :param pulumi.Input['JobOptimization'] optimization: Optional. The optimization strategy of the job. The default is `AUTODETECT`.
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
@@ -228,12 +264,14 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 batch_mode_priority: Optional[pulumi.Input[int]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input['JobMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 optimization: Optional[pulumi.Input['JobOptimization']] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
@@ -247,12 +285,14 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
+            __props__.__dict__["batch_mode_priority"] = batch_mode_priority
             __props__.__dict__["config"] = config
             __props__.__dict__["input_uri"] = input_uri
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
+            __props__.__dict__["optimization"] = optimization
             __props__.__dict__["output_uri"] = output_uri
             __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id
@@ -286,6 +326,7 @@ class Job(pulumi.CustomResource):
 
         __props__ = JobArgs.__new__(JobArgs)
 
+        __props__.__dict__["batch_mode_priority"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["end_time"] = None
@@ -295,6 +336,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["mode"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["optimization"] = None
         __props__.__dict__["output_uri"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["start_time"] = None
@@ -302,6 +344,14 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["template_id"] = None
         __props__.__dict__["ttl_after_completion_days"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="batchModePriority")
+    def batch_mode_priority(self) -> pulumi.Output[int]:
+        """
+        The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        """
+        return pulumi.get(self, "batch_mode_priority")
 
     @property
     @pulumi.getter
@@ -331,7 +381,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def error(self) -> pulumi.Output['outputs.StatusResponse']:
         """
-        An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+        An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.
         """
         return pulumi.get(self, "error")
 
@@ -371,6 +421,14 @@ class Job(pulumi.CustomResource):
         The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def optimization(self) -> pulumi.Output[str]:
+        """
+        Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+        """
+        return pulumi.get(self, "optimization")
 
     @property
     @pulumi.getter(name="outputUri")

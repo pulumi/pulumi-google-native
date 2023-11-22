@@ -61,7 +61,7 @@ class GetDicomStoreResult:
     @pulumi.getter(name="streamConfigs")
     def stream_configs(self) -> Sequence['outputs.GoogleCloudHealthcareV1beta1DicomStreamConfigResponse']:
         """
-        A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         return pulumi.get(self, "stream_configs")
 

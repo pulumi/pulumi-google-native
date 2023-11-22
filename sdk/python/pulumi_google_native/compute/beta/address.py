@@ -35,7 +35,7 @@ class AddressArgs:
         :param pulumi.Input[str] address: The static IP address represented by this resource.
         :param pulumi.Input['AddressAddressType'] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
-        :param pulumi.Input['AddressIpVersion'] ip_version: The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+        :param pulumi.Input['AddressIpVersion'] ip_version: The IP version that will be used by this address. Valid options are IPV4 or IPV6.
         :param pulumi.Input['AddressIpv6EndpointType'] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
@@ -125,7 +125,7 @@ class AddressArgs:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input['AddressIpVersion']]:
         """
-        The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+        The IP version that will be used by this address. Valid options are IPV4 or IPV6.
         """
         return pulumi.get(self, "ip_version")
 
@@ -280,7 +280,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] address: The static IP address represented by this resource.
         :param pulumi.Input['AddressAddressType'] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
-        :param pulumi.Input['AddressIpVersion'] ip_version: The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+        :param pulumi.Input['AddressIpVersion'] ip_version: The IP version that will be used by this address. Valid options are IPV4 or IPV6.
         :param pulumi.Input['AddressIpv6EndpointType'] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
@@ -445,7 +445,7 @@ class Address(pulumi.CustomResource):
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[str]:
         """
-        The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+        The IP version that will be used by this address. Valid options are IPV4 or IPV6.
         """
         return pulumi.get(self, "ip_version")
 

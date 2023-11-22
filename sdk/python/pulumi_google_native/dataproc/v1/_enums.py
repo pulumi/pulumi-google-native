@@ -8,6 +8,7 @@ __all__ = [
     'GceClusterConfigPrivateIpv6GoogleAccess',
     'GkeNodePoolTargetRolesItem',
     'InstanceGroupConfigPreemptibility',
+    'JupyterConfigKernel',
     'MetricMetricSource',
     'NodeGroupRolesItem',
     'ReservationAffinityConsumeReservationType',
@@ -82,6 +83,24 @@ class InstanceGroupConfigPreemptibility(str, Enum):
     """
 
 
+class JupyterConfigKernel(str, Enum):
+    """
+    Optional. Kernel
+    """
+    KERNEL_UNSPECIFIED = "KERNEL_UNSPECIFIED"
+    """
+    The kernel is unknown.
+    """
+    PYTHON = "PYTHON"
+    """
+    Python kernel.
+    """
+    SCALA = "SCALA"
+    """
+    Scala kernel.
+    """
+
+
 class MetricMetricSource(str, Enum):
     """
     Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information).
@@ -117,6 +136,10 @@ class MetricMetricSource(str, Enum):
     HIVEMETASTORE = "HIVEMETASTORE"
     """
     hivemetastore metric source
+    """
+    FLINK = "FLINK"
+    """
+    flink metric source
     """
 
 

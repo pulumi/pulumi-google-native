@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetQueueResult:
-    def __init__(__self__, app_engine_routing_override=None, name=None, purge_time=None, rate_limits=None, retry_config=None, stackdriver_logging_config=None, state=None):
+    def __init__(__self__, app_engine_routing_override=None, http_target=None, name=None, purge_time=None, rate_limits=None, retry_config=None, stackdriver_logging_config=None, state=None):
         if app_engine_routing_override and not isinstance(app_engine_routing_override, dict):
             raise TypeError("Expected argument 'app_engine_routing_override' to be a dict")
         pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if http_target and not isinstance(http_target, dict):
+            raise TypeError("Expected argument 'http_target' to be a dict")
+        pulumi.set(__self__, "http_target", http_target)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -49,6 +52,14 @@ class GetQueueResult:
         Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
         """
         return pulumi.get(self, "app_engine_routing_override")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> 'outputs.HttpTargetResponse':
+        """
+        Modifies HTTP target for HTTP tasks.
+        """
+        return pulumi.get(self, "http_target")
 
     @property
     @pulumi.getter
@@ -106,6 +117,7 @@ class AwaitableGetQueueResult(GetQueueResult):
             yield self
         return GetQueueResult(
             app_engine_routing_override=self.app_engine_routing_override,
+            http_target=self.http_target,
             name=self.name,
             purge_time=self.purge_time,
             rate_limits=self.rate_limits,
@@ -130,6 +142,7 @@ def get_queue(location: Optional[str] = None,
 
     return AwaitableGetQueueResult(
         app_engine_routing_override=pulumi.get(__ret__, 'app_engine_routing_override'),
+        http_target=pulumi.get(__ret__, 'http_target'),
         name=pulumi.get(__ret__, 'name'),
         purge_time=pulumi.get(__ret__, 'purge_time'),
         rate_limits=pulumi.get(__ret__, 'rate_limits'),

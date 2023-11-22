@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDeviceResult:
-    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, compromised_state=None, create_time=None, device_id=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
+    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, compromised_state=None, create_time=None, device_id=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, hostname=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
         if android_specific_attributes and not isinstance(android_specific_attributes, dict):
             raise TypeError("Expected argument 'android_specific_attributes' to be a dict")
         pulumi.set(__self__, "android_specific_attributes", android_specific_attributes)
@@ -59,6 +59,9 @@ class GetDeviceResult:
         if encryption_state and not isinstance(encryption_state, str):
             raise TypeError("Expected argument 'encryption_state' to be a str")
         pulumi.set(__self__, "encryption_state", encryption_state)
+        if hostname and not isinstance(hostname, str):
+            raise TypeError("Expected argument 'hostname' to be a str")
+        pulumi.set(__self__, "hostname", hostname)
         if imei and not isinstance(imei, str):
             raise TypeError("Expected argument 'imei' to be a str")
         pulumi.set(__self__, "imei", imei)
@@ -214,6 +217,14 @@ class GetDeviceResult:
 
     @property
     @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Host name of the device.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
     def imei(self) -> str:
         """
         IMEI number of device if GSM device; empty otherwise.
@@ -360,6 +371,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             enabled_developer_options=self.enabled_developer_options,
             enabled_usb_debugging=self.enabled_usb_debugging,
             encryption_state=self.encryption_state,
+            hostname=self.hostname,
             imei=self.imei,
             kernel_version=self.kernel_version,
             last_sync_time=self.last_sync_time,
@@ -404,6 +416,7 @@ def get_device(customer: Optional[str] = None,
         enabled_developer_options=pulumi.get(__ret__, 'enabled_developer_options'),
         enabled_usb_debugging=pulumi.get(__ret__, 'enabled_usb_debugging'),
         encryption_state=pulumi.get(__ret__, 'encryption_state'),
+        hostname=pulumi.get(__ret__, 'hostname'),
         imei=pulumi.get(__ret__, 'imei'),
         kernel_version=pulumi.get(__ret__, 'kernel_version'),
         last_sync_time=pulumi.get(__ret__, 'last_sync_time'),

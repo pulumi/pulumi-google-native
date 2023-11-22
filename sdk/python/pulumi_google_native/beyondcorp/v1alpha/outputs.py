@@ -14,25 +14,22 @@ from ._enums import *
 __all__ = [
     'AllocatedConnectionResponse',
     'ApplicationEndpointResponse',
-    'ConfigResponse',
-    'DestinationRouteResponse',
-    'EgressResponse',
     'GatewayResponse',
     'GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponse',
     'GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoResponse',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountResponse',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse',
-    'GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse',
     'GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse',
     'GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse',
     'GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse',
     'GoogleIamV1AuditConfigResponse',
     'GoogleIamV1AuditLogConfigResponse',
     'GoogleIamV1BindingResponse',
     'GoogleTypeExprResponse',
-    'IngressResponse',
-    'PeeredVpcResponse',
     'PrincipalInfoResponse',
     'ResourceInfoResponse',
     'ServiceAccountResponse',
@@ -121,130 +118,6 @@ class ApplicationEndpointResponse(dict):
         Port of the remote application endpoint.
         """
         return pulumi.get(self, "port")
-
-
-@pulumi.output_type
-class ConfigResponse(dict):
-    """
-    The basic ingress config for ClientGateways.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationRoutes":
-            suggest = "destination_routes"
-        elif key == "transportProtocol":
-            suggest = "transport_protocol"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 destination_routes: Sequence['outputs.DestinationRouteResponse'],
-                 transport_protocol: str):
-        """
-        The basic ingress config for ClientGateways.
-        :param Sequence['DestinationRouteResponse'] destination_routes: The settings used to configure basic ClientGateways.
-        :param str transport_protocol: Immutable. The transport protocol used between the client and the server.
-        """
-        pulumi.set(__self__, "destination_routes", destination_routes)
-        pulumi.set(__self__, "transport_protocol", transport_protocol)
-
-    @property
-    @pulumi.getter(name="destinationRoutes")
-    def destination_routes(self) -> Sequence['outputs.DestinationRouteResponse']:
-        """
-        The settings used to configure basic ClientGateways.
-        """
-        return pulumi.get(self, "destination_routes")
-
-    @property
-    @pulumi.getter(name="transportProtocol")
-    def transport_protocol(self) -> str:
-        """
-        Immutable. The transport protocol used between the client and the server.
-        """
-        return pulumi.get(self, "transport_protocol")
-
-
-@pulumi.output_type
-class DestinationRouteResponse(dict):
-    """
-    The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-    """
-    def __init__(__self__, *,
-                 address: str,
-                 netmask: str):
-        """
-        The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-        :param str address: The network address of the subnet for which the packet is routed to the ClientGateway.
-        :param str netmask: The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "netmask", netmask)
-
-    @property
-    @pulumi.getter
-    def address(self) -> str:
-        """
-        The network address of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "address")
-
-    @property
-    @pulumi.getter
-    def netmask(self) -> str:
-        """
-        The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "netmask")
-
-
-@pulumi.output_type
-class EgressResponse(dict):
-    """
-    The details of the egress info. One of the following options should be set.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "peeredVpc":
-            suggest = "peered_vpc"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EgressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EgressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EgressResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 peered_vpc: 'outputs.PeeredVpcResponse'):
-        """
-        The details of the egress info. One of the following options should be set.
-        :param 'PeeredVpcResponse' peered_vpc: A VPC from the consumer project.
-        """
-        pulumi.set(__self__, "peered_vpc", peered_vpc)
-
-    @property
-    @pulumi.getter(name="peeredVpc")
-    def peered_vpc(self) -> 'outputs.PeeredVpcResponse':
-        """
-        A VPC from the consumer project.
-        """
-        return pulumi.get(self, "peered_vpc")
 
 
 @pulumi.output_type
@@ -543,9 +416,9 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse(dict):
+class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse(dict):
     """
-    Message contains the authentication information to validate against the proxy server.
+    Message contains the JWT encryption information for the proxy server.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -554,42 +427,77 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse(dict
             suggest = "encryption_sa_email"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse.__key_warning(key)
+        GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse.__key_warning(key)
+        GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 encryption_sa_email: str):
+                 encryption_sa_email: str,
+                 jwk: str):
         """
-        Message contains the authentication information to validate against the proxy server.
-        :param str encryption_sa_email: Optional. Service Account for encrypting the JWT.
+        Message contains the JWT encryption information for the proxy server.
+        :param str encryption_sa_email: Optional. Service Account for encryption key.
+        :param str jwk: Optional. JWK in string.
         """
         pulumi.set(__self__, "encryption_sa_email", encryption_sa_email)
+        pulumi.set(__self__, "jwk", jwk)
 
     @property
     @pulumi.getter(name="encryptionSaEmail")
     def encryption_sa_email(self) -> str:
         """
-        Optional. Service Account for encrypting the JWT.
+        Optional. Service Account for encryption key.
         """
         return pulumi.get(self, "encryption_sa_email")
+
+    @property
+    @pulumi.getter
+    def jwk(self) -> str:
+        """
+        Optional. JWK in string.
+        """
+        return pulumi.get(self, "jwk")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse(dict):
+    """
+    Message to capture group information
+    """
+    def __init__(__self__, *,
+                 email: str):
+        """
+        Message to capture group information
+        :param str email: The group email id
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The group email id
+        """
+        return pulumi.get(self, "email")
 
 
 @pulumi.output_type
 class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse(dict):
     """
-    Metadata associated with Tenant and is provided by the Partner.
+    Metadata associated with PartnerTenant and is provided by the Partner.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "partnerTenantId":
+        if key == "internalTenantId":
+            suggest = "internal_tenant_id"
+        elif key == "partnerTenantId":
             suggest = "partner_tenant_id"
 
         if suggest:
@@ -604,18 +512,29 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 internal_tenant_id: str,
                  partner_tenant_id: str):
         """
-        Metadata associated with Tenant and is provided by the Partner.
-        :param str partner_tenant_id: Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        Metadata associated with PartnerTenant and is provided by the Partner.
+        :param str internal_tenant_id: Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        :param str partner_tenant_id: Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
         """
+        pulumi.set(__self__, "internal_tenant_id", internal_tenant_id)
         pulumi.set(__self__, "partner_tenant_id", partner_tenant_id)
+
+    @property
+    @pulumi.getter(name="internalTenantId")
+    def internal_tenant_id(self) -> str:
+        """
+        Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        """
+        return pulumi.get(self, "internal_tenant_id")
 
     @property
     @pulumi.getter(name="partnerTenantId")
     def partner_tenant_id(self) -> str:
         """
-        Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
         """
         return pulumi.get(self, "partner_tenant_id")
 
@@ -657,6 +576,39 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse(dict):
         Proxy Auto-Configuration (PAC) URI.
         """
         return pulumi.get(self, "pac_uri")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse(dict):
+    """
+    Message to capture settings for a BrowserDlpRule
+    """
+    def __init__(__self__, *,
+                 type: str,
+                 value: Mapping[str, str]):
+        """
+        Message to capture settings for a BrowserDlpRule
+        :param str type: Immutable. The type of the Setting. .
+        :param Mapping[str, str] value: The value of the Setting.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Immutable. The type of the Setting. .
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Mapping[str, str]:
+        """
+        The value of the Setting.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -910,67 +862,6 @@ class GoogleTypeExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
-
-
-@pulumi.output_type
-class IngressResponse(dict):
-    """
-    Settings of how to connect to the ClientGateway. One of the following options should be set.
-    """
-    def __init__(__self__, *,
-                 config: 'outputs.ConfigResponse'):
-        """
-        Settings of how to connect to the ClientGateway. One of the following options should be set.
-        :param 'ConfigResponse' config: The basic ingress config for ClientGateways.
-        """
-        pulumi.set(__self__, "config", config)
-
-    @property
-    @pulumi.getter
-    def config(self) -> 'outputs.ConfigResponse':
-        """
-        The basic ingress config for ClientGateways.
-        """
-        return pulumi.get(self, "config")
-
-
-@pulumi.output_type
-class PeeredVpcResponse(dict):
-    """
-    The peered VPC owned by the consumer project.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkVpc":
-            suggest = "network_vpc"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeeredVpcResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeeredVpcResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeeredVpcResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 network_vpc: str):
-        """
-        The peered VPC owned by the consumer project.
-        :param str network_vpc: The name of the peered VPC owned by the consumer project.
-        """
-        pulumi.set(__self__, "network_vpc", network_vpc)
-
-    @property
-    @pulumi.getter(name="networkVpc")
-    def network_vpc(self) -> str:
-        """
-        The name of the peered VPC owned by the consumer project.
-        """
-        return pulumi.get(self, "network_vpc")
 
 
 @pulumi.output_type

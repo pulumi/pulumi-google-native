@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetApiProductResult:
-    def __init__(__self__, api_resources=None, approval_type=None, attributes=None, created_at=None, description=None, display_name=None, environments=None, graphql_operation_group=None, last_modified_at=None, name=None, operation_group=None, proxies=None, quota=None, quota_counter_scope=None, quota_interval=None, quota_time_unit=None, scopes=None):
+    def __init__(__self__, api_resources=None, approval_type=None, attributes=None, created_at=None, description=None, display_name=None, environments=None, graphql_operation_group=None, grpc_operation_group=None, last_modified_at=None, name=None, operation_group=None, proxies=None, quota=None, quota_counter_scope=None, quota_interval=None, quota_time_unit=None, scopes=None):
         if api_resources and not isinstance(api_resources, list):
             raise TypeError("Expected argument 'api_resources' to be a list")
         pulumi.set(__self__, "api_resources", api_resources)
@@ -44,6 +44,9 @@ class GetApiProductResult:
         if graphql_operation_group and not isinstance(graphql_operation_group, dict):
             raise TypeError("Expected argument 'graphql_operation_group' to be a dict")
         pulumi.set(__self__, "graphql_operation_group", graphql_operation_group)
+        if grpc_operation_group and not isinstance(grpc_operation_group, dict):
+            raise TypeError("Expected argument 'grpc_operation_group' to be a dict")
+        pulumi.set(__self__, "grpc_operation_group", grpc_operation_group)
         if last_modified_at and not isinstance(last_modified_at, str):
             raise TypeError("Expected argument 'last_modified_at' to be a str")
         pulumi.set(__self__, "last_modified_at", last_modified_at)
@@ -137,6 +140,14 @@ class GetApiProductResult:
         return pulumi.get(self, "graphql_operation_group")
 
     @property
+    @pulumi.getter(name="grpcOperationGroup")
+    def grpc_operation_group(self) -> 'outputs.GoogleCloudApigeeV1GrpcOperationGroupResponse':
+        """
+        Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+        """
+        return pulumi.get(self, "grpc_operation_group")
+
+    @property
     @pulumi.getter(name="lastModifiedAt")
     def last_modified_at(self) -> str:
         """
@@ -223,6 +234,7 @@ class AwaitableGetApiProductResult(GetApiProductResult):
             display_name=self.display_name,
             environments=self.environments,
             graphql_operation_group=self.graphql_operation_group,
+            grpc_operation_group=self.grpc_operation_group,
             last_modified_at=self.last_modified_at,
             name=self.name,
             operation_group=self.operation_group,
@@ -255,6 +267,7 @@ def get_api_product(apiproduct_id: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         environments=pulumi.get(__ret__, 'environments'),
         graphql_operation_group=pulumi.get(__ret__, 'graphql_operation_group'),
+        grpc_operation_group=pulumi.get(__ret__, 'grpc_operation_group'),
         last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
         name=pulumi.get(__ret__, 'name'),
         operation_group=pulumi.get(__ret__, 'operation_group'),

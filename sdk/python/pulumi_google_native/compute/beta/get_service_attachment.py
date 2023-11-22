@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceAttachmentResult:
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, reconcile_connections=None, region=None, self_link=None, target_service=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, reconcile_connections=None, region=None, self_link=None, target_service=None, tunneling_config=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -74,6 +74,9 @@ class GetServiceAttachmentResult:
         if target_service and not isinstance(target_service, str):
             raise TypeError("Expected argument 'target_service' to be a str")
         pulumi.set(__self__, "target_service", target_service)
+        if tunneling_config and not isinstance(tunneling_config, dict):
+            raise TypeError("Expected argument 'tunneling_config' to be a dict")
+        pulumi.set(__self__, "tunneling_config", tunneling_config)
 
     @property
     @pulumi.getter(name="connectedEndpoints")
@@ -191,7 +194,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter(name="reconcileConnections")
     def reconcile_connections(self) -> bool:
         """
-        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         """
         return pulumi.get(self, "reconcile_connections")
 
@@ -219,6 +222,14 @@ class GetServiceAttachmentResult:
         """
         return pulumi.get(self, "target_service")
 
+    @property
+    @pulumi.getter(name="tunnelingConfig")
+    def tunneling_config(self) -> 'outputs.ServiceAttachmentTunnelingConfigResponse':
+        """
+        When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+        """
+        return pulumi.get(self, "tunneling_config")
+
 
 class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
     # pylint: disable=using-constant-test
@@ -243,7 +254,8 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
             reconcile_connections=self.reconcile_connections,
             region=self.region,
             self_link=self.self_link,
-            target_service=self.target_service)
+            target_service=self.target_service,
+            tunneling_config=self.tunneling_config)
 
 
 def get_service_attachment(project: Optional[str] = None,
@@ -278,7 +290,8 @@ def get_service_attachment(project: Optional[str] = None,
         reconcile_connections=pulumi.get(__ret__, 'reconcile_connections'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
-        target_service=pulumi.get(__ret__, 'target_service'))
+        target_service=pulumi.get(__ret__, 'target_service'),
+        tunneling_config=pulumi.get(__ret__, 'tunneling_config'))
 
 
 @_utilities.lift_output_func(get_service_attachment)

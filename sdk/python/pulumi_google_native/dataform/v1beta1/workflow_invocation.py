@@ -24,7 +24,7 @@ class WorkflowInvocationArgs:
                  workflow_config: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkflowInvocation resource.
-        :param pulumi.Input[str] compilation_result: Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        :param pulumi.Input[str] compilation_result: Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         :param pulumi.Input['InvocationConfigArgs'] invocation_config: Immutable. If left unset, a default InvocationConfig will be used.
         :param pulumi.Input[str] workflow_config: Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
         """
@@ -53,7 +53,7 @@ class WorkflowInvocationArgs:
     @pulumi.getter(name="compilationResult")
     def compilation_result(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         """
         return pulumi.get(self, "compilation_result")
 
@@ -122,7 +122,7 @@ class WorkflowInvocation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compilation_result: Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        :param pulumi.Input[str] compilation_result: Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         :param pulumi.Input[pulumi.InputType['InvocationConfigArgs']] invocation_config: Immutable. If left unset, a default InvocationConfig will be used.
         :param pulumi.Input[str] workflow_config: Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
         """
@@ -176,6 +176,7 @@ class WorkflowInvocation(pulumi.CustomResource):
             __props__.__dict__["workflow_config"] = workflow_config
             __props__.__dict__["invocation_timing"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["resolved_compilation_result"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -208,6 +209,7 @@ class WorkflowInvocation(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["repository_id"] = None
+        __props__.__dict__["resolved_compilation_result"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["workflow_config"] = None
         return WorkflowInvocation(resource_name, opts=opts, __props__=__props__)
@@ -216,7 +218,7 @@ class WorkflowInvocation(pulumi.CustomResource):
     @pulumi.getter(name="compilationResult")
     def compilation_result(self) -> pulumi.Output[str]:
         """
-        Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         """
         return pulumi.get(self, "compilation_result")
 
@@ -258,6 +260,14 @@ class WorkflowInvocation(pulumi.CustomResource):
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "repository_id")
+
+    @property
+    @pulumi.getter(name="resolvedCompilationResult")
+    def resolved_compilation_result(self) -> pulumi.Output[str]:
+        """
+        The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        """
+        return pulumi.get(self, "resolved_compilation_result")
 
     @property
     @pulumi.getter

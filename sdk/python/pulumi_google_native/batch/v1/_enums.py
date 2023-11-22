@@ -11,6 +11,7 @@ __all__ = [
     'MessageNewJobState',
     'MessageNewTaskState',
     'MessageType',
+    'TaskGroupSchedulingPolicy',
 ]
 
 
@@ -77,6 +78,9 @@ class MessageNewJobState(str, Enum):
     The new job state.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Job state unspecified.
+    """
     QUEUED = "QUEUED"
     """
     Job is admitted (validated and persisted) and waiting for resources.
@@ -152,4 +156,22 @@ class MessageType(str, Enum):
     TASK_STATE_CHANGED = "TASK_STATE_CHANGED"
     """
     Notify users that the task state has changed.
+    """
+
+
+class TaskGroupSchedulingPolicy(str, Enum):
+    """
+    Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
+    """
+    SCHEDULING_POLICY_UNSPECIFIED = "SCHEDULING_POLICY_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    AS_SOON_AS_POSSIBLE = "AS_SOON_AS_POSSIBLE"
+    """
+    Run Tasks as soon as resources are available. Tasks might be executed in parallel depending on parallelism and task_count values.
+    """
+    IN_ORDER = "IN_ORDER"
+    """
+    Run Tasks sequentially with increased task index.
     """

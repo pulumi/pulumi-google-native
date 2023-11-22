@@ -19,6 +19,7 @@ __all__ = [
     'DataProviderResponse',
     'ExprResponse',
     'PublisherResponse',
+    'RestrictedExportConfigResponse',
 ]
 
 @pulumi.output_type
@@ -342,5 +343,68 @@ class PublisherResponse(dict):
         Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
         """
         return pulumi.get(self, "primary_contact")
+
+
+@pulumi.output_type
+class RestrictedExportConfigResponse(dict):
+    """
+    Restricted export config, used to configure restricted export on linked dataset.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "restrictDirectTableAccess":
+            suggest = "restrict_direct_table_access"
+        elif key == "restrictQueryResult":
+            suggest = "restrict_query_result"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestrictedExportConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestrictedExportConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestrictedExportConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 restrict_direct_table_access: bool,
+                 restrict_query_result: bool):
+        """
+        Restricted export config, used to configure restricted export on linked dataset.
+        :param bool enabled: Optional. If true, enable restricted export.
+        :param bool restrict_direct_table_access: If true, restrict direct table access(read api/tabledata.list) on linked table.
+        :param bool restrict_query_result: Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "restrict_direct_table_access", restrict_direct_table_access)
+        pulumi.set(__self__, "restrict_query_result", restrict_query_result)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Optional. If true, enable restricted export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="restrictDirectTableAccess")
+    def restrict_direct_table_access(self) -> bool:
+        """
+        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        """
+        return pulumi.get(self, "restrict_direct_table_access")
+
+    @property
+    @pulumi.getter(name="restrictQueryResult")
+    def restrict_query_result(self) -> bool:
+        """
+        Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        return pulumi.get(self, "restrict_query_result")
 
 

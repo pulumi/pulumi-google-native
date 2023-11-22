@@ -12,25 +12,22 @@ from ._enums import *
 
 __all__ = [
     'ApplicationEndpointArgs',
-    'ConfigArgs',
-    'DestinationRouteArgs',
-    'EgressArgs',
     'GatewayArgs',
     'GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointArgs',
     'GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs',
-    'GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs',
     'GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs',
     'GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs',
     'GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
     'GoogleTypeExprArgs',
-    'IngressArgs',
-    'PeeredVpcArgs',
     'PrincipalInfoArgs',
     'ResourceInfoArgs',
     'ServiceAccountArgs',
@@ -72,106 +69,6 @@ class ApplicationEndpointArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
-
-
-@pulumi.input_type
-class ConfigArgs:
-    def __init__(__self__, *,
-                 destination_routes: pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]],
-                 transport_protocol: pulumi.Input['ConfigTransportProtocol']):
-        """
-        The basic ingress config for ClientGateways.
-        :param pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]] destination_routes: The settings used to configure basic ClientGateways.
-        :param pulumi.Input['ConfigTransportProtocol'] transport_protocol: Immutable. The transport protocol used between the client and the server.
-        """
-        pulumi.set(__self__, "destination_routes", destination_routes)
-        pulumi.set(__self__, "transport_protocol", transport_protocol)
-
-    @property
-    @pulumi.getter(name="destinationRoutes")
-    def destination_routes(self) -> pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]]:
-        """
-        The settings used to configure basic ClientGateways.
-        """
-        return pulumi.get(self, "destination_routes")
-
-    @destination_routes.setter
-    def destination_routes(self, value: pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]]):
-        pulumi.set(self, "destination_routes", value)
-
-    @property
-    @pulumi.getter(name="transportProtocol")
-    def transport_protocol(self) -> pulumi.Input['ConfigTransportProtocol']:
-        """
-        Immutable. The transport protocol used between the client and the server.
-        """
-        return pulumi.get(self, "transport_protocol")
-
-    @transport_protocol.setter
-    def transport_protocol(self, value: pulumi.Input['ConfigTransportProtocol']):
-        pulumi.set(self, "transport_protocol", value)
-
-
-@pulumi.input_type
-class DestinationRouteArgs:
-    def __init__(__self__, *,
-                 address: pulumi.Input[str],
-                 netmask: pulumi.Input[str]):
-        """
-        The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-        :param pulumi.Input[str] address: The network address of the subnet for which the packet is routed to the ClientGateway.
-        :param pulumi.Input[str] netmask: The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "netmask", netmask)
-
-    @property
-    @pulumi.getter
-    def address(self) -> pulumi.Input[str]:
-        """
-        The network address of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "address")
-
-    @address.setter
-    def address(self, value: pulumi.Input[str]):
-        pulumi.set(self, "address", value)
-
-    @property
-    @pulumi.getter
-    def netmask(self) -> pulumi.Input[str]:
-        """
-        The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "netmask")
-
-    @netmask.setter
-    def netmask(self, value: pulumi.Input[str]):
-        pulumi.set(self, "netmask", value)
-
-
-@pulumi.input_type
-class EgressArgs:
-    def __init__(__self__, *,
-                 peered_vpc: Optional[pulumi.Input['PeeredVpcArgs']] = None):
-        """
-        The details of the egress info. One of the following options should be set.
-        :param pulumi.Input['PeeredVpcArgs'] peered_vpc: A VPC from the consumer project.
-        """
-        if peered_vpc is not None:
-            pulumi.set(__self__, "peered_vpc", peered_vpc)
-
-    @property
-    @pulumi.getter(name="peeredVpc")
-    def peered_vpc(self) -> Optional[pulumi.Input['PeeredVpcArgs']]:
-        """
-        A VPC from the consumer project.
-        """
-        return pulumi.get(self, "peered_vpc")
-
-    @peered_vpc.setter
-    def peered_vpc(self, value: Optional[pulumi.Input['PeeredVpcArgs']]):
-        pulumi.set(self, "peered_vpc", value)
 
 
 @pulumi.input_type
@@ -409,21 +306,25 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs:
 
 
 @pulumi.input_type
-class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs:
+class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs:
     def __init__(__self__, *,
-                 encryption_sa_email: Optional[pulumi.Input[str]] = None):
+                 encryption_sa_email: Optional[pulumi.Input[str]] = None,
+                 jwk: Optional[pulumi.Input[str]] = None):
         """
-        Message contains the authentication information to validate against the proxy server.
-        :param pulumi.Input[str] encryption_sa_email: Optional. Service Account for encrypting the JWT.
+        Message contains the JWT encryption information for the proxy server.
+        :param pulumi.Input[str] encryption_sa_email: Optional. Service Account for encryption key.
+        :param pulumi.Input[str] jwk: Optional. JWK in string.
         """
         if encryption_sa_email is not None:
             pulumi.set(__self__, "encryption_sa_email", encryption_sa_email)
+        if jwk is not None:
+            pulumi.set(__self__, "jwk", jwk)
 
     @property
     @pulumi.getter(name="encryptionSaEmail")
     def encryption_sa_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Service Account for encrypting the JWT.
+        Optional. Service Account for encryption key.
         """
         return pulumi.get(self, "encryption_sa_email")
 
@@ -431,23 +332,91 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs:
     def encryption_sa_email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encryption_sa_email", value)
 
+    @property
+    @pulumi.getter
+    def jwk(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. JWK in string.
+        """
+        return pulumi.get(self, "jwk")
+
+    @jwk.setter
+    def jwk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jwk", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        Message to capture group information
+        :param pulumi.Input[str] email: The group email id
+        :param pulumi.Input[str] id: Google group id
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group email id
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Google group id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
 
 @pulumi.input_type
 class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs:
     def __init__(__self__, *,
+                 internal_tenant_id: Optional[pulumi.Input[str]] = None,
                  partner_tenant_id: Optional[pulumi.Input[str]] = None):
         """
-        Metadata associated with Tenant and is provided by the Partner.
-        :param pulumi.Input[str] partner_tenant_id: Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        Metadata associated with PartnerTenant and is provided by the Partner.
+        :param pulumi.Input[str] internal_tenant_id: Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        :param pulumi.Input[str] partner_tenant_id: Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
         """
+        if internal_tenant_id is not None:
+            pulumi.set(__self__, "internal_tenant_id", internal_tenant_id)
         if partner_tenant_id is not None:
             pulumi.set(__self__, "partner_tenant_id", partner_tenant_id)
+
+    @property
+    @pulumi.getter(name="internalTenantId")
+    def internal_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        """
+        return pulumi.get(self, "internal_tenant_id")
+
+    @internal_tenant_id.setter
+    def internal_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_tenant_id", value)
 
     @property
     @pulumi.getter(name="partnerTenantId")
     def partner_tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
         """
         return pulumi.get(self, "partner_tenant_id")
 
@@ -477,6 +446,44 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs:
     @pac_uri.setter
     def pac_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "pac_uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        """
+        Message to capture settings for a BrowserDlpRule
+        :param pulumi.Input[str] type: Immutable. The type of the Setting. .
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value: The value of the Setting.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Immutable. The type of the Setting. .
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        The value of the Setting.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -724,53 +731,6 @@ class GoogleTypeExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class IngressArgs:
-    def __init__(__self__, *,
-                 config: Optional[pulumi.Input['ConfigArgs']] = None):
-        """
-        Settings of how to connect to the ClientGateway. One of the following options should be set.
-        :param pulumi.Input['ConfigArgs'] config: The basic ingress config for ClientGateways.
-        """
-        if config is not None:
-            pulumi.set(__self__, "config", config)
-
-    @property
-    @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ConfigArgs']]:
-        """
-        The basic ingress config for ClientGateways.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: Optional[pulumi.Input['ConfigArgs']]):
-        pulumi.set(self, "config", value)
-
-
-@pulumi.input_type
-class PeeredVpcArgs:
-    def __init__(__self__, *,
-                 network_vpc: pulumi.Input[str]):
-        """
-        The peered VPC owned by the consumer project.
-        :param pulumi.Input[str] network_vpc: The name of the peered VPC owned by the consumer project.
-        """
-        pulumi.set(__self__, "network_vpc", network_vpc)
-
-    @property
-    @pulumi.getter(name="networkVpc")
-    def network_vpc(self) -> pulumi.Input[str]:
-        """
-        The name of the peered VPC owned by the consumer project.
-        """
-        return pulumi.get(self, "network_vpc")
-
-    @network_vpc.setter
-    def network_vpc(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network_vpc", value)
 
 
 @pulumi.input_type

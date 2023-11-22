@@ -123,6 +123,9 @@ class PolicyAlternativeNameServerConfigTargetNameServerForwardingPath(str, Enum)
 
 
 class RRSetRoutingPolicyLoadBalancerTargetIpProtocol(str, Enum):
+    """
+    The protocol of the load balancer to health check.
+    """
     UNDEFINED = "undefined"
     TCP = "tcp"
     UDP = "udp"
@@ -130,10 +133,12 @@ class RRSetRoutingPolicyLoadBalancerTargetIpProtocol(str, Enum):
 
 class RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(str, Enum):
     """
-    The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+    The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. 
     """
     NONE = "none"
+    GLOBAL_L7ILB = "globalL7ilb"
     REGIONAL_L4ILB = "regionalL4ilb"
+    REGIONAL_L7ILB = "regionalL7ilb"
 
 
 class ResponsePolicyRuleBehavior(str, Enum):

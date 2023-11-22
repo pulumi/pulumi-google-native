@@ -5,10 +5,26 @@
 from enum import Enum
 
 __all__ = [
+    'BudgetOwnershipScope',
     'GoogleCloudBillingBudgetsV1FilterCalendarPeriod',
     'GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment',
     'GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis',
 ]
+
+
+class BudgetOwnershipScope(str, Enum):
+    OWNERSHIP_SCOPE_UNSPECIFIED = "OWNERSHIP_SCOPE_UNSPECIFIED"
+    """
+    Unspecified ownership scope, same as ALL_USERS.
+    """
+    ALL_USERS = "ALL_USERS"
+    """
+    Both billing account-level users and project-level users have full access to the budget, if the users have the required IAM permissions.
+    """
+    BILLING_ACCOUNT = "BILLING_ACCOUNT"
+    """
+    Only billing account-level users have full access to the budget. Project-level users have read-only access, even if they have the required IAM permissions.
+    """
 
 
 class GoogleCloudBillingBudgetsV1FilterCalendarPeriod(str, Enum):

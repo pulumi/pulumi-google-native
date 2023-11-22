@@ -8,12 +8,14 @@ __all__ = [
     'EntityTypeAutoExpansionMode',
     'EntityTypeKind',
     'ExperimentState',
+    'GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType',
     'GoogleCloudDialogflowCxV3ExperimentResultMetricCountType',
     'GoogleCloudDialogflowCxV3ExperimentResultMetricType',
     'GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding',
     'GoogleCloudDialogflowCxV3InputAudioConfigModelVariant',
     'GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode',
     'GoogleCloudDialogflowCxV3NluSettingsModelType',
+    'GoogleCloudDialogflowCxV3ResponseMessageResponseType',
     'GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat',
     'GoogleCloudDialogflowCxV3TestCaseResultTestResult',
     'GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod',
@@ -21,6 +23,7 @@ __all__ = [
     'SecuritySettingPurgeDataTypesItem',
     'SecuritySettingRedactionScope',
     'SecuritySettingRedactionStrategy',
+    'SecuritySettingRetentionStrategy',
     'SessionEntityTypeEntityOverrideMode',
 ]
 
@@ -84,6 +87,28 @@ class ExperimentState(str, Enum):
     ROLLOUT_FAILED = "ROLLOUT_FAILED"
     """
     The experiment with auto-rollout enabled has failed.
+    """
+
+
+class GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType(str, Enum):
+    """
+    The type of the connected data store.
+    """
+    DATA_STORE_TYPE_UNSPECIFIED = "DATA_STORE_TYPE_UNSPECIFIED"
+    """
+    Not specified. This value indicates that the data store type is not specified, so it will not be used during search.
+    """
+    PUBLIC_WEB = "PUBLIC_WEB"
+    """
+    A data store that contains public web content.
+    """
+    UNSTRUCTURED = "UNSTRUCTURED"
+    """
+    A data store that contains unstructured private data.
+    """
+    STRUCTURED = "STRUCTURED"
+    """
+    A data store that contains structured data (for example FAQ).
     """
 
 
@@ -235,6 +260,28 @@ class GoogleCloudDialogflowCxV3NluSettingsModelType(str, Enum):
     """
 
 
+class GoogleCloudDialogflowCxV3ResponseMessageResponseType(str, Enum):
+    """
+    Response type.
+    """
+    RESPONSE_TYPE_UNSPECIFIED = "RESPONSE_TYPE_UNSPECIFIED"
+    """
+    Not specified.
+    """
+    ENTRY_PROMPT = "ENTRY_PROMPT"
+    """
+    The response is from an entry prompt in the page.
+    """
+    PARAMETER_PROMPT = "PARAMETER_PROMPT"
+    """
+    The response is from form-filling prompt in the page.
+    """
+    HANDLER_PROMPT = "HANDLER_PROMPT"
+    """
+    The response is from a transition route or an event handler in the page or flow or transition route group.
+    """
+
+
 class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat(str, Enum):
     """
     File format for exported audio file. Currently only in telephony recordings.
@@ -367,6 +414,20 @@ class SecuritySettingRedactionStrategy(str, Enum):
     REDACT_WITH_SERVICE = "REDACT_WITH_SERVICE"
     """
     Call redaction service to clean up the data to be persisted.
+    """
+
+
+class SecuritySettingRetentionStrategy(str, Enum):
+    """
+    Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+    """
+    RETENTION_STRATEGY_UNSPECIFIED = "RETENTION_STRATEGY_UNSPECIFIED"
+    """
+    Retains the persisted data with Dialogflow's internal default 365d TTLs.
+    """
+    REMOVE_AFTER_CONVERSATION = "REMOVE_AFTER_CONVERSATION"
+    """
+    Removes data when the conversation ends. If there is no Conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
     """
 
 

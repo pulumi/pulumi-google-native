@@ -43,6 +43,10 @@ class InternalRangeOverlapsItem(str, Enum):
     """
     Allow creation of static routes more specific than the current internal range.
     """
+    OVERLAP_EXISTING_SUBNET_RANGE = "OVERLAP_EXISTING_SUBNET_RANGE"
+    """
+    Allow creation of internal ranges that overlap with existing subnets.
+    """
 
 
 class InternalRangePeering(str, Enum):

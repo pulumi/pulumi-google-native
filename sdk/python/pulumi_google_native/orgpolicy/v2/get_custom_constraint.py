@@ -56,7 +56,7 @@ class GetCustomConstraintResult:
     @pulumi.getter
     def condition(self) -> str:
         """
-        Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         """
         return pulumi.get(self, "condition")
 

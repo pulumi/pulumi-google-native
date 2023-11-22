@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketResult:
-    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
+    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, object_retention=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, soft_delete_policy=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
@@ -74,6 +74,9 @@ class GetBucketResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if object_retention and not isinstance(object_retention, dict):
+            raise TypeError("Expected argument 'object_retention' to be a dict")
+        pulumi.set(__self__, "object_retention", object_retention)
         if owner and not isinstance(owner, dict):
             raise TypeError("Expected argument 'owner' to be a dict")
         pulumi.set(__self__, "owner", owner)
@@ -92,6 +95,9 @@ class GetBucketResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if soft_delete_policy and not isinstance(soft_delete_policy, dict):
+            raise TypeError("Expected argument 'soft_delete_policy' to be a dict")
+        pulumi.set(__self__, "soft_delete_policy", soft_delete_policy)
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
@@ -253,6 +259,14 @@ class GetBucketResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="objectRetention")
+    def object_retention(self) -> 'outputs.BucketObjectRetentionResponse':
+        """
+        The bucket's object retention config.
+        """
+        return pulumi.get(self, "object_retention")
+
+    @property
     @pulumi.getter
     def owner(self) -> 'outputs.BucketOwnerResponse':
         """
@@ -299,6 +313,14 @@ class GetBucketResult:
         The URI of this bucket.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="softDeletePolicy")
+    def soft_delete_policy(self) -> 'outputs.BucketSoftDeletePolicyResponse':
+        """
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+        """
+        return pulumi.get(self, "soft_delete_policy")
 
     @property
     @pulumi.getter(name="storageClass")
@@ -365,12 +387,14 @@ class AwaitableGetBucketResult(GetBucketResult):
             logging=self.logging,
             metageneration=self.metageneration,
             name=self.name,
+            object_retention=self.object_retention,
             owner=self.owner,
             project_number=self.project_number,
             retention_policy=self.retention_policy,
             rpo=self.rpo,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
+            soft_delete_policy=self.soft_delete_policy,
             storage_class=self.storage_class,
             time_created=self.time_created,
             updated=self.updated,
@@ -415,12 +439,14 @@ def get_bucket(bucket: Optional[str] = None,
         logging=pulumi.get(__ret__, 'logging'),
         metageneration=pulumi.get(__ret__, 'metageneration'),
         name=pulumi.get(__ret__, 'name'),
+        object_retention=pulumi.get(__ret__, 'object_retention'),
         owner=pulumi.get(__ret__, 'owner'),
         project_number=pulumi.get(__ret__, 'project_number'),
         retention_policy=pulumi.get(__ret__, 'retention_policy'),
         rpo=pulumi.get(__ret__, 'rpo'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        soft_delete_policy=pulumi.get(__ret__, 'soft_delete_policy'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
         time_created=pulumi.get(__ret__, 'time_created'),
         updated=pulumi.get(__ret__, 'updated'),

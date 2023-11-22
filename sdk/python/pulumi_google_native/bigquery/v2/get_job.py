@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, configuration=None, etag=None, job_reference=None, kind=None, self_link=None, statistics=None, status=None, user_email=None):
+    def __init__(__self__, configuration=None, etag=None, job_creation_reason=None, job_reference=None, kind=None, self_link=None, statistics=None, status=None, user_email=None):
         if configuration and not isinstance(configuration, dict):
             raise TypeError("Expected argument 'configuration' to be a dict")
         pulumi.set(__self__, "configuration", configuration)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if job_creation_reason and not isinstance(job_creation_reason, dict):
+            raise TypeError("Expected argument 'job_creation_reason' to be a dict")
+        pulumi.set(__self__, "job_creation_reason", job_creation_reason)
         if job_reference and not isinstance(job_reference, dict):
             raise TypeError("Expected argument 'job_reference' to be a dict")
         pulumi.set(__self__, "job_reference", job_reference)
@@ -60,6 +63,14 @@ class GetJobResult:
         A hash of this resource.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="jobCreationReason")
+    def job_creation_reason(self) -> Any:
+        """
+        If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
+        """
+        return pulumi.get(self, "job_creation_reason")
 
     @property
     @pulumi.getter(name="jobReference")
@@ -118,6 +129,7 @@ class AwaitableGetJobResult(GetJobResult):
         return GetJobResult(
             configuration=self.configuration,
             etag=self.etag,
+            job_creation_reason=self.job_creation_reason,
             job_reference=self.job_reference,
             kind=self.kind,
             self_link=self.self_link,
@@ -143,6 +155,7 @@ def get_job(job_id: Optional[str] = None,
     return AwaitableGetJobResult(
         configuration=pulumi.get(__ret__, 'configuration'),
         etag=pulumi.get(__ret__, 'etag'),
+        job_creation_reason=pulumi.get(__ret__, 'job_creation_reason'),
         job_reference=pulumi.get(__ret__, 'job_reference'),
         kind=pulumi.get(__ret__, 'kind'),
         self_link=pulumi.get(__ret__, 'self_link'),

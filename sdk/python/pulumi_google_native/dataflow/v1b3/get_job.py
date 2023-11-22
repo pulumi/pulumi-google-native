@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, client_request_id=None, create_time=None, created_from_snapshot_id=None, current_state=None, current_state_time=None, environment=None, execution_info=None, job_metadata=None, labels=None, location=None, name=None, pipeline_description=None, project=None, replace_job_id=None, replaced_by_job_id=None, requested_state=None, runtime_updatable_params=None, satisfies_pzs=None, stage_states=None, start_time=None, steps=None, steps_location=None, temp_files=None, transform_name_mapping=None, type=None):
+    def __init__(__self__, client_request_id=None, create_time=None, created_from_snapshot_id=None, current_state=None, current_state_time=None, environment=None, execution_info=None, job_metadata=None, labels=None, location=None, name=None, pipeline_description=None, project=None, replace_job_id=None, replaced_by_job_id=None, requested_state=None, runtime_updatable_params=None, satisfies_pzi=None, satisfies_pzs=None, stage_states=None, start_time=None, steps=None, steps_location=None, temp_files=None, transform_name_mapping=None, type=None):
         if client_request_id and not isinstance(client_request_id, str):
             raise TypeError("Expected argument 'client_request_id' to be a str")
         pulumi.set(__self__, "client_request_id", client_request_id)
@@ -71,6 +71,9 @@ class GetJobResult:
         if runtime_updatable_params and not isinstance(runtime_updatable_params, dict):
             raise TypeError("Expected argument 'runtime_updatable_params' to be a dict")
         pulumi.set(__self__, "runtime_updatable_params", runtime_updatable_params)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -223,7 +226,7 @@ class GetJobResult:
     @pulumi.getter(name="requestedState")
     def requested_state(self) -> str:
         """
-        The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
         """
         return pulumi.get(self, "requested_state")
 
@@ -234,6 +237,14 @@ class GetJobResult:
         This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         """
         return pulumi.get(self, "runtime_updatable_params")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -323,6 +334,7 @@ class AwaitableGetJobResult(GetJobResult):
             replaced_by_job_id=self.replaced_by_job_id,
             requested_state=self.requested_state,
             runtime_updatable_params=self.runtime_updatable_params,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             stage_states=self.stage_states,
             start_time=self.start_time,
@@ -367,6 +379,7 @@ def get_job(job_id: Optional[str] = None,
         replaced_by_job_id=pulumi.get(__ret__, 'replaced_by_job_id'),
         requested_state=pulumi.get(__ret__, 'requested_state'),
         runtime_updatable_params=pulumi.get(__ret__, 'runtime_updatable_params'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         stage_states=pulumi.get(__ret__, 'stage_states'),
         start_time=pulumi.get(__ret__, 'start_time'),

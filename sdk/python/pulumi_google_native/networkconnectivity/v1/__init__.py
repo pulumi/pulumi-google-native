@@ -7,10 +7,11 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .get_hub import *
+from .get_hub_group_iam_policy import *
 from .get_hub_iam_policy import *
 from .get_internal_range import *
+from .get_policy_based_route import *
 from .get_policy_based_route_iam_policy import *
-from .get_service_class import *
 from .get_service_class_iam_policy import *
 from .get_service_connection_map import *
 from .get_service_connection_map_iam_policy import *
@@ -20,14 +21,17 @@ from .get_service_connection_token import *
 from .get_spoke import *
 from .get_spoke_iam_policy import *
 from .hub import *
+from .hub_group_iam_binding import *
+from .hub_group_iam_member import *
+from .hub_group_iam_policy import *
 from .hub_iam_binding import *
 from .hub_iam_member import *
 from .hub_iam_policy import *
 from .internal_range import *
+from .policy_based_route import *
 from .policy_based_route_iam_binding import *
 from .policy_based_route_iam_member import *
 from .policy_based_route_iam_policy import *
-from .service_class import *
 from .service_class_iam_binding import *
 from .service_class_iam_member import *
 from .service_class_iam_policy import *

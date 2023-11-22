@@ -18,6 +18,8 @@ __all__ = ['ReservationInitArgs', 'Reservation']
 class ReservationInitArgs:
     def __init__(__self__, *,
                  aggregate_reservation: Optional[pulumi.Input['AllocationAggregateReservationArgs']] = None,
+                 delete_after_duration: Optional[pulumi.Input['DurationArgs']] = None,
+                 delete_at_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -30,6 +32,8 @@ class ReservationInitArgs:
         """
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input['AllocationAggregateReservationArgs'] aggregate_reservation: Reservation for aggregated resources, providing shape flexibility.
+        :param pulumi.Input['DurationArgs'] delete_after_duration: Duration time relative to reservation creation when GCE will automatically delete this resource.
+        :param pulumi.Input[str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -41,6 +45,10 @@ class ReservationInitArgs:
         """
         if aggregate_reservation is not None:
             pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
+        if delete_after_duration is not None:
+            pulumi.set(__self__, "delete_after_duration", delete_after_duration)
+        if delete_at_time is not None:
+            pulumi.set(__self__, "delete_at_time", delete_at_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -71,6 +79,30 @@ class ReservationInitArgs:
     @aggregate_reservation.setter
     def aggregate_reservation(self, value: Optional[pulumi.Input['AllocationAggregateReservationArgs']]):
         pulumi.set(self, "aggregate_reservation", value)
+
+    @property
+    @pulumi.getter(name="deleteAfterDuration")
+    def delete_after_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
+        """
+        Duration time relative to reservation creation when GCE will automatically delete this resource.
+        """
+        return pulumi.get(self, "delete_after_duration")
+
+    @delete_after_duration.setter
+    def delete_after_duration(self, value: Optional[pulumi.Input['DurationArgs']]):
+        pulumi.set(self, "delete_after_duration", value)
+
+    @property
+    @pulumi.getter(name="deleteAtTime")
+    def delete_at_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        """
+        return pulumi.get(self, "delete_at_time")
+
+    @delete_at_time.setter
+    def delete_at_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_at_time", value)
 
     @property
     @pulumi.getter
@@ -184,6 +216,8 @@ class Reservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregate_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationAggregateReservationArgs']]] = None,
+                 delete_after_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 delete_at_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -200,6 +234,8 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AllocationAggregateReservationArgs']] aggregate_reservation: Reservation for aggregated resources, providing shape flexibility.
+        :param pulumi.Input[pulumi.InputType['DurationArgs']] delete_after_duration: Duration time relative to reservation creation when GCE will automatically delete this resource.
+        :param pulumi.Input[str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -234,6 +270,8 @@ class Reservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregate_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationAggregateReservationArgs']]] = None,
+                 delete_after_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 delete_at_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -253,6 +291,8 @@ class Reservation(pulumi.CustomResource):
             __props__ = ReservationInitArgs.__new__(ReservationInitArgs)
 
             __props__.__dict__["aggregate_reservation"] = aggregate_reservation
+            __props__.__dict__["delete_after_duration"] = delete_after_duration
+            __props__.__dict__["delete_at_time"] = delete_at_time
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -297,6 +337,8 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["aggregate_reservation"] = None
         __props__.__dict__["commitment"] = None
         __props__.__dict__["creation_timestamp"] = None
+        __props__.__dict__["delete_after_duration"] = None
+        __props__.__dict__["delete_at_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
@@ -337,6 +379,22 @@ class Reservation(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="deleteAfterDuration")
+    def delete_after_duration(self) -> pulumi.Output['outputs.DurationResponse']:
+        """
+        Duration time relative to reservation creation when GCE will automatically delete this resource.
+        """
+        return pulumi.get(self, "delete_after_duration")
+
+    @property
+    @pulumi.getter(name="deleteAtTime")
+    def delete_at_time(self) -> pulumi.Output[str]:
+        """
+        Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        """
+        return pulumi.get(self, "delete_at_time")
 
     @property
     @pulumi.getter

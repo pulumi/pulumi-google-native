@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetStreamResult:
-    def __init__(__self__, backfill_all=None, backfill_none=None, create_time=None, customer_managed_encryption_key=None, destination_config=None, display_name=None, errors=None, labels=None, name=None, source_config=None, state=None, update_time=None):
+    def __init__(__self__, backfill_all=None, backfill_none=None, create_time=None, customer_managed_encryption_key=None, destination_config=None, display_name=None, errors=None, labels=None, last_recovery_time=None, name=None, source_config=None, state=None, update_time=None):
         if backfill_all and not isinstance(backfill_all, dict):
             raise TypeError("Expected argument 'backfill_all' to be a dict")
         pulumi.set(__self__, "backfill_all", backfill_all)
@@ -44,6 +44,9 @@ class GetStreamResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if last_recovery_time and not isinstance(last_recovery_time, str):
+            raise TypeError("Expected argument 'last_recovery_time' to be a str")
+        pulumi.set(__self__, "last_recovery_time", last_recovery_time)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -122,6 +125,14 @@ class GetStreamResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="lastRecoveryTime")
+    def last_recovery_time(self) -> str:
+        """
+        If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
+        """
+        return pulumi.get(self, "last_recovery_time")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -168,6 +179,7 @@ class AwaitableGetStreamResult(GetStreamResult):
             display_name=self.display_name,
             errors=self.errors,
             labels=self.labels,
+            last_recovery_time=self.last_recovery_time,
             name=self.name,
             source_config=self.source_config,
             state=self.state,
@@ -197,6 +209,7 @@ def get_stream(location: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         errors=pulumi.get(__ret__, 'errors'),
         labels=pulumi.get(__ret__, 'labels'),
+        last_recovery_time=pulumi.get(__ret__, 'last_recovery_time'),
         name=pulumi.get(__ret__, 'name'),
         source_config=pulumi.get(__ret__, 'source_config'),
         state=pulumi.get(__ret__, 'state'),

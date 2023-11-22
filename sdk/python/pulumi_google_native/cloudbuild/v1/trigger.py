@@ -496,7 +496,7 @@ class Trigger(pulumi.CustomResource):
                  webhook_config: Optional[pulumi.Input[pulumi.InputType['WebhookConfigArgs']]] = None,
                  __props__=None):
         """
-        Creates a new `BuildTrigger`. This API is experimental.
+        Creates a new `BuildTrigger`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -534,7 +534,7 @@ class Trigger(pulumi.CustomResource):
                  args: TriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new `BuildTrigger`. This API is experimental.
+        Creates a new `BuildTrigger`.
 
         :param str resource_name: The name of the resource.
         :param TriggerArgs args: The arguments to use to populate this resource's properties.

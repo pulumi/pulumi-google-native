@@ -5,7 +5,9 @@
 from enum import Enum
 
 __all__ = [
+    'DiscoveryConfigStatus',
     'GooglePrivacyDlpV2BigQueryOptionsSampleMethod',
+    'GooglePrivacyDlpV2BigQueryTableTypesTypesItem',
     'GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore',
     'GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem',
     'GooglePrivacyDlpV2CloudStorageOptionsSampleMethod',
@@ -14,18 +16,47 @@ __all__ = [
     'GooglePrivacyDlpV2CustomInfoTypeExclusionType',
     'GooglePrivacyDlpV2CustomInfoTypeLikelihood',
     'GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem',
+    'GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection',
+    'GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency',
+    'GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem',
+    'GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency',
+    'GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem',
     'GooglePrivacyDlpV2ExclusionRuleMatchingType',
     'GooglePrivacyDlpV2ExpressionsLogicalOperator',
+    'GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood',
     'GooglePrivacyDlpV2InspectConfigContentOptionsItem',
     'GooglePrivacyDlpV2InspectConfigMinLikelihood',
     'GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood',
     'GooglePrivacyDlpV2OutputStorageConfigOutputSchema',
+    'GooglePrivacyDlpV2PubSubConditionMinimumRiskScore',
+    'GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore',
+    'GooglePrivacyDlpV2PubSubExpressionsLogicalOperator',
+    'GooglePrivacyDlpV2PubSubNotificationDetailOfMessage',
+    'GooglePrivacyDlpV2PubSubNotificationEvent',
     'GooglePrivacyDlpV2SensitivityScoreScore',
     'GooglePrivacyDlpV2TimePartConfigPartToExtract',
     'GooglePrivacyDlpV2ValueDayOfWeekValue',
     'JobTriggerStatus',
     'OrganizationJobTriggerStatus',
 ]
+
+
+class DiscoveryConfigStatus(str, Enum):
+    """
+    Required. A status for this configuration.
+    """
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
+    """
+    Unused
+    """
+    RUNNING = "RUNNING"
+    """
+    The discovery config is currently active.
+    """
+    PAUSED = "PAUSED"
+    """
+    The discovery config is paused temporarily.
+    """
 
 
 class GooglePrivacyDlpV2BigQueryOptionsSampleMethod(str, Enum):
@@ -37,6 +68,21 @@ class GooglePrivacyDlpV2BigQueryOptionsSampleMethod(str, Enum):
     RANDOM_START = "RANDOM_START"
     """
     Randomly pick groups of rows to scan.
+    """
+
+
+class GooglePrivacyDlpV2BigQueryTableTypesTypesItem(str, Enum):
+    BIG_QUERY_TABLE_TYPE_UNSPECIFIED = "BIG_QUERY_TABLE_TYPE_UNSPECIFIED"
+    """
+    Unused.
+    """
+    BIG_QUERY_TABLE_TYPE_TABLE = "BIG_QUERY_TABLE_TYPE_TABLE"
+    """
+    A normal BigQuery table.
+    """
+    BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE = "BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE"
+    """
+    A table that references data stored in Cloud Storage.
     """
 
 
@@ -77,7 +123,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(str, Enum):
     """
     BINARY_FILE = "BINARY_FILE"
     """
-    Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+    Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
     """
     TEXT_FILE = "TEXT_FILE"
     """
@@ -85,15 +131,15 @@ class GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(str, Enum):
     """
     IMAGE = "IMAGE"
     """
-    Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+    Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
     """
     WORD = "WORD"
     """
-    Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+    Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
     """
     PDF = "PDF"
     """
-    PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+    PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
     """
     AVRO = "AVRO"
     """
@@ -109,11 +155,11 @@ class GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(str, Enum):
     """
     POWERPOINT = "POWERPOINT"
     """
-    Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+    Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
     """
     EXCEL = "EXCEL"
     """
-    Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+    Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
     """
 
 
@@ -244,7 +290,7 @@ class GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(str, Enum):
     """
     BINARY_FILE = "BINARY_FILE"
     """
-    Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+    Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
     """
     TEXT_FILE = "TEXT_FILE"
     """
@@ -252,15 +298,15 @@ class GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(str, Enum):
     """
     IMAGE = "IMAGE"
     """
-    Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+    Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
     """
     WORD = "WORD"
     """
-    Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+    Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.
     """
     PDF = "PDF"
     """
-    PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+    PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.
     """
     AVRO = "AVRO"
     """
@@ -276,11 +322,99 @@ class GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(str, Enum):
     """
     POWERPOINT = "POWERPOINT"
     """
-    Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+    Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.
     """
     EXCEL = "EXCEL"
     """
-    Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+    Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files.
+    """
+
+
+class GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection(str, Enum):
+    """
+    Restrict discovery to categories of table types.
+    """
+    BIG_QUERY_COLLECTION_UNSPECIFIED = "BIG_QUERY_COLLECTION_UNSPECIFIED"
+    """
+    Unused.
+    """
+    BIG_QUERY_COLLECTION_ALL_TYPES = "BIG_QUERY_COLLECTION_ALL_TYPES"
+    """
+    Automatically generate profiles for all tables, even if the table type is not yet fully supported for analysis. Profiles for unsupported tables will be generated with errors to indicate their partial support. When full support is added, the tables will automatically be profiled during the next scheduled run.
+    """
+    BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES = "BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES"
+    """
+    Only those types fully supported will be profiled. Will expand automatically as Cloud DLP adds support for new table types. Unsupported table types will not have partial profiles generated.
+    """
+
+
+class GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency(str, Enum):
+    """
+    How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+    """
+    UPDATE_FREQUENCY_UNSPECIFIED = "UPDATE_FREQUENCY_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    UPDATE_FREQUENCY_NEVER = "UPDATE_FREQUENCY_NEVER"
+    """
+    After the data profile is created, it will never be updated.
+    """
+    UPDATE_FREQUENCY_DAILY = "UPDATE_FREQUENCY_DAILY"
+    """
+    The data profile can be updated up to once every 24 hours.
+    """
+    UPDATE_FREQUENCY_MONTHLY = "UPDATE_FREQUENCY_MONTHLY"
+    """
+    The data profile can be updated up to once every 30 days. Default.
+    """
+
+
+class GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem(str, Enum):
+    SCHEMA_MODIFICATION_UNSPECIFIED = "SCHEMA_MODIFICATION_UNSPECIFIED"
+    """
+    Unused
+    """
+    SCHEMA_NEW_COLUMNS = "SCHEMA_NEW_COLUMNS"
+    """
+    Profiles should be regenerated when new columns are added to the table. Default.
+    """
+    SCHEMA_REMOVED_COLUMNS = "SCHEMA_REMOVED_COLUMNS"
+    """
+    Profiles should be regenerated when columns are removed from the table.
+    """
+
+
+class GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency(str, Enum):
+    """
+    How frequently data profiles can be updated when tables are modified. Defaults to never.
+    """
+    UPDATE_FREQUENCY_UNSPECIFIED = "UPDATE_FREQUENCY_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    UPDATE_FREQUENCY_NEVER = "UPDATE_FREQUENCY_NEVER"
+    """
+    After the data profile is created, it will never be updated.
+    """
+    UPDATE_FREQUENCY_DAILY = "UPDATE_FREQUENCY_DAILY"
+    """
+    The data profile can be updated up to once every 24 hours.
+    """
+    UPDATE_FREQUENCY_MONTHLY = "UPDATE_FREQUENCY_MONTHLY"
+    """
+    The data profile can be updated up to once every 30 days. Default.
+    """
+
+
+class GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem(str, Enum):
+    TABLE_MODIFICATION_UNSPECIFIED = "TABLE_MODIFICATION_UNSPECIFIED"
+    """
+    Unused.
+    """
+    TABLE_MODIFIED_TIMESTAMP = "TABLE_MODIFIED_TIMESTAMP"
+    """
+    A table will be considered modified when the last_modified_time from BigQuery has been updated.
     """
 
 
@@ -320,6 +454,36 @@ class GooglePrivacyDlpV2ExpressionsLogicalOperator(str, Enum):
     """
 
 
+class GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood(str, Enum):
+    """
+    Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+    """
+    LIKELIHOOD_UNSPECIFIED = "LIKELIHOOD_UNSPECIFIED"
+    """
+    Default value; same as POSSIBLE.
+    """
+    VERY_UNLIKELY = "VERY_UNLIKELY"
+    """
+    Highest chance of a false positive.
+    """
+    UNLIKELY = "UNLIKELY"
+    """
+    High chance of a false positive.
+    """
+    POSSIBLE = "POSSIBLE"
+    """
+    Some matching signals. The default value.
+    """
+    LIKELY = "LIKELY"
+    """
+    Low chance of a false positive.
+    """
+    VERY_LIKELY = "VERY_LIKELY"
+    """
+    Confidence level is high. Lowest chance of a false positive.
+    """
+
+
 class GooglePrivacyDlpV2InspectConfigContentOptionsItem(str, Enum):
     CONTENT_UNSPECIFIED = "CONTENT_UNSPECIFIED"
     """
@@ -337,7 +501,7 @@ class GooglePrivacyDlpV2InspectConfigContentOptionsItem(str, Enum):
 
 class GooglePrivacyDlpV2InspectConfigMinLikelihood(str, Enum):
     """
-    Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+    Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
     """
     LIKELIHOOD_UNSPECIFIED = "LIKELIHOOD_UNSPECIFIED"
     """
@@ -422,6 +586,104 @@ class GooglePrivacyDlpV2OutputStorageConfigOutputSchema(str, Enum):
     ALL_COLUMNS = "ALL_COLUMNS"
     """
     Schema containing all columns.
+    """
+
+
+class GooglePrivacyDlpV2PubSubConditionMinimumRiskScore(str, Enum):
+    """
+    The minimum data risk score that triggers the condition.
+    """
+    PROFILE_SCORE_BUCKET_UNSPECIFIED = "PROFILE_SCORE_BUCKET_UNSPECIFIED"
+    """
+    Unused.
+    """
+    HIGH = "HIGH"
+    """
+    High risk/sensitivity detected.
+    """
+    MEDIUM_OR_HIGH = "MEDIUM_OR_HIGH"
+    """
+    Medium or high risk/sensitivity detected.
+    """
+
+
+class GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore(str, Enum):
+    """
+    The minimum sensitivity level that triggers the condition.
+    """
+    PROFILE_SCORE_BUCKET_UNSPECIFIED = "PROFILE_SCORE_BUCKET_UNSPECIFIED"
+    """
+    Unused.
+    """
+    HIGH = "HIGH"
+    """
+    High risk/sensitivity detected.
+    """
+    MEDIUM_OR_HIGH = "MEDIUM_OR_HIGH"
+    """
+    Medium or high risk/sensitivity detected.
+    """
+
+
+class GooglePrivacyDlpV2PubSubExpressionsLogicalOperator(str, Enum):
+    """
+    The operator to apply to the collection of conditions.
+    """
+    LOGICAL_OPERATOR_UNSPECIFIED = "LOGICAL_OPERATOR_UNSPECIFIED"
+    """
+    Unused.
+    """
+    OR_ = "OR"
+    """
+    Conditional OR.
+    """
+    AND_ = "AND"
+    """
+    Conditional AND.
+    """
+
+
+class GooglePrivacyDlpV2PubSubNotificationDetailOfMessage(str, Enum):
+    """
+    How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+    """
+    DETAIL_LEVEL_UNSPECIFIED = "DETAIL_LEVEL_UNSPECIFIED"
+    """
+    Unused.
+    """
+    TABLE_PROFILE = "TABLE_PROFILE"
+    """
+    The full table data profile.
+    """
+    RESOURCE_NAME = "RESOURCE_NAME"
+    """
+    The resource name of the table.
+    """
+
+
+class GooglePrivacyDlpV2PubSubNotificationEvent(str, Enum):
+    """
+    The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+    """
+    EVENT_TYPE_UNSPECIFIED = "EVENT_TYPE_UNSPECIFIED"
+    """
+    Unused.
+    """
+    NEW_PROFILE = "NEW_PROFILE"
+    """
+    New profile (not a re-profile).
+    """
+    CHANGED_PROFILE = "CHANGED_PROFILE"
+    """
+    Changed one of the following profile metrics: * Table data risk score * Table sensitivity score * Table resource visibility * Table encryption type * Table predicted infoTypes * Table other infoTypes
+    """
+    SCORE_INCREASED = "SCORE_INCREASED"
+    """
+    Table data risk score or sensitivity score increased.
+    """
+    ERROR_CHANGED = "ERROR_CHANGED"
+    """
+    A user (non-internal) error occurred.
     """
 
 

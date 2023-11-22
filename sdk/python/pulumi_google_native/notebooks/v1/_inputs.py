@@ -41,7 +41,7 @@ class AcceleratorConfigArgs:
                  core_count: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['AcceleratorConfigType']] = None):
         """
-        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
         :param pulumi.Input[str] core_count: Count of cores of this accelerator.
         :param pulumi.Input['AcceleratorConfigType'] type: Type of this accelerator.
         """
@@ -790,7 +790,7 @@ class RuntimeAcceleratorConfigArgs:
                  core_count: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['RuntimeAcceleratorConfigType']] = None):
         """
-        Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+        Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
         :param pulumi.Input[str] core_count: Count of cores of this accelerator.
         :param pulumi.Input['RuntimeAcceleratorConfigType'] type: Accelerator model.
         """
@@ -871,7 +871,7 @@ class RuntimeShieldedInstanceConfigArgs:
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
                  enable_vtpm: Optional[pulumi.Input[bool]] = None):
         """
-        A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+        A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
         :param pulumi.Input[bool] enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
         :param pulumi.Input[bool] enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
         :param pulumi.Input[bool] enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.
@@ -1110,7 +1110,7 @@ class SchedulerAcceleratorConfigArgs:
                  core_count: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['SchedulerAcceleratorConfigType']] = None):
         """
-        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
+        Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
         :param pulumi.Input[str] core_count: Count of cores of this accelerator.
         :param pulumi.Input['SchedulerAcceleratorConfigType'] type: Type of this accelerator.
         """
@@ -1151,7 +1151,7 @@ class ShieldedInstanceConfigArgs:
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
                  enable_vtpm: Optional[pulumi.Input[bool]] = None):
         """
-        A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
+        A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
         :param pulumi.Input[bool] enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
         :param pulumi.Input[bool] enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
         :param pulumi.Input[bool] enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.

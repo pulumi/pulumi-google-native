@@ -35,10 +35,20 @@ __all__ = [
     'ReportSummaryMachineFindingResponse',
     'ReportSummaryMachineSeriesAllocationResponse',
     'ReportSummaryResponse',
+    'ReportSummarySoleTenantFindingResponse',
+    'ReportSummarySoleTenantNodeAllocationResponse',
     'ReportSummaryUtilizationChartDataResponse',
+    'ReportSummaryVMWareEngineFindingResponse',
+    'ReportSummaryVMWareNodeAllocationResponse',
+    'ReportSummaryVMWareNodeResponse',
+    'SoleTenancyPreferencesResponse',
+    'SoleTenantNodeTypeResponse',
     'UploadFileInfoResponse',
     'ValidationReportResponse',
+    'VirtualMachinePreferencesNetworkCostParametersResponse',
     'VirtualMachinePreferencesResponse',
+    'VirtualMachinePreferencesSizingOptimizationCustomParametersResponse',
+    'VmwareEnginePreferencesResponse',
 ]
 
 @pulumi.output_type
@@ -1007,7 +1017,7 @@ class ReportSummaryGroupFindingResponse(dict):
         :param 'ReportSummaryAssetAggregateStatsResponse' asset_aggregate_stats: Summary statistics for all the assets in this group.
         :param str description: Description for the Group.
         :param str display_name: Display Name for the Group.
-        :param str overlapping_asset_count: Count of the number of assets in this group which are also included in another group within the same report.
+        :param str overlapping_asset_count: This field is deprecated, do not rely on it having a value.
         :param Sequence['ReportSummaryGroupPreferenceSetFindingResponse'] preference_set_findings: Findings for each of the PreferenceSets for this group.
         """
         pulumi.set(__self__, "asset_aggregate_stats", asset_aggregate_stats)
@@ -1044,8 +1054,11 @@ class ReportSummaryGroupFindingResponse(dict):
     @pulumi.getter(name="overlappingAssetCount")
     def overlapping_asset_count(self) -> str:
         """
-        Count of the number of assets in this group which are also included in another group within the same report.
+        This field is deprecated, do not rely on it having a value.
         """
+        warnings.warn("""This field is deprecated, do not rely on it having a value.""", DeprecationWarning)
+        pulumi.log.warn("""overlapping_asset_count is deprecated: This field is deprecated, do not rely on it having a value.""")
+
         return pulumi.get(self, "overlapping_asset_count")
 
     @property
@@ -1087,8 +1100,12 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
             suggest = "preferred_region"
         elif key == "pricingTrack":
             suggest = "pricing_track"
+        elif key == "soleTenantFinding":
+            suggest = "sole_tenant_finding"
         elif key == "topPriority":
             suggest = "top_priority"
+        elif key == "vmwareEngineFinding":
+            suggest = "vmware_engine_finding"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ReportSummaryGroupPreferenceSetFindingResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1114,7 +1131,9 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
                  monthly_cost_total: 'outputs.MoneyResponse',
                  preferred_region: str,
                  pricing_track: str,
-                 top_priority: str):
+                 sole_tenant_finding: 'outputs.ReportSummarySoleTenantFindingResponse',
+                 top_priority: str,
+                 vmware_engine_finding: 'outputs.ReportSummaryVMWareEngineFindingResponse'):
         """
         Summary Findings for a specific Group/PreferenceSet combination.
         :param str description: Description for the Preference Set.
@@ -1129,7 +1148,9 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
         :param 'MoneyResponse' monthly_cost_total: Total monthly cost for this preference set.
         :param str preferred_region: Target region for this Preference Set
         :param str pricing_track: Text describing the pricing track specified for this Preference Set
+        :param 'ReportSummarySoleTenantFindingResponse' sole_tenant_finding: A set of findings that applies to Stole-Tenant machines in the input.
         :param str top_priority: Text describing the business priority specified for this Preference Set
+        :param 'ReportSummaryVMWareEngineFindingResponse' vmware_engine_finding: A set of findings that applies to VMWare machines in the input.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -1143,7 +1164,9 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
         pulumi.set(__self__, "monthly_cost_total", monthly_cost_total)
         pulumi.set(__self__, "preferred_region", preferred_region)
         pulumi.set(__self__, "pricing_track", pricing_track)
+        pulumi.set(__self__, "sole_tenant_finding", sole_tenant_finding)
         pulumi.set(__self__, "top_priority", top_priority)
+        pulumi.set(__self__, "vmware_engine_finding", vmware_engine_finding)
 
     @property
     @pulumi.getter
@@ -1242,12 +1265,28 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
         return pulumi.get(self, "pricing_track")
 
     @property
+    @pulumi.getter(name="soleTenantFinding")
+    def sole_tenant_finding(self) -> 'outputs.ReportSummarySoleTenantFindingResponse':
+        """
+        A set of findings that applies to Stole-Tenant machines in the input.
+        """
+        return pulumi.get(self, "sole_tenant_finding")
+
+    @property
     @pulumi.getter(name="topPriority")
     def top_priority(self) -> str:
         """
         Text describing the business priority specified for this Preference Set
         """
         return pulumi.get(self, "top_priority")
+
+    @property
+    @pulumi.getter(name="vmwareEngineFinding")
+    def vmware_engine_finding(self) -> 'outputs.ReportSummaryVMWareEngineFindingResponse':
+        """
+        A set of findings that applies to VMWare machines in the input.
+        """
+        return pulumi.get(self, "vmware_engine_finding")
 
 
 @pulumi.output_type
@@ -1518,6 +1557,134 @@ class ReportSummaryResponse(dict):
 
 
 @pulumi.output_type
+class ReportSummarySoleTenantFindingResponse(dict):
+    """
+    A set of findings that applies to assets destined for Sole-Tenant nodes.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedAssetCount":
+            suggest = "allocated_asset_count"
+        elif key == "allocatedRegions":
+            suggest = "allocated_regions"
+        elif key == "nodeAllocations":
+            suggest = "node_allocations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportSummarySoleTenantFindingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportSummarySoleTenantFindingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportSummarySoleTenantFindingResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocated_asset_count: str,
+                 allocated_regions: Sequence[str],
+                 node_allocations: Sequence['outputs.ReportSummarySoleTenantNodeAllocationResponse']):
+        """
+        A set of findings that applies to assets destined for Sole-Tenant nodes.
+        :param str allocated_asset_count: Count of assets which are allocated
+        :param Sequence[str] allocated_regions: Set of regions in which the assets are allocated
+        :param Sequence['ReportSummarySoleTenantNodeAllocationResponse'] node_allocations: Set of per-nodetype allocation records
+        """
+        pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        pulumi.set(__self__, "allocated_regions", allocated_regions)
+        pulumi.set(__self__, "node_allocations", node_allocations)
+
+    @property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> str:
+        """
+        Count of assets which are allocated
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @property
+    @pulumi.getter(name="allocatedRegions")
+    def allocated_regions(self) -> Sequence[str]:
+        """
+        Set of regions in which the assets are allocated
+        """
+        return pulumi.get(self, "allocated_regions")
+
+    @property
+    @pulumi.getter(name="nodeAllocations")
+    def node_allocations(self) -> Sequence['outputs.ReportSummarySoleTenantNodeAllocationResponse']:
+        """
+        Set of per-nodetype allocation records
+        """
+        return pulumi.get(self, "node_allocations")
+
+
+@pulumi.output_type
+class ReportSummarySoleTenantNodeAllocationResponse(dict):
+    """
+    Represents the assets allocated to a specific Sole-Tenant node type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedAssetCount":
+            suggest = "allocated_asset_count"
+        elif key == "nodeCount":
+            suggest = "node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportSummarySoleTenantNodeAllocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportSummarySoleTenantNodeAllocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportSummarySoleTenantNodeAllocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocated_asset_count: str,
+                 node: 'outputs.SoleTenantNodeTypeResponse',
+                 node_count: str):
+        """
+        Represents the assets allocated to a specific Sole-Tenant node type.
+        :param str allocated_asset_count: Count of assets allocated to these nodes
+        :param 'SoleTenantNodeTypeResponse' node: Sole Tenant node type, e.g. "m3-node-128-3904"
+        :param str node_count: Count of this node type to be provisioned
+        """
+        pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "node_count", node_count)
+
+    @property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> str:
+        """
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @property
+    @pulumi.getter
+    def node(self) -> 'outputs.SoleTenantNodeTypeResponse':
+        """
+        Sole Tenant node type, e.g. "m3-node-128-3904"
+        """
+        return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> str:
+        """
+        Count of this node type to be provisioned
+        """
+        return pulumi.get(self, "node_count")
+
+
+@pulumi.output_type
 class ReportSummaryUtilizationChartDataResponse(dict):
     """
     Utilization Chart is a specific type of visualization which displays a metric classified into "Used" and "Free" buckets.
@@ -1548,6 +1715,275 @@ class ReportSummaryUtilizationChartDataResponse(dict):
         Aggregate value which falls into the "Used" bucket.
         """
         return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class ReportSummaryVMWareEngineFindingResponse(dict):
+    """
+    A set of findings that applies to assets destined for VMWare Engine.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedAssetCount":
+            suggest = "allocated_asset_count"
+        elif key == "allocatedRegions":
+            suggest = "allocated_regions"
+        elif key == "nodeAllocations":
+            suggest = "node_allocations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportSummaryVMWareEngineFindingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportSummaryVMWareEngineFindingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportSummaryVMWareEngineFindingResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocated_asset_count: str,
+                 allocated_regions: Sequence[str],
+                 node_allocations: Sequence['outputs.ReportSummaryVMWareNodeAllocationResponse']):
+        """
+        A set of findings that applies to assets destined for VMWare Engine.
+        :param str allocated_asset_count: Count of assets which are allocated
+        :param Sequence[str] allocated_regions: Set of regions in which the assets were allocated
+        :param Sequence['ReportSummaryVMWareNodeAllocationResponse'] node_allocations: Set of per-nodetype allocation records
+        """
+        pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        pulumi.set(__self__, "allocated_regions", allocated_regions)
+        pulumi.set(__self__, "node_allocations", node_allocations)
+
+    @property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> str:
+        """
+        Count of assets which are allocated
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @property
+    @pulumi.getter(name="allocatedRegions")
+    def allocated_regions(self) -> Sequence[str]:
+        """
+        Set of regions in which the assets were allocated
+        """
+        return pulumi.get(self, "allocated_regions")
+
+    @property
+    @pulumi.getter(name="nodeAllocations")
+    def node_allocations(self) -> Sequence['outputs.ReportSummaryVMWareNodeAllocationResponse']:
+        """
+        Set of per-nodetype allocation records
+        """
+        return pulumi.get(self, "node_allocations")
+
+
+@pulumi.output_type
+class ReportSummaryVMWareNodeAllocationResponse(dict):
+    """
+    Represents assets allocated to a specific VMWare Node type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedAssetCount":
+            suggest = "allocated_asset_count"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "vmwareNode":
+            suggest = "vmware_node"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportSummaryVMWareNodeAllocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportSummaryVMWareNodeAllocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportSummaryVMWareNodeAllocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocated_asset_count: str,
+                 node_count: str,
+                 vmware_node: 'outputs.ReportSummaryVMWareNodeResponse'):
+        """
+        Represents assets allocated to a specific VMWare Node type.
+        :param str allocated_asset_count: Count of assets allocated to these nodes
+        :param str node_count: Count of this node type to be provisioned
+        :param 'ReportSummaryVMWareNodeResponse' vmware_node: VMWare node type, e.g. "ve1-standard-72"
+        """
+        pulumi.set(__self__, "allocated_asset_count", allocated_asset_count)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "vmware_node", vmware_node)
+
+    @property
+    @pulumi.getter(name="allocatedAssetCount")
+    def allocated_asset_count(self) -> str:
+        """
+        Count of assets allocated to these nodes
+        """
+        return pulumi.get(self, "allocated_asset_count")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> str:
+        """
+        Count of this node type to be provisioned
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="vmwareNode")
+    def vmware_node(self) -> 'outputs.ReportSummaryVMWareNodeResponse':
+        """
+        VMWare node type, e.g. "ve1-standard-72"
+        """
+        return pulumi.get(self, "vmware_node")
+
+
+@pulumi.output_type
+class ReportSummaryVMWareNodeResponse(dict):
+    """
+    A VMWare Engine Node
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        A VMWare Engine Node
+        :param str code: Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class SoleTenancyPreferencesResponse(dict):
+    """
+    Preferences concerning Sole Tenancy nodes and VMs.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commitmentPlan":
+            suggest = "commitment_plan"
+        elif key == "cpuOvercommitRatio":
+            suggest = "cpu_overcommit_ratio"
+        elif key == "hostMaintenancePolicy":
+            suggest = "host_maintenance_policy"
+        elif key == "nodeTypes":
+            suggest = "node_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SoleTenancyPreferencesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SoleTenancyPreferencesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SoleTenancyPreferencesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 commitment_plan: str,
+                 cpu_overcommit_ratio: float,
+                 host_maintenance_policy: str,
+                 node_types: Sequence['outputs.SoleTenantNodeTypeResponse']):
+        """
+        Preferences concerning Sole Tenancy nodes and VMs.
+        :param str commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        :param float cpu_overcommit_ratio: CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+        :param str host_maintenance_policy: Sole Tenancy nodes maintenance policy.
+        :param Sequence['SoleTenantNodeTypeResponse'] node_types: A list of sole tenant node types. An empty list means that all possible node types will be considered.
+        """
+        pulumi.set(__self__, "commitment_plan", commitment_plan)
+        pulumi.set(__self__, "cpu_overcommit_ratio", cpu_overcommit_ratio)
+        pulumi.set(__self__, "host_maintenance_policy", host_maintenance_policy)
+        pulumi.set(__self__, "node_types", node_types)
+
+    @property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> str:
+        """
+        Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @property
+    @pulumi.getter(name="cpuOvercommitRatio")
+    def cpu_overcommit_ratio(self) -> float:
+        """
+        CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+        """
+        return pulumi.get(self, "cpu_overcommit_ratio")
+
+    @property
+    @pulumi.getter(name="hostMaintenancePolicy")
+    def host_maintenance_policy(self) -> str:
+        """
+        Sole Tenancy nodes maintenance policy.
+        """
+        return pulumi.get(self, "host_maintenance_policy")
+
+    @property
+    @pulumi.getter(name="nodeTypes")
+    def node_types(self) -> Sequence['outputs.SoleTenantNodeTypeResponse']:
+        """
+        A list of sole tenant node types. An empty list means that all possible node types will be considered.
+        """
+        return pulumi.get(self, "node_types")
+
+
+@pulumi.output_type
+class SoleTenantNodeTypeResponse(dict):
+    """
+    A Sole Tenant node type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeName":
+            suggest = "node_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SoleTenantNodeTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SoleTenantNodeTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SoleTenantNodeTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_name: str):
+        """
+        A Sole Tenant node type.
+        :param str node_name: Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        """
+        Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        """
+        return pulumi.get(self, "node_name")
 
 
 @pulumi.output_type
@@ -1666,9 +2102,48 @@ class ValidationReportResponse(dict):
 
 
 @pulumi.output_type
+class VirtualMachinePreferencesNetworkCostParametersResponse(dict):
+    """
+    Parameters that affect network cost estimations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedEgressTrafficPercentage":
+            suggest = "estimated_egress_traffic_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachinePreferencesNetworkCostParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachinePreferencesNetworkCostParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachinePreferencesNetworkCostParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 estimated_egress_traffic_percentage: int):
+        """
+        Parameters that affect network cost estimations.
+        :param int estimated_egress_traffic_percentage: Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+        """
+        pulumi.set(__self__, "estimated_egress_traffic_percentage", estimated_egress_traffic_percentage)
+
+    @property
+    @pulumi.getter(name="estimatedEgressTrafficPercentage")
+    def estimated_egress_traffic_percentage(self) -> int:
+        """
+        Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
+        """
+        return pulumi.get(self, "estimated_egress_traffic_percentage")
+
+
+@pulumi.output_type
 class VirtualMachinePreferencesResponse(dict):
     """
-    VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+    VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1677,10 +2152,20 @@ class VirtualMachinePreferencesResponse(dict):
             suggest = "commitment_plan"
         elif key == "computeEnginePreferences":
             suggest = "compute_engine_preferences"
+        elif key == "networkCostParameters":
+            suggest = "network_cost_parameters"
         elif key == "regionPreferences":
             suggest = "region_preferences"
+        elif key == "sizingOptimizationCustomParameters":
+            suggest = "sizing_optimization_custom_parameters"
         elif key == "sizingOptimizationStrategy":
             suggest = "sizing_optimization_strategy"
+        elif key == "soleTenancyPreferences":
+            suggest = "sole_tenancy_preferences"
+        elif key == "targetProduct":
+            suggest = "target_product"
+        elif key == "vmwareEnginePreferences":
+            suggest = "vmware_engine_preferences"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VirtualMachinePreferencesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1696,19 +2181,34 @@ class VirtualMachinePreferencesResponse(dict):
     def __init__(__self__, *,
                  commitment_plan: str,
                  compute_engine_preferences: 'outputs.ComputeEnginePreferencesResponse',
+                 network_cost_parameters: 'outputs.VirtualMachinePreferencesNetworkCostParametersResponse',
                  region_preferences: 'outputs.RegionPreferencesResponse',
-                 sizing_optimization_strategy: str):
+                 sizing_optimization_custom_parameters: 'outputs.VirtualMachinePreferencesSizingOptimizationCustomParametersResponse',
+                 sizing_optimization_strategy: str,
+                 sole_tenancy_preferences: 'outputs.SoleTenancyPreferencesResponse',
+                 target_product: str,
+                 vmware_engine_preferences: 'outputs.VmwareEnginePreferencesResponse'):
         """
-        VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+        VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
         :param str commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
         :param 'ComputeEnginePreferencesResponse' compute_engine_preferences: Compute Engine preferences concern insights and recommendations for Compute Engine target.
-        :param 'RegionPreferencesResponse' region_preferences: Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+        :param 'VirtualMachinePreferencesNetworkCostParametersResponse' network_cost_parameters: Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+        :param 'RegionPreferencesResponse' region_preferences: Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
+        :param 'VirtualMachinePreferencesSizingOptimizationCustomParametersResponse' sizing_optimization_custom_parameters: Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
         :param str sizing_optimization_strategy: Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
+        :param 'SoleTenancyPreferencesResponse' sole_tenancy_preferences: Preferences concerning Sole Tenant nodes and virtual machines.
+        :param str target_product: Target product for assets using this preference set. Specify either target product or business goal, but not both.
+        :param 'VmwareEnginePreferencesResponse' vmware_engine_preferences: Preferences concerning insights and recommendations for Google Cloud VMware Engine.
         """
         pulumi.set(__self__, "commitment_plan", commitment_plan)
         pulumi.set(__self__, "compute_engine_preferences", compute_engine_preferences)
+        pulumi.set(__self__, "network_cost_parameters", network_cost_parameters)
         pulumi.set(__self__, "region_preferences", region_preferences)
+        pulumi.set(__self__, "sizing_optimization_custom_parameters", sizing_optimization_custom_parameters)
         pulumi.set(__self__, "sizing_optimization_strategy", sizing_optimization_strategy)
+        pulumi.set(__self__, "sole_tenancy_preferences", sole_tenancy_preferences)
+        pulumi.set(__self__, "target_product", target_product)
+        pulumi.set(__self__, "vmware_engine_preferences", vmware_engine_preferences)
 
     @property
     @pulumi.getter(name="commitmentPlan")
@@ -1727,12 +2227,28 @@ class VirtualMachinePreferencesResponse(dict):
         return pulumi.get(self, "compute_engine_preferences")
 
     @property
+    @pulumi.getter(name="networkCostParameters")
+    def network_cost_parameters(self) -> 'outputs.VirtualMachinePreferencesNetworkCostParametersResponse':
+        """
+        Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters.
+        """
+        return pulumi.get(self, "network_cost_parameters")
+
+    @property
     @pulumi.getter(name="regionPreferences")
     def region_preferences(self) -> 'outputs.RegionPreferencesResponse':
         """
-        Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
+        Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field.
         """
         return pulumi.get(self, "region_preferences")
+
+    @property
+    @pulumi.getter(name="sizingOptimizationCustomParameters")
+    def sizing_optimization_custom_parameters(self) -> 'outputs.VirtualMachinePreferencesSizingOptimizationCustomParametersResponse':
+        """
+        Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom".
+        """
+        return pulumi.get(self, "sizing_optimization_custom_parameters")
 
     @property
     @pulumi.getter(name="sizingOptimizationStrategy")
@@ -1741,5 +2257,185 @@ class VirtualMachinePreferencesResponse(dict):
         Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
         """
         return pulumi.get(self, "sizing_optimization_strategy")
+
+    @property
+    @pulumi.getter(name="soleTenancyPreferences")
+    def sole_tenancy_preferences(self) -> 'outputs.SoleTenancyPreferencesResponse':
+        """
+        Preferences concerning Sole Tenant nodes and virtual machines.
+        """
+        return pulumi.get(self, "sole_tenancy_preferences")
+
+    @property
+    @pulumi.getter(name="targetProduct")
+    def target_product(self) -> str:
+        """
+        Target product for assets using this preference set. Specify either target product or business goal, but not both.
+        """
+        return pulumi.get(self, "target_product")
+
+    @property
+    @pulumi.getter(name="vmwareEnginePreferences")
+    def vmware_engine_preferences(self) -> 'outputs.VmwareEnginePreferencesResponse':
+        """
+        Preferences concerning insights and recommendations for Google Cloud VMware Engine.
+        """
+        return pulumi.get(self, "vmware_engine_preferences")
+
+
+@pulumi.output_type
+class VirtualMachinePreferencesSizingOptimizationCustomParametersResponse(dict):
+    """
+    Custom data to use for sizing optimizations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationMethod":
+            suggest = "aggregation_method"
+        elif key == "cpuUsagePercentage":
+            suggest = "cpu_usage_percentage"
+        elif key == "memoryUsagePercentage":
+            suggest = "memory_usage_percentage"
+        elif key == "storageMultiplier":
+            suggest = "storage_multiplier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachinePreferencesSizingOptimizationCustomParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachinePreferencesSizingOptimizationCustomParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachinePreferencesSizingOptimizationCustomParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aggregation_method: str,
+                 cpu_usage_percentage: int,
+                 memory_usage_percentage: int,
+                 storage_multiplier: float):
+        """
+        Custom data to use for sizing optimizations.
+        :param str aggregation_method: Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+        :param int cpu_usage_percentage: Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+        :param int memory_usage_percentage: Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+        :param float storage_multiplier: Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+        """
+        pulumi.set(__self__, "aggregation_method", aggregation_method)
+        pulumi.set(__self__, "cpu_usage_percentage", cpu_usage_percentage)
+        pulumi.set(__self__, "memory_usage_percentage", memory_usage_percentage)
+        pulumi.set(__self__, "storage_multiplier", storage_multiplier)
+
+    @property
+    @pulumi.getter(name="aggregationMethod")
+    def aggregation_method(self) -> str:
+        """
+        Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+        """
+        return pulumi.get(self, "aggregation_method")
+
+    @property
+    @pulumi.getter(name="cpuUsagePercentage")
+    def cpu_usage_percentage(self) -> int:
+        """
+        Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+        """
+        return pulumi.get(self, "cpu_usage_percentage")
+
+    @property
+    @pulumi.getter(name="memoryUsagePercentage")
+    def memory_usage_percentage(self) -> int:
+        """
+        Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+        """
+        return pulumi.get(self, "memory_usage_percentage")
+
+    @property
+    @pulumi.getter(name="storageMultiplier")
+    def storage_multiplier(self) -> float:
+        """
+        Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
+        """
+        return pulumi.get(self, "storage_multiplier")
+
+
+@pulumi.output_type
+class VmwareEnginePreferencesResponse(dict):
+    """
+    The user preferences relating to Google Cloud VMware Engine target platform.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commitmentPlan":
+            suggest = "commitment_plan"
+        elif key == "cpuOvercommitRatio":
+            suggest = "cpu_overcommit_ratio"
+        elif key == "memoryOvercommitRatio":
+            suggest = "memory_overcommit_ratio"
+        elif key == "storageDeduplicationCompressionRatio":
+            suggest = "storage_deduplication_compression_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareEnginePreferencesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareEnginePreferencesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareEnginePreferencesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 commitment_plan: str,
+                 cpu_overcommit_ratio: float,
+                 memory_overcommit_ratio: float,
+                 storage_deduplication_compression_ratio: float):
+        """
+        The user preferences relating to Google Cloud VMware Engine target platform.
+        :param str commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        :param float cpu_overcommit_ratio: CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        :param float memory_overcommit_ratio: Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+        :param float storage_deduplication_compression_ratio: The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+        """
+        pulumi.set(__self__, "commitment_plan", commitment_plan)
+        pulumi.set(__self__, "cpu_overcommit_ratio", cpu_overcommit_ratio)
+        pulumi.set(__self__, "memory_overcommit_ratio", memory_overcommit_ratio)
+        pulumi.set(__self__, "storage_deduplication_compression_ratio", storage_deduplication_compression_ratio)
+
+    @property
+    @pulumi.getter(name="commitmentPlan")
+    def commitment_plan(self) -> str:
+        """
+        Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        """
+        return pulumi.get(self, "commitment_plan")
+
+    @property
+    @pulumi.getter(name="cpuOvercommitRatio")
+    def cpu_overcommit_ratio(self) -> float:
+        """
+        CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+        """
+        return pulumi.get(self, "cpu_overcommit_ratio")
+
+    @property
+    @pulumi.getter(name="memoryOvercommitRatio")
+    def memory_overcommit_ratio(self) -> float:
+        """
+        Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+        """
+        return pulumi.get(self, "memory_overcommit_ratio")
+
+    @property
+    @pulumi.getter(name="storageDeduplicationCompressionRatio")
+    def storage_deduplication_compression_ratio(self) -> float:
+        """
+        The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+        """
+        return pulumi.get(self, "storage_deduplication_compression_ratio")
 
 

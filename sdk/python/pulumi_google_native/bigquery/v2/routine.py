@@ -22,6 +22,7 @@ class RoutineArgs:
                  routine_reference: pulumi.Input['RoutineReferenceArgs'],
                  routine_type: pulumi.Input['RoutineRoutineType'],
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]] = None,
+                 data_governance_type: Optional[pulumi.Input['RoutineDataGovernanceType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  determinism_level: Optional[pulumi.Input['RoutineDeterminismLevel']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -30,6 +31,7 @@ class RoutineArgs:
                  remote_function_options: Optional[pulumi.Input['RemoteFunctionOptionsArgs']] = None,
                  return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
                  return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
+                 security_mode: Optional[pulumi.Input['RoutineSecurityMode']] = None,
                  spark_options: Optional[pulumi.Input['SparkOptionsArgs']] = None,
                  strict_mode: Optional[pulumi.Input[bool]] = None):
         """
@@ -38,6 +40,7 @@ class RoutineArgs:
         :param pulumi.Input['RoutineReferenceArgs'] routine_reference: Reference describing the ID of this routine.
         :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
         :param pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]] arguments: Optional.
+        :param pulumi.Input['RoutineDataGovernanceType'] data_governance_type: Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
         :param pulumi.Input[str] description: Optional. The description of the routine, if defined.
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
@@ -45,6 +48,7 @@ class RoutineArgs:
         :param pulumi.Input['RemoteFunctionOptionsArgs'] remote_function_options: Optional. Remote function specific options.
         :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        :param pulumi.Input['RoutineSecurityMode'] security_mode: Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
         :param pulumi.Input['SparkOptionsArgs'] spark_options: Optional. Spark specific options.
         :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
         """
@@ -54,6 +58,8 @@ class RoutineArgs:
         pulumi.set(__self__, "routine_type", routine_type)
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
+        if data_governance_type is not None:
+            pulumi.set(__self__, "data_governance_type", data_governance_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if determinism_level is not None:
@@ -70,6 +76,8 @@ class RoutineArgs:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
+        if security_mode is not None:
+            pulumi.set(__self__, "security_mode", security_mode)
         if spark_options is not None:
             pulumi.set(__self__, "spark_options", spark_options)
         if strict_mode is not None:
@@ -131,6 +139,18 @@ class RoutineArgs:
     @arguments.setter
     def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]]):
         pulumi.set(self, "arguments", value)
+
+    @property
+    @pulumi.getter(name="dataGovernanceType")
+    def data_governance_type(self) -> Optional[pulumi.Input['RoutineDataGovernanceType']]:
+        """
+        Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+        """
+        return pulumi.get(self, "data_governance_type")
+
+    @data_governance_type.setter
+    def data_governance_type(self, value: Optional[pulumi.Input['RoutineDataGovernanceType']]):
+        pulumi.set(self, "data_governance_type", value)
 
     @property
     @pulumi.getter
@@ -226,6 +246,18 @@ class RoutineArgs:
         pulumi.set(self, "return_type", value)
 
     @property
+    @pulumi.getter(name="securityMode")
+    def security_mode(self) -> Optional[pulumi.Input['RoutineSecurityMode']]:
+        """
+        Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+        """
+        return pulumi.get(self, "security_mode")
+
+    @security_mode.setter
+    def security_mode(self, value: Optional[pulumi.Input['RoutineSecurityMode']]):
+        pulumi.set(self, "security_mode", value)
+
+    @property
     @pulumi.getter(name="sparkOptions")
     def spark_options(self) -> Optional[pulumi.Input['SparkOptionsArgs']]:
         """
@@ -256,6 +288,7 @@ class Routine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]]] = None,
+                 data_governance_type: Optional[pulumi.Input['RoutineDataGovernanceType']] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -268,6 +301,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
+                 security_mode: Optional[pulumi.Input['RoutineSecurityMode']] = None,
                  spark_options: Optional[pulumi.Input[pulumi.InputType['SparkOptionsArgs']]] = None,
                  strict_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -278,6 +312,7 @@ class Routine(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]] arguments: Optional.
+        :param pulumi.Input['RoutineDataGovernanceType'] data_governance_type: Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\\n", y))` The definition_body is `concat(x, "\\n", y)` (\\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\\n";\\n'` The definition_body is `return "\\n";\\n` Note that both \\n are replaced with linebreaks.
         :param pulumi.Input[str] description: Optional. The description of the routine, if defined.
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
@@ -288,6 +323,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Reference describing the ID of this routine.
         :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
+        :param pulumi.Input['RoutineSecurityMode'] security_mode: Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
         :param pulumi.Input[pulumi.InputType['SparkOptionsArgs']] spark_options: Optional. Spark specific options.
         :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
         """
@@ -317,6 +353,7 @@ class Routine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]]] = None,
+                 data_governance_type: Optional[pulumi.Input['RoutineDataGovernanceType']] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -329,6 +366,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
+                 security_mode: Optional[pulumi.Input['RoutineSecurityMode']] = None,
                  spark_options: Optional[pulumi.Input[pulumi.InputType['SparkOptionsArgs']]] = None,
                  strict_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -341,6 +379,7 @@ class Routine(pulumi.CustomResource):
             __props__ = RoutineArgs.__new__(RoutineArgs)
 
             __props__.__dict__["arguments"] = arguments
+            __props__.__dict__["data_governance_type"] = data_governance_type
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
@@ -361,6 +400,7 @@ class Routine(pulumi.CustomResource):
             if routine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_type'")
             __props__.__dict__["routine_type"] = routine_type
+            __props__.__dict__["security_mode"] = security_mode
             __props__.__dict__["spark_options"] = spark_options
             __props__.__dict__["strict_mode"] = strict_mode
             __props__.__dict__["creation_time"] = None
@@ -392,6 +432,7 @@ class Routine(pulumi.CustomResource):
 
         __props__.__dict__["arguments"] = None
         __props__.__dict__["creation_time"] = None
+        __props__.__dict__["data_governance_type"] = None
         __props__.__dict__["dataset_id"] = None
         __props__.__dict__["definition_body"] = None
         __props__.__dict__["description"] = None
@@ -406,6 +447,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["return_type"] = None
         __props__.__dict__["routine_reference"] = None
         __props__.__dict__["routine_type"] = None
+        __props__.__dict__["security_mode"] = None
         __props__.__dict__["spark_options"] = None
         __props__.__dict__["strict_mode"] = None
         return Routine(resource_name, opts=opts, __props__=__props__)
@@ -425,6 +467,14 @@ class Routine(pulumi.CustomResource):
         The time when this routine was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="dataGovernanceType")
+    def data_governance_type(self) -> pulumi.Output[str]:
+        """
+        Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+        """
+        return pulumi.get(self, "data_governance_type")
 
     @property
     @pulumi.getter(name="datasetId")
@@ -531,6 +581,14 @@ class Routine(pulumi.CustomResource):
         The type of routine.
         """
         return pulumi.get(self, "routine_type")
+
+    @property
+    @pulumi.getter(name="securityMode")
+    def security_mode(self) -> pulumi.Output[str]:
+        """
+        Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+        """
+        return pulumi.get(self, "security_mode")
 
     @property
     @pulumi.getter(name="sparkOptions")

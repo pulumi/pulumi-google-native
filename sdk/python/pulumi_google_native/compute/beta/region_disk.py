@@ -22,6 +22,7 @@ class RegionDiskArgs:
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncReplicationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input['RegionDiskInterface']] = None,
@@ -57,6 +58,7 @@ class RegionDiskArgs:
         :param pulumi.Input['DiskAsyncReplicationArgs'] async_primary_disk: Disk asynchronously replicated into this disk.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         :param pulumi.Input['RegionDiskInterface'] interface: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -74,7 +76,7 @@ class RegionDiskArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
-        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
@@ -95,6 +97,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if erase_windows_vss_signature is not None:
             pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
@@ -216,6 +220,18 @@ class RegionDiskArgs:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this disk is using confidential compute mode.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
 
     @property
     @pulumi.getter(name="eraseWindowsVssSignature")
@@ -437,7 +453,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> Optional[pulumi.Input[str]]:
         """
-        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         """
         return pulumi.get(self, "size_gb")
 
@@ -578,6 +594,7 @@ class RegionDisk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncReplicationArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  interface: Optional[pulumi.Input['RegionDiskInterface']] = None,
@@ -618,6 +635,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DiskAsyncReplicationArgs']] async_primary_disk: Disk asynchronously replicated into this disk.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         :param pulumi.Input['RegionDiskInterface'] interface: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -635,7 +653,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
-        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
@@ -675,6 +693,7 @@ class RegionDisk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncReplicationArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  interface: Optional[pulumi.Input['RegionDiskInterface']] = None,
@@ -718,6 +737,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_os_features"] = guest_os_features
             if interface is not None and not opts.urn:
@@ -805,6 +825,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_encryption_key"] = None
+        __props__.__dict__["enable_confidential_compute"] = None
         __props__.__dict__["erase_windows_vss_signature"] = None
         __props__.__dict__["guest_os_features"] = None
         __props__.__dict__["interface"] = None
@@ -901,6 +922,14 @@ class RegionDisk(pulumi.CustomResource):
         Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> pulumi.Output[bool]:
+        """
+        Whether this disk is using confidential compute mode.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="eraseWindowsVssSignature")
@@ -1119,7 +1148,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> pulumi.Output[str]:
         """
-        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         """
         return pulumi.get(self, "size_gb")
 

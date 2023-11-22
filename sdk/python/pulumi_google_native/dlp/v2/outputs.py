@@ -15,12 +15,18 @@ __all__ = [
     'GooglePrivacyDlpV2ActionDetailsResponse',
     'GooglePrivacyDlpV2ActionResponse',
     'GooglePrivacyDlpV2AllInfoTypesResponse',
+    'GooglePrivacyDlpV2AllOtherBigQueryTablesResponse',
     'GooglePrivacyDlpV2AllTextResponse',
     'GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse',
     'GooglePrivacyDlpV2AuxiliaryTableResponse',
+    'GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse',
     'GooglePrivacyDlpV2BigQueryFieldResponse',
     'GooglePrivacyDlpV2BigQueryOptionsResponse',
+    'GooglePrivacyDlpV2BigQueryRegexResponse',
+    'GooglePrivacyDlpV2BigQueryRegexesResponse',
+    'GooglePrivacyDlpV2BigQueryTableCollectionResponse',
     'GooglePrivacyDlpV2BigQueryTableResponse',
+    'GooglePrivacyDlpV2BigQueryTableTypesResponse',
     'GooglePrivacyDlpV2BucketResponse',
     'GooglePrivacyDlpV2BucketingConfigResponse',
     'GooglePrivacyDlpV2CategoricalStatsConfigResponse',
@@ -40,6 +46,8 @@ __all__ = [
     'GooglePrivacyDlpV2CryptoKeyResponse',
     'GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse',
     'GooglePrivacyDlpV2CustomInfoTypeResponse',
+    'GooglePrivacyDlpV2DataProfileActionResponse',
+    'GooglePrivacyDlpV2DataProfilePubSubConditionResponse',
     'GooglePrivacyDlpV2DatastoreOptionsResponse',
     'GooglePrivacyDlpV2DateShiftConfigResponse',
     'GooglePrivacyDlpV2DeidentifyConfigResponse',
@@ -53,11 +61,20 @@ __all__ = [
     'GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse',
     'GooglePrivacyDlpV2DetectionRuleResponse',
     'GooglePrivacyDlpV2DictionaryResponse',
+    'GooglePrivacyDlpV2DisabledResponse',
+    'GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse',
+    'GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse',
+    'GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse',
+    'GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse',
+    'GooglePrivacyDlpV2DiscoveryStartingLocationResponse',
+    'GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse',
+    'GooglePrivacyDlpV2DiscoveryTargetResponse',
     'GooglePrivacyDlpV2EntityIdResponse',
     'GooglePrivacyDlpV2ErrorResponse',
     'GooglePrivacyDlpV2ExcludeByHotwordResponse',
     'GooglePrivacyDlpV2ExcludeInfoTypesResponse',
     'GooglePrivacyDlpV2ExclusionRuleResponse',
+    'GooglePrivacyDlpV2ExportResponse',
     'GooglePrivacyDlpV2ExpressionsResponse',
     'GooglePrivacyDlpV2FieldIdResponse',
     'GooglePrivacyDlpV2FieldTransformationResponse',
@@ -69,6 +86,7 @@ __all__ = [
     'GooglePrivacyDlpV2HybridOptionsResponse',
     'GooglePrivacyDlpV2ImageTransformationResponse',
     'GooglePrivacyDlpV2ImageTransformationsResponse',
+    'GooglePrivacyDlpV2InfoTypeLikelihoodResponse',
     'GooglePrivacyDlpV2InfoTypeLimitResponse',
     'GooglePrivacyDlpV2InfoTypeResponse',
     'GooglePrivacyDlpV2InfoTypeStatsResponse',
@@ -102,11 +120,16 @@ __all__ = [
     'GooglePrivacyDlpV2ManualResponse',
     'GooglePrivacyDlpV2NumericalStatsConfigResponse',
     'GooglePrivacyDlpV2NumericalStatsResultResponse',
+    'GooglePrivacyDlpV2OrConditionsResponse',
+    'GooglePrivacyDlpV2OrgConfigResponse',
     'GooglePrivacyDlpV2OutputStorageConfigResponse',
     'GooglePrivacyDlpV2PartitionIdResponse',
     'GooglePrivacyDlpV2PrimitiveTransformationResponse',
     'GooglePrivacyDlpV2PrivacyMetricResponse',
     'GooglePrivacyDlpV2ProximityResponse',
+    'GooglePrivacyDlpV2PubSubConditionResponse',
+    'GooglePrivacyDlpV2PubSubExpressionsResponse',
+    'GooglePrivacyDlpV2PubSubNotificationResponse',
     'GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse',
     'GooglePrivacyDlpV2PublishSummaryToCsccResponse',
     'GooglePrivacyDlpV2PublishToPubSubResponse',
@@ -320,6 +343,18 @@ class GooglePrivacyDlpV2AllInfoTypesResponse(dict):
     def __init__(__self__):
         """
         Apply transformation to all findings.
+        """
+        pass
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2AllOtherBigQueryTablesResponse(dict):
+    """
+    Catch-all for all other tables not specified by other filters. Should always be last, except for single-table configurations, which will only have a TableReference target.
+    """
+    def __init__(__self__):
+        """
+        Catch-all for all other tables not specified by other filters. Should always be last, except for single-table configurations, which will only have a TableReference target.
         """
         pass
 
@@ -543,6 +578,61 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse(dict):
 
 
 @pulumi.output_type
+class GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse(dict):
+    """
+    Target used to match against for discovery with BigQuery tables
+    """
+    def __init__(__self__, *,
+                 cadence: 'outputs.GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse',
+                 conditions: 'outputs.GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse',
+                 disabled: 'outputs.GooglePrivacyDlpV2DisabledResponse',
+                 filter: 'outputs.GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse'):
+        """
+        Target used to match against for discovery with BigQuery tables
+        :param 'GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse' cadence: How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+        :param 'GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse' conditions: In addition to matching the filter, these conditions must be true before a profile is generated.
+        :param 'GooglePrivacyDlpV2DisabledResponse' disabled: Tables that match this filter will not have profiles created.
+        :param 'GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse' filter: The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+        """
+        pulumi.set(__self__, "cadence", cadence)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def cadence(self) -> 'outputs.GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse':
+        """
+        How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+        """
+        return pulumi.get(self, "cadence")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> 'outputs.GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse':
+        """
+        In addition to matching the filter, these conditions must be true before a profile is generated.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> 'outputs.GooglePrivacyDlpV2DisabledResponse':
+        """
+        Tables that match this filter will not have profiles created.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> 'outputs.GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse':
+        """
+        The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+        """
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
 class GooglePrivacyDlpV2BigQueryFieldResponse(dict):
     """
     Message defining a field of a BigQuery table.
@@ -619,9 +709,9 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
                  table_reference: 'outputs.GooglePrivacyDlpV2BigQueryTableResponse'):
         """
         Options defining BigQuery table and row identifiers.
-        :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] excluded_fields: References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+        :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] excluded_fields: References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] identifying_fields: Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
-        :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] included_fields: Limit scanning only to these fields.
+        :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] included_fields: Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         :param str rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
         :param int rows_limit_percent: Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
         :param 'GooglePrivacyDlpV2BigQueryTableResponse' table_reference: Complete BigQuery table reference.
@@ -638,7 +728,7 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
     @pulumi.getter(name="excludedFields")
     def excluded_fields(self) -> Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse']:
         """
-        References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
+        References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         """
         return pulumi.get(self, "excluded_fields")
 
@@ -654,7 +744,7 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
     @pulumi.getter(name="includedFields")
     def included_fields(self) -> Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse']:
         """
-        Limit scanning only to these fields.
+        Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         """
         return pulumi.get(self, "included_fields")
 
@@ -686,6 +776,132 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
         Complete BigQuery table reference.
         """
         return pulumi.get(self, "table_reference")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2BigQueryRegexResponse(dict):
+    """
+    A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetIdRegex":
+            suggest = "dataset_id_regex"
+        elif key == "projectIdRegex":
+            suggest = "project_id_regex"
+        elif key == "tableIdRegex":
+            suggest = "table_id_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2BigQueryRegexResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2BigQueryRegexResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2BigQueryRegexResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id_regex: str,
+                 project_id_regex: str,
+                 table_id_regex: str):
+        """
+        A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+        :param str dataset_id_regex: If unset, this property matches all datasets.
+        :param str project_id_regex: For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+        :param str table_id_regex: If unset, this property matches all tables.
+        """
+        pulumi.set(__self__, "dataset_id_regex", dataset_id_regex)
+        pulumi.set(__self__, "project_id_regex", project_id_regex)
+        pulumi.set(__self__, "table_id_regex", table_id_regex)
+
+    @property
+    @pulumi.getter(name="datasetIdRegex")
+    def dataset_id_regex(self) -> str:
+        """
+        If unset, this property matches all datasets.
+        """
+        return pulumi.get(self, "dataset_id_regex")
+
+    @property
+    @pulumi.getter(name="projectIdRegex")
+    def project_id_regex(self) -> str:
+        """
+        For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+        """
+        return pulumi.get(self, "project_id_regex")
+
+    @property
+    @pulumi.getter(name="tableIdRegex")
+    def table_id_regex(self) -> str:
+        """
+        If unset, this property matches all tables.
+        """
+        return pulumi.get(self, "table_id_regex")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2BigQueryRegexesResponse(dict):
+    """
+    A collection of regular expressions to determine what tables to match against.
+    """
+    def __init__(__self__, *,
+                 patterns: Sequence['outputs.GooglePrivacyDlpV2BigQueryRegexResponse']):
+        """
+        A collection of regular expressions to determine what tables to match against.
+        :param Sequence['GooglePrivacyDlpV2BigQueryRegexResponse'] patterns: A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+        """
+        pulumi.set(__self__, "patterns", patterns)
+
+    @property
+    @pulumi.getter
+    def patterns(self) -> Sequence['outputs.GooglePrivacyDlpV2BigQueryRegexResponse']:
+        """
+        A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
+        """
+        return pulumi.get(self, "patterns")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2BigQueryTableCollectionResponse(dict):
+    """
+    Specifies a collection of BigQuery tables. Used for Discovery.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeRegexes":
+            suggest = "include_regexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2BigQueryTableCollectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2BigQueryTableCollectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2BigQueryTableCollectionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 include_regexes: 'outputs.GooglePrivacyDlpV2BigQueryRegexesResponse'):
+        """
+        Specifies a collection of BigQuery tables. Used for Discovery.
+        :param 'GooglePrivacyDlpV2BigQueryRegexesResponse' include_regexes: A collection of regular expressions to match a BigQuery table against.
+        """
+        pulumi.set(__self__, "include_regexes", include_regexes)
+
+    @property
+    @pulumi.getter(name="includeRegexes")
+    def include_regexes(self) -> 'outputs.GooglePrivacyDlpV2BigQueryRegexesResponse':
+        """
+        A collection of regular expressions to match a BigQuery table against.
+        """
+        return pulumi.get(self, "include_regexes")
 
 
 @pulumi.output_type
@@ -749,6 +965,28 @@ class GooglePrivacyDlpV2BigQueryTableResponse(dict):
         Name of the table.
         """
         return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2BigQueryTableTypesResponse(dict):
+    """
+    The types of BigQuery tables supported by Cloud DLP.
+    """
+    def __init__(__self__, *,
+                 types: Sequence[str]):
+        """
+        The types of BigQuery tables supported by Cloud DLP.
+        :param Sequence[str] types: A set of BigQuery table types.
+        """
+        pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def types(self) -> Sequence[str]:
+        """
+        A set of BigQuery table types.
+        """
+        return pulumi.get(self, "types")
 
 
 @pulumi.output_type
@@ -1179,8 +1417,8 @@ class GooglePrivacyDlpV2CloudStorageOptionsResponse(dict):
                  sample_method: str):
         """
         Options defining a file or a set of files within a Cloud Storage bucket.
-        :param str bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
-        :param int bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+        :param str bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+        :param int bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
         :param 'GooglePrivacyDlpV2FileSetResponse' file_set: The set of one or more files to scan.
         :param Sequence[str] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
         :param int files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
@@ -1196,7 +1434,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsResponse(dict):
     @pulumi.getter(name="bytesLimitPerFile")
     def bytes_limit_per_file(self) -> str:
         """
-        Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+        Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
         """
         return pulumi.get(self, "bytes_limit_per_file")
 
@@ -1204,7 +1442,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsResponse(dict):
     @pulumi.getter(name="bytesLimitPerFilePercent")
     def bytes_limit_per_file_percent(self) -> int:
         """
-        Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+        Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
         """
         return pulumi.get(self, "bytes_limit_per_file_percent")
 
@@ -1748,7 +1986,7 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
         :param 'GooglePrivacyDlpV2InfoTypeResponse' info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
         :param str likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
         :param 'GooglePrivacyDlpV2RegexResponse' regex: Regular expression based CustomInfoType.
-        :param 'GooglePrivacyDlpV2SensitivityScoreResponse' sensitivity_score: Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+        :param 'GooglePrivacyDlpV2SensitivityScoreResponse' sensitivity_score: Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
         :param 'GooglePrivacyDlpV2StoredTypeResponse' stored_type: Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
         :param 'GooglePrivacyDlpV2SurrogateTypeResponse' surrogate_type: Message for detecting output from deidentification transformations that support reversing.
         """
@@ -1814,7 +2052,7 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
     @pulumi.getter(name="sensitivityScore")
     def sensitivity_score(self) -> 'outputs.GooglePrivacyDlpV2SensitivityScoreResponse':
         """
-        Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+        Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
         """
         return pulumi.get(self, "sensitivity_score")
 
@@ -1833,6 +2071,80 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
         Message for detecting output from deidentification transformations that support reversing.
         """
         return pulumi.get(self, "surrogate_type")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DataProfileActionResponse(dict):
+    """
+    A task to execute when a data profile has been generated.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exportData":
+            suggest = "export_data"
+        elif key == "pubSubNotification":
+            suggest = "pub_sub_notification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DataProfileActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DataProfileActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DataProfileActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 export_data: 'outputs.GooglePrivacyDlpV2ExportResponse',
+                 pub_sub_notification: 'outputs.GooglePrivacyDlpV2PubSubNotificationResponse'):
+        """
+        A task to execute when a data profile has been generated.
+        :param 'GooglePrivacyDlpV2ExportResponse' export_data: Export data profiles into a provided location.
+        :param 'GooglePrivacyDlpV2PubSubNotificationResponse' pub_sub_notification: Publish a message into the Pub/Sub topic.
+        """
+        pulumi.set(__self__, "export_data", export_data)
+        pulumi.set(__self__, "pub_sub_notification", pub_sub_notification)
+
+    @property
+    @pulumi.getter(name="exportData")
+    def export_data(self) -> 'outputs.GooglePrivacyDlpV2ExportResponse':
+        """
+        Export data profiles into a provided location.
+        """
+        return pulumi.get(self, "export_data")
+
+    @property
+    @pulumi.getter(name="pubSubNotification")
+    def pub_sub_notification(self) -> 'outputs.GooglePrivacyDlpV2PubSubNotificationResponse':
+        """
+        Publish a message into the Pub/Sub topic.
+        """
+        return pulumi.get(self, "pub_sub_notification")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DataProfilePubSubConditionResponse(dict):
+    """
+    A condition for determining whether a Pub/Sub should be triggered.
+    """
+    def __init__(__self__, *,
+                 expressions: 'outputs.GooglePrivacyDlpV2PubSubExpressionsResponse'):
+        """
+        A condition for determining whether a Pub/Sub should be triggered.
+        :param 'GooglePrivacyDlpV2PubSubExpressionsResponse' expressions: An expression.
+        """
+        pulumi.set(__self__, "expressions", expressions)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> 'outputs.GooglePrivacyDlpV2PubSubExpressionsResponse':
+        """
+        An expression.
+        """
+        return pulumi.get(self, "expressions")
 
 
 @pulumi.output_type
@@ -2673,6 +2985,353 @@ class GooglePrivacyDlpV2DictionaryResponse(dict):
 
 
 @pulumi.output_type
+class GooglePrivacyDlpV2DisabledResponse(dict):
+    """
+    Do not profile the tables.
+    """
+    def __init__(__self__):
+        """
+        Do not profile the tables.
+        """
+        pass
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse(dict):
+    """
+    Requirements that must be true before a table is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAfter":
+            suggest = "created_after"
+        elif key == "orConditions":
+            suggest = "or_conditions"
+        elif key == "typeCollection":
+            suggest = "type_collection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_after: str,
+                 or_conditions: 'outputs.GooglePrivacyDlpV2OrConditionsResponse',
+                 type_collection: str,
+                 types: 'outputs.GooglePrivacyDlpV2BigQueryTableTypesResponse'):
+        """
+        Requirements that must be true before a table is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
+        :param str created_after: BigQuery table must have been created after this date. Used to avoid backfilling.
+        :param 'GooglePrivacyDlpV2OrConditionsResponse' or_conditions: At least one of the conditions must be true for a table to be scanned.
+        :param str type_collection: Restrict discovery to categories of table types.
+        :param 'GooglePrivacyDlpV2BigQueryTableTypesResponse' types: Restrict discovery to specific table types.
+        """
+        pulumi.set(__self__, "created_after", created_after)
+        pulumi.set(__self__, "or_conditions", or_conditions)
+        pulumi.set(__self__, "type_collection", type_collection)
+        pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter(name="createdAfter")
+    def created_after(self) -> str:
+        """
+        BigQuery table must have been created after this date. Used to avoid backfilling.
+        """
+        return pulumi.get(self, "created_after")
+
+    @property
+    @pulumi.getter(name="orConditions")
+    def or_conditions(self) -> 'outputs.GooglePrivacyDlpV2OrConditionsResponse':
+        """
+        At least one of the conditions must be true for a table to be scanned.
+        """
+        return pulumi.get(self, "or_conditions")
+
+    @property
+    @pulumi.getter(name="typeCollection")
+    def type_collection(self) -> str:
+        """
+        Restrict discovery to categories of table types.
+        """
+        return pulumi.get(self, "type_collection")
+
+    @property
+    @pulumi.getter
+    def types(self) -> 'outputs.GooglePrivacyDlpV2BigQueryTableTypesResponse':
+        """
+        Restrict discovery to specific table types.
+        """
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse(dict):
+    """
+    Determines what tables will have profiles generated within an organization or project. Includes the ability to filter by regular expression patterns on project ID, dataset ID, and table ID.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "otherTables":
+            suggest = "other_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DiscoveryBigQueryFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 other_tables: 'outputs.GooglePrivacyDlpV2AllOtherBigQueryTablesResponse',
+                 tables: 'outputs.GooglePrivacyDlpV2BigQueryTableCollectionResponse'):
+        """
+        Determines what tables will have profiles generated within an organization or project. Includes the ability to filter by regular expression patterns on project ID, dataset ID, and table ID.
+        :param 'GooglePrivacyDlpV2AllOtherBigQueryTablesResponse' other_tables: Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        :param 'GooglePrivacyDlpV2BigQueryTableCollectionResponse' tables: A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+        """
+        pulumi.set(__self__, "other_tables", other_tables)
+        pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter(name="otherTables")
+    def other_tables(self) -> 'outputs.GooglePrivacyDlpV2AllOtherBigQueryTablesResponse':
+        """
+        Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        """
+        return pulumi.get(self, "other_tables")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> 'outputs.GooglePrivacyDlpV2BigQueryTableCollectionResponse':
+        """
+        A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse(dict):
+    """
+    What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaModifiedCadence":
+            suggest = "schema_modified_cadence"
+        elif key == "tableModifiedCadence":
+            suggest = "table_modified_cadence"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DiscoveryGenerationCadenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema_modified_cadence: 'outputs.GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse',
+                 table_modified_cadence: 'outputs.GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse'):
+        """
+        What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as quickly as possible depending on system capacity.
+        :param 'GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse' schema_modified_cadence: Governs when to update data profiles when a schema is modified.
+        :param 'GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse' table_modified_cadence: Governs when to update data profiles when a table is modified.
+        """
+        pulumi.set(__self__, "schema_modified_cadence", schema_modified_cadence)
+        pulumi.set(__self__, "table_modified_cadence", table_modified_cadence)
+
+    @property
+    @pulumi.getter(name="schemaModifiedCadence")
+    def schema_modified_cadence(self) -> 'outputs.GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse':
+        """
+        Governs when to update data profiles when a schema is modified.
+        """
+        return pulumi.get(self, "schema_modified_cadence")
+
+    @property
+    @pulumi.getter(name="tableModifiedCadence")
+    def table_modified_cadence(self) -> 'outputs.GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse':
+        """
+        Governs when to update data profiles when a table is modified.
+        """
+        return pulumi.get(self, "table_modified_cadence")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceResponse(dict):
+    """
+    The cadence at which to update data profiles when a schema is modified.
+    """
+    def __init__(__self__, *,
+                 frequency: str,
+                 types: Sequence[str]):
+        """
+        The cadence at which to update data profiles when a schema is modified.
+        :param str frequency: How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+        :param Sequence[str] types: The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+        """
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        """
+        How frequently profiles may be updated when schemas are modified. Defaults to monthly.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter
+    def types(self) -> Sequence[str]:
+        """
+        The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
+        """
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DiscoveryStartingLocationResponse(dict):
+    """
+    The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "folderId":
+            suggest = "folder_id"
+        elif key == "organizationId":
+            suggest = "organization_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DiscoveryStartingLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DiscoveryStartingLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DiscoveryStartingLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 folder_id: str,
+                 organization_id: str):
+        """
+        The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
+        :param str folder_id: The ID of the Folder within an organization to scan.
+        :param str organization_id: The ID of an organization to scan.
+        """
+        pulumi.set(__self__, "folder_id", folder_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> str:
+        """
+        The ID of the Folder within an organization to scan.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> str:
+        """
+        The ID of an organization to scan.
+        """
+        return pulumi.get(self, "organization_id")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse(dict):
+    """
+    The cadence at which to update data profiles when a table is modified.
+    """
+    def __init__(__self__, *,
+                 frequency: str,
+                 types: Sequence[str]):
+        """
+        The cadence at which to update data profiles when a table is modified.
+        :param str frequency: How frequently data profiles can be updated when tables are modified. Defaults to never.
+        :param Sequence[str] types: The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+        """
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        """
+        How frequently data profiles can be updated when tables are modified. Defaults to never.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter
+    def types(self) -> Sequence[str]:
+        """
+        The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+        """
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DiscoveryTargetResponse(dict):
+    """
+    Target used to match against for Discovery.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQueryTarget":
+            suggest = "big_query_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DiscoveryTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DiscoveryTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DiscoveryTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 big_query_target: 'outputs.GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse'):
+        """
+        Target used to match against for Discovery.
+        :param 'GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse' big_query_target: BigQuery target for Discovery. The first target to match a table will be the one applied.
+        """
+        pulumi.set(__self__, "big_query_target", big_query_target)
+
+    @property
+    @pulumi.getter(name="bigQueryTarget")
+    def big_query_target(self) -> 'outputs.GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse':
+        """
+        BigQuery target for Discovery. The first target to match a table will be the one applied.
+        """
+        return pulumi.get(self, "big_query_target")
+
+
+@pulumi.output_type
 class GooglePrivacyDlpV2EntityIdResponse(dict):
     """
     An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical records the `EntityId` might be a patient identifier, or for financial records it might be an account identifier. This message is used when generalizations or analysis must take into account that multiple rows correspond to the same entity.
@@ -2705,7 +3364,7 @@ class GooglePrivacyDlpV2ErrorResponse(dict):
         """
         Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
         :param 'GoogleRpcStatusResponse' details: Detailed error codes and messages.
-        :param Sequence[str] timestamps: The times the error occurred.
+        :param Sequence[str] timestamps: The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
         """
         pulumi.set(__self__, "details", details)
         pulumi.set(__self__, "timestamps", timestamps)
@@ -2722,7 +3381,7 @@ class GooglePrivacyDlpV2ErrorResponse(dict):
     @pulumi.getter
     def timestamps(self) -> Sequence[str]:
         """
-        The times the error occurred.
+        The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
         """
         return pulumi.get(self, "timestamps")
 
@@ -2901,6 +3560,45 @@ class GooglePrivacyDlpV2ExclusionRuleResponse(dict):
         Regular expression which defines the rule.
         """
         return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2ExportResponse(dict):
+    """
+    If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileTable":
+            suggest = "profile_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ExportResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ExportResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ExportResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 profile_table: 'outputs.GooglePrivacyDlpV2BigQueryTableResponse'):
+        """
+        If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
+        :param 'GooglePrivacyDlpV2BigQueryTableResponse' profile_table: Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+        """
+        pulumi.set(__self__, "profile_table", profile_table)
+
+    @property
+    @pulumi.getter(name="profileTable")
+    def profile_table(self) -> 'outputs.GooglePrivacyDlpV2BigQueryTableResponse':
+        """
+        Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
+        """
+        return pulumi.get(self, "profile_table")
 
 
 @pulumi.output_type
@@ -3528,6 +4226,58 @@ class GooglePrivacyDlpV2ImageTransformationsResponse(dict):
 
 
 @pulumi.output_type
+class GooglePrivacyDlpV2InfoTypeLikelihoodResponse(dict):
+    """
+    Configuration for setting a minimum likelihood per infotype. Used to customize the minimum likelihood level for specific infotypes in the request. For example, use this if you want to lower the precision for PERSON_NAME without lowering the precision for the other infotypes in the request.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoType":
+            suggest = "info_type"
+        elif key == "minLikelihood":
+            suggest = "min_likelihood"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InfoTypeLikelihoodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InfoTypeLikelihoodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InfoTypeLikelihoodResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 info_type: 'outputs.GooglePrivacyDlpV2InfoTypeResponse',
+                 min_likelihood: str):
+        """
+        Configuration for setting a minimum likelihood per infotype. Used to customize the minimum likelihood level for specific infotypes in the request. For example, use this if you want to lower the precision for PERSON_NAME without lowering the precision for the other infotypes in the request.
+        :param 'GooglePrivacyDlpV2InfoTypeResponse' info_type: Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+        :param str min_likelihood: Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+        """
+        pulumi.set(__self__, "info_type", info_type)
+        pulumi.set(__self__, "min_likelihood", min_likelihood)
+
+    @property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> 'outputs.GooglePrivacyDlpV2InfoTypeResponse':
+        """
+        Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+        """
+        return pulumi.get(self, "info_type")
+
+    @property
+    @pulumi.getter(name="minLikelihood")
+    def min_likelihood(self) -> str:
+        """
+        Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
+        """
+        return pulumi.get(self, "min_likelihood")
+
+
+@pulumi.output_type
 class GooglePrivacyDlpV2InfoTypeLimitResponse(dict):
     """
     Max findings configuration per infoType, per content item or long running DlpJob.
@@ -3784,6 +4534,8 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
             suggest = "info_types"
         elif key == "minLikelihood":
             suggest = "min_likelihood"
+        elif key == "minLikelihoodPerInfoType":
+            suggest = "min_likelihood_per_info_type"
         elif key == "ruleSet":
             suggest = "rule_set"
 
@@ -3806,6 +4558,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
                  info_types: Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse'],
                  limits: 'outputs.GooglePrivacyDlpV2FindingLimitsResponse',
                  min_likelihood: str,
+                 min_likelihood_per_info_type: Sequence['outputs.GooglePrivacyDlpV2InfoTypeLikelihoodResponse'],
                  rule_set: Sequence['outputs.GooglePrivacyDlpV2InspectionRuleSetResponse']):
         """
         Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
@@ -3813,9 +4566,10 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         :param Sequence['GooglePrivacyDlpV2CustomInfoTypeResponse'] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
         :param bool exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
-        :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+        :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
         :param 'GooglePrivacyDlpV2FindingLimitsResponse' limits: Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
-        :param str min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+        :param str min_likelihood: Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+        :param Sequence['GooglePrivacyDlpV2InfoTypeLikelihoodResponse'] min_likelihood_per_info_type: Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
         :param Sequence['GooglePrivacyDlpV2InspectionRuleSetResponse'] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
         pulumi.set(__self__, "content_options", content_options)
@@ -3825,6 +4579,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         pulumi.set(__self__, "info_types", info_types)
         pulumi.set(__self__, "limits", limits)
         pulumi.set(__self__, "min_likelihood", min_likelihood)
+        pulumi.set(__self__, "min_likelihood_per_info_type", min_likelihood_per_info_type)
         pulumi.set(__self__, "rule_set", rule_set)
 
     @property
@@ -3866,7 +4621,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @pulumi.getter(name="infoTypes")
     def info_types(self) -> Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse']:
         """
-        Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+        Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
         """
         return pulumi.get(self, "info_types")
 
@@ -3882,9 +4637,17 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @pulumi.getter(name="minLikelihood")
     def min_likelihood(self) -> str:
         """
-        Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+        Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
         """
         return pulumi.get(self, "min_likelihood")
+
+    @property
+    @pulumi.getter(name="minLikelihoodPerInfoType")
+    def min_likelihood_per_info_type(self) -> Sequence['outputs.GooglePrivacyDlpV2InfoTypeLikelihoodResponse']:
+        """
+        Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
+        """
+        return pulumi.get(self, "min_likelihood_per_info_type")
 
     @property
     @pulumi.getter(name="ruleSet")
@@ -5318,6 +6081,91 @@ class GooglePrivacyDlpV2NumericalStatsResultResponse(dict):
 
 
 @pulumi.output_type
+class GooglePrivacyDlpV2OrConditionsResponse(dict):
+    """
+    There is an OR relationship between these attributes. They are used to determine if a table should be scanned or not in Discovery.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minAge":
+            suggest = "min_age"
+        elif key == "minRowCount":
+            suggest = "min_row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2OrConditionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2OrConditionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2OrConditionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 min_age: str,
+                 min_row_count: int):
+        """
+        There is an OR relationship between these attributes. They are used to determine if a table should be scanned or not in Discovery.
+        :param str min_age: Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+        :param int min_row_count: Minimum number of rows that should be present before Cloud DLP profiles a table
+        """
+        pulumi.set(__self__, "min_age", min_age)
+        pulumi.set(__self__, "min_row_count", min_row_count)
+
+    @property
+    @pulumi.getter(name="minAge")
+    def min_age(self) -> str:
+        """
+        Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+        """
+        return pulumi.get(self, "min_age")
+
+    @property
+    @pulumi.getter(name="minRowCount")
+    def min_row_count(self) -> int:
+        """
+        Minimum number of rows that should be present before Cloud DLP profiles a table
+        """
+        return pulumi.get(self, "min_row_count")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2OrgConfigResponse(dict):
+    """
+    Project and scan location information. Only set when the parent is an org.
+    """
+    def __init__(__self__, *,
+                 location: 'outputs.GooglePrivacyDlpV2DiscoveryStartingLocationResponse',
+                 project: str):
+        """
+        Project and scan location information. Only set when the parent is an org.
+        :param 'GooglePrivacyDlpV2DiscoveryStartingLocationResponse' location: The data to scan: folder, org, or project
+        :param str project: The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def location(self) -> 'outputs.GooglePrivacyDlpV2DiscoveryStartingLocationResponse':
+        """
+        The data to scan: folder, org, or project
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
 class GooglePrivacyDlpV2OutputStorageConfigResponse(dict):
     """
     Cloud repository for storing output.
@@ -5753,6 +6601,182 @@ class GooglePrivacyDlpV2ProximityResponse(dict):
         Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         return pulumi.get(self, "window_before")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2PubSubConditionResponse(dict):
+    """
+    A condition consisting of a value.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minimumRiskScore":
+            suggest = "minimum_risk_score"
+        elif key == "minimumSensitivityScore":
+            suggest = "minimum_sensitivity_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2PubSubConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2PubSubConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2PubSubConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 minimum_risk_score: str,
+                 minimum_sensitivity_score: str):
+        """
+        A condition consisting of a value.
+        :param str minimum_risk_score: The minimum data risk score that triggers the condition.
+        :param str minimum_sensitivity_score: The minimum sensitivity level that triggers the condition.
+        """
+        pulumi.set(__self__, "minimum_risk_score", minimum_risk_score)
+        pulumi.set(__self__, "minimum_sensitivity_score", minimum_sensitivity_score)
+
+    @property
+    @pulumi.getter(name="minimumRiskScore")
+    def minimum_risk_score(self) -> str:
+        """
+        The minimum data risk score that triggers the condition.
+        """
+        return pulumi.get(self, "minimum_risk_score")
+
+    @property
+    @pulumi.getter(name="minimumSensitivityScore")
+    def minimum_sensitivity_score(self) -> str:
+        """
+        The minimum sensitivity level that triggers the condition.
+        """
+        return pulumi.get(self, "minimum_sensitivity_score")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2PubSubExpressionsResponse(dict):
+    """
+    An expression, consisting of an operator and conditions.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logicalOperator":
+            suggest = "logical_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2PubSubExpressionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2PubSubExpressionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2PubSubExpressionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GooglePrivacyDlpV2PubSubConditionResponse'],
+                 logical_operator: str):
+        """
+        An expression, consisting of an operator and conditions.
+        :param Sequence['GooglePrivacyDlpV2PubSubConditionResponse'] conditions: Conditions to apply to the expression.
+        :param str logical_operator: The operator to apply to the collection of conditions.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "logical_operator", logical_operator)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GooglePrivacyDlpV2PubSubConditionResponse']:
+        """
+        Conditions to apply to the expression.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="logicalOperator")
+    def logical_operator(self) -> str:
+        """
+        The operator to apply to the collection of conditions.
+        """
+        return pulumi.get(self, "logical_operator")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2PubSubNotificationResponse(dict):
+    """
+    Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detailOfMessage":
+            suggest = "detail_of_message"
+        elif key == "pubsubCondition":
+            suggest = "pubsub_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2PubSubNotificationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2PubSubNotificationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2PubSubNotificationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 detail_of_message: str,
+                 event: str,
+                 pubsub_condition: 'outputs.GooglePrivacyDlpV2DataProfilePubSubConditionResponse',
+                 topic: str):
+        """
+        Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
+        :param str detail_of_message: How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+        :param str event: The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+        :param 'GooglePrivacyDlpV2DataProfilePubSubConditionResponse' pubsub_condition: Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+        :param str topic: Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+        """
+        pulumi.set(__self__, "detail_of_message", detail_of_message)
+        pulumi.set(__self__, "event", event)
+        pulumi.set(__self__, "pubsub_condition", pubsub_condition)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="detailOfMessage")
+    def detail_of_message(self) -> str:
+        """
+        How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
+        """
+        return pulumi.get(self, "detail_of_message")
+
+    @property
+    @pulumi.getter
+    def event(self) -> str:
+        """
+        The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
+        """
+        return pulumi.get(self, "event")
+
+    @property
+    @pulumi.getter(name="pubsubCondition")
+    def pubsub_condition(self) -> 'outputs.GooglePrivacyDlpV2DataProfilePubSubConditionResponse':
+        """
+        Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
+        """
+        return pulumi.get(self, "pubsub_condition")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+        """
+        return pulumi.get(self, "topic")
 
 
 @pulumi.output_type
@@ -6238,7 +7262,7 @@ class GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(dict):
     """
-    De-id options.
+    De-identification options.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -6266,7 +7290,7 @@ class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(dict):
                  snapshot_image_redact_template: 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse',
                  snapshot_structured_deidentify_template: 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse'):
         """
-        De-id options.
+        De-identification options.
         :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_deidentify_template: Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
         :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_image_redact_template: Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
         :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_structured_deidentify_template: Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.

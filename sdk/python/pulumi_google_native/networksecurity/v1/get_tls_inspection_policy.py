@@ -18,19 +18,34 @@ __all__ = [
 
 @pulumi.output_type
 class GetTlsInspectionPolicyResult:
-    def __init__(__self__, ca_pool=None, create_time=None, description=None, name=None, update_time=None):
+    def __init__(__self__, ca_pool=None, create_time=None, custom_tls_features=None, description=None, exclude_public_ca_set=None, min_tls_version=None, name=None, tls_feature_profile=None, trust_config=None, update_time=None):
         if ca_pool and not isinstance(ca_pool, str):
             raise TypeError("Expected argument 'ca_pool' to be a str")
         pulumi.set(__self__, "ca_pool", ca_pool)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if custom_tls_features and not isinstance(custom_tls_features, list):
+            raise TypeError("Expected argument 'custom_tls_features' to be a list")
+        pulumi.set(__self__, "custom_tls_features", custom_tls_features)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if exclude_public_ca_set and not isinstance(exclude_public_ca_set, bool):
+            raise TypeError("Expected argument 'exclude_public_ca_set' to be a bool")
+        pulumi.set(__self__, "exclude_public_ca_set", exclude_public_ca_set)
+        if min_tls_version and not isinstance(min_tls_version, str):
+            raise TypeError("Expected argument 'min_tls_version' to be a str")
+        pulumi.set(__self__, "min_tls_version", min_tls_version)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if tls_feature_profile and not isinstance(tls_feature_profile, str):
+            raise TypeError("Expected argument 'tls_feature_profile' to be a str")
+        pulumi.set(__self__, "tls_feature_profile", tls_feature_profile)
+        if trust_config and not isinstance(trust_config, str):
+            raise TypeError("Expected argument 'trust_config' to be a str")
+        pulumi.set(__self__, "trust_config", trust_config)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -52,6 +67,14 @@ class GetTlsInspectionPolicyResult:
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="customTlsFeatures")
+    def custom_tls_features(self) -> Sequence[str]:
+        """
+        Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "custom_tls_features")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -60,12 +83,44 @@ class GetTlsInspectionPolicyResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="excludePublicCaSet")
+    def exclude_public_ca_set(self) -> bool:
+        """
+        Optional. If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trust_config. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trust_config will be accepted. This defaults to FALSE (use public CAs in addition to trust_config) for backwards compatibility, but trusting public root CAs is *not recommended* unless the traffic in question is outbound to public web servers. When possible, prefer setting this to "false" and explicitly specifying trusted CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "exclude_public_ca_set")
+
+    @property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> str:
+        """
+        Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "min_tls_version")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
         Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="tlsFeatureProfile")
+    def tls_feature_profile(self) -> str:
+        """
+        Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "tls_feature_profile")
+
+    @property
+    @pulumi.getter(name="trustConfig")
+    def trust_config(self) -> str:
+        """
+        Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
+        """
+        return pulumi.get(self, "trust_config")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -84,8 +139,13 @@ class AwaitableGetTlsInspectionPolicyResult(GetTlsInspectionPolicyResult):
         return GetTlsInspectionPolicyResult(
             ca_pool=self.ca_pool,
             create_time=self.create_time,
+            custom_tls_features=self.custom_tls_features,
             description=self.description,
+            exclude_public_ca_set=self.exclude_public_ca_set,
+            min_tls_version=self.min_tls_version,
             name=self.name,
+            tls_feature_profile=self.tls_feature_profile,
+            trust_config=self.trust_config,
             update_time=self.update_time)
 
 
@@ -106,8 +166,13 @@ def get_tls_inspection_policy(location: Optional[str] = None,
     return AwaitableGetTlsInspectionPolicyResult(
         ca_pool=pulumi.get(__ret__, 'ca_pool'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        custom_tls_features=pulumi.get(__ret__, 'custom_tls_features'),
         description=pulumi.get(__ret__, 'description'),
+        exclude_public_ca_set=pulumi.get(__ret__, 'exclude_public_ca_set'),
+        min_tls_version=pulumi.get(__ret__, 'min_tls_version'),
         name=pulumi.get(__ret__, 'name'),
+        tls_feature_profile=pulumi.get(__ret__, 'tls_feature_profile'),
+        trust_config=pulumi.get(__ret__, 'trust_config'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

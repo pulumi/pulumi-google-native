@@ -68,7 +68,7 @@ class GetBackupResult:
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> str:
         """
-        The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 90 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
         """
         return pulumi.get(self, "expire_time")
 

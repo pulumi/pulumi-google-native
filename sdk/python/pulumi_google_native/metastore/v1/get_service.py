@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, artifact_gcs_uri=None, create_time=None, database_type=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_management_activity=None, name=None, network=None, network_config=None, port=None, release_channel=None, scaling_config=None, state=None, state_message=None, telemetry_config=None, tier=None, uid=None, update_time=None):
+    def __init__(__self__, artifact_gcs_uri=None, create_time=None, database_type=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, network_config=None, port=None, release_channel=None, scaling_config=None, state=None, state_message=None, telemetry_config=None, tier=None, uid=None, update_time=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
@@ -44,6 +44,9 @@ class GetServiceResult:
         if maintenance_window and not isinstance(maintenance_window, dict):
             raise TypeError("Expected argument 'maintenance_window' to be a dict")
         pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if metadata_integration and not isinstance(metadata_integration, dict):
+            raise TypeError("Expected argument 'metadata_integration' to be a dict")
+        pulumi.set(__self__, "metadata_integration", metadata_integration)
         if metadata_management_activity and not isinstance(metadata_management_activity, dict):
             raise TypeError("Expected argument 'metadata_management_activity' to be a dict")
         pulumi.set(__self__, "metadata_management_activity", metadata_management_activity)
@@ -147,6 +150,14 @@ class GetServiceResult:
         The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
         """
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> 'outputs.MetadataIntegrationResponse':
+        """
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
 
     @property
     @pulumi.getter(name="metadataManagementActivity")
@@ -267,6 +278,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             hive_metastore_config=self.hive_metastore_config,
             labels=self.labels,
             maintenance_window=self.maintenance_window,
+            metadata_integration=self.metadata_integration,
             metadata_management_activity=self.metadata_management_activity,
             name=self.name,
             network=self.network,
@@ -305,6 +317,7 @@ def get_service(location: Optional[str] = None,
         hive_metastore_config=pulumi.get(__ret__, 'hive_metastore_config'),
         labels=pulumi.get(__ret__, 'labels'),
         maintenance_window=pulumi.get(__ret__, 'maintenance_window'),
+        metadata_integration=pulumi.get(__ret__, 'metadata_integration'),
         metadata_management_activity=pulumi.get(__ret__, 'metadata_management_activity'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),

@@ -21,6 +21,7 @@ class NfsShareArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  requested_size_gib: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input['NfsShareStorageType']] = None):
@@ -29,6 +30,7 @@ class NfsShareArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AllowedClientArgs']]] allowed_clients: List of allowed access points.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
         :param pulumi.Input[str] name: Immutable. The name of the NFS share.
+        :param pulumi.Input[str] pod: Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
         :param pulumi.Input[str] requested_size_gib: The requested size, in GiB.
         :param pulumi.Input['NfsShareStorageType'] storage_type: Immutable. The storage type of the underlying volume.
         """
@@ -40,6 +42,8 @@ class NfsShareArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pod is not None:
+            pulumi.set(__self__, "pod", pod)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if requested_size_gib is not None:
@@ -94,6 +98,18 @@ class NfsShareArgs:
 
     @property
     @pulumi.getter
+    def pod(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
+        """
+        return pulumi.get(self, "pod")
+
+    @pod.setter
+    def pod(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -135,6 +151,7 @@ class NfsShare(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  requested_size_gib: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input['NfsShareStorageType']] = None,
@@ -147,6 +164,7 @@ class NfsShare(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AllowedClientArgs']]]] allowed_clients: List of allowed access points.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
         :param pulumi.Input[str] name: Immutable. The name of the NFS share.
+        :param pulumi.Input[str] pod: Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
         :param pulumi.Input[str] requested_size_gib: The requested size, in GiB.
         :param pulumi.Input['NfsShareStorageType'] storage_type: Immutable. The storage type of the underlying volume.
         """
@@ -178,6 +196,7 @@ class NfsShare(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  requested_size_gib: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input['NfsShareStorageType']] = None,
@@ -194,6 +213,7 @@ class NfsShare(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            __props__.__dict__["pod"] = pod
             __props__.__dict__["project"] = project
             __props__.__dict__["requested_size_gib"] = requested_size_gib
             __props__.__dict__["storage_type"] = storage_type
@@ -229,6 +249,7 @@ class NfsShare(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nfs_share_id"] = None
+        __props__.__dict__["pod"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["requested_size_gib"] = None
         __props__.__dict__["state"] = None
@@ -272,6 +293,14 @@ class NfsShare(pulumi.CustomResource):
         An identifier for the NFS share, generated by the backend. This field will be deprecated in the future, use `id` instead.
         """
         return pulumi.get(self, "nfs_share_id")
+
+    @property
+    @pulumi.getter
+    def pod(self) -> pulumi.Output[str]:
+        """
+        Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
+        """
+        return pulumi.get(self, "pod")
 
     @property
     @pulumi.getter

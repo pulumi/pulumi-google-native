@@ -277,9 +277,11 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["service_config"] = service_config
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_messages"] = None
             __props__.__dict__["update_time"] = None
+            __props__.__dict__["url"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Function, __self__).__init__(
@@ -314,10 +316,12 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["service_config"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_messages"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["url"] = None
         return Function(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -395,6 +399,14 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter(name="serviceConfig")
     def service_config(self) -> pulumi.Output['outputs.ServiceConfigResponse']:
         """
@@ -425,4 +437,12 @@ class Function(pulumi.CustomResource):
         The last update timestamp of a Cloud Function.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[str]:
+        """
+        The deployed url for the function.
+        """
+        return pulumi.get(self, "url")
 

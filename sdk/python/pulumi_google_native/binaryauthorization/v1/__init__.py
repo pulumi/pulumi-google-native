@@ -12,7 +12,9 @@ from .attestor_iam_member import *
 from .attestor_iam_policy import *
 from .get_attestor import *
 from .get_attestor_iam_policy import *
+from .get_policy import *
 from .get_policy_iam_policy import *
+from .policy import *
 from .policy_iam_binding import *
 from .policy_iam_member import *
 from .policy_iam_policy import *

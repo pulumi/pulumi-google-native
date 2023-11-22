@@ -11,6 +11,7 @@ from ... import _utilities
 
 __all__ = [
     'EmailPreferencesArgs',
+    'EncryptionConfigurationArgs',
     'ScheduleOptionsArgs',
 ]
 
@@ -36,6 +37,30 @@ class EmailPreferencesArgs:
     @enable_failure_email.setter
     def enable_failure_email(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_failure_email", value)
+
+
+@pulumi.input_type
+class EncryptionConfigurationArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        Represents the encryption configuration for a transfer.
+        :param pulumi.Input[str] kms_key_name: The name of the KMS key used for encrypting BigQuery data.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the KMS key used for encrypting BigQuery data.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 @pulumi.input_type

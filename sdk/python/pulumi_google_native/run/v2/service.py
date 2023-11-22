@@ -23,6 +23,7 @@ class ServiceArgs:
                  binary_authorization: Optional[pulumi.Input['GoogleCloudRunV2BinaryAuthorizationArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input['ServiceIngress']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -30,6 +31,7 @@ class ServiceArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 scaling: Optional[pulumi.Input['GoogleCloudRunV2ServiceScalingArgs']] = None,
                  traffic: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
@@ -39,11 +41,13 @@ class ServiceArgs:
         :param pulumi.Input['GoogleCloudRunV2BinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input['ServiceIngress'] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
+        :param pulumi.Input['GoogleCloudRunV2ServiceScalingArgs'] scaling: Optional. Specifies service-level scaling settings
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         """
         pulumi.set(__self__, "service_id", service_id)
@@ -56,6 +60,8 @@ class ServiceArgs:
             pulumi.set(__self__, "client", client)
         if client_version is not None:
             pulumi.set(__self__, "client_version", client_version)
+        if custom_audiences is not None:
+            pulumi.set(__self__, "custom_audiences", custom_audiences)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ingress is not None:
@@ -70,6 +76,8 @@ class ServiceArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scaling is not None:
+            pulumi.set(__self__, "scaling", scaling)
         if traffic is not None:
             pulumi.set(__self__, "traffic", traffic)
 
@@ -144,6 +152,18 @@ class ServiceArgs:
     @client_version.setter
     def client_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_version", value)
+
+    @property
+    @pulumi.getter(name="customAudiences")
+    def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        """
+        return pulumi.get(self, "custom_audiences")
+
+    @custom_audiences.setter
+    def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_audiences", value)
 
     @property
     @pulumi.getter
@@ -225,6 +245,18 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
+    def scaling(self) -> Optional[pulumi.Input['GoogleCloudRunV2ServiceScalingArgs']]:
+        """
+        Optional. Specifies service-level scaling settings
+        """
+        return pulumi.get(self, "scaling")
+
+    @scaling.setter
+    def scaling(self, value: Optional[pulumi.Input['GoogleCloudRunV2ServiceScalingArgs']]):
+        pulumi.set(self, "scaling", value)
+
+    @property
+    @pulumi.getter
     def traffic(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
@@ -245,6 +277,7 @@ class Service(pulumi.CustomResource):
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input['ServiceIngress']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -252,6 +285,7 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 scaling: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2ServiceScalingArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']]] = None,
                  traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]]] = None,
@@ -265,11 +299,13 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input['ServiceIngress'] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2ServiceScalingArgs']] scaling: Optional. Specifies service-level scaling settings
         :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']] template: The template used to create revisions for this Service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
@@ -302,6 +338,7 @@ class Service(pulumi.CustomResource):
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input['ServiceIngress']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -309,6 +346,7 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 scaling: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2ServiceScalingArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']]] = None,
                  traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]]] = None,
@@ -325,6 +363,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
+            __props__.__dict__["custom_audiences"] = custom_audiences
             __props__.__dict__["description"] = description
             __props__.__dict__["ingress"] = ingress
             __props__.__dict__["labels"] = labels
@@ -332,6 +371,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["scaling"] = scaling
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
@@ -388,6 +428,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["conditions"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["creator"] = None
+        __props__.__dict__["custom_audiences"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
@@ -405,6 +446,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["satisfies_pzs"] = None
+        __props__.__dict__["scaling"] = None
         __props__.__dict__["service_id"] = None
         __props__.__dict__["template"] = None
         __props__.__dict__["terminal_condition"] = None
@@ -470,6 +512,14 @@ class Service(pulumi.CustomResource):
         Email address of the authenticated creator.
         """
         return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="customAudiences")
+    def custom_audiences(self) -> pulumi.Output[Sequence[str]]:
+        """
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        """
+        return pulumi.get(self, "custom_audiences")
 
     @property
     @pulumi.getter(name="deleteTime")
@@ -600,6 +650,14 @@ class Service(pulumi.CustomResource):
         Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter
+    def scaling(self) -> pulumi.Output['outputs.GoogleCloudRunV2ServiceScalingResponse']:
+        """
+        Optional. Specifies service-level scaling settings
+        """
+        return pulumi.get(self, "scaling")
 
     @property
     @pulumi.getter(name="serviceId")

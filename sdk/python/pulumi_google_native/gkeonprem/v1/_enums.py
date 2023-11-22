@@ -5,10 +5,30 @@
 from enum import Enum
 
 __all__ = [
+    'BareMetalClusterUpgradePolicyPolicy',
     'BareMetalNodePoolConfigOperatingSystem',
     'BareMetalWorkloadNodeConfigContainerRuntime',
+    'BinaryAuthorizationEvaluationMode',
     'NodeTaintEffect',
 ]
+
+
+class BareMetalClusterUpgradePolicyPolicy(str, Enum):
+    """
+    Specifies which upgrade policy to use.
+    """
+    NODE_POOL_POLICY_UNSPECIFIED = "NODE_POOL_POLICY_UNSPECIFIED"
+    """
+    No upgrade policy selected.
+    """
+    SERIAL = "SERIAL"
+    """
+    Upgrade worker node pools sequentially.
+    """
+    CONCURRENT = "CONCURRENT"
+    """
+    Upgrade all worker node pools in parallel.
+    """
 
 
 class BareMetalNodePoolConfigOperatingSystem(str, Enum):
@@ -36,6 +56,24 @@ class BareMetalWorkloadNodeConfigContainerRuntime(str, Enum):
     CONTAINERD = "CONTAINERD"
     """
     Containerd runtime.
+    """
+
+
+class BinaryAuthorizationEvaluationMode(str, Enum):
+    """
+    Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+    """
+    EVALUATION_MODE_UNSPECIFIED = "EVALUATION_MODE_UNSPECIFIED"
+    """
+    Default value
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable BinaryAuthorization
+    """
+    PROJECT_SINGLETON_POLICY_ENFORCE = "PROJECT_SINGLETON_POLICY_ENFORCE"
+    """
+    Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy.
     """
 
 

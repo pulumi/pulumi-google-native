@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectivityTestResult:
-    def __init__(__self__, create_time=None, description=None, destination=None, display_name=None, labels=None, name=None, protocol=None, reachability_details=None, related_projects=None, source=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, destination=None, display_name=None, labels=None, name=None, probing_details=None, protocol=None, reachability_details=None, related_projects=None, source=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -38,6 +38,9 @@ class GetConnectivityTestResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if probing_details and not isinstance(probing_details, dict):
+            raise TypeError("Expected argument 'probing_details' to be a dict")
+        pulumi.set(__self__, "probing_details", probing_details)
         if protocol and not isinstance(protocol, str):
             raise TypeError("Expected argument 'protocol' to be a str")
         pulumi.set(__self__, "protocol", protocol)
@@ -103,6 +106,14 @@ class GetConnectivityTestResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="probingDetails")
+    def probing_details(self) -> 'outputs.ProbingDetailsResponse':
+        """
+        The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+        """
+        return pulumi.get(self, "probing_details")
+
+    @property
     @pulumi.getter
     def protocol(self) -> str:
         """
@@ -155,6 +166,7 @@ class AwaitableGetConnectivityTestResult(GetConnectivityTestResult):
             display_name=self.display_name,
             labels=self.labels,
             name=self.name,
+            probing_details=self.probing_details,
             protocol=self.protocol,
             reachability_details=self.reachability_details,
             related_projects=self.related_projects,
@@ -181,6 +193,7 @@ def get_connectivity_test(connectivity_test_id: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        probing_details=pulumi.get(__ret__, 'probing_details'),
         protocol=pulumi.get(__ret__, 'protocol'),
         reachability_details=pulumi.get(__ret__, 'reachability_details'),
         related_projects=pulumi.get(__ret__, 'related_projects'),

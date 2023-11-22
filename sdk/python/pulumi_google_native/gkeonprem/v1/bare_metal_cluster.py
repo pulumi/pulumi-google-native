@@ -25,6 +25,7 @@ class BareMetalClusterArgs:
                  network_config: pulumi.Input['BareMetalNetworkConfigArgs'],
                  storage: pulumi.Input['BareMetalStorageConfigArgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 binary_authorization: Optional[pulumi.Input['BinaryAuthorizationArgs']] = None,
                  cluster_operations: Optional[pulumi.Input['BareMetalClusterOperationsConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -35,7 +36,8 @@ class BareMetalClusterArgs:
                  os_environment_config: Optional[pulumi.Input['BareMetalOsEnvironmentConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy: Optional[pulumi.Input['BareMetalProxyConfigArgs']] = None,
-                 security_config: Optional[pulumi.Input['BareMetalSecurityConfigArgs']] = None):
+                 security_config: Optional[pulumi.Input['BareMetalSecurityConfigArgs']] = None,
+                 upgrade_policy: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']] = None):
         """
         The set of arguments for constructing a BareMetalCluster resource.
         :param pulumi.Input[str] admin_cluster_membership: The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership.
@@ -46,6 +48,7 @@ class BareMetalClusterArgs:
         :param pulumi.Input['BareMetalNetworkConfigArgs'] network_config: Network configuration.
         :param pulumi.Input['BareMetalStorageConfigArgs'] storage: Storage configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the bare metal user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        :param pulumi.Input['BinaryAuthorizationArgs'] binary_authorization: Binary Authorization related configurations.
         :param pulumi.Input['BareMetalClusterOperationsConfigArgs'] cluster_operations: Cluster operations configuration.
         :param pulumi.Input[str] description: A human readable description of this bare metal user cluster.
         :param pulumi.Input['BareMetalMaintenanceConfigArgs'] maintenance_config: Maintenance configuration.
@@ -55,6 +58,7 @@ class BareMetalClusterArgs:
         :param pulumi.Input['BareMetalOsEnvironmentConfigArgs'] os_environment_config: OS environment related configurations.
         :param pulumi.Input['BareMetalProxyConfigArgs'] proxy: Proxy configuration.
         :param pulumi.Input['BareMetalSecurityConfigArgs'] security_config: Security related setting configuration.
+        :param pulumi.Input['BareMetalClusterUpgradePolicyArgs'] upgrade_policy: The cluster upgrade policy.
         """
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
         pulumi.set(__self__, "bare_metal_cluster_id", bare_metal_cluster_id)
@@ -65,6 +69,8 @@ class BareMetalClusterArgs:
         pulumi.set(__self__, "storage", storage)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if binary_authorization is not None:
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_operations is not None:
             pulumi.set(__self__, "cluster_operations", cluster_operations)
         if description is not None:
@@ -87,6 +93,8 @@ class BareMetalClusterArgs:
             pulumi.set(__self__, "proxy", proxy)
         if security_config is not None:
             pulumi.set(__self__, "security_config", security_config)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
 
     @property
     @pulumi.getter(name="adminClusterMembership")
@@ -183,6 +191,18 @@ class BareMetalClusterArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['BinaryAuthorizationArgs']]:
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['BinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="clusterOperations")
@@ -310,6 +330,18 @@ class BareMetalClusterArgs:
     def security_config(self, value: Optional[pulumi.Input['BareMetalSecurityConfigArgs']]):
         pulumi.set(self, "security_config", value)
 
+    @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]:
+        """
+        The cluster upgrade policy.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
+
 
 class BareMetalCluster(pulumi.CustomResource):
     @overload
@@ -320,6 +352,7 @@ class BareMetalCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_cluster_id: Optional[pulumi.Input[str]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
                  cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterOperationsConfigArgs']]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalControlPlaneConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -335,6 +368,7 @@ class BareMetalCluster(pulumi.CustomResource):
                  proxy: Optional[pulumi.Input[pulumi.InputType['BareMetalProxyConfigArgs']]] = None,
                  security_config: Optional[pulumi.Input[pulumi.InputType['BareMetalSecurityConfigArgs']]] = None,
                  storage: Optional[pulumi.Input[pulumi.InputType['BareMetalStorageConfigArgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']]] = None,
                  __props__=None):
         """
         Creates a new bare metal cluster in a given project and location.
@@ -345,6 +379,7 @@ class BareMetalCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the bare metal user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] bare_metal_cluster_id: Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
         :param pulumi.Input[str] bare_metal_version: The Anthos clusters on bare metal version for your user cluster.
+        :param pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
         :param pulumi.Input[pulumi.InputType['BareMetalClusterOperationsConfigArgs']] cluster_operations: Cluster operations configuration.
         :param pulumi.Input[pulumi.InputType['BareMetalControlPlaneConfigArgs']] control_plane: Control plane configuration.
         :param pulumi.Input[str] description: A human readable description of this bare metal user cluster.
@@ -358,6 +393,7 @@ class BareMetalCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BareMetalProxyConfigArgs']] proxy: Proxy configuration.
         :param pulumi.Input[pulumi.InputType['BareMetalSecurityConfigArgs']] security_config: Security related setting configuration.
         :param pulumi.Input[pulumi.InputType['BareMetalStorageConfigArgs']] storage: Storage configuration.
+        :param pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']] upgrade_policy: The cluster upgrade policy.
         """
         ...
     @overload
@@ -387,6 +423,7 @@ class BareMetalCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_cluster_id: Optional[pulumi.Input[str]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
                  cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterOperationsConfigArgs']]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalControlPlaneConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -402,6 +439,7 @@ class BareMetalCluster(pulumi.CustomResource):
                  proxy: Optional[pulumi.Input[pulumi.InputType['BareMetalProxyConfigArgs']]] = None,
                  security_config: Optional[pulumi.Input[pulumi.InputType['BareMetalSecurityConfigArgs']]] = None,
                  storage: Optional[pulumi.Input[pulumi.InputType['BareMetalStorageConfigArgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -421,6 +459,7 @@ class BareMetalCluster(pulumi.CustomResource):
             if bare_metal_version is None and not opts.urn:
                 raise TypeError("Missing required property 'bare_metal_version'")
             __props__.__dict__["bare_metal_version"] = bare_metal_version
+            __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["cluster_operations"] = cluster_operations
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
@@ -444,6 +483,7 @@ class BareMetalCluster(pulumi.CustomResource):
             if storage is None and not opts.urn:
                 raise TypeError("Missing required property 'storage'")
             __props__.__dict__["storage"] = storage
+            __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["admin_cluster_name"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
@@ -487,6 +527,7 @@ class BareMetalCluster(pulumi.CustomResource):
         __props__.__dict__["annotations"] = None
         __props__.__dict__["bare_metal_cluster_id"] = None
         __props__.__dict__["bare_metal_version"] = None
+        __props__.__dict__["binary_authorization"] = None
         __props__.__dict__["cluster_operations"] = None
         __props__.__dict__["control_plane"] = None
         __props__.__dict__["create_time"] = None
@@ -514,6 +555,7 @@ class BareMetalCluster(pulumi.CustomResource):
         __props__.__dict__["storage"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["upgrade_policy"] = None
         __props__.__dict__["validation_check"] = None
         return BareMetalCluster(resource_name, opts=opts, __props__=__props__)
 
@@ -556,6 +598,14 @@ class BareMetalCluster(pulumi.CustomResource):
         The Anthos clusters on bare metal version for your user cluster.
         """
         return pulumi.get(self, "bare_metal_version")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> pulumi.Output['outputs.BinaryAuthorizationResponse']:
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="clusterOperations")
@@ -766,6 +816,14 @@ class BareMetalCluster(pulumi.CustomResource):
         The time when the bare metal user cluster was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> pulumi.Output['outputs.BareMetalClusterUpgradePolicyResponse']:
+        """
+        The cluster upgrade policy.
+        """
+        return pulumi.get(self, "upgrade_policy")
 
     @property
     @pulumi.getter(name="validationCheck")

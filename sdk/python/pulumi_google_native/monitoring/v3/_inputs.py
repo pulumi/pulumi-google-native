@@ -19,6 +19,7 @@ __all__ = [
     'BasicServiceArgs',
     'BasicSliArgs',
     'CloudEndpointsArgs',
+    'CloudFunctionV2TargetArgs',
     'CloudRunArgs',
     'ClusterIstioArgs',
     'ConditionArgs',
@@ -51,11 +52,13 @@ __all__ = [
     'NotificationRateLimitArgs',
     'PerformanceThresholdArgs',
     'PingConfigArgs',
+    'PrometheusQueryLanguageConditionArgs',
     'RequestBasedSliArgs',
     'ResourceGroupArgs',
     'ResponseStatusCodeArgs',
     'ServiceLevelIndicatorArgs',
     'StatusArgs',
+    'SyntheticMonitorTargetArgs',
     'TcpCheckArgs',
     'TelemetryArgs',
     'TimeIntervalArgs',
@@ -418,6 +421,29 @@ class CloudEndpointsArgs:
 
 
 @pulumi.input_type
+class CloudFunctionV2TargetArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+        :param pulumi.Input[str] name: Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
 class CloudRunArgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
@@ -535,6 +561,7 @@ class ConditionArgs:
                  condition_absent: Optional[pulumi.Input['MetricAbsenceArgs']] = None,
                  condition_matched_log: Optional[pulumi.Input['LogMatchArgs']] = None,
                  condition_monitoring_query_language: Optional[pulumi.Input['MonitoringQueryLanguageConditionArgs']] = None,
+                 condition_prometheus_query_language: Optional[pulumi.Input['PrometheusQueryLanguageConditionArgs']] = None,
                  condition_threshold: Optional[pulumi.Input['MetricThresholdArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -543,6 +570,7 @@ class ConditionArgs:
         :param pulumi.Input['MetricAbsenceArgs'] condition_absent: A condition that checks that a time series continues to receive new data points.
         :param pulumi.Input['LogMatchArgs'] condition_matched_log: A condition that checks for log messages matching given constraints. If set, no other conditions can be present.
         :param pulumi.Input['MonitoringQueryLanguageConditionArgs'] condition_monitoring_query_language: A condition that uses the Monitoring Query Language to define alerts.
+        :param pulumi.Input['PrometheusQueryLanguageConditionArgs'] condition_prometheus_query_language: A condition that uses the Prometheus query language to define alerts.
         :param pulumi.Input['MetricThresholdArgs'] condition_threshold: A condition that compares a time series against a threshold.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
         :param pulumi.Input[str] name: Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
@@ -553,6 +581,8 @@ class ConditionArgs:
             pulumi.set(__self__, "condition_matched_log", condition_matched_log)
         if condition_monitoring_query_language is not None:
             pulumi.set(__self__, "condition_monitoring_query_language", condition_monitoring_query_language)
+        if condition_prometheus_query_language is not None:
+            pulumi.set(__self__, "condition_prometheus_query_language", condition_prometheus_query_language)
         if condition_threshold is not None:
             pulumi.set(__self__, "condition_threshold", condition_threshold)
         if display_name is not None:
@@ -595,6 +625,18 @@ class ConditionArgs:
     @condition_monitoring_query_language.setter
     def condition_monitoring_query_language(self, value: Optional[pulumi.Input['MonitoringQueryLanguageConditionArgs']]):
         pulumi.set(self, "condition_monitoring_query_language", value)
+
+    @property
+    @pulumi.getter(name="conditionPrometheusQueryLanguage")
+    def condition_prometheus_query_language(self) -> Optional[pulumi.Input['PrometheusQueryLanguageConditionArgs']]:
+        """
+        A condition that uses the Prometheus query language to define alerts.
+        """
+        return pulumi.get(self, "condition_prometheus_query_language")
+
+    @condition_prometheus_query_language.setter
+    def condition_prometheus_query_language(self, value: Optional[pulumi.Input['PrometheusQueryLanguageConditionArgs']]):
+        pulumi.set(self, "condition_prometheus_query_language", value)
 
     @property
     @pulumi.getter(name="conditionThreshold")
@@ -766,16 +808,20 @@ class DistributionCutArgs:
 class DocumentationArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
-                 mime_type: Optional[pulumi.Input[str]] = None):
+                 mime_type: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input[str]] = None):
         """
         A content string and a MIME type that describes the content string's format.
         :param pulumi.Input[str] content: The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
         :param pulumi.Input[str] mime_type: The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
+        :param pulumi.Input[str] subject: Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if mime_type is not None:
             pulumi.set(__self__, "mime_type", mime_type)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
 
     @property
     @pulumi.getter
@@ -801,6 +847,18 @@ class DocumentationArgs:
     def mime_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mime_type", value)
 
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject", value)
+
 
 @pulumi.input_type
 class ForecastOptionsArgs:
@@ -808,7 +866,7 @@ class ForecastOptionsArgs:
                  forecast_horizon: pulumi.Input[str]):
         """
         Options used when forecasting the time series and testing the predicted value against the threshold.
-        :param pulumi.Input[str] forecast_horizon: The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+        :param pulumi.Input[str] forecast_horizon: The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
         """
         pulumi.set(__self__, "forecast_horizon", forecast_horizon)
 
@@ -816,7 +874,7 @@ class ForecastOptionsArgs:
     @pulumi.getter(name="forecastHorizon")
     def forecast_horizon(self) -> pulumi.Input[str]:
         """
-        The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+        The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
         """
         return pulumi.get(self, "forecast_horizon")
 
@@ -2307,6 +2365,109 @@ class PingConfigArgs:
 
 
 @pulumi.input_type
+class PrometheusQueryLanguageConditionArgs:
+    def __init__(__self__, *,
+                 query: pulumi.Input[str],
+                 alert_rule: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
+                 evaluation_interval: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 rule_group: Optional[pulumi.Input[str]] = None):
+        """
+        A condition type that allows alert policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).
+        :param pulumi.Input[str] query: The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+        :param pulumi.Input[str] alert_rule: Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+        :param pulumi.Input[str] duration: Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+        :param pulumi.Input[str] evaluation_interval: Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+        :param pulumi.Input[str] rule_group: Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+        """
+        pulumi.set(__self__, "query", query)
+        if alert_rule is not None:
+            pulumi.set(__self__, "alert_rule", alert_rule)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if evaluation_interval is not None:
+            pulumi.set(__self__, "evaluation_interval", evaluation_interval)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if rule_group is not None:
+            pulumi.set(__self__, "rule_group", rule_group)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="alertRule")
+    def alert_rule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+        """
+        return pulumi.get(self, "alert_rule")
+
+    @alert_rule.setter
+    def alert_rule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alert_rule", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="evaluationInterval")
+    def evaluation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+        """
+        return pulumi.get(self, "evaluation_interval")
+
+    @evaluation_interval.setter
+    def evaluation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluation_interval", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="ruleGroup")
+    def rule_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+        """
+        return pulumi.get(self, "rule_group")
+
+    @rule_group.setter
+    def rule_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_group", value)
+
+
+@pulumi.input_type
 class RequestBasedSliArgs:
     def __init__(__self__, *,
                  distribution_cut: Optional[pulumi.Input['DistributionCutArgs']] = None,
@@ -2536,6 +2697,30 @@ class StatusArgs:
     @message.setter
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class SyntheticMonitorTargetArgs:
+    def __init__(__self__, *,
+                 cloud_function_v2: Optional[pulumi.Input['CloudFunctionV2TargetArgs']] = None):
+        """
+        Describes a Synthetic Monitor to be invoked by Uptime.
+        :param pulumi.Input['CloudFunctionV2TargetArgs'] cloud_function_v2: Target a Synthetic Monitor GCFv2 instance.
+        """
+        if cloud_function_v2 is not None:
+            pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
+
+    @property
+    @pulumi.getter(name="cloudFunctionV2")
+    def cloud_function_v2(self) -> Optional[pulumi.Input['CloudFunctionV2TargetArgs']]:
+        """
+        Target a Synthetic Monitor GCFv2 instance.
+        """
+        return pulumi.get(self, "cloud_function_v2")
+
+    @cloud_function_v2.setter
+    def cloud_function_v2(self, value: Optional[pulumi.Input['CloudFunctionV2TargetArgs']]):
+        pulumi.set(self, "cloud_function_v2", value)
 
 
 @pulumi.input_type

@@ -19,16 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetBindingResult:
-    def __init__(__self__, create_time=None, delete_time=None, fleet=None, name=None, scope=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, labels=None, name=None, scope=None, state=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
-        if fleet and not isinstance(fleet, bool):
-            raise TypeError("Expected argument 'fleet' to be a bool")
-        pulumi.set(__self__, "fleet", fleet)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -63,11 +63,11 @@ class GetBindingResult:
 
     @property
     @pulumi.getter
-    def fleet(self) -> bool:
+    def labels(self) -> Mapping[str, str]:
         """
-        Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        Optional. Labels for this MembershipBinding.
         """
-        return pulumi.get(self, "fleet")
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -81,7 +81,7 @@ class GetBindingResult:
     @pulumi.getter
     def scope(self) -> str:
         """
-        A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         """
         return pulumi.get(self, "scope")
 
@@ -118,7 +118,7 @@ class AwaitableGetBindingResult(GetBindingResult):
         return GetBindingResult(
             create_time=self.create_time,
             delete_time=self.delete_time,
-            fleet=self.fleet,
+            labels=self.labels,
             name=self.name,
             scope=self.scope,
             state=self.state,
@@ -145,7 +145,7 @@ def get_binding(binding_id: Optional[str] = None,
     return AwaitableGetBindingResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
-        fleet=pulumi.get(__ret__, 'fleet'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         scope=pulumi.get(__ret__, 'scope'),
         state=pulumi.get(__ret__, 'state'),

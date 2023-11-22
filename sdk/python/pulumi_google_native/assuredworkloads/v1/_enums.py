@@ -5,87 +5,10 @@
 from enum import Enum
 
 __all__ = [
-    'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain',
-    'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping',
-    'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType',
     'WorkloadComplianceRegime',
     'WorkloadPartner',
 ]
-
-
-class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain(str, Enum):
-    """
-    Indicates Ekm provisioning error if any.
-    """
-    EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED = "EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED"
-    """
-    No error domain
-    """
-    UNSPECIFIED_ERROR = "UNSPECIFIED_ERROR"
-    """
-    Error but domain is unspecified.
-    """
-    GOOGLE_SERVER_ERROR = "GOOGLE_SERVER_ERROR"
-    """
-    Internal logic breaks within provisioning code.
-    """
-    EXTERNAL_USER_ERROR = "EXTERNAL_USER_ERROR"
-    """
-    Error occurred with the customer not granting permission/creating resource.
-    """
-    EXTERNAL_PARTNER_ERROR = "EXTERNAL_PARTNER_ERROR"
-    """
-    Error occurred within the partner’s provisioning cluster.
-    """
-    TIMEOUT_ERROR = "TIMEOUT_ERROR"
-    """
-    Resource wasn't provisioned in the required 7 day time period
-    """
-
-
-class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping(str, Enum):
-    """
-    Detailed error message if Ekm provisioning fails
-    """
-    EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED = "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED"
-    """
-    Error is unspecified.
-    """
-    INVALID_SERVICE_ACCOUNT = "INVALID_SERVICE_ACCOUNT"
-    """
-    Service account is used is invalid.
-    """
-    MISSING_METRICS_SCOPE_ADMIN_PERMISSION = "MISSING_METRICS_SCOPE_ADMIN_PERMISSION"
-    """
-    Iam permission monitoring.MetricsScopeAdmin wasn't applied.
-    """
-    MISSING_EKM_CONNECTION_ADMIN_PERMISSION = "MISSING_EKM_CONNECTION_ADMIN_PERMISSION"
-    """
-    Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
-    """
-
-
-class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState(str, Enum):
-    """
-    Indicates Ekm enrollment Provisioning of a given workload.
-    """
-    EKM_PROVISIONING_STATE_UNSPECIFIED = "EKM_PROVISIONING_STATE_UNSPECIFIED"
-    """
-    Default State for Ekm Provisioning
-    """
-    EKM_PROVISIONING_STATE_PENDING = "EKM_PROVISIONING_STATE_PENDING"
-    """
-    Pending State for Ekm Provisioning
-    """
-    EKM_PROVISIONING_STATE_FAILED = "EKM_PROVISIONING_STATE_FAILED"
-    """
-    Failed State for Ekm Provisioning
-    """
-    EKM_PROVISIONING_STATE_COMPLETED = "EKM_PROVISIONING_STATE_COMPLETED"
-    """
-    Completed State for Ekm Provisioning
-    """
 
 
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(str, Enum):
@@ -164,7 +87,7 @@ class WorkloadComplianceRegime(str, Enum):
     """
     AU_REGIONS_AND_US_SUPPORT = "AU_REGIONS_AND_US_SUPPORT"
     """
-    Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.
+    Assured Workloads for Australia Regions and Support controls
     """
     ASSURED_WORKLOADS_FOR_PARTNERS = "ASSURED_WORKLOADS_FOR_PARTNERS"
     """
@@ -181,6 +104,18 @@ class WorkloadComplianceRegime(str, Enum):
     CA_PROTECTED_B = "CA_PROTECTED_B"
     """
     Assured Workloads for Canada Protected B regime
+    """
+    IL5 = "IL5"
+    """
+    Information protection as per DoD IL5 requirements.
+    """
+    IL2 = "IL2"
+    """
+    Information protection as per DoD IL2 requirements.
+    """
+    JP_REGIONS_AND_SUPPORT = "JP_REGIONS_AND_SUPPORT"
+    """
+    Assured Workloads for Japan Regions
     """
 
 

@@ -8,15 +8,23 @@ __all__ = [
     'AggregationCrossSeriesReducer',
     'AggregationPerSeriesAligner',
     'AxisScale',
+    'BreakdownSortOrder',
     'ChartOptionsMode',
     'DashboardFilterFilterType',
     'DataSetPlotType',
     'DataSetTargetAxis',
+    'DimensionSortOrder',
     'PickTimeSeriesFilterDirection',
     'PickTimeSeriesFilterRankingMethod',
+    'PieChartChartType',
     'SparkChartViewSparkChartType',
     'StatisticalTimeSeriesFilterRankingMethod',
     'TextFormat',
+    'TextStyleFontSize',
+    'TextStyleHorizontalAlignment',
+    'TextStylePadding',
+    'TextStylePointerLocation',
+    'TextStyleVerticalAlignment',
     'ThresholdColor',
     'ThresholdDirection',
     'ThresholdTargetAxis',
@@ -186,6 +194,28 @@ class AxisScale(str, Enum):
     """
 
 
+class BreakdownSortOrder(str, Enum):
+    """
+    Required. The sort order is applied to the values of the breakdown column.
+    """
+    SORT_ORDER_UNSPECIFIED = "SORT_ORDER_UNSPECIFIED"
+    """
+    An unspecified sort order. This option is invalid when sorting is required.
+    """
+    SORT_ORDER_NONE = "SORT_ORDER_NONE"
+    """
+    No sorting is applied.
+    """
+    SORT_ORDER_ASCENDING = "SORT_ORDER_ASCENDING"
+    """
+    The lowest-valued entries are selected first.
+    """
+    SORT_ORDER_DESCENDING = "SORT_ORDER_DESCENDING"
+    """
+    The highest-valued entries are selected first.
+    """
+
+
 class ChartOptionsMode(str, Enum):
     """
     The chart mode.
@@ -282,6 +312,28 @@ class DataSetTargetAxis(str, Enum):
     """
 
 
+class DimensionSortOrder(str, Enum):
+    """
+    The sort order applied to the sort column.
+    """
+    SORT_ORDER_UNSPECIFIED = "SORT_ORDER_UNSPECIFIED"
+    """
+    An unspecified sort order. This option is invalid when sorting is required.
+    """
+    SORT_ORDER_NONE = "SORT_ORDER_NONE"
+    """
+    No sorting is applied.
+    """
+    SORT_ORDER_ASCENDING = "SORT_ORDER_ASCENDING"
+    """
+    The lowest-valued entries are selected first.
+    """
+    SORT_ORDER_DESCENDING = "SORT_ORDER_DESCENDING"
+    """
+    The highest-valued entries are selected first.
+    """
+
+
 class PickTimeSeriesFilterDirection(str, Enum):
     """
     How to use the ranking to select time series that pass through the filter.
@@ -327,6 +379,24 @@ class PickTimeSeriesFilterRankingMethod(str, Enum):
     METHOD_LATEST = "METHOD_LATEST"
     """
     Select the most recent value.
+    """
+
+
+class PieChartChartType(str, Enum):
+    """
+    Required. Indicates the visualization type for the PieChart.
+    """
+    PIE_CHART_TYPE_UNSPECIFIED = "PIE_CHART_TYPE_UNSPECIFIED"
+    """
+    The zero value. No type specified. Do not use.
+    """
+    PIE = "PIE"
+    """
+    A Pie type PieChart.
+    """
+    DONUT = "DONUT"
+    """
+    Similar to PIE, but the DONUT type PieChart has a hole in the middle.
     """
 
 
@@ -377,6 +447,168 @@ class TextFormat(str, Enum):
     RAW = "RAW"
     """
     The text contains no special formatting.
+    """
+
+
+class TextStyleFontSize(str, Enum):
+    """
+    Font sizes for both the title and content. The title will still be larger relative to the content.
+    """
+    FONT_SIZE_UNSPECIFIED = "FONT_SIZE_UNSPECIFIED"
+    """
+    No font size specified, will default to FS_LARGE
+    """
+    FS_EXTRA_SMALL = "FS_EXTRA_SMALL"
+    """
+    Extra small font size
+    """
+    FS_SMALL = "FS_SMALL"
+    """
+    Small font size
+    """
+    FS_MEDIUM = "FS_MEDIUM"
+    """
+    Medium font size
+    """
+    FS_LARGE = "FS_LARGE"
+    """
+    Large font size
+    """
+    FS_EXTRA_LARGE = "FS_EXTRA_LARGE"
+    """
+    Extra large font size
+    """
+
+
+class TextStyleHorizontalAlignment(str, Enum):
+    """
+    The horizontal alignment of both the title and content
+    """
+    HORIZONTAL_ALIGNMENT_UNSPECIFIED = "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
+    """
+    No horizontal alignment specified, will default to H_LEFT
+    """
+    H_LEFT = "H_LEFT"
+    """
+    Left-align
+    """
+    H_CENTER = "H_CENTER"
+    """
+    Center-align
+    """
+    H_RIGHT = "H_RIGHT"
+    """
+    Right-align
+    """
+
+
+class TextStylePadding(str, Enum):
+    """
+    The amount of padding around the widget
+    """
+    PADDING_SIZE_UNSPECIFIED = "PADDING_SIZE_UNSPECIFIED"
+    """
+    No padding size specified, will default to P_EXTRA_SMALL
+    """
+    P_EXTRA_SMALL = "P_EXTRA_SMALL"
+    """
+    Extra small padding
+    """
+    P_SMALL = "P_SMALL"
+    """
+    Small padding
+    """
+    P_MEDIUM = "P_MEDIUM"
+    """
+    Medium padding
+    """
+    P_LARGE = "P_LARGE"
+    """
+    Large padding
+    """
+    P_EXTRA_LARGE = "P_EXTRA_LARGE"
+    """
+    Extra large padding
+    """
+
+
+class TextStylePointerLocation(str, Enum):
+    """
+    The pointer location for this widget (also sometimes called a "tail")
+    """
+    POINTER_LOCATION_UNSPECIFIED = "POINTER_LOCATION_UNSPECIFIED"
+    """
+    No visual pointer
+    """
+    PL_TOP = "PL_TOP"
+    """
+    Placed in the middle of the top of the widget
+    """
+    PL_RIGHT = "PL_RIGHT"
+    """
+    Placed in the middle of the right side of the widget
+    """
+    PL_BOTTOM = "PL_BOTTOM"
+    """
+    Placed in the middle of the bottom of the widget
+    """
+    PL_LEFT = "PL_LEFT"
+    """
+    Placed in the middle of the left side of the widget
+    """
+    PL_TOP_LEFT = "PL_TOP_LEFT"
+    """
+    Placed on the left side of the top of the widget
+    """
+    PL_TOP_RIGHT = "PL_TOP_RIGHT"
+    """
+    Placed on the right side of the top of the widget
+    """
+    PL_RIGHT_TOP = "PL_RIGHT_TOP"
+    """
+    Placed on the top of the right side of the widget
+    """
+    PL_RIGHT_BOTTOM = "PL_RIGHT_BOTTOM"
+    """
+    Placed on the bottom of the right side of the widget
+    """
+    PL_BOTTOM_RIGHT = "PL_BOTTOM_RIGHT"
+    """
+    Placed on the right side of the bottom of the widget
+    """
+    PL_BOTTOM_LEFT = "PL_BOTTOM_LEFT"
+    """
+    Placed on the left side of the bottom of the widget
+    """
+    PL_LEFT_BOTTOM = "PL_LEFT_BOTTOM"
+    """
+    Placed on the bottom of the left side of the widget
+    """
+    PL_LEFT_TOP = "PL_LEFT_TOP"
+    """
+    Placed on the top of the left side of the widget
+    """
+
+
+class TextStyleVerticalAlignment(str, Enum):
+    """
+    The vertical alignment of both the title and content
+    """
+    VERTICAL_ALIGNMENT_UNSPECIFIED = "VERTICAL_ALIGNMENT_UNSPECIFIED"
+    """
+    No vertical alignment specified, will default to V_TOP
+    """
+    V_TOP = "V_TOP"
+    """
+    Top-align
+    """
+    V_CENTER = "V_CENTER"
+    """
+    Center-align
+    """
+    V_BOTTOM = "V_BOTTOM"
+    """
+    Bottom-align
     """
 
 

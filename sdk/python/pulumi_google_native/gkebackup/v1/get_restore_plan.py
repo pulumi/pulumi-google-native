@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRestorePlanResult:
-    def __init__(__self__, backup_plan=None, cluster=None, create_time=None, description=None, etag=None, labels=None, name=None, restore_config=None, uid=None, update_time=None):
+    def __init__(__self__, backup_plan=None, cluster=None, create_time=None, description=None, etag=None, labels=None, name=None, restore_config=None, state=None, state_reason=None, uid=None, update_time=None):
         if backup_plan and not isinstance(backup_plan, str):
             raise TypeError("Expected argument 'backup_plan' to be a str")
         pulumi.set(__self__, "backup_plan", backup_plan)
@@ -44,6 +44,12 @@ class GetRestorePlanResult:
         if restore_config and not isinstance(restore_config, dict):
             raise TypeError("Expected argument 'restore_config' to be a dict")
         pulumi.set(__self__, "restore_config", restore_config)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if state_reason and not isinstance(state_reason, str):
+            raise TypeError("Expected argument 'state_reason' to be a str")
+        pulumi.set(__self__, "state_reason", state_reason)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -79,7 +85,7 @@ class GetRestorePlanResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        User specified descriptive string for this RestorePlan.
+        Optional. User specified descriptive string for this RestorePlan.
         """
         return pulumi.get(self, "description")
 
@@ -95,7 +101,7 @@ class GetRestorePlanResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        A set of custom labels supplied by user.
+        Optional. A set of custom labels supplied by user.
         """
         return pulumi.get(self, "labels")
 
@@ -114,6 +120,22 @@ class GetRestorePlanResult:
         Configuration of Restores created via this RestorePlan.
         """
         return pulumi.get(self, "restore_config")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> str:
+        """
+        Human-readable description of why RestorePlan is in the current `state`
+        """
+        return pulumi.get(self, "state_reason")
 
     @property
     @pulumi.getter
@@ -146,6 +168,8 @@ class AwaitableGetRestorePlanResult(GetRestorePlanResult):
             labels=self.labels,
             name=self.name,
             restore_config=self.restore_config,
+            state=self.state,
+            state_reason=self.state_reason,
             uid=self.uid,
             update_time=self.update_time)
 
@@ -173,6 +197,8 @@ def get_restore_plan(location: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         restore_config=pulumi.get(__ret__, 'restore_config'),
+        state=pulumi.get(__ret__, 'state'),
+        state_reason=pulumi.get(__ret__, 'state_reason'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

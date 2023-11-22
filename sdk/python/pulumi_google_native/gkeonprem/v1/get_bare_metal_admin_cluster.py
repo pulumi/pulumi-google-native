@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetBareMetalAdminClusterResult:
-    def __init__(__self__, annotations=None, bare_metal_version=None, cluster_operations=None, control_plane=None, create_time=None, delete_time=None, description=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, maintenance_config=None, maintenance_status=None, name=None, network_config=None, node_access_config=None, node_config=None, os_environment_config=None, proxy=None, reconciling=None, security_config=None, state=None, status=None, storage=None, uid=None, update_time=None, validation_check=None):
+    def __init__(__self__, annotations=None, bare_metal_version=None, binary_authorization=None, cluster_operations=None, control_plane=None, create_time=None, delete_time=None, description=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, maintenance_config=None, maintenance_status=None, name=None, network_config=None, node_access_config=None, node_config=None, os_environment_config=None, proxy=None, reconciling=None, security_config=None, state=None, status=None, storage=None, uid=None, update_time=None, validation_check=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
         if bare_metal_version and not isinstance(bare_metal_version, str):
             raise TypeError("Expected argument 'bare_metal_version' to be a str")
         pulumi.set(__self__, "bare_metal_version", bare_metal_version)
+        if binary_authorization and not isinstance(binary_authorization, dict):
+            raise TypeError("Expected argument 'binary_authorization' to be a dict")
+        pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_operations and not isinstance(cluster_operations, dict):
             raise TypeError("Expected argument 'cluster_operations' to be a dict")
         pulumi.set(__self__, "cluster_operations", cluster_operations)
@@ -120,6 +123,14 @@ class GetBareMetalAdminClusterResult:
         The Anthos clusters on bare metal version for the bare metal admin cluster.
         """
         return pulumi.get(self, "bare_metal_version")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> 'outputs.BinaryAuthorizationResponse':
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="clusterOperations")
@@ -338,6 +349,7 @@ class AwaitableGetBareMetalAdminClusterResult(GetBareMetalAdminClusterResult):
         return GetBareMetalAdminClusterResult(
             annotations=self.annotations,
             bare_metal_version=self.bare_metal_version,
+            binary_authorization=self.binary_authorization,
             cluster_operations=self.cluster_operations,
             control_plane=self.control_plane,
             create_time=self.create_time,
@@ -385,6 +397,7 @@ def get_bare_metal_admin_cluster(bare_metal_admin_cluster_id: Optional[str] = No
     return AwaitableGetBareMetalAdminClusterResult(
         annotations=pulumi.get(__ret__, 'annotations'),
         bare_metal_version=pulumi.get(__ret__, 'bare_metal_version'),
+        binary_authorization=pulumi.get(__ret__, 'binary_authorization'),
         cluster_operations=pulumi.get(__ret__, 'cluster_operations'),
         control_plane=pulumi.get(__ret__, 'control_plane'),
         create_time=pulumi.get(__ret__, 'create_time'),

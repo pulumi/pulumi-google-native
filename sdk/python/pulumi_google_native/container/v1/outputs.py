@@ -13,13 +13,17 @@ from ._enums import *
 
 __all__ = [
     'AcceleratorConfigResponse',
+    'AdditionalNodeNetworkConfigResponse',
+    'AdditionalPodNetworkConfigResponse',
     'AdditionalPodRangesConfigResponse',
     'AddonsConfigResponse',
+    'AdvancedDatapathObservabilityConfigResponse',
     'AdvancedMachineFeaturesResponse',
     'AuthenticatorGroupsConfigResponse',
     'AutoUpgradeOptionsResponse',
     'AutopilotResponse',
     'AutoprovisioningNodePoolDefaultsResponse',
+    'BestEffortProvisioningResponse',
     'BigQueryDestinationResponse',
     'BinaryAuthorizationResponse',
     'BlueGreenInfoResponse',
@@ -28,6 +32,7 @@ __all__ = [
     'ClientCertificateConfigResponse',
     'CloudRunConfigResponse',
     'ClusterAutoscalingResponse',
+    'ClusterNetworkPerformanceConfigResponse',
     'ConfidentialNodesResponse',
     'ConfigConnectorConfigResponse',
     'ConsumptionMeteringConfigResponse',
@@ -37,20 +42,24 @@ __all__ = [
     'DatabaseEncryptionResponse',
     'DefaultSnatStatusResponse',
     'DnsCacheConfigResponse',
+    'EnterpriseConfigResponse',
     'EphemeralStorageLocalSsdConfigResponse',
     'FastSocketResponse',
     'FilterResponse',
     'FleetResponse',
+    'GPUDriverInstallationConfigResponse',
     'GPUSharingConfigResponse',
     'GatewayAPIConfigResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
     'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
+    'GcsFuseCsiDriverConfigResponse',
     'GkeBackupAgentConfigResponse',
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
     'IPAllocationPolicyResponse',
     'IdentityServiceConfigResponse',
+    'K8sBetaAPIConfigResponse',
     'KubernetesDashboardResponse',
     'LegacyAbacResponse',
     'LinuxNodeConfigResponse',
@@ -73,6 +82,7 @@ __all__ = [
     'NetworkPolicyConfigResponse',
     'NetworkPolicyResponse',
     'NetworkTagsResponse',
+    'NodeAffinityResponse',
     'NodeConfigDefaultsResponse',
     'NodeConfigResponse',
     'NodeKubeletConfigResponse',
@@ -85,21 +95,27 @@ __all__ = [
     'NodePoolResponse',
     'NodeTaintResponse',
     'NotificationConfigResponse',
+    'ParentProductConfigResponse',
     'PlacementPolicyResponse',
     'PodCIDROverprovisionConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateClusterMasterGlobalAccessConfigResponse',
     'PubSubResponse',
+    'QueuedProvisioningResponse',
+    'RangeInfoResponse',
     'RecurringTimeWindowResponse',
     'ReleaseChannelConfigResponse',
     'ReleaseChannelResponse',
     'ReservationAffinityResponse',
     'ResourceLimitResponse',
+    'ResourceManagerTagsResponse',
     'ResourceUsageExportConfigResponse',
     'SandboxConfigResponse',
+    'SecurityPostureConfigResponse',
     'ServiceExternalIPsConfigResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedNodesResponse',
+    'SoleTenantConfigResponse',
     'StandardRolloutPolicyResponse',
     'StatusConditionResponse',
     'TimeWindowResponse',
@@ -110,6 +126,7 @@ __all__ = [
     'WindowsNodeConfigResponse',
     'WorkloadIdentityConfigResponse',
     'WorkloadMetadataConfigResponse',
+    'WorkloadPolicyConfigResponse',
 ]
 
 @pulumi.output_type
@@ -124,6 +141,8 @@ class AcceleratorConfigResponse(dict):
             suggest = "accelerator_count"
         elif key == "acceleratorType":
             suggest = "accelerator_type"
+        elif key == "gpuDriverInstallationConfig":
+            suggest = "gpu_driver_installation_config"
         elif key == "gpuPartitionSize":
             suggest = "gpu_partition_size"
         elif key == "gpuSharingConfig":
@@ -143,17 +162,20 @@ class AcceleratorConfigResponse(dict):
     def __init__(__self__, *,
                  accelerator_count: str,
                  accelerator_type: str,
+                 gpu_driver_installation_config: 'outputs.GPUDriverInstallationConfigResponse',
                  gpu_partition_size: str,
                  gpu_sharing_config: 'outputs.GPUSharingConfigResponse'):
         """
         AcceleratorConfig represents a Hardware Accelerator request.
         :param str accelerator_count: The number of the accelerator cards exposed to an instance.
         :param str accelerator_type: The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
+        :param 'GPUDriverInstallationConfigResponse' gpu_driver_installation_config: The configuration for auto installation of GPU driver.
         :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         :param 'GPUSharingConfigResponse' gpu_sharing_config: The configuration for GPU sharing options.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "gpu_driver_installation_config", gpu_driver_installation_config)
         pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
         pulumi.set(__self__, "gpu_sharing_config", gpu_sharing_config)
 
@@ -174,6 +196,14 @@ class AcceleratorConfigResponse(dict):
         return pulumi.get(self, "accelerator_type")
 
     @property
+    @pulumi.getter(name="gpuDriverInstallationConfig")
+    def gpu_driver_installation_config(self) -> 'outputs.GPUDriverInstallationConfigResponse':
+        """
+        The configuration for auto installation of GPU driver.
+        """
+        return pulumi.get(self, "gpu_driver_installation_config")
+
+    @property
     @pulumi.getter(name="gpuPartitionSize")
     def gpu_partition_size(self) -> str:
         """
@@ -191,6 +221,102 @@ class AcceleratorConfigResponse(dict):
 
 
 @pulumi.output_type
+class AdditionalNodeNetworkConfigResponse(dict):
+    """
+    AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
+    """
+    def __init__(__self__, *,
+                 network: str,
+                 subnetwork: str):
+        """
+        AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
+        :param str network: Name of the VPC where the additional interface belongs
+        :param str subnetwork: Name of the subnetwork where the additional interface belongs
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Name of the VPC where the additional interface belongs
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        Name of the subnetwork where the additional interface belongs
+        """
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class AdditionalPodNetworkConfigResponse(dict):
+    """
+    AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxPodsPerNode":
+            suggest = "max_pods_per_node"
+        elif key == "secondaryPodRange":
+            suggest = "secondary_pod_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdditionalPodNetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdditionalPodNetworkConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdditionalPodNetworkConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_pods_per_node: 'outputs.MaxPodsConstraintResponse',
+                 secondary_pod_range: str,
+                 subnetwork: str):
+        """
+        AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+        :param 'MaxPodsConstraintResponse' max_pods_per_node: The maximum number of pods per node which use this pod network
+        :param str secondary_pod_range: The name of the secondary range on the subnet which provides IP address for this pod range
+        :param str subnetwork: Name of the subnetwork where the additional pod network belongs
+        """
+        pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+        pulumi.set(__self__, "secondary_pod_range", secondary_pod_range)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> 'outputs.MaxPodsConstraintResponse':
+        """
+        The maximum number of pods per node which use this pod network
+        """
+        return pulumi.get(self, "max_pods_per_node")
+
+    @property
+    @pulumi.getter(name="secondaryPodRange")
+    def secondary_pod_range(self) -> str:
+        """
+        The name of the secondary range on the subnet which provides IP address for this pod range
+        """
+        return pulumi.get(self, "secondary_pod_range")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        Name of the subnetwork where the additional pod network belongs
+        """
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
 class AdditionalPodRangesConfigResponse(dict):
     """
     AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
@@ -198,7 +324,9 @@ class AdditionalPodRangesConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "podRangeNames":
+        if key == "podRangeInfo":
+            suggest = "pod_range_info"
+        elif key == "podRangeNames":
             suggest = "pod_range_names"
 
         if suggest:
@@ -213,12 +341,23 @@ class AdditionalPodRangesConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 pod_range_info: Sequence['outputs.RangeInfoResponse'],
                  pod_range_names: Sequence[str]):
         """
         AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+        :param Sequence['RangeInfoResponse'] pod_range_info: [Output only] Information for additional pod range.
         :param Sequence[str] pod_range_names: Name for pod secondary ipv4 range which has the actual range defined ahead.
         """
+        pulumi.set(__self__, "pod_range_info", pod_range_info)
         pulumi.set(__self__, "pod_range_names", pod_range_names)
+
+    @property
+    @pulumi.getter(name="podRangeInfo")
+    def pod_range_info(self) -> Sequence['outputs.RangeInfoResponse']:
+        """
+        [Output only] Information for additional pod range.
+        """
+        return pulumi.get(self, "pod_range_info")
 
     @property
     @pulumi.getter(name="podRangeNames")
@@ -247,6 +386,8 @@ class AddonsConfigResponse(dict):
             suggest = "gce_persistent_disk_csi_driver_config"
         elif key == "gcpFilestoreCsiDriverConfig":
             suggest = "gcp_filestore_csi_driver_config"
+        elif key == "gcsFuseCsiDriverConfig":
+            suggest = "gcs_fuse_csi_driver_config"
         elif key == "gkeBackupAgentConfig":
             suggest = "gke_backup_agent_config"
         elif key == "horizontalPodAutoscaling":
@@ -275,6 +416,7 @@ class AddonsConfigResponse(dict):
                  dns_cache_config: 'outputs.DnsCacheConfigResponse',
                  gce_persistent_disk_csi_driver_config: 'outputs.GcePersistentDiskCsiDriverConfigResponse',
                  gcp_filestore_csi_driver_config: 'outputs.GcpFilestoreCsiDriverConfigResponse',
+                 gcs_fuse_csi_driver_config: 'outputs.GcsFuseCsiDriverConfigResponse',
                  gke_backup_agent_config: 'outputs.GkeBackupAgentConfigResponse',
                  horizontal_pod_autoscaling: 'outputs.HorizontalPodAutoscalingResponse',
                  http_load_balancing: 'outputs.HttpLoadBalancingResponse',
@@ -287,6 +429,7 @@ class AddonsConfigResponse(dict):
         :param 'DnsCacheConfigResponse' dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param 'GcePersistentDiskCsiDriverConfigResponse' gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
         :param 'GcpFilestoreCsiDriverConfigResponse' gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
+        :param 'GcsFuseCsiDriverConfigResponse' gcs_fuse_csi_driver_config: Configuration for the Cloud Storage Fuse CSI driver.
         :param 'GkeBackupAgentConfigResponse' gke_backup_agent_config: Configuration for the Backup for GKE agent addon.
         :param 'HorizontalPodAutoscalingResponse' horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param 'HttpLoadBalancingResponse' http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -298,6 +441,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "dns_cache_config", dns_cache_config)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        pulumi.set(__self__, "gcs_fuse_csi_driver_config", gcs_fuse_csi_driver_config)
         pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         pulumi.set(__self__, "http_load_balancing", http_load_balancing)
@@ -345,6 +489,14 @@ class AddonsConfigResponse(dict):
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
 
     @property
+    @pulumi.getter(name="gcsFuseCsiDriverConfig")
+    def gcs_fuse_csi_driver_config(self) -> 'outputs.GcsFuseCsiDriverConfigResponse':
+        """
+        Configuration for the Cloud Storage Fuse CSI driver.
+        """
+        return pulumi.get(self, "gcs_fuse_csi_driver_config")
+
+    @property
     @pulumi.getter(name="gkeBackupAgentConfig")
     def gke_backup_agent_config(self) -> 'outputs.GkeBackupAgentConfigResponse':
         """
@@ -383,6 +535,58 @@ class AddonsConfigResponse(dict):
         Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
         """
         return pulumi.get(self, "network_policy_config")
+
+
+@pulumi.output_type
+class AdvancedDatapathObservabilityConfigResponse(dict):
+    """
+    AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableMetrics":
+            suggest = "enable_metrics"
+        elif key == "relayMode":
+            suggest = "relay_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdvancedDatapathObservabilityConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdvancedDatapathObservabilityConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdvancedDatapathObservabilityConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_metrics: bool,
+                 relay_mode: str):
+        """
+        AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+        :param bool enable_metrics: Expose flow metrics on nodes
+        :param str relay_mode: Method used to make Relay available
+        """
+        pulumi.set(__self__, "enable_metrics", enable_metrics)
+        pulumi.set(__self__, "relay_mode", relay_mode)
+
+    @property
+    @pulumi.getter(name="enableMetrics")
+    def enable_metrics(self) -> bool:
+        """
+        Expose flow metrics on nodes
+        """
+        return pulumi.get(self, "enable_metrics")
+
+    @property
+    @pulumi.getter(name="relayMode")
+    def relay_mode(self) -> str:
+        """
+        Method used to make Relay available
+        """
+        return pulumi.get(self, "relay_mode")
 
 
 @pulumi.output_type
@@ -529,13 +733,33 @@ class AutopilotResponse(dict):
     """
     Autopilot is the configuration for Autopilot settings on the cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workloadPolicyConfig":
+            suggest = "workload_policy_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutopilotResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutopilotResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutopilotResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: bool):
+                 enabled: bool,
+                 workload_policy_config: 'outputs.WorkloadPolicyConfigResponse'):
         """
         Autopilot is the configuration for Autopilot settings on the cluster.
         :param bool enabled: Enable Autopilot
+        :param 'WorkloadPolicyConfigResponse' workload_policy_config: Workload policy configuration for Autopilot.
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "workload_policy_config", workload_policy_config)
 
     @property
     @pulumi.getter
@@ -544,6 +768,14 @@ class AutopilotResponse(dict):
         Enable Autopilot
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="workloadPolicyConfig")
+    def workload_policy_config(self) -> 'outputs.WorkloadPolicyConfigResponse':
+        """
+        Workload policy configuration for Autopilot.
+        """
+        return pulumi.get(self, "workload_policy_config")
 
 
 @pulumi.output_type
@@ -562,6 +794,8 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
             suggest = "disk_type"
         elif key == "imageType":
             suggest = "image_type"
+        elif key == "insecureKubeletReadonlyPortEnabled":
+            suggest = "insecure_kubelet_readonly_port_enabled"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
         elif key == "oauthScopes":
@@ -589,6 +823,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
                  disk_size_gb: int,
                  disk_type: str,
                  image_type: str,
+                 insecure_kubelet_readonly_port_enabled: bool,
                  management: 'outputs.NodeManagementResponse',
                  min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
@@ -601,6 +836,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param str image_type: The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
+        :param bool insecure_kubelet_readonly_port_enabled: Enable or disable Kubelet read only port.
         :param 'NodeManagementResponse' management: Specifies the node management options for NAP created node-pools.
         :param str min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: Scopes that are used by NAP when creating node pools.
@@ -612,6 +848,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "image_type", image_type)
+        pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         pulumi.set(__self__, "management", management)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
@@ -650,6 +887,14 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         """
         return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
+    def insecure_kubelet_readonly_port_enabled(self) -> bool:
+        """
+        Enable or disable Kubelet read only port.
+        """
+        return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
 
     @property
     @pulumi.getter
@@ -701,6 +946,56 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         Specifies the upgrade settings for NAP created node pools
         """
         return pulumi.get(self, "upgrade_settings")
+
+
+@pulumi.output_type
+class BestEffortProvisioningResponse(dict):
+    """
+    Best effort provisioning.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minProvisionNodes":
+            suggest = "min_provision_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BestEffortProvisioningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BestEffortProvisioningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BestEffortProvisioningResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 min_provision_nodes: int):
+        """
+        Best effort provisioning.
+        :param bool enabled: When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+        :param int min_provision_nodes: Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "min_provision_nodes", min_provision_nodes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="minProvisionNodes")
+    def min_provision_nodes(self) -> int:
+        """
+        Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+        """
+        return pulumi.get(self, "min_provision_nodes")
 
 
 @pulumi.output_type
@@ -1169,6 +1464,45 @@ class ClusterAutoscalingResponse(dict):
 
 
 @pulumi.output_type
+class ClusterNetworkPerformanceConfigResponse(dict):
+    """
+    Configuration of network bandwidth tiers
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNetworkPerformanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNetworkPerformanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNetworkPerformanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        Configuration of network bandwidth tiers
+        :param str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for NodePools in the cluster.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        Specifies the total network bandwidth tier for NodePools in the cluster.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
 class ConfidentialNodesResponse(dict):
     """
     ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -1466,9 +1800,48 @@ class DnsCacheConfigResponse(dict):
 
 
 @pulumi.output_type
+class EnterpriseConfigResponse(dict):
+    """
+    EnterpriseConfig is the cluster enterprise configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterTier":
+            suggest = "cluster_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_tier: str):
+        """
+        EnterpriseConfig is the cluster enterprise configuration.
+        :param str cluster_tier: [Output only] cluster_tier specifies the premium tier of the cluster.
+        """
+        pulumi.set(__self__, "cluster_tier", cluster_tier)
+
+    @property
+    @pulumi.getter(name="clusterTier")
+    def cluster_tier(self) -> str:
+        """
+        [Output only] cluster_tier specifies the premium tier of the cluster.
+        """
+        return pulumi.get(self, "cluster_tier")
+
+
+@pulumi.output_type
 class EphemeralStorageLocalSsdConfigResponse(dict):
     """
-    EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+    EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1490,8 +1863,8 @@ class EphemeralStorageLocalSsdConfigResponse(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         """
-        EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
-        :param int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
+        :param int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
 
@@ -1499,7 +1872,7 @@ class EphemeralStorageLocalSsdConfigResponse(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         """
-        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -1624,6 +1997,45 @@ class FleetResponse(dict):
         The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
         """
         return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GPUDriverInstallationConfigResponse(dict):
+    """
+    GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuDriverVersion":
+            suggest = "gpu_driver_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GPUDriverInstallationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GPUDriverInstallationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GPUDriverInstallationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_driver_version: str):
+        """
+        GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
+        :param str gpu_driver_version: Mode for how the GPU driver is installed.
+        """
+        pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
+
+    @property
+    @pulumi.getter(name="gpuDriverVersion")
+    def gpu_driver_version(self) -> str:
+        """
+        Mode for how the GPU driver is installed.
+        """
+        return pulumi.get(self, "gpu_driver_version")
 
 
 @pulumi.output_type
@@ -1767,6 +2179,28 @@ class GcpFilestoreCsiDriverConfigResponse(dict):
 
 
 @pulumi.output_type
+class GcsFuseCsiDriverConfigResponse(dict):
+    """
+    Configuration for the Cloud Storage Fuse CSI driver.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Cloud Storage Fuse CSI driver.
+        :param bool enabled: Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GkeBackupAgentConfigResponse(dict):
     """
     Configuration for the Backup for GKE Agent.
@@ -1850,6 +2284,8 @@ class IPAllocationPolicyResponse(dict):
             suggest = "cluster_secondary_range_name"
         elif key == "createSubnetwork":
             suggest = "create_subnetwork"
+        elif key == "defaultPodIpv4RangeUtilization":
+            suggest = "default_pod_ipv4_range_utilization"
         elif key == "ipv6AccessType":
             suggest = "ipv6_access_type"
         elif key == "nodeIpv4Cidr":
@@ -1896,6 +2332,7 @@ class IPAllocationPolicyResponse(dict):
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
                  create_subnetwork: bool,
+                 default_pod_ipv4_range_utilization: float,
                  ipv6_access_type: str,
                  node_ipv4_cidr: str,
                  node_ipv4_cidr_block: str,
@@ -1917,6 +2354,7 @@ class IPAllocationPolicyResponse(dict):
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
         :param bool create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
+        :param float default_pod_ipv4_range_utilization: [Output only] The utilization of the cluster default IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
         :param str ipv6_access_type: The ipv6 access type (internal or external) when create_subnetwork is true
         :param str node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param str node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -1937,6 +2375,7 @@ class IPAllocationPolicyResponse(dict):
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        pulumi.set(__self__, "default_pod_ipv4_range_utilization", default_pod_ipv4_range_utilization)
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         pulumi.set(__self__, "node_ipv4_cidr", node_ipv4_cidr)
         pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
@@ -1994,6 +2433,14 @@ class IPAllocationPolicyResponse(dict):
         Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
         """
         return pulumi.get(self, "create_subnetwork")
+
+    @property
+    @pulumi.getter(name="defaultPodIpv4RangeUtilization")
+    def default_pod_ipv4_range_utilization(self) -> float:
+        """
+        [Output only] The utilization of the cluster default IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        """
+        return pulumi.get(self, "default_pod_ipv4_range_utilization")
 
     @property
     @pulumi.getter(name="ipv6AccessType")
@@ -2137,6 +2584,45 @@ class IdentityServiceConfigResponse(dict):
 
 
 @pulumi.output_type
+class K8sBetaAPIConfigResponse(dict):
+    """
+    K8sBetaAPIConfig , configuration for beta APIs
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledApis":
+            suggest = "enabled_apis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in K8sBetaAPIConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        K8sBetaAPIConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        K8sBetaAPIConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_apis: Sequence[str]):
+        """
+        K8sBetaAPIConfig , configuration for beta APIs
+        :param Sequence[str] enabled_apis: Enabled k8s beta APIs.
+        """
+        pulumi.set(__self__, "enabled_apis", enabled_apis)
+
+    @property
+    @pulumi.getter(name="enabledApis")
+    def enabled_apis(self) -> Sequence[str]:
+        """
+        Enabled k8s beta APIs.
+        """
+        return pulumi.get(self, "enabled_apis")
+
+
+@pulumi.output_type
 class KubernetesDashboardResponse(dict):
     """
     Configuration for the Kubernetes Dashboard.
@@ -2233,7 +2719,7 @@ class LinuxNodeConfigResponse(dict):
 @pulumi.output_type
 class LocalNvmeSsdBlockConfigResponse(dict):
     """
-    LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+    LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2255,8 +2741,8 @@ class LocalNvmeSsdBlockConfigResponse(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         """
-        LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
-        :param int local_ssd_count: The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
+        :param int local_ssd_count: Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
 
@@ -2264,7 +2750,7 @@ class LocalNvmeSsdBlockConfigResponse(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         """
-        The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -2816,7 +3302,9 @@ class MonitoringConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "componentConfig":
+        if key == "advancedDatapathObservabilityConfig":
+            suggest = "advanced_datapath_observability_config"
+        elif key == "componentConfig":
             suggest = "component_config"
         elif key == "managedPrometheusConfig":
             suggest = "managed_prometheus_config"
@@ -2833,15 +3321,26 @@ class MonitoringConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 advanced_datapath_observability_config: 'outputs.AdvancedDatapathObservabilityConfigResponse',
                  component_config: 'outputs.MonitoringComponentConfigResponse',
                  managed_prometheus_config: 'outputs.ManagedPrometheusConfigResponse'):
         """
         MonitoringConfig is cluster monitoring configuration.
+        :param 'AdvancedDatapathObservabilityConfigResponse' advanced_datapath_observability_config: Configuration of Advanced Datapath Observability features.
         :param 'MonitoringComponentConfigResponse' component_config: Monitoring components configuration
         :param 'ManagedPrometheusConfigResponse' managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
         """
+        pulumi.set(__self__, "advanced_datapath_observability_config", advanced_datapath_observability_config)
         pulumi.set(__self__, "component_config", component_config)
         pulumi.set(__self__, "managed_prometheus_config", managed_prometheus_config)
+
+    @property
+    @pulumi.getter(name="advancedDatapathObservabilityConfig")
+    def advanced_datapath_observability_config(self) -> 'outputs.AdvancedDatapathObservabilityConfigResponse':
+        """
+        Configuration of Advanced Datapath Observability features.
+        """
+        return pulumi.get(self, "advanced_datapath_observability_config")
 
     @property
     @pulumi.getter(name="componentConfig")
@@ -2874,12 +3373,18 @@ class NetworkConfigResponse(dict):
             suggest = "default_snat_status"
         elif key == "dnsConfig":
             suggest = "dns_config"
+        elif key == "enableFqdnNetworkPolicy":
+            suggest = "enable_fqdn_network_policy"
         elif key == "enableIntraNodeVisibility":
             suggest = "enable_intra_node_visibility"
         elif key == "enableL4ilbSubsetting":
             suggest = "enable_l4ilb_subsetting"
+        elif key == "enableMultiNetworking":
+            suggest = "enable_multi_networking"
         elif key == "gatewayApiConfig":
             suggest = "gateway_api_config"
+        elif key == "networkPerformanceConfig":
+            suggest = "network_performance_config"
         elif key == "privateIpv6GoogleAccess":
             suggest = "private_ipv6_google_access"
         elif key == "serviceExternalIpsConfig":
@@ -2900,10 +3405,13 @@ class NetworkConfigResponse(dict):
                  datapath_provider: str,
                  default_snat_status: 'outputs.DefaultSnatStatusResponse',
                  dns_config: 'outputs.DNSConfigResponse',
+                 enable_fqdn_network_policy: bool,
                  enable_intra_node_visibility: bool,
                  enable_l4ilb_subsetting: bool,
+                 enable_multi_networking: bool,
                  gateway_api_config: 'outputs.GatewayAPIConfigResponse',
                  network: str,
+                 network_performance_config: 'outputs.ClusterNetworkPerformanceConfigResponse',
                  private_ipv6_google_access: str,
                  service_external_ips_config: 'outputs.ServiceExternalIPsConfigResponse',
                  subnetwork: str):
@@ -2912,10 +3420,13 @@ class NetworkConfigResponse(dict):
         :param str datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param 'DefaultSnatStatusResponse' default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param 'DNSConfigResponse' dns_config: DNSConfig contains clusterDNS config for this cluster.
+        :param bool enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster.
         :param bool enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param bool enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
+        :param bool enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param 'GatewayAPIConfigResponse' gateway_api_config: GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         :param str network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
+        :param 'ClusterNetworkPerformanceConfigResponse' network_performance_config: Network bandwidth tier configuration.
         :param str private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         :param 'ServiceExternalIPsConfigResponse' service_external_ips_config: ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
         :param str subnetwork: The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
@@ -2923,10 +3434,13 @@ class NetworkConfigResponse(dict):
         pulumi.set(__self__, "datapath_provider", datapath_provider)
         pulumi.set(__self__, "default_snat_status", default_snat_status)
         pulumi.set(__self__, "dns_config", dns_config)
+        pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
         pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
+        pulumi.set(__self__, "enable_multi_networking", enable_multi_networking)
         pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_performance_config", network_performance_config)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
         pulumi.set(__self__, "subnetwork", subnetwork)
@@ -2956,6 +3470,14 @@ class NetworkConfigResponse(dict):
         return pulumi.get(self, "dns_config")
 
     @property
+    @pulumi.getter(name="enableFqdnNetworkPolicy")
+    def enable_fqdn_network_policy(self) -> bool:
+        """
+        Whether FQDN Network Policy is enabled on this cluster.
+        """
+        return pulumi.get(self, "enable_fqdn_network_policy")
+
+    @property
     @pulumi.getter(name="enableIntraNodeVisibility")
     def enable_intra_node_visibility(self) -> bool:
         """
@@ -2972,6 +3494,14 @@ class NetworkConfigResponse(dict):
         return pulumi.get(self, "enable_l4ilb_subsetting")
 
     @property
+    @pulumi.getter(name="enableMultiNetworking")
+    def enable_multi_networking(self) -> bool:
+        """
+        Whether multi-networking is enabled for this cluster.
+        """
+        return pulumi.get(self, "enable_multi_networking")
+
+    @property
     @pulumi.getter(name="gatewayApiConfig")
     def gateway_api_config(self) -> 'outputs.GatewayAPIConfigResponse':
         """
@@ -2986,6 +3516,14 @@ class NetworkConfigResponse(dict):
         The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> 'outputs.ClusterNetworkPerformanceConfigResponse':
+        """
+        Network bandwidth tier configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
 
     @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
@@ -3129,6 +3667,50 @@ class NetworkTagsResponse(dict):
 
 
 @pulumi.output_type
+class NodeAffinityResponse(dict):
+    """
+    Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        """
+        Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+        :param str key: Key for NodeAffinity.
+        :param str operator: Operator for NodeAffinity.
+        :param Sequence[str] values: Values for NodeAffinity.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key for NodeAffinity.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operator for NodeAffinity.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        Values for NodeAffinity.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class NodeConfigDefaultsResponse(dict):
     """
     Subset of NodeConfig message that has defaults.
@@ -3228,12 +3810,16 @@ class NodeConfigResponse(dict):
             suggest = "reservation_affinity"
         elif key == "resourceLabels":
             suggest = "resource_labels"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
+        elif key == "soleTenantConfig":
+            suggest = "sole_tenant_config"
         elif key == "windowsNodeConfig":
             suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
@@ -3276,9 +3862,11 @@ class NodeConfigResponse(dict):
                  preemptible: bool,
                  reservation_affinity: 'outputs.ReservationAffinityResponse',
                  resource_labels: Mapping[str, str],
+                 resource_manager_tags: 'outputs.ResourceManagerTagsResponse',
                  sandbox_config: 'outputs.SandboxConfigResponse',
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
+                 sole_tenant_config: 'outputs.SoleTenantConfigResponse',
                  spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.NodeTaintResponse'],
@@ -3311,9 +3899,11 @@ class NodeConfigResponse(dict):
         :param bool preemptible: Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
         :param 'ReservationAffinityResponse' reservation_affinity: The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
         :param Mapping[str, str] resource_labels: The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        :param 'ResourceManagerTagsResponse' resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes.
         :param 'SandboxConfigResponse' sandbox_config: Sandbox configuration for this node.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
+        :param 'SoleTenantConfigResponse' sole_tenant_config: Parameters for node pools to be backed by shared sole tenant node groups.
         :param bool spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
         :param Sequence['NodeTaintResponse'] taints: List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -3345,9 +3935,11 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         pulumi.set(__self__, "resource_labels", resource_labels)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "sandbox_config", sandbox_config)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
@@ -3555,6 +4147,14 @@ class NodeConfigResponse(dict):
         return pulumi.get(self, "resource_labels")
 
     @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> 'outputs.ResourceManagerTagsResponse':
+        """
+        A map of resource manager tag keys and values to be attached to the nodes.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @property
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> 'outputs.SandboxConfigResponse':
         """
@@ -3577,6 +4177,14 @@ class NodeConfigResponse(dict):
         Shielded Instance options.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter(name="soleTenantConfig")
+    def sole_tenant_config(self) -> 'outputs.SoleTenantConfigResponse':
+        """
+        Parameters for node pools to be backed by shared sole tenant node groups.
+        """
+        return pulumi.get(self, "sole_tenant_config")
 
     @property
     @pulumi.getter
@@ -3633,6 +4241,8 @@ class NodeKubeletConfigResponse(dict):
             suggest = "cpu_cfs_quota_period"
         elif key == "cpuManagerPolicy":
             suggest = "cpu_manager_policy"
+        elif key == "insecureKubeletReadonlyPortEnabled":
+            suggest = "insecure_kubelet_readonly_port_enabled"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
 
@@ -3651,17 +4261,20 @@ class NodeKubeletConfigResponse(dict):
                  cpu_cfs_quota: bool,
                  cpu_cfs_quota_period: str,
                  cpu_manager_policy: str,
+                 insecure_kubelet_readonly_port_enabled: bool,
                  pod_pids_limit: str):
         """
         Node kubelet configs.
         :param bool cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
         :param str cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
         :param str cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        :param bool insecure_kubelet_readonly_port_enabled: Enable or disable Kubelet read only port.
         :param str pod_pids_limit: Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
 
     @property
@@ -3687,6 +4300,14 @@ class NodeKubeletConfigResponse(dict):
         Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         """
         return pulumi.get(self, "cpu_manager_policy")
+
+    @property
+    @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
+    def insecure_kubelet_readonly_port_enabled(self) -> bool:
+        """
+        Enable or disable Kubelet read only port.
+        """
+        return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
 
     @property
     @pulumi.getter(name="podPidsLimit")
@@ -3770,7 +4391,11 @@ class NodeNetworkConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "createPodRange":
+        if key == "additionalNodeNetworkConfigs":
+            suggest = "additional_node_network_configs"
+        elif key == "additionalPodNetworkConfigs":
+            suggest = "additional_pod_network_configs"
+        elif key == "createPodRange":
             suggest = "create_pod_range"
         elif key == "enablePrivateNodes":
             suggest = "enable_private_nodes"
@@ -3780,6 +4405,8 @@ class NodeNetworkConfigResponse(dict):
             suggest = "pod_cidr_overprovision_config"
         elif key == "podIpv4CidrBlock":
             suggest = "pod_ipv4_cidr_block"
+        elif key == "podIpv4RangeUtilization":
+            suggest = "pod_ipv4_range_utilization"
         elif key == "podRange":
             suggest = "pod_range"
 
@@ -3795,27 +4422,52 @@ class NodeNetworkConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_node_network_configs: Sequence['outputs.AdditionalNodeNetworkConfigResponse'],
+                 additional_pod_network_configs: Sequence['outputs.AdditionalPodNetworkConfigResponse'],
                  create_pod_range: bool,
                  enable_private_nodes: bool,
                  network_performance_config: 'outputs.NetworkPerformanceConfigResponse',
                  pod_cidr_overprovision_config: 'outputs.PodCIDROverprovisionConfigResponse',
                  pod_ipv4_cidr_block: str,
+                 pod_ipv4_range_utilization: float,
                  pod_range: str):
         """
         Parameters for node pool-level network config.
+        :param Sequence['AdditionalNodeNetworkConfigResponse'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+        :param Sequence['AdditionalPodNetworkConfigResponse'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
         :param bool create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param bool enable_private_nodes: Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
         :param 'NetworkPerformanceConfigResponse' network_performance_config: Network bandwidth tier configuration.
         :param 'PodCIDROverprovisionConfigResponse' pod_cidr_overprovision_config: [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
         :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param float pod_ipv4_range_utilization: [Output only] The utilization of the IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
         :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
+        pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
+        pulumi.set(__self__, "additional_pod_network_configs", additional_pod_network_configs)
         pulumi.set(__self__, "create_pod_range", create_pod_range)
         pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         pulumi.set(__self__, "network_performance_config", network_performance_config)
         pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
+        pulumi.set(__self__, "pod_ipv4_range_utilization", pod_ipv4_range_utilization)
         pulumi.set(__self__, "pod_range", pod_range)
+
+    @property
+    @pulumi.getter(name="additionalNodeNetworkConfigs")
+    def additional_node_network_configs(self) -> Sequence['outputs.AdditionalNodeNetworkConfigResponse']:
+        """
+        We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+        """
+        return pulumi.get(self, "additional_node_network_configs")
+
+    @property
+    @pulumi.getter(name="additionalPodNetworkConfigs")
+    def additional_pod_network_configs(self) -> Sequence['outputs.AdditionalPodNetworkConfigResponse']:
+        """
+        We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+        """
+        return pulumi.get(self, "additional_pod_network_configs")
 
     @property
     @pulumi.getter(name="createPodRange")
@@ -3858,6 +4510,14 @@ class NodeNetworkConfigResponse(dict):
         return pulumi.get(self, "pod_ipv4_cidr_block")
 
     @property
+    @pulumi.getter(name="podIpv4RangeUtilization")
+    def pod_ipv4_range_utilization(self) -> float:
+        """
+        [Output only] The utilization of the IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        """
+        return pulumi.get(self, "pod_ipv4_range_utilization")
+
+    @property
     @pulumi.getter(name="podRange")
     def pod_range(self) -> str:
         """
@@ -3876,6 +4536,8 @@ class NodePoolAutoConfigResponse(dict):
         suggest = None
         if key == "networkTags":
             suggest = "network_tags"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolAutoConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3889,12 +4551,15 @@ class NodePoolAutoConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 network_tags: 'outputs.NetworkTagsResponse'):
+                 network_tags: 'outputs.NetworkTagsResponse',
+                 resource_manager_tags: 'outputs.ResourceManagerTagsResponse'):
         """
         Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
         :param 'NetworkTagsResponse' network_tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+        :param 'ResourceManagerTagsResponse' resource_manager_tags: Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
         """
         pulumi.set(__self__, "network_tags", network_tags)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="networkTags")
@@ -3903,6 +4568,14 @@ class NodePoolAutoConfigResponse(dict):
         The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
         """
         return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> 'outputs.ResourceManagerTagsResponse':
+        """
+        Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -4104,7 +4777,9 @@ class NodePoolResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "initialNodeCount":
+        if key == "bestEffortProvisioning":
+            suggest = "best_effort_provisioning"
+        elif key == "initialNodeCount":
             suggest = "initial_node_count"
         elif key == "instanceGroupUrls":
             suggest = "instance_group_urls"
@@ -4116,6 +4791,8 @@ class NodePoolResponse(dict):
             suggest = "placement_policy"
         elif key == "podIpv4CidrSize":
             suggest = "pod_ipv4_cidr_size"
+        elif key == "queuedProvisioning":
+            suggest = "queued_provisioning"
         elif key == "selfLink":
             suggest = "self_link"
         elif key == "statusMessage":
@@ -4138,6 +4815,7 @@ class NodePoolResponse(dict):
 
     def __init__(__self__, *,
                  autoscaling: 'outputs.NodePoolAutoscalingResponse',
+                 best_effort_provisioning: 'outputs.BestEffortProvisioningResponse',
                  conditions: Sequence['outputs.StatusConditionResponse'],
                  config: 'outputs.NodeConfigResponse',
                  etag: str,
@@ -4150,6 +4828,7 @@ class NodePoolResponse(dict):
                  network_config: 'outputs.NodeNetworkConfigResponse',
                  placement_policy: 'outputs.PlacementPolicyResponse',
                  pod_ipv4_cidr_size: int,
+                 queued_provisioning: 'outputs.QueuedProvisioningResponse',
                  self_link: str,
                  status: str,
                  status_message: str,
@@ -4159,6 +4838,7 @@ class NodePoolResponse(dict):
         """
         NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
         :param 'NodePoolAutoscalingResponse' autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        :param 'BestEffortProvisioningResponse' best_effort_provisioning: Enable best effort provisioning for nodes
         :param Sequence['StatusConditionResponse'] conditions: Which conditions caused the current node pool state.
         :param 'NodeConfigResponse' config: The node configuration of the pool.
         :param str etag: This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
@@ -4171,6 +4851,7 @@ class NodePoolResponse(dict):
         :param 'NodeNetworkConfigResponse' network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param 'PlacementPolicyResponse' placement_policy: Specifies the node placement policy.
         :param int pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
+        :param 'QueuedProvisioningResponse' queued_provisioning: Specifies the configuration of queued provisioning.
         :param str self_link: [Output only] Server-defined URL for the resource.
         :param str status: [Output only] The status of the nodes in this pool instance.
         :param str status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
@@ -4179,6 +4860,7 @@ class NodePoolResponse(dict):
         :param str version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         pulumi.set(__self__, "autoscaling", autoscaling)
+        pulumi.set(__self__, "best_effort_provisioning", best_effort_provisioning)
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "etag", etag)
@@ -4191,6 +4873,7 @@ class NodePoolResponse(dict):
         pulumi.set(__self__, "network_config", network_config)
         pulumi.set(__self__, "placement_policy", placement_policy)
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
+        pulumi.set(__self__, "queued_provisioning", queued_provisioning)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_message", status_message)
@@ -4205,6 +4888,14 @@ class NodePoolResponse(dict):
         Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         """
         return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> 'outputs.BestEffortProvisioningResponse':
+        """
+        Enable best effort provisioning for nodes
+        """
+        return pulumi.get(self, "best_effort_provisioning")
 
     @property
     @pulumi.getter
@@ -4301,6 +4992,14 @@ class NodePoolResponse(dict):
         [Output only] The pod CIDR block size per node in this node pool.
         """
         return pulumi.get(self, "pod_ipv4_cidr_size")
+
+    @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> 'outputs.QueuedProvisioningResponse':
+        """
+        Specifies the configuration of queued provisioning.
+        """
+        return pulumi.get(self, "queued_provisioning")
 
     @property
     @pulumi.getter(name="selfLink")
@@ -4421,17 +5120,108 @@ class NotificationConfigResponse(dict):
 
 
 @pulumi.output_type
+class ParentProductConfigResponse(dict):
+    """
+    ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "productName":
+            suggest = "product_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParentProductConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParentProductConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParentProductConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 product_name: str):
+        """
+        ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
+        :param Mapping[str, str] labels: Labels contain the configuration of the parent product.
+        :param str product_name: Name of the parent product associated with the cluster.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "product_name", product_name)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels contain the configuration of the parent product.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="productName")
+    def product_name(self) -> str:
+        """
+        Name of the parent product associated with the cluster.
+        """
+        return pulumi.get(self, "product_name")
+
+
+@pulumi.output_type
 class PlacementPolicyResponse(dict):
     """
     PlacementPolicy defines the placement policy used by the node pool.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyName":
+            suggest = "policy_name"
+        elif key == "tpuTopology":
+            suggest = "tpu_topology"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PlacementPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PlacementPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PlacementPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 policy_name: str,
+                 tpu_topology: str,
                  type: str):
         """
         PlacementPolicy defines the placement policy used by the node pool.
+        :param str policy_name: If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+        :param str tpu_topology: Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
         :param str type: The type of placement.
         """
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "tpu_topology", tpu_topology)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> str:
+        """
+        If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> str:
+        """
+        Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+        """
+        return pulumi.get(self, "tpu_topology")
 
     @property
     @pulumi.getter
@@ -4661,6 +5451,78 @@ class PubSubResponse(dict):
 
 
 @pulumi.output_type
+class QueuedProvisioningResponse(dict):
+    """
+    QueuedProvisioning defines the queued provisioning used by the node pool.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        QueuedProvisioning defines the queued provisioning used by the node pool.
+        :param bool enabled: Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class RangeInfoResponse(dict):
+    """
+    RangeInfo contains the range name and the range utilization by this cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RangeInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RangeInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RangeInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str,
+                 utilization: float):
+        """
+        RangeInfo contains the range name and the range utilization by this cluster.
+        :param str range_name: [Output only] Name of a range.
+        :param float utilization: [Output only] The utilization of the range.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+        pulumi.set(__self__, "utilization", utilization)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        """
+        [Output only] Name of a range.
+        """
+        return pulumi.get(self, "range_name")
+
+    @property
+    @pulumi.getter
+    def utilization(self) -> float:
+        """
+        [Output only] The utilization of the range.
+        """
+        return pulumi.get(self, "utilization")
+
+
+@pulumi.output_type
 class RecurringTimeWindowResponse(dict):
     """
     Represents an arbitrary window of time that recurs.
@@ -4882,6 +5744,28 @@ class ResourceLimitResponse(dict):
 
 
 @pulumi.output_type
+class ResourceManagerTagsResponse(dict):
+    """
+    A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values.
+    """
+    def __init__(__self__, *,
+                 tags: Mapping[str, str]):
+        """
+        A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values.
+        :param Mapping[str, str] tags: TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+        """
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class ResourceUsageExportConfigResponse(dict):
     """
     Configuration for exporting cluster resource usages.
@@ -4966,6 +5850,56 @@ class SandboxConfigResponse(dict):
         Type of the sandbox to use for the node.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class SecurityPostureConfigResponse(dict):
+    """
+    SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vulnerabilityMode":
+            suggest = "vulnerability_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPostureConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPostureConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPostureConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode: str,
+                 vulnerability_mode: str):
+        """
+        SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+        :param str mode: Sets which mode to use for Security Posture features.
+        :param str vulnerability_mode: Sets which mode to use for vulnerability scanning.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "vulnerability_mode", vulnerability_mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Sets which mode to use for Security Posture features.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="vulnerabilityMode")
+    def vulnerability_mode(self) -> str:
+        """
+        Sets which mode to use for vulnerability scanning.
+        """
+        return pulumi.get(self, "vulnerability_mode")
 
 
 @pulumi.output_type
@@ -5062,6 +5996,45 @@ class ShieldedNodesResponse(dict):
         Whether Shielded Nodes features are enabled on all nodes in this cluster.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class SoleTenantConfigResponse(dict):
+    """
+    SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeAffinities":
+            suggest = "node_affinities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SoleTenantConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SoleTenantConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SoleTenantConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_affinities: Sequence['outputs.NodeAffinityResponse']):
+        """
+        SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+        :param Sequence['NodeAffinityResponse'] node_affinities: NodeAffinities used to match to a shared sole tenant node group.
+        """
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.NodeAffinityResponse']:
+        """
+        NodeAffinities used to match to a shared sole tenant node group.
+        """
+        return pulumi.get(self, "node_affinities")
 
 
 @pulumi.output_type
@@ -5515,5 +6488,44 @@ class WorkloadMetadataConfigResponse(dict):
         Mode is the configuration for how to expose metadata to workloads running on the node pool.
         """
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class WorkloadPolicyConfigResponse(dict):
+    """
+    WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowNetAdmin":
+            suggest = "allow_net_admin"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadPolicyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadPolicyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadPolicyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_net_admin: bool):
+        """
+        WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
+        :param bool allow_net_admin: If true, workloads can use NET_ADMIN capability.
+        """
+        pulumi.set(__self__, "allow_net_admin", allow_net_admin)
+
+    @property
+    @pulumi.getter(name="allowNetAdmin")
+    def allow_net_admin(self) -> bool:
+        """
+        If true, workloads can use NET_ADMIN capability.
+        """
+        return pulumi.get(self, "allow_net_admin")
 
 

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProvisioningConfigResult:
-    def __init__(__self__, cloud_console_uri=None, custom_id=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, state=None, status_message=None, ticket_id=None, update_time=None, volumes=None, vpc_sc_enabled=None):
+    def __init__(__self__, cloud_console_uri=None, custom_id=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, pod=None, state=None, status_message=None, ticket_id=None, update_time=None, volumes=None, vpc_sc_enabled=None):
         if cloud_console_uri and not isinstance(cloud_console_uri, str):
             raise TypeError("Expected argument 'cloud_console_uri' to be a str")
         pulumi.set(__self__, "cloud_console_uri", cloud_console_uri)
@@ -44,6 +44,9 @@ class GetProvisioningConfigResult:
         if networks and not isinstance(networks, list):
             raise TypeError("Expected argument 'networks' to be a list")
         pulumi.set(__self__, "networks", networks)
+        if pod and not isinstance(pod, str):
+            raise TypeError("Expected argument 'pod' to be a str")
+        pulumi.set(__self__, "pod", pod)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -132,6 +135,14 @@ class GetProvisioningConfigResult:
 
     @property
     @pulumi.getter
+    def pod(self) -> str:
+        """
+        Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+        """
+        return pulumi.get(self, "pod")
+
+    @property
+    @pulumi.getter
     def state(self) -> str:
         """
         State of ProvisioningConfig.
@@ -193,6 +204,7 @@ class AwaitableGetProvisioningConfigResult(GetProvisioningConfigResult):
             location=self.location,
             name=self.name,
             networks=self.networks,
+            pod=self.pod,
             state=self.state,
             status_message=self.status_message,
             ticket_id=self.ticket_id,
@@ -224,6 +236,7 @@ def get_provisioning_config(location: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         networks=pulumi.get(__ret__, 'networks'),
+        pod=pulumi.get(__ret__, 'pod'),
         state=pulumi.get(__ret__, 'state'),
         status_message=pulumi.get(__ret__, 'status_message'),
         ticket_id=pulumi.get(__ret__, 'ticket_id'),

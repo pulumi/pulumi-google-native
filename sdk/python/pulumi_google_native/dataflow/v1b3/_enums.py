@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AutoscalingSettingsAlgorithm',
+    'DataSamplingConfigBehaviorsItem',
     'EnvironmentFlexResourceSchedulingGoal',
     'ExecutionStageStateExecutionStageState',
     'ExecutionStageSummaryKind',
@@ -36,6 +37,25 @@ class AutoscalingSettingsAlgorithm(str, Enum):
     AUTOSCALING_ALGORITHM_BASIC = "AUTOSCALING_ALGORITHM_BASIC"
     """
     Increase worker count over time to reduce job execution time.
+    """
+
+
+class DataSamplingConfigBehaviorsItem(str, Enum):
+    DATA_SAMPLING_BEHAVIOR_UNSPECIFIED = "DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"
+    """
+    If given, has no effect on sampling behavior. Used as an unknown or unset sentinel value.
+    """
+    DISABLED = "DISABLED"
+    """
+    When given, disables element sampling. Has same behavior as not setting the behavior.
+    """
+    ALWAYS_ON = "ALWAYS_ON"
+    """
+    When given, enables sampling in-flight from all PCollections.
+    """
+    EXCEPTIONS = "EXCEPTIONS"
+    """
+    When given, enables sampling input elements when a user-defined DoFn causes an exception.
     """
 
 
@@ -217,7 +237,7 @@ class JobCurrentState(str, Enum):
 
 class JobRequestedState(str, Enum):
     """
-    The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+    The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
     """
     JOB_STATE_UNKNOWN = "JOB_STATE_UNKNOWN"
     """

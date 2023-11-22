@@ -35,11 +35,13 @@ __all__ = [
     'GoogleCloudDatacatalogV1DataplexFilesetSpecResponse',
     'GoogleCloudDatacatalogV1DataplexSpecResponse',
     'GoogleCloudDatacatalogV1DataplexTableSpecResponse',
+    'GoogleCloudDatacatalogV1DatasetSpecResponse',
     'GoogleCloudDatacatalogV1EntryOverviewResponse',
     'GoogleCloudDatacatalogV1FilesetSpecResponse',
     'GoogleCloudDatacatalogV1GcsFileSpecResponse',
     'GoogleCloudDatacatalogV1GcsFilesetSpecResponse',
     'GoogleCloudDatacatalogV1LookerSystemSpecResponse',
+    'GoogleCloudDatacatalogV1ModelSpecResponse',
     'GoogleCloudDatacatalogV1PersonalDetailsResponse',
     'GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse',
     'GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse',
@@ -58,6 +60,9 @@ __all__ = [
     'GoogleCloudDatacatalogV1TableSpecResponse',
     'GoogleCloudDatacatalogV1TaxonomyServiceResponse',
     'GoogleCloudDatacatalogV1UsageSignalResponse',
+    'GoogleCloudDatacatalogV1VertexDatasetSpecResponse',
+    'GoogleCloudDatacatalogV1VertexModelSourceInfoResponse',
+    'GoogleCloudDatacatalogV1VertexModelSpecResponse',
     'GoogleCloudDatacatalogV1ViewSpecResponse',
 ]
 
@@ -1387,6 +1392,45 @@ class GoogleCloudDatacatalogV1DataplexTableSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1DatasetSpecResponse(dict):
+    """
+    Specification that applies to a dataset. Valid only for entries with the `DATASET` type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vertexDatasetSpec":
+            suggest = "vertex_dataset_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DatasetSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DatasetSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DatasetSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vertex_dataset_spec: 'outputs.GoogleCloudDatacatalogV1VertexDatasetSpecResponse'):
+        """
+        Specification that applies to a dataset. Valid only for entries with the `DATASET` type.
+        :param 'GoogleCloudDatacatalogV1VertexDatasetSpecResponse' vertex_dataset_spec: Vertex AI Dataset specific fields
+        """
+        pulumi.set(__self__, "vertex_dataset_spec", vertex_dataset_spec)
+
+    @property
+    @pulumi.getter(name="vertexDatasetSpec")
+    def vertex_dataset_spec(self) -> 'outputs.GoogleCloudDatacatalogV1VertexDatasetSpecResponse':
+        """
+        Vertex AI Dataset specific fields
+        """
+        return pulumi.get(self, "vertex_dataset_spec")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1EntryOverviewResponse(dict):
     """
     Entry overview fields for rich text descriptions of entries.
@@ -1666,6 +1710,45 @@ class GoogleCloudDatacatalogV1LookerSystemSpecResponse(dict):
         ID of the parent View. Empty if it does not exist.
         """
         return pulumi.get(self, "parent_view_id")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1ModelSpecResponse(dict):
+    """
+    Specification that applies to a model. Valid only for entries with the `MODEL` type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vertexModelSpec":
+            suggest = "vertex_model_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1ModelSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1ModelSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1ModelSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vertex_model_spec: 'outputs.GoogleCloudDatacatalogV1VertexModelSpecResponse'):
+        """
+        Specification that applies to a model. Valid only for entries with the `MODEL` type.
+        :param 'GoogleCloudDatacatalogV1VertexModelSpecResponse' vertex_model_spec: Specification for vertex model resources.
+        """
+        pulumi.set(__self__, "vertex_model_spec", vertex_model_spec)
+
+    @property
+    @pulumi.getter(name="vertexModelSpec")
+    def vertex_model_spec(self) -> 'outputs.GoogleCloudDatacatalogV1VertexModelSpecResponse':
+        """
+        Specification for vertex model resources.
+        """
+        return pulumi.get(self, "vertex_model_spec")
 
 
 @pulumi.output_type
@@ -2434,6 +2517,199 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
         BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
         """
         return pulumi.get(self, "usage_within_time_range")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1VertexDatasetSpecResponse(dict):
+    """
+    Specification for vertex dataset resources.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataItemCount":
+            suggest = "data_item_count"
+        elif key == "dataType":
+            suggest = "data_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1VertexDatasetSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1VertexDatasetSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1VertexDatasetSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_item_count: str,
+                 data_type: str):
+        """
+        Specification for vertex dataset resources.
+        :param str data_item_count: The number of DataItems in this Dataset. Only apply for non-structured Dataset.
+        :param str data_type: Type of the dataset.
+        """
+        pulumi.set(__self__, "data_item_count", data_item_count)
+        pulumi.set(__self__, "data_type", data_type)
+
+    @property
+    @pulumi.getter(name="dataItemCount")
+    def data_item_count(self) -> str:
+        """
+        The number of DataItems in this Dataset. Only apply for non-structured Dataset.
+        """
+        return pulumi.get(self, "data_item_count")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> str:
+        """
+        Type of the dataset.
+        """
+        return pulumi.get(self, "data_type")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1VertexModelSourceInfoResponse(dict):
+    """
+    Detail description of the source information of a Vertex model.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceType":
+            suggest = "source_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1VertexModelSourceInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1VertexModelSourceInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1VertexModelSourceInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 copy: bool,
+                 source_type: str):
+        """
+        Detail description of the source information of a Vertex model.
+        :param bool copy: If this Model is copy of another Model. If true then source_type pertains to the original.
+        :param str source_type: Type of the model source.
+        """
+        pulumi.set(__self__, "copy", copy)
+        pulumi.set(__self__, "source_type", source_type)
+
+    @property
+    @pulumi.getter
+    def copy(self) -> bool:
+        """
+        If this Model is copy of another Model. If true then source_type pertains to the original.
+        """
+        return pulumi.get(self, "copy")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        Type of the model source.
+        """
+        return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1VertexModelSpecResponse(dict):
+    """
+    Specification for vertex model resources.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImageUri":
+            suggest = "container_image_uri"
+        elif key == "versionAliases":
+            suggest = "version_aliases"
+        elif key == "versionDescription":
+            suggest = "version_description"
+        elif key == "versionId":
+            suggest = "version_id"
+        elif key == "vertexModelSourceInfo":
+            suggest = "vertex_model_source_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1VertexModelSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1VertexModelSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1VertexModelSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_image_uri: str,
+                 version_aliases: Sequence[str],
+                 version_description: str,
+                 version_id: str,
+                 vertex_model_source_info: 'outputs.GoogleCloudDatacatalogV1VertexModelSourceInfoResponse'):
+        """
+        Specification for vertex model resources.
+        :param str container_image_uri: URI of the Docker image to be used as the custom container for serving predictions.
+        :param Sequence[str] version_aliases: User provided version aliases so that a model version can be referenced via alias
+        :param str version_description: The description of this version.
+        :param str version_id: The version ID of the model.
+        :param 'GoogleCloudDatacatalogV1VertexModelSourceInfoResponse' vertex_model_source_info: Source of a Vertex model.
+        """
+        pulumi.set(__self__, "container_image_uri", container_image_uri)
+        pulumi.set(__self__, "version_aliases", version_aliases)
+        pulumi.set(__self__, "version_description", version_description)
+        pulumi.set(__self__, "version_id", version_id)
+        pulumi.set(__self__, "vertex_model_source_info", vertex_model_source_info)
+
+    @property
+    @pulumi.getter(name="containerImageUri")
+    def container_image_uri(self) -> str:
+        """
+        URI of the Docker image to be used as the custom container for serving predictions.
+        """
+        return pulumi.get(self, "container_image_uri")
+
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Sequence[str]:
+        """
+        User provided version aliases so that a model version can be referenced via alias
+        """
+        return pulumi.get(self, "version_aliases")
+
+    @property
+    @pulumi.getter(name="versionDescription")
+    def version_description(self) -> str:
+        """
+        The description of this version.
+        """
+        return pulumi.get(self, "version_description")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        """
+        The version ID of the model.
+        """
+        return pulumi.get(self, "version_id")
+
+    @property
+    @pulumi.getter(name="vertexModelSourceInfo")
+    def vertex_model_source_info(self) -> 'outputs.GoogleCloudDatacatalogV1VertexModelSourceInfoResponse':
+        """
+        Source of a Vertex model.
+        """
+        return pulumi.get(self, "vertex_model_source_info")
 
 
 @pulumi.output_type

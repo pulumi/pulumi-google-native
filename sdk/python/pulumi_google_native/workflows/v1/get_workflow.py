@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkflowResult:
-    def __init__(__self__, call_log_level=None, create_time=None, crypto_key_name=None, description=None, labels=None, name=None, revision_create_time=None, revision_id=None, service_account=None, source_contents=None, state=None, state_error=None, update_time=None):
+    def __init__(__self__, call_log_level=None, create_time=None, crypto_key_name=None, description=None, labels=None, name=None, revision_create_time=None, revision_id=None, service_account=None, source_contents=None, state=None, state_error=None, update_time=None, user_env_vars=None):
         if call_log_level and not isinstance(call_log_level, str):
             raise TypeError("Expected argument 'call_log_level' to be a str")
         pulumi.set(__self__, "call_log_level", call_log_level)
@@ -59,6 +59,9 @@ class GetWorkflowResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if user_env_vars and not isinstance(user_env_vars, dict):
+            raise TypeError("Expected argument 'user_env_vars' to be a dict")
+        pulumi.set(__self__, "user_env_vars", user_env_vars)
 
     @property
     @pulumi.getter(name="callLogLevel")
@@ -72,7 +75,7 @@ class GetWorkflowResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The timestamp for when the workflow was created.
+        The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "create_time")
 
@@ -88,7 +91,7 @@ class GetWorkflowResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "description")
 
@@ -96,7 +99,7 @@ class GetWorkflowResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "labels")
 
@@ -104,7 +107,7 @@ class GetWorkflowResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "name")
 
@@ -120,7 +123,7 @@ class GetWorkflowResult:
     @pulumi.getter(name="revisionId")
     def revision_id(self) -> str:
         """
-        The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+        The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
         """
         return pulumi.get(self, "revision_id")
 
@@ -160,9 +163,17 @@ class GetWorkflowResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        The timestamp for when the workflow was last updated.
+        The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="userEnvVars")
+    def user_env_vars(self) -> Mapping[str, str]:
+        """
+        Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        """
+        return pulumi.get(self, "user_env_vars")
 
 
 class AwaitableGetWorkflowResult(GetWorkflowResult):
@@ -183,7 +194,8 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
             source_contents=self.source_contents,
             state=self.state,
             state_error=self.state_error,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            user_env_vars=self.user_env_vars)
 
 
 def get_workflow(location: Optional[str] = None,
@@ -215,7 +227,8 @@ def get_workflow(location: Optional[str] = None,
         source_contents=pulumi.get(__ret__, 'source_contents'),
         state=pulumi.get(__ret__, 'state'),
         state_error=pulumi.get(__ret__, 'state_error'),
-        update_time=pulumi.get(__ret__, 'update_time'))
+        update_time=pulumi.get(__ret__, 'update_time'),
+        user_env_vars=pulumi.get(__ret__, 'user_env_vars'))
 
 
 @_utilities.lift_output_func(get_workflow)

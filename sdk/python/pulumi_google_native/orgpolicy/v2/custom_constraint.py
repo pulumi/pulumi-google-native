@@ -26,7 +26,7 @@ class CustomConstraintArgs:
         """
         The set of arguments for constructing a CustomConstraint resource.
         :param pulumi.Input['CustomConstraintActionType'] action_type: Allow or deny type.
-        :param pulumi.Input[str] condition: Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        :param pulumi.Input[str] condition: Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         :param pulumi.Input[str] description: Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
         :param pulumi.Input[str] display_name: One line display name for the UI. The max length of the display_name is 200 characters.
         :param pulumi.Input[Sequence[pulumi.Input['CustomConstraintMethodTypesItem']]] method_types: All the operations being applied for this constraint.
@@ -74,7 +74,7 @@ class CustomConstraintArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
         """
-        Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         """
         return pulumi.get(self, "condition")
 
@@ -163,7 +163,7 @@ class CustomConstraint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['CustomConstraintActionType'] action_type: Allow or deny type.
-        :param pulumi.Input[str] condition: Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        :param pulumi.Input[str] condition: Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         :param pulumi.Input[str] description: Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
         :param pulumi.Input[str] display_name: One line display name for the UI. The max length of the display_name is 200 characters.
         :param pulumi.Input[Sequence[pulumi.Input['CustomConstraintMethodTypesItem']]] method_types: All the operations being applied for this constraint.
@@ -269,7 +269,7 @@ class CustomConstraint(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[str]:
         """
-        Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         """
         return pulumi.get(self, "condition")
 

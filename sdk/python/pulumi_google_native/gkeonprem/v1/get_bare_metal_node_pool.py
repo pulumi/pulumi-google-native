@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBareMetalNodePoolResult:
-    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, etag=None, name=None, node_pool_config=None, reconciling=None, state=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, etag=None, name=None, node_pool_config=None, reconciling=None, state=None, status=None, uid=None, update_time=None, upgrade_policy=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -56,6 +56,9 @@ class GetBareMetalNodePoolResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if upgrade_policy and not isinstance(upgrade_policy, dict):
+            raise TypeError("Expected argument 'upgrade_policy' to be a dict")
+        pulumi.set(__self__, "upgrade_policy", upgrade_policy)
 
     @property
     @pulumi.getter
@@ -153,6 +156,14 @@ class GetBareMetalNodePoolResult:
         """
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> 'outputs.BareMetalNodePoolUpgradePolicyResponse':
+        """
+        The worker node pool upgrade policy.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
 
 class AwaitableGetBareMetalNodePoolResult(GetBareMetalNodePoolResult):
     # pylint: disable=using-constant-test
@@ -171,13 +182,15 @@ class AwaitableGetBareMetalNodePoolResult(GetBareMetalNodePoolResult):
             state=self.state,
             status=self.status,
             uid=self.uid,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            upgrade_policy=self.upgrade_policy)
 
 
 def get_bare_metal_node_pool(bare_metal_cluster_id: Optional[str] = None,
                              bare_metal_node_pool_id: Optional[str] = None,
                              location: Optional[str] = None,
                              project: Optional[str] = None,
+                             view: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBareMetalNodePoolResult:
     """
     Gets details of a single bare metal node pool.
@@ -187,6 +200,7 @@ def get_bare_metal_node_pool(bare_metal_cluster_id: Optional[str] = None,
     __args__['bareMetalNodePoolId'] = bare_metal_node_pool_id
     __args__['location'] = location
     __args__['project'] = project
+    __args__['view'] = view
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:gkeonprem/v1:getBareMetalNodePool', __args__, opts=opts, typ=GetBareMetalNodePoolResult).value
 
@@ -202,7 +216,8 @@ def get_bare_metal_node_pool(bare_metal_cluster_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         status=pulumi.get(__ret__, 'status'),
         uid=pulumi.get(__ret__, 'uid'),
-        update_time=pulumi.get(__ret__, 'update_time'))
+        update_time=pulumi.get(__ret__, 'update_time'),
+        upgrade_policy=pulumi.get(__ret__, 'upgrade_policy'))
 
 
 @_utilities.lift_output_func(get_bare_metal_node_pool)
@@ -210,6 +225,7 @@ def get_bare_metal_node_pool_output(bare_metal_cluster_id: Optional[pulumi.Input
                                     bare_metal_node_pool_id: Optional[pulumi.Input[str]] = None,
                                     location: Optional[pulumi.Input[str]] = None,
                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    view: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBareMetalNodePoolResult]:
     """
     Gets details of a single bare metal node pool.

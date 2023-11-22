@@ -23,6 +23,7 @@ class BudgetArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  notifications_rule: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']] = None,
+                 ownership_scope: Optional[pulumi.Input['BudgetOwnershipScope']] = None,
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]] = None):
         """
         The set of arguments for constructing a Budget resource.
@@ -43,6 +44,8 @@ class BudgetArgs:
             pulumi.set(__self__, "etag", etag)
         if notifications_rule is not None:
             pulumi.set(__self__, "notifications_rule", notifications_rule)
+        if ownership_scope is not None:
+            pulumi.set(__self__, "ownership_scope", ownership_scope)
         if threshold_rules is not None:
             pulumi.set(__self__, "threshold_rules", threshold_rules)
 
@@ -116,6 +119,15 @@ class BudgetArgs:
         pulumi.set(self, "notifications_rule", value)
 
     @property
+    @pulumi.getter(name="ownershipScope")
+    def ownership_scope(self) -> Optional[pulumi.Input['BudgetOwnershipScope']]:
+        return pulumi.get(self, "ownership_scope")
+
+    @ownership_scope.setter
+    def ownership_scope(self, value: Optional[pulumi.Input['BudgetOwnershipScope']]):
+        pulumi.set(self, "ownership_scope", value)
+
+    @property
     @pulumi.getter(name="thresholdRules")
     def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]:
         """
@@ -139,6 +151,7 @@ class Budget(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  notifications_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']]] = None,
+                 ownership_scope: Optional[pulumi.Input['BudgetOwnershipScope']] = None,
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]] = None,
                  __props__=None):
         """
@@ -185,6 +198,7 @@ class Budget(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  notifications_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']]] = None,
+                 ownership_scope: Optional[pulumi.Input['BudgetOwnershipScope']] = None,
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -205,6 +219,7 @@ class Budget(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["notifications_rule"] = notifications_rule
+            __props__.__dict__["ownership_scope"] = ownership_scope
             __props__.__dict__["threshold_rules"] = threshold_rules
             __props__.__dict__["name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billing_account_id"])
@@ -238,6 +253,7 @@ class Budget(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notifications_rule"] = None
+        __props__.__dict__["ownership_scope"] = None
         __props__.__dict__["threshold_rules"] = None
         return Budget(resource_name, opts=opts, __props__=__props__)
 
@@ -293,6 +309,11 @@ class Budget(pulumi.CustomResource):
         Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         """
         return pulumi.get(self, "notifications_rule")
+
+    @property
+    @pulumi.getter(name="ownershipScope")
+    def ownership_scope(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "ownership_scope")
 
     @property
     @pulumi.getter(name="thresholdRules")

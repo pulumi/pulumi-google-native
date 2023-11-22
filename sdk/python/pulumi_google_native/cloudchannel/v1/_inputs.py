@@ -448,7 +448,7 @@ class GoogleCloudChannelV1RepricingConditionArgs:
 class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs:
     def __init__(__self__):
         """
-        Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+        Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object. Deprecated: This is no longer supported. Use RepricingConfig.EntitlementGranularity instead.
         """
         pass
 
@@ -491,13 +491,16 @@ class GoogleCloudChannelV1RepricingConfigArgs:
         :param pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs'] adjustment: Information about the adjustment.
         :param pulumi.Input['GoogleTypeDateArgs'] effective_invoice_month: The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
         :param pulumi.Input['GoogleCloudChannelV1RepricingConfigRebillingBasis'] rebilling_basis: The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
-        :param pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs'] channel_partner_granularity: Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs'] channel_partner_granularity: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ConditionalOverrideArgs']]] conditional_overrides: The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
-        :param pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs'] entitlement_granularity: Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs'] entitlement_granularity: Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
         """
         pulumi.set(__self__, "adjustment", adjustment)
         pulumi.set(__self__, "effective_invoice_month", effective_invoice_month)
         pulumi.set(__self__, "rebilling_basis", rebilling_basis)
+        if channel_partner_granularity is not None:
+            warnings.warn("""Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.""", DeprecationWarning)
+            pulumi.log.warn("""channel_partner_granularity is deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.""")
         if channel_partner_granularity is not None:
             pulumi.set(__self__, "channel_partner_granularity", channel_partner_granularity)
         if conditional_overrides is not None:
@@ -545,8 +548,11 @@ class GoogleCloudChannelV1RepricingConfigArgs:
     @pulumi.getter(name="channelPartnerGranularity")
     def channel_partner_granularity(self) -> Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs']]:
         """
-        Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+        Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
         """
+        warnings.warn("""Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.""", DeprecationWarning)
+        pulumi.log.warn("""channel_partner_granularity is deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.""")
+
         return pulumi.get(self, "channel_partner_granularity")
 
     @channel_partner_granularity.setter
@@ -569,7 +575,7 @@ class GoogleCloudChannelV1RepricingConfigArgs:
     @pulumi.getter(name="entitlementGranularity")
     def entitlement_granularity(self) -> Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs']]:
         """
-        Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+        Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
         """
         return pulumi.get(self, "entitlement_granularity")
 

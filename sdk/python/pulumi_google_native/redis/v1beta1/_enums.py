@@ -5,6 +5,8 @@
 from enum import Enum
 
 __all__ = [
+    'ClusterAuthorizationMode',
+    'ClusterTransitEncryptionMode',
     'InstanceConnectMode',
     'InstanceReadReplicasMode',
     'InstanceSuspensionReasonsItem',
@@ -14,6 +16,42 @@ __all__ = [
     'PersistenceConfigRdbSnapshotPeriod',
     'WeeklyMaintenanceWindowDay',
 ]
+
+
+class ClusterAuthorizationMode(str, Enum):
+    """
+    Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
+    """
+    AUTH_MODE_UNSPECIFIED = "AUTH_MODE_UNSPECIFIED"
+    """
+    Not set.
+    """
+    AUTH_MODE_IAM_AUTH = "AUTH_MODE_IAM_AUTH"
+    """
+    IAM basic authorization mode
+    """
+    AUTH_MODE_DISABLED = "AUTH_MODE_DISABLED"
+    """
+    Authorization disabled mode
+    """
+
+
+class ClusterTransitEncryptionMode(str, Enum):
+    """
+    Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+    """
+    TRANSIT_ENCRYPTION_MODE_UNSPECIFIED = "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
+    """
+    In-transit encryption not set.
+    """
+    TRANSIT_ENCRYPTION_MODE_DISABLED = "TRANSIT_ENCRYPTION_MODE_DISABLED"
+    """
+    In-transit encryption disabled.
+    """
+    TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION = "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
+    """
+    Use server managed encryption for in-transit encryption.
+    """
 
 
 class InstanceConnectMode(str, Enum):

@@ -24,11 +24,11 @@ class FirewallpolicyArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Firewallpolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionArgs']]] actions: The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as AllowAction, BlockAction or SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy can contain up to 16 actions.
-        :param pulumi.Input[str] condition: A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
-        :param pulumi.Input[str] description: A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
-        :param pulumi.Input[str] name: The resource name for the FirewallPolicy in the format "projects/{project}/firewallpolicies/{firewallpolicy}".
-        :param pulumi.Input[str] path: The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionArgs']]] actions: Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.
+        :param pulumi.Input[str] condition: Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
+        :param pulumi.Input[str] description: Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
+        :param pulumi.Input[str] name: Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
+        :param pulumi.Input[str] path: Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -47,7 +47,7 @@ class FirewallpolicyArgs:
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionArgs']]]]:
         """
-        The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as AllowAction, BlockAction or SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy can contain up to 16 actions.
+        Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.
         """
         return pulumi.get(self, "actions")
 
@@ -59,7 +59,7 @@ class FirewallpolicyArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
         """
-        A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
+        Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
         """
         return pulumi.get(self, "condition")
 
@@ -71,7 +71,7 @@ class FirewallpolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
+        Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
         """
         return pulumi.get(self, "description")
 
@@ -83,7 +83,7 @@ class FirewallpolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name for the FirewallPolicy in the format "projects/{project}/firewallpolicies/{firewallpolicy}".
+        Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
         """
         return pulumi.get(self, "name")
 
@@ -95,7 +95,7 @@ class FirewallpolicyArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+        Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
         """
         return pulumi.get(self, "path")
 
@@ -130,11 +130,11 @@ class Firewallpolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1FirewallActionArgs']]]] actions: The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as AllowAction, BlockAction or SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy can contain up to 16 actions.
-        :param pulumi.Input[str] condition: A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
-        :param pulumi.Input[str] description: A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
-        :param pulumi.Input[str] name: The resource name for the FirewallPolicy in the format "projects/{project}/firewallpolicies/{firewallpolicy}".
-        :param pulumi.Input[str] path: The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1FirewallActionArgs']]]] actions: Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.
+        :param pulumi.Input[str] condition: Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
+        :param pulumi.Input[str] description: Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
+        :param pulumi.Input[str] name: Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
+        :param pulumi.Input[str] path: Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
         """
         ...
     @overload
@@ -217,7 +217,7 @@ class Firewallpolicy(pulumi.CustomResource):
     @pulumi.getter
     def actions(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionResponse']]:
         """
-        The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as AllowAction, BlockAction or SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy can contain up to 16 actions.
+        Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.
         """
         return pulumi.get(self, "actions")
 
@@ -225,7 +225,7 @@ class Firewallpolicy(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[str]:
         """
-        A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
+        Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
         """
         return pulumi.get(self, "condition")
 
@@ -233,7 +233,7 @@ class Firewallpolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
+        Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
         """
         return pulumi.get(self, "description")
 
@@ -241,7 +241,7 @@ class Firewallpolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name for the FirewallPolicy in the format "projects/{project}/firewallpolicies/{firewallpolicy}".
+        Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
         """
         return pulumi.get(self, "name")
 
@@ -249,7 +249,7 @@ class Firewallpolicy(pulumi.CustomResource):
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
         """
-        The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+        Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
         """
         return pulumi.get(self, "path")
 

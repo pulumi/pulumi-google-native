@@ -172,6 +172,7 @@ class BuildConfigArgs:
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['SourceArgs']] = None,
+                 source_token: Optional[pulumi.Input[str]] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
         Describes the Build step of the function that builds a container from the given source.
@@ -181,6 +182,7 @@ class BuildConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: User-provided build-time environment variables for the function
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         :param pulumi.Input['SourceArgs'] source: The location of the function source code.
+        :param pulumi.Input[str] source_token: An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
         :param pulumi.Input[str] worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         """
         if docker_registry is not None:
@@ -195,6 +197,8 @@ class BuildConfigArgs:
             pulumi.set(__self__, "runtime", runtime)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if source_token is not None:
+            pulumi.set(__self__, "source_token", source_token)
         if worker_pool is not None:
             pulumi.set(__self__, "worker_pool", worker_pool)
 
@@ -269,6 +273,18 @@ class BuildConfigArgs:
     @source.setter
     def source(self, value: Optional[pulumi.Input['SourceArgs']]):
         pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter(name="sourceToken")
+    def source_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+        """
+        return pulumi.get(self, "source_token")
+
+    @source_token.setter
+    def source_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_token", value)
 
     @property
     @pulumi.getter(name="workerPool")
@@ -534,7 +550,6 @@ class RepoSourceArgs:
                  branch_name: Optional[pulumi.Input[str]] = None,
                  commit_sha: Optional[pulumi.Input[str]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
-                 invert_regex: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
                  tag_name: Optional[pulumi.Input[str]] = None):
@@ -543,7 +558,6 @@ class RepoSourceArgs:
         :param pulumi.Input[str] branch_name: Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         :param pulumi.Input[str] commit_sha: Explicit commit SHA to build.
         :param pulumi.Input[str] dir: Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
-        :param pulumi.Input[bool] invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
         :param pulumi.Input[str] project: ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         :param pulumi.Input[str] repo_name: Name of the Cloud Source Repository.
         :param pulumi.Input[str] tag_name: Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -554,8 +568,6 @@ class RepoSourceArgs:
             pulumi.set(__self__, "commit_sha", commit_sha)
         if dir is not None:
             pulumi.set(__self__, "dir", dir)
-        if invert_regex is not None:
-            pulumi.set(__self__, "invert_regex", invert_regex)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if repo_name is not None:
@@ -598,18 +610,6 @@ class RepoSourceArgs:
     @dir.setter
     def dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dir", value)
-
-    @property
-    @pulumi.getter(name="invertRegex")
-    def invert_regex(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Only trigger a build if the revision regex does NOT match the revision regex.
-        """
-        return pulumi.get(self, "invert_regex")
-
-    @invert_regex.setter
-    def invert_regex(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "invert_regex", value)
 
     @property
     @pulumi.getter
@@ -1083,17 +1083,33 @@ class ServiceConfigArgs:
 @pulumi.input_type
 class SourceArgs:
     def __init__(__self__, *,
+                 git_uri: Optional[pulumi.Input[str]] = None,
                  repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
                  storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None):
         """
         The location of the function source code.
+        :param pulumi.Input[str] git_uri: If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
         :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
         """
+        if git_uri is not None:
+            pulumi.set(__self__, "git_uri", git_uri)
         if repo_source is not None:
             pulumi.set(__self__, "repo_source", repo_source)
         if storage_source is not None:
             pulumi.set(__self__, "storage_source", storage_source)
+
+    @property
+    @pulumi.getter(name="gitUri")
+    def git_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
+        """
+        return pulumi.get(self, "git_uri")
+
+    @git_uri.setter
+    def git_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "git_uri", value)
 
     @property
     @pulumi.getter(name="repoSource")

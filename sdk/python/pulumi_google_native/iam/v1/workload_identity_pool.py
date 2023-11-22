@@ -177,6 +177,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")
             __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workload_identity_pool_id"])
@@ -206,6 +207,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["expire_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -236,6 +238,14 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         A display name for the pool. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Time after which the workload identity pool will be permanently purged and cannot be recovered.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter

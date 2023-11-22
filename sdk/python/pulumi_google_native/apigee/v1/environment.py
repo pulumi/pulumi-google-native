@@ -23,9 +23,11 @@ class EnvironmentArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
+                 has_attached_flow_hooks: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['GoogleCloudApigeeV1NodeConfigArgs']] = None,
-                 properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None):
+                 properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None,
+                 type: Optional[pulumi.Input['EnvironmentType']] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input['EnvironmentApiProxyType'] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
@@ -36,6 +38,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input['GoogleCloudApigeeV1NodeConfigArgs'] node_config: Optional. NodeConfig of the environment.
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
+        :param pulumi.Input['EnvironmentType'] type: Optional. EnvironmentType selected for the environment.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if api_proxy_type is not None:
@@ -48,12 +51,16 @@ class EnvironmentArgs:
             pulumi.set(__self__, "display_name", display_name)
         if forward_proxy_uri is not None:
             pulumi.set(__self__, "forward_proxy_uri", forward_proxy_uri)
+        if has_attached_flow_hooks is not None:
+            pulumi.set(__self__, "has_attached_flow_hooks", has_attached_flow_hooks)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -125,6 +132,15 @@ class EnvironmentArgs:
         pulumi.set(self, "forward_proxy_uri", value)
 
     @property
+    @pulumi.getter(name="hasAttachedFlowHooks")
+    def has_attached_flow_hooks(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "has_attached_flow_hooks")
+
+    @has_attached_flow_hooks.setter
+    def has_attached_flow_hooks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "has_attached_flow_hooks", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -160,6 +176,18 @@ class EnvironmentArgs:
     def properties(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['EnvironmentType']]:
+        """
+        Optional. EnvironmentType selected for the environment.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['EnvironmentType']]):
+        pulumi.set(self, "type", value)
+
 
 class Environment(pulumi.CustomResource):
     @overload
@@ -171,10 +199,12 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
+                 has_attached_flow_hooks: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1NodeConfigArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
+                 type: Optional[pulumi.Input['EnvironmentType']] = None,
                  __props__=None):
         """
         Creates an environment in an organization.
@@ -189,6 +219,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1NodeConfigArgs']] node_config: Optional. NodeConfig of the environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Optional. Key-value pairs that may be used for customizing the environment.
+        :param pulumi.Input['EnvironmentType'] type: Optional. EnvironmentType selected for the environment.
         """
         ...
     @overload
@@ -219,10 +250,12 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
+                 has_attached_flow_hooks: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1NodeConfigArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
+                 type: Optional[pulumi.Input['EnvironmentType']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -237,12 +270,14 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["forward_proxy_uri"] = forward_proxy_uri
+            __props__.__dict__["has_attached_flow_hooks"] = has_attached_flow_hooks
             __props__.__dict__["name"] = name
             __props__.__dict__["node_config"] = node_config
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["type"] = type
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_modified_at"] = None
             __props__.__dict__["state"] = None
@@ -276,12 +311,14 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["forward_proxy_uri"] = None
+        __props__.__dict__["has_attached_flow_hooks"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["node_config"] = None
         __props__.__dict__["organization_id"] = None
         __props__.__dict__["properties"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["type"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -333,6 +370,11 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "forward_proxy_uri")
 
     @property
+    @pulumi.getter(name="hasAttachedFlowHooks")
+    def has_attached_flow_hooks(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "has_attached_flow_hooks")
+
+    @property
     @pulumi.getter(name="lastModifiedAt")
     def last_modified_at(self) -> pulumi.Output[str]:
         """
@@ -376,4 +418,12 @@ class Environment(pulumi.CustomResource):
         State of the environment. Values other than ACTIVE means the resource is not ready to use.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Optional. EnvironmentType selected for the environment.
+        """
+        return pulumi.get(self, "type")
 

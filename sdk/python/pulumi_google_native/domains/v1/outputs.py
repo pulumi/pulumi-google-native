@@ -411,7 +411,7 @@ class DnsSettingsResponse(dict):
         Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
         :param 'CustomDnsResponse' custom_dns: An arbitrary DNS provider identified by its name servers.
         :param Sequence['GlueRecordResponse'] glue_records: The list of glue records for this `Registration`. Commonly empty.
-        :param 'GoogleDomainsDnsResponse' google_domains_dns: The free DNS zone provided by [Google Domains](https://domains.google/).
+        :param 'GoogleDomainsDnsResponse' google_domains_dns: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
         """
         pulumi.set(__self__, "custom_dns", custom_dns)
         pulumi.set(__self__, "glue_records", glue_records)
@@ -437,8 +437,11 @@ class DnsSettingsResponse(dict):
     @pulumi.getter(name="googleDomainsDns")
     def google_domains_dns(self) -> 'outputs.GoogleDomainsDnsResponse':
         """
-        The free DNS zone provided by [Google Domains](https://domains.google/).
+        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
         """
+        warnings.warn("""Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""", DeprecationWarning)
+        pulumi.log.warn("""google_domains_dns is deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""")
+
         return pulumi.get(self, "google_domains_dns")
 
 
@@ -639,7 +642,7 @@ class GlueRecordResponse(dict):
 @pulumi.output_type
 class GoogleDomainsDnsResponse(dict):
     """
-    Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+    Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -667,7 +670,7 @@ class GoogleDomainsDnsResponse(dict):
                  ds_state: str,
                  name_servers: Sequence[str]):
         """
-        Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
         :param Sequence['DsRecordResponse'] ds_records: The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
         :param str ds_state: The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         :param Sequence[str] name_servers: A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
@@ -709,7 +712,9 @@ class ManagementSettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "renewalMethod":
+        if key == "preferredRenewalMethod":
+            suggest = "preferred_renewal_method"
+        elif key == "renewalMethod":
             suggest = "renewal_method"
         elif key == "transferLockState":
             suggest = "transfer_lock_state"
@@ -726,21 +731,32 @@ class ManagementSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 preferred_renewal_method: str,
                  renewal_method: str,
                  transfer_lock_state: str):
         """
         Defines renewal, billing, and transfer settings for a `Registration`.
-        :param str renewal_method: The renewal method for this `Registration`.
+        :param str preferred_renewal_method: Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+        :param str renewal_method: The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
         :param str transfer_lock_state: Controls whether the domain can be transferred to another registrar.
         """
+        pulumi.set(__self__, "preferred_renewal_method", preferred_renewal_method)
         pulumi.set(__self__, "renewal_method", renewal_method)
         pulumi.set(__self__, "transfer_lock_state", transfer_lock_state)
+
+    @property
+    @pulumi.getter(name="preferredRenewalMethod")
+    def preferred_renewal_method(self) -> str:
+        """
+        Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
+        """
+        return pulumi.get(self, "preferred_renewal_method")
 
     @property
     @pulumi.getter(name="renewalMethod")
     def renewal_method(self) -> str:
         """
-        The renewal method for this `Registration`.
+        The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
         """
         return pulumi.get(self, "renewal_method")
 

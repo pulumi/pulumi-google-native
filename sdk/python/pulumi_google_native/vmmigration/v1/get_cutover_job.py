@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetCutoverJobResult:
-    def __init__(__self__, compute_engine_target_details=None, create_time=None, end_time=None, error=None, name=None, progress_percent=None, state=None, state_message=None, state_time=None, steps=None):
+    def __init__(__self__, compute_engine_disks_target_details=None, compute_engine_target_details=None, create_time=None, end_time=None, error=None, name=None, progress_percent=None, state=None, state_message=None, state_time=None, steps=None):
+        if compute_engine_disks_target_details and not isinstance(compute_engine_disks_target_details, dict):
+            raise TypeError("Expected argument 'compute_engine_disks_target_details' to be a dict")
+        pulumi.set(__self__, "compute_engine_disks_target_details", compute_engine_disks_target_details)
         if compute_engine_target_details and not isinstance(compute_engine_target_details, dict):
             raise TypeError("Expected argument 'compute_engine_target_details' to be a dict")
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
@@ -50,6 +53,14 @@ class GetCutoverJobResult:
         if steps and not isinstance(steps, list):
             raise TypeError("Expected argument 'steps' to be a list")
         pulumi.set(__self__, "steps", steps)
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDetails")
+    def compute_engine_disks_target_details(self) -> 'outputs.ComputeEngineDisksTargetDetailsResponse':
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -138,6 +149,7 @@ class AwaitableGetCutoverJobResult(GetCutoverJobResult):
         if False:
             yield self
         return GetCutoverJobResult(
+            compute_engine_disks_target_details=self.compute_engine_disks_target_details,
             compute_engine_target_details=self.compute_engine_target_details,
             create_time=self.create_time,
             end_time=self.end_time,
@@ -169,6 +181,7 @@ def get_cutover_job(cutover_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1:getCutoverJob', __args__, opts=opts, typ=GetCutoverJobResult).value
 
     return AwaitableGetCutoverJobResult(
+        compute_engine_disks_target_details=pulumi.get(__ret__, 'compute_engine_disks_target_details'),
         compute_engine_target_details=pulumi.get(__ret__, 'compute_engine_target_details'),
         create_time=pulumi.get(__ret__, 'create_time'),
         end_time=pulumi.get(__ret__, 'end_time'),

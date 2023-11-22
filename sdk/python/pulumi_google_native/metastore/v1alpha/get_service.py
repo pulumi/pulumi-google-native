@@ -155,7 +155,7 @@ class GetServiceResult:
     @pulumi.getter(name="metadataIntegration")
     def metadata_integration(self) -> 'outputs.MetadataIntegrationResponse':
         """
-        The setting that defines how metastore metadata should be integrated with external services and systems.
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         """
         return pulumi.get(self, "metadata_integration")
 

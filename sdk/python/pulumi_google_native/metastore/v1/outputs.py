@@ -16,6 +16,7 @@ __all__ = [
     'AuditLogConfigResponse',
     'BindingResponse',
     'ConsumerResponse',
+    'DataCatalogConfigResponse',
     'DatabaseDumpResponse',
     'EncryptionConfigResponse',
     'ExprResponse',
@@ -23,6 +24,7 @@ __all__ = [
     'KerberosConfigResponse',
     'MaintenanceWindowResponse',
     'MetadataExportResponse',
+    'MetadataIntegrationResponse',
     'MetadataManagementActivityResponse',
     'NetworkConfigResponse',
     'RestoreResponse',
@@ -186,7 +188,9 @@ class ConsumerResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "endpointUri":
+        if key == "endpointLocation":
+            suggest = "endpoint_location"
+        elif key == "endpointUri":
             suggest = "endpoint_uri"
 
         if suggest:
@@ -201,15 +205,26 @@ class ConsumerResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 endpoint_location: str,
                  endpoint_uri: str,
                  subnetwork: str):
         """
         Contains information of the customer's network configurations.
+        :param str endpoint_location: The location of the endpoint URI. Format: projects/{project}/locations/{location}.
         :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param str subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
+        pulumi.set(__self__, "endpoint_location", endpoint_location)
         pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="endpointLocation")
+    def endpoint_location(self) -> str:
+        """
+        The location of the endpoint URI. Format: projects/{project}/locations/{location}.
+        """
+        return pulumi.get(self, "endpoint_location")
 
     @property
     @pulumi.getter(name="endpointUri")
@@ -226,6 +241,28 @@ class ConsumerResponse(dict):
         Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class DataCatalogConfigResponse(dict):
+    """
+    Specifies how metastore metadata should be integrated with the Data Catalog service.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Specifies how metastore metadata should be integrated with the Data Catalog service.
+        :param bool enabled: Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -410,6 +447,8 @@ class HiveMetastoreConfigResponse(dict):
             suggest = "auxiliary_versions"
         elif key == "configOverrides":
             suggest = "config_overrides"
+        elif key == "endpointProtocol":
+            suggest = "endpoint_protocol"
         elif key == "kerberosConfig":
             suggest = "kerberos_config"
 
@@ -427,17 +466,20 @@ class HiveMetastoreConfigResponse(dict):
     def __init__(__self__, *,
                  auxiliary_versions: Mapping[str, str],
                  config_overrides: Mapping[str, str],
+                 endpoint_protocol: str,
                  kerberos_config: 'outputs.KerberosConfigResponse',
                  version: str):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
         :param Mapping[str, str] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
+        :param str endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
         :param 'KerberosConfigResponse' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param str version: Immutable. The Hive metastore schema version.
         """
         pulumi.set(__self__, "auxiliary_versions", auxiliary_versions)
         pulumi.set(__self__, "config_overrides", config_overrides)
+        pulumi.set(__self__, "endpoint_protocol", endpoint_protocol)
         pulumi.set(__self__, "kerberos_config", kerberos_config)
         pulumi.set(__self__, "version", version)
 
@@ -456,6 +498,14 @@ class HiveMetastoreConfigResponse(dict):
         A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         """
         return pulumi.get(self, "config_overrides")
+
+    @property
+    @pulumi.getter(name="endpointProtocol")
+    def endpoint_protocol(self) -> str:
+        """
+        The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+        """
+        return pulumi.get(self, "endpoint_protocol")
 
     @property
     @pulumi.getter(name="kerberosConfig")
@@ -677,6 +727,45 @@ class MetadataExportResponse(dict):
 
 
 @pulumi.output_type
+class MetadataIntegrationResponse(dict):
+    """
+    Specifies how metastore metadata should be integrated with external services.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataCatalogConfig":
+            suggest = "data_catalog_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataIntegrationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataIntegrationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataIntegrationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_catalog_config: 'outputs.DataCatalogConfigResponse'):
+        """
+        Specifies how metastore metadata should be integrated with external services.
+        :param 'DataCatalogConfigResponse' data_catalog_config: Optional. The integration config for the Data Catalog service.
+        """
+        pulumi.set(__self__, "data_catalog_config", data_catalog_config)
+
+    @property
+    @pulumi.getter(name="dataCatalogConfig")
+    def data_catalog_config(self) -> 'outputs.DataCatalogConfigResponse':
+        """
+        Optional. The integration config for the Data Catalog service.
+        """
+        return pulumi.get(self, "data_catalog_config")
+
+
+@pulumi.output_type
 class MetadataManagementActivityResponse(dict):
     """
     The metadata management activities of the metastore service.
@@ -756,7 +845,9 @@ class RestoreResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "endTime":
+        if key == "backupLocation":
+            suggest = "backup_location"
+        elif key == "endTime":
             suggest = "end_time"
         elif key == "startTime":
             suggest = "start_time"
@@ -774,6 +865,7 @@ class RestoreResponse(dict):
 
     def __init__(__self__, *,
                  backup: str,
+                 backup_location: str,
                  details: str,
                  end_time: str,
                  start_time: str,
@@ -782,6 +874,7 @@ class RestoreResponse(dict):
         """
         The details of a metadata restore operation.
         :param str backup: The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
+        :param str backup_location: Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
         :param str details: The restore details containing the revision of the service to be restored to, in format of JSON.
         :param str end_time: The time when the restore ended.
         :param str start_time: The time when the restore started.
@@ -789,6 +882,7 @@ class RestoreResponse(dict):
         :param str type: The type of restore.
         """
         pulumi.set(__self__, "backup", backup)
+        pulumi.set(__self__, "backup_location", backup_location)
         pulumi.set(__self__, "details", details)
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "start_time", start_time)
@@ -802,6 +896,14 @@ class RestoreResponse(dict):
         The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
         """
         return pulumi.get(self, "backup")
+
+    @property
+    @pulumi.getter(name="backupLocation")
+    def backup_location(self) -> str:
+        """
+        Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
+        """
+        return pulumi.get(self, "backup_location")
 
     @property
     @pulumi.getter
@@ -957,6 +1059,8 @@ class ServiceResponse(dict):
             suggest = "hive_metastore_config"
         elif key == "maintenanceWindow":
             suggest = "maintenance_window"
+        elif key == "metadataIntegration":
+            suggest = "metadata_integration"
         elif key == "metadataManagementActivity":
             suggest = "metadata_management_activity"
         elif key == "networkConfig":
@@ -992,6 +1096,7 @@ class ServiceResponse(dict):
                  hive_metastore_config: 'outputs.HiveMetastoreConfigResponse',
                  labels: Mapping[str, str],
                  maintenance_window: 'outputs.MaintenanceWindowResponse',
+                 metadata_integration: 'outputs.MetadataIntegrationResponse',
                  metadata_management_activity: 'outputs.MetadataManagementActivityResponse',
                  name: str,
                  network: str,
@@ -1015,6 +1120,7 @@ class ServiceResponse(dict):
         :param 'HiveMetastoreConfigResponse' hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param Mapping[str, str] labels: User-defined labels for the metastore service.
         :param 'MaintenanceWindowResponse' maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
+        :param 'MetadataIntegrationResponse' metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         :param 'MetadataManagementActivityResponse' metadata_management_activity: The metadata management activities of the metastore service.
         :param str name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param str network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
@@ -1037,6 +1143,7 @@ class ServiceResponse(dict):
         pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "maintenance_window", maintenance_window)
+        pulumi.set(__self__, "metadata_integration", metadata_integration)
         pulumi.set(__self__, "metadata_management_activity", metadata_management_activity)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
@@ -1114,6 +1221,14 @@ class ServiceResponse(dict):
         The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
         """
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> 'outputs.MetadataIntegrationResponse':
+        """
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
 
     @property
     @pulumi.getter(name="metadataManagementActivity")

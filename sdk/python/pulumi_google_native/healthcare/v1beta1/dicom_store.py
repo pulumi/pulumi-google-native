@@ -31,7 +31,7 @@ class DicomStoreArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] name: Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification destination for new DICOM instances. Supplied by the client.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]] stream_configs: A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]] stream_configs: Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         if dicom_store_id is not None:
@@ -128,7 +128,7 @@ class DicomStoreArgs:
     @pulumi.getter(name="streamConfigs")
     def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]]]:
         """
-        A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         return pulumi.get(self, "stream_configs")
 
@@ -160,7 +160,7 @@ class DicomStore(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] name: Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification destination for new DICOM instances. Supplied by the client.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]]] stream_configs: A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]]] stream_configs: Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         ...
     @overload
@@ -298,7 +298,7 @@ class DicomStore(pulumi.CustomResource):
     @pulumi.getter(name="streamConfigs")
     def stream_configs(self) -> pulumi.Output[Sequence['outputs.GoogleCloudHealthcareV1beta1DicomStreamConfigResponse']]:
         """
-        A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         return pulumi.get(self, "stream_configs")
 

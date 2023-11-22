@@ -17,6 +17,7 @@ __all__ = ['TableArgs', 'Table']
 class TableArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
+                 biglake_configuration: Optional[pulumi.Input['BigLakeConfigurationArgs']] = None,
                  clustering: Optional[pulumi.Input['ClusteringArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
@@ -30,6 +31,7 @@ class TableArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
                  table_constraints: Optional[pulumi.Input['TableConstraintsArgs']] = None,
                  table_reference: Optional[pulumi.Input['TableReferenceArgs']] = None,
@@ -37,6 +39,7 @@ class TableArgs:
                  view: Optional[pulumi.Input['ViewDefinitionArgs']] = None):
         """
         The set of arguments for constructing a Table resource.
+        :param pulumi.Input['BigLakeConfigurationArgs'] biglake_configuration: [Optional] Specifies the configuration of a BigLake managed table.
         :param pulumi.Input['ClusteringArgs'] clustering: [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of this table.
         :param pulumi.Input['EncryptionConfigurationArgs'] encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
@@ -49,6 +52,7 @@ class TableArgs:
         :param pulumi.Input['ModelDefinitionArgs'] model: [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
         :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
         :param pulumi.Input['TableSchemaArgs'] schema: [Optional] Describes the schema of this table.
         :param pulumi.Input['TableConstraintsArgs'] table_constraints: [Optional] The table constraints on the table.
         :param pulumi.Input['TableReferenceArgs'] table_reference: [Required] Reference describing the ID of this table.
@@ -56,6 +60,8 @@ class TableArgs:
         :param pulumi.Input['ViewDefinitionArgs'] view: [Optional] The view definition.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
+        if biglake_configuration is not None:
+            pulumi.set(__self__, "biglake_configuration", biglake_configuration)
         if clustering is not None:
             pulumi.set(__self__, "clustering", clustering)
         if description is not None:
@@ -82,6 +88,8 @@ class TableArgs:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if require_partition_filter is not None:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if table_constraints is not None:
@@ -101,6 +109,18 @@ class TableArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="biglakeConfiguration")
+    def biglake_configuration(self) -> Optional[pulumi.Input['BigLakeConfigurationArgs']]:
+        """
+        [Optional] Specifies the configuration of a BigLake managed table.
+        """
+        return pulumi.get(self, "biglake_configuration")
+
+    @biglake_configuration.setter
+    def biglake_configuration(self, value: Optional[pulumi.Input['BigLakeConfigurationArgs']]):
+        pulumi.set(self, "biglake_configuration", value)
 
     @property
     @pulumi.getter
@@ -256,6 +276,18 @@ class TableArgs:
         pulumi.set(self, "require_partition_filter", value)
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input['TableSchemaArgs']]:
         """
@@ -321,6 +353,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 biglake_configuration: Optional[pulumi.Input[pulumi.InputType['BigLakeConfigurationArgs']]] = None,
                  clustering: Optional[pulumi.Input[pulumi.InputType['ClusteringArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -335,6 +368,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableConstraintsArgs']]] = None,
                  table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
@@ -347,6 +381,7 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['BigLakeConfigurationArgs']] biglake_configuration: [Optional] Specifies the configuration of a BigLake managed table.
         :param pulumi.Input[pulumi.InputType['ClusteringArgs']] clustering: [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of this table.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']] encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
@@ -359,6 +394,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ModelDefinitionArgs']] model: [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
         :param pulumi.Input[pulumi.InputType['RangePartitioningArgs']] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
         :param pulumi.Input[pulumi.InputType['TableSchemaArgs']] schema: [Optional] Describes the schema of this table.
         :param pulumi.Input[pulumi.InputType['TableConstraintsArgs']] table_constraints: [Optional] The table constraints on the table.
         :param pulumi.Input[pulumi.InputType['TableReferenceArgs']] table_reference: [Required] Reference describing the ID of this table.
@@ -390,6 +426,7 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 biglake_configuration: Optional[pulumi.Input[pulumi.InputType['BigLakeConfigurationArgs']]] = None,
                  clustering: Optional[pulumi.Input[pulumi.InputType['ClusteringArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -404,6 +441,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableConstraintsArgs']]] = None,
                  table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
@@ -418,6 +456,7 @@ class Table(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableArgs.__new__(TableArgs)
 
+            __props__.__dict__["biglake_configuration"] = biglake_configuration
             __props__.__dict__["clustering"] = clustering
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
@@ -434,6 +473,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["require_partition_filter"] = require_partition_filter
+            __props__.__dict__["resource_tags"] = resource_tags
             __props__.__dict__["schema"] = schema
             __props__.__dict__["table_constraints"] = table_constraints
             __props__.__dict__["table_reference"] = table_reference
@@ -487,6 +527,7 @@ class Table(pulumi.CustomResource):
 
         __props__ = TableArgs.__new__(TableArgs)
 
+        __props__.__dict__["biglake_configuration"] = None
         __props__.__dict__["clone_definition"] = None
         __props__.__dict__["clustering"] = None
         __props__.__dict__["creation_time"] = None
@@ -521,6 +562,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["range_partitioning"] = None
         __props__.__dict__["require_partition_filter"] = None
+        __props__.__dict__["resource_tags"] = None
         __props__.__dict__["schema"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["snapshot_definition"] = None
@@ -531,6 +573,14 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["type"] = None
         __props__.__dict__["view"] = None
         return Table(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="biglakeConfiguration")
+    def biglake_configuration(self) -> pulumi.Output['outputs.BigLakeConfigurationResponse']:
+        """
+        [Optional] Specifies the configuration of a BigLake managed table.
+        """
+        return pulumi.get(self, "biglake_configuration")
 
     @property
     @pulumi.getter(name="cloneDefinition")
@@ -797,6 +847,14 @@ class Table(pulumi.CustomResource):
         [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         """
         return pulumi.get(self, "require_partition_filter")
+
+    @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+        """
+        return pulumi.get(self, "resource_tags")
 
     @property
     @pulumi.getter

@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetWorkforcePoolResult',
@@ -18,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkforcePoolResult:
-    def __init__(__self__, description=None, disabled=None, display_name=None, name=None, parent=None, session_duration=None, state=None):
+    def __init__(__self__, access_restrictions=None, description=None, disabled=None, display_name=None, expire_time=None, name=None, parent=None, session_duration=None, state=None):
+        if access_restrictions and not isinstance(access_restrictions, dict):
+            raise TypeError("Expected argument 'access_restrictions' to be a dict")
+        pulumi.set(__self__, "access_restrictions", access_restrictions)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -28,6 +32,9 @@ class GetWorkforcePoolResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if expire_time and not isinstance(expire_time, str):
+            raise TypeError("Expected argument 'expire_time' to be a str")
+        pulumi.set(__self__, "expire_time", expire_time)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -40,6 +47,14 @@ class GetWorkforcePoolResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="accessRestrictions")
+    def access_restrictions(self) -> 'outputs.AccessRestrictionsResponse':
+        """
+        Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        """
+        return pulumi.get(self, "access_restrictions")
 
     @property
     @pulumi.getter
@@ -64,6 +79,14 @@ class GetWorkforcePoolResult:
         A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Time after which the workforce pool will be permanently purged and cannot be recovered.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
@@ -104,9 +127,11 @@ class AwaitableGetWorkforcePoolResult(GetWorkforcePoolResult):
         if False:
             yield self
         return GetWorkforcePoolResult(
+            access_restrictions=self.access_restrictions,
             description=self.description,
             disabled=self.disabled,
             display_name=self.display_name,
+            expire_time=self.expire_time,
             name=self.name,
             parent=self.parent,
             session_duration=self.session_duration,
@@ -126,9 +151,11 @@ def get_workforce_pool(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getWorkforcePool', __args__, opts=opts, typ=GetWorkforcePoolResult).value
 
     return AwaitableGetWorkforcePoolResult(
+        access_restrictions=pulumi.get(__ret__, 'access_restrictions'),
         description=pulumi.get(__ret__, 'description'),
         disabled=pulumi.get(__ret__, 'disabled'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
         session_duration=pulumi.get(__ret__, 'session_duration'),

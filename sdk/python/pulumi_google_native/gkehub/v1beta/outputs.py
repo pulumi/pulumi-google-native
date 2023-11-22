@@ -16,31 +16,75 @@ __all__ = [
     'AnthosObservabilityMembershipSpecResponse',
     'AppDevExperienceFeatureSpecResponse',
     'AppDevExperienceFeatureStateResponse',
+    'ApplianceClusterResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AuthorityResponse',
+    'BinaryAuthorizationConfigResponse',
     'BindingResponse',
+    'ClusterUpgradeFleetSpecResponse',
+    'ClusterUpgradeFleetStateResponse',
+    'ClusterUpgradeGKEUpgradeFeatureConditionResponse',
+    'ClusterUpgradeGKEUpgradeFeatureStateResponse',
+    'ClusterUpgradeGKEUpgradeOverrideResponse',
+    'ClusterUpgradeGKEUpgradeResponse',
+    'ClusterUpgradeGKEUpgradeStateResponse',
+    'ClusterUpgradePostConditionsResponse',
+    'ClusterUpgradeUpgradeStatusResponse',
     'CommonFeatureSpecResponse',
     'CommonFeatureStateResponse',
     'CommonFleetDefaultMemberConfigSpecResponse',
+    'ConfigManagementBinauthzConfigResponse',
+    'ConfigManagementConfigSyncResponse',
+    'ConfigManagementGitConfigResponse',
+    'ConfigManagementHierarchyControllerConfigResponse',
+    'ConfigManagementMembershipSpecResponse',
+    'ConfigManagementOciConfigResponse',
+    'ConfigManagementPolicyControllerMonitoringResponse',
+    'ConfigManagementPolicyControllerResponse',
+    'DefaultClusterConfigResponse',
+    'EdgeClusterResponse',
     'ExprResponse',
     'FeatureResourceStateResponse',
     'FeatureStateResponse',
     'FleetLifecycleStateResponse',
+    'FleetObservabilityFeatureErrorResponse',
     'FleetObservabilityFeatureSpecResponse',
     'FleetObservabilityFeatureStateResponse',
+    'FleetObservabilityFleetObservabilityBaseFeatureStateResponse',
+    'FleetObservabilityFleetObservabilityLoggingStateResponse',
+    'FleetObservabilityFleetObservabilityMonitoringStateResponse',
     'FleetObservabilityLoggingConfigResponse',
     'FleetObservabilityRoutingConfigResponse',
+    'GkeClusterResponse',
     'IdentityServiceAuthMethodResponse',
     'IdentityServiceAzureADConfigResponse',
     'IdentityServiceGoogleConfigResponse',
     'IdentityServiceMembershipSpecResponse',
     'IdentityServiceOidcConfigResponse',
+    'KubernetesMetadataResponse',
+    'KubernetesResourceResponse',
     'MembershipBindingLifecycleStateResponse',
+    'MembershipEndpointResponse',
+    'MembershipStateResponse',
+    'MonitoringConfigResponse',
+    'MultiCloudClusterResponse',
     'MultiClusterIngressFeatureSpecResponse',
     'NamespaceLifecycleStateResponse',
+    'OnPremClusterResponse',
+    'PolicyBindingResponse',
+    'PolicyControllerHubConfigResponse',
+    'PolicyControllerMembershipSpecResponse',
+    'PolicyControllerMonitoringConfigResponse',
+    'PolicyControllerPolicyContentSpecResponse',
+    'PolicyControllerTemplateLibraryConfigResponse',
     'RBACRoleBindingLifecycleStateResponse',
+    'ResourceManifestResponse',
+    'ResourceOptionsResponse',
     'RoleResponse',
     'ScopeLifecycleStateResponse',
+    'SecurityPostureConfigResponse',
+    'ServiceMeshMembershipSpecResponse',
     'StatusResponse',
 ]
 
@@ -198,6 +242,45 @@ class AppDevExperienceFeatureStateResponse(dict):
 
 
 @pulumi.output_type
+class ApplianceClusterResponse(dict):
+    """
+    ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplianceClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplianceClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplianceClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_link: str):
+        """
+        ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        """
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        """
+        return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
 class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
@@ -300,6 +383,134 @@ class AuditLogConfigResponse(dict):
 
 
 @pulumi.output_type
+class AuthorityResponse(dict):
+    """
+    Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProvider":
+            suggest = "identity_provider"
+        elif key == "oidcJwks":
+            suggest = "oidc_jwks"
+        elif key == "workloadIdentityPool":
+            suggest = "workload_identity_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider: str,
+                 issuer: str,
+                 oidc_jwks: str,
+                 workload_identity_pool: str):
+        """
+        Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        :param str identity_provider: An identity provider that reflects the `issuer` in the workload identity pool.
+        :param str issuer: Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters, it must use `location` rather than `zone` for GKE clusters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        :param str oidc_jwks: Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        :param str workload_identity_pool: The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
+        """
+        pulumi.set(__self__, "identity_provider", identity_provider)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "oidc_jwks", oidc_jwks)
+        pulumi.set(__self__, "workload_identity_pool", workload_identity_pool)
+
+    @property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> str:
+        """
+        An identity provider that reflects the `issuer` in the workload identity pool.
+        """
+        return pulumi.get(self, "identity_provider")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        """
+        Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters, it must use `location` rather than `zone` for GKE clusters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="oidcJwks")
+    def oidc_jwks(self) -> str:
+        """
+        Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        """
+        return pulumi.get(self, "oidc_jwks")
+
+    @property
+    @pulumi.getter(name="workloadIdentityPool")
+    def workload_identity_pool(self) -> str:
+        """
+        The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
+        """
+        return pulumi.get(self, "workload_identity_pool")
+
+
+@pulumi.output_type
+class BinaryAuthorizationConfigResponse(dict):
+    """
+    BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+        elif key == "policyBindings":
+            suggest = "policy_bindings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BinaryAuthorizationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BinaryAuthorizationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BinaryAuthorizationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluation_mode: str,
+                 policy_bindings: Sequence['outputs.PolicyBindingResponse']):
+        """
+        BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
+        :param str evaluation_mode: Optional. Mode of operation for binauthz policy evaluation.
+        :param Sequence['PolicyBindingResponse'] policy_bindings: Optional. Binauthz policies that apply to this cluster.
+        """
+        pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+        pulumi.set(__self__, "policy_bindings", policy_bindings)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> str:
+        """
+        Optional. Mode of operation for binauthz policy evaluation.
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @property
+    @pulumi.getter(name="policyBindings")
+    def policy_bindings(self) -> Sequence['outputs.PolicyBindingResponse']:
+        """
+        Optional. Binauthz policies that apply to this cluster.
+        """
+        return pulumi.get(self, "policy_bindings")
+
+
+@pulumi.output_type
 class BindingResponse(dict):
     """
     Associates `members`, or principals, with a `role`.
@@ -344,6 +555,466 @@ class BindingResponse(dict):
 
 
 @pulumi.output_type
+class ClusterUpgradeFleetSpecResponse(dict):
+    """
+    **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeUpgradeOverrides":
+            suggest = "gke_upgrade_overrides"
+        elif key == "postConditions":
+            suggest = "post_conditions"
+        elif key == "upstreamFleets":
+            suggest = "upstream_fleets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradeFleetSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterUpgradeFleetSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterUpgradeFleetSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gke_upgrade_overrides: Sequence['outputs.ClusterUpgradeGKEUpgradeOverrideResponse'],
+                 post_conditions: 'outputs.ClusterUpgradePostConditionsResponse',
+                 upstream_fleets: Sequence[str]):
+        """
+        **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.
+        :param Sequence['ClusterUpgradeGKEUpgradeOverrideResponse'] gke_upgrade_overrides: Allow users to override some properties of each GKE upgrade.
+        :param 'ClusterUpgradePostConditionsResponse' post_conditions: Post conditions to evaluate to mark an upgrade COMPLETE. Required.
+        :param Sequence[str] upstream_fleets: This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
+        """
+        pulumi.set(__self__, "gke_upgrade_overrides", gke_upgrade_overrides)
+        pulumi.set(__self__, "post_conditions", post_conditions)
+        pulumi.set(__self__, "upstream_fleets", upstream_fleets)
+
+    @property
+    @pulumi.getter(name="gkeUpgradeOverrides")
+    def gke_upgrade_overrides(self) -> Sequence['outputs.ClusterUpgradeGKEUpgradeOverrideResponse']:
+        """
+        Allow users to override some properties of each GKE upgrade.
+        """
+        return pulumi.get(self, "gke_upgrade_overrides")
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> 'outputs.ClusterUpgradePostConditionsResponse':
+        """
+        Post conditions to evaluate to mark an upgrade COMPLETE. Required.
+        """
+        return pulumi.get(self, "post_conditions")
+
+    @property
+    @pulumi.getter(name="upstreamFleets")
+    def upstream_fleets(self) -> Sequence[str]:
+        """
+        This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
+        """
+        return pulumi.get(self, "upstream_fleets")
+
+
+@pulumi.output_type
+class ClusterUpgradeFleetStateResponse(dict):
+    """
+    **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "downstreamFleets":
+            suggest = "downstream_fleets"
+        elif key == "gkeState":
+            suggest = "gke_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradeFleetStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterUpgradeFleetStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterUpgradeFleetStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 downstream_fleets: Sequence[str],
+                 gke_state: 'outputs.ClusterUpgradeGKEUpgradeFeatureStateResponse',
+                 ignored: Mapping[str, str]):
+        """
+        **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
+        :param Sequence[str] downstream_fleets: This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project number or id.
+        :param 'ClusterUpgradeGKEUpgradeFeatureStateResponse' gke_state: Feature state for GKE clusters.
+        :param Mapping[str, str] ignored: A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
+        """
+        pulumi.set(__self__, "downstream_fleets", downstream_fleets)
+        pulumi.set(__self__, "gke_state", gke_state)
+        pulumi.set(__self__, "ignored", ignored)
+
+    @property
+    @pulumi.getter(name="downstreamFleets")
+    def downstream_fleets(self) -> Sequence[str]:
+        """
+        This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project number or id.
+        """
+        return pulumi.get(self, "downstream_fleets")
+
+    @property
+    @pulumi.getter(name="gkeState")
+    def gke_state(self) -> 'outputs.ClusterUpgradeGKEUpgradeFeatureStateResponse':
+        """
+        Feature state for GKE clusters.
+        """
+        return pulumi.get(self, "gke_state")
+
+    @property
+    @pulumi.getter
+    def ignored(self) -> Mapping[str, str]:
+        """
+        A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
+        """
+        return pulumi.get(self, "ignored")
+
+
+@pulumi.output_type
+class ClusterUpgradeGKEUpgradeFeatureConditionResponse(dict):
+    """
+    GKEUpgradeFeatureCondition describes the condition of the feature for GKE clusters at a certain point of time.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradeGKEUpgradeFeatureConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterUpgradeGKEUpgradeFeatureConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterUpgradeGKEUpgradeFeatureConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reason: str,
+                 status: str,
+                 type: str,
+                 update_time: str):
+        """
+        GKEUpgradeFeatureCondition describes the condition of the feature for GKE clusters at a certain point of time.
+        :param str reason: Reason why the feature is in this status.
+        :param str status: Status of the condition, one of True, False, Unknown.
+        :param str type: Type of the condition, for example, "ready".
+        :param str update_time: Last timestamp the condition was updated.
+        """
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        Reason why the feature is in this status.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Status of the condition, one of True, False, Unknown.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the condition, for example, "ready".
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Last timestamp the condition was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class ClusterUpgradeGKEUpgradeFeatureStateResponse(dict):
+    """
+    GKEUpgradeFeatureState contains feature states for GKE clusters in the scope.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "upgradeState":
+            suggest = "upgrade_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradeGKEUpgradeFeatureStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterUpgradeGKEUpgradeFeatureStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterUpgradeGKEUpgradeFeatureStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.ClusterUpgradeGKEUpgradeFeatureConditionResponse'],
+                 upgrade_state: Sequence['outputs.ClusterUpgradeGKEUpgradeStateResponse']):
+        """
+        GKEUpgradeFeatureState contains feature states for GKE clusters in the scope.
+        :param Sequence['ClusterUpgradeGKEUpgradeFeatureConditionResponse'] conditions: Current conditions of the feature.
+        :param Sequence['ClusterUpgradeGKEUpgradeStateResponse'] upgrade_state: Upgrade state. It will eventually replace `state`.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "upgrade_state", upgrade_state)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.ClusterUpgradeGKEUpgradeFeatureConditionResponse']:
+        """
+        Current conditions of the feature.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="upgradeState")
+    def upgrade_state(self) -> Sequence['outputs.ClusterUpgradeGKEUpgradeStateResponse']:
+        """
+        Upgrade state. It will eventually replace `state`.
+        """
+        return pulumi.get(self, "upgrade_state")
+
+
+@pulumi.output_type
+class ClusterUpgradeGKEUpgradeOverrideResponse(dict):
+    """
+    Properties of a GKE upgrade that can be overridden by the user. For example, a user can skip soaking by overriding the soaking to 0.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postConditions":
+            suggest = "post_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradeGKEUpgradeOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterUpgradeGKEUpgradeOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterUpgradeGKEUpgradeOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 post_conditions: 'outputs.ClusterUpgradePostConditionsResponse',
+                 upgrade: 'outputs.ClusterUpgradeGKEUpgradeResponse'):
+        """
+        Properties of a GKE upgrade that can be overridden by the user. For example, a user can skip soaking by overriding the soaking to 0.
+        :param 'ClusterUpgradePostConditionsResponse' post_conditions: Post conditions to override for the specified upgrade (name + version). Required.
+        :param 'ClusterUpgradeGKEUpgradeResponse' upgrade: Which upgrade to override. Required.
+        """
+        pulumi.set(__self__, "post_conditions", post_conditions)
+        pulumi.set(__self__, "upgrade", upgrade)
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> 'outputs.ClusterUpgradePostConditionsResponse':
+        """
+        Post conditions to override for the specified upgrade (name + version). Required.
+        """
+        return pulumi.get(self, "post_conditions")
+
+    @property
+    @pulumi.getter
+    def upgrade(self) -> 'outputs.ClusterUpgradeGKEUpgradeResponse':
+        """
+        Which upgrade to override. Required.
+        """
+        return pulumi.get(self, "upgrade")
+
+
+@pulumi.output_type
+class ClusterUpgradeGKEUpgradeResponse(dict):
+    """
+    GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 version: str):
+        """
+        GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+        :param str name: Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        :param str version: Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ClusterUpgradeGKEUpgradeStateResponse(dict):
+    """
+    GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.
+    """
+    def __init__(__self__, *,
+                 stats: Mapping[str, str],
+                 status: 'outputs.ClusterUpgradeUpgradeStatusResponse',
+                 upgrade: 'outputs.ClusterUpgradeGKEUpgradeResponse'):
+        """
+        GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.
+        :param Mapping[str, str] stats: Number of GKE clusters in each status code.
+        :param 'ClusterUpgradeUpgradeStatusResponse' status: Status of the upgrade.
+        :param 'ClusterUpgradeGKEUpgradeResponse' upgrade: Which upgrade to track the state.
+        """
+        pulumi.set(__self__, "stats", stats)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "upgrade", upgrade)
+
+    @property
+    @pulumi.getter
+    def stats(self) -> Mapping[str, str]:
+        """
+        Number of GKE clusters in each status code.
+        """
+        return pulumi.get(self, "stats")
+
+    @property
+    @pulumi.getter
+    def status(self) -> 'outputs.ClusterUpgradeUpgradeStatusResponse':
+        """
+        Status of the upgrade.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def upgrade(self) -> 'outputs.ClusterUpgradeGKEUpgradeResponse':
+        """
+        Which upgrade to track the state.
+        """
+        return pulumi.get(self, "upgrade")
+
+
+@pulumi.output_type
+class ClusterUpgradePostConditionsResponse(dict):
+    """
+    Post conditional checks after an upgrade has been applied on all eligible clusters.
+    """
+    def __init__(__self__, *,
+                 soaking: str):
+        """
+        Post conditional checks after an upgrade has been applied on all eligible clusters.
+        :param str soaking: Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required.
+        """
+        pulumi.set(__self__, "soaking", soaking)
+
+    @property
+    @pulumi.getter
+    def soaking(self) -> str:
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required.
+        """
+        return pulumi.get(self, "soaking")
+
+
+@pulumi.output_type
+class ClusterUpgradeUpgradeStatusResponse(dict):
+    """
+    UpgradeStatus provides status information for each upgrade.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradeUpgradeStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterUpgradeUpgradeStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterUpgradeUpgradeStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 reason: str,
+                 update_time: str):
+        """
+        UpgradeStatus provides status information for each upgrade.
+        :param str code: Status code of the upgrade.
+        :param str reason: Reason for this status.
+        :param str update_time: Last timestamp the status was updated.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Status code of the upgrade.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        Reason for this status.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Last timestamp the status was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
 class CommonFeatureSpecResponse(dict):
     """
     CommonFeatureSpec contains Hub-wide configuration information
@@ -351,17 +1022,20 @@ class CommonFeatureSpecResponse(dict):
     def __init__(__self__, *,
                  anthosobservability: 'outputs.AnthosObservabilityFeatureSpecResponse',
                  appdevexperience: 'outputs.AppDevExperienceFeatureSpecResponse',
+                 clusterupgrade: 'outputs.ClusterUpgradeFleetSpecResponse',
                  fleetobservability: 'outputs.FleetObservabilityFeatureSpecResponse',
                  multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse'):
         """
         CommonFeatureSpec contains Hub-wide configuration information
         :param 'AnthosObservabilityFeatureSpecResponse' anthosobservability: Anthos Observability spec
         :param 'AppDevExperienceFeatureSpecResponse' appdevexperience: Appdevexperience specific spec.
+        :param 'ClusterUpgradeFleetSpecResponse' clusterupgrade: ClusterUpgrade (fleet-based) feature spec.
         :param 'FleetObservabilityFeatureSpecResponse' fleetobservability: FleetObservability feature spec.
         :param 'MultiClusterIngressFeatureSpecResponse' multiclusteringress: Multicluster Ingress-specific spec.
         """
         pulumi.set(__self__, "anthosobservability", anthosobservability)
         pulumi.set(__self__, "appdevexperience", appdevexperience)
+        pulumi.set(__self__, "clusterupgrade", clusterupgrade)
         pulumi.set(__self__, "fleetobservability", fleetobservability)
         pulumi.set(__self__, "multiclusteringress", multiclusteringress)
 
@@ -380,6 +1054,14 @@ class CommonFeatureSpecResponse(dict):
         Appdevexperience specific spec.
         """
         return pulumi.get(self, "appdevexperience")
+
+    @property
+    @pulumi.getter
+    def clusterupgrade(self) -> 'outputs.ClusterUpgradeFleetSpecResponse':
+        """
+        ClusterUpgrade (fleet-based) feature spec.
+        """
+        return pulumi.get(self, "clusterupgrade")
 
     @property
     @pulumi.getter
@@ -405,15 +1087,18 @@ class CommonFeatureStateResponse(dict):
     """
     def __init__(__self__, *,
                  appdevexperience: 'outputs.AppDevExperienceFeatureStateResponse',
+                 clusterupgrade: 'outputs.ClusterUpgradeFleetStateResponse',
                  fleetobservability: 'outputs.FleetObservabilityFeatureStateResponse',
                  state: 'outputs.FeatureStateResponse'):
         """
         CommonFeatureState contains Hub-wide Feature status information.
         :param 'AppDevExperienceFeatureStateResponse' appdevexperience: Appdevexperience specific state.
+        :param 'ClusterUpgradeFleetStateResponse' clusterupgrade: ClusterUpgrade fleet-level state.
         :param 'FleetObservabilityFeatureStateResponse' fleetobservability: FleetObservability feature state.
         :param 'FeatureStateResponse' state: The "running state" of the Feature in this Hub.
         """
         pulumi.set(__self__, "appdevexperience", appdevexperience)
+        pulumi.set(__self__, "clusterupgrade", clusterupgrade)
         pulumi.set(__self__, "fleetobservability", fleetobservability)
         pulumi.set(__self__, "state", state)
 
@@ -424,6 +1109,14 @@ class CommonFeatureStateResponse(dict):
         Appdevexperience specific state.
         """
         return pulumi.get(self, "appdevexperience")
+
+    @property
+    @pulumi.getter
+    def clusterupgrade(self) -> 'outputs.ClusterUpgradeFleetStateResponse':
+        """
+        ClusterUpgrade fleet-level state.
+        """
+        return pulumi.get(self, "clusterupgrade")
 
     @property
     @pulumi.getter
@@ -448,12 +1141,29 @@ class CommonFleetDefaultMemberConfigSpecResponse(dict):
     CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
     """
     def __init__(__self__, *,
-                 identityservice: 'outputs.IdentityServiceMembershipSpecResponse'):
+                 configmanagement: 'outputs.ConfigManagementMembershipSpecResponse',
+                 identityservice: 'outputs.IdentityServiceMembershipSpecResponse',
+                 mesh: 'outputs.ServiceMeshMembershipSpecResponse',
+                 policycontroller: 'outputs.PolicyControllerMembershipSpecResponse'):
         """
         CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+        :param 'ConfigManagementMembershipSpecResponse' configmanagement: Config Management-specific spec.
         :param 'IdentityServiceMembershipSpecResponse' identityservice: Identity Service-specific spec.
+        :param 'ServiceMeshMembershipSpecResponse' mesh: Anthos Service Mesh-specific spec
+        :param 'PolicyControllerMembershipSpecResponse' policycontroller: Policy Controller spec.
         """
+        pulumi.set(__self__, "configmanagement", configmanagement)
         pulumi.set(__self__, "identityservice", identityservice)
+        pulumi.set(__self__, "mesh", mesh)
+        pulumi.set(__self__, "policycontroller", policycontroller)
+
+    @property
+    @pulumi.getter
+    def configmanagement(self) -> 'outputs.ConfigManagementMembershipSpecResponse':
+        """
+        Config Management-specific spec.
+        """
+        return pulumi.get(self, "configmanagement")
 
     @property
     @pulumi.getter
@@ -462,6 +1172,795 @@ class CommonFleetDefaultMemberConfigSpecResponse(dict):
         Identity Service-specific spec.
         """
         return pulumi.get(self, "identityservice")
+
+    @property
+    @pulumi.getter
+    def mesh(self) -> 'outputs.ServiceMeshMembershipSpecResponse':
+        """
+        Anthos Service Mesh-specific spec
+        """
+        return pulumi.get(self, "mesh")
+
+    @property
+    @pulumi.getter
+    def policycontroller(self) -> 'outputs.PolicyControllerMembershipSpecResponse':
+        """
+        Policy Controller spec.
+        """
+        return pulumi.get(self, "policycontroller")
+
+
+@pulumi.output_type
+class ConfigManagementBinauthzConfigResponse(dict):
+    """
+    Configuration for Binauthz
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for Binauthz
+        :param bool enabled: Whether binauthz is enabled in this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether binauthz is enabled in this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ConfigManagementConfigSyncResponse(dict):
+    """
+    Configuration for Config Sync
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowVerticalScale":
+            suggest = "allow_vertical_scale"
+        elif key == "metricsGcpServiceAccountEmail":
+            suggest = "metrics_gcp_service_account_email"
+        elif key == "preventDrift":
+            suggest = "prevent_drift"
+        elif key == "sourceFormat":
+            suggest = "source_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigManagementConfigSyncResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigManagementConfigSyncResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigManagementConfigSyncResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_vertical_scale: bool,
+                 enabled: bool,
+                 git: 'outputs.ConfigManagementGitConfigResponse',
+                 metrics_gcp_service_account_email: str,
+                 oci: 'outputs.ConfigManagementOciConfigResponse',
+                 prevent_drift: bool,
+                 source_format: str):
+        """
+        Configuration for Config Sync
+        :param bool allow_vertical_scale: Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
+        :param bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        :param 'ConfigManagementGitConfigResponse' git: Git repo configuration for the cluster.
+        :param str metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+        :param 'ConfigManagementOciConfigResponse' oci: OCI repo configuration for the cluster
+        :param bool prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        """
+        pulumi.set(__self__, "allow_vertical_scale", allow_vertical_scale)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "git", git)
+        pulumi.set(__self__, "metrics_gcp_service_account_email", metrics_gcp_service_account_email)
+        pulumi.set(__self__, "oci", oci)
+        pulumi.set(__self__, "prevent_drift", prevent_drift)
+        pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter(name="allowVerticalScale")
+    def allow_vertical_scale(self) -> bool:
+        """
+        Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
+        """
+        warnings.warn("""Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""allow_vertical_scale is deprecated: Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""")
+
+        return pulumi.get(self, "allow_vertical_scale")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def git(self) -> 'outputs.ConfigManagementGitConfigResponse':
+        """
+        Git repo configuration for the cluster.
+        """
+        return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter(name="metricsGcpServiceAccountEmail")
+    def metrics_gcp_service_account_email(self) -> str:
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+        """
+        return pulumi.get(self, "metrics_gcp_service_account_email")
+
+    @property
+    @pulumi.getter
+    def oci(self) -> 'outputs.ConfigManagementOciConfigResponse':
+        """
+        OCI repo configuration for the cluster
+        """
+        return pulumi.get(self, "oci")
+
+    @property
+    @pulumi.getter(name="preventDrift")
+    def prevent_drift(self) -> bool:
+        """
+        Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        """
+        return pulumi.get(self, "prevent_drift")
+
+    @property
+    @pulumi.getter(name="sourceFormat")
+    def source_format(self) -> str:
+        """
+        Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        """
+        return pulumi.get(self, "source_format")
+
+
+@pulumi.output_type
+class ConfigManagementGitConfigResponse(dict):
+    """
+    Git repo configuration for a single cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpServiceAccountEmail":
+            suggest = "gcp_service_account_email"
+        elif key == "httpsProxy":
+            suggest = "https_proxy"
+        elif key == "policyDir":
+            suggest = "policy_dir"
+        elif key == "secretType":
+            suggest = "secret_type"
+        elif key == "syncBranch":
+            suggest = "sync_branch"
+        elif key == "syncRepo":
+            suggest = "sync_repo"
+        elif key == "syncRev":
+            suggest = "sync_rev"
+        elif key == "syncWaitSecs":
+            suggest = "sync_wait_secs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigManagementGitConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigManagementGitConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigManagementGitConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_service_account_email: str,
+                 https_proxy: str,
+                 policy_dir: str,
+                 secret_type: str,
+                 sync_branch: str,
+                 sync_repo: str,
+                 sync_rev: str,
+                 sync_wait_secs: str):
+        """
+        Git repo configuration for a single cluster.
+        :param str gcp_service_account_email: The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        :param str https_proxy: URL for the HTTPS proxy to be used when communicating with the Git repo.
+        :param str policy_dir: The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        :param str secret_type: Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
+        :param str sync_branch: The branch of the repository to sync from. Default: master.
+        :param str sync_repo: The URL of the Git repository to use as the source of truth.
+        :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD.
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
+        """
+        pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        pulumi.set(__self__, "https_proxy", https_proxy)
+        pulumi.set(__self__, "policy_dir", policy_dir)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "sync_branch", sync_branch)
+        pulumi.set(__self__, "sync_repo", sync_repo)
+        pulumi.set(__self__, "sync_rev", sync_rev)
+        pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> str:
+        """
+        The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> str:
+        """
+        URL for the HTTPS proxy to be used when communicating with the Git repo.
+        """
+        return pulumi.get(self, "https_proxy")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> str:
+        """
+        The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> str:
+        """
+        Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="syncBranch")
+    def sync_branch(self) -> str:
+        """
+        The branch of the repository to sync from. Default: master.
+        """
+        return pulumi.get(self, "sync_branch")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> str:
+        """
+        The URL of the Git repository to use as the source of truth.
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncRev")
+    def sync_rev(self) -> str:
+        """
+        Git revision (tag or hash) to check out. Default HEAD.
+        """
+        return pulumi.get(self, "sync_rev")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> str:
+        """
+        Period in seconds between consecutive syncs. Default: 15.
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+
+@pulumi.output_type
+class ConfigManagementHierarchyControllerConfigResponse(dict):
+    """
+    Configuration for Hierarchy Controller
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableHierarchicalResourceQuota":
+            suggest = "enable_hierarchical_resource_quota"
+        elif key == "enablePodTreeLabels":
+            suggest = "enable_pod_tree_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigManagementHierarchyControllerConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigManagementHierarchyControllerConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigManagementHierarchyControllerConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_hierarchical_resource_quota: bool,
+                 enable_pod_tree_labels: bool,
+                 enabled: bool):
+        """
+        Configuration for Hierarchy Controller
+        :param bool enable_hierarchical_resource_quota: Whether hierarchical resource quota is enabled in this cluster.
+        :param bool enable_pod_tree_labels: Whether pod tree labels are enabled in this cluster.
+        :param bool enabled: Whether Hierarchy Controller is enabled in this cluster.
+        """
+        pulumi.set(__self__, "enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
+        pulumi.set(__self__, "enable_pod_tree_labels", enable_pod_tree_labels)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="enableHierarchicalResourceQuota")
+    def enable_hierarchical_resource_quota(self) -> bool:
+        """
+        Whether hierarchical resource quota is enabled in this cluster.
+        """
+        return pulumi.get(self, "enable_hierarchical_resource_quota")
+
+    @property
+    @pulumi.getter(name="enablePodTreeLabels")
+    def enable_pod_tree_labels(self) -> bool:
+        """
+        Whether pod tree labels are enabled in this cluster.
+        """
+        return pulumi.get(self, "enable_pod_tree_labels")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether Hierarchy Controller is enabled in this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ConfigManagementMembershipSpecResponse(dict):
+    """
+    **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configSync":
+            suggest = "config_sync"
+        elif key == "hierarchyController":
+            suggest = "hierarchy_controller"
+        elif key == "policyController":
+            suggest = "policy_controller"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigManagementMembershipSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigManagementMembershipSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigManagementMembershipSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 binauthz: 'outputs.ConfigManagementBinauthzConfigResponse',
+                 cluster: str,
+                 config_sync: 'outputs.ConfigManagementConfigSyncResponse',
+                 hierarchy_controller: 'outputs.ConfigManagementHierarchyControllerConfigResponse',
+                 policy_controller: 'outputs.ConfigManagementPolicyControllerResponse',
+                 version: str):
+        """
+        **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
+        :param 'ConfigManagementBinauthzConfigResponse' binauthz: Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
+        :param str cluster: The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
+        :param 'ConfigManagementConfigSyncResponse' config_sync: Config Sync configuration for the cluster.
+        :param 'ConfigManagementHierarchyControllerConfigResponse' hierarchy_controller: Hierarchy Controller configuration for the cluster.
+        :param 'ConfigManagementPolicyControllerResponse' policy_controller: Policy Controller configuration for the cluster.
+        :param str version: Version of ACM installed.
+        """
+        pulumi.set(__self__, "binauthz", binauthz)
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "config_sync", config_sync)
+        pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+        pulumi.set(__self__, "policy_controller", policy_controller)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def binauthz(self) -> 'outputs.ConfigManagementBinauthzConfigResponse':
+        """
+        Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
+        """
+        warnings.warn("""Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.""", DeprecationWarning)
+        pulumi.log.warn("""binauthz is deprecated: Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.""")
+
+        return pulumi.get(self, "binauthz")
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="configSync")
+    def config_sync(self) -> 'outputs.ConfigManagementConfigSyncResponse':
+        """
+        Config Sync configuration for the cluster.
+        """
+        return pulumi.get(self, "config_sync")
+
+    @property
+    @pulumi.getter(name="hierarchyController")
+    def hierarchy_controller(self) -> 'outputs.ConfigManagementHierarchyControllerConfigResponse':
+        """
+        Hierarchy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "hierarchy_controller")
+
+    @property
+    @pulumi.getter(name="policyController")
+    def policy_controller(self) -> 'outputs.ConfigManagementPolicyControllerResponse':
+        """
+        Policy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "policy_controller")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of ACM installed.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ConfigManagementOciConfigResponse(dict):
+    """
+    OCI repo configuration for a single cluster
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpServiceAccountEmail":
+            suggest = "gcp_service_account_email"
+        elif key == "policyDir":
+            suggest = "policy_dir"
+        elif key == "secretType":
+            suggest = "secret_type"
+        elif key == "syncRepo":
+            suggest = "sync_repo"
+        elif key == "syncWaitSecs":
+            suggest = "sync_wait_secs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigManagementOciConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigManagementOciConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigManagementOciConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_service_account_email: str,
+                 policy_dir: str,
+                 secret_type: str,
+                 sync_repo: str,
+                 sync_wait_secs: str):
+        """
+        OCI repo configuration for a single cluster
+        :param str gcp_service_account_email: The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        :param str policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        :param str secret_type: Type of secret configured for access to the Git repo.
+        :param str sync_repo: The OCI image repository URL for the package to sync from. e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
+        """
+        pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        pulumi.set(__self__, "policy_dir", policy_dir)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "sync_repo", sync_repo)
+        pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> str:
+        """
+        The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> str:
+        """
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> str:
+        """
+        Type of secret configured for access to the Git repo.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> str:
+        """
+        The OCI image repository URL for the package to sync from. e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> str:
+        """
+        Period in seconds between consecutive syncs. Default: 15.
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+
+@pulumi.output_type
+class ConfigManagementPolicyControllerMonitoringResponse(dict):
+    """
+    PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+    """
+    def __init__(__self__, *,
+                 backends: Sequence[str]):
+        """
+        PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+        :param Sequence[str] backends: Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Sequence[str]:
+        """
+        Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        return pulumi.get(self, "backends")
+
+
+@pulumi.output_type
+class ConfigManagementPolicyControllerResponse(dict):
+    """
+    Configuration for Policy Controller
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditIntervalSeconds":
+            suggest = "audit_interval_seconds"
+        elif key == "exemptableNamespaces":
+            suggest = "exemptable_namespaces"
+        elif key == "logDeniesEnabled":
+            suggest = "log_denies_enabled"
+        elif key == "mutationEnabled":
+            suggest = "mutation_enabled"
+        elif key == "referentialRulesEnabled":
+            suggest = "referential_rules_enabled"
+        elif key == "templateLibraryInstalled":
+            suggest = "template_library_installed"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigManagementPolicyControllerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigManagementPolicyControllerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigManagementPolicyControllerResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_interval_seconds: str,
+                 enabled: bool,
+                 exemptable_namespaces: Sequence[str],
+                 log_denies_enabled: bool,
+                 monitoring: 'outputs.ConfigManagementPolicyControllerMonitoringResponse',
+                 mutation_enabled: bool,
+                 referential_rules_enabled: bool,
+                 template_library_installed: bool,
+                 update_time: str):
+        """
+        Configuration for Policy Controller
+        :param str audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param bool log_denies_enabled: Logs all denies and dry run failures.
+        :param 'ConfigManagementPolicyControllerMonitoringResponse' monitoring: Monitoring specifies the configuration of monitoring.
+        :param bool mutation_enabled: Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster.
+        :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        :param bool template_library_installed: Installs the default template library along with Policy Controller.
+        :param str update_time: Last time this membership spec was updated.
+        """
+        pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        pulumi.set(__self__, "monitoring", monitoring)
+        pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+        pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+        pulumi.set(__self__, "template_library_installed", template_library_installed)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> str:
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Sequence[str]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> bool:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> 'outputs.ConfigManagementPolicyControllerMonitoringResponse':
+        """
+        Monitoring specifies the configuration of monitoring.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> bool:
+        """
+        Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster.
+        """
+        return pulumi.get(self, "mutation_enabled")
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> bool:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+    @property
+    @pulumi.getter(name="templateLibraryInstalled")
+    def template_library_installed(self) -> bool:
+        """
+        Installs the default template library along with Policy Controller.
+        """
+        return pulumi.get(self, "template_library_installed")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Last time this membership spec was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class DefaultClusterConfigResponse(dict):
+    """
+    DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "binaryAuthorizationConfig":
+            suggest = "binary_authorization_config"
+        elif key == "securityPostureConfig":
+            suggest = "security_posture_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DefaultClusterConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DefaultClusterConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DefaultClusterConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 binary_authorization_config: 'outputs.BinaryAuthorizationConfigResponse',
+                 security_posture_config: 'outputs.SecurityPostureConfigResponse'):
+        """
+        DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
+        :param 'BinaryAuthorizationConfigResponse' binary_authorization_config: Optional. Enable/Disable binary authorization features for the cluster.
+        :param 'SecurityPostureConfigResponse' security_posture_config: Enable/Disable Security Posture features for the cluster.
+        """
+        pulumi.set(__self__, "binary_authorization_config", binary_authorization_config)
+        pulumi.set(__self__, "security_posture_config", security_posture_config)
+
+    @property
+    @pulumi.getter(name="binaryAuthorizationConfig")
+    def binary_authorization_config(self) -> 'outputs.BinaryAuthorizationConfigResponse':
+        """
+        Optional. Enable/Disable binary authorization features for the cluster.
+        """
+        return pulumi.get(self, "binary_authorization_config")
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> 'outputs.SecurityPostureConfigResponse':
+        """
+        Enable/Disable Security Posture features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
+
+
+@pulumi.output_type
+class EdgeClusterResponse(dict):
+    """
+    EdgeCluster contains information specific to Google Edge Clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_link: str):
+        """
+        EdgeCluster contains information specific to Google Edge Clusters.
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        """
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
 
 
 @pulumi.output_type
@@ -625,6 +2124,39 @@ class FleetLifecycleStateResponse(dict):
 
 
 @pulumi.output_type
+class FleetObservabilityFeatureErrorResponse(dict):
+    """
+    All error details of the fleet observability feature.
+    """
+    def __init__(__self__, *,
+                 code: str,
+                 description: str):
+        """
+        All error details of the fleet observability feature.
+        :param str code: The code of the error.
+        :param str description: A human-readable description of the current status.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The code of the error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A human-readable description of the current status.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class FleetObservabilityFeatureSpecResponse(dict):
     """
     **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
@@ -666,13 +2198,141 @@ class FleetObservabilityFeatureSpecResponse(dict):
 @pulumi.output_type
 class FleetObservabilityFeatureStateResponse(dict):
     """
-    **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+    **FleetObservability**: Hub-wide Feature for FleetObservability feature. state.
     """
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 logging: 'outputs.FleetObservabilityFleetObservabilityLoggingStateResponse',
+                 monitoring: 'outputs.FleetObservabilityFleetObservabilityMonitoringStateResponse'):
         """
-        **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+        **FleetObservability**: Hub-wide Feature for FleetObservability feature. state.
+        :param 'FleetObservabilityFleetObservabilityLoggingStateResponse' logging: The feature state of default logging.
+        :param 'FleetObservabilityFleetObservabilityMonitoringStateResponse' monitoring: The feature state of fleet monitoring.
         """
-        pass
+        pulumi.set(__self__, "logging", logging)
+        pulumi.set(__self__, "monitoring", monitoring)
+
+    @property
+    @pulumi.getter
+    def logging(self) -> 'outputs.FleetObservabilityFleetObservabilityLoggingStateResponse':
+        """
+        The feature state of default logging.
+        """
+        return pulumi.get(self, "logging")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> 'outputs.FleetObservabilityFleetObservabilityMonitoringStateResponse':
+        """
+        The feature state of fleet monitoring.
+        """
+        return pulumi.get(self, "monitoring")
+
+
+@pulumi.output_type
+class FleetObservabilityFleetObservabilityBaseFeatureStateResponse(dict):
+    """
+    Base state for fleet observability feature.
+    """
+    def __init__(__self__, *,
+                 code: str,
+                 errors: Sequence['outputs.FleetObservabilityFeatureErrorResponse']):
+        """
+        Base state for fleet observability feature.
+        :param str code: The high-level, machine-readable status of this Feature.
+        :param Sequence['FleetObservabilityFeatureErrorResponse'] errors: Errors after reconciling the monitoring and logging feature if the code is not OK.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The high-level, machine-readable status of this Feature.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.FleetObservabilityFeatureErrorResponse']:
+        """
+        Errors after reconciling the monitoring and logging feature if the code is not OK.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class FleetObservabilityFleetObservabilityLoggingStateResponse(dict):
+    """
+    Feature state for logging feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultLog":
+            suggest = "default_log"
+        elif key == "scopeLog":
+            suggest = "scope_log"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetObservabilityFleetObservabilityLoggingStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetObservabilityFleetObservabilityLoggingStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetObservabilityFleetObservabilityLoggingStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_log: 'outputs.FleetObservabilityFleetObservabilityBaseFeatureStateResponse',
+                 scope_log: 'outputs.FleetObservabilityFleetObservabilityBaseFeatureStateResponse'):
+        """
+        Feature state for logging feature.
+        :param 'FleetObservabilityFleetObservabilityBaseFeatureStateResponse' default_log: The base feature state of fleet default log.
+        :param 'FleetObservabilityFleetObservabilityBaseFeatureStateResponse' scope_log: The base feature state of fleet scope log.
+        """
+        pulumi.set(__self__, "default_log", default_log)
+        pulumi.set(__self__, "scope_log", scope_log)
+
+    @property
+    @pulumi.getter(name="defaultLog")
+    def default_log(self) -> 'outputs.FleetObservabilityFleetObservabilityBaseFeatureStateResponse':
+        """
+        The base feature state of fleet default log.
+        """
+        return pulumi.get(self, "default_log")
+
+    @property
+    @pulumi.getter(name="scopeLog")
+    def scope_log(self) -> 'outputs.FleetObservabilityFleetObservabilityBaseFeatureStateResponse':
+        """
+        The base feature state of fleet scope log.
+        """
+        return pulumi.get(self, "scope_log")
+
+
+@pulumi.output_type
+class FleetObservabilityFleetObservabilityMonitoringStateResponse(dict):
+    """
+    Feature state for monitoring feature.
+    """
+    def __init__(__self__, *,
+                 state: 'outputs.FleetObservabilityFleetObservabilityBaseFeatureStateResponse'):
+        """
+        Feature state for monitoring feature.
+        :param 'FleetObservabilityFleetObservabilityBaseFeatureStateResponse' state: The base feature state of fleet monitoring feature.
+        """
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> 'outputs.FleetObservabilityFleetObservabilityBaseFeatureStateResponse':
+        """
+        The base feature state of fleet monitoring feature.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -750,6 +2410,58 @@ class FleetObservabilityRoutingConfigResponse(dict):
 
 
 @pulumi.output_type
+class GkeClusterResponse(dict):
+    """
+    GkeCluster contains information specific to GKE clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GkeClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GkeClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GkeClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_missing: bool,
+                 resource_link: str):
+        """
+        GkeCluster contains information specific to GKE clusters.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        """
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        """
+        return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
 class IdentityServiceAuthMethodResponse(dict):
     """
     Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
@@ -784,7 +2496,7 @@ class IdentityServiceAuthMethodResponse(dict):
         """
         Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
         :param 'IdentityServiceAzureADConfigResponse' azuread_config: AzureAD specific Configuration.
-        :param 'IdentityServiceGoogleConfigResponse' google_config: GoogleConfig specific configuration
+        :param 'IdentityServiceGoogleConfigResponse' google_config: GoogleConfig specific configuration.
         :param str name: Identifier for auth config.
         :param 'IdentityServiceOidcConfigResponse' oidc_config: OIDC specific configuration.
         :param str proxy: Proxy server address to use for auth method.
@@ -807,7 +2519,7 @@ class IdentityServiceAuthMethodResponse(dict):
     @pulumi.getter(name="googleConfig")
     def google_config(self) -> 'outputs.IdentityServiceGoogleConfigResponse':
         """
-        GoogleConfig specific configuration
+        GoogleConfig specific configuration.
         """
         return pulumi.get(self, "google_config")
 
@@ -1193,6 +2905,188 @@ class IdentityServiceOidcConfigResponse(dict):
 
 
 @pulumi.output_type
+class KubernetesMetadataResponse(dict):
+    """
+    KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kubernetesApiServerVersion":
+            suggest = "kubernetes_api_server_version"
+        elif key == "memoryMb":
+            suggest = "memory_mb"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "nodeProviderId":
+            suggest = "node_provider_id"
+        elif key == "updateTime":
+            suggest = "update_time"
+        elif key == "vcpuCount":
+            suggest = "vcpu_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kubernetes_api_server_version: str,
+                 memory_mb: int,
+                 node_count: int,
+                 node_provider_id: str,
+                 update_time: str,
+                 vcpu_count: int):
+        """
+        KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
+        :param str kubernetes_api_server_version: Kubernetes API server version string as reported by `/version`.
+        :param int memory_mb: The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
+        :param int node_count: Node count as reported by Kubernetes nodes resources.
+        :param str node_provider_id: Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
+        :param str update_time: The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
+        :param int vcpu_count: vCPU count as reported by Kubernetes nodes resources.
+        """
+        pulumi.set(__self__, "kubernetes_api_server_version", kubernetes_api_server_version)
+        pulumi.set(__self__, "memory_mb", memory_mb)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_provider_id", node_provider_id)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "vcpu_count", vcpu_count)
+
+    @property
+    @pulumi.getter(name="kubernetesApiServerVersion")
+    def kubernetes_api_server_version(self) -> str:
+        """
+        Kubernetes API server version string as reported by `/version`.
+        """
+        return pulumi.get(self, "kubernetes_api_server_version")
+
+    @property
+    @pulumi.getter(name="memoryMb")
+    def memory_mb(self) -> int:
+        """
+        The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
+        """
+        return pulumi.get(self, "memory_mb")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        """
+        Node count as reported by Kubernetes nodes resources.
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="nodeProviderId")
+    def node_provider_id(self) -> str:
+        """
+        Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
+        """
+        return pulumi.get(self, "node_provider_id")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> int:
+        """
+        vCPU count as reported by Kubernetes nodes resources.
+        """
+        return pulumi.get(self, "vcpu_count")
+
+
+@pulumi.output_type
+class KubernetesResourceResponse(dict):
+    """
+    KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectResources":
+            suggest = "connect_resources"
+        elif key == "membershipCrManifest":
+            suggest = "membership_cr_manifest"
+        elif key == "membershipResources":
+            suggest = "membership_resources"
+        elif key == "resourceOptions":
+            suggest = "resource_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connect_resources: Sequence['outputs.ResourceManifestResponse'],
+                 membership_cr_manifest: str,
+                 membership_resources: Sequence['outputs.ResourceManifestResponse'],
+                 resource_options: 'outputs.ResourceOptionsResponse'):
+        """
+        KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+        :param Sequence['ResourceManifestResponse'] connect_resources: The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        :param str membership_cr_manifest: Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+        :param Sequence['ResourceManifestResponse'] membership_resources: Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        :param 'ResourceOptionsResponse' resource_options: Optional. Options for Kubernetes resource generation.
+        """
+        pulumi.set(__self__, "connect_resources", connect_resources)
+        pulumi.set(__self__, "membership_cr_manifest", membership_cr_manifest)
+        pulumi.set(__self__, "membership_resources", membership_resources)
+        pulumi.set(__self__, "resource_options", resource_options)
+
+    @property
+    @pulumi.getter(name="connectResources")
+    def connect_resources(self) -> Sequence['outputs.ResourceManifestResponse']:
+        """
+        The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        """
+        return pulumi.get(self, "connect_resources")
+
+    @property
+    @pulumi.getter(name="membershipCrManifest")
+    def membership_cr_manifest(self) -> str:
+        """
+        Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+        """
+        return pulumi.get(self, "membership_cr_manifest")
+
+    @property
+    @pulumi.getter(name="membershipResources")
+    def membership_resources(self) -> Sequence['outputs.ResourceManifestResponse']:
+        """
+        Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        """
+        return pulumi.get(self, "membership_resources")
+
+    @property
+    @pulumi.getter(name="resourceOptions")
+    def resource_options(self) -> 'outputs.ResourceOptionsResponse':
+        """
+        Optional. Options for Kubernetes resource generation.
+        """
+        return pulumi.get(self, "resource_options")
+
+
+@pulumi.output_type
 class MembershipBindingLifecycleStateResponse(dict):
     """
     MembershipBindingLifecycleState describes the state of a Binding resource.
@@ -1212,6 +3106,295 @@ class MembershipBindingLifecycleStateResponse(dict):
         The current state of the MembershipBinding resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class MembershipEndpointResponse(dict):
+    """
+    MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applianceCluster":
+            suggest = "appliance_cluster"
+        elif key == "edgeCluster":
+            suggest = "edge_cluster"
+        elif key == "gkeCluster":
+            suggest = "gke_cluster"
+        elif key == "googleManaged":
+            suggest = "google_managed"
+        elif key == "kubernetesMetadata":
+            suggest = "kubernetes_metadata"
+        elif key == "kubernetesResource":
+            suggest = "kubernetes_resource"
+        elif key == "multiCloudCluster":
+            suggest = "multi_cloud_cluster"
+        elif key == "onPremCluster":
+            suggest = "on_prem_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembershipEndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembershipEndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembershipEndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 appliance_cluster: 'outputs.ApplianceClusterResponse',
+                 edge_cluster: 'outputs.EdgeClusterResponse',
+                 gke_cluster: 'outputs.GkeClusterResponse',
+                 google_managed: bool,
+                 kubernetes_metadata: 'outputs.KubernetesMetadataResponse',
+                 kubernetes_resource: 'outputs.KubernetesResourceResponse',
+                 multi_cloud_cluster: 'outputs.MultiCloudClusterResponse',
+                 on_prem_cluster: 'outputs.OnPremClusterResponse'):
+        """
+        MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+        :param 'ApplianceClusterResponse' appliance_cluster: Optional. Specific information for a GDC Edge Appliance cluster.
+        :param 'EdgeClusterResponse' edge_cluster: Optional. Specific information for a Google Edge cluster.
+        :param 'GkeClusterResponse' gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
+        :param bool google_managed: Whether the lifecycle of this membership is managed by a google cluster platform service.
+        :param 'KubernetesMetadataResponse' kubernetes_metadata: Useful Kubernetes-specific metadata.
+        :param 'KubernetesResourceResponse' kubernetes_resource: Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+        :param 'MultiCloudClusterResponse' multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
+        :param 'OnPremClusterResponse' on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
+        """
+        pulumi.set(__self__, "appliance_cluster", appliance_cluster)
+        pulumi.set(__self__, "edge_cluster", edge_cluster)
+        pulumi.set(__self__, "gke_cluster", gke_cluster)
+        pulumi.set(__self__, "google_managed", google_managed)
+        pulumi.set(__self__, "kubernetes_metadata", kubernetes_metadata)
+        pulumi.set(__self__, "kubernetes_resource", kubernetes_resource)
+        pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
+        pulumi.set(__self__, "on_prem_cluster", on_prem_cluster)
+
+    @property
+    @pulumi.getter(name="applianceCluster")
+    def appliance_cluster(self) -> 'outputs.ApplianceClusterResponse':
+        """
+        Optional. Specific information for a GDC Edge Appliance cluster.
+        """
+        return pulumi.get(self, "appliance_cluster")
+
+    @property
+    @pulumi.getter(name="edgeCluster")
+    def edge_cluster(self) -> 'outputs.EdgeClusterResponse':
+        """
+        Optional. Specific information for a Google Edge cluster.
+        """
+        return pulumi.get(self, "edge_cluster")
+
+    @property
+    @pulumi.getter(name="gkeCluster")
+    def gke_cluster(self) -> 'outputs.GkeClusterResponse':
+        """
+        Optional. Specific information for a GKE-on-GCP cluster.
+        """
+        return pulumi.get(self, "gke_cluster")
+
+    @property
+    @pulumi.getter(name="googleManaged")
+    def google_managed(self) -> bool:
+        """
+        Whether the lifecycle of this membership is managed by a google cluster platform service.
+        """
+        return pulumi.get(self, "google_managed")
+
+    @property
+    @pulumi.getter(name="kubernetesMetadata")
+    def kubernetes_metadata(self) -> 'outputs.KubernetesMetadataResponse':
+        """
+        Useful Kubernetes-specific metadata.
+        """
+        return pulumi.get(self, "kubernetes_metadata")
+
+    @property
+    @pulumi.getter(name="kubernetesResource")
+    def kubernetes_resource(self) -> 'outputs.KubernetesResourceResponse':
+        """
+        Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+        """
+        return pulumi.get(self, "kubernetes_resource")
+
+    @property
+    @pulumi.getter(name="multiCloudCluster")
+    def multi_cloud_cluster(self) -> 'outputs.MultiCloudClusterResponse':
+        """
+        Optional. Specific information for a GKE Multi-Cloud cluster.
+        """
+        return pulumi.get(self, "multi_cloud_cluster")
+
+    @property
+    @pulumi.getter(name="onPremCluster")
+    def on_prem_cluster(self) -> 'outputs.OnPremClusterResponse':
+        """
+        Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
+        """
+        return pulumi.get(self, "on_prem_cluster")
+
+
+@pulumi.output_type
+class MembershipStateResponse(dict):
+    """
+    MembershipState describes the state of a Membership resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        MembershipState describes the state of a Membership resource.
+        :param str code: The current state of the Membership resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the Membership resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class MonitoringConfigResponse(dict):
+    """
+    MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterHash":
+            suggest = "cluster_hash"
+        elif key == "kubernetesMetricsPrefix":
+            suggest = "kubernetes_metrics_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitoringConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitoringConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster: str,
+                 cluster_hash: str,
+                 kubernetes_metrics_prefix: str,
+                 location: str,
+                 project: str):
+        """
+        MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics.
+        :param str cluster: Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
+        :param str cluster_hash: Optional. For GKE and Multicloud clusters, this is the UUID of the cluster resource. For VMWare and Baremetal clusters, this is the kube-system UID.
+        :param str kubernetes_metrics_prefix: Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos.
+        :param str location: Optional. Location used to report Metrics
+        :param str project: Optional. Project used to report Metrics
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "cluster_hash", cluster_hash)
+        pulumi.set(__self__, "kubernetes_metrics_prefix", kubernetes_metrics_prefix)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="clusterHash")
+    def cluster_hash(self) -> str:
+        """
+        Optional. For GKE and Multicloud clusters, this is the UUID of the cluster resource. For VMWare and Baremetal clusters, this is the kube-system UID.
+        """
+        return pulumi.get(self, "cluster_hash")
+
+    @property
+    @pulumi.getter(name="kubernetesMetricsPrefix")
+    def kubernetes_metrics_prefix(self) -> str:
+        """
+        Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos.
+        """
+        return pulumi.get(self, "kubernetes_metrics_prefix")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Optional. Location used to report Metrics
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Optional. Project used to report Metrics
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class MultiCloudClusterResponse(dict):
+    """
+    MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiCloudClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiCloudClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiCloudClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_missing: bool,
+                 resource_link: str):
+        """
+        MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        """
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
 
 
 @pulumi.output_type
@@ -1290,6 +3473,404 @@ class NamespaceLifecycleStateResponse(dict):
 
 
 @pulumi.output_type
+class OnPremClusterResponse(dict):
+    """
+    OnPremCluster contains information specific to GKE On-Prem clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminCluster":
+            suggest = "admin_cluster"
+        elif key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "clusterType":
+            suggest = "cluster_type"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OnPremClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OnPremClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OnPremClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_cluster: bool,
+                 cluster_missing: bool,
+                 cluster_type: str,
+                 resource_link: str):
+        """
+        OnPremCluster contains information specific to GKE On-Prem clusters.
+        :param bool admin_cluster: Immutable. Whether the cluster is an admin cluster.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        :param str cluster_type: Immutable. The on prem cluster's type.
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        pulumi.set(__self__, "admin_cluster", admin_cluster)
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="adminCluster")
+    def admin_cluster(self) -> bool:
+        """
+        Immutable. Whether the cluster is an admin cluster.
+        """
+        return pulumi.get(self, "admin_cluster")
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        Immutable. The on prem cluster's type.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
+class PolicyBindingResponse(dict):
+    """
+    Binauthz policy that applies to this cluster.
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        Binauthz policy that applies to this cluster.
+        :param str name: The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class PolicyControllerHubConfigResponse(dict):
+    """
+    Configuration for Policy Controller
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditIntervalSeconds":
+            suggest = "audit_interval_seconds"
+        elif key == "constraintViolationLimit":
+            suggest = "constraint_violation_limit"
+        elif key == "deploymentConfigs":
+            suggest = "deployment_configs"
+        elif key == "exemptableNamespaces":
+            suggest = "exemptable_namespaces"
+        elif key == "installSpec":
+            suggest = "install_spec"
+        elif key == "logDeniesEnabled":
+            suggest = "log_denies_enabled"
+        elif key == "mutationEnabled":
+            suggest = "mutation_enabled"
+        elif key == "policyContent":
+            suggest = "policy_content"
+        elif key == "referentialRulesEnabled":
+            suggest = "referential_rules_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyControllerHubConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyControllerHubConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyControllerHubConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_interval_seconds: str,
+                 constraint_violation_limit: str,
+                 deployment_configs: Mapping[str, str],
+                 exemptable_namespaces: Sequence[str],
+                 install_spec: str,
+                 log_denies_enabled: bool,
+                 monitoring: 'outputs.PolicyControllerMonitoringConfigResponse',
+                 mutation_enabled: bool,
+                 policy_content: 'outputs.PolicyControllerPolicyContentSpecResponse',
+                 referential_rules_enabled: bool):
+        """
+        Configuration for Policy Controller
+        :param str audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param str constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
+        :param Mapping[str, str] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
+        :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param str install_spec: The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
+        :param bool log_denies_enabled: Logs all denies and dry run failures.
+        :param 'PolicyControllerMonitoringConfigResponse' monitoring: Monitoring specifies the configuration of monitoring.
+        :param bool mutation_enabled: Enables the ability to mutate resources using Policy Controller.
+        :param 'PolicyControllerPolicyContentSpecResponse' policy_content: Specifies the desired policy content on the cluster
+        :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        pulumi.set(__self__, "constraint_violation_limit", constraint_violation_limit)
+        pulumi.set(__self__, "deployment_configs", deployment_configs)
+        pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        pulumi.set(__self__, "install_spec", install_spec)
+        pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        pulumi.set(__self__, "monitoring", monitoring)
+        pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+        pulumi.set(__self__, "policy_content", policy_content)
+        pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> str:
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @property
+    @pulumi.getter(name="constraintViolationLimit")
+    def constraint_violation_limit(self) -> str:
+        """
+        The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
+        """
+        return pulumi.get(self, "constraint_violation_limit")
+
+    @property
+    @pulumi.getter(name="deploymentConfigs")
+    def deployment_configs(self) -> Mapping[str, str]:
+        """
+        Map of deployment configs to deployments ("admission", "audit", "mutation').
+        """
+        return pulumi.get(self, "deployment_configs")
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Sequence[str]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @property
+    @pulumi.getter(name="installSpec")
+    def install_spec(self) -> str:
+        """
+        The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
+        """
+        return pulumi.get(self, "install_spec")
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> bool:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> 'outputs.PolicyControllerMonitoringConfigResponse':
+        """
+        Monitoring specifies the configuration of monitoring.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> bool:
+        """
+        Enables the ability to mutate resources using Policy Controller.
+        """
+        return pulumi.get(self, "mutation_enabled")
+
+    @property
+    @pulumi.getter(name="policyContent")
+    def policy_content(self) -> 'outputs.PolicyControllerPolicyContentSpecResponse':
+        """
+        Specifies the desired policy content on the cluster
+        """
+        return pulumi.get(self, "policy_content")
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> bool:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+
+@pulumi.output_type
+class PolicyControllerMembershipSpecResponse(dict):
+    """
+    **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyControllerHubConfig":
+            suggest = "policy_controller_hub_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyControllerMembershipSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyControllerMembershipSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyControllerMembershipSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy_controller_hub_config: 'outputs.PolicyControllerHubConfigResponse',
+                 version: str):
+        """
+        **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+        :param 'PolicyControllerHubConfigResponse' policy_controller_hub_config: Policy Controller configuration for the cluster.
+        :param str version: Version of Policy Controller installed.
+        """
+        pulumi.set(__self__, "policy_controller_hub_config", policy_controller_hub_config)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="policyControllerHubConfig")
+    def policy_controller_hub_config(self) -> 'outputs.PolicyControllerHubConfigResponse':
+        """
+        Policy Controller configuration for the cluster.
+        """
+        return pulumi.get(self, "policy_controller_hub_config")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of Policy Controller installed.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PolicyControllerMonitoringConfigResponse(dict):
+    """
+    MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+    """
+    def __init__(__self__, *,
+                 backends: Sequence[str]):
+        """
+        MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+        :param Sequence[str] backends: Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Sequence[str]:
+        """
+        Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        """
+        return pulumi.get(self, "backends")
+
+
+@pulumi.output_type
+class PolicyControllerPolicyContentSpecResponse(dict):
+    """
+    PolicyContentSpec defines the user's desired content configuration on the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateLibrary":
+            suggest = "template_library"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyControllerPolicyContentSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyControllerPolicyContentSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyControllerPolicyContentSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bundles: Mapping[str, str],
+                 template_library: 'outputs.PolicyControllerTemplateLibraryConfigResponse'):
+        """
+        PolicyContentSpec defines the user's desired content configuration on the cluster.
+        :param Mapping[str, str] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        :param 'PolicyControllerTemplateLibraryConfigResponse' template_library: Configures the installation of the Template Library.
+        """
+        pulumi.set(__self__, "bundles", bundles)
+        pulumi.set(__self__, "template_library", template_library)
+
+    @property
+    @pulumi.getter
+    def bundles(self) -> Mapping[str, str]:
+        """
+        map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        """
+        return pulumi.get(self, "bundles")
+
+    @property
+    @pulumi.getter(name="templateLibrary")
+    def template_library(self) -> 'outputs.PolicyControllerTemplateLibraryConfigResponse':
+        """
+        Configures the installation of the Template Library.
+        """
+        return pulumi.get(self, "template_library")
+
+
+@pulumi.output_type
+class PolicyControllerTemplateLibraryConfigResponse(dict):
+    """
+    The config specifying which default library templates to install.
+    """
+    def __init__(__self__, *,
+                 installation: str):
+        """
+        The config specifying which default library templates to install.
+        :param str installation: Configures the manner in which the template library is installed on the cluster.
+        """
+        pulumi.set(__self__, "installation", installation)
+
+    @property
+    @pulumi.getter
+    def installation(self) -> str:
+        """
+        Configures the manner in which the template library is installed on the cluster.
+        """
+        return pulumi.get(self, "installation")
+
+
+@pulumi.output_type
 class RBACRoleBindingLifecycleStateResponse(dict):
     """
     RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
@@ -1309,6 +3890,121 @@ class RBACRoleBindingLifecycleStateResponse(dict):
         The current state of the rbacrolebinding resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class ResourceManifestResponse(dict):
+    """
+    ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterScoped":
+            suggest = "cluster_scoped"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceManifestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceManifestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceManifestResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_scoped: bool,
+                 manifest: str):
+        """
+        ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+        :param bool cluster_scoped: Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+        :param str manifest: YAML manifest of the resource.
+        """
+        pulumi.set(__self__, "cluster_scoped", cluster_scoped)
+        pulumi.set(__self__, "manifest", manifest)
+
+    @property
+    @pulumi.getter(name="clusterScoped")
+    def cluster_scoped(self) -> bool:
+        """
+        Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+        """
+        return pulumi.get(self, "cluster_scoped")
+
+    @property
+    @pulumi.getter
+    def manifest(self) -> str:
+        """
+        YAML manifest of the resource.
+        """
+        return pulumi.get(self, "manifest")
+
+
+@pulumi.output_type
+class ResourceOptionsResponse(dict):
+    """
+    ResourceOptions represent options for Kubernetes resource generation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVersion":
+            suggest = "connect_version"
+        elif key == "k8sVersion":
+            suggest = "k8s_version"
+        elif key == "v1beta1Crd":
+            suggest = "v1beta1_crd"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connect_version: str,
+                 k8s_version: str,
+                 v1beta1_crd: bool):
+        """
+        ResourceOptions represent options for Kubernetes resource generation.
+        :param str connect_version: Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        :param str k8s_version: Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        :param bool v1beta1_crd: Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+        """
+        pulumi.set(__self__, "connect_version", connect_version)
+        pulumi.set(__self__, "k8s_version", k8s_version)
+        pulumi.set(__self__, "v1beta1_crd", v1beta1_crd)
+
+    @property
+    @pulumi.getter(name="connectVersion")
+    def connect_version(self) -> str:
+        """
+        Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        """
+        return pulumi.get(self, "connect_version")
+
+    @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> str:
+        """
+        Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @property
+    @pulumi.getter(name="v1beta1Crd")
+    def v1beta1_crd(self) -> bool:
+        """
+        Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+        """
+        return pulumi.get(self, "v1beta1_crd")
 
 
 @pulumi.output_type
@@ -1370,6 +4066,109 @@ class ScopeLifecycleStateResponse(dict):
         The current state of the scope resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class SecurityPostureConfigResponse(dict):
+    """
+    SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vulnerabilityMode":
+            suggest = "vulnerability_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPostureConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPostureConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPostureConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode: str,
+                 vulnerability_mode: str):
+        """
+        SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+        :param str mode: Sets which mode to use for Security Posture features.
+        :param str vulnerability_mode: Sets which mode to use for vulnerability scanning.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "vulnerability_mode", vulnerability_mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Sets which mode to use for Security Posture features.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="vulnerabilityMode")
+    def vulnerability_mode(self) -> str:
+        """
+        Sets which mode to use for vulnerability scanning.
+        """
+        return pulumi.get(self, "vulnerability_mode")
+
+
+@pulumi.output_type
+class ServiceMeshMembershipSpecResponse(dict):
+    """
+    **Service Mesh**: Spec for a single Membership for the servicemesh feature
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlane":
+            suggest = "control_plane"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMeshMembershipSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMeshMembershipSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMeshMembershipSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane: str,
+                 management: str):
+        """
+        **Service Mesh**: Spec for a single Membership for the servicemesh feature
+        :param str control_plane: Deprecated: use `management` instead Enables automatic control plane management.
+        :param str management: Enables automatic Service Mesh management.
+        """
+        pulumi.set(__self__, "control_plane", control_plane)
+        pulumi.set(__self__, "management", management)
+
+    @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> str:
+        """
+        Deprecated: use `management` instead Enables automatic control plane management.
+        """
+        warnings.warn("""Deprecated: use `management` instead Enables automatic control plane management.""", DeprecationWarning)
+        pulumi.log.warn("""control_plane is deprecated: Deprecated: use `management` instead Enables automatic control plane management.""")
+
+        return pulumi.get(self, "control_plane")
+
+    @property
+    @pulumi.getter
+    def management(self) -> str:
+        """
+        Enables automatic Service Mesh management.
+        """
+        return pulumi.get(self, "management")
 
 
 @pulumi.output_type

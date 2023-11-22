@@ -197,6 +197,7 @@ class ServiceBinding(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_binding_id'")
             __props__.__dict__["service_binding_id"] = service_binding_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["service_id"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "service_binding_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -230,6 +231,7 @@ class ServiceBinding(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["service"] = None
         __props__.__dict__["service_binding_id"] = None
+        __props__.__dict__["service_id"] = None
         __props__.__dict__["update_time"] = None
         return ServiceBinding(resource_name, opts=opts, __props__=__props__)
 
@@ -290,6 +292,14 @@ class ServiceBinding(pulumi.CustomResource):
         Required. Short name of the ServiceBinding resource to be created.
         """
         return pulumi.get(self, "service_binding_id")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+        """
+        return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter(name="updateTime")

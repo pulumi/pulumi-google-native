@@ -8,11 +8,14 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
 
 __all__ = [
     'GoogleFirestoreAdminV1DailyRecurrenceResponse',
+    'GoogleFirestoreAdminV1FlatIndexResponse',
     'GoogleFirestoreAdminV1IndexFieldResponse',
+    'GoogleFirestoreAdminV1VectorConfigResponse',
     'GoogleFirestoreAdminV1WeeklyRecurrenceResponse',
 ]
 
@@ -29,6 +32,18 @@ class GoogleFirestoreAdminV1DailyRecurrenceResponse(dict):
 
 
 @pulumi.output_type
+class GoogleFirestoreAdminV1FlatIndexResponse(dict):
+    """
+    An index that stores vectors in a flat data structure, and supports exhaustive search.
+    """
+    def __init__(__self__):
+        """
+        An index that stores vectors in a flat data structure, and supports exhaustive search.
+        """
+        pass
+
+
+@pulumi.output_type
 class GoogleFirestoreAdminV1IndexFieldResponse(dict):
     """
     A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
@@ -40,6 +55,8 @@ class GoogleFirestoreAdminV1IndexFieldResponse(dict):
             suggest = "array_config"
         elif key == "fieldPath":
             suggest = "field_path"
+        elif key == "vectorConfig":
+            suggest = "vector_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleFirestoreAdminV1IndexFieldResponse. Access the value via the '{suggest}' property getter instead.")
@@ -55,16 +72,19 @@ class GoogleFirestoreAdminV1IndexFieldResponse(dict):
     def __init__(__self__, *,
                  array_config: str,
                  field_path: str,
-                 order: str):
+                 order: str,
+                 vector_config: 'outputs.GoogleFirestoreAdminV1VectorConfigResponse'):
         """
         A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
         :param str array_config: Indicates that this field supports operations on `array_value`s.
         :param str field_path: Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
         :param str order: Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
+        :param 'GoogleFirestoreAdminV1VectorConfigResponse' vector_config: Indicates that this field supports nearest neighbors and distance operations on vector.
         """
         pulumi.set(__self__, "array_config", array_config)
         pulumi.set(__self__, "field_path", field_path)
         pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "vector_config", vector_config)
 
     @property
     @pulumi.getter(name="arrayConfig")
@@ -89,6 +109,47 @@ class GoogleFirestoreAdminV1IndexFieldResponse(dict):
         Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
         """
         return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="vectorConfig")
+    def vector_config(self) -> 'outputs.GoogleFirestoreAdminV1VectorConfigResponse':
+        """
+        Indicates that this field supports nearest neighbors and distance operations on vector.
+        """
+        return pulumi.get(self, "vector_config")
+
+
+@pulumi.output_type
+class GoogleFirestoreAdminV1VectorConfigResponse(dict):
+    """
+    The index configuration to support vector search operations
+    """
+    def __init__(__self__, *,
+                 dimension: int,
+                 flat: 'outputs.GoogleFirestoreAdminV1FlatIndexResponse'):
+        """
+        The index configuration to support vector search operations
+        :param int dimension: The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+        :param 'GoogleFirestoreAdminV1FlatIndexResponse' flat: Indicates the vector index is a flat index.
+        """
+        pulumi.set(__self__, "dimension", dimension)
+        pulumi.set(__self__, "flat", flat)
+
+    @property
+    @pulumi.getter
+    def dimension(self) -> int:
+        """
+        The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+        """
+        return pulumi.get(self, "dimension")
+
+    @property
+    @pulumi.getter
+    def flat(self) -> 'outputs.GoogleFirestoreAdminV1FlatIndexResponse':
+        """
+        Indicates the vector index is a flat index.
+        """
+        return pulumi.get(self, "flat")
 
 
 @pulumi.output_type

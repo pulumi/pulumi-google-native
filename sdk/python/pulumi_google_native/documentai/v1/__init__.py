@@ -7,3 +7,4 @@ import typing
 # Export this package's modules as members:
 from .get_processor import *
 from .processor import *
+from . import outputs

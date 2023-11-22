@@ -33,6 +33,7 @@ __all__ = [
     'BareMetalBgpLbConfigArgs',
     'BareMetalBgpPeerConfigArgs',
     'BareMetalClusterOperationsConfigArgs',
+    'BareMetalClusterUpgradePolicyArgs',
     'BareMetalControlPlaneConfigArgs',
     'BareMetalControlPlaneNodePoolConfigArgs',
     'BareMetalIslandModeCidrConfigArgs',
@@ -50,7 +51,9 @@ __all__ = [
     'BareMetalNodeAccessConfigArgs',
     'BareMetalNodeConfigArgs',
     'BareMetalNodePoolConfigArgs',
+    'BareMetalNodePoolUpgradePolicyArgs',
     'BareMetalOsEnvironmentConfigArgs',
+    'BareMetalParallelUpgradeConfigArgs',
     'BareMetalPortConfigArgs',
     'BareMetalProxyConfigArgs',
     'BareMetalSecurityConfigArgs',
@@ -58,6 +61,7 @@ __all__ = [
     'BareMetalStorageConfigArgs',
     'BareMetalVipConfigArgs',
     'BareMetalWorkloadNodeConfigArgs',
+    'BinaryAuthorizationArgs',
     'BindingArgs',
     'ClusterUserArgs',
     'ExprArgs',
@@ -66,8 +70,10 @@ __all__ = [
     'VmwareAddressPoolArgs',
     'VmwareAutoRepairConfigArgs',
     'VmwareAutoResizeConfigArgs',
+    'VmwareClusterUpgradePolicyArgs',
     'VmwareControlPlaneNodeConfigArgs',
     'VmwareControlPlaneV2ConfigArgs',
+    'VmwareControlPlaneVsphereConfigArgs',
     'VmwareDataplaneV2ConfigArgs',
     'VmwareDhcpIpConfigArgs',
     'VmwareF5BigIpConfigArgs',
@@ -82,29 +88,33 @@ __all__ = [
     'VmwareNodePoolAutoscalingConfigArgs',
     'VmwareStaticIpConfigArgs',
     'VmwareStorageConfigArgs',
+    'VmwareVCenterConfigArgs',
     'VmwareVipConfigArgs',
+    'VmwareVsphereConfigArgs',
+    'VmwareVsphereTagArgs',
 ]
 
 @pulumi.input_type
 class AuthorizationArgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]]):
+                 admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]]] = None):
         """
         Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]] admin_users: For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]] admin_users: For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
         """
-        pulumi.set(__self__, "admin_users", admin_users)
+        if admin_users is not None:
+            pulumi.set(__self__, "admin_users", admin_users)
 
     @property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]]:
+    def admin_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]]]:
         """
-        For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+        For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
         """
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]]):
+    def admin_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserArgs']]]]):
         pulumi.set(self, "admin_users", value)
 
 
@@ -173,17 +183,28 @@ class BareMetalAdminClusterOperationsConfigArgs:
 @pulumi.input_type
 class BareMetalAdminControlPlaneConfigArgs:
     def __init__(__self__, *,
-                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminApiServerArgumentArgs']]]] = None,
-                 control_plane_node_pool_config: Optional[pulumi.Input['BareMetalAdminControlPlaneNodePoolConfigArgs']] = None):
+                 control_plane_node_pool_config: pulumi.Input['BareMetalAdminControlPlaneNodePoolConfigArgs'],
+                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminApiServerArgumentArgs']]]] = None):
         """
         BareMetalAdminControlPlaneConfig specifies the control plane configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminApiServerArgumentArgs']]] api_server_args: Customizes the default API server args. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
         :param pulumi.Input['BareMetalAdminControlPlaneNodePoolConfigArgs'] control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminApiServerArgumentArgs']]] api_server_args: Customizes the default API server args. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
         """
+        pulumi.set(__self__, "control_plane_node_pool_config", control_plane_node_pool_config)
         if api_server_args is not None:
             pulumi.set(__self__, "api_server_args", api_server_args)
-        if control_plane_node_pool_config is not None:
-            pulumi.set(__self__, "control_plane_node_pool_config", control_plane_node_pool_config)
+
+    @property
+    @pulumi.getter(name="controlPlaneNodePoolConfig")
+    def control_plane_node_pool_config(self) -> pulumi.Input['BareMetalAdminControlPlaneNodePoolConfigArgs']:
+        """
+        Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        """
+        return pulumi.get(self, "control_plane_node_pool_config")
+
+    @control_plane_node_pool_config.setter
+    def control_plane_node_pool_config(self, value: pulumi.Input['BareMetalAdminControlPlaneNodePoolConfigArgs']):
+        pulumi.set(self, "control_plane_node_pool_config", value)
 
     @property
     @pulumi.getter(name="apiServerArgs")
@@ -197,40 +218,27 @@ class BareMetalAdminControlPlaneConfigArgs:
     def api_server_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminApiServerArgumentArgs']]]]):
         pulumi.set(self, "api_server_args", value)
 
-    @property
-    @pulumi.getter(name="controlPlaneNodePoolConfig")
-    def control_plane_node_pool_config(self) -> Optional[pulumi.Input['BareMetalAdminControlPlaneNodePoolConfigArgs']]:
-        """
-        Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
-        """
-        return pulumi.get(self, "control_plane_node_pool_config")
-
-    @control_plane_node_pool_config.setter
-    def control_plane_node_pool_config(self, value: Optional[pulumi.Input['BareMetalAdminControlPlaneNodePoolConfigArgs']]):
-        pulumi.set(self, "control_plane_node_pool_config", value)
-
 
 @pulumi.input_type
 class BareMetalAdminControlPlaneNodePoolConfigArgs:
     def __init__(__self__, *,
-                 node_pool_config: Optional[pulumi.Input['BareMetalNodePoolConfigArgs']] = None):
+                 node_pool_config: pulumi.Input['BareMetalNodePoolConfigArgs']):
         """
         BareMetalAdminControlPlaneNodePoolConfig specifies the control plane node pool configuration. We have a control plane specific node pool config so that we can flexible about supporting control plane specific fields in the future.
         :param pulumi.Input['BareMetalNodePoolConfigArgs'] node_pool_config: The generic configuration for a node pool running the control plane.
         """
-        if node_pool_config is not None:
-            pulumi.set(__self__, "node_pool_config", node_pool_config)
+        pulumi.set(__self__, "node_pool_config", node_pool_config)
 
     @property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalNodePoolConfigArgs']]:
+    def node_pool_config(self) -> pulumi.Input['BareMetalNodePoolConfigArgs']:
         """
         The generic configuration for a node pool running the control plane.
         """
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalNodePoolConfigArgs']]):
+    def node_pool_config(self, value: pulumi.Input['BareMetalNodePoolConfigArgs']):
         pulumi.set(self, "node_pool_config", value)
 
 
@@ -805,6 +813,30 @@ class BareMetalClusterOperationsConfigArgs:
 
 
 @pulumi.input_type
+class BareMetalClusterUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input['BareMetalClusterUpgradePolicyPolicy']] = None):
+        """
+        BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+        :param pulumi.Input['BareMetalClusterUpgradePolicyPolicy'] policy: Specifies which upgrade policy to use.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input['BareMetalClusterUpgradePolicyPolicy']]:
+        """
+        Specifies which upgrade policy to use.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input['BareMetalClusterUpgradePolicyPolicy']]):
+        pulumi.set(self, "policy", value)
+
+
+@pulumi.input_type
 class BareMetalControlPlaneConfigArgs:
     def __init__(__self__, *,
                  control_plane_node_pool_config: pulumi.Input['BareMetalControlPlaneNodePoolConfigArgs'],
@@ -911,7 +943,7 @@ class BareMetalKubeletConfigArgs:
                  registry_pull_qps: Optional[pulumi.Input[int]] = None,
                  serialize_image_pulls_disabled: Optional[pulumi.Input[bool]] = None):
         """
-        KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+        KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
         :param pulumi.Input[int] registry_burst: The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
         :param pulumi.Input[int] registry_pull_qps: The limit of registry pulls per second. Setting this value to 0 means no limit. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 5.
         :param pulumi.Input[bool] serialize_image_pulls_disabled: Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version < 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details.
@@ -1476,7 +1508,7 @@ class BareMetalNodePoolConfigArgs:
         """
         BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodeConfigArgs']]] node_configs: The list of machine addresses in the bare metal node pool.
-        :param pulumi.Input['BareMetalKubeletConfigArgs'] kubelet_config: The modifiable kubelet configurations for the baremetal machines.
+        :param pulumi.Input['BareMetalKubeletConfigArgs'] kubelet_config: The modifiable kubelet configurations for the bare metal machines.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input['BareMetalNodePoolConfigOperatingSystem'] operating_system: Specifies the nodes operating system (default: LINUX).
         :param pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
@@ -1507,7 +1539,7 @@ class BareMetalNodePoolConfigArgs:
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> Optional[pulumi.Input['BareMetalKubeletConfigArgs']]:
         """
-        The modifiable kubelet configurations for the baremetal machines.
+        The modifiable kubelet configurations for the bare metal machines.
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -1553,6 +1585,30 @@ class BareMetalNodePoolConfigArgs:
 
 
 @pulumi.input_type
+class BareMetalNodePoolUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 parallel_upgrade_config: Optional[pulumi.Input['BareMetalParallelUpgradeConfigArgs']] = None):
+        """
+        BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+        :param pulumi.Input['BareMetalParallelUpgradeConfigArgs'] parallel_upgrade_config: The parallel upgrade settings for worker node pools.
+        """
+        if parallel_upgrade_config is not None:
+            pulumi.set(__self__, "parallel_upgrade_config", parallel_upgrade_config)
+
+    @property
+    @pulumi.getter(name="parallelUpgradeConfig")
+    def parallel_upgrade_config(self) -> Optional[pulumi.Input['BareMetalParallelUpgradeConfigArgs']]:
+        """
+        The parallel upgrade settings for worker node pools.
+        """
+        return pulumi.get(self, "parallel_upgrade_config")
+
+    @parallel_upgrade_config.setter
+    def parallel_upgrade_config(self, value: Optional[pulumi.Input['BareMetalParallelUpgradeConfigArgs']]):
+        pulumi.set(self, "parallel_upgrade_config", value)
+
+
+@pulumi.input_type
 class BareMetalOsEnvironmentConfigArgs:
     def __init__(__self__, *,
                  package_repo_excluded: Optional[pulumi.Input[bool]] = None):
@@ -1574,6 +1630,46 @@ class BareMetalOsEnvironmentConfigArgs:
     @package_repo_excluded.setter
     def package_repo_excluded(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "package_repo_excluded", value)
+
+
+@pulumi.input_type
+class BareMetalParallelUpgradeConfigArgs:
+    def __init__(__self__, *,
+                 concurrent_nodes: Optional[pulumi.Input[int]] = None,
+                 minimum_available_nodes: Optional[pulumi.Input[int]] = None):
+        """
+        BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+        :param pulumi.Input[int] concurrent_nodes: The maximum number of nodes that can be upgraded at once.
+        :param pulumi.Input[int] minimum_available_nodes: The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+        """
+        if concurrent_nodes is not None:
+            pulumi.set(__self__, "concurrent_nodes", concurrent_nodes)
+        if minimum_available_nodes is not None:
+            pulumi.set(__self__, "minimum_available_nodes", minimum_available_nodes)
+
+    @property
+    @pulumi.getter(name="concurrentNodes")
+    def concurrent_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of nodes that can be upgraded at once.
+        """
+        return pulumi.get(self, "concurrent_nodes")
+
+    @concurrent_nodes.setter
+    def concurrent_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrent_nodes", value)
+
+    @property
+    @pulumi.getter(name="minimumAvailableNodes")
+    def minimum_available_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+        """
+        return pulumi.get(self, "minimum_available_nodes")
+
+    @minimum_available_nodes.setter
+    def minimum_available_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_available_nodes", value)
 
 
 @pulumi.input_type
@@ -1803,6 +1899,30 @@ class BareMetalWorkloadNodeConfigArgs:
     @max_pods_per_node.setter
     def max_pods_per_node(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_pods_per_node", value)
+
+
+@pulumi.input_type
+class BinaryAuthorizationArgs:
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']] = None):
+        """
+        Configuration for Binary Authorization.
+        :param pulumi.Input['BinaryAuthorizationEvaluationMode'] evaluation_mode: Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+        """
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']]:
+        """
+        Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @evaluation_mode.setter
+    def evaluation_mode(self, value: Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']]):
+        pulumi.set(self, "evaluation_mode", value)
 
 
 @pulumi.input_type
@@ -2155,18 +2275,44 @@ class VmwareAutoResizeConfigArgs:
 
 
 @pulumi.input_type
+class VmwareClusterUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 control_plane_only: Optional[pulumi.Input[bool]] = None):
+        """
+        VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+        :param pulumi.Input[bool] control_plane_only: Controls whether the upgrade applies to the control plane only.
+        """
+        if control_plane_only is not None:
+            pulumi.set(__self__, "control_plane_only", control_plane_only)
+
+    @property
+    @pulumi.getter(name="controlPlaneOnly")
+    def control_plane_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether the upgrade applies to the control plane only.
+        """
+        return pulumi.get(self, "control_plane_only")
+
+    @control_plane_only.setter
+    def control_plane_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "control_plane_only", value)
+
+
+@pulumi.input_type
 class VmwareControlPlaneNodeConfigArgs:
     def __init__(__self__, *,
                  auto_resize_config: Optional[pulumi.Input['VmwareAutoResizeConfigArgs']] = None,
                  cpus: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[str]] = None,
-                 replicas: Optional[pulumi.Input[str]] = None):
+                 replicas: Optional[pulumi.Input[str]] = None,
+                 vsphere_config: Optional[pulumi.Input['VmwareControlPlaneVsphereConfigArgs']] = None):
         """
         Specifies control plane node config for the VMware user cluster.
         :param pulumi.Input['VmwareAutoResizeConfigArgs'] auto_resize_config: AutoResizeConfig provides auto resizing configurations.
         :param pulumi.Input[str] cpus: The number of CPUs for each admin cluster node that serve as control planes for this VMware user cluster. (default: 4 CPUs)
         :param pulumi.Input[str] memory: The megabytes of memory for each admin cluster node that serves as a control plane for this VMware user cluster (default: 8192 MB memory).
         :param pulumi.Input[str] replicas: The number of control plane nodes for this VMware user cluster. (default: 1 replica).
+        :param pulumi.Input['VmwareControlPlaneVsphereConfigArgs'] vsphere_config: Vsphere-specific config.
         """
         if auto_resize_config is not None:
             pulumi.set(__self__, "auto_resize_config", auto_resize_config)
@@ -2176,6 +2322,8 @@ class VmwareControlPlaneNodeConfigArgs:
             pulumi.set(__self__, "memory", memory)
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if vsphere_config is not None:
+            pulumi.set(__self__, "vsphere_config", vsphere_config)
 
     @property
     @pulumi.getter(name="autoResizeConfig")
@@ -2225,6 +2373,18 @@ class VmwareControlPlaneNodeConfigArgs:
     def replicas(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "replicas", value)
 
+    @property
+    @pulumi.getter(name="vsphereConfig")
+    def vsphere_config(self) -> Optional[pulumi.Input['VmwareControlPlaneVsphereConfigArgs']]:
+        """
+        Vsphere-specific config.
+        """
+        return pulumi.get(self, "vsphere_config")
+
+    @vsphere_config.setter
+    def vsphere_config(self, value: Optional[pulumi.Input['VmwareControlPlaneVsphereConfigArgs']]):
+        pulumi.set(self, "vsphere_config", value)
+
 
 @pulumi.input_type
 class VmwareControlPlaneV2ConfigArgs:
@@ -2248,6 +2408,46 @@ class VmwareControlPlaneV2ConfigArgs:
     @control_plane_ip_block.setter
     def control_plane_ip_block(self, value: Optional[pulumi.Input['VmwareIpBlockArgs']]):
         pulumi.set(self, "control_plane_ip_block", value)
+
+
+@pulumi.input_type
+class VmwareControlPlaneVsphereConfigArgs:
+    def __init__(__self__, *,
+                 datastore: Optional[pulumi.Input[str]] = None,
+                 storage_policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies control plane node config.
+        :param pulumi.Input[str] datastore: The Vsphere datastore used by the control plane Node.
+        :param pulumi.Input[str] storage_policy_name: The Vsphere storage policy used by the control plane Node.
+        """
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if storage_policy_name is not None:
+            pulumi.set(__self__, "storage_policy_name", storage_policy_name)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Vsphere datastore used by the control plane Node.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Vsphere storage policy used by the control plane Node.
+        """
+        return pulumi.get(self, "storage_policy_name")
+
+    @storage_policy_name.setter
+    def storage_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_policy_name", value)
 
 
 @pulumi.input_type
@@ -2818,7 +3018,8 @@ class VmwareNodeConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  memory_mb: Optional[pulumi.Input[str]] = None,
                  replicas: Optional[pulumi.Input[str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]] = None,
+                 vsphere_config: Optional[pulumi.Input['VmwareVsphereConfigArgs']] = None):
         """
         Parameters that describe the configuration of all nodes within a given node pool.
         :param pulumi.Input[str] image_type: The OS image to be used for each node in a node pool. Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
@@ -2830,6 +3031,7 @@ class VmwareNodeConfigArgs:
         :param pulumi.Input[str] memory_mb: The megabytes of memory for each node in the node pool.
         :param pulumi.Input[str] replicas: The number of nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input['VmwareVsphereConfigArgs'] vsphere_config: Specifies the vSphere config for node pool.
         """
         pulumi.set(__self__, "image_type", image_type)
         if boot_disk_size_gb is not None:
@@ -2848,6 +3050,8 @@ class VmwareNodeConfigArgs:
             pulumi.set(__self__, "replicas", replicas)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if vsphere_config is not None:
+            pulumi.set(__self__, "vsphere_config", vsphere_config)
 
     @property
     @pulumi.getter(name="imageType")
@@ -2957,6 +3161,18 @@ class VmwareNodeConfigArgs:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="vsphereConfig")
+    def vsphere_config(self) -> Optional[pulumi.Input['VmwareVsphereConfigArgs']]:
+        """
+        Specifies the vSphere config for node pool.
+        """
+        return pulumi.get(self, "vsphere_config")
+
+    @vsphere_config.setter
+    def vsphere_config(self, value: Optional[pulumi.Input['VmwareVsphereConfigArgs']]):
+        pulumi.set(self, "vsphere_config", value)
+
 
 @pulumi.input_type
 class VmwareNodePoolAutoscalingConfigArgs:
@@ -3047,6 +3263,126 @@ class VmwareStorageConfigArgs:
 
 
 @pulumi.input_type
+class VmwareVCenterConfigArgs:
+    def __init__(__self__, *,
+                 ca_cert_data: Optional[pulumi.Input[str]] = None,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 datastore: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 resource_pool: Optional[pulumi.Input[str]] = None,
+                 storage_policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        Represents configuration for the VMware VCenter for the user cluster.
+        :param pulumi.Input[str] ca_cert_data: Contains the vCenter CA certificate public key for SSL verification.
+        :param pulumi.Input[str] cluster: The name of the vCenter cluster for the user cluster.
+        :param pulumi.Input[str] datacenter: The name of the vCenter datacenter for the user cluster.
+        :param pulumi.Input[str] datastore: The name of the vCenter datastore for the user cluster.
+        :param pulumi.Input[str] folder: The name of the vCenter folder for the user cluster.
+        :param pulumi.Input[str] resource_pool: The name of the vCenter resource pool for the user cluster.
+        :param pulumi.Input[str] storage_policy_name: The name of the vCenter storage policy for the user cluster.
+        """
+        if ca_cert_data is not None:
+            pulumi.set(__self__, "ca_cert_data", ca_cert_data)
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if resource_pool is not None:
+            pulumi.set(__self__, "resource_pool", resource_pool)
+        if storage_policy_name is not None:
+            pulumi.set(__self__, "storage_policy_name", storage_policy_name)
+
+    @property
+    @pulumi.getter(name="caCertData")
+    def ca_cert_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contains the vCenter CA certificate public key for SSL verification.
+        """
+        return pulumi.get(self, "ca_cert_data")
+
+    @ca_cert_data.setter
+    def ca_cert_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_cert_data", value)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter cluster for the user cluster.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter datacenter for the user cluster.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter datastore for the user cluster.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter folder for the user cluster.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter(name="resourcePool")
+    def resource_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter resource pool for the user cluster.
+        """
+        return pulumi.get(self, "resource_pool")
+
+    @resource_pool.setter
+    def resource_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_pool", value)
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter storage policy for the user cluster.
+        """
+        return pulumi.get(self, "storage_policy_name")
+
+    @storage_policy_name.setter
+    def storage_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_policy_name", value)
+
+
+@pulumi.input_type
 class VmwareVipConfigArgs:
     def __init__(__self__, *,
                  control_plane_vip: Optional[pulumi.Input[str]] = None,
@@ -3084,5 +3420,101 @@ class VmwareVipConfigArgs:
     @ingress_vip.setter
     def ingress_vip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingress_vip", value)
+
+
+@pulumi.input_type
+class VmwareVsphereConfigArgs:
+    def __init__(__self__, *,
+                 datastore: Optional[pulumi.Input[str]] = None,
+                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareVsphereTagArgs']]]] = None):
+        """
+        VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
+        :param pulumi.Input[str] datastore: The name of the vCenter datastore. Inherited from the user cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Vsphere host groups to apply to all VMs in the node pool
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareVsphereTagArgs']]] tags: Tags to apply to VMs.
+        """
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if host_groups is not None:
+            pulumi.set(__self__, "host_groups", host_groups)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter datastore. Inherited from the user cluster.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter(name="hostGroups")
+    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Vsphere host groups to apply to all VMs in the node pool
+        """
+        return pulumi.get(self, "host_groups")
+
+    @host_groups.setter
+    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_groups", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareVsphereTagArgs']]]]:
+        """
+        Tags to apply to VMs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareVsphereTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class VmwareVsphereTagArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node pool. For more information, see https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
+        :param pulumi.Input[str] category: The Vsphere tag category.
+        :param pulumi.Input[str] tag: The Vsphere tag name.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Vsphere tag category.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Vsphere tag name.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 

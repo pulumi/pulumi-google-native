@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetRoutineResult:
-    def __init__(__self__, arguments=None, creation_time=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, remote_function_options=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None, spark_options=None, strict_mode=None):
+    def __init__(__self__, arguments=None, creation_time=None, data_governance_type=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, remote_function_options=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None, security_mode=None, spark_options=None, strict_mode=None):
         if arguments and not isinstance(arguments, list):
             raise TypeError("Expected argument 'arguments' to be a list")
         pulumi.set(__self__, "arguments", arguments)
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
+        if data_governance_type and not isinstance(data_governance_type, str):
+            raise TypeError("Expected argument 'data_governance_type' to be a str")
+        pulumi.set(__self__, "data_governance_type", data_governance_type)
         if definition_body and not isinstance(definition_body, str):
             raise TypeError("Expected argument 'definition_body' to be a str")
         pulumi.set(__self__, "definition_body", definition_body)
@@ -62,6 +65,9 @@ class GetRoutineResult:
         if routine_type and not isinstance(routine_type, str):
             raise TypeError("Expected argument 'routine_type' to be a str")
         pulumi.set(__self__, "routine_type", routine_type)
+        if security_mode and not isinstance(security_mode, str):
+            raise TypeError("Expected argument 'security_mode' to be a str")
+        pulumi.set(__self__, "security_mode", security_mode)
         if spark_options and not isinstance(spark_options, dict):
             raise TypeError("Expected argument 'spark_options' to be a dict")
         pulumi.set(__self__, "spark_options", spark_options)
@@ -84,6 +90,14 @@ class GetRoutineResult:
         The time when this routine was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="dataGovernanceType")
+    def data_governance_type(self) -> str:
+        """
+        Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+        """
+        return pulumi.get(self, "data_governance_type")
 
     @property
     @pulumi.getter(name="definitionBody")
@@ -182,6 +196,14 @@ class GetRoutineResult:
         return pulumi.get(self, "routine_type")
 
     @property
+    @pulumi.getter(name="securityMode")
+    def security_mode(self) -> str:
+        """
+        Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+        """
+        return pulumi.get(self, "security_mode")
+
+    @property
     @pulumi.getter(name="sparkOptions")
     def spark_options(self) -> 'outputs.SparkOptionsResponse':
         """
@@ -206,6 +228,7 @@ class AwaitableGetRoutineResult(GetRoutineResult):
         return GetRoutineResult(
             arguments=self.arguments,
             creation_time=self.creation_time,
+            data_governance_type=self.data_governance_type,
             definition_body=self.definition_body,
             description=self.description,
             determinism_level=self.determinism_level,
@@ -218,6 +241,7 @@ class AwaitableGetRoutineResult(GetRoutineResult):
             return_type=self.return_type,
             routine_reference=self.routine_reference,
             routine_type=self.routine_type,
+            security_mode=self.security_mode,
             spark_options=self.spark_options,
             strict_mode=self.strict_mode)
 
@@ -241,6 +265,7 @@ def get_routine(dataset_id: Optional[str] = None,
     return AwaitableGetRoutineResult(
         arguments=pulumi.get(__ret__, 'arguments'),
         creation_time=pulumi.get(__ret__, 'creation_time'),
+        data_governance_type=pulumi.get(__ret__, 'data_governance_type'),
         definition_body=pulumi.get(__ret__, 'definition_body'),
         description=pulumi.get(__ret__, 'description'),
         determinism_level=pulumi.get(__ret__, 'determinism_level'),
@@ -253,6 +278,7 @@ def get_routine(dataset_id: Optional[str] = None,
         return_type=pulumi.get(__ret__, 'return_type'),
         routine_reference=pulumi.get(__ret__, 'routine_reference'),
         routine_type=pulumi.get(__ret__, 'routine_type'),
+        security_mode=pulumi.get(__ret__, 'security_mode'),
         spark_options=pulumi.get(__ret__, 'spark_options'),
         strict_mode=pulumi.get(__ret__, 'strict_mode'))
 

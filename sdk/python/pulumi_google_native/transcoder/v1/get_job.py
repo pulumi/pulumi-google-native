@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, config=None, create_time=None, end_time=None, error=None, input_uri=None, labels=None, mode=None, name=None, output_uri=None, start_time=None, state=None, template_id=None, ttl_after_completion_days=None):
+    def __init__(__self__, batch_mode_priority=None, config=None, create_time=None, end_time=None, error=None, input_uri=None, labels=None, mode=None, name=None, optimization=None, output_uri=None, start_time=None, state=None, template_id=None, ttl_after_completion_days=None):
+        if batch_mode_priority and not isinstance(batch_mode_priority, int):
+            raise TypeError("Expected argument 'batch_mode_priority' to be a int")
+        pulumi.set(__self__, "batch_mode_priority", batch_mode_priority)
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -44,6 +47,9 @@ class GetJobResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if optimization and not isinstance(optimization, str):
+            raise TypeError("Expected argument 'optimization' to be a str")
+        pulumi.set(__self__, "optimization", optimization)
         if output_uri and not isinstance(output_uri, str):
             raise TypeError("Expected argument 'output_uri' to be a str")
         pulumi.set(__self__, "output_uri", output_uri)
@@ -59,6 +65,14 @@ class GetJobResult:
         if ttl_after_completion_days and not isinstance(ttl_after_completion_days, int):
             raise TypeError("Expected argument 'ttl_after_completion_days' to be a int")
         pulumi.set(__self__, "ttl_after_completion_days", ttl_after_completion_days)
+
+    @property
+    @pulumi.getter(name="batchModePriority")
+    def batch_mode_priority(self) -> int:
+        """
+        The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        """
+        return pulumi.get(self, "batch_mode_priority")
 
     @property
     @pulumi.getter
@@ -88,7 +102,7 @@ class GetJobResult:
     @pulumi.getter
     def error(self) -> 'outputs.StatusResponse':
         """
-        An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+        An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.
         """
         return pulumi.get(self, "error")
 
@@ -123,6 +137,14 @@ class GetJobResult:
         The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def optimization(self) -> str:
+        """
+        Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+        """
+        return pulumi.get(self, "optimization")
 
     @property
     @pulumi.getter(name="outputUri")
@@ -171,6 +193,7 @@ class AwaitableGetJobResult(GetJobResult):
         if False:
             yield self
         return GetJobResult(
+            batch_mode_priority=self.batch_mode_priority,
             config=self.config,
             create_time=self.create_time,
             end_time=self.end_time,
@@ -179,6 +202,7 @@ class AwaitableGetJobResult(GetJobResult):
             labels=self.labels,
             mode=self.mode,
             name=self.name,
+            optimization=self.optimization,
             output_uri=self.output_uri,
             start_time=self.start_time,
             state=self.state,
@@ -201,6 +225,7 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:transcoder/v1:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
+        batch_mode_priority=pulumi.get(__ret__, 'batch_mode_priority'),
         config=pulumi.get(__ret__, 'config'),
         create_time=pulumi.get(__ret__, 'create_time'),
         end_time=pulumi.get(__ret__, 'end_time'),
@@ -209,6 +234,7 @@ def get_job(job_id: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         mode=pulumi.get(__ret__, 'mode'),
         name=pulumi.get(__ret__, 'name'),
+        optimization=pulumi.get(__ret__, 'optimization'),
         output_uri=pulumi.get(__ret__, 'output_uri'),
         start_time=pulumi.get(__ret__, 'start_time'),
         state=pulumi.get(__ret__, 'state'),

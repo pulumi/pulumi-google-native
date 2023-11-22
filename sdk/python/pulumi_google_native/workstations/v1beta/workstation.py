@@ -28,12 +28,12 @@ class WorkstationArgs:
         """
         The set of arguments for constructing a Workstation resource.
         :param pulumi.Input[str] workstation_id: Required. ID to use for the workstation.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
-        :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environment variables passed to the workstation container's entrypoint.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
-        :param pulumi.Input[str] name: Full name of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
+        :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Optional. Environment variables passed to the workstation container's entrypoint.
+        :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
+        :param pulumi.Input[str] name: Identifier. Full name of this workstation.
         """
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         pulumi.set(__self__, "workstation_config_id", workstation_config_id)
@@ -89,7 +89,7 @@ class WorkstationArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Client-specified annotations.
+        Optional. Client-specified annotations.
         """
         return pulumi.get(self, "annotations")
 
@@ -101,7 +101,7 @@ class WorkstationArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Human-readable name for this resource.
+        Optional. Human-readable name for this workstation.
         """
         return pulumi.get(self, "display_name")
 
@@ -113,7 +113,7 @@ class WorkstationArgs:
     @pulumi.getter
     def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Environment variables passed to the workstation container's entrypoint.
+        Optional. Environment variables passed to the workstation container's entrypoint.
         """
         return pulumi.get(self, "env")
 
@@ -125,7 +125,7 @@ class WorkstationArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -137,7 +137,7 @@ class WorkstationArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
         """
         return pulumi.get(self, "labels")
 
@@ -158,7 +158,7 @@ class WorkstationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Full name of this resource.
+        Identifier. Full name of this workstation.
         """
         return pulumi.get(self, "name")
 
@@ -198,12 +198,12 @@ class Workstation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
-        :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environment variables passed to the workstation container's entrypoint.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
-        :param pulumi.Input[str] name: Full name of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
+        :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Optional. Environment variables passed to the workstation container's entrypoint.
+        :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
+        :param pulumi.Input[str] name: Identifier. Full name of this workstation.
         :param pulumi.Input[str] workstation_id: Required. ID to use for the workstation.
         """
         ...
@@ -271,6 +271,7 @@ class Workstation(pulumi.CustomResource):
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["reconciling"] = None
+            __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -310,6 +311,7 @@ class Workstation(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["reconciling"] = None
+        __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
@@ -322,7 +324,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Client-specified annotations.
+        Optional. Client-specified annotations.
         """
         return pulumi.get(self, "annotations")
 
@@ -330,7 +332,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time when this resource was created.
+        Time when this workstation was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -338,7 +340,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> pulumi.Output[str]:
         """
-        Time when this resource was soft-deleted.
+        Time when this workstation was soft-deleted.
         """
         return pulumi.get(self, "delete_time")
 
@@ -346,7 +348,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Human-readable name for this resource.
+        Optional. Human-readable name for this workstation.
         """
         return pulumi.get(self, "display_name")
 
@@ -354,7 +356,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter
     def env(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Environment variables passed to the workstation container's entrypoint.
+        Optional. Environment variables passed to the workstation container's entrypoint.
         """
         return pulumi.get(self, "env")
 
@@ -362,7 +364,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+        Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -378,7 +380,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
         """
         return pulumi.get(self, "labels")
 
@@ -391,7 +393,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Full name of this resource.
+        Identifier. Full name of this workstation.
         """
         return pulumi.get(self, "name")
 
@@ -404,9 +406,17 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Indicates whether this resource is currently being updated to match its intended state.
+        Indicates whether this workstation is currently being updated to match its intended state.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
+        """
+        return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter
@@ -420,7 +430,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        A system-assigned unique identified for this resource.
+        A system-assigned unique identifier for this workstation.
         """
         return pulumi.get(self, "uid")
 
@@ -428,7 +438,7 @@ class Workstation(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time when this resource was most recently updated.
+        Time when this workstation was most recently updated.
         """
         return pulumi.get(self, "update_time")
 

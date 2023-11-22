@@ -26,7 +26,7 @@ class TrustConfigArgs:
                  trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustStoreArgs']]]] = None):
         """
         The set of arguments for constructing a TrustConfig resource.
-        :param pulumi.Input[str] trust_config_id: Required. A user-provided name of the TrustConfig.
+        :param pulumi.Input[str] trust_config_id: Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a TrustConfig.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a TrustConfig.
@@ -53,7 +53,7 @@ class TrustConfigArgs:
     @pulumi.getter(name="trustConfigId")
     def trust_config_id(self) -> pulumi.Input[str]:
         """
-        Required. A user-provided name of the TrustConfig.
+        Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
         """
         return pulumi.get(self, "trust_config_id")
 
@@ -163,7 +163,7 @@ class TrustConfig(pulumi.CustomResource):
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a TrustConfig.
         :param pulumi.Input[str] name: A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
-        :param pulumi.Input[str] trust_config_id: Required. A user-provided name of the TrustConfig.
+        :param pulumi.Input[str] trust_config_id: Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustStoreArgs']]]] trust_stores: Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
         """
         ...
@@ -309,7 +309,7 @@ class TrustConfig(pulumi.CustomResource):
     @pulumi.getter(name="trustConfigId")
     def trust_config_id(self) -> pulumi.Output[str]:
         """
-        Required. A user-provided name of the TrustConfig.
+        Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
         """
         return pulumi.get(self, "trust_config_id")
 

@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceConnectionTokenResult:
-    def __init__(__self__, create_time=None, description=None, expire_time=None, labels=None, name=None, network=None, token=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, etag=None, expire_time=None, labels=None, name=None, network=None, token=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
@@ -59,6 +62,14 @@ class GetServiceConnectionTokenResult:
         A description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="expireTime")
@@ -117,6 +128,7 @@ class AwaitableGetServiceConnectionTokenResult(GetServiceConnectionTokenResult):
         return GetServiceConnectionTokenResult(
             create_time=self.create_time,
             description=self.description,
+            etag=self.etag,
             expire_time=self.expire_time,
             labels=self.labels,
             name=self.name,
@@ -142,6 +154,7 @@ def get_service_connection_token(location: Optional[str] = None,
     return AwaitableGetServiceConnectionTokenResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

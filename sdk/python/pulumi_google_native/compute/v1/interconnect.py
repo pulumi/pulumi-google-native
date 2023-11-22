@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['InterconnectArgs', 'Interconnect']
 
@@ -23,11 +24,14 @@ class InterconnectArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 macsec: Optional[pulumi.Input['InterconnectMacsecArgs']] = None,
+                 macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Interconnect resource.
@@ -38,10 +42,13 @@ class InterconnectArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         if admin_enabled is not None:
@@ -58,6 +65,10 @@ class InterconnectArgs:
             pulumi.set(__self__, "link_type", link_type)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if macsec is not None:
+            pulumi.set(__self__, "macsec", macsec)
+        if macsec_enabled is not None:
+            pulumi.set(__self__, "macsec_enabled", macsec_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if noc_contact_email is not None:
@@ -68,6 +79,8 @@ class InterconnectArgs:
             pulumi.set(__self__, "remote_location", remote_location)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if requested_features is not None:
+            pulumi.set(__self__, "requested_features", requested_features)
         if requested_link_count is not None:
             pulumi.set(__self__, "requested_link_count", requested_link_count)
 
@@ -157,6 +170,30 @@ class InterconnectArgs:
 
     @property
     @pulumi.getter
+    def macsec(self) -> Optional[pulumi.Input['InterconnectMacsecArgs']]:
+        """
+        Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        """
+        return pulumi.get(self, "macsec")
+
+    @macsec.setter
+    def macsec(self, value: Optional[pulumi.Input['InterconnectMacsecArgs']]):
+        pulumi.set(self, "macsec", value)
+
+    @property
+    @pulumi.getter(name="macsecEnabled")
+    def macsec_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+        """
+        return pulumi.get(self, "macsec_enabled")
+
+    @macsec_enabled.setter
+    def macsec_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "macsec_enabled", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -213,6 +250,18 @@ class InterconnectArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="requestedFeatures")
+    def requested_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]]:
+        """
+        Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+        """
+        return pulumi.get(self, "requested_features")
+
+    @requested_features.setter
+    def requested_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]]):
+        pulumi.set(self, "requested_features", value)
+
+    @property
     @pulumi.getter(name="requestedLinkCount")
     def requested_link_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -237,11 +286,14 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -256,10 +308,13 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         ...
@@ -293,11 +348,14 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -315,12 +373,16 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["link_type"] = link_type
             __props__.__dict__["location"] = location
+            __props__.__dict__["macsec"] = macsec
+            __props__.__dict__["macsec_enabled"] = macsec_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["noc_contact_email"] = noc_contact_email
             __props__.__dict__["project"] = project
             __props__.__dict__["remote_location"] = remote_location
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["requested_features"] = requested_features
             __props__.__dict__["requested_link_count"] = requested_link_count
+            __props__.__dict__["available_features"] = None
             __props__.__dict__["circuit_infos"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["expected_outages"] = None
@@ -360,6 +422,7 @@ class Interconnect(pulumi.CustomResource):
         __props__ = InterconnectArgs.__new__(InterconnectArgs)
 
         __props__.__dict__["admin_enabled"] = None
+        __props__.__dict__["available_features"] = None
         __props__.__dict__["circuit_infos"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["customer_name"] = None
@@ -374,6 +437,8 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["link_type"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["macsec"] = None
+        __props__.__dict__["macsec_enabled"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["noc_contact_email"] = None
         __props__.__dict__["operational_status"] = None
@@ -382,6 +447,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["provisioned_link_count"] = None
         __props__.__dict__["remote_location"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["requested_features"] = None
         __props__.__dict__["requested_link_count"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
@@ -395,6 +461,14 @@ class Interconnect(pulumi.CustomResource):
         Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         """
         return pulumi.get(self, "admin_enabled")
+
+    @property
+    @pulumi.getter(name="availableFeatures")
+    def available_features(self) -> pulumi.Output[Sequence[str]]:
+        """
+        [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
+        """
+        return pulumi.get(self, "available_features")
 
     @property
     @pulumi.getter(name="circuitInfos")
@@ -510,6 +584,22 @@ class Interconnect(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def macsec(self) -> pulumi.Output['outputs.InterconnectMacsecResponse']:
+        """
+        Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        """
+        return pulumi.get(self, "macsec")
+
+    @property
+    @pulumi.getter(name="macsecEnabled")
+    def macsec_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+        """
+        return pulumi.get(self, "macsec_enabled")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -568,6 +658,14 @@ class Interconnect(pulumi.CustomResource):
         An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="requestedFeatures")
+    def requested_features(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+        """
+        return pulumi.get(self, "requested_features")
 
     @property
     @pulumi.getter(name="requestedLinkCount")

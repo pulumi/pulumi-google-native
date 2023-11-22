@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, description=None, etag=None, expire_time=None, generation=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, satisfies_pzs=None, template=None, terminal_condition=None, traffic=None, traffic_statuses=None, uid=None, update_time=None, uri=None):
+    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, delete_time=None, description=None, etag=None, expire_time=None, generation=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, satisfies_pzs=None, scaling=None, template=None, terminal_condition=None, traffic=None, traffic_statuses=None, uid=None, update_time=None, uri=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -41,6 +41,9 @@ class GetServiceResult:
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
+        if custom_audiences and not isinstance(custom_audiences, list):
+            raise TypeError("Expected argument 'custom_audiences' to be a list")
+        pulumi.set(__self__, "custom_audiences", custom_audiences)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
@@ -86,6 +89,9 @@ class GetServiceResult:
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
+        if scaling and not isinstance(scaling, dict):
+            raise TypeError("Expected argument 'scaling' to be a dict")
+        pulumi.set(__self__, "scaling", scaling)
         if template and not isinstance(template, dict):
             raise TypeError("Expected argument 'template' to be a dict")
         pulumi.set(__self__, "template", template)
@@ -163,6 +169,14 @@ class GetServiceResult:
         Email address of the authenticated creator.
         """
         return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="customAudiences")
+    def custom_audiences(self) -> Sequence[str]:
+        """
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        """
+        return pulumi.get(self, "custom_audiences")
 
     @property
     @pulumi.getter(name="deleteTime")
@@ -286,6 +300,14 @@ class GetServiceResult:
 
     @property
     @pulumi.getter
+    def scaling(self) -> 'outputs.GoogleCloudRunV2ServiceScalingResponse':
+        """
+        Optional. Specifies service-level scaling settings
+        """
+        return pulumi.get(self, "scaling")
+
+    @property
+    @pulumi.getter
     def template(self) -> 'outputs.GoogleCloudRunV2RevisionTemplateResponse':
         """
         The template used to create revisions for this Service.
@@ -354,6 +376,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             conditions=self.conditions,
             create_time=self.create_time,
             creator=self.creator,
+            custom_audiences=self.custom_audiences,
             delete_time=self.delete_time,
             description=self.description,
             etag=self.etag,
@@ -369,6 +392,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             observed_generation=self.observed_generation,
             reconciling=self.reconciling,
             satisfies_pzs=self.satisfies_pzs,
+            scaling=self.scaling,
             template=self.template,
             terminal_condition=self.terminal_condition,
             traffic=self.traffic,
@@ -400,6 +424,7 @@ def get_service(location: Optional[str] = None,
         conditions=pulumi.get(__ret__, 'conditions'),
         create_time=pulumi.get(__ret__, 'create_time'),
         creator=pulumi.get(__ret__, 'creator'),
+        custom_audiences=pulumi.get(__ret__, 'custom_audiences'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),
@@ -415,6 +440,7 @@ def get_service(location: Optional[str] = None,
         observed_generation=pulumi.get(__ret__, 'observed_generation'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        scaling=pulumi.get(__ret__, 'scaling'),
         template=pulumi.get(__ret__, 'template'),
         terminal_condition=pulumi.get(__ret__, 'terminal_condition'),
         traffic=pulumi.get(__ret__, 'traffic'),

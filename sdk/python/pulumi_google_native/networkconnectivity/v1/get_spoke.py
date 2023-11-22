@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetSpokeResult:
-    def __init__(__self__, create_time=None, description=None, hub=None, labels=None, linked_interconnect_attachments=None, linked_router_appliance_instances=None, linked_vpn_tunnels=None, name=None, state=None, unique_id=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, group=None, hub=None, labels=None, linked_interconnect_attachments=None, linked_router_appliance_instances=None, linked_vpc_network=None, linked_vpn_tunnels=None, name=None, reasons=None, spoke_type=None, state=None, unique_id=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if group and not isinstance(group, str):
+            raise TypeError("Expected argument 'group' to be a str")
+        pulumi.set(__self__, "group", group)
         if hub and not isinstance(hub, str):
             raise TypeError("Expected argument 'hub' to be a str")
         pulumi.set(__self__, "hub", hub)
@@ -38,12 +41,21 @@ class GetSpokeResult:
         if linked_router_appliance_instances and not isinstance(linked_router_appliance_instances, dict):
             raise TypeError("Expected argument 'linked_router_appliance_instances' to be a dict")
         pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
+        if linked_vpc_network and not isinstance(linked_vpc_network, dict):
+            raise TypeError("Expected argument 'linked_vpc_network' to be a dict")
+        pulumi.set(__self__, "linked_vpc_network", linked_vpc_network)
         if linked_vpn_tunnels and not isinstance(linked_vpn_tunnels, dict):
             raise TypeError("Expected argument 'linked_vpn_tunnels' to be a dict")
         pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if reasons and not isinstance(reasons, list):
+            raise TypeError("Expected argument 'reasons' to be a list")
+        pulumi.set(__self__, "reasons", reasons)
+        if spoke_type and not isinstance(spoke_type, str):
+            raise TypeError("Expected argument 'spoke_type' to be a str")
+        pulumi.set(__self__, "spoke_type", spoke_type)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -72,6 +84,14 @@ class GetSpokeResult:
 
     @property
     @pulumi.getter
+    def group(self) -> str:
+        """
+        Optional. The name of the group that this spoke is associated with.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
     def hub(self) -> str:
         """
         Immutable. The name of the hub that this spoke is attached to.
@@ -82,7 +102,7 @@ class GetSpokeResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         """
         return pulumi.get(self, "labels")
 
@@ -103,6 +123,14 @@ class GetSpokeResult:
         return pulumi.get(self, "linked_router_appliance_instances")
 
     @property
+    @pulumi.getter(name="linkedVpcNetwork")
+    def linked_vpc_network(self) -> 'outputs.LinkedVpcNetworkResponse':
+        """
+        Optional. VPC network that is associated with the spoke.
+        """
+        return pulumi.get(self, "linked_vpc_network")
+
+    @property
     @pulumi.getter(name="linkedVpnTunnels")
     def linked_vpn_tunnels(self) -> 'outputs.LinkedVpnTunnelsResponse':
         """
@@ -120,6 +148,22 @@ class GetSpokeResult:
 
     @property
     @pulumi.getter
+    def reasons(self) -> Sequence['outputs.StateReasonResponse']:
+        """
+        The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+        """
+        return pulumi.get(self, "reasons")
+
+    @property
+    @pulumi.getter(name="spokeType")
+    def spoke_type(self) -> str:
+        """
+        The type of resource associated with the spoke.
+        """
+        return pulumi.get(self, "spoke_type")
+
+    @property
+    @pulumi.getter
     def state(self) -> str:
         """
         The current lifecycle state of this spoke.
@@ -130,7 +174,7 @@ class GetSpokeResult:
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> str:
         """
-        The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
         """
         return pulumi.get(self, "unique_id")
 
@@ -151,12 +195,16 @@ class AwaitableGetSpokeResult(GetSpokeResult):
         return GetSpokeResult(
             create_time=self.create_time,
             description=self.description,
+            group=self.group,
             hub=self.hub,
             labels=self.labels,
             linked_interconnect_attachments=self.linked_interconnect_attachments,
             linked_router_appliance_instances=self.linked_router_appliance_instances,
+            linked_vpc_network=self.linked_vpc_network,
             linked_vpn_tunnels=self.linked_vpn_tunnels,
             name=self.name,
+            reasons=self.reasons,
+            spoke_type=self.spoke_type,
             state=self.state,
             unique_id=self.unique_id,
             update_time=self.update_time)
@@ -179,12 +227,16 @@ def get_spoke(location: Optional[str] = None,
     return AwaitableGetSpokeResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        group=pulumi.get(__ret__, 'group'),
         hub=pulumi.get(__ret__, 'hub'),
         labels=pulumi.get(__ret__, 'labels'),
         linked_interconnect_attachments=pulumi.get(__ret__, 'linked_interconnect_attachments'),
         linked_router_appliance_instances=pulumi.get(__ret__, 'linked_router_appliance_instances'),
+        linked_vpc_network=pulumi.get(__ret__, 'linked_vpc_network'),
         linked_vpn_tunnels=pulumi.get(__ret__, 'linked_vpn_tunnels'),
         name=pulumi.get(__ret__, 'name'),
+        reasons=pulumi.get(__ret__, 'reasons'),
+        spoke_type=pulumi.get(__ret__, 'spoke_type'),
         state=pulumi.get(__ret__, 'state'),
         unique_id=pulumi.get(__ret__, 'unique_id'),
         update_time=pulumi.get(__ret__, 'update_time'))

@@ -157,8 +157,16 @@ class CustomClass(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["annotations"] = None
+            __props__.__dict__["delete_time"] = None
+            __props__.__dict__["display_name"] = None
+            __props__.__dict__["etag"] = None
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["kms_key_name"] = None
             __props__.__dict__["kms_key_version_name"] = None
+            __props__.__dict__["reconciling"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["uid"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CustomClass, __self__).__init__(
@@ -183,14 +191,30 @@ class CustomClass(pulumi.CustomResource):
 
         __props__ = CustomClassArgs.__new__(CustomClassArgs)
 
+        __props__.__dict__["annotations"] = None
         __props__.__dict__["custom_class_id"] = None
+        __props__.__dict__["delete_time"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["expire_time"] = None
         __props__.__dict__["items"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["kms_key_version_name"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["reconciling"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["uid"] = None
         return CustomClass(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="customClassId")
@@ -199,6 +223,38 @@ class CustomClass(pulumi.CustomResource):
         If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
         """
         return pulumi.get(self, "custom_class_id")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this resource was requested for deletion. This field is not used.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this resource will be purged. This field is not used.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
@@ -241,4 +297,28 @@ class CustomClass(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def reconciling(self) -> pulumi.Output[bool]:
+        """
+        Whether or not this CustomClass is in the process of being updated. This field is not used.
+        """
+        return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The CustomClass lifecycle state. This field is not used.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        System-assigned unique identifier for the CustomClass. This field is not used.
+        """
+        return pulumi.get(self, "uid")
 

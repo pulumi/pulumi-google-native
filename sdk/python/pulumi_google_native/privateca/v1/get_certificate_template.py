@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCertificateTemplateResult:
-    def __init__(__self__, create_time=None, description=None, identity_constraints=None, labels=None, name=None, passthrough_extensions=None, predefined_values=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, identity_constraints=None, labels=None, maximum_lifetime=None, name=None, passthrough_extensions=None, predefined_values=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -32,6 +32,9 @@ class GetCertificateTemplateResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maximum_lifetime and not isinstance(maximum_lifetime, str):
+            raise TypeError("Expected argument 'maximum_lifetime' to be a str")
+        pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -78,6 +81,14 @@ class GetCertificateTemplateResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="maximumLifetime")
+    def maximum_lifetime(self) -> str:
+        """
+        Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
+        """
+        return pulumi.get(self, "maximum_lifetime")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -120,6 +131,7 @@ class AwaitableGetCertificateTemplateResult(GetCertificateTemplateResult):
             description=self.description,
             identity_constraints=self.identity_constraints,
             labels=self.labels,
+            maximum_lifetime=self.maximum_lifetime,
             name=self.name,
             passthrough_extensions=self.passthrough_extensions,
             predefined_values=self.predefined_values,
@@ -145,6 +157,7 @@ def get_certificate_template(certificate_template_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         identity_constraints=pulumi.get(__ret__, 'identity_constraints'),
         labels=pulumi.get(__ret__, 'labels'),
+        maximum_lifetime=pulumi.get(__ret__, 'maximum_lifetime'),
         name=pulumi.get(__ret__, 'name'),
         passthrough_extensions=pulumi.get(__ret__, 'passthrough_extensions'),
         predefined_values=pulumi.get(__ret__, 'predefined_values'),

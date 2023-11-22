@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, app_engine_integration_mode=None, concurrency_mode=None, create_time=None, delete_protection_state=None, etag=None, key_prefix=None, location=None, name=None, type=None, uid=None, update_time=None):
+    def __init__(__self__, app_engine_integration_mode=None, concurrency_mode=None, create_time=None, delete_protection_state=None, earliest_version_time=None, etag=None, key_prefix=None, location=None, name=None, point_in_time_recovery_enablement=None, type=None, uid=None, update_time=None, version_retention_period=None):
         if app_engine_integration_mode and not isinstance(app_engine_integration_mode, str):
             raise TypeError("Expected argument 'app_engine_integration_mode' to be a str")
         pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
@@ -31,6 +31,9 @@ class GetDatabaseResult:
         if delete_protection_state and not isinstance(delete_protection_state, str):
             raise TypeError("Expected argument 'delete_protection_state' to be a str")
         pulumi.set(__self__, "delete_protection_state", delete_protection_state)
+        if earliest_version_time and not isinstance(earliest_version_time, str):
+            raise TypeError("Expected argument 'earliest_version_time' to be a str")
+        pulumi.set(__self__, "earliest_version_time", earliest_version_time)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -43,6 +46,9 @@ class GetDatabaseResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if point_in_time_recovery_enablement and not isinstance(point_in_time_recovery_enablement, str):
+            raise TypeError("Expected argument 'point_in_time_recovery_enablement' to be a str")
+        pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -52,6 +58,9 @@ class GetDatabaseResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if version_retention_period and not isinstance(version_retention_period, str):
+            raise TypeError("Expected argument 'version_retention_period' to be a str")
+        pulumi.set(__self__, "version_retention_period", version_retention_period)
 
     @property
     @pulumi.getter(name="appEngineIntegrationMode")
@@ -86,6 +95,14 @@ class GetDatabaseResult:
         return pulumi.get(self, "delete_protection_state")
 
     @property
+    @pulumi.getter(name="earliestVersionTime")
+    def earliest_version_time(self) -> str:
+        """
+        The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        """
+        return pulumi.get(self, "earliest_version_time")
+
+    @property
     @pulumi.getter
     def etag(self) -> str:
         """
@@ -105,7 +122,7 @@ class GetDatabaseResult:
     @pulumi.getter
     def location(self) -> str:
         """
-        The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+        The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
         """
         return pulumi.get(self, "location")
 
@@ -116,6 +133,14 @@ class GetDatabaseResult:
         The resource name of the Database. Format: `projects/{project}/databases/{database}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pointInTimeRecoveryEnablement")
+    def point_in_time_recovery_enablement(self) -> str:
+        """
+        Whether to enable the PITR feature on this database.
+        """
+        return pulumi.get(self, "point_in_time_recovery_enablement")
 
     @property
     @pulumi.getter
@@ -141,6 +166,14 @@ class GetDatabaseResult:
         """
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter(name="versionRetentionPeriod")
+    def version_retention_period(self) -> str:
+        """
+        The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        """
+        return pulumi.get(self, "version_retention_period")
+
 
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
@@ -152,13 +185,16 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             concurrency_mode=self.concurrency_mode,
             create_time=self.create_time,
             delete_protection_state=self.delete_protection_state,
+            earliest_version_time=self.earliest_version_time,
             etag=self.etag,
             key_prefix=self.key_prefix,
             location=self.location,
             name=self.name,
+            point_in_time_recovery_enablement=self.point_in_time_recovery_enablement,
             type=self.type,
             uid=self.uid,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            version_retention_period=self.version_retention_period)
 
 
 def get_database(database_id: Optional[str] = None,
@@ -178,13 +214,16 @@ def get_database(database_id: Optional[str] = None,
         concurrency_mode=pulumi.get(__ret__, 'concurrency_mode'),
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_protection_state=pulumi.get(__ret__, 'delete_protection_state'),
+        earliest_version_time=pulumi.get(__ret__, 'earliest_version_time'),
         etag=pulumi.get(__ret__, 'etag'),
         key_prefix=pulumi.get(__ret__, 'key_prefix'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
+        point_in_time_recovery_enablement=pulumi.get(__ret__, 'point_in_time_recovery_enablement'),
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),
-        update_time=pulumi.get(__ret__, 'update_time'))
+        update_time=pulumi.get(__ret__, 'update_time'),
+        version_retention_period=pulumi.get(__ret__, 'version_retention_period'))
 
 
 @_utilities.lift_output_func(get_database)

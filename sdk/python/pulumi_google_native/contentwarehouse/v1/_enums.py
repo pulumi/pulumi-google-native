@@ -147,6 +147,14 @@ class GoogleCloudContentwarehouseV1RuleTriggerType(str, Enum):
     """
     Trigger for update document action.
     """
+    ON_CREATE_LINK = "ON_CREATE_LINK"
+    """
+    Trigger for create link action.
+    """
+    ON_DELETE_LINK = "ON_DELETE_LINK"
+    """
+    Trigger for delete link action.
+    """
 
 
 class GoogleCloudContentwarehouseV1UpdateOptionsUpdateType(str, Enum):

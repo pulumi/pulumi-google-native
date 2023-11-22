@@ -23,6 +23,8 @@ from .get_region_cluster_iam_policy import *
 from .get_region_job_iam_policy import *
 from .get_region_operation_iam_policy import *
 from .get_region_workflow_template_iam_policy import *
+from .get_session import *
+from .get_session_template import *
 from .get_workflow_template import *
 from .get_workflow_template_iam_policy import *
 from .job import *
@@ -42,6 +44,8 @@ from .region_operation_iam_policy import *
 from .region_workflow_template_iam_binding import *
 from .region_workflow_template_iam_member import *
 from .region_workflow_template_iam_policy import *
+from .session import *
+from .session_template import *
 from .workflow_template import *
 from .workflow_template_iam_binding import *
 from .workflow_template_iam_member import *

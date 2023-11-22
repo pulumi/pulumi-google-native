@@ -30,12 +30,12 @@ class BackupPlanArgs:
         The set of arguments for constructing a BackupPlan resource.
         :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
         :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
-        :param pulumi.Input['BackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
-        :param pulumi.Input['ScheduleArgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
-        :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
-        :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
-        :param pulumi.Input['RetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input['BackupConfigArgs'] backup_config: Optional. Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input['ScheduleArgs'] backup_schedule: Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[bool] deactivated: Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        :param pulumi.Input[str] description: Optional. User specified descriptive string for this BackupPlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A set of custom labels supplied by user.
+        :param pulumi.Input['RetentionPolicyArgs'] retention_policy: Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         """
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
         pulumi.set(__self__, "cluster", cluster)
@@ -84,7 +84,7 @@ class BackupPlanArgs:
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> Optional[pulumi.Input['BackupConfigArgs']]:
         """
-        Defines the configuration of Backups created via this BackupPlan.
+        Optional. Defines the configuration of Backups created via this BackupPlan.
         """
         return pulumi.get(self, "backup_config")
 
@@ -96,7 +96,7 @@ class BackupPlanArgs:
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> Optional[pulumi.Input['ScheduleArgs']]:
         """
-        Defines a schedule for automatic Backup creation via this BackupPlan.
+        Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         """
         return pulumi.get(self, "backup_schedule")
 
@@ -108,7 +108,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def deactivated(self) -> Optional[pulumi.Input[bool]]:
         """
-        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         """
         return pulumi.get(self, "deactivated")
 
@@ -120,7 +120,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User specified descriptive string for this BackupPlan.
+        Optional. User specified descriptive string for this BackupPlan.
         """
         return pulumi.get(self, "description")
 
@@ -132,7 +132,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A set of custom labels supplied by user.
+        Optional. A set of custom labels supplied by user.
         """
         return pulumi.get(self, "labels")
 
@@ -162,7 +162,7 @@ class BackupPlanArgs:
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> Optional[pulumi.Input['RetentionPolicyArgs']]:
         """
-        RetentionPolicy governs lifecycle of Backups created under this plan.
+        Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         """
         return pulumi.get(self, "retention_policy")
 
@@ -193,14 +193,14 @@ class BackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BackupConfigArgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[pulumi.InputType['BackupConfigArgs']] backup_config: Optional. Defines the configuration of Backups created via this BackupPlan.
         :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
-        :param pulumi.Input[pulumi.InputType['ScheduleArgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[pulumi.InputType['ScheduleArgs']] backup_schedule: Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
-        :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
-        :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
-        :param pulumi.Input[pulumi.InputType['RetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[bool] deactivated: Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        :param pulumi.Input[str] description: Optional. User specified descriptive string for this BackupPlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A set of custom labels supplied by user.
+        :param pulumi.Input[pulumi.InputType['RetentionPolicyArgs']] retention_policy: Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         """
         ...
     @overload
@@ -264,6 +264,8 @@ class BackupPlan(pulumi.CustomResource):
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["protected_pod_count"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["state_reason"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backup_plan_id", "location", "project"])
@@ -304,6 +306,8 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["protected_pod_count"] = None
         __props__.__dict__["retention_policy"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["state_reason"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
@@ -312,7 +316,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> pulumi.Output['outputs.BackupConfigResponse']:
         """
-        Defines the configuration of Backups created via this BackupPlan.
+        Optional. Defines the configuration of Backups created via this BackupPlan.
         """
         return pulumi.get(self, "backup_config")
 
@@ -328,7 +332,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> pulumi.Output['outputs.ScheduleResponse']:
         """
-        Defines a schedule for automatic Backup creation via this BackupPlan.
+        Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         """
         return pulumi.get(self, "backup_schedule")
 
@@ -352,7 +356,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def deactivated(self) -> pulumi.Output[bool]:
         """
-        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         """
         return pulumi.get(self, "deactivated")
 
@@ -360,7 +364,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        User specified descriptive string for this BackupPlan.
+        Optional. User specified descriptive string for this BackupPlan.
         """
         return pulumi.get(self, "description")
 
@@ -376,7 +380,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        A set of custom labels supplied by user.
+        Optional. A set of custom labels supplied by user.
         """
         return pulumi.get(self, "labels")
 
@@ -410,9 +414,25 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> pulumi.Output['outputs.RetentionPolicyResponse']:
         """
-        RetentionPolicy governs lifecycle of Backups created under this plan.
+        Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         """
         return pulumi.get(self, "retention_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> pulumi.Output[str]:
+        """
+        Human-readable description of why BackupPlan is in the current `state`
+        """
+        return pulumi.get(self, "state_reason")
 
     @property
     @pulumi.getter

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRolloutResult:
-    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, controller_rollout=None, create_time=None, deploy_end_time=None, deploy_failure_cause=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, metadata=None, name=None, phases=None, state=None, target_id=None, uid=None):
+    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, controller_rollout=None, create_time=None, deploy_end_time=None, deploy_failure_cause=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, metadata=None, name=None, phases=None, rollback_of_rollout=None, rolled_back_by_rollouts=None, state=None, target_id=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -71,6 +71,12 @@ class GetRolloutResult:
         if phases and not isinstance(phases, list):
             raise TypeError("Expected argument 'phases' to be a list")
         pulumi.set(__self__, "phases", phases)
+        if rollback_of_rollout and not isinstance(rollback_of_rollout, str):
+            raise TypeError("Expected argument 'rollback_of_rollout' to be a str")
+        pulumi.set(__self__, "rollback_of_rollout", rollback_of_rollout)
+        if rolled_back_by_rollouts and not isinstance(rolled_back_by_rollouts, list):
+            raise TypeError("Expected argument 'rolled_back_by_rollouts' to be a list")
+        pulumi.set(__self__, "rolled_back_by_rollouts", rolled_back_by_rollouts)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -85,7 +91,7 @@ class GetRolloutResult:
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
 
@@ -109,7 +115,7 @@ class GetRolloutResult:
     @pulumi.getter(name="controllerRollout")
     def controller_rollout(self) -> str:
         """
-        Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         """
         return pulumi.get(self, "controller_rollout")
 
@@ -189,7 +195,7 @@ class GetRolloutResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -205,7 +211,7 @@ class GetRolloutResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         """
         return pulumi.get(self, "name")
 
@@ -216,6 +222,22 @@ class GetRolloutResult:
         The phases that represent the workflows of this `Rollout`.
         """
         return pulumi.get(self, "phases")
+
+    @property
+    @pulumi.getter(name="rollbackOfRollout")
+    def rollback_of_rollout(self) -> str:
+        """
+        Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't created as a rollback.
+        """
+        return pulumi.get(self, "rollback_of_rollout")
+
+    @property
+    @pulumi.getter(name="rolledBackByRollouts")
+    def rolled_back_by_rollouts(self) -> Sequence[str]:
+        """
+        Names of `Rollouts` that rolled back this `Rollout`.
+        """
+        return pulumi.get(self, "rolled_back_by_rollouts")
 
     @property
     @pulumi.getter
@@ -265,6 +287,8 @@ class AwaitableGetRolloutResult(GetRolloutResult):
             metadata=self.metadata,
             name=self.name,
             phases=self.phases,
+            rollback_of_rollout=self.rollback_of_rollout,
+            rolled_back_by_rollouts=self.rolled_back_by_rollouts,
             state=self.state,
             target_id=self.target_id,
             uid=self.uid)
@@ -306,6 +330,8 @@ def get_rollout(delivery_pipeline_id: Optional[str] = None,
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
         phases=pulumi.get(__ret__, 'phases'),
+        rollback_of_rollout=pulumi.get(__ret__, 'rollback_of_rollout'),
+        rolled_back_by_rollouts=pulumi.get(__ret__, 'rolled_back_by_rollouts'),
         state=pulumi.get(__ret__, 'state'),
         target_id=pulumi.get(__ret__, 'target_id'),
         uid=pulumi.get(__ret__, 'uid'))

@@ -25,17 +25,19 @@ class WorkflowArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source_contents: Optional[pulumi.Input[str]] = None):
+                 source_contents: Optional[pulumi.Input[str]] = None,
+                 user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
         :param pulumi.Input[str] workflow_id: Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
         :param pulumi.Input['WorkflowCallLogLevel'] call_log_level: Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
         :param pulumi.Input[str] crypto_key_name: Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
-        :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
-        :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
+        :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         :param pulumi.Input[str] service_account: The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         pulumi.set(__self__, "workflow_id", workflow_id)
         if call_log_level is not None:
@@ -56,6 +58,8 @@ class WorkflowArgs:
             pulumi.set(__self__, "service_account", service_account)
         if source_contents is not None:
             pulumi.set(__self__, "source_contents", source_contents)
+        if user_env_vars is not None:
+            pulumi.set(__self__, "user_env_vars", user_env_vars)
 
     @property
     @pulumi.getter(name="workflowId")
@@ -97,7 +101,7 @@ class WorkflowArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "description")
 
@@ -109,7 +113,7 @@ class WorkflowArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "labels")
 
@@ -130,7 +134,7 @@ class WorkflowArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "name")
 
@@ -171,6 +175,18 @@ class WorkflowArgs:
     def source_contents(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_contents", value)
 
+    @property
+    @pulumi.getter(name="userEnvVars")
+    def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        """
+        return pulumi.get(self, "user_env_vars")
+
+    @user_env_vars.setter
+    def user_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_env_vars", value)
+
 
 class Workflow(pulumi.CustomResource):
     @overload
@@ -186,6 +202,7 @@ class Workflow(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -195,11 +212,12 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['WorkflowCallLogLevel'] call_log_level: Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
         :param pulumi.Input[str] crypto_key_name: Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
-        :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
-        :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
+        :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         :param pulumi.Input[str] service_account: The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         :param pulumi.Input[str] workflow_id: Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
         """
         ...
@@ -235,6 +253,7 @@ class Workflow(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -254,6 +273,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["source_contents"] = source_contents
+            __props__.__dict__["user_env_vars"] = user_env_vars
             if workflow_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workflow_id'")
             __props__.__dict__["workflow_id"] = workflow_id
@@ -302,6 +322,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["state_error"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["user_env_vars"] = None
         __props__.__dict__["workflow_id"] = None
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
@@ -317,7 +338,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp for when the workflow was created.
+        The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "create_time")
 
@@ -333,7 +354,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "description")
 
@@ -341,7 +362,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "labels")
 
@@ -354,7 +375,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "name")
 
@@ -375,7 +396,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="revisionId")
     def revision_id(self) -> pulumi.Output[str]:
         """
-        The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+        The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
         """
         return pulumi.get(self, "revision_id")
 
@@ -415,9 +436,17 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp for when the workflow was last updated.
+        The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="userEnvVars")
+    def user_env_vars(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        """
+        return pulumi.get(self, "user_env_vars")
 
     @property
     @pulumi.getter(name="workflowId")

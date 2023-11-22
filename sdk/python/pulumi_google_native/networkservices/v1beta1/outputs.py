@@ -17,6 +17,9 @@ __all__ = [
     'BindingResponse',
     'EndpointMatcherResponse',
     'ExprResponse',
+    'ExtensionChainExtensionResponse',
+    'ExtensionChainMatchConditionResponse',
+    'ExtensionChainResponse',
     'GrpcRouteDestinationResponse',
     'GrpcRouteFaultInjectionPolicyAbortResponse',
     'GrpcRouteFaultInjectionPolicyDelayResponse',
@@ -27,6 +30,7 @@ __all__ = [
     'GrpcRouteRouteActionResponse',
     'GrpcRouteRouteMatchResponse',
     'GrpcRouteRouteRuleResponse',
+    'GrpcRouteStatefulSessionAffinityPolicyResponse',
     'HttpRouteCorsPolicyResponse',
     'HttpRouteDestinationResponse',
     'HttpRouteFaultInjectionPolicyAbortResponse',
@@ -42,9 +46,12 @@ __all__ = [
     'HttpRouteRouteActionResponse',
     'HttpRouteRouteMatchResponse',
     'HttpRouteRouteRuleResponse',
+    'HttpRouteStatefulSessionAffinityPolicyResponse',
     'HttpRouteURLRewriteResponse',
     'MetadataLabelMatcherResponse',
     'MetadataLabelsResponse',
+    'ServiceLbPolicyAutoCapacityDrainResponse',
+    'ServiceLbPolicyFailoverConfigResponse',
     'TcpRouteRouteActionResponse',
     'TcpRouteRouteDestinationResponse',
     'TcpRouteRouteMatchResponse',
@@ -297,6 +304,215 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class ExtensionChainExtensionResponse(dict):
+    """
+    A single extension in the chain to execute for the matching request.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failOpen":
+            suggest = "fail_open"
+        elif key == "forwardHeaders":
+            suggest = "forward_headers"
+        elif key == "supportedEvents":
+            suggest = "supported_events"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExtensionChainExtensionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExtensionChainExtensionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExtensionChainExtensionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authority: str,
+                 fail_open: bool,
+                 forward_headers: Sequence[str],
+                 name: str,
+                 service: str,
+                 supported_events: Sequence[str],
+                 timeout: str):
+        """
+        A single extension in the chain to execute for the matching request.
+        :param str authority: The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        :param bool fail_open: Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+        :param Sequence[str] forward_headers: Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
+        :param str name: The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+        :param str service: The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        :param Sequence[str] supported_events: Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
+        :param str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        """
+        pulumi.set(__self__, "authority", authority)
+        pulumi.set(__self__, "fail_open", fail_open)
+        pulumi.set(__self__, "forward_headers", forward_headers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "supported_events", supported_events)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> str:
+        """
+        The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        """
+        return pulumi.get(self, "authority")
+
+    @property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> bool:
+        """
+        Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @property
+    @pulumi.getter(name="forwardHeaders")
+    def forward_headers(self) -> Sequence[str]:
+        """
+        Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
+        """
+        return pulumi.get(self, "forward_headers")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="supportedEvents")
+    def supported_events(self) -> Sequence[str]:
+        """
+        Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
+        """
+        return pulumi.get(self, "supported_events")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> str:
+        """
+        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class ExtensionChainMatchConditionResponse(dict):
+    """
+    Conditions under which this chain is invoked for a request.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "celExpression":
+            suggest = "cel_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExtensionChainMatchConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExtensionChainMatchConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExtensionChainMatchConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cel_expression: str):
+        """
+        Conditions under which this chain is invoked for a request.
+        :param str cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        pulumi.set(__self__, "cel_expression", cel_expression)
+
+    @property
+    @pulumi.getter(name="celExpression")
+    def cel_expression(self) -> str:
+        """
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        return pulumi.get(self, "cel_expression")
+
+
+@pulumi.output_type
+class ExtensionChainResponse(dict):
+    """
+    A single extension chain wrapper that contains the match conditions and extensions to execute.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchCondition":
+            suggest = "match_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExtensionChainResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExtensionChainResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExtensionChainResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 extensions: Sequence['outputs.ExtensionChainExtensionResponse'],
+                 match_condition: 'outputs.ExtensionChainMatchConditionResponse',
+                 name: str):
+        """
+        A single extension chain wrapper that contains the match conditions and extensions to execute.
+        :param Sequence['ExtensionChainExtensionResponse'] extensions: A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
+        :param 'ExtensionChainMatchConditionResponse' match_condition: Conditions under which this chain is invoked for a request.
+        :param str name: The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+        """
+        pulumi.set(__self__, "extensions", extensions)
+        pulumi.set(__self__, "match_condition", match_condition)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> Sequence['outputs.ExtensionChainExtensionResponse']:
+        """
+        A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains are limited to 1 extension per extension chain.
+        """
+        return pulumi.get(self, "extensions")
+
+    @property
+    @pulumi.getter(name="matchCondition")
+    def match_condition(self) -> 'outputs.ExtensionChainMatchConditionResponse':
+        """
+        Conditions under which this chain is invoked for a request.
+        """
+        return pulumi.get(self, "match_condition")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GrpcRouteDestinationResponse(dict):
     """
     The destination to which traffic will be routed.
@@ -324,7 +540,7 @@ class GrpcRouteDestinationResponse(dict):
         """
         The destination to which traffic will be routed.
         :param str service_name: The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
-        :param int weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        :param int weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "weight", weight)
@@ -341,7 +557,7 @@ class GrpcRouteDestinationResponse(dict):
     @pulumi.getter
     def weight(self) -> int:
         """
-        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         return pulumi.get(self, "weight")
 
@@ -663,6 +879,8 @@ class GrpcRouteRouteActionResponse(dict):
             suggest = "fault_injection_policy"
         elif key == "retryPolicy":
             suggest = "retry_policy"
+        elif key == "statefulSessionAffinity":
+            suggest = "stateful_session_affinity"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GrpcRouteRouteActionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -679,17 +897,20 @@ class GrpcRouteRouteActionResponse(dict):
                  destinations: Sequence['outputs.GrpcRouteDestinationResponse'],
                  fault_injection_policy: 'outputs.GrpcRouteFaultInjectionPolicyResponse',
                  retry_policy: 'outputs.GrpcRouteRetryPolicyResponse',
+                 stateful_session_affinity: 'outputs.GrpcRouteStatefulSessionAffinityPolicyResponse',
                  timeout: str):
         """
         Specifies how to route matched traffic.
         :param Sequence['GrpcRouteDestinationResponse'] destinations: Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
         :param 'GrpcRouteFaultInjectionPolicyResponse' fault_injection_policy: Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
         :param 'GrpcRouteRetryPolicyResponse' retry_policy: Optional. Specifies the retry policy associated with this route.
+        :param 'GrpcRouteStatefulSessionAffinityPolicyResponse' stateful_session_affinity: Optional. Specifies cookie-based stateful session affinity.
         :param str timeout: Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         """
         pulumi.set(__self__, "destinations", destinations)
         pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
         pulumi.set(__self__, "retry_policy", retry_policy)
+        pulumi.set(__self__, "stateful_session_affinity", stateful_session_affinity)
         pulumi.set(__self__, "timeout", timeout)
 
     @property
@@ -715,6 +936,14 @@ class GrpcRouteRouteActionResponse(dict):
         Optional. Specifies the retry policy associated with this route.
         """
         return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter(name="statefulSessionAffinity")
+    def stateful_session_affinity(self) -> 'outputs.GrpcRouteStatefulSessionAffinityPolicyResponse':
+        """
+        Optional. Specifies cookie-based stateful session affinity.
+        """
+        return pulumi.get(self, "stateful_session_affinity")
 
     @property
     @pulumi.getter
@@ -789,6 +1018,45 @@ class GrpcRouteRouteRuleResponse(dict):
         Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic.
         """
         return pulumi.get(self, "matches")
+
+
+@pulumi.output_type
+class GrpcRouteStatefulSessionAffinityPolicyResponse(dict):
+    """
+    The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieTtl":
+            suggest = "cookie_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrpcRouteStatefulSessionAffinityPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrpcRouteStatefulSessionAffinityPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrpcRouteStatefulSessionAffinityPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cookie_ttl: str):
+        """
+        The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+        :param str cookie_ttl: The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        pulumi.set(__self__, "cookie_ttl", cookie_ttl)
+
+    @property
+    @pulumi.getter(name="cookieTtl")
+    def cookie_ttl(self) -> str:
+        """
+        The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        return pulumi.get(self, "cookie_ttl")
 
 
 @pulumi.output_type
@@ -947,7 +1215,7 @@ class HttpRouteDestinationResponse(dict):
         """
         Specifications of a destination to which the request should be routed to.
         :param str service_name: The URL of a BackendService to route traffic to.
-        :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "weight", weight)
@@ -964,7 +1232,7 @@ class HttpRouteDestinationResponse(dict):
     @pulumi.getter
     def weight(self) -> int:
         """
-        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         return pulumi.get(self, "weight")
 
@@ -1609,6 +1877,8 @@ class HttpRouteRouteActionResponse(dict):
             suggest = "response_header_modifier"
         elif key == "retryPolicy":
             suggest = "retry_policy"
+        elif key == "statefulSessionAffinity":
+            suggest = "stateful_session_affinity"
         elif key == "urlRewrite":
             suggest = "url_rewrite"
 
@@ -1632,6 +1902,7 @@ class HttpRouteRouteActionResponse(dict):
                  request_mirror_policy: 'outputs.HttpRouteRequestMirrorPolicyResponse',
                  response_header_modifier: 'outputs.HttpRouteHeaderModifierResponse',
                  retry_policy: 'outputs.HttpRouteRetryPolicyResponse',
+                 stateful_session_affinity: 'outputs.HttpRouteStatefulSessionAffinityPolicyResponse',
                  timeout: str,
                  url_rewrite: 'outputs.HttpRouteURLRewriteResponse'):
         """
@@ -1640,10 +1911,11 @@ class HttpRouteRouteActionResponse(dict):
         :param Sequence['HttpRouteDestinationResponse'] destinations: The destination to which traffic should be forwarded.
         :param 'HttpRouteFaultInjectionPolicyResponse' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
         :param 'HttpRouteRedirectResponse' redirect: If set, the request is directed as configured by this field.
-        :param 'HttpRouteHeaderModifierResponse' request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        :param 'HttpRouteHeaderModifierResponse' request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         :param 'HttpRouteRequestMirrorPolicyResponse' request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
-        :param 'HttpRouteHeaderModifierResponse' response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
+        :param 'HttpRouteHeaderModifierResponse' response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         :param 'HttpRouteRetryPolicyResponse' retry_policy: Specifies the retry policy associated with this route.
+        :param 'HttpRouteStatefulSessionAffinityPolicyResponse' stateful_session_affinity: Optional. Specifies cookie-based stateful session affinity.
         :param str timeout: Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         :param 'HttpRouteURLRewriteResponse' url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
         """
@@ -1655,6 +1927,7 @@ class HttpRouteRouteActionResponse(dict):
         pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         pulumi.set(__self__, "response_header_modifier", response_header_modifier)
         pulumi.set(__self__, "retry_policy", retry_policy)
+        pulumi.set(__self__, "stateful_session_affinity", stateful_session_affinity)
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "url_rewrite", url_rewrite)
 
@@ -1694,7 +1967,7 @@ class HttpRouteRouteActionResponse(dict):
     @pulumi.getter(name="requestHeaderModifier")
     def request_header_modifier(self) -> 'outputs.HttpRouteHeaderModifierResponse':
         """
-        The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         """
         return pulumi.get(self, "request_header_modifier")
 
@@ -1710,7 +1983,7 @@ class HttpRouteRouteActionResponse(dict):
     @pulumi.getter(name="responseHeaderModifier")
     def response_header_modifier(self) -> 'outputs.HttpRouteHeaderModifierResponse':
         """
-        The specification for modifying the headers of a response prior to sending the response back to the client.
+        The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         """
         return pulumi.get(self, "response_header_modifier")
 
@@ -1721,6 +1994,14 @@ class HttpRouteRouteActionResponse(dict):
         Specifies the retry policy associated with this route.
         """
         return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter(name="statefulSessionAffinity")
+    def stateful_session_affinity(self) -> 'outputs.HttpRouteStatefulSessionAffinityPolicyResponse':
+        """
+        Optional. Specifies cookie-based stateful session affinity.
+        """
+        return pulumi.get(self, "stateful_session_affinity")
 
     @property
     @pulumi.getter
@@ -1872,6 +2153,45 @@ class HttpRouteRouteRuleResponse(dict):
         A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic. If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
         """
         return pulumi.get(self, "matches")
+
+
+@pulumi.output_type
+class HttpRouteStatefulSessionAffinityPolicyResponse(dict):
+    """
+    The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieTtl":
+            suggest = "cookie_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteStatefulSessionAffinityPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteStatefulSessionAffinityPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteStatefulSessionAffinityPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cookie_ttl: str):
+        """
+        The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+        :param str cookie_ttl: The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        pulumi.set(__self__, "cookie_ttl", cookie_ttl)
+
+    @property
+    @pulumi.getter(name="cookieTtl")
+    def cookie_ttl(self) -> str:
+        """
+        The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        return pulumi.get(self, "cookie_ttl")
 
 
 @pulumi.output_type
@@ -2031,6 +2351,67 @@ class MetadataLabelsResponse(dict):
 
 
 @pulumi.output_type
+class ServiceLbPolicyAutoCapacityDrainResponse(dict):
+    """
+    Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+    """
+    def __init__(__self__, *,
+                 enable: bool):
+        """
+        Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+        :param bool enable: Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+        """
+        pulumi.set(__self__, "enable", enable)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+        """
+        return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class ServiceLbPolicyFailoverConfigResponse(dict):
+    """
+    Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failoverHealthThreshold":
+            suggest = "failover_health_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceLbPolicyFailoverConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceLbPolicyFailoverConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceLbPolicyFailoverConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failover_health_threshold: int):
+        """
+        Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+        :param int failover_health_threshold: Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+        """
+        pulumi.set(__self__, "failover_health_threshold", failover_health_threshold)
+
+    @property
+    @pulumi.getter(name="failoverHealthThreshold")
+    def failover_health_threshold(self) -> int:
+        """
+        Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+        """
+        return pulumi.get(self, "failover_health_threshold")
+
+
+@pulumi.output_type
 class TcpRouteRouteActionResponse(dict):
     """
     The specifications for routing traffic and applying associated policies.
@@ -2108,7 +2489,7 @@ class TcpRouteRouteDestinationResponse(dict):
         """
         Describe the destination for traffic to be routed to.
         :param str service_name: The URL of a BackendService to route traffic to.
-        :param int weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        :param int weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "weight", weight)
@@ -2125,7 +2506,7 @@ class TcpRouteRouteDestinationResponse(dict):
     @pulumi.getter
     def weight(self) -> int:
         """
-        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         return pulumi.get(self, "weight")
 
@@ -2246,7 +2627,7 @@ class TlsRouteRouteDestinationResponse(dict):
         """
         Describe the destination for traffic to be routed to.
         :param str service_name: The URL of a BackendService to route traffic to.
-        :param int weight: Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+        :param int weight: Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
         """
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "weight", weight)
@@ -2263,7 +2644,7 @@ class TlsRouteRouteDestinationResponse(dict):
     @pulumi.getter
     def weight(self) -> int:
         """
-        Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+        Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
         """
         return pulumi.get(self, "weight")
 

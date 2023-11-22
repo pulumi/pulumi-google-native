@@ -7,8 +7,11 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_google_native.cloudsupport.v2 as __v2
+    v2 = __v2
     import pulumi_google_native.cloudsupport.v2beta as __v2beta
     v2beta = __v2beta
 else:
+    v2 = _utilities.lazy_import('pulumi_google_native.cloudsupport.v2')
     v2beta = _utilities.lazy_import('pulumi_google_native.cloudsupport.v2beta')
 

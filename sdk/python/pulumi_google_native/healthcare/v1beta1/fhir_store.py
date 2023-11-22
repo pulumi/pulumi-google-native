@@ -19,6 +19,7 @@ class FhirStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  complex_data_type_reference_parsing: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']] = None,
+                 consent_config: Optional[pulumi.Input['ConsentConfigArgs']] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
@@ -36,6 +37,7 @@ class FhirStoreArgs:
         """
         The set of arguments for constructing a FhirStore resource.
         :param pulumi.Input['FhirStoreComplexDataTypeReferenceParsing'] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        :param pulumi.Input['ConsentConfigArgs'] consent_config: Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
@@ -52,6 +54,8 @@ class FhirStoreArgs:
         pulumi.set(__self__, "dataset_id", dataset_id)
         if complex_data_type_reference_parsing is not None:
             pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
+        if consent_config is not None:
+            pulumi.set(__self__, "consent_config", consent_config)
         if default_search_handling_strict is not None:
             pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
@@ -104,6 +108,18 @@ class FhirStoreArgs:
     @complex_data_type_reference_parsing.setter
     def complex_data_type_reference_parsing(self, value: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']]):
         pulumi.set(self, "complex_data_type_reference_parsing", value)
+
+    @property
+    @pulumi.getter(name="consentConfig")
+    def consent_config(self) -> Optional[pulumi.Input['ConsentConfigArgs']]:
+        """
+        Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+        """
+        return pulumi.get(self, "consent_config")
+
+    @consent_config.setter
+    def consent_config(self, value: Optional[pulumi.Input['ConsentConfigArgs']]):
+        pulumi.set(self, "consent_config", value)
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -277,6 +293,7 @@ class FhirStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  complex_data_type_reference_parsing: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']] = None,
+                 consent_config: Optional[pulumi.Input[pulumi.InputType['ConsentConfigArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
@@ -300,6 +317,7 @@ class FhirStore(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['FhirStoreComplexDataTypeReferenceParsing'] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        :param pulumi.Input[pulumi.InputType['ConsentConfigArgs']] consent_config: Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
@@ -339,6 +357,7 @@ class FhirStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  complex_data_type_reference_parsing: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']] = None,
+                 consent_config: Optional[pulumi.Input[pulumi.InputType['ConsentConfigArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
@@ -364,6 +383,7 @@ class FhirStore(pulumi.CustomResource):
             __props__ = FhirStoreArgs.__new__(FhirStoreArgs)
 
             __props__.__dict__["complex_data_type_reference_parsing"] = complex_data_type_reference_parsing
+            __props__.__dict__["consent_config"] = consent_config
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
@@ -410,6 +430,7 @@ class FhirStore(pulumi.CustomResource):
         __props__ = FhirStoreArgs.__new__(FhirStoreArgs)
 
         __props__.__dict__["complex_data_type_reference_parsing"] = None
+        __props__.__dict__["consent_config"] = None
         __props__.__dict__["dataset_id"] = None
         __props__.__dict__["default_search_handling_strict"] = None
         __props__.__dict__["disable_referential_integrity"] = None
@@ -435,6 +456,14 @@ class FhirStore(pulumi.CustomResource):
         Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
         """
         return pulumi.get(self, "complex_data_type_reference_parsing")
+
+    @property
+    @pulumi.getter(name="consentConfig")
+    def consent_config(self) -> pulumi.Output['outputs.ConsentConfigResponse']:
+        """
+        Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+        """
+        return pulumi.get(self, "consent_config")
 
     @property
     @pulumi.getter(name="datasetId")

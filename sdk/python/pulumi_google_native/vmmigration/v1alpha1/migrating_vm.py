@@ -19,6 +19,7 @@ class MigratingVmArgs:
     def __init__(__self__, *,
                  migrating_vm_id: pulumi.Input[str],
                  source_id: pulumi.Input[str],
+                 compute_engine_disks_target_defaults: Optional[pulumi.Input['ComputeEngineDisksTargetDefaultsArgs']] = None,
                  compute_engine_target_defaults: Optional[pulumi.Input['ComputeEngineTargetDefaultsArgs']] = None,
                  compute_engine_vm_defaults: Optional[pulumi.Input['TargetVMDetailsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class MigratingVmArgs:
         """
         The set of arguments for constructing a MigratingVm resource.
         :param pulumi.Input[str] migrating_vm_id: Required. The migratingVm identifier.
+        :param pulumi.Input['ComputeEngineDisksTargetDefaultsArgs'] compute_engine_disks_target_defaults: Details of the target Persistent Disks in Compute Engine.
         :param pulumi.Input['ComputeEngineTargetDefaultsArgs'] compute_engine_target_defaults: Details of the target VM in Compute Engine.
         :param pulumi.Input['TargetVMDetailsArgs'] compute_engine_vm_defaults: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         :param pulumi.Input[str] description: The description attached to the migrating VM by the user.
@@ -45,6 +47,8 @@ class MigratingVmArgs:
         """
         pulumi.set(__self__, "migrating_vm_id", migrating_vm_id)
         pulumi.set(__self__, "source_id", source_id)
+        if compute_engine_disks_target_defaults is not None:
+            pulumi.set(__self__, "compute_engine_disks_target_defaults", compute_engine_disks_target_defaults)
         if compute_engine_target_defaults is not None:
             pulumi.set(__self__, "compute_engine_target_defaults", compute_engine_target_defaults)
         if compute_engine_vm_defaults is not None:
@@ -94,6 +98,18 @@ class MigratingVmArgs:
     @source_id.setter
     def source_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_id", value)
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDefaults")
+    def compute_engine_disks_target_defaults(self) -> Optional[pulumi.Input['ComputeEngineDisksTargetDefaultsArgs']]:
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_defaults")
+
+    @compute_engine_disks_target_defaults.setter
+    def compute_engine_disks_target_defaults(self, value: Optional[pulumi.Input['ComputeEngineDisksTargetDefaultsArgs']]):
+        pulumi.set(self, "compute_engine_disks_target_defaults", value)
 
     @property
     @pulumi.getter(name="computeEngineTargetDefaults")
@@ -233,6 +249,7 @@ class MigratingVm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_engine_disks_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineDisksTargetDefaultsArgs']]] = None,
                  compute_engine_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']]] = None,
                  compute_engine_vm_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -253,6 +270,7 @@ class MigratingVm(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ComputeEngineDisksTargetDefaultsArgs']] compute_engine_disks_target_defaults: Details of the target Persistent Disks in Compute Engine.
         :param pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']] compute_engine_target_defaults: Details of the target VM in Compute Engine.
         :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] compute_engine_vm_defaults: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         :param pulumi.Input[str] description: The description attached to the migrating VM by the user.
@@ -289,6 +307,7 @@ class MigratingVm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_engine_disks_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineDisksTargetDefaultsArgs']]] = None,
                  compute_engine_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']]] = None,
                  compute_engine_vm_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -311,6 +330,7 @@ class MigratingVm(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MigratingVmArgs.__new__(MigratingVmArgs)
 
+            __props__.__dict__["compute_engine_disks_target_defaults"] = compute_engine_disks_target_defaults
             __props__.__dict__["compute_engine_target_defaults"] = compute_engine_target_defaults
             if compute_engine_vm_defaults is not None and not opts.urn:
                 warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
@@ -335,6 +355,7 @@ class MigratingVm(pulumi.CustomResource):
                 pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
             __props__.__dict__["target_defaults"] = target_defaults
             __props__.__dict__["aws_source_vm_details"] = None
+            __props__.__dict__["azure_source_vm_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_sync_info"] = None
             __props__.__dict__["cutover_forecast"] = None
@@ -348,6 +369,7 @@ class MigratingVm(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_time"] = None
             __props__.__dict__["update_time"] = None
+            __props__.__dict__["vmware_source_vm_details"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "migrating_vm_id", "project", "source_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(MigratingVm, __self__).__init__(
@@ -373,6 +395,8 @@ class MigratingVm(pulumi.CustomResource):
         __props__ = MigratingVmArgs.__new__(MigratingVmArgs)
 
         __props__.__dict__["aws_source_vm_details"] = None
+        __props__.__dict__["azure_source_vm_details"] = None
+        __props__.__dict__["compute_engine_disks_target_defaults"] = None
         __props__.__dict__["compute_engine_target_defaults"] = None
         __props__.__dict__["compute_engine_vm_defaults"] = None
         __props__.__dict__["create_time"] = None
@@ -399,6 +423,7 @@ class MigratingVm(pulumi.CustomResource):
         __props__.__dict__["state_time"] = None
         __props__.__dict__["target_defaults"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["vmware_source_vm_details"] = None
         return MigratingVm(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -408,6 +433,22 @@ class MigratingVm(pulumi.CustomResource):
         Details of the VM from an AWS source.
         """
         return pulumi.get(self, "aws_source_vm_details")
+
+    @property
+    @pulumi.getter(name="azureSourceVmDetails")
+    def azure_source_vm_details(self) -> pulumi.Output['outputs.AzureSourceVmDetailsResponse']:
+        """
+        Details of the VM from an Azure source.
+        """
+        return pulumi.get(self, "azure_source_vm_details")
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDefaults")
+    def compute_engine_disks_target_defaults(self) -> pulumi.Output['outputs.ComputeEngineDisksTargetDefaultsResponse']:
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_defaults")
 
     @property
     @pulumi.getter(name="computeEngineTargetDefaults")
@@ -613,4 +654,12 @@ class MigratingVm(pulumi.CustomResource):
         The last time the migrating VM resource was updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="vmwareSourceVmDetails")
+    def vmware_source_vm_details(self) -> pulumi.Output['outputs.VmwareSourceVmDetailsResponse']:
+        """
+        Details of the VM from a Vmware source.
+        """
+        return pulumi.get(self, "vmware_source_vm_details")
 

@@ -24,10 +24,13 @@ __all__ = [
     'NamespacedNameResponse',
     'NamespacedNamesResponse',
     'NamespacesResponse',
+    'ResourceFilterResponse',
     'RestoreConfigResponse',
     'RetentionPolicyResponse',
     'ScheduleResponse',
     'SubstitutionRuleResponse',
+    'TransformationRuleActionResponse',
+    'TransformationRuleResponse',
 ]
 
 @pulumi.output_type
@@ -174,9 +177,9 @@ class BackupConfigResponse(dict):
         """
         BackupConfig defines the configuration of Backups created via this BackupPlan.
         :param bool all_namespaces: If True, include all namespaced resources
-        :param 'EncryptionKeyResponse' encryption_key: This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
-        :param bool include_secrets: This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
-        :param bool include_volume_data: This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+        :param 'EncryptionKeyResponse' encryption_key: Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+        :param bool include_secrets: Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+        :param bool include_volume_data: Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
         :param 'NamespacedNamesResponse' selected_applications: If set, include just the resources referenced by the listed ProtectedApplications.
         :param 'NamespacesResponse' selected_namespaces: If set, include just the resources in the listed namespaces.
         """
@@ -199,7 +202,7 @@ class BackupConfigResponse(dict):
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> 'outputs.EncryptionKeyResponse':
         """
-        This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+        Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -207,7 +210,7 @@ class BackupConfigResponse(dict):
     @pulumi.getter(name="includeSecrets")
     def include_secrets(self) -> bool:
         """
-        This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
+        Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
         """
         return pulumi.get(self, "include_secrets")
 
@@ -215,7 +218,7 @@ class BackupConfigResponse(dict):
     @pulumi.getter(name="includeVolumeData")
     def include_volume_data(self) -> bool:
         """
-        This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
+        Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
         """
         return pulumi.get(self, "include_volume_data")
 
@@ -377,7 +380,13 @@ class ClusterResourceRestoreScopeResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "selectedGroupKinds":
+        if key == "allGroupKinds":
+            suggest = "all_group_kinds"
+        elif key == "excludedGroupKinds":
+            suggest = "excluded_group_kinds"
+        elif key == "noGroupKinds":
+            suggest = "no_group_kinds"
+        elif key == "selectedGroupKinds":
             suggest = "selected_group_kinds"
 
         if suggest:
@@ -392,18 +401,51 @@ class ClusterResourceRestoreScopeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 all_group_kinds: bool,
+                 excluded_group_kinds: Sequence['outputs.GroupKindResponse'],
+                 no_group_kinds: bool,
                  selected_group_kinds: Sequence['outputs.GroupKindResponse']):
         """
         Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
-        :param Sequence['GroupKindResponse'] selected_group_kinds: A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+        :param bool all_group_kinds: Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+        :param Sequence['GroupKindResponse'] excluded_group_kinds: Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+        :param bool no_group_kinds: Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+        :param Sequence['GroupKindResponse'] selected_group_kinds: Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
         """
+        pulumi.set(__self__, "all_group_kinds", all_group_kinds)
+        pulumi.set(__self__, "excluded_group_kinds", excluded_group_kinds)
+        pulumi.set(__self__, "no_group_kinds", no_group_kinds)
         pulumi.set(__self__, "selected_group_kinds", selected_group_kinds)
+
+    @property
+    @pulumi.getter(name="allGroupKinds")
+    def all_group_kinds(self) -> bool:
+        """
+        Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
+        """
+        return pulumi.get(self, "all_group_kinds")
+
+    @property
+    @pulumi.getter(name="excludedGroupKinds")
+    def excluded_group_kinds(self) -> Sequence['outputs.GroupKindResponse']:
+        """
+        Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any other field in the message.
+        """
+        return pulumi.get(self, "excluded_group_kinds")
+
+    @property
+    @pulumi.getter(name="noGroupKinds")
+    def no_group_kinds(self) -> bool:
+        """
+        Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message.
+        """
+        return pulumi.get(self, "no_group_kinds")
 
     @property
     @pulumi.getter(name="selectedGroupKinds")
     def selected_group_kinds(self) -> Sequence['outputs.GroupKindResponse']:
         """
-        A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
+        Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected resources will be restored. Mutually exclusive to any other field in the message.
         """
         return pulumi.get(self, "selected_group_kinds")
 
@@ -434,7 +476,7 @@ class EncryptionKeyResponse(dict):
                  gcp_kms_encryption_key: str):
         """
         Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
-        :param str gcp_kms_encryption_key: Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        :param str gcp_kms_encryption_key: Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         """
         pulumi.set(__self__, "gcp_kms_encryption_key", gcp_kms_encryption_key)
 
@@ -442,7 +484,7 @@ class EncryptionKeyResponse(dict):
     @pulumi.getter(name="gcpKmsEncryptionKey")
     def gcp_kms_encryption_key(self) -> str:
         """
-        Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         """
         return pulumi.get(self, "gcp_kms_encryption_key")
 
@@ -531,8 +573,8 @@ class GroupKindResponse(dict):
                  resource_kind: str):
         """
         This is a direct map to the Kubernetes GroupKind type [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for identifying specific "types" of resources to restore.
-        :param str resource_group: API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
-        :param str resource_kind: Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+        :param str resource_group: Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        :param str resource_kind: Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
         """
         pulumi.set(__self__, "resource_group", resource_group)
         pulumi.set(__self__, "resource_kind", resource_kind)
@@ -541,7 +583,7 @@ class GroupKindResponse(dict):
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> str:
         """
-        API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
         """
         return pulumi.get(self, "resource_group")
 
@@ -549,7 +591,7 @@ class GroupKindResponse(dict):
     @pulumi.getter(name="resourceKind")
     def resource_kind(self) -> str:
         """
-        Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+        Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
         """
         return pulumi.get(self, "resource_kind")
 
@@ -564,8 +606,8 @@ class NamespacedNameResponse(dict):
                  namespace: str):
         """
         A reference to a namespaced resource in Kubernetes.
-        :param str name: The name of the Kubernetes resource.
-        :param str namespace: The Namespace of the Kubernetes resource.
+        :param str name: Optional. The name of the Kubernetes resource.
+        :param str namespace: Optional. The Namespace of the Kubernetes resource.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace", namespace)
@@ -574,7 +616,7 @@ class NamespacedNameResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Kubernetes resource.
+        Optional. The name of the Kubernetes resource.
         """
         return pulumi.get(self, "name")
 
@@ -582,7 +624,7 @@ class NamespacedNameResponse(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        The Namespace of the Kubernetes resource.
+        Optional. The Namespace of the Kubernetes resource.
         """
         return pulumi.get(self, "namespace")
 
@@ -613,7 +655,7 @@ class NamespacedNamesResponse(dict):
                  namespaced_names: Sequence['outputs.NamespacedNameResponse']):
         """
         A list of namespaced Kubernetes resources.
-        :param Sequence['NamespacedNameResponse'] namespaced_names: A list of namespaced Kubernetes resources.
+        :param Sequence['NamespacedNameResponse'] namespaced_names: Optional. A list of namespaced Kubernetes resources.
         """
         pulumi.set(__self__, "namespaced_names", namespaced_names)
 
@@ -621,7 +663,7 @@ class NamespacedNamesResponse(dict):
     @pulumi.getter(name="namespacedNames")
     def namespaced_names(self) -> Sequence['outputs.NamespacedNameResponse']:
         """
-        A list of namespaced Kubernetes resources.
+        Optional. A list of namespaced Kubernetes resources.
         """
         return pulumi.get(self, "namespaced_names")
 
@@ -635,7 +677,7 @@ class NamespacesResponse(dict):
                  namespaces: Sequence[str]):
         """
         A list of Kubernetes Namespaces
-        :param Sequence[str] namespaces: A list of Kubernetes Namespaces
+        :param Sequence[str] namespaces: Optional. A list of Kubernetes Namespaces
         """
         pulumi.set(__self__, "namespaces", namespaces)
 
@@ -643,7 +685,70 @@ class NamespacesResponse(dict):
     @pulumi.getter
     def namespaces(self) -> Sequence[str]:
         """
-        A list of Kubernetes Namespaces
+        Optional. A list of Kubernetes Namespaces
+        """
+        return pulumi.get(self, "namespaces")
+
+
+@pulumi.output_type
+class ResourceFilterResponse(dict):
+    """
+    ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupKinds":
+            suggest = "group_kinds"
+        elif key == "jsonPath":
+            suggest = "json_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_kinds: Sequence['outputs.GroupKindResponse'],
+                 json_path: str,
+                 namespaces: Sequence[str]):
+        """
+        ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
+        :param Sequence['GroupKindResponse'] group_kinds: Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+        :param str json_path: Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+        :param Sequence[str] namespaces: Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
+        """
+        pulumi.set(__self__, "group_kinds", group_kinds)
+        pulumi.set(__self__, "json_path", json_path)
+        pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter(name="groupKinds")
+    def group_kinds(self) -> Sequence['outputs.GroupKindResponse']:
+        """
+        Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
+        """
+        return pulumi.get(self, "group_kinds")
+
+    @property
+    @pulumi.getter(name="jsonPath")
+    def json_path(self) -> str:
+        """
+        Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
+        """
+        return pulumi.get(self, "json_path")
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Sequence[str]:
+        """
+        Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
         """
         return pulumi.get(self, "namespaces")
 
@@ -651,7 +756,7 @@ class NamespacesResponse(dict):
 @pulumi.output_type
 class RestoreConfigResponse(dict):
     """
-    Configuration of a restore. Next id: 12
+    Configuration of a restore. Next id: 13
     """
     @staticmethod
     def __key_warning(key: str):
@@ -662,14 +767,20 @@ class RestoreConfigResponse(dict):
             suggest = "cluster_resource_conflict_policy"
         elif key == "clusterResourceRestoreScope":
             suggest = "cluster_resource_restore_scope"
+        elif key == "excludedNamespaces":
+            suggest = "excluded_namespaces"
         elif key == "namespacedResourceRestoreMode":
             suggest = "namespaced_resource_restore_mode"
+        elif key == "noNamespaces":
+            suggest = "no_namespaces"
         elif key == "selectedApplications":
             suggest = "selected_applications"
         elif key == "selectedNamespaces":
             suggest = "selected_namespaces"
         elif key == "substitutionRules":
             suggest = "substitution_rules"
+        elif key == "transformationRules":
+            suggest = "transformation_rules"
         elif key == "volumeDataRestorePolicy":
             suggest = "volume_data_restore_policy"
 
@@ -688,29 +799,38 @@ class RestoreConfigResponse(dict):
                  all_namespaces: bool,
                  cluster_resource_conflict_policy: str,
                  cluster_resource_restore_scope: 'outputs.ClusterResourceRestoreScopeResponse',
+                 excluded_namespaces: 'outputs.NamespacesResponse',
                  namespaced_resource_restore_mode: str,
+                 no_namespaces: bool,
                  selected_applications: 'outputs.NamespacedNamesResponse',
                  selected_namespaces: 'outputs.NamespacesResponse',
                  substitution_rules: Sequence['outputs.SubstitutionRuleResponse'],
+                 transformation_rules: Sequence['outputs.TransformationRuleResponse'],
                  volume_data_restore_policy: str):
         """
-        Configuration of a restore. Next id: 12
+        Configuration of a restore. Next id: 13
         :param bool all_namespaces: Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
-        :param str cluster_resource_conflict_policy: Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
-        :param 'ClusterResourceRestoreScopeResponse' cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
-        :param str namespaced_resource_restore_mode: Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+        :param str cluster_resource_conflict_policy: Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+        :param 'ClusterResourceRestoreScopeResponse' cluster_resource_restore_scope: Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+        :param 'NamespacesResponse' excluded_namespaces: A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+        :param str namespaced_resource_restore_mode: Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+        :param bool no_namespaces: Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
         :param 'NamespacedNamesResponse' selected_applications: A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
         :param 'NamespacesResponse' selected_namespaces: A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored.
-        :param Sequence['SubstitutionRuleResponse'] substitution_rules: A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
-        :param str volume_data_restore_policy: Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+        :param Sequence['SubstitutionRuleResponse'] substitution_rules: Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+        :param Sequence['TransformationRuleResponse'] transformation_rules: Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+        :param str volume_data_restore_policy: Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
         """
         pulumi.set(__self__, "all_namespaces", all_namespaces)
         pulumi.set(__self__, "cluster_resource_conflict_policy", cluster_resource_conflict_policy)
         pulumi.set(__self__, "cluster_resource_restore_scope", cluster_resource_restore_scope)
+        pulumi.set(__self__, "excluded_namespaces", excluded_namespaces)
         pulumi.set(__self__, "namespaced_resource_restore_mode", namespaced_resource_restore_mode)
+        pulumi.set(__self__, "no_namespaces", no_namespaces)
         pulumi.set(__self__, "selected_applications", selected_applications)
         pulumi.set(__self__, "selected_namespaces", selected_namespaces)
         pulumi.set(__self__, "substitution_rules", substitution_rules)
+        pulumi.set(__self__, "transformation_rules", transformation_rules)
         pulumi.set(__self__, "volume_data_restore_policy", volume_data_restore_policy)
 
     @property
@@ -725,7 +845,7 @@ class RestoreConfigResponse(dict):
     @pulumi.getter(name="clusterResourceConflictPolicy")
     def cluster_resource_conflict_policy(self) -> str:
         """
-        Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+        Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
         """
         return pulumi.get(self, "cluster_resource_conflict_policy")
 
@@ -733,17 +853,33 @@ class RestoreConfigResponse(dict):
     @pulumi.getter(name="clusterResourceRestoreScope")
     def cluster_resource_restore_scope(self) -> 'outputs.ClusterResourceRestoreScopeResponse':
         """
-        Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
+        Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
         """
         return pulumi.get(self, "cluster_resource_restore_scope")
+
+    @property
+    @pulumi.getter(name="excludedNamespaces")
+    def excluded_namespaces(self) -> 'outputs.NamespacesResponse':
+        """
+        A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
+        """
+        return pulumi.get(self, "excluded_namespaces")
 
     @property
     @pulumi.getter(name="namespacedResourceRestoreMode")
     def namespaced_resource_restore_mode(self) -> str:
         """
-        Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+        Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         """
         return pulumi.get(self, "namespaced_resource_restore_mode")
+
+    @property
+    @pulumi.getter(name="noNamespaces")
+    def no_namespaces(self) -> bool:
+        """
+        Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+        """
+        return pulumi.get(self, "no_namespaces")
 
     @property
     @pulumi.getter(name="selectedApplications")
@@ -765,15 +901,23 @@ class RestoreConfigResponse(dict):
     @pulumi.getter(name="substitutionRules")
     def substitution_rules(self) -> Sequence['outputs.SubstitutionRuleResponse']:
         """
-        A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
+        Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
         """
         return pulumi.get(self, "substitution_rules")
+
+    @property
+    @pulumi.getter(name="transformationRules")
+    def transformation_rules(self) -> Sequence['outputs.TransformationRuleResponse']:
+        """
+        Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+        """
+        return pulumi.get(self, "transformation_rules")
 
     @property
     @pulumi.getter(name="volumeDataRestorePolicy")
     def volume_data_restore_policy(self) -> str:
         """
-        Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+        Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
         """
         return pulumi.get(self, "volume_data_restore_policy")
 
@@ -808,9 +952,9 @@ class RetentionPolicyResponse(dict):
                  locked: bool):
         """
         RetentionPolicy defines a Backup retention policy for a BackupPlan.
-        :param int backup_delete_lock_days: Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
-        :param int backup_retain_days: The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
-        :param bool locked: This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+        :param int backup_delete_lock_days: Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+        :param int backup_retain_days: Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
+        :param bool locked: Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
         """
         pulumi.set(__self__, "backup_delete_lock_days", backup_delete_lock_days)
         pulumi.set(__self__, "backup_retain_days", backup_retain_days)
@@ -820,7 +964,7 @@ class RetentionPolicyResponse(dict):
     @pulumi.getter(name="backupDeleteLockDays")
     def backup_delete_lock_days(self) -> int:
         """
-        Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+        Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
         """
         return pulumi.get(self, "backup_delete_lock_days")
 
@@ -828,7 +972,7 @@ class RetentionPolicyResponse(dict):
     @pulumi.getter(name="backupRetainDays")
     def backup_retain_days(self) -> int:
         """
-        The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+        Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
         """
         return pulumi.get(self, "backup_retain_days")
 
@@ -836,7 +980,7 @@ class RetentionPolicyResponse(dict):
     @pulumi.getter
     def locked(self) -> bool:
         """
-        This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
+        Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
         """
         return pulumi.get(self, "locked")
 
@@ -844,7 +988,7 @@ class RetentionPolicyResponse(dict):
 @pulumi.output_type
 class ScheduleResponse(dict):
     """
-    Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
+    Defines scheduling parameters for automatically creating Backups via this BackupPlan.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -867,9 +1011,9 @@ class ScheduleResponse(dict):
                  cron_schedule: str,
                  paused: bool):
         """
-        Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
-        :param str cron_schedule: A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
-        :param bool paused: This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+        Defines scheduling parameters for automatically creating Backups via this BackupPlan.
+        :param str cron_schedule: Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+        :param bool paused: Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
         """
         pulumi.set(__self__, "cron_schedule", cron_schedule)
         pulumi.set(__self__, "paused", paused)
@@ -878,7 +1022,7 @@ class ScheduleResponse(dict):
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> str:
         """
-        A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+        Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
         """
         return pulumi.get(self, "cron_schedule")
 
@@ -886,7 +1030,7 @@ class ScheduleResponse(dict):
     @pulumi.getter
     def paused(self) -> bool:
         """
-        This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+        Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
         """
         return pulumi.get(self, "paused")
 
@@ -929,11 +1073,11 @@ class SubstitutionRuleResponse(dict):
                  target_namespaces: Sequence[str]):
         """
         A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic.
-        :param str new_value: This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
-        :param str original_value_pattern: (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
-        :param Sequence['GroupKindResponse'] target_group_kinds: (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
+        :param str new_value: Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+        :param str original_value_pattern: Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
+        :param Sequence['GroupKindResponse'] target_group_kinds: Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
         :param str target_json_path: This is a [JSONPath] (https://kubernetes.io/docs/reference/kubectl/jsonpath/) expression that matches specific fields of candidate resources and it operates as both a filtering parameter (resources that are not matched with this expression will not be candidates for substitution) as well as a field identifier (identifies exactly which fields out of the candidate resources will be modified).
-        :param Sequence[str] target_namespaces: (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
+        :param Sequence[str] target_namespaces: Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
         """
         pulumi.set(__self__, "new_value", new_value)
         pulumi.set(__self__, "original_value_pattern", original_value_pattern)
@@ -945,7 +1089,7 @@ class SubstitutionRuleResponse(dict):
     @pulumi.getter(name="newValue")
     def new_value(self) -> str:
         """
-        This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+        Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
         """
         return pulumi.get(self, "new_value")
 
@@ -953,7 +1097,7 @@ class SubstitutionRuleResponse(dict):
     @pulumi.getter(name="originalValuePattern")
     def original_value_pattern(self) -> str:
         """
-        (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
+        Optional. (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
         """
         return pulumi.get(self, "original_value_pattern")
 
@@ -961,7 +1105,7 @@ class SubstitutionRuleResponse(dict):
     @pulumi.getter(name="targetGroupKinds")
     def target_group_kinds(self) -> Sequence['outputs.GroupKindResponse']:
         """
-        (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
+        Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for substitution).
         """
         return pulumi.get(self, "target_group_kinds")
 
@@ -977,8 +1121,143 @@ class SubstitutionRuleResponse(dict):
     @pulumi.getter(name="targetNamespaces")
     def target_namespaces(self) -> Sequence[str]:
         """
-        (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
+        Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces.
         """
         return pulumi.get(self, "target_namespaces")
+
+
+@pulumi.output_type
+class TransformationRuleActionResponse(dict):
+    """
+    TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fromPath":
+            suggest = "from_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransformationRuleActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransformationRuleActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransformationRuleActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_path: str,
+                 op: str,
+                 path: str,
+                 value: str):
+        """
+        TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+        :param str from_path: Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
+        :param str op: op specifies the operation to perform.
+        :param str path: Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
+        :param str value: Optional. A string that specifies the desired value in string format to use for transformation.
+        """
+        pulumi.set(__self__, "from_path", from_path)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="fromPath")
+    def from_path(self) -> str:
+        """
+        Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
+        """
+        return pulumi.get(self, "from_path")
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        op specifies the operation to perform.
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Optional. A string that specifies the desired value in string format to use for transformation.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class TransformationRuleResponse(dict):
+    """
+    A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldActions":
+            suggest = "field_actions"
+        elif key == "resourceFilter":
+            suggest = "resource_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransformationRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransformationRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransformationRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: str,
+                 field_actions: Sequence['outputs.TransformationRuleActionResponse'],
+                 resource_filter: 'outputs.ResourceFilterResponse'):
+        """
+        A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
+        :param str description: Optional. The description is a user specified string description of the transformation rule.
+        :param Sequence['TransformationRuleActionResponse'] field_actions: A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
+        :param 'ResourceFilterResponse' resource_filter: Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "field_actions", field_actions)
+        pulumi.set(__self__, "resource_filter", resource_filter)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. The description is a user specified string description of the transformation rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fieldActions")
+    def field_actions(self) -> Sequence['outputs.TransformationRuleActionResponse']:
+        """
+        A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
+        """
+        return pulumi.get(self, "field_actions")
+
+    @property
+    @pulumi.getter(name="resourceFilter")
+    def resource_filter(self) -> 'outputs.ResourceFilterResponse':
+        """
+        Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
+        """
+        return pulumi.get(self, "resource_filter")
 
 

@@ -19,6 +19,7 @@ class SinkArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str],
                  bigquery_options: Optional[pulumi.Input['BigQueryOptionsArgs']] = None,
+                 custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['LogExclusionArgs']]]] = None,
@@ -30,8 +31,9 @@ class SinkArgs:
                  unique_writer_identity: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Sink resource.
-        :param pulumi.Input[str] destination: The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        :param pulumi.Input[str] destination: The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         :param pulumi.Input['BigQueryOptionsArgs'] bigquery_options: Optional. Options that affect sinks exporting data to BigQuery.
+        :param pulumi.Input[str] custom_writer_identity: Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.
         :param pulumi.Input[str] description: Optional. A description of this sink.The maximum length of the description is 8000 characters.
         :param pulumi.Input[bool] disabled: Optional. If set to true, then this sink is disabled and it does not export any log entries.
         :param pulumi.Input[Sequence[pulumi.Input['LogExclusionArgs']]] exclusions: Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
@@ -39,11 +41,13 @@ class SinkArgs:
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param pulumi.Input['SinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
-        :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+        :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
         """
         pulumi.set(__self__, "destination", destination)
         if bigquery_options is not None:
             pulumi.set(__self__, "bigquery_options", bigquery_options)
+        if custom_writer_identity is not None:
+            pulumi.set(__self__, "custom_writer_identity", custom_writer_identity)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -70,7 +74,7 @@ class SinkArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         """
         return pulumi.get(self, "destination")
 
@@ -89,6 +93,18 @@ class SinkArgs:
     @bigquery_options.setter
     def bigquery_options(self, value: Optional[pulumi.Input['BigQueryOptionsArgs']]):
         pulumi.set(self, "bigquery_options", value)
+
+    @property
+    @pulumi.getter(name="customWriterIdentity")
+    def custom_writer_identity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.
+        """
+        return pulumi.get(self, "custom_writer_identity")
+
+    @custom_writer_identity.setter
+    def custom_writer_identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_writer_identity", value)
 
     @property
     @pulumi.getter
@@ -190,7 +206,7 @@ class SinkArgs:
     @pulumi.getter(name="uniqueWriterIdentity")
     def unique_writer_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+        Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
         """
         return pulumi.get(self, "unique_writer_identity")
 
@@ -205,6 +221,7 @@ class Sink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']]] = None,
+                 custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -217,20 +234,21 @@ class Sink(pulumi.CustomResource):
                  unique_writer_identity: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
+        Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']] bigquery_options: Optional. Options that affect sinks exporting data to BigQuery.
+        :param pulumi.Input[str] custom_writer_identity: Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.
         :param pulumi.Input[str] description: Optional. A description of this sink.The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] destination: The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        :param pulumi.Input[str] destination: The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         :param pulumi.Input[bool] disabled: Optional. If set to true, then this sink is disabled and it does not export any log entries.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogExclusionArgs']]]] exclusions: Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param pulumi.Input['SinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
-        :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+        :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
         """
         ...
     @overload
@@ -239,7 +257,7 @@ class Sink(pulumi.CustomResource):
                  args: SinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
+        Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
 
         :param str resource_name: The name of the resource.
         :param SinkArgs args: The arguments to use to populate this resource's properties.
@@ -257,6 +275,7 @@ class Sink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']]] = None,
+                 custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -277,6 +296,7 @@ class Sink(pulumi.CustomResource):
             __props__ = SinkArgs.__new__(SinkArgs)
 
             __props__.__dict__["bigquery_options"] = bigquery_options
+            __props__.__dict__["custom_writer_identity"] = custom_writer_identity
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
@@ -321,6 +341,7 @@ class Sink(pulumi.CustomResource):
 
         __props__.__dict__["bigquery_options"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["custom_writer_identity"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["destination"] = None
         __props__.__dict__["disabled"] = None
@@ -352,6 +373,14 @@ class Sink(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="customWriterIdentity")
+    def custom_writer_identity(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.
+        """
+        return pulumi.get(self, "custom_writer_identity")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
@@ -363,7 +392,7 @@ class Sink(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
-        The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         """
         return pulumi.get(self, "destination")
 
@@ -427,7 +456,7 @@ class Sink(pulumi.CustomResource):
     @pulumi.getter(name="uniqueWriterIdentity")
     def unique_writer_identity(self) -> pulumi.Output[Optional[bool]]:
         """
-        Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+        Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
         """
         return pulumi.get(self, "unique_writer_identity")
 

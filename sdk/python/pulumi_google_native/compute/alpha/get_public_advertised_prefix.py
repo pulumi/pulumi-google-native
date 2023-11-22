@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetPublicAdvertisedPrefixResult:
-    def __init__(__self__, creation_timestamp=None, description=None, dns_verification_ip=None, fingerprint=None, ip_cidr_range=None, kind=None, name=None, pdp_scope=None, public_delegated_prefixs=None, self_link=None, self_link_with_id=None, shared_secret=None, status=None):
+    def __init__(__self__, byoip_api_version=None, creation_timestamp=None, description=None, dns_verification_ip=None, fingerprint=None, ip_cidr_range=None, kind=None, name=None, pdp_scope=None, public_delegated_prefixs=None, self_link=None, self_link_with_id=None, shared_secret=None, status=None):
+        if byoip_api_version and not isinstance(byoip_api_version, str):
+            raise TypeError("Expected argument 'byoip_api_version' to be a str")
+        pulumi.set(__self__, "byoip_api_version", byoip_api_version)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -61,6 +64,14 @@ class GetPublicAdvertisedPrefixResult:
         pulumi.set(__self__, "status", status)
 
     @property
+    @pulumi.getter(name="byoipApiVersion")
+    def byoip_api_version(self) -> str:
+        """
+        The version of BYOIP API.
+        """
+        return pulumi.get(self, "byoip_api_version")
+
+    @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
@@ -80,7 +91,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter(name="dnsVerificationIp")
     def dns_verification_ip(self) -> str:
         """
-        The IPv4 address to be used for reverse DNS verification.
+        The address to be used for reverse DNS verification.
         """
         return pulumi.get(self, "dns_verification_ip")
 
@@ -96,7 +107,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> str:
         """
-        The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        The address range, in CIDR format, represented by this public advertised prefix.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -171,6 +182,7 @@ class AwaitableGetPublicAdvertisedPrefixResult(GetPublicAdvertisedPrefixResult):
         if False:
             yield self
         return GetPublicAdvertisedPrefixResult(
+            byoip_api_version=self.byoip_api_version,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             dns_verification_ip=self.dns_verification_ip,
@@ -199,6 +211,7 @@ def get_public_advertised_prefix(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getPublicAdvertisedPrefix', __args__, opts=opts, typ=GetPublicAdvertisedPrefixResult).value
 
     return AwaitableGetPublicAdvertisedPrefixResult(
+        byoip_api_version=pulumi.get(__ret__, 'byoip_api_version'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         dns_verification_ip=pulumi.get(__ret__, 'dns_verification_ip'),

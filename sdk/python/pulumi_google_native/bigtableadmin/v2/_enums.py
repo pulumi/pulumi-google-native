@@ -5,11 +5,26 @@
 from enum import Enum
 
 __all__ = [
+    'AppProfilePriority',
     'AuditLogConfigLogType',
     'ClusterDefaultStorageType',
     'InstanceType',
+    'StandardIsolationPriority',
     'TableGranularity',
 ]
+
+
+class AppProfilePriority(str, Enum):
+    """
+    This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+    """
+    PRIORITY_UNSPECIFIED = "PRIORITY_UNSPECIFIED"
+    """
+    Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+    """
+    PRIORITY_LOW = "PRIORITY_LOW"
+    PRIORITY_MEDIUM = "PRIORITY_MEDIUM"
+    PRIORITY_HIGH = "PRIORITY_HIGH"
 
 
 class AuditLogConfigLogType(str, Enum):
@@ -68,6 +83,19 @@ class InstanceType(str, Enum):
     """
     DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces a higher minimum node count than DEVELOPMENT.
     """
+
+
+class StandardIsolationPriority(str, Enum):
+    """
+    The priority of requests sent using this app profile.
+    """
+    PRIORITY_UNSPECIFIED = "PRIORITY_UNSPECIFIED"
+    """
+    Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+    """
+    PRIORITY_LOW = "PRIORITY_LOW"
+    PRIORITY_MEDIUM = "PRIORITY_MEDIUM"
+    PRIORITY_HIGH = "PRIORITY_HIGH"
 
 
 class TableGranularity(str, Enum):

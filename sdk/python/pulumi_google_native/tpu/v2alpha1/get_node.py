@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeResult:
-    def __init__(__self__, accelerator_config=None, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, multislice_node=None, name=None, network_config=None, network_endpoints=None, queued_resource=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
+    def __init__(__self__, accelerator_config=None, accelerator_type=None, api_version=None, autocheckpoint_enabled=None, boot_disk_config=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, multislice_node=None, name=None, network_config=None, network_endpoints=None, queued_resource=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
         if accelerator_config and not isinstance(accelerator_config, dict):
             raise TypeError("Expected argument 'accelerator_config' to be a dict")
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -29,6 +29,12 @@ class GetNodeResult:
         if api_version and not isinstance(api_version, str):
             raise TypeError("Expected argument 'api_version' to be a str")
         pulumi.set(__self__, "api_version", api_version)
+        if autocheckpoint_enabled and not isinstance(autocheckpoint_enabled, bool):
+            raise TypeError("Expected argument 'autocheckpoint_enabled' to be a bool")
+        pulumi.set(__self__, "autocheckpoint_enabled", autocheckpoint_enabled)
+        if boot_disk_config and not isinstance(boot_disk_config, dict):
+            raise TypeError("Expected argument 'boot_disk_config' to be a dict")
+        pulumi.set(__self__, "boot_disk_config", boot_disk_config)
         if cidr_block and not isinstance(cidr_block, str):
             raise TypeError("Expected argument 'cidr_block' to be a str")
         pulumi.set(__self__, "cidr_block", cidr_block)
@@ -113,6 +119,22 @@ class GetNodeResult:
         The API version that created this Node.
         """
         return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="autocheckpointEnabled")
+    def autocheckpoint_enabled(self) -> bool:
+        """
+        Optional. Whether Autocheckpoint is enabled.
+        """
+        return pulumi.get(self, "autocheckpoint_enabled")
+
+    @property
+    @pulumi.getter(name="bootDiskConfig")
+    def boot_disk_config(self) -> 'outputs.BootDiskConfigResponse':
+        """
+        Optional. Boot disk configuration.
+        """
+        return pulumi.get(self, "boot_disk_config")
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -284,6 +306,8 @@ class AwaitableGetNodeResult(GetNodeResult):
             accelerator_config=self.accelerator_config,
             accelerator_type=self.accelerator_type,
             api_version=self.api_version,
+            autocheckpoint_enabled=self.autocheckpoint_enabled,
+            boot_disk_config=self.boot_disk_config,
             cidr_block=self.cidr_block,
             create_time=self.create_time,
             data_disks=self.data_disks,
@@ -324,6 +348,8 @@ def get_node(location: Optional[str] = None,
         accelerator_config=pulumi.get(__ret__, 'accelerator_config'),
         accelerator_type=pulumi.get(__ret__, 'accelerator_type'),
         api_version=pulumi.get(__ret__, 'api_version'),
+        autocheckpoint_enabled=pulumi.get(__ret__, 'autocheckpoint_enabled'),
+        boot_disk_config=pulumi.get(__ret__, 'boot_disk_config'),
         cidr_block=pulumi.get(__ret__, 'cidr_block'),
         create_time=pulumi.get(__ret__, 'create_time'),
         data_disks=pulumi.get(__ret__, 'data_disks'),

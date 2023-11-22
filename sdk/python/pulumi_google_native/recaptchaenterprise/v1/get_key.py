@@ -84,7 +84,7 @@ class GetKeyResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        See Creating and managing labels.
+        Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
         """
         return pulumi.get(self, "labels")
 
@@ -92,7 +92,7 @@ class GetKeyResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name for the Key in the format "projects/{project}/keys/{key}".
+        Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
         """
         return pulumi.get(self, "name")
 
@@ -100,7 +100,7 @@ class GetKeyResult:
     @pulumi.getter(name="testingOptions")
     def testing_options(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse':
         """
-        Options for user acceptance testing.
+        Optional. Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
 
@@ -108,7 +108,7 @@ class GetKeyResult:
     @pulumi.getter(name="wafSettings")
     def waf_settings(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1WafSettingsResponse':
         """
-        Settings for WAF
+        Optional. Settings for WAF
         """
         return pulumi.get(self, "waf_settings")
 

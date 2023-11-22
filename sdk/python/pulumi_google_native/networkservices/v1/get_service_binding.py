@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceBindingResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, name=None, service=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, labels=None, name=None, service=None, service_id=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -34,6 +34,9 @@ class GetServiceBindingResult:
         if service and not isinstance(service, str):
             raise TypeError("Expected argument 'service' to be a str")
         pulumi.set(__self__, "service", service)
+        if service_id and not isinstance(service_id, str):
+            raise TypeError("Expected argument 'service_id' to be a str")
+        pulumi.set(__self__, "service_id", service_id)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -79,6 +82,14 @@ class GetServiceBindingResult:
         return pulumi.get(self, "service")
 
     @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> str:
+        """
+        The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+        """
+        return pulumi.get(self, "service_id")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -98,6 +109,7 @@ class AwaitableGetServiceBindingResult(GetServiceBindingResult):
             labels=self.labels,
             name=self.name,
             service=self.service,
+            service_id=self.service_id,
             update_time=self.update_time)
 
 
@@ -121,6 +133,7 @@ def get_service_binding(location: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         service=pulumi.get(__ret__, 'service'),
+        service_id=pulumi.get(__ret__, 'service_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

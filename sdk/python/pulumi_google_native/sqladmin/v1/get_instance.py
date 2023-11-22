@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, available_maintenance_versions=None, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, etag=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, ipv6_address=None, kind=None, maintenance_version=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, project=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, state=None, suspension_reason=None):
+    def __init__(__self__, available_maintenance_versions=None, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, dns_name=None, etag=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, ipv6_address=None, kind=None, maintenance_version=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, primary_dns_name=None, project=None, psc_service_attachment_link=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, sql_network_architecture=None, state=None, suspension_reason=None, write_endpoint=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -47,6 +47,9 @@ class GetInstanceResult:
         if disk_encryption_status and not isinstance(disk_encryption_status, dict):
             raise TypeError("Expected argument 'disk_encryption_status' to be a dict")
         pulumi.set(__self__, "disk_encryption_status", disk_encryption_status)
+        if dns_name and not isinstance(dns_name, str):
+            raise TypeError("Expected argument 'dns_name' to be a str")
+        pulumi.set(__self__, "dns_name", dns_name)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -86,9 +89,15 @@ class GetInstanceResult:
         if out_of_disk_report and not isinstance(out_of_disk_report, dict):
             raise TypeError("Expected argument 'out_of_disk_report' to be a dict")
         pulumi.set(__self__, "out_of_disk_report", out_of_disk_report)
+        if primary_dns_name and not isinstance(primary_dns_name, str):
+            raise TypeError("Expected argument 'primary_dns_name' to be a str")
+        pulumi.set(__self__, "primary_dns_name", primary_dns_name)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if psc_service_attachment_link and not isinstance(psc_service_attachment_link, str):
+            raise TypeError("Expected argument 'psc_service_attachment_link' to be a str")
+        pulumi.set(__self__, "psc_service_attachment_link", psc_service_attachment_link)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -122,12 +131,18 @@ class GetInstanceResult:
         if settings and not isinstance(settings, dict):
             raise TypeError("Expected argument 'settings' to be a dict")
         pulumi.set(__self__, "settings", settings)
+        if sql_network_architecture and not isinstance(sql_network_architecture, str):
+            raise TypeError("Expected argument 'sql_network_architecture' to be a str")
+        pulumi.set(__self__, "sql_network_architecture", sql_network_architecture)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
         if suspension_reason and not isinstance(suspension_reason, list):
             raise TypeError("Expected argument 'suspension_reason' to be a list")
         pulumi.set(__self__, "suspension_reason", suspension_reason)
+        if write_endpoint and not isinstance(write_endpoint, str):
+            raise TypeError("Expected argument 'write_endpoint' to be a str")
+        pulumi.set(__self__, "write_endpoint", write_endpoint)
 
     @property
     @pulumi.getter(name="availableMaintenanceVersions")
@@ -200,6 +215,14 @@ class GetInstanceResult:
         Disk encryption status specific to an instance.
         """
         return pulumi.get(self, "disk_encryption_status")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
+        """
+        The dns name of the instance.
+        """
+        return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter
@@ -312,12 +335,31 @@ class GetInstanceResult:
         return pulumi.get(self, "out_of_disk_report")
 
     @property
+    @pulumi.getter(name="primaryDnsName")
+    def primary_dns_name(self) -> str:
+        """
+        DEPRECATED: please use write_endpoint instead.
+        """
+        warnings.warn("""Output only. DEPRECATED: please use write_endpoint instead.""", DeprecationWarning)
+        pulumi.log.warn("""primary_dns_name is deprecated: Output only. DEPRECATED: please use write_endpoint instead.""")
+
+        return pulumi.get(self, "primary_dns_name")
+
+    @property
     @pulumi.getter
     def project(self) -> str:
         """
         The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscServiceAttachmentLink")
+    def psc_service_attachment_link(self) -> str:
+        """
+        The link to service attachment of PSC instance.
+        """
+        return pulumi.get(self, "psc_service_attachment_link")
 
     @property
     @pulumi.getter
@@ -408,6 +450,11 @@ class GetInstanceResult:
         return pulumi.get(self, "settings")
 
     @property
+    @pulumi.getter(name="sqlNetworkArchitecture")
+    def sql_network_architecture(self) -> str:
+        return pulumi.get(self, "sql_network_architecture")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -422,6 +469,14 @@ class GetInstanceResult:
         If the instance state is SUSPENDED, the reason for the suspension.
         """
         return pulumi.get(self, "suspension_reason")
+
+    @property
+    @pulumi.getter(name="writeEndpoint")
+    def write_endpoint(self) -> str:
+        """
+        The dns name of the primary instance in a replication group.
+        """
+        return pulumi.get(self, "write_endpoint")
 
 
 class AwaitableGetInstanceResult(GetInstanceResult):
@@ -439,6 +494,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             database_version=self.database_version,
             disk_encryption_configuration=self.disk_encryption_configuration,
             disk_encryption_status=self.disk_encryption_status,
+            dns_name=self.dns_name,
             etag=self.etag,
             failover_replica=self.failover_replica,
             gce_zone=self.gce_zone,
@@ -452,7 +508,9 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             on_premises_configuration=self.on_premises_configuration,
             out_of_disk_report=self.out_of_disk_report,
+            primary_dns_name=self.primary_dns_name,
             project=self.project,
+            psc_service_attachment_link=self.psc_service_attachment_link,
             region=self.region,
             replica_configuration=self.replica_configuration,
             replica_names=self.replica_names,
@@ -464,8 +522,10 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             server_ca_cert=self.server_ca_cert,
             service_account_email_address=self.service_account_email_address,
             settings=self.settings,
+            sql_network_architecture=self.sql_network_architecture,
             state=self.state,
-            suspension_reason=self.suspension_reason)
+            suspension_reason=self.suspension_reason,
+            write_endpoint=self.write_endpoint)
 
 
 def get_instance(instance: Optional[str] = None,
@@ -490,6 +550,7 @@ def get_instance(instance: Optional[str] = None,
         database_version=pulumi.get(__ret__, 'database_version'),
         disk_encryption_configuration=pulumi.get(__ret__, 'disk_encryption_configuration'),
         disk_encryption_status=pulumi.get(__ret__, 'disk_encryption_status'),
+        dns_name=pulumi.get(__ret__, 'dns_name'),
         etag=pulumi.get(__ret__, 'etag'),
         failover_replica=pulumi.get(__ret__, 'failover_replica'),
         gce_zone=pulumi.get(__ret__, 'gce_zone'),
@@ -503,7 +564,9 @@ def get_instance(instance: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         on_premises_configuration=pulumi.get(__ret__, 'on_premises_configuration'),
         out_of_disk_report=pulumi.get(__ret__, 'out_of_disk_report'),
+        primary_dns_name=pulumi.get(__ret__, 'primary_dns_name'),
         project=pulumi.get(__ret__, 'project'),
+        psc_service_attachment_link=pulumi.get(__ret__, 'psc_service_attachment_link'),
         region=pulumi.get(__ret__, 'region'),
         replica_configuration=pulumi.get(__ret__, 'replica_configuration'),
         replica_names=pulumi.get(__ret__, 'replica_names'),
@@ -515,8 +578,10 @@ def get_instance(instance: Optional[str] = None,
         server_ca_cert=pulumi.get(__ret__, 'server_ca_cert'),
         service_account_email_address=pulumi.get(__ret__, 'service_account_email_address'),
         settings=pulumi.get(__ret__, 'settings'),
+        sql_network_architecture=pulumi.get(__ret__, 'sql_network_architecture'),
         state=pulumi.get(__ret__, 'state'),
-        suspension_reason=pulumi.get(__ret__, 'suspension_reason'))
+        suspension_reason=pulumi.get(__ret__, 'suspension_reason'),
+        write_endpoint=pulumi.get(__ret__, 'write_endpoint'))
 
 
 @_utilities.lift_output_func(get_instance)

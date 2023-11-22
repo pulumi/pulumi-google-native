@@ -22,7 +22,10 @@ __all__ = [
     'HttpHeaderMatchArgs',
     'MTLSPolicyArgs',
     'RuleArgs',
+    'SeverityOverrideArgs',
     'SourceArgs',
+    'ThreatOverrideArgs',
+    'ThreatPreventionProfileArgs',
     'ValidationCAArgs',
 ]
 
@@ -525,6 +528,44 @@ class RuleArgs:
 
 
 @pulumi.input_type
+class SeverityOverrideArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['SeverityOverrideAction'],
+                 severity: pulumi.Input['SeverityOverrideSeverity']):
+        """
+        Defines what action to take for a specific severity match.
+        :param pulumi.Input['SeverityOverrideAction'] action: Threat action override.
+        :param pulumi.Input['SeverityOverrideSeverity'] severity: Severity level to match.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['SeverityOverrideAction']:
+        """
+        Threat action override.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['SeverityOverrideAction']):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input['SeverityOverrideSeverity']:
+        """
+        Severity level to match.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input['SeverityOverrideSeverity']):
+        pulumi.set(self, "severity", value)
+
+
+@pulumi.input_type
 class SourceArgs:
     def __init__(__self__, *,
                  ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -562,6 +603,84 @@ class SourceArgs:
     @principals.setter
     def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "principals", value)
+
+
+@pulumi.input_type
+class ThreatOverrideArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['ThreatOverrideAction'],
+                 threat_id: pulumi.Input[str]):
+        """
+        Defines what action to take for a specific threat_id match.
+        :param pulumi.Input['ThreatOverrideAction'] action: Threat action override. For some threat types, only a subset of actions applies.
+        :param pulumi.Input[str] threat_id: Vendor-specific ID of a threat to override.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threat_id", threat_id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['ThreatOverrideAction']:
+        """
+        Threat action override. For some threat types, only a subset of actions applies.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['ThreatOverrideAction']):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="threatId")
+    def threat_id(self) -> pulumi.Input[str]:
+        """
+        Vendor-specific ID of a threat to override.
+        """
+        return pulumi.get(self, "threat_id")
+
+    @threat_id.setter
+    def threat_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "threat_id", value)
+
+
+@pulumi.input_type
+class ThreatPreventionProfileArgs:
+    def __init__(__self__, *,
+                 severity_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['SeverityOverrideArgs']]]] = None,
+                 threat_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ThreatOverrideArgs']]]] = None):
+        """
+        ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+        :param pulumi.Input[Sequence[pulumi.Input['SeverityOverrideArgs']]] severity_overrides: Optional. Configuration for overriding threats actions by severity match.
+        :param pulumi.Input[Sequence[pulumi.Input['ThreatOverrideArgs']]] threat_overrides: Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+        """
+        if severity_overrides is not None:
+            pulumi.set(__self__, "severity_overrides", severity_overrides)
+        if threat_overrides is not None:
+            pulumi.set(__self__, "threat_overrides", threat_overrides)
+
+    @property
+    @pulumi.getter(name="severityOverrides")
+    def severity_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SeverityOverrideArgs']]]]:
+        """
+        Optional. Configuration for overriding threats actions by severity match.
+        """
+        return pulumi.get(self, "severity_overrides")
+
+    @severity_overrides.setter
+    def severity_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SeverityOverrideArgs']]]]):
+        pulumi.set(self, "severity_overrides", value)
+
+    @property
+    @pulumi.getter(name="threatOverrides")
+    def threat_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ThreatOverrideArgs']]]]:
+        """
+        Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+        """
+        return pulumi.get(self, "threat_overrides")
+
+    @threat_overrides.setter
+    def threat_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ThreatOverrideArgs']]]]):
+        pulumi.set(self, "threat_overrides", value)
 
 
 @pulumi.input_type

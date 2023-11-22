@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, cjis_settings=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, controls=None, create_time=None, display_name=None, ekm_provisioning_response=None, enable_sovereign_controls=None, etag=None, fedramp_high_settings=None, fedramp_moderate_settings=None, il4_settings=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, partner_permissions=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None, violation_notifications_enabled=None):
+    def __init__(__self__, billing_account=None, cjis_settings=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, ekm_provisioning_response=None, enable_sovereign_controls=None, etag=None, fedramp_high_settings=None, fedramp_moderate_settings=None, il4_settings=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, partner_permissions=None, provisioned_resources_parent=None, resource_monitoring_enabled=None, resource_settings=None, resources=None, saa_enrollment_response=None, violation_notifications_enabled=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -35,9 +35,6 @@ class GetWorkloadResult:
         if compliant_but_disallowed_services and not isinstance(compliant_but_disallowed_services, list):
             raise TypeError("Expected argument 'compliant_but_disallowed_services' to be a list")
         pulumi.set(__self__, "compliant_but_disallowed_services", compliant_but_disallowed_services)
-        if controls and not isinstance(controls, dict):
-            raise TypeError("Expected argument 'controls' to be a dict")
-        pulumi.set(__self__, "controls", controls)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -83,6 +80,9 @@ class GetWorkloadResult:
         if provisioned_resources_parent and not isinstance(provisioned_resources_parent, str):
             raise TypeError("Expected argument 'provisioned_resources_parent' to be a str")
         pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
+        if resource_monitoring_enabled and not isinstance(resource_monitoring_enabled, bool):
+            raise TypeError("Expected argument 'resource_monitoring_enabled' to be a bool")
+        pulumi.set(__self__, "resource_monitoring_enabled", resource_monitoring_enabled)
         if resource_settings and not isinstance(resource_settings, list):
             raise TypeError("Expected argument 'resource_settings' to be a list")
         pulumi.set(__self__, "resource_settings", resource_settings)
@@ -132,17 +132,9 @@ class GetWorkloadResult:
     @pulumi.getter(name="compliantButDisallowedServices")
     def compliant_but_disallowed_services(self) -> Sequence[str]:
         """
-        Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         """
         return pulumi.get(self, "compliant_but_disallowed_services")
-
-    @property
-    @pulumi.getter
-    def controls(self) -> 'outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse':
-        """
-        Controls associated with the customer workload
-        """
-        return pulumi.get(self, "controls")
 
     @property
     @pulumi.getter(name="createTime")
@@ -164,7 +156,7 @@ class GetWorkloadResult:
     @pulumi.getter(name="ekmProvisioningResponse")
     def ekm_provisioning_response(self) -> 'outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse':
         """
-        Optional. Represents the Ekm Provisioning State of the given workload.
+        Represents the Ekm Provisioning State of the given workload.
         """
         return pulumi.get(self, "ekm_provisioning_response")
 
@@ -268,6 +260,14 @@ class GetWorkloadResult:
         return pulumi.get(self, "provisioned_resources_parent")
 
     @property
+    @pulumi.getter(name="resourceMonitoringEnabled")
+    def resource_monitoring_enabled(self) -> bool:
+        """
+        Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+        """
+        return pulumi.get(self, "resource_monitoring_enabled")
+
+    @property
     @pulumi.getter(name="resourceSettings")
     def resource_settings(self) -> Sequence['outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse']:
         """
@@ -311,7 +311,6 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             compliance_regime=self.compliance_regime,
             compliance_status=self.compliance_status,
             compliant_but_disallowed_services=self.compliant_but_disallowed_services,
-            controls=self.controls,
             create_time=self.create_time,
             display_name=self.display_name,
             ekm_provisioning_response=self.ekm_provisioning_response,
@@ -327,6 +326,7 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             partner=self.partner,
             partner_permissions=self.partner_permissions,
             provisioned_resources_parent=self.provisioned_resources_parent,
+            resource_monitoring_enabled=self.resource_monitoring_enabled,
             resource_settings=self.resource_settings,
             resources=self.resources,
             saa_enrollment_response=self.saa_enrollment_response,
@@ -353,7 +353,6 @@ def get_workload(location: Optional[str] = None,
         compliance_regime=pulumi.get(__ret__, 'compliance_regime'),
         compliance_status=pulumi.get(__ret__, 'compliance_status'),
         compliant_but_disallowed_services=pulumi.get(__ret__, 'compliant_but_disallowed_services'),
-        controls=pulumi.get(__ret__, 'controls'),
         create_time=pulumi.get(__ret__, 'create_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
         ekm_provisioning_response=pulumi.get(__ret__, 'ekm_provisioning_response'),
@@ -369,6 +368,7 @@ def get_workload(location: Optional[str] = None,
         partner=pulumi.get(__ret__, 'partner'),
         partner_permissions=pulumi.get(__ret__, 'partner_permissions'),
         provisioned_resources_parent=pulumi.get(__ret__, 'provisioned_resources_parent'),
+        resource_monitoring_enabled=pulumi.get(__ret__, 'resource_monitoring_enabled'),
         resource_settings=pulumi.get(__ret__, 'resource_settings'),
         resources=pulumi.get(__ret__, 'resources'),
         saa_enrollment_response=pulumi.get(__ret__, 'saa_enrollment_response'),

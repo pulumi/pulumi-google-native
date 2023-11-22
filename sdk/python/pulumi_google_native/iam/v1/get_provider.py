@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProviderResult:
-    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, name=None, oidc=None, saml=None, state=None):
+    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, expire_time=None, name=None, oidc=None, saml=None, state=None):
         if attribute_condition and not isinstance(attribute_condition, str):
             raise TypeError("Expected argument 'attribute_condition' to be a str")
         pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -38,6 +38,9 @@ class GetProviderResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if expire_time and not isinstance(expire_time, str):
+            raise TypeError("Expected argument 'expire_time' to be a str")
+        pulumi.set(__self__, "expire_time", expire_time)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -63,7 +66,7 @@ class GetProviderResult:
     @pulumi.getter(name="attributeMapping")
     def attribute_mapping(self) -> Mapping[str, str]:
         """
-        Maps attributes from authentication credentials issued by an external identity provider to Google Cloud attributes, such as `subject` and `segment`. Each key must be a string specifying the Google Cloud IAM attribute to map to. The following keys are supported: * `google.subject`: The principal IAM is authenticating. You can reference this value in IAM bindings. This is also the subject that appears in Cloud Logging logs. Cannot exceed 127 bytes. * `google.groups`: Groups the external identity belongs to. You can grant groups access to resources using an IAM `principalSet` binding; access applies to all members of the group. You can also provide custom attributes by specifying `attribute.{custom_attribute}`, where `{custom_attribute}` is the name of the custom attribute to be mapped. You can define a maximum of 50 custom attributes. The maximum length of a mapped attribute key is 100 characters, and the key may only contain the characters [a-z0-9_]. You can reference these attributes in IAM policies to define fine-grained access for a workload to Google Cloud resources. For example: * `google.subject`: `principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}` * `google.groups`: `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}` * `attribute.{custom_attribute}`: `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}` Each value must be a [Common Expression Language] (https://opensource.google/projects/cel) function that maps an identity provider credential to the normalized attribute specified by the corresponding map key. You can use the `assertion` keyword in the expression to access a JSON representation of the authentication credential issued by the provider. The maximum length of an attribute mapping expression is 2048 characters. When evaluated, the total size of all mapped attributes must not exceed 8KB. For AWS providers, if no attribute mapping is defined, the following default mapping applies: ``` { "google.subject":"assertion.arn", "attribute.aws_role": "assertion.arn.contains('assumed-role')" " ? assertion.arn.extract('{account_arn}assumed-role/')" " + 'assumed-role/'" " + assertion.arn.extract('assumed-role/{role_name}/')" " : assertion.arn", } ``` If any custom attribute mappings are defined, they must include a mapping to the `google.subject` attribute. For OIDC providers, you must supply a custom mapping, which must include the `google.subject` attribute. For example, the following maps the `sub` claim of the incoming credential to the `subject` attribute on a Google token: ``` {"google.subject": "assertion.sub"} ```
+         Maps attributes from authentication credentials issued by an external identity provider to Google Cloud attributes, such as `subject` and `segment`. Each key must be a string specifying the Google Cloud IAM attribute to map to. The following keys are supported: * `google.subject`: The principal IAM is authenticating. You can reference this value in IAM bindings. This is also the subject that appears in Cloud Logging logs. Cannot exceed 127 bytes. * `google.groups`: Groups the external identity belongs to. You can grant groups access to resources using an IAM `principalSet` binding; access applies to all members of the group. You can also provide custom attributes by specifying `attribute.{custom_attribute}`, where `{custom_attribute}` is the name of the custom attribute to be mapped. You can define a maximum of 50 custom attributes. The maximum length of a mapped attribute key is 100 characters, and the key may only contain the characters [a-z0-9_]. You can reference these attributes in IAM policies to define fine-grained access for a workload to Google Cloud resources. For example: * `google.subject`: `principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}` * `google.groups`: `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}` * `attribute.{custom_attribute}`: `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}` Each value must be a [Common Expression Language] (https://opensource.google/projects/cel) function that maps an identity provider credential to the normalized attribute specified by the corresponding map key. You can use the `assertion` keyword in the expression to access a JSON representation of the authentication credential issued by the provider. The maximum length of an attribute mapping expression is 2048 characters. When evaluated, the total size of all mapped attributes must not exceed 8KB. For AWS providers, if no attribute mapping is defined, the following default mapping applies: ``` { "google.subject":"assertion.arn", "attribute.aws_role": "assertion.arn.contains('assumed-role')" " ? assertion.arn.extract('{account_arn}assumed-role/')" " + 'assumed-role/'" " + assertion.arn.extract('assumed-role/{role_name}/')" " : assertion.arn", } ``` If any custom attribute mappings are defined, they must include a mapping to the `google.subject` attribute. For OIDC providers, you must supply a custom mapping, which must include the `google.subject` attribute. For example, the following maps the `sub` claim of the incoming credential to the `subject` attribute on a Google token: ``` {"google.subject": "assertion.sub"} ```
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -98,6 +101,14 @@ class GetProviderResult:
         A display name for the provider. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Time after which the workload identity pool provider will be permanently purged and cannot be recovered.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
@@ -144,6 +155,7 @@ class AwaitableGetProviderResult(GetProviderResult):
             description=self.description,
             disabled=self.disabled,
             display_name=self.display_name,
+            expire_time=self.expire_time,
             name=self.name,
             oidc=self.oidc,
             saml=self.saml,
@@ -173,6 +185,7 @@ def get_provider(location: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         disabled=pulumi.get(__ret__, 'disabled'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
         name=pulumi.get(__ret__, 'name'),
         oidc=pulumi.get(__ret__, 'oidc'),
         saml=pulumi.get(__ret__, 'saml'),

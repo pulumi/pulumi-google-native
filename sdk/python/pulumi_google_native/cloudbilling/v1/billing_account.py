@@ -15,16 +15,20 @@ __all__ = ['BillingAccountArgs', 'BillingAccount']
 class BillingAccountArgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 master_billing_account: Optional[pulumi.Input[str]] = None):
+                 master_billing_account: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BillingAccount resource.
         :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+        :param pulumi.Input[str] parent: Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if master_billing_account is not None:
             pulumi.set(__self__, "master_billing_account", master_billing_account)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter(name="displayName")
@@ -50,6 +54,18 @@ class BillingAccountArgs:
     def master_billing_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "master_billing_account", value)
 
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
 
 class BillingAccount(pulumi.CustomResource):
     @overload
@@ -58,9 +74,10 @@ class BillingAccount(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned as a reseller account.
+        This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts.
         Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
@@ -69,6 +86,7 @@ class BillingAccount(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+        :param pulumi.Input[str] parent: Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
         """
         ...
     @overload
@@ -77,7 +95,7 @@ class BillingAccount(pulumi.CustomResource):
                  args: Optional[BillingAccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned as a reseller account.
+        This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts.
         Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
@@ -99,6 +117,7 @@ class BillingAccount(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -110,6 +129,7 @@ class BillingAccount(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["master_billing_account"] = master_billing_account
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["name"] = None
             __props__.__dict__["open"] = None
         super(BillingAccount, __self__).__init__(
@@ -138,6 +158,7 @@ class BillingAccount(pulumi.CustomResource):
         __props__.__dict__["master_billing_account"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["open"] = None
+        __props__.__dict__["parent"] = None
         return BillingAccount(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -171,4 +192,12 @@ class BillingAccount(pulumi.CustomResource):
         True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
         """
         return pulumi.get(self, "open")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[str]:
+        """
+        Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        """
+        return pulumi.get(self, "parent")
 

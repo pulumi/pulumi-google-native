@@ -163,6 +163,7 @@ class AwsS3DataArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[str],
                  aws_access_key: Optional[pulumi.Input['AwsAccessKeyArgs']] = None,
+                 cloudfront_domain: Optional[pulumi.Input[str]] = None,
                  credentials_secret: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None):
@@ -170,6 +171,7 @@ class AwsS3DataArgs:
         An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
         :param pulumi.Input[str] bucket_name: S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         :param pulumi.Input['AwsAccessKeyArgs'] aws_access_key: Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        :param pulumi.Input[str] cloudfront_domain: Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
         :param pulumi.Input[str] credentials_secret: Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
@@ -177,6 +179,8 @@ class AwsS3DataArgs:
         pulumi.set(__self__, "bucket_name", bucket_name)
         if aws_access_key is not None:
             pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if cloudfront_domain is not None:
+            pulumi.set(__self__, "cloudfront_domain", cloudfront_domain)
         if credentials_secret is not None:
             pulumi.set(__self__, "credentials_secret", credentials_secret)
         if path is not None:
@@ -207,6 +211,18 @@ class AwsS3DataArgs:
     @aws_access_key.setter
     def aws_access_key(self, value: Optional[pulumi.Input['AwsAccessKeyArgs']]):
         pulumi.set(self, "aws_access_key", value)
+
+    @property
+    @pulumi.getter(name="cloudfrontDomain")
+    def cloudfront_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+        """
+        return pulumi.get(self, "cloudfront_domain")
+
+    @cloudfront_domain.setter
+    def cloudfront_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloudfront_domain", value)
 
     @property
     @pulumi.getter(name="credentialsSecret")

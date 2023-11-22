@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'GoogleCloudApigeeV1AddonsConfigArgs',
     'GoogleCloudApigeeV1AdvancedApiOpsConfigArgs',
+    'GoogleCloudApigeeV1AnalyticsConfigArgs',
     'GoogleCloudApigeeV1ApiSecurityConfigArgs',
     'GoogleCloudApigeeV1AttributeArgs',
     'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs',
@@ -23,12 +24,22 @@ __all__ = [
     'GoogleCloudApigeeV1GraphQLOperationConfigArgs',
     'GoogleCloudApigeeV1GraphQLOperationGroupArgs',
     'GoogleCloudApigeeV1GraphQLOperationArgs',
+    'GoogleCloudApigeeV1GrpcOperationConfigArgs',
+    'GoogleCloudApigeeV1GrpcOperationGroupArgs',
     'GoogleCloudApigeeV1IntegrationConfigArgs',
     'GoogleCloudApigeeV1MonetizationConfigArgs',
     'GoogleCloudApigeeV1NodeConfigArgs',
     'GoogleCloudApigeeV1OperationConfigArgs',
     'GoogleCloudApigeeV1OperationGroupArgs',
     'GoogleCloudApigeeV1OperationArgs',
+    'GoogleCloudApigeeV1ProfileConfigAbuseArgs',
+    'GoogleCloudApigeeV1ProfileConfigAuthorizationArgs',
+    'GoogleCloudApigeeV1ProfileConfigCORSArgs',
+    'GoogleCloudApigeeV1ProfileConfigCategoryArgs',
+    'GoogleCloudApigeeV1ProfileConfigMTLSArgs',
+    'GoogleCloudApigeeV1ProfileConfigMediationArgs',
+    'GoogleCloudApigeeV1ProfileConfigThreatArgs',
+    'GoogleCloudApigeeV1ProfileConfigArgs',
     'GoogleCloudApigeeV1PropertiesArgs',
     'GoogleCloudApigeeV1PropertyArgs',
     'GoogleCloudApigeeV1QueryMetricArgs',
@@ -36,6 +47,13 @@ __all__ = [
     'GoogleCloudApigeeV1RateRangeArgs',
     'GoogleCloudApigeeV1ReportPropertyArgs',
     'GoogleCloudApigeeV1RevenueShareRangeArgs',
+    'GoogleCloudApigeeV1SecurityActionAllowArgs',
+    'GoogleCloudApigeeV1SecurityActionConditionConfigArgs',
+    'GoogleCloudApigeeV1SecurityActionDenyArgs',
+    'GoogleCloudApigeeV1SecurityActionFlagArgs',
+    'GoogleCloudApigeeV1SecurityActionHttpHeaderArgs',
+    'GoogleCloudApigeeV1SecurityProfileEnvironmentArgs',
+    'GoogleCloudApigeeV1SecurityProfileScoringConfigArgs',
     'GoogleCloudApigeeV1SecurityReportQueryMetricArgs',
     'GoogleCloudApigeeV1TlsInfoCommonNameArgs',
     'GoogleCloudApigeeV1TlsInfoArgs',
@@ -51,6 +69,7 @@ __all__ = [
 class GoogleCloudApigeeV1AddonsConfigArgs:
     def __init__(__self__, *,
                  advanced_api_ops_config: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']] = None,
+                 analytics_config: Optional[pulumi.Input['GoogleCloudApigeeV1AnalyticsConfigArgs']] = None,
                  api_security_config: Optional[pulumi.Input['GoogleCloudApigeeV1ApiSecurityConfigArgs']] = None,
                  connectors_platform_config: Optional[pulumi.Input['GoogleCloudApigeeV1ConnectorsPlatformConfigArgs']] = None,
                  integration_config: Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']] = None,
@@ -58,6 +77,7 @@ class GoogleCloudApigeeV1AddonsConfigArgs:
         """
         Add-on configurations for the Apigee organization.
         :param pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
+        :param pulumi.Input['GoogleCloudApigeeV1AnalyticsConfigArgs'] analytics_config: Configuration for the Analytics add-on.
         :param pulumi.Input['GoogleCloudApigeeV1ApiSecurityConfigArgs'] api_security_config: Configuration for the API Security add-on.
         :param pulumi.Input['GoogleCloudApigeeV1ConnectorsPlatformConfigArgs'] connectors_platform_config: Configuration for the Connectors Platform add-on.
         :param pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs'] integration_config: Configuration for the Integration add-on.
@@ -65,6 +85,8 @@ class GoogleCloudApigeeV1AddonsConfigArgs:
         """
         if advanced_api_ops_config is not None:
             pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+        if analytics_config is not None:
+            pulumi.set(__self__, "analytics_config", analytics_config)
         if api_security_config is not None:
             pulumi.set(__self__, "api_security_config", api_security_config)
         if connectors_platform_config is not None:
@@ -85,6 +107,18 @@ class GoogleCloudApigeeV1AddonsConfigArgs:
     @advanced_api_ops_config.setter
     def advanced_api_ops_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']]):
         pulumi.set(self, "advanced_api_ops_config", value)
+
+    @property
+    @pulumi.getter(name="analyticsConfig")
+    def analytics_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1AnalyticsConfigArgs']]:
+        """
+        Configuration for the Analytics add-on.
+        """
+        return pulumi.get(self, "analytics_config")
+
+    @analytics_config.setter
+    def analytics_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1AnalyticsConfigArgs']]):
+        pulumi.set(self, "analytics_config", value)
 
     @property
     @pulumi.getter(name="apiSecurityConfig")
@@ -151,6 +185,30 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfigArgs:
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1AnalyticsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Analytics add-on.
+        :param pulumi.Input[bool] enabled: Whether the Analytics add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Analytics add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -615,6 +673,115 @@ class GoogleCloudApigeeV1GraphQLOperationArgs:
 
 
 @pulumi.input_type
+class GoogleCloudApigeeV1GrpcOperationConfigArgs:
+    def __init__(__self__, *,
+                 api_source: pulumi.Input[str],
+                 service: pulumi.Input[str],
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 quota: Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']] = None):
+        """
+        Binds the resources in a proxy or remote service with the gRPC operation and its associated quota enforcement.
+        :param pulumi.Input[str] api_source: Name of the API proxy with which the gRPC operation and quota are associated.
+        :param pulumi.Input[str] service: gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]] attributes: Custom attributes associated with the operation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy. Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+        :param pulumi.Input['GoogleCloudApigeeV1QuotaArgs'] quota: Quota parameters to be enforced for the methods and API source combination. If none are specified, quota enforcement will not be done.
+        """
+        pulumi.set(__self__, "api_source", api_source)
+        pulumi.set(__self__, "service", service)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+
+    @property
+    @pulumi.getter(name="apiSource")
+    def api_source(self) -> pulumi.Input[str]:
+        """
+        Name of the API proxy with which the gRPC operation and quota are associated.
+        """
+        return pulumi.get(self, "api_source")
+
+    @api_source.setter
+    def api_source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_source", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]]:
+        """
+        Custom attributes associated with the operation.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]]):
+        pulumi.set(self, "attributes", value)
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy. Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+        """
+        return pulumi.get(self, "methods")
+
+    @methods.setter
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "methods", value)
+
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']]:
+        """
+        Quota parameters to be enforced for the methods and API source combination. If none are specified, quota enforcement will not be done.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']]):
+        pulumi.set(self, "quota", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1GrpcOperationGroupArgs:
+    def __init__(__self__, *,
+                 operation_configs: pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GrpcOperationConfigArgs']]]):
+        """
+        List of gRPC operation configuration details associated with Apigee API proxies.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GrpcOperationConfigArgs']]] operation_configs: List of operation configurations for either Apigee API proxies that are associated with this API product.
+        """
+        pulumi.set(__self__, "operation_configs", operation_configs)
+
+    @property
+    @pulumi.getter(name="operationConfigs")
+    def operation_configs(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GrpcOperationConfigArgs']]]:
+        """
+        List of operation configurations for either Apigee API proxies that are associated with this API product.
+        """
+        return pulumi.get(self, "operation_configs")
+
+    @operation_configs.setter
+    def operation_configs(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GrpcOperationConfigArgs']]]):
+        pulumi.set(self, "operation_configs", value)
+
+
+@pulumi.input_type
 class GoogleCloudApigeeV1IntegrationConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
@@ -849,6 +1016,188 @@ class GoogleCloudApigeeV1OperationArgs:
     @methods.setter
     def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "methods", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigAbuseArgs:
+    def __init__(__self__):
+        """
+        Checks for abuse, which includes any requests sent to the API for purposes other than what it is intended for, such as high volumes of requests, data scraping, and abuse related to authorization.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigAuthorizationArgs:
+    def __init__(__self__):
+        """
+        By default, following policies will be included: - JWS - JWT - OAuth - BasicAuth - APIKey
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigCORSArgs:
+    def __init__(__self__):
+        """
+        Checks to see if you have CORS policy in place.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigCategoryArgs:
+    def __init__(__self__, *,
+                 abuse: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigAbuseArgs']] = None,
+                 authorization: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigAuthorizationArgs']] = None,
+                 cors: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigCORSArgs']] = None,
+                 mediation: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigMediationArgs']] = None,
+                 mtls: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigMTLSArgs']] = None,
+                 threat: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigThreatArgs']] = None):
+        """
+        Advanced API Security provides security profile that scores the following categories.
+        :param pulumi.Input['GoogleCloudApigeeV1ProfileConfigAbuseArgs'] abuse: Checks for abuse, which includes any requests sent to the API for purposes other than what it is intended for, such as high volumes of requests, data scraping, and abuse related to authorization.
+        :param pulumi.Input['GoogleCloudApigeeV1ProfileConfigAuthorizationArgs'] authorization: Checks to see if you have an authorization policy in place.
+        :param pulumi.Input['GoogleCloudApigeeV1ProfileConfigCORSArgs'] cors: Checks to see if you have CORS policy in place.
+        :param pulumi.Input['GoogleCloudApigeeV1ProfileConfigMediationArgs'] mediation: Checks to see if you have a mediation policy in place.
+        :param pulumi.Input['GoogleCloudApigeeV1ProfileConfigMTLSArgs'] mtls: Checks to see if you have configured mTLS for the target server.
+        :param pulumi.Input['GoogleCloudApigeeV1ProfileConfigThreatArgs'] threat: Checks to see if you have a threat protection policy in place.
+        """
+        if abuse is not None:
+            pulumi.set(__self__, "abuse", abuse)
+        if authorization is not None:
+            pulumi.set(__self__, "authorization", authorization)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if mediation is not None:
+            pulumi.set(__self__, "mediation", mediation)
+        if mtls is not None:
+            pulumi.set(__self__, "mtls", mtls)
+        if threat is not None:
+            pulumi.set(__self__, "threat", threat)
+
+    @property
+    @pulumi.getter
+    def abuse(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigAbuseArgs']]:
+        """
+        Checks for abuse, which includes any requests sent to the API for purposes other than what it is intended for, such as high volumes of requests, data scraping, and abuse related to authorization.
+        """
+        return pulumi.get(self, "abuse")
+
+    @abuse.setter
+    def abuse(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigAbuseArgs']]):
+        pulumi.set(self, "abuse", value)
+
+    @property
+    @pulumi.getter
+    def authorization(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigAuthorizationArgs']]:
+        """
+        Checks to see if you have an authorization policy in place.
+        """
+        return pulumi.get(self, "authorization")
+
+    @authorization.setter
+    def authorization(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigAuthorizationArgs']]):
+        pulumi.set(self, "authorization", value)
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigCORSArgs']]:
+        """
+        Checks to see if you have CORS policy in place.
+        """
+        return pulumi.get(self, "cors")
+
+    @cors.setter
+    def cors(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigCORSArgs']]):
+        pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter
+    def mediation(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigMediationArgs']]:
+        """
+        Checks to see if you have a mediation policy in place.
+        """
+        return pulumi.get(self, "mediation")
+
+    @mediation.setter
+    def mediation(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigMediationArgs']]):
+        pulumi.set(self, "mediation", value)
+
+    @property
+    @pulumi.getter
+    def mtls(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigMTLSArgs']]:
+        """
+        Checks to see if you have configured mTLS for the target server.
+        """
+        return pulumi.get(self, "mtls")
+
+    @mtls.setter
+    def mtls(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigMTLSArgs']]):
+        pulumi.set(self, "mtls", value)
+
+    @property
+    @pulumi.getter
+    def threat(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigThreatArgs']]:
+        """
+        Checks to see if you have a threat protection policy in place.
+        """
+        return pulumi.get(self, "threat")
+
+    @threat.setter
+    def threat(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1ProfileConfigThreatArgs']]):
+        pulumi.set(self, "threat", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigMTLSArgs:
+    def __init__(__self__):
+        """
+        Checks to see if you have configured mTLS for the target server.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigMediationArgs:
+    def __init__(__self__):
+        """
+        By default, following policies will be included: - OASValidation - SOAPMessageValidation
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigThreatArgs:
+    def __init__(__self__):
+        """
+        By default, following policies will be included: - XMLThreatProtection - JSONThreatProtection
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ProfileConfigArgs:
+    def __init__(__self__, *,
+                 categories: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ProfileConfigCategoryArgs']]]] = None):
+        """
+        ProfileConfig defines a set of categories and policies which will be used to compute security score.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ProfileConfigCategoryArgs']]] categories: List of categories of profile config.
+        """
+        if categories is not None:
+            pulumi.set(__self__, "categories", categories)
+
+    @property
+    @pulumi.getter
+    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ProfileConfigCategoryArgs']]]]:
+        """
+        List of categories of profile config.
+        """
+        return pulumi.get(self, "categories")
+
+    @categories.setter
+    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ProfileConfigCategoryArgs']]]]):
+        pulumi.set(self, "categories", value)
 
 
 @pulumi.input_type
@@ -1205,6 +1554,208 @@ class GoogleCloudApigeeV1RevenueShareRangeArgs:
     @start.setter
     def start(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityActionAllowArgs:
+    def __init__(__self__):
+        """
+        Message that should be set in case of an Allow Action. This does not have any fields.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityActionConditionConfigArgs:
+    def __init__(__self__, *,
+                 bot_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bot_reasons: Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_address_ranges: Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+        """
+        if bot_reasons is not None:
+            pulumi.set(__self__, "bot_reasons", bot_reasons)
+        if ip_address_ranges is not None:
+            pulumi.set(__self__, "ip_address_ranges", ip_address_ranges)
+
+    @property
+    @pulumi.getter(name="botReasons")
+    def bot_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+        """
+        return pulumi.get(self, "bot_reasons")
+
+    @bot_reasons.setter
+    def bot_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "bot_reasons", value)
+
+    @property
+    @pulumi.getter(name="ipAddressRanges")
+    def ip_address_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+        """
+        return pulumi.get(self, "ip_address_ranges")
+
+    @ip_address_ranges.setter
+    def ip_address_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_address_ranges", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityActionDenyArgs:
+    def __init__(__self__, *,
+                 response_code: Optional[pulumi.Input[int]] = None):
+        """
+        Message that should be set in case of a Deny Action.
+        :param pulumi.Input[int] response_code: Optional. The HTTP response code if the Action = DENY.
+        """
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+
+    @property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The HTTP response code if the Action = DENY.
+        """
+        return pulumi.get(self, "response_code")
+
+    @response_code.setter
+    def response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "response_code", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityActionFlagArgs:
+    def __init__(__self__, *,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1SecurityActionHttpHeaderArgs']]]] = None):
+        """
+        The message that should be set in the case of a Flag action.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1SecurityActionHttpHeaderArgs']]] headers: Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1SecurityActionHttpHeaderArgs']]]]:
+        """
+        Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1SecurityActionHttpHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityActionHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        An HTTP header.
+        :param pulumi.Input[str] name: The header name to be sent to the target.
+        :param pulumi.Input[str] value: The header value to be sent to the target.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header name to be sent to the target.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header value to be sent to the target.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityProfileEnvironmentArgs:
+    def __init__(__self__):
+        """
+        Environment information of attached environments. Scoring an environment is enabled only if it is attached to a security profile.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityProfileScoringConfigArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 score_path: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        Security configurations to manage scoring.
+        :param pulumi.Input[str] description: Description of the config.
+        :param pulumi.Input[str] score_path: Path of the component config used for scoring.
+        :param pulumi.Input[str] title: Title of the config.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if score_path is not None:
+            pulumi.set(__self__, "score_path", score_path)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the config.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="scorePath")
+    def score_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the component config used for scoring.
+        """
+        return pulumi.get(self, "score_path")
+
+    @score_path.setter
+    def score_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "score_path", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title of the config.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 @pulumi.input_type

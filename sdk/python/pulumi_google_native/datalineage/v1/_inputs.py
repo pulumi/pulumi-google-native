@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogLineageV1EntityReferenceArgs:
                  fully_qualified_name: pulumi.Input[str]):
         """
         The soft reference to everything you can attach a lineage event to.
-        :param pulumi.Input[str] fully_qualified_name: [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+        :param pulumi.Input[str] fully_qualified_name: [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
         """
         pulumi.set(__self__, "fully_qualified_name", fully_qualified_name)
 
@@ -30,7 +30,7 @@ class GoogleCloudDatacatalogLineageV1EntityReferenceArgs:
     @pulumi.getter(name="fullyQualifiedName")
     def fully_qualified_name(self) -> pulumi.Input[str]:
         """
-        [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+        [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
         """
         return pulumi.get(self, "fully_qualified_name")
 

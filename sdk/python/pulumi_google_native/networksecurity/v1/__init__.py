@@ -6,6 +6,10 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .address_group import *
+from .address_group_iam_binding import *
+from .address_group_iam_member import *
+from .address_group_iam_policy import *
 from .authorization_policy import *
 from .authorization_policy_iam_binding import *
 from .authorization_policy_iam_member import *
@@ -15,6 +19,8 @@ from .client_tls_policy_iam_binding import *
 from .client_tls_policy_iam_member import *
 from .client_tls_policy_iam_policy import *
 from .gateway_security_policy import *
+from .get_address_group import *
+from .get_address_group_iam_policy import *
 from .get_authorization_policy import *
 from .get_authorization_policy_iam_policy import *
 from .get_client_tls_policy import *

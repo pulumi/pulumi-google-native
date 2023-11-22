@@ -19,10 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigratingVmResult:
-    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, create_time=None, current_sync_info=None, cutover_forecast=None, description=None, display_name=None, error=None, group=None, labels=None, last_replication_cycle=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, update_time=None):
+    def __init__(__self__, aws_source_vm_details=None, azure_source_vm_details=None, compute_engine_disks_target_defaults=None, compute_engine_target_defaults=None, create_time=None, current_sync_info=None, cutover_forecast=None, description=None, display_name=None, error=None, group=None, labels=None, last_replication_cycle=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, update_time=None, vmware_source_vm_details=None):
         if aws_source_vm_details and not isinstance(aws_source_vm_details, dict):
             raise TypeError("Expected argument 'aws_source_vm_details' to be a dict")
         pulumi.set(__self__, "aws_source_vm_details", aws_source_vm_details)
+        if azure_source_vm_details and not isinstance(azure_source_vm_details, dict):
+            raise TypeError("Expected argument 'azure_source_vm_details' to be a dict")
+        pulumi.set(__self__, "azure_source_vm_details", azure_source_vm_details)
+        if compute_engine_disks_target_defaults and not isinstance(compute_engine_disks_target_defaults, dict):
+            raise TypeError("Expected argument 'compute_engine_disks_target_defaults' to be a dict")
+        pulumi.set(__self__, "compute_engine_disks_target_defaults", compute_engine_disks_target_defaults)
         if compute_engine_target_defaults and not isinstance(compute_engine_target_defaults, dict):
             raise TypeError("Expected argument 'compute_engine_target_defaults' to be a dict")
         pulumi.set(__self__, "compute_engine_target_defaults", compute_engine_target_defaults)
@@ -80,6 +86,9 @@ class GetMigratingVmResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if vmware_source_vm_details and not isinstance(vmware_source_vm_details, dict):
+            raise TypeError("Expected argument 'vmware_source_vm_details' to be a dict")
+        pulumi.set(__self__, "vmware_source_vm_details", vmware_source_vm_details)
 
     @property
     @pulumi.getter(name="awsSourceVmDetails")
@@ -88,6 +97,22 @@ class GetMigratingVmResult:
         Details of the VM from an AWS source.
         """
         return pulumi.get(self, "aws_source_vm_details")
+
+    @property
+    @pulumi.getter(name="azureSourceVmDetails")
+    def azure_source_vm_details(self) -> 'outputs.AzureSourceVmDetailsResponse':
+        """
+        Details of the VM from an Azure source.
+        """
+        return pulumi.get(self, "azure_source_vm_details")
+
+    @property
+    @pulumi.getter(name="computeEngineDisksTargetDefaults")
+    def compute_engine_disks_target_defaults(self) -> 'outputs.ComputeEngineDisksTargetDefaultsResponse':
+        """
+        Details of the target Persistent Disks in Compute Engine.
+        """
+        return pulumi.get(self, "compute_engine_disks_target_defaults")
 
     @property
     @pulumi.getter(name="computeEngineTargetDefaults")
@@ -241,6 +266,14 @@ class GetMigratingVmResult:
         """
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter(name="vmwareSourceVmDetails")
+    def vmware_source_vm_details(self) -> 'outputs.VmwareSourceVmDetailsResponse':
+        """
+        Details of the VM from a Vmware source.
+        """
+        return pulumi.get(self, "vmware_source_vm_details")
+
 
 class AwaitableGetMigratingVmResult(GetMigratingVmResult):
     # pylint: disable=using-constant-test
@@ -249,6 +282,8 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
             yield self
         return GetMigratingVmResult(
             aws_source_vm_details=self.aws_source_vm_details,
+            azure_source_vm_details=self.azure_source_vm_details,
+            compute_engine_disks_target_defaults=self.compute_engine_disks_target_defaults,
             compute_engine_target_defaults=self.compute_engine_target_defaults,
             create_time=self.create_time,
             current_sync_info=self.current_sync_info,
@@ -267,7 +302,8 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
             source_vm_id=self.source_vm_id,
             state=self.state,
             state_time=self.state_time,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            vmware_source_vm_details=self.vmware_source_vm_details)
 
 
 def get_migrating_vm(location: Optional[str] = None,
@@ -290,6 +326,8 @@ def get_migrating_vm(location: Optional[str] = None,
 
     return AwaitableGetMigratingVmResult(
         aws_source_vm_details=pulumi.get(__ret__, 'aws_source_vm_details'),
+        azure_source_vm_details=pulumi.get(__ret__, 'azure_source_vm_details'),
+        compute_engine_disks_target_defaults=pulumi.get(__ret__, 'compute_engine_disks_target_defaults'),
         compute_engine_target_defaults=pulumi.get(__ret__, 'compute_engine_target_defaults'),
         create_time=pulumi.get(__ret__, 'create_time'),
         current_sync_info=pulumi.get(__ret__, 'current_sync_info'),
@@ -308,7 +346,8 @@ def get_migrating_vm(location: Optional[str] = None,
         source_vm_id=pulumi.get(__ret__, 'source_vm_id'),
         state=pulumi.get(__ret__, 'state'),
         state_time=pulumi.get(__ret__, 'state_time'),
-        update_time=pulumi.get(__ret__, 'update_time'))
+        update_time=pulumi.get(__ret__, 'update_time'),
+        vmware_source_vm_details=pulumi.get(__ret__, 'vmware_source_vm_details'))
 
 
 @_utilities.lift_output_func(get_migrating_vm)

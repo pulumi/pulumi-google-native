@@ -19,16 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetProxyConfigResult:
-    def __init__(__self__, authentication_info=None, create_time=None, display_name=None, name=None, proxy_uri=None, routing_info=None, transport_info=None, update_time=None):
-        if authentication_info and not isinstance(authentication_info, dict):
-            raise TypeError("Expected argument 'authentication_info' to be a dict")
-        pulumi.set(__self__, "authentication_info", authentication_info)
+    def __init__(__self__, create_time=None, display_name=None, encryption_info=None, name=None, proxy_uri=None, routing_info=None, transport_info=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if encryption_info and not isinstance(encryption_info, dict):
+            raise TypeError("Expected argument 'encryption_info' to be a dict")
+        pulumi.set(__self__, "encryption_info", encryption_info)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -46,14 +46,6 @@ class GetProxyConfigResult:
         pulumi.set(__self__, "update_time", update_time)
 
     @property
-    @pulumi.getter(name="authenticationInfo")
-    def authentication_info(self) -> 'outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse':
-        """
-        Optional. Information to facilitate Authentication against the proxy server.
-        """
-        return pulumi.get(self, "authentication_info")
-
-    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
@@ -68,6 +60,14 @@ class GetProxyConfigResult:
         Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="encryptionInfo")
+    def encryption_info(self) -> 'outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse':
+        """
+        Optional. Information to encrypt JWT for the proxy server.
+        """
+        return pulumi.get(self, "encryption_info")
 
     @property
     @pulumi.getter
@@ -116,9 +116,9 @@ class AwaitableGetProxyConfigResult(GetProxyConfigResult):
         if False:
             yield self
         return GetProxyConfigResult(
-            authentication_info=self.authentication_info,
             create_time=self.create_time,
             display_name=self.display_name,
+            encryption_info=self.encryption_info,
             name=self.name,
             proxy_uri=self.proxy_uri,
             routing_info=self.routing_info,
@@ -127,23 +127,23 @@ class AwaitableGetProxyConfigResult(GetProxyConfigResult):
 
 
 def get_proxy_config(organization_id: Optional[str] = None,
+                     partner_tenant_id: Optional[str] = None,
                      proxy_config_id: Optional[str] = None,
-                     tenant_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProxyConfigResult:
     """
-    Gets details of a single Tenant.
+    Gets details of a single ProxyConfig.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
+    __args__['partnerTenantId'] = partner_tenant_id
     __args__['proxyConfigId'] = proxy_config_id
-    __args__['tenantId'] = tenant_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1alpha:getProxyConfig', __args__, opts=opts, typ=GetProxyConfigResult).value
 
     return AwaitableGetProxyConfigResult(
-        authentication_info=pulumi.get(__ret__, 'authentication_info'),
         create_time=pulumi.get(__ret__, 'create_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        encryption_info=pulumi.get(__ret__, 'encryption_info'),
         name=pulumi.get(__ret__, 'name'),
         proxy_uri=pulumi.get(__ret__, 'proxy_uri'),
         routing_info=pulumi.get(__ret__, 'routing_info'),
@@ -153,10 +153,10 @@ def get_proxy_config(organization_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_proxy_config)
 def get_proxy_config_output(organization_id: Optional[pulumi.Input[str]] = None,
+                            partner_tenant_id: Optional[pulumi.Input[str]] = None,
                             proxy_config_id: Optional[pulumi.Input[str]] = None,
-                            tenant_id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProxyConfigResult]:
     """
-    Gets details of a single Tenant.
+    Gets details of a single ProxyConfig.
     """
     ...

@@ -126,7 +126,7 @@ class Attestor(pulumi.CustomResource):
                  user_owned_grafeas_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedGrafeasNoteArgs']]] = None,
                  __props__=None):
         """
-        Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
+        Creates an attestor, and returns a copy of the new attestor. Returns `NOT_FOUND` if the project does not exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the attestor already exists.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -143,7 +143,7 @@ class Attestor(pulumi.CustomResource):
                  args: AttestorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
+        Creates an attestor, and returns a copy of the new attestor. Returns `NOT_FOUND` if the project does not exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the attestor already exists.
 
         :param str resource_name: The name of the resource.
         :param AttestorArgs args: The arguments to use to populate this resource's properties.

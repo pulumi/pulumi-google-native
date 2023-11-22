@@ -29,6 +29,7 @@ __all__ = [
     'ScheduledSnapshotsConfigResponse',
     'SchedulerResourceResponse',
     'SoftwareConfigResponse',
+    'StorageConfigResponse',
     'TriggererResourceResponse',
     'WebServerConfigResponse',
     'WebServerNetworkAccessControlResponse',
@@ -167,12 +168,15 @@ class DatabaseConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 machine_type: str):
+                 machine_type: str,
+                 zone: str):
         """
         The configuration of Cloud SQL instance that is used by the Apache Airflow software.
         :param str machine_type: Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param str zone: Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
         """
         pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="machineType")
@@ -181,6 +185,14 @@ class DatabaseConfigResponse(dict):
         Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+        """
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type
@@ -256,6 +268,8 @@ class EnvironmentConfigResponse(dict):
             suggest = "private_environment_config"
         elif key == "recoveryConfig":
             suggest = "recovery_config"
+        elif key == "resilienceMode":
+            suggest = "resilience_mode"
         elif key == "softwareConfig":
             suggest = "software_config"
         elif key == "webServerConfig":
@@ -290,6 +304,7 @@ class EnvironmentConfigResponse(dict):
                  node_count: int,
                  private_environment_config: 'outputs.PrivateEnvironmentConfigResponse',
                  recovery_config: 'outputs.RecoveryConfigResponse',
+                 resilience_mode: str,
                  software_config: 'outputs.SoftwareConfigResponse',
                  web_server_config: 'outputs.WebServerConfigResponse',
                  web_server_network_access_control: 'outputs.WebServerNetworkAccessControlResponse',
@@ -309,6 +324,7 @@ class EnvironmentConfigResponse(dict):
         :param int node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'PrivateEnvironmentConfigResponse' private_environment_config: The configuration used for the Private IP Cloud Composer environment.
         :param 'RecoveryConfigResponse' recovery_config: Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        :param str resilience_mode: Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
         :param 'SoftwareConfigResponse' software_config: The configuration settings for software inside the environment.
         :param 'WebServerConfigResponse' web_server_config: Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'WebServerNetworkAccessControlResponse' web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
@@ -327,6 +343,7 @@ class EnvironmentConfigResponse(dict):
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_config", private_environment_config)
         pulumi.set(__self__, "recovery_config", recovery_config)
+        pulumi.set(__self__, "resilience_mode", resilience_mode)
         pulumi.set(__self__, "software_config", software_config)
         pulumi.set(__self__, "web_server_config", web_server_config)
         pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
@@ -435,6 +452,14 @@ class EnvironmentConfigResponse(dict):
         Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         """
         return pulumi.get(self, "recovery_config")
+
+    @property
+    @pulumi.getter(name="resilienceMode")
+    def resilience_mode(self) -> str:
+        """
+        Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "resilience_mode")
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -1398,6 +1423,28 @@ class SoftwareConfigResponse(dict):
         Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
         """
         return pulumi.get(self, "scheduler_count")
+
+
+@pulumi.output_type
+class StorageConfigResponse(dict):
+    """
+    The configuration for data storage in the environment.
+    """
+    def __init__(__self__, *,
+                 bucket: str):
+        """
+        The configuration for data storage in the environment.
+        :param str bucket: Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+        """
+        return pulumi.get(self, "bucket")
 
 
 @pulumi.output_type

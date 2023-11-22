@@ -5,5 +5,16 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
+from .conversation import *
+from .data_store import *
 from .document import *
+from .engine import *
+from .get_conversation import *
+from .get_data_store import *
 from .get_document import *
+from .get_engine import *
+from .get_schema import *
+from .schema import *
+from ._inputs import *
+from . import outputs

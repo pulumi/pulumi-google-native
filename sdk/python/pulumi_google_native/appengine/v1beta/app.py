@@ -22,10 +22,10 @@ class AppArgs:
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
                  dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['UrlDispatchRuleArgs']]]] = None,
                  feature_settings: Optional[pulumi.Input['FeatureSettingsArgs']] = None,
+                 generated_customer_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input['IdentityAwareProxyArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None):
         """
@@ -35,9 +35,9 @@ class AppArgs:
         :param pulumi.Input[str] default_cookie_expiration: Cookie expiration policy for this application.
         :param pulumi.Input[Sequence[pulumi.Input['UrlDispatchRuleArgs']]] dispatch_rules: HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
         :param pulumi.Input['FeatureSettingsArgs'] feature_settings: The feature specific settings to be used in the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] generated_customer_metadata: Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-        :param pulumi.Input[str] parent: The project and location in which the application should be created, specified in the format projects/*/locations/*
         :param pulumi.Input[str] service_account: The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
         :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
@@ -51,14 +51,14 @@ class AppArgs:
             pulumi.set(__self__, "dispatch_rules", dispatch_rules)
         if feature_settings is not None:
             pulumi.set(__self__, "feature_settings", feature_settings)
+        if generated_customer_metadata is not None:
+            pulumi.set(__self__, "generated_customer_metadata", generated_customer_metadata)
         if iap is not None:
             pulumi.set(__self__, "iap", iap)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if parent is not None:
-            pulumi.set(__self__, "parent", parent)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if serving_status is not None:
@@ -125,6 +125,18 @@ class AppArgs:
         pulumi.set(self, "feature_settings", value)
 
     @property
+    @pulumi.getter(name="generatedCustomerMetadata")
+    def generated_customer_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+        """
+        return pulumi.get(self, "generated_customer_metadata")
+
+    @generated_customer_metadata.setter
+    def generated_customer_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "generated_customer_metadata", value)
+
+    @property
     @pulumi.getter
     def iap(self) -> Optional[pulumi.Input['IdentityAwareProxyArgs']]:
         return pulumi.get(self, "iap")
@@ -156,18 +168,6 @@ class AppArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project and location in which the application should be created, specified in the format projects/*/locations/*
-        """
-        return pulumi.get(self, "parent")
-
-    @parent.setter
-    def parent(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -204,10 +204,10 @@ class App(pulumi.CustomResource):
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
                  dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlDispatchRuleArgs']]]]] = None,
                  feature_settings: Optional[pulumi.Input[pulumi.InputType['FeatureSettingsArgs']]] = None,
+                 generated_customer_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
@@ -224,9 +224,9 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] default_cookie_expiration: Cookie expiration policy for this application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlDispatchRuleArgs']]]] dispatch_rules: HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
         :param pulumi.Input[pulumi.InputType['FeatureSettingsArgs']] feature_settings: The feature specific settings to be used in the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] generated_customer_metadata: Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-        :param pulumi.Input[str] parent: The project and location in which the application should be created, specified in the format projects/*/locations/*
         :param pulumi.Input[str] service_account: The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
         :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
@@ -262,10 +262,10 @@ class App(pulumi.CustomResource):
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
                  dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlDispatchRuleArgs']]]]] = None,
                  feature_settings: Optional[pulumi.Input[pulumi.InputType['FeatureSettingsArgs']]] = None,
+                 generated_customer_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
@@ -282,10 +282,10 @@ class App(pulumi.CustomResource):
             __props__.__dict__["default_cookie_expiration"] = default_cookie_expiration
             __props__.__dict__["dispatch_rules"] = dispatch_rules
             __props__.__dict__["feature_settings"] = feature_settings
+            __props__.__dict__["generated_customer_metadata"] = generated_customer_metadata
             __props__.__dict__["iap"] = iap
             __props__.__dict__["id"] = id
             __props__.__dict__["location"] = location
-            __props__.__dict__["parent"] = parent
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["code_bucket"] = None
@@ -324,10 +324,10 @@ class App(pulumi.CustomResource):
         __props__.__dict__["dispatch_rules"] = None
         __props__.__dict__["feature_settings"] = None
         __props__.__dict__["gcr_domain"] = None
+        __props__.__dict__["generated_customer_metadata"] = None
         __props__.__dict__["iap"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
-        __props__.__dict__["parent"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["serving_status"] = None
         return App(resource_name, opts=opts, __props__=__props__)
@@ -405,6 +405,14 @@ class App(pulumi.CustomResource):
         return pulumi.get(self, "gcr_domain")
 
     @property
+    @pulumi.getter(name="generatedCustomerMetadata")
+    def generated_customer_metadata(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+        """
+        return pulumi.get(self, "generated_customer_metadata")
+
+    @property
     @pulumi.getter
     def iap(self) -> pulumi.Output['outputs.IdentityAwareProxyResponse']:
         return pulumi.get(self, "iap")
@@ -424,14 +432,6 @@ class App(pulumi.CustomResource):
         Full path to the Application resource in the API. Example: apps/myapp.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def parent(self) -> pulumi.Output[Optional[str]]:
-        """
-        The project and location in which the application should be created, specified in the format projects/*/locations/*
-        """
-        return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter(name="serviceAccount")

@@ -196,7 +196,7 @@ class DataCatalogConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         Specifies how metastore metadata should be integrated with the Data Catalog service.
-        :param pulumi.Input[bool] enabled: Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        :param pulumi.Input[bool] enabled: Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -205,7 +205,7 @@ class DataCatalogConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
         """
         return pulumi.get(self, "enabled")
 
@@ -597,7 +597,7 @@ class MetadataIntegrationArgs:
                  dataplex_config: Optional[pulumi.Input['DataplexConfigArgs']] = None):
         """
         Specifies how metastore metadata should be integrated with external services.
-        :param pulumi.Input['DataCatalogConfigArgs'] data_catalog_config: The integration config for the Data Catalog service.
+        :param pulumi.Input['DataCatalogConfigArgs'] data_catalog_config: Optional. The integration config for the Data Catalog service.
         :param pulumi.Input['DataplexConfigArgs'] dataplex_config: The integration config for the Dataplex service.
         """
         if data_catalog_config is not None:
@@ -609,7 +609,7 @@ class MetadataIntegrationArgs:
     @pulumi.getter(name="dataCatalogConfig")
     def data_catalog_config(self) -> Optional[pulumi.Input['DataCatalogConfigArgs']]:
         """
-        The integration config for the Data Catalog service.
+        Optional. The integration config for the Data Catalog service.
         """
         return pulumi.get(self, "data_catalog_config")
 

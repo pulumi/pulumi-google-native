@@ -19,13 +19,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+    def __init__(__self__, aggregate_reservation=None, commitment=None, creation_timestamp=None, delete_after_duration=None, delete_at_time=None, description=None, kind=None, name=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+        if aggregate_reservation and not isinstance(aggregate_reservation, dict):
+            raise TypeError("Expected argument 'aggregate_reservation' to be a dict")
+        pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if delete_after_duration and not isinstance(delete_after_duration, dict):
+            raise TypeError("Expected argument 'delete_after_duration' to be a dict")
+        pulumi.set(__self__, "delete_after_duration", delete_after_duration)
+        if delete_at_time and not isinstance(delete_at_time, str):
+            raise TypeError("Expected argument 'delete_at_time' to be a str")
+        pulumi.set(__self__, "delete_at_time", delete_at_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -64,6 +73,14 @@ class GetReservationResult:
         pulumi.set(__self__, "zone", zone)
 
     @property
+    @pulumi.getter(name="aggregateReservation")
+    def aggregate_reservation(self) -> 'outputs.AllocationAggregateReservationResponse':
+        """
+        Reservation for aggregated resources, providing shape flexibility.
+        """
+        return pulumi.get(self, "aggregate_reservation")
+
+    @property
     @pulumi.getter
     def commitment(self) -> str:
         """
@@ -78,6 +95,22 @@ class GetReservationResult:
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="deleteAfterDuration")
+    def delete_after_duration(self) -> 'outputs.DurationResponse':
+        """
+        Duration time relative to reservation creation when GCE will automatically delete this resource.
+        """
+        return pulumi.get(self, "delete_after_duration")
+
+    @property
+    @pulumi.getter(name="deleteAtTime")
+    def delete_at_time(self) -> str:
+        """
+        Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        """
+        return pulumi.get(self, "delete_at_time")
 
     @property
     @pulumi.getter
@@ -182,8 +215,11 @@ class AwaitableGetReservationResult(GetReservationResult):
         if False:
             yield self
         return GetReservationResult(
+            aggregate_reservation=self.aggregate_reservation,
             commitment=self.commitment,
             creation_timestamp=self.creation_timestamp,
+            delete_after_duration=self.delete_after_duration,
+            delete_at_time=self.delete_at_time,
             description=self.description,
             kind=self.kind,
             name=self.name,
@@ -213,8 +249,11 @@ def get_reservation(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
+        aggregate_reservation=pulumi.get(__ret__, 'aggregate_reservation'),
         commitment=pulumi.get(__ret__, 'commitment'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        delete_after_duration=pulumi.get(__ret__, 'delete_after_duration'),
+        delete_at_time=pulumi.get(__ret__, 'delete_at_time'),
         description=pulumi.get(__ret__, 'description'),
         kind=pulumi.get(__ret__, 'kind'),
         name=pulumi.get(__ret__, 'name'),

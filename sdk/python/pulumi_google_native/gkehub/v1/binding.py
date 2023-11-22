@@ -17,7 +17,7 @@ class BindingInitArgs:
     def __init__(__self__, *,
                  membership_binding_id: pulumi.Input[str],
                  membership_id: pulumi.Input[str],
-                 fleet: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -25,14 +25,14 @@ class BindingInitArgs:
         """
         The set of arguments for constructing a Binding resource.
         :param pulumi.Input[str] membership_binding_id: Required. The ID to use for the MembershipBinding.
-        :param pulumi.Input[bool] fleet: Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this MembershipBinding.
         :param pulumi.Input[str] name: The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
-        :param pulumi.Input[str] scope: A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        :param pulumi.Input[str] scope: A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         """
         pulumi.set(__self__, "membership_binding_id", membership_binding_id)
         pulumi.set(__self__, "membership_id", membership_id)
-        if fleet is not None:
-            pulumi.set(__self__, "fleet", fleet)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -65,15 +65,15 @@ class BindingInitArgs:
 
     @property
     @pulumi.getter
-    def fleet(self) -> Optional[pulumi.Input[bool]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        Optional. Labels for this MembershipBinding.
         """
-        return pulumi.get(self, "fleet")
+        return pulumi.get(self, "labels")
 
-    @fleet.setter
-    def fleet(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "fleet", value)
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -109,7 +109,7 @@ class BindingInitArgs:
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
-        A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         """
         return pulumi.get(self, "scope")
 
@@ -123,7 +123,7 @@ class Binding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fleet: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_binding_id: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -137,10 +137,10 @@ class Binding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] fleet: Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this MembershipBinding.
         :param pulumi.Input[str] membership_binding_id: Required. The ID to use for the MembershipBinding.
         :param pulumi.Input[str] name: The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
-        :param pulumi.Input[str] scope: A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        :param pulumi.Input[str] scope: A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         """
         ...
     @overload
@@ -167,7 +167,7 @@ class Binding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fleet: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_binding_id: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -183,7 +183,7 @@ class Binding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BindingInitArgs.__new__(BindingInitArgs)
 
-            __props__.__dict__["fleet"] = fleet
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             if membership_binding_id is None and not opts.urn:
                 raise TypeError("Missing required property 'membership_binding_id'")
@@ -225,7 +225,7 @@ class Binding(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
-        __props__.__dict__["fleet"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["membership_binding_id"] = None
         __props__.__dict__["membership_id"] = None
@@ -255,11 +255,11 @@ class Binding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fleet(self) -> pulumi.Output[bool]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+        Optional. Labels for this MembershipBinding.
         """
-        return pulumi.get(self, "fleet")
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -296,7 +296,7 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
         """
-        A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         """
         return pulumi.get(self, "scope")
 

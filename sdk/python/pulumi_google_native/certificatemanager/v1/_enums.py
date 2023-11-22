@@ -53,5 +53,9 @@ class CertificateScope(str, Enum):
     """
     EDGE_CACHE = "EDGE_CACHE"
     """
-    Certificates with scope EDGE_CACHE are special-purposed certificates, served from non-core Google data centers.
+    Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence. See https://cloud.google.com/vpc/docs/edge-locations.
+    """
+    ALL_REGIONS = "ALL_REGIONS"
+    """
+    Certificates with ALL_REGIONS scope are served from all Google Cloud regions. See https://cloud.google.com/compute/docs/regions-zones.
     """

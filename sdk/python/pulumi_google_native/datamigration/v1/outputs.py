@@ -14,27 +14,49 @@ from ._enums import *
 __all__ = [
     'AlloyDbConnectionProfileResponse',
     'AlloyDbSettingsResponse',
+    'ApplyHashResponse',
+    'AssignSpecificValueResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
     'CloudSqlConnectionProfileResponse',
     'CloudSqlSettingsResponse',
+    'ConditionalColumnSetValueResponse',
     'ConversionWorkspaceInfoResponse',
+    'ConvertRowIdToColumnResponse',
+    'DataCacheConfigResponse',
     'DatabaseEngineInfoResponse',
     'DatabaseTypeResponse',
+    'DoubleComparisonFilterResponse',
     'DumpFlagResponse',
     'DumpFlagsResponse',
+    'EmptyResponse',
     'EncryptionConfigResponse',
+    'EntityMoveResponse',
     'ExprResponse',
+    'FilterTableColumnsResponse',
     'ForwardSshTunnelConnectivityResponse',
+    'IntComparisonFilterResponse',
     'MachineConfigResponse',
+    'MappingRuleFilterResponse',
+    'MultiColumnDatatypeChangeResponse',
+    'MultiEntityRenameResponse',
     'MySqlConnectionProfileResponse',
     'OracleConnectionProfileResponse',
+    'PerformanceConfigResponse',
     'PostgreSqlConnectionProfileResponse',
     'PrimaryInstanceSettingsResponse',
     'PrivateConnectivityResponse',
     'PrivateServiceConnectConnectivityResponse',
     'ReverseSshConnectivityResponse',
+    'RoundToScaleResponse',
+    'SetTablePrimaryKeyResponse',
+    'SingleColumnChangeResponse',
+    'SingleEntityRenameResponse',
+    'SinglePackageChangeResponse',
+    'SourceNumericFilterResponse',
+    'SourceSqlChangeResponse',
+    'SourceTextFilterResponse',
     'SqlAclEntryResponse',
     'SqlIpConfigResponse',
     'SslConfigResponse',
@@ -42,6 +64,8 @@ __all__ = [
     'StaticServiceIpConnectivityResponse',
     'StatusResponse',
     'UserPasswordResponse',
+    'ValueListFilterResponse',
+    'ValueTransformationResponse',
     'VpcPeeringConfigResponse',
     'VpcPeeringConnectivityResponse',
 ]
@@ -104,7 +128,9 @@ class AlloyDbSettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "encryptionConfig":
+        if key == "databaseVersion":
+            suggest = "database_version"
+        elif key == "encryptionConfig":
             suggest = "encryption_config"
         elif key == "initialUser":
             suggest = "initial_user"
@@ -125,6 +151,7 @@ class AlloyDbSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 database_version: str,
                  encryption_config: 'outputs.EncryptionConfigResponse',
                  initial_user: 'outputs.UserPasswordResponse',
                  labels: Mapping[str, str],
@@ -132,16 +159,26 @@ class AlloyDbSettingsResponse(dict):
                  vpc_network: str):
         """
         Settings for creating an AlloyDB cluster.
+        :param str database_version: Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
         :param 'EncryptionConfigResponse' encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         :param 'UserPasswordResponse' initial_user: Input only. Initial user to setup during cluster creation. Required.
         :param Mapping[str, str] labels: Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
         :param str vpc_network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
         """
+        pulumi.set(__self__, "database_version", database_version)
         pulumi.set(__self__, "encryption_config", encryption_config)
         pulumi.set(__self__, "initial_user", initial_user)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "primary_instance_settings", primary_instance_settings)
         pulumi.set(__self__, "vpc_network", vpc_network)
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> str:
+        """
+        Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
+        """
+        return pulumi.get(self, "database_version")
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -179,6 +216,67 @@ class AlloyDbSettingsResponse(dict):
         The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
         """
         return pulumi.get(self, "vpc_network")
+
+
+@pulumi.output_type
+class ApplyHashResponse(dict):
+    """
+    Apply a hash function on the value.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "uuidFromBytes":
+            suggest = "uuid_from_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplyHashResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplyHashResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplyHashResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uuid_from_bytes: 'outputs.EmptyResponse'):
+        """
+        Apply a hash function on the value.
+        :param 'EmptyResponse' uuid_from_bytes: Optional. Generate UUID from the data's byte array
+        """
+        pulumi.set(__self__, "uuid_from_bytes", uuid_from_bytes)
+
+    @property
+    @pulumi.getter(name="uuidFromBytes")
+    def uuid_from_bytes(self) -> 'outputs.EmptyResponse':
+        """
+        Optional. Generate UUID from the data's byte array
+        """
+        return pulumi.get(self, "uuid_from_bytes")
+
+
+@pulumi.output_type
+class AssignSpecificValueResponse(dict):
+    """
+    Set to a specific value (value is converted to fit the target data type)
+    """
+    def __init__(__self__, *,
+                 value: str):
+        """
+        Set to a specific value (value is converted to fit the target data type)
+        :param str value: Specific value to be assigned
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Specific value to be assigned
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -432,6 +530,8 @@ class CloudSqlSettingsResponse(dict):
             suggest = "availability_type"
         elif key == "cmekKeyName":
             suggest = "cmek_key_name"
+        elif key == "dataCacheConfig":
+            suggest = "data_cache_config"
         elif key == "dataDiskSizeGb":
             suggest = "data_disk_size_gb"
         elif key == "dataDiskType":
@@ -472,10 +572,12 @@ class CloudSqlSettingsResponse(dict):
                  availability_type: str,
                  cmek_key_name: str,
                  collation: str,
+                 data_cache_config: 'outputs.DataCacheConfigResponse',
                  data_disk_size_gb: str,
                  data_disk_type: str,
                  database_flags: Mapping[str, str],
                  database_version: str,
+                 edition: str,
                  ip_config: 'outputs.SqlIpConfigResponse',
                  root_password: str,
                  root_password_set: bool,
@@ -492,10 +594,12 @@ class CloudSqlSettingsResponse(dict):
         :param str availability_type: Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
         :param str cmek_key_name: The KMS key name used for the csql instance.
         :param str collation: The Cloud SQL default instance level collation.
+        :param 'DataCacheConfigResponse' data_cache_config: Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
         :param str data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         :param str data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
         :param Mapping[str, str] database_flags: The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param str database_version: The database engine type and version.
+        :param str edition: Optional. The edition of the given Cloud SQL instance.
         :param 'SqlIpConfigResponse' ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         :param str root_password: Input only. Initial root password.
         :param bool root_password_set: Indicates If this connection profile root password is stored.
@@ -511,10 +615,12 @@ class CloudSqlSettingsResponse(dict):
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "cmek_key_name", cmek_key_name)
         pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "data_cache_config", data_cache_config)
         pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         pulumi.set(__self__, "data_disk_type", data_disk_type)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "database_version", database_version)
+        pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "ip_config", ip_config)
         pulumi.set(__self__, "root_password", root_password)
         pulumi.set(__self__, "root_password_set", root_password_set)
@@ -566,6 +672,14 @@ class CloudSqlSettingsResponse(dict):
         return pulumi.get(self, "collation")
 
     @property
+    @pulumi.getter(name="dataCacheConfig")
+    def data_cache_config(self) -> 'outputs.DataCacheConfigResponse':
+        """
+        Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+        """
+        return pulumi.get(self, "data_cache_config")
+
+    @property
     @pulumi.getter(name="dataDiskSizeGb")
     def data_disk_size_gb(self) -> str:
         """
@@ -596,6 +710,14 @@ class CloudSqlSettingsResponse(dict):
         The database engine type and version.
         """
         return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        Optional. The edition of the given Cloud SQL instance.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="ipConfig")
@@ -671,6 +793,84 @@ class CloudSqlSettingsResponse(dict):
 
 
 @pulumi.output_type
+class ConditionalColumnSetValueResponse(dict):
+    """
+    Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customFeatures":
+            suggest = "custom_features"
+        elif key == "sourceNumericFilter":
+            suggest = "source_numeric_filter"
+        elif key == "sourceTextFilter":
+            suggest = "source_text_filter"
+        elif key == "valueTransformation":
+            suggest = "value_transformation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionalColumnSetValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionalColumnSetValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionalColumnSetValueResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_features: Mapping[str, str],
+                 source_numeric_filter: 'outputs.SourceNumericFilterResponse',
+                 source_text_filter: 'outputs.SourceTextFilterResponse',
+                 value_transformation: 'outputs.ValueTransformationResponse'):
+        """
+        Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
+        :param Mapping[str, str] custom_features: Optional. Custom engine specific features.
+        :param 'SourceNumericFilterResponse' source_numeric_filter: Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+        :param 'SourceTextFilterResponse' source_text_filter: Optional. Optional filter on source column length. Used for text based data types like varchar.
+        :param 'ValueTransformationResponse' value_transformation: Description of data transformation during migration.
+        """
+        pulumi.set(__self__, "custom_features", custom_features)
+        pulumi.set(__self__, "source_numeric_filter", source_numeric_filter)
+        pulumi.set(__self__, "source_text_filter", source_text_filter)
+        pulumi.set(__self__, "value_transformation", value_transformation)
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Mapping[str, str]:
+        """
+        Optional. Custom engine specific features.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @property
+    @pulumi.getter(name="sourceNumericFilter")
+    def source_numeric_filter(self) -> 'outputs.SourceNumericFilterResponse':
+        """
+        Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
+        """
+        return pulumi.get(self, "source_numeric_filter")
+
+    @property
+    @pulumi.getter(name="sourceTextFilter")
+    def source_text_filter(self) -> 'outputs.SourceTextFilterResponse':
+        """
+        Optional. Optional filter on source column length. Used for text based data types like varchar.
+        """
+        return pulumi.get(self, "source_text_filter")
+
+    @property
+    @pulumi.getter(name="valueTransformation")
+    def value_transformation(self) -> 'outputs.ValueTransformationResponse':
+        """
+        Description of data transformation during migration.
+        """
+        return pulumi.get(self, "value_transformation")
+
+
+@pulumi.output_type
 class ConversionWorkspaceInfoResponse(dict):
     """
     A conversion workspace's version.
@@ -721,6 +921,84 @@ class ConversionWorkspaceInfoResponse(dict):
 
 
 @pulumi.output_type
+class ConvertRowIdToColumnResponse(dict):
+    """
+    Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onlyIfNoPrimaryKey":
+            suggest = "only_if_no_primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConvertRowIdToColumnResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConvertRowIdToColumnResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConvertRowIdToColumnResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 only_if_no_primary_key: bool):
+        """
+        Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined.
+        :param bool only_if_no_primary_key: Only work on tables without primary key defined
+        """
+        pulumi.set(__self__, "only_if_no_primary_key", only_if_no_primary_key)
+
+    @property
+    @pulumi.getter(name="onlyIfNoPrimaryKey")
+    def only_if_no_primary_key(self) -> bool:
+        """
+        Only work on tables without primary key defined
+        """
+        return pulumi.get(self, "only_if_no_primary_key")
+
+
+@pulumi.output_type
+class DataCacheConfigResponse(dict):
+    """
+    Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataCacheEnabled":
+            suggest = "data_cache_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataCacheConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataCacheConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataCacheConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_cache_enabled: bool):
+        """
+        Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+        :param bool data_cache_enabled: Optional. Whether data cache is enabled for the instance.
+        """
+        pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
+
+    @property
+    @pulumi.getter(name="dataCacheEnabled")
+    def data_cache_enabled(self) -> bool:
+        """
+        Optional. Whether data cache is enabled for the instance.
+        """
+        return pulumi.get(self, "data_cache_enabled")
+
+
+@pulumi.output_type
 class DatabaseEngineInfoResponse(dict):
     """
     The type and version of a source or destination database.
@@ -731,7 +1009,7 @@ class DatabaseEngineInfoResponse(dict):
         """
         The type and version of a source or destination database.
         :param str engine: Engine type.
-        :param str version: Engine named version, for example 12.c.1.
+        :param str version: Engine version, for example "12.c.1".
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "version", version)
@@ -748,7 +1026,7 @@ class DatabaseEngineInfoResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Engine named version, for example 12.c.1.
+        Engine version, for example "12.c.1".
         """
         return pulumi.get(self, "version")
 
@@ -784,6 +1062,56 @@ class DatabaseTypeResponse(dict):
         The database provider.
         """
         return pulumi.get(self, "provider")
+
+
+@pulumi.output_type
+class DoubleComparisonFilterResponse(dict):
+    """
+    Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueComparison":
+            suggest = "value_comparison"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DoubleComparisonFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DoubleComparisonFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DoubleComparisonFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 value: float,
+                 value_comparison: str):
+        """
+        Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+        :param float value: Double compare value to be used
+        :param str value_comparison: Relation between source value and compare value
+        """
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_comparison", value_comparison)
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        Double compare value to be used
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueComparison")
+    def value_comparison(self) -> str:
+        """
+        Relation between source value and compare value
+        """
+        return pulumi.get(self, "value_comparison")
 
 
 @pulumi.output_type
@@ -859,6 +1187,18 @@ class DumpFlagsResponse(dict):
 
 
 @pulumi.output_type
+class EmptyResponse(dict):
+    """
+    A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    """
+    def __init__(__self__):
+        """
+        A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+        """
+        pass
+
+
+@pulumi.output_type
 class EncryptionConfigResponse(dict):
     """
     EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
@@ -895,6 +1235,45 @@ class EncryptionConfigResponse(dict):
         The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class EntityMoveResponse(dict):
+    """
+    Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newSchema":
+            suggest = "new_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntityMoveResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntityMoveResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntityMoveResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 new_schema: str):
+        """
+        Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+        :param str new_schema: The new schema
+        """
+        pulumi.set(__self__, "new_schema", new_schema)
+
+    @property
+    @pulumi.getter(name="newSchema")
+    def new_schema(self) -> str:
+        """
+        The new schema
+        """
+        return pulumi.get(self, "new_schema")
 
 
 @pulumi.output_type
@@ -950,6 +1329,58 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FilterTableColumnsResponse(dict):
+    """
+    Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeColumns":
+            suggest = "exclude_columns"
+        elif key == "includeColumns":
+            suggest = "include_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FilterTableColumnsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FilterTableColumnsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FilterTableColumnsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_columns: Sequence[str],
+                 include_columns: Sequence[str]):
+        """
+        Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule.
+        :param Sequence[str] exclude_columns: Optional. List of columns to be excluded for a particular table.
+        :param Sequence[str] include_columns: Optional. List of columns to be included for a particular table.
+        """
+        pulumi.set(__self__, "exclude_columns", exclude_columns)
+        pulumi.set(__self__, "include_columns", include_columns)
+
+    @property
+    @pulumi.getter(name="excludeColumns")
+    def exclude_columns(self) -> Sequence[str]:
+        """
+        Optional. List of columns to be excluded for a particular table.
+        """
+        return pulumi.get(self, "exclude_columns")
+
+    @property
+    @pulumi.getter(name="includeColumns")
+    def include_columns(self) -> Sequence[str]:
+        """
+        Optional. List of columns to be included for a particular table.
+        """
+        return pulumi.get(self, "include_columns")
 
 
 @pulumi.output_type
@@ -1036,6 +1467,56 @@ class ForwardSshTunnelConnectivityResponse(dict):
 
 
 @pulumi.output_type
+class IntComparisonFilterResponse(dict):
+    """
+    Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueComparison":
+            suggest = "value_comparison"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntComparisonFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntComparisonFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntComparisonFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 value: str,
+                 value_comparison: str):
+        """
+        Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+        :param str value: Integer compare value to be used
+        :param str value_comparison: Relation between source value and compare value
+        """
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_comparison", value_comparison)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Integer compare value to be used
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueComparison")
+    def value_comparison(self) -> str:
+        """
+        Relation between source value and compare value
+        """
+        return pulumi.get(self, "value_comparison")
+
+
+@pulumi.output_type
 class MachineConfigResponse(dict):
     """
     MachineConfig describes the configuration of a machine.
@@ -1072,6 +1553,290 @@ class MachineConfigResponse(dict):
         The number of CPU's in the VM instance.
         """
         return pulumi.get(self, "cpu_count")
+
+
+@pulumi.output_type
+class MappingRuleFilterResponse(dict):
+    """
+    A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityNameContains":
+            suggest = "entity_name_contains"
+        elif key == "entityNamePrefix":
+            suggest = "entity_name_prefix"
+        elif key == "entityNameSuffix":
+            suggest = "entity_name_suffix"
+        elif key == "parentEntity":
+            suggest = "parent_entity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MappingRuleFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MappingRuleFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MappingRuleFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entities: Sequence[str],
+                 entity_name_contains: str,
+                 entity_name_prefix: str,
+                 entity_name_suffix: str,
+                 parent_entity: str):
+        """
+        A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
+        :param Sequence[str] entities: Optional. The rule should be applied to specific entities defined by their fully qualified names.
+        :param str entity_name_contains: Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+        :param str entity_name_prefix: Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+        :param str entity_name_suffix: Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+        :param str parent_entity: Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+        """
+        pulumi.set(__self__, "entities", entities)
+        pulumi.set(__self__, "entity_name_contains", entity_name_contains)
+        pulumi.set(__self__, "entity_name_prefix", entity_name_prefix)
+        pulumi.set(__self__, "entity_name_suffix", entity_name_suffix)
+        pulumi.set(__self__, "parent_entity", parent_entity)
+
+    @property
+    @pulumi.getter
+    def entities(self) -> Sequence[str]:
+        """
+        Optional. The rule should be applied to specific entities defined by their fully qualified names.
+        """
+        return pulumi.get(self, "entities")
+
+    @property
+    @pulumi.getter(name="entityNameContains")
+    def entity_name_contains(self) -> str:
+        """
+        Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+        """
+        return pulumi.get(self, "entity_name_contains")
+
+    @property
+    @pulumi.getter(name="entityNamePrefix")
+    def entity_name_prefix(self) -> str:
+        """
+        Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+        """
+        return pulumi.get(self, "entity_name_prefix")
+
+    @property
+    @pulumi.getter(name="entityNameSuffix")
+    def entity_name_suffix(self) -> str:
+        """
+        Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+        """
+        return pulumi.get(self, "entity_name_suffix")
+
+    @property
+    @pulumi.getter(name="parentEntity")
+    def parent_entity(self) -> str:
+        """
+        Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
+        """
+        return pulumi.get(self, "parent_entity")
+
+
+@pulumi.output_type
+class MultiColumnDatatypeChangeResponse(dict):
+    """
+    Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customFeatures":
+            suggest = "custom_features"
+        elif key == "newDataType":
+            suggest = "new_data_type"
+        elif key == "overrideFractionalSecondsPrecision":
+            suggest = "override_fractional_seconds_precision"
+        elif key == "overrideLength":
+            suggest = "override_length"
+        elif key == "overridePrecision":
+            suggest = "override_precision"
+        elif key == "overrideScale":
+            suggest = "override_scale"
+        elif key == "sourceDataTypeFilter":
+            suggest = "source_data_type_filter"
+        elif key == "sourceNumericFilter":
+            suggest = "source_numeric_filter"
+        elif key == "sourceTextFilter":
+            suggest = "source_text_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiColumnDatatypeChangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiColumnDatatypeChangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiColumnDatatypeChangeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_features: Mapping[str, str],
+                 new_data_type: str,
+                 override_fractional_seconds_precision: int,
+                 override_length: str,
+                 override_precision: int,
+                 override_scale: int,
+                 source_data_type_filter: str,
+                 source_numeric_filter: 'outputs.SourceNumericFilterResponse',
+                 source_text_filter: 'outputs.SourceTextFilterResponse'):
+        """
+        Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
+        :param Mapping[str, str] custom_features: Optional. Custom engine specific features.
+        :param str new_data_type: New data type.
+        :param int override_fractional_seconds_precision: Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+        :param str override_length: Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+        :param int override_precision: Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+        :param int override_scale: Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+        :param str source_data_type_filter: Filter on source data type.
+        :param 'SourceNumericFilterResponse' source_numeric_filter: Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+        :param 'SourceTextFilterResponse' source_text_filter: Optional. Filter for text-based data types like varchar.
+        """
+        pulumi.set(__self__, "custom_features", custom_features)
+        pulumi.set(__self__, "new_data_type", new_data_type)
+        pulumi.set(__self__, "override_fractional_seconds_precision", override_fractional_seconds_precision)
+        pulumi.set(__self__, "override_length", override_length)
+        pulumi.set(__self__, "override_precision", override_precision)
+        pulumi.set(__self__, "override_scale", override_scale)
+        pulumi.set(__self__, "source_data_type_filter", source_data_type_filter)
+        pulumi.set(__self__, "source_numeric_filter", source_numeric_filter)
+        pulumi.set(__self__, "source_text_filter", source_text_filter)
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Mapping[str, str]:
+        """
+        Optional. Custom engine specific features.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @property
+    @pulumi.getter(name="newDataType")
+    def new_data_type(self) -> str:
+        """
+        New data type.
+        """
+        return pulumi.get(self, "new_data_type")
+
+    @property
+    @pulumi.getter(name="overrideFractionalSecondsPrecision")
+    def override_fractional_seconds_precision(self) -> int:
+        """
+        Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
+        """
+        return pulumi.get(self, "override_fractional_seconds_precision")
+
+    @property
+    @pulumi.getter(name="overrideLength")
+    def override_length(self) -> str:
+        """
+        Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+        """
+        return pulumi.get(self, "override_length")
+
+    @property
+    @pulumi.getter(name="overridePrecision")
+    def override_precision(self) -> int:
+        """
+        Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+        """
+        return pulumi.get(self, "override_precision")
+
+    @property
+    @pulumi.getter(name="overrideScale")
+    def override_scale(self) -> int:
+        """
+        Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+        """
+        return pulumi.get(self, "override_scale")
+
+    @property
+    @pulumi.getter(name="sourceDataTypeFilter")
+    def source_data_type_filter(self) -> str:
+        """
+        Filter on source data type.
+        """
+        return pulumi.get(self, "source_data_type_filter")
+
+    @property
+    @pulumi.getter(name="sourceNumericFilter")
+    def source_numeric_filter(self) -> 'outputs.SourceNumericFilterResponse':
+        """
+        Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
+        """
+        return pulumi.get(self, "source_numeric_filter")
+
+    @property
+    @pulumi.getter(name="sourceTextFilter")
+    def source_text_filter(self) -> 'outputs.SourceTextFilterResponse':
+        """
+        Optional. Filter for text-based data types like varchar.
+        """
+        return pulumi.get(self, "source_text_filter")
+
+
+@pulumi.output_type
+class MultiEntityRenameResponse(dict):
+    """
+    Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newNamePattern":
+            suggest = "new_name_pattern"
+        elif key == "sourceNameTransformation":
+            suggest = "source_name_transformation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiEntityRenameResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiEntityRenameResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiEntityRenameResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 new_name_pattern: str,
+                 source_name_transformation: str):
+        """
+        Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+        :param str new_name_pattern: Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+        :param str source_name_transformation: Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+        """
+        pulumi.set(__self__, "new_name_pattern", new_name_pattern)
+        pulumi.set(__self__, "source_name_transformation", source_name_transformation)
+
+    @property
+    @pulumi.getter(name="newNamePattern")
+    def new_name_pattern(self) -> str:
+        """
+        Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
+        """
+        return pulumi.get(self, "new_name_pattern")
+
+    @property
+    @pulumi.getter(name="sourceNameTransformation")
+    def source_name_transformation(self) -> str:
+        """
+        Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+        """
+        return pulumi.get(self, "source_name_transformation")
 
 
 @pulumi.output_type
@@ -1219,6 +1984,7 @@ class OracleConnectionProfileResponse(dict):
                  password_set: bool,
                  port: int,
                  private_connectivity: 'outputs.PrivateConnectivityResponse',
+                 ssl: 'outputs.SslConfigResponse',
                  static_service_ip_connectivity: 'outputs.StaticServiceIpConnectivityResponse',
                  username: str):
         """
@@ -1230,6 +1996,7 @@ class OracleConnectionProfileResponse(dict):
         :param bool password_set: Indicates whether a new password is included in the request.
         :param int port: The network port of the source Oracle database.
         :param 'PrivateConnectivityResponse' private_connectivity: Private connectivity.
+        :param 'SslConfigResponse' ssl: SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
         :param 'StaticServiceIpConnectivityResponse' static_service_ip_connectivity: Static Service IP connectivity.
         :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
@@ -1240,6 +2007,7 @@ class OracleConnectionProfileResponse(dict):
         pulumi.set(__self__, "password_set", password_set)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "private_connectivity", private_connectivity)
+        pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
         pulumi.set(__self__, "username", username)
 
@@ -1300,6 +2068,14 @@ class OracleConnectionProfileResponse(dict):
         return pulumi.get(self, "private_connectivity")
 
     @property
+    @pulumi.getter
+    def ssl(self) -> 'outputs.SslConfigResponse':
+        """
+        SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
+        """
+        return pulumi.get(self, "ssl")
+
+    @property
     @pulumi.getter(name="staticServiceIpConnectivity")
     def static_service_ip_connectivity(self) -> 'outputs.StaticServiceIpConnectivityResponse':
         """
@@ -1317,6 +2093,45 @@ class OracleConnectionProfileResponse(dict):
 
 
 @pulumi.output_type
+class PerformanceConfigResponse(dict):
+    """
+    Performance configuration definition.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dumpParallelLevel":
+            suggest = "dump_parallel_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PerformanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PerformanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PerformanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dump_parallel_level: str):
+        """
+        Performance configuration definition.
+        :param str dump_parallel_level: Initial dump parallelism level.
+        """
+        pulumi.set(__self__, "dump_parallel_level", dump_parallel_level)
+
+    @property
+    @pulumi.getter(name="dumpParallelLevel")
+    def dump_parallel_level(self) -> str:
+        """
+        Initial dump parallelism level.
+        """
+        return pulumi.get(self, "dump_parallel_level")
+
+
+@pulumi.output_type
 class PostgreSqlConnectionProfileResponse(dict):
     """
     Specifies connection parameters required specifically for PostgreSQL databases.
@@ -1324,7 +2139,9 @@ class PostgreSqlConnectionProfileResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudSqlId":
+        if key == "alloydbClusterId":
+            suggest = "alloydb_cluster_id"
+        elif key == "cloudSqlId":
             suggest = "cloud_sql_id"
         elif key == "networkArchitecture":
             suggest = "network_architecture"
@@ -1347,6 +2164,7 @@ class PostgreSqlConnectionProfileResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 alloydb_cluster_id: str,
                  cloud_sql_id: str,
                  host: str,
                  network_architecture: str,
@@ -1359,6 +2177,7 @@ class PostgreSqlConnectionProfileResponse(dict):
                  username: str):
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
+        :param str alloydb_cluster_id: Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
         :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param str host: The IP or hostname of the source PostgreSQL database.
         :param str network_architecture: If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
@@ -1370,6 +2189,7 @@ class PostgreSqlConnectionProfileResponse(dict):
         :param 'StaticIpConnectivityResponse' static_ip_connectivity: Static ip connectivity data (default, no additional details needed).
         :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
+        pulumi.set(__self__, "alloydb_cluster_id", alloydb_cluster_id)
         pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "network_architecture", network_architecture)
@@ -1380,6 +2200,14 @@ class PostgreSqlConnectionProfileResponse(dict):
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "static_ip_connectivity", static_ip_connectivity)
         pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="alloydbClusterId")
+    def alloydb_cluster_id(self) -> str:
+        """
+        Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+        """
+        return pulumi.get(self, "alloydb_cluster_id")
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -1580,7 +2408,7 @@ class PrivateConnectivityResponse(dict):
 @pulumi.output_type
 class PrivateServiceConnectConnectivityResponse(dict):
     """
-    Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+    [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1602,7 +2430,7 @@ class PrivateServiceConnectConnectivityResponse(dict):
     def __init__(__self__, *,
                  service_attachment: str):
         """
-        Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+        [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
         :param str service_attachment: A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
         """
         pulumi.set(__self__, "service_attachment", service_attachment)
@@ -1688,6 +2516,556 @@ class ReverseSshConnectivityResponse(dict):
         The name of the VPC to peer with the Cloud SQL private network.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class RoundToScaleResponse(dict):
+    """
+    This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+    """
+    def __init__(__self__, *,
+                 scale: int):
+        """
+        This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0.
+        :param int scale: Scale value to be used
+        """
+        pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> int:
+        """
+        Scale value to be used
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class SetTablePrimaryKeyResponse(dict):
+    """
+    Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryKey":
+            suggest = "primary_key"
+        elif key == "primaryKeyColumns":
+            suggest = "primary_key_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SetTablePrimaryKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SetTablePrimaryKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SetTablePrimaryKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_key: str,
+                 primary_key_columns: Sequence[str]):
+        """
+        Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
+        :param str primary_key: Optional. Name for the primary key
+        :param Sequence[str] primary_key_columns: List of column names for the primary key
+        """
+        pulumi.set(__self__, "primary_key", primary_key)
+        pulumi.set(__self__, "primary_key_columns", primary_key_columns)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> str:
+        """
+        Optional. Name for the primary key
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter(name="primaryKeyColumns")
+    def primary_key_columns(self) -> Sequence[str]:
+        """
+        List of column names for the primary key
+        """
+        return pulumi.get(self, "primary_key_columns")
+
+
+@pulumi.output_type
+class SingleColumnChangeResponse(dict):
+    """
+    Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrayLength":
+            suggest = "array_length"
+        elif key == "autoGenerated":
+            suggest = "auto_generated"
+        elif key == "customFeatures":
+            suggest = "custom_features"
+        elif key == "dataType":
+            suggest = "data_type"
+        elif key == "fractionalSecondsPrecision":
+            suggest = "fractional_seconds_precision"
+        elif key == "setValues":
+            suggest = "set_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SingleColumnChangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SingleColumnChangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SingleColumnChangeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 array: bool,
+                 array_length: int,
+                 auto_generated: bool,
+                 charset: str,
+                 collation: str,
+                 comment: str,
+                 custom_features: Mapping[str, str],
+                 data_type: str,
+                 fractional_seconds_precision: int,
+                 length: str,
+                 nullable: bool,
+                 precision: int,
+                 scale: int,
+                 set_values: Sequence[str],
+                 udt: bool):
+        """
+        Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column..
+        :param bool array: Optional. Is the column of array type.
+        :param int array_length: Optional. The length of the array, only relevant if the column type is an array.
+        :param bool auto_generated: Optional. Is the column auto-generated/identity.
+        :param str charset: Optional. Charset override - instead of table level charset.
+        :param str collation: Optional. Collation override - instead of table level collation.
+        :param str comment: Optional. Comment associated with the column.
+        :param Mapping[str, str] custom_features: Optional. Custom engine specific features.
+        :param str data_type: Optional. Column data type name.
+        :param int fractional_seconds_precision: Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+        :param str length: Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+        :param bool nullable: Optional. Is the column nullable.
+        :param int precision: Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+        :param int scale: Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+        :param Sequence[str] set_values: Optional. Specifies the list of values allowed in the column.
+        :param bool udt: Optional. Is the column a UDT (User-defined Type).
+        """
+        pulumi.set(__self__, "array", array)
+        pulumi.set(__self__, "array_length", array_length)
+        pulumi.set(__self__, "auto_generated", auto_generated)
+        pulumi.set(__self__, "charset", charset)
+        pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "custom_features", custom_features)
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "fractional_seconds_precision", fractional_seconds_precision)
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "nullable", nullable)
+        pulumi.set(__self__, "precision", precision)
+        pulumi.set(__self__, "scale", scale)
+        pulumi.set(__self__, "set_values", set_values)
+        pulumi.set(__self__, "udt", udt)
+
+    @property
+    @pulumi.getter
+    def array(self) -> bool:
+        """
+        Optional. Is the column of array type.
+        """
+        return pulumi.get(self, "array")
+
+    @property
+    @pulumi.getter(name="arrayLength")
+    def array_length(self) -> int:
+        """
+        Optional. The length of the array, only relevant if the column type is an array.
+        """
+        return pulumi.get(self, "array_length")
+
+    @property
+    @pulumi.getter(name="autoGenerated")
+    def auto_generated(self) -> bool:
+        """
+        Optional. Is the column auto-generated/identity.
+        """
+        return pulumi.get(self, "auto_generated")
+
+    @property
+    @pulumi.getter
+    def charset(self) -> str:
+        """
+        Optional. Charset override - instead of table level charset.
+        """
+        return pulumi.get(self, "charset")
+
+    @property
+    @pulumi.getter
+    def collation(self) -> str:
+        """
+        Optional. Collation override - instead of table level collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        """
+        Optional. Comment associated with the column.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Mapping[str, str]:
+        """
+        Optional. Custom engine specific features.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> str:
+        """
+        Optional. Column data type name.
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter(name="fractionalSecondsPrecision")
+    def fractional_seconds_precision(self) -> int:
+        """
+        Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+        """
+        return pulumi.get(self, "fractional_seconds_precision")
+
+    @property
+    @pulumi.getter
+    def length(self) -> str:
+        """
+        Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> bool:
+        """
+        Optional. Is the column nullable.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> int:
+        """
+        Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> int:
+        """
+        Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+        """
+        return pulumi.get(self, "scale")
+
+    @property
+    @pulumi.getter(name="setValues")
+    def set_values(self) -> Sequence[str]:
+        """
+        Optional. Specifies the list of values allowed in the column.
+        """
+        return pulumi.get(self, "set_values")
+
+    @property
+    @pulumi.getter
+    def udt(self) -> bool:
+        """
+        Optional. Is the column a UDT (User-defined Type).
+        """
+        return pulumi.get(self, "udt")
+
+
+@pulumi.output_type
+class SingleEntityRenameResponse(dict):
+    """
+    Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newName":
+            suggest = "new_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SingleEntityRenameResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SingleEntityRenameResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SingleEntityRenameResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 new_name: str):
+        """
+        Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+        :param str new_name: The new name of the destination entity
+        """
+        pulumi.set(__self__, "new_name", new_name)
+
+    @property
+    @pulumi.getter(name="newName")
+    def new_name(self) -> str:
+        """
+        The new name of the destination entity
+        """
+        return pulumi.get(self, "new_name")
+
+
+@pulumi.output_type
+class SinglePackageChangeResponse(dict):
+    """
+    Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packageBody":
+            suggest = "package_body"
+        elif key == "packageDescription":
+            suggest = "package_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SinglePackageChangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SinglePackageChangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SinglePackageChangeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 package_body: str,
+                 package_description: str):
+        """
+        Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
+        :param str package_body: Optional. Sql code for package body
+        :param str package_description: Optional. Sql code for package description
+        """
+        pulumi.set(__self__, "package_body", package_body)
+        pulumi.set(__self__, "package_description", package_description)
+
+    @property
+    @pulumi.getter(name="packageBody")
+    def package_body(self) -> str:
+        """
+        Optional. Sql code for package body
+        """
+        return pulumi.get(self, "package_body")
+
+    @property
+    @pulumi.getter(name="packageDescription")
+    def package_description(self) -> str:
+        """
+        Optional. Sql code for package description
+        """
+        return pulumi.get(self, "package_description")
+
+
+@pulumi.output_type
+class SourceNumericFilterResponse(dict):
+    """
+    Filter for fixed point number data types such as NUMERIC/NUMBER
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numericFilterOption":
+            suggest = "numeric_filter_option"
+        elif key == "sourceMaxPrecisionFilter":
+            suggest = "source_max_precision_filter"
+        elif key == "sourceMaxScaleFilter":
+            suggest = "source_max_scale_filter"
+        elif key == "sourceMinPrecisionFilter":
+            suggest = "source_min_precision_filter"
+        elif key == "sourceMinScaleFilter":
+            suggest = "source_min_scale_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceNumericFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceNumericFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceNumericFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 numeric_filter_option: str,
+                 source_max_precision_filter: int,
+                 source_max_scale_filter: int,
+                 source_min_precision_filter: int,
+                 source_min_scale_filter: int):
+        """
+        Filter for fixed point number data types such as NUMERIC/NUMBER
+        :param str numeric_filter_option: Enum to set the option defining the datatypes numeric filter has to be applied to
+        :param int source_max_precision_filter: Optional. The filter will match columns with precision smaller than or equal to this number.
+        :param int source_max_scale_filter: Optional. The filter will match columns with scale smaller than or equal to this number.
+        :param int source_min_precision_filter: Optional. The filter will match columns with precision greater than or equal to this number.
+        :param int source_min_scale_filter: Optional. The filter will match columns with scale greater than or equal to this number.
+        """
+        pulumi.set(__self__, "numeric_filter_option", numeric_filter_option)
+        pulumi.set(__self__, "source_max_precision_filter", source_max_precision_filter)
+        pulumi.set(__self__, "source_max_scale_filter", source_max_scale_filter)
+        pulumi.set(__self__, "source_min_precision_filter", source_min_precision_filter)
+        pulumi.set(__self__, "source_min_scale_filter", source_min_scale_filter)
+
+    @property
+    @pulumi.getter(name="numericFilterOption")
+    def numeric_filter_option(self) -> str:
+        """
+        Enum to set the option defining the datatypes numeric filter has to be applied to
+        """
+        return pulumi.get(self, "numeric_filter_option")
+
+    @property
+    @pulumi.getter(name="sourceMaxPrecisionFilter")
+    def source_max_precision_filter(self) -> int:
+        """
+        Optional. The filter will match columns with precision smaller than or equal to this number.
+        """
+        return pulumi.get(self, "source_max_precision_filter")
+
+    @property
+    @pulumi.getter(name="sourceMaxScaleFilter")
+    def source_max_scale_filter(self) -> int:
+        """
+        Optional. The filter will match columns with scale smaller than or equal to this number.
+        """
+        return pulumi.get(self, "source_max_scale_filter")
+
+    @property
+    @pulumi.getter(name="sourceMinPrecisionFilter")
+    def source_min_precision_filter(self) -> int:
+        """
+        Optional. The filter will match columns with precision greater than or equal to this number.
+        """
+        return pulumi.get(self, "source_min_precision_filter")
+
+    @property
+    @pulumi.getter(name="sourceMinScaleFilter")
+    def source_min_scale_filter(self) -> int:
+        """
+        Optional. The filter will match columns with scale greater than or equal to this number.
+        """
+        return pulumi.get(self, "source_min_scale_filter")
+
+
+@pulumi.output_type
+class SourceSqlChangeResponse(dict):
+    """
+    Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sqlCode":
+            suggest = "sql_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceSqlChangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceSqlChangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceSqlChangeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sql_code: str):
+        """
+        Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+        :param str sql_code: Sql code for source (stored procedure, function, trigger or view)
+        """
+        pulumi.set(__self__, "sql_code", sql_code)
+
+    @property
+    @pulumi.getter(name="sqlCode")
+    def sql_code(self) -> str:
+        """
+        Sql code for source (stored procedure, function, trigger or view)
+        """
+        return pulumi.get(self, "sql_code")
+
+
+@pulumi.output_type
+class SourceTextFilterResponse(dict):
+    """
+    Filter for text-based data types like varchar.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceMaxLengthFilter":
+            suggest = "source_max_length_filter"
+        elif key == "sourceMinLengthFilter":
+            suggest = "source_min_length_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceTextFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceTextFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceTextFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_max_length_filter: str,
+                 source_min_length_filter: str):
+        """
+        Filter for text-based data types like varchar.
+        :param str source_max_length_filter: Optional. The filter will match columns with length smaller than or equal to this number.
+        :param str source_min_length_filter: Optional. The filter will match columns with length greater than or equal to this number.
+        """
+        pulumi.set(__self__, "source_max_length_filter", source_max_length_filter)
+        pulumi.set(__self__, "source_min_length_filter", source_min_length_filter)
+
+    @property
+    @pulumi.getter(name="sourceMaxLengthFilter")
+    def source_max_length_filter(self) -> str:
+        """
+        Optional. The filter will match columns with length smaller than or equal to this number.
+        """
+        return pulumi.get(self, "source_max_length_filter")
+
+    @property
+    @pulumi.getter(name="sourceMinLengthFilter")
+    def source_min_length_filter(self) -> str:
+        """
+        Optional. The filter will match columns with length greater than or equal to this number.
+        """
+        return pulumi.get(self, "source_min_length_filter")
 
 
 @pulumi.output_type
@@ -2056,6 +3434,225 @@ class UserPasswordResponse(dict):
         The database username.
         """
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class ValueListFilterResponse(dict):
+    """
+    A list of values to filter by in ConditionalColumnSetValue
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreCase":
+            suggest = "ignore_case"
+        elif key == "valuePresentList":
+            suggest = "value_present_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValueListFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValueListFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValueListFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ignore_case: bool,
+                 value_present_list: str,
+                 values: Sequence[str]):
+        """
+        A list of values to filter by in ConditionalColumnSetValue
+        :param bool ignore_case: Whether to ignore case when filtering by values. Defaults to false
+        :param str value_present_list: Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+        :param Sequence[str] values: The list to be used to filter by
+        """
+        pulumi.set(__self__, "ignore_case", ignore_case)
+        pulumi.set(__self__, "value_present_list", value_present_list)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> bool:
+        """
+        Whether to ignore case when filtering by values. Defaults to false
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @property
+    @pulumi.getter(name="valuePresentList")
+    def value_present_list(self) -> str:
+        """
+        Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
+        """
+        return pulumi.get(self, "value_present_list")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The list to be used to filter by
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class ValueTransformationResponse(dict):
+    """
+    Description of data transformation during migration as part of the ConditionalColumnSetValue.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applyHash":
+            suggest = "apply_hash"
+        elif key == "assignMaxValue":
+            suggest = "assign_max_value"
+        elif key == "assignMinValue":
+            suggest = "assign_min_value"
+        elif key == "assignNull":
+            suggest = "assign_null"
+        elif key == "assignSpecificValue":
+            suggest = "assign_specific_value"
+        elif key == "doubleComparison":
+            suggest = "double_comparison"
+        elif key == "intComparison":
+            suggest = "int_comparison"
+        elif key == "isNull":
+            suggest = "is_null"
+        elif key == "roundScale":
+            suggest = "round_scale"
+        elif key == "valueList":
+            suggest = "value_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValueTransformationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValueTransformationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValueTransformationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 apply_hash: 'outputs.ApplyHashResponse',
+                 assign_max_value: 'outputs.EmptyResponse',
+                 assign_min_value: 'outputs.EmptyResponse',
+                 assign_null: 'outputs.EmptyResponse',
+                 assign_specific_value: 'outputs.AssignSpecificValueResponse',
+                 double_comparison: 'outputs.DoubleComparisonFilterResponse',
+                 int_comparison: 'outputs.IntComparisonFilterResponse',
+                 is_null: 'outputs.EmptyResponse',
+                 round_scale: 'outputs.RoundToScaleResponse',
+                 value_list: 'outputs.ValueListFilterResponse'):
+        """
+        Description of data transformation during migration as part of the ConditionalColumnSetValue.
+        :param 'ApplyHashResponse' apply_hash: Optional. Applies a hash function on the data
+        :param 'EmptyResponse' assign_max_value: Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+        :param 'EmptyResponse' assign_min_value: Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+        :param 'EmptyResponse' assign_null: Optional. Set to null
+        :param 'AssignSpecificValueResponse' assign_specific_value: Optional. Set to a specific value (value is converted to fit the target data type)
+        :param 'DoubleComparisonFilterResponse' double_comparison: Optional. Filter on relation between source value and compare value of type double.
+        :param 'IntComparisonFilterResponse' int_comparison: Optional. Filter on relation between source value and compare value of type integer.
+        :param 'EmptyResponse' is_null: Optional. Value is null
+        :param 'RoundToScaleResponse' round_scale: Optional. Allows the data to change scale
+        :param 'ValueListFilterResponse' value_list: Optional. Value is found in the specified list.
+        """
+        pulumi.set(__self__, "apply_hash", apply_hash)
+        pulumi.set(__self__, "assign_max_value", assign_max_value)
+        pulumi.set(__self__, "assign_min_value", assign_min_value)
+        pulumi.set(__self__, "assign_null", assign_null)
+        pulumi.set(__self__, "assign_specific_value", assign_specific_value)
+        pulumi.set(__self__, "double_comparison", double_comparison)
+        pulumi.set(__self__, "int_comparison", int_comparison)
+        pulumi.set(__self__, "is_null", is_null)
+        pulumi.set(__self__, "round_scale", round_scale)
+        pulumi.set(__self__, "value_list", value_list)
+
+    @property
+    @pulumi.getter(name="applyHash")
+    def apply_hash(self) -> 'outputs.ApplyHashResponse':
+        """
+        Optional. Applies a hash function on the data
+        """
+        return pulumi.get(self, "apply_hash")
+
+    @property
+    @pulumi.getter(name="assignMaxValue")
+    def assign_max_value(self) -> 'outputs.EmptyResponse':
+        """
+        Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
+        """
+        return pulumi.get(self, "assign_max_value")
+
+    @property
+    @pulumi.getter(name="assignMinValue")
+    def assign_min_value(self) -> 'outputs.EmptyResponse':
+        """
+        Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
+        """
+        return pulumi.get(self, "assign_min_value")
+
+    @property
+    @pulumi.getter(name="assignNull")
+    def assign_null(self) -> 'outputs.EmptyResponse':
+        """
+        Optional. Set to null
+        """
+        return pulumi.get(self, "assign_null")
+
+    @property
+    @pulumi.getter(name="assignSpecificValue")
+    def assign_specific_value(self) -> 'outputs.AssignSpecificValueResponse':
+        """
+        Optional. Set to a specific value (value is converted to fit the target data type)
+        """
+        return pulumi.get(self, "assign_specific_value")
+
+    @property
+    @pulumi.getter(name="doubleComparison")
+    def double_comparison(self) -> 'outputs.DoubleComparisonFilterResponse':
+        """
+        Optional. Filter on relation between source value and compare value of type double.
+        """
+        return pulumi.get(self, "double_comparison")
+
+    @property
+    @pulumi.getter(name="intComparison")
+    def int_comparison(self) -> 'outputs.IntComparisonFilterResponse':
+        """
+        Optional. Filter on relation between source value and compare value of type integer.
+        """
+        return pulumi.get(self, "int_comparison")
+
+    @property
+    @pulumi.getter(name="isNull")
+    def is_null(self) -> 'outputs.EmptyResponse':
+        """
+        Optional. Value is null
+        """
+        return pulumi.get(self, "is_null")
+
+    @property
+    @pulumi.getter(name="roundScale")
+    def round_scale(self) -> 'outputs.RoundToScaleResponse':
+        """
+        Optional. Allows the data to change scale
+        """
+        return pulumi.get(self, "round_scale")
+
+    @property
+    @pulumi.getter(name="valueList")
+    def value_list(self) -> 'outputs.ValueListFilterResponse':
+        """
+        Optional. Value is found in the specified list.
+        """
+        return pulumi.get(self, "value_list")
 
 
 @pulumi.output_type

@@ -188,7 +188,7 @@ class GetFunctionResult:
     @pulumi.getter(name="entryPoint")
     def entry_point(self) -> str:
         """
-        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         """
         return pulumi.get(self, "entry_point")
 
@@ -268,8 +268,11 @@ class GetFunctionResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        Deprecated: use vpc_connector
         """
+        warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
+
         return pulumi.get(self, "network")
 
     @property
@@ -429,6 +432,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
 def get_function(function_id: Optional[str] = None,
                  location: Optional[str] = None,
                  project: Optional[str] = None,
+                 version_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionResult:
     """
     Returns a function with the given name from the requested project.
@@ -437,6 +441,7 @@ def get_function(function_id: Optional[str] = None,
     __args__['functionId'] = function_id
     __args__['location'] = location
     __args__['project'] = project
+    __args__['versionId'] = version_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudfunctions/v1:getFunction', __args__, opts=opts, typ=GetFunctionResult).value
 
@@ -480,6 +485,7 @@ def get_function(function_id: Optional[str] = None,
 def get_function_output(function_id: Optional[pulumi.Input[str]] = None,
                         location: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                        version_id: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
     """
     Returns a function with the given name from the requested project.

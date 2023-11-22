@@ -19,7 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, create_time=None, description=None, docker_config=None, format=None, kms_key_name=None, labels=None, maven_config=None, mode=None, name=None, remote_repository_config=None, satisfies_pzs=None, size_bytes=None, update_time=None, virtual_repository_config=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_config=None, format=None, kms_key_name=None, labels=None, maven_config=None, mode=None, name=None, remote_repository_config=None, satisfies_pzs=None, size_bytes=None, update_time=None, virtual_repository_config=None):
+        if cleanup_policies and not isinstance(cleanup_policies, dict):
+            raise TypeError("Expected argument 'cleanup_policies' to be a dict")
+        pulumi.set(__self__, "cleanup_policies", cleanup_policies)
+        if cleanup_policy_dry_run and not isinstance(cleanup_policy_dry_run, bool):
+            raise TypeError("Expected argument 'cleanup_policy_dry_run' to be a bool")
+        pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -64,6 +70,22 @@ class GetRepositoryResult:
         pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
 
     @property
+    @pulumi.getter(name="cleanupPolicies")
+    def cleanup_policies(self) -> Mapping[str, str]:
+        """
+        Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        """
+        return pulumi.get(self, "cleanup_policies")
+
+    @property
+    @pulumi.getter(name="cleanupPolicyDryRun")
+    def cleanup_policy_dry_run(self) -> bool:
+        """
+        Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        """
+        return pulumi.get(self, "cleanup_policy_dry_run")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
@@ -91,7 +113,7 @@ class GetRepositoryResult:
     @pulumi.getter
     def format(self) -> str:
         """
-        The format of packages that are stored in the repository.
+        Optional. The format of packages that are stored in the repository.
         """
         return pulumi.get(self, "format")
 
@@ -123,7 +145,7 @@ class GetRepositoryResult:
     @pulumi.getter
     def mode(self) -> str:
         """
-        The mode of the repository.
+        Optional. The mode of the repository.
         """
         return pulumi.get(self, "mode")
 
@@ -131,7 +153,7 @@ class GetRepositoryResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         """
         return pulumi.get(self, "name")
 
@@ -182,6 +204,8 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
         if False:
             yield self
         return GetRepositoryResult(
+            cleanup_policies=self.cleanup_policies,
+            cleanup_policy_dry_run=self.cleanup_policy_dry_run,
             create_time=self.create_time,
             description=self.description,
             docker_config=self.docker_config,
@@ -213,6 +237,8 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:artifactregistry/v1:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
+        cleanup_policies=pulumi.get(__ret__, 'cleanup_policies'),
+        cleanup_policy_dry_run=pulumi.get(__ret__, 'cleanup_policy_dry_run'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         docker_config=pulumi.get(__ret__, 'docker_config'),

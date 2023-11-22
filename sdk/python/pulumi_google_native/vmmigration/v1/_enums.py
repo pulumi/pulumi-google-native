@@ -5,14 +5,39 @@
 from enum import Enum
 
 __all__ = [
+    'BootDiskDefaultsDiskType',
     'ComputeEngineTargetDefaultsDiskType',
     'ComputeEngineTargetDefaultsLicenseType',
     'ComputeSchedulingOnHostMaintenance',
     'ComputeSchedulingRestartType',
+    'GroupMigrationTargetType',
+    'PersistentDiskDefaultsDiskType',
     'SchedulingNodeAffinityOperator',
     'UtilizationReportTimeFrame',
     'VmwareVmDetailsPowerState',
 ]
+
+
+class BootDiskDefaultsDiskType(str, Enum):
+    """
+    Optional. The type of disk provisioning to use for the VM.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED = "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
+    """
+    An unspecified disk type. Will be used as STANDARD.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_STANDARD = "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
+    """
+    A Standard disk type.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_SSD = "COMPUTE_ENGINE_DISK_TYPE_SSD"
+    """
+    SSD hard disk type.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_BALANCED = "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
+    """
+    An alternative to SSD persistent disks that balance performance and cost.
+    """
 
 
 class ComputeEngineTargetDefaultsDiskType(str, Enum):
@@ -88,6 +113,46 @@ class ComputeSchedulingRestartType(str, Enum):
     NO_AUTOMATIC_RESTART = "NO_AUTOMATIC_RESTART"
     """
     The Instance isn't automatically restarted whenever it is terminated by Compute Engine.
+    """
+
+
+class GroupMigrationTargetType(str, Enum):
+    """
+    Immutable. The target type of this group.
+    """
+    MIGRATION_TARGET_TYPE_UNSPECIFIED = "MIGRATION_TARGET_TYPE_UNSPECIFIED"
+    """
+    Group type is not specified. This defaults to Compute Engine targets.
+    """
+    MIGRATION_TARGET_TYPE_GCE = "MIGRATION_TARGET_TYPE_GCE"
+    """
+    All MigratingVMs in the group must have Compute Engine targets.
+    """
+    MIGRATION_TARGET_TYPE_DISKS = "MIGRATION_TARGET_TYPE_DISKS"
+    """
+    All MigratingVMs in the group must have Compute Engine Disks targets.
+    """
+
+
+class PersistentDiskDefaultsDiskType(str, Enum):
+    """
+    The disk type to use.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED = "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
+    """
+    An unspecified disk type. Will be used as STANDARD.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_STANDARD = "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
+    """
+    A Standard disk type.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_SSD = "COMPUTE_ENGINE_DISK_TYPE_SSD"
+    """
+    SSD hard disk type.
+    """
+    COMPUTE_ENGINE_DISK_TYPE_BALANCED = "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
+    """
+    An alternative to SSD persistent disks that balance performance and cost.
     """
 
 

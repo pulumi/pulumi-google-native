@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceConnectionMapResult:
-    def __init__(__self__, consumer_psc_configs=None, consumer_psc_connections=None, create_time=None, description=None, infrastructure=None, labels=None, name=None, producer_psc_configs=None, service_class=None, service_class_uri=None, token=None, update_time=None):
+    def __init__(__self__, consumer_psc_configs=None, consumer_psc_connections=None, create_time=None, description=None, etag=None, infrastructure=None, labels=None, name=None, producer_psc_configs=None, service_class=None, service_class_uri=None, token=None, update_time=None):
         if consumer_psc_configs and not isinstance(consumer_psc_configs, list):
             raise TypeError("Expected argument 'consumer_psc_configs' to be a list")
         pulumi.set(__self__, "consumer_psc_configs", consumer_psc_configs)
@@ -32,6 +32,9 @@ class GetServiceConnectionMapResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if infrastructure and not isinstance(infrastructure, str):
             raise TypeError("Expected argument 'infrastructure' to be a str")
         pulumi.set(__self__, "infrastructure", infrastructure)
@@ -88,6 +91,14 @@ class GetServiceConnectionMapResult:
         A description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -164,6 +175,7 @@ class AwaitableGetServiceConnectionMapResult(GetServiceConnectionMapResult):
             consumer_psc_connections=self.consumer_psc_connections,
             create_time=self.create_time,
             description=self.description,
+            etag=self.etag,
             infrastructure=self.infrastructure,
             labels=self.labels,
             name=self.name,
@@ -193,6 +205,7 @@ def get_service_connection_map(location: Optional[str] = None,
         consumer_psc_connections=pulumi.get(__ret__, 'consumer_psc_connections'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
         infrastructure=pulumi.get(__ret__, 'infrastructure'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

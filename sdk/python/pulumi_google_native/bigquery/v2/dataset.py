@@ -23,6 +23,7 @@ class DatasetArgs:
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_dataset_reference: Optional[pulumi.Input['ExternalDatasetReferenceArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -38,6 +39,7 @@ class DatasetArgs:
         :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
         :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
+        :param pulumi.Input['ExternalDatasetReferenceArgs'] external_dataset_reference: [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
         :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
@@ -58,6 +60,8 @@ class DatasetArgs:
             pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if external_dataset_reference is not None:
+            pulumi.set(__self__, "external_dataset_reference", external_dataset_reference)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
         if is_case_insensitive is not None:
@@ -143,6 +147,18 @@ class DatasetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="externalDatasetReference")
+    def external_dataset_reference(self) -> Optional[pulumi.Input['ExternalDatasetReferenceArgs']]:
+        """
+        [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        """
+        return pulumi.get(self, "external_dataset_reference")
+
+    @external_dataset_reference.setter
+    def external_dataset_reference(self, value: Optional[pulumi.Input['ExternalDatasetReferenceArgs']]):
+        pulumi.set(self, "external_dataset_reference", value)
 
     @property
     @pulumi.getter(name="friendlyName")
@@ -249,6 +265,7 @@ class Dataset(pulumi.CustomResource):
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -269,6 +286,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
         :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
+        :param pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']] external_dataset_reference: [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
         :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
@@ -308,6 +326,7 @@ class Dataset(pulumi.CustomResource):
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -331,6 +350,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["description"] = description
+            __props__.__dict__["external_dataset_reference"] = external_dataset_reference
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["is_case_insensitive"] = is_case_insensitive
             __props__.__dict__["labels"] = labels
@@ -381,6 +401,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["default_table_expiration_ms"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["external_dataset_reference"] = None
         __props__.__dict__["friendly_name"] = None
         __props__.__dict__["is_case_insensitive"] = None
         __props__.__dict__["kind"] = None
@@ -471,6 +492,14 @@ class Dataset(pulumi.CustomResource):
         A hash of the resource.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="externalDatasetReference")
+    def external_dataset_reference(self) -> pulumi.Output['outputs.ExternalDatasetReferenceResponse']:
+        """
+        [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        """
+        return pulumi.get(self, "external_dataset_reference")
 
     @property
     @pulumi.getter(name="friendlyName")

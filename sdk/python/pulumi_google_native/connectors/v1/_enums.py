@@ -7,6 +7,12 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'AuthConfigAuthType',
+    'ConnectionEventingEnablementType',
+    'CustomConnectorCustomConnectorType',
+    'CustomConnectorVersionType',
+    'EncryptionKeyType',
+    'EventSubscriptionDestinationType',
+    'JMSType',
     'SslConfigClientCertType',
     'SslConfigServerCertType',
     'SslConfigTrustModel',
@@ -63,6 +69,110 @@ class AuthConfigAuthType(str, Enum):
     OAUTH2_AUTH_CODE_FLOW = "OAUTH2_AUTH_CODE_FLOW"
     """
     Oauth 2.0 Authorization Code Flow
+    """
+
+
+class ConnectionEventingEnablementType(str, Enum):
+    """
+    Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+    """
+    EVENTING_ENABLEMENT_TYPE_UNSPECIFIED = "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"
+    """
+    Eventing Enablement Type Unspecifeied.
+    """
+    EVENTING_AND_CONNECTION = "EVENTING_AND_CONNECTION"
+    """
+    Both connection and eventing.
+    """
+    ONLY_EVENTING = "ONLY_EVENTING"
+    """
+    Only Eventing.
+    """
+
+
+class CustomConnectorCustomConnectorType(str, Enum):
+    """
+    Required. Type of the custom connector.
+    """
+    CUSTOM_CONNECTOR_TYPE_UNSPECIFIED = "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
+    """
+    Connector type is not specified.
+    """
+    OPEN_API = "OPEN_API"
+    """
+    OpenAPI connector.
+    """
+    PROTO = "PROTO"
+    """
+    Proto connector.
+    """
+
+
+class CustomConnectorVersionType(str, Enum):
+    """
+    Required. Type of the customConnector.
+    """
+    CUSTOM_CONNECTOR_TYPE_UNSPECIFIED = "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
+    """
+    Connector type is not specified.
+    """
+    OPEN_API = "OPEN_API"
+    """
+    OpenAPI connector.
+    """
+    PROTO = "PROTO"
+    """
+    Proto connector.
+    """
+
+
+class EncryptionKeyType(str, Enum):
+    """
+    Type.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Value type is not specified.
+    """
+    GOOGLE_MANAGED = "GOOGLE_MANAGED"
+    """
+    Google Managed.
+    """
+    CUSTOMER_MANAGED = "CUSTOMER_MANAGED"
+    """
+    Customer Managed.
+    """
+
+
+class EventSubscriptionDestinationType(str, Enum):
+    """
+    type of the destination
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default state.
+    """
+    ENDPOINT = "ENDPOINT"
+    """
+    Endpoint - Hit the value of endpoint when event is received
+    """
+
+
+class JMSType(str, Enum):
+    """
+    Optional. Type of the JMS Source. i.e. Queue or Topic
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default state.
+    """
+    QUEUE = "QUEUE"
+    """
+    JMS Queue.
+    """
+    TOPIC = "TOPIC"
+    """
+    JMS Topic.
     """
 
 

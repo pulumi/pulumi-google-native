@@ -12,6 +12,9 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AutoscalingConfigResponse',
+    'AutoscalingLimitsResponse',
+    'AutoscalingTargetsResponse',
     'BackupInfoResponse',
     'BindingResponse',
     'EncryptionConfigResponse',
@@ -22,6 +25,188 @@ __all__ = [
     'RestoreInfoResponse',
     'StatusResponse',
 ]
+
+@pulumi.output_type
+class AutoscalingConfigResponse(dict):
+    """
+    Autoscaling config for an instance.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingLimits":
+            suggest = "autoscaling_limits"
+        elif key == "autoscalingTargets":
+            suggest = "autoscaling_targets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscaling_limits: 'outputs.AutoscalingLimitsResponse',
+                 autoscaling_targets: 'outputs.AutoscalingTargetsResponse'):
+        """
+        Autoscaling config for an instance.
+        :param 'AutoscalingLimitsResponse' autoscaling_limits: Autoscaling limits for an instance.
+        :param 'AutoscalingTargetsResponse' autoscaling_targets: The autoscaling targets for an instance.
+        """
+        pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+        pulumi.set(__self__, "autoscaling_targets", autoscaling_targets)
+
+    @property
+    @pulumi.getter(name="autoscalingLimits")
+    def autoscaling_limits(self) -> 'outputs.AutoscalingLimitsResponse':
+        """
+        Autoscaling limits for an instance.
+        """
+        return pulumi.get(self, "autoscaling_limits")
+
+    @property
+    @pulumi.getter(name="autoscalingTargets")
+    def autoscaling_targets(self) -> 'outputs.AutoscalingTargetsResponse':
+        """
+        The autoscaling targets for an instance.
+        """
+        return pulumi.get(self, "autoscaling_targets")
+
+
+@pulumi.output_type
+class AutoscalingLimitsResponse(dict):
+    """
+    The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodes":
+            suggest = "max_nodes"
+        elif key == "maxProcessingUnits":
+            suggest = "max_processing_units"
+        elif key == "minNodes":
+            suggest = "min_nodes"
+        elif key == "minProcessingUnits":
+            suggest = "min_processing_units"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingLimitsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingLimitsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingLimitsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_nodes: int,
+                 max_processing_units: int,
+                 min_nodes: int,
+                 min_processing_units: int):
+        """
+        The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit.
+        :param int max_nodes: Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.
+        :param int max_processing_units: Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units.
+        :param int min_nodes: Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.
+        :param int min_processing_units: Minimum number of processing units allocated to the instance. If set, this number should be multiples of 1000.
+        """
+        pulumi.set(__self__, "max_nodes", max_nodes)
+        pulumi.set(__self__, "max_processing_units", max_processing_units)
+        pulumi.set(__self__, "min_nodes", min_nodes)
+        pulumi.set(__self__, "min_processing_units", min_processing_units)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> int:
+        """
+        Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @property
+    @pulumi.getter(name="maxProcessingUnits")
+    def max_processing_units(self) -> int:
+        """
+        Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units.
+        """
+        return pulumi.get(self, "max_processing_units")
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> int:
+        """
+        Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_nodes")
+
+    @property
+    @pulumi.getter(name="minProcessingUnits")
+    def min_processing_units(self) -> int:
+        """
+        Minimum number of processing units allocated to the instance. If set, this number should be multiples of 1000.
+        """
+        return pulumi.get(self, "min_processing_units")
+
+
+@pulumi.output_type
+class AutoscalingTargetsResponse(dict):
+    """
+    The autoscaling targets for an instance.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "highPriorityCpuUtilizationPercent":
+            suggest = "high_priority_cpu_utilization_percent"
+        elif key == "storageUtilizationPercent":
+            suggest = "storage_utilization_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingTargetsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingTargetsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingTargetsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 high_priority_cpu_utilization_percent: int,
+                 storage_utilization_percent: int):
+        """
+        The autoscaling targets for an instance.
+        :param int high_priority_cpu_utilization_percent: The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        :param int storage_utilization_percent: The target storage utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 100] inclusive.
+        """
+        pulumi.set(__self__, "high_priority_cpu_utilization_percent", high_priority_cpu_utilization_percent)
+        pulumi.set(__self__, "storage_utilization_percent", storage_utilization_percent)
+
+    @property
+    @pulumi.getter(name="highPriorityCpuUtilizationPercent")
+    def high_priority_cpu_utilization_percent(self) -> int:
+        """
+        The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        """
+        return pulumi.get(self, "high_priority_cpu_utilization_percent")
+
+    @property
+    @pulumi.getter(name="storageUtilizationPercent")
+    def storage_utilization_percent(self) -> int:
+        """
+        The target storage utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 100] inclusive.
+        """
+        return pulumi.get(self, "storage_utilization_percent")
+
 
 @pulumi.output_type
 class BackupInfoResponse(dict):

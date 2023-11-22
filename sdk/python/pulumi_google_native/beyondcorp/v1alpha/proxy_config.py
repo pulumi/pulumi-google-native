@@ -17,31 +17,31 @@ __all__ = ['ProxyConfigArgs', 'ProxyConfig']
 class ProxyConfigArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
+                 partner_tenant_id: pulumi.Input[str],
                  proxy_uri: pulumi.Input[str],
                  routing_info: pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs'],
-                 tenant_id: pulumi.Input[str],
                  transport_info: pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs'],
-                 authentication_info: Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 encryption_info: Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProxyConfig resource.
         :param pulumi.Input[str] proxy_uri: The URI of the proxy server.
         :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs'] routing_info: Routing info to direct traffic to the proxy server.
         :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs'] transport_info: Transport layer information to verify for the proxy server.
-        :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs'] authentication_info: Optional. Information to facilitate Authentication against the proxy server.
         :param pulumi.Input[str] display_name: Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
+        :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs'] encryption_info: Optional. Information to encrypt JWT for the proxy server.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "partner_tenant_id", partner_tenant_id)
         pulumi.set(__self__, "proxy_uri", proxy_uri)
         pulumi.set(__self__, "routing_info", routing_info)
-        pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "transport_info", transport_info)
-        if authentication_info is not None:
-            pulumi.set(__self__, "authentication_info", authentication_info)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if encryption_info is not None:
+            pulumi.set(__self__, "encryption_info", encryption_info)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
 
@@ -53,6 +53,15 @@ class ProxyConfigArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="partnerTenantId")
+    def partner_tenant_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "partner_tenant_id")
+
+    @partner_tenant_id.setter
+    def partner_tenant_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "partner_tenant_id", value)
 
     @property
     @pulumi.getter(name="proxyUri")
@@ -79,15 +88,6 @@ class ProxyConfigArgs:
         pulumi.set(self, "routing_info", value)
 
     @property
-    @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "tenant_id")
-
-    @tenant_id.setter
-    def tenant_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "tenant_id", value)
-
-    @property
     @pulumi.getter(name="transportInfo")
     def transport_info(self) -> pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']:
         """
@@ -100,18 +100,6 @@ class ProxyConfigArgs:
         pulumi.set(self, "transport_info", value)
 
     @property
-    @pulumi.getter(name="authenticationInfo")
-    def authentication_info(self) -> Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs']]:
-        """
-        Optional. Information to facilitate Authentication against the proxy server.
-        """
-        return pulumi.get(self, "authentication_info")
-
-    @authentication_info.setter
-    def authentication_info(self, value: Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs']]):
-        pulumi.set(self, "authentication_info", value)
-
-    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -122,6 +110,18 @@ class ProxyConfigArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="encryptionInfo")
+    def encryption_info(self) -> Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']]:
+        """
+        Optional. Information to encrypt JWT for the proxy server.
+        """
+        return pulumi.get(self, "encryption_info")
+
+    @encryption_info.setter
+    def encryption_info(self, value: Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']]):
+        pulumi.set(self, "encryption_info", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -141,25 +141,23 @@ class ProxyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 encryption_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 partner_tenant_id: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs']]] = None,
-                 tenant_id: Optional[pulumi.Input[str]] = None,
                  transport_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']]] = None,
                  __props__=None):
         """
-        Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
+        Creates a new BeyondCorp Enterprise ProxyConfig in a given organization and PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
         Auto-naming is currently not supported for this resource.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs']] authentication_info: Optional. Information to facilitate Authentication against the proxy server.
         :param pulumi.Input[str] display_name: Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']] encryption_info: Optional. Information to encrypt JWT for the proxy server.
         :param pulumi.Input[str] proxy_uri: The URI of the proxy server.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs']] routing_info: Routing info to direct traffic to the proxy server.
@@ -172,10 +170,8 @@ class ProxyConfig(pulumi.CustomResource):
                  args: ProxyConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
+        Creates a new BeyondCorp Enterprise ProxyConfig in a given organization and PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
         Auto-naming is currently not supported for this resource.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param ProxyConfigArgs args: The arguments to use to populate this resource's properties.
@@ -192,13 +188,13 @@ class ProxyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 encryption_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 partner_tenant_id: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs']]] = None,
-                 tenant_id: Optional[pulumi.Input[str]] = None,
                  transport_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -209,11 +205,14 @@ class ProxyConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProxyConfigArgs.__new__(ProxyConfigArgs)
 
-            __props__.__dict__["authentication_info"] = authentication_info
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["encryption_info"] = encryption_info
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if partner_tenant_id is None and not opts.urn:
+                raise TypeError("Missing required property 'partner_tenant_id'")
+            __props__.__dict__["partner_tenant_id"] = partner_tenant_id
             if proxy_uri is None and not opts.urn:
                 raise TypeError("Missing required property 'proxy_uri'")
             __props__.__dict__["proxy_uri"] = proxy_uri
@@ -221,16 +220,13 @@ class ProxyConfig(pulumi.CustomResource):
             if routing_info is None and not opts.urn:
                 raise TypeError("Missing required property 'routing_info'")
             __props__.__dict__["routing_info"] = routing_info
-            if tenant_id is None and not opts.urn:
-                raise TypeError("Missing required property 'tenant_id'")
-            __props__.__dict__["tenant_id"] = tenant_id
             if transport_info is None and not opts.urn:
                 raise TypeError("Missing required property 'transport_info'")
             __props__.__dict__["transport_info"] = transport_info
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id", "tenant_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id", "partner_tenant_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ProxyConfig, __self__).__init__(
             'google-native:beyondcorp/v1alpha:ProxyConfig',
@@ -254,26 +250,18 @@ class ProxyConfig(pulumi.CustomResource):
 
         __props__ = ProxyConfigArgs.__new__(ProxyConfigArgs)
 
-        __props__.__dict__["authentication_info"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["encryption_info"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["organization_id"] = None
+        __props__.__dict__["partner_tenant_id"] = None
         __props__.__dict__["proxy_uri"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["routing_info"] = None
-        __props__.__dict__["tenant_id"] = None
         __props__.__dict__["transport_info"] = None
         __props__.__dict__["update_time"] = None
         return ProxyConfig(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="authenticationInfo")
-    def authentication_info(self) -> pulumi.Output['outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse']:
-        """
-        Optional. Information to facilitate Authentication against the proxy server.
-        """
-        return pulumi.get(self, "authentication_info")
 
     @property
     @pulumi.getter(name="createTime")
@@ -292,6 +280,14 @@ class ProxyConfig(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="encryptionInfo")
+    def encryption_info(self) -> pulumi.Output['outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse']:
+        """
+        Optional. Information to encrypt JWT for the proxy server.
+        """
+        return pulumi.get(self, "encryption_info")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -303,6 +299,11 @@ class ProxyConfig(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter(name="partnerTenantId")
+    def partner_tenant_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "partner_tenant_id")
 
     @property
     @pulumi.getter(name="proxyUri")
@@ -327,11 +328,6 @@ class ProxyConfig(pulumi.CustomResource):
         Routing info to direct traffic to the proxy server.
         """
         return pulumi.get(self, "routing_info")
-
-    @property
-    @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="transportInfo")

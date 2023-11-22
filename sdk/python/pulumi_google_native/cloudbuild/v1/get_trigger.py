@@ -348,7 +348,7 @@ def get_trigger(location: Optional[str] = None,
                 trigger_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTriggerResult:
     """
-    Returns information about a `BuildTrigger`. This API is experimental.
+    Returns information about a `BuildTrigger`.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -394,6 +394,6 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
                        trigger_id: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTriggerResult]:
     """
-    Returns information about a `BuildTrigger`. This API is experimental.
+    Returns information about a `BuildTrigger`.
     """
     ...

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNfsShareResult:
-    def __init__(__self__, allowed_clients=None, labels=None, name=None, nfs_share_id=None, requested_size_gib=None, state=None, storage_type=None, volume=None):
+    def __init__(__self__, allowed_clients=None, labels=None, name=None, nfs_share_id=None, pod=None, requested_size_gib=None, state=None, storage_type=None, volume=None):
         if allowed_clients and not isinstance(allowed_clients, list):
             raise TypeError("Expected argument 'allowed_clients' to be a list")
         pulumi.set(__self__, "allowed_clients", allowed_clients)
@@ -32,6 +32,9 @@ class GetNfsShareResult:
         if nfs_share_id and not isinstance(nfs_share_id, str):
             raise TypeError("Expected argument 'nfs_share_id' to be a str")
         pulumi.set(__self__, "nfs_share_id", nfs_share_id)
+        if pod and not isinstance(pod, str):
+            raise TypeError("Expected argument 'pod' to be a str")
+        pulumi.set(__self__, "pod", pod)
         if requested_size_gib and not isinstance(requested_size_gib, str):
             raise TypeError("Expected argument 'requested_size_gib' to be a str")
         pulumi.set(__self__, "requested_size_gib", requested_size_gib)
@@ -78,6 +81,14 @@ class GetNfsShareResult:
         return pulumi.get(self, "nfs_share_id")
 
     @property
+    @pulumi.getter
+    def pod(self) -> str:
+        """
+        Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
+        """
+        return pulumi.get(self, "pod")
+
+    @property
     @pulumi.getter(name="requestedSizeGib")
     def requested_size_gib(self) -> str:
         """
@@ -120,6 +131,7 @@ class AwaitableGetNfsShareResult(GetNfsShareResult):
             labels=self.labels,
             name=self.name,
             nfs_share_id=self.nfs_share_id,
+            pod=self.pod,
             requested_size_gib=self.requested_size_gib,
             state=self.state,
             storage_type=self.storage_type,
@@ -145,6 +157,7 @@ def get_nfs_share(location: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         nfs_share_id=pulumi.get(__ret__, 'nfs_share_id'),
+        pod=pulumi.get(__ret__, 'pod'),
         requested_size_gib=pulumi.get(__ret__, 'requested_size_gib'),
         state=pulumi.get(__ret__, 'state'),
         storage_type=pulumi.get(__ret__, 'storage_type'),

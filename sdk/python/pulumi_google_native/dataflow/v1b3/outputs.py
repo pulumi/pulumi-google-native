@@ -17,6 +17,7 @@ __all__ = [
     'BigTableIODetailsResponse',
     'ComponentSourceResponse',
     'ComponentTransformResponse',
+    'DataSamplingConfigResponse',
     'DatastoreIODetailsResponse',
     'DebugOptionsResponse',
     'DiskResponse',
@@ -28,12 +29,14 @@ __all__ = [
     'JobExecutionInfoResponse',
     'JobMetadataResponse',
     'PackageResponse',
+    'ParameterMetadataEnumOptionResponse',
     'ParameterMetadataResponse',
     'PipelineDescriptionResponse',
     'PubSubIODetailsResponse',
     'RuntimeMetadataResponse',
     'RuntimeUpdatableParamsResponse',
     'SDKInfoResponse',
+    'SdkBugResponse',
     'SdkHarnessContainerImageResponse',
     'SdkVersionResponse',
     'SpannerIODetailsResponse',
@@ -342,6 +345,28 @@ class ComponentTransformResponse(dict):
 
 
 @pulumi.output_type
+class DataSamplingConfigResponse(dict):
+    """
+    Configuration options for sampling elements.
+    """
+    def __init__(__self__, *,
+                 behaviors: Sequence[str]):
+        """
+        Configuration options for sampling elements.
+        :param Sequence[str] behaviors: List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+        """
+        pulumi.set(__self__, "behaviors", behaviors)
+
+    @property
+    @pulumi.getter
+    def behaviors(self) -> Sequence[str]:
+        """
+        List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+        """
+        return pulumi.get(self, "behaviors")
+
+
+@pulumi.output_type
 class DatastoreIODetailsResponse(dict):
     """
     Metadata for a Datastore connector used by the job.
@@ -382,7 +407,9 @@ class DebugOptionsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableHotKeyLogging":
+        if key == "dataSampling":
+            suggest = "data_sampling"
+        elif key == "enableHotKeyLogging":
             suggest = "enable_hot_key_logging"
 
         if suggest:
@@ -397,12 +424,23 @@ class DebugOptionsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 data_sampling: 'outputs.DataSamplingConfigResponse',
                  enable_hot_key_logging: bool):
         """
         Describes any options that have an effect on the debugging of pipelines.
+        :param 'DataSamplingConfigResponse' data_sampling: Configuration options for sampling elements from a running pipeline.
         :param bool enable_hot_key_logging: When true, enables the logging of the literal hot key to the user's Cloud Logging.
         """
+        pulumi.set(__self__, "data_sampling", data_sampling)
         pulumi.set(__self__, "enable_hot_key_logging", enable_hot_key_logging)
+
+    @property
+    @pulumi.getter(name="dataSampling")
+    def data_sampling(self) -> 'outputs.DataSamplingConfigResponse':
+        """
+        Configuration options for sampling elements from a running pipeline.
+        """
+        return pulumi.get(self, "data_sampling")
 
     @property
     @pulumi.getter(name="enableHotKeyLogging")
@@ -680,6 +718,8 @@ class EnvironmentResponse(dict):
             suggest = "shuffle_mode"
         elif key == "tempStoragePrefix":
             suggest = "temp_storage_prefix"
+        elif key == "useStreamingEngineResourceBasedBilling":
+            suggest = "use_streaming_engine_resource_based_billing"
         elif key == "userAgent":
             suggest = "user_agent"
         elif key == "workerPools":
@@ -713,6 +753,7 @@ class EnvironmentResponse(dict):
                  service_options: Sequence[str],
                  shuffle_mode: str,
                  temp_storage_prefix: str,
+                 use_streaming_engine_resource_based_billing: bool,
                  user_agent: Mapping[str, str],
                  version: Mapping[str, str],
                  worker_pools: Sequence['outputs.WorkerPoolResponse'],
@@ -732,6 +773,7 @@ class EnvironmentResponse(dict):
         :param Sequence[str] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         :param str shuffle_mode: The shuffle mode used for the job.
         :param str temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
+        :param bool use_streaming_engine_resource_based_billing: Whether the job uses the new streaming engine billing model based on resource usage.
         :param Mapping[str, str] user_agent: A description of the process that generated the request.
         :param Mapping[str, str] version: A structure describing which components and their versions of the service are required in order to run the job.
         :param Sequence['WorkerPoolResponse'] worker_pools: The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
@@ -750,6 +792,7 @@ class EnvironmentResponse(dict):
         pulumi.set(__self__, "service_options", service_options)
         pulumi.set(__self__, "shuffle_mode", shuffle_mode)
         pulumi.set(__self__, "temp_storage_prefix", temp_storage_prefix)
+        pulumi.set(__self__, "use_streaming_engine_resource_based_billing", use_streaming_engine_resource_based_billing)
         pulumi.set(__self__, "user_agent", user_agent)
         pulumi.set(__self__, "version", version)
         pulumi.set(__self__, "worker_pools", worker_pools)
@@ -851,6 +894,14 @@ class EnvironmentResponse(dict):
         The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         """
         return pulumi.get(self, "temp_storage_prefix")
+
+    @property
+    @pulumi.getter(name="useStreamingEngineResourceBasedBilling")
+    def use_streaming_engine_resource_based_billing(self) -> bool:
+        """
+        Whether the job uses the new streaming engine billing model based on resource usage.
+        """
+        return pulumi.get(self, "use_streaming_engine_resource_based_billing")
 
     @property
     @pulumi.getter(name="userAgent")
@@ -1296,6 +1347,50 @@ class PackageResponse(dict):
 
 
 @pulumi.output_type
+class ParameterMetadataEnumOptionResponse(dict):
+    """
+    ParameterMetadataEnumOption specifies the option shown in the enum form.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 label: str,
+                 value: str):
+        """
+        ParameterMetadataEnumOption specifies the option shown in the enum form.
+        :param str description: Optional. The description to display for the enum option.
+        :param str label: Optional. The label to display for the enum option.
+        :param str value: The value of the enum option.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. The description to display for the enum option.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Optional. The label to display for the enum option.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the enum option.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ParameterMetadataResponse(dict):
     """
     Metadata for a specific parameter.
@@ -1305,6 +1400,10 @@ class ParameterMetadataResponse(dict):
         suggest = None
         if key == "customMetadata":
             suggest = "custom_metadata"
+        elif key == "defaultValue":
+            suggest = "default_value"
+        elif key == "enumOptions":
+            suggest = "enum_options"
         elif key == "groupName":
             suggest = "group_name"
         elif key == "helpText":
@@ -1331,6 +1430,8 @@ class ParameterMetadataResponse(dict):
 
     def __init__(__self__, *,
                  custom_metadata: Mapping[str, str],
+                 default_value: str,
+                 enum_options: Sequence['outputs.ParameterMetadataEnumOptionResponse'],
                  group_name: str,
                  help_text: str,
                  is_optional: bool,
@@ -1343,6 +1444,8 @@ class ParameterMetadataResponse(dict):
         """
         Metadata for a specific parameter.
         :param Mapping[str, str] custom_metadata: Optional. Additional metadata for describing this parameter.
+        :param str default_value: Optional. The default values will pre-populate the parameter with the given value from the proto. If default_value is left empty, the parameter will be populated with a default of the relevant type, e.g. false for a boolean.
+        :param Sequence['ParameterMetadataEnumOptionResponse'] enum_options: Optional. The options shown when ENUM ParameterType is specified.
         :param str group_name: Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
         :param str help_text: The help text to display for the parameter.
         :param bool is_optional: Optional. Whether the parameter is optional. Defaults to false.
@@ -1354,6 +1457,8 @@ class ParameterMetadataResponse(dict):
         :param Sequence[str] regexes: Optional. Regexes that the parameter must match.
         """
         pulumi.set(__self__, "custom_metadata", custom_metadata)
+        pulumi.set(__self__, "default_value", default_value)
+        pulumi.set(__self__, "enum_options", enum_options)
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "help_text", help_text)
         pulumi.set(__self__, "is_optional", is_optional)
@@ -1371,6 +1476,22 @@ class ParameterMetadataResponse(dict):
         Optional. Additional metadata for describing this parameter.
         """
         return pulumi.get(self, "custom_metadata")
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> str:
+        """
+        Optional. The default values will pre-populate the parameter with the given value from the proto. If default_value is left empty, the parameter will be populated with a default of the relevant type, e.g. false for a boolean.
+        """
+        return pulumi.get(self, "default_value")
+
+    @property
+    @pulumi.getter(name="enumOptions")
+    def enum_options(self) -> Sequence['outputs.ParameterMetadataEnumOptionResponse']:
+        """
+        Optional. The options shown when ENUM ParameterType is specified.
+        """
+        return pulumi.get(self, "enum_options")
 
     @property
     @pulumi.getter(name="groupName")
@@ -1692,6 +1813,50 @@ class SDKInfoResponse(dict):
 
 
 @pulumi.output_type
+class SdkBugResponse(dict):
+    """
+    A bug found in the Dataflow SDK.
+    """
+    def __init__(__self__, *,
+                 severity: str,
+                 type: str,
+                 uri: str):
+        """
+        A bug found in the Dataflow SDK.
+        :param str severity: How severe the SDK bug is.
+        :param str type: Describes the impact of this SDK bug.
+        :param str uri: Link to more information on the bug.
+        """
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> str:
+        """
+        How severe the SDK bug is.
+        """
+        return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Describes the impact of this SDK bug.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Link to more information on the bug.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class SdkHarnessContainerImageResponse(dict):
     """
     Defines an SDK harness container for executing Dataflow pipelines.
@@ -1792,18 +1957,29 @@ class SdkVersionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bugs: Sequence['outputs.SdkBugResponse'],
                  sdk_support_status: str,
                  version: str,
                  version_display_name: str):
         """
         The version of the SDK used to run the job.
+        :param Sequence['SdkBugResponse'] bugs: Known bugs found in this SDK version.
         :param str sdk_support_status: The support status for this SDK version.
         :param str version: The version of the SDK used to run the job.
         :param str version_display_name: A readable string describing the version of the SDK.
         """
+        pulumi.set(__self__, "bugs", bugs)
         pulumi.set(__self__, "sdk_support_status", sdk_support_status)
         pulumi.set(__self__, "version", version)
         pulumi.set(__self__, "version_display_name", version_display_name)
+
+    @property
+    @pulumi.getter
+    def bugs(self) -> Sequence['outputs.SdkBugResponse']:
+        """
+        Known bugs found in this SDK version.
+        """
+        return pulumi.get(self, "bugs")
 
     @property
     @pulumi.getter(name="sdkSupportStatus")

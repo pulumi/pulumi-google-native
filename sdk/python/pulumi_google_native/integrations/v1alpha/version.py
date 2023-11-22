@@ -19,6 +19,8 @@ class VersionArgs:
     def __init__(__self__, *,
                  integration_id: pulumi.Input[str],
                  product_id: pulumi.Input[str],
+                 cloud_logging_details: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']] = None,
+                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] = None,
@@ -41,6 +43,8 @@ class VersionArgs:
                  user_label: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Version resource.
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs'] cloud_logging_details: Optional. Cloud Logging details for the integration version
+        :param pulumi.Input[bool] create_sample_integrations: Optional. Optional. Indicates if sample workflow should be created.
         :param pulumi.Input['VersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The integration description.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]] error_catcher_configs: Optional. Error Catch Task configuration for the integration. It's optional.
@@ -62,6 +66,10 @@ class VersionArgs:
         """
         pulumi.set(__self__, "integration_id", integration_id)
         pulumi.set(__self__, "product_id", product_id)
+        if cloud_logging_details is not None:
+            pulumi.set(__self__, "cloud_logging_details", cloud_logging_details)
+        if create_sample_integrations is not None:
+            pulumi.set(__self__, "create_sample_integrations", create_sample_integrations)
         if database_persistence_policy is not None:
             pulumi.set(__self__, "database_persistence_policy", database_persistence_policy)
         if description is not None:
@@ -120,6 +128,30 @@ class VersionArgs:
     @product_id.setter
     def product_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "product_id", value)
+
+    @property
+    @pulumi.getter(name="cloudLoggingDetails")
+    def cloud_logging_details(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]:
+        """
+        Optional. Cloud Logging details for the integration version
+        """
+        return pulumi.get(self, "cloud_logging_details")
+
+    @cloud_logging_details.setter
+    def cloud_logging_details(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]):
+        pulumi.set(self, "cloud_logging_details", value)
+
+    @property
+    @pulumi.getter(name="createSampleIntegrations")
+    def create_sample_integrations(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Optional. Indicates if sample workflow should be created.
+        """
+        return pulumi.get(self, "create_sample_integrations")
+
+    @create_sample_integrations.setter
+    def create_sample_integrations(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_sample_integrations", value)
 
     @property
     @pulumi.getter(name="databasePersistencePolicy")
@@ -361,6 +393,8 @@ class Version(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_logging_details: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]] = None,
+                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
@@ -390,6 +424,8 @@ class Version(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']] cloud_logging_details: Optional. Cloud Logging details for the integration version
+        :param pulumi.Input[bool] create_sample_integrations: Optional. Optional. Indicates if sample workflow should be created.
         :param pulumi.Input['VersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The integration description.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] error_catcher_configs: Optional. Error Catch Task configuration for the integration. It's optional.
@@ -434,6 +470,8 @@ class Version(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_logging_details: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]] = None,
+                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
@@ -465,6 +503,8 @@ class Version(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VersionArgs.__new__(VersionArgs)
 
+            __props__.__dict__["cloud_logging_details"] = cloud_logging_details
+            __props__.__dict__["create_sample_integrations"] = create_sample_integrations
             __props__.__dict__["database_persistence_policy"] = database_persistence_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["error_catcher_configs"] = error_catcher_configs
@@ -520,6 +560,8 @@ class Version(pulumi.CustomResource):
 
         __props__ = VersionArgs.__new__(VersionArgs)
 
+        __props__.__dict__["cloud_logging_details"] = None
+        __props__.__dict__["create_sample_integrations"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database_persistence_policy"] = None
         __props__.__dict__["description"] = None
@@ -548,6 +590,22 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["update_time"] = None
         __props__.__dict__["user_label"] = None
         return Version(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cloudLoggingDetails")
+    def cloud_logging_details(self) -> pulumi.Output['outputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse']:
+        """
+        Optional. Cloud Logging details for the integration version
+        """
+        return pulumi.get(self, "cloud_logging_details")
+
+    @property
+    @pulumi.getter(name="createSampleIntegrations")
+    def create_sample_integrations(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Optional. Indicates if sample workflow should be created.
+        """
+        return pulumi.get(self, "create_sample_integrations")
 
     @property
     @pulumi.getter(name="createTime")

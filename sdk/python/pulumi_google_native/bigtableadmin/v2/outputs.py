@@ -18,6 +18,7 @@ __all__ = [
     'AutoscalingTargetsResponse',
     'BackupInfoResponse',
     'BindingResponse',
+    'ChangeStreamConfigResponse',
     'ClusterAutoscalingConfigResponse',
     'ClusterConfigResponse',
     'EncryptionConfigResponse',
@@ -26,6 +27,7 @@ __all__ = [
     'MultiClusterRoutingUseAnyResponse',
     'RestoreInfoResponse',
     'SingleClusterRoutingResponse',
+    'StandardIsolationResponse',
     'StatusResponse',
     'TableStatsResponse',
 ]
@@ -367,6 +369,45 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class ChangeStreamConfigResponse(dict):
+    """
+    Change stream configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionPeriod":
+            suggest = "retention_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChangeStreamConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChangeStreamConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChangeStreamConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 retention_period: str):
+        """
+        Change stream configuration.
+        :param str retention_period: How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+        """
+        pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> str:
+        """
+        How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+        """
+        return pulumi.get(self, "retention_period")
 
 
 @pulumi.output_type
@@ -760,6 +801,28 @@ class SingleClusterRoutingResponse(dict):
         The cluster to which read/write requests should be routed.
         """
         return pulumi.get(self, "cluster_id")
+
+
+@pulumi.output_type
+class StandardIsolationResponse(dict):
+    """
+    Standard options for isolating this app profile's traffic from other use cases.
+    """
+    def __init__(__self__, *,
+                 priority: str):
+        """
+        Standard options for isolating this app profile's traffic from other use cases.
+        :param str priority: The priority of requests sent using this app profile.
+        """
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        """
+        The priority of requests sent using this app profile.
+        """
+        return pulumi.get(self, "priority")
 
 
 @pulumi.output_type

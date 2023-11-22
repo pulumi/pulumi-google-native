@@ -18,10 +18,12 @@ class SpokeArgs:
     def __init__(__self__, *,
                  spoke_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['LinkedInterconnectAttachmentsArgs']] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input['LinkedRouterApplianceInstancesArgs']] = None,
+                 linked_vpc_network: Optional[pulumi.Input['LinkedVpcNetworkArgs']] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input['LinkedVpnTunnelsArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -31,17 +33,21 @@ class SpokeArgs:
         The set of arguments for constructing a Spoke resource.
         :param pulumi.Input[str] spoke_id: Required. Unique id for the spoke to create.
         :param pulumi.Input[str] description: An optional description of the spoke.
+        :param pulumi.Input[str] group: Optional. The name of the group that this spoke is associated with.
         :param pulumi.Input[str] hub: Immutable. The name of the hub that this spoke is attached to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input['LinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: VLAN attachments that are associated with the spoke.
         :param pulumi.Input['LinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
+        :param pulumi.Input['LinkedVpcNetworkArgs'] linked_vpc_network: Optional. VPC network that is associated with the spoke.
         :param pulumi.Input['LinkedVpnTunnelsArgs'] linked_vpn_tunnels: VPN tunnels that are associated with the spoke.
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
-        :param pulumi.Input[str] request_id: Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "spoke_id", spoke_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
         if hub is not None:
             pulumi.set(__self__, "hub", hub)
         if labels is not None:
@@ -50,6 +56,8 @@ class SpokeArgs:
             pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
         if linked_router_appliance_instances is not None:
             pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
+        if linked_vpc_network is not None:
+            pulumi.set(__self__, "linked_vpc_network", linked_vpc_network)
         if linked_vpn_tunnels is not None:
             pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
         if location is not None:
@@ -87,6 +95,18 @@ class SpokeArgs:
 
     @property
     @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the group that this spoke is associated with.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
     def hub(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The name of the hub that this spoke is attached to.
@@ -101,7 +121,7 @@ class SpokeArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         """
         return pulumi.get(self, "labels")
 
@@ -132,6 +152,18 @@ class SpokeArgs:
     @linked_router_appliance_instances.setter
     def linked_router_appliance_instances(self, value: Optional[pulumi.Input['LinkedRouterApplianceInstancesArgs']]):
         pulumi.set(self, "linked_router_appliance_instances", value)
+
+    @property
+    @pulumi.getter(name="linkedVpcNetwork")
+    def linked_vpc_network(self) -> Optional[pulumi.Input['LinkedVpcNetworkArgs']]:
+        """
+        Optional. VPC network that is associated with the spoke.
+        """
+        return pulumi.get(self, "linked_vpc_network")
+
+    @linked_vpc_network.setter
+    def linked_vpc_network(self, value: Optional[pulumi.Input['LinkedVpcNetworkArgs']]):
+        pulumi.set(self, "linked_vpc_network", value)
 
     @property
     @pulumi.getter(name="linkedVpnTunnels")
@@ -179,7 +211,7 @@ class SpokeArgs:
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
 
@@ -194,10 +226,12 @@ class Spoke(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['LinkedInterconnectAttachmentsArgs']]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']]] = None,
+                 linked_vpc_network: Optional[pulumi.Input[pulumi.InputType['LinkedVpcNetworkArgs']]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[pulumi.InputType['LinkedVpnTunnelsArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -211,13 +245,15 @@ class Spoke(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the spoke.
+        :param pulumi.Input[str] group: Optional. The name of the group that this spoke is associated with.
         :param pulumi.Input[str] hub: Immutable. The name of the hub that this spoke is attached to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[pulumi.InputType['LinkedInterconnectAttachmentsArgs']] linked_interconnect_attachments: VLAN attachments that are associated with the spoke.
         :param pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
+        :param pulumi.Input[pulumi.InputType['LinkedVpcNetworkArgs']] linked_vpc_network: Optional. VPC network that is associated with the spoke.
         :param pulumi.Input[pulumi.InputType['LinkedVpnTunnelsArgs']] linked_vpn_tunnels: VPN tunnels that are associated with the spoke.
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
-        :param pulumi.Input[str] request_id: Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] spoke_id: Required. Unique id for the spoke to create.
         """
         ...
@@ -245,10 +281,12 @@ class Spoke(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['LinkedInterconnectAttachmentsArgs']]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']]] = None,
+                 linked_vpc_network: Optional[pulumi.Input[pulumi.InputType['LinkedVpcNetworkArgs']]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[pulumi.InputType['LinkedVpnTunnelsArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -265,10 +303,12 @@ class Spoke(pulumi.CustomResource):
             __props__ = SpokeArgs.__new__(SpokeArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["group"] = group
             __props__.__dict__["hub"] = hub
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
             __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
+            __props__.__dict__["linked_vpc_network"] = linked_vpc_network
             __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -278,6 +318,8 @@ class Spoke(pulumi.CustomResource):
                 raise TypeError("Missing required property 'spoke_id'")
             __props__.__dict__["spoke_id"] = spoke_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["reasons"] = None
+            __props__.__dict__["spoke_type"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
@@ -307,16 +349,20 @@ class Spoke(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["group"] = None
         __props__.__dict__["hub"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["linked_interconnect_attachments"] = None
         __props__.__dict__["linked_router_appliance_instances"] = None
+        __props__.__dict__["linked_vpc_network"] = None
         __props__.__dict__["linked_vpn_tunnels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["reasons"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["spoke_id"] = None
+        __props__.__dict__["spoke_type"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["unique_id"] = None
         __props__.__dict__["update_time"] = None
@@ -340,6 +386,14 @@ class Spoke(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def group(self) -> pulumi.Output[str]:
+        """
+        Optional. The name of the group that this spoke is associated with.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
     def hub(self) -> pulumi.Output[str]:
         """
         Immutable. The name of the hub that this spoke is attached to.
@@ -350,7 +404,7 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         """
         return pulumi.get(self, "labels")
 
@@ -369,6 +423,14 @@ class Spoke(pulumi.CustomResource):
         Router appliance instances that are associated with the spoke.
         """
         return pulumi.get(self, "linked_router_appliance_instances")
+
+    @property
+    @pulumi.getter(name="linkedVpcNetwork")
+    def linked_vpc_network(self) -> pulumi.Output['outputs.LinkedVpcNetworkResponse']:
+        """
+        Optional. VPC network that is associated with the spoke.
+        """
+        return pulumi.get(self, "linked_vpc_network")
 
     @property
     @pulumi.getter(name="linkedVpnTunnels")
@@ -397,10 +459,18 @@ class Spoke(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def reasons(self) -> pulumi.Output[Sequence['outputs.StateReasonResponse']]:
+        """
+        The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+        """
+        return pulumi.get(self, "reasons")
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
 
@@ -411,6 +481,14 @@ class Spoke(pulumi.CustomResource):
         Required. Unique id for the spoke to create.
         """
         return pulumi.get(self, "spoke_id")
+
+    @property
+    @pulumi.getter(name="spokeType")
+    def spoke_type(self) -> pulumi.Output[str]:
+        """
+        The type of resource associated with the spoke.
+        """
+        return pulumi.get(self, "spoke_type")
 
     @property
     @pulumi.getter
@@ -424,7 +502,7 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> pulumi.Output[str]:
         """
-        The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
         """
         return pulumi.get(self, "unique_id")
 

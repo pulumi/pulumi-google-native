@@ -18,11 +18,14 @@ __all__ = [
     'ActiveDataResponse',
     'AttachedDiskResponse',
     'BestEffortResponse',
+    'BootDiskConfigResponse',
     'CreatingDataResponse',
+    'CustomerEncryptionKeyResponse',
     'DeletingDataResponse',
     'FailedDataResponse',
     'GuaranteedResponse',
     'IntervalResponse',
+    'MultiNodeParamsResponse',
     'NetworkConfigResponse',
     'NetworkEndpointResponse',
     'NodeResponse',
@@ -33,6 +36,7 @@ __all__ = [
     'SchedulingConfigResponse',
     'ServiceAccountResponse',
     'ShieldedInstanceConfigResponse',
+    'SpotResponse',
     'StatusResponse',
     'SuspendedDataResponse',
     'SuspendingDataResponse',
@@ -199,6 +203,58 @@ class BestEffortResponse(dict):
 
 
 @pulumi.output_type
+class BootDiskConfigResponse(dict):
+    """
+    Boot disk configurations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerEncryptionKey":
+            suggest = "customer_encryption_key"
+        elif key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BootDiskConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BootDiskConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BootDiskConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_encryption_key: 'outputs.CustomerEncryptionKeyResponse',
+                 enable_confidential_compute: bool):
+        """
+        Boot disk configurations.
+        :param 'CustomerEncryptionKeyResponse' customer_encryption_key: Optional. Customer encryption key for boot disk.
+        :param bool enable_confidential_compute: Optional. Whether the boot disk will be created with confidential compute mode.
+        """
+        pulumi.set(__self__, "customer_encryption_key", customer_encryption_key)
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="customerEncryptionKey")
+    def customer_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
+        """
+        Optional. Customer encryption key for boot disk.
+        """
+        return pulumi.get(self, "customer_encryption_key")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Optional. Whether the boot disk will be created with confidential compute mode.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
 class CreatingDataResponse(dict):
     """
     Further data for the creating state.
@@ -208,6 +264,45 @@ class CreatingDataResponse(dict):
         Further data for the creating state.
         """
         pass
+
+
+@pulumi.output_type
+class CustomerEncryptionKeyResponse(dict):
+    """
+    Customer's encryption key.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomerEncryptionKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomerEncryptionKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomerEncryptionKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        Customer's encryption key.
+        :param str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1 
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1 
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type
@@ -344,6 +439,58 @@ class IntervalResponse(dict):
         Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class MultiNodeParamsResponse(dict):
+    """
+    Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeCount":
+            suggest = "node_count"
+        elif key == "nodeIdPrefix":
+            suggest = "node_id_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiNodeParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiNodeParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiNodeParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_count: int,
+                 node_id_prefix: str):
+        """
+        Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+        :param int node_count: Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+        :param str node_id_prefix: Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+        """
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_id_prefix", node_id_prefix)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        """
+        Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="nodeIdPrefix")
+    def node_id_prefix(self) -> str:
+        """
+        Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+        """
+        return pulumi.get(self, "node_id_prefix")
 
 
 @pulumi.output_type
@@ -497,6 +644,10 @@ class NodeResponse(dict):
             suggest = "accelerator_type"
         elif key == "apiVersion":
             suggest = "api_version"
+        elif key == "autocheckpointEnabled":
+            suggest = "autocheckpoint_enabled"
+        elif key == "bootDiskConfig":
+            suggest = "boot_disk_config"
         elif key == "cidrBlock":
             suggest = "cidr_block"
         elif key == "createTime":
@@ -537,6 +688,8 @@ class NodeResponse(dict):
                  accelerator_config: 'outputs.AcceleratorConfigResponse',
                  accelerator_type: str,
                  api_version: str,
+                 autocheckpoint_enabled: bool,
+                 boot_disk_config: 'outputs.BootDiskConfigResponse',
                  cidr_block: str,
                  create_time: str,
                  data_disks: Sequence['outputs.AttachedDiskResponse'],
@@ -562,6 +715,8 @@ class NodeResponse(dict):
         :param 'AcceleratorConfigResponse' accelerator_config: The AccleratorConfig for the TPU Node.
         :param str accelerator_type: The type of hardware accelerators associated with this node.
         :param str api_version: The API version that created this Node.
+        :param bool autocheckpoint_enabled: Optional. Whether Autocheckpoint is enabled.
+        :param 'BootDiskConfigResponse' boot_disk_config: Optional. Boot disk configuration.
         :param str cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param str create_time: The time when the node was created.
         :param Sequence['AttachedDiskResponse'] data_disks: The additional data disks for the Node.
@@ -586,6 +741,8 @@ class NodeResponse(dict):
         pulumi.set(__self__, "accelerator_config", accelerator_config)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "autocheckpoint_enabled", autocheckpoint_enabled)
+        pulumi.set(__self__, "boot_disk_config", boot_disk_config)
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "data_disks", data_disks)
@@ -630,6 +787,22 @@ class NodeResponse(dict):
         The API version that created this Node.
         """
         return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="autocheckpointEnabled")
+    def autocheckpoint_enabled(self) -> bool:
+        """
+        Optional. Whether Autocheckpoint is enabled.
+        """
+        return pulumi.get(self, "autocheckpoint_enabled")
+
+    @property
+    @pulumi.getter(name="bootDiskConfig")
+    def boot_disk_config(self) -> 'outputs.BootDiskConfigResponse':
+        """
+        Optional. Boot disk configuration.
+        """
+        return pulumi.get(self, "boot_disk_config")
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -800,7 +973,9 @@ class NodeSpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "nodeId":
+        if key == "multiNodeParams":
+            suggest = "multi_node_params"
+        elif key == "nodeId":
             suggest = "node_id"
 
         if suggest:
@@ -815,18 +990,29 @@ class NodeSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 multi_node_params: 'outputs.MultiNodeParamsResponse',
                  node: 'outputs.NodeResponse',
                  node_id: str,
                  parent: str):
         """
         Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+        :param 'MultiNodeParamsResponse' multi_node_params: Optional. Fields to specify in case of multi-node request.
         :param 'NodeResponse' node: The node.
         :param str node_id: The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
         :param str parent: The parent resource name.
         """
+        pulumi.set(__self__, "multi_node_params", multi_node_params)
         pulumi.set(__self__, "node", node)
         pulumi.set(__self__, "node_id", node_id)
         pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter(name="multiNodeParams")
+    def multi_node_params(self) -> 'outputs.MultiNodeParamsResponse':
+        """
+        Optional. Fields to specify in case of multi-node request.
+        """
+        return pulumi.get(self, "multi_node_params")
 
     @property
     @pulumi.getter
@@ -885,6 +1071,8 @@ class QueuedResourceStateResponse(dict):
             suggest = "failed_data"
         elif key == "provisioningData":
             suggest = "provisioning_data"
+        elif key == "stateInitiator":
+            suggest = "state_initiator"
         elif key == "suspendedData":
             suggest = "suspended_data"
         elif key == "suspendingData":
@@ -909,6 +1097,7 @@ class QueuedResourceStateResponse(dict):
                  failed_data: 'outputs.FailedDataResponse',
                  provisioning_data: 'outputs.ProvisioningDataResponse',
                  state: str,
+                 state_initiator: str,
                  suspended_data: 'outputs.SuspendedDataResponse',
                  suspending_data: 'outputs.SuspendingDataResponse'):
         """
@@ -920,6 +1109,7 @@ class QueuedResourceStateResponse(dict):
         :param 'FailedDataResponse' failed_data: Further data for the failed state.
         :param 'ProvisioningDataResponse' provisioning_data: Further data for the provisioning state.
         :param str state: State of the QueuedResource request.
+        :param str state_initiator: The initiator of the QueuedResources's current state.
         :param 'SuspendedDataResponse' suspended_data: Further data for the suspended state.
         :param 'SuspendingDataResponse' suspending_data: Further data for the suspending state.
         """
@@ -930,6 +1120,7 @@ class QueuedResourceStateResponse(dict):
         pulumi.set(__self__, "failed_data", failed_data)
         pulumi.set(__self__, "provisioning_data", provisioning_data)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "state_initiator", state_initiator)
         pulumi.set(__self__, "suspended_data", suspended_data)
         pulumi.set(__self__, "suspending_data", suspending_data)
 
@@ -988,6 +1179,14 @@ class QueuedResourceStateResponse(dict):
         State of the QueuedResource request.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateInitiator")
+    def state_initiator(self) -> str:
+        """
+        The initiator of the QueuedResources's current state.
+        """
+        return pulumi.get(self, "state_initiator")
 
     @property
     @pulumi.getter(name="suspendedData")
@@ -1200,6 +1399,18 @@ class ShieldedInstanceConfigResponse(dict):
         Defines whether the instance has Secure Boot enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class SpotResponse(dict):
+    """
+    Spot tier definition.
+    """
+    def __init__(__self__):
+        """
+        Spot tier definition.
+        """
+        pass
 
 
 @pulumi.output_type

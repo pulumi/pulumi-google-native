@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, can_ip_forward=None, container_image=None, create_time=None, creator=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, reservation_affinity=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
+    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, can_ip_forward=None, container_image=None, create_time=None, creator=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_migration_eligibility=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, migrated=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, reservation_affinity=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
         if accelerator_config and not isinstance(accelerator_config, dict):
             raise TypeError("Expected argument 'accelerator_config' to be a dict")
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -59,6 +59,9 @@ class GetInstanceResult:
         if install_gpu_driver and not isinstance(install_gpu_driver, bool):
             raise TypeError("Expected argument 'install_gpu_driver' to be a bool")
         pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
+        if instance_migration_eligibility and not isinstance(instance_migration_eligibility, dict):
+            raise TypeError("Expected argument 'instance_migration_eligibility' to be a dict")
+        pulumi.set(__self__, "instance_migration_eligibility", instance_migration_eligibility)
         if instance_owners and not isinstance(instance_owners, list):
             raise TypeError("Expected argument 'instance_owners' to be a list")
         pulumi.set(__self__, "instance_owners", instance_owners)
@@ -74,6 +77,9 @@ class GetInstanceResult:
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         pulumi.set(__self__, "metadata", metadata)
+        if migrated and not isinstance(migrated, bool):
+            raise TypeError("Expected argument 'migrated' to be a bool")
+        pulumi.set(__self__, "migrated", migrated)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -234,6 +240,14 @@ class GetInstanceResult:
         return pulumi.get(self, "install_gpu_driver")
 
     @property
+    @pulumi.getter(name="instanceMigrationEligibility")
+    def instance_migration_eligibility(self) -> 'outputs.InstanceMigrationEligibilityResponse':
+        """
+        Checks how feasible a migration from UmN to WbI is.
+        """
+        return pulumi.get(self, "instance_migration_eligibility")
+
+    @property
     @pulumi.getter(name="instanceOwners")
     def instance_owners(self) -> Sequence[str]:
         """
@@ -269,9 +283,17 @@ class GetInstanceResult:
     @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
         """
-        Custom metadata to apply to this instance.
+        Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def migrated(self) -> bool:
+        """
+        Bool indicating whether this notebook has been migrated to a Workbench Instance
+        """
+        return pulumi.get(self, "migrated")
 
     @property
     @pulumi.getter
@@ -309,7 +331,7 @@ class GetInstanceResult:
     @pulumi.getter(name="noPublicIp")
     def no_public_ip(self) -> bool:
         """
-        If true, no public IP will be assigned to this instance.
+        If true, no external IP will be assigned to this instance.
         """
         return pulumi.get(self, "no_public_ip")
 
@@ -437,11 +459,13 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             disk_encryption=self.disk_encryption,
             disks=self.disks,
             install_gpu_driver=self.install_gpu_driver,
+            instance_migration_eligibility=self.instance_migration_eligibility,
             instance_owners=self.instance_owners,
             kms_key=self.kms_key,
             labels=self.labels,
             machine_type=self.machine_type,
             metadata=self.metadata,
+            migrated=self.migrated,
             name=self.name,
             network=self.network,
             nic_type=self.nic_type,
@@ -490,11 +514,13 @@ def get_instance(instance_id: Optional[str] = None,
         disk_encryption=pulumi.get(__ret__, 'disk_encryption'),
         disks=pulumi.get(__ret__, 'disks'),
         install_gpu_driver=pulumi.get(__ret__, 'install_gpu_driver'),
+        instance_migration_eligibility=pulumi.get(__ret__, 'instance_migration_eligibility'),
         instance_owners=pulumi.get(__ret__, 'instance_owners'),
         kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         machine_type=pulumi.get(__ret__, 'machine_type'),
         metadata=pulumi.get(__ret__, 'metadata'),
+        migrated=pulumi.get(__ret__, 'migrated'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         nic_type=pulumi.get(__ret__, 'nic_type'),

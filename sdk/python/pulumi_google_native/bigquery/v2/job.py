@@ -139,6 +139,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["source"] = source
             __props__.__dict__["etag"] = None
+            __props__.__dict__["job_creation_reason"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["statistics"] = None
@@ -170,6 +171,7 @@ class Job(pulumi.CustomResource):
 
         __props__.__dict__["configuration"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["job_creation_reason"] = None
         __props__.__dict__["job_reference"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["project"] = None
@@ -194,6 +196,14 @@ class Job(pulumi.CustomResource):
         A hash of this resource.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="jobCreationReason")
+    def job_creation_reason(self) -> pulumi.Output[Any]:
+        """
+        If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
+        """
+        return pulumi.get(self, "job_creation_reason")
 
     @property
     @pulumi.getter(name="jobReference")

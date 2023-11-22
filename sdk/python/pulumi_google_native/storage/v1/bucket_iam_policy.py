@@ -28,7 +28,7 @@ class BucketIamPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BucketIamPolicyBindingsItemArgs']]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
         :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
         :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
-        :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         :param pulumi.Input[int] version: The IAM policy format version.
         """
@@ -95,7 +95,7 @@ class BucketIamPolicyArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         """
         return pulumi.get(self, "resource_id")
 
@@ -151,7 +151,7 @@ class BucketIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketIamPolicyBindingsItemArgs']]]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
         :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
         :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
-        :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         :param pulumi.Input[int] version: The IAM policy format version.
         """
@@ -272,7 +272,7 @@ class BucketIamPolicy(pulumi.CustomResource):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         """
         return pulumi.get(self, "resource_id")
 

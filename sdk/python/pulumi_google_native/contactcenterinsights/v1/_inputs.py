@@ -294,7 +294,7 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs:
                  dialogflow_source: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1DialogflowSourceArgs']] = None,
                  gcs_source: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1GcsSourceArgs']] = None):
         """
-        The conversation source, which is a combination of transcript and audio.
+        The conversation source, which is a combination of transcript, audio, and metadata.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1DialogflowSourceArgs'] dialogflow_source: The source when the conversation comes from Dialogflow.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1GcsSourceArgs'] gcs_source: A Cloud Storage location specification for the audio and transcript.
         """

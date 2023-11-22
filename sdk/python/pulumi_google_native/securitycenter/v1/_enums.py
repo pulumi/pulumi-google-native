@@ -6,10 +6,11 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
-    'CustomModuleEnablementState',
-    'FolderCustomModuleEnablementState',
+    'FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState',
     'GoogleCloudSecuritycenterV1CustomConfigSeverity',
-    'OrganizationCustomModuleEnablementState',
+    'OrganizationEventThreatDetectionSettingCustomModuleEnablementState',
+    'OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState',
+    'ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState',
 ]
 
 
@@ -35,29 +36,7 @@ class AuditLogConfigLogType(str, Enum):
     """
 
 
-class CustomModuleEnablementState(str, Enum):
-    """
-    The enablement state of the custom module.
-    """
-    ENABLEMENT_STATE_UNSPECIFIED = "ENABLEMENT_STATE_UNSPECIFIED"
-    """
-    Unspecified enablement state.
-    """
-    ENABLED = "ENABLED"
-    """
-    The module is enabled at the given CRM resource.
-    """
-    DISABLED = "DISABLED"
-    """
-    The module is disabled at the given CRM resource.
-    """
-    INHERITED = "INHERITED"
-    """
-    State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
-    """
-
-
-class FolderCustomModuleEnablementState(str, Enum):
+class FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState(str, Enum):
     """
     The enablement state of the custom module.
     """
@@ -105,7 +84,47 @@ class GoogleCloudSecuritycenterV1CustomConfigSeverity(str, Enum):
     """
 
 
-class OrganizationCustomModuleEnablementState(str, Enum):
+class OrganizationEventThreatDetectionSettingCustomModuleEnablementState(str, Enum):
+    """
+    The state of enablement for the module at the given level of the hierarchy.
+    """
+    ENABLEMENT_STATE_UNSPECIFIED = "ENABLEMENT_STATE_UNSPECIFIED"
+    """
+    Unspecified enablement state.
+    """
+    ENABLED = "ENABLED"
+    """
+    The module is enabled at the given level.
+    """
+    DISABLED = "DISABLED"
+    """
+    The module is disabled at the given level.
+    """
+
+
+class OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState(str, Enum):
+    """
+    The enablement state of the custom module.
+    """
+    ENABLEMENT_STATE_UNSPECIFIED = "ENABLEMENT_STATE_UNSPECIFIED"
+    """
+    Unspecified enablement state.
+    """
+    ENABLED = "ENABLED"
+    """
+    The module is enabled at the given CRM resource.
+    """
+    DISABLED = "DISABLED"
+    """
+    The module is disabled at the given CRM resource.
+    """
+    INHERITED = "INHERITED"
+    """
+    State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+    """
+
+
+class ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState(str, Enum):
     """
     The enablement state of the custom module.
     """

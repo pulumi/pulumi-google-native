@@ -25,7 +25,8 @@ class BareMetalNodePoolArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 upgrade_policy: Optional[pulumi.Input['BareMetalNodePoolUpgradePolicyArgs']] = None):
         """
         The set of arguments for constructing a BareMetalNodePool resource.
         :param pulumi.Input['BareMetalNodePoolConfigArgs'] node_pool_config: Node pool configuration.
@@ -34,6 +35,7 @@ class BareMetalNodePoolArgs:
         :param pulumi.Input[str] display_name: The display name for the bare metal node pool.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
         :param pulumi.Input[str] name: Immutable. The bare metal node pool resource name.
+        :param pulumi.Input['BareMetalNodePoolUpgradePolicyArgs'] upgrade_policy: The worker node pool upgrade policy.
         """
         pulumi.set(__self__, "bare_metal_cluster_id", bare_metal_cluster_id)
         pulumi.set(__self__, "node_pool_config", node_pool_config)
@@ -51,6 +53,8 @@ class BareMetalNodePoolArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
 
     @property
     @pulumi.getter(name="bareMetalClusterId")
@@ -151,6 +155,18 @@ class BareMetalNodePoolArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['BareMetalNodePoolUpgradePolicyArgs']]:
+        """
+        The worker node pool upgrade policy.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['BareMetalNodePoolUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
+
 
 class BareMetalNodePool(pulumi.CustomResource):
     @overload
@@ -166,6 +182,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool_config: Optional[pulumi.Input[pulumi.InputType['BareMetalNodePoolConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalNodePoolUpgradePolicyArgs']]] = None,
                  __props__=None):
         """
         Creates a new bare metal node pool in a given project, location and Bare Metal cluster.
@@ -178,6 +195,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
         :param pulumi.Input[str] name: Immutable. The bare metal node pool resource name.
         :param pulumi.Input[pulumi.InputType['BareMetalNodePoolConfigArgs']] node_pool_config: Node pool configuration.
+        :param pulumi.Input[pulumi.InputType['BareMetalNodePoolUpgradePolicyArgs']] upgrade_policy: The worker node pool upgrade policy.
         """
         ...
     @overload
@@ -212,6 +230,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool_config: Optional[pulumi.Input[pulumi.InputType['BareMetalNodePoolConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalNodePoolUpgradePolicyArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -234,6 +253,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_pool_config'")
             __props__.__dict__["node_pool_config"] = node_pool_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["reconciling"] = None
@@ -281,6 +301,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         __props__.__dict__["status"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["upgrade_policy"] = None
         return BareMetalNodePool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -401,4 +422,12 @@ class BareMetalNodePool(pulumi.CustomResource):
         The time at which this bare metal node pool was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> pulumi.Output['outputs.BareMetalNodePoolUpgradePolicyResponse']:
+        """
+        The worker node pool upgrade policy.
+        """
+        return pulumi.get(self, "upgrade_policy")
 

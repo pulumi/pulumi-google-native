@@ -2231,7 +2231,7 @@ class VpcAccessConnectorArgs:
         """
         VPC access connector specification.
         :param pulumi.Input['VpcAccessConnectorEgressSetting'] egress_setting: The egress setting for the connector, controlling what traffic is diverted through it.
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
         """
         if egress_setting is not None:
             pulumi.set(__self__, "egress_setting", egress_setting)
@@ -2254,7 +2254,7 @@ class VpcAccessConnectorArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
 

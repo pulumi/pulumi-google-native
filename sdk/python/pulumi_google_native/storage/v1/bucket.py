@@ -23,6 +23,7 @@ class BucketArgs:
                  custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]] = None,
+                 enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_configuration: Optional[pulumi.Input['BucketIamConfigurationArgs']] = None,
@@ -35,6 +36,7 @@ class BucketArgs:
                  logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 object_retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
                  owner: Optional[pulumi.Input['BucketOwnerArgs']] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
@@ -45,6 +47,7 @@ class BucketArgs:
                  rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 soft_delete_policy: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
@@ -60,6 +63,7 @@ class BucketArgs:
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
+        :param pulumi.Input[bool] enable_object_retention: When set to true, object retention is enabled for this bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: Encryption configuration for a bucket.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the bucket.
         :param pulumi.Input['BucketIamConfigurationArgs'] iam_configuration: The bucket's IAM configuration.
@@ -72,6 +76,7 @@ class BucketArgs:
         :param pulumi.Input['BucketLoggingArgs'] logging: The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
         :param pulumi.Input[str] metageneration: The metadata generation of this bucket.
         :param pulumi.Input[str] name: The name of the bucket.
+        :param pulumi.Input['BucketObjectRetentionArgs'] object_retention: The bucket's object retention config.
         :param pulumi.Input['BucketOwnerArgs'] owner: The owner of the bucket. This is always the project team's owner group.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this bucket.
         :param pulumi.Input[str] predefined_default_object_acl: Apply a predefined set of default object access controls to this bucket.
@@ -82,6 +87,7 @@ class BucketArgs:
         :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this bucket.
+        :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         :param pulumi.Input[str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
@@ -103,6 +109,8 @@ class BucketArgs:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
         if default_object_acl is not None:
             pulumi.set(__self__, "default_object_acl", default_object_acl)
+        if enable_object_retention is not None:
+            pulumi.set(__self__, "enable_object_retention", enable_object_retention)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if etag is not None:
@@ -127,6 +135,8 @@ class BucketArgs:
             pulumi.set(__self__, "metageneration", metageneration)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if object_retention is not None:
+            pulumi.set(__self__, "object_retention", object_retention)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if predefined_acl is not None:
@@ -147,6 +157,8 @@ class BucketArgs:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if soft_delete_policy is not None:
+            pulumi.set(__self__, "soft_delete_policy", soft_delete_policy)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
         if time_created is not None:
@@ -243,6 +255,18 @@ class BucketArgs:
     @default_object_acl.setter
     def default_object_acl(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]]):
         pulumi.set(self, "default_object_acl", value)
+
+    @property
+    @pulumi.getter(name="enableObjectRetention")
+    def enable_object_retention(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, object retention is enabled for this bucket.
+        """
+        return pulumi.get(self, "enable_object_retention")
+
+    @enable_object_retention.setter
+    def enable_object_retention(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_object_retention", value)
 
     @property
     @pulumi.getter
@@ -389,6 +413,18 @@ class BucketArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="objectRetention")
+    def object_retention(self) -> Optional[pulumi.Input['BucketObjectRetentionArgs']]:
+        """
+        The bucket's object retention config.
+        """
+        return pulumi.get(self, "object_retention")
+
+    @object_retention.setter
+    def object_retention(self, value: Optional[pulumi.Input['BucketObjectRetentionArgs']]):
+        pulumi.set(self, "object_retention", value)
+
+    @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input['BucketOwnerArgs']]:
         """
@@ -509,6 +545,18 @@ class BucketArgs:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="softDeletePolicy")
+    def soft_delete_policy(self) -> Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]:
+        """
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+        """
+        return pulumi.get(self, "soft_delete_policy")
+
+    @soft_delete_policy.setter
+    def soft_delete_policy(self, value: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]):
+        pulumi.set(self, "soft_delete_policy", value)
+
+    @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -593,6 +641,7 @@ class Bucket(pulumi.CustomResource):
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
+                 enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
@@ -605,6 +654,7 @@ class Bucket(pulumi.CustomResource):
                  logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 object_retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
@@ -615,6 +665,7 @@ class Bucket(pulumi.CustomResource):
                  rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
@@ -634,6 +685,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
+        :param pulumi.Input[bool] enable_object_retention: When set to true, object retention is enabled for this bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: Encryption configuration for a bucket.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the bucket.
         :param pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']] iam_configuration: The bucket's IAM configuration.
@@ -646,6 +698,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
         :param pulumi.Input[str] metageneration: The metadata generation of this bucket.
         :param pulumi.Input[str] name: The name of the bucket.
+        :param pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']] object_retention: The bucket's object retention config.
         :param pulumi.Input[pulumi.InputType['BucketOwnerArgs']] owner: The owner of the bucket. This is always the project team's owner group.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this bucket.
         :param pulumi.Input[str] predefined_default_object_acl: Apply a predefined set of default object access controls to this bucket.
@@ -656,6 +709,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this bucket.
+        :param pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         :param pulumi.Input[str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
@@ -694,6 +748,7 @@ class Bucket(pulumi.CustomResource):
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
+                 enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
@@ -706,6 +761,7 @@ class Bucket(pulumi.CustomResource):
                  logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 object_retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
@@ -716,6 +772,7 @@ class Bucket(pulumi.CustomResource):
                  rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
@@ -738,6 +795,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
             __props__.__dict__["default_object_acl"] = default_object_acl
+            __props__.__dict__["enable_object_retention"] = enable_object_retention
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["etag"] = etag
             __props__.__dict__["iam_configuration"] = iam_configuration
@@ -750,6 +808,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["logging"] = logging
             __props__.__dict__["metageneration"] = metageneration
             __props__.__dict__["name"] = name
+            __props__.__dict__["object_retention"] = object_retention
             __props__.__dict__["owner"] = owner
             __props__.__dict__["predefined_acl"] = predefined_acl
             __props__.__dict__["predefined_default_object_acl"] = predefined_default_object_acl
@@ -760,6 +819,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["rpo"] = rpo
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
+            __props__.__dict__["soft_delete_policy"] = soft_delete_policy
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["time_created"] = time_created
             __props__.__dict__["updated"] = updated
@@ -797,6 +857,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["custom_placement_config"] = None
         __props__.__dict__["default_event_based_hold"] = None
         __props__.__dict__["default_object_acl"] = None
+        __props__.__dict__["enable_object_retention"] = None
         __props__.__dict__["encryption"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["iam_configuration"] = None
@@ -808,6 +869,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["logging"] = None
         __props__.__dict__["metageneration"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["object_retention"] = None
         __props__.__dict__["owner"] = None
         __props__.__dict__["predefined_acl"] = None
         __props__.__dict__["predefined_default_object_acl"] = None
@@ -818,6 +880,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["rpo"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["soft_delete_policy"] = None
         __props__.__dict__["storage_class"] = None
         __props__.__dict__["time_created"] = None
         __props__.__dict__["updated"] = None
@@ -881,6 +944,14 @@ class Bucket(pulumi.CustomResource):
         Default access controls to apply to new objects when no ACL is provided.
         """
         return pulumi.get(self, "default_object_acl")
+
+    @property
+    @pulumi.getter(name="enableObjectRetention")
+    def enable_object_retention(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When set to true, object retention is enabled for this bucket.
+        """
+        return pulumi.get(self, "enable_object_retention")
 
     @property
     @pulumi.getter
@@ -971,6 +1042,14 @@ class Bucket(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="objectRetention")
+    def object_retention(self) -> pulumi.Output['outputs.BucketObjectRetentionResponse']:
+        """
+        The bucket's object retention config.
+        """
+        return pulumi.get(self, "object_retention")
+
+    @property
     @pulumi.getter
     def owner(self) -> pulumi.Output['outputs.BucketOwnerResponse']:
         """
@@ -1049,6 +1128,14 @@ class Bucket(pulumi.CustomResource):
         The URI of this bucket.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="softDeletePolicy")
+    def soft_delete_policy(self) -> pulumi.Output['outputs.BucketSoftDeletePolicyResponse']:
+        """
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+        """
+        return pulumi.get(self, "soft_delete_policy")
 
     @property
     @pulumi.getter(name="storageClass")

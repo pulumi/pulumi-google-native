@@ -8,12 +8,15 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WorkforcePoolArgs', 'WorkforcePool']
 
 @pulumi.input_type
 class WorkforcePoolArgs:
     def __init__(__self__, *,
+                 access_restrictions: Optional[pulumi.Input['AccessRestrictionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -23,6 +26,7 @@ class WorkforcePoolArgs:
                  workforce_pool_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkforcePool resource.
+        :param pulumi.Input['AccessRestrictionsArgs'] access_restrictions: Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
@@ -30,6 +34,8 @@ class WorkforcePoolArgs:
         :param pulumi.Input[str] session_duration: Duration that the Google Cloud access tokens, console sign-in sessions, and `gcloud` sign-in sessions from this pool are valid. Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If `session_duration` is not configured, minted credentials have a default duration of one hour (3600s). For SAML providers, the lifetime of the token is the minimum of the `session_duration` and the `SessionNotOnOrAfter` claim in the SAML assertion.
         :param pulumi.Input[str] workforce_pool_id: The ID to use for the pool, which becomes the final component of the resource name. The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
+        if access_restrictions is not None:
+            pulumi.set(__self__, "access_restrictions", access_restrictions)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -44,6 +50,18 @@ class WorkforcePoolArgs:
             pulumi.set(__self__, "session_duration", session_duration)
         if workforce_pool_id is not None:
             pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+
+    @property
+    @pulumi.getter(name="accessRestrictions")
+    def access_restrictions(self) -> Optional[pulumi.Input['AccessRestrictionsArgs']]:
+        """
+        Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        """
+        return pulumi.get(self, "access_restrictions")
+
+    @access_restrictions.setter
+    def access_restrictions(self, value: Optional[pulumi.Input['AccessRestrictionsArgs']]):
+        pulumi.set(self, "access_restrictions", value)
 
     @property
     @pulumi.getter
@@ -132,6 +150,7 @@ class WorkforcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['AccessRestrictionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -146,6 +165,7 @@ class WorkforcePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AccessRestrictionsArgs']] access_restrictions: Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
@@ -178,6 +198,7 @@ class WorkforcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['AccessRestrictionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -194,6 +215,7 @@ class WorkforcePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkforcePoolArgs.__new__(WorkforcePoolArgs)
 
+            __props__.__dict__["access_restrictions"] = access_restrictions
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
@@ -201,6 +223,7 @@ class WorkforcePool(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["workforce_pool_id"] = workforce_pool_id
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location"])
@@ -227,9 +250,11 @@ class WorkforcePool(pulumi.CustomResource):
 
         __props__ = WorkforcePoolArgs.__new__(WorkforcePoolArgs)
 
+        __props__.__dict__["access_restrictions"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["expire_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent"] = None
@@ -237,6 +262,14 @@ class WorkforcePool(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["workforce_pool_id"] = None
         return WorkforcePool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessRestrictions")
+    def access_restrictions(self) -> pulumi.Output['outputs.AccessRestrictionsResponse']:
+        """
+        Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        """
+        return pulumi.get(self, "access_restrictions")
 
     @property
     @pulumi.getter
@@ -261,6 +294,14 @@ class WorkforcePool(pulumi.CustomResource):
         A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Time after which the workforce pool will be permanently purged and cannot be recovered.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter

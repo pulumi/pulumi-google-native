@@ -17,6 +17,7 @@ __all__ = ['AuthConfigArgs', 'AuthConfig']
 @pulumi.input_type
 class AuthConfigArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  product_id: pulumi.Input[str],
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  client_certificate_encrypted_private_key: Optional[pulumi.Input[str]] = None,
@@ -26,7 +27,6 @@ class AuthConfigArgs:
                  credential_type: Optional[pulumi.Input['AuthConfigCredentialType']] = None,
                  decrypted_credential: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCredentialArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  encrypted_credential: Optional[pulumi.Input[str]] = None,
                  expiry_notification_duration: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
@@ -40,6 +40,7 @@ class AuthConfigArgs:
                  visibility: Optional[pulumi.Input['AuthConfigVisibility']] = None):
         """
         The set of arguments for constructing a AuthConfig resource.
+        :param pulumi.Input[str] display_name: The name of the auth config.
         :param pulumi.Input[str] certificate_id: Certificate id for client certificate
         :param pulumi.Input[str] client_certificate_encrypted_private_key: The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines. For example, -----BEGIN CERTIFICATE----- MIICTTCCAbagAwIBAgIJAPT0tSKNxan/MA0GCSqGSIb3DQEBCwUAMCoxFzAVBgNV BAoTDkdvb2dsZSBURVNUSU5HMQ8wDQYDVQQDEwZ0ZXN0Q0EwHhcNMTUwMTAxMDAw MDAwWhcNMjUwMTAxMDAwMDAwWjAuMRcwFQYDVQQKEw5Hb29nbGUgVEVTVElORzET MBEGA1UEAwwKam9lQGJhbmFuYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA vDYFgMgxi5W488d9J7UpCInl0NXmZQpJDEHE4hvkaRlH7pnC71H0DLt0/3zATRP1 JzY2+eqBmbGl4/sgZKYv8UrLnNyQNUTsNx1iZAfPUflf5FwgVsai8BM0pUciq1NB xD429VFcrGZNucvFLh72RuRFIKH8WUpiK/iZNFkWhZ0CAwEAAaN3MHUwDgYDVR0P AQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMB Af8EAjAAMBkGA1UdDgQSBBCVgnFBCWgL/iwCqnGrhTPQMBsGA1UdIwQUMBKAEKey Um2o4k2WiEVA0ldQvNYwDQYJKoZIhvcNAQELBQADgYEAYK986R4E3L1v+Q6esBtW JrUwA9UmJRSQr0N5w3o9XzarU37/bkjOP0Fw0k/A6Vv1n3vlciYfBFaBIam1qRHr 5dMsYf4CZS6w50r7hyzqyrwDoyNxkLnd2PdcHT/sym1QmflsjEs7pejtnohO6N2H wQW6M0H7Zt8claGRla4fKkg= -----END CERTIFICATE-----
         :param pulumi.Input[str] client_certificate_passphrase: 'passphrase' should be left unset if private key is not encrypted. Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
@@ -48,7 +49,6 @@ class AuthConfigArgs:
         :param pulumi.Input['AuthConfigCredentialType'] credential_type: Credential type of the encrypted credential.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaCredentialArgs'] decrypted_credential: Raw auth credentials.
         :param pulumi.Input[str] description: A description of the auth config.
-        :param pulumi.Input[str] display_name: The name of the auth config.
         :param pulumi.Input[str] encrypted_credential: Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expiry_notification_duration: User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
         :param pulumi.Input[str] last_modifier_email: The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
@@ -59,6 +59,7 @@ class AuthConfigArgs:
         :param pulumi.Input[str] valid_time: The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
         :param pulumi.Input['AuthConfigVisibility'] visibility: The visibility of the auth config.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "product_id", product_id)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
@@ -76,8 +77,6 @@ class AuthConfigArgs:
             pulumi.set(__self__, "decrypted_credential", decrypted_credential)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if encrypted_credential is not None:
             pulumi.set(__self__, "encrypted_credential", encrypted_credential)
         if expiry_notification_duration is not None:
@@ -100,6 +99,18 @@ class AuthConfigArgs:
             pulumi.set(__self__, "valid_time", valid_time)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The name of the auth config.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="productId")
@@ -205,18 +216,6 @@ class AuthConfigArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the auth config.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="encryptedCredential")
@@ -460,6 +459,8 @@ class AuthConfig(pulumi.CustomResource):
             __props__.__dict__["credential_type"] = credential_type
             __props__.__dict__["decrypted_credential"] = decrypted_credential
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encrypted_credential"] = encrypted_credential
             __props__.__dict__["expiry_notification_duration"] = expiry_notification_duration

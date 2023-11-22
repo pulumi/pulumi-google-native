@@ -189,7 +189,9 @@ class ConsumerResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "endpointUri":
+        if key == "endpointLocation":
+            suggest = "endpoint_location"
+        elif key == "endpointUri":
             suggest = "endpoint_uri"
 
         if suggest:
@@ -204,15 +206,26 @@ class ConsumerResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 endpoint_location: str,
                  endpoint_uri: str,
                  subnetwork: str):
         """
         Contains information of the customer's network configurations.
+        :param str endpoint_location: The location of the endpoint URI. Format: projects/{project}/locations/{location}.
         :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param str subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
+        pulumi.set(__self__, "endpoint_location", endpoint_location)
         pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="endpointLocation")
+    def endpoint_location(self) -> str:
+        """
+        The location of the endpoint URI. Format: projects/{project}/locations/{location}.
+        """
+        return pulumi.get(self, "endpoint_location")
 
     @property
     @pulumi.getter(name="endpointUri")
@@ -240,7 +253,7 @@ class DataCatalogConfigResponse(dict):
                  enabled: bool):
         """
         Specifies how metastore metadata should be integrated with the Data Catalog service.
-        :param bool enabled: Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        :param bool enabled: Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -248,7 +261,7 @@ class DataCatalogConfigResponse(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
         """
         return pulumi.get(self, "enabled")
 
@@ -782,7 +795,7 @@ class MetadataIntegrationResponse(dict):
                  dataplex_config: 'outputs.DataplexConfigResponse'):
         """
         Specifies how metastore metadata should be integrated with external services.
-        :param 'DataCatalogConfigResponse' data_catalog_config: The integration config for the Data Catalog service.
+        :param 'DataCatalogConfigResponse' data_catalog_config: Optional. The integration config for the Data Catalog service.
         :param 'DataplexConfigResponse' dataplex_config: The integration config for the Dataplex service.
         """
         pulumi.set(__self__, "data_catalog_config", data_catalog_config)
@@ -792,7 +805,7 @@ class MetadataIntegrationResponse(dict):
     @pulumi.getter(name="dataCatalogConfig")
     def data_catalog_config(self) -> 'outputs.DataCatalogConfigResponse':
         """
-        The integration config for the Data Catalog service.
+        Optional. The integration config for the Data Catalog service.
         """
         return pulumi.get(self, "data_catalog_config")
 
@@ -913,7 +926,9 @@ class RestoreResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "endTime":
+        if key == "backupLocation":
+            suggest = "backup_location"
+        elif key == "endTime":
             suggest = "end_time"
         elif key == "startTime":
             suggest = "start_time"
@@ -931,6 +946,7 @@ class RestoreResponse(dict):
 
     def __init__(__self__, *,
                  backup: str,
+                 backup_location: str,
                  details: str,
                  end_time: str,
                  start_time: str,
@@ -939,6 +955,7 @@ class RestoreResponse(dict):
         """
         The details of a metadata restore operation.
         :param str backup: The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
+        :param str backup_location: Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
         :param str details: The restore details containing the revision of the service to be restored to, in format of JSON.
         :param str end_time: The time when the restore ended.
         :param str start_time: The time when the restore started.
@@ -946,6 +963,7 @@ class RestoreResponse(dict):
         :param str type: The type of restore.
         """
         pulumi.set(__self__, "backup", backup)
+        pulumi.set(__self__, "backup_location", backup_location)
         pulumi.set(__self__, "details", details)
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "start_time", start_time)
@@ -959,6 +977,14 @@ class RestoreResponse(dict):
         The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
         """
         return pulumi.get(self, "backup")
+
+    @property
+    @pulumi.getter(name="backupLocation")
+    def backup_location(self) -> str:
+        """
+        Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
+        """
+        return pulumi.get(self, "backup_location")
 
     @property
     @pulumi.getter
@@ -1175,7 +1201,7 @@ class ServiceResponse(dict):
         :param 'HiveMetastoreConfigResponse' hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param Mapping[str, str] labels: User-defined labels for the metastore service.
         :param 'MaintenanceWindowResponse' maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-        :param 'MetadataIntegrationResponse' metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param 'MetadataIntegrationResponse' metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         :param 'MetadataManagementActivityResponse' metadata_management_activity: The metadata management activities of the metastore service.
         :param str name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param str network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
@@ -1281,7 +1307,7 @@ class ServiceResponse(dict):
     @pulumi.getter(name="metadataIntegration")
     def metadata_integration(self) -> 'outputs.MetadataIntegrationResponse':
         """
-        The setting that defines how metastore metadata should be integrated with external services and systems.
+        Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         """
         return pulumi.get(self, "metadata_integration")
 

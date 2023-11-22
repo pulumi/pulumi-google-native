@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = ['ProcessorArgs', 'Processor']
 
@@ -26,7 +27,7 @@ class ProcessorArgs:
         :param pulumi.Input[str] create_time: The time the processor was created.
         :param pulumi.Input[str] default_processor_version: The default processor version.
         :param pulumi.Input[str] display_name: The display name of the processor.
-        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        :param pulumi.Input[str] kms_key_name: The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         :param pulumi.Input[str] type: The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
         """
         if create_time is not None:
@@ -84,7 +85,7 @@ class ProcessorArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -145,7 +146,7 @@ class Processor(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time the processor was created.
         :param pulumi.Input[str] default_processor_version: The default processor version.
         :param pulumi.Input[str] display_name: The display name of the processor.
-        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        :param pulumi.Input[str] kms_key_name: The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         :param pulumi.Input[str] type: The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
         """
         ...
@@ -198,6 +199,7 @@ class Processor(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["name"] = None
             __props__.__dict__["process_endpoint"] = None
+            __props__.__dict__["processor_version_aliases"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -230,6 +232,7 @@ class Processor(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["process_endpoint"] = None
+        __props__.__dict__["processor_version_aliases"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
@@ -263,7 +266,7 @@ class Processor(pulumi.CustomResource):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[str]:
         """
-        The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -287,6 +290,14 @@ class Processor(pulumi.CustomResource):
         Immutable. The http endpoint that can be called to invoke processing.
         """
         return pulumi.get(self, "process_endpoint")
+
+    @property
+    @pulumi.getter(name="processorVersionAliases")
+    def processor_version_aliases(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse']]:
+        """
+        The processor version aliases.
+        """
+        return pulumi.get(self, "processor_version_aliases")
 
     @property
     @pulumi.getter

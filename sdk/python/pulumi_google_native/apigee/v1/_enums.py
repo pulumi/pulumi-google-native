@@ -9,6 +9,7 @@ __all__ = [
     'DataCollectorType',
     'EnvironmentApiProxyType',
     'EnvironmentDeploymentType',
+    'EnvironmentType',
     'GoogleCloudApigeeV1TraceSamplingConfigSampler',
     'GoogleIamV1AuditLogConfigLogType',
     'InstancePeeringCidrRange',
@@ -20,6 +21,7 @@ __all__ = [
     'RatePlanPaymentFundingModel',
     'RatePlanRevenueShareType',
     'RatePlanState',
+    'SecurityActionState',
     'TargetServerProtocol',
 ]
 
@@ -105,6 +107,28 @@ class EnvironmentDeploymentType(str, Enum):
     ARCHIVE = "ARCHIVE"
     """
     Archive deployment enables you to develop API proxies locally then deploy an archive of your API proxy configuration to an environment in Apigee on Google Cloud. You will be prevented from performing a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment.
+    """
+
+
+class EnvironmentType(str, Enum):
+    """
+    Optional. EnvironmentType selected for the environment.
+    """
+    ENVIRONMENT_TYPE_UNSPECIFIED = "ENVIRONMENT_TYPE_UNSPECIFIED"
+    """
+    Environment type not specified.
+    """
+    BASE = "BASE"
+    """
+    Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
+    """
+    INTERMEDIATE = "INTERMEDIATE"
+    """
+    This is the default type and it supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
+    """
+    COMPREHENSIVE = "COMPREHENSIVE"
+    """
+    Comprehensive environment supports advanced capabilites and even higher capacity than Intermediate environment. Refer to Apigee's public documentation for more details.
     """
 
 
@@ -200,7 +224,7 @@ class OrganizationBillingType(str, Enum):
     """
     EVALUATION = "EVALUATION"
     """
-    Free and limited access to Apigee for evaluation purposes only. only.
+    Free and limited access to Apigee for evaluation purposes only.
     """
     PAYG = "PAYG"
     """
@@ -346,6 +370,24 @@ class RatePlanState(str, Enum):
     """
 
 
+class SecurityActionState(str, Enum):
+    """
+    Required. Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    The default value. This only exists for forward compatibility. A create request with this value will be rejected.
+    """
+    ENABLED = "ENABLED"
+    """
+    An ENABLED SecurityAction is actively enforced if the `expiration_time` is in the future.
+    """
+    DISABLED = "DISABLED"
+    """
+    A disabled SecurityAction is never enforced.
+    """
+
+
 class TargetServerProtocol(str, Enum):
     """
     Immutable. The protocol used by this TargetServer.
@@ -358,7 +400,19 @@ class TargetServerProtocol(str, Enum):
     """
     The TargetServer uses HTTP.
     """
+    HTTP2 = "HTTP2"
+    """
+    The TargetSever uses HTTP2.
+    """
+    GRPC_TARGET = "GRPC_TARGET"
+    """
+    The TargetServer uses GRPC.
+    """
     GRPC = "GRPC"
     """
     GRPC TargetServer to be used in ExternalCallout Policy. Prefer to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL _CALLOUT generally available.
+    """
+    EXTERNAL_CALLOUT = "EXTERNAL_CALLOUT"
+    """
+    The TargetServer is to be used in the ExternalCallout Policy
     """

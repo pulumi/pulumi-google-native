@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'InstanceType',
+    'NetworkConfigConnectionType',
 ]
 
 
@@ -51,4 +52,22 @@ class InstanceType(str, Enum):
     DEVELOPER = "DEVELOPER"
     """
     Developer Data Fusion instance. In Developer type, the user will have all features available but with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration pipelines at low cost.
+    """
+
+
+class NetworkConfigConnectionType(str, Enum):
+    """
+    Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+    """
+    CONNECTION_TYPE_UNSPECIFIED = "CONNECTION_TYPE_UNSPECIFIED"
+    """
+    No specific connection type was requested, the default value of VPC_PEERING is chosen.
+    """
+    VPC_PEERING = "VPC_PEERING"
+    """
+    Requests the use of VPC peerings for connecting the consumer and tenant projects.
+    """
+    PRIVATE_SERVICE_CONNECT_INTERFACES = "PRIVATE_SERVICE_CONNECT_INTERFACES"
+    """
+    Requests the use of Private Service Connect Interfaces for connecting the consumer and tenant projects.
     """

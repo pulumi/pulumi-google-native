@@ -16,8 +16,12 @@ __all__ = [
     'BigQueryDatasetSourceArgs',
     'BindingArgs',
     'DataProviderArgs',
+    'DcrExchangeConfigArgs',
+    'DefaultExchangeConfigArgs',
     'ExprArgs',
     'PublisherArgs',
+    'RestrictedExportConfigArgs',
+    'SharingEnvironmentConfigArgs',
 ]
 
 @pulumi.input_type
@@ -221,6 +225,24 @@ class DataProviderArgs:
 
 
 @pulumi.input_type
+class DcrExchangeConfigArgs:
+    def __init__(__self__):
+        """
+        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        """
+        pass
+
+
+@pulumi.input_type
+class DefaultExchangeConfigArgs:
+    def __init__(__self__):
+        """
+        Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        pass
+
+
+@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -330,5 +352,85 @@ class PublisherArgs:
     @primary_contact.setter
     def primary_contact(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary_contact", value)
+
+
+@pulumi.input_type
+class RestrictedExportConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 restrict_query_result: Optional[pulumi.Input[bool]] = None):
+        """
+        Restricted export config, used to configure restricted export on linked dataset.
+        :param pulumi.Input[bool] enabled: Optional. If true, enable restricted export.
+        :param pulumi.Input[bool] restrict_query_result: Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if restrict_query_result is not None:
+            pulumi.set(__self__, "restrict_query_result", restrict_query_result)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, enable restricted export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="restrictQueryResult")
+    def restrict_query_result(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        return pulumi.get(self, "restrict_query_result")
+
+    @restrict_query_result.setter
+    def restrict_query_result(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_query_result", value)
+
+
+@pulumi.input_type
+class SharingEnvironmentConfigArgs:
+    def __init__(__self__, *,
+                 dcr_exchange_config: Optional[pulumi.Input['DcrExchangeConfigArgs']] = None,
+                 default_exchange_config: Optional[pulumi.Input['DefaultExchangeConfigArgs']] = None):
+        """
+        Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+        :param pulumi.Input['DcrExchangeConfigArgs'] dcr_exchange_config: Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        :param pulumi.Input['DefaultExchangeConfigArgs'] default_exchange_config: Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        if dcr_exchange_config is not None:
+            pulumi.set(__self__, "dcr_exchange_config", dcr_exchange_config)
+        if default_exchange_config is not None:
+            pulumi.set(__self__, "default_exchange_config", default_exchange_config)
+
+    @property
+    @pulumi.getter(name="dcrExchangeConfig")
+    def dcr_exchange_config(self) -> Optional[pulumi.Input['DcrExchangeConfigArgs']]:
+        """
+        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        """
+        return pulumi.get(self, "dcr_exchange_config")
+
+    @dcr_exchange_config.setter
+    def dcr_exchange_config(self, value: Optional[pulumi.Input['DcrExchangeConfigArgs']]):
+        pulumi.set(self, "dcr_exchange_config", value)
+
+    @property
+    @pulumi.getter(name="defaultExchangeConfig")
+    def default_exchange_config(self) -> Optional[pulumi.Input['DefaultExchangeConfigArgs']]:
+        """
+        Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        return pulumi.get(self, "default_exchange_config")
+
+    @default_exchange_config.setter
+    def default_exchange_config(self, value: Optional[pulumi.Input['DefaultExchangeConfigArgs']]):
+        pulumi.set(self, "default_exchange_config", value)
 
 

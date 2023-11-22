@@ -20,6 +20,7 @@ __all__ = [
     'InvocationConfigResponse',
     'ScheduledExecutionRecordResponse',
     'ScheduledReleaseRecordResponse',
+    'SshAuthenticationConfigResponse',
     'StatusResponse',
     'TargetResponse',
     'WorkspaceCompilationOverridesResponse',
@@ -336,6 +337,8 @@ class GitRemoteSettingsResponse(dict):
             suggest = "authentication_token_secret_version"
         elif key == "defaultBranch":
             suggest = "default_branch"
+        elif key == "sshAuthenticationConfig":
+            suggest = "ssh_authentication_config"
         elif key == "tokenStatus":
             suggest = "token_status"
 
@@ -353,17 +356,20 @@ class GitRemoteSettingsResponse(dict):
     def __init__(__self__, *,
                  authentication_token_secret_version: str,
                  default_branch: str,
+                 ssh_authentication_config: 'outputs.SshAuthenticationConfigResponse',
                  token_status: str,
                  url: str):
         """
         Controls Git remote configuration for a repository.
-        :param str authentication_token_secret_version: The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        :param str authentication_token_secret_version: Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
         :param str default_branch: The Git remote's default branch name.
-        :param str token_status: Indicates the status of the Git access token.
+        :param 'SshAuthenticationConfigResponse' ssh_authentication_config: Optional. Authentication fields for remote uris using SSH protocol.
+        :param str token_status: Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
         :param str url: The Git remote's URL.
         """
         pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
         pulumi.set(__self__, "default_branch", default_branch)
+        pulumi.set(__self__, "ssh_authentication_config", ssh_authentication_config)
         pulumi.set(__self__, "token_status", token_status)
         pulumi.set(__self__, "url", url)
 
@@ -371,7 +377,7 @@ class GitRemoteSettingsResponse(dict):
     @pulumi.getter(name="authenticationTokenSecretVersion")
     def authentication_token_secret_version(self) -> str:
         """
-        The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "authentication_token_secret_version")
 
@@ -384,11 +390,22 @@ class GitRemoteSettingsResponse(dict):
         return pulumi.get(self, "default_branch")
 
     @property
+    @pulumi.getter(name="sshAuthenticationConfig")
+    def ssh_authentication_config(self) -> 'outputs.SshAuthenticationConfigResponse':
+        """
+        Optional. Authentication fields for remote uris using SSH protocol.
+        """
+        return pulumi.get(self, "ssh_authentication_config")
+
+    @property
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> str:
         """
-        Indicates the status of the Git access token.
+        Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
         """
+        warnings.warn("""Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus""", DeprecationWarning)
+        pulumi.log.warn("""token_status is deprecated: Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus""")
+
         return pulumi.get(self, "token_status")
 
     @property
@@ -466,6 +483,8 @@ class InvocationConfigResponse(dict):
             suggest = "included_tags"
         elif key == "includedTargets":
             suggest = "included_targets"
+        elif key == "serviceAccount":
+            suggest = "service_account"
         elif key == "transitiveDependenciesIncluded":
             suggest = "transitive_dependencies_included"
         elif key == "transitiveDependentsIncluded":
@@ -486,6 +505,7 @@ class InvocationConfigResponse(dict):
                  fully_refresh_incremental_tables_enabled: bool,
                  included_tags: Sequence[str],
                  included_targets: Sequence['outputs.TargetResponse'],
+                 service_account: str,
                  transitive_dependencies_included: bool,
                  transitive_dependents_included: bool):
         """
@@ -493,12 +513,14 @@ class InvocationConfigResponse(dict):
         :param bool fully_refresh_incremental_tables_enabled: Optional. When set to true, any incremental tables will be fully refreshed.
         :param Sequence[str] included_tags: Optional. The set of tags to include.
         :param Sequence['TargetResponse'] included_targets: Optional. The set of action identifiers to include.
+        :param str service_account: Optional. The service account to run workflow invocations under.
         :param bool transitive_dependencies_included: Optional. When set to true, transitive dependencies of included actions will be executed.
         :param bool transitive_dependents_included: Optional. When set to true, transitive dependents of included actions will be executed.
         """
         pulumi.set(__self__, "fully_refresh_incremental_tables_enabled", fully_refresh_incremental_tables_enabled)
         pulumi.set(__self__, "included_tags", included_tags)
         pulumi.set(__self__, "included_targets", included_targets)
+        pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "transitive_dependencies_included", transitive_dependencies_included)
         pulumi.set(__self__, "transitive_dependents_included", transitive_dependents_included)
 
@@ -525,6 +547,14 @@ class InvocationConfigResponse(dict):
         Optional. The set of action identifiers to include.
         """
         return pulumi.get(self, "included_targets")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter(name="transitiveDependenciesIncluded")
@@ -671,6 +701,58 @@ class ScheduledReleaseRecordResponse(dict):
         The timestamp of this release attempt.
         """
         return pulumi.get(self, "release_time")
+
+
+@pulumi.output_type
+class SshAuthenticationConfigResponse(dict):
+    """
+    Configures fields for performing SSH authentication.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostPublicKey":
+            suggest = "host_public_key"
+        elif key == "userPrivateKeySecretVersion":
+            suggest = "user_private_key_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SshAuthenticationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SshAuthenticationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SshAuthenticationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_public_key: str,
+                 user_private_key_secret_version: str):
+        """
+        Configures fields for performing SSH authentication.
+        :param str host_public_key: Content of a public SSH key to verify an identity of a remote Git host.
+        :param str user_private_key_secret_version: The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        """
+        pulumi.set(__self__, "host_public_key", host_public_key)
+        pulumi.set(__self__, "user_private_key_secret_version", user_private_key_secret_version)
+
+    @property
+    @pulumi.getter(name="hostPublicKey")
+    def host_public_key(self) -> str:
+        """
+        Content of a public SSH key to verify an identity of a remote Git host.
+        """
+        return pulumi.get(self, "host_public_key")
+
+    @property
+    @pulumi.getter(name="userPrivateKeySecretVersion")
+    def user_private_key_secret_version(self) -> str:
+        """
+        The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_private_key_secret_version")
 
 
 @pulumi.output_type

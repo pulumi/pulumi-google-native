@@ -5,19 +5,24 @@
 from enum import Enum
 
 __all__ = [
+    'AdvancedDatapathObservabilityConfigRelayMode',
     'BinaryAuthorizationEvaluationMode',
     'CloudRunConfigLoadBalancerType',
     'ClusterAutoscalingAutoscalingProfile',
+    'ClusterNetworkPerformanceConfigTotalEgressBandwidthTier',
     'ClusterTelemetryType',
     'ClusterUpdateDesiredDatapathProvider',
+    'ClusterUpdateDesiredInTransitEncryptionConfig',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
     'ClusterUpdateDesiredStackType',
     'DNSConfigClusterDns',
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'FilterEventTypeItem',
+    'GPUDriverInstallationConfigGpuDriverVersion',
     'GPUSharingConfigGpuSharingStrategy',
     'GatewayAPIConfigChannel',
+    'HostMaintenancePolicyMaintenanceInterval',
     'IPAllocationPolicyIpv6AccessType',
     'IPAllocationPolicyStackType',
     'IstioConfigAuth',
@@ -27,10 +32,12 @@ __all__ = [
     'MaintenanceExclusionOptionsScope',
     'MonitoringComponentConfigEnableComponentsItem',
     'NetworkConfigDatapathProvider',
+    'NetworkConfigInTransitEncryptionConfig',
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPerformanceConfigExternalIpEgressBandwidthTier',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkPolicyProvider',
+    'NodeAffinityOperator',
     'NodePoolAutoscalingLocationPolicy',
     'NodeTaintEffect',
     'PlacementPolicyType',
@@ -38,6 +45,8 @@ __all__ = [
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
+    'SecurityPostureConfigMode',
+    'SecurityPostureConfigVulnerabilityMode',
     'StatusConditionCanonicalCode',
     'StatusConditionCode',
     'UpgradeSettingsStrategy',
@@ -46,6 +55,28 @@ __all__ = [
     'WorkloadMetadataConfigMode',
     'WorkloadMetadataConfigNodeMetadata',
 ]
+
+
+class AdvancedDatapathObservabilityConfigRelayMode(str, Enum):
+    """
+    Method used to make Relay available
+    """
+    RELAY_MODE_UNSPECIFIED = "RELAY_MODE_UNSPECIFIED"
+    """
+    Default value. This shouldn't be used.
+    """
+    DISABLED = "DISABLED"
+    """
+    disabled
+    """
+    INTERNAL_VPC_LB = "INTERNAL_VPC_LB"
+    """
+    exposed via internal load balancer
+    """
+    EXTERNAL_LB = "EXTERNAL_LB"
+    """
+    exposed via external load balancer
+    """
 
 
 class BinaryAuthorizationEvaluationMode(str, Enum):
@@ -63,6 +94,14 @@ class BinaryAuthorizationEvaluationMode(str, Enum):
     PROJECT_SINGLETON_POLICY_ENFORCE = "PROJECT_SINGLETON_POLICY_ENFORCE"
     """
     Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy. This is equivalent to setting the enabled boolean to true.
+    """
+    POLICY_BINDINGS = "POLICY_BINDINGS"
+    """
+    Use Binary Authorization with the policies specified in policy_bindings.
+    """
+    POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE = "POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE"
+    """
+    Use Binary Authorization with the policies specified in policy_bindings, and also with the project's singleton policy in enforcement mode.
     """
 
 
@@ -99,6 +138,20 @@ class ClusterAutoscalingAutoscalingProfile(str, Enum):
     BALANCED = "BALANCED"
     """
     Use default (balanced) autoscaling configuration.
+    """
+
+
+class ClusterNetworkPerformanceConfigTotalEgressBandwidthTier(str, Enum):
+    """
+    Specifies the total network bandwidth tier for the NodePool.
+    """
+    TIER_UNSPECIFIED = "TIER_UNSPECIFIED"
+    """
+    Default value
+    """
+    TIER1 = "TIER_1"
+    """
+    Higher bandwidth, actual values based on VM size.
     """
 
 
@@ -139,6 +192,24 @@ class ClusterUpdateDesiredDatapathProvider(str, Enum):
     ADVANCED_DATAPATH = "ADVANCED_DATAPATH"
     """
     Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+    """
+
+
+class ClusterUpdateDesiredInTransitEncryptionConfig(str, Enum):
+    """
+    Specify the details of in-transit encryption.
+    """
+    IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED = "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
+    """
+    Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+    """
+    IN_TRANSIT_ENCRYPTION_DISABLED = "IN_TRANSIT_ENCRYPTION_DISABLED"
+    """
+    In-transit encryption is disabled.
+    """
+    IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT = "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT"
+    """
+    Data in-transit is encrypted using inter-node transparent encryption.
     """
 
 
@@ -198,6 +269,10 @@ class DNSConfigClusterDns(str, Enum):
     """
     Use CloudDNS for DNS resolution.
     """
+    KUBE_DNS = "KUBE_DNS"
+    """
+    Use KubeDNS for DNS resolution.
+    """
 
 
 class DNSConfigClusterDnsScope(str, Enum):
@@ -255,6 +330,28 @@ class FilterEventTypeItem(str, Enum):
     """
 
 
+class GPUDriverInstallationConfigGpuDriverVersion(str, Enum):
+    """
+    Mode for how the GPU driver is installed.
+    """
+    GPU_DRIVER_VERSION_UNSPECIFIED = "GPU_DRIVER_VERSION_UNSPECIFIED"
+    """
+    Default value is to not install any GPU driver.
+    """
+    INSTALLATION_DISABLED = "INSTALLATION_DISABLED"
+    """
+    Disable GPU driver auto installation and needs manual installation
+    """
+    DEFAULT = "DEFAULT"
+    """
+    "Default" GPU driver in COS and Ubuntu.
+    """
+    LATEST = "LATEST"
+    """
+    "Latest" GPU driver in COS.
+    """
+
+
 class GPUSharingConfigGpuSharingStrategy(str, Enum):
     """
     The type of GPU sharing strategy to enable on the GPU node.
@@ -288,6 +385,24 @@ class GatewayAPIConfigChannel(str, Enum):
     CHANNEL_STANDARD = "CHANNEL_STANDARD"
     """
     Gateway API support is enabled, standard CRDs are installed
+    """
+
+
+class HostMaintenancePolicyMaintenanceInterval(str, Enum):
+    """
+    Specifies the frequency of planned maintenance events.
+    """
+    MAINTENANCE_INTERVAL_UNSPECIFIED = "MAINTENANCE_INTERVAL_UNSPECIFIED"
+    """
+    The maintenance interval is not explicitly specified.
+    """
+    AS_NEEDED = "AS_NEEDED"
+    """
+    Nodes are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the node than the PERIODIC option.
+    """
+    PERIODIC = "PERIODIC"
+    """
+    Nodes receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean underlying VMs will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
     """
 
 
@@ -447,6 +562,30 @@ class MonitoringComponentConfigEnableComponentsItem(str, Enum):
     """
     kube-controller-manager
     """
+    STORAGE = "STORAGE"
+    """
+    Storage
+    """
+    HPA = "HPA"
+    """
+    Horizontal Pod Autoscaling
+    """
+    POD = "POD"
+    """
+    Pod
+    """
+    DAEMONSET = "DAEMONSET"
+    """
+    DaemonSet
+    """
+    DEPLOYMENT = "DEPLOYMENT"
+    """
+    Deployment
+    """
+    STATEFULSET = "STATEFULSET"
+    """
+    Statefulset
+    """
 
 
 class NetworkConfigDatapathProvider(str, Enum):
@@ -464,6 +603,24 @@ class NetworkConfigDatapathProvider(str, Enum):
     ADVANCED_DATAPATH = "ADVANCED_DATAPATH"
     """
     Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+    """
+
+
+class NetworkConfigInTransitEncryptionConfig(str, Enum):
+    """
+    Specify the details of in-transit encryption.
+    """
+    IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED = "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
+    """
+    Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+    """
+    IN_TRANSIT_ENCRYPTION_DISABLED = "IN_TRANSIT_ENCRYPTION_DISABLED"
+    """
+    In-transit encryption is disabled.
+    """
+    IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT = "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT"
+    """
+    Data in-transit is encrypted using inter-node transparent encryption.
     """
 
 
@@ -528,6 +685,24 @@ class NetworkPolicyProvider(str, Enum):
     CALICO = "CALICO"
     """
     Tigera (Calico Felix).
+    """
+
+
+class NodeAffinityOperator(str, Enum):
+    """
+    Operator for NodeAffinity.
+    """
+    OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED"
+    """
+    Invalid or unspecified affinity operator.
+    """
+    IN_ = "IN"
+    """
+    Affinity operator.
+    """
+    NOT_IN = "NOT_IN"
+    """
+    Anti-affinity operator.
     """
 
 
@@ -658,6 +833,46 @@ class SandboxConfigType(str, Enum):
     GVISOR = "GVISOR"
     """
     Run sandbox using gvisor.
+    """
+
+
+class SecurityPostureConfigMode(str, Enum):
+    """
+    Sets which mode to use for Security Posture features.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value not specified.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disables Security Posture features on the cluster.
+    """
+    BASIC = "BASIC"
+    """
+    Applies Security Posture features on the cluster.
+    """
+
+
+class SecurityPostureConfigVulnerabilityMode(str, Enum):
+    """
+    Sets which mode to use for vulnerability scanning.
+    """
+    VULNERABILITY_MODE_UNSPECIFIED = "VULNERABILITY_MODE_UNSPECIFIED"
+    """
+    Default value not specified.
+    """
+    VULNERABILITY_DISABLED = "VULNERABILITY_DISABLED"
+    """
+    Disables vulnerability scanning on the cluster.
+    """
+    VULNERABILITY_BASIC = "VULNERABILITY_BASIC"
+    """
+    Applies basic vulnerability scanning on the cluster.
+    """
+    VULNERABILITY_ENTERPRISE = "VULNERABILITY_ENTERPRISE"
+    """
+    Applies the Security Posture's vulnerability on cluster Enterprise level features.
     """
 
 

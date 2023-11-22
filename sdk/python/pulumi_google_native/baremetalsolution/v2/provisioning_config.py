@@ -23,6 +23,7 @@ class ProvisioningConfigArgs:
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
+                 pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,7 @@ class ProvisioningConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] instances: Instances to be created.
         :param pulumi.Input[str] location: Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: Networks to be created.
+        :param pulumi.Input[str] pod: Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
         :param pulumi.Input[str] status_message: Optional status messages associated with the FAILED state.
         :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]] volumes: Volumes to be created.
@@ -56,6 +58,8 @@ class ProvisioningConfigArgs:
             pulumi.set(__self__, "location", location)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if pod is not None:
+            pulumi.set(__self__, "pod", pod)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if status_message is not None:
@@ -144,6 +148,18 @@ class ProvisioningConfigArgs:
 
     @property
     @pulumi.getter
+    def pod(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+        """
+        return pulumi.get(self, "pod")
+
+    @pod.setter
+    def pod(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -211,6 +227,7 @@ class ProvisioningConfig(pulumi.CustomResource):
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
@@ -231,6 +248,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] instances: Instances to be created.
         :param pulumi.Input[str] location: Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: Networks to be created.
+        :param pulumi.Input[str] pod: Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
         :param pulumi.Input[str] status_message: Optional status messages associated with the FAILED state.
         :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]] volumes: Volumes to be created.
@@ -269,6 +287,7 @@ class ProvisioningConfig(pulumi.CustomResource):
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
@@ -292,6 +311,7 @@ class ProvisioningConfig(pulumi.CustomResource):
             __props__.__dict__["instances"] = instances
             __props__.__dict__["location"] = location
             __props__.__dict__["networks"] = networks
+            __props__.__dict__["pod"] = pod
             __props__.__dict__["project"] = project
             __props__.__dict__["status_message"] = status_message
             __props__.__dict__["ticket_id"] = ticket_id
@@ -333,6 +353,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["pod"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
@@ -402,6 +423,14 @@ class ProvisioningConfig(pulumi.CustomResource):
         Networks to be created.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def pod(self) -> pulumi.Output[str]:
+        """
+        Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+        """
+        return pulumi.get(self, "pod")
 
     @property
     @pulumi.getter

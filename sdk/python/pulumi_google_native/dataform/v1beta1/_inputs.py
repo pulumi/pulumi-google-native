@@ -15,6 +15,7 @@ __all__ = [
     'ExprArgs',
     'GitRemoteSettingsArgs',
     'InvocationConfigArgs',
+    'SshAuthenticationConfigArgs',
     'TargetArgs',
     'WorkspaceCompilationOverridesArgs',
 ]
@@ -286,30 +287,23 @@ class ExprArgs:
 @pulumi.input_type
 class GitRemoteSettingsArgs:
     def __init__(__self__, *,
-                 authentication_token_secret_version: pulumi.Input[str],
                  default_branch: pulumi.Input[str],
-                 url: pulumi.Input[str]):
+                 url: pulumi.Input[str],
+                 authentication_token_secret_version: Optional[pulumi.Input[str]] = None,
+                 ssh_authentication_config: Optional[pulumi.Input['SshAuthenticationConfigArgs']] = None):
         """
         Controls Git remote configuration for a repository.
-        :param pulumi.Input[str] authentication_token_secret_version: The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[str] default_branch: The Git remote's default branch name.
         :param pulumi.Input[str] url: The Git remote's URL.
+        :param pulumi.Input[str] authentication_token_secret_version: Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input['SshAuthenticationConfigArgs'] ssh_authentication_config: Optional. Authentication fields for remote uris using SSH protocol.
         """
-        pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="authenticationTokenSecretVersion")
-    def authentication_token_secret_version(self) -> pulumi.Input[str]:
-        """
-        The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-        """
-        return pulumi.get(self, "authentication_token_secret_version")
-
-    @authentication_token_secret_version.setter
-    def authentication_token_secret_version(self, value: pulumi.Input[str]):
-        pulumi.set(self, "authentication_token_secret_version", value)
+        if authentication_token_secret_version is not None:
+            pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
+        if ssh_authentication_config is not None:
+            pulumi.set(__self__, "ssh_authentication_config", ssh_authentication_config)
 
     @property
     @pulumi.getter(name="defaultBranch")
@@ -335,6 +329,30 @@ class GitRemoteSettingsArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+    @property
+    @pulumi.getter(name="authenticationTokenSecretVersion")
+    def authentication_token_secret_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "authentication_token_secret_version")
+
+    @authentication_token_secret_version.setter
+    def authentication_token_secret_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authentication_token_secret_version", value)
+
+    @property
+    @pulumi.getter(name="sshAuthenticationConfig")
+    def ssh_authentication_config(self) -> Optional[pulumi.Input['SshAuthenticationConfigArgs']]:
+        """
+        Optional. Authentication fields for remote uris using SSH protocol.
+        """
+        return pulumi.get(self, "ssh_authentication_config")
+
+    @ssh_authentication_config.setter
+    def ssh_authentication_config(self, value: Optional[pulumi.Input['SshAuthenticationConfigArgs']]):
+        pulumi.set(self, "ssh_authentication_config", value)
+
 
 @pulumi.input_type
 class InvocationConfigArgs:
@@ -342,6 +360,7 @@ class InvocationConfigArgs:
                  fully_refresh_incremental_tables_enabled: Optional[pulumi.Input[bool]] = None,
                  included_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_targets: Optional[pulumi.Input[Sequence[pulumi.Input['TargetArgs']]]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  transitive_dependencies_included: Optional[pulumi.Input[bool]] = None,
                  transitive_dependents_included: Optional[pulumi.Input[bool]] = None):
         """
@@ -349,6 +368,7 @@ class InvocationConfigArgs:
         :param pulumi.Input[bool] fully_refresh_incremental_tables_enabled: Optional. When set to true, any incremental tables will be fully refreshed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_tags: Optional. The set of tags to include.
         :param pulumi.Input[Sequence[pulumi.Input['TargetArgs']]] included_targets: Optional. The set of action identifiers to include.
+        :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
         :param pulumi.Input[bool] transitive_dependencies_included: Optional. When set to true, transitive dependencies of included actions will be executed.
         :param pulumi.Input[bool] transitive_dependents_included: Optional. When set to true, transitive dependents of included actions will be executed.
         """
@@ -358,6 +378,8 @@ class InvocationConfigArgs:
             pulumi.set(__self__, "included_tags", included_tags)
         if included_targets is not None:
             pulumi.set(__self__, "included_targets", included_targets)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if transitive_dependencies_included is not None:
             pulumi.set(__self__, "transitive_dependencies_included", transitive_dependencies_included)
         if transitive_dependents_included is not None:
@@ -400,6 +422,18 @@ class InvocationConfigArgs:
         pulumi.set(self, "included_targets", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter(name="transitiveDependenciesIncluded")
     def transitive_dependencies_included(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -422,6 +456,44 @@ class InvocationConfigArgs:
     @transitive_dependents_included.setter
     def transitive_dependents_included(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "transitive_dependents_included", value)
+
+
+@pulumi.input_type
+class SshAuthenticationConfigArgs:
+    def __init__(__self__, *,
+                 host_public_key: pulumi.Input[str],
+                 user_private_key_secret_version: pulumi.Input[str]):
+        """
+        Configures fields for performing SSH authentication.
+        :param pulumi.Input[str] host_public_key: Content of a public SSH key to verify an identity of a remote Git host.
+        :param pulumi.Input[str] user_private_key_secret_version: The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        """
+        pulumi.set(__self__, "host_public_key", host_public_key)
+        pulumi.set(__self__, "user_private_key_secret_version", user_private_key_secret_version)
+
+    @property
+    @pulumi.getter(name="hostPublicKey")
+    def host_public_key(self) -> pulumi.Input[str]:
+        """
+        Content of a public SSH key to verify an identity of a remote Git host.
+        """
+        return pulumi.get(self, "host_public_key")
+
+    @host_public_key.setter
+    def host_public_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_public_key", value)
+
+    @property
+    @pulumi.getter(name="userPrivateKeySecretVersion")
+    def user_private_key_secret_version(self) -> pulumi.Input[str]:
+        """
+        The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_private_key_secret_version")
+
+    @user_private_key_secret_version.setter
+    def user_private_key_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_private_key_secret_version", value)
 
 
 @pulumi.input_type

@@ -23,7 +23,10 @@ __all__ = [
     'HttpHeaderMatchResponse',
     'MTLSPolicyResponse',
     'RuleResponse',
+    'SeverityOverrideResponse',
     'SourceResponse',
+    'ThreatOverrideResponse',
+    'ThreatPreventionProfileResponse',
     'ValidationCAResponse',
 ]
 
@@ -581,6 +584,39 @@ class RuleResponse(dict):
 
 
 @pulumi.output_type
+class SeverityOverrideResponse(dict):
+    """
+    Defines what action to take for a specific severity match.
+    """
+    def __init__(__self__, *,
+                 action: str,
+                 severity: str):
+        """
+        Defines what action to take for a specific severity match.
+        :param str action: Threat action override.
+        :param str severity: Severity level to match.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Threat action override.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> str:
+        """
+        Severity level to match.
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
 class SourceResponse(dict):
     """
     Specification of traffic source attributes.
@@ -628,6 +664,119 @@ class SourceResponse(dict):
         Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
         """
         return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
+class ThreatOverrideResponse(dict):
+    """
+    Defines what action to take for a specific threat_id match.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threatId":
+            suggest = "threat_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ThreatOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ThreatOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ThreatOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 threat_id: str,
+                 type: str):
+        """
+        Defines what action to take for a specific threat_id match.
+        :param str action: Threat action override. For some threat types, only a subset of actions applies.
+        :param str threat_id: Vendor-specific ID of a threat to override.
+        :param str type: Type of the threat (read only).
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threat_id", threat_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Threat action override. For some threat types, only a subset of actions applies.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="threatId")
+    def threat_id(self) -> str:
+        """
+        Vendor-specific ID of a threat to override.
+        """
+        return pulumi.get(self, "threat_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the threat (read only).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ThreatPreventionProfileResponse(dict):
+    """
+    ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "severityOverrides":
+            suggest = "severity_overrides"
+        elif key == "threatOverrides":
+            suggest = "threat_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ThreatPreventionProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ThreatPreventionProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ThreatPreventionProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 severity_overrides: Sequence['outputs.SeverityOverrideResponse'],
+                 threat_overrides: Sequence['outputs.ThreatOverrideResponse']):
+        """
+        ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
+        :param Sequence['SeverityOverrideResponse'] severity_overrides: Optional. Configuration for overriding threats actions by severity match.
+        :param Sequence['ThreatOverrideResponse'] threat_overrides: Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+        """
+        pulumi.set(__self__, "severity_overrides", severity_overrides)
+        pulumi.set(__self__, "threat_overrides", threat_overrides)
+
+    @property
+    @pulumi.getter(name="severityOverrides")
+    def severity_overrides(self) -> Sequence['outputs.SeverityOverrideResponse']:
+        """
+        Optional. Configuration for overriding threats actions by severity match.
+        """
+        return pulumi.get(self, "severity_overrides")
+
+    @property
+    @pulumi.getter(name="threatOverrides")
+    def threat_overrides(self) -> Sequence['outputs.ThreatOverrideResponse']:
+        """
+        Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
+        """
+        return pulumi.get(self, "threat_overrides")
 
 
 @pulumi.output_type

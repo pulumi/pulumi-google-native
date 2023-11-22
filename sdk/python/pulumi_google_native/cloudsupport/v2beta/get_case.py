@@ -227,7 +227,7 @@ def get_case(case_id: Optional[str] = None,
              v2betum_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCaseResult:
     """
-    Retrieve the specified case.
+    Retrieve a case. EXAMPLES: cURL: ``` shell case="projects/some-project/cases/16033687" curl \\ --header "Authorization: Bearer $(gcloud auth print-access-token)" \\ "https://cloudsupport.googleapis.com/v2/$case"  ``` Python: ``` python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute())  ```
     """
     __args__ = dict()
     __args__['caseId'] = case_id
@@ -261,6 +261,6 @@ def get_case_output(case_id: Optional[pulumi.Input[str]] = None,
                     v2betum_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaseResult]:
     """
-    Retrieve the specified case.
+    Retrieve a case. EXAMPLES: cURL: ``` shell case="projects/some-project/cases/16033687" curl \\ --header "Authorization: Bearer $(gcloud auth print-access-token)" \\ "https://cloudsupport.googleapis.com/v2/$case"  ``` Python: ``` python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute())  ```
     """
     ...

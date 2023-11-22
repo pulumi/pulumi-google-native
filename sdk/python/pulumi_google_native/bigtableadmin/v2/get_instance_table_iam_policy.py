@@ -83,7 +83,7 @@ def get_instance_table_iam_policy(instance_id: Optional[str] = None,
                                   table_id: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTableIamPolicyResult:
     """
-    Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+    Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -105,6 +105,6 @@ def get_instance_table_iam_policy_output(instance_id: Optional[pulumi.Input[str]
                                          table_id: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTableIamPolicyResult]:
     """
-    Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+    Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
     """
     ...

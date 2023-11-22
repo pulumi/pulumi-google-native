@@ -16,6 +16,7 @@ __all__ = [
     'AdvancedMachineFeaturesResponse',
     'BackupConfigurationResponse',
     'BackupRetentionSettingsResponse',
+    'DataCacheConfigResponse',
     'DatabaseFlagsResponse',
     'DenyMaintenancePeriodResponse',
     'DiskEncryptionConfigurationResponse',
@@ -32,6 +33,7 @@ __all__ = [
     'OperationErrorResponse',
     'PasswordStatusResponse',
     'PasswordValidationPolicyResponse',
+    'PscConfigResponse',
     'ReplicaConfigurationResponse',
     'SettingsResponse',
     'SqlActiveDirectoryConfigResponse',
@@ -204,7 +206,7 @@ class BackupConfigurationResponse(dict):
         :param bool enabled: Whether this configuration is enabled.
         :param str kind: This is always `sql#backupConfiguration`.
         :param str location: Location of the backup
-        :param bool point_in_time_recovery_enabled: (Postgres only) Whether point in time recovery is enabled.
+        :param bool point_in_time_recovery_enabled: Whether point in time recovery is enabled.
         :param bool replication_log_archiving_enabled: Reserved for future use.
         :param str start_time: Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
         :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
@@ -263,7 +265,7 @@ class BackupConfigurationResponse(dict):
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> bool:
         """
-        (Postgres only) Whether point in time recovery is enabled.
+        Whether point in time recovery is enabled.
         """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
@@ -342,6 +344,45 @@ class BackupRetentionSettingsResponse(dict):
         The unit that 'retained_backups' represents.
         """
         return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class DataCacheConfigResponse(dict):
+    """
+    Data cache configurations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataCacheEnabled":
+            suggest = "data_cache_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataCacheConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataCacheConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataCacheConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_cache_enabled: bool):
+        """
+        Data cache configurations.
+        :param bool data_cache_enabled: Whether data cache is enabled for the instance.
+        """
+        pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
+
+    @property
+    @pulumi.getter(name="dataCacheEnabled")
+    def data_cache_enabled(self) -> bool:
+        """
+        Whether data cache is enabled for the instance.
+        """
+        return pulumi.get(self, "data_cache_enabled")
 
 
 @pulumi.output_type
@@ -726,8 +767,12 @@ class IpConfigurationResponse(dict):
             suggest = "ipv4_enabled"
         elif key == "privateNetwork":
             suggest = "private_network"
+        elif key == "pscConfig":
+            suggest = "psc_config"
         elif key == "requireSsl":
             suggest = "require_ssl"
+        elif key == "sslMode":
+            suggest = "ssl_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in IpConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
@@ -746,7 +791,9 @@ class IpConfigurationResponse(dict):
                  enable_private_path_for_google_cloud_services: bool,
                  ipv4_enabled: bool,
                  private_network: str,
-                 require_ssl: bool):
+                 psc_config: 'outputs.PscConfigResponse',
+                 require_ssl: bool,
+                 ssl_mode: str):
         """
         IP Management configuration.
         :param str allocated_ip_range: The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
@@ -754,14 +801,18 @@ class IpConfigurationResponse(dict):
         :param bool enable_private_path_for_google_cloud_services: Controls connectivity to private IP instances from Google services, such as BigQuery.
         :param bool ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
-        :param bool require_ssl: Whether SSL connections over IP are enforced or not.
+        :param 'PscConfigResponse' psc_config: PSC settings for this instance.
+        :param bool require_ssl: Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+        :param str ssl_mode: Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
+        pulumi.set(__self__, "psc_config", psc_config)
         pulumi.set(__self__, "require_ssl", require_ssl)
+        pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -804,18 +855,34 @@ class IpConfigurationResponse(dict):
         return pulumi.get(self, "private_network")
 
     @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> 'outputs.PscConfigResponse':
+        """
+        PSC settings for this instance.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @property
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> bool:
         """
-        Whether SSL connections over IP are enforced or not.
+        Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
         """
         return pulumi.get(self, "require_ssl")
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> str:
+        """
+        Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+        """
+        return pulumi.get(self, "ssl_mode")
 
 
 @pulumi.output_type
 class IpMappingResponse(dict):
     """
-    Database instance IP Mapping.
+    Database instance IP mapping
     """
     @staticmethod
     def __key_warning(key: str):
@@ -841,7 +908,7 @@ class IpMappingResponse(dict):
                  time_to_retire: str,
                  type: str):
         """
-        Database instance IP Mapping.
+        Database instance IP mapping
         :param str ip_address: The IP address assigned.
         :param str time_to_retire: The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
         :param str type: The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
@@ -908,7 +975,7 @@ class LocationPreferenceResponse(dict):
         Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
         :param str follow_gae_application: The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
         :param str kind: This is always `sql#locationPreference`.
-        :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+        :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
         :param str zone: The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
         """
         pulumi.set(__self__, "follow_gae_application", follow_gae_application)
@@ -936,7 +1003,7 @@ class LocationPreferenceResponse(dict):
     @pulumi.getter(name="secondaryZone")
     def secondary_zone(self) -> str:
         """
-        The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.).
+        The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
         """
         return pulumi.get(self, "secondary_zone")
 
@@ -1423,7 +1490,9 @@ class PasswordValidationPolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "disallowUsernameSubstring":
+        if key == "disallowCompromisedCredentials":
+            suggest = "disallow_compromised_credentials"
+        elif key == "disallowUsernameSubstring":
             suggest = "disallow_username_substring"
         elif key == "enablePasswordPolicy":
             suggest = "enable_password_policy"
@@ -1447,6 +1516,7 @@ class PasswordValidationPolicyResponse(dict):
 
     def __init__(__self__, *,
                  complexity: str,
+                 disallow_compromised_credentials: bool,
                  disallow_username_substring: bool,
                  enable_password_policy: bool,
                  min_length: int,
@@ -1455,6 +1525,7 @@ class PasswordValidationPolicyResponse(dict):
         """
         Database instance local user password validation policy
         :param str complexity: The complexity of the password.
+        :param bool disallow_compromised_credentials: Disallow credentials that have been previously compromised by a public data breach.
         :param bool disallow_username_substring: Disallow username as a part of the password.
         :param bool enable_password_policy: Whether the password policy is enabled or not.
         :param int min_length: Minimum number of characters allowed.
@@ -1462,6 +1533,7 @@ class PasswordValidationPolicyResponse(dict):
         :param int reuse_interval: Number of previous passwords that cannot be reused.
         """
         pulumi.set(__self__, "complexity", complexity)
+        pulumi.set(__self__, "disallow_compromised_credentials", disallow_compromised_credentials)
         pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
         pulumi.set(__self__, "enable_password_policy", enable_password_policy)
         pulumi.set(__self__, "min_length", min_length)
@@ -1475,6 +1547,14 @@ class PasswordValidationPolicyResponse(dict):
         The complexity of the password.
         """
         return pulumi.get(self, "complexity")
+
+    @property
+    @pulumi.getter(name="disallowCompromisedCredentials")
+    def disallow_compromised_credentials(self) -> bool:
+        """
+        Disallow credentials that have been previously compromised by a public data breach.
+        """
+        return pulumi.get(self, "disallow_compromised_credentials")
 
     @property
     @pulumi.getter(name="disallowUsernameSubstring")
@@ -1518,6 +1598,58 @@ class PasswordValidationPolicyResponse(dict):
 
 
 @pulumi.output_type
+class PscConfigResponse(dict):
+    """
+    PSC settings for a Cloud SQL instance.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedConsumerProjects":
+            suggest = "allowed_consumer_projects"
+        elif key == "pscEnabled":
+            suggest = "psc_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PscConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PscConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PscConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Sequence[str],
+                 psc_enabled: bool):
+        """
+        PSC settings for a Cloud SQL instance.
+        :param Sequence[str] allowed_consumer_projects: Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param bool psc_enabled: Whether PSC connectivity is enabled for this instance.
+        """
+        pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Sequence[str]:
+        """
+        Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        """
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> bool:
+        """
+        Whether PSC connectivity is enabled for this instance.
+        """
+        return pulumi.get(self, "psc_enabled")
+
+
+@pulumi.output_type
 class ReplicaConfigurationResponse(dict):
     """
     Read-replica configuration for connecting to the primary instance.
@@ -1525,7 +1657,9 @@ class ReplicaConfigurationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "failoverTarget":
+        if key == "cascadableReplica":
+            suggest = "cascadable_replica"
+        elif key == "failoverTarget":
             suggest = "failover_target"
         elif key == "mysqlReplicaConfiguration":
             suggest = "mysql_replica_configuration"
@@ -1542,18 +1676,29 @@ class ReplicaConfigurationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cascadable_replica: bool,
                  failover_target: bool,
                  kind: str,
                  mysql_replica_configuration: 'outputs.MySqlReplicaConfigurationResponse'):
         """
         Read-replica configuration for connecting to the primary instance.
+        :param bool cascadable_replica: Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
         :param bool failover_target: Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
         :param str kind: This is always `sql#replicaConfiguration`.
         :param 'MySqlReplicaConfigurationResponse' mysql_replica_configuration: MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named `master.info` in the data directory.
         """
+        pulumi.set(__self__, "cascadable_replica", cascadable_replica)
         pulumi.set(__self__, "failover_target", failover_target)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "mysql_replica_configuration", mysql_replica_configuration)
+
+    @property
+    @pulumi.getter(name="cascadableReplica")
+    def cascadable_replica(self) -> bool:
+        """
+        Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+        """
+        return pulumi.get(self, "cascadable_replica")
 
     @property
     @pulumi.getter(name="failoverTarget")
@@ -1604,6 +1749,8 @@ class SettingsResponse(dict):
             suggest = "connector_enforcement"
         elif key == "crashSafeReplicationEnabled":
             suggest = "crash_safe_replication_enabled"
+        elif key == "dataCacheConfig":
+            suggest = "data_cache_config"
         elif key == "dataDiskSizeGb":
             suggest = "data_disk_size_gb"
         elif key == "dataDiskType":
@@ -1664,12 +1811,14 @@ class SettingsResponse(dict):
                  collation: str,
                  connector_enforcement: str,
                  crash_safe_replication_enabled: bool,
+                 data_cache_config: 'outputs.DataCacheConfigResponse',
                  data_disk_size_gb: str,
                  data_disk_type: str,
                  database_flags: Sequence['outputs.DatabaseFlagsResponse'],
                  database_replication_enabled: bool,
                  deletion_protection_enabled: bool,
                  deny_maintenance_periods: Sequence['outputs.DenyMaintenancePeriodResponse'],
+                 edition: str,
                  insights_config: 'outputs.InsightsConfigResponse',
                  ip_configuration: 'outputs.IpConfigurationResponse',
                  kind: str,
@@ -1696,12 +1845,14 @@ class SettingsResponse(dict):
         :param str collation: The name of server Instance collation.
         :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
         :param bool crash_safe_replication_enabled: Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
+        :param 'DataCacheConfigResponse' data_cache_config: Configuration for data cache.
         :param str data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
         :param str data_disk_type: The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
         :param Sequence['DatabaseFlagsResponse'] database_flags: The database flags passed to the instance at startup.
         :param bool database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param Sequence['DenyMaintenancePeriodResponse'] deny_maintenance_periods: Deny maintenance periods
+        :param str edition: Optional. The edition of the instance.
         :param 'InsightsConfigResponse' insights_config: Insights configuration, for now relevant only for Postgres.
         :param 'IpConfigurationResponse' ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
         :param str kind: This is always `sql#settings`.
@@ -1727,12 +1878,14 @@ class SettingsResponse(dict):
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         pulumi.set(__self__, "crash_safe_replication_enabled", crash_safe_replication_enabled)
+        pulumi.set(__self__, "data_cache_config", data_cache_config)
         pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         pulumi.set(__self__, "data_disk_type", data_disk_type)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "database_replication_enabled", database_replication_enabled)
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
+        pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "insights_config", insights_config)
         pulumi.set(__self__, "ip_configuration", ip_configuration)
         pulumi.set(__self__, "kind", kind)
@@ -1825,6 +1978,14 @@ class SettingsResponse(dict):
         return pulumi.get(self, "crash_safe_replication_enabled")
 
     @property
+    @pulumi.getter(name="dataCacheConfig")
+    def data_cache_config(self) -> 'outputs.DataCacheConfigResponse':
+        """
+        Configuration for data cache.
+        """
+        return pulumi.get(self, "data_cache_config")
+
+    @property
     @pulumi.getter(name="dataDiskSizeGb")
     def data_disk_size_gb(self) -> str:
         """
@@ -1871,6 +2032,14 @@ class SettingsResponse(dict):
         Deny maintenance periods
         """
         return pulumi.get(self, "deny_maintenance_periods")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        Optional. The edition of the instance.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="insightsConfig")

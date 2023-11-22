@@ -11,6 +11,12 @@ __all__ = [
     'MTLSPolicyClientValidationMode',
     'OrganizationAddressGroupType',
     'RuleBasicProfile',
+    'SecurityProfileType',
+    'SeverityOverrideAction',
+    'SeverityOverrideSeverity',
+    'ThreatOverrideAction',
+    'TlsInspectionPolicyMinTlsVersion',
+    'TlsInspectionPolicyTlsFeatureProfile',
 ]
 
 
@@ -123,4 +129,152 @@ class RuleBasicProfile(str, Enum):
     DENY = "DENY"
     """
     Deny the matched traffic.
+    """
+
+
+class SecurityProfileType(str, Enum):
+    """
+    Immutable. The single ProfileType that the SecurityProfile resource configures.
+    """
+    PROFILE_TYPE_UNSPECIFIED = "PROFILE_TYPE_UNSPECIFIED"
+    """
+    Profile type not specified.
+    """
+    THREAT_PREVENTION = "THREAT_PREVENTION"
+    """
+    Profile type for threat prevention.
+    """
+
+
+class SeverityOverrideAction(str, Enum):
+    """
+    Required. Threat action override.
+    """
+    THREAT_ACTION_UNSPECIFIED = "THREAT_ACTION_UNSPECIFIED"
+    """
+    Threat action not specified.
+    """
+    DEFAULT_ACTION = "DEFAULT_ACTION"
+    """
+    The default action (as specified by the vendor) is taken.
+    """
+    ALLOW = "ALLOW"
+    """
+    The packet matching this rule will be allowed to transmit.
+    """
+    ALERT = "ALERT"
+    """
+    The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+    """
+    DENY = "DENY"
+    """
+    The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+    """
+
+
+class SeverityOverrideSeverity(str, Enum):
+    """
+    Required. Severity level to match.
+    """
+    SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
+    """
+    Severity level not specified.
+    """
+    INFORMATIONAL = "INFORMATIONAL"
+    """
+    Suspicious events that do not pose an immediate threat, but that are reported to call attention to deeper problems that could possibly exist.
+    """
+    LOW = "LOW"
+    """
+    Warning-level threats that have very little impact on an organization's infrastructure. They usually require local or physical system access and may often result in victim privacy issues and information leakage.
+    """
+    MEDIUM = "MEDIUM"
+    """
+    Minor threats in which impact is minimized, that do not compromise the target or exploits that require an attacker to reside on the same local network as the victim, affect only non-standard configurations or obscure applications, or provide very limited access.
+    """
+    HIGH = "HIGH"
+    """
+    Threats that have the ability to become critical but have mitigating factors; for example, they may be difficult to exploit, do not result in elevated privileges, or do not have a large victim pool.
+    """
+    CRITICAL = "CRITICAL"
+    """
+    Serious threats, such as those that affect default installations of widely deployed software, result in root compromise of servers, and the exploit code is widely available to attackers. The attacker usually does not need any special authentication credentials or knowledge about the individual victims and the target does not need to be manipulated into performing any special functions.
+    """
+
+
+class ThreatOverrideAction(str, Enum):
+    """
+    Required. Threat action override. For some threat types, only a subset of actions applies.
+    """
+    THREAT_ACTION_UNSPECIFIED = "THREAT_ACTION_UNSPECIFIED"
+    """
+    Threat action not specified.
+    """
+    DEFAULT_ACTION = "DEFAULT_ACTION"
+    """
+    The default action (as specified by the vendor) is taken.
+    """
+    ALLOW = "ALLOW"
+    """
+    The packet matching this rule will be allowed to transmit.
+    """
+    ALERT = "ALERT"
+    """
+    The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+    """
+    DENY = "DENY"
+    """
+    The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+    """
+
+
+class TlsInspectionPolicyMinTlsVersion(str, Enum):
+    """
+    Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+    """
+    TLS_VERSION_UNSPECIFIED = "TLS_VERSION_UNSPECIFIED"
+    """
+    Indicates no TLS version was specified.
+    """
+    TLS10 = "TLS_1_0"
+    """
+    TLS 1.0
+    """
+    TLS11 = "TLS_1_1"
+    """
+    TLS 1.1
+    """
+    TLS12 = "TLS_1_2"
+    """
+    TLS 1.2
+    """
+    TLS13 = "TLS_1_3"
+    """
+    TLS 1.3
+    """
+
+
+class TlsInspectionPolicyTlsFeatureProfile(str, Enum):
+    """
+    Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+    """
+    PROFILE_UNSPECIFIED = "PROFILE_UNSPECIFIED"
+    """
+    Indicates no profile was specified.
+    """
+    PROFILE_COMPATIBLE = "PROFILE_COMPATIBLE"
+    """
+    Compatible profile. Allows the broadest set of clients, even those which support only out-of-date SSL features to negotiate with the TLS inspection proxy.
+    """
+    PROFILE_MODERN = "PROFILE_MODERN"
+    """
+    Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the TLS inspection proxy.
+    """
+    PROFILE_RESTRICTED = "PROFILE_RESTRICTED"
+    """
+    Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+    """
+    PROFILE_CUSTOM = "PROFILE_CUSTOM"
+    """
+    Custom profile. Allow only the set of allowed SSL features specified in the custom_features field of SslPolicy.
     """

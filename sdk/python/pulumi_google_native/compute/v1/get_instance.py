@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -56,6 +56,9 @@ class GetInstanceResult:
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
+        if instance_encryption_key and not isinstance(instance_encryption_key, dict):
+            raise TypeError("Expected argument 'instance_encryption_key' to be a dict")
+        pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
         if key_revocation_action_type and not isinstance(key_revocation_action_type, str):
             raise TypeError("Expected argument 'key_revocation_action_type' to be a str")
         pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
@@ -242,6 +245,14 @@ class GetInstanceResult:
         Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
+        """
+        Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+        """
+        return pulumi.get(self, "instance_encryption_key")
 
     @property
     @pulumi.getter(name="keyRevocationActionType")
@@ -501,6 +512,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             fingerprint=self.fingerprint,
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
+            instance_encryption_key=self.instance_encryption_key,
             key_revocation_action_type=self.key_revocation_action_type,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
@@ -561,6 +573,7 @@ def get_instance(instance: Optional[str] = None,
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         guest_accelerators=pulumi.get(__ret__, 'guest_accelerators'),
         hostname=pulumi.get(__ret__, 'hostname'),
+        instance_encryption_key=pulumi.get(__ret__, 'instance_encryption_key'),
         key_revocation_action_type=pulumi.get(__ret__, 'key_revocation_action_type'),
         kind=pulumi.get(__ret__, 'kind'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),

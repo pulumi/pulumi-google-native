@@ -20,6 +20,7 @@ class ReleaseArgs:
                  release_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['BuildArtifactArgs']]]] = None,
+                 deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -33,16 +34,17 @@ class ReleaseArgs:
         """
         The set of arguments for constructing a Release resource.
         :param pulumi.Input[str] release_id: Required. ID of the `Release`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[Sequence[pulumi.Input['BuildArtifactArgs']]] build_artifacts: List of artifacts to pass through to Skaffold command.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for all targets in this release.
         :param pulumi.Input[str] description: Description of the `Release`. Max length is 255 characters.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param pulumi.Input[str] name: Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param pulumi.Input[str] name: Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] skaffold_config_path: Filepath of the Skaffold config inside of the config URI.
         :param pulumi.Input[str] skaffold_config_uri: Cloud Storage URI of tar.gz archive containing Skaffold configuration.
-        :param pulumi.Input[str] skaffold_version: The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        :param pulumi.Input[str] skaffold_version: The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         """
         pulumi.set(__self__, "delivery_pipeline_id", delivery_pipeline_id)
         pulumi.set(__self__, "release_id", release_id)
@@ -50,6 +52,8 @@ class ReleaseArgs:
             pulumi.set(__self__, "annotations", annotations)
         if build_artifacts is not None:
             pulumi.set(__self__, "build_artifacts", build_artifacts)
+        if deploy_parameters is not None:
+            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -96,7 +100,7 @@ class ReleaseArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
 
@@ -115,6 +119,18 @@ class ReleaseArgs:
     @build_artifacts.setter
     def build_artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BuildArtifactArgs']]]]):
         pulumi.set(self, "build_artifacts", value)
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The deploy parameters to use for all targets in this release.
+        """
+        return pulumi.get(self, "deploy_parameters")
+
+    @deploy_parameters.setter
+    def deploy_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "deploy_parameters", value)
 
     @property
     @pulumi.getter
@@ -144,7 +160,7 @@ class ReleaseArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -165,7 +181,7 @@ class ReleaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         """
         return pulumi.get(self, "name")
 
@@ -222,7 +238,7 @@ class ReleaseArgs:
     @pulumi.getter(name="skaffoldVersion")
     def skaffold_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         """
         return pulumi.get(self, "skaffold_version")
 
@@ -239,6 +255,7 @@ class Release(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildArtifactArgs']]]]] = None,
                  delivery_pipeline_id: Optional[pulumi.Input[str]] = None,
+                 deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -253,23 +270,23 @@ class Release(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new Release in a given project and location.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildArtifactArgs']]]] build_artifacts: List of artifacts to pass through to Skaffold command.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for all targets in this release.
         :param pulumi.Input[str] description: Description of the `Release`. Max length is 255 characters.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param pulumi.Input[str] name: Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param pulumi.Input[str] name: Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         :param pulumi.Input[str] release_id: Required. ID of the `Release`.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] skaffold_config_path: Filepath of the Skaffold config inside of the config URI.
         :param pulumi.Input[str] skaffold_config_uri: Cloud Storage URI of tar.gz archive containing Skaffold configuration.
-        :param pulumi.Input[str] skaffold_version: The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        :param pulumi.Input[str] skaffold_version: The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         """
         ...
     @overload
@@ -279,7 +296,6 @@ class Release(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Release in a given project and location.
-        Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -301,6 +317,7 @@ class Release(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildArtifactArgs']]]]] = None,
                  delivery_pipeline_id: Optional[pulumi.Input[str]] = None,
+                 deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -326,6 +343,7 @@ class Release(pulumi.CustomResource):
             if delivery_pipeline_id is None and not opts.urn:
                 raise TypeError("Missing required property 'delivery_pipeline_id'")
             __props__.__dict__["delivery_pipeline_id"] = delivery_pipeline_id
+            __props__.__dict__["deploy_parameters"] = deploy_parameters
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
@@ -381,6 +399,7 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delivery_pipeline_id"] = None
         __props__.__dict__["delivery_pipeline_snapshot"] = None
+        __props__.__dict__["deploy_parameters"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
@@ -413,7 +432,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         """
         return pulumi.get(self, "annotations")
 
@@ -455,6 +474,14 @@ class Release(pulumi.CustomResource):
         return pulumi.get(self, "delivery_pipeline_snapshot")
 
     @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. The deploy parameters to use for all targets in this release.
+        """
+        return pulumi.get(self, "deploy_parameters")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
@@ -474,7 +501,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -487,7 +514,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         """
         return pulumi.get(self, "name")
 
@@ -556,7 +583,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter(name="skaffoldVersion")
     def skaffold_version(self) -> pulumi.Output[str]:
         """
-        The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+        The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
         """
         return pulumi.get(self, "skaffold_version")
 

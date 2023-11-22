@@ -8,6 +8,7 @@ __all__ = [
     'AuditLogConfigLogType',
     'DatabaseDumpDatabaseType',
     'DatabaseDumpType',
+    'HiveMetastoreConfigEndpointProtocol',
     'MaintenanceWindowDayOfWeek',
     'ScalingConfigInstanceSize',
     'ServiceDatabaseType',
@@ -68,6 +69,24 @@ class DatabaseDumpType(str, Enum):
     AVRO = "AVRO"
     """
     Database dump contains Avro files.
+    """
+
+
+class HiveMetastoreConfigEndpointProtocol(str, Enum):
+    """
+    The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+    """
+    ENDPOINT_PROTOCOL_UNSPECIFIED = "ENDPOINT_PROTOCOL_UNSPECIFIED"
+    """
+    The protocol is not set.
+    """
+    THRIFT = "THRIFT"
+    """
+    Use the legacy Apache Thrift protocol for the metastore service endpoint.
+    """
+    GRPC = "GRPC"
+    """
+    Use the modernized gRPC protocol for the metastore service endpoint.
     """
 
 

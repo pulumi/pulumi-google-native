@@ -67,7 +67,7 @@ class GetBackupScheduleResult:
     @pulumi.getter
     def retention(self) -> str:
         """
-        At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+        At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         """
         return pulumi.get(self, "retention")
 

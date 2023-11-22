@@ -25,6 +25,7 @@ __all__ = [
     'BuildResponse',
     'BuildStepResponse',
     'BuiltImageResponse',
+    'ConnectedRepositoryResponse',
     'FailureInfoResponse',
     'FileHashesResponse',
     'GitFileSourceResponse',
@@ -342,6 +343,8 @@ class BitbucketServerConfigResponse(dict):
             suggest = "host_uri"
         elif key == "peeredNetwork":
             suggest = "peered_network"
+        elif key == "peeredNetworkIpRange":
+            suggest = "peered_network_ip_range"
         elif key == "sslCa":
             suggest = "ssl_ca"
         elif key == "webhookKey":
@@ -365,6 +368,7 @@ class BitbucketServerConfigResponse(dict):
                  host_uri: str,
                  name: str,
                  peered_network: str,
+                 peered_network_ip_range: str,
                  secrets: 'outputs.BitbucketServerSecretsResponse',
                  ssl_ca: str,
                  username: str,
@@ -377,6 +381,7 @@ class BitbucketServerConfigResponse(dict):
         :param str host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
         :param str name: The resource name for the config.
         :param str peered_network: Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        :param str peered_network_ip_range: Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
         :param 'BitbucketServerSecretsResponse' secrets: Secret Manager secrets needed by the config.
         :param str ssl_ca: Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         :param str username: Username of the account Cloud Build will use on Bitbucket Server.
@@ -388,6 +393,7 @@ class BitbucketServerConfigResponse(dict):
         pulumi.set(__self__, "host_uri", host_uri)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "peered_network", peered_network)
+        pulumi.set(__self__, "peered_network_ip_range", peered_network_ip_range)
         pulumi.set(__self__, "secrets", secrets)
         pulumi.set(__self__, "ssl_ca", ssl_ca)
         pulumi.set(__self__, "username", username)
@@ -440,6 +446,14 @@ class BitbucketServerConfigResponse(dict):
         Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         """
         return pulumi.get(self, "peered_network")
+
+    @property
+    @pulumi.getter(name="peeredNetworkIpRange")
+    def peered_network_ip_range(self) -> str:
+        """
+        Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+        """
+        return pulumi.get(self, "peered_network_ip_range")
 
     @property
     @pulumi.getter
@@ -758,7 +772,9 @@ class BuildOptionsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultLogsBucketBehavior":
+        if key == "automapSubstitutions":
+            suggest = "automap_substitutions"
+        elif key == "defaultLogsBucketBehavior":
             suggest = "default_logs_bucket_behavior"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
@@ -791,6 +807,7 @@ class BuildOptionsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 automap_substitutions: bool,
                  default_logs_bucket_behavior: str,
                  disk_size_gb: str,
                  dynamic_substitutions: bool,
@@ -807,11 +824,12 @@ class BuildOptionsResponse(dict):
                  worker_pool: str):
         """
         Optional arguments to enable specific features of builds.
+        :param bool automap_substitutions: Option to include built-in and custom substitutions as env variables for all build steps.
         :param str default_logs_bucket_behavior: Optional. Option to specify how default logs buckets are setup.
         :param str disk_size_gb: Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
         :param bool dynamic_substitutions: Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
         :param Sequence[str] env: A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-        :param str log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
+        :param str log_streaming_option: Option to define build log streaming behavior to Cloud Storage.
         :param str logging: Option to specify the logging mode, which determines if and where build logs are stored.
         :param str machine_type: Compute Engine machine type on which to run the build.
         :param 'PoolOptionResponse' pool: Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
@@ -822,6 +840,7 @@ class BuildOptionsResponse(dict):
         :param Sequence['VolumeResponse'] volumes: Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
         :param str worker_pool: This field deprecated; please use `pool.name` instead.
         """
+        pulumi.set(__self__, "automap_substitutions", automap_substitutions)
         pulumi.set(__self__, "default_logs_bucket_behavior", default_logs_bucket_behavior)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "dynamic_substitutions", dynamic_substitutions)
@@ -836,6 +855,14 @@ class BuildOptionsResponse(dict):
         pulumi.set(__self__, "substitution_option", substitution_option)
         pulumi.set(__self__, "volumes", volumes)
         pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="automapSubstitutions")
+    def automap_substitutions(self) -> bool:
+        """
+        Option to include built-in and custom substitutions as env variables for all build steps.
+        """
+        return pulumi.get(self, "automap_substitutions")
 
     @property
     @pulumi.getter(name="defaultLogsBucketBehavior")
@@ -873,7 +900,7 @@ class BuildOptionsResponse(dict):
     @pulumi.getter(name="logStreamingOption")
     def log_streaming_option(self) -> str:
         """
-        Option to define build log streaming behavior to Google Cloud Storage.
+        Option to define build log streaming behavior to Cloud Storage.
         """
         return pulumi.get(self, "log_streaming_option")
 
@@ -1034,7 +1061,7 @@ class BuildResponse(dict):
         :param str finish_time: Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         :param str log_url: URL to logs for this build in Google Cloud Console.
-        :param str logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        :param str logs_bucket: Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         :param str name: The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
         :param 'BuildOptionsResponse' options: Special options for this build.
         :param str project: ID of the project.
@@ -1159,7 +1186,7 @@ class BuildResponse(dict):
     @pulumi.getter(name="logsBucket")
     def logs_bucket(self) -> str:
         """
-        Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         """
         return pulumi.get(self, "logs_bucket")
 
@@ -1320,6 +1347,8 @@ class BuildStepResponse(dict):
             suggest = "allow_exit_codes"
         elif key == "allowFailure":
             suggest = "allow_failure"
+        elif key == "automapSubstitutions":
+            suggest = "automap_substitutions"
         elif key == "exitCode":
             suggest = "exit_code"
         elif key == "pullTiming":
@@ -1344,6 +1373,7 @@ class BuildStepResponse(dict):
                  allow_exit_codes: Sequence[int],
                  allow_failure: bool,
                  args: Sequence[str],
+                 automap_substitutions: bool,
                  dir: str,
                  entrypoint: str,
                  env: Sequence[str],
@@ -1362,6 +1392,7 @@ class BuildStepResponse(dict):
         :param Sequence[int] allow_exit_codes: Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
         :param bool allow_failure: Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
         :param Sequence[str] args: A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
+        :param bool automap_substitutions: Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
         :param str dir: Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         :param str entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
         :param Sequence[str] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
@@ -1379,6 +1410,7 @@ class BuildStepResponse(dict):
         pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
         pulumi.set(__self__, "allow_failure", allow_failure)
         pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "automap_substitutions", automap_substitutions)
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "entrypoint", entrypoint)
         pulumi.set(__self__, "env", env)
@@ -1416,6 +1448,14 @@ class BuildStepResponse(dict):
         A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
         """
         return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="automapSubstitutions")
+    def automap_substitutions(self) -> bool:
+        """
+        Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+        """
+        return pulumi.get(self, "automap_substitutions")
 
     @property
     @pulumi.getter
@@ -1584,6 +1624,50 @@ class BuiltImageResponse(dict):
 
 
 @pulumi.output_type
+class ConnectedRepositoryResponse(dict):
+    """
+    Location of the source in a 2nd-gen Google Cloud Build repository resource.
+    """
+    def __init__(__self__, *,
+                 dir: str,
+                 repository: str,
+                 revision: str):
+        """
+        Location of the source in a 2nd-gen Google Cloud Build repository resource.
+        :param str dir: Directory, relative to the source root, in which to run the build.
+        :param str repository: Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+        :param str revision: The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        """
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "revision", revision)
+
+    @property
+    @pulumi.getter
+    def dir(self) -> str:
+        """
+        Directory, relative to the source root, in which to run the build.
+        """
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> str:
+        """
+        The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        """
+        return pulumi.get(self, "revision")
+
+
+@pulumi.output_type
 class FailureInfoResponse(dict):
     """
     A fatal problem encountered during the execution of the build.
@@ -1695,7 +1779,7 @@ class GitFileSourceResponse(dict):
         :param str github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param str path: The path of the file, with the repo root as the root of the path.
         :param str repo_type: See RepoType above.
-        :param str repository: The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        :param str repository: The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
         :param str uri: The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
@@ -1743,7 +1827,7 @@ class GitFileSourceResponse(dict):
     @pulumi.getter
     def repository(self) -> str:
         """
-        The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
         return pulumi.get(self, "repository")
 
@@ -2413,8 +2497,8 @@ class GitRepoSourceResponse(dict):
         :param str github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: See RepoType below.
-        :param str repository: The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
-        :param str uri: The URI of the repo. Either uri or repository can be specified and is required.
+        :param str repository: The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
+        :param str uri: The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
         """
         pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
         pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
@@ -2459,7 +2543,7 @@ class GitRepoSourceResponse(dict):
     @pulumi.getter
     def repository(self) -> str:
         """
-        The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+        The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
         """
         return pulumi.get(self, "repository")
 
@@ -2467,7 +2551,7 @@ class GitRepoSourceResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        The URI of the repo. Either uri or repository can be specified and is required.
+        The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
         """
         return pulumi.get(self, "uri")
 
@@ -3353,7 +3437,7 @@ class ResultsResponse(dict):
         :param str artifact_manifest: Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         :param 'TimeSpanResponse' artifact_timing: Time to push all non-container artifacts to Cloud Storage.
         :param Sequence[str] build_step_images: List of build step digests, in the order corresponding to build step indices.
-        :param Sequence[str] build_step_outputs: List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        :param Sequence[str] build_step_outputs: List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
         :param Sequence['BuiltImageResponse'] images: Container images that were built as a part of the build.
         :param Sequence['UploadedMavenArtifactResponse'] maven_artifacts: Maven artifacts uploaded to Artifact Registry at the end of the build.
         :param Sequence['UploadedNpmPackageResponse'] npm_packages: Npm packages uploaded to Artifact Registry at the end of the build.
@@ -3398,7 +3482,7 @@ class ResultsResponse(dict):
     @pulumi.getter(name="buildStepOutputs")
     def build_step_outputs(self) -> Sequence[str]:
         """
-        List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
         """
         return pulumi.get(self, "build_step_outputs")
 
@@ -3627,6 +3711,10 @@ class SourceProvenanceResponse(dict):
         suggest = None
         if key == "fileHashes":
             suggest = "file_hashes"
+        elif key == "resolvedConnectedRepository":
+            suggest = "resolved_connected_repository"
+        elif key == "resolvedGitSource":
+            suggest = "resolved_git_source"
         elif key == "resolvedRepoSource":
             suggest = "resolved_repo_source"
         elif key == "resolvedStorageSource":
@@ -3647,17 +3735,23 @@ class SourceProvenanceResponse(dict):
 
     def __init__(__self__, *,
                  file_hashes: Mapping[str, str],
+                 resolved_connected_repository: 'outputs.ConnectedRepositoryResponse',
+                 resolved_git_source: 'outputs.GitSourceResponse',
                  resolved_repo_source: 'outputs.RepoSourceResponse',
                  resolved_storage_source: 'outputs.StorageSourceResponse',
                  resolved_storage_source_manifest: 'outputs.StorageSourceManifestResponse'):
         """
         Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
         :param Mapping[str, str] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
+        :param 'ConnectedRepositoryResponse' resolved_connected_repository: A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        :param 'GitSourceResponse' resolved_git_source: A copy of the build's `source.git_source`, if exists, with any revisions resolved.
         :param 'RepoSourceResponse' resolved_repo_source: A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
         :param 'StorageSourceResponse' resolved_storage_source: A copy of the build's `source.storage_source`, if exists, with any generations resolved.
         :param 'StorageSourceManifestResponse' resolved_storage_source_manifest: A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
         """
         pulumi.set(__self__, "file_hashes", file_hashes)
+        pulumi.set(__self__, "resolved_connected_repository", resolved_connected_repository)
+        pulumi.set(__self__, "resolved_git_source", resolved_git_source)
         pulumi.set(__self__, "resolved_repo_source", resolved_repo_source)
         pulumi.set(__self__, "resolved_storage_source", resolved_storage_source)
         pulumi.set(__self__, "resolved_storage_source_manifest", resolved_storage_source_manifest)
@@ -3669,6 +3763,22 @@ class SourceProvenanceResponse(dict):
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
         """
         return pulumi.get(self, "file_hashes")
+
+    @property
+    @pulumi.getter(name="resolvedConnectedRepository")
+    def resolved_connected_repository(self) -> 'outputs.ConnectedRepositoryResponse':
+        """
+        A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        """
+        return pulumi.get(self, "resolved_connected_repository")
+
+    @property
+    @pulumi.getter(name="resolvedGitSource")
+    def resolved_git_source(self) -> 'outputs.GitSourceResponse':
+        """
+        A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+        """
+        return pulumi.get(self, "resolved_git_source")
 
     @property
     @pulumi.getter(name="resolvedRepoSource")
@@ -3703,7 +3813,9 @@ class SourceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "gitSource":
+        if key == "connectedRepository":
+            suggest = "connected_repository"
+        elif key == "gitSource":
             suggest = "git_source"
         elif key == "repoSource":
             suggest = "repo_source"
@@ -3724,21 +3836,32 @@ class SourceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 connected_repository: 'outputs.ConnectedRepositoryResponse',
                  git_source: 'outputs.GitSourceResponse',
                  repo_source: 'outputs.RepoSourceResponse',
                  storage_source: 'outputs.StorageSourceResponse',
                  storage_source_manifest: 'outputs.StorageSourceManifestResponse'):
         """
         Location of the source in a supported storage service.
+        :param 'ConnectedRepositoryResponse' connected_repository: Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
         :param 'GitSourceResponse' git_source: If provided, get the source from this Git repository.
         :param 'RepoSourceResponse' repo_source: If provided, get the source from this location in a Cloud Source Repository.
-        :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Google Cloud Storage.
-        :param 'StorageSourceManifestResponse' storage_source_manifest: If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Cloud Storage.
+        :param 'StorageSourceManifestResponse' storage_source_manifest: If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
+        pulumi.set(__self__, "connected_repository", connected_repository)
         pulumi.set(__self__, "git_source", git_source)
         pulumi.set(__self__, "repo_source", repo_source)
         pulumi.set(__self__, "storage_source", storage_source)
         pulumi.set(__self__, "storage_source_manifest", storage_source_manifest)
+
+    @property
+    @pulumi.getter(name="connectedRepository")
+    def connected_repository(self) -> 'outputs.ConnectedRepositoryResponse':
+        """
+        Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+        """
+        return pulumi.get(self, "connected_repository")
 
     @property
     @pulumi.getter(name="gitSource")
@@ -3760,7 +3883,7 @@ class SourceResponse(dict):
     @pulumi.getter(name="storageSource")
     def storage_source(self) -> 'outputs.StorageSourceResponse':
         """
-        If provided, get the source from this location in Google Cloud Storage.
+        If provided, get the source from this location in Cloud Storage.
         """
         return pulumi.get(self, "storage_source")
 
@@ -3768,7 +3891,7 @@ class SourceResponse(dict):
     @pulumi.getter(name="storageSourceManifest")
     def storage_source_manifest(self) -> 'outputs.StorageSourceManifestResponse':
         """
-        If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
         return pulumi.get(self, "storage_source_manifest")
 
@@ -3776,17 +3899,17 @@ class SourceResponse(dict):
 @pulumi.output_type
 class StorageSourceManifestResponse(dict):
     """
-    Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+    Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
     """
     def __init__(__self__, *,
                  bucket: str,
                  generation: str,
                  object: str):
         """
-        Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-        :param str bucket: Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-        :param str generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-        :param str object: Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+        Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        :param str bucket: Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        :param str generation: Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        :param str object: Cloud Storage object containing the source manifest. This object must be a JSON file.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "generation", generation)
@@ -3796,7 +3919,7 @@ class StorageSourceManifestResponse(dict):
     @pulumi.getter
     def bucket(self) -> str:
         """
-        Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         """
         return pulumi.get(self, "bucket")
 
@@ -3804,7 +3927,7 @@ class StorageSourceManifestResponse(dict):
     @pulumi.getter
     def generation(self) -> str:
         """
-        Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         """
         return pulumi.get(self, "generation")
 
@@ -3812,7 +3935,7 @@ class StorageSourceManifestResponse(dict):
     @pulumi.getter
     def object(self) -> str:
         """
-        Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+        Cloud Storage object containing the source manifest. This object must be a JSON file.
         """
         return pulumi.get(self, "object")
 
@@ -3820,27 +3943,47 @@ class StorageSourceManifestResponse(dict):
 @pulumi.output_type
 class StorageSourceResponse(dict):
     """
-    Location of the source in an archive file in Google Cloud Storage.
+    Location of the source in an archive file in Cloud Storage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceFetcher":
+            suggest = "source_fetcher"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket: str,
                  generation: str,
-                 object: str):
+                 object: str,
+                 source_fetcher: str):
         """
-        Location of the source in an archive file in Google Cloud Storage.
-        :param str bucket: Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-        :param str generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-        :param str object: Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        Location of the source in an archive file in Cloud Storage.
+        :param str bucket: Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        :param str generation: Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        :param str object: Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        :param str source_fetcher: Optional. Option to specify the tool to fetch the source file for the build.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "generation", generation)
         pulumi.set(__self__, "object", object)
+        pulumi.set(__self__, "source_fetcher", source_fetcher)
 
     @property
     @pulumi.getter
     def bucket(self) -> str:
         """
-        Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         """
         return pulumi.get(self, "bucket")
 
@@ -3848,7 +3991,7 @@ class StorageSourceResponse(dict):
     @pulumi.getter
     def generation(self) -> str:
         """
-        Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         """
         return pulumi.get(self, "generation")
 
@@ -3856,9 +3999,17 @@ class StorageSourceResponse(dict):
     @pulumi.getter
     def object(self) -> str:
         """
-        Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         """
         return pulumi.get(self, "object")
+
+    @property
+    @pulumi.getter(name="sourceFetcher")
+    def source_fetcher(self) -> str:
+        """
+        Optional. Option to specify the tool to fetch the source file for the build.
+        """
+        return pulumi.get(self, "source_fetcher")
 
 
 @pulumi.output_type

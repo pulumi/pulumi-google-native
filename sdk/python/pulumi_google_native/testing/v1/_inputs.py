@@ -31,11 +31,13 @@ __all__ = [
     'IosDeviceFileArgs',
     'IosDeviceListArgs',
     'IosDeviceArgs',
+    'IosRoboTestArgs',
     'IosTestLoopArgs',
     'IosTestSetupArgs',
     'IosXcTestArgs',
     'LauncherActivityIntentArgs',
     'ManualShardingArgs',
+    'NoActivityIntentArgs',
     'ObbFileArgs',
     'RegularFileArgs',
     'ResultStorageArgs',
@@ -1123,6 +1125,61 @@ class IosDeviceArgs:
 
 
 @pulumi.input_type
+class IosRoboTestArgs:
+    def __init__(__self__, *,
+                 app_ipa: pulumi.Input['FileReferenceArgs'],
+                 app_bundle_id: Optional[pulumi.Input[str]] = None,
+                 robo_script: Optional[pulumi.Input['FileReferenceArgs']] = None):
+        """
+        A test that explores an iOS application on an iOS device.
+        :param pulumi.Input['FileReferenceArgs'] app_ipa: The ipa stored at this file should be used to run the test.
+        :param pulumi.Input[str] app_bundle_id: The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+        :param pulumi.Input['FileReferenceArgs'] robo_script: An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+        """
+        pulumi.set(__self__, "app_ipa", app_ipa)
+        if app_bundle_id is not None:
+            pulumi.set(__self__, "app_bundle_id", app_bundle_id)
+        if robo_script is not None:
+            pulumi.set(__self__, "robo_script", robo_script)
+
+    @property
+    @pulumi.getter(name="appIpa")
+    def app_ipa(self) -> pulumi.Input['FileReferenceArgs']:
+        """
+        The ipa stored at this file should be used to run the test.
+        """
+        return pulumi.get(self, "app_ipa")
+
+    @app_ipa.setter
+    def app_ipa(self, value: pulumi.Input['FileReferenceArgs']):
+        pulumi.set(self, "app_ipa", value)
+
+    @property
+    @pulumi.getter(name="appBundleId")
+    def app_bundle_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+        """
+        return pulumi.get(self, "app_bundle_id")
+
+    @app_bundle_id.setter
+    def app_bundle_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_bundle_id", value)
+
+    @property
+    @pulumi.getter(name="roboScript")
+    def robo_script(self) -> Optional[pulumi.Input['FileReferenceArgs']]:
+        """
+        An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+        """
+        return pulumi.get(self, "robo_script")
+
+    @robo_script.setter
+    def robo_script(self, value: Optional[pulumi.Input['FileReferenceArgs']]):
+        pulumi.set(self, "robo_script", value)
+
+
+@pulumi.input_type
 class IosTestLoopArgs:
     def __init__(__self__, *,
                  app_ipa: pulumi.Input['FileReferenceArgs'],
@@ -1319,7 +1376,7 @@ class ManualShardingArgs:
                  test_targets_for_shard: pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]):
         """
         Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
-        :param pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]] test_targets_for_shard: Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+        :param pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]] test_targets_for_shard: Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
         """
         pulumi.set(__self__, "test_targets_for_shard", test_targets_for_shard)
 
@@ -1327,13 +1384,22 @@ class ManualShardingArgs:
     @pulumi.getter(name="testTargetsForShard")
     def test_targets_for_shard(self) -> pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]:
         """
-        Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+        Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
         """
         return pulumi.get(self, "test_targets_for_shard")
 
     @test_targets_for_shard.setter
     def test_targets_for_shard(self, value: pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]):
         pulumi.set(self, "test_targets_for_shard", value)
+
+
+@pulumi.input_type
+class NoActivityIntentArgs:
+    def __init__(__self__):
+        """
+        Skips the starting activity
+        """
+        pass
 
 
 @pulumi.input_type
@@ -1509,16 +1575,20 @@ class RoboDirectiveArgs:
 class RoboStartingIntentArgs:
     def __init__(__self__, *,
                  launcher_activity: Optional[pulumi.Input['LauncherActivityIntentArgs']] = None,
+                 no_activity: Optional[pulumi.Input['NoActivityIntentArgs']] = None,
                  start_activity: Optional[pulumi.Input['StartActivityIntentArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         Message for specifying the start activities to crawl.
         :param pulumi.Input['LauncherActivityIntentArgs'] launcher_activity: An intent that starts the main launcher activity.
+        :param pulumi.Input['NoActivityIntentArgs'] no_activity: Skips the starting activity
         :param pulumi.Input['StartActivityIntentArgs'] start_activity: An intent that starts an activity with specific details.
         :param pulumi.Input[str] timeout: Timeout in seconds for each intent.
         """
         if launcher_activity is not None:
             pulumi.set(__self__, "launcher_activity", launcher_activity)
+        if no_activity is not None:
+            pulumi.set(__self__, "no_activity", no_activity)
         if start_activity is not None:
             pulumi.set(__self__, "start_activity", start_activity)
         if timeout is not None:
@@ -1535,6 +1605,18 @@ class RoboStartingIntentArgs:
     @launcher_activity.setter
     def launcher_activity(self, value: Optional[pulumi.Input['LauncherActivityIntentArgs']]):
         pulumi.set(self, "launcher_activity", value)
+
+    @property
+    @pulumi.getter(name="noActivity")
+    def no_activity(self) -> Optional[pulumi.Input['NoActivityIntentArgs']]:
+        """
+        Skips the starting activity
+        """
+        return pulumi.get(self, "no_activity")
+
+    @no_activity.setter
+    def no_activity(self, value: Optional[pulumi.Input['NoActivityIntentArgs']]):
+        pulumi.set(self, "no_activity", value)
 
     @property
     @pulumi.getter(name="startActivity")
@@ -1623,7 +1705,7 @@ class SmartShardingArgs:
                  targeted_shard_duration: Optional[pulumi.Input[str]] = None):
         """
         Shards test based on previous test case timing records.
-        :param pulumi.Input[str] targeted_shard_duration: The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+        :param pulumi.Input[str] targeted_shard_duration: The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
         """
         if targeted_shard_duration is not None:
             pulumi.set(__self__, "targeted_shard_duration", targeted_shard_duration)
@@ -1632,7 +1714,7 @@ class SmartShardingArgs:
     @pulumi.getter(name="targetedShardDuration")
     def targeted_shard_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+        The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
         """
         return pulumi.get(self, "targeted_shard_duration")
 
@@ -1729,16 +1811,18 @@ class TestSetupArgs:
                  dont_autogrant_permissions: Optional[pulumi.Input[bool]] = None,
                  environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableArgs']]]] = None,
                  files_to_push: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceFileArgs']]]] = None,
+                 initial_setup_apks: Optional[pulumi.Input[Sequence[pulumi.Input['ApkArgs']]]] = None,
                  network_profile: Optional[pulumi.Input[str]] = None,
                  systrace: Optional[pulumi.Input['SystraceSetupArgs']] = None):
         """
         A description of how to set up the Android device prior to running the test.
         :param pulumi.Input['AccountArgs'] account: The device will be logged in on this account for the duration of the test.
-        :param pulumi.Input[Sequence[pulumi.Input['ApkArgs']]] additional_apks: APKs to install in addition to those being directly tested. Currently capped at 100.
+        :param pulumi.Input[Sequence[pulumi.Input['ApkArgs']]] additional_apks: APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] directories_to_pull: List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
         :param pulumi.Input[bool] dont_autogrant_permissions: Whether to prevent all runtime permissions to be granted at app install
         :param pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableArgs']]] environment_variables: Environment variables to set for the test (only applicable for instrumentation tests).
         :param pulumi.Input[Sequence[pulumi.Input['DeviceFileArgs']]] files_to_push: List of files to push to the device before starting the test.
+        :param pulumi.Input[Sequence[pulumi.Input['ApkArgs']]] initial_setup_apks: Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
         :param pulumi.Input[str] network_profile: The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
         :param pulumi.Input['SystraceSetupArgs'] systrace: Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
         """
@@ -1754,6 +1838,8 @@ class TestSetupArgs:
             pulumi.set(__self__, "environment_variables", environment_variables)
         if files_to_push is not None:
             pulumi.set(__self__, "files_to_push", files_to_push)
+        if initial_setup_apks is not None:
+            pulumi.set(__self__, "initial_setup_apks", initial_setup_apks)
         if network_profile is not None:
             pulumi.set(__self__, "network_profile", network_profile)
         if systrace is not None:
@@ -1778,7 +1864,7 @@ class TestSetupArgs:
     @pulumi.getter(name="additionalApks")
     def additional_apks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApkArgs']]]]:
         """
-        APKs to install in addition to those being directly tested. Currently capped at 100.
+        APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
         """
         return pulumi.get(self, "additional_apks")
 
@@ -1835,6 +1921,18 @@ class TestSetupArgs:
         pulumi.set(self, "files_to_push", value)
 
     @property
+    @pulumi.getter(name="initialSetupApks")
+    def initial_setup_apks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApkArgs']]]]:
+        """
+        Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+        """
+        return pulumi.get(self, "initial_setup_apks")
+
+    @initial_setup_apks.setter
+    def initial_setup_apks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApkArgs']]]]):
+        pulumi.set(self, "initial_setup_apks", value)
+
+    @property
     @pulumi.getter(name="networkProfile")
     def network_profile(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1870,6 +1968,7 @@ class TestSpecificationArgs:
                  android_test_loop: Optional[pulumi.Input['AndroidTestLoopArgs']] = None,
                  disable_performance_metrics: Optional[pulumi.Input[bool]] = None,
                  disable_video_recording: Optional[pulumi.Input[bool]] = None,
+                 ios_robo_test: Optional[pulumi.Input['IosRoboTestArgs']] = None,
                  ios_test_loop: Optional[pulumi.Input['IosTestLoopArgs']] = None,
                  ios_test_setup: Optional[pulumi.Input['IosTestSetupArgs']] = None,
                  ios_xc_test: Optional[pulumi.Input['IosXcTestArgs']] = None,
@@ -1882,6 +1981,7 @@ class TestSpecificationArgs:
         :param pulumi.Input['AndroidTestLoopArgs'] android_test_loop: An Android Application with a Test Loop.
         :param pulumi.Input[bool] disable_performance_metrics: Disables performance metrics recording. May reduce test latency.
         :param pulumi.Input[bool] disable_video_recording: Disables video recording. May reduce test latency.
+        :param pulumi.Input['IosRoboTestArgs'] ios_robo_test: An iOS Robo test.
         :param pulumi.Input['IosTestLoopArgs'] ios_test_loop: An iOS application with a test loop.
         :param pulumi.Input['IosTestSetupArgs'] ios_test_setup: Test setup requirements for iOS.
         :param pulumi.Input['IosXcTestArgs'] ios_xc_test: An iOS XCTest, via an .xctestrun file.
@@ -1898,6 +1998,8 @@ class TestSpecificationArgs:
             pulumi.set(__self__, "disable_performance_metrics", disable_performance_metrics)
         if disable_video_recording is not None:
             pulumi.set(__self__, "disable_video_recording", disable_video_recording)
+        if ios_robo_test is not None:
+            pulumi.set(__self__, "ios_robo_test", ios_robo_test)
         if ios_test_loop is not None:
             pulumi.set(__self__, "ios_test_loop", ios_test_loop)
         if ios_test_setup is not None:
@@ -1968,6 +2070,18 @@ class TestSpecificationArgs:
     @disable_video_recording.setter
     def disable_video_recording(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_video_recording", value)
+
+    @property
+    @pulumi.getter(name="iosRoboTest")
+    def ios_robo_test(self) -> Optional[pulumi.Input['IosRoboTestArgs']]:
+        """
+        An iOS Robo test.
+        """
+        return pulumi.get(self, "ios_robo_test")
+
+    @ios_robo_test.setter
+    def ios_robo_test(self, value: Optional[pulumi.Input['IosRoboTestArgs']]):
+        pulumi.set(self, "ios_robo_test", value)
 
     @property
     @pulumi.getter(name="iosTestLoop")
@@ -2098,7 +2212,7 @@ class UniformShardingArgs:
                  num_shards: pulumi.Input[int]):
         """
         Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
-        :param pulumi.Input[int] num_shards: The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+        :param pulumi.Input[int] num_shards: The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
         """
         pulumi.set(__self__, "num_shards", num_shards)
 
@@ -2106,7 +2220,7 @@ class UniformShardingArgs:
     @pulumi.getter(name="numShards")
     def num_shards(self) -> pulumi.Input[int]:
         """
-        The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+        The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
         """
         return pulumi.get(self, "num_shards")
 

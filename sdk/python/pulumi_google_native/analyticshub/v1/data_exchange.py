@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DataExchangeArgs', 'DataExchange']
 
@@ -21,7 +23,8 @@ class DataExchangeArgs:
                  icon: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 sharing_environment_config: Optional[pulumi.Input['SharingEnvironmentConfigArgs']] = None):
         """
         The set of arguments for constructing a DataExchange resource.
         :param pulumi.Input[str] data_exchange_id: Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
@@ -30,6 +33,7 @@ class DataExchangeArgs:
         :param pulumi.Input[str] documentation: Optional. Documentation describing the data exchange.
         :param pulumi.Input[str] icon: Optional. Base64 encoded image representing the data exchange. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the content of the fields are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[str] primary_contact: Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
+        :param pulumi.Input['SharingEnvironmentConfigArgs'] sharing_environment_config: Optional. Configurable data sharing environment option for a data exchange.
         """
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -45,6 +49,8 @@ class DataExchangeArgs:
             pulumi.set(__self__, "primary_contact", primary_contact)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if sharing_environment_config is not None:
+            pulumi.set(__self__, "sharing_environment_config", sharing_environment_config)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -136,6 +142,18 @@ class DataExchangeArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="sharingEnvironmentConfig")
+    def sharing_environment_config(self) -> Optional[pulumi.Input['SharingEnvironmentConfigArgs']]:
+        """
+        Optional. Configurable data sharing environment option for a data exchange.
+        """
+        return pulumi.get(self, "sharing_environment_config")
+
+    @sharing_environment_config.setter
+    def sharing_environment_config(self, value: Optional[pulumi.Input['SharingEnvironmentConfigArgs']]):
+        pulumi.set(self, "sharing_environment_config", value)
+
 
 class DataExchange(pulumi.CustomResource):
     @overload
@@ -150,6 +168,7 @@ class DataExchange(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sharing_environment_config: Optional[pulumi.Input[pulumi.InputType['SharingEnvironmentConfigArgs']]] = None,
                  __props__=None):
         """
         Creates a new data exchange.
@@ -163,6 +182,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[str] documentation: Optional. Documentation describing the data exchange.
         :param pulumi.Input[str] icon: Optional. Base64 encoded image representing the data exchange. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the content of the fields are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[str] primary_contact: Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
+        :param pulumi.Input[pulumi.InputType['SharingEnvironmentConfigArgs']] sharing_environment_config: Optional. Configurable data sharing environment option for a data exchange.
         """
         ...
     @overload
@@ -197,6 +217,7 @@ class DataExchange(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sharing_environment_config: Optional[pulumi.Input[pulumi.InputType['SharingEnvironmentConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -218,6 +239,7 @@ class DataExchange(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["primary_contact"] = primary_contact
             __props__.__dict__["project"] = project
+            __props__.__dict__["sharing_environment_config"] = sharing_environment_config
             __props__.__dict__["listing_count"] = None
             __props__.__dict__["name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["data_exchange_id", "location", "project"])
@@ -254,6 +276,7 @@ class DataExchange(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["primary_contact"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["sharing_environment_config"] = None
         return DataExchange(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -329,4 +352,12 @@ class DataExchange(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sharingEnvironmentConfig")
+    def sharing_environment_config(self) -> pulumi.Output['outputs.SharingEnvironmentConfigResponse']:
+        """
+        Optional. Configurable data sharing environment option for a data exchange.
+        """
+        return pulumi.get(self, "sharing_environment_config")
 

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecuritySettingResult:
-    def __init__(__self__, audio_export_settings=None, deidentify_template=None, display_name=None, insights_export_settings=None, inspect_template=None, name=None, purge_data_types=None, redaction_scope=None, redaction_strategy=None, retention_window_days=None):
+    def __init__(__self__, audio_export_settings=None, deidentify_template=None, display_name=None, insights_export_settings=None, inspect_template=None, name=None, purge_data_types=None, redaction_scope=None, redaction_strategy=None, retention_strategy=None, retention_window_days=None):
         if audio_export_settings and not isinstance(audio_export_settings, dict):
             raise TypeError("Expected argument 'audio_export_settings' to be a dict")
         pulumi.set(__self__, "audio_export_settings", audio_export_settings)
@@ -47,6 +47,9 @@ class GetSecuritySettingResult:
         if redaction_strategy and not isinstance(redaction_strategy, str):
             raise TypeError("Expected argument 'redaction_strategy' to be a str")
         pulumi.set(__self__, "redaction_strategy", redaction_strategy)
+        if retention_strategy and not isinstance(retention_strategy, str):
+            raise TypeError("Expected argument 'retention_strategy' to be a str")
+        pulumi.set(__self__, "retention_strategy", retention_strategy)
         if retention_window_days and not isinstance(retention_window_days, int):
             raise TypeError("Expected argument 'retention_window_days' to be a int")
         pulumi.set(__self__, "retention_window_days", retention_window_days)
@@ -124,6 +127,14 @@ class GetSecuritySettingResult:
         return pulumi.get(self, "redaction_strategy")
 
     @property
+    @pulumi.getter(name="retentionStrategy")
+    def retention_strategy(self) -> str:
+        """
+        Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+        """
+        return pulumi.get(self, "retention_strategy")
+
+    @property
     @pulumi.getter(name="retentionWindowDays")
     def retention_window_days(self) -> int:
         """
@@ -147,6 +158,7 @@ class AwaitableGetSecuritySettingResult(GetSecuritySettingResult):
             purge_data_types=self.purge_data_types,
             redaction_scope=self.redaction_scope,
             redaction_strategy=self.redaction_strategy,
+            retention_strategy=self.retention_strategy,
             retention_window_days=self.retention_window_days)
 
 
@@ -174,6 +186,7 @@ def get_security_setting(location: Optional[str] = None,
         purge_data_types=pulumi.get(__ret__, 'purge_data_types'),
         redaction_scope=pulumi.get(__ret__, 'redaction_scope'),
         redaction_strategy=pulumi.get(__ret__, 'redaction_strategy'),
+        retention_strategy=pulumi.get(__ret__, 'retention_strategy'),
         retention_window_days=pulumi.get(__ret__, 'retention_window_days'))
 
 

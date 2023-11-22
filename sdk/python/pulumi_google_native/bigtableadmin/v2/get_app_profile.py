@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAppProfileResult:
-    def __init__(__self__, description=None, etag=None, multi_cluster_routing_use_any=None, name=None, single_cluster_routing=None):
+    def __init__(__self__, description=None, etag=None, multi_cluster_routing_use_any=None, name=None, priority=None, single_cluster_routing=None, standard_isolation=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -32,9 +32,15 @@ class GetAppProfileResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if priority and not isinstance(priority, str):
+            raise TypeError("Expected argument 'priority' to be a str")
+        pulumi.set(__self__, "priority", priority)
         if single_cluster_routing and not isinstance(single_cluster_routing, dict):
             raise TypeError("Expected argument 'single_cluster_routing' to be a dict")
         pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+        if standard_isolation and not isinstance(standard_isolation, dict):
+            raise TypeError("Expected argument 'standard_isolation' to be a dict")
+        pulumi.set(__self__, "standard_isolation", standard_isolation)
 
     @property
     @pulumi.getter
@@ -69,12 +75,28 @@ class GetAppProfileResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def priority(self) -> str:
+        """
+        This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
     @pulumi.getter(name="singleClusterRouting")
     def single_cluster_routing(self) -> 'outputs.SingleClusterRoutingResponse':
         """
         Use a single-cluster routing policy.
         """
         return pulumi.get(self, "single_cluster_routing")
+
+    @property
+    @pulumi.getter(name="standardIsolation")
+    def standard_isolation(self) -> 'outputs.StandardIsolationResponse':
+        """
+        The standard options used for isolating this app profile's traffic from other use cases.
+        """
+        return pulumi.get(self, "standard_isolation")
 
 
 class AwaitableGetAppProfileResult(GetAppProfileResult):
@@ -87,7 +109,9 @@ class AwaitableGetAppProfileResult(GetAppProfileResult):
             etag=self.etag,
             multi_cluster_routing_use_any=self.multi_cluster_routing_use_any,
             name=self.name,
-            single_cluster_routing=self.single_cluster_routing)
+            priority=self.priority,
+            single_cluster_routing=self.single_cluster_routing,
+            standard_isolation=self.standard_isolation)
 
 
 def get_app_profile(app_profile_id: Optional[str] = None,
@@ -109,7 +133,9 @@ def get_app_profile(app_profile_id: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         multi_cluster_routing_use_any=pulumi.get(__ret__, 'multi_cluster_routing_use_any'),
         name=pulumi.get(__ret__, 'name'),
-        single_cluster_routing=pulumi.get(__ret__, 'single_cluster_routing'))
+        priority=pulumi.get(__ret__, 'priority'),
+        single_cluster_routing=pulumi.get(__ret__, 'single_cluster_routing'),
+        standard_isolation=pulumi.get(__ret__, 'standard_isolation'))
 
 
 @_utilities.lift_output_func(get_app_profile)

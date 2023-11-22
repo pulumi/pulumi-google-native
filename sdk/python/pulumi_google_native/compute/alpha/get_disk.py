@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetDiskResult:
-    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, enable_confidential_compute=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_pool=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, access_mode=None, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, enable_confidential_compute=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_pool=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
+        if access_mode and not isinstance(access_mode, str):
+            raise TypeError("Expected argument 'access_mode' to be a str")
+        pulumi.set(__self__, "access_mode", access_mode)
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -184,6 +187,14 @@ class GetDiskResult:
         pulumi.set(__self__, "zone", zone)
 
     @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> str:
+        """
+        The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @property
     @pulumi.getter
     def architecture(self) -> str:
         """
@@ -235,7 +246,7 @@ class GetDiskResult:
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
         """
-        Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        Whether this disk is using confidential compute mode.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -454,7 +465,7 @@ class GetDiskResult:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> str:
         """
-        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
         """
         return pulumi.get(self, "size_gb")
 
@@ -628,6 +639,7 @@ class AwaitableGetDiskResult(GetDiskResult):
         if False:
             yield self
         return GetDiskResult(
+            access_mode=self.access_mode,
             architecture=self.architecture,
             async_primary_disk=self.async_primary_disk,
             async_secondary_disks=self.async_secondary_disks,
@@ -699,6 +711,7 @@ def get_disk(disk: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getDisk', __args__, opts=opts, typ=GetDiskResult).value
 
     return AwaitableGetDiskResult(
+        access_mode=pulumi.get(__ret__, 'access_mode'),
         architecture=pulumi.get(__ret__, 'architecture'),
         async_primary_disk=pulumi.get(__ret__, 'async_primary_disk'),
         async_secondary_disks=pulumi.get(__ret__, 'async_secondary_disks'),

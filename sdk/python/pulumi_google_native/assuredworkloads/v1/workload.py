@@ -21,7 +21,6 @@ class WorkloadArgs:
                  display_name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  billing_account: Optional[pulumi.Input[str]] = None,
-                 ekm_provisioning_response: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs']] = None,
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
@@ -39,7 +38,6 @@ class WorkloadArgs:
         :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Immutable. Compliance Regime associated with this workload.
         :param pulumi.Input[str] display_name: The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[str] billing_account: Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs'] ekm_provisioning_response: Optional. Represents the Ekm Provisioning State of the given workload.
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         :param pulumi.Input[str] external_id: Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
@@ -57,8 +55,6 @@ class WorkloadArgs:
         pulumi.set(__self__, "organization_id", organization_id)
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
-        if ekm_provisioning_response is not None:
-            pulumi.set(__self__, "ekm_provisioning_response", ekm_provisioning_response)
         if enable_sovereign_controls is not None:
             pulumi.set(__self__, "enable_sovereign_controls", enable_sovereign_controls)
         if etag is not None:
@@ -131,18 +127,6 @@ class WorkloadArgs:
     @billing_account.setter
     def billing_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "billing_account", value)
-
-    @property
-    @pulumi.getter(name="ekmProvisioningResponse")
-    def ekm_provisioning_response(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs']]:
-        """
-        Optional. Represents the Ekm Provisioning State of the given workload.
-        """
-        return pulumi.get(self, "ekm_provisioning_response")
-
-    @ekm_provisioning_response.setter
-    def ekm_provisioning_response(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs']]):
-        pulumi.set(self, "ekm_provisioning_response", value)
 
     @property
     @pulumi.getter(name="enableSovereignControls")
@@ -297,7 +281,6 @@ class Workload(pulumi.CustomResource):
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input['WorkloadComplianceRegime']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ekm_provisioning_response: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs']]] = None,
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
@@ -320,7 +303,6 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] billing_account: Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Immutable. Compliance Regime associated with this workload.
         :param pulumi.Input[str] display_name: The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs']] ekm_provisioning_response: Optional. Represents the Ekm Provisioning State of the given workload.
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         :param pulumi.Input[str] external_id: Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
@@ -360,7 +342,6 @@ class Workload(pulumi.CustomResource):
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input['WorkloadComplianceRegime']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ekm_provisioning_response: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs']]] = None,
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
@@ -390,7 +371,6 @@ class Workload(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            __props__.__dict__["ekm_provisioning_response"] = ekm_provisioning_response
             __props__.__dict__["enable_sovereign_controls"] = enable_sovereign_controls
             __props__.__dict__["etag"] = etag
             __props__.__dict__["external_id"] = external_id
@@ -412,7 +392,9 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["compliance_status"] = None
             __props__.__dict__["compliant_but_disallowed_services"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["ekm_provisioning_response"] = None
             __props__.__dict__["kaj_enrollment_state"] = None
+            __props__.__dict__["resource_monitoring_enabled"] = None
             __props__.__dict__["resources"] = None
             __props__.__dict__["saa_enrollment_response"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organization_id"])
@@ -458,6 +440,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["partner"] = None
         __props__.__dict__["partner_permissions"] = None
         __props__.__dict__["provisioned_resources_parent"] = None
+        __props__.__dict__["resource_monitoring_enabled"] = None
         __props__.__dict__["resource_settings"] = None
         __props__.__dict__["resources"] = None
         __props__.__dict__["saa_enrollment_response"] = None
@@ -492,7 +475,7 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter(name="compliantButDisallowedServices")
     def compliant_but_disallowed_services(self) -> pulumi.Output[Sequence[str]]:
         """
-        Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         """
         return pulumi.get(self, "compliant_but_disallowed_services")
 
@@ -516,7 +499,7 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter(name="ekmProvisioningResponse")
     def ekm_provisioning_response(self) -> pulumi.Output['outputs.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse']:
         """
-        Optional. Represents the Ekm Provisioning State of the given workload.
+        Represents the Ekm Provisioning State of the given workload.
         """
         return pulumi.get(self, "ekm_provisioning_response")
 
@@ -612,6 +595,14 @@ class Workload(pulumi.CustomResource):
         Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         """
         return pulumi.get(self, "provisioned_resources_parent")
+
+    @property
+    @pulumi.getter(name="resourceMonitoringEnabled")
+    def resource_monitoring_enabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+        """
+        return pulumi.get(self, "resource_monitoring_enabled")
 
     @property
     @pulumi.getter(name="resourceSettings")

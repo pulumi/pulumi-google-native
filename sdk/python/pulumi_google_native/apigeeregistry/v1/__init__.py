@@ -33,6 +33,9 @@ from .artifact_iam_member import *
 from .artifact_iam_policy import *
 from .deployment import *
 from .deployment_artifact import *
+from .document_iam_binding import *
+from .document_iam_member import *
+from .document_iam_policy import *
 from .get_api import *
 from .get_api_artifact_iam_policy import *
 from .get_api_deployment_iam_policy import *
@@ -45,6 +48,7 @@ from .get_artifact import *
 from .get_artifact_iam_policy import *
 from .get_deployment import *
 from .get_deployment_artifact import *
+from .get_document_iam_policy import *
 from .get_instance import *
 from .get_instance_iam_policy import *
 from .get_runtime_iam_policy import *

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, metadatas=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, metadatas=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None, used_by=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -137,6 +137,9 @@ class GetBackendServiceResult:
         if timeout_sec and not isinstance(timeout_sec, int):
             raise TypeError("Expected argument 'timeout_sec' to be a int")
         pulumi.set(__self__, "timeout_sec", timeout_sec)
+        if used_by and not isinstance(used_by, list):
+            raise TypeError("Expected argument 'used_by' to be a list")
+        pulumi.set(__self__, "used_by", used_by)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -304,7 +307,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> str:
         """
-        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "locality_lb_policy")
 
@@ -352,7 +355,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> 'outputs.OutlierDetectionResponse':
         """
-        Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2, or GRPC, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+        Settings controlling the ejection of unhealthy backend endpoints from the load balancing pool of each individual proxy instance that processes the traffic for the given backend service. If not set, this feature is considered disabled. Results of the outlier detection algorithm (ejection of endpoints from the load balancing pool and returning them back to the pool) are executed independently by each proxy instance of the load balancer. In most cases, more than one proxy instance handles the traffic received by a backend service. Thus, it is possible that an unhealthy endpoint is detected and ejected by only some of the proxies, and while this happens, other proxies may continue to send requests to the same unhealthy endpoint until they detect and eject the unhealthy endpoint. Applicable backend endpoints can be: - VM instances in an Instance Group - Endpoints in a Zonal NEG (GCE_VM_IP, GCE_VM_IP_PORT) - Endpoints in a Hybrid Connectivity NEG (NON_GCP_PRIVATE_IP_PORT) - Serverless NEGs, that resolve to Cloud Run, App Engine, or Cloud Functions Services - Private Service Connect NEGs, that resolve to Google-managed regional API endpoints or managed services published using Private Service Connect Applicable backend service types can be: - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED. - A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and loadBalancingScheme set to INTERNAL_MANAGED or EXTERNAL_MANAGED. Not supported for Serverless NEGs. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "outlier_detection")
 
@@ -444,6 +447,11 @@ class GetBackendServiceResult:
         """
         return pulumi.get(self, "timeout_sec")
 
+    @property
+    @pulumi.getter(name="usedBy")
+    def used_by(self) -> Sequence['outputs.BackendServiceUsedByResponse']:
+        return pulumi.get(self, "used_by")
+
 
 class AwaitableGetBackendServiceResult(GetBackendServiceResult):
     # pylint: disable=using-constant-test
@@ -489,7 +497,8 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             service_bindings=self.service_bindings,
             session_affinity=self.session_affinity,
             subsetting=self.subsetting,
-            timeout_sec=self.timeout_sec)
+            timeout_sec=self.timeout_sec,
+            used_by=self.used_by)
 
 
 def get_backend_service(backend_service: Optional[str] = None,
@@ -543,7 +552,8 @@ def get_backend_service(backend_service: Optional[str] = None,
         service_bindings=pulumi.get(__ret__, 'service_bindings'),
         session_affinity=pulumi.get(__ret__, 'session_affinity'),
         subsetting=pulumi.get(__ret__, 'subsetting'),
-        timeout_sec=pulumi.get(__ret__, 'timeout_sec'))
+        timeout_sec=pulumi.get(__ret__, 'timeout_sec'),
+        used_by=pulumi.get(__ret__, 'used_by'))
 
 
 @_utilities.lift_output_func(get_backend_service)

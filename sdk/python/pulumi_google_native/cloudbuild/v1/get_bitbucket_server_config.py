@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBitbucketServerConfigResult:
-    def __init__(__self__, api_key=None, connected_repositories=None, create_time=None, host_uri=None, name=None, peered_network=None, secrets=None, ssl_ca=None, username=None, webhook_key=None):
+    def __init__(__self__, api_key=None, connected_repositories=None, create_time=None, host_uri=None, name=None, peered_network=None, peered_network_ip_range=None, secrets=None, ssl_ca=None, username=None, webhook_key=None):
         if api_key and not isinstance(api_key, str):
             raise TypeError("Expected argument 'api_key' to be a str")
         pulumi.set(__self__, "api_key", api_key)
@@ -38,6 +38,9 @@ class GetBitbucketServerConfigResult:
         if peered_network and not isinstance(peered_network, str):
             raise TypeError("Expected argument 'peered_network' to be a str")
         pulumi.set(__self__, "peered_network", peered_network)
+        if peered_network_ip_range and not isinstance(peered_network_ip_range, str):
+            raise TypeError("Expected argument 'peered_network_ip_range' to be a str")
+        pulumi.set(__self__, "peered_network_ip_range", peered_network_ip_range)
         if secrets and not isinstance(secrets, dict):
             raise TypeError("Expected argument 'secrets' to be a dict")
         pulumi.set(__self__, "secrets", secrets)
@@ -100,6 +103,14 @@ class GetBitbucketServerConfigResult:
         return pulumi.get(self, "peered_network")
 
     @property
+    @pulumi.getter(name="peeredNetworkIpRange")
+    def peered_network_ip_range(self) -> str:
+        """
+        Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+        """
+        return pulumi.get(self, "peered_network_ip_range")
+
+    @property
     @pulumi.getter
     def secrets(self) -> 'outputs.BitbucketServerSecretsResponse':
         """
@@ -144,6 +155,7 @@ class AwaitableGetBitbucketServerConfigResult(GetBitbucketServerConfigResult):
             host_uri=self.host_uri,
             name=self.name,
             peered_network=self.peered_network,
+            peered_network_ip_range=self.peered_network_ip_range,
             secrets=self.secrets,
             ssl_ca=self.ssl_ca,
             username=self.username,
@@ -171,6 +183,7 @@ def get_bitbucket_server_config(bitbucket_server_config_id: Optional[str] = None
         host_uri=pulumi.get(__ret__, 'host_uri'),
         name=pulumi.get(__ret__, 'name'),
         peered_network=pulumi.get(__ret__, 'peered_network'),
+        peered_network_ip_range=pulumi.get(__ret__, 'peered_network_ip_range'),
         secrets=pulumi.get(__ret__, 'secrets'),
         ssl_ca=pulumi.get(__ret__, 'ssl_ca'),
         username=pulumi.get(__ret__, 'username'),

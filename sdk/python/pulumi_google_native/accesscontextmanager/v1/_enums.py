@@ -13,6 +13,7 @@ __all__ = [
     'DevicePolicyAllowedDeviceManagementLevelsItem',
     'DevicePolicyAllowedEncryptionStatusesItem',
     'EgressFromIdentityType',
+    'EgressFromSourceRestriction',
     'IngressFromIdentityType',
     'OsConstraintOsType',
     'ServicePerimeterPerimeterType',
@@ -162,6 +163,24 @@ class EgressFromIdentityType(str, Enum):
     ANY_SERVICE_ACCOUNT = "ANY_SERVICE_ACCOUNT"
     """
     Authorize access from all service accounts outside the perimeter.
+    """
+
+
+class EgressFromSourceRestriction(str, Enum):
+    """
+    Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+    """
+    SOURCE_RESTRICTION_UNSPECIFIED = "SOURCE_RESTRICTION_UNSPECIFIED"
+    """
+    Enforcement preference unspecified, will not enforce traffic restrictions based on `sources` in EgressFrom.
+    """
+    SOURCE_RESTRICTION_ENABLED = "SOURCE_RESTRICTION_ENABLED"
+    """
+    Enforcement preference enabled, traffic restrictions will be enforced based on `sources` in EgressFrom.
+    """
+    SOURCE_RESTRICTION_DISABLED = "SOURCE_RESTRICTION_DISABLED"
+    """
+    Enforcement preference disabled, will not enforce traffic restrictions based on `sources` in EgressFrom.
     """
 
 

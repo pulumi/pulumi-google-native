@@ -25,6 +25,8 @@ __all__ = [
     'GoogleCloudDataplexV1ContentSqlScriptResponse',
     'GoogleCloudDataplexV1DataAccessSpecResponse',
     'GoogleCloudDataplexV1DataAttributeBindingPathResponse',
+    'GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse',
+    'GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse',
     'GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse',
     'GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse',
     'GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse',
@@ -33,8 +35,14 @@ __all__ = [
     'GoogleCloudDataplexV1DataProfileResultProfileFieldResponse',
     'GoogleCloudDataplexV1DataProfileResultProfileResponse',
     'GoogleCloudDataplexV1DataProfileResultResponse',
+    'GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse',
+    'GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse',
     'GoogleCloudDataplexV1DataProfileSpecResponse',
+    'GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse',
+    'GoogleCloudDataplexV1DataQualityDimensionResponse',
     'GoogleCloudDataplexV1DataQualityDimensionResultResponse',
+    'GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse',
+    'GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse',
     'GoogleCloudDataplexV1DataQualityResultResponse',
     'GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse',
     'GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse',
@@ -46,6 +54,8 @@ __all__ = [
     'GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse',
     'GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse',
     'GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse',
     'GoogleCloudDataplexV1DataQualitySpecResponse',
     'GoogleCloudDataplexV1DataScanExecutionSpecResponse',
     'GoogleCloudDataplexV1DataScanExecutionStatusResponse',
@@ -868,6 +878,78 @@ class GoogleCloudDataplexV1DataAttributeBindingPathResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse(dict):
+    """
+    The result of BigQuery export post scan action.
+    """
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        The result of BigQuery export post scan action.
+        :param str message: Additional information about the BigQuery exporting.
+        :param str state: Execution state for the BigQuery exporting.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Additional information about the BigQuery exporting.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Execution state for the BigQuery exporting.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse(dict):
+    """
+    The result of post scan actions of DataProfileScan job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryExportResult":
+            suggest = "bigquery_export_result"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bigquery_export_result: 'outputs.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse'):
+        """
+        The result of post scan actions of DataProfileScan job.
+        :param 'GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse' bigquery_export_result: The result of BigQuery export post scan action.
+        """
+        pulumi.set(__self__, "bigquery_export_result", bigquery_export_result)
+
+    @property
+    @pulumi.getter(name="bigqueryExportResult")
+    def bigquery_export_result(self) -> 'outputs.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse':
+        """
+        The result of BigQuery export post scan action.
+        """
+        return pulumi.get(self, "bigquery_export_result")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse(dict):
     """
     The profile information for a double type field.
@@ -983,7 +1065,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
         :param float average: Average of non-null values in the scanned data. NaN, if the field has a NaN.
         :param str max: Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
         :param str min: Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
-        :param Sequence[str] quartiles: A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+        :param Sequence[str] quartiles: A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of approximate quartile values for the scanned data, occurring in order Q1, median, Q3.
         :param float standard_deviation: Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
         """
         pulumi.set(__self__, "average", average)
@@ -1020,7 +1102,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
     @pulumi.getter
     def quartiles(self) -> Sequence[str]:
         """
-        A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+        A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of approximate quartile values for the scanned data, occurring in order Q1, median, Q3.
         """
         return pulumi.get(self, "quartiles")
 
@@ -1079,7 +1161,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse(dict
         :param 'GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse' integer_profile: Integer type field information.
         :param float null_ratio: Ratio of rows with null value against total scanned rows.
         :param 'GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse' string_profile: String type field information.
-        :param Sequence['GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse'] top_n_values: The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+        :param Sequence['GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse'] top_n_values: The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
         """
         pulumi.set(__self__, "distinct_ratio", distinct_ratio)
         pulumi.set(__self__, "double_profile", double_profile)
@@ -1132,7 +1214,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse(dict
     @pulumi.getter(name="topNValues")
     def top_n_values(self) -> Sequence['outputs.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse']:
         """
-        The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+        The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
         """
         return pulumi.get(self, "top_n_values")
 
@@ -1209,13 +1291,16 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResp
     """
     def __init__(__self__, *,
                  count: str,
+                 ratio: float,
                  value: str):
         """
         Top N non-null values in the scanned data.
         :param str count: Count of the corresponding value in the scanned data.
+        :param float ratio: Ratio of the corresponding value in the field against the total number of rows in the scanned data.
         :param str value: String value of a top N non-null value.
         """
         pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "ratio", ratio)
         pulumi.set(__self__, "value", value)
 
     @property
@@ -1225,6 +1310,14 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResp
         Count of the corresponding value in the scanned data.
         """
         return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def ratio(self) -> float:
+        """
+        Ratio of the corresponding value in the field against the total number of rows in the scanned data.
+        """
+        return pulumi.get(self, "ratio")
 
     @property
     @pulumi.getter
@@ -1320,7 +1413,9 @@ class GoogleCloudDataplexV1DataProfileResultResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "rowCount":
+        if key == "postScanActionsResult":
+            suggest = "post_scan_actions_result"
+        elif key == "rowCount":
             suggest = "row_count"
         elif key == "scannedData":
             suggest = "scanned_data"
@@ -1337,18 +1432,29 @@ class GoogleCloudDataplexV1DataProfileResultResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 post_scan_actions_result: 'outputs.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse',
                  profile: 'outputs.GoogleCloudDataplexV1DataProfileResultProfileResponse',
                  row_count: str,
                  scanned_data: 'outputs.GoogleCloudDataplexV1ScannedDataResponse'):
         """
         DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific profile result.
+        :param 'GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse' post_scan_actions_result: The result of post scan actions.
         :param 'GoogleCloudDataplexV1DataProfileResultProfileResponse' profile: The profile information per field.
         :param str row_count: The count of rows scanned.
         :param 'GoogleCloudDataplexV1ScannedDataResponse' scanned_data: The data scanned for this result.
         """
+        pulumi.set(__self__, "post_scan_actions_result", post_scan_actions_result)
         pulumi.set(__self__, "profile", profile)
         pulumi.set(__self__, "row_count", row_count)
         pulumi.set(__self__, "scanned_data", scanned_data)
+
+    @property
+    @pulumi.getter(name="postScanActionsResult")
+    def post_scan_actions_result(self) -> 'outputs.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse':
+        """
+        The result of post scan actions.
+        """
+        return pulumi.get(self, "post_scan_actions_result")
 
     @property
     @pulumi.getter
@@ -1376,6 +1482,84 @@ class GoogleCloudDataplexV1DataProfileResultResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse(dict):
+    """
+    The configuration of BigQuery export post scan action.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resultsTable":
+            suggest = "results_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 results_table: str):
+        """
+        The configuration of BigQuery export post scan action.
+        :param str results_table: Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        pulumi.set(__self__, "results_table", results_table)
+
+    @property
+    @pulumi.getter(name="resultsTable")
+    def results_table(self) -> str:
+        """
+        Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "results_table")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse(dict):
+    """
+    The configuration of post scan actions of DataProfileScan job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryExport":
+            suggest = "bigquery_export"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bigquery_export: 'outputs.GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse'):
+        """
+        The configuration of post scan actions of DataProfileScan job.
+        :param 'GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse' bigquery_export: Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        pulumi.set(__self__, "bigquery_export", bigquery_export)
+
+    @property
+    @pulumi.getter(name="bigqueryExport")
+    def bigquery_export(self) -> 'outputs.GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse':
+        """
+        Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        return pulumi.get(self, "bigquery_export")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1DataProfileSpecResponse(dict):
     """
     DataProfileScan related setting.
@@ -1383,7 +1567,13 @@ class GoogleCloudDataplexV1DataProfileSpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "rowFilter":
+        if key == "excludeFields":
+            suggest = "exclude_fields"
+        elif key == "includeFields":
+            suggest = "include_fields"
+        elif key == "postScanActions":
+            suggest = "post_scan_actions"
+        elif key == "rowFilter":
             suggest = "row_filter"
         elif key == "samplingPercent":
             suggest = "sampling_percent"
@@ -1400,15 +1590,48 @@ class GoogleCloudDataplexV1DataProfileSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 exclude_fields: 'outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse',
+                 include_fields: 'outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse',
+                 post_scan_actions: 'outputs.GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse',
                  row_filter: str,
                  sampling_percent: float):
         """
         DataProfileScan related setting.
+        :param 'GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse' exclude_fields: Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+        :param 'GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse' include_fields: Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+        :param 'GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse' post_scan_actions: Optional. Actions to take upon job completion..
         :param str row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param float sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        pulumi.set(__self__, "exclude_fields", exclude_fields)
+        pulumi.set(__self__, "include_fields", include_fields)
+        pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         pulumi.set(__self__, "row_filter", row_filter)
         pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="excludeFields")
+    def exclude_fields(self) -> 'outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse':
+        """
+        Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
+        """
+        return pulumi.get(self, "exclude_fields")
+
+    @property
+    @pulumi.getter(name="includeFields")
+    def include_fields(self) -> 'outputs.GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse':
+        """
+        Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job execution are included, except for ones listed in exclude_fields.
+        """
+        return pulumi.get(self, "include_fields")
+
+    @property
+    @pulumi.getter(name="postScanActions")
+    def post_scan_actions(self) -> 'outputs.GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse':
+        """
+        Optional. Actions to take upon job completion..
+        """
+        return pulumi.get(self, "post_scan_actions")
 
     @property
     @pulumi.getter(name="rowFilter")
@@ -1428,17 +1651,89 @@ class GoogleCloudDataplexV1DataProfileSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse(dict):
+    """
+    The specification for fields to include or exclude in data profile scan.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldNames":
+            suggest = "field_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_names: Sequence[str]):
+        """
+        The specification for fields to include or exclude in data profile scan.
+        :param Sequence[str] field_names: Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        pulumi.set(__self__, "field_names", field_names)
+
+    @property
+    @pulumi.getter(name="fieldNames")
+    def field_names(self) -> Sequence[str]:
+        """
+        Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        return pulumi.get(self, "field_names")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualityDimensionResponse(dict):
+    """
+    A dimension captures data quality intent about a defined subset of the rules specified.
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        A dimension captures data quality intent about a defined subset of the rules specified.
+        :param str name: The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1DataQualityDimensionResultResponse(dict):
     """
     DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
     """
     def __init__(__self__, *,
+                 dimension: 'outputs.GoogleCloudDataplexV1DataQualityDimensionResponse',
                  passed: bool):
         """
         DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
+        :param 'GoogleCloudDataplexV1DataQualityDimensionResponse' dimension: The dimension config specified in the DataQualitySpec, as is.
         :param bool passed: Whether the dimension passed or failed.
         """
+        pulumi.set(__self__, "dimension", dimension)
         pulumi.set(__self__, "passed", passed)
+
+    @property
+    @pulumi.getter
+    def dimension(self) -> 'outputs.GoogleCloudDataplexV1DataQualityDimensionResponse':
+        """
+        The dimension config specified in the DataQualitySpec, as is.
+        """
+        return pulumi.get(self, "dimension")
 
     @property
     @pulumi.getter
@@ -1450,6 +1745,78 @@ class GoogleCloudDataplexV1DataQualityDimensionResultResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse(dict):
+    """
+    The result of BigQuery export post scan action.
+    """
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        The result of BigQuery export post scan action.
+        :param str message: Additional information about the BigQuery exporting.
+        :param str state: Execution state for the BigQuery exporting.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Additional information about the BigQuery exporting.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Execution state for the BigQuery exporting.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse(dict):
+    """
+    The result of post scan actions of DataQualityScan job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryExportResult":
+            suggest = "bigquery_export_result"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bigquery_export_result: 'outputs.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse'):
+        """
+        The result of post scan actions of DataQualityScan job.
+        :param 'GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse' bigquery_export_result: The result of BigQuery export post scan action.
+        """
+        pulumi.set(__self__, "bigquery_export_result", bigquery_export_result)
+
+    @property
+    @pulumi.getter(name="bigqueryExportResult")
+    def bigquery_export_result(self) -> 'outputs.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse':
+        """
+        The result of BigQuery export post scan action.
+        """
+        return pulumi.get(self, "bigquery_export_result")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1DataQualityResultResponse(dict):
     """
     The output of a DataQualityScan.
@@ -1457,7 +1824,9 @@ class GoogleCloudDataplexV1DataQualityResultResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "rowCount":
+        if key == "postScanActionsResult":
+            suggest = "post_scan_actions_result"
+        elif key == "rowCount":
             suggest = "row_count"
         elif key == "scannedData":
             suggest = "scanned_data"
@@ -1476,19 +1845,22 @@ class GoogleCloudDataplexV1DataQualityResultResponse(dict):
     def __init__(__self__, *,
                  dimensions: Sequence['outputs.GoogleCloudDataplexV1DataQualityDimensionResultResponse'],
                  passed: bool,
+                 post_scan_actions_result: 'outputs.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse',
                  row_count: str,
                  rules: Sequence['outputs.GoogleCloudDataplexV1DataQualityRuleResultResponse'],
                  scanned_data: 'outputs.GoogleCloudDataplexV1ScannedDataResponse'):
         """
         The output of a DataQualityScan.
-        :param Sequence['GoogleCloudDataplexV1DataQualityDimensionResultResponse'] dimensions: A list of results at the dimension level.
+        :param Sequence['GoogleCloudDataplexV1DataQualityDimensionResultResponse'] dimensions: A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
         :param bool passed: Overall data quality result -- true if all rules passed.
+        :param 'GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse' post_scan_actions_result: The result of post scan actions.
         :param str row_count: The count of rows processed.
         :param Sequence['GoogleCloudDataplexV1DataQualityRuleResultResponse'] rules: A list of all the rules in a job, and their results.
         :param 'GoogleCloudDataplexV1ScannedDataResponse' scanned_data: The data scanned for this result.
         """
         pulumi.set(__self__, "dimensions", dimensions)
         pulumi.set(__self__, "passed", passed)
+        pulumi.set(__self__, "post_scan_actions_result", post_scan_actions_result)
         pulumi.set(__self__, "row_count", row_count)
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "scanned_data", scanned_data)
@@ -1497,7 +1869,7 @@ class GoogleCloudDataplexV1DataQualityResultResponse(dict):
     @pulumi.getter
     def dimensions(self) -> Sequence['outputs.GoogleCloudDataplexV1DataQualityDimensionResultResponse']:
         """
-        A list of results at the dimension level.
+        A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
         """
         return pulumi.get(self, "dimensions")
 
@@ -1508,6 +1880,14 @@ class GoogleCloudDataplexV1DataQualityResultResponse(dict):
         Overall data quality result -- true if all rules passed.
         """
         return pulumi.get(self, "passed")
+
+    @property
+    @pulumi.getter(name="postScanActionsResult")
+    def post_scan_actions_result(self) -> 'outputs.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse':
+        """
+        The result of post scan actions.
+        """
+        return pulumi.get(self, "post_scan_actions_result")
 
     @property
     @pulumi.getter(name="rowCount")
@@ -1633,7 +2013,7 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse(dict):
                  regex: str):
         """
         Evaluates whether each column value matches a specified regex.
-        :param str regex: A regular expression the column value is expected to match.
+        :param str regex: Optional. A regular expression the column value is expected to match.
         """
         pulumi.set(__self__, "regex", regex)
 
@@ -1641,7 +2021,7 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse(dict):
     @pulumi.getter
     def regex(self) -> str:
         """
-        A regular expression the column value is expected to match.
+        Optional. A regular expression the column value is expected to match.
         """
         return pulumi.get(self, "regex")
 
@@ -1686,8 +2066,10 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
 
     def __init__(__self__, *,
                  column: str,
+                 description: str,
                  dimension: str,
                  ignore_null: bool,
+                 name: str,
                  non_null_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse',
                  range_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse',
                  regex_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse',
@@ -1700,21 +2082,25 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
         """
         A rule captures data quality intent about a data source.
         :param str column: Optional. The unnested column which this rule is evaluated against.
+        :param str description: Optional. Description of the rule. The maximum length is 1,024 characters.
         :param str dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
-        :param bool ignore_null: Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
-        :param 'GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse' non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
-        :param 'GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse' range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
-        :param 'GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse' regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
-        :param 'GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse' row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
-        :param 'GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse' set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
-        :param 'GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse' statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
-        :param 'GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse' table_condition_expectation: Table rule which evaluates whether the provided expression is true.
-        :param float threshold: Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
-        :param 'GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse' uniqueness_expectation: ColumnAggregate rule which evaluates whether the column has duplicates.
+        :param bool ignore_null: Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+        :param str name: Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+        :param 'GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse' non_null_expectation: Row-level rule which evaluates whether each column value is null.
+        :param 'GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse' range_expectation: Row-level rule which evaluates whether each column value lies between a specified range.
+        :param 'GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse' regex_expectation: Row-level rule which evaluates whether each column value matches a specified regex.
+        :param 'GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse' row_condition_expectation: Row-level rule which evaluates whether each row in a table passes the specified condition.
+        :param 'GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse' set_expectation: Row-level rule which evaluates whether each column value is contained by a specified set.
+        :param 'GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse' statistic_range_expectation: Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        :param 'GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse' table_condition_expectation: Aggregate rule which evaluates whether the provided expression is true for a table.
+        :param float threshold: Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
+        :param 'GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse' uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
         """
         pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dimension", dimension)
         pulumi.set(__self__, "ignore_null", ignore_null)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "non_null_expectation", non_null_expectation)
         pulumi.set(__self__, "range_expectation", range_expectation)
         pulumi.set(__self__, "regex_expectation", regex_expectation)
@@ -1735,6 +2121,14 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
 
     @property
     @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Description of the rule. The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
     def dimension(self) -> str:
         """
         The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
@@ -1745,15 +2139,23 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="ignoreNull")
     def ignore_null(self) -> bool:
         """
-        Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+        Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
         """
         return pulumi.get(self, "ignore_null")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nonNullExpectation")
     def non_null_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse':
         """
-        ColumnMap rule which evaluates whether each column value is null.
+        Row-level rule which evaluates whether each column value is null.
         """
         return pulumi.get(self, "non_null_expectation")
 
@@ -1761,7 +2163,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="rangeExpectation")
     def range_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse':
         """
-        ColumnMap rule which evaluates whether each column value lies between a specified range.
+        Row-level rule which evaluates whether each column value lies between a specified range.
         """
         return pulumi.get(self, "range_expectation")
 
@@ -1769,7 +2171,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="regexExpectation")
     def regex_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse':
         """
-        ColumnMap rule which evaluates whether each column value matches a specified regex.
+        Row-level rule which evaluates whether each column value matches a specified regex.
         """
         return pulumi.get(self, "regex_expectation")
 
@@ -1777,7 +2179,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="rowConditionExpectation")
     def row_condition_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse':
         """
-        Table rule which evaluates whether each row passes the specified condition.
+        Row-level rule which evaluates whether each row in a table passes the specified condition.
         """
         return pulumi.get(self, "row_condition_expectation")
 
@@ -1785,7 +2187,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="setExpectation")
     def set_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse':
         """
-        ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        Row-level rule which evaluates whether each column value is contained by a specified set.
         """
         return pulumi.get(self, "set_expectation")
 
@@ -1793,7 +2195,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="statisticRangeExpectation")
     def statistic_range_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse':
         """
-        ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         """
         return pulumi.get(self, "statistic_range_expectation")
 
@@ -1801,7 +2203,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="tableConditionExpectation")
     def table_condition_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse':
         """
-        Table rule which evaluates whether the provided expression is true.
+        Aggregate rule which evaluates whether the provided expression is true for a table.
         """
         return pulumi.get(self, "table_condition_expectation")
 
@@ -1809,7 +2211,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter
     def threshold(self) -> float:
         """
-        Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+        Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
         """
         return pulumi.get(self, "threshold")
 
@@ -1817,7 +2219,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="uniquenessExpectation")
     def uniqueness_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse':
         """
-        ColumnAggregate rule which evaluates whether the column has duplicates.
+        Row-level rule which evaluates whether each column value is unique.
         """
         return pulumi.get(self, "uniqueness_expectation")
 
@@ -1862,12 +2264,12 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
                  rule: 'outputs.GoogleCloudDataplexV1DataQualityRuleResponse'):
         """
         DataQualityRuleResult provides a more detailed, per-rule view of the results.
-        :param str evaluated_count: The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
-        :param str failing_rows_query: The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+        :param str evaluated_count: The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+        :param str failing_rows_query: The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
         :param str null_count: The number of rows with null values in the specified column.
-        :param float pass_ratio: The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+        :param float pass_ratio: The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
         :param bool passed: Whether the rule passed or failed.
-        :param str passed_count: The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+        :param str passed_count: The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
         :param 'GoogleCloudDataplexV1DataQualityRuleResponse' rule: The rule specified in the DataQualitySpec, as is.
         """
         pulumi.set(__self__, "evaluated_count", evaluated_count)
@@ -1882,7 +2284,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
     @pulumi.getter(name="evaluatedCount")
     def evaluated_count(self) -> str:
         """
-        The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+        The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         """
         return pulumi.get(self, "evaluated_count")
 
@@ -1890,7 +2292,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
     @pulumi.getter(name="failingRowsQuery")
     def failing_rows_query(self) -> str:
         """
-        The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+        The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
         """
         return pulumi.get(self, "failing_rows_query")
 
@@ -1906,7 +2308,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
     @pulumi.getter(name="passRatio")
     def pass_ratio(self) -> float:
         """
-        The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+        The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
         """
         return pulumi.get(self, "pass_ratio")
 
@@ -1922,7 +2324,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
     @pulumi.getter(name="passedCount")
     def passed_count(self) -> str:
         """
-        The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+        The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
         """
         return pulumi.get(self, "passed_count")
 
@@ -1961,7 +2363,7 @@ class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse(dict):
                  sql_expression: str):
         """
         Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
-        :param str sql_expression: The SQL expression.
+        :param str sql_expression: Optional. The SQL expression.
         """
         pulumi.set(__self__, "sql_expression", sql_expression)
 
@@ -1969,7 +2371,7 @@ class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse(dict):
     @pulumi.getter(name="sqlExpression")
     def sql_expression(self) -> str:
         """
-        The SQL expression.
+        Optional. The SQL expression.
         """
         return pulumi.get(self, "sql_expression")
 
@@ -1983,7 +2385,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse(dict):
                  values: Sequence[str]):
         """
         Evaluates whether each column value is contained by a specified set.
-        :param Sequence[str] values: Expected values for the column value.
+        :param Sequence[str] values: Optional. Expected values for the column value.
         """
         pulumi.set(__self__, "values", values)
 
@@ -1991,7 +2393,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse(dict):
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        Expected values for the column value.
+        Optional. Expected values for the column value.
         """
         return pulumi.get(self, "values")
 
@@ -2032,11 +2434,11 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
                  strict_min_enabled: bool):
         """
         Evaluates whether the column aggregate statistic lies between a specified range.
-        :param str max_value: The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
-        :param str min_value: The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
-        :param str statistic: The aggregate metric to evaluate.
-        :param bool strict_max_enabled: Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
-        :param bool strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        :param str max_value: Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param str min_value: Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param str statistic: Optional. The aggregate metric to evaluate.
+        :param bool strict_max_enabled: Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        :param bool strict_min_enabled: Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
         """
         pulumi.set(__self__, "max_value", max_value)
         pulumi.set(__self__, "min_value", min_value)
@@ -2048,7 +2450,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
     @pulumi.getter(name="maxValue")
     def max_value(self) -> str:
         """
-        The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         """
         return pulumi.get(self, "max_value")
 
@@ -2056,7 +2458,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
     @pulumi.getter(name="minValue")
     def min_value(self) -> str:
         """
-        The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         """
         return pulumi.get(self, "min_value")
 
@@ -2064,7 +2466,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
     @pulumi.getter
     def statistic(self) -> str:
         """
-        The aggregate metric to evaluate.
+        Optional. The aggregate metric to evaluate.
         """
         return pulumi.get(self, "statistic")
 
@@ -2072,7 +2474,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
     @pulumi.getter(name="strictMaxEnabled")
     def strict_max_enabled(self) -> bool:
         """
-        Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
         """
         return pulumi.get(self, "strict_max_enabled")
 
@@ -2080,7 +2482,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
     @pulumi.getter(name="strictMinEnabled")
     def strict_min_enabled(self) -> bool:
         """
-        Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
         """
         return pulumi.get(self, "strict_min_enabled")
 
@@ -2111,7 +2513,7 @@ class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse(dict
                  sql_expression: str):
         """
         Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
-        :param str sql_expression: The SQL expression.
+        :param str sql_expression: Optional. The SQL expression.
         """
         pulumi.set(__self__, "sql_expression", sql_expression)
 
@@ -2119,7 +2521,7 @@ class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse(dict
     @pulumi.getter(name="sqlExpression")
     def sql_expression(self) -> str:
         """
-        The SQL expression.
+        Optional. The SQL expression.
         """
         return pulumi.get(self, "sql_expression")
 
@@ -2137,6 +2539,84 @@ class GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse(dict):
+    """
+    The configuration of BigQuery export post scan action.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resultsTable":
+            suggest = "results_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 results_table: str):
+        """
+        The configuration of BigQuery export post scan action.
+        :param str results_table: Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        pulumi.set(__self__, "results_table", results_table)
+
+    @property
+    @pulumi.getter(name="resultsTable")
+    def results_table(self) -> str:
+        """
+        Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "results_table")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse(dict):
+    """
+    The configuration of post scan actions of DataQualityScan.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryExport":
+            suggest = "bigquery_export"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bigquery_export: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse'):
+        """
+        The configuration of post scan actions of DataQualityScan.
+        :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse' bigquery_export: Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        pulumi.set(__self__, "bigquery_export", bigquery_export)
+
+    @property
+    @pulumi.getter(name="bigqueryExport")
+    def bigquery_export(self) -> 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse':
+        """
+        Optional. If set, results will be exported to the provided BigQuery table.
+        """
+        return pulumi.get(self, "bigquery_export")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1DataQualitySpecResponse(dict):
     """
     DataQualityScan related setting.
@@ -2144,7 +2624,9 @@ class GoogleCloudDataplexV1DataQualitySpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "rowFilter":
+        if key == "postScanActions":
+            suggest = "post_scan_actions"
+        elif key == "rowFilter":
             suggest = "row_filter"
         elif key == "samplingPercent":
             suggest = "sampling_percent"
@@ -2161,18 +2643,29 @@ class GoogleCloudDataplexV1DataQualitySpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 post_scan_actions: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse',
                  row_filter: str,
                  rules: Sequence['outputs.GoogleCloudDataplexV1DataQualityRuleResponse'],
                  sampling_percent: float):
         """
         DataQualityScan related setting.
+        :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse' post_scan_actions: Optional. Actions to take upon job completion.
         :param str row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param Sequence['GoogleCloudDataplexV1DataQualityRuleResponse'] rules: The list of rules to evaluate against a data source. At least one rule is required.
         :param float sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         pulumi.set(__self__, "row_filter", row_filter)
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="postScanActions")
+    def post_scan_actions(self) -> 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse':
+        """
+        Optional. Actions to take upon job completion.
+        """
+        return pulumi.get(self, "post_scan_actions")
 
     @property
     @pulumi.getter(name="rowFilter")
@@ -2708,6 +3201,8 @@ class GoogleCloudDataplexV1JobResponse(dict):
         suggest = None
         if key == "endTime":
             suggest = "end_time"
+        elif key == "executionSpec":
+            suggest = "execution_spec"
         elif key == "retryCount":
             suggest = "retry_count"
         elif key == "serviceJob":
@@ -2728,6 +3223,8 @@ class GoogleCloudDataplexV1JobResponse(dict):
 
     def __init__(__self__, *,
                  end_time: str,
+                 execution_spec: 'outputs.GoogleCloudDataplexV1TaskExecutionSpecResponse',
+                 labels: Mapping[str, str],
                  message: str,
                  name: str,
                  retry_count: int,
@@ -2735,10 +3232,13 @@ class GoogleCloudDataplexV1JobResponse(dict):
                  service_job: str,
                  start_time: str,
                  state: str,
+                 trigger: str,
                  uid: str):
         """
         A job represents an instance of a task.
         :param str end_time: The time when the job ended.
+        :param 'GoogleCloudDataplexV1TaskExecutionSpecResponse' execution_spec: Spec related to how a task is executed.
+        :param Mapping[str, str] labels: User-defined labels for the task.
         :param str message: Additional information about the current state.
         :param str name: The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
         :param int retry_count: The number of times the job has been retried (excluding the initial attempt).
@@ -2746,9 +3246,12 @@ class GoogleCloudDataplexV1JobResponse(dict):
         :param str service_job: The full resource name for the job run under a particular service.
         :param str start_time: The time when the job was started.
         :param str state: Execution state for the job.
+        :param str trigger: Job execution trigger.
         :param str uid: System generated globally unique ID for the job.
         """
         pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "execution_spec", execution_spec)
+        pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "message", message)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "retry_count", retry_count)
@@ -2756,6 +3259,7 @@ class GoogleCloudDataplexV1JobResponse(dict):
         pulumi.set(__self__, "service_job", service_job)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "trigger", trigger)
         pulumi.set(__self__, "uid", uid)
 
     @property
@@ -2765,6 +3269,22 @@ class GoogleCloudDataplexV1JobResponse(dict):
         The time when the job ended.
         """
         return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="executionSpec")
+    def execution_spec(self) -> 'outputs.GoogleCloudDataplexV1TaskExecutionSpecResponse':
+        """
+        Spec related to how a task is executed.
+        """
+        return pulumi.get(self, "execution_spec")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        User-defined labels for the task.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -2821,6 +3341,14 @@ class GoogleCloudDataplexV1JobResponse(dict):
         Execution state for the job.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> str:
+        """
+        Job execution trigger.
+        """
+        return pulumi.get(self, "trigger")
 
     @property
     @pulumi.getter

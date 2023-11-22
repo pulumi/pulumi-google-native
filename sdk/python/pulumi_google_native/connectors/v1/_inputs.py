@@ -19,7 +19,13 @@ __all__ = [
     'ConnectorsLogConfigArgs',
     'DestinationConfigArgs',
     'DestinationArgs',
+    'EncryptionKeyArgs',
+    'EndPointArgs',
+    'EventSubscriptionDestinationArgs',
+    'EventingConfigArgs',
     'ExprArgs',
+    'HeaderArgs',
+    'JMSArgs',
     'JwtClaimsArgs',
     'LockConfigArgs',
     'NodeConfigArgs',
@@ -308,6 +314,7 @@ class BindingArgs:
 class ConfigVariableArgs:
     def __init__(__self__, *,
                  bool_value: Optional[pulumi.Input[bool]] = None,
+                 encryption_key_value: Optional[pulumi.Input['EncryptionKeyArgs']] = None,
                  int_value: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  secret_value: Optional[pulumi.Input['SecretArgs']] = None,
@@ -315,6 +322,7 @@ class ConfigVariableArgs:
         """
         ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
         :param pulumi.Input[bool] bool_value: Value is a bool.
+        :param pulumi.Input['EncryptionKeyArgs'] encryption_key_value: Value is a Encryption Key.
         :param pulumi.Input[str] int_value: Value is an integer
         :param pulumi.Input[str] key: Key of the config variable.
         :param pulumi.Input['SecretArgs'] secret_value: Value is a secret.
@@ -322,6 +330,8 @@ class ConfigVariableArgs:
         """
         if bool_value is not None:
             pulumi.set(__self__, "bool_value", bool_value)
+        if encryption_key_value is not None:
+            pulumi.set(__self__, "encryption_key_value", encryption_key_value)
         if int_value is not None:
             pulumi.set(__self__, "int_value", int_value)
         if key is not None:
@@ -342,6 +352,18 @@ class ConfigVariableArgs:
     @bool_value.setter
     def bool_value(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "bool_value", value)
+
+    @property
+    @pulumi.getter(name="encryptionKeyValue")
+    def encryption_key_value(self) -> Optional[pulumi.Input['EncryptionKeyArgs']]:
+        """
+        Value is a Encryption Key.
+        """
+        return pulumi.get(self, "encryption_key_value")
+
+    @encryption_key_value.setter
+    def encryption_key_value(self, value: Optional[pulumi.Input['EncryptionKeyArgs']]):
+        pulumi.set(self, "encryption_key_value", value)
 
     @property
     @pulumi.getter(name="intValue")
@@ -512,6 +534,262 @@ class DestinationArgs:
 
 
 @pulumi.input_type
+class EncryptionKeyArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['EncryptionKeyType']] = None):
+        """
+        Encryption Key value.
+        :param pulumi.Input[str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+        :param pulumi.Input['EncryptionKeyType'] type: Type.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['EncryptionKeyType']]:
+        """
+        Type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['EncryptionKeyType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class EndPointArgs:
+    def __init__(__self__, *,
+                 endpoint_uri: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['HeaderArgs']]]] = None):
+        """
+        Endpoint message includes details of the Destination endpoint.
+        :param pulumi.Input[str] endpoint_uri: The URI of the Endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input['HeaderArgs']]] headers: List of Header to be added to the Endpoint.
+        """
+        if endpoint_uri is not None:
+            pulumi.set(__self__, "endpoint_uri", endpoint_uri)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @property
+    @pulumi.getter(name="endpointUri")
+    def endpoint_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the Endpoint.
+        """
+        return pulumi.get(self, "endpoint_uri")
+
+    @endpoint_uri.setter
+    def endpoint_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_uri", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HeaderArgs']]]]:
+        """
+        List of Header to be added to the Endpoint.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+
+@pulumi.input_type
+class EventSubscriptionDestinationArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input['EndPointArgs']] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['EventSubscriptionDestinationType']] = None):
+        """
+        Message for EventSubscription Destination to act on receiving an event
+        :param pulumi.Input['EndPointArgs'] endpoint: OPTION 1: Hit an endpoint when we receive an event.
+        :param pulumi.Input[str] service_account: Service account needed for runtime plane to trigger IP workflow.
+        :param pulumi.Input['EventSubscriptionDestinationType'] type: type of the destination
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input['EndPointArgs']]:
+        """
+        OPTION 1: Hit an endpoint when we receive an event.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input['EndPointArgs']]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service account needed for runtime plane to trigger IP workflow.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['EventSubscriptionDestinationType']]:
+        """
+        type of the destination
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['EventSubscriptionDestinationType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class EventingConfigArgs:
+    def __init__(__self__, *,
+                 additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
+                 auth_config: Optional[pulumi.Input['AuthConfigArgs']] = None,
+                 encryption_key: Optional[pulumi.Input['ConfigVariableArgs']] = None,
+                 enrichment_enabled: Optional[pulumi.Input[bool]] = None,
+                 events_listener_ingress_endpoint: Optional[pulumi.Input[str]] = None,
+                 private_connectivity_enabled: Optional[pulumi.Input[bool]] = None,
+                 registration_destination_config: Optional[pulumi.Input['DestinationConfigArgs']] = None):
+        """
+        Eventing Configuration of a connection
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] additional_variables: Additional eventing related field values
+        :param pulumi.Input['AuthConfigArgs'] auth_config: Auth details for the webhook adapter.
+        :param pulumi.Input['ConfigVariableArgs'] encryption_key: Encryption key (can be either Google managed or CMEK).
+        :param pulumi.Input[bool] enrichment_enabled: Enrichment Enabled.
+        :param pulumi.Input[str] events_listener_ingress_endpoint: Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        :param pulumi.Input[bool] private_connectivity_enabled: Optional. Private Connectivity Enabled.
+        :param pulumi.Input['DestinationConfigArgs'] registration_destination_config: Registration endpoint for auto registration.
+        """
+        if additional_variables is not None:
+            pulumi.set(__self__, "additional_variables", additional_variables)
+        if auth_config is not None:
+            pulumi.set(__self__, "auth_config", auth_config)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if enrichment_enabled is not None:
+            pulumi.set(__self__, "enrichment_enabled", enrichment_enabled)
+        if events_listener_ingress_endpoint is not None:
+            pulumi.set(__self__, "events_listener_ingress_endpoint", events_listener_ingress_endpoint)
+        if private_connectivity_enabled is not None:
+            pulumi.set(__self__, "private_connectivity_enabled", private_connectivity_enabled)
+        if registration_destination_config is not None:
+            pulumi.set(__self__, "registration_destination_config", registration_destination_config)
+
+    @property
+    @pulumi.getter(name="additionalVariables")
+    def additional_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]]:
+        """
+        Additional eventing related field values
+        """
+        return pulumi.get(self, "additional_variables")
+
+    @additional_variables.setter
+    def additional_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]]):
+        pulumi.set(self, "additional_variables", value)
+
+    @property
+    @pulumi.getter(name="authConfig")
+    def auth_config(self) -> Optional[pulumi.Input['AuthConfigArgs']]:
+        """
+        Auth details for the webhook adapter.
+        """
+        return pulumi.get(self, "auth_config")
+
+    @auth_config.setter
+    def auth_config(self, value: Optional[pulumi.Input['AuthConfigArgs']]):
+        pulumi.set(self, "auth_config", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input['ConfigVariableArgs']]:
+        """
+        Encryption key (can be either Google managed or CMEK).
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input['ConfigVariableArgs']]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="enrichmentEnabled")
+    def enrichment_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enrichment Enabled.
+        """
+        return pulumi.get(self, "enrichment_enabled")
+
+    @enrichment_enabled.setter
+    def enrichment_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enrichment_enabled", value)
+
+    @property
+    @pulumi.getter(name="eventsListenerIngressEndpoint")
+    def events_listener_ingress_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        """
+        return pulumi.get(self, "events_listener_ingress_endpoint")
+
+    @events_listener_ingress_endpoint.setter
+    def events_listener_ingress_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "events_listener_ingress_endpoint", value)
+
+    @property
+    @pulumi.getter(name="privateConnectivityEnabled")
+    def private_connectivity_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Private Connectivity Enabled.
+        """
+        return pulumi.get(self, "private_connectivity_enabled")
+
+    @private_connectivity_enabled.setter
+    def private_connectivity_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_connectivity_enabled", value)
+
+    @property
+    @pulumi.getter(name="registrationDestinationConfig")
+    def registration_destination_config(self) -> Optional[pulumi.Input['DestinationConfigArgs']]:
+        """
+        Registration endpoint for auto registration.
+        """
+        return pulumi.get(self, "registration_destination_config")
+
+    @registration_destination_config.setter
+    def registration_destination_config(self, value: Optional[pulumi.Input['DestinationConfigArgs']]):
+        pulumi.set(self, "registration_destination_config", value)
+
+
+@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -581,6 +859,86 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class HeaderArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Header details for a given header to be added to Endpoint.
+        :param pulumi.Input[str] key: Key of Header.
+        :param pulumi.Input[str] value: Value of Header.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of Header.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of Header.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class JMSArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['JMSType']] = None):
+        """
+        JMS message denotes the source of the event
+        :param pulumi.Input[str] name: Optional. Name of the JMS source. i.e. queueName or topicName
+        :param pulumi.Input['JMSType'] type: Optional. Type of the JMS Source. i.e. Queue or Topic
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Name of the JMS source. i.e. queueName or topicName
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['JMSType']]:
+        """
+        Optional. Type of the JMS Source. i.e. Queue or Topic
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['JMSType']]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -723,6 +1081,7 @@ class NodeConfigArgs:
 class Oauth2AuthCodeFlowArgs:
     def __init__(__self__, *,
                  auth_code: Optional[pulumi.Input[str]] = None,
+                 auth_uri: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input['SecretArgs']] = None,
                  enable_pkce: Optional[pulumi.Input[bool]] = None,
@@ -732,6 +1091,7 @@ class Oauth2AuthCodeFlowArgs:
         """
         Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
         :param pulumi.Input[str] auth_code: Authorization code to be exchanged for access and refresh tokens.
+        :param pulumi.Input[str] auth_uri: Auth URL for Authorization Code Flow
         :param pulumi.Input[str] client_id: Client ID for user-provided OAuth app.
         :param pulumi.Input['SecretArgs'] client_secret: Client secret for user-provided OAuth app.
         :param pulumi.Input[bool] enable_pkce: Whether to enable PKCE when the user performs the auth code flow.
@@ -741,6 +1101,8 @@ class Oauth2AuthCodeFlowArgs:
         """
         if auth_code is not None:
             pulumi.set(__self__, "auth_code", auth_code)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -765,6 +1127,18 @@ class Oauth2AuthCodeFlowArgs:
     @auth_code.setter
     def auth_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auth_code", value)
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Auth URL for Authorization Code Flow
+        """
+        return pulumi.get(self, "auth_uri")
+
+    @auth_uri.setter
+    def auth_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_uri", value)
 
     @property
     @pulumi.getter(name="clientId")

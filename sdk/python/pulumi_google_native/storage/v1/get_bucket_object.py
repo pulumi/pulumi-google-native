@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketObjectResult:
-    def __init__(__self__, acl=None, bucket=None, cache_control=None, component_count=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, custom_time=None, customer_encryption=None, etag=None, event_based_hold=None, generation=None, kind=None, kms_key_name=None, md5_hash=None, media_link=None, metadata=None, metageneration=None, name=None, owner=None, retention_expiration_time=None, self_link=None, size=None, storage_class=None, temporary_hold=None, time_created=None, time_deleted=None, time_storage_class_updated=None, updated=None):
+    def __init__(__self__, acl=None, bucket=None, cache_control=None, component_count=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, custom_time=None, customer_encryption=None, etag=None, event_based_hold=None, generation=None, hard_delete_time=None, kind=None, kms_key_name=None, md5_hash=None, media_link=None, metadata=None, metageneration=None, name=None, owner=None, retention=None, retention_expiration_time=None, self_link=None, size=None, soft_delete_time=None, storage_class=None, temporary_hold=None, time_created=None, time_deleted=None, time_storage_class_updated=None, updated=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
@@ -62,6 +62,9 @@ class GetBucketObjectResult:
         if generation and not isinstance(generation, str):
             raise TypeError("Expected argument 'generation' to be a str")
         pulumi.set(__self__, "generation", generation)
+        if hard_delete_time and not isinstance(hard_delete_time, str):
+            raise TypeError("Expected argument 'hard_delete_time' to be a str")
+        pulumi.set(__self__, "hard_delete_time", hard_delete_time)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -86,6 +89,9 @@ class GetBucketObjectResult:
         if owner and not isinstance(owner, dict):
             raise TypeError("Expected argument 'owner' to be a dict")
         pulumi.set(__self__, "owner", owner)
+        if retention and not isinstance(retention, dict):
+            raise TypeError("Expected argument 'retention' to be a dict")
+        pulumi.set(__self__, "retention", retention)
         if retention_expiration_time and not isinstance(retention_expiration_time, str):
             raise TypeError("Expected argument 'retention_expiration_time' to be a str")
         pulumi.set(__self__, "retention_expiration_time", retention_expiration_time)
@@ -95,6 +101,9 @@ class GetBucketObjectResult:
         if size and not isinstance(size, str):
             raise TypeError("Expected argument 'size' to be a str")
         pulumi.set(__self__, "size", size)
+        if soft_delete_time and not isinstance(soft_delete_time, str):
+            raise TypeError("Expected argument 'soft_delete_time' to be a str")
+        pulumi.set(__self__, "soft_delete_time", soft_delete_time)
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
@@ -227,6 +236,14 @@ class GetBucketObjectResult:
         return pulumi.get(self, "generation")
 
     @property
+    @pulumi.getter(name="hardDeleteTime")
+    def hard_delete_time(self) -> str:
+        """
+        This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+        """
+        return pulumi.get(self, "hard_delete_time")
+
+    @property
     @pulumi.getter
     def kind(self) -> str:
         """
@@ -291,6 +308,14 @@ class GetBucketObjectResult:
         return pulumi.get(self, "owner")
 
     @property
+    @pulumi.getter
+    def retention(self) -> 'outputs.BucketObjectRetentionResponse':
+        """
+        A collection of object level retention parameters.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
     @pulumi.getter(name="retentionExpirationTime")
     def retention_expiration_time(self) -> str:
         """
@@ -313,6 +338,14 @@ class GetBucketObjectResult:
         Content-Length of the data in bytes.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="softDeleteTime")
+    def soft_delete_time(self) -> str:
+        """
+        The time at which the object became soft-deleted in RFC 3339 format.
+        """
+        return pulumi.get(self, "soft_delete_time")
 
     @property
     @pulumi.getter(name="storageClass")
@@ -342,7 +375,7 @@ class GetBucketObjectResult:
     @pulumi.getter(name="timeDeleted")
     def time_deleted(self) -> str:
         """
-        The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         """
         return pulumi.get(self, "time_deleted")
 
@@ -383,6 +416,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             etag=self.etag,
             event_based_hold=self.event_based_hold,
             generation=self.generation,
+            hard_delete_time=self.hard_delete_time,
             kind=self.kind,
             kms_key_name=self.kms_key_name,
             md5_hash=self.md5_hash,
@@ -391,9 +425,11 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             metageneration=self.metageneration,
             name=self.name,
             owner=self.owner,
+            retention=self.retention,
             retention_expiration_time=self.retention_expiration_time,
             self_link=self.self_link,
             size=self.size,
+            soft_delete_time=self.soft_delete_time,
             storage_class=self.storage_class,
             temporary_hold=self.temporary_hold,
             time_created=self.time_created,
@@ -410,6 +446,7 @@ def get_bucket_object(bucket: Optional[str] = None,
                       if_metageneration_not_match: Optional[str] = None,
                       object: Optional[str] = None,
                       projection: Optional[str] = None,
+                      soft_deleted: Optional[bool] = None,
                       user_project: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketObjectResult:
     """
@@ -424,6 +461,7 @@ def get_bucket_object(bucket: Optional[str] = None,
     __args__['ifMetagenerationNotMatch'] = if_metageneration_not_match
     __args__['object'] = object
     __args__['projection'] = projection
+    __args__['softDeleted'] = soft_deleted
     __args__['userProject'] = user_project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getBucketObject', __args__, opts=opts, typ=GetBucketObjectResult).value
@@ -443,6 +481,7 @@ def get_bucket_object(bucket: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         event_based_hold=pulumi.get(__ret__, 'event_based_hold'),
         generation=pulumi.get(__ret__, 'generation'),
+        hard_delete_time=pulumi.get(__ret__, 'hard_delete_time'),
         kind=pulumi.get(__ret__, 'kind'),
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         md5_hash=pulumi.get(__ret__, 'md5_hash'),
@@ -451,9 +490,11 @@ def get_bucket_object(bucket: Optional[str] = None,
         metageneration=pulumi.get(__ret__, 'metageneration'),
         name=pulumi.get(__ret__, 'name'),
         owner=pulumi.get(__ret__, 'owner'),
+        retention=pulumi.get(__ret__, 'retention'),
         retention_expiration_time=pulumi.get(__ret__, 'retention_expiration_time'),
         self_link=pulumi.get(__ret__, 'self_link'),
         size=pulumi.get(__ret__, 'size'),
+        soft_delete_time=pulumi.get(__ret__, 'soft_delete_time'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
         temporary_hold=pulumi.get(__ret__, 'temporary_hold'),
         time_created=pulumi.get(__ret__, 'time_created'),
@@ -471,6 +512,7 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
                              if_metageneration_not_match: Optional[pulumi.Input[Optional[str]]] = None,
                              object: Optional[pulumi.Input[str]] = None,
                              projection: Optional[pulumi.Input[Optional[str]]] = None,
+                             soft_deleted: Optional[pulumi.Input[Optional[bool]]] = None,
                              user_project: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectResult]:
     """

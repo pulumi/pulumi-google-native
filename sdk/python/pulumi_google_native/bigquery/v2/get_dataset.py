@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_rounding_mode=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, storage_billing_model=None, tags=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_rounding_mode=None, default_table_expiration_ms=None, description=None, etag=None, external_dataset_reference=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, storage_billing_model=None, tags=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -50,6 +50,9 @@ class GetDatasetResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if external_dataset_reference and not isinstance(external_dataset_reference, dict):
+            raise TypeError("Expected argument 'external_dataset_reference' to be a dict")
+        pulumi.set(__self__, "external_dataset_reference", external_dataset_reference)
         if friendly_name and not isinstance(friendly_name, str):
             raise TypeError("Expected argument 'friendly_name' to be a str")
         pulumi.set(__self__, "friendly_name", friendly_name)
@@ -162,6 +165,14 @@ class GetDatasetResult:
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="externalDatasetReference")
+    def external_dataset_reference(self) -> 'outputs.ExternalDatasetReferenceResponse':
+        """
+        [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        """
+        return pulumi.get(self, "external_dataset_reference")
+
+    @property
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> str:
         """
@@ -266,6 +277,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             default_table_expiration_ms=self.default_table_expiration_ms,
             description=self.description,
             etag=self.etag,
+            external_dataset_reference=self.external_dataset_reference,
             friendly_name=self.friendly_name,
             is_case_insensitive=self.is_case_insensitive,
             kind=self.kind,
@@ -280,6 +292,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
 
 
 def get_dataset(dataset_id: Optional[str] = None,
+                dataset_view: Optional[str] = None,
                 project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatasetResult:
     """
@@ -287,6 +300,7 @@ def get_dataset(dataset_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['datasetId'] = dataset_id
+    __args__['datasetView'] = dataset_view
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:bigquery/v2:getDataset', __args__, opts=opts, typ=GetDatasetResult).value
@@ -302,6 +316,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         default_table_expiration_ms=pulumi.get(__ret__, 'default_table_expiration_ms'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),
+        external_dataset_reference=pulumi.get(__ret__, 'external_dataset_reference'),
         friendly_name=pulumi.get(__ret__, 'friendly_name'),
         is_case_insensitive=pulumi.get(__ret__, 'is_case_insensitive'),
         kind=pulumi.get(__ret__, 'kind'),
@@ -317,6 +332,7 @@ def get_dataset(dataset_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_dataset)
 def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
+                       dataset_view: Optional[pulumi.Input[Optional[str]]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetResult]:
     """

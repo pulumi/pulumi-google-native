@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'MaintenancePolicyArgs',
     'PersistenceConfigArgs',
+    'PscConfigArgs',
     'TimeOfDayArgs',
     'WeeklyMaintenanceWindowArgs',
 ]
@@ -111,6 +112,28 @@ class PersistenceConfigArgs:
     @rdb_snapshot_start_time.setter
     def rdb_snapshot_start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rdb_snapshot_start_time", value)
+
+
+@pulumi.input_type
+class PscConfigArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] network: The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
 
 
 @pulumi.input_type

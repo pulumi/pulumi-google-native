@@ -198,6 +198,7 @@ class DataTaxonomy(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["attribute_count"] = None
+            __props__.__dict__["class_count"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["uid"] = None
@@ -227,6 +228,7 @@ class DataTaxonomy(pulumi.CustomResource):
         __props__ = DataTaxonomyArgs.__new__(DataTaxonomyArgs)
 
         __props__.__dict__["attribute_count"] = None
+        __props__.__dict__["class_count"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["data_taxonomy_id"] = None
         __props__.__dict__["description"] = None
@@ -247,6 +249,14 @@ class DataTaxonomy(pulumi.CustomResource):
         The number of attributes in the DataTaxonomy.
         """
         return pulumi.get(self, "attribute_count")
+
+    @property
+    @pulumi.getter(name="classCount")
+    def class_count(self) -> pulumi.Output[int]:
+        """
+        The number of classes in the DataTaxonomy.
+        """
+        return pulumi.get(self, "class_count")
 
     @property
     @pulumi.getter(name="createTime")

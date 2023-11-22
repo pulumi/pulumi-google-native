@@ -163,7 +163,7 @@ class InstanceClusterBackupIamPolicy(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Sets the access control policy on a Table resource. Replaces any existing policy.
+        Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -182,7 +182,7 @@ class InstanceClusterBackupIamPolicy(pulumi.CustomResource):
                  args: InstanceClusterBackupIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Sets the access control policy on a Table resource. Replaces any existing policy.
+        Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 

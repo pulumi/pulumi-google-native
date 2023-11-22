@@ -7,11 +7,7 @@ from enum import Enum
 __all__ = [
     'AllowedClientMountPermissions',
     'InstanceConfigNetworkConfig',
-    'InstanceWorkloadProfile',
     'LogicalNetworkInterfaceNetworkType',
-    'LunMultiprotocolType',
-    'LunState',
-    'LunStorageType',
     'NetworkConfigBandwidth',
     'NetworkConfigServiceCidr',
     'NetworkConfigType',
@@ -20,11 +16,6 @@ __all__ = [
     'VolumeConfigPerformanceTier',
     'VolumeConfigProtocol',
     'VolumeConfigType',
-    'VolumePerformanceTier',
-    'VolumeSnapshotAutoDeleteBehavior',
-    'VolumeState',
-    'VolumeStorageType',
-    'VolumeWorkloadProfile',
 ]
 
 
@@ -64,24 +55,6 @@ class InstanceConfigNetworkConfig(str, Enum):
     """
 
 
-class InstanceWorkloadProfile(str, Enum):
-    """
-    The workload profile for the instance.
-    """
-    WORKLOAD_PROFILE_UNSPECIFIED = "WORKLOAD_PROFILE_UNSPECIFIED"
-    """
-    The workload profile is in an unknown state.
-    """
-    WORKLOAD_PROFILE_GENERIC = "WORKLOAD_PROFILE_GENERIC"
-    """
-    The workload profile is generic.
-    """
-    WORKLOAD_PROFILE_HANA = "WORKLOAD_PROFILE_HANA"
-    """
-    The workload profile is hana.
-    """
-
-
 class LogicalNetworkInterfaceNetworkType(str, Enum):
     """
     Type of network.
@@ -97,68 +70,6 @@ class LogicalNetworkInterfaceNetworkType(str, Enum):
     PRIVATE = "PRIVATE"
     """
     Private network, a network local to the Bare Metal Solution environment.
-    """
-
-
-class LunMultiprotocolType(str, Enum):
-    """
-    The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
-    """
-    MULTIPROTOCOL_TYPE_UNSPECIFIED = "MULTIPROTOCOL_TYPE_UNSPECIFIED"
-    """
-    Server has no OS specified.
-    """
-    LINUX = "LINUX"
-    """
-    Server with Linux OS.
-    """
-
-
-class LunState(str, Enum):
-    """
-    The state of this storage volume.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """
-    The LUN is in an unknown state.
-    """
-    CREATING = "CREATING"
-    """
-    The LUN is being created.
-    """
-    UPDATING = "UPDATING"
-    """
-    The LUN is being updated.
-    """
-    READY = "READY"
-    """
-    The LUN is ready for use.
-    """
-    DELETING = "DELETING"
-    """
-    The LUN has been requested to be deleted.
-    """
-    COOL_OFF = "COOL_OFF"
-    """
-    The LUN is in cool off state. It will be deleted after `expire_time`.
-    """
-
-
-class LunStorageType(str, Enum):
-    """
-    The storage type for this LUN.
-    """
-    STORAGE_TYPE_UNSPECIFIED = "STORAGE_TYPE_UNSPECIFIED"
-    """
-    The storage type for this LUN is unknown.
-    """
-    SSD = "SSD"
-    """
-    This storage type for this LUN is SSD.
-    """
-    HDD = "HDD"
-    """
-    This storage type for this LUN is HDD.
     """
 
 
@@ -323,114 +234,4 @@ class VolumeConfigType(str, Enum):
     DISK = "DISK"
     """
     This Volume is on disk.
-    """
-
-
-class VolumePerformanceTier(str, Enum):
-    """
-    Immutable. Performance tier of the Volume. Default is SHARED.
-    """
-    VOLUME_PERFORMANCE_TIER_UNSPECIFIED = "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
-    """
-    Value is not specified.
-    """
-    VOLUME_PERFORMANCE_TIER_SHARED = "VOLUME_PERFORMANCE_TIER_SHARED"
-    """
-    Regular volumes, shared aggregates.
-    """
-    VOLUME_PERFORMANCE_TIER_ASSIGNED = "VOLUME_PERFORMANCE_TIER_ASSIGNED"
-    """
-    Assigned aggregates.
-    """
-    VOLUME_PERFORMANCE_TIER_HT = "VOLUME_PERFORMANCE_TIER_HT"
-    """
-    High throughput aggregates.
-    """
-
-
-class VolumeSnapshotAutoDeleteBehavior(str, Enum):
-    """
-    The behavior to use when snapshot reserved space is full.
-    """
-    SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED = "SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"
-    """
-    The unspecified behavior.
-    """
-    DISABLED = "DISABLED"
-    """
-    Don't delete any snapshots. This disables new snapshot creation, as long as the snapshot reserved space is full.
-    """
-    OLDEST_FIRST = "OLDEST_FIRST"
-    """
-    Delete the oldest snapshots first.
-    """
-    NEWEST_FIRST = "NEWEST_FIRST"
-    """
-    Delete the newest snapshots first.
-    """
-
-
-class VolumeState(str, Enum):
-    """
-    The state of this storage volume.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """
-    The storage volume is in an unknown state.
-    """
-    CREATING = "CREATING"
-    """
-    The storage volume is being created.
-    """
-    READY = "READY"
-    """
-    The storage volume is ready for use.
-    """
-    DELETING = "DELETING"
-    """
-    The storage volume has been requested to be deleted.
-    """
-    UPDATING = "UPDATING"
-    """
-    The storage volume is being updated.
-    """
-    COOL_OFF = "COOL_OFF"
-    """
-    The storage volume is in cool off state. It will be deleted after `expire_time`.
-    """
-
-
-class VolumeStorageType(str, Enum):
-    """
-    The storage type for this volume.
-    """
-    STORAGE_TYPE_UNSPECIFIED = "STORAGE_TYPE_UNSPECIFIED"
-    """
-    The storage type for this volume is unknown.
-    """
-    SSD = "SSD"
-    """
-    The storage type for this volume is SSD.
-    """
-    HDD = "HDD"
-    """
-    This storage type for this volume is HDD.
-    """
-
-
-class VolumeWorkloadProfile(str, Enum):
-    """
-    The workload profile for the volume.
-    """
-    WORKLOAD_PROFILE_UNSPECIFIED = "WORKLOAD_PROFILE_UNSPECIFIED"
-    """
-    The workload profile is in an unknown state.
-    """
-    GENERIC = "GENERIC"
-    """
-    The workload profile is generic.
-    """
-    HANA = "HANA"
-    """
-    The workload profile is hana.
     """

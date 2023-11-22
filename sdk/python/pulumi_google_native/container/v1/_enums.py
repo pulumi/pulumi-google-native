@@ -5,9 +5,11 @@
 from enum import Enum
 
 __all__ = [
+    'AdvancedDatapathObservabilityConfigRelayMode',
     'BinaryAuthorizationEvaluationMode',
     'CloudRunConfigLoadBalancerType',
     'ClusterAutoscalingAutoscalingProfile',
+    'ClusterNetworkPerformanceConfigTotalEgressBandwidthTier',
     'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
     'ClusterUpdateDesiredStackType',
@@ -15,6 +17,7 @@ __all__ = [
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'FilterEventTypeItem',
+    'GPUDriverInstallationConfigGpuDriverVersion',
     'GPUSharingConfigGpuSharingStrategy',
     'GatewayAPIConfigChannel',
     'IPAllocationPolicyIpv6AccessType',
@@ -28,18 +31,43 @@ __all__ = [
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkPolicyProvider',
+    'NodeAffinityOperator',
     'NodePoolAutoscalingLocationPolicy',
     'NodeTaintEffect',
     'PlacementPolicyType',
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
+    'SecurityPostureConfigMode',
+    'SecurityPostureConfigVulnerabilityMode',
     'StatusConditionCanonicalCode',
     'StatusConditionCode',
     'UpgradeSettingsStrategy',
     'WindowsNodeConfigOsVersion',
     'WorkloadMetadataConfigMode',
 ]
+
+
+class AdvancedDatapathObservabilityConfigRelayMode(str, Enum):
+    """
+    Method used to make Relay available
+    """
+    RELAY_MODE_UNSPECIFIED = "RELAY_MODE_UNSPECIFIED"
+    """
+    Default value. This shouldn't be used.
+    """
+    DISABLED = "DISABLED"
+    """
+    disabled
+    """
+    INTERNAL_VPC_LB = "INTERNAL_VPC_LB"
+    """
+    exposed via internal load balancer
+    """
+    EXTERNAL_LB = "EXTERNAL_LB"
+    """
+    exposed via external load balancer
+    """
 
 
 class BinaryAuthorizationEvaluationMode(str, Enum):
@@ -93,6 +121,20 @@ class ClusterAutoscalingAutoscalingProfile(str, Enum):
     BALANCED = "BALANCED"
     """
     Use default (balanced) autoscaling configuration.
+    """
+
+
+class ClusterNetworkPerformanceConfigTotalEgressBandwidthTier(str, Enum):
+    """
+    Specifies the total network bandwidth tier for NodePools in the cluster.
+    """
+    TIER_UNSPECIFIED = "TIER_UNSPECIFIED"
+    """
+    Default value
+    """
+    TIER1 = "TIER_1"
+    """
+    Higher bandwidth, actual values based on VM size.
     """
 
 
@@ -170,6 +212,10 @@ class DNSConfigClusterDns(str, Enum):
     """
     Use CloudDNS for DNS resolution.
     """
+    KUBE_DNS = "KUBE_DNS"
+    """
+    Use KubeDNS for DNS resolution.
+    """
 
 
 class DNSConfigClusterDnsScope(str, Enum):
@@ -224,6 +270,28 @@ class FilterEventTypeItem(str, Enum):
     SECURITY_BULLETIN_EVENT = "SECURITY_BULLETIN_EVENT"
     """
     Corresponds with SecurityBulletinEvent.
+    """
+
+
+class GPUDriverInstallationConfigGpuDriverVersion(str, Enum):
+    """
+    Mode for how the GPU driver is installed.
+    """
+    GPU_DRIVER_VERSION_UNSPECIFIED = "GPU_DRIVER_VERSION_UNSPECIFIED"
+    """
+    Default value is to not install any GPU driver.
+    """
+    INSTALLATION_DISABLED = "INSTALLATION_DISABLED"
+    """
+    Disable GPU driver auto installation and needs manual installation
+    """
+    DEFAULT = "DEFAULT"
+    """
+    "Default" GPU driver in COS and Ubuntu.
+    """
+    LATEST = "LATEST"
+    """
+    "Latest" GPU driver in COS.
     """
 
 
@@ -401,6 +469,30 @@ class MonitoringComponentConfigEnableComponentsItem(str, Enum):
     """
     kube-controller-manager
     """
+    STORAGE = "STORAGE"
+    """
+    Storage
+    """
+    HPA = "HPA"
+    """
+    Horizontal Pod Autoscaling
+    """
+    POD = "POD"
+    """
+    Pod
+    """
+    DAEMONSET = "DAEMONSET"
+    """
+    DaemonSet
+    """
+    DEPLOYMENT = "DEPLOYMENT"
+    """
+    Deployment
+    """
+    STATEFULSET = "STATEFULSET"
+    """
+    Statefulset
+    """
 
 
 class NetworkConfigDatapathProvider(str, Enum):
@@ -468,6 +560,24 @@ class NetworkPolicyProvider(str, Enum):
     CALICO = "CALICO"
     """
     Tigera (Calico Felix).
+    """
+
+
+class NodeAffinityOperator(str, Enum):
+    """
+    Operator for NodeAffinity.
+    """
+    OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED"
+    """
+    Invalid or unspecified affinity operator.
+    """
+    IN_ = "IN"
+    """
+    Affinity operator.
+    """
+    NOT_IN = "NOT_IN"
+    """
+    Anti-affinity operator.
     """
 
 
@@ -580,6 +690,42 @@ class SandboxConfigType(str, Enum):
     GVISOR = "GVISOR"
     """
     Run sandbox using gvisor.
+    """
+
+
+class SecurityPostureConfigMode(str, Enum):
+    """
+    Sets which mode to use for Security Posture features.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value not specified.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disables Security Posture features on the cluster.
+    """
+    BASIC = "BASIC"
+    """
+    Applies Security Posture features on the cluster.
+    """
+
+
+class SecurityPostureConfigVulnerabilityMode(str, Enum):
+    """
+    Sets which mode to use for vulnerability scanning.
+    """
+    VULNERABILITY_MODE_UNSPECIFIED = "VULNERABILITY_MODE_UNSPECIFIED"
+    """
+    Default value not specified.
+    """
+    VULNERABILITY_DISABLED = "VULNERABILITY_DISABLED"
+    """
+    Disables vulnerability scanning on the cluster.
+    """
+    VULNERABILITY_BASIC = "VULNERABILITY_BASIC"
+    """
+    Applies basic vulnerability scanning on the cluster.
     """
 
 

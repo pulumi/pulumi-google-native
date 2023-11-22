@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouteResult:
-    def __init__(__self__, allow_conflicting_subnetworks=None, as_paths=None, creation_timestamp=None, description=None, dest_range=None, ilb_route_behavior_on_unhealthy=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_hub=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, self_link_with_id=None, tags=None, warnings=None):
+    def __init__(__self__, allow_conflicting_subnetworks=None, as_paths=None, creation_timestamp=None, description=None, dest_range=None, ilb_route_behavior_on_unhealthy=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_hub=None, next_hop_ilb=None, next_hop_instance=None, next_hop_inter_region_cost=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_med=None, next_hop_network=None, next_hop_origin=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, self_link_with_id=None, tags=None, warnings=None):
         if allow_conflicting_subnetworks and not isinstance(allow_conflicting_subnetworks, bool):
             raise TypeError("Expected argument 'allow_conflicting_subnetworks' to be a bool")
         pulumi.set(__self__, "allow_conflicting_subnetworks", allow_conflicting_subnetworks)
@@ -59,15 +59,24 @@ class GetRouteResult:
         if next_hop_instance and not isinstance(next_hop_instance, str):
             raise TypeError("Expected argument 'next_hop_instance' to be a str")
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
+        if next_hop_inter_region_cost and not isinstance(next_hop_inter_region_cost, int):
+            raise TypeError("Expected argument 'next_hop_inter_region_cost' to be a int")
+        pulumi.set(__self__, "next_hop_inter_region_cost", next_hop_inter_region_cost)
         if next_hop_interconnect_attachment and not isinstance(next_hop_interconnect_attachment, str):
             raise TypeError("Expected argument 'next_hop_interconnect_attachment' to be a str")
         pulumi.set(__self__, "next_hop_interconnect_attachment", next_hop_interconnect_attachment)
         if next_hop_ip and not isinstance(next_hop_ip, str):
             raise TypeError("Expected argument 'next_hop_ip' to be a str")
         pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        if next_hop_med and not isinstance(next_hop_med, int):
+            raise TypeError("Expected argument 'next_hop_med' to be a int")
+        pulumi.set(__self__, "next_hop_med", next_hop_med)
         if next_hop_network and not isinstance(next_hop_network, str):
             raise TypeError("Expected argument 'next_hop_network' to be a str")
         pulumi.set(__self__, "next_hop_network", next_hop_network)
+        if next_hop_origin and not isinstance(next_hop_origin, str):
+            raise TypeError("Expected argument 'next_hop_origin' to be a str")
+        pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         if next_hop_peering and not isinstance(next_hop_peering, str):
             raise TypeError("Expected argument 'next_hop_peering' to be a str")
         pulumi.set(__self__, "next_hop_peering", next_hop_peering)
@@ -132,7 +141,7 @@ class GetRouteResult:
     @pulumi.getter(name="destRange")
     def dest_range(self) -> str:
         """
-        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
         """
         return pulumi.get(self, "dest_range")
 
@@ -180,7 +189,7 @@ class GetRouteResult:
     @pulumi.getter(name="nextHopHub")
     def next_hop_hub(self) -> str:
         """
-        The full resource name of the network connectivity center hub that should handle matching packets.
+        The full resource name of the Network Connectivity Center hub that will handle matching packets.
         """
         return pulumi.get(self, "next_hop_hub")
 
@@ -201,6 +210,14 @@ class GetRouteResult:
         return pulumi.get(self, "next_hop_instance")
 
     @property
+    @pulumi.getter(name="nextHopInterRegionCost")
+    def next_hop_inter_region_cost(self) -> int:
+        """
+        [Output only] Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+        """
+        return pulumi.get(self, "next_hop_inter_region_cost")
+
+    @property
     @pulumi.getter(name="nextHopInterconnectAttachment")
     def next_hop_interconnect_attachment(self) -> str:
         """
@@ -212,9 +229,17 @@ class GetRouteResult:
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> str:
         """
-        The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+        The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
         """
         return pulumi.get(self, "next_hop_ip")
+
+    @property
+    @pulumi.getter(name="nextHopMed")
+    def next_hop_med(self) -> int:
+        """
+        Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        """
+        return pulumi.get(self, "next_hop_med")
 
     @property
     @pulumi.getter(name="nextHopNetwork")
@@ -223,6 +248,14 @@ class GetRouteResult:
         The URL of the local network if it should handle matching packets.
         """
         return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopOrigin")
+    def next_hop_origin(self) -> str:
+        """
+        Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        """
+        return pulumi.get(self, "next_hop_origin")
 
     @property
     @pulumi.getter(name="nextHopPeering")
@@ -316,9 +349,12 @@ class AwaitableGetRouteResult(GetRouteResult):
             next_hop_hub=self.next_hop_hub,
             next_hop_ilb=self.next_hop_ilb,
             next_hop_instance=self.next_hop_instance,
+            next_hop_inter_region_cost=self.next_hop_inter_region_cost,
             next_hop_interconnect_attachment=self.next_hop_interconnect_attachment,
             next_hop_ip=self.next_hop_ip,
+            next_hop_med=self.next_hop_med,
             next_hop_network=self.next_hop_network,
+            next_hop_origin=self.next_hop_origin,
             next_hop_peering=self.next_hop_peering,
             next_hop_vpn_tunnel=self.next_hop_vpn_tunnel,
             priority=self.priority,
@@ -356,9 +392,12 @@ def get_route(project: Optional[str] = None,
         next_hop_hub=pulumi.get(__ret__, 'next_hop_hub'),
         next_hop_ilb=pulumi.get(__ret__, 'next_hop_ilb'),
         next_hop_instance=pulumi.get(__ret__, 'next_hop_instance'),
+        next_hop_inter_region_cost=pulumi.get(__ret__, 'next_hop_inter_region_cost'),
         next_hop_interconnect_attachment=pulumi.get(__ret__, 'next_hop_interconnect_attachment'),
         next_hop_ip=pulumi.get(__ret__, 'next_hop_ip'),
+        next_hop_med=pulumi.get(__ret__, 'next_hop_med'),
         next_hop_network=pulumi.get(__ret__, 'next_hop_network'),
+        next_hop_origin=pulumi.get(__ret__, 'next_hop_origin'),
         next_hop_peering=pulumi.get(__ret__, 'next_hop_peering'),
         next_hop_vpn_tunnel=pulumi.get(__ret__, 'next_hop_vpn_tunnel'),
         priority=pulumi.get(__ret__, 'priority'),

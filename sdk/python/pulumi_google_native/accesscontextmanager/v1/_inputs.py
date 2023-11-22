@@ -21,6 +21,7 @@ __all__ = [
     'DevicePolicyArgs',
     'EgressFromArgs',
     'EgressPolicyArgs',
+    'EgressSourceArgs',
     'EgressToArgs',
     'ExprArgs',
     'IngressFromArgs',
@@ -31,6 +32,8 @@ __all__ = [
     'OsConstraintArgs',
     'ServicePerimeterConfigArgs',
     'VpcAccessibleServicesArgs',
+    'VpcNetworkSourceArgs',
+    'VpcSubNetworkArgs',
 ]
 
 @pulumi.input_type
@@ -256,15 +259,17 @@ class ConditionArgs:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNetworkSourceArgs']]]] = None):
         """
         A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
         :param pulumi.Input['DevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_subnetworks: CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
-        :param pulumi.Input[bool] negate: Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+        :param pulumi.Input[bool] negate: Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] required_access_levels: A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
+        :param pulumi.Input[Sequence[pulumi.Input['VpcNetworkSourceArgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
         """
         if device_policy is not None:
             pulumi.set(__self__, "device_policy", device_policy)
@@ -278,6 +283,8 @@ class ConditionArgs:
             pulumi.set(__self__, "regions", regions)
         if required_access_levels is not None:
             pulumi.set(__self__, "required_access_levels", required_access_levels)
+        if vpc_network_sources is not None:
+            pulumi.set(__self__, "vpc_network_sources", vpc_network_sources)
 
     @property
     @pulumi.getter(name="devicePolicy")
@@ -319,7 +326,7 @@ class ConditionArgs:
     @pulumi.getter
     def negate(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
+        Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false.
         """
         return pulumi.get(self, "negate")
 
@@ -350,6 +357,18 @@ class ConditionArgs:
     @required_access_levels.setter
     def required_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "required_access_levels", value)
+
+    @property
+    @pulumi.getter(name="vpcNetworkSources")
+    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcNetworkSourceArgs']]]]:
+        """
+        The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        """
+        return pulumi.get(self, "vpc_network_sources")
+
+    @vpc_network_sources.setter
+    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNetworkSourceArgs']]]]):
+        pulumi.set(self, "vpc_network_sources", value)
 
 
 @pulumi.input_type
@@ -483,16 +502,24 @@ class DevicePolicyArgs:
 class EgressFromArgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_type: Optional[pulumi.Input['EgressFromIdentityType']] = None):
+                 identity_type: Optional[pulumi.Input['EgressFromIdentityType']] = None,
+                 source_restriction: Optional[pulumi.Input['EgressFromSourceRestriction']] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['EgressSourceArgs']]]] = None):
         """
         Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
         :param pulumi.Input['EgressFromIdentityType'] identity_type: Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+        :param pulumi.Input['EgressFromSourceRestriction'] source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        :param pulumi.Input[Sequence[pulumi.Input['EgressSourceArgs']]] sources: Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
             pulumi.set(__self__, "identity_type", identity_type)
+        if source_restriction is not None:
+            pulumi.set(__self__, "source_restriction", source_restriction)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -517,6 +544,30 @@ class EgressFromArgs:
     @identity_type.setter
     def identity_type(self, value: Optional[pulumi.Input['EgressFromIdentityType']]):
         pulumi.set(self, "identity_type", value)
+
+    @property
+    @pulumi.getter(name="sourceRestriction")
+    def source_restriction(self) -> Optional[pulumi.Input['EgressFromSourceRestriction']]:
+        """
+        Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        """
+        return pulumi.get(self, "source_restriction")
+
+    @source_restriction.setter
+    def source_restriction(self, value: Optional[pulumi.Input['EgressFromSourceRestriction']]):
+        pulumi.set(self, "source_restriction", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EgressSourceArgs']]]]:
+        """
+        Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EgressSourceArgs']]]]):
+        pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
@@ -557,6 +608,30 @@ class EgressPolicyArgs:
     @egress_to.setter
     def egress_to(self, value: Optional[pulumi.Input['EgressToArgs']]):
         pulumi.set(self, "egress_to", value)
+
+
+@pulumi.input_type
+class EgressSourceArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None):
+        """
+        The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+        :param pulumi.Input[str] access_level: An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
 
 
 @pulumi.input_type
@@ -1100,5 +1175,68 @@ class VpcAccessibleServicesArgs:
     @enable_restriction.setter
     def enable_restriction(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_restriction", value)
+
+
+@pulumi.input_type
+class VpcNetworkSourceArgs:
+    def __init__(__self__, *,
+                 vpc_subnetwork: Optional[pulumi.Input['VpcSubNetworkArgs']] = None):
+        """
+        The originating network source in Google Cloud.
+        :param pulumi.Input['VpcSubNetworkArgs'] vpc_subnetwork: Sub-segment ranges of a VPC network.
+        """
+        if vpc_subnetwork is not None:
+            pulumi.set(__self__, "vpc_subnetwork", vpc_subnetwork)
+
+    @property
+    @pulumi.getter(name="vpcSubnetwork")
+    def vpc_subnetwork(self) -> Optional[pulumi.Input['VpcSubNetworkArgs']]:
+        """
+        Sub-segment ranges of a VPC network.
+        """
+        return pulumi.get(self, "vpc_subnetwork")
+
+    @vpc_subnetwork.setter
+    def vpc_subnetwork(self, value: Optional[pulumi.Input['VpcSubNetworkArgs']]):
+        pulumi.set(self, "vpc_subnetwork", value)
+
+
+@pulumi.input_type
+class VpcSubNetworkArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 vpc_ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Sub-segment ranges inside of a VPC Network.
+        :param pulumi.Input[str] network: Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ip_subnetworks: CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+        """
+        pulumi.set(__self__, "network", network)
+        if vpc_ip_subnetworks is not None:
+            pulumi.set(__self__, "vpc_ip_subnetworks", vpc_ip_subnetworks)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="vpcIpSubnetworks")
+    def vpc_ip_subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+        """
+        return pulumi.get(self, "vpc_ip_subnetworks")
+
+    @vpc_ip_subnetworks.setter
+    def vpc_ip_subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vpc_ip_subnetworks", value)
 
 

@@ -28,6 +28,7 @@ __all__ = [
     'GrpcRouteRouteActionArgs',
     'GrpcRouteRouteMatchArgs',
     'GrpcRouteRouteRuleArgs',
+    'GrpcRouteStatefulSessionAffinityPolicyArgs',
     'HttpRouteCorsPolicyArgs',
     'HttpRouteDestinationArgs',
     'HttpRouteFaultInjectionPolicyAbortArgs',
@@ -43,6 +44,7 @@ __all__ = [
     'HttpRouteRouteActionArgs',
     'HttpRouteRouteMatchArgs',
     'HttpRouteRouteRuleArgs',
+    'HttpRouteStatefulSessionAffinityPolicyArgs',
     'HttpRouteURLRewriteArgs',
     'TcpRouteRouteActionArgs',
     'TcpRouteRouteDestinationArgs',
@@ -373,7 +375,7 @@ class GrpcRouteDestinationArgs:
         """
         The destination to which traffic will be routed.
         :param pulumi.Input[str] service_name: The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
-        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         pulumi.set(__self__, "service_name", service_name)
         if weight is not None:
@@ -395,7 +397,7 @@ class GrpcRouteDestinationArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         return pulumi.get(self, "weight")
 
@@ -694,12 +696,14 @@ class GrpcRouteRouteActionArgs:
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteDestinationArgs']]]] = None,
                  fault_injection_policy: Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyArgs']] = None,
                  retry_policy: Optional[pulumi.Input['GrpcRouteRetryPolicyArgs']] = None,
+                 stateful_session_affinity: Optional[pulumi.Input['GrpcRouteStatefulSessionAffinityPolicyArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         Specifies how to route matched traffic.
         :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteDestinationArgs']]] destinations: Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
         :param pulumi.Input['GrpcRouteFaultInjectionPolicyArgs'] fault_injection_policy: Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
         :param pulumi.Input['GrpcRouteRetryPolicyArgs'] retry_policy: Optional. Specifies the retry policy associated with this route.
+        :param pulumi.Input['GrpcRouteStatefulSessionAffinityPolicyArgs'] stateful_session_affinity: Optional. Specifies cookie-based stateful session affinity.
         :param pulumi.Input[str] timeout: Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         """
         if destinations is not None:
@@ -708,6 +712,8 @@ class GrpcRouteRouteActionArgs:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
+        if stateful_session_affinity is not None:
+            pulumi.set(__self__, "stateful_session_affinity", stateful_session_affinity)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
 
@@ -746,6 +752,18 @@ class GrpcRouteRouteActionArgs:
     @retry_policy.setter
     def retry_policy(self, value: Optional[pulumi.Input['GrpcRouteRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
+
+    @property
+    @pulumi.getter(name="statefulSessionAffinity")
+    def stateful_session_affinity(self) -> Optional[pulumi.Input['GrpcRouteStatefulSessionAffinityPolicyArgs']]:
+        """
+        Optional. Specifies cookie-based stateful session affinity.
+        """
+        return pulumi.get(self, "stateful_session_affinity")
+
+    @stateful_session_affinity.setter
+    def stateful_session_affinity(self, value: Optional[pulumi.Input['GrpcRouteStatefulSessionAffinityPolicyArgs']]):
+        pulumi.set(self, "stateful_session_affinity", value)
 
     @property
     @pulumi.getter
@@ -837,6 +855,29 @@ class GrpcRouteRouteRuleArgs:
     @matches.setter
     def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRouteMatchArgs']]]]):
         pulumi.set(self, "matches", value)
+
+
+@pulumi.input_type
+class GrpcRouteStatefulSessionAffinityPolicyArgs:
+    def __init__(__self__, *,
+                 cookie_ttl: pulumi.Input[str]):
+        """
+        The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+        :param pulumi.Input[str] cookie_ttl: The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        pulumi.set(__self__, "cookie_ttl", cookie_ttl)
+
+    @property
+    @pulumi.getter(name="cookieTtl")
+    def cookie_ttl(self) -> pulumi.Input[str]:
+        """
+        The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        return pulumi.get(self, "cookie_ttl")
+
+    @cookie_ttl.setter
+    def cookie_ttl(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cookie_ttl", value)
 
 
 @pulumi.input_type
@@ -983,7 +1024,7 @@ class HttpRouteDestinationArgs:
         """
         Specifications of a destination to which the request should be routed to.
         :param pulumi.Input[str] service_name: The URL of a BackendService to route traffic to.
-        :param pulumi.Input[int] weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        :param pulumi.Input[int] weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -1006,7 +1047,7 @@ class HttpRouteDestinationArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         return pulumi.get(self, "weight")
 
@@ -1650,6 +1691,7 @@ class HttpRouteRouteActionArgs:
                  request_mirror_policy: Optional[pulumi.Input['HttpRouteRequestMirrorPolicyArgs']] = None,
                  response_header_modifier: Optional[pulumi.Input['HttpRouteHeaderModifierArgs']] = None,
                  retry_policy: Optional[pulumi.Input['HttpRouteRetryPolicyArgs']] = None,
+                 stateful_session_affinity: Optional[pulumi.Input['HttpRouteStatefulSessionAffinityPolicyArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  url_rewrite: Optional[pulumi.Input['HttpRouteURLRewriteArgs']] = None):
         """
@@ -1658,10 +1700,11 @@ class HttpRouteRouteActionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HttpRouteDestinationArgs']]] destinations: The destination to which traffic should be forwarded.
         :param pulumi.Input['HttpRouteFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
         :param pulumi.Input['HttpRouteRedirectArgs'] redirect: If set, the request is directed as configured by this field.
-        :param pulumi.Input['HttpRouteHeaderModifierArgs'] request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        :param pulumi.Input['HttpRouteHeaderModifierArgs'] request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         :param pulumi.Input['HttpRouteRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
-        :param pulumi.Input['HttpRouteHeaderModifierArgs'] response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
+        :param pulumi.Input['HttpRouteHeaderModifierArgs'] response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         :param pulumi.Input['HttpRouteRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['HttpRouteStatefulSessionAffinityPolicyArgs'] stateful_session_affinity: Optional. Specifies cookie-based stateful session affinity.
         :param pulumi.Input[str] timeout: Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         :param pulumi.Input['HttpRouteURLRewriteArgs'] url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
         """
@@ -1681,6 +1724,8 @@ class HttpRouteRouteActionArgs:
             pulumi.set(__self__, "response_header_modifier", response_header_modifier)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
+        if stateful_session_affinity is not None:
+            pulumi.set(__self__, "stateful_session_affinity", stateful_session_affinity)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
         if url_rewrite is not None:
@@ -1738,7 +1783,7 @@ class HttpRouteRouteActionArgs:
     @pulumi.getter(name="requestHeaderModifier")
     def request_header_modifier(self) -> Optional[pulumi.Input['HttpRouteHeaderModifierArgs']]:
         """
-        The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         """
         return pulumi.get(self, "request_header_modifier")
 
@@ -1762,7 +1807,7 @@ class HttpRouteRouteActionArgs:
     @pulumi.getter(name="responseHeaderModifier")
     def response_header_modifier(self) -> Optional[pulumi.Input['HttpRouteHeaderModifierArgs']]:
         """
-        The specification for modifying the headers of a response prior to sending the response back to the client.
+        The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         """
         return pulumi.get(self, "response_header_modifier")
 
@@ -1781,6 +1826,18 @@ class HttpRouteRouteActionArgs:
     @retry_policy.setter
     def retry_policy(self, value: Optional[pulumi.Input['HttpRouteRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
+
+    @property
+    @pulumi.getter(name="statefulSessionAffinity")
+    def stateful_session_affinity(self) -> Optional[pulumi.Input['HttpRouteStatefulSessionAffinityPolicyArgs']]:
+        """
+        Optional. Specifies cookie-based stateful session affinity.
+        """
+        return pulumi.get(self, "stateful_session_affinity")
+
+    @stateful_session_affinity.setter
+    def stateful_session_affinity(self, value: Optional[pulumi.Input['HttpRouteStatefulSessionAffinityPolicyArgs']]):
+        pulumi.set(self, "stateful_session_affinity", value)
 
     @property
     @pulumi.getter
@@ -1952,6 +2009,29 @@ class HttpRouteRouteRuleArgs:
 
 
 @pulumi.input_type
+class HttpRouteStatefulSessionAffinityPolicyArgs:
+    def __init__(__self__, *,
+                 cookie_ttl: pulumi.Input[str]):
+        """
+        The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
+        :param pulumi.Input[str] cookie_ttl: The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        pulumi.set(__self__, "cookie_ttl", cookie_ttl)
+
+    @property
+    @pulumi.getter(name="cookieTtl")
+    def cookie_ttl(self) -> pulumi.Input[str]:
+        """
+        The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        """
+        return pulumi.get(self, "cookie_ttl")
+
+    @cookie_ttl.setter
+    def cookie_ttl(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cookie_ttl", value)
+
+
+@pulumi.input_type
 class HttpRouteURLRewriteArgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
@@ -2039,7 +2119,7 @@ class TcpRouteRouteDestinationArgs:
         """
         Describe the destination for traffic to be routed to.
         :param pulumi.Input[str] service_name: The URL of a BackendService to route traffic to.
-        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         pulumi.set(__self__, "service_name", service_name)
         if weight is not None:
@@ -2061,7 +2141,7 @@ class TcpRouteRouteDestinationArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
         return pulumi.get(self, "weight")
 
@@ -2178,7 +2258,7 @@ class TlsRouteRouteDestinationArgs:
         """
         Describe the destination for traffic to be routed to.
         :param pulumi.Input[str] service_name: The URL of a BackendService to route traffic to.
-        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
         """
         pulumi.set(__self__, "service_name", service_name)
         if weight is not None:
@@ -2200,7 +2280,7 @@ class TlsRouteRouteDestinationArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+        Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
         """
         return pulumi.get(self, "weight")
 

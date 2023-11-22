@@ -12,19 +12,75 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AccessRestrictionsResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'AwsResponse',
     'BindingResponse',
     'Condition',
     'ExprResponse',
+    'GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse',
+    'GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse',
     'GoogleIamAdminV1WorkforcePoolProviderOidcResponse',
     'GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse',
     'GoogleIamAdminV1WorkforcePoolProviderSamlResponse',
     'KeyDataResponse',
     'OidcResponse',
     'SamlResponse',
+    'ServiceConfigResponse',
 ]
+
+@pulumi.output_type
+class AccessRestrictionsResponse(dict):
+    """
+    Access related restrictions on the workforce pool.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "disableProgrammaticSignin":
+            suggest = "disable_programmatic_signin"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessRestrictionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessRestrictionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessRestrictionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_services: Sequence['outputs.ServiceConfigResponse'],
+                 disable_programmatic_signin: bool):
+        """
+        Access related restrictions on the workforce pool.
+        :param Sequence['ServiceConfigResponse'] allowed_services: Optional. Immutable. Services allowed for web sign-in with the workforce pool. If not set by default there are no restrictions.
+        :param bool disable_programmatic_signin: Optional. Disable programmatic sign-in by disabling token issue via the Security Token API endpoint. See [Security Token Service API] (https://cloud.google.com/iam/docs/reference/sts/rest).
+        """
+        pulumi.set(__self__, "allowed_services", allowed_services)
+        pulumi.set(__self__, "disable_programmatic_signin", disable_programmatic_signin)
+
+    @property
+    @pulumi.getter(name="allowedServices")
+    def allowed_services(self) -> Sequence['outputs.ServiceConfigResponse']:
+        """
+        Optional. Immutable. Services allowed for web sign-in with the workforce pool. If not set by default there are no restrictions.
+        """
+        return pulumi.get(self, "allowed_services")
+
+    @property
+    @pulumi.getter(name="disableProgrammaticSignin")
+    def disable_programmatic_signin(self) -> bool:
+        """
+        Optional. Disable programmatic sign-in by disabling token issue via the Security Token API endpoint. See [Security Token Service API] (https://cloud.google.com/iam/docs/reference/sts/rest).
+        """
+        return pulumi.get(self, "disable_programmatic_signin")
+
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
@@ -312,6 +368,78 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse(dict):
+    """
+    Representation of a client secret configured for the OIDC provider.
+    """
+    def __init__(__self__, *,
+                 value: 'outputs.GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse'):
+        """
+        Representation of a client secret configured for the OIDC provider.
+        :param 'GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse' value: The value of the client secret.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> 'outputs.GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse':
+        """
+        The value of the client secret.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse(dict):
+    """
+    Representation of the value of the client secret.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "plainText":
+            suggest = "plain_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 plain_text: str,
+                 thumbprint: str):
+        """
+        Representation of the value of the client secret.
+        :param str plain_text: Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.
+        :param str thumbprint: A thumbprint to represent the current client secret value.
+        """
+        pulumi.set(__self__, "plain_text", plain_text)
+        pulumi.set(__self__, "thumbprint", thumbprint)
+
+    @property
+    @pulumi.getter(name="plainText")
+    def plain_text(self) -> str:
+        """
+        Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.
+        """
+        return pulumi.get(self, "plain_text")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> str:
+        """
+        A thumbprint to represent the current client secret value.
+        """
+        return pulumi.get(self, "thumbprint")
+
+
+@pulumi.output_type
 class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
     """
     Represents an OpenId Connect 1.0 identity provider.
@@ -321,8 +449,12 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
         suggest = None
         if key == "clientId":
             suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
         elif key == "issuerUri":
             suggest = "issuer_uri"
+        elif key == "jwksJson":
+            suggest = "jwks_json"
         elif key == "webSsoConfig":
             suggest = "web_sso_config"
 
@@ -339,16 +471,22 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
 
     def __init__(__self__, *,
                  client_id: str,
+                 client_secret: 'outputs.GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse',
                  issuer_uri: str,
+                 jwks_json: str,
                  web_sso_config: 'outputs.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse'):
         """
         Represents an OpenId Connect 1.0 identity provider.
         :param str client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
+        :param 'GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse' client_secret: The optional client secret. Required to enable Authorization Code flow for web sign-in.
         :param str issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        :param str jwks_json: OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
         :param 'GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse' web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
         """
         pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "issuer_uri", issuer_uri)
+        pulumi.set(__self__, "jwks_json", jwks_json)
         pulumi.set(__self__, "web_sso_config", web_sso_config)
 
     @property
@@ -360,12 +498,28 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
         return pulumi.get(self, "client_id")
 
     @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> 'outputs.GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse':
+        """
+        The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
     @pulumi.getter(name="issuerUri")
     def issuer_uri(self) -> str:
         """
         The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         """
         return pulumi.get(self, "issuer_uri")
+
+    @property
+    @pulumi.getter(name="jwksJson")
+    def jwks_json(self) -> str:
+        """
+        OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
+        """
+        return pulumi.get(self, "jwks_json")
 
     @property
     @pulumi.getter(name="webSsoConfig")
@@ -384,7 +538,9 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "assertionClaimsBehavior":
+        if key == "additionalScopes":
+            suggest = "additional_scopes"
+        elif key == "assertionClaimsBehavior":
             suggest = "assertion_claims_behavior"
         elif key == "responseType":
             suggest = "response_type"
@@ -401,15 +557,26 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_scopes: Sequence[str],
                  assertion_claims_behavior: str,
                  response_type: str):
         """
         Configuration for web single sign-on for the OIDC provider.
+        :param Sequence[str] additional_scopes: Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
         :param str assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
-        :param str response_type: The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        :param str response_type: The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
         """
+        pulumi.set(__self__, "additional_scopes", additional_scopes)
         pulumi.set(__self__, "assertion_claims_behavior", assertion_claims_behavior)
         pulumi.set(__self__, "response_type", response_type)
+
+    @property
+    @pulumi.getter(name="additionalScopes")
+    def additional_scopes(self) -> Sequence[str]:
+        """
+        Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+        """
+        return pulumi.get(self, "additional_scopes")
 
     @property
     @pulumi.getter(name="assertionClaimsBehavior")
@@ -423,7 +590,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse(dict):
     @pulumi.getter(name="responseType")
     def response_type(self) -> str:
         """
-        The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
         """
         return pulumi.get(self, "response_type")
 
@@ -454,7 +621,7 @@ class GoogleIamAdminV1WorkforcePoolProviderSamlResponse(dict):
                  idp_metadata_xml: str):
         """
         Represents a SAML identity provider.
-        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 15 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
         """
         pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
 
@@ -462,7 +629,7 @@ class GoogleIamAdminV1WorkforcePoolProviderSamlResponse(dict):
     @pulumi.getter(name="idpMetadataXml")
     def idp_metadata_xml(self) -> str:
         """
-        SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+        SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 15 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
         """
         return pulumi.get(self, "idp_metadata_xml")
 
@@ -566,6 +733,8 @@ class OidcResponse(dict):
             suggest = "allowed_audiences"
         elif key == "issuerUri":
             suggest = "issuer_uri"
+        elif key == "jwksJson":
+            suggest = "jwks_json"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OidcResponse. Access the value via the '{suggest}' property getter instead.")
@@ -580,14 +749,17 @@ class OidcResponse(dict):
 
     def __init__(__self__, *,
                  allowed_audiences: Sequence[str],
-                 issuer_uri: str):
+                 issuer_uri: str,
+                 jwks_json: str):
         """
         Represents an OpenId Connect 1.0 identity provider.
         :param Sequence[str] allowed_audiences: Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ``` //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ ```
         :param str issuer_uri: The OIDC issuer URL. Must be an HTTPS endpoint.
+        :param str jwks_json: Optional. OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
         """
         pulumi.set(__self__, "allowed_audiences", allowed_audiences)
         pulumi.set(__self__, "issuer_uri", issuer_uri)
+        pulumi.set(__self__, "jwks_json", jwks_json)
 
     @property
     @pulumi.getter(name="allowedAudiences")
@@ -604,6 +776,14 @@ class OidcResponse(dict):
         The OIDC issuer URL. Must be an HTTPS endpoint.
         """
         return pulumi.get(self, "issuer_uri")
+
+    @property
+    @pulumi.getter(name="jwksJson")
+    def jwks_json(self) -> str:
+        """
+        Optional. OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
+        """
+        return pulumi.get(self, "jwks_json")
 
 
 @pulumi.output_type
@@ -632,7 +812,7 @@ class SamlResponse(dict):
                  idp_metadata_xml: str):
         """
         Represents an SAML 2.0 identity provider.
-        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 15 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
         """
         pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
 
@@ -640,8 +820,30 @@ class SamlResponse(dict):
     @pulumi.getter(name="idpMetadataXml")
     def idp_metadata_xml(self) -> str:
         """
-        SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+        SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 15 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
         """
         return pulumi.get(self, "idp_metadata_xml")
+
+
+@pulumi.output_type
+class ServiceConfigResponse(dict):
+    """
+    Configuration for a service.
+    """
+    def __init__(__self__, *,
+                 domain: str):
+        """
+        Configuration for a service.
+        :param str domain: Optional. Domain name of the service. Example: console.cloud.google
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Optional. Domain name of the service. Example: console.cloud.google
+        """
+        return pulumi.get(self, "domain")
 
 

@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetDocumentResult',
@@ -18,7 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDocumentResult:
-    def __init__(__self__, json_data=None, name=None, parent_document_id=None, schema_id=None, struct_data=None):
+    def __init__(__self__, content=None, derived_struct_data=None, json_data=None, name=None, parent_document_id=None, schema_id=None, struct_data=None):
+        if content and not isinstance(content, dict):
+            raise TypeError("Expected argument 'content' to be a dict")
+        pulumi.set(__self__, "content", content)
+        if derived_struct_data and not isinstance(derived_struct_data, dict):
+            raise TypeError("Expected argument 'derived_struct_data' to be a dict")
+        pulumi.set(__self__, "derived_struct_data", derived_struct_data)
         if json_data and not isinstance(json_data, str):
             raise TypeError("Expected argument 'json_data' to be a str")
         pulumi.set(__self__, "json_data", json_data)
@@ -36,10 +43,26 @@ class GetDocumentResult:
         pulumi.set(__self__, "struct_data", struct_data)
 
     @property
+    @pulumi.getter
+    def content(self) -> 'outputs.GoogleCloudDiscoveryengineV1betaDocumentContentResponse':
+        """
+        The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="derivedStructData")
+    def derived_struct_data(self) -> Mapping[str, str]:
+        """
+        This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+        """
+        return pulumi.get(self, "derived_struct_data")
+
+    @property
     @pulumi.getter(name="jsonData")
     def json_data(self) -> str:
         """
-        The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "json_data")
 
@@ -71,7 +94,7 @@ class GetDocumentResult:
     @pulumi.getter(name="structData")
     def struct_data(self) -> Mapping[str, str]:
         """
-        The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "struct_data")
 
@@ -82,6 +105,8 @@ class AwaitableGetDocumentResult(GetDocumentResult):
         if False:
             yield self
         return GetDocumentResult(
+            content=self.content,
+            derived_struct_data=self.derived_struct_data,
             json_data=self.json_data,
             name=self.name,
             parent_document_id=self.parent_document_id,
@@ -110,6 +135,8 @@ def get_document(branch_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:discoveryengine/v1beta:getDocument', __args__, opts=opts, typ=GetDocumentResult).value
 
     return AwaitableGetDocumentResult(
+        content=pulumi.get(__ret__, 'content'),
+        derived_struct_data=pulumi.get(__ret__, 'derived_struct_data'),
         json_data=pulumi.get(__ret__, 'json_data'),
         name=pulumi.get(__ret__, 'name'),
         parent_document_id=pulumi.get(__ret__, 'parent_document_id'),

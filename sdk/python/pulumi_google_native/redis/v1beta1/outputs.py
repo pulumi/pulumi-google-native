@@ -12,14 +12,80 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'DiscoveryEndpointResponse',
     'MaintenancePolicyResponse',
     'MaintenanceScheduleResponse',
     'NodeInfoResponse',
     'PersistenceConfigResponse',
+    'PscConfigResponse',
+    'PscConnectionResponse',
+    'StateInfoResponse',
     'TimeOfDayResponse',
     'TlsCertificateResponse',
+    'UpdateInfoResponse',
     'WeeklyMaintenanceWindowResponse',
 ]
+
+@pulumi.output_type
+class DiscoveryEndpointResponse(dict):
+    """
+    Endpoints on each network, for Redis clients to connect to the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pscConfig":
+            suggest = "psc_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiscoveryEndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiscoveryEndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiscoveryEndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: str,
+                 port: int,
+                 psc_config: 'outputs.PscConfigResponse'):
+        """
+        Endpoints on each network, for Redis clients to connect to the cluster.
+        :param str address: Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
+        :param int port: The port number of the exposed Redis endpoint.
+        :param 'PscConfigResponse' psc_config: Customer configuration for where the endpoint is created and accessed from.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "psc_config", psc_config)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port number of the exposed Redis endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> 'outputs.PscConfigResponse':
+        """
+        Customer configuration for where the endpoint is created and accessed from.
+        """
+        return pulumi.get(self, "psc_config")
+
 
 @pulumi.output_type
 class MaintenancePolicyResponse(dict):
@@ -276,6 +342,148 @@ class PersistenceConfigResponse(dict):
 
 
 @pulumi.output_type
+class PscConfigResponse(dict):
+    def __init__(__self__, *,
+                 network: str):
+        """
+        :param str network: The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class PscConnectionResponse(dict):
+    """
+    Details of consumer resources in a PSC connection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PscConnectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PscConnectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PscConnectionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: str,
+                 forwarding_rule: str,
+                 network: str,
+                 project: str,
+                 psc_connection_id: str):
+        """
+        Details of consumer resources in a PSC connection.
+        :param str address: The IP allocated on the consumer network for the PSC forwarding rule.
+        :param str forwarding_rule: The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        :param str network: The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
+        :param str project: The consumer project_id where the forwarding rule is created from.
+        :param str psc_connection_id: The PSC connection id of the forwarding rule connected to the service attachment.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the forwarding rule connected to the service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+
+@pulumi.output_type
+class StateInfoResponse(dict):
+    """
+    Represents additional information about the state of the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateInfo":
+            suggest = "update_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StateInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StateInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StateInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 update_info: 'outputs.UpdateInfoResponse'):
+        """
+        Represents additional information about the state of the cluster.
+        :param 'UpdateInfoResponse' update_info: Describes ongoing update on the cluster when cluster state is UPDATING.
+        """
+        pulumi.set(__self__, "update_info", update_info)
+
+    @property
+    @pulumi.getter(name="updateInfo")
+    def update_info(self) -> 'outputs.UpdateInfoResponse':
+        """
+        Describes ongoing update on the cluster when cluster state is UPDATING.
+        """
+        return pulumi.get(self, "update_info")
+
+
+@pulumi.output_type
 class TimeOfDayResponse(dict):
     """
     Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -417,6 +625,58 @@ class TlsCertificateResponse(dict):
         Sha1 Fingerprint of the certificate.
         """
         return pulumi.get(self, "sha1_fingerprint")
+
+
+@pulumi.output_type
+class UpdateInfoResponse(dict):
+    """
+    Represents information about an updating cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetReplicaCount":
+            suggest = "target_replica_count"
+        elif key == "targetShardCount":
+            suggest = "target_shard_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpdateInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpdateInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpdateInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_replica_count: int,
+                 target_shard_count: int):
+        """
+        Represents information about an updating cluster.
+        :param int target_replica_count: Target number of replica nodes per shard.
+        :param int target_shard_count: Target number of shards for redis cluster
+        """
+        pulumi.set(__self__, "target_replica_count", target_replica_count)
+        pulumi.set(__self__, "target_shard_count", target_shard_count)
+
+    @property
+    @pulumi.getter(name="targetReplicaCount")
+    def target_replica_count(self) -> int:
+        """
+        Target number of replica nodes per shard.
+        """
+        return pulumi.get(self, "target_replica_count")
+
+    @property
+    @pulumi.getter(name="targetShardCount")
+    def target_shard_count(self) -> int:
+        """
+        Target number of shards for redis cluster
+        """
+        return pulumi.get(self, "target_shard_count")
 
 
 @pulumi.output_type

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, cluster_states=None, column_families=None, deletion_protection=None, granularity=None, name=None, restore_info=None, stats=None):
+    def __init__(__self__, change_stream_config=None, cluster_states=None, column_families=None, deletion_protection=None, granularity=None, name=None, restore_info=None, stats=None):
+        if change_stream_config and not isinstance(change_stream_config, dict):
+            raise TypeError("Expected argument 'change_stream_config' to be a dict")
+        pulumi.set(__self__, "change_stream_config", change_stream_config)
         if cluster_states and not isinstance(cluster_states, dict):
             raise TypeError("Expected argument 'cluster_states' to be a dict")
         pulumi.set(__self__, "cluster_states", cluster_states)
@@ -41,6 +44,14 @@ class GetTableResult:
         if stats and not isinstance(stats, dict):
             raise TypeError("Expected argument 'stats' to be a dict")
         pulumi.set(__self__, "stats", stats)
+
+    @property
+    @pulumi.getter(name="changeStreamConfig")
+    def change_stream_config(self) -> 'outputs.ChangeStreamConfigResponse':
+        """
+        If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+        """
+        return pulumi.get(self, "change_stream_config")
 
     @property
     @pulumi.getter(name="clusterStates")
@@ -105,6 +116,7 @@ class AwaitableGetTableResult(GetTableResult):
         if False:
             yield self
         return GetTableResult(
+            change_stream_config=self.change_stream_config,
             cluster_states=self.cluster_states,
             column_families=self.column_families,
             deletion_protection=self.deletion_protection,
@@ -131,6 +143,7 @@ def get_table(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getTable', __args__, opts=opts, typ=GetTableResult).value
 
     return AwaitableGetTableResult(
+        change_stream_config=pulumi.get(__ret__, 'change_stream_config'),
         cluster_states=pulumi.get(__ret__, 'cluster_states'),
         column_families=pulumi.get(__ret__, 'column_families'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),

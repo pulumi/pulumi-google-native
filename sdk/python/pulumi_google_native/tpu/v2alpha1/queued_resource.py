@@ -25,15 +25,17 @@ class QueuedResourceArgs:
                  queueing_policy: Optional[pulumi.Input['QueueingPolicyArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_name: Optional[pulumi.Input[str]] = None,
+                 spot: Optional[pulumi.Input['SpotArgs']] = None,
                  tpu: Optional[pulumi.Input['TpuArgs']] = None):
         """
         The set of arguments for constructing a QueuedResource resource.
         :param pulumi.Input['BestEffortArgs'] best_effort: The BestEffort tier.
-        :param pulumi.Input['GuaranteedArgs'] guaranteed: The Guaranteed tier
+        :param pulumi.Input['GuaranteedArgs'] guaranteed: The Guaranteed tier.
         :param pulumi.Input[str] queued_resource_id: The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
         :param pulumi.Input['QueueingPolicyArgs'] queueing_policy: The queueing policy of the QueuedRequest.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[str] reservation_name: Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+        :param pulumi.Input['SpotArgs'] spot: Optional. The Spot tier.
         :param pulumi.Input['TpuArgs'] tpu: Defines a TPU resource.
         """
         if best_effort is not None:
@@ -52,6 +54,8 @@ class QueuedResourceArgs:
             pulumi.set(__self__, "request_id", request_id)
         if reservation_name is not None:
             pulumi.set(__self__, "reservation_name", reservation_name)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
         if tpu is not None:
             pulumi.set(__self__, "tpu", tpu)
 
@@ -71,7 +75,7 @@ class QueuedResourceArgs:
     @pulumi.getter
     def guaranteed(self) -> Optional[pulumi.Input['GuaranteedArgs']]:
         """
-        The Guaranteed tier
+        The Guaranteed tier.
         """
         return pulumi.get(self, "guaranteed")
 
@@ -147,6 +151,18 @@ class QueuedResourceArgs:
 
     @property
     @pulumi.getter
+    def spot(self) -> Optional[pulumi.Input['SpotArgs']]:
+        """
+        Optional. The Spot tier.
+        """
+        return pulumi.get(self, "spot")
+
+    @spot.setter
+    def spot(self, value: Optional[pulumi.Input['SpotArgs']]):
+        pulumi.set(self, "spot", value)
+
+    @property
+    @pulumi.getter
     def tpu(self) -> Optional[pulumi.Input['TpuArgs']]:
         """
         Defines a TPU resource.
@@ -171,6 +187,7 @@ class QueuedResource(pulumi.CustomResource):
                  queueing_policy: Optional[pulumi.Input[pulumi.InputType['QueueingPolicyArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_name: Optional[pulumi.Input[str]] = None,
+                 spot: Optional[pulumi.Input[pulumi.InputType['SpotArgs']]] = None,
                  tpu: Optional[pulumi.Input[pulumi.InputType['TpuArgs']]] = None,
                  __props__=None):
         """
@@ -180,11 +197,12 @@ class QueuedResource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BestEffortArgs']] best_effort: The BestEffort tier.
-        :param pulumi.Input[pulumi.InputType['GuaranteedArgs']] guaranteed: The Guaranteed tier
+        :param pulumi.Input[pulumi.InputType['GuaranteedArgs']] guaranteed: The Guaranteed tier.
         :param pulumi.Input[str] queued_resource_id: The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
         :param pulumi.Input[pulumi.InputType['QueueingPolicyArgs']] queueing_policy: The queueing policy of the QueuedRequest.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[str] reservation_name: Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+        :param pulumi.Input[pulumi.InputType['SpotArgs']] spot: Optional. The Spot tier.
         :param pulumi.Input[pulumi.InputType['TpuArgs']] tpu: Defines a TPU resource.
         """
         ...
@@ -220,6 +238,7 @@ class QueuedResource(pulumi.CustomResource):
                  queueing_policy: Optional[pulumi.Input[pulumi.InputType['QueueingPolicyArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_name: Optional[pulumi.Input[str]] = None,
+                 spot: Optional[pulumi.Input[pulumi.InputType['SpotArgs']]] = None,
                  tpu: Optional[pulumi.Input[pulumi.InputType['TpuArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -238,7 +257,9 @@ class QueuedResource(pulumi.CustomResource):
             __props__.__dict__["queueing_policy"] = queueing_policy
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservation_name"] = reservation_name
+            __props__.__dict__["spot"] = spot
             __props__.__dict__["tpu"] = tpu
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
@@ -266,6 +287,7 @@ class QueuedResource(pulumi.CustomResource):
         __props__ = QueuedResourceArgs.__new__(QueuedResourceArgs)
 
         __props__.__dict__["best_effort"] = None
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["guaranteed"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -274,6 +296,7 @@ class QueuedResource(pulumi.CustomResource):
         __props__.__dict__["queueing_policy"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["reservation_name"] = None
+        __props__.__dict__["spot"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["tpu"] = None
         return QueuedResource(resource_name, opts=opts, __props__=__props__)
@@ -287,10 +310,18 @@ class QueuedResource(pulumi.CustomResource):
         return pulumi.get(self, "best_effort")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the QueuedResource was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter
     def guaranteed(self) -> pulumi.Output['outputs.GuaranteedResponse']:
         """
-        The Guaranteed tier
+        The Guaranteed tier.
         """
         return pulumi.get(self, "guaranteed")
 
@@ -343,6 +374,14 @@ class QueuedResource(pulumi.CustomResource):
         Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
         """
         return pulumi.get(self, "reservation_name")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> pulumi.Output['outputs.SpotResponse']:
+        """
+        Optional. The Spot tier.
+        """
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter

@@ -23,6 +23,7 @@ class ContactCenterArgs:
                  admin_user: Optional[pulumi.Input['AdminUserArgs']] = None,
                  ccaip_managed_users: Optional[pulumi.Input[bool]] = None,
                  instance_config: Optional[pulumi.Input['InstanceConfigArgs']] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,7 @@ class ContactCenterArgs:
         :param pulumi.Input['AdminUserArgs'] admin_user: Optional. Info about the first admin user, such as given name and family name.
         :param pulumi.Input[bool] ccaip_managed_users: Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
         :param pulumi.Input['InstanceConfigArgs'] instance_config: The configuration of this instance, it is currently immutable once created.
+        :param pulumi.Input[str] kms_key: Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] name: name of resource
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -53,6 +55,8 @@ class ContactCenterArgs:
             pulumi.set(__self__, "ccaip_managed_users", ccaip_managed_users)
         if instance_config is not None:
             pulumi.set(__self__, "instance_config", instance_config)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -139,6 +143,18 @@ class ContactCenterArgs:
     @instance_config.setter
     def instance_config(self, value: Optional[pulumi.Input['InstanceConfigArgs']]):
         pulumi.set(self, "instance_config", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter
@@ -230,6 +246,7 @@ class ContactCenter(pulumi.CustomResource):
                  customer_domain_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -249,6 +266,7 @@ class ContactCenter(pulumi.CustomResource):
         :param pulumi.Input[str] customer_domain_prefix: Immutable. At least 2 and max 16 char long, must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt).
         :param pulumi.Input[str] display_name: A user friendly name for the ContactCenter.
         :param pulumi.Input[pulumi.InputType['InstanceConfigArgs']] instance_config: The configuration of this instance, it is currently immutable once created.
+        :param pulumi.Input[str] kms_key: Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] name: name of resource
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -285,6 +303,7 @@ class ContactCenter(pulumi.CustomResource):
                  customer_domain_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -313,6 +332,7 @@ class ContactCenter(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["instance_config"] = instance_config
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -355,6 +375,7 @@ class ContactCenter(pulumi.CustomResource):
         __props__.__dict__["customer_domain_prefix"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["instance_config"] = None
+        __props__.__dict__["kms_key"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -422,6 +443,14 @@ class ContactCenter(pulumi.CustomResource):
         The configuration of this instance, it is currently immutable once created.
         """
         return pulumi.get(self, "instance_config")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[str]:
+        """
+        Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
