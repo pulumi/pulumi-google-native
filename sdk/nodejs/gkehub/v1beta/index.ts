@@ -55,25 +55,45 @@ export const getFleet: typeof import("./getFleet").getFleet = null as any;
 export const getFleetOutput: typeof import("./getFleet").getFleetOutput = null as any;
 utilities.lazyLoad(exports, ["getFleet","getFleetOutput"], () => require("./getFleet"));
 
+export { GetMembershipArgs, GetMembershipResult, GetMembershipOutputArgs } from "./getMembership";
+export const getMembership: typeof import("./getMembership").getMembership = null as any;
+export const getMembershipOutput: typeof import("./getMembership").getMembershipOutput = null as any;
+utilities.lazyLoad(exports, ["getMembership","getMembershipOutput"], () => require("./getMembership"));
+
 export { GetMembershipIamPolicyArgs, GetMembershipIamPolicyResult, GetMembershipIamPolicyOutputArgs } from "./getMembershipIamPolicy";
 export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").getMembershipIamPolicy = null as any;
 export const getMembershipIamPolicyOutput: typeof import("./getMembershipIamPolicy").getMembershipIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
+
+export { GetMembershipRbacRoleBindingArgs, GetMembershipRbacRoleBindingResult, GetMembershipRbacRoleBindingOutputArgs } from "./getMembershipRbacRoleBinding";
+export const getMembershipRbacRoleBinding: typeof import("./getMembershipRbacRoleBinding").getMembershipRbacRoleBinding = null as any;
+export const getMembershipRbacRoleBindingOutput: typeof import("./getMembershipRbacRoleBinding").getMembershipRbacRoleBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getMembershipRbacRoleBinding","getMembershipRbacRoleBindingOutput"], () => require("./getMembershipRbacRoleBinding"));
 
 export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
 export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
 export const getNamespaceOutput: typeof import("./getNamespace").getNamespaceOutput = null as any;
 utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
 
-export { GetRbacrolebindingArgs, GetRbacrolebindingResult, GetRbacrolebindingOutputArgs } from "./getRbacrolebinding";
-export const getRbacrolebinding: typeof import("./getRbacrolebinding").getRbacrolebinding = null as any;
-export const getRbacrolebindingOutput: typeof import("./getRbacrolebinding").getRbacrolebindingOutput = null as any;
-utilities.lazyLoad(exports, ["getRbacrolebinding","getRbacrolebindingOutput"], () => require("./getRbacrolebinding"));
-
 export { GetScopeArgs, GetScopeResult, GetScopeOutputArgs } from "./getScope";
 export const getScope: typeof import("./getScope").getScope = null as any;
 export const getScopeOutput: typeof import("./getScope").getScopeOutput = null as any;
 utilities.lazyLoad(exports, ["getScope","getScopeOutput"], () => require("./getScope"));
+
+export { GetScopeIamPolicyArgs, GetScopeIamPolicyResult, GetScopeIamPolicyOutputArgs } from "./getScopeIamPolicy";
+export const getScopeIamPolicy: typeof import("./getScopeIamPolicy").getScopeIamPolicy = null as any;
+export const getScopeIamPolicyOutput: typeof import("./getScopeIamPolicy").getScopeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getScopeIamPolicy","getScopeIamPolicyOutput"], () => require("./getScopeIamPolicy"));
+
+export { GetScopeRbacRoleBindingArgs, GetScopeRbacRoleBindingResult, GetScopeRbacRoleBindingOutputArgs } from "./getScopeRbacRoleBinding";
+export const getScopeRbacRoleBinding: typeof import("./getScopeRbacRoleBinding").getScopeRbacRoleBinding = null as any;
+export const getScopeRbacRoleBindingOutput: typeof import("./getScopeRbacRoleBinding").getScopeRbacRoleBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getScopeRbacRoleBinding","getScopeRbacRoleBindingOutput"], () => require("./getScopeRbacRoleBinding"));
+
+export { MembershipArgs } from "./membership";
+export type Membership = import("./membership").Membership;
+export const Membership: typeof import("./membership").Membership = null as any;
+utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
 
 export { MembershipIamBindingArgs } from "./membershipIamBinding";
 export type MembershipIamBinding = import("./membershipIamBinding").MembershipIamBinding;
@@ -90,20 +110,40 @@ export type MembershipIamPolicy = import("./membershipIamPolicy").MembershipIamP
 export const MembershipIamPolicy: typeof import("./membershipIamPolicy").MembershipIamPolicy = null as any;
 utilities.lazyLoad(exports, ["MembershipIamPolicy"], () => require("./membershipIamPolicy"));
 
+export { MembershipRbacRoleBindingArgs } from "./membershipRbacRoleBinding";
+export type MembershipRbacRoleBinding = import("./membershipRbacRoleBinding").MembershipRbacRoleBinding;
+export const MembershipRbacRoleBinding: typeof import("./membershipRbacRoleBinding").MembershipRbacRoleBinding = null as any;
+utilities.lazyLoad(exports, ["MembershipRbacRoleBinding"], () => require("./membershipRbacRoleBinding"));
+
 export { NamespaceArgs } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
 utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
 
-export { RbacrolebindingArgs } from "./rbacrolebinding";
-export type Rbacrolebinding = import("./rbacrolebinding").Rbacrolebinding;
-export const Rbacrolebinding: typeof import("./rbacrolebinding").Rbacrolebinding = null as any;
-utilities.lazyLoad(exports, ["Rbacrolebinding"], () => require("./rbacrolebinding"));
-
 export { ScopeArgs } from "./scope";
 export type Scope = import("./scope").Scope;
 export const Scope: typeof import("./scope").Scope = null as any;
 utilities.lazyLoad(exports, ["Scope"], () => require("./scope"));
+
+export { ScopeIamBindingArgs } from "./scopeIamBinding";
+export type ScopeIamBinding = import("./scopeIamBinding").ScopeIamBinding;
+export const ScopeIamBinding: typeof import("./scopeIamBinding").ScopeIamBinding = null as any;
+utilities.lazyLoad(exports, ["ScopeIamBinding"], () => require("./scopeIamBinding"));
+
+export { ScopeIamMemberArgs } from "./scopeIamMember";
+export type ScopeIamMember = import("./scopeIamMember").ScopeIamMember;
+export const ScopeIamMember: typeof import("./scopeIamMember").ScopeIamMember = null as any;
+utilities.lazyLoad(exports, ["ScopeIamMember"], () => require("./scopeIamMember"));
+
+export { ScopeIamPolicyArgs } from "./scopeIamPolicy";
+export type ScopeIamPolicy = import("./scopeIamPolicy").ScopeIamPolicy;
+export const ScopeIamPolicy: typeof import("./scopeIamPolicy").ScopeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ScopeIamPolicy"], () => require("./scopeIamPolicy"));
+
+export { ScopeRbacRoleBindingArgs } from "./scopeRbacRoleBinding";
+export type ScopeRbacRoleBinding = import("./scopeRbacRoleBinding").ScopeRbacRoleBinding;
+export const ScopeRbacRoleBinding: typeof import("./scopeRbacRoleBinding").ScopeRbacRoleBinding = null as any;
+utilities.lazyLoad(exports, ["ScopeRbacRoleBinding"], () => require("./scopeRbacRoleBinding"));
 
 
 // Export enums:
@@ -125,18 +165,28 @@ const _module = {
                 return new FeatureIamPolicy(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:Fleet":
                 return new Fleet(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1beta:Membership":
+                return new Membership(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:MembershipIamBinding":
                 return new MembershipIamBinding(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:MembershipIamMember":
                 return new MembershipIamMember(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:MembershipIamPolicy":
                 return new MembershipIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1beta:MembershipRbacRoleBinding":
+                return new MembershipRbacRoleBinding(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
-            case "google-native:gkehub/v1beta:Rbacrolebinding":
-                return new Rbacrolebinding(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:Scope":
                 return new Scope(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1beta:ScopeIamBinding":
+                return new ScopeIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1beta:ScopeIamMember":
+                return new ScopeIamMember(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1beta:ScopeIamPolicy":
+                return new ScopeIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1beta:ScopeRbacRoleBinding":
+                return new ScopeRbacRoleBinding(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -174,6 +174,30 @@ export const FieldMetadataAction = {
  */
 export type FieldMetadataAction = (typeof FieldMetadataAction)[keyof typeof FieldMetadataAction];
 
+export const GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition = {
+    /**
+     * Default behavior is the same as WRITE_EMPTY.
+     */
+    WriteDispositionUnspecified: "WRITE_DISPOSITION_UNSPECIFIED",
+    /**
+     * Only export data if the destination table is empty.
+     */
+    WriteEmpty: "WRITE_EMPTY",
+    /**
+     * Erase all existing data in the destination table before writing the instances.
+     */
+    WriteTruncate: "WRITE_TRUNCATE",
+    /**
+     * Append data to the destination table.
+     */
+    WriteAppend: "WRITE_APPEND",
+} as const;
+
+/**
+ * Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+ */
+export type GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition = (typeof GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition)[keyof typeof GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition];
+
 export const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition = {
     /**
      * Default behavior is the same as WRITE_EMPTY.

@@ -60,7 +60,7 @@ export class TrustConfig extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Required. A user-provided name of the TrustConfig.
+     * Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
      */
     public readonly trustConfigId!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export interface TrustConfigArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Required. A user-provided name of the TrustConfig.
+     * Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
      */
     trustConfigId: pulumi.Input<string>;
     /**

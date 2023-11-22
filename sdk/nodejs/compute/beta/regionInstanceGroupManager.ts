@@ -74,6 +74,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
+     * Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+     */
+    public readonly instanceFlexibilityPolicy!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerInstanceFlexibilityPolicyResponse>;
+    /**
      * The URL of the Instance Group resource.
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
@@ -116,6 +120,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
+     * Standby policy for stopped and suspended instances.
+     */
+    public readonly standbyPolicy!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerStandbyPolicyResponse>;
+    /**
      * Stateful configuration for this Instanced Group Manager
      */
     public readonly statefulPolicy!: pulumi.Output<outputs.compute.beta.StatefulPolicyResponse>;
@@ -131,6 +139,14 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
      */
     public readonly targetSize!: pulumi.Output<number>;
+    /**
+     * The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+     */
+    public readonly targetStoppedSize!: pulumi.Output<number>;
+    /**
+     * The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
+     */
+    public readonly targetSuspendedSize!: pulumi.Output<number>;
     /**
      * The update policy for this managed instance group.
      */
@@ -164,6 +180,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
             resourceInputs["failoverAction"] = args ? args.failoverAction : undefined;
+            resourceInputs["instanceFlexibilityPolicy"] = args ? args.instanceFlexibilityPolicy : undefined;
             resourceInputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             resourceInputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
@@ -173,9 +190,12 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["standbyPolicy"] = args ? args.standbyPolicy : undefined;
             resourceInputs["statefulPolicy"] = args ? args.statefulPolicy : undefined;
             resourceInputs["targetPools"] = args ? args.targetPools : undefined;
             resourceInputs["targetSize"] = args ? args.targetSize : undefined;
+            resourceInputs["targetStoppedSize"] = args ? args.targetStoppedSize : undefined;
+            resourceInputs["targetSuspendedSize"] = args ? args.targetSuspendedSize : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             resourceInputs["versions"] = args ? args.versions : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -196,6 +216,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["distributionPolicy"] = undefined /*out*/;
             resourceInputs["failoverAction"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["instanceFlexibilityPolicy"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
             resourceInputs["instanceLifecyclePolicy"] = undefined /*out*/;
             resourceInputs["instanceTemplate"] = undefined /*out*/;
@@ -208,10 +229,13 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["standbyPolicy"] = undefined /*out*/;
             resourceInputs["statefulPolicy"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["targetPools"] = undefined /*out*/;
             resourceInputs["targetSize"] = undefined /*out*/;
+            resourceInputs["targetStoppedSize"] = undefined /*out*/;
+            resourceInputs["targetSuspendedSize"] = undefined /*out*/;
             resourceInputs["updatePolicy"] = undefined /*out*/;
             resourceInputs["versions"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
@@ -252,6 +276,10 @@ export interface RegionInstanceGroupManagerArgs {
      */
     failoverAction?: pulumi.Input<enums.compute.beta.RegionInstanceGroupManagerFailoverAction>;
     /**
+     * Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+     */
+    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerInstanceFlexibilityPolicyArgs>;
+    /**
      * The repair policy for this managed instance group.
      */
     instanceLifecyclePolicy?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerInstanceLifecyclePolicyArgs>;
@@ -282,6 +310,10 @@ export interface RegionInstanceGroupManagerArgs {
      */
     serviceAccount?: pulumi.Input<string>;
     /**
+     * Standby policy for stopped and suspended instances.
+     */
+    standbyPolicy?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerStandbyPolicyArgs>;
+    /**
      * Stateful configuration for this Instanced Group Manager
      */
     statefulPolicy?: pulumi.Input<inputs.compute.beta.StatefulPolicyArgs>;
@@ -293,6 +325,14 @@ export interface RegionInstanceGroupManagerArgs {
      * The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+     */
+    targetStoppedSize?: pulumi.Input<number>;
+    /**
+     * The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
+     */
+    targetSuspendedSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group.
      */

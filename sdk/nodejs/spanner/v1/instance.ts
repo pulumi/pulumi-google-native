@@ -38,6 +38,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+     */
+    public readonly autoscalingConfig!: pulumi.Output<outputs.spanner.v1.AutoscalingConfigResponse>;
+    /**
      * The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
      */
     public readonly config!: pulumi.Output<string>;
@@ -109,6 +113,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["autoscalingConfig"] = args ? args.autoscalingConfig : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["endpointUris"] = args ? args.endpointUris : undefined;
@@ -124,6 +129,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["autoscalingConfig"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -149,6 +155,10 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+     */
+    autoscalingConfig?: pulumi.Input<inputs.spanner.v1.AutoscalingConfigArgs>;
     /**
      * The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
      */

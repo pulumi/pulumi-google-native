@@ -56,6 +56,10 @@ export interface GetServiceResult {
      */
     readonly creator: string;
     /**
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     */
+    readonly customAudiences: string[];
+    /**
      * The deletion time.
      */
     readonly deleteTime: string;
@@ -115,6 +119,10 @@ export interface GetServiceResult {
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
+    /**
+     * Optional. Specifies service-level scaling settings
+     */
+    readonly scaling: outputs.run.v2.GoogleCloudRunV2ServiceScalingResponse;
     /**
      * The template used to create revisions for this Service.
      */

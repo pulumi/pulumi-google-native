@@ -44,9 +44,17 @@ export interface GetEnvironmentResult {
      */
     readonly name: string;
     /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * The current state of the environment.
      */
     readonly state: string;
+    /**
+     * Optional. Storage configuration for this environment.
+     */
+    readonly storageConfig: outputs.composer.v1beta1.StorageConfigResponse;
     /**
      * The time at which this environment was last modified.
      */

@@ -78,7 +78,7 @@ export class Build extends pulumi.CustomResource {
      */
     public /*out*/ readonly logUrl!: pulumi.Output<string>;
     /**
-     * Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+     * Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
      */
     public readonly logsBucket!: pulumi.Output<string>;
     /**
@@ -259,7 +259,7 @@ export interface BuildArgs {
     images?: pulumi.Input<pulumi.Input<string>[]>;
     location?: pulumi.Input<string>;
     /**
-     * Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+     * Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
      */
     logsBucket?: pulumi.Input<string>;
     /**

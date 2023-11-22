@@ -51,7 +51,7 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly hubId!: pulumi.Output<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -60,13 +60,21 @@ export class Hub extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub.
+     */
+    public /*out*/ readonly routeTables!: pulumi.Output<string[]>;
     /**
      * The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      */
     public readonly routingVpcs!: pulumi.Output<outputs.networkconnectivity.v1.RoutingVPCResponse[]>;
+    /**
+     * A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+     */
+    public /*out*/ readonly spokeSummary!: pulumi.Output<outputs.networkconnectivity.v1.SpokeSummaryResponse>;
     /**
      * The current lifecycle state of this hub.
      */
@@ -102,6 +110,8 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["routingVpcs"] = args ? args.routingVpcs : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["routeTables"] = undefined /*out*/;
+            resourceInputs["spokeSummary"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -113,7 +123,9 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["routeTables"] = undefined /*out*/;
             resourceInputs["routingVpcs"] = undefined /*out*/;
+            resourceInputs["spokeSummary"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -138,7 +150,7 @@ export interface HubArgs {
      */
     hubId: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -147,7 +159,7 @@ export interface HubArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
     /**

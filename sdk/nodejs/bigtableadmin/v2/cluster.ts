@@ -64,7 +64,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+     * The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      */
     public readonly serveNodes!: pulumi.Output<number>;
     /**
@@ -149,7 +149,7 @@ export interface ClusterArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+     * The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      */
     serveNodes?: pulumi.Input<number>;
 }

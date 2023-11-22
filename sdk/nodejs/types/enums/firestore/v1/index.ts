@@ -66,6 +66,26 @@ export const DatabaseDeleteProtectionState = {
  */
 export type DatabaseDeleteProtectionState = (typeof DatabaseDeleteProtectionState)[keyof typeof DatabaseDeleteProtectionState];
 
+export const DatabasePointInTimeRecoveryEnablement = {
+    /**
+     * Not used.
+     */
+    PointInTimeRecoveryEnablementUnspecified: "POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED",
+    /**
+     * Reads are supported on selected versions of the data from within the past 7 days: * Reads against any timestamp within the past hour * Reads against 1-minute snapshots beyond 1 hour and within 7 days `version_retention_period` and `earliest_version_time` can be used to determine the supported versions.
+     */
+    PointInTimeRecoveryEnabled: "POINT_IN_TIME_RECOVERY_ENABLED",
+    /**
+     * Reads are supported on any version of the data from within the past 1 hour.
+     */
+    PointInTimeRecoveryDisabled: "POINT_IN_TIME_RECOVERY_DISABLED",
+} as const;
+
+/**
+ * Whether to enable the PITR feature on this database.
+ */
+export type DatabasePointInTimeRecoveryEnablement = (typeof DatabasePointInTimeRecoveryEnablement)[keyof typeof DatabasePointInTimeRecoveryEnablement];
+
 export const DatabaseType = {
     /**
      * The default value. This value is used if the database type is omitted.
@@ -164,7 +184,7 @@ export type GoogleFirestoreAdminV1WeeklyRecurrenceDay = (typeof GoogleFirestoreA
 
 export const IndexApiScope = {
     /**
-     * The index can be used by both Firestore Native and Firestore in Datastore Mode query API. This is the default.
+     * The index can only be used by the Firestore Native query API. This is the default.
      */
     AnyApi: "ANY_API",
     /**

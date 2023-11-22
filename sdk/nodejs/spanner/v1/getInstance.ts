@@ -28,6 +28,10 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
+     * Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+     */
+    readonly autoscalingConfig: outputs.spanner.v1.AutoscalingConfigResponse;
+    /**
      * The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
      */
     readonly config: string;

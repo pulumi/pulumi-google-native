@@ -64,7 +64,7 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
      */
     public readonly serviceLevelIndicator!: pulumi.Output<outputs.monitoring.v3.ServiceLevelIndicatorResponse>;
     /**
-     * Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+     * Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
      */
     public readonly serviceLevelObjectiveId!: pulumi.Output<string | undefined>;
     /**
@@ -155,7 +155,7 @@ export interface ServiceLevelObjectiveArgs {
      */
     serviceLevelIndicator?: pulumi.Input<inputs.monitoring.v3.ServiceLevelIndicatorArgs>;
     /**
-     * Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+     * Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
      */
     serviceLevelObjectiveId?: pulumi.Input<string>;
     /**

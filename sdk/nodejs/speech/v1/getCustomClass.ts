@@ -28,9 +28,29 @@ export interface GetCustomClassArgs {
 
 export interface GetCustomClassResult {
     /**
+     * Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+     */
+    readonly annotations: {[key: string]: string};
+    /**
      * If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
      */
     readonly customClassId: string;
+    /**
+     * The time at which this resource was requested for deletion. This field is not used.
+     */
+    readonly deleteTime: string;
+    /**
+     * User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.
+     */
+    readonly displayName: string;
+    /**
+     * This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+     */
+    readonly etag: string;
+    /**
+     * The time at which this resource will be purged. This field is not used.
+     */
+    readonly expireTime: string;
     /**
      * A collection of class items.
      */
@@ -47,6 +67,18 @@ export interface GetCustomClassResult {
      * The resource name of the custom class.
      */
     readonly name: string;
+    /**
+     * Whether or not this CustomClass is in the process of being updated. This field is not used.
+     */
+    readonly reconciling: boolean;
+    /**
+     * The CustomClass lifecycle state. This field is not used.
+     */
+    readonly state: string;
+    /**
+     * System-assigned unique identifier for the CustomClass. This field is not used.
+     */
+    readonly uid: string;
 }
 /**
  * Get a custom class.

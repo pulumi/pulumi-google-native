@@ -38,6 +38,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     }
 
     /**
+     * The version of BYOIP API.
+     */
+    public /*out*/ readonly byoipApiVersion!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -46,7 +50,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The IPv4 address to be used for reverse DNS verification.
+     * The address to be used for reverse DNS verification.
      */
     public readonly dnsVerificationIp!: pulumi.Output<string>;
     /**
@@ -54,7 +58,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -65,6 +69,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+     */
+    public readonly pdpScope!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The list of public delegated prefixes that exist for this public advertised prefix.
@@ -102,9 +110,11 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["dnsVerificationIp"] = args ? args.dnsVerificationIp : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pdpScope"] = args ? args.pdpScope : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["byoipApiVersion"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -112,6 +122,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sharedSecret"] = undefined /*out*/;
         } else {
+            resourceInputs["byoipApiVersion"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["dnsVerificationIp"] = undefined /*out*/;
@@ -119,6 +130,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["ipCidrRange"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pdpScope"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["publicDelegatedPrefixs"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -142,17 +154,21 @@ export interface PublicAdvertisedPrefixArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The IPv4 address to be used for reverse DNS verification.
+     * The address to be used for reverse DNS verification.
      */
     dnsVerificationIp?: pulumi.Input<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+     */
+    pdpScope?: pulumi.Input<enums.compute.v1.PublicAdvertisedPrefixPdpScope>;
     project?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

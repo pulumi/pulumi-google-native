@@ -54,13 +54,9 @@ export class Workload extends pulumi.CustomResource {
      */
     public /*out*/ readonly complianceStatus!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse>;
     /**
-     * Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+     * Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
      */
     public /*out*/ readonly compliantButDisallowedServices!: pulumi.Output<string[]>;
-    /**
-     * Controls associated with the customer workload
-     */
-    public /*out*/ readonly controls!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse>;
     /**
      * Immutable. The Workload creation timestamp.
      */
@@ -70,9 +66,9 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Optional. Represents the Ekm Provisioning State of the given workload.
+     * Represents the Ekm Provisioning State of the given workload.
      */
-    public readonly ekmProvisioningResponse!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse>;
+    public /*out*/ readonly ekmProvisioningResponse!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse>;
     /**
      * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
      */
@@ -130,6 +126,10 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly provisionedResourcesParent!: pulumi.Output<string>;
     /**
+     * Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+     */
+    public /*out*/ readonly resourceMonitoringEnabled!: pulumi.Output<boolean>;
+    /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
     public readonly resourceSettings!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse[]>;
@@ -170,7 +170,6 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["cjisSettings"] = args ? args.cjisSettings : undefined;
             resourceInputs["complianceRegime"] = args ? args.complianceRegime : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["ekmProvisioningResponse"] = args ? args.ekmProvisioningResponse : undefined;
             resourceInputs["enableSovereignControls"] = args ? args.enableSovereignControls : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
@@ -189,9 +188,10 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["violationNotificationsEnabled"] = args ? args.violationNotificationsEnabled : undefined;
             resourceInputs["complianceStatus"] = undefined /*out*/;
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
-            resourceInputs["controls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["ekmProvisioningResponse"] = undefined /*out*/;
             resourceInputs["kajEnrollmentState"] = undefined /*out*/;
+            resourceInputs["resourceMonitoringEnabled"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
             resourceInputs["saaEnrollmentResponse"] = undefined /*out*/;
         } else {
@@ -200,7 +200,6 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["complianceRegime"] = undefined /*out*/;
             resourceInputs["complianceStatus"] = undefined /*out*/;
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
-            resourceInputs["controls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["ekmProvisioningResponse"] = undefined /*out*/;
@@ -219,6 +218,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["partner"] = undefined /*out*/;
             resourceInputs["partnerPermissions"] = undefined /*out*/;
             resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
+            resourceInputs["resourceMonitoringEnabled"] = undefined /*out*/;
             resourceInputs["resourceSettings"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
             resourceInputs["saaEnrollmentResponse"] = undefined /*out*/;
@@ -251,10 +251,6 @@ export interface WorkloadArgs {
      * The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
     displayName: pulumi.Input<string>;
-    /**
-     * Optional. Represents the Ekm Provisioning State of the given workload.
-     */
-    ekmProvisioningResponse?: pulumi.Input<inputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs>;
     /**
      * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
      */

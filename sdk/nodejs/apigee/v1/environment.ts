@@ -61,6 +61,7 @@ export class Environment extends pulumi.CustomResource {
      * Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
      */
     public readonly forwardProxyUri!: pulumi.Output<string>;
+    public readonly hasAttachedFlowHooks!: pulumi.Output<boolean>;
     /**
      * Last modification time of this environment as milliseconds since epoch.
      */
@@ -82,6 +83,10 @@ export class Environment extends pulumi.CustomResource {
      * State of the environment. Values other than ACTIVE means the resource is not ready to use.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Optional. EnvironmentType selected for the environment.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -102,10 +107,12 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["forwardProxyUri"] = args ? args.forwardProxyUri : undefined;
+            resourceInputs["hasAttachedFlowHooks"] = args ? args.hasAttachedFlowHooks : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -116,12 +123,14 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["forwardProxyUri"] = undefined /*out*/;
+            resourceInputs["hasAttachedFlowHooks"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeConfig"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
@@ -154,6 +163,7 @@ export interface EnvironmentArgs {
      * Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
      */
     forwardProxyUri?: pulumi.Input<string>;
+    hasAttachedFlowHooks?: pulumi.Input<boolean>;
     /**
      * Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
@@ -167,4 +177,8 @@ export interface EnvironmentArgs {
      * Optional. Key-value pairs that may be used for customizing the environment.
      */
     properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1PropertiesArgs>;
+    /**
+     * Optional. EnvironmentType selected for the environment.
+     */
+    type?: pulumi.Input<enums.apigee.v1.EnvironmentType>;
 }

@@ -62,6 +62,10 @@ export interface GetProvisioningConfigResult {
      */
     readonly networks: outputs.baremetalsolution.v2.NetworkConfigResponse[];
     /**
+     * Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
+     */
+    readonly pod: string;
+    /**
      * State of ProvisioningConfig.
      */
     readonly state: string;

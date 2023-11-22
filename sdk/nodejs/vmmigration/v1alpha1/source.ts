@@ -43,6 +43,10 @@ export class Source extends pulumi.CustomResource {
      */
     public readonly aws!: pulumi.Output<outputs.vmmigration.v1alpha1.AwsSourceDetailsResponse>;
     /**
+     * Azure type source details.
+     */
+    public readonly azure!: pulumi.Output<outputs.vmmigration.v1alpha1.AzureSourceDetailsResponse>;
+    /**
      * The create time timestamp.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -50,6 +54,10 @@ export class Source extends pulumi.CustomResource {
      * User-provided description of the source.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Immutable. The encryption details of the source data stored by the service.
+     */
+    public readonly encryption!: pulumi.Output<outputs.vmmigration.v1alpha1.EncryptionResponse>;
     /**
      * Provides details on the state of the Source in case of an error.
      */
@@ -96,7 +104,9 @@ export class Source extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sourceId'");
             }
             resourceInputs["aws"] = args ? args.aws : undefined;
+            resourceInputs["azure"] = args ? args.azure : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -109,8 +119,10 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["aws"] = undefined /*out*/;
+            resourceInputs["azure"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["encryption"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -137,9 +149,17 @@ export interface SourceArgs {
      */
     aws?: pulumi.Input<inputs.vmmigration.v1alpha1.AwsSourceDetailsArgs>;
     /**
+     * Azure type source details.
+     */
+    azure?: pulumi.Input<inputs.vmmigration.v1alpha1.AzureSourceDetailsArgs>;
+    /**
      * User-provided description of the source.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Immutable. The encryption details of the source data stored by the service.
+     */
+    encryption?: pulumi.Input<inputs.vmmigration.v1alpha1.EncryptionArgs>;
     /**
      * The labels of the source.
      */

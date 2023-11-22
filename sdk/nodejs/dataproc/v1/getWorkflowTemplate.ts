@@ -38,6 +38,10 @@ export interface GetWorkflowTemplateResult {
      */
     readonly dagTimeout: string;
     /**
+     * Optional. Encryption settings for the encrypting customer core content.
+     */
+    readonly encryptionConfig: outputs.dataproc.v1.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse;
+    /**
      * The Directed Acyclic Graph of Jobs to submit.
      */
     readonly jobs: outputs.dataproc.v1.OrderedJobResponse[];

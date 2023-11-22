@@ -26,6 +26,22 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const FilterProtocolVersion = {
+    /**
+     * Default value.
+     */
+    ProtocolVersionUnspecified: "PROTOCOL_VERSION_UNSPECIFIED",
+    /**
+     * The PBR is for IPv4 internet protocol traffic.
+     */
+    Ipv4: "IPV4",
+} as const;
+
+/**
+ * Required. Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
+ */
+export type FilterProtocolVersion = (typeof FilterProtocolVersion)[keyof typeof FilterProtocolVersion];
+
 export const InternalRangeOverlapsItem = {
     /**
      * No overlap overrides.
@@ -35,6 +51,10 @@ export const InternalRangeOverlapsItem = {
      * Allow creation of static routes more specific that the current internal range.
      */
     OverlapRouteRange: "OVERLAP_ROUTE_RANGE",
+    /**
+     * Allow creation of internal ranges that overlap with existing subnets.
+     */
+    OverlapExistingSubnetRange: "OVERLAP_EXISTING_SUBNET_RANGE",
 } as const;
 
 export type InternalRangeOverlapsItem = (typeof InternalRangeOverlapsItem)[keyof typeof InternalRangeOverlapsItem];
@@ -82,3 +102,19 @@ export const InternalRangeUsage = {
  * The type of usage set for this InternalRange.
  */
 export type InternalRangeUsage = (typeof InternalRangeUsage)[keyof typeof InternalRangeUsage];
+
+export const PolicyBasedRouteNextHopOtherRoutes = {
+    /**
+     * Default value.
+     */
+    OtherRoutesUnspecified: "OTHER_ROUTES_UNSPECIFIED",
+    /**
+     * Use the routes from the default routing tables (system-generated routes, custom routes, peering route) to determine the next hop. This will effectively exclude matching packets being applied on other PBRs with a lower priority.
+     */
+    DefaultRouting: "DEFAULT_ROUTING",
+} as const;
+
+/**
+ * Optional. Other routes that will be referenced to determine the next hop of the packet.
+ */
+export type PolicyBasedRouteNextHopOtherRoutes = (typeof PolicyBasedRouteNextHopOtherRoutes)[keyof typeof PolicyBasedRouteNextHopOtherRoutes];

@@ -58,6 +58,10 @@ export interface GetSnapshotResult {
      */
     readonly downloadBytes: string;
     /**
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+     */
+    readonly guestOsFeatures: outputs.compute.v1.GuestOsFeatureResponse[];
+    /**
      * Type of the resource. Always compute#snapshot for Snapshot resources.
      */
     readonly kind: string;
@@ -109,6 +113,10 @@ export interface GetSnapshotResult {
      * The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
      */
     readonly sourceDiskEncryptionKey: outputs.compute.v1.CustomerEncryptionKeyResponse;
+    /**
+     * The source disk whose recovery checkpoint will be used to create this snapshot.
+     */
+    readonly sourceDiskForRecoveryCheckpoint: string;
     /**
      * The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
      */

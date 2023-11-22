@@ -9,6 +9,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new data transfer configuration.
+ * Auto-naming is currently not supported for this resource.
  */
 export class TransferConfig extends pulumi.CustomResource {
     /**
@@ -69,9 +70,13 @@ export class TransferConfig extends pulumi.CustomResource {
      * Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
      */
     public readonly emailPreferences!: pulumi.Output<outputs.bigquerydatatransfer.v1.EmailPreferencesResponse>;
+    /**
+     * The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+     */
+    public readonly encryptionConfiguration!: pulumi.Output<outputs.bigquerydatatransfer.v1.EncryptionConfigurationResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+     * The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -140,6 +145,7 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["emailPreferences"] = args ? args.emailPreferences : undefined;
+            resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
@@ -164,6 +170,7 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["emailPreferences"] = undefined /*out*/;
+            resourceInputs["encryptionConfiguration"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nextRunTime"] = undefined /*out*/;
@@ -218,9 +225,13 @@ export interface TransferConfigArgs {
      * Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
      */
     emailPreferences?: pulumi.Input<inputs.bigquerydatatransfer.v1.EmailPreferencesArgs>;
+    /**
+     * The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+     */
+    encryptionConfiguration?: pulumi.Input<inputs.bigquerydatatransfer.v1.EncryptionConfigurationArgs>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+     * The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
     name?: pulumi.Input<string>;
     /**

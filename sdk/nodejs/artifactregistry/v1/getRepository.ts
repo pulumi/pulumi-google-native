@@ -28,6 +28,14 @@ export interface GetRepositoryArgs {
 
 export interface GetRepositoryResult {
     /**
+     * Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+     */
+    readonly cleanupPolicies: {[key: string]: string};
+    /**
+     * Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     */
+    readonly cleanupPolicyDryRun: boolean;
+    /**
      * The time when the repository was created.
      */
     readonly createTime: string;
@@ -40,7 +48,7 @@ export interface GetRepositoryResult {
      */
     readonly dockerConfig: outputs.artifactregistry.v1.DockerRepositoryConfigResponse;
     /**
-     * The format of packages that are stored in the repository.
+     * Optional. The format of packages that are stored in the repository.
      */
     readonly format: string;
     /**
@@ -56,11 +64,11 @@ export interface GetRepositoryResult {
      */
     readonly mavenConfig: outputs.artifactregistry.v1.MavenRepositoryConfigResponse;
     /**
-     * The mode of the repository.
+     * Optional. The mode of the repository.
      */
     readonly mode: string;
     /**
-     * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+     * The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
      */
     readonly name: string;
     /**

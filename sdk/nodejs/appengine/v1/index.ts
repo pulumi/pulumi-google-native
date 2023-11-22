@@ -10,11 +10,6 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
-export { ApplicationArgs } from "./application";
-export type Application = import("./application").Application;
-export const Application: typeof import("./application").Application = null as any;
-utilities.lazyLoad(exports, ["Application"], () => require("./application"));
-
 export { AuthorizedCertificateArgs } from "./authorizedCertificate";
 export type AuthorizedCertificate = import("./authorizedCertificate").AuthorizedCertificate;
 export const AuthorizedCertificate: typeof import("./authorizedCertificate").AuthorizedCertificate = null as any;
@@ -29,11 +24,6 @@ export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
 export const getApp: typeof import("./getApp").getApp = null as any;
 export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
 utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
-
-export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
-export const getApplication: typeof import("./getApplication").getApplication = null as any;
-export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
-utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
 
 export { GetAuthorizedCertificateArgs, GetAuthorizedCertificateResult, GetAuthorizedCertificateOutputArgs } from "./getAuthorizedCertificate";
 export const getAuthorizedCertificate: typeof import("./getAuthorizedCertificate").getAuthorizedCertificate = null as any;
@@ -75,8 +65,6 @@ const _module = {
         switch (type) {
             case "google-native:appengine/v1:App":
                 return new App(name, <any>undefined, { urn })
-            case "google-native:appengine/v1:Application":
-                return new Application(name, <any>undefined, { urn })
             case "google-native:appengine/v1:AuthorizedCertificate":
                 return new AuthorizedCertificate(name, <any>undefined, { urn })
             case "google-native:appengine/v1:DomainMapping":

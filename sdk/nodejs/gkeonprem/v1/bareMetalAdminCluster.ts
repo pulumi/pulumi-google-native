@@ -52,6 +52,10 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
      */
     public readonly bareMetalVersion!: pulumi.Output<string>;
     /**
+     * Binary Authorization related configurations.
+     */
+    public readonly binaryAuthorization!: pulumi.Output<outputs.gkeonprem.v1.BinaryAuthorizationResponse>;
+    /**
      * Cluster operations configuration.
      */
     public readonly clusterOperations!: pulumi.Output<outputs.gkeonprem.v1.BareMetalAdminClusterOperationsConfigResponse>;
@@ -175,6 +179,7 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["bareMetalAdminClusterId"] = args ? args.bareMetalAdminClusterId : undefined;
             resourceInputs["bareMetalVersion"] = args ? args.bareMetalVersion : undefined;
+            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["clusterOperations"] = args ? args.clusterOperations : undefined;
             resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -207,6 +212,7 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["bareMetalAdminClusterId"] = undefined /*out*/;
             resourceInputs["bareMetalVersion"] = undefined /*out*/;
+            resourceInputs["binaryAuthorization"] = undefined /*out*/;
             resourceInputs["clusterOperations"] = undefined /*out*/;
             resourceInputs["controlPlane"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -259,6 +265,10 @@ export interface BareMetalAdminClusterArgs {
      * The Anthos clusters on bare metal version for the bare metal admin cluster.
      */
     bareMetalVersion?: pulumi.Input<string>;
+    /**
+     * Binary Authorization related configurations.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.gkeonprem.v1.BinaryAuthorizationArgs>;
     /**
      * Cluster operations configuration.
      */

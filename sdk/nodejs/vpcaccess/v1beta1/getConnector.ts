@@ -44,7 +44,7 @@ export interface GetConnectorResult {
      */
     readonly maxInstances: number;
     /**
-     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
      */
     readonly maxThroughput: number;
     /**
@@ -52,7 +52,7 @@ export interface GetConnectorResult {
      */
     readonly minInstances: number;
     /**
-     * Minimum throughput of the connector in Mbps. Default and min is 200.
+     * Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
      */
     readonly minThroughput: number;
     /**

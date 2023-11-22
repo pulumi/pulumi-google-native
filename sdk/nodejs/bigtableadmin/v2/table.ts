@@ -38,6 +38,10 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+     */
+    public readonly changeStreamConfig!: pulumi.Output<outputs.bigtableadmin.v2.ChangeStreamConfigResponse>;
+    /**
      * Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
      */
     public /*out*/ readonly clusterStates!: pulumi.Output<{[key: string]: string}>;
@@ -66,7 +70,7 @@ export class Table extends pulumi.CustomResource {
     /**
      * Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
      */
-    public readonly stats!: pulumi.Output<outputs.bigtableadmin.v2.TableStatsResponse>;
+    public /*out*/ readonly stats!: pulumi.Output<outputs.bigtableadmin.v2.TableStatsResponse>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -85,6 +89,7 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
+            resourceInputs["changeStreamConfig"] = args ? args.changeStreamConfig : undefined;
             resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["granularity"] = args ? args.granularity : undefined;
@@ -92,11 +97,12 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["stats"] = args ? args.stats : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
             resourceInputs["clusterStates"] = undefined /*out*/;
             resourceInputs["restoreInfo"] = undefined /*out*/;
+            resourceInputs["stats"] = undefined /*out*/;
         } else {
+            resourceInputs["changeStreamConfig"] = undefined /*out*/;
             resourceInputs["clusterStates"] = undefined /*out*/;
             resourceInputs["columnFamilies"] = undefined /*out*/;
             resourceInputs["deletionProtection"] = undefined /*out*/;
@@ -119,6 +125,10 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableArgs {
     /**
+     * If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+     */
+    changeStreamConfig?: pulumi.Input<inputs.bigtableadmin.v2.ChangeStreamConfigArgs>;
+    /**
      * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
      */
     columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -140,10 +150,6 @@ export interface TableArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
-     */
-    stats?: pulumi.Input<inputs.bigtableadmin.v2.TableStatsArgs>;
     /**
      * The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
      */

@@ -108,6 +108,10 @@ export interface GetInstanceResult {
      */
     readonly p4ServiceAccount: string;
     /**
+     * Optional. Current patch revision of the Data Fusion.
+     */
+    readonly patchRevision: string;
+    /**
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */
     readonly privateInstance: boolean;
@@ -149,6 +153,10 @@ export interface GetInstanceResult {
      * Current version of the Data Fusion. Only specifiable in Update.
      */
     readonly version: string;
+    /**
+     * Endpoint on which the Data Fusion UI is accessible to third-party users
+     */
+    readonly workforceIdentityServiceEndpoint: string;
     /**
      * Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
      */

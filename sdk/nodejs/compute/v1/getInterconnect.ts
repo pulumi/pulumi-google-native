@@ -30,6 +30,10 @@ export interface GetInterconnectResult {
      */
     readonly adminEnabled: boolean;
     /**
+     * [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
+     */
+    readonly availableFeatures: string[];
+    /**
      * A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      */
     readonly circuitInfos: outputs.compute.v1.InterconnectCircuitInfoResponse[];
@@ -86,6 +90,14 @@ export interface GetInterconnectResult {
      */
     readonly location: string;
     /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+     */
+    readonly macsec: outputs.compute.v1.InterconnectMacsecResponse;
+    /**
+     * Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
+     */
+    readonly macsecEnabled: boolean;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name: string;
@@ -109,6 +121,10 @@ export interface GetInterconnectResult {
      * Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
      */
     readonly remoteLocation: string;
+    /**
+     * Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
+     */
+    readonly requestedFeatures: string[];
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */

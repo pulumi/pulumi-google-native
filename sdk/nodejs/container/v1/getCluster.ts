@@ -98,6 +98,10 @@ export interface GetClusterResult {
      */
     readonly description: string;
     /**
+     * Beta APIs Config
+     */
+    readonly enableK8sBetaApis: outputs.container.v1.K8sBetaAPIConfigResponse;
+    /**
      * Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
      */
     readonly enableKubernetesAlpha: boolean;
@@ -109,6 +113,10 @@ export interface GetClusterResult {
      * [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
      */
     readonly endpoint: string;
+    /**
+     * GKE Enterprise Configuration.
+     */
+    readonly enterpriseConfig: outputs.container.v1.EnterpriseConfigResponse;
     /**
      * This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -236,6 +244,10 @@ export interface GetClusterResult {
      */
     readonly notificationConfig: outputs.container.v1.NotificationConfigResponse;
     /**
+     * The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+     */
+    readonly parentProductConfig: outputs.container.v1.ParentProductConfigResponse;
+    /**
      * Configuration for private cluster.
      */
     readonly privateClusterConfig: outputs.container.v1.PrivateClusterConfigResponse;
@@ -251,6 +263,10 @@ export interface GetClusterResult {
      * Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
      */
     readonly resourceUsageExportConfig: outputs.container.v1.ResourceUsageExportConfigResponse;
+    /**
+     * Enable/Disable Security Posture API features for the cluster.
+     */
+    readonly securityPostureConfig: outputs.container.v1.SecurityPostureConfigResponse;
     /**
      * [Output only] Server-defined URL for the resource.
      */

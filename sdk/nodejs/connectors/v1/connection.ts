@@ -51,9 +51,21 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly connectionId!: pulumi.Output<string>;
     /**
+     * Connection revision. This field is only updated when the connection is created or updated by User.
+     */
+    public /*out*/ readonly connectionRevision!: pulumi.Output<string>;
+    /**
      * Connector version on which the connection is created. The format is: projects/*&#47;locations/*&#47;providers/*&#47;connectors/*&#47;versions/* Only global location is supported for ConnectorVersion resource.
      */
     public readonly connectorVersion!: pulumi.Output<string>;
+    /**
+     * Infra configs supported by Connector Version.
+     */
+    public /*out*/ readonly connectorVersionInfraConfig!: pulumi.Output<outputs.connectors.v1.ConnectorVersionInfraConfigResponse>;
+    /**
+     * Flag to mark the version indicating the launch stage.
+     */
+    public /*out*/ readonly connectorVersionLaunchStage!: pulumi.Output<string>;
     /**
      * Created time.
      */
@@ -71,9 +83,25 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly envoyImageLocation!: pulumi.Output<string>;
     /**
+     * Optional. Eventing config of a connection
+     */
+    public readonly eventingConfig!: pulumi.Output<outputs.connectors.v1.EventingConfigResponse>;
+    /**
+     * Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+     */
+    public readonly eventingEnablementType!: pulumi.Output<string>;
+    /**
+     * Eventing Runtime Data.
+     */
+    public /*out*/ readonly eventingRuntimeData!: pulumi.Output<outputs.connectors.v1.EventingRuntimeDataResponse>;
+    /**
      * GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
      */
     public /*out*/ readonly imageLocation!: pulumi.Output<string>;
+    /**
+     * Is trusted tester program enabled for the project.
+     */
+    public /*out*/ readonly isTrustedTester!: pulumi.Output<boolean>;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
@@ -97,7 +125,7 @@ export class Connection extends pulumi.CustomResource {
     public readonly nodeConfig!: pulumi.Output<outputs.connectors.v1.NodeConfigResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Optional. Service account needed for runtime plane to access GCP resources.
+     * Optional. Service account needed for runtime plane to access Google Cloud resources.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
@@ -148,6 +176,8 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["connectorVersion"] = args ? args.connectorVersion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["destinationConfigs"] = args ? args.destinationConfigs : undefined;
+            resourceInputs["eventingConfig"] = args ? args.eventingConfig : undefined;
+            resourceInputs["eventingEnablementType"] = args ? args.eventingEnablementType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["lockConfig"] = args ? args.lockConfig : undefined;
@@ -157,9 +187,14 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["sslConfig"] = args ? args.sslConfig : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
+            resourceInputs["connectionRevision"] = undefined /*out*/;
+            resourceInputs["connectorVersionInfraConfig"] = undefined /*out*/;
+            resourceInputs["connectorVersionLaunchStage"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
+            resourceInputs["eventingRuntimeData"] = undefined /*out*/;
             resourceInputs["imageLocation"] = undefined /*out*/;
+            resourceInputs["isTrustedTester"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceDirectory"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -169,12 +204,19 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["authConfig"] = undefined /*out*/;
             resourceInputs["configVariables"] = undefined /*out*/;
             resourceInputs["connectionId"] = undefined /*out*/;
+            resourceInputs["connectionRevision"] = undefined /*out*/;
             resourceInputs["connectorVersion"] = undefined /*out*/;
+            resourceInputs["connectorVersionInfraConfig"] = undefined /*out*/;
+            resourceInputs["connectorVersionLaunchStage"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["destinationConfigs"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
+            resourceInputs["eventingConfig"] = undefined /*out*/;
+            resourceInputs["eventingEnablementType"] = undefined /*out*/;
+            resourceInputs["eventingRuntimeData"] = undefined /*out*/;
             resourceInputs["imageLocation"] = undefined /*out*/;
+            resourceInputs["isTrustedTester"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["lockConfig"] = undefined /*out*/;
@@ -226,6 +268,14 @@ export interface ConnectionArgs {
      */
     destinationConfigs?: pulumi.Input<pulumi.Input<inputs.connectors.v1.DestinationConfigArgs>[]>;
     /**
+     * Optional. Eventing config of a connection
+     */
+    eventingConfig?: pulumi.Input<inputs.connectors.v1.EventingConfigArgs>;
+    /**
+     * Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+     */
+    eventingEnablementType?: pulumi.Input<enums.connectors.v1.ConnectionEventingEnablementType>;
+    /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -244,7 +294,7 @@ export interface ConnectionArgs {
     nodeConfig?: pulumi.Input<inputs.connectors.v1.NodeConfigArgs>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. Service account needed for runtime plane to access GCP resources.
+     * Optional. Service account needed for runtime plane to access Google Cloud resources.
      */
     serviceAccount?: pulumi.Input<string>;
     /**

@@ -56,6 +56,10 @@ export interface GetFunctionResult {
      */
     readonly name: string;
     /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
      */
     readonly serviceConfig: outputs.cloudfunctions.v2beta.ServiceConfigResponse;
@@ -71,6 +75,10 @@ export interface GetFunctionResult {
      * The last update timestamp of a Cloud Function.
      */
     readonly updateTime: string;
+    /**
+     * The deployed url for the function.
+     */
+    readonly url: string;
 }
 /**
  * Returns a function with the given name from the requested project.

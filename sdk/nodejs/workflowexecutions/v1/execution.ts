@@ -83,7 +83,7 @@ export class Execution extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+     * Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
      */
     public /*out*/ readonly stateError!: pulumi.Output<outputs.workflowexecutions.v1.StateErrorResponse>;
     /**

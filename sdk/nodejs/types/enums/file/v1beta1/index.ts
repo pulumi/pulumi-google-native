@@ -55,6 +55,10 @@ export const InstanceTier = {
      * ZONAL instances offer expanded capacity and performance scaling capabilities.
      */
     Zonal: "ZONAL",
+    /**
+     * REGIONAL instances offer the features and availability needed for mission-critical workloads.
+     */
+    Regional: "REGIONAL",
 } as const;
 
 /**

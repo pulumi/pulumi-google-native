@@ -88,6 +88,10 @@ export interface GetInstanceResult {
      */
     readonly parameters: outputs.memcache.v1.MemcacheParametersResponse;
     /**
+     * Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+     */
+    readonly reservedIpRangeId: string[];
+    /**
      * The state of this Memcached instance.
      */
     readonly state: string;

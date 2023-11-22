@@ -32,6 +32,10 @@ export interface GetCutoverJobArgs {
 
 export interface GetCutoverJobResult {
     /**
+     * Details of the target Persistent Disks in Compute Engine.
+     */
+    readonly computeEngineDisksTargetDetails: outputs.vmmigration.v1alpha1.ComputeEngineDisksTargetDetailsResponse;
+    /**
      * Details of the target VM in Compute Engine.
      */
     readonly computeEngineTargetDetails: outputs.vmmigration.v1alpha1.ComputeEngineTargetDetailsResponse;

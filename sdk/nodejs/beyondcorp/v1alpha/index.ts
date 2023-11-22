@@ -65,6 +65,21 @@ export type AppGatewayIamPolicy = import("./appGatewayIamPolicy").AppGatewayIamP
 export const AppGatewayIamPolicy: typeof import("./appGatewayIamPolicy").AppGatewayIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AppGatewayIamPolicy"], () => require("./appGatewayIamPolicy"));
 
+export { ApplicationDomainIamBindingArgs } from "./applicationDomainIamBinding";
+export type ApplicationDomainIamBinding = import("./applicationDomainIamBinding").ApplicationDomainIamBinding;
+export const ApplicationDomainIamBinding: typeof import("./applicationDomainIamBinding").ApplicationDomainIamBinding = null as any;
+utilities.lazyLoad(exports, ["ApplicationDomainIamBinding"], () => require("./applicationDomainIamBinding"));
+
+export { ApplicationDomainIamMemberArgs } from "./applicationDomainIamMember";
+export type ApplicationDomainIamMember = import("./applicationDomainIamMember").ApplicationDomainIamMember;
+export const ApplicationDomainIamMember: typeof import("./applicationDomainIamMember").ApplicationDomainIamMember = null as any;
+utilities.lazyLoad(exports, ["ApplicationDomainIamMember"], () => require("./applicationDomainIamMember"));
+
+export { ApplicationDomainIamPolicyArgs } from "./applicationDomainIamPolicy";
+export type ApplicationDomainIamPolicy = import("./applicationDomainIamPolicy").ApplicationDomainIamPolicy;
+export const ApplicationDomainIamPolicy: typeof import("./applicationDomainIamPolicy").ApplicationDomainIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ApplicationDomainIamPolicy"], () => require("./applicationDomainIamPolicy"));
+
 export { ApplicationIamBindingArgs } from "./applicationIamBinding";
 export type ApplicationIamBinding = import("./applicationIamBinding").ApplicationIamBinding;
 export const ApplicationIamBinding: typeof import("./applicationIamBinding").ApplicationIamBinding = null as any;
@@ -80,10 +95,10 @@ export type ApplicationIamPolicy = import("./applicationIamPolicy").ApplicationI
 export const ApplicationIamPolicy: typeof import("./applicationIamPolicy").ApplicationIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ApplicationIamPolicy"], () => require("./applicationIamPolicy"));
 
-export { ClientConnectorServiceArgs } from "./clientConnectorService";
-export type ClientConnectorService = import("./clientConnectorService").ClientConnectorService;
-export const ClientConnectorService: typeof import("./clientConnectorService").ClientConnectorService = null as any;
-utilities.lazyLoad(exports, ["ClientConnectorService"], () => require("./clientConnectorService"));
+export { BrowserDlpRuleArgs } from "./browserDlpRule";
+export type BrowserDlpRule = import("./browserDlpRule").BrowserDlpRule;
+export const BrowserDlpRule: typeof import("./browserDlpRule").BrowserDlpRule = null as any;
+utilities.lazyLoad(exports, ["BrowserDlpRule"], () => require("./browserDlpRule"));
 
 export { ClientConnectorServiceIamBindingArgs } from "./clientConnectorServiceIamBinding";
 export type ClientConnectorServiceIamBinding = import("./clientConnectorServiceIamBinding").ClientConnectorServiceIamBinding;
@@ -99,11 +114,6 @@ export { ClientConnectorServiceIamPolicyArgs } from "./clientConnectorServiceIam
 export type ClientConnectorServiceIamPolicy = import("./clientConnectorServiceIamPolicy").ClientConnectorServiceIamPolicy;
 export const ClientConnectorServiceIamPolicy: typeof import("./clientConnectorServiceIamPolicy").ClientConnectorServiceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ClientConnectorServiceIamPolicy"], () => require("./clientConnectorServiceIamPolicy"));
-
-export { ClientGatewayArgs } from "./clientGateway";
-export type ClientGateway = import("./clientGateway").ClientGateway;
-export const ClientGateway: typeof import("./clientGateway").ClientGateway = null as any;
-utilities.lazyLoad(exports, ["ClientGateway"], () => require("./clientGateway"));
 
 export { ClientGatewayIamBindingArgs } from "./clientGatewayIamBinding";
 export type ClientGatewayIamBinding = import("./clientGatewayIamBinding").ClientGatewayIamBinding;
@@ -190,25 +200,25 @@ export const getAppGatewayIamPolicy: typeof import("./getAppGatewayIamPolicy").g
 export const getAppGatewayIamPolicyOutput: typeof import("./getAppGatewayIamPolicy").getAppGatewayIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAppGatewayIamPolicy","getAppGatewayIamPolicyOutput"], () => require("./getAppGatewayIamPolicy"));
 
+export { GetApplicationDomainIamPolicyArgs, GetApplicationDomainIamPolicyResult, GetApplicationDomainIamPolicyOutputArgs } from "./getApplicationDomainIamPolicy";
+export const getApplicationDomainIamPolicy: typeof import("./getApplicationDomainIamPolicy").getApplicationDomainIamPolicy = null as any;
+export const getApplicationDomainIamPolicyOutput: typeof import("./getApplicationDomainIamPolicy").getApplicationDomainIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationDomainIamPolicy","getApplicationDomainIamPolicyOutput"], () => require("./getApplicationDomainIamPolicy"));
+
 export { GetApplicationIamPolicyArgs, GetApplicationIamPolicyResult, GetApplicationIamPolicyOutputArgs } from "./getApplicationIamPolicy";
 export const getApplicationIamPolicy: typeof import("./getApplicationIamPolicy").getApplicationIamPolicy = null as any;
 export const getApplicationIamPolicyOutput: typeof import("./getApplicationIamPolicy").getApplicationIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationIamPolicy","getApplicationIamPolicyOutput"], () => require("./getApplicationIamPolicy"));
 
-export { GetClientConnectorServiceArgs, GetClientConnectorServiceResult, GetClientConnectorServiceOutputArgs } from "./getClientConnectorService";
-export const getClientConnectorService: typeof import("./getClientConnectorService").getClientConnectorService = null as any;
-export const getClientConnectorServiceOutput: typeof import("./getClientConnectorService").getClientConnectorServiceOutput = null as any;
-utilities.lazyLoad(exports, ["getClientConnectorService","getClientConnectorServiceOutput"], () => require("./getClientConnectorService"));
+export { GetBrowserDlpRuleArgs, GetBrowserDlpRuleResult, GetBrowserDlpRuleOutputArgs } from "./getBrowserDlpRule";
+export const getBrowserDlpRule: typeof import("./getBrowserDlpRule").getBrowserDlpRule = null as any;
+export const getBrowserDlpRuleOutput: typeof import("./getBrowserDlpRule").getBrowserDlpRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getBrowserDlpRule","getBrowserDlpRuleOutput"], () => require("./getBrowserDlpRule"));
 
 export { GetClientConnectorServiceIamPolicyArgs, GetClientConnectorServiceIamPolicyResult, GetClientConnectorServiceIamPolicyOutputArgs } from "./getClientConnectorServiceIamPolicy";
 export const getClientConnectorServiceIamPolicy: typeof import("./getClientConnectorServiceIamPolicy").getClientConnectorServiceIamPolicy = null as any;
 export const getClientConnectorServiceIamPolicyOutput: typeof import("./getClientConnectorServiceIamPolicy").getClientConnectorServiceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getClientConnectorServiceIamPolicy","getClientConnectorServiceIamPolicyOutput"], () => require("./getClientConnectorServiceIamPolicy"));
-
-export { GetClientGatewayArgs, GetClientGatewayResult, GetClientGatewayOutputArgs } from "./getClientGateway";
-export const getClientGateway: typeof import("./getClientGateway").getClientGateway = null as any;
-export const getClientGatewayOutput: typeof import("./getClientGateway").getClientGatewayOutput = null as any;
-utilities.lazyLoad(exports, ["getClientGateway","getClientGatewayOutput"], () => require("./getClientGateway"));
 
 export { GetClientGatewayIamPolicyArgs, GetClientGatewayIamPolicyResult, GetClientGatewayIamPolicyOutputArgs } from "./getClientGatewayIamPolicy";
 export const getClientGatewayIamPolicy: typeof import("./getClientGatewayIamPolicy").getClientGatewayIamPolicy = null as any;
@@ -240,6 +250,26 @@ export const getNetConnectionIamPolicy: typeof import("./getNetConnectionIamPoli
 export const getNetConnectionIamPolicyOutput: typeof import("./getNetConnectionIamPolicy").getNetConnectionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getNetConnectionIamPolicy","getNetConnectionIamPolicyOutput"], () => require("./getNetConnectionIamPolicy"));
 
+export { GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs, GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyResult, GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyOutputArgs } from "./getOrganizationPartnerTenantBrowserDlpRuleIamPolicy";
+export const getOrganizationPartnerTenantBrowserDlpRuleIamPolicy: typeof import("./getOrganizationPartnerTenantBrowserDlpRuleIamPolicy").getOrganizationPartnerTenantBrowserDlpRuleIamPolicy = null as any;
+export const getOrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput: typeof import("./getOrganizationPartnerTenantBrowserDlpRuleIamPolicy").getOrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationPartnerTenantBrowserDlpRuleIamPolicy","getOrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput"], () => require("./getOrganizationPartnerTenantBrowserDlpRuleIamPolicy"));
+
+export { GetOrganizationPartnerTenantIamPolicyArgs, GetOrganizationPartnerTenantIamPolicyResult, GetOrganizationPartnerTenantIamPolicyOutputArgs } from "./getOrganizationPartnerTenantIamPolicy";
+export const getOrganizationPartnerTenantIamPolicy: typeof import("./getOrganizationPartnerTenantIamPolicy").getOrganizationPartnerTenantIamPolicy = null as any;
+export const getOrganizationPartnerTenantIamPolicyOutput: typeof import("./getOrganizationPartnerTenantIamPolicy").getOrganizationPartnerTenantIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationPartnerTenantIamPolicy","getOrganizationPartnerTenantIamPolicyOutput"], () => require("./getOrganizationPartnerTenantIamPolicy"));
+
+export { GetOrganizationPartnerTenantProxyConfigIamPolicyArgs, GetOrganizationPartnerTenantProxyConfigIamPolicyResult, GetOrganizationPartnerTenantProxyConfigIamPolicyOutputArgs } from "./getOrganizationPartnerTenantProxyConfigIamPolicy";
+export const getOrganizationPartnerTenantProxyConfigIamPolicy: typeof import("./getOrganizationPartnerTenantProxyConfigIamPolicy").getOrganizationPartnerTenantProxyConfigIamPolicy = null as any;
+export const getOrganizationPartnerTenantProxyConfigIamPolicyOutput: typeof import("./getOrganizationPartnerTenantProxyConfigIamPolicy").getOrganizationPartnerTenantProxyConfigIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationPartnerTenantProxyConfigIamPolicy","getOrganizationPartnerTenantProxyConfigIamPolicyOutput"], () => require("./getOrganizationPartnerTenantProxyConfigIamPolicy"));
+
+export { GetPartnerTenantArgs, GetPartnerTenantResult, GetPartnerTenantOutputArgs } from "./getPartnerTenant";
+export const getPartnerTenant: typeof import("./getPartnerTenant").getPartnerTenant = null as any;
+export const getPartnerTenantOutput: typeof import("./getPartnerTenant").getPartnerTenantOutput = null as any;
+utilities.lazyLoad(exports, ["getPartnerTenant","getPartnerTenantOutput"], () => require("./getPartnerTenant"));
+
 export { GetProxyConfigArgs, GetProxyConfigResult, GetProxyConfigOutputArgs } from "./getProxyConfig";
 export const getProxyConfig: typeof import("./getProxyConfig").getProxyConfig = null as any;
 export const getProxyConfigOutput: typeof import("./getProxyConfig").getProxyConfigOutput = null as any;
@@ -249,11 +279,6 @@ export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs }
 export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
 export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
 utilities.lazyLoad(exports, ["getSubscription","getSubscriptionOutput"], () => require("./getSubscription"));
-
-export { GetTenantArgs, GetTenantResult, GetTenantOutputArgs } from "./getTenant";
-export const getTenant: typeof import("./getTenant").getTenant = null as any;
-export const getTenantOutput: typeof import("./getTenant").getTenantOutput = null as any;
-utilities.lazyLoad(exports, ["getTenant","getTenantOutput"], () => require("./getTenant"));
 
 export { NetConnectionIamBindingArgs } from "./netConnectionIamBinding";
 export type NetConnectionIamBinding = import("./netConnectionIamBinding").NetConnectionIamBinding;
@@ -270,6 +295,56 @@ export type NetConnectionIamPolicy = import("./netConnectionIamPolicy").NetConne
 export const NetConnectionIamPolicy: typeof import("./netConnectionIamPolicy").NetConnectionIamPolicy = null as any;
 utilities.lazyLoad(exports, ["NetConnectionIamPolicy"], () => require("./netConnectionIamPolicy"));
 
+export { OrganizationPartnerTenantBrowserDlpRuleIamBindingArgs } from "./organizationPartnerTenantBrowserDlpRuleIamBinding";
+export type OrganizationPartnerTenantBrowserDlpRuleIamBinding = import("./organizationPartnerTenantBrowserDlpRuleIamBinding").OrganizationPartnerTenantBrowserDlpRuleIamBinding;
+export const OrganizationPartnerTenantBrowserDlpRuleIamBinding: typeof import("./organizationPartnerTenantBrowserDlpRuleIamBinding").OrganizationPartnerTenantBrowserDlpRuleIamBinding = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantBrowserDlpRuleIamBinding"], () => require("./organizationPartnerTenantBrowserDlpRuleIamBinding"));
+
+export { OrganizationPartnerTenantBrowserDlpRuleIamMemberArgs } from "./organizationPartnerTenantBrowserDlpRuleIamMember";
+export type OrganizationPartnerTenantBrowserDlpRuleIamMember = import("./organizationPartnerTenantBrowserDlpRuleIamMember").OrganizationPartnerTenantBrowserDlpRuleIamMember;
+export const OrganizationPartnerTenantBrowserDlpRuleIamMember: typeof import("./organizationPartnerTenantBrowserDlpRuleIamMember").OrganizationPartnerTenantBrowserDlpRuleIamMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantBrowserDlpRuleIamMember"], () => require("./organizationPartnerTenantBrowserDlpRuleIamMember"));
+
+export { OrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs } from "./organizationPartnerTenantBrowserDlpRuleIamPolicy";
+export type OrganizationPartnerTenantBrowserDlpRuleIamPolicy = import("./organizationPartnerTenantBrowserDlpRuleIamPolicy").OrganizationPartnerTenantBrowserDlpRuleIamPolicy;
+export const OrganizationPartnerTenantBrowserDlpRuleIamPolicy: typeof import("./organizationPartnerTenantBrowserDlpRuleIamPolicy").OrganizationPartnerTenantBrowserDlpRuleIamPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantBrowserDlpRuleIamPolicy"], () => require("./organizationPartnerTenantBrowserDlpRuleIamPolicy"));
+
+export { OrganizationPartnerTenantIamBindingArgs } from "./organizationPartnerTenantIamBinding";
+export type OrganizationPartnerTenantIamBinding = import("./organizationPartnerTenantIamBinding").OrganizationPartnerTenantIamBinding;
+export const OrganizationPartnerTenantIamBinding: typeof import("./organizationPartnerTenantIamBinding").OrganizationPartnerTenantIamBinding = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantIamBinding"], () => require("./organizationPartnerTenantIamBinding"));
+
+export { OrganizationPartnerTenantIamMemberArgs } from "./organizationPartnerTenantIamMember";
+export type OrganizationPartnerTenantIamMember = import("./organizationPartnerTenantIamMember").OrganizationPartnerTenantIamMember;
+export const OrganizationPartnerTenantIamMember: typeof import("./organizationPartnerTenantIamMember").OrganizationPartnerTenantIamMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantIamMember"], () => require("./organizationPartnerTenantIamMember"));
+
+export { OrganizationPartnerTenantIamPolicyArgs } from "./organizationPartnerTenantIamPolicy";
+export type OrganizationPartnerTenantIamPolicy = import("./organizationPartnerTenantIamPolicy").OrganizationPartnerTenantIamPolicy;
+export const OrganizationPartnerTenantIamPolicy: typeof import("./organizationPartnerTenantIamPolicy").OrganizationPartnerTenantIamPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantIamPolicy"], () => require("./organizationPartnerTenantIamPolicy"));
+
+export { OrganizationPartnerTenantProxyConfigIamBindingArgs } from "./organizationPartnerTenantProxyConfigIamBinding";
+export type OrganizationPartnerTenantProxyConfigIamBinding = import("./organizationPartnerTenantProxyConfigIamBinding").OrganizationPartnerTenantProxyConfigIamBinding;
+export const OrganizationPartnerTenantProxyConfigIamBinding: typeof import("./organizationPartnerTenantProxyConfigIamBinding").OrganizationPartnerTenantProxyConfigIamBinding = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantProxyConfigIamBinding"], () => require("./organizationPartnerTenantProxyConfigIamBinding"));
+
+export { OrganizationPartnerTenantProxyConfigIamMemberArgs } from "./organizationPartnerTenantProxyConfigIamMember";
+export type OrganizationPartnerTenantProxyConfigIamMember = import("./organizationPartnerTenantProxyConfigIamMember").OrganizationPartnerTenantProxyConfigIamMember;
+export const OrganizationPartnerTenantProxyConfigIamMember: typeof import("./organizationPartnerTenantProxyConfigIamMember").OrganizationPartnerTenantProxyConfigIamMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantProxyConfigIamMember"], () => require("./organizationPartnerTenantProxyConfigIamMember"));
+
+export { OrganizationPartnerTenantProxyConfigIamPolicyArgs } from "./organizationPartnerTenantProxyConfigIamPolicy";
+export type OrganizationPartnerTenantProxyConfigIamPolicy = import("./organizationPartnerTenantProxyConfigIamPolicy").OrganizationPartnerTenantProxyConfigIamPolicy;
+export const OrganizationPartnerTenantProxyConfigIamPolicy: typeof import("./organizationPartnerTenantProxyConfigIamPolicy").OrganizationPartnerTenantProxyConfigIamPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationPartnerTenantProxyConfigIamPolicy"], () => require("./organizationPartnerTenantProxyConfigIamPolicy"));
+
+export { PartnerTenantArgs } from "./partnerTenant";
+export type PartnerTenant = import("./partnerTenant").PartnerTenant;
+export const PartnerTenant: typeof import("./partnerTenant").PartnerTenant = null as any;
+utilities.lazyLoad(exports, ["PartnerTenant"], () => require("./partnerTenant"));
+
 export { ProxyConfigArgs } from "./proxyConfig";
 export type ProxyConfig = import("./proxyConfig").ProxyConfig;
 export const ProxyConfig: typeof import("./proxyConfig").ProxyConfig = null as any;
@@ -279,11 +354,6 @@ export { SubscriptionArgs } from "./subscription";
 export type Subscription = import("./subscription").Subscription;
 export const Subscription: typeof import("./subscription").Subscription = null as any;
 utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
-
-export { TenantArgs } from "./tenant";
-export type Tenant = import("./tenant").Tenant;
-export const Tenant: typeof import("./tenant").Tenant = null as any;
-utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
 
 
 // Export enums:
@@ -317,22 +387,26 @@ const _module = {
                 return new AppGatewayIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:AppGatewayIamPolicy":
                 return new AppGatewayIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:ApplicationDomainIamBinding":
+                return new ApplicationDomainIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:ApplicationDomainIamMember":
+                return new ApplicationDomainIamMember(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:ApplicationDomainIamPolicy":
+                return new ApplicationDomainIamPolicy(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ApplicationIamBinding":
                 return new ApplicationIamBinding(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ApplicationIamMember":
                 return new ApplicationIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ApplicationIamPolicy":
                 return new ApplicationIamPolicy(name, <any>undefined, { urn })
-            case "google-native:beyondcorp/v1alpha:ClientConnectorService":
-                return new ClientConnectorService(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:BrowserDlpRule":
+                return new BrowserDlpRule(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamBinding":
                 return new ClientConnectorServiceIamBinding(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamMember":
                 return new ClientConnectorServiceIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamPolicy":
                 return new ClientConnectorServiceIamPolicy(name, <any>undefined, { urn })
-            case "google-native:beyondcorp/v1alpha:ClientGateway":
-                return new ClientGateway(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ClientGatewayIamBinding":
                 return new ClientGatewayIamBinding(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ClientGatewayIamMember":
@@ -361,12 +435,30 @@ const _module = {
                 return new NetConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy":
                 return new NetConnectionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamBinding":
+                return new OrganizationPartnerTenantBrowserDlpRuleIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamMember":
+                return new OrganizationPartnerTenantBrowserDlpRuleIamMember(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamPolicy":
+                return new OrganizationPartnerTenantBrowserDlpRuleIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantIamBinding":
+                return new OrganizationPartnerTenantIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantIamMember":
+                return new OrganizationPartnerTenantIamMember(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantIamPolicy":
+                return new OrganizationPartnerTenantIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantProxyConfigIamBinding":
+                return new OrganizationPartnerTenantProxyConfigIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantProxyConfigIamMember":
+                return new OrganizationPartnerTenantProxyConfigIamMember(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:OrganizationPartnerTenantProxyConfigIamPolicy":
+                return new OrganizationPartnerTenantProxyConfigIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:PartnerTenant":
+                return new PartnerTenant(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ProxyConfig":
                 return new ProxyConfig(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
-            case "google-native:beyondcorp/v1alpha:Tenant":
-                return new Tenant(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

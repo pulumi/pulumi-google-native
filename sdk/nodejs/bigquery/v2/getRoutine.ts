@@ -38,6 +38,10 @@ export interface GetRoutineResult {
      */
     readonly creationTime: string;
     /**
+     * Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+     */
+    readonly dataGovernanceType: string;
+    /**
      * The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
      */
     readonly definitionBody: string;
@@ -85,6 +89,10 @@ export interface GetRoutineResult {
      * The type of routine.
      */
     readonly routineType: string;
+    /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+     */
+    readonly securityMode: string;
     /**
      * Optional. Spark specific options.
      */

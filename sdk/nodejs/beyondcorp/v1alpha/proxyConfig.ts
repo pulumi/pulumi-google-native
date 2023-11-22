@@ -8,10 +8,8 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
+ * Creates a new BeyondCorp Enterprise ProxyConfig in a given organization and PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
  * Auto-naming is currently not supported for this resource.
- * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
- * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class ProxyConfig extends pulumi.CustomResource {
     /**
@@ -41,10 +39,6 @@ export class ProxyConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. Information to facilitate Authentication against the proxy server.
-     */
-    public readonly authenticationInfo!: pulumi.Output<outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse>;
-    /**
      * Timestamp when the resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -53,10 +47,15 @@ export class ProxyConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Optional. Information to encrypt JWT for the proxy server.
+     */
+    public readonly encryptionInfo!: pulumi.Output<outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse>;
+    /**
      * ProxyConfig resource name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
+    public readonly partnerTenantId!: pulumi.Output<string>;
     /**
      * The URI of the proxy server.
      */
@@ -69,7 +68,6 @@ export class ProxyConfig extends pulumi.CustomResource {
      * Routing info to direct traffic to the proxy server.
      */
     public readonly routingInfo!: pulumi.Output<outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse>;
-    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Transport layer information to verify for the proxy server.
      */
@@ -93,44 +91,44 @@ export class ProxyConfig extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
+            if ((!args || args.partnerTenantId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'partnerTenantId'");
+            }
             if ((!args || args.proxyUri === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'proxyUri'");
             }
             if ((!args || args.routingInfo === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routingInfo'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tenantId'");
-            }
             if ((!args || args.transportInfo === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transportInfo'");
             }
-            resourceInputs["authenticationInfo"] = args ? args.authenticationInfo : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["encryptionInfo"] = args ? args.encryptionInfo : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["partnerTenantId"] = args ? args.partnerTenantId : undefined;
             resourceInputs["proxyUri"] = args ? args.proxyUri : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["routingInfo"] = args ? args.routingInfo : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["transportInfo"] = args ? args.transportInfo : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            resourceInputs["authenticationInfo"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["encryptionInfo"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
+            resourceInputs["partnerTenantId"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["routingInfo"] = undefined /*out*/;
-            resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["transportInfo"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["organizationId", "tenantId"] };
+        const replaceOnChanges = { replaceOnChanges: ["organizationId", "partnerTenantId"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ProxyConfig.__pulumiType, name, resourceInputs, opts);
     }
@@ -141,14 +139,15 @@ export class ProxyConfig extends pulumi.CustomResource {
  */
 export interface ProxyConfigArgs {
     /**
-     * Optional. Information to facilitate Authentication against the proxy server.
-     */
-    authenticationInfo?: pulumi.Input<inputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs>;
-    /**
      * Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. Information to encrypt JWT for the proxy server.
+     */
+    encryptionInfo?: pulumi.Input<inputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs>;
     organizationId: pulumi.Input<string>;
+    partnerTenantId: pulumi.Input<string>;
     /**
      * The URI of the proxy server.
      */
@@ -161,7 +160,6 @@ export interface ProxyConfigArgs {
      * Routing info to direct traffic to the proxy server.
      */
     routingInfo: pulumi.Input<inputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs>;
-    tenantId: pulumi.Input<string>;
     /**
      * Transport layer information to verify for the proxy server.
      */

@@ -8,7 +8,7 @@ export const BuildOptionsDefaultLogsBucketBehavior = {
      */
     DefaultLogsBucketBehaviorUnspecified: "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED",
     /**
-     * Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+     * Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to Cloud Storage buckets in the build project.
      */
     RegionalUserOwnedBucket: "REGIONAL_USER_OWNED_BUCKET",
 } as const;
@@ -24,17 +24,17 @@ export const BuildOptionsLogStreamingOption = {
      */
     StreamDefault: "STREAM_DEFAULT",
     /**
-     * Build logs should be streamed to Google Cloud Storage.
+     * Build logs should be streamed to Cloud Storage.
      */
     StreamOn: "STREAM_ON",
     /**
-     * Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed.
+     * Build logs should not be streamed to Cloud Storage; they will be written when the build is completed.
      */
     StreamOff: "STREAM_OFF",
 } as const;
 
 /**
- * Option to define build log streaming behavior to Google Cloud Storage.
+ * Option to define build log streaming behavior to Cloud Storage.
  */
 export type BuildOptionsLogStreamingOption = (typeof BuildOptionsLogStreamingOption)[keyof typeof BuildOptionsLogStreamingOption];
 
@@ -91,6 +91,10 @@ export const BuildOptionsMachineType = {
      * Highcpu e2 machine with 32 CPUs.
      */
     E2Highcpu32: "E2_HIGHCPU_32",
+    /**
+     * E2 machine with 1 CPU.
+     */
+    E2Medium: "E2_MEDIUM",
 } as const;
 
 /**
@@ -274,6 +278,26 @@ export const PullRequestFilterCommentControl = {
  * Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
  */
 export type PullRequestFilterCommentControl = (typeof PullRequestFilterCommentControl)[keyof typeof PullRequestFilterCommentControl];
+
+export const StorageSourceSourceFetcher = {
+    /**
+     * Unspecified defaults to GSUTIL.
+     */
+    SourceFetcherUnspecified: "SOURCE_FETCHER_UNSPECIFIED",
+    /**
+     * Use the "gsutil" tool to download the source file.
+     */
+    Gsutil: "GSUTIL",
+    /**
+     * Use the Cloud Storage Fetcher tool to download the source file.
+     */
+    GcsFetcher: "GCS_FETCHER",
+} as const;
+
+/**
+ * Optional. Option to specify the tool to fetch the source file for the build.
+ */
+export type StorageSourceSourceFetcher = (typeof StorageSourceSourceFetcher)[keyof typeof StorageSourceSourceFetcher];
 
 export const TriggerEventType = {
     /**

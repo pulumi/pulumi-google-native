@@ -59,7 +59,7 @@ export class Product extends pulumi.CustomResource {
     public readonly availableTime!: pulumi.Output<string>;
     public readonly branchId!: pulumi.Output<string>;
     /**
-     * The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+     * The brands of the product. A maximum of 30 brands are allowed unless overridden through the Google Cloud console. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
      */
     public readonly brands!: pulumi.Output<string[]>;
     public readonly catalogId!: pulumi.Output<string>;
@@ -315,7 +315,7 @@ export interface ProductArgs {
     availableTime?: pulumi.Input<string>;
     branchId: pulumi.Input<string>;
     /**
-     * The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+     * The brands of the product. A maximum of 30 brands are allowed unless overridden through the Google Cloud console. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
      */
     brands?: pulumi.Input<pulumi.Input<string>[]>;
     catalogId: pulumi.Input<string>;

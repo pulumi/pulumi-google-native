@@ -36,6 +36,10 @@ export interface GetJobResult {
      */
     readonly etag: string;
     /**
+     * If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
+     */
+    readonly jobCreationReason: any;
+    /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
     readonly jobReference: outputs.bigquery.v2.JobReferenceResponse;

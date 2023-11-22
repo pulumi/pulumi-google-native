@@ -26,6 +26,43 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const BinaryAuthorizationConfigEvaluationMode = {
+    /**
+     * Default value
+     */
+    EvaluationModeUnspecified: "EVALUATION_MODE_UNSPECIFIED",
+    /**
+     * Disable BinaryAuthorization
+     */
+    Disabled: "DISABLED",
+    /**
+     * Use Binary Authorization with the policies specified in policy_bindings.
+     */
+    PolicyBindings: "POLICY_BINDINGS",
+} as const;
+
+/**
+ * Optional. Mode of operation for binauthz policy evaluation.
+ */
+export type BinaryAuthorizationConfigEvaluationMode = (typeof BinaryAuthorizationConfigEvaluationMode)[keyof typeof BinaryAuthorizationConfigEvaluationMode];
+
+export const ConfigManagementPolicyControllerMonitoringBackendsItem = {
+    /**
+     * Backend cannot be determined
+     */
+    MonitoringBackendUnspecified: "MONITORING_BACKEND_UNSPECIFIED",
+    /**
+     * Prometheus backend for monitoring
+     */
+    Prometheus: "PROMETHEUS",
+    /**
+     * Stackdriver/Cloud Monitoring backend for monitoring
+     */
+    CloudMonitoring: "CLOUD_MONITORING",
+} as const;
+
+export type ConfigManagementPolicyControllerMonitoringBackendsItem = (typeof ConfigManagementPolicyControllerMonitoringBackendsItem)[keyof typeof ConfigManagementPolicyControllerMonitoringBackendsItem];
+
 export const FeatureSpecProvisionGoogleCa = {
     /**
      * Disable default Google managed CA.
@@ -39,6 +76,14 @@ export const FeatureSpecProvisionGoogleCa = {
      * Use default Google managed CA.
      */
     Enabled: "ENABLED",
+    /**
+     * Workload certificate feature is enabled, and the entire certificate provisioning process is managed by Google with managed CAS which is more secure than the default CA.
+     */
+    EnabledWithManagedCa: "ENABLED_WITH_MANAGED_CA",
+    /**
+     * Workload certificate feature is enabled, and the entire certificate provisioning process is using the default CA which is free.
+     */
+    EnabledWithDefaultCa: "ENABLED_WITH_DEFAULT_CA",
 } as const;
 
 /**
@@ -106,6 +151,26 @@ export const MultiClusterIngressFeatureSpecBilling = {
  */
 export type MultiClusterIngressFeatureSpecBilling = (typeof MultiClusterIngressFeatureSpecBilling)[keyof typeof MultiClusterIngressFeatureSpecBilling];
 
+export const NamespaceActuationFeatureSpecActuationMode = {
+    /**
+     * ACTUATION_MODE_UNSPECIFIED is similar to CREATE_AND_DELETE_IF_CREATED in the default controller behavior.
+     */
+    ActuationModeUnspecified: "ACTUATION_MODE_UNSPECIFIED",
+    /**
+     * ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED has the controller create cluster namespaces for each fleet namespace and it deletes only the ones it created, which are identified by a label.
+     */
+    ActuationModeCreateAndDeleteIfCreated: "ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED",
+    /**
+     * ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS has the controller only apply labels to cluster namespaces to signal fleet namespace enablement. It doesn't create or delete cluster namespaces.
+     */
+    ActuationModeAddAndRemoveFleetLabels: "ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS",
+} as const;
+
+/**
+ * actuation_mode controls the behavior of the controller
+ */
+export type NamespaceActuationFeatureSpecActuationMode = (typeof NamespaceActuationFeatureSpecActuationMode)[keyof typeof NamespaceActuationFeatureSpecActuationMode];
+
 export const OnPremClusterClusterType = {
     /**
      * The ClusterType is not set.
@@ -134,6 +199,71 @@ export const OnPremClusterClusterType = {
  */
 export type OnPremClusterClusterType = (typeof OnPremClusterClusterType)[keyof typeof OnPremClusterClusterType];
 
+export const PolicyControllerHubConfigInstallSpec = {
+    /**
+     * Spec is unknown.
+     */
+    InstallSpecUnspecified: "INSTALL_SPEC_UNSPECIFIED",
+    /**
+     * Request to uninstall Policy Controller.
+     */
+    InstallSpecNotInstalled: "INSTALL_SPEC_NOT_INSTALLED",
+    /**
+     * Request to install and enable Policy Controller.
+     */
+    InstallSpecEnabled: "INSTALL_SPEC_ENABLED",
+    /**
+     * Request to suspend Policy Controller i.e. its webhooks. If Policy Controller is not installed, it will be installed but suspended.
+     */
+    InstallSpecSuspended: "INSTALL_SPEC_SUSPENDED",
+    /**
+     * Request to stop all reconciliation actions by PoCo Hub controller. This is a breakglass mechanism to stop PoCo Hub from affecting cluster resources.
+     */
+    InstallSpecDetached: "INSTALL_SPEC_DETACHED",
+} as const;
+
+/**
+ * The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
+ */
+export type PolicyControllerHubConfigInstallSpec = (typeof PolicyControllerHubConfigInstallSpec)[keyof typeof PolicyControllerHubConfigInstallSpec];
+
+export const PolicyControllerMonitoringConfigBackendsItem = {
+    /**
+     * Backend cannot be determined
+     */
+    MonitoringBackendUnspecified: "MONITORING_BACKEND_UNSPECIFIED",
+    /**
+     * Prometheus backend for monitoring
+     */
+    Prometheus: "PROMETHEUS",
+    /**
+     * Stackdriver/Cloud Monitoring backend for monitoring
+     */
+    CloudMonitoring: "CLOUD_MONITORING",
+} as const;
+
+export type PolicyControllerMonitoringConfigBackendsItem = (typeof PolicyControllerMonitoringConfigBackendsItem)[keyof typeof PolicyControllerMonitoringConfigBackendsItem];
+
+export const PolicyControllerTemplateLibraryConfigInstallation = {
+    /**
+     * No installation strategy has been specified.
+     */
+    InstallationUnspecified: "INSTALLATION_UNSPECIFIED",
+    /**
+     * Do not install the template library.
+     */
+    NotInstalled: "NOT_INSTALLED",
+    /**
+     * Install the entire template library.
+     */
+    All: "ALL",
+} as const;
+
+/**
+ * Configures the manner in which the template library is installed on the cluster.
+ */
+export type PolicyControllerTemplateLibraryConfigInstallation = (typeof PolicyControllerTemplateLibraryConfigInstallation)[keyof typeof PolicyControllerTemplateLibraryConfigInstallation];
+
 export const RolePredefinedRole = {
     /**
      * UNKNOWN
@@ -151,9 +281,121 @@ export const RolePredefinedRole = {
      * VIEW can only read resources
      */
     View: "VIEW",
+    /**
+     * ANTHOS_SUPPORT gives Google Support read-only access to a number of cluster resources.
+     */
+    AnthosSupport: "ANTHOS_SUPPORT",
 } as const;
 
 /**
  * predefined_role is the Kubernetes default role to use
  */
 export type RolePredefinedRole = (typeof RolePredefinedRole)[keyof typeof RolePredefinedRole];
+
+export const SecurityPostureConfigMode = {
+    /**
+     * Default value not specified.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * Disables Security Posture features on the cluster.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Applies Security Posture features on the cluster.
+     */
+    Basic: "BASIC",
+} as const;
+
+/**
+ * Sets which mode to use for Security Posture features.
+ */
+export type SecurityPostureConfigMode = (typeof SecurityPostureConfigMode)[keyof typeof SecurityPostureConfigMode];
+
+export const SecurityPostureConfigVulnerabilityMode = {
+    /**
+     * Default value not specified.
+     */
+    VulnerabilityModeUnspecified: "VULNERABILITY_MODE_UNSPECIFIED",
+    /**
+     * Disables vulnerability scanning on the cluster.
+     */
+    VulnerabilityDisabled: "VULNERABILITY_DISABLED",
+    /**
+     * Applies basic vulnerability scanning on the cluster.
+     */
+    VulnerabilityBasic: "VULNERABILITY_BASIC",
+    /**
+     * Applies the Security Posture's vulnerability on cluster Enterprise level features.
+     */
+    VulnerabilityEnterprise: "VULNERABILITY_ENTERPRISE",
+} as const;
+
+/**
+ * Sets which mode to use for vulnerability scanning.
+ */
+export type SecurityPostureConfigVulnerabilityMode = (typeof SecurityPostureConfigVulnerabilityMode)[keyof typeof SecurityPostureConfigVulnerabilityMode];
+
+export const ServiceMeshMembershipSpecControlPlane = {
+    /**
+     * Unspecified
+     */
+    ControlPlaneManagementUnspecified: "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED",
+    /**
+     * Google should provision a control plane revision and make it available in the cluster. Google will enroll this revision in a release channel and keep it up to date. The control plane revision may be a managed service, or a managed install.
+     */
+    Automatic: "AUTOMATIC",
+    /**
+     * User will manually configure the control plane (e.g. via CLI, or via the ControlPlaneRevision KRM API)
+     */
+    Manual: "MANUAL",
+} as const;
+
+/**
+ * Deprecated: use `management` instead Enables automatic control plane management.
+ */
+export type ServiceMeshMembershipSpecControlPlane = (typeof ServiceMeshMembershipSpecControlPlane)[keyof typeof ServiceMeshMembershipSpecControlPlane];
+
+export const ServiceMeshMembershipSpecDefaultChannel = {
+    /**
+     * Unspecified
+     */
+    ChannelUnspecified: "CHANNEL_UNSPECIFIED",
+    /**
+     * RAPID channel is offered on an early access basis for customers who want to test new releases.
+     */
+    Rapid: "RAPID",
+    /**
+     * REGULAR channel is intended for production users who want to take advantage of new features.
+     */
+    Regular: "REGULAR",
+    /**
+     * STABLE channel includes versions that are known to be stable and reliable in production.
+     */
+    Stable: "STABLE",
+} as const;
+
+/**
+ * Determines which release channel to use for default injection and service mesh APIs.
+ */
+export type ServiceMeshMembershipSpecDefaultChannel = (typeof ServiceMeshMembershipSpecDefaultChannel)[keyof typeof ServiceMeshMembershipSpecDefaultChannel];
+
+export const ServiceMeshMembershipSpecManagement = {
+    /**
+     * Unspecified
+     */
+    ManagementUnspecified: "MANAGEMENT_UNSPECIFIED",
+    /**
+     * Google should manage my Service Mesh for the cluster.
+     */
+    ManagementAutomatic: "MANAGEMENT_AUTOMATIC",
+    /**
+     * User will manually configure their service mesh components.
+     */
+    ManagementManual: "MANAGEMENT_MANUAL",
+} as const;
+
+/**
+ * Enables automatic Service Mesh management.
+ */
+export type ServiceMeshMembershipSpecManagement = (typeof ServiceMeshMembershipSpecManagement)[keyof typeof ServiceMeshMembershipSpecManagement];

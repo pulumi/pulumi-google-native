@@ -42,7 +42,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly adminEnabled!: pulumi.Output<boolean>;
     /**
-     * [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+     * [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
      */
     public /*out*/ readonly availableFeatures!: pulumi.Output<string[]>;
     /**
@@ -102,11 +102,11 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
      */
     public readonly macsec!: pulumi.Output<outputs.compute.alpha.InterconnectMacsecResponse>;
     /**
-     * Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+     * Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
      */
     public readonly macsecEnabled!: pulumi.Output<boolean>;
     /**
@@ -139,7 +139,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
-     * Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+     * Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
      */
     public readonly requestedFeatures!: pulumi.Output<string[]>;
     /**
@@ -280,11 +280,11 @@ export interface InterconnectArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
      */
     macsec?: pulumi.Input<inputs.compute.alpha.InterconnectMacsecArgs>;
     /**
-     * Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+     * Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
      */
     macsecEnabled?: pulumi.Input<boolean>;
     /**
@@ -305,7 +305,7 @@ export interface InterconnectArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+     * Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
      */
     requestedFeatures?: pulumi.Input<pulumi.Input<enums.compute.alpha.InterconnectRequestedFeaturesItem>[]>;
     /**

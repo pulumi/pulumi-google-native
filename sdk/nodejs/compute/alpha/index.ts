@@ -480,6 +480,16 @@ export const getRegionSecurityPolicy: typeof import("./getRegionSecurityPolicy")
 export const getRegionSecurityPolicyOutput: typeof import("./getRegionSecurityPolicy").getRegionSecurityPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionSecurityPolicy","getRegionSecurityPolicyOutput"], () => require("./getRegionSecurityPolicy"));
 
+export { GetRegionSnapshotArgs, GetRegionSnapshotResult, GetRegionSnapshotOutputArgs } from "./getRegionSnapshot";
+export const getRegionSnapshot: typeof import("./getRegionSnapshot").getRegionSnapshot = null as any;
+export const getRegionSnapshotOutput: typeof import("./getRegionSnapshot").getRegionSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionSnapshot","getRegionSnapshotOutput"], () => require("./getRegionSnapshot"));
+
+export { GetRegionSnapshotIamPolicyArgs, GetRegionSnapshotIamPolicyResult, GetRegionSnapshotIamPolicyOutputArgs } from "./getRegionSnapshotIamPolicy";
+export const getRegionSnapshotIamPolicy: typeof import("./getRegionSnapshotIamPolicy").getRegionSnapshotIamPolicy = null as any;
+export const getRegionSnapshotIamPolicyOutput: typeof import("./getRegionSnapshotIamPolicy").getRegionSnapshotIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionSnapshotIamPolicy","getRegionSnapshotIamPolicyOutput"], () => require("./getRegionSnapshotIamPolicy"));
+
 export { GetRegionSslCertificateArgs, GetRegionSslCertificateResult, GetRegionSslCertificateOutputArgs } from "./getRegionSslCertificate";
 export const getRegionSslCertificate: typeof import("./getRegionSslCertificate").getRegionSslCertificate = null as any;
 export const getRegionSslCertificateOutput: typeof import("./getRegionSslCertificate").getRegionSslCertificateOutput = null as any;
@@ -1120,6 +1130,26 @@ export type RegionSecurityPolicy = import("./regionSecurityPolicy").RegionSecuri
 export const RegionSecurityPolicy: typeof import("./regionSecurityPolicy").RegionSecurityPolicy = null as any;
 utilities.lazyLoad(exports, ["RegionSecurityPolicy"], () => require("./regionSecurityPolicy"));
 
+export { RegionSnapshotArgs } from "./regionSnapshot";
+export type RegionSnapshot = import("./regionSnapshot").RegionSnapshot;
+export const RegionSnapshot: typeof import("./regionSnapshot").RegionSnapshot = null as any;
+utilities.lazyLoad(exports, ["RegionSnapshot"], () => require("./regionSnapshot"));
+
+export { RegionSnapshotIamBindingArgs } from "./regionSnapshotIamBinding";
+export type RegionSnapshotIamBinding = import("./regionSnapshotIamBinding").RegionSnapshotIamBinding;
+export const RegionSnapshotIamBinding: typeof import("./regionSnapshotIamBinding").RegionSnapshotIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegionSnapshotIamBinding"], () => require("./regionSnapshotIamBinding"));
+
+export { RegionSnapshotIamMemberArgs } from "./regionSnapshotIamMember";
+export type RegionSnapshotIamMember = import("./regionSnapshotIamMember").RegionSnapshotIamMember;
+export const RegionSnapshotIamMember: typeof import("./regionSnapshotIamMember").RegionSnapshotIamMember = null as any;
+utilities.lazyLoad(exports, ["RegionSnapshotIamMember"], () => require("./regionSnapshotIamMember"));
+
+export { RegionSnapshotIamPolicyArgs } from "./regionSnapshotIamPolicy";
+export type RegionSnapshotIamPolicy = import("./regionSnapshotIamPolicy").RegionSnapshotIamPolicy;
+export const RegionSnapshotIamPolicy: typeof import("./regionSnapshotIamPolicy").RegionSnapshotIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionSnapshotIamPolicy"], () => require("./regionSnapshotIamPolicy"));
+
 export { RegionSslCertificateArgs } from "./regionSslCertificate";
 export type RegionSslCertificate = import("./regionSslCertificate").RegionSslCertificate;
 export const RegionSslCertificate: typeof import("./regionSslCertificate").RegionSslCertificate = null as any;
@@ -1593,6 +1623,14 @@ const _module = {
                 return new RegionNotificationEndpoint(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionSecurityPolicy":
                 return new RegionSecurityPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionSnapshot":
+                return new RegionSnapshot(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionSnapshotIamBinding":
+                return new RegionSnapshotIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionSnapshotIamMember":
+                return new RegionSnapshotIamMember(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionSnapshotIamPolicy":
+                return new RegionSnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionSslPolicy":

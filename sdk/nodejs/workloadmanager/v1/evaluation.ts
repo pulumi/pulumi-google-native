@@ -44,6 +44,10 @@ export class Evaluation extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The Cloud Storage bucket name for custom rules.
+     */
+    public readonly customRulesBucket!: pulumi.Output<string>;
+    /**
      * Description of the Evaluation
      */
     public readonly description!: pulumi.Output<string>;
@@ -82,7 +86,7 @@ export class Evaluation extends pulumi.CustomResource {
      */
     public /*out*/ readonly ruleVersions!: pulumi.Output<string[]>;
     /**
-     * crontab format schedule for scheduled evaluation, example: 0 *&#47;3 * * *
+     * crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 *&#47;1 * * *", "0 *&#47;6 * * *", "0 *&#47;12 * * *", "0 0 *&#47;1 * *", "0 0 *&#47;7 * *",
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
@@ -104,6 +108,7 @@ export class Evaluation extends pulumi.CustomResource {
             if ((!args || args.evaluationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'evaluationId'");
             }
+            resourceInputs["customRulesBucket"] = args ? args.customRulesBucket : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["evaluationId"] = args ? args.evaluationId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -120,6 +125,7 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["customRulesBucket"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["evaluationId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -145,6 +151,10 @@ export class Evaluation extends pulumi.CustomResource {
  * The set of arguments for constructing a Evaluation resource.
  */
 export interface EvaluationArgs {
+    /**
+     * The Cloud Storage bucket name for custom rules.
+     */
+    customRulesBucket?: pulumi.Input<string>;
     /**
      * Description of the Evaluation
      */
@@ -176,7 +186,7 @@ export interface EvaluationArgs {
      */
     ruleNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * crontab format schedule for scheduled evaluation, example: 0 *&#47;3 * * *
+     * crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 *&#47;1 * * *", "0 *&#47;6 * * *", "0 *&#47;12 * * *", "0 0 *&#47;1 * *", "0 0 *&#47;7 * *",
      */
     schedule?: pulumi.Input<string>;
 }

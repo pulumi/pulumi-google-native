@@ -34,7 +34,7 @@ export interface GetWorkflowResult {
      */
     readonly callLogLevel: string;
     /**
-     * The timestamp for when the workflow was created.
+     * The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
      */
     readonly createTime: string;
     /**
@@ -42,15 +42,15 @@ export interface GetWorkflowResult {
      */
     readonly cryptoKeyName: string;
     /**
-     * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+     * Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
      */
     readonly description: string;
     /**
-     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
      */
     readonly labels: {[key: string]: string};
     /**
-     * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+     * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
      */
     readonly name: string;
     /**
@@ -58,7 +58,7 @@ export interface GetWorkflowResult {
      */
     readonly revisionCreateTime: string;
     /**
-     * The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+     * The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
      */
     readonly revisionId: string;
     /**
@@ -78,9 +78,13 @@ export interface GetWorkflowResult {
      */
     readonly stateError: outputs.workflows.v1.StateErrorResponse;
     /**
-     * The timestamp for when the workflow was last updated.
+     * The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
      */
     readonly updateTime: string;
+    /**
+     * Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     */
+    readonly userEnvVars: {[key: string]: string};
 }
 /**
  * Gets details of a single workflow.

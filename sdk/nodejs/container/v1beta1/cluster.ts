@@ -108,6 +108,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+     */
+    public readonly enableK8sBetaApis!: pulumi.Output<outputs.container.v1beta1.K8sBetaAPIConfigResponse>;
+    /**
      * Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
      */
     public readonly enableKubernetesAlpha!: pulumi.Output<boolean>;
@@ -121,6 +125,10 @@ export class Cluster extends pulumi.CustomResource {
      * [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    /**
+     * GKE Enterprise Configuration.
+     */
+    public readonly enterpriseConfig!: pulumi.Output<outputs.container.v1beta1.EnterpriseConfigResponse>;
     /**
      * This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -255,6 +263,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.container.v1beta1.NotificationConfigResponse>;
     /**
+     * The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+     */
+    public readonly parentProductConfig!: pulumi.Output<outputs.container.v1beta1.ParentProductConfigResponse>;
+    /**
      * Configuration for the PodSecurityPolicy feature.
      */
     public readonly podSecurityPolicyConfig!: pulumi.Output<outputs.container.v1beta1.PodSecurityPolicyConfigResponse>;
@@ -270,7 +282,9 @@ export class Cluster extends pulumi.CustomResource {
     public readonly privateClusterConfig!: pulumi.Output<outputs.container.v1beta1.PrivateClusterConfigResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Enable/Disable Protect API features for the cluster.
+     * Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
+     *
+     * @deprecated Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
      */
     public readonly protectConfig!: pulumi.Output<outputs.container.v1beta1.ProtectConfigResponse>;
     /**
@@ -285,6 +299,10 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
      */
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.v1beta1.ResourceUsageExportConfigResponse>;
+    /**
+     * Enable/Disable Security Posture API features for the cluster.
+     */
+    public readonly securityPostureConfig!: pulumi.Output<outputs.container.v1beta1.SecurityPostureConfigResponse>;
     /**
      * [Output only] Server-defined URL for the resource.
      */
@@ -366,8 +384,10 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             resourceInputs["defaultMaxPodsConstraint"] = args ? args.defaultMaxPodsConstraint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableK8sBetaApis"] = args ? args.enableK8sBetaApis : undefined;
             resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
+            resourceInputs["enterpriseConfig"] = args ? args.enterpriseConfig : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["fleet"] = args ? args.fleet : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
@@ -398,6 +418,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodePools"] = args ? args.nodePools : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["parentProductConfig"] = args ? args.parentProductConfig : undefined;
             resourceInputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
             resourceInputs["privateCluster"] = args ? args.privateCluster : undefined;
             resourceInputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
@@ -406,6 +427,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
+            resourceInputs["securityPostureConfig"] = args ? args.securityPostureConfig : undefined;
             resourceInputs["shieldedNodes"] = args ? args.shieldedNodes : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
@@ -445,9 +467,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["databaseEncryption"] = undefined /*out*/;
             resourceInputs["defaultMaxPodsConstraint"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableK8sBetaApis"] = undefined /*out*/;
             resourceInputs["enableKubernetesAlpha"] = undefined /*out*/;
             resourceInputs["enableTpu"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
+            resourceInputs["enterpriseConfig"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["fleet"] = undefined /*out*/;
@@ -480,6 +504,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodePoolDefaults"] = undefined /*out*/;
             resourceInputs["nodePools"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["parentProductConfig"] = undefined /*out*/;
             resourceInputs["podSecurityPolicyConfig"] = undefined /*out*/;
             resourceInputs["privateCluster"] = undefined /*out*/;
             resourceInputs["privateClusterConfig"] = undefined /*out*/;
@@ -488,6 +513,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["releaseChannel"] = undefined /*out*/;
             resourceInputs["resourceLabels"] = undefined /*out*/;
             resourceInputs["resourceUsageExportConfig"] = undefined /*out*/;
+            resourceInputs["securityPostureConfig"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["servicesIpv4Cidr"] = undefined /*out*/;
             resourceInputs["shieldedNodes"] = undefined /*out*/;
@@ -582,6 +608,10 @@ export interface ClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+     */
+    enableK8sBetaApis?: pulumi.Input<inputs.container.v1beta1.K8sBetaAPIConfigArgs>;
+    /**
      * Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
      */
     enableKubernetesAlpha?: pulumi.Input<boolean>;
@@ -591,6 +621,10 @@ export interface ClusterArgs {
      * @deprecated Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
      */
     enableTpu?: pulumi.Input<boolean>;
+    /**
+     * GKE Enterprise Configuration.
+     */
+    enterpriseConfig?: pulumi.Input<inputs.container.v1beta1.EnterpriseConfigArgs>;
     /**
      * This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -717,6 +751,10 @@ export interface ClusterArgs {
      */
     parent?: pulumi.Input<string>;
     /**
+     * The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+     */
+    parentProductConfig?: pulumi.Input<inputs.container.v1beta1.ParentProductConfigArgs>;
+    /**
      * Configuration for the PodSecurityPolicy feature.
      */
     podSecurityPolicyConfig?: pulumi.Input<inputs.container.v1beta1.PodSecurityPolicyConfigArgs>;
@@ -737,7 +775,9 @@ export interface ClusterArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Enable/Disable Protect API features for the cluster.
+     * Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
+     *
+     * @deprecated Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
      */
     protectConfig?: pulumi.Input<inputs.container.v1beta1.ProtectConfigArgs>;
     /**
@@ -752,6 +792,10 @@ export interface ClusterArgs {
      * Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.v1beta1.ResourceUsageExportConfigArgs>;
+    /**
+     * Enable/Disable Security Posture API features for the cluster.
+     */
+    securityPostureConfig?: pulumi.Input<inputs.container.v1beta1.SecurityPostureConfigArgs>;
     /**
      * Shielded Nodes configuration.
      */

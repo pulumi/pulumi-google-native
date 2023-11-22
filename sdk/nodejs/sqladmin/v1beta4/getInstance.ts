@@ -62,6 +62,10 @@ export interface GetInstanceResult {
      */
     readonly diskEncryptionStatus: outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse;
     /**
+     * The dns name of the instance.
+     */
+    readonly dnsName: string;
+    /**
      * This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
      *
      * @deprecated This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
@@ -118,9 +122,19 @@ export interface GetInstanceResult {
      */
     readonly outOfDiskReport: outputs.sqladmin.v1beta4.SqlOutOfDiskReportResponse;
     /**
+     * DEPRECATED: please use write_endpoint instead.
+     *
+     * @deprecated Output only. DEPRECATED: please use write_endpoint instead.
+     */
+    readonly primaryDnsName: string;
+    /**
      * The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
      */
     readonly project: string;
+    /**
+     * The link to service attachment of PSC instance.
+     */
+    readonly pscServiceAttachmentLink: string;
     /**
      * The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
      */
@@ -166,6 +180,10 @@ export interface GetInstanceResult {
      */
     readonly settings: outputs.sqladmin.v1beta4.SettingsResponse;
     /**
+     * The SQL network architecture for the instance.
+     */
+    readonly sqlNetworkArchitecture: string;
+    /**
      * The current serving state of the Cloud SQL instance.
      */
     readonly state: string;
@@ -173,6 +191,10 @@ export interface GetInstanceResult {
      * If the instance state is SUSPENDED, the reason for the suspension.
      */
     readonly suspensionReason: string[];
+    /**
+     * The dns name of the primary instance in a replication group.
+     */
+    readonly writeEndpoint: string;
 }
 /**
  * Retrieves a resource containing information about a Cloud SQL instance.

@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AccessDeterminationLogConfigLogLevel = {
+    /**
+     * No log level specified. This value is unused.
+     */
+    LogLevelUnspecified: "LOG_LEVEL_UNSPECIFIED",
+    /**
+     * No additional consent-related logging is added to audit logs.
+     */
+    Disabled: "DISABLED",
+    /**
+     * The following information is included: - One of the following [`consentMode`](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent#audit_logs) fields: (`off`|`emptyScope`|`enforced`|`btg`|`bypass`). - The accessor's request headers - The `log_level` of the [AccessDeterminationLogConfig](google.cloud.healthcare.v1beta1.fhir.FhirStore.ConsentConfig.AccessDeterminationLogConfig) - The final consent evaluation (`PERMIT`, `DENY`, or `NO_CONSENT`) - A human-readable summary of the evaluation
+     */
+    Minimum: "MINIMUM",
+    /**
+     * Includes `MINIMUM` and, for each resource owner, returns: - The resource owner's name - Most specific part of the `X-Consent-Scope` resulting in consensual determination - Timestamp of the applied enforcement leading to the decision - Enforcement version at the time the applicable consents were applied - The Consent resource name - The timestamp of the Consent resource used for enforcement - Policy type (PATIENT or ADMIN) Note that this mode adds some overhead to CRUD operations.
+     */
+    Verbose: "VERBOSE",
+} as const;
+
+/**
+ * Optional. Controls the amount of detail to include as part of the audit logs.
+ */
+export type AccessDeterminationLogConfigLogLevel = (typeof AccessDeterminationLogConfigLogLevel)[keyof typeof AccessDeterminationLogConfigLogLevel];
+
 export const AttributeDefinitionCategory = {
     /**
      * No category specified. This option is invalid.
@@ -45,6 +69,42 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const ConsentConfigVersion = {
+    /**
+     * Users must specify an enforcement version or an error is returned.
+     */
+    ConsentEnforcementVersionUnspecified: "CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED",
+    /**
+     * Enforcement version 1. See the [FHIR Consent resources in the Cloud Healthcare API](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent) guide for more details.
+     */
+    V1: "V1",
+} as const;
+
+/**
+ * Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+ */
+export type ConsentConfigVersion = (typeof ConsentConfigVersion)[keyof typeof ConsentConfigVersion];
+
+export const ConsentHeaderHandlingProfile = {
+    /**
+     * If not specified, the default value `PERMIT_EMPTY_SCOPE` is used.
+     */
+    ScopeProfileUnspecified: "SCOPE_PROFILE_UNSPECIFIED",
+    /**
+     * When no consent scopes are provided (for example, if there's an empty or missing header), then consent check is disabled, similar to when `access_enforced` is `false`. You can use audit logs to differentiate these two cases by looking at the value of `protopayload.metadata.consentMode`. If consents scopes are present, they must be valid and within the allowed limits, otherwise the request will be rejected with a `4xx` code.
+     */
+    PermitEmptyScope: "PERMIT_EMPTY_SCOPE",
+    /**
+     * The consent header must be non-empty when performing read and search operations, otherwise the request is rejected with a `4xx` code. Additionally, invalid consent scopes or scopes exceeding the allowed limits are rejected.
+     */
+    RequiredOnRead: "REQUIRED_ON_READ",
+} as const;
+
+/**
+ * Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+ */
+export type ConsentHeaderHandlingProfile = (typeof ConsentHeaderHandlingProfile)[keyof typeof ConsentHeaderHandlingProfile];
 
 export const ConsentState = {
     /**
@@ -140,15 +200,15 @@ export const FhirFieldConfigProfileType = {
      */
     ProfileTypeUnspecified: "PROFILE_TYPE_UNSPECIFIED",
     /**
-     * `Keep` all fields.
+     * Keep all fields.
      */
     KeepAll: "KEEP_ALL",
     /**
-     * Transforms known HIPAA 18 fields and cleans known unstructured text fields.
+     * Transforms known [HIPAA 18](https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html#standard) fields and cleans known unstructured text fields.
      */
     Basic: "BASIC",
     /**
-     * Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+     * Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
      */
     CleanAll: "CLEAN_ALL",
 } as const;
@@ -416,7 +476,7 @@ export type SchemaPackageUnexpectedSegmentHandling = (typeof SchemaPackageUnexpe
 
 export const TextConfigProfileType = {
     /**
-     * Same as BASIC.
+     * No profile provided. Same as BASIC.
      */
     ProfileTypeUnspecified: "PROFILE_TYPE_UNSPECIFIED",
     /**
@@ -424,7 +484,7 @@ export const TextConfigProfileType = {
      */
     Empty: "EMPTY",
     /**
-     * Basic profile applies: DATE -> DateShift Default -> ReplaceWithInfoType
+     * Automatically converts "DATE" infoTypes using a DateShiftConfig, and all other infoTypes using a ReplaceWithInfoTypeConfig.
      */
     Basic: "BASIC",
 } as const;

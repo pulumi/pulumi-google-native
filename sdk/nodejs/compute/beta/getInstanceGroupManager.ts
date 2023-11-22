@@ -64,6 +64,10 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly fingerprint: string;
     /**
+     * Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+     */
+    readonly instanceFlexibilityPolicy: outputs.compute.beta.InstanceGroupManagerInstanceFlexibilityPolicyResponse;
+    /**
      * The URL of the Instance Group resource.
      */
     readonly instanceGroup: string;
@@ -104,6 +108,10 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly serviceAccount: string;
     /**
+     * Standby policy for stopped and suspended instances.
+     */
+    readonly standbyPolicy: outputs.compute.beta.InstanceGroupManagerStandbyPolicyResponse;
+    /**
      * Stateful configuration for this Instanced Group Manager
      */
     readonly statefulPolicy: outputs.compute.beta.StatefulPolicyResponse;
@@ -119,6 +127,14 @@ export interface GetInstanceGroupManagerResult {
      * The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
      */
     readonly targetSize: number;
+    /**
+     * The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+     */
+    readonly targetStoppedSize: number;
+    /**
+     * The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
+     */
+    readonly targetSuspendedSize: number;
     /**
      * The update policy for this managed instance group.
      */

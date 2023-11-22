@@ -41,6 +41,10 @@ export class Queue extends pulumi.CustomResource {
      * Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
      */
     public readonly appEngineRoutingOverride!: pulumi.Output<outputs.cloudtasks.v2.AppEngineRoutingResponse>;
+    /**
+     * Modifies HTTP target for HTTP tasks.
+     */
+    public readonly httpTarget!: pulumi.Output<outputs.cloudtasks.v2.HttpTargetResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
@@ -80,6 +84,7 @@ export class Queue extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
+            resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -90,6 +95,7 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["appEngineRoutingOverride"] = undefined /*out*/;
+            resourceInputs["httpTarget"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -114,6 +120,10 @@ export interface QueueArgs {
      * Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
      */
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.v2.AppEngineRoutingArgs>;
+    /**
+     * Modifies HTTP target for HTTP tasks.
+     */
+    httpTarget?: pulumi.Input<inputs.cloudtasks.v2.HttpTargetArgs>;
     location?: pulumi.Input<string>;
     /**
      * Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.

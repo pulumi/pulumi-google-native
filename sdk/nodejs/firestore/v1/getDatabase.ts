@@ -39,6 +39,10 @@ export interface GetDatabaseResult {
      */
     readonly deleteProtectionState: string;
     /**
+     * The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+     */
+    readonly earliestVersionTime: string;
+    /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     readonly etag: string;
@@ -47,13 +51,17 @@ export interface GetDatabaseResult {
      */
     readonly keyPrefix: string;
     /**
-     * The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+     * The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
      */
     readonly location: string;
     /**
      * The resource name of the Database. Format: `projects/{project}/databases/{database}`
      */
     readonly name: string;
+    /**
+     * Whether to enable the PITR feature on this database.
+     */
+    readonly pointInTimeRecoveryEnablement: string;
     /**
      * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
      */
@@ -66,6 +74,10 @@ export interface GetDatabaseResult {
      * The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
      */
     readonly updateTime: string;
+    /**
+     * The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+     */
+    readonly versionRetentionPeriod: string;
 }
 /**
  * Gets information about a database.

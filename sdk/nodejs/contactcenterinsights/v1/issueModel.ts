@@ -53,7 +53,15 @@ export class IssueModel extends pulumi.CustomResource {
      * Number of issues in this issue model.
      */
     public /*out*/ readonly issueCount!: pulumi.Output<string>;
+    /**
+     * Language of the model.
+     */
+    public readonly languageCode!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
+    /**
+     * Type of the model.
+     */
+    public readonly modelType!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
      */
@@ -85,7 +93,9 @@ export class IssueModel extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["inputDataConfig"] = args ? args.inputDataConfig : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["modelType"] = args ? args.modelType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -98,7 +108,9 @@ export class IssueModel extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["inputDataConfig"] = undefined /*out*/;
             resourceInputs["issueCount"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["modelType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -124,7 +136,15 @@ export interface IssueModelArgs {
      * Configs for the input data that used to create the issue model.
      */
     inputDataConfig?: pulumi.Input<inputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs>;
+    /**
+     * Language of the model.
+     */
+    languageCode?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
+    /**
+     * Type of the model.
+     */
+    modelType?: pulumi.Input<enums.contactcenterinsights.v1.IssueModelModelType>;
     /**
      * Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
      */

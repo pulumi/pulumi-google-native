@@ -35,27 +35,27 @@ export class Workstation extends pulumi.CustomResource {
     }
 
     /**
-     * Client-specified annotations.
+     * Optional. Client-specified annotations.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Time when this resource was created.
+     * Time when this workstation was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Time when this resource was soft-deleted.
+     * Time when this workstation was soft-deleted.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
-     * Human-readable name for this resource.
+     * Optional. Human-readable name for this workstation.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Environment variables passed to the workstation container's entrypoint.
+     * Optional. Environment variables passed to the workstation container's entrypoint.
      */
     public readonly env!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+     * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -63,29 +63,33 @@ export class Workstation extends pulumi.CustomResource {
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
     /**
-     * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Full name of this resource.
+     * Identifier. Full name of this workstation.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Indicates whether this resource is currently being updated to match its intended state.
+     * Indicates whether this workstation is currently being updated to match its intended state.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    /**
+     * Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
     /**
      * Current state of the workstation.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * A system-assigned unique identified for this resource.
+     * A system-assigned unique identifier for this workstation.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * Time when this resource was most recently updated.
+     * Time when this workstation was most recently updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     public readonly workstationClusterId!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -146,6 +151,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -165,28 +171,28 @@ export class Workstation extends pulumi.CustomResource {
  */
 export interface WorkstationArgs {
     /**
-     * Client-specified annotations.
+     * Optional. Client-specified annotations.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Human-readable name for this resource.
+     * Optional. Human-readable name for this workstation.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Environment variables passed to the workstation container's entrypoint.
+     * Optional. Environment variables passed to the workstation container's entrypoint.
      */
     env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+     * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
-     * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Full name of this resource.
+     * Identifier. Full name of this workstation.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

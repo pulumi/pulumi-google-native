@@ -37,6 +37,10 @@ export class Flow extends pulumi.CustomResource {
         return obj['__pulumiType'] === Flow.__pulumiType;
     }
 
+    /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    public readonly advancedSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>;
     public readonly agentId!: pulumi.Output<string>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -50,6 +54,10 @@ export class Flow extends pulumi.CustomResource {
      * A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      */
     public readonly eventHandlers!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EventHandlerResponse[]>;
+    /**
+     * Optional. Knowledge connector configuration.
+     */
+    public readonly knowledgeConnectorSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse>;
     /**
      * The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
      */
@@ -65,7 +73,7 @@ export class Flow extends pulumi.CustomResource {
     public readonly nluSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1NluSettingsResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+     * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
      */
     public readonly transitionRouteGroups!: pulumi.Output<string[]>;
     /**
@@ -90,10 +98,12 @@ export class Flow extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
+            resourceInputs["knowledgeConnectorSettings"] = args ? args.knowledgeConnectorSettings : undefined;
             resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -102,10 +112,12 @@ export class Flow extends pulumi.CustomResource {
             resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
+            resourceInputs["advancedSettings"] = undefined /*out*/;
             resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["eventHandlers"] = undefined /*out*/;
+            resourceInputs["knowledgeConnectorSettings"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -125,6 +137,10 @@ export class Flow extends pulumi.CustomResource {
  * The set of arguments for constructing a Flow resource.
  */
 export interface FlowArgs {
+    /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    advancedSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>;
     agentId: pulumi.Input<string>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -138,6 +154,10 @@ export interface FlowArgs {
      * A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      */
     eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EventHandlerArgs>[]>;
+    /**
+     * Optional. Knowledge connector configuration.
+     */
+    knowledgeConnectorSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsArgs>;
     /**
      * The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
      */
@@ -153,7 +173,7 @@ export interface FlowArgs {
     nluSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1NluSettingsArgs>;
     project?: pulumi.Input<string>;
     /**
-     * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+     * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
      */
     transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**

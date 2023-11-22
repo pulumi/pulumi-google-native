@@ -170,6 +170,30 @@ export const AxisScale = {
  */
 export type AxisScale = (typeof AxisScale)[keyof typeof AxisScale];
 
+export const BreakdownSortOrder = {
+    /**
+     * An unspecified sort order. This option is invalid when sorting is required.
+     */
+    SortOrderUnspecified: "SORT_ORDER_UNSPECIFIED",
+    /**
+     * No sorting is applied.
+     */
+    SortOrderNone: "SORT_ORDER_NONE",
+    /**
+     * The lowest-valued entries are selected first.
+     */
+    SortOrderAscending: "SORT_ORDER_ASCENDING",
+    /**
+     * The highest-valued entries are selected first.
+     */
+    SortOrderDescending: "SORT_ORDER_DESCENDING",
+} as const;
+
+/**
+ * Required. The sort order is applied to the values of the breakdown column.
+ */
+export type BreakdownSortOrder = (typeof BreakdownSortOrder)[keyof typeof BreakdownSortOrder];
+
 export const ChartOptionsMode = {
     /**
      * Mode is unspecified. The view will default to COLOR.
@@ -274,6 +298,30 @@ export const DataSetTargetAxis = {
  */
 export type DataSetTargetAxis = (typeof DataSetTargetAxis)[keyof typeof DataSetTargetAxis];
 
+export const DimensionSortOrder = {
+    /**
+     * An unspecified sort order. This option is invalid when sorting is required.
+     */
+    SortOrderUnspecified: "SORT_ORDER_UNSPECIFIED",
+    /**
+     * No sorting is applied.
+     */
+    SortOrderNone: "SORT_ORDER_NONE",
+    /**
+     * The lowest-valued entries are selected first.
+     */
+    SortOrderAscending: "SORT_ORDER_ASCENDING",
+    /**
+     * The highest-valued entries are selected first.
+     */
+    SortOrderDescending: "SORT_ORDER_DESCENDING",
+} as const;
+
+/**
+ * The sort order applied to the sort column.
+ */
+export type DimensionSortOrder = (typeof DimensionSortOrder)[keyof typeof DimensionSortOrder];
+
 export const PickTimeSeriesFilterDirection = {
     /**
      * Not allowed. You must specify a different Direction if you specify a PickTimeSeriesFilter.
@@ -325,6 +373,26 @@ export const PickTimeSeriesFilterRankingMethod = {
  * ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
  */
 export type PickTimeSeriesFilterRankingMethod = (typeof PickTimeSeriesFilterRankingMethod)[keyof typeof PickTimeSeriesFilterRankingMethod];
+
+export const PieChartChartType = {
+    /**
+     * The zero value. No type specified. Do not use.
+     */
+    PieChartTypeUnspecified: "PIE_CHART_TYPE_UNSPECIFIED",
+    /**
+     * A Pie type PieChart.
+     */
+    Pie: "PIE",
+    /**
+     * Similar to PIE, but the DONUT type PieChart has a hole in the middle.
+     */
+    Donut: "DONUT",
+} as const;
+
+/**
+ * Required. Indicates the visualization type for the PieChart.
+ */
+export type PieChartChartType = (typeof PieChartChartType)[keyof typeof PieChartChartType];
 
 export const SparkChartViewSparkChartType = {
     /**
@@ -381,6 +449,178 @@ export const TextFormat = {
  * How the text content is formatted.
  */
 export type TextFormat = (typeof TextFormat)[keyof typeof TextFormat];
+
+export const TextStyleFontSize = {
+    /**
+     * No font size specified, will default to FS_LARGE
+     */
+    FontSizeUnspecified: "FONT_SIZE_UNSPECIFIED",
+    /**
+     * Extra small font size
+     */
+    FsExtraSmall: "FS_EXTRA_SMALL",
+    /**
+     * Small font size
+     */
+    FsSmall: "FS_SMALL",
+    /**
+     * Medium font size
+     */
+    FsMedium: "FS_MEDIUM",
+    /**
+     * Large font size
+     */
+    FsLarge: "FS_LARGE",
+    /**
+     * Extra large font size
+     */
+    FsExtraLarge: "FS_EXTRA_LARGE",
+} as const;
+
+/**
+ * Font sizes for both the title and content. The title will still be larger relative to the content.
+ */
+export type TextStyleFontSize = (typeof TextStyleFontSize)[keyof typeof TextStyleFontSize];
+
+export const TextStyleHorizontalAlignment = {
+    /**
+     * No horizontal alignment specified, will default to H_LEFT
+     */
+    HorizontalAlignmentUnspecified: "HORIZONTAL_ALIGNMENT_UNSPECIFIED",
+    /**
+     * Left-align
+     */
+    HLeft: "H_LEFT",
+    /**
+     * Center-align
+     */
+    HCenter: "H_CENTER",
+    /**
+     * Right-align
+     */
+    HRight: "H_RIGHT",
+} as const;
+
+/**
+ * The horizontal alignment of both the title and content
+ */
+export type TextStyleHorizontalAlignment = (typeof TextStyleHorizontalAlignment)[keyof typeof TextStyleHorizontalAlignment];
+
+export const TextStylePadding = {
+    /**
+     * No padding size specified, will default to P_EXTRA_SMALL
+     */
+    PaddingSizeUnspecified: "PADDING_SIZE_UNSPECIFIED",
+    /**
+     * Extra small padding
+     */
+    PExtraSmall: "P_EXTRA_SMALL",
+    /**
+     * Small padding
+     */
+    PSmall: "P_SMALL",
+    /**
+     * Medium padding
+     */
+    PMedium: "P_MEDIUM",
+    /**
+     * Large padding
+     */
+    PLarge: "P_LARGE",
+    /**
+     * Extra large padding
+     */
+    PExtraLarge: "P_EXTRA_LARGE",
+} as const;
+
+/**
+ * The amount of padding around the widget
+ */
+export type TextStylePadding = (typeof TextStylePadding)[keyof typeof TextStylePadding];
+
+export const TextStylePointerLocation = {
+    /**
+     * No visual pointer
+     */
+    PointerLocationUnspecified: "POINTER_LOCATION_UNSPECIFIED",
+    /**
+     * Placed in the middle of the top of the widget
+     */
+    PlTop: "PL_TOP",
+    /**
+     * Placed in the middle of the right side of the widget
+     */
+    PlRight: "PL_RIGHT",
+    /**
+     * Placed in the middle of the bottom of the widget
+     */
+    PlBottom: "PL_BOTTOM",
+    /**
+     * Placed in the middle of the left side of the widget
+     */
+    PlLeft: "PL_LEFT",
+    /**
+     * Placed on the left side of the top of the widget
+     */
+    PlTopLeft: "PL_TOP_LEFT",
+    /**
+     * Placed on the right side of the top of the widget
+     */
+    PlTopRight: "PL_TOP_RIGHT",
+    /**
+     * Placed on the top of the right side of the widget
+     */
+    PlRightTop: "PL_RIGHT_TOP",
+    /**
+     * Placed on the bottom of the right side of the widget
+     */
+    PlRightBottom: "PL_RIGHT_BOTTOM",
+    /**
+     * Placed on the right side of the bottom of the widget
+     */
+    PlBottomRight: "PL_BOTTOM_RIGHT",
+    /**
+     * Placed on the left side of the bottom of the widget
+     */
+    PlBottomLeft: "PL_BOTTOM_LEFT",
+    /**
+     * Placed on the bottom of the left side of the widget
+     */
+    PlLeftBottom: "PL_LEFT_BOTTOM",
+    /**
+     * Placed on the top of the left side of the widget
+     */
+    PlLeftTop: "PL_LEFT_TOP",
+} as const;
+
+/**
+ * The pointer location for this widget (also sometimes called a "tail")
+ */
+export type TextStylePointerLocation = (typeof TextStylePointerLocation)[keyof typeof TextStylePointerLocation];
+
+export const TextStyleVerticalAlignment = {
+    /**
+     * No vertical alignment specified, will default to V_TOP
+     */
+    VerticalAlignmentUnspecified: "VERTICAL_ALIGNMENT_UNSPECIFIED",
+    /**
+     * Top-align
+     */
+    VTop: "V_TOP",
+    /**
+     * Center-align
+     */
+    VCenter: "V_CENTER",
+    /**
+     * Bottom-align
+     */
+    VBottom: "V_BOTTOM",
+} as const;
+
+/**
+ * The vertical alignment of both the title and content
+ */
+export type TextStyleVerticalAlignment = (typeof TextStyleVerticalAlignment)[keyof typeof TextStyleVerticalAlignment];
 
 export const ThresholdColor = {
     /**

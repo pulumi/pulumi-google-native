@@ -2,6 +2,46 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const ClusterAuthorizationMode = {
+    /**
+     * Not set.
+     */
+    AuthModeUnspecified: "AUTH_MODE_UNSPECIFIED",
+    /**
+     * IAM basic authorization mode
+     */
+    AuthModeIamAuth: "AUTH_MODE_IAM_AUTH",
+    /**
+     * Authorization disabled mode
+     */
+    AuthModeDisabled: "AUTH_MODE_DISABLED",
+} as const;
+
+/**
+ * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
+ */
+export type ClusterAuthorizationMode = (typeof ClusterAuthorizationMode)[keyof typeof ClusterAuthorizationMode];
+
+export const ClusterTransitEncryptionMode = {
+    /**
+     * In-transit encryption not set.
+     */
+    TransitEncryptionModeUnspecified: "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
+    /**
+     * In-transit encryption disabled.
+     */
+    TransitEncryptionModeDisabled: "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    /**
+     * Use server managed encryption for in-transit encryption.
+     */
+    TransitEncryptionModeServerAuthentication: "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+} as const;
+
+/**
+ * Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+ */
+export type ClusterTransitEncryptionMode = (typeof ClusterTransitEncryptionMode)[keyof typeof ClusterTransitEncryptionMode];
+
 export const InstanceConnectMode = {
     /**
      * Not set.

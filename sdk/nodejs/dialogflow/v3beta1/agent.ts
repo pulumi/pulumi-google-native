@@ -42,6 +42,10 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly advancedSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>;
     /**
+     * Optional. Answer feedback collection settings.
+     */
+    public readonly answerFeedbackSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */
     public readonly avatarUri!: pulumi.Output<string>;
@@ -65,6 +69,14 @@ export class Agent extends pulumi.CustomResource {
      * Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean>;
+    /**
+     * Gen App Builder-related agent-level settings.
+     */
+    public readonly genAppBuilderSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse>;
+    /**
+     * Git integration settings for this agent.
+     */
+    public readonly gitIntegrationSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
@@ -121,12 +133,15 @@ export class Agent extends pulumi.CustomResource {
                 throw new Error("Missing required property 'timeZone'");
             }
             resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
+            resourceInputs["answerFeedbackSettings"] = args ? args.answerFeedbackSettings : undefined;
             resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
             resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
             resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
+            resourceInputs["genAppBuilderSettings"] = args ? args.genAppBuilderSettings : undefined;
+            resourceInputs["gitIntegrationSettings"] = args ? args.gitIntegrationSettings : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -139,12 +154,15 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
             resourceInputs["advancedSettings"] = undefined /*out*/;
+            resourceInputs["answerFeedbackSettings"] = undefined /*out*/;
             resourceInputs["avatarUri"] = undefined /*out*/;
             resourceInputs["defaultLanguageCode"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableSpellCorrection"] = undefined /*out*/;
             resourceInputs["enableStackdriverLogging"] = undefined /*out*/;
+            resourceInputs["genAppBuilderSettings"] = undefined /*out*/;
+            resourceInputs["gitIntegrationSettings"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -172,6 +190,10 @@ export interface AgentArgs {
      */
     advancedSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>;
     /**
+     * Optional. Answer feedback collection settings.
+     */
+    answerFeedbackSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */
     avatarUri?: pulumi.Input<string>;
@@ -195,6 +217,14 @@ export interface AgentArgs {
      * Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
+    /**
+     * Gen App Builder-related agent-level settings.
+     */
+    genAppBuilderSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs>;
+    /**
+     * Git integration settings for this agent.
+     */
+    gitIntegrationSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs>;
     location?: pulumi.Input<string>;
     /**
      * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.

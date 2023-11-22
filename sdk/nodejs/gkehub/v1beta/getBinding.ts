@@ -38,15 +38,15 @@ export interface GetBindingResult {
      */
     readonly deleteTime: string;
     /**
-     * Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
+     * Optional. Labels for this MembershipBinding.
      */
-    readonly fleet: boolean;
+    readonly labels: {[key: string]: string};
     /**
      * The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
      */
     readonly name: string;
     /**
-     * A Workspace resource name in the format `projects/*&#47;locations/*&#47;scopes/*`.
+     * A Scope resource name in the format `projects/*&#47;locations/*&#47;scopes/*`.
      */
     readonly scope: string;
     /**

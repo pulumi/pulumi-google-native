@@ -28,6 +28,14 @@ export interface GetPublicDelegatedPrefixArgs {
 
 export interface GetPublicDelegatedPrefixResult {
     /**
+     * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+     */
+    readonly allocatablePrefixLength: number;
+    /**
+     * The version of BYOIP API.
+     */
+    readonly byoipApiVersion: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -40,7 +48,7 @@ export interface GetPublicDelegatedPrefixResult {
      */
     readonly fingerprint: string;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+     * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
     readonly ipCidrRange: string;
     /**
@@ -51,6 +59,10 @@ export interface GetPublicDelegatedPrefixResult {
      * Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
      */
     readonly kind: string;
+    /**
+     * The public delegated prefix mode for IPv6 only.
+     */
+    readonly mode: string;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

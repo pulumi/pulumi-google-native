@@ -84,6 +84,10 @@ export interface GetMigrationJobResult {
      */
     readonly name: string;
     /**
+     * Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+     */
+    readonly performanceConfig: outputs.datamigration.v1.PerformanceConfigResponse;
+    /**
      * The current migration job phase.
      */
     readonly phase: string;

@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AdvancedDatapathObservabilityConfigRelayMode = {
+    /**
+     * Default value. This shouldn't be used.
+     */
+    RelayModeUnspecified: "RELAY_MODE_UNSPECIFIED",
+    /**
+     * disabled
+     */
+    Disabled: "DISABLED",
+    /**
+     * exposed via internal load balancer
+     */
+    InternalVpcLb: "INTERNAL_VPC_LB",
+    /**
+     * exposed via external load balancer
+     */
+    ExternalLb: "EXTERNAL_LB",
+} as const;
+
+/**
+ * Method used to make Relay available
+ */
+export type AdvancedDatapathObservabilityConfigRelayMode = (typeof AdvancedDatapathObservabilityConfigRelayMode)[keyof typeof AdvancedDatapathObservabilityConfigRelayMode];
+
 export const BinaryAuthorizationEvaluationMode = {
     /**
      * Default value
@@ -61,6 +85,22 @@ export const ClusterAutoscalingAutoscalingProfile = {
  * Defines autoscaling behaviour.
  */
 export type ClusterAutoscalingAutoscalingProfile = (typeof ClusterAutoscalingAutoscalingProfile)[keyof typeof ClusterAutoscalingAutoscalingProfile];
+
+export const ClusterNetworkPerformanceConfigTotalEgressBandwidthTier = {
+    /**
+     * Default value
+     */
+    TierUnspecified: "TIER_UNSPECIFIED",
+    /**
+     * Higher bandwidth, actual values based on VM size.
+     */
+    Tier1: "TIER_1",
+} as const;
+
+/**
+ * Specifies the total network bandwidth tier for NodePools in the cluster.
+ */
+export type ClusterNetworkPerformanceConfigTotalEgressBandwidthTier = (typeof ClusterNetworkPerformanceConfigTotalEgressBandwidthTier)[keyof typeof ClusterNetworkPerformanceConfigTotalEgressBandwidthTier];
 
 export const ClusterUpdateDesiredDatapathProvider = {
     /**
@@ -139,6 +179,10 @@ export const DNSConfigClusterDns = {
      * Use CloudDNS for DNS resolution.
      */
     CloudDns: "CLOUD_DNS",
+    /**
+     * Use KubeDNS for DNS resolution.
+     */
+    KubeDns: "KUBE_DNS",
 } as const;
 
 /**
@@ -206,6 +250,30 @@ export const FilterEventTypeItem = {
 } as const;
 
 export type FilterEventTypeItem = (typeof FilterEventTypeItem)[keyof typeof FilterEventTypeItem];
+
+export const GPUDriverInstallationConfigGpuDriverVersion = {
+    /**
+     * Default value is to not install any GPU driver.
+     */
+    GpuDriverVersionUnspecified: "GPU_DRIVER_VERSION_UNSPECIFIED",
+    /**
+     * Disable GPU driver auto installation and needs manual installation
+     */
+    InstallationDisabled: "INSTALLATION_DISABLED",
+    /**
+     * "Default" GPU driver in COS and Ubuntu.
+     */
+    Default: "DEFAULT",
+    /**
+     * "Latest" GPU driver in COS.
+     */
+    Latest: "LATEST",
+} as const;
+
+/**
+ * Mode for how the GPU driver is installed.
+ */
+export type GPUDriverInstallationConfigGpuDriverVersion = (typeof GPUDriverInstallationConfigGpuDriverVersion)[keyof typeof GPUDriverInstallationConfigGpuDriverVersion];
 
 export const GPUSharingConfigGpuSharingStrategy = {
     /**
@@ -397,6 +465,30 @@ export const MonitoringComponentConfigEnableComponentsItem = {
      * kube-controller-manager
      */
     ControllerManager: "CONTROLLER_MANAGER",
+    /**
+     * Storage
+     */
+    Storage: "STORAGE",
+    /**
+     * Horizontal Pod Autoscaling
+     */
+    Hpa: "HPA",
+    /**
+     * Pod
+     */
+    Pod: "POD",
+    /**
+     * DaemonSet
+     */
+    Daemonset: "DAEMONSET",
+    /**
+     * Deployment
+     */
+    Deployment: "DEPLOYMENT",
+    /**
+     * Statefulset
+     */
+    Statefulset: "STATEFULSET",
 } as const;
 
 export type MonitoringComponentConfigEnableComponentsItem = (typeof MonitoringComponentConfigEnableComponentsItem)[keyof typeof MonitoringComponentConfigEnableComponentsItem];
@@ -476,6 +568,26 @@ export const NetworkPolicyProvider = {
  * The selected network policy provider.
  */
 export type NetworkPolicyProvider = (typeof NetworkPolicyProvider)[keyof typeof NetworkPolicyProvider];
+
+export const NodeAffinityOperator = {
+    /**
+     * Invalid or unspecified affinity operator.
+     */
+    OperatorUnspecified: "OPERATOR_UNSPECIFIED",
+    /**
+     * Affinity operator.
+     */
+    In: "IN",
+    /**
+     * Anti-affinity operator.
+     */
+    NotIn: "NOT_IN",
+} as const;
+
+/**
+ * Operator for NodeAffinity.
+ */
+export type NodeAffinityOperator = (typeof NodeAffinityOperator)[keyof typeof NodeAffinityOperator];
 
 export const NodePoolAutoscalingLocationPolicy = {
     /**
@@ -600,6 +712,46 @@ export const SandboxConfigType = {
  * Type of the sandbox to use for the node.
  */
 export type SandboxConfigType = (typeof SandboxConfigType)[keyof typeof SandboxConfigType];
+
+export const SecurityPostureConfigMode = {
+    /**
+     * Default value not specified.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * Disables Security Posture features on the cluster.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Applies Security Posture features on the cluster.
+     */
+    Basic: "BASIC",
+} as const;
+
+/**
+ * Sets which mode to use for Security Posture features.
+ */
+export type SecurityPostureConfigMode = (typeof SecurityPostureConfigMode)[keyof typeof SecurityPostureConfigMode];
+
+export const SecurityPostureConfigVulnerabilityMode = {
+    /**
+     * Default value not specified.
+     */
+    VulnerabilityModeUnspecified: "VULNERABILITY_MODE_UNSPECIFIED",
+    /**
+     * Disables vulnerability scanning on the cluster.
+     */
+    VulnerabilityDisabled: "VULNERABILITY_DISABLED",
+    /**
+     * Applies basic vulnerability scanning on the cluster.
+     */
+    VulnerabilityBasic: "VULNERABILITY_BASIC",
+} as const;
+
+/**
+ * Sets which mode to use for vulnerability scanning.
+ */
+export type SecurityPostureConfigVulnerabilityMode = (typeof SecurityPostureConfigVulnerabilityMode)[keyof typeof SecurityPostureConfigVulnerabilityMode];
 
 export const StatusConditionCanonicalCode = {
     /**

@@ -66,6 +66,10 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
      * Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      */
     public readonly peeredNetwork!: pulumi.Output<string>;
+    /**
+     * Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+     */
+    public readonly peeredNetworkIpRange!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Secret Manager secrets needed by the config.
@@ -111,6 +115,7 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["peeredNetwork"] = args ? args.peeredNetwork : undefined;
+            resourceInputs["peeredNetworkIpRange"] = args ? args.peeredNetworkIpRange : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["secrets"] = args ? args.secrets : undefined;
             resourceInputs["sslCa"] = args ? args.sslCa : undefined;
@@ -126,6 +131,7 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["peeredNetwork"] = undefined /*out*/;
+            resourceInputs["peeredNetworkIpRange"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["secrets"] = undefined /*out*/;
             resourceInputs["sslCa"] = undefined /*out*/;
@@ -168,6 +174,10 @@ export interface BitbucketServerConfigArgs {
      * Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      */
     peeredNetwork?: pulumi.Input<string>;
+    /**
+     * Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+     */
+    peeredNetworkIpRange?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Secret Manager secrets needed by the config.

@@ -50,11 +50,11 @@ export class ConversionWorkspace extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<outputs.datamigration.v1.DatabaseEngineInfoResponse>;
     /**
-     * The display name for the workspace.
+     * Optional. The display name for the workspace.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+     * Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
      */
     public readonly globalSettings!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -158,11 +158,11 @@ export interface ConversionWorkspaceArgs {
      */
     destination: pulumi.Input<inputs.datamigration.v1.DatabaseEngineInfoArgs>;
     /**
-     * The display name for the workspace.
+     * Optional. The display name for the workspace.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+     * Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
      */
     globalSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;

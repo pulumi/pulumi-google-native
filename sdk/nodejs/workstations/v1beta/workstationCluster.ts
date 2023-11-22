@@ -38,69 +38,73 @@ export class WorkstationCluster extends pulumi.CustomResource {
     }
 
     /**
-     * Client-specified annotations.
+     * Optional. Client-specified annotations.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Status conditions describing the current resource state.
+     * Status conditions describing the workstation cluster's current state.
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.workstations.v1beta.StatusResponse[]>;
     /**
-     * The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     * The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
      */
     public /*out*/ readonly controlPlaneIp!: pulumi.Output<string>;
     /**
-     * Time when this resource was created.
+     * Time when this workstation cluster was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+     * Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
      */
     public /*out*/ readonly degraded!: pulumi.Output<boolean>;
     /**
-     * Time when this resource was soft-deleted.
+     * Time when this workstation cluster was soft-deleted.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
-     * Human-readable name for this resource.
+     * Optional. Human-readable name for this workstation cluster.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+     * Optional. Configuration options for a custom domain.
+     */
+    public readonly domainConfig!: pulumi.Output<outputs.workstations.v1beta.DomainConfigResponse>;
+    /**
+     * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
-     * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Full name of this resource.
+     * Identifier. Full name of this workstation cluster.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+     * Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Configuration for private cluster.
+     * Optional. Configuration for private workstation cluster.
      */
     public readonly privateClusterConfig!: pulumi.Output<outputs.workstations.v1beta.PrivateClusterConfigResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Indicates whether this resource is currently being updated to match its intended state.
+     * Indicates whether this workstation cluster is currently being updated to match its intended state.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+     * Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * A system-assigned unique identified for this resource.
+     * A system-assigned unique identifier for this workstation cluster.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * Time when this resource was most recently updated.
+     * Time when this workstation cluster was most recently updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
@@ -124,6 +128,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["domainConfig"] = args ? args.domainConfig : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -149,6 +154,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["degraded"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["domainConfig"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -174,37 +180,41 @@ export class WorkstationCluster extends pulumi.CustomResource {
  */
 export interface WorkstationClusterArgs {
     /**
-     * Client-specified annotations.
+     * Optional. Client-specified annotations.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Human-readable name for this resource.
+     * Optional. Human-readable name for this workstation cluster.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+     * Optional. Configuration options for a custom domain.
+     */
+    domainConfig?: pulumi.Input<inputs.workstations.v1beta.DomainConfigArgs>;
+    /**
+     * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
-     * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Full name of this resource.
+     * Identifier. Full name of this workstation cluster.
      */
     name?: pulumi.Input<string>;
     /**
-     * Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+     * Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
      */
     network?: pulumi.Input<string>;
     /**
-     * Configuration for private cluster.
+     * Optional. Configuration for private workstation cluster.
      */
     privateClusterConfig?: pulumi.Input<inputs.workstations.v1beta.PrivateClusterConfigArgs>;
     project?: pulumi.Input<string>;
     /**
-     * Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+     * Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
      */
     subnetwork?: pulumi.Input<string>;
     /**

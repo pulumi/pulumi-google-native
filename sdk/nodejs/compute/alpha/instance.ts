@@ -144,6 +144,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly params!: pulumi.Output<outputs.compute.alpha.InstanceParamsResponse>;
     /**
+     * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+     */
+    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string}>;
+    /**
      * PostKeyRevocationActionType of the instance.
      */
     public readonly postKeyRevocationActionType!: pulumi.Output<string>;
@@ -275,6 +279,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
             resourceInputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             resourceInputs["preservedStateSizeGb"] = args ? args.preservedStateSizeGb : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
@@ -340,6 +345,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = undefined /*out*/;
             resourceInputs["networkPerformanceConfig"] = undefined /*out*/;
             resourceInputs["params"] = undefined /*out*/;
+            resourceInputs["partnerMetadata"] = undefined /*out*/;
             resourceInputs["postKeyRevocationActionType"] = undefined /*out*/;
             resourceInputs["preservedStateSizeGb"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
@@ -454,6 +460,10 @@ export interface InstanceArgs {
      * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
      */
     params?: pulumi.Input<inputs.compute.alpha.InstanceParamsArgs>;
+    /**
+     * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+     */
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * PostKeyRevocationActionType of the instance.
      */

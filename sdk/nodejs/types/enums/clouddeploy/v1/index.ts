@@ -43,6 +43,34 @@ export const ExecutionConfigUsagesItem = {
      * Use for deployment verification.
      */
     Verify: "VERIFY",
+    /**
+     * Use for predeploy job execution.
+     */
+    Predeploy: "PREDEPLOY",
+    /**
+     * Use for postdeploy job execution.
+     */
+    Postdeploy: "POSTDEPLOY",
 } as const;
 
 export type ExecutionConfigUsagesItem = (typeof ExecutionConfigUsagesItem)[keyof typeof ExecutionConfigUsagesItem];
+
+export const RetryBackoffMode = {
+    /**
+     * No WaitMode is specified.
+     */
+    BackoffModeUnspecified: "BACKOFF_MODE_UNSPECIFIED",
+    /**
+     * Increases the wait time linearly.
+     */
+    BackoffModeLinear: "BACKOFF_MODE_LINEAR",
+    /**
+     * Increases the wait time exponentially.
+     */
+    BackoffModeExponential: "BACKOFF_MODE_EXPONENTIAL",
+} as const;
+
+/**
+ * Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+ */
+export type RetryBackoffMode = (typeof RetryBackoffMode)[keyof typeof RetryBackoffMode];

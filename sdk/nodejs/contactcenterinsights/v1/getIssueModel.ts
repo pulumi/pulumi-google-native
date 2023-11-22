@@ -44,6 +44,14 @@ export interface GetIssueModelResult {
      */
     readonly issueCount: string;
     /**
+     * Language of the model.
+     */
+    readonly languageCode: string;
+    /**
+     * Type of the model.
+     */
+    readonly modelType: string;
+    /**
      * Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
      */
     readonly name: string;

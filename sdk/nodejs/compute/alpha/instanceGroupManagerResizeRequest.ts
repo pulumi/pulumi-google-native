@@ -68,6 +68,14 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
+     * Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+     */
+    public readonly requestedRunDuration!: pulumi.Output<outputs.compute.alpha.DurationResponse>;
+    /**
+     * The number of instances to be created by this resize request. The group's target size will be increased by this number.
+     */
+    public readonly resizeBy!: pulumi.Output<number>;
+    /**
      * The URL for this resize request. The server defines this URL.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -80,7 +88,7 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+     * [Output only] Status of the request.
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerResizeRequestStatusResponse>;
     public readonly zone!: pulumi.Output<string>;
@@ -106,6 +114,8 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["queuingPolicy"] = args ? args.queuingPolicy : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["requestedRunDuration"] = args ? args.requestedRunDuration : undefined;
+            resourceInputs["resizeBy"] = args ? args.resizeBy : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -123,6 +133,8 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["queuingPolicy"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["requestedRunDuration"] = undefined /*out*/;
+            resourceInputs["resizeBy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -162,5 +174,13 @@ export interface InstanceGroupManagerResizeRequestArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+     */
+    requestedRunDuration?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
+    /**
+     * The number of instances to be created by this resize request. The group's target size will be increased by this number.
+     */
+    resizeBy?: pulumi.Input<number>;
     zone?: pulumi.Input<string>;
 }

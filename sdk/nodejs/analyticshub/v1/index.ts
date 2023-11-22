@@ -60,10 +60,30 @@ export const getListing: typeof import("./getListing").getListing = null as any;
 export const getListingOutput: typeof import("./getListing").getListingOutput = null as any;
 utilities.lazyLoad(exports, ["getListing","getListingOutput"], () => require("./getListing"));
 
+export { GetSubscriptionIamPolicyArgs, GetSubscriptionIamPolicyResult, GetSubscriptionIamPolicyOutputArgs } from "./getSubscriptionIamPolicy";
+export const getSubscriptionIamPolicy: typeof import("./getSubscriptionIamPolicy").getSubscriptionIamPolicy = null as any;
+export const getSubscriptionIamPolicyOutput: typeof import("./getSubscriptionIamPolicy").getSubscriptionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSubscriptionIamPolicy","getSubscriptionIamPolicyOutput"], () => require("./getSubscriptionIamPolicy"));
+
 export { ListingArgs } from "./listing";
 export type Listing = import("./listing").Listing;
 export const Listing: typeof import("./listing").Listing = null as any;
 utilities.lazyLoad(exports, ["Listing"], () => require("./listing"));
+
+export { SubscriptionIamBindingArgs } from "./subscriptionIamBinding";
+export type SubscriptionIamBinding = import("./subscriptionIamBinding").SubscriptionIamBinding;
+export const SubscriptionIamBinding: typeof import("./subscriptionIamBinding").SubscriptionIamBinding = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIamBinding"], () => require("./subscriptionIamBinding"));
+
+export { SubscriptionIamMemberArgs } from "./subscriptionIamMember";
+export type SubscriptionIamMember = import("./subscriptionIamMember").SubscriptionIamMember;
+export const SubscriptionIamMember: typeof import("./subscriptionIamMember").SubscriptionIamMember = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIamMember"], () => require("./subscriptionIamMember"));
+
+export { SubscriptionIamPolicyArgs } from "./subscriptionIamPolicy";
+export type SubscriptionIamPolicy = import("./subscriptionIamPolicy").SubscriptionIamPolicy;
+export const SubscriptionIamPolicy: typeof import("./subscriptionIamPolicy").SubscriptionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIamPolicy"], () => require("./subscriptionIamPolicy"));
 
 
 // Export enums:
@@ -89,6 +109,12 @@ const _module = {
                 return new DataExchangeListingIamPolicy(name, <any>undefined, { urn })
             case "google-native:analyticshub/v1:Listing":
                 return new Listing(name, <any>undefined, { urn })
+            case "google-native:analyticshub/v1:SubscriptionIamBinding":
+                return new SubscriptionIamBinding(name, <any>undefined, { urn })
+            case "google-native:analyticshub/v1:SubscriptionIamMember":
+                return new SubscriptionIamMember(name, <any>undefined, { urn })
+            case "google-native:analyticshub/v1:SubscriptionIamPolicy":
+                return new SubscriptionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

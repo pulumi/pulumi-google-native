@@ -26,6 +26,10 @@ export interface GetPublicAdvertisedPrefixArgs {
 
 export interface GetPublicAdvertisedPrefixResult {
     /**
+     * The version of BYOIP API.
+     */
+    readonly byoipApiVersion: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -34,7 +38,7 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly description: string;
     /**
-     * The IPv4 address to be used for reverse DNS verification.
+     * The address to be used for reverse DNS verification.
      */
     readonly dnsVerificationIp: string;
     /**
@@ -42,7 +46,7 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly fingerprint: string;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      */
     readonly ipCidrRange: string;
     /**
@@ -53,6 +57,10 @@ export interface GetPublicAdvertisedPrefixResult {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name: string;
+    /**
+     * Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+     */
+    readonly pdpScope: string;
     /**
      * The list of public delegated prefixes that exist for this public advertised prefix.
      */

@@ -45,6 +45,10 @@ export interface GetRegionTargetHttpsProxyResult {
      */
     readonly fingerprint: string;
     /**
+     * Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+     */
+    readonly httpKeepAliveTimeoutSec: number;
+    /**
      * Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
      */
     readonly kind: string;

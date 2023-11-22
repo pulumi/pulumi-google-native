@@ -62,6 +62,26 @@ export const DatabaseDumpType = {
  */
 export type DatabaseDumpType = (typeof DatabaseDumpType)[keyof typeof DatabaseDumpType];
 
+export const HiveMetastoreConfigEndpointProtocol = {
+    /**
+     * The protocol is not set.
+     */
+    EndpointProtocolUnspecified: "ENDPOINT_PROTOCOL_UNSPECIFIED",
+    /**
+     * Use the legacy Apache Thrift protocol for the metastore service endpoint.
+     */
+    Thrift: "THRIFT",
+    /**
+     * Use the modernized gRPC protocol for the metastore service endpoint.
+     */
+    Grpc: "GRPC",
+} as const;
+
+/**
+ * The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
+ */
+export type HiveMetastoreConfigEndpointProtocol = (typeof HiveMetastoreConfigEndpointProtocol)[keyof typeof HiveMetastoreConfigEndpointProtocol];
+
 export const MaintenanceWindowDayOfWeek = {
     /**
      * The day of the week is unspecified.

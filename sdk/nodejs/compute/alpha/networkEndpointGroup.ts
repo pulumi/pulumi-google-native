@@ -46,6 +46,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly appEngine!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupAppEngineResponse>;
     /**
+     * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+     */
+    public readonly clientPortMappingMode!: pulumi.Output<string>;
+    /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     public readonly cloudFunction!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupCloudFunctionResponse>;
@@ -140,6 +144,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["appEngine"] = args ? args.appEngine : undefined;
+            resourceInputs["clientPortMappingMode"] = args ? args.clientPortMappingMode : undefined;
             resourceInputs["cloudFunction"] = args ? args.cloudFunction : undefined;
             resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
             resourceInputs["defaultPort"] = args ? args.defaultPort : undefined;
@@ -165,6 +170,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["appEngine"] = undefined /*out*/;
+            resourceInputs["clientPortMappingMode"] = undefined /*out*/;
             resourceInputs["cloudFunction"] = undefined /*out*/;
             resourceInputs["cloudRun"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -207,6 +213,10 @@ export interface NetworkEndpointGroupArgs {
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     appEngine?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupAppEngineArgs>;
+    /**
+     * Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+     */
+    clientPortMappingMode?: pulumi.Input<enums.compute.alpha.NetworkEndpointGroupClientPortMappingMode>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */

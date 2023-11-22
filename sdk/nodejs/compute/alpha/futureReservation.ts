@@ -38,6 +38,18 @@ export class FutureReservation extends pulumi.CustomResource {
     }
 
     /**
+     * Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+     */
+    public readonly autoCreatedReservationsDeleteTime!: pulumi.Output<string>;
+    /**
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     */
+    public readonly autoCreatedReservationsDuration!: pulumi.Output<outputs.compute.alpha.DurationResponse>;
+    /**
+     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
+     */
+    public readonly autoDeleteAutoCreatedReservations!: pulumi.Output<boolean>;
+    /**
      * The creation timestamp for this future reservation in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -103,6 +115,9 @@ export class FutureReservation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["autoCreatedReservationsDeleteTime"] = args ? args.autoCreatedReservationsDeleteTime : undefined;
+            resourceInputs["autoCreatedReservationsDuration"] = args ? args.autoCreatedReservationsDuration : undefined;
+            resourceInputs["autoDeleteAutoCreatedReservations"] = args ? args.autoDeleteAutoCreatedReservations : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
@@ -119,6 +134,9 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["autoCreatedReservationsDeleteTime"] = undefined /*out*/;
+            resourceInputs["autoCreatedReservationsDuration"] = undefined /*out*/;
+            resourceInputs["autoDeleteAutoCreatedReservations"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -146,6 +164,18 @@ export class FutureReservation extends pulumi.CustomResource {
  * The set of arguments for constructing a FutureReservation resource.
  */
 export interface FutureReservationArgs {
+    /**
+     * Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+     */
+    autoCreatedReservationsDeleteTime?: pulumi.Input<string>;
+    /**
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     */
+    autoCreatedReservationsDuration?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
+    /**
+     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
+     */
+    autoDeleteAutoCreatedReservations?: pulumi.Input<boolean>;
     /**
      * An optional description of this resource. Provide this property when you create the future reservation.
      */

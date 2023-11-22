@@ -55,7 +55,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly earliestVersionTime!: pulumi.Output<string>;
     /**
-     * Whether drop protection is enabled for this database. Defaults to false, if not set.
+     * Whether drop protection is enabled for this database. Defaults to false, if not set. For more details, please see how to [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
      */
     public /*out*/ readonly enableDropProtection!: pulumi.Output<boolean>;
     /**

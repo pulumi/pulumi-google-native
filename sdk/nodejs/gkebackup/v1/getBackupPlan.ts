@@ -28,11 +28,11 @@ export interface GetBackupPlanArgs {
 
 export interface GetBackupPlanResult {
     /**
-     * Defines the configuration of Backups created via this BackupPlan.
+     * Optional. Defines the configuration of Backups created via this BackupPlan.
      */
     readonly backupConfig: outputs.gkebackup.v1.BackupConfigResponse;
     /**
-     * Defines a schedule for automatic Backup creation via this BackupPlan.
+     * Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
      */
     readonly backupSchedule: outputs.gkebackup.v1.ScheduleResponse;
     /**
@@ -44,11 +44,11 @@ export interface GetBackupPlanResult {
      */
     readonly createTime: string;
     /**
-     * This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+     * Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
      */
     readonly deactivated: boolean;
     /**
-     * User specified descriptive string for this BackupPlan.
+     * Optional. User specified descriptive string for this BackupPlan.
      */
     readonly description: string;
     /**
@@ -56,7 +56,7 @@ export interface GetBackupPlanResult {
      */
     readonly etag: string;
     /**
-     * A set of custom labels supplied by user.
+     * Optional. A set of custom labels supplied by user.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -68,9 +68,17 @@ export interface GetBackupPlanResult {
      */
     readonly protectedPodCount: number;
     /**
-     * RetentionPolicy governs lifecycle of Backups created under this plan.
+     * Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
      */
     readonly retentionPolicy: outputs.gkebackup.v1.RetentionPolicyResponse;
+    /**
+     * State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+     */
+    readonly state: string;
+    /**
+     * Human-readable description of why BackupPlan is in the current `state`
+     */
+    readonly stateReason: string;
     /**
      * Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
      */

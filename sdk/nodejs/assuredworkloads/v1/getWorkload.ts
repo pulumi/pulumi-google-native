@@ -40,7 +40,7 @@ export interface GetWorkloadResult {
      */
     readonly complianceStatus: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse;
     /**
-     * Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+     * Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
      */
     readonly compliantButDisallowedServices: string[];
     /**
@@ -52,7 +52,7 @@ export interface GetWorkloadResult {
      */
     readonly displayName: string;
     /**
-     * Optional. Represents the Ekm Provisioning State of the given workload.
+     * Represents the Ekm Provisioning State of the given workload.
      */
     readonly ekmProvisioningResponse: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse;
     /**
@@ -93,6 +93,10 @@ export interface GetWorkloadResult {
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
     readonly provisionedResourcesParent: string;
+    /**
+     * Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
+     */
+    readonly resourceMonitoringEnabled: boolean;
     /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */

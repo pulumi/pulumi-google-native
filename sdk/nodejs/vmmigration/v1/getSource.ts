@@ -32,6 +32,10 @@ export interface GetSourceResult {
      */
     readonly aws: outputs.vmmigration.v1.AwsSourceDetailsResponse;
     /**
+     * Azure type source details.
+     */
+    readonly azure: outputs.vmmigration.v1.AzureSourceDetailsResponse;
+    /**
      * The create time timestamp.
      */
     readonly createTime: string;
@@ -39,6 +43,10 @@ export interface GetSourceResult {
      * User-provided description of the source.
      */
     readonly description: string;
+    /**
+     * Optional. Immutable. The encryption details of the source data stored by the service.
+     */
+    readonly encryption: outputs.vmmigration.v1.EncryptionResponse;
     /**
      * The labels of the source.
      */

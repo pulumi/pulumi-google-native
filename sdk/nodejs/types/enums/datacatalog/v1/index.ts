@@ -12,7 +12,7 @@ export const EntryType = {
      */
     Table: "TABLE",
     /**
-     * Output only. The type of models. For more information, see [Supported models in BigQuery ML] (https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in).
+     * The type of models. For more information, see [Supported models in BigQuery ML](/bigquery/docs/bqml-introduction#supported_models).
      */
     Model: "MODEL",
     /**
@@ -32,11 +32,11 @@ export const EntryType = {
      */
     Database: "DATABASE",
     /**
-     * Output only. Connection to a data source. For example, a BigQuery connection.
+     * Connection to a data source. For example, a BigQuery connection.
      */
     DataSourceConnection: "DATA_SOURCE_CONNECTION",
     /**
-     * Output only. Routine, for example, a BigQuery routine.
+     * Routine, for example, a BigQuery routine.
      */
     Routine: "ROUTINE",
     /**
@@ -70,7 +70,7 @@ export const EntryType = {
 } as const;
 
 /**
- * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+ * The type of the entry. For details, see [`EntryType`](#entrytype).
  */
 export type EntryType = (typeof EntryType)[keyof typeof EntryType];
 
@@ -217,6 +217,94 @@ export const GoogleCloudDatacatalogV1RoutineSpecRoutineType = {
  * The type of the routine.
  */
 export type GoogleCloudDatacatalogV1RoutineSpecRoutineType = (typeof GoogleCloudDatacatalogV1RoutineSpecRoutineType)[keyof typeof GoogleCloudDatacatalogV1RoutineSpecRoutineType];
+
+export const GoogleCloudDatacatalogV1VertexDatasetSpecDataType = {
+    /**
+     * Should not be used.
+     */
+    DataTypeUnspecified: "DATA_TYPE_UNSPECIFIED",
+    /**
+     * Structured data dataset.
+     */
+    Table: "TABLE",
+    /**
+     * Image dataset which supports ImageClassification, ImageObjectDetection and ImageSegmentation problems.
+     */
+    Image: "IMAGE",
+    /**
+     * Document dataset which supports TextClassification, TextExtraction and TextSentiment problems.
+     */
+    Text: "TEXT",
+    /**
+     * Video dataset which supports VideoClassification, VideoObjectTracking and VideoActionRecognition problems.
+     */
+    Video: "VIDEO",
+    /**
+     * Conversation dataset which supports conversation problems.
+     */
+    Conversation: "CONVERSATION",
+    /**
+     * TimeSeries dataset.
+     */
+    TimeSeries: "TIME_SERIES",
+    /**
+     * Document dataset which supports DocumentAnnotation problems.
+     */
+    Document: "DOCUMENT",
+    /**
+     * TextToSpeech dataset which supports TextToSpeech problems.
+     */
+    TextToSpeech: "TEXT_TO_SPEECH",
+    /**
+     * Translation dataset which supports Translation problems.
+     */
+    Translation: "TRANSLATION",
+    /**
+     * Store Vision dataset which is used for HITL integration.
+     */
+    StoreVision: "STORE_VISION",
+    /**
+     * Enterprise Knowledge Graph dataset which is used for HITL labeling integration.
+     */
+    EnterpriseKnowledgeGraph: "ENTERPRISE_KNOWLEDGE_GRAPH",
+    /**
+     * Text prompt dataset which supports Large Language Models.
+     */
+    TextPrompt: "TEXT_PROMPT",
+} as const;
+
+/**
+ * Type of the dataset.
+ */
+export type GoogleCloudDatacatalogV1VertexDatasetSpecDataType = (typeof GoogleCloudDatacatalogV1VertexDatasetSpecDataType)[keyof typeof GoogleCloudDatacatalogV1VertexDatasetSpecDataType];
+
+export const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType = {
+    /**
+     * Should not be used.
+     */
+    ModelSourceTypeUnspecified: "MODEL_SOURCE_TYPE_UNSPECIFIED",
+    /**
+     * The Model is uploaded by automl training pipeline.
+     */
+    Automl: "AUTOML",
+    /**
+     * The Model is uploaded by user or custom training pipeline.
+     */
+    Custom: "CUSTOM",
+    /**
+     * The Model is registered and sync'ed from BigQuery ML.
+     */
+    Bqml: "BQML",
+    /**
+     * The Model is saved or tuned from Model Garden.
+     */
+    ModelGarden: "MODEL_GARDEN",
+} as const;
+
+/**
+ * Type of the model source.
+ */
+export type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType = (typeof GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType)[keyof typeof GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType];
 
 export const TaxonomyActivatedPolicyTypesItem = {
     /**

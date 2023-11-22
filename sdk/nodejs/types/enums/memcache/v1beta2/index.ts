@@ -11,6 +11,10 @@ export const InstanceMemcacheVersion = {
      * Memcached 1.5 version.
      */
     Memcache15: "MEMCACHE_1_5",
+    /**
+     * Memcached 1.6.15 version.
+     */
+    Memcache1615: "MEMCACHE_1_6_15",
 } as const;
 
 /**

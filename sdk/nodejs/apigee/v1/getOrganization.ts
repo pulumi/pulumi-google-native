@@ -28,9 +28,9 @@ export interface GetOrganizationResult {
      */
     readonly addonsConfig: outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse;
     /**
-     * DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      *
-     * @deprecated Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * @deprecated Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
     readonly analyticsRegion: string;
     /**
@@ -78,6 +78,10 @@ export interface GetOrganizationResult {
      */
     readonly description: string;
     /**
+     * Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+     */
+    readonly disableVpcPeering: boolean;
+    /**
      * Display name for the Apigee organization. Unused, but reserved for future use.
      */
     readonly displayName: string;
@@ -121,6 +125,10 @@ export interface GetOrganizationResult {
      * State of the organization. Values other than ACTIVE means the resource is not ready to use.
      */
     readonly state: string;
+    /**
+     * Subscription plan that the customer has purchased. Output only.
+     */
+    readonly subscriptionPlan: string;
     /**
      * DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
      *

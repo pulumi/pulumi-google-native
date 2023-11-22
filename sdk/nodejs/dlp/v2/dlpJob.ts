@@ -62,6 +62,10 @@ export class DlpJob extends pulumi.CustomResource {
      * If created by a job trigger, the resource name of the trigger that instantiated the job.
      */
     public /*out*/ readonly jobTriggerName!: pulumi.Output<string>;
+    /**
+     * Time when the job was last modified by the system.
+     */
+    public /*out*/ readonly lastModified!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The server-assigned name.
@@ -107,6 +111,7 @@ export class DlpJob extends pulumi.CustomResource {
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["inspectDetails"] = undefined /*out*/;
             resourceInputs["jobTriggerName"] = undefined /*out*/;
+            resourceInputs["lastModified"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["riskDetails"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
@@ -119,6 +124,7 @@ export class DlpJob extends pulumi.CustomResource {
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["inspectDetails"] = undefined /*out*/;
             resourceInputs["jobTriggerName"] = undefined /*out*/;
+            resourceInputs["lastModified"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

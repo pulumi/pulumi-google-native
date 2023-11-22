@@ -263,6 +263,22 @@ export const InstanceDatabaseVersion = {
      * The database version is SQL Server 2019 Web.
      */
     Sqlserver2019Web: "SQLSERVER_2019_WEB",
+    /**
+     * The database version is SQL Server 2022 Standard.
+     */
+    Sqlserver2022Standard: "SQLSERVER_2022_STANDARD",
+    /**
+     * The database version is SQL Server 2022 Enterprise.
+     */
+    Sqlserver2022Enterprise: "SQLSERVER_2022_ENTERPRISE",
+    /**
+     * The database version is SQL Server 2022 Express.
+     */
+    Sqlserver2022Express: "SQLSERVER_2022_EXPRESS",
+    /**
+     * The database version is SQL Server 2022 Web.
+     */
+    Sqlserver2022Web: "SQLSERVER_2022_WEB",
 } as const;
 
 /**
@@ -293,6 +309,23 @@ export const InstanceInstanceType = {
  * The instance type.
  */
 export type InstanceInstanceType = (typeof InstanceInstanceType)[keyof typeof InstanceInstanceType];
+
+export const InstanceSqlNetworkArchitecture = {
+    SqlNetworkArchitectureUnspecified: "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED",
+    /**
+     * Instance is a Tenancy Unit (TU) instance.
+     */
+    NewNetworkArchitecture: "NEW_NETWORK_ARCHITECTURE",
+    /**
+     * Instance is an Umbrella instance.
+     */
+    OldNetworkArchitecture: "OLD_NETWORK_ARCHITECTURE",
+} as const;
+
+/**
+ * The SQL network architecture for the instance.
+ */
+export type InstanceSqlNetworkArchitecture = (typeof InstanceSqlNetworkArchitecture)[keyof typeof InstanceSqlNetworkArchitecture];
 
 export const InstanceState = {
     /**
@@ -359,6 +392,30 @@ export const InstanceSuspensionReasonItem = {
 
 export type InstanceSuspensionReasonItem = (typeof InstanceSuspensionReasonItem)[keyof typeof InstanceSuspensionReasonItem];
 
+export const IpConfigurationSslMode = {
+    /**
+     * The SSL mode is unknown.
+     */
+    SslModeUnspecified: "SSL_MODE_UNSPECIFIED",
+    /**
+     * Allow non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. When this value is used, the legacy `require_ssl` flag must be false or cleared to avoid the conflict between values of two flags.
+     */
+    AllowUnencryptedAndEncrypted: "ALLOW_UNENCRYPTED_AND_ENCRYPTED",
+    /**
+     * Only allow connections encrypted with SSL/TLS. When this value is used, the legacy `require_ssl` flag must be false or cleared to avoid the conflict between values of two flags.
+     */
+    EncryptedOnly: "ENCRYPTED_ONLY",
+    /**
+     * Only allow connections encrypted with SSL/TLS and with valid client certificates. When this value is used, the legacy `require_ssl` flag must be true or cleared to avoid the conflict between values of two flags.
+     */
+    TrustedClientCertificateRequired: "TRUSTED_CLIENT_CERTIFICATE_REQUIRED",
+} as const;
+
+/**
+ * Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+ */
+export type IpConfigurationSslMode = (typeof IpConfigurationSslMode)[keyof typeof IpConfigurationSslMode];
+
 export const IpMappingType = {
     /**
      * This is an unknown IP address type.
@@ -400,6 +457,10 @@ export const MaintenanceWindowUpdateTrack = {
      * For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable).
      */
     Stable: "stable",
+    /**
+     * For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable) to be at least 5 weeks after the notification.
+     */
+    Week5: "week5",
 } as const;
 
 /**
@@ -511,6 +572,26 @@ export const SettingsDataDiskType = {
  */
 export type SettingsDataDiskType = (typeof SettingsDataDiskType)[keyof typeof SettingsDataDiskType];
 
+export const SettingsEdition = {
+    /**
+     * The instance did not specify the edition.
+     */
+    EditionUnspecified: "EDITION_UNSPECIFIED",
+    /**
+     * The instance is an enterprise edition.
+     */
+    Enterprise: "ENTERPRISE",
+    /**
+     * The instance is an Enterprise Plus edition.
+     */
+    EnterprisePlus: "ENTERPRISE_PLUS",
+} as const;
+
+/**
+ * Optional. The edition of the instance.
+ */
+export type SettingsEdition = (typeof SettingsEdition)[keyof typeof SettingsEdition];
+
 export const SettingsPricingPlan = {
     /**
      * This is an unknown pricing plan for this instance.
@@ -608,6 +689,18 @@ export const UserType = {
      * Cloud IAM service account.
      */
     CloudIamServiceAccount: "CLOUD_IAM_SERVICE_ACCOUNT",
+    /**
+     * Cloud IAM Group non-login user.
+     */
+    CloudIamGroup: "CLOUD_IAM_GROUP",
+    /**
+     * Cloud IAM Group login user.
+     */
+    CloudIamGroupUser: "CLOUD_IAM_GROUP_USER",
+    /**
+     * Cloud IAM Group service account.
+     */
+    CloudIamGroupServiceAccount: "CLOUD_IAM_GROUP_SERVICE_ACCOUNT",
 } as const;
 
 /**

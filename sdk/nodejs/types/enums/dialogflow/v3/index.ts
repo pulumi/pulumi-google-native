@@ -70,6 +70,30 @@ export const ExperimentState = {
  */
 export type ExperimentState = (typeof ExperimentState)[keyof typeof ExperimentState];
 
+export const GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType = {
+    /**
+     * Not specified. This value indicates that the data store type is not specified, so it will not be used during search.
+     */
+    DataStoreTypeUnspecified: "DATA_STORE_TYPE_UNSPECIFIED",
+    /**
+     * A data store that contains public web content.
+     */
+    PublicWeb: "PUBLIC_WEB",
+    /**
+     * A data store that contains unstructured private data.
+     */
+    Unstructured: "UNSTRUCTURED",
+    /**
+     * A data store that contains structured data (for example FAQ).
+     */
+    Structured: "STRUCTURED",
+} as const;
+
+/**
+ * The type of the connected data store.
+ */
+export type GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType = (typeof GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType)[keyof typeof GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType];
+
 export const GoogleCloudDialogflowCxV3ExperimentResultMetricCountType = {
     /**
      * Count type unspecified.
@@ -230,6 +254,30 @@ export const GoogleCloudDialogflowCxV3NluSettingsModelType = {
  */
 export type GoogleCloudDialogflowCxV3NluSettingsModelType = (typeof GoogleCloudDialogflowCxV3NluSettingsModelType)[keyof typeof GoogleCloudDialogflowCxV3NluSettingsModelType];
 
+export const GoogleCloudDialogflowCxV3ResponseMessageResponseType = {
+    /**
+     * Not specified.
+     */
+    ResponseTypeUnspecified: "RESPONSE_TYPE_UNSPECIFIED",
+    /**
+     * The response is from an entry prompt in the page.
+     */
+    EntryPrompt: "ENTRY_PROMPT",
+    /**
+     * The response is from form-filling prompt in the page.
+     */
+    ParameterPrompt: "PARAMETER_PROMPT",
+    /**
+     * The response is from a transition route or an event handler in the page or flow or transition route group.
+     */
+    HandlerPrompt: "HANDLER_PROMPT",
+} as const;
+
+/**
+ * Response type.
+ */
+export type GoogleCloudDialogflowCxV3ResponseMessageResponseType = (typeof GoogleCloudDialogflowCxV3ResponseMessageResponseType)[keyof typeof GoogleCloudDialogflowCxV3ResponseMessageResponseType];
+
 export const GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat = {
     /**
      * Unspecified. Do not use.
@@ -378,6 +426,22 @@ export const SecuritySettingRedactionStrategy = {
  * Strategy that defines how we do redaction.
  */
 export type SecuritySettingRedactionStrategy = (typeof SecuritySettingRedactionStrategy)[keyof typeof SecuritySettingRedactionStrategy];
+
+export const SecuritySettingRetentionStrategy = {
+    /**
+     * Retains the persisted data with Dialogflow's internal default 365d TTLs.
+     */
+    RetentionStrategyUnspecified: "RETENTION_STRATEGY_UNSPECIFIED",
+    /**
+     * Removes data when the conversation ends. If there is no Conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
+     */
+    RemoveAfterConversation: "REMOVE_AFTER_CONVERSATION",
+} as const;
+
+/**
+ * Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+ */
+export type SecuritySettingRetentionStrategy = (typeof SecuritySettingRetentionStrategy)[keyof typeof SecuritySettingRetentionStrategy];
 
 export const SessionEntityTypeEntityOverrideMode = {
     /**

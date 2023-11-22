@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Release in a given project and location.
- * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -45,7 +44,7 @@ export class Release extends pulumi.CustomResource {
      */
     public /*out*/ readonly abandoned!: pulumi.Output<boolean>;
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -66,6 +65,10 @@ export class Release extends pulumi.CustomResource {
      */
     public /*out*/ readonly deliveryPipelineSnapshot!: pulumi.Output<outputs.clouddeploy.v1.DeliveryPipelineResponse>;
     /**
+     * Optional. The deploy parameters to use for all targets in this release.
+     */
+    public readonly deployParameters!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Description of the `Release`. Max length is 255 characters.
      */
     public readonly description!: pulumi.Output<string>;
@@ -74,12 +77,12 @@ export class Release extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+     * Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -112,7 +115,7 @@ export class Release extends pulumi.CustomResource {
      */
     public readonly skaffoldConfigUri!: pulumi.Output<string>;
     /**
-     * The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+     * The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
      */
     public readonly skaffoldVersion!: pulumi.Output<string>;
     /**
@@ -152,6 +155,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["buildArtifacts"] = args ? args.buildArtifacts : undefined;
             resourceInputs["deliveryPipelineId"] = args ? args.deliveryPipelineId : undefined;
+            resourceInputs["deployParameters"] = args ? args.deployParameters : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -182,6 +186,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deliveryPipelineId"] = undefined /*out*/;
             resourceInputs["deliveryPipelineSnapshot"] = undefined /*out*/;
+            resourceInputs["deployParameters"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -213,7 +218,7 @@ export class Release extends pulumi.CustomResource {
  */
 export interface ReleaseArgs {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -221,6 +226,10 @@ export interface ReleaseArgs {
      */
     buildArtifacts?: pulumi.Input<pulumi.Input<inputs.clouddeploy.v1.BuildArtifactArgs>[]>;
     deliveryPipelineId: pulumi.Input<string>;
+    /**
+     * Optional. The deploy parameters to use for all targets in this release.
+     */
+    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Description of the `Release`. Max length is 255 characters.
      */
@@ -230,12 +239,12 @@ export interface ReleaseArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+     * Optional. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -256,7 +265,7 @@ export interface ReleaseArgs {
      */
     skaffoldConfigUri?: pulumi.Input<string>;
     /**
-     * The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+     * The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
      */
     skaffoldVersion?: pulumi.Input<string>;
 }

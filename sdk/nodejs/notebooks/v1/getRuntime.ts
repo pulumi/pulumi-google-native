@@ -48,9 +48,17 @@ export interface GetRuntimeResult {
      */
     readonly metrics: outputs.notebooks.v1.RuntimeMetricsResponse;
     /**
+     * Bool indicating whether this notebook has been migrated to a Workbench Instance
+     */
+    readonly migrated: boolean;
+    /**
      * The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
      */
     readonly name: string;
+    /**
+     * Checks how feasible a migration from GmN to WbI is.
+     */
+    readonly runtimeMigrationEligibility: outputs.notebooks.v1.RuntimeMigrationEligibilityResponse;
     /**
      * The config settings for software inside the runtime.
      */

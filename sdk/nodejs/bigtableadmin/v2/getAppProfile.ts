@@ -44,9 +44,17 @@ export interface GetAppProfileResult {
      */
     readonly name: string;
     /**
+     * This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+     */
+    readonly priority: string;
+    /**
      * Use a single-cluster routing policy.
      */
     readonly singleClusterRouting: outputs.bigtableadmin.v2.SingleClusterRoutingResponse;
+    /**
+     * The standard options used for isolating this app profile's traffic from other use cases.
+     */
+    readonly standardIsolation: outputs.bigtableadmin.v2.StandardIsolationResponse;
 }
 /**
  * Gets information about an app profile.

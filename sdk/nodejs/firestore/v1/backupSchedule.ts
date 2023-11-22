@@ -53,7 +53,7 @@ export class BackupSchedule extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+     * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      */
     public readonly retention!: pulumi.Output<string>;
     /**
@@ -115,7 +115,7 @@ export interface BackupScheduleArgs {
     databaseId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+     * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      */
     retention?: pulumi.Input<string>;
     /**

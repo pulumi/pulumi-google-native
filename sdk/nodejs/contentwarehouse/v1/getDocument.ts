@@ -64,6 +64,10 @@ export interface GetDocumentResult {
      */
     readonly inlineRawDocument: string;
     /**
+     * Indicates if the document has a legal hold on it.
+     */
+    readonly legalHold: boolean;
+    /**
      * The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
      */
     readonly name: string;

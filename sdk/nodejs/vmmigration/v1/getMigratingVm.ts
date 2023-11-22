@@ -36,6 +36,14 @@ export interface GetMigratingVmResult {
      */
     readonly awsSourceVmDetails: outputs.vmmigration.v1.AwsSourceVmDetailsResponse;
     /**
+     * Details of the VM from an Azure source.
+     */
+    readonly azureSourceVmDetails: outputs.vmmigration.v1.AzureSourceVmDetailsResponse;
+    /**
+     * Details of the target Persistent Disks in Compute Engine.
+     */
+    readonly computeEngineDisksTargetDefaults: outputs.vmmigration.v1.ComputeEngineDisksTargetDefaultsResponse;
+    /**
      * Details of the target VM in Compute Engine.
      */
     readonly computeEngineTargetDefaults: outputs.vmmigration.v1.ComputeEngineTargetDefaultsResponse;
@@ -111,6 +119,10 @@ export interface GetMigratingVmResult {
      * The last time the migrating VM resource was updated.
      */
     readonly updateTime: string;
+    /**
+     * Details of the VM from a Vmware source.
+     */
+    readonly vmwareSourceVmDetails: outputs.vmmigration.v1.VmwareSourceVmDetailsResponse;
 }
 /**
  * Gets details of a single MigratingVm.

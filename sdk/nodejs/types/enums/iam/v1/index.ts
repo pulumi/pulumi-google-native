@@ -32,6 +32,10 @@ export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaim
      */
     AssertionClaimsBehaviorUnspecified: "ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED",
     /**
+     * Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
+     */
+    MergeUserInfoOverIdTokenClaims: "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+    /**
      * Only include ID Token Claims.
      */
     OnlyIdTokenClaims: "ONLY_ID_TOKEN_CLAIMS",
@@ -48,13 +52,17 @@ export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType =
      */
     ResponseTypeUnspecified: "RESPONSE_TYPE_UNSPECIFIED",
     /**
+     * The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
+     */
+    Code: "CODE",
+    /**
      * The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
      */
     IdToken: "ID_TOKEN",
 } as const;
 
 /**
- * Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+ * Required. The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
  */
 export type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType = (typeof GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType)[keyof typeof GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType];
 

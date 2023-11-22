@@ -37,6 +37,10 @@ export class Page extends pulumi.CustomResource {
         return obj['__pulumiType'] === Page.__pulumiType;
     }
 
+    /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    public readonly advancedSettings!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3AdvancedSettingsResponse>;
     public readonly agentId!: pulumi.Output<string>;
     /**
      * The human-readable name of the page, unique within the flow.
@@ -56,6 +60,10 @@ export class Page extends pulumi.CustomResource {
      */
     public readonly form!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormResponse>;
     /**
+     * Optional. Knowledge connector configuration.
+     */
+    public readonly knowledgeConnectorSettings!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse>;
+    /**
      * The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
      */
     public readonly languageCode!: pulumi.Output<string | undefined>;
@@ -66,7 +74,7 @@ export class Page extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+     * Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
      */
     public readonly transitionRouteGroups!: pulumi.Output<string[]>;
     /**
@@ -94,12 +102,14 @@ export class Page extends pulumi.CustomResource {
             if ((!args || args.flowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flowId'");
             }
+            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["entryFulfillment"] = args ? args.entryFulfillment : undefined;
             resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
             resourceInputs["flowId"] = args ? args.flowId : undefined;
             resourceInputs["form"] = args ? args.form : undefined;
+            resourceInputs["knowledgeConnectorSettings"] = args ? args.knowledgeConnectorSettings : undefined;
             resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -107,12 +117,14 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
+            resourceInputs["advancedSettings"] = undefined /*out*/;
             resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["entryFulfillment"] = undefined /*out*/;
             resourceInputs["eventHandlers"] = undefined /*out*/;
             resourceInputs["flowId"] = undefined /*out*/;
             resourceInputs["form"] = undefined /*out*/;
+            resourceInputs["knowledgeConnectorSettings"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -131,6 +143,10 @@ export class Page extends pulumi.CustomResource {
  * The set of arguments for constructing a Page resource.
  */
 export interface PageArgs {
+    /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    advancedSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3AdvancedSettingsArgs>;
     agentId: pulumi.Input<string>;
     /**
      * The human-readable name of the page, unique within the flow.
@@ -150,6 +166,10 @@ export interface PageArgs {
      */
     form?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormArgs>;
     /**
+     * Optional. Knowledge connector configuration.
+     */
+    knowledgeConnectorSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs>;
+    /**
      * The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
      */
     languageCode?: pulumi.Input<string>;
@@ -160,7 +180,7 @@ export interface PageArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+     * Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
      */
     transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**

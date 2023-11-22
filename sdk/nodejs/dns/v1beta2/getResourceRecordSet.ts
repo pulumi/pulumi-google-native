@@ -37,7 +37,7 @@ export interface GetResourceRecordSetResult {
      */
     readonly name: string;
     /**
-     * Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+     * Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
      */
     readonly routingPolicy: outputs.dns.v1beta2.RRSetRoutingPolicyResponse;
     /**

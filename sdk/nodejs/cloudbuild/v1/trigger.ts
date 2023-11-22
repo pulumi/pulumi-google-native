@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new `BuildTrigger`. This API is experimental.
+ * Creates a new `BuildTrigger`.
  */
 export class Trigger extends pulumi.CustomResource {
     /**

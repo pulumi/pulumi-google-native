@@ -46,6 +46,10 @@ export class Routine extends pulumi.CustomResource {
      * The time when this routine was created, in milliseconds since the epoch.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
+     * Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+     */
+    public readonly dataGovernanceType!: pulumi.Output<string>;
     public readonly datasetId!: pulumi.Output<string>;
     /**
      * The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
@@ -97,6 +101,10 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly routineType!: pulumi.Output<string>;
     /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+     */
+    public readonly securityMode!: pulumi.Output<string>;
+    /**
      * Optional. Spark specific options.
      */
     public readonly sparkOptions!: pulumi.Output<outputs.bigquery.v2.SparkOptionsResponse>;
@@ -129,6 +137,7 @@ export class Routine extends pulumi.CustomResource {
                 throw new Error("Missing required property 'routineType'");
             }
             resourceInputs["arguments"] = args ? args.arguments : undefined;
+            resourceInputs["dataGovernanceType"] = args ? args.dataGovernanceType : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["definitionBody"] = args ? args.definitionBody : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -141,6 +150,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = args ? args.returnType : undefined;
             resourceInputs["routineReference"] = args ? args.routineReference : undefined;
             resourceInputs["routineType"] = args ? args.routineType : undefined;
+            resourceInputs["securityMode"] = args ? args.securityMode : undefined;
             resourceInputs["sparkOptions"] = args ? args.sparkOptions : undefined;
             resourceInputs["strictMode"] = args ? args.strictMode : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -149,6 +159,7 @@ export class Routine extends pulumi.CustomResource {
         } else {
             resourceInputs["arguments"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["dataGovernanceType"] = undefined /*out*/;
             resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["definitionBody"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -163,6 +174,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = undefined /*out*/;
             resourceInputs["routineReference"] = undefined /*out*/;
             resourceInputs["routineType"] = undefined /*out*/;
+            resourceInputs["securityMode"] = undefined /*out*/;
             resourceInputs["sparkOptions"] = undefined /*out*/;
             resourceInputs["strictMode"] = undefined /*out*/;
         }
@@ -181,6 +193,10 @@ export interface RoutineArgs {
      * Optional.
      */
     arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.ArgumentArgs>[]>;
+    /**
+     * Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+     */
+    dataGovernanceType?: pulumi.Input<enums.bigquery.v2.RoutineDataGovernanceType>;
     datasetId: pulumi.Input<string>;
     /**
      * The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
@@ -223,6 +239,10 @@ export interface RoutineArgs {
      * The type of routine.
      */
     routineType: pulumi.Input<enums.bigquery.v2.RoutineRoutineType>;
+    /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+     */
+    securityMode?: pulumi.Input<enums.bigquery.v2.RoutineSecurityMode>;
     /**
      * Optional. Spark specific options.
      */

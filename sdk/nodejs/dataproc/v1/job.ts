@@ -43,7 +43,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly done!: pulumi.Output<boolean>;
     /**
-     * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+     * If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri.
      */
     public /*out*/ readonly driverControlFilesUri!: pulumi.Output<string>;
     /**
@@ -55,6 +55,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly driverSchedulingConfig!: pulumi.Output<outputs.dataproc.v1.DriverSchedulingConfigResponse>;
     /**
+     * Optional. Job is a Flink job.
+     */
+    public readonly flinkJob!: pulumi.Output<outputs.dataproc.v1.FlinkJobResponse>;
+    /**
      * Optional. Job is a Hadoop job.
      */
     public readonly hadoopJob!: pulumi.Output<outputs.dataproc.v1.HadoopJobResponse>;
@@ -63,11 +67,11 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly hiveJob!: pulumi.Output<outputs.dataproc.v1.HiveJobResponse>;
     /**
-     * A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+     * A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that might be reused over time.
      */
     public /*out*/ readonly jobUuid!: pulumi.Output<string>;
     /**
-     * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+     * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -109,7 +113,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly sparkSqlJob!: pulumi.Output<outputs.dataproc.v1.SparkSqlJobResponse>;
     /**
-     * The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+     * The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields.
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.dataproc.v1.JobStatusResponse>;
     /**
@@ -121,7 +125,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly trinoJob!: pulumi.Output<outputs.dataproc.v1.TrinoJobResponse>;
     /**
-     * The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+     * The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
      */
     public /*out*/ readonly yarnApplications!: pulumi.Output<outputs.dataproc.v1.YarnApplicationResponse[]>;
 
@@ -143,6 +147,7 @@ export class Job extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["driverSchedulingConfig"] = args ? args.driverSchedulingConfig : undefined;
+            resourceInputs["flinkJob"] = args ? args.flinkJob : undefined;
             resourceInputs["hadoopJob"] = args ? args.hadoopJob : undefined;
             resourceInputs["hiveJob"] = args ? args.hiveJob : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -171,6 +176,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["driverControlFilesUri"] = undefined /*out*/;
             resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
             resourceInputs["driverSchedulingConfig"] = undefined /*out*/;
+            resourceInputs["flinkJob"] = undefined /*out*/;
             resourceInputs["hadoopJob"] = undefined /*out*/;
             resourceInputs["hiveJob"] = undefined /*out*/;
             resourceInputs["jobUuid"] = undefined /*out*/;
@@ -207,6 +213,10 @@ export interface JobArgs {
      */
     driverSchedulingConfig?: pulumi.Input<inputs.dataproc.v1.DriverSchedulingConfigArgs>;
     /**
+     * Optional. Job is a Flink job.
+     */
+    flinkJob?: pulumi.Input<inputs.dataproc.v1.FlinkJobArgs>;
+    /**
      * Optional. Job is a Hadoop job.
      */
     hadoopJob?: pulumi.Input<inputs.dataproc.v1.HadoopJobArgs>;
@@ -215,7 +225,7 @@ export interface JobArgs {
      */
     hiveJob?: pulumi.Input<inputs.dataproc.v1.HiveJobArgs>;
     /**
-     * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+     * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

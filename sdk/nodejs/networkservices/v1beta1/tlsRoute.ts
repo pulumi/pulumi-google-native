@@ -49,6 +49,10 @@ export class TlsRoute extends pulumi.CustomResource {
      * Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*&#47;locations/global/gateways/`
      */
     public readonly gateways!: pulumi.Output<string[]>;
+    /**
+     * Optional. Set of label tags associated with the TlsRoute resource.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*&#47;locations/global/meshes/` The attached Mesh should be of a type SIDECAR
@@ -68,7 +72,7 @@ export class TlsRoute extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+     * Required. Short name of the TlsRoute resource to be created.
      */
     public readonly tlsRouteId!: pulumi.Output<string>;
     /**
@@ -95,6 +99,7 @@ export class TlsRoute extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["gateways"] = args ? args.gateways : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["meshes"] = args ? args.meshes : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -108,6 +113,7 @@ export class TlsRoute extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["gateways"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["meshes"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export interface TlsRouteArgs {
      * Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*&#47;locations/global/gateways/`
      */
     gateways?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Optional. Set of label tags associated with the TlsRoute resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*&#47;locations/global/meshes/` The attached Mesh should be of a type SIDECAR
@@ -151,7 +161,7 @@ export interface TlsRouteArgs {
      */
     rules: pulumi.Input<pulumi.Input<inputs.networkservices.v1beta1.TlsRouteRouteRuleArgs>[]>;
     /**
-     * Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+     * Required. Short name of the TlsRoute resource to be created.
      */
     tlsRouteId: pulumi.Input<string>;
 }

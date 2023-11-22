@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Sets the access control policy on a Table resource. Replaces any existing policy.
+ * Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
  */
 export class InstanceTableIamMember extends pulumi.CustomResource {
     /**

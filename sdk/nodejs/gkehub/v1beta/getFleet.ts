@@ -32,6 +32,10 @@ export interface GetFleetResult {
      */
     readonly createTime: string;
     /**
+     * Optional. The default cluster configurations to apply across the fleet.
+     */
+    readonly defaultClusterConfig: outputs.gkehub.v1beta.DefaultClusterConfigResponse;
+    /**
      * When the Fleet was deleted.
      */
     readonly deleteTime: string;
@@ -39,6 +43,10 @@ export interface GetFleetResult {
      * Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
      */
     readonly displayName: string;
+    /**
+     * Optional. Labels for this Fleet.
+     */
+    readonly labels: {[key: string]: string};
     /**
      * The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
      */

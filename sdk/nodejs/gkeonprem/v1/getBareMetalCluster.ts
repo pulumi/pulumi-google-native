@@ -46,6 +46,10 @@ export interface GetBareMetalClusterResult {
      */
     readonly bareMetalVersion: string;
     /**
+     * Binary Authorization related configurations.
+     */
+    readonly binaryAuthorization: outputs.gkeonprem.v1.BinaryAuthorizationResponse;
+    /**
      * Cluster operations configuration.
      */
     readonly clusterOperations: outputs.gkeonprem.v1.BareMetalClusterOperationsConfigResponse;
@@ -145,6 +149,10 @@ export interface GetBareMetalClusterResult {
      * The time when the bare metal user cluster was last updated.
      */
     readonly updateTime: string;
+    /**
+     * The cluster upgrade policy.
+     */
+    readonly upgradePolicy: outputs.gkeonprem.v1.BareMetalClusterUpgradePolicyResponse;
     /**
      * The result of the preflight check.
      */

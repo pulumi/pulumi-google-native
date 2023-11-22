@@ -38,6 +38,6 @@ export const RepositoryFormat = {
 } as const;
 
 /**
- * The format of packages that are stored in the repository.
+ * Optional. The format of packages that are stored in the repository.
  */
 export type RepositoryFormat = (typeof RepositoryFormat)[keyof typeof RepositoryFormat];

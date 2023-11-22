@@ -32,6 +32,10 @@ export interface GetAgentResult {
      */
     readonly advancedSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse;
     /**
+     * Optional. Answer feedback collection settings.
+     */
+    readonly answerFeedbackSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */
     readonly avatarUri: string;
@@ -55,6 +59,14 @@ export interface GetAgentResult {
      * Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
      */
     readonly enableStackdriverLogging: boolean;
+    /**
+     * Gen App Builder-related agent-level settings.
+     */
+    readonly genAppBuilderSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse;
+    /**
+     * Git integration settings for this agent.
+     */
+    readonly gitIntegrationSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse;
     /**
      * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
      */

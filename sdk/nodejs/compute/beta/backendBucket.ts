@@ -54,7 +54,7 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied responses.
+     * Headers that the Application Load Balancer should add to proxied responses.
      */
     public readonly customResponseHeaders!: pulumi.Output<string[]>;
     /**
@@ -150,7 +150,7 @@ export interface BackendBucketArgs {
      */
     compressionMode?: pulumi.Input<enums.compute.beta.BackendBucketCompressionMode>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied responses.
+     * Headers that the Application Load Balancer should add to proxied responses.
      */
     customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**

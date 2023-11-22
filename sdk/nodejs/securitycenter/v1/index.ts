@@ -5,45 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export { CustomModuleArgs } from "./customModule";
-export type CustomModule = import("./customModule").CustomModule;
-export const CustomModule: typeof import("./customModule").CustomModule = null as any;
-utilities.lazyLoad(exports, ["CustomModule"], () => require("./customModule"));
-
 export { FolderBigQueryExportArgs } from "./folderBigQueryExport";
 export type FolderBigQueryExport = import("./folderBigQueryExport").FolderBigQueryExport;
 export const FolderBigQueryExport: typeof import("./folderBigQueryExport").FolderBigQueryExport = null as any;
 utilities.lazyLoad(exports, ["FolderBigQueryExport"], () => require("./folderBigQueryExport"));
-
-export { FolderCustomModuleArgs } from "./folderCustomModule";
-export type FolderCustomModule = import("./folderCustomModule").FolderCustomModule;
-export const FolderCustomModule: typeof import("./folderCustomModule").FolderCustomModule = null as any;
-utilities.lazyLoad(exports, ["FolderCustomModule"], () => require("./folderCustomModule"));
 
 export { FolderNotificationConfigArgs } from "./folderNotificationConfig";
 export type FolderNotificationConfig = import("./folderNotificationConfig").FolderNotificationConfig;
 export const FolderNotificationConfig: typeof import("./folderNotificationConfig").FolderNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["FolderNotificationConfig"], () => require("./folderNotificationConfig"));
 
-export { GetCustomModuleArgs, GetCustomModuleResult, GetCustomModuleOutputArgs } from "./getCustomModule";
-export const getCustomModule: typeof import("./getCustomModule").getCustomModule = null as any;
-export const getCustomModuleOutput: typeof import("./getCustomModule").getCustomModuleOutput = null as any;
-utilities.lazyLoad(exports, ["getCustomModule","getCustomModuleOutput"], () => require("./getCustomModule"));
+export { FolderSecurityHealthAnalyticsSettingCustomModuleArgs } from "./folderSecurityHealthAnalyticsSettingCustomModule";
+export type FolderSecurityHealthAnalyticsSettingCustomModule = import("./folderSecurityHealthAnalyticsSettingCustomModule").FolderSecurityHealthAnalyticsSettingCustomModule;
+export const FolderSecurityHealthAnalyticsSettingCustomModule: typeof import("./folderSecurityHealthAnalyticsSettingCustomModule").FolderSecurityHealthAnalyticsSettingCustomModule = null as any;
+utilities.lazyLoad(exports, ["FolderSecurityHealthAnalyticsSettingCustomModule"], () => require("./folderSecurityHealthAnalyticsSettingCustomModule"));
 
 export { GetFolderBigQueryExportArgs, GetFolderBigQueryExportResult, GetFolderBigQueryExportOutputArgs } from "./getFolderBigQueryExport";
 export const getFolderBigQueryExport: typeof import("./getFolderBigQueryExport").getFolderBigQueryExport = null as any;
 export const getFolderBigQueryExportOutput: typeof import("./getFolderBigQueryExport").getFolderBigQueryExportOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderBigQueryExport","getFolderBigQueryExportOutput"], () => require("./getFolderBigQueryExport"));
 
-export { GetFolderCustomModuleArgs, GetFolderCustomModuleResult, GetFolderCustomModuleOutputArgs } from "./getFolderCustomModule";
-export const getFolderCustomModule: typeof import("./getFolderCustomModule").getFolderCustomModule = null as any;
-export const getFolderCustomModuleOutput: typeof import("./getFolderCustomModule").getFolderCustomModuleOutput = null as any;
-utilities.lazyLoad(exports, ["getFolderCustomModule","getFolderCustomModuleOutput"], () => require("./getFolderCustomModule"));
-
 export { GetFolderNotificationConfigArgs, GetFolderNotificationConfigResult, GetFolderNotificationConfigOutputArgs } from "./getFolderNotificationConfig";
 export const getFolderNotificationConfig: typeof import("./getFolderNotificationConfig").getFolderNotificationConfig = null as any;
 export const getFolderNotificationConfigOutput: typeof import("./getFolderNotificationConfig").getFolderNotificationConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderNotificationConfig","getFolderNotificationConfigOutput"], () => require("./getFolderNotificationConfig"));
+
+export { GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs, GetFolderSecurityHealthAnalyticsSettingCustomModuleResult, GetFolderSecurityHealthAnalyticsSettingCustomModuleOutputArgs } from "./getFolderSecurityHealthAnalyticsSettingCustomModule";
+export const getFolderSecurityHealthAnalyticsSettingCustomModule: typeof import("./getFolderSecurityHealthAnalyticsSettingCustomModule").getFolderSecurityHealthAnalyticsSettingCustomModule = null as any;
+export const getFolderSecurityHealthAnalyticsSettingCustomModuleOutput: typeof import("./getFolderSecurityHealthAnalyticsSettingCustomModule").getFolderSecurityHealthAnalyticsSettingCustomModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderSecurityHealthAnalyticsSettingCustomModule","getFolderSecurityHealthAnalyticsSettingCustomModuleOutput"], () => require("./getFolderSecurityHealthAnalyticsSettingCustomModule"));
 
 export { GetMuteConfigArgs, GetMuteConfigResult, GetMuteConfigOutputArgs } from "./getMuteConfig";
 export const getMuteConfig: typeof import("./getMuteConfig").getMuteConfig = null as any;
@@ -60,10 +50,10 @@ export const getOrganizationBigQueryExport: typeof import("./getOrganizationBigQ
 export const getOrganizationBigQueryExportOutput: typeof import("./getOrganizationBigQueryExport").getOrganizationBigQueryExportOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationBigQueryExport","getOrganizationBigQueryExportOutput"], () => require("./getOrganizationBigQueryExport"));
 
-export { GetOrganizationCustomModuleArgs, GetOrganizationCustomModuleResult, GetOrganizationCustomModuleOutputArgs } from "./getOrganizationCustomModule";
-export const getOrganizationCustomModule: typeof import("./getOrganizationCustomModule").getOrganizationCustomModule = null as any;
-export const getOrganizationCustomModuleOutput: typeof import("./getOrganizationCustomModule").getOrganizationCustomModuleOutput = null as any;
-utilities.lazyLoad(exports, ["getOrganizationCustomModule","getOrganizationCustomModuleOutput"], () => require("./getOrganizationCustomModule"));
+export { GetOrganizationEventThreatDetectionSettingCustomModuleArgs, GetOrganizationEventThreatDetectionSettingCustomModuleResult, GetOrganizationEventThreatDetectionSettingCustomModuleOutputArgs } from "./getOrganizationEventThreatDetectionSettingCustomModule";
+export const getOrganizationEventThreatDetectionSettingCustomModule: typeof import("./getOrganizationEventThreatDetectionSettingCustomModule").getOrganizationEventThreatDetectionSettingCustomModule = null as any;
+export const getOrganizationEventThreatDetectionSettingCustomModuleOutput: typeof import("./getOrganizationEventThreatDetectionSettingCustomModule").getOrganizationEventThreatDetectionSettingCustomModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationEventThreatDetectionSettingCustomModule","getOrganizationEventThreatDetectionSettingCustomModuleOutput"], () => require("./getOrganizationEventThreatDetectionSettingCustomModule"));
 
 export { GetOrganizationMuteConfigArgs, GetOrganizationMuteConfigResult, GetOrganizationMuteConfigOutputArgs } from "./getOrganizationMuteConfig";
 export const getOrganizationMuteConfig: typeof import("./getOrganizationMuteConfig").getOrganizationMuteConfig = null as any;
@@ -75,6 +65,11 @@ export const getOrganizationNotificationConfig: typeof import("./getOrganization
 export const getOrganizationNotificationConfigOutput: typeof import("./getOrganizationNotificationConfig").getOrganizationNotificationConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationNotificationConfig","getOrganizationNotificationConfigOutput"], () => require("./getOrganizationNotificationConfig"));
 
+export { GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs, GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult, GetOrganizationSecurityHealthAnalyticsSettingCustomModuleOutputArgs } from "./getOrganizationSecurityHealthAnalyticsSettingCustomModule";
+export const getOrganizationSecurityHealthAnalyticsSettingCustomModule: typeof import("./getOrganizationSecurityHealthAnalyticsSettingCustomModule").getOrganizationSecurityHealthAnalyticsSettingCustomModule = null as any;
+export const getOrganizationSecurityHealthAnalyticsSettingCustomModuleOutput: typeof import("./getOrganizationSecurityHealthAnalyticsSettingCustomModule").getOrganizationSecurityHealthAnalyticsSettingCustomModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationSecurityHealthAnalyticsSettingCustomModule","getOrganizationSecurityHealthAnalyticsSettingCustomModuleOutput"], () => require("./getOrganizationSecurityHealthAnalyticsSettingCustomModule"));
+
 export { GetOrganizationSourceIamPolicyArgs, GetOrganizationSourceIamPolicyResult, GetOrganizationSourceIamPolicyOutputArgs } from "./getOrganizationSourceIamPolicy";
 export const getOrganizationSourceIamPolicy: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicy = null as any;
 export const getOrganizationSourceIamPolicyOutput: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicyOutput = null as any;
@@ -84,6 +79,11 @@ export { GetProjectBigQueryExportArgs, GetProjectBigQueryExportResult, GetProjec
 export const getProjectBigQueryExport: typeof import("./getProjectBigQueryExport").getProjectBigQueryExport = null as any;
 export const getProjectBigQueryExportOutput: typeof import("./getProjectBigQueryExport").getProjectBigQueryExportOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectBigQueryExport","getProjectBigQueryExportOutput"], () => require("./getProjectBigQueryExport"));
+
+export { GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs, GetProjectSecurityHealthAnalyticsSettingCustomModuleResult, GetProjectSecurityHealthAnalyticsSettingCustomModuleOutputArgs } from "./getProjectSecurityHealthAnalyticsSettingCustomModule";
+export const getProjectSecurityHealthAnalyticsSettingCustomModule: typeof import("./getProjectSecurityHealthAnalyticsSettingCustomModule").getProjectSecurityHealthAnalyticsSettingCustomModule = null as any;
+export const getProjectSecurityHealthAnalyticsSettingCustomModuleOutput: typeof import("./getProjectSecurityHealthAnalyticsSettingCustomModule").getProjectSecurityHealthAnalyticsSettingCustomModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectSecurityHealthAnalyticsSettingCustomModule","getProjectSecurityHealthAnalyticsSettingCustomModuleOutput"], () => require("./getProjectSecurityHealthAnalyticsSettingCustomModule"));
 
 export { GetSourceArgs, GetSourceResult, GetSourceOutputArgs } from "./getSource";
 export const getSource: typeof import("./getSource").getSource = null as any;
@@ -105,10 +105,10 @@ export type OrganizationBigQueryExport = import("./organizationBigQueryExport").
 export const OrganizationBigQueryExport: typeof import("./organizationBigQueryExport").OrganizationBigQueryExport = null as any;
 utilities.lazyLoad(exports, ["OrganizationBigQueryExport"], () => require("./organizationBigQueryExport"));
 
-export { OrganizationCustomModuleArgs } from "./organizationCustomModule";
-export type OrganizationCustomModule = import("./organizationCustomModule").OrganizationCustomModule;
-export const OrganizationCustomModule: typeof import("./organizationCustomModule").OrganizationCustomModule = null as any;
-utilities.lazyLoad(exports, ["OrganizationCustomModule"], () => require("./organizationCustomModule"));
+export { OrganizationEventThreatDetectionSettingCustomModuleArgs } from "./organizationEventThreatDetectionSettingCustomModule";
+export type OrganizationEventThreatDetectionSettingCustomModule = import("./organizationEventThreatDetectionSettingCustomModule").OrganizationEventThreatDetectionSettingCustomModule;
+export const OrganizationEventThreatDetectionSettingCustomModule: typeof import("./organizationEventThreatDetectionSettingCustomModule").OrganizationEventThreatDetectionSettingCustomModule = null as any;
+utilities.lazyLoad(exports, ["OrganizationEventThreatDetectionSettingCustomModule"], () => require("./organizationEventThreatDetectionSettingCustomModule"));
 
 export { OrganizationMuteConfigArgs } from "./organizationMuteConfig";
 export type OrganizationMuteConfig = import("./organizationMuteConfig").OrganizationMuteConfig;
@@ -119,6 +119,11 @@ export { OrganizationNotificationConfigArgs } from "./organizationNotificationCo
 export type OrganizationNotificationConfig = import("./organizationNotificationConfig").OrganizationNotificationConfig;
 export const OrganizationNotificationConfig: typeof import("./organizationNotificationConfig").OrganizationNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["OrganizationNotificationConfig"], () => require("./organizationNotificationConfig"));
+
+export { OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs } from "./organizationSecurityHealthAnalyticsSettingCustomModule";
+export type OrganizationSecurityHealthAnalyticsSettingCustomModule = import("./organizationSecurityHealthAnalyticsSettingCustomModule").OrganizationSecurityHealthAnalyticsSettingCustomModule;
+export const OrganizationSecurityHealthAnalyticsSettingCustomModule: typeof import("./organizationSecurityHealthAnalyticsSettingCustomModule").OrganizationSecurityHealthAnalyticsSettingCustomModule = null as any;
+utilities.lazyLoad(exports, ["OrganizationSecurityHealthAnalyticsSettingCustomModule"], () => require("./organizationSecurityHealthAnalyticsSettingCustomModule"));
 
 export { OrganizationSourceIamBindingArgs } from "./organizationSourceIamBinding";
 export type OrganizationSourceIamBinding = import("./organizationSourceIamBinding").OrganizationSourceIamBinding;
@@ -140,6 +145,11 @@ export type ProjectBigQueryExport = import("./projectBigQueryExport").ProjectBig
 export const ProjectBigQueryExport: typeof import("./projectBigQueryExport").ProjectBigQueryExport = null as any;
 utilities.lazyLoad(exports, ["ProjectBigQueryExport"], () => require("./projectBigQueryExport"));
 
+export { ProjectSecurityHealthAnalyticsSettingCustomModuleArgs } from "./projectSecurityHealthAnalyticsSettingCustomModule";
+export type ProjectSecurityHealthAnalyticsSettingCustomModule = import("./projectSecurityHealthAnalyticsSettingCustomModule").ProjectSecurityHealthAnalyticsSettingCustomModule;
+export const ProjectSecurityHealthAnalyticsSettingCustomModule: typeof import("./projectSecurityHealthAnalyticsSettingCustomModule").ProjectSecurityHealthAnalyticsSettingCustomModule = null as any;
+utilities.lazyLoad(exports, ["ProjectSecurityHealthAnalyticsSettingCustomModule"], () => require("./projectSecurityHealthAnalyticsSettingCustomModule"));
+
 export { SourceArgs } from "./source";
 export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
@@ -153,26 +163,26 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:securitycenter/v1:CustomModule":
-                return new CustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:FolderBigQueryExport":
                 return new FolderBigQueryExport(name, <any>undefined, { urn })
-            case "google-native:securitycenter/v1:FolderCustomModule":
-                return new FolderCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:FolderNotificationConfig":
                 return new FolderNotificationConfig(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:FolderSecurityHealthAnalyticsSettingCustomModule":
+                return new FolderSecurityHealthAnalyticsSettingCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:MuteConfig":
                 return new MuteConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:NotificationConfig":
                 return new NotificationConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationBigQueryExport":
                 return new OrganizationBigQueryExport(name, <any>undefined, { urn })
-            case "google-native:securitycenter/v1:OrganizationCustomModule":
-                return new OrganizationCustomModule(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:OrganizationEventThreatDetectionSettingCustomModule":
+                return new OrganizationEventThreatDetectionSettingCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationMuteConfig":
                 return new OrganizationMuteConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationNotificationConfig":
                 return new OrganizationNotificationConfig(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:OrganizationSecurityHealthAnalyticsSettingCustomModule":
+                return new OrganizationSecurityHealthAnalyticsSettingCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationSourceIamBinding":
                 return new OrganizationSourceIamBinding(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationSourceIamMember":
@@ -181,6 +191,8 @@ const _module = {
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:ProjectBigQueryExport":
                 return new ProjectBigQueryExport(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:ProjectSecurityHealthAnalyticsSettingCustomModule":
+                return new ProjectSecurityHealthAnalyticsSettingCustomModule(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:Source":
                 return new Source(name, <any>undefined, { urn })
             default:

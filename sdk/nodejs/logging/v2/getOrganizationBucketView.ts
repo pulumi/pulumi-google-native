@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Gets a view on a log bucket..
+ * Gets a view on a log bucket.
  */
 export function getOrganizationBucketView(args: GetOrganizationBucketViewArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBucketViewResult> {
 
@@ -48,7 +48,7 @@ export interface GetOrganizationBucketViewResult {
     readonly updateTime: string;
 }
 /**
- * Gets a view on a log bucket..
+ * Gets a view on a log bucket.
  */
 export function getOrganizationBucketViewOutput(args: GetOrganizationBucketViewOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationBucketViewResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationBucketView(a, opts))

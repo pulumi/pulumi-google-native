@@ -78,6 +78,10 @@ export interface GetDeviceResult {
      */
     readonly encryptionState: string;
     /**
+     * Host name of the device.
+     */
+    readonly hostname: string;
+    /**
      * IMEI number of device if GSM device; empty otherwise.
      */
     readonly imei: string;

@@ -29,11 +29,11 @@ export interface GetGroupResult {
      */
     readonly createTime: string;
     /**
-     * The description of the resource.
+     * Optional. The description of the group.
      */
     readonly description: string;
     /**
-     * User-friendly display name.
+     * Optional. User-friendly display name.
      */
     readonly displayName: string;
     /**

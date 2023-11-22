@@ -47,6 +47,10 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      * A display name for the pool. Cannot exceed 32 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Time after which the workload identity pool will be permanently purged and cannot be recovered.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the pool.
@@ -82,12 +86,14 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

@@ -140,7 +140,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly operationalStatus!: pulumi.Output<string>;
     /**
-     * [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+     * [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
      */
     public readonly pairingKey!: pulumi.Output<string>;
     /**
@@ -148,7 +148,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly partnerAsn!: pulumi.Output<string>;
     /**
-     * Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+     * Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
      */
     public readonly partnerMetadata!: pulumi.Output<outputs.compute.beta.InterconnectAttachmentPartnerMetadataResponse>;
     /**
@@ -364,7 +364,7 @@ export interface InterconnectAttachmentArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+     * [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
      */
     pairingKey?: pulumi.Input<string>;
     /**
@@ -372,7 +372,7 @@ export interface InterconnectAttachmentArgs {
      */
     partnerAsn?: pulumi.Input<string>;
     /**
-     * Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+     * Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
      */
     partnerMetadata?: pulumi.Input<inputs.compute.beta.InterconnectAttachmentPartnerMetadataArgs>;
     project?: pulumi.Input<string>;

@@ -4,8 +4,10 @@
 // Export sub-modules:
 import * as v1 from "./v1";
 import * as v1alpha1 from "./v1alpha1";
+import * as v2 from "./v2";
 
 export {
     v1,
     v1alpha1,
+    v2,
 };

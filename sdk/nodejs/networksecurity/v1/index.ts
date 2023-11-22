@@ -5,6 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { AddressGroupArgs } from "./addressGroup";
+export type AddressGroup = import("./addressGroup").AddressGroup;
+export const AddressGroup: typeof import("./addressGroup").AddressGroup = null as any;
+utilities.lazyLoad(exports, ["AddressGroup"], () => require("./addressGroup"));
+
+export { AddressGroupIamBindingArgs } from "./addressGroupIamBinding";
+export type AddressGroupIamBinding = import("./addressGroupIamBinding").AddressGroupIamBinding;
+export const AddressGroupIamBinding: typeof import("./addressGroupIamBinding").AddressGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamBinding"], () => require("./addressGroupIamBinding"));
+
+export { AddressGroupIamMemberArgs } from "./addressGroupIamMember";
+export type AddressGroupIamMember = import("./addressGroupIamMember").AddressGroupIamMember;
+export const AddressGroupIamMember: typeof import("./addressGroupIamMember").AddressGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamMember"], () => require("./addressGroupIamMember"));
+
+export { AddressGroupIamPolicyArgs } from "./addressGroupIamPolicy";
+export type AddressGroupIamPolicy = import("./addressGroupIamPolicy").AddressGroupIamPolicy;
+export const AddressGroupIamPolicy: typeof import("./addressGroupIamPolicy").AddressGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamPolicy"], () => require("./addressGroupIamPolicy"));
+
 export { AuthorizationPolicyArgs } from "./authorizationPolicy";
 export type AuthorizationPolicy = import("./authorizationPolicy").AuthorizationPolicy;
 export const AuthorizationPolicy: typeof import("./authorizationPolicy").AuthorizationPolicy = null as any;
@@ -49,6 +69,16 @@ export { GatewaySecurityPolicyArgs } from "./gatewaySecurityPolicy";
 export type GatewaySecurityPolicy = import("./gatewaySecurityPolicy").GatewaySecurityPolicy;
 export const GatewaySecurityPolicy: typeof import("./gatewaySecurityPolicy").GatewaySecurityPolicy = null as any;
 utilities.lazyLoad(exports, ["GatewaySecurityPolicy"], () => require("./gatewaySecurityPolicy"));
+
+export { GetAddressGroupArgs, GetAddressGroupResult, GetAddressGroupOutputArgs } from "./getAddressGroup";
+export const getAddressGroup: typeof import("./getAddressGroup").getAddressGroup = null as any;
+export const getAddressGroupOutput: typeof import("./getAddressGroup").getAddressGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getAddressGroup","getAddressGroupOutput"], () => require("./getAddressGroup"));
+
+export { GetAddressGroupIamPolicyArgs, GetAddressGroupIamPolicyResult, GetAddressGroupIamPolicyOutputArgs } from "./getAddressGroupIamPolicy";
+export const getAddressGroupIamPolicy: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicy = null as any;
+export const getAddressGroupIamPolicyOutput: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAddressGroupIamPolicy","getAddressGroupIamPolicyOutput"], () => require("./getAddressGroupIamPolicy"));
 
 export { GetAuthorizationPolicyArgs, GetAuthorizationPolicyResult, GetAuthorizationPolicyOutputArgs } from "./getAuthorizationPolicy";
 export const getAuthorizationPolicy: typeof import("./getAuthorizationPolicy").getAuthorizationPolicy = null as any;
@@ -143,6 +173,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:networksecurity/v1:AddressGroup":
+                return new AddressGroup(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:AddressGroupIamBinding":
+                return new AddressGroupIamBinding(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:AddressGroupIamMember":
+                return new AddressGroupIamMember(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:AddressGroupIamPolicy":
+                return new AddressGroupIamPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:AuthorizationPolicy":
                 return new AuthorizationPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:AuthorizationPolicyIamBinding":

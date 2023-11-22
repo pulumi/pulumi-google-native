@@ -25,11 +25,6 @@ export const getRoutine: typeof import("./getRoutine").getRoutine = null as any;
 export const getRoutineOutput: typeof import("./getRoutine").getRoutineOutput = null as any;
 utilities.lazyLoad(exports, ["getRoutine","getRoutineOutput"], () => require("./getRoutine"));
 
-export { GetRowAccessPolicyIamPolicyArgs, GetRowAccessPolicyIamPolicyResult, GetRowAccessPolicyIamPolicyOutputArgs } from "./getRowAccessPolicyIamPolicy";
-export const getRowAccessPolicyIamPolicy: typeof import("./getRowAccessPolicyIamPolicy").getRowAccessPolicyIamPolicy = null as any;
-export const getRowAccessPolicyIamPolicyOutput: typeof import("./getRowAccessPolicyIamPolicy").getRowAccessPolicyIamPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getRowAccessPolicyIamPolicy","getRowAccessPolicyIamPolicyOutput"], () => require("./getRowAccessPolicyIamPolicy"));
-
 export { GetTableArgs, GetTableResult, GetTableOutputArgs } from "./getTable";
 export const getTable: typeof import("./getTable").getTable = null as any;
 export const getTableOutput: typeof import("./getTable").getTableOutput = null as any;
@@ -49,21 +44,6 @@ export { RoutineArgs } from "./routine";
 export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
 utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
-
-export { RowAccessPolicyIamBindingArgs } from "./rowAccessPolicyIamBinding";
-export type RowAccessPolicyIamBinding = import("./rowAccessPolicyIamBinding").RowAccessPolicyIamBinding;
-export const RowAccessPolicyIamBinding: typeof import("./rowAccessPolicyIamBinding").RowAccessPolicyIamBinding = null as any;
-utilities.lazyLoad(exports, ["RowAccessPolicyIamBinding"], () => require("./rowAccessPolicyIamBinding"));
-
-export { RowAccessPolicyIamMemberArgs } from "./rowAccessPolicyIamMember";
-export type RowAccessPolicyIamMember = import("./rowAccessPolicyIamMember").RowAccessPolicyIamMember;
-export const RowAccessPolicyIamMember: typeof import("./rowAccessPolicyIamMember").RowAccessPolicyIamMember = null as any;
-utilities.lazyLoad(exports, ["RowAccessPolicyIamMember"], () => require("./rowAccessPolicyIamMember"));
-
-export { RowAccessPolicyIamPolicyArgs } from "./rowAccessPolicyIamPolicy";
-export type RowAccessPolicyIamPolicy = import("./rowAccessPolicyIamPolicy").RowAccessPolicyIamPolicy;
-export const RowAccessPolicyIamPolicy: typeof import("./rowAccessPolicyIamPolicy").RowAccessPolicyIamPolicy = null as any;
-utilities.lazyLoad(exports, ["RowAccessPolicyIamPolicy"], () => require("./rowAccessPolicyIamPolicy"));
 
 export { TableArgs } from "./table";
 export type Table = import("./table").Table;
@@ -99,12 +79,6 @@ const _module = {
                 return new Job(name, <any>undefined, { urn })
             case "google-native:bigquery/v2:Routine":
                 return new Routine(name, <any>undefined, { urn })
-            case "google-native:bigquery/v2:RowAccessPolicyIamBinding":
-                return new RowAccessPolicyIamBinding(name, <any>undefined, { urn })
-            case "google-native:bigquery/v2:RowAccessPolicyIamMember":
-                return new RowAccessPolicyIamMember(name, <any>undefined, { urn })
-            case "google-native:bigquery/v2:RowAccessPolicyIamPolicy":
-                return new RowAccessPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:bigquery/v2:Table":
                 return new Table(name, <any>undefined, { urn })
             case "google-native:bigquery/v2:TableIamBinding":

@@ -25,10 +25,25 @@ export type ConnectionIamPolicy = import("./connectionIamPolicy").ConnectionIamP
 export const ConnectionIamPolicy: typeof import("./connectionIamPolicy").ConnectionIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
 
+export { CustomConnectorArgs } from "./customConnector";
+export type CustomConnector = import("./customConnector").CustomConnector;
+export const CustomConnector: typeof import("./customConnector").CustomConnector = null as any;
+utilities.lazyLoad(exports, ["CustomConnector"], () => require("./customConnector"));
+
+export { CustomConnectorVersionArgs } from "./customConnectorVersion";
+export type CustomConnectorVersion = import("./customConnectorVersion").CustomConnectorVersion;
+export const CustomConnectorVersion: typeof import("./customConnectorVersion").CustomConnectorVersion = null as any;
+utilities.lazyLoad(exports, ["CustomConnectorVersion"], () => require("./customConnectorVersion"));
+
 export { EndpointAttachmentArgs } from "./endpointAttachment";
 export type EndpointAttachment = import("./endpointAttachment").EndpointAttachment;
 export const EndpointAttachment: typeof import("./endpointAttachment").EndpointAttachment = null as any;
 utilities.lazyLoad(exports, ["EndpointAttachment"], () => require("./endpointAttachment"));
+
+export { EventSubscriptionArgs } from "./eventSubscription";
+export type EventSubscription = import("./eventSubscription").EventSubscription;
+export const EventSubscription: typeof import("./eventSubscription").EventSubscription = null as any;
+utilities.lazyLoad(exports, ["EventSubscription"], () => require("./eventSubscription"));
 
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
@@ -40,10 +55,25 @@ export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").g
 export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
 
+export { GetCustomConnectorArgs, GetCustomConnectorResult, GetCustomConnectorOutputArgs } from "./getCustomConnector";
+export const getCustomConnector: typeof import("./getCustomConnector").getCustomConnector = null as any;
+export const getCustomConnectorOutput: typeof import("./getCustomConnector").getCustomConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomConnector","getCustomConnectorOutput"], () => require("./getCustomConnector"));
+
+export { GetCustomConnectorVersionArgs, GetCustomConnectorVersionResult, GetCustomConnectorVersionOutputArgs } from "./getCustomConnectorVersion";
+export const getCustomConnectorVersion: typeof import("./getCustomConnectorVersion").getCustomConnectorVersion = null as any;
+export const getCustomConnectorVersionOutput: typeof import("./getCustomConnectorVersion").getCustomConnectorVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomConnectorVersion","getCustomConnectorVersionOutput"], () => require("./getCustomConnectorVersion"));
+
 export { GetEndpointAttachmentArgs, GetEndpointAttachmentResult, GetEndpointAttachmentOutputArgs } from "./getEndpointAttachment";
 export const getEndpointAttachment: typeof import("./getEndpointAttachment").getEndpointAttachment = null as any;
 export const getEndpointAttachmentOutput: typeof import("./getEndpointAttachment").getEndpointAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getEndpointAttachment","getEndpointAttachmentOutput"], () => require("./getEndpointAttachment"));
+
+export { GetEventSubscriptionArgs, GetEventSubscriptionResult, GetEventSubscriptionOutputArgs } from "./getEventSubscription";
+export const getEventSubscription: typeof import("./getEventSubscription").getEventSubscription = null as any;
+export const getEventSubscriptionOutput: typeof import("./getEventSubscription").getEventSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getEventSubscription","getEventSubscriptionOutput"], () => require("./getEventSubscription"));
 
 export { GetManagedZoneArgs, GetManagedZoneResult, GetManagedZoneOutputArgs } from "./getManagedZone";
 export const getManagedZone: typeof import("./getManagedZone").getManagedZone = null as any;
@@ -91,8 +121,14 @@ const _module = {
                 return new ConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:connectors/v1:ConnectionIamPolicy":
                 return new ConnectionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:connectors/v1:CustomConnector":
+                return new CustomConnector(name, <any>undefined, { urn })
+            case "google-native:connectors/v1:CustomConnectorVersion":
+                return new CustomConnectorVersion(name, <any>undefined, { urn })
             case "google-native:connectors/v1:EndpointAttachment":
                 return new EndpointAttachment(name, <any>undefined, { urn })
+            case "google-native:connectors/v1:EventSubscription":
+                return new EventSubscription(name, <any>undefined, { urn })
             case "google-native:connectors/v1:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
             case "google-native:connectors/v1:ProviderIamBinding":

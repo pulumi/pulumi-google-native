@@ -44,6 +44,10 @@ export const CryptoKeyPurpose = {
      */
     AsymmetricDecrypt: "ASYMMETRIC_DECRYPT",
     /**
+     * CryptoKeys with this purpose may be used with RawEncrypt and RawDecrypt. This purpose is meant to be used for interoperable symmetric encryption and does not support automatic CryptoKey rotation.
+     */
+    RawEncryptDecrypt: "RAW_ENCRYPT_DECRYPT",
+    /**
      * CryptoKeys with this purpose may be used with MacSign.
      */
     Mac: "MAC",
@@ -115,6 +119,30 @@ export const CryptoKeyVersionTemplateAlgorithm = {
      * Creates symmetric encryption keys.
      */
     GoogleSymmetricEncryption: "GOOGLE_SYMMETRIC_ENCRYPTION",
+    /**
+     * AES-GCM (Galois Counter Mode) using 128-bit keys.
+     */
+    Aes128Gcm: "AES_128_GCM",
+    /**
+     * AES-GCM (Galois Counter Mode) using 256-bit keys.
+     */
+    Aes256Gcm: "AES_256_GCM",
+    /**
+     * AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+     */
+    Aes128Cbc: "AES_128_CBC",
+    /**
+     * AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+     */
+    Aes256Cbc: "AES_256_CBC",
+    /**
+     * AES-CTR (Counter Mode) using 128-bit keys.
+     */
+    Aes128Ctr: "AES_128_CTR",
+    /**
+     * AES-CTR (Counter Mode) using 256-bit keys.
+     */
+    Aes256Ctr: "AES_256_CTR",
     /**
      * RSASSA-PSS 2048 bit key with a SHA256 digest.
      */

@@ -59,7 +59,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly maxInstances!: pulumi.Output<number>;
     /**
-     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
      */
     public readonly maxThroughput!: pulumi.Output<number>;
     /**
@@ -67,7 +67,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly minInstances!: pulumi.Output<number>;
     /**
-     * Minimum throughput of the connector in Mbps. Default and min is 200.
+     * Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
      */
     public readonly minThroughput!: pulumi.Output<number>;
     /**
@@ -161,7 +161,7 @@ export interface ConnectorArgs {
      */
     maxInstances?: pulumi.Input<number>;
     /**
-     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
      */
     maxThroughput?: pulumi.Input<number>;
     /**
@@ -169,7 +169,7 @@ export interface ConnectorArgs {
      */
     minInstances?: pulumi.Input<number>;
     /**
-     * Minimum throughput of the connector in Mbps. Default and min is 200.
+     * Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
      */
     minThroughput?: pulumi.Input<number>;
     /**

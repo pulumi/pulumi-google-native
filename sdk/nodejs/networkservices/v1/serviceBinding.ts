@@ -61,6 +61,10 @@ export class ServiceBinding extends pulumi.CustomResource {
      */
     public readonly serviceBindingId!: pulumi.Output<string>;
     /**
+     * The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+     */
+    public /*out*/ readonly serviceId!: pulumi.Output<string>;
+    /**
      * The timestamp when the resource was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -90,6 +94,7 @@ export class ServiceBinding extends pulumi.CustomResource {
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["serviceBindingId"] = args ? args.serviceBindingId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -100,6 +105,7 @@ export class ServiceBinding extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["service"] = undefined /*out*/;
             resourceInputs["serviceBindingId"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

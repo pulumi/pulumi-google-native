@@ -76,6 +76,10 @@ export class App extends pulumi.CustomResource {
      * The Google Container Registry domain used for storing managed build docker images for this application.
      */
     public /*out*/ readonly gcrDomain!: pulumi.Output<string>;
+    /**
+     * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+     */
+    public readonly generatedCustomerMetadata!: pulumi.Output<{[key: string]: string}>;
     public readonly iap!: pulumi.Output<outputs.appengine.v1beta.IdentityAwareProxyResponse>;
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
@@ -85,10 +89,6 @@ export class App extends pulumi.CustomResource {
      * Full path to the Application resource in the API. Example: apps/myapp.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * The project and location in which the application should be created, specified in the format projects/*&#47;locations/*
-     */
-    public readonly parent!: pulumi.Output<string | undefined>;
     /**
      * The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
      */
@@ -114,10 +114,10 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultCookieExpiration"] = args ? args.defaultCookieExpiration : undefined;
             resourceInputs["dispatchRules"] = args ? args.dispatchRules : undefined;
             resourceInputs["featureSettings"] = args ? args.featureSettings : undefined;
+            resourceInputs["generatedCustomerMetadata"] = args ? args.generatedCustomerMetadata : undefined;
             resourceInputs["iap"] = args ? args.iap : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
             resourceInputs["codeBucket"] = undefined /*out*/;
@@ -135,10 +135,10 @@ export class App extends pulumi.CustomResource {
             resourceInputs["dispatchRules"] = undefined /*out*/;
             resourceInputs["featureSettings"] = undefined /*out*/;
             resourceInputs["gcrDomain"] = undefined /*out*/;
+            resourceInputs["generatedCustomerMetadata"] = undefined /*out*/;
             resourceInputs["iap"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["servingStatus"] = undefined /*out*/;
         }
@@ -171,6 +171,10 @@ export interface AppArgs {
      * The feature specific settings to be used in the application.
      */
     featureSettings?: pulumi.Input<inputs.appengine.v1beta.FeatureSettingsArgs>;
+    /**
+     * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
+     */
+    generatedCustomerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     iap?: pulumi.Input<inputs.appengine.v1beta.IdentityAwareProxyArgs>;
     /**
      * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
@@ -180,10 +184,6 @@ export interface AppArgs {
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */
     location?: pulumi.Input<string>;
-    /**
-     * The project and location in which the application should be created, specified in the format projects/*&#47;locations/*
-     */
-    parent?: pulumi.Input<string>;
     /**
      * The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
      */

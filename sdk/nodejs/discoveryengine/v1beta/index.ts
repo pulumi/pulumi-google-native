@@ -5,23 +5,50 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { ConversationArgs } from "./conversation";
+export type Conversation = import("./conversation").Conversation;
+export const Conversation: typeof import("./conversation").Conversation = null as any;
+utilities.lazyLoad(exports, ["Conversation"], () => require("./conversation"));
+
 export { DocumentArgs } from "./document";
 export type Document = import("./document").Document;
 export const Document: typeof import("./document").Document = null as any;
 utilities.lazyLoad(exports, ["Document"], () => require("./document"));
+
+export { GetConversationArgs, GetConversationResult, GetConversationOutputArgs } from "./getConversation";
+export const getConversation: typeof import("./getConversation").getConversation = null as any;
+export const getConversationOutput: typeof import("./getConversation").getConversationOutput = null as any;
+utilities.lazyLoad(exports, ["getConversation","getConversationOutput"], () => require("./getConversation"));
 
 export { GetDocumentArgs, GetDocumentResult, GetDocumentOutputArgs } from "./getDocument";
 export const getDocument: typeof import("./getDocument").getDocument = null as any;
 export const getDocumentOutput: typeof import("./getDocument").getDocumentOutput = null as any;
 utilities.lazyLoad(exports, ["getDocument","getDocumentOutput"], () => require("./getDocument"));
 
+export { GetSchemaArgs, GetSchemaResult, GetSchemaOutputArgs } from "./getSchema";
+export const getSchema: typeof import("./getSchema").getSchema = null as any;
+export const getSchemaOutput: typeof import("./getSchema").getSchemaOutput = null as any;
+utilities.lazyLoad(exports, ["getSchema","getSchemaOutput"], () => require("./getSchema"));
+
+export { SchemaArgs } from "./schema";
+export type Schema = import("./schema").Schema;
+export const Schema: typeof import("./schema").Schema = null as any;
+utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+
+
+// Export enums:
+export * from "../../types/enums/discoveryengine/v1beta";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:discoveryengine/v1beta:Conversation":
+                return new Conversation(name, <any>undefined, { urn })
             case "google-native:discoveryengine/v1beta:Document":
                 return new Document(name, <any>undefined, { urn })
+            case "google-native:discoveryengine/v1beta:Schema":
+                return new Schema(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

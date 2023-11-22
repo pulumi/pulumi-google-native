@@ -37,6 +37,10 @@ export interface GetWorkloadIdentityPoolResult {
      */
     readonly displayName: string;
     /**
+     * Time after which the workload identity pool will be permanently purged and cannot be recovered.
+     */
+    readonly expireTime: string;
+    /**
      * The resource name of the pool.
      */
     readonly name: string;

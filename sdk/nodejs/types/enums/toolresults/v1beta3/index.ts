@@ -382,6 +382,10 @@ export const TestIssueType = {
      * Robo detected a splash screen provided by app (vs. Android OS splash screen).
      */
     DetectedAppSplashScreen: "detectedAppSplashScreen",
+    /**
+     * There was an issue with the assets in this test.
+     */
+    AssetIssue: "assetIssue",
 } as const;
 
 /**

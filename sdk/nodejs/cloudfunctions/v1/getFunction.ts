@@ -17,6 +17,7 @@ export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions):
         "functionId": args.functionId,
         "location": args.location,
         "project": args.project,
+        "versionId": args.versionId,
     }, opts);
 }
 
@@ -24,6 +25,7 @@ export interface GetFunctionArgs {
     functionId: string;
     location: string;
     project?: string;
+    versionId?: string;
 }
 
 export interface GetFunctionResult {
@@ -60,7 +62,7 @@ export interface GetFunctionResult {
      */
     readonly dockerRepository: string;
     /**
-     * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+     * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
      */
     readonly entryPoint: string;
     /**
@@ -100,7 +102,9 @@ export interface GetFunctionResult {
      */
     readonly name: string;
     /**
-     * The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+     * Deprecated: use vpc_connector
+     *
+     * @deprecated Deprecated: use vpc_connector
      */
     readonly network: string;
     /**
@@ -171,4 +175,5 @@ export interface GetFunctionOutputArgs {
     functionId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
 }

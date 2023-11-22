@@ -134,7 +134,7 @@ export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatis
 } as const;
 
 /**
- * The aggregate metric to evaluate.
+ * Optional. The aggregate metric to evaluate.
  */
 export type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic = (typeof GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic)[keyof typeof GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic];
 

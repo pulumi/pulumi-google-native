@@ -43,6 +43,10 @@ export class ServiceConnectionToken extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * The time to which this token is valid.
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
@@ -89,6 +93,7 @@ export class ServiceConnectionToken extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -103,6 +108,7 @@ export class ServiceConnectionToken extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -129,6 +135,10 @@ export interface ServiceConnectionTokenArgs {
      * A description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * User-defined labels.
      */

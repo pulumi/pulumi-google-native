@@ -52,6 +52,10 @@ export interface GetBitbucketServerConfigResult {
      */
     readonly peeredNetwork: string;
     /**
+     * Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+     */
+    readonly peeredNetworkIpRange: string;
+    /**
      * Secret Manager secrets needed by the config.
      */
     readonly secrets: outputs.cloudbuild.v1.BitbucketServerSecretsResponse;

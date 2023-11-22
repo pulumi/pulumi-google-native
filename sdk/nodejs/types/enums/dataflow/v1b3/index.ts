@@ -22,6 +22,27 @@ export const AutoscalingSettingsAlgorithm = {
  */
 export type AutoscalingSettingsAlgorithm = (typeof AutoscalingSettingsAlgorithm)[keyof typeof AutoscalingSettingsAlgorithm];
 
+export const DataSamplingConfigBehaviorsItem = {
+    /**
+     * If given, has no effect on sampling behavior. Used as an unknown or unset sentinel value.
+     */
+    DataSamplingBehaviorUnspecified: "DATA_SAMPLING_BEHAVIOR_UNSPECIFIED",
+    /**
+     * When given, disables element sampling. Has same behavior as not setting the behavior.
+     */
+    Disabled: "DISABLED",
+    /**
+     * When given, enables sampling in-flight from all PCollections.
+     */
+    AlwaysOn: "ALWAYS_ON",
+    /**
+     * When given, enables sampling input elements when a user-defined DoFn causes an exception.
+     */
+    Exceptions: "EXCEPTIONS",
+} as const;
+
+export type DataSamplingConfigBehaviorsItem = (typeof DataSamplingConfigBehaviorsItem)[keyof typeof DataSamplingConfigBehaviorsItem];
+
 export const EnvironmentFlexResourceSchedulingGoal = {
     /**
      * Run in the default mode.
@@ -262,7 +283,7 @@ export const JobRequestedState = {
 } as const;
 
 /**
- * The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+ * The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
  */
 export type JobRequestedState = (typeof JobRequestedState)[keyof typeof JobRequestedState];
 

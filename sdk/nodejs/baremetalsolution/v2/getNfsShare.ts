@@ -44,6 +44,10 @@ export interface GetNfsShareResult {
      */
     readonly nfsShareId: string;
     /**
+     * Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
+     */
+    readonly pod: string;
+    /**
      * The requested size, in GiB.
      */
     readonly requestedSizeGib: string;

@@ -46,6 +46,10 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * The type of underlying resources used to create the connection.
      */
     public /*out*/ readonly infrastructure!: pulumi.Output<string>;
@@ -100,6 +104,7 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -116,6 +121,7 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["infrastructure"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -144,6 +150,10 @@ export interface ServiceConnectionPolicyArgs {
      * A description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * User-defined labels.
      */

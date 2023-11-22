@@ -5,10 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { CollectionIamBindingArgs } from "./collectionIamBinding";
+export type CollectionIamBinding = import("./collectionIamBinding").CollectionIamBinding;
+export const CollectionIamBinding: typeof import("./collectionIamBinding").CollectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["CollectionIamBinding"], () => require("./collectionIamBinding"));
+
+export { CollectionIamMemberArgs } from "./collectionIamMember";
+export type CollectionIamMember = import("./collectionIamMember").CollectionIamMember;
+export const CollectionIamMember: typeof import("./collectionIamMember").CollectionIamMember = null as any;
+utilities.lazyLoad(exports, ["CollectionIamMember"], () => require("./collectionIamMember"));
+
+export { CollectionIamPolicyArgs } from "./collectionIamPolicy";
+export type CollectionIamPolicy = import("./collectionIamPolicy").CollectionIamPolicy;
+export const CollectionIamPolicy: typeof import("./collectionIamPolicy").CollectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CollectionIamPolicy"], () => require("./collectionIamPolicy"));
+
 export { CompilationResultArgs } from "./compilationResult";
 export type CompilationResult = import("./compilationResult").CompilationResult;
 export const CompilationResult: typeof import("./compilationResult").CompilationResult = null as any;
 utilities.lazyLoad(exports, ["CompilationResult"], () => require("./compilationResult"));
+
+export { GetCollectionIamPolicyArgs, GetCollectionIamPolicyResult, GetCollectionIamPolicyOutputArgs } from "./getCollectionIamPolicy";
+export const getCollectionIamPolicy: typeof import("./getCollectionIamPolicy").getCollectionIamPolicy = null as any;
+export const getCollectionIamPolicyOutput: typeof import("./getCollectionIamPolicy").getCollectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCollectionIamPolicy","getCollectionIamPolicyOutput"], () => require("./getCollectionIamPolicy"));
 
 export { GetCompilationResultArgs, GetCompilationResultResult, GetCompilationResultOutputArgs } from "./getCompilationResult";
 export const getCompilationResult: typeof import("./getCompilationResult").getCompilationResult = null as any;
@@ -110,6 +130,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:dataform/v1beta1:CollectionIamBinding":
+                return new CollectionIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:CollectionIamMember":
+                return new CollectionIamMember(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:CollectionIamPolicy":
+                return new CollectionIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataform/v1beta1:CompilationResult":
                 return new CompilationResult(name, <any>undefined, { urn })
             case "google-native:dataform/v1beta1:ReleaseConfig":

@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -53,6 +56,10 @@ export class Group extends pulumi.CustomResource {
     public readonly groupId!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
+     * Immutable. The target type of this group.
+     */
+    public readonly migrationTargetType!: pulumi.Output<string>;
+    /**
      * The Group name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -84,6 +91,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["migrationTargetType"] = args ? args.migrationTargetType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -95,6 +103,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["groupId"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["migrationTargetType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -124,6 +133,10 @@ export interface GroupArgs {
      */
     groupId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
+    /**
+     * Immutable. The target type of this group.
+     */
+    migrationTargetType?: pulumi.Input<enums.vmmigration.v1alpha1.GroupMigrationTargetType>;
     project?: pulumi.Input<string>;
     /**
      * A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).

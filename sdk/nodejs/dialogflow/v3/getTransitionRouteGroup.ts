@@ -38,7 +38,7 @@ export interface GetTransitionRouteGroupResult {
      */
     readonly displayName: string;
     /**
-     * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+     * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
      */
     readonly name: string;
     /**

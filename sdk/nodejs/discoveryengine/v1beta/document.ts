@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -36,13 +39,21 @@ export class Document extends pulumi.CustomResource {
 
     public readonly branchId!: pulumi.Output<string>;
     public readonly collectionId!: pulumi.Output<string>;
+    /**
+     * The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+     */
+    public readonly content!: pulumi.Output<outputs.discoveryengine.v1beta.GoogleCloudDiscoveryengineV1betaDocumentContentResponse>;
     public readonly dataStoreId!: pulumi.Output<string>;
+    /**
+     * This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
+     */
+    public /*out*/ readonly derivedStructData!: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
      */
     public readonly documentId!: pulumi.Output<string>;
     /**
-     * The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+     * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     public readonly jsonData!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
@@ -60,7 +71,7 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly schemaId!: pulumi.Output<string>;
     /**
-     * The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+     * The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     public readonly structData!: pulumi.Output<{[key: string]: string}>;
 
@@ -89,6 +100,7 @@ export class Document extends pulumi.CustomResource {
             }
             resourceInputs["branchId"] = args ? args.branchId : undefined;
             resourceInputs["collectionId"] = args ? args.collectionId : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
             resourceInputs["documentId"] = args ? args.documentId : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
@@ -99,10 +111,13 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schemaId"] = args ? args.schemaId : undefined;
             resourceInputs["structData"] = args ? args.structData : undefined;
+            resourceInputs["derivedStructData"] = undefined /*out*/;
         } else {
             resourceInputs["branchId"] = undefined /*out*/;
             resourceInputs["collectionId"] = undefined /*out*/;
+            resourceInputs["content"] = undefined /*out*/;
             resourceInputs["dataStoreId"] = undefined /*out*/;
+            resourceInputs["derivedStructData"] = undefined /*out*/;
             resourceInputs["documentId"] = undefined /*out*/;
             resourceInputs["jsonData"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -125,6 +140,10 @@ export class Document extends pulumi.CustomResource {
 export interface DocumentArgs {
     branchId: pulumi.Input<string>;
     collectionId: pulumi.Input<string>;
+    /**
+     * The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+     */
+    content?: pulumi.Input<inputs.discoveryengine.v1beta.GoogleCloudDiscoveryengineV1betaDocumentContentArgs>;
     dataStoreId: pulumi.Input<string>;
     /**
      * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -135,7 +154,7 @@ export interface DocumentArgs {
      */
     id?: pulumi.Input<string>;
     /**
-     * The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+     * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     jsonData?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
@@ -153,7 +172,7 @@ export interface DocumentArgs {
      */
     schemaId?: pulumi.Input<string>;
     /**
-     * The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+     * The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     structData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

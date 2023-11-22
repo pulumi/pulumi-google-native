@@ -29,6 +29,10 @@ export interface GetDataTaxonomyResult {
      */
     readonly attributeCount: number;
     /**
+     * The number of classes in the DataTaxonomy.
+     */
+    readonly classCount: number;
+    /**
      * The time when the DataTaxonomy was created.
      */
     readonly createTime: string;

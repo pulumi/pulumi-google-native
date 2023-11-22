@@ -95,6 +95,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionState!: pulumi.Output<string>;
     /**
+     * Host name of the device.
+     */
+    public readonly hostname!: pulumi.Output<string>;
+    /**
      * IMEI number of device if GSM device; empty otherwise.
      */
     public /*out*/ readonly imei!: pulumi.Output<string>;
@@ -173,6 +177,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["assetTag"] = args ? args.assetTag : undefined;
             resourceInputs["customer"] = args ? args.customer : undefined;
             resourceInputs["deviceId"] = args ? args.deviceId : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["lastSyncTime"] = args ? args.lastSyncTime : undefined;
             resourceInputs["serialNumber"] = args ? args.serialNumber : undefined;
             resourceInputs["wifiMacAddresses"] = args ? args.wifiMacAddresses : undefined;
@@ -215,6 +220,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["enabledDeveloperOptions"] = undefined /*out*/;
             resourceInputs["enabledUsbDebugging"] = undefined /*out*/;
             resourceInputs["encryptionState"] = undefined /*out*/;
+            resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["imei"] = undefined /*out*/;
             resourceInputs["kernelVersion"] = undefined /*out*/;
             resourceInputs["lastSyncTime"] = undefined /*out*/;
@@ -253,6 +259,10 @@ export interface DeviceArgs {
      * Unique identifier for the device.
      */
     deviceId?: pulumi.Input<string>;
+    /**
+     * Host name of the device.
+     */
+    hostname?: pulumi.Input<string>;
     /**
      * Most recent time when device synced with this service.
      */

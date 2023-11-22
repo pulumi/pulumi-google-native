@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -69,6 +72,10 @@ export class DataExchange extends pulumi.CustomResource {
      */
     public readonly primaryContact!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. Configurable data sharing environment option for a data exchange.
+     */
+    public readonly sharingEnvironmentConfig!: pulumi.Output<outputs.analyticshub.v1.SharingEnvironmentConfigResponse>;
 
     /**
      * Create a DataExchange resource with the given unique name, arguments, and options.
@@ -95,6 +102,7 @@ export class DataExchange extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["primaryContact"] = args ? args.primaryContact : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sharingEnvironmentConfig"] = args ? args.sharingEnvironmentConfig : undefined;
             resourceInputs["listingCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {
@@ -108,6 +116,7 @@ export class DataExchange extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["primaryContact"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["sharingEnvironmentConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["dataExchangeId", "location", "project"] };
@@ -146,4 +155,8 @@ export interface DataExchangeArgs {
      */
     primaryContact?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. Configurable data sharing environment option for a data exchange.
+     */
+    sharingEnvironmentConfig?: pulumi.Input<inputs.analyticshub.v1.SharingEnvironmentConfigArgs>;
 }

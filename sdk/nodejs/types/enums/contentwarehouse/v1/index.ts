@@ -135,6 +135,14 @@ export const GoogleCloudContentwarehouseV1RuleTriggerType = {
      * Trigger for update document action.
      */
     OnUpdate: "ON_UPDATE",
+    /**
+     * Trigger for create link action.
+     */
+    OnCreateLink: "ON_CREATE_LINK",
+    /**
+     * Trigger for delete link action.
+     */
+    OnDeleteLink: "ON_DELETE_LINK",
 } as const;
 
 /**

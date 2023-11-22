@@ -41,7 +41,7 @@ export interface GetAddressResult {
      */
     readonly description: string;
     /**
-     * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+     * The IP version that will be used by this address. Valid options are IPV4 or IPV6.
      */
     readonly ipVersion: string;
     /**

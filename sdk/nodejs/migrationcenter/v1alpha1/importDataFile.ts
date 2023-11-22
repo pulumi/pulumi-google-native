@@ -43,7 +43,7 @@ export class ImportDataFile extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * User-friendly display name. Maximum length is 63 characters.
+     * Optional. User-friendly display name. Maximum length is 256 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -130,7 +130,7 @@ export class ImportDataFile extends pulumi.CustomResource {
  */
 export interface ImportDataFileArgs {
     /**
-     * User-friendly display name. Maximum length is 63 characters.
+     * Optional. User-friendly display name. Maximum length is 256 characters.
      */
     displayName?: pulumi.Input<string>;
     /**

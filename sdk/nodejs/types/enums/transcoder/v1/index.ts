@@ -22,6 +22,26 @@ export const AnimationFadeFadeType = {
  */
 export type AnimationFadeFadeType = (typeof AnimationFadeFadeType)[keyof typeof AnimationFadeFadeType];
 
+export const DashConfigSegmentReferenceScheme = {
+    /**
+     * The segment reference scheme is not specified.
+     */
+    SegmentReferenceSchemeUnspecified: "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED",
+    /**
+     * Explicitly lists the URLs of media files for each segment. For example, if SegmentSettings.individual_segments is `true`, then the manifest contains fields similar to the following: ```xml ... ```
+     */
+    SegmentList: "SEGMENT_LIST",
+    /**
+     * SegmentSettings.individual_segments must be set to `true` to use this segment reference scheme. Uses the DASH specification `` tag to determine the URLs of media files for each segment. For example: ```xml ... ```
+     */
+    SegmentTemplateNumber: "SEGMENT_TEMPLATE_NUMBER",
+} as const;
+
+/**
+ * The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+ */
+export type DashConfigSegmentReferenceScheme = (typeof DashConfigSegmentReferenceScheme)[keyof typeof DashConfigSegmentReferenceScheme];
+
 export const JobMode = {
     /**
      * The job processing mode is not specified.
@@ -41,6 +61,26 @@ export const JobMode = {
  * The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
  */
 export type JobMode = (typeof JobMode)[keyof typeof JobMode];
+
+export const JobOptimization = {
+    /**
+     * The optimization strategy is not specified.
+     */
+    OptimizationStrategyUnspecified: "OPTIMIZATION_STRATEGY_UNSPECIFIED",
+    /**
+     * Prioritize job processing speed.
+     */
+    Autodetect: "AUTODETECT",
+    /**
+     * Disable all optimizations.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+ */
+export type JobOptimization = (typeof JobOptimization)[keyof typeof JobOptimization];
 
 export const ManifestType = {
     /**

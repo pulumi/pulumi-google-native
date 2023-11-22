@@ -104,6 +104,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly parameters!: pulumi.Output<outputs.memcache.v1.MemcacheParametersResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+     */
+    public readonly reservedIpRangeId!: pulumi.Output<string[]>;
+    /**
      * The state of this Memcached instance.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -149,6 +153,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservedIpRangeId"] = args ? args.reservedIpRangeId : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoint"] = undefined /*out*/;
@@ -176,6 +181,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeCount"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["reservedIpRangeId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["zones"] = undefined /*out*/;
@@ -237,6 +243,10 @@ export interface InstanceArgs {
      */
     parameters?: pulumi.Input<inputs.memcache.v1.MemcacheParametersArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+     */
+    reservedIpRangeId?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
      */

@@ -63,6 +63,7 @@ export class Budget extends pulumi.CustomResource {
      * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly ownershipScope!: pulumi.Output<string>;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */
@@ -91,6 +92,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["budgetFilter"] = args ? args.budgetFilter : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["ownershipScope"] = args ? args.ownershipScope : undefined;
             resourceInputs["thresholdRules"] = args ? args.thresholdRules : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
@@ -101,6 +103,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["ownershipScope"] = undefined /*out*/;
             resourceInputs["thresholdRules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -135,6 +138,7 @@ export interface BudgetArgs {
      * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
      */
     etag?: pulumi.Input<string>;
+    ownershipScope?: pulumi.Input<enums.billingbudgets.v1beta1.BudgetOwnershipScope>;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */

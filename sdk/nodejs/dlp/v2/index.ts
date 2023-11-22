@@ -10,6 +10,11 @@ export type DeidentifyTemplate = import("./deidentifyTemplate").DeidentifyTempla
 export const DeidentifyTemplate: typeof import("./deidentifyTemplate").DeidentifyTemplate = null as any;
 utilities.lazyLoad(exports, ["DeidentifyTemplate"], () => require("./deidentifyTemplate"));
 
+export { DiscoveryConfigArgs } from "./discoveryConfig";
+export type DiscoveryConfig = import("./discoveryConfig").DiscoveryConfig;
+export const DiscoveryConfig: typeof import("./discoveryConfig").DiscoveryConfig = null as any;
+utilities.lazyLoad(exports, ["DiscoveryConfig"], () => require("./discoveryConfig"));
+
 export { DlpJobArgs } from "./dlpJob";
 export type DlpJob = import("./dlpJob").DlpJob;
 export const DlpJob: typeof import("./dlpJob").DlpJob = null as any;
@@ -19,6 +24,11 @@ export { GetDeidentifyTemplateArgs, GetDeidentifyTemplateResult, GetDeidentifyTe
 export const getDeidentifyTemplate: typeof import("./getDeidentifyTemplate").getDeidentifyTemplate = null as any;
 export const getDeidentifyTemplateOutput: typeof import("./getDeidentifyTemplate").getDeidentifyTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getDeidentifyTemplate","getDeidentifyTemplateOutput"], () => require("./getDeidentifyTemplate"));
+
+export { GetDiscoveryConfigArgs, GetDiscoveryConfigResult, GetDiscoveryConfigOutputArgs } from "./getDiscoveryConfig";
+export const getDiscoveryConfig: typeof import("./getDiscoveryConfig").getDiscoveryConfig = null as any;
+export const getDiscoveryConfigOutput: typeof import("./getDiscoveryConfig").getDiscoveryConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getDiscoveryConfig","getDiscoveryConfigOutput"], () => require("./getDiscoveryConfig"));
 
 export { GetDlpJobArgs, GetDlpJobResult, GetDlpJobOutputArgs } from "./getDlpJob";
 export const getDlpJob: typeof import("./getDlpJob").getDlpJob = null as any;
@@ -95,6 +105,8 @@ const _module = {
         switch (type) {
             case "google-native:dlp/v2:DeidentifyTemplate":
                 return new DeidentifyTemplate(name, <any>undefined, { urn })
+            case "google-native:dlp/v2:DiscoveryConfig":
+                return new DiscoveryConfig(name, <any>undefined, { urn })
             case "google-native:dlp/v2:DlpJob":
                 return new DlpJob(name, <any>undefined, { urn })
             case "google-native:dlp/v2:InspectTemplate":

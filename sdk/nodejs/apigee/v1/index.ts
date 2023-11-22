@@ -20,10 +20,15 @@ export type ApiProduct = import("./apiProduct").ApiProduct;
 export const ApiProduct: typeof import("./apiProduct").ApiProduct = null as any;
 utilities.lazyLoad(exports, ["ApiProduct"], () => require("./apiProduct"));
 
-export { AppArgs } from "./app";
-export type App = import("./app").App;
-export const App: typeof import("./app").App = null as any;
-utilities.lazyLoad(exports, ["App"], () => require("./app"));
+export { AppGroupAppArgs } from "./appGroupApp";
+export type AppGroupApp = import("./appGroupApp").AppGroupApp;
+export const AppGroupApp: typeof import("./appGroupApp").AppGroupApp = null as any;
+utilities.lazyLoad(exports, ["AppGroupApp"], () => require("./appGroupApp"));
+
+export { AppgroupArgs } from "./appgroup";
+export type Appgroup = import("./appgroup").Appgroup;
+export const Appgroup: typeof import("./appgroup").Appgroup = null as any;
+utilities.lazyLoad(exports, ["Appgroup"], () => require("./appgroup"));
 
 export { ArchiveDeploymentArgs } from "./archiveDeployment";
 export type ArchiveDeployment = import("./archiveDeployment").ArchiveDeployment;
@@ -54,6 +59,11 @@ export { DeveloperArgs } from "./developer";
 export type Developer = import("./developer").Developer;
 export const Developer: typeof import("./developer").Developer = null as any;
 utilities.lazyLoad(exports, ["Developer"], () => require("./developer"));
+
+export { DeveloperAppArgs } from "./developerApp";
+export type DeveloperApp = import("./developerApp").DeveloperApp;
+export const DeveloperApp: typeof import("./developerApp").DeveloperApp = null as any;
+utilities.lazyLoad(exports, ["DeveloperApp"], () => require("./developerApp"));
 
 export { EndpointAttachmentArgs } from "./endpointAttachment";
 export type EndpointAttachment = import("./endpointAttachment").EndpointAttachment;
@@ -110,10 +120,20 @@ export const getApicategory: typeof import("./getApicategory").getApicategory = 
 export const getApicategoryOutput: typeof import("./getApicategory").getApicategoryOutput = null as any;
 utilities.lazyLoad(exports, ["getApicategory","getApicategoryOutput"], () => require("./getApicategory"));
 
-export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
-export const getApp: typeof import("./getApp").getApp = null as any;
-export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
-utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
+export { GetAppGroupAppArgs, GetAppGroupAppResult, GetAppGroupAppOutputArgs } from "./getAppGroupApp";
+export const getAppGroupApp: typeof import("./getAppGroupApp").getAppGroupApp = null as any;
+export const getAppGroupAppOutput: typeof import("./getAppGroupApp").getAppGroupAppOutput = null as any;
+utilities.lazyLoad(exports, ["getAppGroupApp","getAppGroupAppOutput"], () => require("./getAppGroupApp"));
+
+export { GetAppGroupAppKeyArgs, GetAppGroupAppKeyResult, GetAppGroupAppKeyOutputArgs } from "./getAppGroupAppKey";
+export const getAppGroupAppKey: typeof import("./getAppGroupAppKey").getAppGroupAppKey = null as any;
+export const getAppGroupAppKeyOutput: typeof import("./getAppGroupAppKey").getAppGroupAppKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getAppGroupAppKey","getAppGroupAppKeyOutput"], () => require("./getAppGroupAppKey"));
+
+export { GetAppgroupArgs, GetAppgroupResult, GetAppgroupOutputArgs } from "./getAppgroup";
+export const getAppgroup: typeof import("./getAppgroup").getAppgroup = null as any;
+export const getAppgroupOutput: typeof import("./getAppgroup").getAppgroupOutput = null as any;
+utilities.lazyLoad(exports, ["getAppgroup","getAppgroupOutput"], () => require("./getAppgroup"));
 
 export { GetArchiveDeploymentArgs, GetArchiveDeploymentResult, GetArchiveDeploymentOutputArgs } from "./getArchiveDeployment";
 export const getArchiveDeployment: typeof import("./getArchiveDeployment").getArchiveDeployment = null as any;
@@ -144,6 +164,16 @@ export { GetDeveloperArgs, GetDeveloperResult, GetDeveloperOutputArgs } from "./
 export const getDeveloper: typeof import("./getDeveloper").getDeveloper = null as any;
 export const getDeveloperOutput: typeof import("./getDeveloper").getDeveloperOutput = null as any;
 utilities.lazyLoad(exports, ["getDeveloper","getDeveloperOutput"], () => require("./getDeveloper"));
+
+export { GetDeveloperAppArgs, GetDeveloperAppResult, GetDeveloperAppOutputArgs } from "./getDeveloperApp";
+export const getDeveloperApp: typeof import("./getDeveloperApp").getDeveloperApp = null as any;
+export const getDeveloperAppOutput: typeof import("./getDeveloperApp").getDeveloperAppOutput = null as any;
+utilities.lazyLoad(exports, ["getDeveloperApp","getDeveloperAppOutput"], () => require("./getDeveloperApp"));
+
+export { GetDeveloperAppKeyArgs, GetDeveloperAppKeyResult, GetDeveloperAppKeyOutputArgs } from "./getDeveloperAppKey";
+export const getDeveloperAppKey: typeof import("./getDeveloperAppKey").getDeveloperAppKey = null as any;
+export const getDeveloperAppKeyOutput: typeof import("./getDeveloperAppKey").getDeveloperAppKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getDeveloperAppKey","getDeveloperAppKeyOutput"], () => require("./getDeveloperAppKey"));
 
 export { GetEndpointAttachmentArgs, GetEndpointAttachmentResult, GetEndpointAttachmentOutputArgs } from "./getEndpointAttachment";
 export const getEndpointAttachment: typeof import("./getEndpointAttachment").getEndpointAttachment = null as any;
@@ -200,11 +230,6 @@ export const getInstanceAttachment: typeof import("./getInstanceAttachment").get
 export const getInstanceAttachmentOutput: typeof import("./getInstanceAttachment").getInstanceAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceAttachment","getInstanceAttachmentOutput"], () => require("./getInstanceAttachment"));
 
-export { GetKeyArgs, GetKeyResult, GetKeyOutputArgs } from "./getKey";
-export const getKey: typeof import("./getKey").getKey = null as any;
-export const getKeyOutput: typeof import("./getKey").getKeyOutput = null as any;
-utilities.lazyLoad(exports, ["getKey","getKeyOutput"], () => require("./getKey"));
-
 export { GetKeystoreArgs, GetKeystoreResult, GetKeystoreOutputArgs } from "./getKeystore";
 export const getKeystore: typeof import("./getKeystore").getKeystore = null as any;
 export const getKeystoreOutput: typeof import("./getKeystore").getKeystoreOutput = null as any;
@@ -254,6 +279,16 @@ export { GetResourcefileArgs, GetResourcefileResult, GetResourcefileOutputArgs }
 export const getResourcefile: typeof import("./getResourcefile").getResourcefile = null as any;
 export const getResourcefileOutput: typeof import("./getResourcefile").getResourcefileOutput = null as any;
 utilities.lazyLoad(exports, ["getResourcefile","getResourcefileOutput"], () => require("./getResourcefile"));
+
+export { GetSecurityActionArgs, GetSecurityActionResult, GetSecurityActionOutputArgs } from "./getSecurityAction";
+export const getSecurityAction: typeof import("./getSecurityAction").getSecurityAction = null as any;
+export const getSecurityActionOutput: typeof import("./getSecurityAction").getSecurityActionOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityAction","getSecurityActionOutput"], () => require("./getSecurityAction"));
+
+export { GetSecurityProfileArgs, GetSecurityProfileResult, GetSecurityProfileOutputArgs } from "./getSecurityProfile";
+export const getSecurityProfile: typeof import("./getSecurityProfile").getSecurityProfile = null as any;
+export const getSecurityProfileOutput: typeof import("./getSecurityProfile").getSecurityProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityProfile","getSecurityProfileOutput"], () => require("./getSecurityProfile"));
 
 export { GetSecurityReportArgs, GetSecurityReportResult, GetSecurityReportOutputArgs } from "./getSecurityReport";
 export const getSecurityReport: typeof import("./getSecurityReport").getSecurityReport = null as any;
@@ -355,6 +390,16 @@ export type Resourcefile = import("./resourcefile").Resourcefile;
 export const Resourcefile: typeof import("./resourcefile").Resourcefile = null as any;
 utilities.lazyLoad(exports, ["Resourcefile"], () => require("./resourcefile"));
 
+export { SecurityActionArgs } from "./securityAction";
+export type SecurityAction = import("./securityAction").SecurityAction;
+export const SecurityAction: typeof import("./securityAction").SecurityAction = null as any;
+utilities.lazyLoad(exports, ["SecurityAction"], () => require("./securityAction"));
+
+export { SecurityProfileArgs } from "./securityProfile";
+export type SecurityProfile = import("./securityProfile").SecurityProfile;
+export const SecurityProfile: typeof import("./securityProfile").SecurityProfile = null as any;
+utilities.lazyLoad(exports, ["SecurityProfile"], () => require("./securityProfile"));
+
 export { SecurityReportArgs } from "./securityReport";
 export type SecurityReport = import("./securityReport").SecurityReport;
 export const SecurityReport: typeof import("./securityReport").SecurityReport = null as any;
@@ -389,8 +434,10 @@ const _module = {
                 return new Api(name, <any>undefined, { urn })
             case "google-native:apigee/v1:ApiProduct":
                 return new ApiProduct(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:App":
-                return new App(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:AppGroupApp":
+                return new AppGroupApp(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Appgroup":
+                return new Appgroup(name, <any>undefined, { urn })
             case "google-native:apigee/v1:ArchiveDeployment":
                 return new ArchiveDeployment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:CanaryEvaluation":
@@ -403,6 +450,8 @@ const _module = {
                 return new DebugSession(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Developer":
                 return new Developer(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:DeveloperApp":
+                return new DeveloperApp(name, <any>undefined, { urn })
             case "google-native:apigee/v1:EndpointAttachment":
                 return new EndpointAttachment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Entry":
@@ -449,6 +498,10 @@ const _module = {
                 return new Report(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Resourcefile":
                 return new Resourcefile(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:SecurityAction":
+                return new SecurityAction(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:SecurityProfile":
+                return new SecurityProfile(name, <any>undefined, { urn })
             case "google-native:apigee/v1:SecurityReport":
                 return new SecurityReport(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Sharedflow":

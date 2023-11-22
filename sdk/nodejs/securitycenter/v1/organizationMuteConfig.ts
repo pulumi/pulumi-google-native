@@ -59,7 +59,7 @@ export class OrganizationMuteConfig extends pulumi.CustomResource {
      */
     public readonly muteConfigId!: pulumi.Output<string>;
     /**
-     * This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+     * This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
      */
     public readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
@@ -136,7 +136,7 @@ export interface OrganizationMuteConfigArgs {
      */
     muteConfigId: pulumi.Input<string>;
     /**
-     * This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+     * This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
      */
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;

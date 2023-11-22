@@ -71,7 +71,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.metastore.v1alpha.MaintenanceWindowResponse>;
     /**
-     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
      */
     public readonly metadataIntegration!: pulumi.Output<outputs.metastore.v1alpha.MetadataIntegrationResponse>;
     /**
@@ -237,7 +237,7 @@ export interface ServiceArgs {
      */
     maintenanceWindow?: pulumi.Input<inputs.metastore.v1alpha.MaintenanceWindowArgs>;
     /**
-     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
      */
     metadataIntegration?: pulumi.Input<inputs.metastore.v1alpha.MetadataIntegrationArgs>;
     /**

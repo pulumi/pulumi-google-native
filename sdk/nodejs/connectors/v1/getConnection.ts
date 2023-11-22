@@ -38,9 +38,21 @@ export interface GetConnectionResult {
      */
     readonly configVariables: outputs.connectors.v1.ConfigVariableResponse[];
     /**
+     * Connection revision. This field is only updated when the connection is created or updated by User.
+     */
+    readonly connectionRevision: string;
+    /**
      * Connector version on which the connection is created. The format is: projects/*&#47;locations/*&#47;providers/*&#47;connectors/*&#47;versions/* Only global location is supported for ConnectorVersion resource.
      */
     readonly connectorVersion: string;
+    /**
+     * Infra configs supported by Connector Version.
+     */
+    readonly connectorVersionInfraConfig: outputs.connectors.v1.ConnectorVersionInfraConfigResponse;
+    /**
+     * Flag to mark the version indicating the launch stage.
+     */
+    readonly connectorVersionLaunchStage: string;
     /**
      * Created time.
      */
@@ -58,9 +70,25 @@ export interface GetConnectionResult {
      */
     readonly envoyImageLocation: string;
     /**
+     * Optional. Eventing config of a connection
+     */
+    readonly eventingConfig: outputs.connectors.v1.EventingConfigResponse;
+    /**
+     * Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+     */
+    readonly eventingEnablementType: string;
+    /**
+     * Eventing Runtime Data.
+     */
+    readonly eventingRuntimeData: outputs.connectors.v1.EventingRuntimeDataResponse;
+    /**
      * GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
      */
     readonly imageLocation: string;
+    /**
+     * Is trusted tester program enabled for the project.
+     */
+    readonly isTrustedTester: boolean;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
@@ -82,7 +110,7 @@ export interface GetConnectionResult {
      */
     readonly nodeConfig: outputs.connectors.v1.NodeConfigResponse;
     /**
-     * Optional. Service account needed for runtime plane to access GCP resources.
+     * Optional. Service account needed for runtime plane to access Google Cloud resources.
      */
     readonly serviceAccount: string;
     /**

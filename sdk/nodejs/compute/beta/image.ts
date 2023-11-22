@@ -62,6 +62,10 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly diskSizeGb!: pulumi.Output<string>;
     /**
+     * Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+     */
+    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    /**
      * The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
      */
     public readonly family!: pulumi.Output<string>;
@@ -199,6 +203,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["deprecated"] = args ? args.deprecated : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
+            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
             resourceInputs["family"] = args ? args.family : undefined;
             resourceInputs["forceCreate"] = args ? args.forceCreate : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
@@ -238,6 +243,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["deprecated"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
+            resourceInputs["enableConfidentialCompute"] = undefined /*out*/;
             resourceInputs["family"] = undefined /*out*/;
             resourceInputs["forceCreate"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
@@ -301,6 +307,10 @@ export interface ImageArgs {
      * Size of the image when restored onto a persistent disk (in GB).
      */
     diskSizeGb?: pulumi.Input<string>;
+    /**
+     * Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
      * The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
      */

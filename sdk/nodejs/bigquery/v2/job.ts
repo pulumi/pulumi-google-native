@@ -47,6 +47,10 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
+     */
+    public /*out*/ readonly jobCreationReason!: pulumi.Output<any>;
+    /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
     public readonly jobReference!: pulumi.Output<outputs.bigquery.v2.JobReferenceResponse>;
@@ -88,6 +92,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["jobCreationReason"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["statistics"] = undefined /*out*/;
@@ -96,6 +101,7 @@ export class Job extends pulumi.CustomResource {
         } else {
             resourceInputs["configuration"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["jobCreationReason"] = undefined /*out*/;
             resourceInputs["jobReference"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

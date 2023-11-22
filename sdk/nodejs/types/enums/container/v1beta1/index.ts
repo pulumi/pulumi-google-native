@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AdvancedDatapathObservabilityConfigRelayMode = {
+    /**
+     * Default value. This shouldn't be used.
+     */
+    RelayModeUnspecified: "RELAY_MODE_UNSPECIFIED",
+    /**
+     * disabled
+     */
+    Disabled: "DISABLED",
+    /**
+     * exposed via internal load balancer
+     */
+    InternalVpcLb: "INTERNAL_VPC_LB",
+    /**
+     * exposed via external load balancer
+     */
+    ExternalLb: "EXTERNAL_LB",
+} as const;
+
+/**
+ * Method used to make Relay available
+ */
+export type AdvancedDatapathObservabilityConfigRelayMode = (typeof AdvancedDatapathObservabilityConfigRelayMode)[keyof typeof AdvancedDatapathObservabilityConfigRelayMode];
+
 export const BinaryAuthorizationEvaluationMode = {
     /**
      * Default value
@@ -15,6 +39,14 @@ export const BinaryAuthorizationEvaluationMode = {
      * Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy. This is equivalent to setting the enabled boolean to true.
      */
     ProjectSingletonPolicyEnforce: "PROJECT_SINGLETON_POLICY_ENFORCE",
+    /**
+     * Use Binary Authorization with the policies specified in policy_bindings.
+     */
+    PolicyBindings: "POLICY_BINDINGS",
+    /**
+     * Use Binary Authorization with the policies specified in policy_bindings, and also with the project's singleton policy in enforcement mode.
+     */
+    PolicyBindingsAndProjectSingletonPolicyEnforce: "POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE",
 } as const;
 
 /**
@@ -62,6 +94,22 @@ export const ClusterAutoscalingAutoscalingProfile = {
  */
 export type ClusterAutoscalingAutoscalingProfile = (typeof ClusterAutoscalingAutoscalingProfile)[keyof typeof ClusterAutoscalingAutoscalingProfile];
 
+export const ClusterNetworkPerformanceConfigTotalEgressBandwidthTier = {
+    /**
+     * Default value
+     */
+    TierUnspecified: "TIER_UNSPECIFIED",
+    /**
+     * Higher bandwidth, actual values based on VM size.
+     */
+    Tier1: "TIER_1",
+} as const;
+
+/**
+ * Specifies the total network bandwidth tier for the NodePool.
+ */
+export type ClusterNetworkPerformanceConfigTotalEgressBandwidthTier = (typeof ClusterNetworkPerformanceConfigTotalEgressBandwidthTier)[keyof typeof ClusterNetworkPerformanceConfigTotalEgressBandwidthTier];
+
 export const ClusterTelemetryType = {
     /**
      * Not set.
@@ -105,6 +153,26 @@ export const ClusterUpdateDesiredDatapathProvider = {
  * The desired datapath provider for the cluster.
  */
 export type ClusterUpdateDesiredDatapathProvider = (typeof ClusterUpdateDesiredDatapathProvider)[keyof typeof ClusterUpdateDesiredDatapathProvider];
+
+export const ClusterUpdateDesiredInTransitEncryptionConfig = {
+    /**
+     * Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+     */
+    InTransitEncryptionConfigUnspecified: "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED",
+    /**
+     * In-transit encryption is disabled.
+     */
+    InTransitEncryptionDisabled: "IN_TRANSIT_ENCRYPTION_DISABLED",
+    /**
+     * Data in-transit is encrypted using inter-node transparent encryption.
+     */
+    InTransitEncryptionInterNodeTransparent: "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT",
+} as const;
+
+/**
+ * Specify the details of in-transit encryption.
+ */
+export type ClusterUpdateDesiredInTransitEncryptionConfig = (typeof ClusterUpdateDesiredInTransitEncryptionConfig)[keyof typeof ClusterUpdateDesiredInTransitEncryptionConfig];
 
 export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
     /**
@@ -163,6 +231,10 @@ export const DNSConfigClusterDns = {
      * Use CloudDNS for DNS resolution.
      */
     CloudDns: "CLOUD_DNS",
+    /**
+     * Use KubeDNS for DNS resolution.
+     */
+    KubeDns: "KUBE_DNS",
 } as const;
 
 /**
@@ -231,6 +303,30 @@ export const FilterEventTypeItem = {
 
 export type FilterEventTypeItem = (typeof FilterEventTypeItem)[keyof typeof FilterEventTypeItem];
 
+export const GPUDriverInstallationConfigGpuDriverVersion = {
+    /**
+     * Default value is to not install any GPU driver.
+     */
+    GpuDriverVersionUnspecified: "GPU_DRIVER_VERSION_UNSPECIFIED",
+    /**
+     * Disable GPU driver auto installation and needs manual installation
+     */
+    InstallationDisabled: "INSTALLATION_DISABLED",
+    /**
+     * "Default" GPU driver in COS and Ubuntu.
+     */
+    Default: "DEFAULT",
+    /**
+     * "Latest" GPU driver in COS.
+     */
+    Latest: "LATEST",
+} as const;
+
+/**
+ * Mode for how the GPU driver is installed.
+ */
+export type GPUDriverInstallationConfigGpuDriverVersion = (typeof GPUDriverInstallationConfigGpuDriverVersion)[keyof typeof GPUDriverInstallationConfigGpuDriverVersion];
+
 export const GPUSharingConfigGpuSharingStrategy = {
     /**
      * Default value.
@@ -270,6 +366,26 @@ export const GatewayAPIConfigChannel = {
  * The Gateway API release channel to use for Gateway API.
  */
 export type GatewayAPIConfigChannel = (typeof GatewayAPIConfigChannel)[keyof typeof GatewayAPIConfigChannel];
+
+export const HostMaintenancePolicyMaintenanceInterval = {
+    /**
+     * The maintenance interval is not explicitly specified.
+     */
+    MaintenanceIntervalUnspecified: "MAINTENANCE_INTERVAL_UNSPECIFIED",
+    /**
+     * Nodes are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the node than the PERIODIC option.
+     */
+    AsNeeded: "AS_NEEDED",
+    /**
+     * Nodes receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean underlying VMs will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+     */
+    Periodic: "PERIODIC",
+} as const;
+
+/**
+ * Specifies the frequency of planned maintenance events.
+ */
+export type HostMaintenancePolicyMaintenanceInterval = (typeof HostMaintenancePolicyMaintenanceInterval)[keyof typeof HostMaintenancePolicyMaintenanceInterval];
 
 export const IPAllocationPolicyIpv6AccessType = {
     /**
@@ -441,6 +557,30 @@ export const MonitoringComponentConfigEnableComponentsItem = {
      * kube-controller-manager
      */
     ControllerManager: "CONTROLLER_MANAGER",
+    /**
+     * Storage
+     */
+    Storage: "STORAGE",
+    /**
+     * Horizontal Pod Autoscaling
+     */
+    Hpa: "HPA",
+    /**
+     * Pod
+     */
+    Pod: "POD",
+    /**
+     * DaemonSet
+     */
+    Daemonset: "DAEMONSET",
+    /**
+     * Deployment
+     */
+    Deployment: "DEPLOYMENT",
+    /**
+     * Statefulset
+     */
+    Statefulset: "STATEFULSET",
 } as const;
 
 export type MonitoringComponentConfigEnableComponentsItem = (typeof MonitoringComponentConfigEnableComponentsItem)[keyof typeof MonitoringComponentConfigEnableComponentsItem];
@@ -464,6 +604,26 @@ export const NetworkConfigDatapathProvider = {
  * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
  */
 export type NetworkConfigDatapathProvider = (typeof NetworkConfigDatapathProvider)[keyof typeof NetworkConfigDatapathProvider];
+
+export const NetworkConfigInTransitEncryptionConfig = {
+    /**
+     * Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+     */
+    InTransitEncryptionConfigUnspecified: "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED",
+    /**
+     * In-transit encryption is disabled.
+     */
+    InTransitEncryptionDisabled: "IN_TRANSIT_ENCRYPTION_DISABLED",
+    /**
+     * Data in-transit is encrypted using inter-node transparent encryption.
+     */
+    InTransitEncryptionInterNodeTransparent: "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT",
+} as const;
+
+/**
+ * Specify the details of in-transit encryption.
+ */
+export type NetworkConfigInTransitEncryptionConfig = (typeof NetworkConfigInTransitEncryptionConfig)[keyof typeof NetworkConfigInTransitEncryptionConfig];
 
 export const NetworkConfigPrivateIpv6GoogleAccess = {
     /**
@@ -536,6 +696,26 @@ export const NetworkPolicyProvider = {
  * The selected network policy provider.
  */
 export type NetworkPolicyProvider = (typeof NetworkPolicyProvider)[keyof typeof NetworkPolicyProvider];
+
+export const NodeAffinityOperator = {
+    /**
+     * Invalid or unspecified affinity operator.
+     */
+    OperatorUnspecified: "OPERATOR_UNSPECIFIED",
+    /**
+     * Affinity operator.
+     */
+    In: "IN",
+    /**
+     * Anti-affinity operator.
+     */
+    NotIn: "NOT_IN",
+} as const;
+
+/**
+ * Operator for NodeAffinity.
+ */
+export type NodeAffinityOperator = (typeof NodeAffinityOperator)[keyof typeof NodeAffinityOperator];
 
 export const NodePoolAutoscalingLocationPolicy = {
     /**
@@ -680,6 +860,50 @@ export const SandboxConfigType = {
  * Type of the sandbox to use for the node.
  */
 export type SandboxConfigType = (typeof SandboxConfigType)[keyof typeof SandboxConfigType];
+
+export const SecurityPostureConfigMode = {
+    /**
+     * Default value not specified.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * Disables Security Posture features on the cluster.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Applies Security Posture features on the cluster.
+     */
+    Basic: "BASIC",
+} as const;
+
+/**
+ * Sets which mode to use for Security Posture features.
+ */
+export type SecurityPostureConfigMode = (typeof SecurityPostureConfigMode)[keyof typeof SecurityPostureConfigMode];
+
+export const SecurityPostureConfigVulnerabilityMode = {
+    /**
+     * Default value not specified.
+     */
+    VulnerabilityModeUnspecified: "VULNERABILITY_MODE_UNSPECIFIED",
+    /**
+     * Disables vulnerability scanning on the cluster.
+     */
+    VulnerabilityDisabled: "VULNERABILITY_DISABLED",
+    /**
+     * Applies basic vulnerability scanning on the cluster.
+     */
+    VulnerabilityBasic: "VULNERABILITY_BASIC",
+    /**
+     * Applies the Security Posture's vulnerability on cluster Enterprise level features.
+     */
+    VulnerabilityEnterprise: "VULNERABILITY_ENTERPRISE",
+} as const;
+
+/**
+ * Sets which mode to use for vulnerability scanning.
+ */
+export type SecurityPostureConfigVulnerabilityMode = (typeof SecurityPostureConfigVulnerabilityMode)[keyof typeof SecurityPostureConfigVulnerabilityMode];
 
 export const StatusConditionCanonicalCode = {
     /**

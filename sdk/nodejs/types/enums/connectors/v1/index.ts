@@ -58,6 +58,122 @@ export const AuthConfigAuthType = {
  */
 export type AuthConfigAuthType = (typeof AuthConfigAuthType)[keyof typeof AuthConfigAuthType];
 
+export const ConnectionEventingEnablementType = {
+    /**
+     * Eventing Enablement Type Unspecifeied.
+     */
+    EventingEnablementTypeUnspecified: "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED",
+    /**
+     * Both connection and eventing.
+     */
+    EventingAndConnection: "EVENTING_AND_CONNECTION",
+    /**
+     * Only Eventing.
+     */
+    OnlyEventing: "ONLY_EVENTING",
+} as const;
+
+/**
+ * Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+ */
+export type ConnectionEventingEnablementType = (typeof ConnectionEventingEnablementType)[keyof typeof ConnectionEventingEnablementType];
+
+export const CustomConnectorCustomConnectorType = {
+    /**
+     * Connector type is not specified.
+     */
+    CustomConnectorTypeUnspecified: "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED",
+    /**
+     * OpenAPI connector.
+     */
+    OpenApi: "OPEN_API",
+    /**
+     * Proto connector.
+     */
+    Proto: "PROTO",
+} as const;
+
+/**
+ * Required. Type of the custom connector.
+ */
+export type CustomConnectorCustomConnectorType = (typeof CustomConnectorCustomConnectorType)[keyof typeof CustomConnectorCustomConnectorType];
+
+export const CustomConnectorVersionType = {
+    /**
+     * Connector type is not specified.
+     */
+    CustomConnectorTypeUnspecified: "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED",
+    /**
+     * OpenAPI connector.
+     */
+    OpenApi: "OPEN_API",
+    /**
+     * Proto connector.
+     */
+    Proto: "PROTO",
+} as const;
+
+/**
+ * Required. Type of the customConnector.
+ */
+export type CustomConnectorVersionType = (typeof CustomConnectorVersionType)[keyof typeof CustomConnectorVersionType];
+
+export const EncryptionKeyType = {
+    /**
+     * Value type is not specified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Google Managed.
+     */
+    GoogleManaged: "GOOGLE_MANAGED",
+    /**
+     * Customer Managed.
+     */
+    CustomerManaged: "CUSTOMER_MANAGED",
+} as const;
+
+/**
+ * Type.
+ */
+export type EncryptionKeyType = (typeof EncryptionKeyType)[keyof typeof EncryptionKeyType];
+
+export const EventSubscriptionDestinationType = {
+    /**
+     * Default state.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Endpoint - Hit the value of endpoint when event is received
+     */
+    Endpoint: "ENDPOINT",
+} as const;
+
+/**
+ * type of the destination
+ */
+export type EventSubscriptionDestinationType = (typeof EventSubscriptionDestinationType)[keyof typeof EventSubscriptionDestinationType];
+
+export const JMSType = {
+    /**
+     * Default state.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * JMS Queue.
+     */
+    Queue: "QUEUE",
+    /**
+     * JMS Topic.
+     */
+    Topic: "TOPIC",
+} as const;
+
+/**
+ * Optional. Type of the JMS Source. i.e. Queue or Topic
+ */
+export type JMSType = (typeof JMSType)[keyof typeof JMSType];
+
 export const SslConfigClientCertType = {
     /**
      * Cert type unspecified.

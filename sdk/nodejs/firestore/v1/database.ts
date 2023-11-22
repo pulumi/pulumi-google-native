@@ -50,13 +50,17 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+     * Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
      */
     public readonly databaseId!: pulumi.Output<string>;
     /**
      * State of delete protection for the database.
      */
     public readonly deleteProtectionState!: pulumi.Output<string>;
+    /**
+     * The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+     */
+    public /*out*/ readonly earliestVersionTime!: pulumi.Output<string>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -66,13 +70,17 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly keyPrefix!: pulumi.Output<string>;
     /**
-     * The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+     * The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
      */
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the Database. Format: `projects/{project}/databases/{database}`
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Whether to enable the PITR feature on this database.
+     */
+    public readonly pointInTimeRecoveryEnablement!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
@@ -86,6 +94,10 @@ export class Database extends pulumi.CustomResource {
      * The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+     */
+    public /*out*/ readonly versionRetentionPeriod!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -108,26 +120,32 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pointInTimeRecoveryEnablement"] = args ? args.pointInTimeRecoveryEnablement : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["earliestVersionTime"] = undefined /*out*/;
             resourceInputs["keyPrefix"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["versionRetentionPeriod"] = undefined /*out*/;
         } else {
             resourceInputs["appEngineIntegrationMode"] = undefined /*out*/;
             resourceInputs["concurrencyMode"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databaseId"] = undefined /*out*/;
             resourceInputs["deleteProtectionState"] = undefined /*out*/;
+            resourceInputs["earliestVersionTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["keyPrefix"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pointInTimeRecoveryEnablement"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["versionRetentionPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["databaseId", "project"] };
@@ -149,7 +167,7 @@ export interface DatabaseArgs {
      */
     concurrencyMode?: pulumi.Input<enums.firestore.v1.DatabaseConcurrencyMode>;
     /**
-     * Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+     * Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
      */
     databaseId: pulumi.Input<string>;
     /**
@@ -161,13 +179,17 @@ export interface DatabaseArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+     * The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
      */
     location?: pulumi.Input<string>;
     /**
      * The resource name of the Database. Format: `projects/{project}/databases/{database}`
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether to enable the PITR feature on this database.
+     */
+    pointInTimeRecoveryEnablement?: pulumi.Input<enums.firestore.v1.DatabasePointInTimeRecoveryEnablement>;
     project?: pulumi.Input<string>;
     /**
      * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.

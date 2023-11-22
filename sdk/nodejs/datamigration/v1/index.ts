@@ -65,6 +65,11 @@ export const getConversionWorkspaceIamPolicy: typeof import("./getConversionWork
 export const getConversionWorkspaceIamPolicyOutput: typeof import("./getConversionWorkspaceIamPolicy").getConversionWorkspaceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getConversionWorkspaceIamPolicy","getConversionWorkspaceIamPolicyOutput"], () => require("./getConversionWorkspaceIamPolicy"));
 
+export { GetMappingRuleArgs, GetMappingRuleResult, GetMappingRuleOutputArgs } from "./getMappingRule";
+export const getMappingRule: typeof import("./getMappingRule").getMappingRule = null as any;
+export const getMappingRuleOutput: typeof import("./getMappingRule").getMappingRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getMappingRule","getMappingRuleOutput"], () => require("./getMappingRule"));
+
 export { GetMigrationJobArgs, GetMigrationJobResult, GetMigrationJobOutputArgs } from "./getMigrationJob";
 export const getMigrationJob: typeof import("./getMigrationJob").getMigrationJob = null as any;
 export const getMigrationJobOutput: typeof import("./getMigrationJob").getMigrationJobOutput = null as any;
@@ -84,6 +89,11 @@ export { GetPrivateConnectionIamPolicyArgs, GetPrivateConnectionIamPolicyResult,
 export const getPrivateConnectionIamPolicy: typeof import("./getPrivateConnectionIamPolicy").getPrivateConnectionIamPolicy = null as any;
 export const getPrivateConnectionIamPolicyOutput: typeof import("./getPrivateConnectionIamPolicy").getPrivateConnectionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getPrivateConnectionIamPolicy","getPrivateConnectionIamPolicyOutput"], () => require("./getPrivateConnectionIamPolicy"));
+
+export { MappingRuleArgs } from "./mappingRule";
+export type MappingRule = import("./mappingRule").MappingRule;
+export const MappingRule: typeof import("./mappingRule").MappingRule = null as any;
+utilities.lazyLoad(exports, ["MappingRule"], () => require("./mappingRule"));
 
 export { MigrationJobArgs } from "./migrationJob";
 export type MigrationJob = import("./migrationJob").MigrationJob;
@@ -149,6 +159,8 @@ const _module = {
                 return new ConversionWorkspaceIamMember(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:ConversionWorkspaceIamPolicy":
                 return new ConversionWorkspaceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:MappingRule":
+                return new MappingRule(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:MigrationJob":
                 return new MigrationJob(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:MigrationJobIamBinding":

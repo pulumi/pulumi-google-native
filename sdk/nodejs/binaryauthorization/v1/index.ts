@@ -35,10 +35,20 @@ export const getAttestorIamPolicy: typeof import("./getAttestorIamPolicy").getAt
 export const getAttestorIamPolicyOutput: typeof import("./getAttestorIamPolicy").getAttestorIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAttestorIamPolicy","getAttestorIamPolicyOutput"], () => require("./getAttestorIamPolicy"));
 
+export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
+export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
+export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
+
 export { GetPolicyIamPolicyArgs, GetPolicyIamPolicyResult, GetPolicyIamPolicyOutputArgs } from "./getPolicyIamPolicy";
 export const getPolicyIamPolicy: typeof import("./getPolicyIamPolicy").getPolicyIamPolicy = null as any;
 export const getPolicyIamPolicyOutput: typeof import("./getPolicyIamPolicy").getPolicyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicyIamPolicy","getPolicyIamPolicyOutput"], () => require("./getPolicyIamPolicy"));
+
+export { PolicyArgs } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
 export { PolicyIamBindingArgs } from "./policyIamBinding";
 export type PolicyIamBinding = import("./policyIamBinding").PolicyIamBinding;
@@ -71,6 +81,8 @@ const _module = {
                 return new AttestorIamMember(name, <any>undefined, { urn })
             case "google-native:binaryauthorization/v1:AttestorIamPolicy":
                 return new AttestorIamPolicy(name, <any>undefined, { urn })
+            case "google-native:binaryauthorization/v1:Policy":
+                return new Policy(name, <any>undefined, { urn })
             case "google-native:binaryauthorization/v1:PolicyIamBinding":
                 return new PolicyIamBinding(name, <any>undefined, { urn })
             case "google-native:binaryauthorization/v1:PolicyIamMember":

@@ -28,7 +28,7 @@ export interface GetDeliveryPipelineArgs {
 
 export interface GetDeliveryPipelineResult {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
      */
     readonly annotations: {[key: string]: string};
     /**
@@ -48,11 +48,11 @@ export interface GetDeliveryPipelineResult {
      */
     readonly etag: string;
     /**
-     * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     readonly labels: {[key: string]: string};
     /**
-     * Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+     * Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
      */
     readonly name: string;
     /**

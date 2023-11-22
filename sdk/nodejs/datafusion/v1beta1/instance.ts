@@ -124,6 +124,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly p4ServiceAccount!: pulumi.Output<string>;
     /**
+     * Optional. Current patch revision of the Data Fusion.
+     */
+    public readonly patchRevision!: pulumi.Output<string>;
+    /**
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */
     public readonly privateInstance!: pulumi.Output<boolean>;
@@ -167,6 +171,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly version!: pulumi.Output<string>;
     /**
+     * Endpoint on which the Data Fusion UI is accessible to third-party users.
+     */
+    public /*out*/ readonly workforceIdentityServiceEndpoint!: pulumi.Output<string>;
+    /**
      * Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -202,6 +210,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["patchRevision"] = args ? args.patchRevision : undefined;
             resourceInputs["privateInstance"] = args ? args.privateInstance : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -222,6 +231,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["tenantProjectId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["workforceIdentityServiceEndpoint"] = undefined /*out*/;
         } else {
             resourceInputs["accelerators"] = undefined /*out*/;
             resourceInputs["apiEndpoint"] = undefined /*out*/;
@@ -245,6 +255,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["options"] = undefined /*out*/;
             resourceInputs["p4ServiceAccount"] = undefined /*out*/;
+            resourceInputs["patchRevision"] = undefined /*out*/;
             resourceInputs["privateInstance"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
@@ -256,6 +267,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
+            resourceInputs["workforceIdentityServiceEndpoint"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -322,6 +334,10 @@ export interface InstanceArgs {
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. Current patch revision of the Data Fusion.
+     */
+    patchRevision?: pulumi.Input<string>;
     /**
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */

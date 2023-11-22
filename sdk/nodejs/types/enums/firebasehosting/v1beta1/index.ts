@@ -2,6 +2,34 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const CustomDomainCertPreference = {
+    /**
+     * The certificate's type is unspecified. The message is invalid if this is unspecified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * A short-lived certificate type that covers a domain name temporarily, while Hosting creates a more permanent certificate.
+     */
+    Temporary: "TEMPORARY",
+    /**
+     * The standard certificate for Spark plan custom domains.
+     */
+    Grouped: "GROUPED",
+    /**
+     * Blaze plan only. A certificate that covers from 1 to 100 domain names with custom domains on the same Firebase project.
+     */
+    ProjectGrouped: "PROJECT_GROUPED",
+    /**
+     * Blaze plan only. A certificate that covers a single domain name.
+     */
+    Dedicated: "DEDICATED",
+} as const;
+
+/**
+ * A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
+ */
+export type CustomDomainCertPreference = (typeof CustomDomainCertPreference)[keyof typeof CustomDomainCertPreference];
+
 export const DomainRedirectType = {
     /**
      * The default redirect type; should not be intentionlly used.

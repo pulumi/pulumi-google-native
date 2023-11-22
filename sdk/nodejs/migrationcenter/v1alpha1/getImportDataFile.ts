@@ -34,7 +34,7 @@ export interface GetImportDataFileResult {
      */
     readonly createTime: string;
     /**
-     * User-friendly display name. Maximum length is 63 characters.
+     * Optional. User-friendly display name. Maximum length is 256 characters.
      */
     readonly displayName: string;
     /**

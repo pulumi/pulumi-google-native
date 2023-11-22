@@ -13,6 +13,8 @@ utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 // Export sub-modules:
 import * as accesscontextmanager from "./accesscontextmanager";
+import * as aiplatform from "./aiplatform";
+import * as alloydb from "./alloydb";
 import * as analyticshub from "./analyticshub";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
@@ -22,16 +24,20 @@ import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as authorization from "./authorization";
+import * as backupdr from "./backupdr";
 import * as baremetalsolution from "./baremetalsolution";
 import * as batch from "./batch";
 import * as beyondcorp from "./beyondcorp";
+import * as biglake from "./biglake";
 import * as bigquery from "./bigquery";
 import * as bigqueryconnection from "./bigqueryconnection";
+import * as bigquerydatapolicy from "./bigquerydatapolicy";
 import * as bigquerydatatransfer from "./bigquerydatatransfer";
 import * as bigqueryreservation from "./bigqueryreservation";
 import * as bigtableadmin from "./bigtableadmin";
 import * as billingbudgets from "./billingbudgets";
 import * as binaryauthorization from "./binaryauthorization";
+import * as blockchainnodeengine from "./blockchainnodeengine";
 import * as certificatemanager from "./certificatemanager";
 import * as cloudasset from "./cloudasset";
 import * as cloudbilling from "./cloudbilling";
@@ -100,6 +106,7 @@ import * as ids from "./ids";
 import * as integrations from "./integrations";
 import * as jobs from "./jobs";
 import * as logging from "./logging";
+import * as looker from "./looker";
 import * as managedidentities from "./managedidentities";
 import * as memcache from "./memcache";
 import * as metastore from "./metastore";
@@ -118,6 +125,7 @@ import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
 import * as pubsub from "./pubsub";
 import * as pubsublite from "./pubsublite";
+import * as rapidmigrationassessment from "./rapidmigrationassessment";
 import * as recaptchaenterprise from "./recaptchaenterprise";
 import * as recommendationengine from "./recommendationengine";
 import * as redis from "./redis";
@@ -143,6 +151,7 @@ import * as translate from "./translate";
 import * as types from "./types";
 import * as vision from "./vision";
 import * as vmmigration from "./vmmigration";
+import * as vmwareengine from "./vmwareengine";
 import * as vpcaccess from "./vpcaccess";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
@@ -152,6 +161,8 @@ import * as workstations from "./workstations";
 
 export {
     accesscontextmanager,
+    aiplatform,
+    alloydb,
     analyticshub,
     apigateway,
     apigee,
@@ -161,16 +172,20 @@ export {
     artifactregistry,
     assuredworkloads,
     authorization,
+    backupdr,
     baremetalsolution,
     batch,
     beyondcorp,
+    biglake,
     bigquery,
     bigqueryconnection,
+    bigquerydatapolicy,
     bigquerydatatransfer,
     bigqueryreservation,
     bigtableadmin,
     billingbudgets,
     binaryauthorization,
+    blockchainnodeengine,
     certificatemanager,
     cloudasset,
     cloudbilling,
@@ -239,6 +254,7 @@ export {
     integrations,
     jobs,
     logging,
+    looker,
     managedidentities,
     memcache,
     metastore,
@@ -257,6 +273,7 @@ export {
     privateca,
     pubsub,
     pubsublite,
+    rapidmigrationassessment,
     recaptchaenterprise,
     recommendationengine,
     redis,
@@ -282,6 +299,7 @@ export {
     types,
     vision,
     vmmigration,
+    vmwareengine,
     vpcaccess,
     websecurityscanner,
     workflowexecutions,

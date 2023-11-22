@@ -94,6 +94,30 @@ export const EnvironmentDeploymentType = {
  */
 export type EnvironmentDeploymentType = (typeof EnvironmentDeploymentType)[keyof typeof EnvironmentDeploymentType];
 
+export const EnvironmentType = {
+    /**
+     * Environment type not specified.
+     */
+    EnvironmentTypeUnspecified: "ENVIRONMENT_TYPE_UNSPECIFIED",
+    /**
+     * Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
+     */
+    Base: "BASE",
+    /**
+     * This is the default type and it supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
+     */
+    Intermediate: "INTERMEDIATE",
+    /**
+     * Comprehensive environment supports advanced capabilites and even higher capacity than Intermediate environment. Refer to Apigee's public documentation for more details.
+     */
+    Comprehensive: "COMPREHENSIVE",
+} as const;
+
+/**
+ * Optional. EnvironmentType selected for the environment.
+ */
+export type EnvironmentType = (typeof EnvironmentType)[keyof typeof EnvironmentType];
+
 export const GoogleCloudApigeeV1TraceSamplingConfigSampler = {
     /**
      * Sampler unspecified.
@@ -188,7 +212,7 @@ export const OrganizationBillingType = {
      */
     Subscription: "SUBSCRIPTION",
     /**
-     * Free and limited access to Apigee for evaluation purposes only. only.
+     * Free and limited access to Apigee for evaluation purposes only.
      */
     Evaluation: "EVALUATION",
     /**
@@ -354,6 +378,26 @@ export const RatePlanState = {
  */
 export type RatePlanState = (typeof RatePlanState)[keyof typeof RatePlanState];
 
+export const SecurityActionState = {
+    /**
+     * The default value. This only exists for forward compatibility. A create request with this value will be rejected.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * An ENABLED SecurityAction is actively enforced if the `expiration_time` is in the future.
+     */
+    Enabled: "ENABLED",
+    /**
+     * A disabled SecurityAction is never enforced.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * Required. Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
+ */
+export type SecurityActionState = (typeof SecurityActionState)[keyof typeof SecurityActionState];
+
 export const TargetServerProtocol = {
     /**
      * UNSPECIFIED defaults to HTTP for backwards compatibility.
@@ -364,9 +408,21 @@ export const TargetServerProtocol = {
      */
     Http: "HTTP",
     /**
+     * The TargetSever uses HTTP2.
+     */
+    Http2: "HTTP2",
+    /**
+     * The TargetServer uses GRPC.
+     */
+    GrpcTarget: "GRPC_TARGET",
+    /**
      * GRPC TargetServer to be used in ExternalCallout Policy. Prefer to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL _CALLOUT generally available.
      */
     Grpc: "GRPC",
+    /**
+     * The TargetServer is to be used in the ExternalCallout Policy
+     */
+    ExternalCallout: "EXTERNAL_CALLOUT",
 } as const;
 
 /**

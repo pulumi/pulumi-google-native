@@ -91,11 +91,15 @@ export class ServiceAttachment extends pulumi.CustomResource {
     public readonly producerForwardingRule!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+     */
+    public readonly propagatedConnectionLimit!: pulumi.Output<number>;
+    /**
      * An 128-bit global unique ID of the PSC service attachment.
      */
     public /*out*/ readonly pscServiceAttachmentId!: pulumi.Output<outputs.compute.alpha.Uint128Response>;
     /**
-     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
      */
     public readonly reconcileConnections!: pulumi.Output<boolean>;
     public readonly region!: pulumi.Output<string>;
@@ -111,6 +115,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     public readonly targetService!: pulumi.Output<string>;
+    /**
+     * When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+     */
+    public readonly tunnelingConfig!: pulumi.Output<outputs.compute.alpha.ServiceAttachmentTunnelingConfigResponse>;
 
     /**
      * Create a ServiceAttachment resource with the given unique name, arguments, and options.
@@ -136,10 +144,12 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
             resourceInputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["propagatedConnectionLimit"] = args ? args.propagatedConnectionLimit : undefined;
             resourceInputs["reconcileConnections"] = args ? args.reconcileConnections : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["targetService"] = args ? args.targetService : undefined;
+            resourceInputs["tunnelingConfig"] = args ? args.tunnelingConfig : undefined;
             resourceInputs["connectedEndpoints"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -161,12 +171,14 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["natSubnets"] = undefined /*out*/;
             resourceInputs["producerForwardingRule"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["propagatedConnectionLimit"] = undefined /*out*/;
             resourceInputs["pscServiceAttachmentId"] = undefined /*out*/;
             resourceInputs["reconcileConnections"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["targetService"] = undefined /*out*/;
+            resourceInputs["tunnelingConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
@@ -217,7 +229,11 @@ export interface ServiceAttachmentArgs {
     producerForwardingRule?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+     * The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+     */
+    propagatedConnectionLimit?: pulumi.Input<number>;
+    /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
      */
     reconcileConnections?: pulumi.Input<boolean>;
     region: pulumi.Input<string>;
@@ -229,4 +245,8 @@ export interface ServiceAttachmentArgs {
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     targetService?: pulumi.Input<string>;
+    /**
+     * When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+     */
+    tunnelingConfig?: pulumi.Input<inputs.compute.alpha.ServiceAttachmentTunnelingConfigArgs>;
 }

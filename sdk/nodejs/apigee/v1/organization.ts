@@ -43,9 +43,9 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly addonsConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse>;
     /**
-     * DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      *
-     * @deprecated Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * @deprecated Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
     public readonly analyticsRegion!: pulumi.Output<string>;
     /**
@@ -92,6 +92,10 @@ export class Organization extends pulumi.CustomResource {
      * Description of the Apigee organization.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+     */
+    public readonly disableVpcPeering!: pulumi.Output<boolean>;
     /**
      * Display name for the Apigee organization. Unused, but reserved for future use.
      */
@@ -141,6 +145,10 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Subscription plan that the customer has purchased. Output only.
+     */
+    public /*out*/ readonly subscriptionPlan!: pulumi.Output<string>;
+    /**
      * DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
      *
      * @deprecated Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
@@ -181,6 +189,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["controlPlaneEncryptionKeyName"] = args ? args.controlPlaneEncryptionKeyName : undefined;
             resourceInputs["customerName"] = args ? args.customerName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableVpcPeering"] = args ? args.disableVpcPeering : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["portalDisabled"] = args ? args.portalDisabled : undefined;
@@ -197,6 +206,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subscriptionPlan"] = undefined /*out*/;
             resourceInputs["subscriptionType"] = undefined /*out*/;
         } else {
             resourceInputs["addonsConfig"] = undefined /*out*/;
@@ -212,6 +222,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["customerName"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["disableVpcPeering"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["environments"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;
@@ -224,6 +235,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
             resourceInputs["runtimeType"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subscriptionPlan"] = undefined /*out*/;
             resourceInputs["subscriptionType"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -243,9 +255,9 @@ export interface OrganizationArgs {
      */
     addonsConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigArgs>;
     /**
-     * DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      *
-     * @deprecated Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * @deprecated Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
     analyticsRegion: pulumi.Input<string>;
     /**
@@ -280,6 +292,10 @@ export interface OrganizationArgs {
      * Description of the Apigee organization.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+     */
+    disableVpcPeering?: pulumi.Input<boolean>;
     /**
      * Display name for the Apigee organization. Unused, but reserved for future use.
      */

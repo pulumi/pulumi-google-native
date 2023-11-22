@@ -32,6 +32,10 @@ export interface GetVersionArgs {
 
 export interface GetVersionResult {
     /**
+     * Optional. Cloud Logging details for the integration version
+     */
+    readonly cloudLoggingDetails: outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse;
+    /**
      * Auto-generated.
      */
     readonly createTime: string;

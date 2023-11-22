@@ -1071,6 +1071,26 @@ export const RemediationRemediationType = {
  */
 export type RemediationRemediationType = (typeof RemediationRemediationType)[keyof typeof RemediationRemediationType];
 
+export const SBOMStatusSbomState = {
+    /**
+     * Default unknown state.
+     */
+    SbomStateUnspecified: "SBOM_STATE_UNSPECIFIED",
+    /**
+     * SBOM scanning is pending.
+     */
+    Pending: "PENDING",
+    /**
+     * SBOM scanning has completed.
+     */
+    Complete: "COMPLETE",
+} as const;
+
+/**
+ * The progress of the SBOM generation.
+ */
+export type SBOMStatusSbomState = (typeof SBOMStatusSbomState)[keyof typeof SBOMStatusSbomState];
+
 export const VersionKind = {
     /**
      * Unknown.

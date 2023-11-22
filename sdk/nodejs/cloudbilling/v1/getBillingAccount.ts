@@ -36,6 +36,10 @@ export interface GetBillingAccountResult {
      * True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
      */
     readonly open: boolean;
+    /**
+     * The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for example: organizations/12345678 - billingAccounts/{billing_account_id}, for example: `billingAccounts/012345-567890-ABCDEF`
+     */
+    readonly parent: string;
 }
 /**
  * Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).

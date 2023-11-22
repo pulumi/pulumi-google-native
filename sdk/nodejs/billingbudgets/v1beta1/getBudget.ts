@@ -49,6 +49,7 @@ export interface GetBudgetResult {
      * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
      */
     readonly name: string;
+    readonly ownershipScope: string;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */

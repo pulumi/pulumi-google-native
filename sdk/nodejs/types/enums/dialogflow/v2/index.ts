@@ -360,6 +360,10 @@ export const GoogleCloudDialogflowV2SuggestionFeatureType = {
      * Run smart reply model for chat.
      */
     SmartReply: "SMART_REPLY",
+    /**
+     * Run knowledge search with text input from agent or text generated query.
+     */
+    KnowledgeSearch: "KNOWLEDGE_SEARCH",
 } as const;
 
 /**

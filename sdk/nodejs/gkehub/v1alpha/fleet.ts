@@ -43,6 +43,10 @@ export class Fleet extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. The default cluster configurations to apply across the fleet.
+     */
+    public readonly defaultClusterConfig!: pulumi.Output<outputs.gkehub.v1alpha.DefaultClusterConfigResponse>;
+    /**
      * When the Fleet was deleted.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
@@ -50,6 +54,10 @@ export class Fleet extends pulumi.CustomResource {
      * Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
      */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Labels for this Fleet.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
@@ -80,7 +88,9 @@ export class Fleet extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["defaultClusterConfig"] = args ? args.defaultClusterConfig : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -91,8 +101,10 @@ export class Fleet extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["defaultClusterConfig"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -112,9 +124,17 @@ export class Fleet extends pulumi.CustomResource {
  */
 export interface FleetArgs {
     /**
+     * Optional. The default cluster configurations to apply across the fleet.
+     */
+    defaultClusterConfig?: pulumi.Input<inputs.gkehub.v1alpha.DefaultClusterConfigArgs>;
+    /**
      * Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. Labels for this Fleet.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

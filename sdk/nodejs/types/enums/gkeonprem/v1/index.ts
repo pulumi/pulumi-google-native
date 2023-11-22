@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const BareMetalClusterUpgradePolicyPolicy = {
+    /**
+     * No upgrade policy selected.
+     */
+    NodePoolPolicyUnspecified: "NODE_POOL_POLICY_UNSPECIFIED",
+    /**
+     * Upgrade worker node pools sequentially.
+     */
+    Serial: "SERIAL",
+    /**
+     * Upgrade all worker node pools in parallel.
+     */
+    Concurrent: "CONCURRENT",
+} as const;
+
+/**
+ * Specifies which upgrade policy to use.
+ */
+export type BareMetalClusterUpgradePolicyPolicy = (typeof BareMetalClusterUpgradePolicyPolicy)[keyof typeof BareMetalClusterUpgradePolicyPolicy];
+
 export const BareMetalNodePoolConfigOperatingSystem = {
     /**
      * No operating system runtime selected.
@@ -33,6 +53,26 @@ export const BareMetalWorkloadNodeConfigContainerRuntime = {
  * Specifies which container runtime will be used.
  */
 export type BareMetalWorkloadNodeConfigContainerRuntime = (typeof BareMetalWorkloadNodeConfigContainerRuntime)[keyof typeof BareMetalWorkloadNodeConfigContainerRuntime];
+
+export const BinaryAuthorizationEvaluationMode = {
+    /**
+     * Default value
+     */
+    EvaluationModeUnspecified: "EVALUATION_MODE_UNSPECIFIED",
+    /**
+     * Disable BinaryAuthorization
+     */
+    Disabled: "DISABLED",
+    /**
+     * Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy.
+     */
+    ProjectSingletonPolicyEnforce: "PROJECT_SINGLETON_POLICY_ENFORCE",
+} as const;
+
+/**
+ * Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+ */
+export type BinaryAuthorizationEvaluationMode = (typeof BinaryAuthorizationEvaluationMode)[keyof typeof BinaryAuthorizationEvaluationMode];
 
 export const NodeTaintEffect = {
     /**

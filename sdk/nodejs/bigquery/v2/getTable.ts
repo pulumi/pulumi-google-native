@@ -32,6 +32,10 @@ export interface GetTableArgs {
 
 export interface GetTableResult {
     /**
+     * [Optional] Specifies the configuration of a BigLake managed table.
+     */
+    readonly biglakeConfiguration: outputs.bigquery.v2.BigLakeConfigurationResponse;
+    /**
      * Clone definition.
      */
     readonly cloneDefinition: outputs.bigquery.v2.CloneDefinitionResponse;
@@ -159,6 +163,10 @@ export interface GetTableResult {
      * [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
      */
     readonly requirePartitionFilter: boolean;
+    /**
+     * [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+     */
+    readonly resourceTags: {[key: string]: string};
     /**
      * [Optional] Describes the schema of this table.
      */

@@ -38,6 +38,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     }
 
     /**
+     * The version of BYOIP API.
+     */
+    public /*out*/ readonly byoipApiVersion!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -46,7 +50,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The IPv4 address to be used for reverse DNS verification.
+     * The address to be used for reverse DNS verification.
      */
     public readonly dnsVerificationIp!: pulumi.Output<string>;
     /**
@@ -54,7 +58,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -114,6 +118,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["byoipApiVersion"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -122,6 +127,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["sharedSecret"] = undefined /*out*/;
         } else {
+            resourceInputs["byoipApiVersion"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["dnsVerificationIp"] = undefined /*out*/;
@@ -154,11 +160,11 @@ export interface PublicAdvertisedPrefixArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The IPv4 address to be used for reverse DNS verification.
+     * The address to be used for reverse DNS verification.
      */
     dnsVerificationIp?: pulumi.Input<string>;
     /**
-     * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+     * The address range, in CIDR format, represented by this public advertised prefix.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**

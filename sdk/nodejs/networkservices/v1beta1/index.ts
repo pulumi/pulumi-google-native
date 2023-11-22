@@ -75,6 +75,16 @@ export const getHttpRoute: typeof import("./getHttpRoute").getHttpRoute = null a
 export const getHttpRouteOutput: typeof import("./getHttpRoute").getHttpRouteOutput = null as any;
 utilities.lazyLoad(exports, ["getHttpRoute","getHttpRouteOutput"], () => require("./getHttpRoute"));
 
+export { GetLbRouteExtensionArgs, GetLbRouteExtensionResult, GetLbRouteExtensionOutputArgs } from "./getLbRouteExtension";
+export const getLbRouteExtension: typeof import("./getLbRouteExtension").getLbRouteExtension = null as any;
+export const getLbRouteExtensionOutput: typeof import("./getLbRouteExtension").getLbRouteExtensionOutput = null as any;
+utilities.lazyLoad(exports, ["getLbRouteExtension","getLbRouteExtensionOutput"], () => require("./getLbRouteExtension"));
+
+export { GetLbTrafficExtensionArgs, GetLbTrafficExtensionResult, GetLbTrafficExtensionOutputArgs } from "./getLbTrafficExtension";
+export const getLbTrafficExtension: typeof import("./getLbTrafficExtension").getLbTrafficExtension = null as any;
+export const getLbTrafficExtensionOutput: typeof import("./getLbTrafficExtension").getLbTrafficExtensionOutput = null as any;
+utilities.lazyLoad(exports, ["getLbTrafficExtension","getLbTrafficExtensionOutput"], () => require("./getLbTrafficExtension"));
+
 export { GetMeshArgs, GetMeshResult, GetMeshOutputArgs } from "./getMesh";
 export const getMesh: typeof import("./getMesh").getMesh = null as any;
 export const getMeshOutput: typeof import("./getMesh").getMeshOutput = null as any;
@@ -95,6 +105,16 @@ export const getServiceBindingIamPolicy: typeof import("./getServiceBindingIamPo
 export const getServiceBindingIamPolicyOutput: typeof import("./getServiceBindingIamPolicy").getServiceBindingIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceBindingIamPolicy","getServiceBindingIamPolicyOutput"], () => require("./getServiceBindingIamPolicy"));
 
+export { GetServiceLbPolicyArgs, GetServiceLbPolicyResult, GetServiceLbPolicyOutputArgs } from "./getServiceLbPolicy";
+export const getServiceLbPolicy: typeof import("./getServiceLbPolicy").getServiceLbPolicy = null as any;
+export const getServiceLbPolicyOutput: typeof import("./getServiceLbPolicy").getServiceLbPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceLbPolicy","getServiceLbPolicyOutput"], () => require("./getServiceLbPolicy"));
+
+export { GetServiceLbPolicyIamPolicyArgs, GetServiceLbPolicyIamPolicyResult, GetServiceLbPolicyIamPolicyOutputArgs } from "./getServiceLbPolicyIamPolicy";
+export const getServiceLbPolicyIamPolicy: typeof import("./getServiceLbPolicyIamPolicy").getServiceLbPolicyIamPolicy = null as any;
+export const getServiceLbPolicyIamPolicyOutput: typeof import("./getServiceLbPolicyIamPolicy").getServiceLbPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceLbPolicyIamPolicy","getServiceLbPolicyIamPolicyOutput"], () => require("./getServiceLbPolicyIamPolicy"));
+
 export { GetTcpRouteArgs, GetTcpRouteResult, GetTcpRouteOutputArgs } from "./getTcpRoute";
 export const getTcpRoute: typeof import("./getTcpRoute").getTcpRoute = null as any;
 export const getTcpRouteOutput: typeof import("./getTcpRoute").getTcpRouteOutput = null as any;
@@ -114,6 +134,16 @@ export { HttpRouteArgs } from "./httpRoute";
 export type HttpRoute = import("./httpRoute").HttpRoute;
 export const HttpRoute: typeof import("./httpRoute").HttpRoute = null as any;
 utilities.lazyLoad(exports, ["HttpRoute"], () => require("./httpRoute"));
+
+export { LbRouteExtensionArgs } from "./lbRouteExtension";
+export type LbRouteExtension = import("./lbRouteExtension").LbRouteExtension;
+export const LbRouteExtension: typeof import("./lbRouteExtension").LbRouteExtension = null as any;
+utilities.lazyLoad(exports, ["LbRouteExtension"], () => require("./lbRouteExtension"));
+
+export { LbTrafficExtensionArgs } from "./lbTrafficExtension";
+export type LbTrafficExtension = import("./lbTrafficExtension").LbTrafficExtension;
+export const LbTrafficExtension: typeof import("./lbTrafficExtension").LbTrafficExtension = null as any;
+utilities.lazyLoad(exports, ["LbTrafficExtension"], () => require("./lbTrafficExtension"));
 
 export { MeshArgs } from "./mesh";
 export type Mesh = import("./mesh").Mesh;
@@ -155,6 +185,26 @@ export type ServiceBindingIamPolicy = import("./serviceBindingIamPolicy").Servic
 export const ServiceBindingIamPolicy: typeof import("./serviceBindingIamPolicy").ServiceBindingIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ServiceBindingIamPolicy"], () => require("./serviceBindingIamPolicy"));
 
+export { ServiceLbPolicyArgs } from "./serviceLbPolicy";
+export type ServiceLbPolicy = import("./serviceLbPolicy").ServiceLbPolicy;
+export const ServiceLbPolicy: typeof import("./serviceLbPolicy").ServiceLbPolicy = null as any;
+utilities.lazyLoad(exports, ["ServiceLbPolicy"], () => require("./serviceLbPolicy"));
+
+export { ServiceLbPolicyIamBindingArgs } from "./serviceLbPolicyIamBinding";
+export type ServiceLbPolicyIamBinding = import("./serviceLbPolicyIamBinding").ServiceLbPolicyIamBinding;
+export const ServiceLbPolicyIamBinding: typeof import("./serviceLbPolicyIamBinding").ServiceLbPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceLbPolicyIamBinding"], () => require("./serviceLbPolicyIamBinding"));
+
+export { ServiceLbPolicyIamMemberArgs } from "./serviceLbPolicyIamMember";
+export type ServiceLbPolicyIamMember = import("./serviceLbPolicyIamMember").ServiceLbPolicyIamMember;
+export const ServiceLbPolicyIamMember: typeof import("./serviceLbPolicyIamMember").ServiceLbPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["ServiceLbPolicyIamMember"], () => require("./serviceLbPolicyIamMember"));
+
+export { ServiceLbPolicyIamPolicyArgs } from "./serviceLbPolicyIamPolicy";
+export type ServiceLbPolicyIamPolicy = import("./serviceLbPolicyIamPolicy").ServiceLbPolicyIamPolicy;
+export const ServiceLbPolicyIamPolicy: typeof import("./serviceLbPolicyIamPolicy").ServiceLbPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ServiceLbPolicyIamPolicy"], () => require("./serviceLbPolicyIamPolicy"));
+
 export { TcpRouteArgs } from "./tcpRoute";
 export type TcpRoute = import("./tcpRoute").TcpRoute;
 export const TcpRoute: typeof import("./tcpRoute").TcpRoute = null as any;
@@ -193,6 +243,10 @@ const _module = {
                 return new GrpcRoute(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:HttpRoute":
                 return new HttpRoute(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1beta1:LbRouteExtension":
+                return new LbRouteExtension(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1beta1:LbTrafficExtension":
+                return new LbTrafficExtension(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:Mesh":
                 return new Mesh(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:MeshIamBinding":
@@ -209,6 +263,14 @@ const _module = {
                 return new ServiceBindingIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:ServiceBindingIamPolicy":
                 return new ServiceBindingIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1beta1:ServiceLbPolicy":
+                return new ServiceLbPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1beta1:ServiceLbPolicyIamBinding":
+                return new ServiceLbPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1beta1:ServiceLbPolicyIamMember":
+                return new ServiceLbPolicyIamMember(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1beta1:ServiceLbPolicyIamPolicy":
+                return new ServiceLbPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:TcpRoute":
                 return new TcpRoute(name, <any>undefined, { urn })
             case "google-native:networkservices/v1beta1:TlsRoute":

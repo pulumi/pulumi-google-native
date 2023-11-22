@@ -108,11 +108,15 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly flexibleRuntimeSettings!: pulumi.Output<outputs.appengine.v1beta.FlexibleRuntimeSettingsResponse>;
     /**
+     * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+     */
+    public readonly generatedCustomerMetadata!: pulumi.Output<{[key: string]: string}>;
+    /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
     public readonly handlers!: pulumi.Output<outputs.appengine.v1beta.UrlMapResponse[]>;
     /**
-     * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+     * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
      */
     public readonly healthCheck!: pulumi.Output<outputs.appengine.v1beta.HealthCheckResponse>;
     /**
@@ -128,7 +132,7 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly libraries!: pulumi.Output<outputs.appengine.v1beta.LibraryResponse[]>;
     /**
-     * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+     * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
      */
     public readonly livenessCheck!: pulumi.Output<outputs.appengine.v1beta.LivenessCheckResponse>;
     /**
@@ -148,7 +152,7 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly nobuildFilesRegex!: pulumi.Output<string>;
     /**
-     * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+     * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
      */
     public readonly readinessCheck!: pulumi.Output<outputs.appengine.v1beta.ReadinessCheckResponse>;
     /**
@@ -235,6 +239,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["envVariables"] = args ? args.envVariables : undefined;
             resourceInputs["errorHandlers"] = args ? args.errorHandlers : undefined;
             resourceInputs["flexibleRuntimeSettings"] = args ? args.flexibleRuntimeSettings : undefined;
+            resourceInputs["generatedCustomerMetadata"] = args ? args.generatedCustomerMetadata : undefined;
             resourceInputs["handlers"] = args ? args.handlers : undefined;
             resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
@@ -282,6 +287,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["envVariables"] = undefined /*out*/;
             resourceInputs["errorHandlers"] = undefined /*out*/;
             resourceInputs["flexibleRuntimeSettings"] = undefined /*out*/;
+            resourceInputs["generatedCustomerMetadata"] = undefined /*out*/;
             resourceInputs["handlers"] = undefined /*out*/;
             resourceInputs["healthCheck"] = undefined /*out*/;
             resourceInputs["inboundServices"] = undefined /*out*/;
@@ -376,11 +382,15 @@ export interface VersionArgs {
      */
     flexibleRuntimeSettings?: pulumi.Input<inputs.appengine.v1beta.FlexibleRuntimeSettingsArgs>;
     /**
+     * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
+     */
+    generatedCustomerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
     handlers?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.UrlMapArgs>[]>;
     /**
-     * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+     * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
      */
     healthCheck?: pulumi.Input<inputs.appengine.v1beta.HealthCheckArgs>;
     /**
@@ -400,7 +410,7 @@ export interface VersionArgs {
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.LibraryArgs>[]>;
     /**
-     * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+     * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
      */
     livenessCheck?: pulumi.Input<inputs.appengine.v1beta.LivenessCheckArgs>;
     /**
@@ -416,7 +426,7 @@ export interface VersionArgs {
      */
     nobuildFilesRegex?: pulumi.Input<string>;
     /**
-     * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+     * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
      */
     readinessCheck?: pulumi.Input<inputs.appengine.v1beta.ReadinessCheckArgs>;
     /**

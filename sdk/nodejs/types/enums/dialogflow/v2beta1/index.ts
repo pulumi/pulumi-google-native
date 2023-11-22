@@ -413,9 +413,17 @@ export const GoogleCloudDialogflowV2beta1SuggestionFeatureType = {
      */
     SmartReply: "SMART_REPLY",
     /**
+     * Run Dialogflow assist model for chat, which will return automated agent response as suggestion.
+     */
+    DialogflowAssist: "DIALOGFLOW_ASSIST",
+    /**
      * Run conversation summarization model for chat.
      */
     ConversationSummarization: "CONVERSATION_SUMMARIZATION",
+    /**
+     * Run knowledge search with text input from agent or text generated query.
+     */
+    KnowledgeSearch: "KNOWLEDGE_SEARCH",
 } as const;
 
 /**

@@ -80,11 +80,15 @@ export interface GetServiceAttachmentResult {
      */
     readonly producerForwardingRule: string;
     /**
+     * The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+     */
+    readonly propagatedConnectionLimit: number;
+    /**
      * An 128-bit global unique ID of the PSC service attachment.
      */
     readonly pscServiceAttachmentId: outputs.compute.alpha.Uint128Response;
     /**
-     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
      */
     readonly reconcileConnections: boolean;
     /**
@@ -99,6 +103,10 @@ export interface GetServiceAttachmentResult {
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     readonly targetService: string;
+    /**
+     * When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+     */
+    readonly tunnelingConfig: outputs.compute.alpha.ServiceAttachmentTunnelingConfigResponse;
 }
 /**
  * Returns the specified ServiceAttachment resource in the given scope.

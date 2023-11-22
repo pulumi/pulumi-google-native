@@ -43,6 +43,14 @@ export class MigratingVm extends pulumi.CustomResource {
      */
     public /*out*/ readonly awsSourceVmDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.AwsSourceVmDetailsResponse>;
     /**
+     * Details of the VM from an Azure source.
+     */
+    public /*out*/ readonly azureSourceVmDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.AzureSourceVmDetailsResponse>;
+    /**
+     * Details of the target Persistent Disks in Compute Engine.
+     */
+    public readonly computeEngineDisksTargetDefaults!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineDisksTargetDefaultsResponse>;
+    /**
      * Details of the target VM in Compute Engine.
      */
     public readonly computeEngineTargetDefaults!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineTargetDefaultsResponse>;
@@ -141,6 +149,10 @@ export class MigratingVm extends pulumi.CustomResource {
      * The last time the migrating VM resource was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Details of the VM from a Vmware source.
+     */
+    public /*out*/ readonly vmwareSourceVmDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.VmwareSourceVmDetailsResponse>;
 
     /**
      * Create a MigratingVm resource with the given unique name, arguments, and options.
@@ -159,6 +171,7 @@ export class MigratingVm extends pulumi.CustomResource {
             if ((!args || args.sourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
+            resourceInputs["computeEngineDisksTargetDefaults"] = args ? args.computeEngineDisksTargetDefaults : undefined;
             resourceInputs["computeEngineTargetDefaults"] = args ? args.computeEngineTargetDefaults : undefined;
             resourceInputs["computeEngineVmDefaults"] = args ? args.computeEngineVmDefaults : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -173,6 +186,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["sourceVmId"] = args ? args.sourceVmId : undefined;
             resourceInputs["targetDefaults"] = args ? args.targetDefaults : undefined;
             resourceInputs["awsSourceVmDetails"] = undefined /*out*/;
+            resourceInputs["azureSourceVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;
             resourceInputs["cutoverForecast"] = undefined /*out*/;
@@ -186,8 +200,11 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["vmwareSourceVmDetails"] = undefined /*out*/;
         } else {
             resourceInputs["awsSourceVmDetails"] = undefined /*out*/;
+            resourceInputs["azureSourceVmDetails"] = undefined /*out*/;
+            resourceInputs["computeEngineDisksTargetDefaults"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDefaults"] = undefined /*out*/;
             resourceInputs["computeEngineVmDefaults"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -214,6 +231,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["targetDefaults"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["vmwareSourceVmDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "migratingVmId", "project", "sourceId"] };
@@ -226,6 +244,10 @@ export class MigratingVm extends pulumi.CustomResource {
  * The set of arguments for constructing a MigratingVm resource.
  */
 export interface MigratingVmArgs {
+    /**
+     * Details of the target Persistent Disks in Compute Engine.
+     */
+    computeEngineDisksTargetDefaults?: pulumi.Input<inputs.vmmigration.v1alpha1.ComputeEngineDisksTargetDefaultsArgs>;
     /**
      * Details of the target VM in Compute Engine.
      */

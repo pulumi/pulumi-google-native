@@ -28,17 +28,21 @@ export interface GetTargetArgs {
 
 export interface GetTargetResult {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     readonly annotations: {[key: string]: string};
     /**
-     * Information specifying an Anthos Cluster.
+     * Optional. Information specifying an Anthos Cluster.
      */
     readonly anthosCluster: outputs.clouddeploy.v1.AnthosClusterResponse;
     /**
      * Time at which the `Target` was created.
      */
     readonly createTime: string;
+    /**
+     * Optional. The deploy parameters to use for this target.
+     */
+    readonly deployParameters: {[key: string]: string};
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
@@ -52,19 +56,19 @@ export interface GetTargetResult {
      */
     readonly executionConfigs: outputs.clouddeploy.v1.ExecutionConfigResponse[];
     /**
-     * Information specifying a GKE Cluster.
+     * Optional. Information specifying a GKE Cluster.
      */
     readonly gke: outputs.clouddeploy.v1.GkeClusterResponse;
     /**
-     * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+     * Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     readonly labels: {[key: string]: string};
     /**
-     * Information specifying a multiTarget.
+     * Optional. Information specifying a multiTarget.
      */
     readonly multiTarget: outputs.clouddeploy.v1.MultiTargetResponse;
     /**
-     * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+     * Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
      */
     readonly name: string;
     /**
@@ -72,7 +76,7 @@ export interface GetTargetResult {
      */
     readonly requireApproval: boolean;
     /**
-     * Information specifying a Cloud Run deployment target.
+     * Optional. Information specifying a Cloud Run deployment target.
      */
     readonly run: outputs.clouddeploy.v1.CloudRunLocationResponse;
     /**

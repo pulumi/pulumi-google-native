@@ -70,6 +70,30 @@ export const ExperimentState = {
  */
 export type ExperimentState = (typeof ExperimentState)[keyof typeof ExperimentState];
 
+export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType = {
+    /**
+     * Not specified. This value indicates that the data store type is not specified, so it will not be used during search.
+     */
+    DataStoreTypeUnspecified: "DATA_STORE_TYPE_UNSPECIFIED",
+    /**
+     * A data store that contains public web content.
+     */
+    PublicWeb: "PUBLIC_WEB",
+    /**
+     * A data store that contains unstructured private data.
+     */
+    Unstructured: "UNSTRUCTURED",
+    /**
+     * A data store that contains structured data (for example FAQ).
+     */
+    Structured: "STRUCTURED",
+} as const;
+
+/**
+ * The type of the connected data store.
+ */
+export type GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType = (typeof GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType)[keyof typeof GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType];
+
 export const GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType = {
     /**
      * Count type unspecified.
@@ -378,6 +402,22 @@ export const SecuritySettingRedactionStrategy = {
  * Strategy that defines how we do redaction.
  */
 export type SecuritySettingRedactionStrategy = (typeof SecuritySettingRedactionStrategy)[keyof typeof SecuritySettingRedactionStrategy];
+
+export const SecuritySettingRetentionStrategy = {
+    /**
+     * Retains the persisted data with Dialogflow's internal default 365d TTLs.
+     */
+    RetentionStrategyUnspecified: "RETENTION_STRATEGY_UNSPECIFIED",
+    /**
+     * Removes data when the conversation ends. If there is no Conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
+     */
+    RemoveAfterConversation: "REMOVE_AFTER_CONVERSATION",
+} as const;
+
+/**
+ * Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+ */
+export type SecuritySettingRetentionStrategy = (typeof SecuritySettingRetentionStrategy)[keyof typeof SecuritySettingRetentionStrategy];
 
 export const SessionEntityTypeEntityOverrideMode = {
     /**

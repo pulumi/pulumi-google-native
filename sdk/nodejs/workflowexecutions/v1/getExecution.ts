@@ -72,7 +72,7 @@ export interface GetExecutionResult {
      */
     readonly state: string;
     /**
-     * Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+     * Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
      */
     readonly stateError: outputs.workflowexecutions.v1.StateErrorResponse;
     /**

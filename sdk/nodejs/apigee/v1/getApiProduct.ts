@@ -58,6 +58,10 @@ export interface GetApiProductResult {
      */
     readonly graphqlOperationGroup: outputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationGroupResponse;
     /**
+     * Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
+     */
+    readonly grpcOperationGroup: outputs.apigee.v1.GoogleCloudApigeeV1GrpcOperationGroupResponse;
+    /**
      * Response only. Modified time of this environment as milliseconds since epoch.
      */
     readonly lastModifiedAt: string;

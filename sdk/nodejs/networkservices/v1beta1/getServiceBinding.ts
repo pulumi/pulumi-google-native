@@ -45,6 +45,10 @@ export interface GetServiceBindingResult {
      */
     readonly service: string;
     /**
+     * The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+     */
+    readonly serviceId: string;
+    /**
      * The timestamp when the resource was updated.
      */
     readonly updateTime: string;

@@ -34,6 +34,10 @@ export interface GetPageArgs {
 
 export interface GetPageResult {
     /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    readonly advancedSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse;
+    /**
      * The human-readable name of the page, unique within the flow.
      */
     readonly displayName: string;
@@ -50,11 +54,15 @@ export interface GetPageResult {
      */
     readonly form: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FormResponse;
     /**
+     * Optional. Knowledge connector configuration.
+     */
+    readonly knowledgeConnectorSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse;
+    /**
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
      */
     readonly name: string;
     /**
-     * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+     * Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
      */
     readonly transitionRouteGroups: string[];
     /**

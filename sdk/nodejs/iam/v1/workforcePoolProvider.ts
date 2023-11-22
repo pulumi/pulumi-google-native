@@ -58,6 +58,10 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Time after which the workload pool provider will be permanently purged and cannot be recovered.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the provider. Format: `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
@@ -111,6 +115,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["saml"] = args ? args.saml : undefined;
             resourceInputs["workforcePoolId"] = args ? args.workforcePoolId : undefined;
             resourceInputs["workforcePoolProviderId"] = args ? args.workforcePoolProviderId : undefined;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
@@ -119,6 +124,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["oidc"] = undefined /*out*/;

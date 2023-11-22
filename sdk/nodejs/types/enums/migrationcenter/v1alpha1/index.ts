@@ -194,6 +194,54 @@ export const ReportType = {
  */
 export type ReportType = (typeof ReportType)[keyof typeof ReportType];
 
+export const SoleTenancyPreferencesCommitmentPlan = {
+    /**
+     * Unspecified commitment plan.
+     */
+    CommitmentPlanUnspecified: "COMMITMENT_PLAN_UNSPECIFIED",
+    /**
+     * No commitment plan (on-demand usage).
+     */
+    OnDemand: "ON_DEMAND",
+    /**
+     * 1 year commitment.
+     */
+    Commitment1Year: "COMMITMENT_1_YEAR",
+    /**
+     * 3 years commitment.
+     */
+    Commitment3Year: "COMMITMENT_3_YEAR",
+} as const;
+
+/**
+ * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+ */
+export type SoleTenancyPreferencesCommitmentPlan = (typeof SoleTenancyPreferencesCommitmentPlan)[keyof typeof SoleTenancyPreferencesCommitmentPlan];
+
+export const SoleTenancyPreferencesHostMaintenancePolicy = {
+    /**
+     * Unspecified host maintenance policy.
+     */
+    HostMaintenancePolicyUnspecified: "HOST_MAINTENANCE_POLICY_UNSPECIFIED",
+    /**
+     * Default host maintenance policy.
+     */
+    HostMaintenancePolicyDefault: "HOST_MAINTENANCE_POLICY_DEFAULT",
+    /**
+     * Restart in place host maintenance policy.
+     */
+    HostMaintenancePolicyRestartInPlace: "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE",
+    /**
+     * Migrate within node group host maintenance policy.
+     */
+    HostMaintenancePolicyMigrateWithinNodeGroup: "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP",
+} as const;
+
+/**
+ * Sole Tenancy nodes maintenance policy.
+ */
+export type SoleTenancyPreferencesHostMaintenancePolicy = (typeof SoleTenancyPreferencesHostMaintenancePolicy)[keyof typeof SoleTenancyPreferencesHostMaintenancePolicy];
+
 export const SourceType = {
     /**
      * Unspecified
@@ -246,6 +294,34 @@ export const VirtualMachinePreferencesCommitmentPlan = {
  */
 export type VirtualMachinePreferencesCommitmentPlan = (typeof VirtualMachinePreferencesCommitmentPlan)[keyof typeof VirtualMachinePreferencesCommitmentPlan];
 
+export const VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod = {
+    /**
+     * Unspecified aggregation method. Can be used for default value.
+     */
+    AggregationMethodUnspecified: "AGGREGATION_METHOD_UNSPECIFIED",
+    /**
+     * Average of utilization data.
+     */
+    AggregationMethodAverage: "AGGREGATION_METHOD_AVERAGE",
+    /**
+     * Median of utilization data.
+     */
+    AggregationMethodMedian: "AGGREGATION_METHOD_MEDIAN",
+    /**
+     * 95th percentile of utilization data.
+     */
+    AggregationMethodNinetyFifthPercentile: "AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE",
+    /**
+     * Peak of utilization data.
+     */
+    AggregationMethodPeak: "AGGREGATION_METHOD_PEAK",
+} as const;
+
+/**
+ * Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+ */
+export type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod = (typeof VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod)[keyof typeof VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod];
+
 export const VirtualMachinePreferencesSizingOptimizationStrategy = {
     /**
      * Unspecified (default value).
@@ -263,9 +339,69 @@ export const VirtualMachinePreferencesSizingOptimizationStrategy = {
      * Virtual machine sizing will match the reported usage, with little slack. Using this option can help reduce costs.
      */
     SizingOptimizationStrategyAggressive: "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE",
+    /**
+     * Virtual machine sizing will be determined by custom parameters. While not supported in the v1 API, this value is converted to UNSPECIFIED in conversions to the v1 API.
+     */
+    SizingOptimizationStrategyCustom: "SIZING_OPTIMIZATION_STRATEGY_CUSTOM",
 } as const;
 
 /**
  * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
  */
 export type VirtualMachinePreferencesSizingOptimizationStrategy = (typeof VirtualMachinePreferencesSizingOptimizationStrategy)[keyof typeof VirtualMachinePreferencesSizingOptimizationStrategy];
+
+export const VirtualMachinePreferencesTargetProduct = {
+    /**
+     * Unspecified (default value).
+     */
+    ComputeMigrationTargetProductUnspecified: "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED",
+    /**
+     * Prefer to migrate to Google Cloud Compute Engine.
+     */
+    ComputeMigrationTargetProductComputeEngine: "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+    /**
+     * Prefer to migrate to Google Cloud VMware Engine.
+     */
+    ComputeMigrationTargetProductVmwareEngine: "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE",
+    /**
+     * Prefer to migrate to Google Cloud Sole Tenant Nodes.
+     */
+    ComputeMigrationTargetProductSoleTenancy: "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY",
+} as const;
+
+/**
+ * Target product for assets using this preference set. Specify either target product or business goal, but not both.
+ */
+export type VirtualMachinePreferencesTargetProduct = (typeof VirtualMachinePreferencesTargetProduct)[keyof typeof VirtualMachinePreferencesTargetProduct];
+
+export const VmwareEnginePreferencesCommitmentPlan = {
+    /**
+     * Unspecified commitment plan.
+     */
+    CommitmentPlanUnspecified: "COMMITMENT_PLAN_UNSPECIFIED",
+    /**
+     * No commitment plan (on-demand usage).
+     */
+    OnDemand: "ON_DEMAND",
+    /**
+     * 1 year commitment (monthly payments).
+     */
+    Commitment1YearMonthlyPayments: "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS",
+    /**
+     * 3 year commitment (monthly payments).
+     */
+    Commitment3YearMonthlyPayments: "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS",
+    /**
+     * 1 year commitment (upfront payment).
+     */
+    Commitment1YearUpfrontPayment: "COMMITMENT_1_YEAR_UPFRONT_PAYMENT",
+    /**
+     * 3 years commitment (upfront payment).
+     */
+    Commitment3YearUpfrontPayment: "COMMITMENT_3_YEAR_UPFRONT_PAYMENT",
+} as const;
+
+/**
+ * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+ */
+export type VmwareEnginePreferencesCommitmentPlan = (typeof VmwareEnginePreferencesCommitmentPlan)[keyof typeof VmwareEnginePreferencesCommitmentPlan];

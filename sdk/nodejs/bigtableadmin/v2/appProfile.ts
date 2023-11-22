@@ -62,11 +62,19 @@ export class AppProfile extends pulumi.CustomResource {
      * The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+     */
+    public readonly priority!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Use a single-cluster routing policy.
      */
     public readonly singleClusterRouting!: pulumi.Output<outputs.bigtableadmin.v2.SingleClusterRoutingResponse>;
+    /**
+     * The standard options used for isolating this app profile's traffic from other use cases.
+     */
+    public readonly standardIsolation!: pulumi.Output<outputs.bigtableadmin.v2.StandardIsolationResponse>;
 
     /**
      * Create a AppProfile resource with the given unique name, arguments, and options.
@@ -92,8 +100,10 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
+            resourceInputs["standardIsolation"] = args ? args.standardIsolation : undefined;
         } else {
             resourceInputs["appProfileId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -102,8 +112,10 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["multiClusterRoutingUseAny"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["singleClusterRouting"] = undefined /*out*/;
+            resourceInputs["standardIsolation"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["appProfileId", "instanceId", "project"] };
@@ -141,9 +153,17 @@ export interface AppProfileArgs {
      * The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+     */
+    priority?: pulumi.Input<enums.bigtableadmin.v2.AppProfilePriority>;
     project?: pulumi.Input<string>;
     /**
      * Use a single-cluster routing policy.
      */
     singleClusterRouting?: pulumi.Input<inputs.bigtableadmin.v2.SingleClusterRoutingArgs>;
+    /**
+     * The standard options used for isolating this app profile's traffic from other use cases.
+     */
+    standardIsolation?: pulumi.Input<inputs.bigtableadmin.v2.StandardIsolationArgs>;
 }

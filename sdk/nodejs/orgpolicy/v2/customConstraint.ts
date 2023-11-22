@@ -42,7 +42,7 @@ export class CustomConstraint extends pulumi.CustomResource {
      */
     public readonly actionType!: pulumi.Output<string>;
     /**
-     * Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+     * Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
      */
     public readonly condition!: pulumi.Output<string>;
     /**
@@ -121,7 +121,7 @@ export interface CustomConstraintArgs {
      */
     actionType?: pulumi.Input<enums.orgpolicy.v2.CustomConstraintActionType>;
     /**
-     * Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+     * Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
      */
     condition?: pulumi.Input<string>;
     /**
